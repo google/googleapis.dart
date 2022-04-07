@@ -1196,7 +1196,7 @@
             }
         }
     },
-    "revision": "20220222",
+    "revision": "20220317",
     "rootUrl": "https://metastore.googleapis.com/",
     "schemas": {
         "AuditConfig": {

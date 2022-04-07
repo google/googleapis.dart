@@ -20,6 +20,8 @@
 ///
 /// Create an instance of [AndroidPublisherApi] to access these resources:
 ///
+/// - [ApplicationsResource]
+///   - [ApplicationsDeviceTierConfigsResource]
 /// - [EditsResource]
 ///   - [EditsApksResource]
 ///   - [EditsBundlesResource]
@@ -77,6 +79,7 @@ class AndroidPublisherApi {
 
   final commons.ApiRequester _requester;
 
+  ApplicationsResource get applications => ApplicationsResource(_requester);
   EditsResource get edits => EditsResource(_requester);
   GeneratedapksResource get generatedapks => GeneratedapksResource(_requester);
   GrantsResource get grants => GrantsResource(_requester);
@@ -95,6 +98,162 @@ class AndroidPublisherApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class ApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ApplicationsDeviceTierConfigsResource get deviceTierConfigs =>
+      ApplicationsDeviceTierConfigsResource(_requester);
+
+  ApplicationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ApplicationsDeviceTierConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ApplicationsDeviceTierConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new device tier config for an app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [allowUnknownDevices] - Whether the service should accept device IDs that
+  /// are unknown to Play's device catalog.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeviceTierConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeviceTierConfig> create(
+    DeviceTierConfig request,
+    core.String packageName, {
+    core.bool? allowUnknownDevices,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (allowUnknownDevices != null)
+        'allowUnknownDevices': ['${allowUnknownDevices}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/deviceTierConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return DeviceTierConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a particular device tier config.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [deviceTierConfigId] - Required. Id of an existing device tier config.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeviceTierConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeviceTierConfig> get(
+    core.String packageName,
+    core.String deviceTierConfigId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/deviceTierConfigs/' +
+        commons.escapeVariable('$deviceTierConfigId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return DeviceTierConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns created device tier configs, ordered by descending creation time.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [pageSize] - The maximum number of device tier configs to return. The
+  /// service may return fewer than this value. If unspecified, at most 10
+  /// device tier configs will be returned. The maximum value for this field is
+  /// 100; values above 100 will be coerced to 100. Device tier configs will be
+  /// ordered by descending creation time.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListDeviceTierConfigs` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeviceTierConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeviceTierConfigsResponse> list(
+    core.String packageName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/deviceTierConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListDeviceTierConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class EditsResource {
@@ -1774,6 +1933,8 @@ class EditsTestersResource {
 
   /// Gets testers.
   ///
+  /// Note: Testers resource does not support email lists.
+  ///
   /// Request parameters:
   ///
   /// [packageName] - Package name of the app.
@@ -1818,6 +1979,8 @@ class EditsTestersResource {
   }
 
   /// Patches testers.
+  ///
+  /// Note: Testers resource does not support email lists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1868,6 +2031,8 @@ class EditsTestersResource {
   }
 
   /// Updates testers.
+  ///
+  /// Note: Testers resource does not support email lists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4511,6 +4676,70 @@ class DeveloperComment {
       };
 }
 
+/// LINT.IfChange A group of devices.
+///
+/// A group is defined by a set of device selectors. A device belongs to the
+/// group if it matches any selector (logical OR).
+class DeviceGroup {
+  /// Device selectors for this group.
+  ///
+  /// A device matching any of the selectors is included in this group.
+  core.List<DeviceSelector>? deviceSelectors;
+
+  /// The name of the group.
+  core.String? name;
+
+  DeviceGroup({
+    this.deviceSelectors,
+    this.name,
+  });
+
+  DeviceGroup.fromJson(core.Map _json)
+      : this(
+          deviceSelectors: _json.containsKey('deviceSelectors')
+              ? (_json['deviceSelectors'] as core.List)
+                  .map((value) => DeviceSelector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceSelectors != null) 'deviceSelectors': deviceSelectors!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Identifier of a device.
+class DeviceId {
+  /// Value of Build.BRAND.
+  core.String? buildBrand;
+
+  /// Value of Build.DEVICE.
+  core.String? buildDevice;
+
+  DeviceId({
+    this.buildBrand,
+    this.buildDevice,
+  });
+
+  DeviceId.fromJson(core.Map _json)
+      : this(
+          buildBrand: _json.containsKey('buildBrand')
+              ? _json['buildBrand'] as core.String
+              : null,
+          buildDevice: _json.containsKey('buildDevice')
+              ? _json['buildDevice'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildBrand != null) 'buildBrand': buildBrand!,
+        if (buildDevice != null) 'buildDevice': buildDevice!,
+      };
+}
+
 /// Characteristics of the user's device.
 class DeviceMetadata {
   /// Device CPU make, e.g. "Qualcomm"
@@ -4610,6 +4839,113 @@ class DeviceMetadata {
       };
 }
 
+/// Conditions about a device's RAM capabilities.
+class DeviceRam {
+  /// Maximum RAM in bytes (bound excluded).
+  core.String? maxBytes;
+
+  /// Minimum RAM in bytes (bound included).
+  core.String? minBytes;
+
+  DeviceRam({
+    this.maxBytes,
+    this.minBytes,
+  });
+
+  DeviceRam.fromJson(core.Map _json)
+      : this(
+          maxBytes: _json.containsKey('maxBytes')
+              ? _json['maxBytes'] as core.String
+              : null,
+          minBytes: _json.containsKey('minBytes')
+              ? _json['minBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxBytes != null) 'maxBytes': maxBytes!,
+        if (minBytes != null) 'minBytes': minBytes!,
+      };
+}
+
+/// Selector for a device group.
+///
+/// A selector consists of a set of conditions on the device that should all
+/// match (logical AND) to determine a device group eligibility. For instance,
+/// if a selector specifies RAM conditions, device model inclusion and device
+/// model exclusion, a device is considered to match if: device matches RAM
+/// conditions AND device matches one of the included device models AND device
+/// doesn't match excluded device models
+class DeviceSelector {
+  /// Conditions on the device's RAM.
+  DeviceRam? deviceRam;
+
+  /// Device models excluded by this selector, even if they match all other
+  /// conditions.
+  core.List<DeviceId>? excludedDeviceIds;
+
+  /// A device that has any of these system features is excluded by this
+  /// selector, even if it matches all other conditions.
+  core.List<SystemFeature>? forbiddenSystemFeatures;
+
+  /// Device models included by this selector.
+  core.List<DeviceId>? includedDeviceIds;
+
+  /// A device needs to have all these system features to be included by the
+  /// selector.
+  core.List<SystemFeature>? requiredSystemFeatures;
+
+  DeviceSelector({
+    this.deviceRam,
+    this.excludedDeviceIds,
+    this.forbiddenSystemFeatures,
+    this.includedDeviceIds,
+    this.requiredSystemFeatures,
+  });
+
+  DeviceSelector.fromJson(core.Map _json)
+      : this(
+          deviceRam: _json.containsKey('deviceRam')
+              ? DeviceRam.fromJson(
+                  _json['deviceRam'] as core.Map<core.String, core.dynamic>)
+              : null,
+          excludedDeviceIds: _json.containsKey('excludedDeviceIds')
+              ? (_json['excludedDeviceIds'] as core.List)
+                  .map((value) => DeviceId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          forbiddenSystemFeatures: _json.containsKey('forbiddenSystemFeatures')
+              ? (_json['forbiddenSystemFeatures'] as core.List)
+                  .map((value) => SystemFeature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          includedDeviceIds: _json.containsKey('includedDeviceIds')
+              ? (_json['includedDeviceIds'] as core.List)
+                  .map((value) => DeviceId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requiredSystemFeatures: _json.containsKey('requiredSystemFeatures')
+              ? (_json['requiredSystemFeatures'] as core.List)
+                  .map((value) => SystemFeature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceRam != null) 'deviceRam': deviceRam!,
+        if (excludedDeviceIds != null) 'excludedDeviceIds': excludedDeviceIds!,
+        if (forbiddenSystemFeatures != null)
+          'forbiddenSystemFeatures': forbiddenSystemFeatures!,
+        if (includedDeviceIds != null) 'includedDeviceIds': includedDeviceIds!,
+        if (requiredSystemFeatures != null)
+          'requiredSystemFeatures': requiredSystemFeatures!,
+      };
+}
+
 /// The device spec used to generate a system APK.
 class DeviceSpec {
   /// Screen dpi.
@@ -4651,6 +4987,126 @@ class DeviceSpec {
         if (screenDensity != null) 'screenDensity': screenDensity!,
         if (supportedAbis != null) 'supportedAbis': supportedAbis!,
         if (supportedLocales != null) 'supportedLocales': supportedLocales!,
+      };
+}
+
+/// A single device tier.
+///
+/// Devices matching any of the device groups in device_group_names are
+/// considered to match the tier.
+class DeviceTier {
+  /// Groups of devices included in this tier.
+  ///
+  /// These groups must be defined explicitly under device_groups in this
+  /// configuration.
+  core.List<core.String>? deviceGroupNames;
+
+  /// The priority level of the tier.
+  ///
+  /// Tiers are evaluated in descending order of level: the highest level tier
+  /// has the highest priority. The highest tier matching a given device is
+  /// selected for that device. You should use a contiguous range of levels for
+  /// your tiers in a tier set; tier levels in a tier set must be unique. For
+  /// instance, if your tier set has 4 tiers (including the global fallback),
+  /// you should define tiers 1, 2 and 3 in this configuration. Note: tier 0 is
+  /// implicitly defined as a global fallback and selected for devices that
+  /// don't match any of the tiers explicitly defined here. You mustn't define
+  /// level 0 explicitly in this configuration.
+  core.int? level;
+
+  DeviceTier({
+    this.deviceGroupNames,
+    this.level,
+  });
+
+  DeviceTier.fromJson(core.Map _json)
+      : this(
+          deviceGroupNames: _json.containsKey('deviceGroupNames')
+              ? (_json['deviceGroupNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          level: _json.containsKey('level') ? _json['level'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceGroupNames != null) 'deviceGroupNames': deviceGroupNames!,
+        if (level != null) 'level': level!,
+      };
+}
+
+/// LINT.IfChange Configuration describing device targeting criteria for the
+/// content of an app.
+class DeviceTierConfig {
+  /// Definition of device groups for the app.
+  core.List<DeviceGroup>? deviceGroups;
+
+  /// The device tier config ID.
+  ///
+  /// Output only.
+  core.String? deviceTierConfigId;
+
+  /// Definition of the set of device tiers for the app.
+  DeviceTierSet? deviceTierSet;
+
+  DeviceTierConfig({
+    this.deviceGroups,
+    this.deviceTierConfigId,
+    this.deviceTierSet,
+  });
+
+  DeviceTierConfig.fromJson(core.Map _json)
+      : this(
+          deviceGroups: _json.containsKey('deviceGroups')
+              ? (_json['deviceGroups'] as core.List)
+                  .map((value) => DeviceGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deviceTierConfigId: _json.containsKey('deviceTierConfigId')
+              ? _json['deviceTierConfigId'] as core.String
+              : null,
+          deviceTierSet: _json.containsKey('deviceTierSet')
+              ? DeviceTierSet.fromJson(
+                  _json['deviceTierSet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceGroups != null) 'deviceGroups': deviceGroups!,
+        if (deviceTierConfigId != null)
+          'deviceTierConfigId': deviceTierConfigId!,
+        if (deviceTierSet != null) 'deviceTierSet': deviceTierSet!,
+      };
+}
+
+/// A set of device tiers.
+///
+/// A tier set determines what variation of app content gets served to a
+/// specific device, for device-targeted content. You should assign a priority
+/// level to each tier, which determines the ordering by which they are
+/// evaluated by Play. See the documentation of DeviceTier.level for more
+/// details.
+class DeviceTierSet {
+  /// Device tiers belonging to the set.
+  core.List<DeviceTier>? deviceTiers;
+
+  DeviceTierSet({
+    this.deviceTiers,
+  });
+
+  DeviceTierSet.fromJson(core.Map _json)
+      : this(
+          deviceTiers: _json.containsKey('deviceTiers')
+              ? (_json['deviceTiers'] as core.List)
+                  .map((value) => DeviceTier.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceTiers != null) 'deviceTiers': deviceTiers!,
       };
 }
 
@@ -5634,6 +6090,40 @@ class IntroductoryPriceInfo {
           'introductoryPriceCycles': introductoryPriceCycles!,
         if (introductoryPricePeriod != null)
           'introductoryPricePeriod': introductoryPricePeriod!,
+      };
+}
+
+/// Response listing existing device tier configs.
+class ListDeviceTierConfigsResponse {
+  /// Device tier configs created by the developer.
+  core.List<DeviceTierConfig>? deviceTierConfigs;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListDeviceTierConfigsResponse({
+    this.deviceTierConfigs,
+    this.nextPageToken,
+  });
+
+  ListDeviceTierConfigsResponse.fromJson(core.Map _json)
+      : this(
+          deviceTierConfigs: _json.containsKey('deviceTierConfigs')
+              ? (_json['deviceTierConfigs'] as core.List)
+                  .map((value) => DeviceTierConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceTierConfigs != null) 'deviceTierConfigs': deviceTierConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6828,9 +7318,30 @@ class SystemApksListResponse {
       };
 }
 
+/// Representation of a system feature.
+class SystemFeature {
+  /// The name of the feature.
+  core.String? name;
+
+  SystemFeature({
+    this.name,
+  });
+
+  SystemFeature.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 /// The testers of an app.
 ///
-/// The resource for TestersService.
+/// The resource for TestersService. Note: while it is possible in the Play
+/// Console UI to add testers via email lists, email lists are not supported by
+/// this resource.
 class Testers {
   /// All testing Google Groups, as email addresses.
   core.List<core.String>? googleGroups;

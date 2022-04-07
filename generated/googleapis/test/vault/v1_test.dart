@@ -382,6 +382,7 @@ api.DriveOptions buildDriveOptions() {
   final o = api.DriveOptions();
   buildCounterDriveOptions++;
   if (buildCounterDriveOptions < 3) {
+    o.clientSideEncryptedOption = 'foo';
     o.includeSharedDrives = true;
     o.includeTeamDrives = true;
     o.versionDate = 'foo';
@@ -393,6 +394,10 @@ api.DriveOptions buildDriveOptions() {
 void checkDriveOptions(api.DriveOptions o) {
   buildCounterDriveOptions++;
   if (buildCounterDriveOptions < 3) {
+    unittest.expect(
+      o.clientSideEncryptedOption!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.includeSharedDrives!, unittest.isTrue);
     unittest.expect(o.includeTeamDrives!, unittest.isTrue);
     unittest.expect(

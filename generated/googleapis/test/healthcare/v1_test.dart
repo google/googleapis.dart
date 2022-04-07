@@ -1401,6 +1401,8 @@ api.ExportResourcesRequest buildExportResourcesRequest() {
   final o = api.ExportResourcesRequest();
   buildCounterExportResourcesRequest++;
   if (buildCounterExportResourcesRequest < 3) {
+    o.P_since = 'foo';
+    o.P_type = 'foo';
     o.bigqueryDestination =
         buildGoogleCloudHealthcareV1FhirBigQueryDestination();
     o.gcsDestination = buildGoogleCloudHealthcareV1FhirGcsDestination();
@@ -1412,6 +1414,14 @@ api.ExportResourcesRequest buildExportResourcesRequest() {
 void checkExportResourcesRequest(api.ExportResourcesRequest o) {
   buildCounterExportResourcesRequest++;
   if (buildCounterExportResourcesRequest < 3) {
+    unittest.expect(
+      o.P_since!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.P_type!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudHealthcareV1FhirBigQueryDestination(o.bigqueryDestination!);
     checkGoogleCloudHealthcareV1FhirGcsDestination(o.gcsDestination!);
   }

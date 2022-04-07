@@ -244,8 +244,8 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -365,8 +365,8 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [configId] - Required. The id of the service configuration resource. This
   /// field must be specified for the server to return all fields, including
@@ -618,8 +618,8 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -668,8 +668,8 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -708,8 +708,8 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [configId] - Required. The id of the service configuration resource. This
   /// field must be specified for the server to return all fields, including
@@ -764,8 +764,8 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
   /// size is 50 if not specified. Maximum value is 100.
@@ -822,8 +822,8 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1025,8 +1025,8 @@ class ServicesRolloutsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1065,8 +1065,8 @@ class ServicesRolloutsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [rolloutId] - Required. The id of the rollout resource.
   ///
@@ -1108,15 +1108,14 @@ class ServicesRolloutsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// \[overview\](/service-management/overview) for naming requirements. For
-  /// example: `example.googleapis.com`.
+  /// [overview](https://cloud.google.com/service-management/overview) for
+  /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [filter] - Required. Use `filter` to return subset of rollouts. The
   /// following filters are supported: -- To limit the results to only those in
-  /// \[status\](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-  /// filter='status=SUCCESS' -- To limit the results to those in
-  /// \[status\](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or
-  /// 'FAILED', use filter='status=CANCELLED OR status=FAILED'
+  /// status 'SUCCESS', use filter='status=SUCCESS' -- To limit the results to
+  /// those in status 'CANCELLED' or 'FAILED', use filter='status=CANCELLED OR
+  /// status=FAILED'
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
   /// size is 50 if not specified. Maximum value is 100.
@@ -3176,7 +3175,47 @@ class HttpRule {
 }
 
 /// Specifies a location to extract JWT from an API request.
-typedef JwtLocation = $JwtLocation;
+class JwtLocation {
+  /// Specifies HTTP header name to extract JWT token.
+  core.String? header;
+
+  /// Specifies URL query parameter name to extract JWT token.
+  core.String? query;
+
+  /// The value prefix.
+  ///
+  /// The value format is "value_prefix{token}" Only applies to "in" header
+  /// type. Must be empty for "in" query type. If not empty, the header value
+  /// has to match (case sensitive) this prefix. If not matched, JWT will not be
+  /// extracted. If matched, JWT will be extracted after the prefix is removed.
+  /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
+  /// with a space at the end.
+  core.String? valuePrefix;
+
+  JwtLocation({
+    this.header,
+    this.query,
+    this.valuePrefix,
+  });
+
+  JwtLocation.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? _json['header'] as core.String
+              : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+          valuePrefix: _json.containsKey('valuePrefix')
+              ? _json['valuePrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (query != null) 'query': query!,
+        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
+      };
+}
 
 /// A description of a label.
 typedef LabelDescriptor = $LabelDescriptor;
@@ -3475,8 +3514,8 @@ class ManagedService {
 
   /// The name of the service.
   ///
-  /// See the \[overview\](/service-management/overview) for naming
-  /// requirements.
+  /// See the [overview](https://cloud.google.com/service-management/overview)
+  /// for naming requirements.
   core.String? serviceName;
 
   ManagedService({

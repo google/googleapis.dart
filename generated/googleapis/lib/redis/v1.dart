@@ -888,8 +888,7 @@ class ProjectsLocationsOperationsResource {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Request for Export.
@@ -1192,9 +1191,9 @@ class Instance {
   /// Output only.
   core.int? readEndpointPort;
 
-  /// Read replica mode.
+  /// Read replicas mode for the instance.
   ///
-  /// Can only be specified when trying to create the instance.
+  /// Defaults to READ_REPLICAS_DISABLED.
   ///
   /// Optional.
   /// Possible string values are:
@@ -1251,14 +1250,12 @@ class Instance {
   /// Optional.
   core.String? reservedIpRange;
 
-  /// Additional ip ranges for node placement, beyond those specified in
-  /// reserved_ip_range.
+  /// Additional IP range for node placement.
   ///
-  /// At most 1 secondary IP range is supported. The mask value must not exceed
-  /// /28. Not supported for BASIC tier. Updates can only add new ranges, once
-  /// added ranges cannot be changed or deleted. Values in this list cannot
-  /// overlap with the reserved_ip_range. Not supported during instance
-  /// creation.
+  /// Required when enabling read replicas on an existing instance. For
+  /// DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For
+  /// PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+  /// range associated with the private service access connection, or "auto".
   ///
   /// Optional.
   core.String? secondaryIpRange;

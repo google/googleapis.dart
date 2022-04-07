@@ -182,6 +182,7 @@ api.CloneJob buildCloneJob() {
   if (buildCounterCloneJob < 3) {
     o.computeEngineTargetDetails = buildComputeEngineTargetDetails();
     o.createTime = 'foo';
+    o.endTime = 'foo';
     o.error = buildStatus();
     o.name = 'foo';
     o.state = 'foo';
@@ -197,6 +198,10 @@ void checkCloneJob(api.CloneJob o) {
     checkComputeEngineTargetDetails(o.computeEngineTargetDetails!);
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
       unittest.equals('foo'),
     );
     checkStatus(o.error!);
@@ -582,6 +587,7 @@ api.CutoverJob buildCutoverJob() {
   if (buildCounterCutoverJob < 3) {
     o.computeEngineTargetDetails = buildComputeEngineTargetDetails();
     o.createTime = 'foo';
+    o.endTime = 'foo';
     o.error = buildStatus();
     o.name = 'foo';
     o.progressPercent = 42;
@@ -599,6 +605,10 @@ void checkCutoverJob(api.CutoverJob o) {
     checkComputeEngineTargetDetails(o.computeEngineTargetDetails!);
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
       unittest.equals('foo'),
     );
     checkStatus(o.error!);

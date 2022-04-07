@@ -948,6 +948,7 @@ api.ComplianceVersion buildComplianceVersion() {
   final o = api.ComplianceVersion();
   buildCounterComplianceVersion++;
   if (buildCounterComplianceVersion < 3) {
+    o.benchmarkDocument = 'foo';
     o.cpeUri = 'foo';
     o.version = 'foo';
   }
@@ -958,6 +959,10 @@ api.ComplianceVersion buildComplianceVersion() {
 void checkComplianceVersion(api.ComplianceVersion o) {
   buildCounterComplianceVersion++;
   if (buildCounterComplianceVersion < 3) {
+    unittest.expect(
+      o.benchmarkDocument!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cpeUri!,
       unittest.equals('foo'),

@@ -150,7 +150,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -5907,6 +5907,12 @@ class GoogleCloudDialogflowCxV3Agent {
   /// Please use agent.advanced_settings instead.
   core.bool? enableStackdriverLogging;
 
+  /// Indiciates whether the agent is locked for changes.
+  ///
+  /// If the agent is locked, modifications to the agent will be rejected except
+  /// for RestoreAgent.
+  core.bool? locked;
+
   /// The unique identifier of the agent.
   ///
   /// Required for the Agents.UpdateAgent method. Agents.CreateAgent populates
@@ -5949,6 +5955,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.displayName,
     this.enableSpellCorrection,
     this.enableStackdriverLogging,
+    this.locked,
     this.name,
     this.securitySettings,
     this.speechToTextSettings,
@@ -5983,6 +5990,8 @@ class GoogleCloudDialogflowCxV3Agent {
               _json.containsKey('enableStackdriverLogging')
                   ? _json['enableStackdriverLogging'] as core.bool
                   : null,
+          locked:
+              _json.containsKey('locked') ? _json['locked'] as core.bool : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           securitySettings: _json.containsKey('securitySettings')
               ? _json['securitySettings'] as core.String
@@ -6016,6 +6025,7 @@ class GoogleCloudDialogflowCxV3Agent {
           'enableSpellCorrection': enableSpellCorrection!,
         if (enableStackdriverLogging != null)
           'enableStackdriverLogging': enableStackdriverLogging!,
+        if (locked != null) 'locked': locked!,
         if (name != null) 'name': name!,
         if (securitySettings != null) 'securitySettings': securitySettings!,
         if (speechToTextSettings != null)
@@ -7782,10 +7792,24 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
   /// export the agent to.
   ///
   /// The format of this URI must be `gs:///`. If left unspecified, the
-  /// serialized agent is returned inline.
+  /// serialized agent is returned inline. Dialogflow performs a write operation
+  /// for the Cloud Storage object on the caller's behalf, so your request
+  /// authentication must have write permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   ///
   /// Optional.
   core.String? agentUri;
+
+  /// The data format of the exported agent.
+  ///
+  /// If not specified, `BLOB` is assumed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
+  /// - "BLOB" : Agent content will be exported as raw bytes.
+  core.String? dataFormat;
 
   /// Environment name.
   ///
@@ -7797,6 +7821,7 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
 
   GoogleCloudDialogflowCxV3ExportAgentRequest({
     this.agentUri,
+    this.dataFormat,
     this.environment,
   });
 
@@ -7805,6 +7830,9 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
           agentUri: _json.containsKey('agentUri')
               ? _json['agentUri'] as core.String
               : null,
+          dataFormat: _json.containsKey('dataFormat')
+              ? _json['dataFormat'] as core.String
+              : null,
           environment: _json.containsKey('environment')
               ? _json['environment'] as core.String
               : null,
@@ -7812,6 +7840,7 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentUri != null) 'agentUri': agentUri!,
+        if (dataFormat != null) 'dataFormat': dataFormat!,
         if (environment != null) 'environment': environment!,
       };
 }
@@ -7822,7 +7851,11 @@ class GoogleCloudDialogflowCxV3ExportFlowRequest {
   /// export the flow to.
   ///
   /// The format of this URI must be `gs:///`. If left unspecified, the
-  /// serialized flow is returned inline.
+  /// serialized flow is returned inline. Dialogflow performs a write operation
+  /// for the Cloud Storage object on the caller's behalf, so your request
+  /// authentication must have write permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   ///
   /// Optional.
   core.String? flowUri;
@@ -7877,7 +7910,11 @@ class GoogleCloudDialogflowCxV3ExportTestCasesRequest {
   /// export the test cases to.
   ///
   /// The format of this URI must be `gs:///`. If unspecified, the serialized
-  /// test cases is returned inline.
+  /// test cases is returned inline. Dialogflow performs a write operation for
+  /// the Cloud Storage object on the caller's behalf, so your request
+  /// authentication must have write permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? gcsUri;
 
   GoogleCloudDialogflowCxV3ExportTestCasesRequest({
@@ -8617,7 +8654,11 @@ class GoogleCloudDialogflowCxV3ImportFlowRequest {
   /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
   /// import flow from.
   ///
-  /// The format of this URI must be `gs:///`.
+  /// The format of this URI must be `gs:///`. Dialogflow performs a read
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have read permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? flowUri;
 
   /// Flow import mode.
@@ -8673,7 +8714,11 @@ class GoogleCloudDialogflowCxV3ImportTestCasesRequest {
   /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
   /// import test cases from.
   ///
-  /// The format of this URI must be `gs:///`.
+  /// The format of this URI must be `gs:///`. Dialogflow performs a read
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have read permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? gcsUri;
 
   GoogleCloudDialogflowCxV3ImportTestCasesRequest({
@@ -9938,12 +9983,13 @@ class GoogleCloudDialogflowCxV3Match {
   ///
   /// Depending on your protocol or client library language, this is a map,
   /// associative array, symbol table, dictionary, or JSON object composed of a
-  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
-  /// value: parameter name - MapValue type: - If parameter's entity type is a
-  /// composite entity: map - Else: depending on parameter value type, could be
-  /// one of string, number, boolean, null, list or map - MapValue value: - If
-  /// parameter's entity type is a composite entity: map from composite entity
-  /// property names to property values - Else: parameter value
+  /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey
+  /// value: parameter name * MapValue type: If parameter's entity type is a
+  /// composite entity then use map, otherwise, depending on the parameter value
+  /// type, it could be one of string, number, boolean, null, list or map. *
+  /// MapValue value: If parameter's entity type is a composite entity then use
+  /// map from composite entity property names to property values, otherwise,
+  /// use parameter value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10459,12 +10505,13 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// agent with the following format: $session.params.parameter-id. Depending
   /// on your protocol or client library language, this is a map, associative
   /// array, symbol table, dictionary, or JSON object composed of a collection
-  /// of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value:
-  /// parameter name - MapValue type: - If parameter's entity type is a
-  /// composite entity: map - Else: depending on parameter value type, could be
-  /// one of string, number, boolean, null, list or map - MapValue value: - If
-  /// parameter's entity type is a composite entity: map from composite entity
-  /// property names to property values - Else: parameter value
+  /// of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value:
+  /// parameter name * MapValue type: If parameter's entity type is a composite
+  /// entity then use map, otherwise, depending on the parameter value type, it
+  /// could be one of string, number, boolean, null, list or map. * MapValue
+  /// value: If parameter's entity type is a composite entity then use map from
+  /// composite entity property names to property values, otherwise, use
+  /// parameter value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10636,12 +10683,13 @@ class GoogleCloudDialogflowCxV3QueryResult {
   ///
   /// Depending on your protocol or client library language, this is a map,
   /// associative array, symbol table, dictionary, or JSON object composed of a
-  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
-  /// value: parameter name - MapValue type: - If parameter's entity type is a
-  /// composite entity: map - Else: depending on parameter value type, could be
-  /// one of string, number, boolean, null, list or map - MapValue value: - If
-  /// parameter's entity type is a composite entity: map from composite entity
-  /// property names to property values - Else: parameter value
+  /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey
+  /// value: parameter name * MapValue type: If parameter's entity type is a
+  /// composite entity then use map, otherwise, depending on the parameter value
+  /// type, it could be one of string, number, boolean, null, list or map. *
+  /// MapValue value: If parameter's entity type is a composite entity then use
+  /// map from composite entity property names to property values, otherwise,
+  /// use parameter value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11275,7 +11323,11 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
   /// restore agent from.
   ///
-  /// The format of this URI must be `gs:///`.
+  /// The format of this URI must be `gs:///`. Dialogflow performs a read
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have read permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? agentUri;
 
   /// Agent restore mode.
@@ -12010,23 +12062,35 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
 
 /// Represents configurations for a test case.
 class GoogleCloudDialogflowCxV3TestConfig {
-  /// Flow name.
+  /// Flow name to start the test case with.
   ///
-  /// If not set, default start flow is assumed. Format:
-  /// `projects//locations//agents//flows/`.
+  /// Format: `projects//locations//agents//flows/`. Only one of `flow` and
+  /// `page` should be set to indicate the starting point of the test case. If
+  /// both are set, `page` takes precedence over `flow`. If neither is set, the
+  /// test case will start with start page on the default start flow.
   core.String? flow;
+
+  /// The page to start the test case with.
+  ///
+  /// Format: `projects//locations//agents//flows//pages/`. Only one of `flow`
+  /// and `page` should be set to indicate the starting point of the test case.
+  /// If both are set, `page` takes precedence over `flow`. If neither is set,
+  /// the test case will start with start page on the default start flow.
+  core.String? page;
 
   /// Session parameters to be compared when calculating differences.
   core.List<core.String>? trackingParameters;
 
   GoogleCloudDialogflowCxV3TestConfig({
     this.flow,
+    this.page,
     this.trackingParameters,
   });
 
   GoogleCloudDialogflowCxV3TestConfig.fromJson(core.Map _json)
       : this(
           flow: _json.containsKey('flow') ? _json['flow'] as core.String : null,
+          page: _json.containsKey('page') ? _json['page'] as core.String : null,
           trackingParameters: _json.containsKey('trackingParameters')
               ? (_json['trackingParameters'] as core.List)
                   .map((value) => value as core.String)
@@ -12036,6 +12100,7 @@ class GoogleCloudDialogflowCxV3TestConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (flow != null) 'flow': flow!,
+        if (page != null) 'page': page!,
         if (trackingParameters != null)
           'trackingParameters': trackingParameters!,
       };
@@ -12901,9 +12966,9 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// unspecified, Dialogflow will use Google's default trust store to verify
   /// certificates. N.B. Make sure the HTTPS server certificates are signed with
   /// "subject alt name". For instance a certificate can be self-signed using
-  /// the following command, openssl x509 -req -days 200 -in example.com.csr \
-  /// -signkey example.com.key \ -out example.com.crt \ -extfile \<(printf
-  /// "\nsubjectAltName='DNS:www.example.com'")
+  /// the following command, ``` openssl x509 -req -days 200 -in example.com.csr
+  /// \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf
+  /// "\nsubjectAltName='DNS:www.example.com'") ```
   ///
   /// Optional.
   core.List<core.String>? allowedCaCerts;
@@ -13153,8 +13218,7 @@ class GoogleLongrunningOperation {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for

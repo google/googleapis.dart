@@ -515,8 +515,8 @@ class CheckResponse {
 
   /// Operation is allowed when this field is not set.
   ///
-  /// Any non-'OK' status indicates a denial; \[google.rpc.Status.details\]()
-  /// would contain additional details about the denial.
+  /// Any non-'OK' status indicates a denial; google.rpc.Status.details would
+  /// contain additional details about the denial.
   Status? status;
 
   CheckResponse({

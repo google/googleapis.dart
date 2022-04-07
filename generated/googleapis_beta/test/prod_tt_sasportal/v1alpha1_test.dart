@@ -451,6 +451,7 @@ api.SasPortalDeviceGrant buildSasPortalDeviceGrant() {
     o.expireTime = 'foo';
     o.frequencyRange = buildSasPortalFrequencyRange();
     o.grantId = 'foo';
+    o.lastHeartbeatTransmitExpireTime = 'foo';
     o.maxEirp = 42.0;
     o.moveList = buildUnnamed8();
     o.state = 'foo';
@@ -474,6 +475,10 @@ void checkSasPortalDeviceGrant(api.SasPortalDeviceGrant o) {
     checkSasPortalFrequencyRange(o.frequencyRange!);
     unittest.expect(
       o.grantId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastHeartbeatTransmitExpireTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1037,6 +1042,7 @@ api.SasPortalNrqzValidation buildSasPortalNrqzValidation() {
     o.cpiId = 'foo';
     o.latitude = 42.0;
     o.longitude = 42.0;
+    o.state = 'foo';
   }
   buildCounterSasPortalNrqzValidation--;
   return o;
@@ -1060,6 +1066,10 @@ void checkSasPortalNrqzValidation(api.SasPortalNrqzValidation o) {
     unittest.expect(
       o.longitude!,
       unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
     );
   }
   buildCounterSasPortalNrqzValidation--;

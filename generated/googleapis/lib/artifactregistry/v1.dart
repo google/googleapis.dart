@@ -28,8 +28,6 @@
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
-///       - [ProjectsLocationsRepositoriesGooGetArtifactsResource]
-///       - [ProjectsLocationsRepositoriesGoogetArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesPackagesResource]
 ///         - [ProjectsLocationsRepositoriesPackagesTagsResource]
 ///         - [ProjectsLocationsRepositoriesPackagesVersionsResource]
@@ -183,6 +181,93 @@ class ProjectsLocationsResource {
       ProjectsLocationsRepositoriesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -240,10 +325,6 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
-  ProjectsLocationsRepositoriesGooGetArtifactsResource get gooGetArtifacts =>
-      ProjectsLocationsRepositoriesGooGetArtifactsResource(_requester);
-  ProjectsLocationsRepositoriesGoogetArtifactsResource get googetArtifacts =>
-      ProjectsLocationsRepositoriesGoogetArtifactsResource(_requester);
   ProjectsLocationsRepositoriesPackagesResource get packages =>
       ProjectsLocationsRepositoriesPackagesResource(_requester);
   ProjectsLocationsRepositoriesYumArtifactsResource get yumArtifacts =>
@@ -868,7 +949,8 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the parent resource whose files will be listed.
+  /// [parent] - The name of the repository whose files will be listed. For
+  /// example: "projects/p1/locations/us-central1/repositories/repo1
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
@@ -921,130 +1003,6 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: _queryParams,
     );
     return ListFilesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsRepositoriesGooGetArtifactsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsRepositoriesGooGetArtifactsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Imports GooGet artifacts.
-  ///
-  /// The returned Operation will complete once the resources are imported.
-  /// Package, Version, and File resources are created based on the imported
-  /// artifacts. Imported artifacts that conflict with existing resources are
-  /// ignored.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - The name of the parent resource where the artifacts will be
-  /// imported.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> import(
-    ImportGooGetArtifactsRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url =
-        'v1/' + core.Uri.encodeFull('$parent') + '/gooGetArtifacts:import';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsRepositoriesGoogetArtifactsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsRepositoriesGoogetArtifactsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Directly uploads a GooGet artifact.
-  ///
-  /// The returned Operation will complete once the resources are uploaded.
-  /// Package, Version, and File resources are created based on the imported
-  /// artifact. Imported artifacts that conflict with existing resources are
-  /// ignored.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - The name of the parent resource where the artifacts will be
-  /// uploaded.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [uploadMedia] - The media to upload.
-  ///
-  /// Completes with a [UploadGooGetArtifactMediaResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<UploadGooGetArtifactMediaResponse> upload(
-    UploadGooGetArtifactRequest request,
-    core.String parent, {
-    core.String? $fields,
-    commons.Media? uploadMedia,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    core.String _url;
-    if (uploadMedia == null) {
-      _url = 'v1/' + core.Uri.encodeFull('$parent') + '/googetArtifacts:create';
-    } else {
-      _url = '/upload/v1/' +
-          core.Uri.encodeFull('$parent') +
-          '/googetArtifacts:create';
-    }
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-      uploadMedia: uploadMedia,
-      uploadOptions: commons.UploadOptions.defaultOptions,
-    );
-    return UploadGooGetArtifactMediaResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1866,8 +1824,7 @@ class DockerImage {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2017,59 +1974,6 @@ class ImportAptArtifactsRequest {
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
-class ImportGooGetArtifactsGcsSource {
-  /// Cloud Storage paths URI (e.g., gs://my_bucket/my_object).
-  core.List<core.String>? uris;
-
-  /// Supports URI wildcards for matching multiple objects from a single URI.
-  core.bool? useWildcards;
-
-  ImportGooGetArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
-
-  ImportGooGetArtifactsGcsSource.fromJson(core.Map _json)
-      : this(
-          uris: _json.containsKey('uris')
-              ? (_json['uris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          useWildcards: _json.containsKey('useWildcards')
-              ? _json['useWildcards'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uris != null) 'uris': uris!,
-        if (useWildcards != null) 'useWildcards': useWildcards!,
-      };
-}
-
-/// The request to import new googet artifacts.
-class ImportGooGetArtifactsRequest {
-  /// Google Cloud Storage location where input content is located.
-  ImportGooGetArtifactsGcsSource? gcsSource;
-
-  ImportGooGetArtifactsRequest({
-    this.gcsSource,
-  });
-
-  ImportGooGetArtifactsRequest.fromJson(core.Map _json)
-      : this(
-          gcsSource: _json.containsKey('gcsSource')
-              ? ImportGooGetArtifactsGcsSource.fromJson(
-                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-      };
-}
-
-/// Google Cloud Storage location where the artifacts currently reside.
 typedef ImportYumArtifactsGcsSource = $ArtifactsGcsSource;
 
 /// The request to import new yum artifacts.
@@ -2156,6 +2060,38 @@ class ListFilesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (files != null) 'files': files!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for Locations.ListLocations.
+class ListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<Location>? locations;
+
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
+
+  ListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2291,6 +2227,9 @@ class ListVersionsResponse {
         if (versions != null) 'versions': versions!,
       };
 }
+
+/// A resource that represents Google Cloud Platform location.
+typedef Location = $Location00;
 
 /// MavenRepositoryConfig is maven related repository details.
 ///
@@ -2646,6 +2585,14 @@ class Repository {
   /// "projects/p1/locations/us-central1/repositories/repo1".
   core.String? name;
 
+  /// The size, in bytes, of all artifact storage in this repository.
+  ///
+  /// Repositories that are generally available or in public preview use this to
+  /// calculate storage costs.
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
   /// The time when the repository was last updated.
   core.String? updateTime;
 
@@ -2657,6 +2604,7 @@ class Repository {
     this.labels,
     this.mavenConfig,
     this.name,
+    this.sizeBytes,
     this.updateTime,
   });
 
@@ -2687,6 +2635,9 @@ class Repository {
                   _json['mavenConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sizeBytes: _json.containsKey('sizeBytes')
+              ? _json['sizeBytes'] as core.String
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -2700,6 +2651,7 @@ class Repository {
         if (labels != null) 'labels': labels!,
         if (mavenConfig != null) 'mavenConfig': mavenConfig!,
         if (name != null) 'name': name!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -2805,31 +2757,6 @@ class UploadAptArtifactMediaResponse {
 
 /// The request to upload an artifact.
 typedef UploadAptArtifactRequest = $Empty;
-
-/// The response to upload an artifact.
-class UploadGooGetArtifactMediaResponse {
-  /// Operation to be returned to the user.
-  Operation? operation;
-
-  UploadGooGetArtifactMediaResponse({
-    this.operation,
-  });
-
-  UploadGooGetArtifactMediaResponse.fromJson(core.Map _json)
-      : this(
-          operation: _json.containsKey('operation')
-              ? Operation.fromJson(
-                  _json['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
-}
-
-/// The request to upload an artifact.
-typedef UploadGooGetArtifactRequest = $Empty;
 
 /// The response to upload an artifact.
 class UploadYumArtifactMediaResponse {

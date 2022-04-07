@@ -742,6 +742,67 @@ typedef CancelOperationRequest = $Empty;
 /// object `{}`.
 typedef Empty = $Empty;
 
+/// Maintenance policy per instance.
+class GoogleCloudMemcacheV1MaintenancePolicy {
+  /// The time when the policy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of what this policy is for.
+  ///
+  /// Create/Update methods return INVALID_ARGUMENT if the length is greater
+  /// than 512.
+  core.String? description;
+
+  /// The time when the policy was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Maintenance window that is applied to resources covered by this policy.
+  ///
+  /// Minimum 1. For the current version, the maximum number of
+  /// weekly_maintenance_windows is expected to be one.
+  ///
+  /// Required.
+  core.List<WeeklyMaintenanceWindow>? weeklyMaintenanceWindow;
+
+  GoogleCloudMemcacheV1MaintenancePolicy({
+    this.createTime,
+    this.description,
+    this.updateTime,
+    this.weeklyMaintenanceWindow,
+  });
+
+  GoogleCloudMemcacheV1MaintenancePolicy.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          weeklyMaintenanceWindow: _json.containsKey('weeklyMaintenanceWindow')
+              ? (_json['weeklyMaintenanceWindow'] as core.List)
+                  .map((value) => WeeklyMaintenanceWindow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (weeklyMaintenanceWindow != null)
+          'weeklyMaintenanceWindow': weeklyMaintenanceWindow!,
+      };
+}
+
 /// A Memorystore for Memcached instance
 class Instance {
   /// The full name of the Google Compute Engine
@@ -776,6 +837,17 @@ class Instance {
   /// Refer to cloud documentation on labels for more details.
   /// https://cloud.google.com/compute/docs/labeling-resources
   core.Map<core.String, core.String>? labels;
+
+  /// The maintenance policy for the instance.
+  ///
+  /// If not provided, the maintenance event will be performed based on
+  /// Memorystore internal rollout schedule.
+  GoogleCloudMemcacheV1MaintenancePolicy? maintenancePolicy;
+
+  /// Published maintenance schedule.
+  ///
+  /// Output only.
+  MaintenanceSchedule? maintenanceSchedule;
 
   /// The full version of memcached server running on this instance.
   ///
@@ -863,6 +935,8 @@ class Instance {
     this.displayName,
     this.instanceMessages,
     this.labels,
+    this.maintenancePolicy,
+    this.maintenanceSchedule,
     this.memcacheFullVersion,
     this.memcacheNodes,
     this.memcacheVersion,
@@ -902,6 +976,15 @@ class Instance {
                     item as core.String,
                   ),
                 )
+              : null,
+          maintenancePolicy: _json.containsKey('maintenancePolicy')
+              ? GoogleCloudMemcacheV1MaintenancePolicy.fromJson(
+                  _json['maintenancePolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          maintenanceSchedule: _json.containsKey('maintenanceSchedule')
+              ? MaintenanceSchedule.fromJson(_json['maintenanceSchedule']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           memcacheFullVersion: _json.containsKey('memcacheFullVersion')
               ? _json['memcacheFullVersion'] as core.String
@@ -946,6 +1029,9 @@ class Instance {
         if (displayName != null) 'displayName': displayName!,
         if (instanceMessages != null) 'instanceMessages': instanceMessages!,
         if (labels != null) 'labels': labels!,
+        if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
+        if (maintenanceSchedule != null)
+          'maintenanceSchedule': maintenanceSchedule!,
         if (memcacheFullVersion != null)
           'memcacheFullVersion': memcacheFullVersion!,
         if (memcacheNodes != null) 'memcacheNodes': memcacheNodes!,
@@ -1103,6 +1189,51 @@ class ListOperationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
+
+/// Upcoming maintenance schedule.
+class MaintenanceSchedule {
+  /// The end time of any upcoming scheduled maintenance for this instance.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The deadline that the maintenance schedule start time can not go beyond,
+  /// including reschedule.
+  ///
+  /// Output only.
+  core.String? scheduleDeadlineTime;
+
+  /// The start time of any upcoming scheduled maintenance for this instance.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  MaintenanceSchedule({
+    this.endTime,
+    this.scheduleDeadlineTime,
+    this.startTime,
+  });
+
+  MaintenanceSchedule.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          scheduleDeadlineTime: _json.containsKey('scheduleDeadlineTime')
+              ? _json['scheduleDeadlineTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (scheduleDeadlineTime != null)
+          'scheduleDeadlineTime': scheduleDeadlineTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
 
 class MemcacheParameters {
   /// The unique ID associated with this set of parameters.
@@ -1334,6 +1465,13 @@ class Operation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef TimeOfDay = $TimeOfDay;
+
 /// Request for UpdateParameters.
 class UpdateParametersRequest {
   /// The parameters to apply to the instance.
@@ -1363,5 +1501,56 @@ class UpdateParametersRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null) 'parameters': parameters!,
         if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Time window specified for weekly operations.
+class WeeklyMaintenanceWindow {
+  /// Allows to define schedule that runs specified day of the week.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  /// Duration of the time window.
+  ///
+  /// Required.
+  core.String? duration;
+
+  /// Start time of the window in UTC.
+  ///
+  /// Required.
+  TimeOfDay? startTime;
+
+  WeeklyMaintenanceWindow({
+    this.day,
+    this.duration,
+    this.startTime,
+  });
+
+  WeeklyMaintenanceWindow.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.String : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? TimeOfDay.fromJson(
+                  _json['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }

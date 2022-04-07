@@ -1990,6 +1990,23 @@ class DriveExportOptions {
 
 /// Additional options for Drive search
 class DriveOptions {
+  /// Set whether the results include only content encrypted with \[Google
+  /// Workspace Client-side encryption\](https://support.google.com/a?p=cse_ov)
+  /// content, only unencrypted content, or both.
+  ///
+  /// Defaults to both. Currently supported for Drive.
+  /// Possible string values are:
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED" : Encryption status
+  /// unspecified. Results include both client-side encrypted and non-encrypted
+  /// content.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_ANY" : Include both client-side encrypted
+  /// and unencrypted content in results.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED" : Include client-side encrypted
+  /// content only.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED" : Include unencrypted content
+  /// only.
+  core.String? clientSideEncryptedOption;
+
   /// Set to **true** to include shared drives.
   core.bool? includeSharedDrives;
 
@@ -2003,6 +2020,7 @@ class DriveOptions {
   core.String? versionDate;
 
   DriveOptions({
+    this.clientSideEncryptedOption,
     this.includeSharedDrives,
     this.includeTeamDrives,
     this.versionDate,
@@ -2010,6 +2028,10 @@ class DriveOptions {
 
   DriveOptions.fromJson(core.Map _json)
       : this(
+          clientSideEncryptedOption:
+              _json.containsKey('clientSideEncryptedOption')
+                  ? _json['clientSideEncryptedOption'] as core.String
+                  : null,
           includeSharedDrives: _json.containsKey('includeSharedDrives')
               ? _json['includeSharedDrives'] as core.bool
               : null,
@@ -2022,6 +2044,8 @@ class DriveOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clientSideEncryptedOption != null)
+          'clientSideEncryptedOption': clientSideEncryptedOption!,
         if (includeSharedDrives != null)
           'includeSharedDrives': includeSharedDrives!,
         if (includeTeamDrives != null) 'includeTeamDrives': includeTeamDrives!,
@@ -2034,8 +2058,7 @@ class DriveOptions {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// An export.
@@ -2070,6 +2093,9 @@ class Export {
   core.String? matterId;
 
   /// The export name.
+  ///
+  /// Don't use special characters (~!$'(),;@:/?) in the name, they can prevent
+  /// you from downloading exports.
   core.String? name;
 
   /// The query parameters used to create the export.
@@ -2528,7 +2554,7 @@ class Hold {
   /// - "DRIVE" : Drive, including Meet and Sites.
   /// - "MAIL" : For search, Gmail and classic Hangouts. For holds, Gmail only.
   /// - "GROUPS" : Groups.
-  /// - "HANGOUTS_CHAT" : For search, Google Chat only. For holds, Google Chat
+  /// - "HANGOUTS_CHAT" : For export, Google Chat only. For holds, Google Chat
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   core.String? corpus;
@@ -2797,8 +2823,10 @@ class MailExportOptions {
   /// The file format for exported messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX.
-  /// - "PST" : Export as PST.
+  /// - "MBOX" : Export as MBOX. Only available for Gmail, Groups, Hangouts and
+  /// Voice.
+  /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
+  /// and Calendar.
   core.String? exportFormat;
 
   /// To export confidential mode content, set to **true**.
@@ -3070,7 +3098,7 @@ class Query {
   /// - "DRIVE" : Drive, including Meet and Sites.
   /// - "MAIL" : For search, Gmail and classic Hangouts. For holds, Gmail only.
   /// - "GROUPS" : Groups.
-  /// - "HANGOUTS_CHAT" : For search, Google Chat only. For holds, Google Chat
+  /// - "HANGOUTS_CHAT" : For export, Google Chat only. For holds, Google Chat
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
   core.String? corpus;
@@ -3540,8 +3568,10 @@ class VoiceExportOptions {
   /// The file format for exported text messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX.
-  /// - "PST" : Export as PST.
+  /// - "MBOX" : Export as MBOX. Only available for Gmail, Groups, Hangouts and
+  /// Voice.
+  /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
+  /// and Calendar.
   core.String? exportFormat;
 
   VoiceExportOptions({

@@ -3071,8 +3071,7 @@ class DomainMapping {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
-/// object {}.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Cloud Endpoints (https://cloud.google.com/endpoints) configuration.
@@ -5183,6 +5182,10 @@ class Version {
   /// in GET requests if view=FULL is set.
   ApiConfigHandler? apiConfig;
 
+  /// app_engine_apis allows second generation runtimes to access the App Engine
+  /// APIs.
+  core.bool? appEngineApis;
+
   /// Automatic scaling is based on request rate, response latencies, and other
   /// application metrics.
   ///
@@ -5384,6 +5387,7 @@ class Version {
 
   Version({
     this.apiConfig,
+    this.appEngineApis,
     this.automaticScaling,
     this.basicScaling,
     this.betaSettings,
@@ -5429,6 +5433,9 @@ class Version {
           apiConfig: _json.containsKey('apiConfig')
               ? ApiConfigHandler.fromJson(
                   _json['apiConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          appEngineApis: _json.containsKey('appEngineApis')
+              ? _json['appEngineApis'] as core.bool
               : null,
           automaticScaling: _json.containsKey('automaticScaling')
               ? AutomaticScaling.fromJson(_json['automaticScaling']
@@ -5585,6 +5592,7 @@ class Version {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiConfig != null) 'apiConfig': apiConfig!,
+        if (appEngineApis != null) 'appEngineApis': appEngineApis!,
         if (automaticScaling != null) 'automaticScaling': automaticScaling!,
         if (basicScaling != null) 'basicScaling': basicScaling!,
         if (betaSettings != null) 'betaSettings': betaSettings!,

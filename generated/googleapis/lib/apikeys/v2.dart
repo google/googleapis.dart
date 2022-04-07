@@ -181,55 +181,6 @@ class ProjectsLocationsKeysResource {
   ProjectsLocationsKeysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// DEPRECATED: API customers can call `GetKey` and then `CreateKey` methods
-  /// to create a copy of an existing key.
-  ///
-  /// Retire `CloneKey` method to eliminate the unnessary method from API Keys
-  /// API. Clones the existing key's restriction and display name to a new API
-  /// key. The service account must have the `apikeys.keys.get` and
-  /// `apikeys.keys.create` permissions in the project. NOTE: Key is a global
-  /// resource; hence the only supported value for location is `global`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the API key to be cloned in the
-  /// same project.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/keys/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> clone(
-    V2CloneKeyRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':clone';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Creates a new API key.
   ///
   /// NOTE: Key is a global resource; hence the only supported value for
@@ -418,18 +369,13 @@ class ProjectsLocationsKeysResource {
   /// [parent] - Required. Lists all API keys associated with this project.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Deprecated: Use `show_deleted` instead. Only list
-  /// keys that conform to the specified filter. The allowed filter strings are
-  /// `state:ACTIVE` and `state:DELETED`. By default, ListKeys returns only
-  /// active keys.
-  ///
   /// [pageSize] - Optional. Specifies the maximum number of results to be
   /// returned at a time.
   ///
   /// [pageToken] - Optional. Requests a specific page of results.
   ///
-  /// [showDeleted] - Optional. Indicate that keys are marked as deleted within
-  /// 30 days should also be returned. Normally only active keys are returned.
+  /// [showDeleted] - Optional. Indicate that keys deleted in the past 30 days
+  /// should also be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -443,14 +389,12 @@ class ProjectsLocationsKeysResource {
   /// this method will complete with the same error.
   async.Future<V2ListKeysResponse> list(
     core.String parent, {
-    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
@@ -785,32 +729,6 @@ class V2BrowserKeyRestrictions {
       };
 }
 
-/// Request message for `CloneKey` method.
-class V2CloneKeyRequest {
-  /// User specified key id (optional).
-  ///
-  /// If specified, it will become the final component of the key resource name.
-  /// The id must be unique within the project, must conform with RFC-1034, is
-  /// restricted to lower-cased letters, and has a maximum length of 63
-  /// characters. In another word, the id must match the regular expression:
-  /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
-  core.String? keyId;
-
-  V2CloneKeyRequest({
-    this.keyId,
-  });
-
-  V2CloneKeyRequest.fromJson(core.Map _json)
-      : this(
-          keyId:
-              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyId != null) 'keyId': keyId!,
-      };
-}
-
 /// Response message for `GetKeyString` method.
 class V2GetKeyStringResponse {
   /// An encrypted and signed value of the key.
@@ -857,6 +775,12 @@ class V2IosKeyRestrictions {
 
 /// The representation of a key managed by the API Keys API.
 class V2Key {
+  /// Annotations is an unstructured key-value map stored with a policy that may
+  /// be set by external tools to store and retrieve arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  core.Map<core.String, core.String>? annotations;
+
   /// A timestamp identifying the time this key was originally created.
   ///
   /// Output only.
@@ -914,6 +838,7 @@ class V2Key {
   core.String? updateTime;
 
   V2Key({
+    this.annotations,
     this.createTime,
     this.deleteTime,
     this.displayName,
@@ -927,6 +852,15 @@ class V2Key {
 
   V2Key.fromJson(core.Map _json)
       : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -952,6 +886,7 @@ class V2Key {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,

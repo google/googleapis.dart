@@ -1142,12 +1142,17 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this campaign that identifies the assigned targeting
@@ -1305,12 +1310,17 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -2696,12 +2706,17 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this insertion order that identifies the assigned
@@ -2846,12 +2861,17 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -3665,12 +3685,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3817,12 +3842,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -3965,12 +3995,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -4115,12 +4150,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -5647,12 +5687,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5787,12 +5832,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -5929,12 +5979,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -6073,12 +6128,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -8966,12 +9026,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9104,12 +9169,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -9244,12 +9314,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -9386,12 +9461,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -9677,12 +9757,17 @@ class TargetingTypesTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -9832,12 +9917,17 @@ class TargetingTypesTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -10007,12 +10097,17 @@ class TargetingTypesTargetingOptionsResource {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11476,6 +11571,18 @@ class AssignedTargetingOption {
   /// `TARGETING_TYPE_CHANNEL`.
   ChannelAssignedTargetingOptionDetails? channelDetails;
 
+  /// Content duration details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_CONTENT_DURATION`.
+  ContentDurationAssignedTargetingOptionDetails? contentDurationDetails;
+
+  /// Content genre details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_CONTENT_GENRE`.
+  ContentGenreAssignedTargetingOptionDetails? contentGenreDetails;
+
   /// Content instream position details.
   ///
   /// This field will be populated when the targeting_type is
@@ -11489,6 +11596,12 @@ class AssignedTargetingOption {
   /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
   ContentOutstreamPositionAssignedTargetingOptionDetails?
       contentOutstreamPositionDetails;
+
+  /// Content duration details.
+  ///
+  /// This field will be populated when the TargetingType is
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+  ContentStreamTypeAssignedTargetingOptionDetails? contentStreamTypeDetails;
 
   /// Day and time details.
   ///
@@ -11757,12 +11870,17 @@ class AssignedTargetingOption {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -11809,8 +11927,11 @@ class AssignedTargetingOption {
     this.carrierAndIspDetails,
     this.categoryDetails,
     this.channelDetails,
+    this.contentDurationDetails,
+    this.contentGenreDetails,
     this.contentInstreamPositionDetails,
     this.contentOutstreamPositionDetails,
+    this.contentStreamTypeDetails,
     this.dayAndTimeDetails,
     this.deviceMakeModelDetails,
     this.deviceTypeDetails,
@@ -11906,6 +12027,16 @@ class AssignedTargetingOption {
                   _json['channelDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          contentDurationDetails: _json.containsKey('contentDurationDetails')
+              ? ContentDurationAssignedTargetingOptionDetails.fromJson(
+                  _json['contentDurationDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          contentGenreDetails: _json.containsKey('contentGenreDetails')
+              ? ContentGenreAssignedTargetingOptionDetails.fromJson(
+                  _json['contentGenreDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           contentInstreamPositionDetails: _json
                   .containsKey('contentInstreamPositionDetails')
               ? ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
@@ -11918,6 +12049,12 @@ class AssignedTargetingOption {
                   _json['contentOutstreamPositionDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          contentStreamTypeDetails:
+              _json.containsKey('contentStreamTypeDetails')
+                  ? ContentStreamTypeAssignedTargetingOptionDetails.fromJson(
+                      _json['contentStreamTypeDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           dayAndTimeDetails: _json.containsKey('dayAndTimeDetails')
               ? DayAndTimeAssignedTargetingOptionDetails.fromJson(
                   _json['dayAndTimeDetails']
@@ -12097,10 +12234,16 @@ class AssignedTargetingOption {
           'carrierAndIspDetails': carrierAndIspDetails!,
         if (categoryDetails != null) 'categoryDetails': categoryDetails!,
         if (channelDetails != null) 'channelDetails': channelDetails!,
+        if (contentDurationDetails != null)
+          'contentDurationDetails': contentDurationDetails!,
+        if (contentGenreDetails != null)
+          'contentGenreDetails': contentGenreDetails!,
         if (contentInstreamPositionDetails != null)
           'contentInstreamPositionDetails': contentInstreamPositionDetails!,
         if (contentOutstreamPositionDetails != null)
           'contentOutstreamPositionDetails': contentOutstreamPositionDetails!,
+        if (contentStreamTypeDetails != null)
+          'contentStreamTypeDetails': contentStreamTypeDetails!,
         if (dayAndTimeDetails != null) 'dayAndTimeDetails': dayAndTimeDetails!,
         if (deviceMakeModelDetails != null)
           'deviceMakeModelDetails': deviceMakeModelDetails!,
@@ -14830,6 +14973,166 @@ class ContactInfoList {
       };
 }
 
+/// Details for content duration assigned targeting option.
+///
+/// This will be populated in the content_duration_details field when
+/// targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting
+/// all options is not supported. Remove all content duration targeting options
+/// to achieve this effect.
+class ContentDurationAssignedTargetingOptionDetails {
+  /// The content duration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONTENT_DURATION_UNSPECIFIED" : Content duration is not specified in
+  /// this version. This enum is a place holder for a default value and does not
+  /// represent a real content duration.
+  /// - "CONTENT_DURATION_UNKNOWN" : The content duration is unknown.
+  /// - "CONTENT_DURATION_0_TO_1_MIN" : Content is 0-1 minute long.
+  /// - "CONTENT_DURATION_1_TO_5_MIN" : Content is 1-5 minutes long.
+  /// - "CONTENT_DURATION_5_TO_15_MIN" : Content is 5-15 minutes long.
+  /// - "CONTENT_DURATION_15_TO_30_MIN" : Content is 15-30 minutes long.
+  /// - "CONTENT_DURATION_30_TO_60_MIN" : Content is 30-60 minutes long.
+  /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
+  core.String? contentDuration;
+
+  /// The targeting_option_id field when targeting_type is
+  /// `TARGETING_TYPE_CONTENT_DURATION`.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  ContentDurationAssignedTargetingOptionDetails({
+    this.contentDuration,
+    this.targetingOptionId,
+  });
+
+  ContentDurationAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentDuration: _json.containsKey('contentDuration')
+              ? _json['contentDuration'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentDuration != null) 'contentDuration': contentDuration!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Represents a targetable content duration.
+///
+/// This will be populated in the content_duration_details field when
+/// targeting_type is `TARGETING_TYPE_CONTENT_DURATION`.
+class ContentDurationTargetingOptionDetails {
+  /// The content duration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONTENT_DURATION_UNSPECIFIED" : Content duration is not specified in
+  /// this version. This enum is a place holder for a default value and does not
+  /// represent a real content duration.
+  /// - "CONTENT_DURATION_UNKNOWN" : The content duration is unknown.
+  /// - "CONTENT_DURATION_0_TO_1_MIN" : Content is 0-1 minute long.
+  /// - "CONTENT_DURATION_1_TO_5_MIN" : Content is 1-5 minutes long.
+  /// - "CONTENT_DURATION_5_TO_15_MIN" : Content is 5-15 minutes long.
+  /// - "CONTENT_DURATION_15_TO_30_MIN" : Content is 15-30 minutes long.
+  /// - "CONTENT_DURATION_30_TO_60_MIN" : Content is 30-60 minutes long.
+  /// - "CONTENT_DURATION_OVER_60_MIN" : Content is over 60 minutes long.
+  core.String? contentDuration;
+
+  ContentDurationTargetingOptionDetails({
+    this.contentDuration,
+  });
+
+  ContentDurationTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentDuration: _json.containsKey('contentDuration')
+              ? _json['contentDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentDuration != null) 'contentDuration': contentDuration!,
+      };
+}
+
+/// Details for content genre assigned targeting option.
+///
+/// This will be populated in the content_genre_details field when
+/// targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. Explicitly targeting all
+/// options is not supported. Remove all content genre targeting options to
+/// achieve this effect.
+class ContentGenreAssignedTargetingOptionDetails {
+  /// The display name of the content genre.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Indicates if this option is being negatively targeted.
+  core.bool? negative;
+
+  /// The targeting_option_id field when targeting_type is
+  /// `TARGETING_TYPE_CONTENT_GENRE`.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  ContentGenreAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
+
+  ContentGenreAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (negative != null) 'negative': negative!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Represents a targetable content genre.
+///
+/// This will be populated in the content_genre_details field when
+/// targeting_type is `TARGETING_TYPE_CONTENT_GENRE`.
+class ContentGenreTargetingOptionDetails {
+  /// The display name of the content genre
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  ContentGenreTargetingOptionDetails({
+    this.displayName,
+  });
+
+  ContentGenreTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+      };
+}
+
 /// Assigned content instream position targeting option details.
 ///
 /// This will be populated in the content_instream_position_details field when
@@ -15067,6 +15370,83 @@ class ContentOutstreamPositionTargetingOptionDetails {
       };
 }
 
+/// Details for content stream type assigned targeting option.
+///
+/// This will be populated in the content_stream_type_details field when
+/// targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. Explicitly targeting
+/// all options is not supported. Remove all content stream type targeting
+/// options to achieve this effect.
+class ContentStreamTypeAssignedTargetingOptionDetails {
+  /// The content stream type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONTENT_STREAM_TYPE_UNSPECIFIED" : Content stream type is not specified
+  /// in this version. This enum is a place holder for a default value and does
+  /// not represent a real content stream type.
+  /// - "CONTENT_LIVE_STREAM" : The content is being live-streamed.
+  /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
+  core.String? contentStreamType;
+
+  /// The targeting_option_id field when targeting_type is
+  /// `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  ContentStreamTypeAssignedTargetingOptionDetails({
+    this.contentStreamType,
+    this.targetingOptionId,
+  });
+
+  ContentStreamTypeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentStreamType: _json.containsKey('contentStreamType')
+              ? _json['contentStreamType'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentStreamType != null) 'contentStreamType': contentStreamType!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Represents a targetable content stream type.
+///
+/// This will be populated in the content_stream_type_details field when
+/// targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+class ContentStreamTypeTargetingOptionDetails {
+  /// The content stream type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONTENT_STREAM_TYPE_UNSPECIFIED" : Content stream type is not specified
+  /// in this version. This enum is a place holder for a default value and does
+  /// not represent a real content stream type.
+  /// - "CONTENT_LIVE_STREAM" : The content is being live-streamed.
+  /// - "CONTENT_ON_DEMAND" : The content is viewed on-demand.
+  core.String? contentStreamType;
+
+  ContentStreamTypeTargetingOptionDetails({
+    this.contentStreamType,
+  });
+
+  ContentStreamTypeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentStreamType: _json.containsKey('contentStreamType')
+              ? _json['contentStreamType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentStreamType != null) 'contentStreamType': contentStreamType!,
+      };
+}
+
 /// Settings that control how conversions are counted.
 ///
 /// All post-click conversions will be counted. A percentage value can be set
@@ -15286,12 +15666,17 @@ class CreateAssignedTargetingOptionsRequest {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -16879,12 +17264,17 @@ class DeleteAssignedTargetingOptionsRequest {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   core.String? targetingType;
 
   DeleteAssignedTargetingOptionsRequest({
@@ -17614,8 +18004,7 @@ class EditCustomerMatchMembersResponse {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Assigned environment targeting option details.
@@ -19426,6 +19815,16 @@ class InsertionOrder {
   /// By default, fixed_bid is set.
   BiddingStrategy? bidStrategy;
 
+  /// The billable outcome of the insertion order.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "BILLABLE_OUTCOME_UNSPECIFIED" : Unspecified billable outcome.
+  /// - "BILLABLE_OUTCOME_PAY_PER_IMPRESSION" : Pay per impressions.
+  /// - "BILLABLE_OUTCOME_PAY_PER_CLICK" : Pay per click.
+  /// - "BILLABLE_OUTCOME_PAY_PER_VIEWABLE_IMPRESSION" : Pay per active view.
+  core.String? billableOutcome;
+
   /// The budget allocation settings of the insertion order.
   ///
   /// Required.
@@ -19539,6 +19938,7 @@ class InsertionOrder {
   InsertionOrder({
     this.advertiserId,
     this.bidStrategy,
+    this.billableOutcome,
     this.budget,
     this.campaignId,
     this.displayName,
@@ -19563,6 +19963,9 @@ class InsertionOrder {
           bidStrategy: _json.containsKey('bidStrategy')
               ? BiddingStrategy.fromJson(
                   _json['bidStrategy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          billableOutcome: _json.containsKey('billableOutcome')
+              ? _json['billableOutcome'] as core.String
               : null,
           budget: _json.containsKey('budget')
               ? InsertionOrderBudget.fromJson(
@@ -19617,6 +20020,7 @@ class InsertionOrder {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (bidStrategy != null) 'bidStrategy': bidStrategy!,
+        if (billableOutcome != null) 'billableOutcome': billableOutcome!,
         if (budget != null) 'budget': budget!,
         if (campaignId != null) 'campaignId': campaignId!,
         if (displayName != null) 'displayName': displayName!,
@@ -25639,12 +26043,21 @@ class TargetingOption {
   /// Category resource details.
   CategoryTargetingOptionDetails? categoryDetails;
 
+  /// Content duration resource details.
+  ContentDurationTargetingOptionDetails? contentDurationDetails;
+
+  /// Content genre resource details.
+  ContentGenreTargetingOptionDetails? contentGenreDetails;
+
   /// Content instream position details.
   ContentInstreamPositionTargetingOptionDetails? contentInstreamPositionDetails;
 
   /// Content outstream position details.
   ContentOutstreamPositionTargetingOptionDetails?
       contentOutstreamPositionDetails;
+
+  /// Content stream type resource details.
+  ContentStreamTypeTargetingOptionDetails? contentStreamTypeDetails;
 
   /// Device make and model resource details.
   DeviceMakeModelTargetingOptionDetails? deviceMakeModelDetails;
@@ -25796,12 +26209,17 @@ class TargetingOption {
   /// coordinates.
   /// - "TARGETING_TYPE_BUSINESS_CHAIN" : Target ads around locations of a
   /// business chain within a specific geo region.
+  /// - "TARGETING_TYPE_CONTENT_DURATION" : Target ads to a specific video
+  /// content duration.
+  /// - "TARGETING_TYPE_CONTENT_STREAM_TYPE" : Target ads to a specific video
+  /// content stream type.
   /// - "TARGETING_TYPE_NATIVE_CONTENT_POSITION" : Target ads to a specific
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
   /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
   /// content type.
+  /// - "TARGETING_TYPE_CONTENT_GENRE" : Target ads to a specific content genre.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -25822,8 +26240,11 @@ class TargetingOption {
     this.businessChainDetails,
     this.carrierAndIspDetails,
     this.categoryDetails,
+    this.contentDurationDetails,
+    this.contentGenreDetails,
     this.contentInstreamPositionDetails,
     this.contentOutstreamPositionDetails,
+    this.contentStreamTypeDetails,
     this.deviceMakeModelDetails,
     this.deviceTypeDetails,
     this.digitalContentLabelDetails,
@@ -25889,6 +26310,16 @@ class TargetingOption {
               ? CategoryTargetingOptionDetails.fromJson(_json['categoryDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          contentDurationDetails: _json.containsKey('contentDurationDetails')
+              ? ContentDurationTargetingOptionDetails.fromJson(
+                  _json['contentDurationDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          contentGenreDetails: _json.containsKey('contentGenreDetails')
+              ? ContentGenreTargetingOptionDetails.fromJson(
+                  _json['contentGenreDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           contentInstreamPositionDetails:
               _json.containsKey('contentInstreamPositionDetails')
                   ? ContentInstreamPositionTargetingOptionDetails.fromJson(
@@ -25899,6 +26330,12 @@ class TargetingOption {
               _json.containsKey('contentOutstreamPositionDetails')
                   ? ContentOutstreamPositionTargetingOptionDetails.fromJson(
                       _json['contentOutstreamPositionDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          contentStreamTypeDetails:
+              _json.containsKey('contentStreamTypeDetails')
+                  ? ContentStreamTypeTargetingOptionDetails.fromJson(
+                      _json['contentStreamTypeDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           deviceMakeModelDetails: _json.containsKey('deviceMakeModelDetails')
@@ -26023,10 +26460,16 @@ class TargetingOption {
         if (carrierAndIspDetails != null)
           'carrierAndIspDetails': carrierAndIspDetails!,
         if (categoryDetails != null) 'categoryDetails': categoryDetails!,
+        if (contentDurationDetails != null)
+          'contentDurationDetails': contentDurationDetails!,
+        if (contentGenreDetails != null)
+          'contentGenreDetails': contentGenreDetails!,
         if (contentInstreamPositionDetails != null)
           'contentInstreamPositionDetails': contentInstreamPositionDetails!,
         if (contentOutstreamPositionDetails != null)
           'contentOutstreamPositionDetails': contentOutstreamPositionDetails!,
+        if (contentStreamTypeDetails != null)
+          'contentStreamTypeDetails': contentStreamTypeDetails!,
         if (deviceMakeModelDetails != null)
           'deviceMakeModelDetails': deviceMakeModelDetails!,
         if (deviceTypeDetails != null) 'deviceTypeDetails': deviceTypeDetails!,

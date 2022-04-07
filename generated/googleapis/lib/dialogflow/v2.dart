@@ -6444,7 +6444,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -12916,14 +12916,21 @@ class GoogleCloudDialogflowV2AnalyzeContentResponse {
   ///
   /// The order is the same as
   /// HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
-  /// HumanAgentAssistantConfig.end_user_suggestion_config.
+  /// HumanAgentAssistantConfig.end_user_suggestion_config. Same as
+  /// human_agent_suggestion_results, any failure of Agent Assist features will
+  /// not lead to the overall failure of an AnalyzeContent API call. Instead,
+  /// the features will fail silently with the error field set in the
+  /// corresponding SuggestionResult.
   core.List<GoogleCloudDialogflowV2SuggestionResult>? endUserSuggestionResults;
 
   /// The suggestions for most recent human agent.
   ///
   /// The order is the same as
   /// HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
-  /// HumanAgentAssistantConfig.human_agent_suggestion_config.
+  /// HumanAgentAssistantConfig.human_agent_suggestion_config. Note that any
+  /// failure of Agent Assist features will not lead to the overall failure of
+  /// an AnalyzeContent API call. Instead, the features will fail silently with
+  /// the error field set in the corresponding SuggestionResult.
   core.List<GoogleCloudDialogflowV2SuggestionResult>?
       humanAgentSuggestionResults;
 
@@ -15413,6 +15420,9 @@ class GoogleCloudDialogflowV2EventInput {
   /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
   /// for a list of the currently supported language codes. Note that queries in
   /// the same session do not necessarily need to specify the same language.
+  /// This field is ignored when used in the context of a
+  /// WebhookResponse.followup_event_input field, because the language was
+  /// already defined in the originating detect intent request.
   ///
   /// Required.
   core.String? languageCode;
@@ -15467,7 +15477,11 @@ class GoogleCloudDialogflowV2ExportAgentRequest {
   /// export the agent to.
   ///
   /// The format of this URI must be `gs:///`. If left unspecified, the
-  /// serialized agent is returned inline.
+  /// serialized agent is returned inline. Dialogflow performs a write operation
+  /// for the Cloud Storage object on the caller's behalf, so your request
+  /// authentication must have write permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   ///
   /// Required.
   core.String? agentUri;
@@ -16540,7 +16554,11 @@ class GoogleCloudDialogflowV2ImportAgentRequest {
 
   /// The URI to a Google Cloud Storage file containing the agent to import.
   ///
-  /// Note: The URI must start with "gs://".
+  /// Note: The URI must start with "gs://". Dialogflow performs a read
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have read permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? agentUri;
 
   GoogleCloudDialogflowV2ImportAgentRequest({
@@ -20368,7 +20386,11 @@ class GoogleCloudDialogflowV2RestoreAgentRequest {
 
   /// The URI to a Google Cloud Storage file containing the agent to restore.
   ///
-  /// Note: The URI must start with "gs://".
+  /// Note: The URI must start with "gs://". Dialogflow performs a read
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have read permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? agentUri;
 
   GoogleCloudDialogflowV2RestoreAgentRequest({
@@ -21815,8 +21837,7 @@ class GoogleLongrunningOperation {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for

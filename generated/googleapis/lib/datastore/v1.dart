@@ -1047,6 +1047,11 @@ class CommitRequest {
 
 /// The response for Datastore.Commit.
 class CommitResponse {
+  /// The transaction commit timestamp.
+  ///
+  /// Not set for non-transactional commits.
+  core.String? commitTime;
+
   /// The number of index entries updated during the commit, or zero if none
   /// were updated.
   core.int? indexUpdates;
@@ -1057,12 +1062,16 @@ class CommitResponse {
   core.List<MutationResult>? mutationResults;
 
   CommitResponse({
+    this.commitTime,
     this.indexUpdates,
     this.mutationResults,
   });
 
   CommitResponse.fromJson(core.Map _json)
       : this(
+          commitTime: _json.containsKey('commitTime')
+              ? _json['commitTime'] as core.String
+              : null,
           indexUpdates: _json.containsKey('indexUpdates')
               ? _json['indexUpdates'] as core.int
               : null,
@@ -1075,6 +1084,7 @@ class CommitResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (commitTime != null) 'commitTime': commitTime!,
         if (indexUpdates != null) 'indexUpdates': indexUpdates!,
         if (mutationResults != null) 'mutationResults': mutationResults!,
       };
@@ -1121,8 +1131,7 @@ class CompositeFilter {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// A Datastore data object.
@@ -1189,6 +1198,12 @@ class EntityResult {
   /// The resulting entity.
   Entity? entity;
 
+  /// The time at which the entity was last changed.
+  ///
+  /// This field is set for `FULL` entity results. If this entity is missing,
+  /// this field will not be set.
+  core.String? updateTime;
+
   /// The version of the entity, a strictly positive number that monotonically
   /// increases with changes to the entity.
   ///
@@ -1201,6 +1216,7 @@ class EntityResult {
   EntityResult({
     this.cursor,
     this.entity,
+    this.updateTime,
     this.version,
   });
 
@@ -1213,6 +1229,9 @@ class EntityResult {
               ? Entity.fromJson(
                   _json['entity'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
           version: _json.containsKey('version')
               ? _json['version'] as core.String
               : null,
@@ -1221,6 +1240,7 @@ class EntityResult {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cursor != null) 'cursor': cursor!,
         if (entity != null) 'entity': entity!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
       };
 }
@@ -1925,10 +1945,14 @@ class LookupResponse {
   /// order of the keys in the input.
   core.List<EntityResult>? missing;
 
+  /// The time at which these entities were read or found missing.
+  core.String? readTime;
+
   LookupResponse({
     this.deferred,
     this.found,
     this.missing,
+    this.readTime,
   });
 
   LookupResponse.fromJson(core.Map _json)
@@ -1951,12 +1975,16 @@ class LookupResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          readTime: _json.containsKey('readTime')
+              ? _json['readTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deferred != null) 'deferred': deferred!,
         if (found != null) 'found': found!,
         if (missing != null) 'missing': missing!,
+        if (readTime != null) 'readTime': readTime!,
       };
 }
 
@@ -1985,6 +2013,12 @@ class Mutation {
   /// The entity must already exist. Must have a complete key path.
   Entity? update;
 
+  /// The update time of the entity that this mutation is being applied to.
+  ///
+  /// If this does not match the current update time on the server, the mutation
+  /// conflicts.
+  core.String? updateTime;
+
   /// The entity to upsert.
   ///
   /// The entity may or may not already exist. The entity key's final path
@@ -1996,6 +2030,7 @@ class Mutation {
     this.delete,
     this.insert,
     this.update,
+    this.updateTime,
     this.upsert,
   });
 
@@ -2016,6 +2051,9 @@ class Mutation {
               ? Entity.fromJson(
                   _json['update'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
           upsert: _json.containsKey('upsert')
               ? Entity.fromJson(
                   _json['upsert'] as core.Map<core.String, core.dynamic>)
@@ -2027,6 +2065,7 @@ class Mutation {
         if (delete != null) 'delete': delete!,
         if (insert != null) 'insert': insert!,
         if (update != null) 'update': update!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (upsert != null) 'upsert': upsert!,
       };
 }
@@ -2044,6 +2083,13 @@ class MutationResult {
   /// Set only when the mutation allocated a key.
   Key? key;
 
+  /// The update time of the entity on the server after processing the mutation.
+  ///
+  /// If the mutation doesn't change anything on the server, then the timestamp
+  /// will be the update timestamp of the current entity. This field will not be
+  /// set after a 'delete'.
+  core.String? updateTime;
+
   /// The version of the entity on the server after processing the mutation.
   ///
   /// If the mutation doesn't change anything on the server, then the version
@@ -2055,6 +2101,7 @@ class MutationResult {
   MutationResult({
     this.conflictDetected,
     this.key,
+    this.updateTime,
     this.version,
   });
 
@@ -2067,6 +2114,9 @@ class MutationResult {
               ? Key.fromJson(
                   _json['key'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
           version: _json.containsKey('version')
               ? _json['version'] as core.String
               : null,
@@ -2075,6 +2125,7 @@ class MutationResult {
   core.Map<core.String, core.dynamic> toJson() => {
         if (conflictDetected != null) 'conflictDetected': conflictDetected!,
         if (key != null) 'key': key!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
       };
 }
@@ -2135,8 +2186,18 @@ class PropertyFilter {
   /// to the given `value`. Requires: * That `property` comes first in
   /// `order_by`.
   /// - "EQUAL" : The given `property` is equal to the given `value`.
+  /// - "IN" : The given `property` is equal to at least one value in the given
+  /// array. Requires: * That `value` is a non-empty `ArrayValue` with at most
+  /// 10 values. * No other `IN` or `NOT_IN` is in the same query.
+  /// - "NOT_EQUAL" : The given `property` is not equal to the given `value`.
+  /// Requires: * No other `NOT_EQUAL` or `NOT_IN` is in the same query. * That
+  /// `property` comes first in the `order_by`.
   /// - "HAS_ANCESTOR" : Limit the result set to the given entity and its
   /// descendants. Requires: * That `value` is an entity key.
+  /// - "NOT_IN" : The value of the `property` is not in the given array.
+  /// Requires: * That `value` is a non-empty `ArrayValue` with at most 10
+  /// values. * No other `IN`, `NOT_IN`, `NOT_EQUAL` is in the same query. *
+  /// That `field` comes first in the `order_by`.
   core.String? op;
 
   /// The property to filter by.
@@ -2392,6 +2453,17 @@ class QueryResultBatch {
   /// results.
   core.String? moreResults;
 
+  /// Read timestamp this batch was returned from.
+  ///
+  /// This applies to the range of results from the query's `start_cursor` (or
+  /// the beginning of the query if no cursor was given) to this batch's
+  /// `end_cursor` (not the query's `end_cursor`). In a single transaction,
+  /// subsequent query result batches for the same query can have a greater
+  /// timestamp. Each batch's read timestamp is valid for all preceding batches.
+  /// This value will not be set for eventually consistent queries in Cloud
+  /// Datastore.
+  core.String? readTime;
+
   /// A cursor that points to the position after the last skipped result.
   ///
   /// Will be set when `skipped_results` != 0.
@@ -2423,6 +2495,7 @@ class QueryResultBatch {
     this.entityResultType,
     this.entityResults,
     this.moreResults,
+    this.readTime,
     this.skippedCursor,
     this.skippedResults,
     this.snapshotVersion,
@@ -2445,6 +2518,9 @@ class QueryResultBatch {
           moreResults: _json.containsKey('moreResults')
               ? _json['moreResults'] as core.String
               : null,
+          readTime: _json.containsKey('readTime')
+              ? _json['readTime'] as core.String
+              : null,
           skippedCursor: _json.containsKey('skippedCursor')
               ? _json['skippedCursor'] as core.String
               : null,
@@ -2461,6 +2537,7 @@ class QueryResultBatch {
         if (entityResultType != null) 'entityResultType': entityResultType!,
         if (entityResults != null) 'entityResults': entityResults!,
         if (moreResults != null) 'moreResults': moreResults!,
+        if (readTime != null) 'readTime': readTime!,
         if (skippedCursor != null) 'skippedCursor': skippedCursor!,
         if (skippedResults != null) 'skippedResults': skippedResults!,
         if (snapshotVersion != null) 'snapshotVersion': snapshotVersion!,
@@ -2468,7 +2545,27 @@ class QueryResultBatch {
 }
 
 /// Options specific to read-only transactions.
-typedef ReadOnly = $Empty;
+class ReadOnly {
+  /// Reads entities at the given time.
+  ///
+  /// This may not be older than 60 seconds.
+  core.String? readTime;
+
+  ReadOnly({
+    this.readTime,
+  });
+
+  ReadOnly.fromJson(core.Map _json)
+      : this(
+          readTime: _json.containsKey('readTime')
+              ? _json['readTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readTime != null) 'readTime': readTime!,
+      };
+}
 
 /// The options shared by read requests.
 class ReadOptions {
@@ -2481,6 +2578,12 @@ class ReadOptions {
   /// - "STRONG" : Strong consistency.
   /// - "EVENTUAL" : Eventual consistency.
   core.String? readConsistency;
+
+  /// Reads entities as they were at the given time.
+  ///
+  /// This may not be older than 270 seconds. This value is only supported for
+  /// Cloud Firestore in Datastore mode.
+  core.String? readTime;
 
   /// The identifier of the transaction in which to read.
   ///
@@ -2497,6 +2600,7 @@ class ReadOptions {
 
   ReadOptions({
     this.readConsistency,
+    this.readTime,
     this.transaction,
   });
 
@@ -2505,6 +2609,9 @@ class ReadOptions {
           readConsistency: _json.containsKey('readConsistency')
               ? _json['readConsistency'] as core.String
               : null,
+          readTime: _json.containsKey('readTime')
+              ? _json['readTime'] as core.String
+              : null,
           transaction: _json.containsKey('transaction')
               ? _json['transaction'] as core.String
               : null,
@@ -2512,6 +2619,7 @@ class ReadOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (readConsistency != null) 'readConsistency': readConsistency!,
+        if (readTime != null) 'readTime': readTime!,
         if (transaction != null) 'transaction': transaction!,
       };
 }

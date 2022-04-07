@@ -2078,8 +2078,7 @@ class DiscoverConnectionProfileResponse {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represent a user-facing Error.
@@ -3172,6 +3171,9 @@ class OracleColumn {
       };
 }
 
+/// Configuration to drop large object values.
+typedef OracleDropLargeObjects = $Empty;
+
 /// Oracle data source object identifier.
 class OracleObjectIdentifier {
   /// The schema name.
@@ -3340,11 +3342,15 @@ class OracleSourceConfig {
   /// Oracle objects to include in the stream.
   OracleRdbms? allowlist;
 
+  /// Drop large object values.
+  OracleDropLargeObjects? dropLargeObjects;
+
   /// Oracle objects to exclude from the stream.
   OracleRdbms? rejectlist;
 
   OracleSourceConfig({
     this.allowlist,
+    this.dropLargeObjects,
     this.rejectlist,
   });
 
@@ -3354,6 +3360,10 @@ class OracleSourceConfig {
               ? OracleRdbms.fromJson(
                   _json['allowlist'] as core.Map<core.String, core.dynamic>)
               : null,
+          dropLargeObjects: _json.containsKey('dropLargeObjects')
+              ? OracleDropLargeObjects.fromJson(_json['dropLargeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           rejectlist: _json.containsKey('rejectlist')
               ? OracleRdbms.fromJson(
                   _json['rejectlist'] as core.Map<core.String, core.dynamic>)
@@ -3362,6 +3372,7 @@ class OracleSourceConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowlist != null) 'allowlist': allowlist!,
+        if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
         if (rejectlist != null) 'rejectlist': rejectlist!,
       };
 }

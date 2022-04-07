@@ -588,6 +588,12 @@ class Release {
   /// ReleaseManager, the API will assume fraction is 1.
   core.double? fraction;
 
+  /// Rollout fraction group.
+  ///
+  /// Only fractions with the same fraction_group are statistically comparable:
+  /// there may be non-fractional differences between different fraction groups.
+  core.String? fractionGroup;
+
   /// Release name.
   ///
   /// Format is
@@ -606,6 +612,7 @@ class Release {
 
   Release({
     this.fraction,
+    this.fractionGroup,
     this.name,
     this.serving,
     this.version,
@@ -615,6 +622,9 @@ class Release {
       : this(
           fraction: _json.containsKey('fraction')
               ? (_json['fraction'] as core.num).toDouble()
+              : null,
+          fractionGroup: _json.containsKey('fractionGroup')
+              ? _json['fractionGroup'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           serving: _json.containsKey('serving')
@@ -628,6 +638,7 @@ class Release {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fraction != null) 'fraction': fraction!,
+        if (fractionGroup != null) 'fractionGroup': fractionGroup!,
         if (name != null) 'name': name!,
         if (serving != null) 'serving': serving!,
         if (version != null) 'version': version!,

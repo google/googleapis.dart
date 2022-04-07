@@ -203,6 +203,37 @@
                             "response": {
                                 "$ref": "FetchRemoteConfigResponse"
                             }
+                        },
+                        "streamFetchInvalidations": {
+                            "description": "Streaming endpoint which allows a client to subscribe to a stream of Fetch invalidation events. These events tell the client that a previous Fetch response is no longer valid (ex: a new Template was published) and that they should perform a new Fetch request to get the latest data.",
+                            "flatPath": "v1/projects/{project}/namespaces/{namespace}:streamFetchInvalidations",
+                            "httpMethod": "POST",
+                            "id": "firebaseremoteconfig.projects.namespaces.streamFetchInvalidations",
+                            "parameterOrder": [
+                                "project",
+                                "namespace"
+                            ],
+                            "parameters": {
+                                "namespace": {
+                                    "description": "Required. The string \"firebase\".",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "project": {
+                                    "description": "Required. The Firebase project ID or project number. (NOTE: These identifiers can be retrieved from the Firebase console.)",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/projects/{project}/namespaces/{namespace}:streamFetchInvalidations",
+                            "request": {
+                                "$ref": "StreamFetchInvalidationsRequest"
+                            },
+                            "response": {
+                                "$ref": "StreamFetchInvalidationsResponse"
+                            }
                         }
                     }
                 },
@@ -295,7 +326,7 @@
             }
         }
     },
-    "revision": "20220303",
+    "revision": "20220405",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
         "ExperimentDescription": {
@@ -435,6 +466,11 @@
                         "The Remote Config parameter values and Firebase A/B Testing experiments both match those returned during the last fetch.",
                         "Template found, but evaluates to empty (e.g. all keys omitted)"
                     ],
+                    "type": "string"
+                },
+                "templateVersion": {
+                    "description": "Used to record the current template in the response.",
+                    "format": "int64",
                     "type": "string"
                 }
             },
@@ -684,6 +720,30 @@
             "properties": {
                 "versionNumber": {
                     "description": "Required. The version number of the RemoteConfig to roll back to. The specified version number must be less than the current version number, and not have been deleted due to staleness.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StreamFetchInvalidationsRequest": {
+            "description": "Open a stream of Fetch response invalidation signals.",
+            "id": "StreamFetchInvalidationsRequest",
+            "properties": {
+                "lastKnownVersionNumber": {
+                    "description": "If this client has previously performed a Fetch, this indicates which Template version was used to process it (returned in the Fetch response).",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StreamFetchInvalidationsResponse": {
+            "description": "Response indicating that the previous Fetch response is now invalid.",
+            "id": "StreamFetchInvalidationsResponse",
+            "properties": {
+                "latestTemplateVersionNumber": {
+                    "description": "Indicates the new Template version number which triggered this invalidation event.",
                     "format": "int64",
                     "type": "string"
                 }

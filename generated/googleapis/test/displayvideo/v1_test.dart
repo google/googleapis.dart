@@ -596,10 +596,15 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
     o.carrierAndIspDetails = buildCarrierAndIspAssignedTargetingOptionDetails();
     o.categoryDetails = buildCategoryAssignedTargetingOptionDetails();
     o.channelDetails = buildChannelAssignedTargetingOptionDetails();
+    o.contentDurationDetails =
+        buildContentDurationAssignedTargetingOptionDetails();
+    o.contentGenreDetails = buildContentGenreAssignedTargetingOptionDetails();
     o.contentInstreamPositionDetails =
         buildContentInstreamPositionAssignedTargetingOptionDetails();
     o.contentOutstreamPositionDetails =
         buildContentOutstreamPositionAssignedTargetingOptionDetails();
+    o.contentStreamTypeDetails =
+        buildContentStreamTypeAssignedTargetingOptionDetails();
     o.dayAndTimeDetails = buildDayAndTimeAssignedTargetingOptionDetails();
     o.deviceMakeModelDetails =
         buildDeviceMakeModelAssignedTargetingOptionDetails();
@@ -673,10 +678,15 @@ void checkAssignedTargetingOption(api.AssignedTargetingOption o) {
     checkCarrierAndIspAssignedTargetingOptionDetails(o.carrierAndIspDetails!);
     checkCategoryAssignedTargetingOptionDetails(o.categoryDetails!);
     checkChannelAssignedTargetingOptionDetails(o.channelDetails!);
+    checkContentDurationAssignedTargetingOptionDetails(
+        o.contentDurationDetails!);
+    checkContentGenreAssignedTargetingOptionDetails(o.contentGenreDetails!);
     checkContentInstreamPositionAssignedTargetingOptionDetails(
         o.contentInstreamPositionDetails!);
     checkContentOutstreamPositionAssignedTargetingOptionDetails(
         o.contentOutstreamPositionDetails!);
+    checkContentStreamTypeAssignedTargetingOptionDetails(
+        o.contentStreamTypeDetails!);
     checkDayAndTimeAssignedTargetingOptionDetails(o.dayAndTimeDetails!);
     checkDeviceMakeModelAssignedTargetingOptionDetails(
         o.deviceMakeModelDetails!);
@@ -2676,6 +2686,114 @@ void checkContactInfoList(api.ContactInfoList o) {
   buildCounterContactInfoList--;
 }
 
+core.int buildCounterContentDurationAssignedTargetingOptionDetails = 0;
+api.ContentDurationAssignedTargetingOptionDetails
+    buildContentDurationAssignedTargetingOptionDetails() {
+  final o = api.ContentDurationAssignedTargetingOptionDetails();
+  buildCounterContentDurationAssignedTargetingOptionDetails++;
+  if (buildCounterContentDurationAssignedTargetingOptionDetails < 3) {
+    o.contentDuration = 'foo';
+    o.targetingOptionId = 'foo';
+  }
+  buildCounterContentDurationAssignedTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentDurationAssignedTargetingOptionDetails(
+    api.ContentDurationAssignedTargetingOptionDetails o) {
+  buildCounterContentDurationAssignedTargetingOptionDetails++;
+  if (buildCounterContentDurationAssignedTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.contentDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetingOptionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentDurationAssignedTargetingOptionDetails--;
+}
+
+core.int buildCounterContentDurationTargetingOptionDetails = 0;
+api.ContentDurationTargetingOptionDetails
+    buildContentDurationTargetingOptionDetails() {
+  final o = api.ContentDurationTargetingOptionDetails();
+  buildCounterContentDurationTargetingOptionDetails++;
+  if (buildCounterContentDurationTargetingOptionDetails < 3) {
+    o.contentDuration = 'foo';
+  }
+  buildCounterContentDurationTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentDurationTargetingOptionDetails(
+    api.ContentDurationTargetingOptionDetails o) {
+  buildCounterContentDurationTargetingOptionDetails++;
+  if (buildCounterContentDurationTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.contentDuration!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentDurationTargetingOptionDetails--;
+}
+
+core.int buildCounterContentGenreAssignedTargetingOptionDetails = 0;
+api.ContentGenreAssignedTargetingOptionDetails
+    buildContentGenreAssignedTargetingOptionDetails() {
+  final o = api.ContentGenreAssignedTargetingOptionDetails();
+  buildCounterContentGenreAssignedTargetingOptionDetails++;
+  if (buildCounterContentGenreAssignedTargetingOptionDetails < 3) {
+    o.displayName = 'foo';
+    o.negative = true;
+    o.targetingOptionId = 'foo';
+  }
+  buildCounterContentGenreAssignedTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentGenreAssignedTargetingOptionDetails(
+    api.ContentGenreAssignedTargetingOptionDetails o) {
+  buildCounterContentGenreAssignedTargetingOptionDetails++;
+  if (buildCounterContentGenreAssignedTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.negative!, unittest.isTrue);
+    unittest.expect(
+      o.targetingOptionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentGenreAssignedTargetingOptionDetails--;
+}
+
+core.int buildCounterContentGenreTargetingOptionDetails = 0;
+api.ContentGenreTargetingOptionDetails
+    buildContentGenreTargetingOptionDetails() {
+  final o = api.ContentGenreTargetingOptionDetails();
+  buildCounterContentGenreTargetingOptionDetails++;
+  if (buildCounterContentGenreTargetingOptionDetails < 3) {
+    o.displayName = 'foo';
+  }
+  buildCounterContentGenreTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentGenreTargetingOptionDetails(
+    api.ContentGenreTargetingOptionDetails o) {
+  buildCounterContentGenreTargetingOptionDetails++;
+  if (buildCounterContentGenreTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentGenreTargetingOptionDetails--;
+}
+
 core.int buildCounterContentInstreamPositionAssignedTargetingOptionDetails = 0;
 api.ContentInstreamPositionAssignedTargetingOptionDetails
     buildContentInstreamPositionAssignedTargetingOptionDetails() {
@@ -2790,6 +2908,59 @@ void checkContentOutstreamPositionTargetingOptionDetails(
     );
   }
   buildCounterContentOutstreamPositionTargetingOptionDetails--;
+}
+
+core.int buildCounterContentStreamTypeAssignedTargetingOptionDetails = 0;
+api.ContentStreamTypeAssignedTargetingOptionDetails
+    buildContentStreamTypeAssignedTargetingOptionDetails() {
+  final o = api.ContentStreamTypeAssignedTargetingOptionDetails();
+  buildCounterContentStreamTypeAssignedTargetingOptionDetails++;
+  if (buildCounterContentStreamTypeAssignedTargetingOptionDetails < 3) {
+    o.contentStreamType = 'foo';
+    o.targetingOptionId = 'foo';
+  }
+  buildCounterContentStreamTypeAssignedTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentStreamTypeAssignedTargetingOptionDetails(
+    api.ContentStreamTypeAssignedTargetingOptionDetails o) {
+  buildCounterContentStreamTypeAssignedTargetingOptionDetails++;
+  if (buildCounterContentStreamTypeAssignedTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.contentStreamType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetingOptionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentStreamTypeAssignedTargetingOptionDetails--;
+}
+
+core.int buildCounterContentStreamTypeTargetingOptionDetails = 0;
+api.ContentStreamTypeTargetingOptionDetails
+    buildContentStreamTypeTargetingOptionDetails() {
+  final o = api.ContentStreamTypeTargetingOptionDetails();
+  buildCounterContentStreamTypeTargetingOptionDetails++;
+  if (buildCounterContentStreamTypeTargetingOptionDetails < 3) {
+    o.contentStreamType = 'foo';
+  }
+  buildCounterContentStreamTypeTargetingOptionDetails--;
+  return o;
+}
+
+void checkContentStreamTypeTargetingOptionDetails(
+    api.ContentStreamTypeTargetingOptionDetails o) {
+  buildCounterContentStreamTypeTargetingOptionDetails++;
+  if (buildCounterContentStreamTypeTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.contentStreamType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterContentStreamTypeTargetingOptionDetails--;
 }
 
 core.List<api.TrackingFloodlightActivityConfig> buildUnnamed37() => [
@@ -5185,6 +5356,7 @@ api.InsertionOrder buildInsertionOrder() {
   if (buildCounterInsertionOrder < 3) {
     o.advertiserId = 'foo';
     o.bidStrategy = buildBiddingStrategy();
+    o.billableOutcome = 'foo';
     o.budget = buildInsertionOrderBudget();
     o.campaignId = 'foo';
     o.displayName = 'foo';
@@ -5212,6 +5384,10 @@ void checkInsertionOrder(api.InsertionOrder o) {
       unittest.equals('foo'),
     );
     checkBiddingStrategy(o.bidStrategy!);
+    unittest.expect(
+      o.billableOutcome!,
+      unittest.equals('foo'),
+    );
     checkInsertionOrderBudget(o.budget!);
     unittest.expect(
       o.campaignId!,
@@ -9287,10 +9463,13 @@ api.TargetingOption buildTargetingOption() {
     o.businessChainDetails = buildBusinessChainTargetingOptionDetails();
     o.carrierAndIspDetails = buildCarrierAndIspTargetingOptionDetails();
     o.categoryDetails = buildCategoryTargetingOptionDetails();
+    o.contentDurationDetails = buildContentDurationTargetingOptionDetails();
+    o.contentGenreDetails = buildContentGenreTargetingOptionDetails();
     o.contentInstreamPositionDetails =
         buildContentInstreamPositionTargetingOptionDetails();
     o.contentOutstreamPositionDetails =
         buildContentOutstreamPositionTargetingOptionDetails();
+    o.contentStreamTypeDetails = buildContentStreamTypeTargetingOptionDetails();
     o.deviceMakeModelDetails = buildDeviceMakeModelTargetingOptionDetails();
     o.deviceTypeDetails = buildDeviceTypeTargetingOptionDetails();
     o.digitalContentLabelDetails =
@@ -9334,10 +9513,13 @@ void checkTargetingOption(api.TargetingOption o) {
     checkBusinessChainTargetingOptionDetails(o.businessChainDetails!);
     checkCarrierAndIspTargetingOptionDetails(o.carrierAndIspDetails!);
     checkCategoryTargetingOptionDetails(o.categoryDetails!);
+    checkContentDurationTargetingOptionDetails(o.contentDurationDetails!);
+    checkContentGenreTargetingOptionDetails(o.contentGenreDetails!);
     checkContentInstreamPositionTargetingOptionDetails(
         o.contentInstreamPositionDetails!);
     checkContentOutstreamPositionTargetingOptionDetails(
         o.contentOutstreamPositionDetails!);
+    checkContentStreamTypeTargetingOptionDetails(o.contentStreamTypeDetails!);
     checkDeviceMakeModelTargetingOptionDetails(o.deviceMakeModelDetails!);
     checkDeviceTypeTargetingOptionDetails(o.deviceTypeDetails!);
     checkDigitalContentLabelTargetingOptionDetails(
@@ -10588,6 +10770,47 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ContentDurationAssignedTargetingOptionDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentDurationAssignedTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentDurationAssignedTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentDurationAssignedTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContentDurationTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentDurationTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentDurationTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentDurationTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContentGenreAssignedTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentGenreAssignedTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentGenreAssignedTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentGenreAssignedTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContentGenreTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentGenreTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentGenreTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentGenreTargetingOptionDetails(od);
+    });
+  });
+
   unittest.group(
       'obj-schema-ContentInstreamPositionAssignedTargetingOptionDetails', () {
     unittest.test('to-json--from-json', () async {
@@ -10631,6 +10854,27 @@ void main() {
       final od = api.ContentOutstreamPositionTargetingOptionDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkContentOutstreamPositionTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContentStreamTypeAssignedTargetingOptionDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentStreamTypeAssignedTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentStreamTypeAssignedTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentStreamTypeAssignedTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ContentStreamTypeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildContentStreamTypeTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ContentStreamTypeTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkContentStreamTypeTargetingOptionDetails(od);
     });
   });
 

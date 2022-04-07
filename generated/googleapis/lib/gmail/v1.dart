@@ -2297,7 +2297,7 @@ class UsersSettingsFiltersResource {
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a filter.
+  /// Immediately and permanently deletes the specified filter.
   ///
   /// Request parameters:
   ///
@@ -3170,7 +3170,8 @@ class UsersThreadsResource {
 
   /// Immediately and permanently deletes the specified thread.
   ///
-  /// This operation cannot be undone. Prefer `threads.trash` instead.
+  /// Any messages that belong to the thread are also deleted. This operation
+  /// cannot be undone. Prefer `threads.trash` instead.
   ///
   /// Request parameters:
   ///
@@ -3381,6 +3382,8 @@ class UsersThreadsResource {
 
   /// Moves the specified thread to the trash.
   ///
+  /// Any messages that belong to the thread are also moved to the trash.
+  ///
   /// Request parameters:
   ///
   /// [userId] - The user's email address. The special value `me` can be used to
@@ -3422,6 +3425,8 @@ class UsersThreadsResource {
   }
 
   /// Removes the specified thread from the trash.
+  ///
+  /// Any messages that belong to the thread are also removed from the trash.
   ///
   /// Request parameters:
   ///
@@ -4897,9 +4902,13 @@ class MessagePartHeader {
 
 class ModifyMessageRequest {
   /// A list of IDs of labels to add to this message.
+  ///
+  /// You can add up to 100 labels with each update.
   core.List<core.String>? addLabelIds;
 
   /// A list IDs of labels to remove from this message.
+  ///
+  /// You can remove up to 100 labels with each update.
   core.List<core.String>? removeLabelIds;
 
   ModifyMessageRequest({
@@ -4929,9 +4938,13 @@ class ModifyMessageRequest {
 
 class ModifyThreadRequest {
   /// A list of IDs of labels to add to this thread.
+  ///
+  /// You can add up to 100 labels with each update.
   core.List<core.String>? addLabelIds;
 
   /// A list of IDs of labels to remove from this thread.
+  ///
+  /// You can remove up to 100 labels with each update.
   core.List<core.String>? removeLabelIds;
 
   ModifyThreadRequest({

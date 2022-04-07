@@ -1229,7 +1229,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// - "PROCESSING_STATE_RECURRING" : The subscription is recurring.
   core.String? processingState;
 
-  /// Resource name that identifies one or more subscription products.
+  /// Resource name that identifies the purchased products.
   ///
   /// The format will be 'partners/{partner_id}/products/{product_id}'.
   ///

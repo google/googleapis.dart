@@ -26,6 +26,33 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAccessApprovalServiceAccount = 0;
+api.AccessApprovalServiceAccount buildAccessApprovalServiceAccount() {
+  final o = api.AccessApprovalServiceAccount();
+  buildCounterAccessApprovalServiceAccount++;
+  if (buildCounterAccessApprovalServiceAccount < 3) {
+    o.accountEmail = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterAccessApprovalServiceAccount--;
+  return o;
+}
+
+void checkAccessApprovalServiceAccount(api.AccessApprovalServiceAccount o) {
+  buildCounterAccessApprovalServiceAccount++;
+  if (buildCounterAccessApprovalServiceAccount < 3) {
+    unittest.expect(
+      o.accountEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAccessApprovalServiceAccount--;
+}
+
 core.List<api.EnrolledService> buildUnnamed0() => [
       buildEnrolledService(),
       buildEnrolledService(),
@@ -59,8 +86,11 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
   final o = api.AccessApprovalSettings();
   buildCounterAccessApprovalSettings++;
   if (buildCounterAccessApprovalSettings < 3) {
+    o.activeKeyVersion = 'foo';
+    o.ancestorHasActiveKeyVersion = true;
     o.enrolledAncestor = true;
     o.enrolledServices = buildUnnamed0();
+    o.invalidKeyVersion = true;
     o.name = 'foo';
     o.notificationEmails = buildUnnamed1();
   }
@@ -71,8 +101,14 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
 void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
   buildCounterAccessApprovalSettings++;
   if (buildCounterAccessApprovalSettings < 3) {
+    unittest.expect(
+      o.activeKeyVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.ancestorHasActiveKeyVersion!, unittest.isTrue);
     unittest.expect(o.enrolledAncestor!, unittest.isTrue);
     checkUnnamed0(o.enrolledServices!);
+    unittest.expect(o.invalidKeyVersion!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -211,7 +247,9 @@ api.ApproveDecision buildApproveDecision() {
   buildCounterApproveDecision++;
   if (buildCounterApproveDecision < 3) {
     o.approveTime = 'foo';
+    o.autoApproved = true;
     o.expireTime = 'foo';
+    o.signatureInfo = buildSignatureInfo();
   }
   buildCounterApproveDecision--;
   return o;
@@ -224,10 +262,12 @@ void checkApproveDecision(api.ApproveDecision o) {
       o.approveTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.autoApproved!, unittest.isTrue);
     unittest.expect(
       o.expireTime!,
       unittest.equals('foo'),
     );
+    checkSignatureInfo(o.signatureInfo!);
   }
   buildCounterApproveDecision--;
 }
@@ -367,7 +407,49 @@ void checkResourceProperties(api.ResourceProperties o) {
   buildCounterResourceProperties--;
 }
 
+core.int buildCounterSignatureInfo = 0;
+api.SignatureInfo buildSignatureInfo() {
+  final o = api.SignatureInfo();
+  buildCounterSignatureInfo++;
+  if (buildCounterSignatureInfo < 3) {
+    o.customerKmsKeyVersion = 'foo';
+    o.googlePublicKeyPem = 'foo';
+    o.signature = 'foo';
+  }
+  buildCounterSignatureInfo--;
+  return o;
+}
+
+void checkSignatureInfo(api.SignatureInfo o) {
+  buildCounterSignatureInfo++;
+  if (buildCounterSignatureInfo < 3) {
+    unittest.expect(
+      o.customerKmsKeyVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googlePublicKeyPem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.signature!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSignatureInfo--;
+}
+
 void main() {
+  unittest.group('obj-schema-AccessApprovalServiceAccount', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAccessApprovalServiceAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccessApprovalServiceAccount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAccessApprovalServiceAccount(od);
+    });
+  });
+
   unittest.group('obj-schema-AccessApprovalSettings', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAccessApprovalSettings();
@@ -488,6 +570,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SignatureInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSignatureInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignatureInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSignatureInfo(od);
+    });
+  });
+
   unittest.group('resource-FoldersResource', () {
     unittest.test('method--deleteAccessApprovalSettings', () async {
       final mock = HttpServerMock();
@@ -593,6 +685,60 @@ void main() {
       final response =
           await res.getAccessApprovalSettings(arg_name, $fields: arg_$fields);
       checkAccessApprovalSettings(response as api.AccessApprovalSettings);
+    });
+
+    unittest.test('method--getServiceAccount', () async {
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAccessApprovalServiceAccount());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getServiceAccount(arg_name, $fields: arg_$fields);
+      checkAccessApprovalServiceAccount(
+          response as api.AccessApprovalServiceAccount);
     });
 
     unittest.test('method--updateAccessApprovalSettings', () async {
@@ -1009,6 +1155,60 @@ void main() {
       checkAccessApprovalSettings(response as api.AccessApprovalSettings);
     });
 
+    unittest.test('method--getServiceAccount', () async {
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAccessApprovalServiceAccount());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getServiceAccount(arg_name, $fields: arg_$fields);
+      checkAccessApprovalServiceAccount(
+          response as api.AccessApprovalServiceAccount);
+    });
+
     unittest.test('method--updateAccessApprovalSettings', () async {
       final mock = HttpServerMock();
       final res = api.AccessApprovalApi(mock).organizations;
@@ -1421,6 +1621,60 @@ void main() {
       final response =
           await res.getAccessApprovalSettings(arg_name, $fields: arg_$fields);
       checkAccessApprovalSettings(response as api.AccessApprovalSettings);
+    });
+
+    unittest.test('method--getServiceAccount', () async {
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAccessApprovalServiceAccount());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getServiceAccount(arg_name, $fields: arg_$fields);
+      checkAccessApprovalServiceAccount(
+          response as api.AccessApprovalServiceAccount);
     });
 
     unittest.test('method--updateAccessApprovalSettings', () async {

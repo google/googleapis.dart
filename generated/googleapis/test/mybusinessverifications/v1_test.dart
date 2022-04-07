@@ -100,14 +100,21 @@ core.int buildCounterComplyWithGuidelines = 0;
 api.ComplyWithGuidelines buildComplyWithGuidelines() {
   final o = api.ComplyWithGuidelines();
   buildCounterComplyWithGuidelines++;
-  if (buildCounterComplyWithGuidelines < 3) {}
+  if (buildCounterComplyWithGuidelines < 3) {
+    o.recommendationReason = 'foo';
+  }
   buildCounterComplyWithGuidelines--;
   return o;
 }
 
 void checkComplyWithGuidelines(api.ComplyWithGuidelines o) {
   buildCounterComplyWithGuidelines++;
-  if (buildCounterComplyWithGuidelines < 3) {}
+  if (buildCounterComplyWithGuidelines < 3) {
+    unittest.expect(
+      o.recommendationReason!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterComplyWithGuidelines--;
 }
 

@@ -1632,6 +1632,7 @@ api.Player buildPlayer() {
     o.displayName = 'foo';
     o.experienceInfo = buildPlayerExperienceInfo();
     o.friendStatus = 'foo';
+    o.gamePlayerId = 'foo';
     o.kind = 'foo';
     o.name = buildPlayerName();
     o.originalPlayerId = 'foo';
@@ -1665,6 +1666,10 @@ void checkPlayer(api.Player o) {
     checkPlayerExperienceInfo(o.experienceInfo!);
     unittest.expect(
       o.friendStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gamePlayerId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -4439,6 +4444,7 @@ void main() {
       final res = api.GamesApi(mock).players;
       final arg_playerId = 'foo';
       final arg_language = 'foo';
+      final arg_playerIdConsistencyToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -4482,6 +4488,10 @@ void main() {
           unittest.equals(arg_language),
         );
         unittest.expect(
+          queryMap['playerIdConsistencyToken']!.first,
+          unittest.equals(arg_playerIdConsistencyToken),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4493,7 +4503,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_playerId,
-          language: arg_language, $fields: arg_$fields);
+          language: arg_language,
+          playerIdConsistencyToken: arg_playerIdConsistencyToken,
+          $fields: arg_$fields);
       checkPlayer(response as api.Player);
     });
 

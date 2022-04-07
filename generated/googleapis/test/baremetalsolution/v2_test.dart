@@ -185,6 +185,7 @@ api.InstanceConfig buildInstanceConfig() {
   final o = api.InstanceConfig();
   buildCounterInstanceConfig++;
   if (buildCounterInstanceConfig < 3) {
+    o.accountNetworksEnabled = true;
     o.clientNetwork = buildNetworkAddress();
     o.hyperthreading = true;
     o.id = 'foo';
@@ -201,6 +202,7 @@ api.InstanceConfig buildInstanceConfig() {
 void checkInstanceConfig(api.InstanceConfig o) {
   buildCounterInstanceConfig++;
   if (buildCounterInstanceConfig < 3) {
+    unittest.expect(o.accountNetworksEnabled!, unittest.isTrue);
     checkNetworkAddress(o.clientNetwork!);
     unittest.expect(o.hyperthreading!, unittest.isTrue);
     unittest.expect(
@@ -1086,12 +1088,14 @@ api.NetworkConfig buildNetworkConfig() {
   if (buildCounterNetworkConfig < 3) {
     o.bandwidth = 'foo';
     o.cidr = 'foo';
+    o.gcpService = 'foo';
     o.id = 'foo';
     o.name = 'foo';
     o.serviceCidr = 'foo';
     o.type = 'foo';
     o.userNote = 'foo';
     o.vlanAttachments = buildUnnamed23();
+    o.vlanSameProject = true;
   }
   buildCounterNetworkConfig--;
   return o;
@@ -1106,6 +1110,10 @@ void checkNetworkConfig(api.NetworkConfig o) {
     );
     unittest.expect(
       o.cidr!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcpService!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1129,6 +1137,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
       unittest.equals('foo'),
     );
     checkUnnamed23(o.vlanAttachments!);
+    unittest.expect(o.vlanSameProject!, unittest.isTrue);
   }
   buildCounterNetworkConfig--;
 }
@@ -1441,11 +1450,16 @@ api.ProvisioningConfig buildProvisioningConfig() {
   final o = api.ProvisioningConfig();
   buildCounterProvisioningConfig++;
   if (buildCounterProvisioningConfig < 3) {
+    o.cloudConsoleUri = 'foo';
+    o.email = 'foo';
     o.handoverServiceAccount = 'foo';
     o.instances = buildUnnamed29();
+    o.location = 'foo';
     o.name = 'foo';
     o.networks = buildUnnamed30();
+    o.state = 'foo';
     o.ticketId = 'foo';
+    o.updateTime = 'foo';
     o.volumes = buildUnnamed31();
   }
   buildCounterProvisioningConfig--;
@@ -1456,17 +1470,37 @@ void checkProvisioningConfig(api.ProvisioningConfig o) {
   buildCounterProvisioningConfig++;
   if (buildCounterProvisioningConfig < 3) {
     unittest.expect(
+      o.cloudConsoleUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.handoverServiceAccount!,
       unittest.equals('foo'),
     );
     checkUnnamed29(o.instances!);
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkUnnamed30(o.networks!);
     unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.ticketId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
       unittest.equals('foo'),
     );
     checkUnnamed31(o.volumes!);
@@ -1485,6 +1519,9 @@ api.ProvisioningQuota buildProvisioningQuota() {
     o.instanceQuota = buildInstanceQuota();
     o.location = 'foo';
     o.name = 'foo';
+    o.networkBandwidth = 'foo';
+    o.serverCount = 'foo';
+    o.storageGib = 'foo';
   }
   buildCounterProvisioningQuota--;
   return o;
@@ -1512,6 +1549,18 @@ void checkProvisioningQuota(api.ProvisioningQuota o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkBandwidth!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serverCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageGib!,
       unittest.equals('foo'),
     );
   }
@@ -1608,6 +1657,7 @@ api.SnapshotReservationDetail buildSnapshotReservationDetail() {
   buildCounterSnapshotReservationDetail++;
   if (buildCounterSnapshotReservationDetail < 3) {
     o.reservedSpaceGib = 'foo';
+    o.reservedSpacePercent = 42;
     o.reservedSpaceRemainingGib = 'foo';
     o.reservedSpaceUsedPercent = 42;
   }
@@ -1621,6 +1671,10 @@ void checkSnapshotReservationDetail(api.SnapshotReservationDetail o) {
     unittest.expect(
       o.reservedSpaceGib!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reservedSpacePercent!,
+      unittest.equals(42),
     );
     unittest.expect(
       o.reservedSpaceRemainingGib!,
@@ -1952,6 +2006,7 @@ api.Volume buildVolume() {
     o.remainingSpaceGib = 'foo';
     o.requestedSizeGib = 'foo';
     o.snapshotAutoDeleteBehavior = 'foo';
+    o.snapshotEnabled = true;
     o.snapshotReservationDetail = buildSnapshotReservationDetail();
     o.snapshotSchedulePolicy = 'foo';
     o.state = 'foo';
@@ -1993,6 +2048,7 @@ void checkVolume(api.Volume o) {
       o.snapshotAutoDeleteBehavior!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.snapshotEnabled!, unittest.isTrue);
     checkSnapshotReservationDetail(o.snapshotReservationDetail!);
     unittest.expect(
       o.snapshotSchedulePolicy!,
@@ -2054,6 +2110,7 @@ api.VolumeConfig buildVolumeConfig() {
   final o = api.VolumeConfig();
   buildCounterVolumeConfig++;
   if (buildCounterVolumeConfig < 3) {
+    o.gcpService = 'foo';
     o.id = 'foo';
     o.lunRanges = buildUnnamed38();
     o.machineIds = buildUnnamed39();
@@ -2072,6 +2129,10 @@ api.VolumeConfig buildVolumeConfig() {
 void checkVolumeConfig(api.VolumeConfig o) {
   buildCounterVolumeConfig++;
   if (buildCounterVolumeConfig < 3) {
+    unittest.expect(
+      o.gcpService!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -3439,6 +3500,192 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsProvisioningConfigsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BaremetalsolutionApi(mock).projects.locations.provisioningConfigs;
+      final arg_request = buildProvisioningConfig();
+      final arg_parent = 'foo';
+      final arg_email = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ProvisioningConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProvisioningConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['email']!.first,
+          unittest.equals(arg_email),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildProvisioningConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          email: arg_email, $fields: arg_$fields);
+      checkProvisioningConfig(response as api.ProvisioningConfig);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BaremetalsolutionApi(mock).projects.locations.provisioningConfigs;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildProvisioningConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkProvisioningConfig(response as api.ProvisioningConfig);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BaremetalsolutionApi(mock).projects.locations.provisioningConfigs;
+      final arg_request = buildProvisioningConfig();
+      final arg_name = 'foo';
+      final arg_email = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ProvisioningConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProvisioningConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['email']!.first,
+          unittest.equals(arg_email),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildProvisioningConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          email: arg_email, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkProvisioningConfig(response as api.ProvisioningConfig);
+    });
+
     unittest.test('method--submit', () async {
       final mock = HttpServerMock();
       final res =

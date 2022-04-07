@@ -213,6 +213,7 @@ api.CommitResponse buildCommitResponse() {
   final o = api.CommitResponse();
   buildCounterCommitResponse++;
   if (buildCounterCommitResponse < 3) {
+    o.commitTime = 'foo';
     o.indexUpdates = 42;
     o.mutationResults = buildUnnamed4();
   }
@@ -223,6 +224,10 @@ api.CommitResponse buildCommitResponse() {
 void checkCommitResponse(api.CommitResponse o) {
   buildCounterCommitResponse++;
   if (buildCounterCommitResponse < 3) {
+    unittest.expect(
+      o.commitTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.indexUpdates!,
       unittest.equals(42),
@@ -321,6 +326,7 @@ api.EntityResult buildEntityResult() {
   if (buildCounterEntityResult < 3) {
     o.cursor = 'foo';
     o.entity = buildEntity();
+    o.updateTime = 'foo';
     o.version = 'foo';
   }
   buildCounterEntityResult--;
@@ -335,6 +341,10 @@ void checkEntityResult(api.EntityResult o) {
       unittest.equals('foo'),
     );
     checkEntity(o.entity!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -1017,6 +1027,7 @@ api.LookupResponse buildLookupResponse() {
     o.deferred = buildUnnamed20();
     o.found = buildUnnamed21();
     o.missing = buildUnnamed22();
+    o.readTime = 'foo';
   }
   buildCounterLookupResponse--;
   return o;
@@ -1028,6 +1039,10 @@ void checkLookupResponse(api.LookupResponse o) {
     checkUnnamed20(o.deferred!);
     checkUnnamed21(o.found!);
     checkUnnamed22(o.missing!);
+    unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLookupResponse--;
 }
@@ -1041,6 +1056,7 @@ api.Mutation buildMutation() {
     o.delete = buildKey();
     o.insert = buildEntity();
     o.update = buildEntity();
+    o.updateTime = 'foo';
     o.upsert = buildEntity();
   }
   buildCounterMutation--;
@@ -1057,6 +1073,10 @@ void checkMutation(api.Mutation o) {
     checkKey(o.delete!);
     checkEntity(o.insert!);
     checkEntity(o.update!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
     checkEntity(o.upsert!);
   }
   buildCounterMutation--;
@@ -1069,6 +1089,7 @@ api.MutationResult buildMutationResult() {
   if (buildCounterMutationResult < 3) {
     o.conflictDetected = true;
     o.key = buildKey();
+    o.updateTime = 'foo';
     o.version = 'foo';
   }
   buildCounterMutationResult--;
@@ -1080,6 +1101,10 @@ void checkMutationResult(api.MutationResult o) {
   if (buildCounterMutationResult < 3) {
     unittest.expect(o.conflictDetected!, unittest.isTrue);
     checkKey(o.key!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -1349,6 +1374,7 @@ api.QueryResultBatch buildQueryResultBatch() {
     o.entityResultType = 'foo';
     o.entityResults = buildUnnamed27();
     o.moreResults = 'foo';
+    o.readTime = 'foo';
     o.skippedCursor = 'foo';
     o.skippedResults = 42;
     o.snapshotVersion = 'foo';
@@ -1374,6 +1400,10 @@ void checkQueryResultBatch(api.QueryResultBatch o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.skippedCursor!,
       unittest.equals('foo'),
     );
@@ -1393,14 +1423,21 @@ core.int buildCounterReadOnly = 0;
 api.ReadOnly buildReadOnly() {
   final o = api.ReadOnly();
   buildCounterReadOnly++;
-  if (buildCounterReadOnly < 3) {}
+  if (buildCounterReadOnly < 3) {
+    o.readTime = 'foo';
+  }
   buildCounterReadOnly--;
   return o;
 }
 
 void checkReadOnly(api.ReadOnly o) {
   buildCounterReadOnly++;
-  if (buildCounterReadOnly < 3) {}
+  if (buildCounterReadOnly < 3) {
+    unittest.expect(
+      o.readTime!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterReadOnly--;
 }
 
@@ -1410,6 +1447,7 @@ api.ReadOptions buildReadOptions() {
   buildCounterReadOptions++;
   if (buildCounterReadOptions < 3) {
     o.readConsistency = 'foo';
+    o.readTime = 'foo';
     o.transaction = 'foo';
   }
   buildCounterReadOptions--;
@@ -1421,6 +1459,10 @@ void checkReadOptions(api.ReadOptions o) {
   if (buildCounterReadOptions < 3) {
     unittest.expect(
       o.readConsistency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readTime!,
       unittest.equals('foo'),
     );
     unittest.expect(

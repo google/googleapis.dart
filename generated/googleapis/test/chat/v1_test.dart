@@ -1807,7 +1807,6 @@ api.Message buildMessage() {
     o.lastUpdateTime = 'foo';
     o.matchedUrl = buildMatchedUrl();
     o.name = 'foo';
-    o.previewText = 'foo';
     o.sender = buildUser();
     o.slashCommand = buildSlashCommand();
     o.space = buildSpace();
@@ -1844,10 +1843,6 @@ void checkMessage(api.Message o) {
     checkMatchedUrl(o.matchedUrl!);
     unittest.expect(
       o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.previewText!,
       unittest.equals('foo'),
     );
     checkUser(o.sender!);

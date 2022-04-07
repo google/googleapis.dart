@@ -14,8 +14,8 @@
 
 /// Authorized Buyers Marketplace API - v1
 ///
-/// The Authorized Buyers Marketplace API allows buyers programmatically
-/// discover inventory; propose, retrieve and negotiate deals with publishers.
+/// The Authorized Buyers Marketplace API lets buyers programmatically discover
+/// inventory; propose, retrieve and negotiate deals with publishers.
 ///
 /// For more information, see
 /// <https://developers.google.com/authorized-buyers/apis/marketplace/reference/rest/>
@@ -49,8 +49,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Authorized Buyers Marketplace API allows buyers programmatically
-/// discover inventory; propose, retrieve and negotiate deals with publishers.
+/// The Authorized Buyers Marketplace API lets buyers programmatically discover
+/// inventory; propose, retrieve and negotiate deals with publishers.
 class AuthorizedBuyersMarketplaceApi {
   /// See, create, edit, and delete your Authorized Buyers Marketplace entities.
   static const authorizedBuyersMarketplaceScope =
@@ -690,11 +690,12 @@ class BuyersClientsResource {
   /// service will update all fields populated in the update request excluding
   /// the output only fields and primitive fields with default value. Note that
   /// explicit field mask is required in order to reset a primitive field back
-  /// to its default value, e.g. false for boolean fields, 0 for integer fields.
-  /// A special field mask consisting of a single path "*" can be used to
-  /// indicate full replacement(the equivalent of PUT method), updatable fields
-  /// unset or unspecified in the input will be cleared or set to default value.
-  /// Output only fields will be ignored regardless of the value of updateMask.
+  /// to its default value, for example, false for boolean fields, 0 for integer
+  /// fields. A special field mask consisting of a single path "*" can be used
+  /// to indicate full replacement(the equivalent of PUT method), updatable
+  /// fields unset or unspecified in the input will be cleared or set to default
+  /// value. Output only fields will be ignored regardless of the value of
+  /// updateMask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1573,11 +1574,12 @@ class BuyersProposalsResource {
   /// service will update all fields populated in the update request excluding
   /// the output only fields and primitive fields with default value. Note that
   /// explicit field mask is required in order to reset a primitive field back
-  /// to its default value, e.g. false for boolean fields, 0 for integer fields.
-  /// A special field mask consisting of a single path "*" can be used to
-  /// indicate full replacement(the equivalent of PUT method), updatable fields
-  /// unset or unspecified in the input will be cleared or set to default value.
-  /// Output only fields will be ignored regardless of the value of updateMask.
+  /// to its default value, for example, false for boolean fields, 0 for integer
+  /// fields. A special field mask consisting of a single path "*" can be used
+  /// to indicate full replacement(the equivalent of PUT method), updatable
+  /// fields unset or unspecified in the input will be cleared or set to default
+  /// value. Output only fields will be ignored regardless of the value of
+  /// updateMask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1807,8 +1809,8 @@ class BuyersProposalsDealsResource {
   /// proposal level. The buyer of the API is expected to keep track of the
   /// revision number after the last update operation and send it in as part of
   /// the next update request. This way, if there are further changes on the
-  /// server (e.g., seller making new updates), then the server can detect
-  /// conflicts and reject the proposed changes.
+  /// server (for example, seller making new updates), then the server can
+  /// detect conflicts and reject the proposed changes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1824,11 +1826,12 @@ class BuyersProposalsDealsResource {
   /// service will update all fields populated in the update request excluding
   /// the output only fields and primitive fields with default value. Note that
   /// explicit field mask is required in order to reset a primitive field back
-  /// to its default value, e.g. false for boolean fields, 0 for integer fields.
-  /// A special field mask consisting of a single path "*" can be used to
-  /// indicate full replacement(the equivalent of PUT method), updatable fields
-  /// unset or unspecified in the input will be cleared or set to default value.
-  /// Output only fields will be ignored regardless of the value of updateMask.
+  /// to its default value, for example, false for boolean fields, 0 for integer
+  /// fields. A special field mask consisting of a single path "*" can be used
+  /// to indicate full replacement(the equivalent of PUT method), updatable
+  /// fields unset or unspecified in the input will be cleared or set to default
+  /// value. Output only fields will be ignored regardless of the value of
+  /// updateMask.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2005,8 +2008,8 @@ class AdSize {
   /// - "PIXEL" : Ad slot with size specified by height and width in pixels.
   /// - "INTERSTITIAL" : Special size to describe an interstitial ad slot.
   /// - "NATIVE" : Native (mobile) ads rendered by the publisher.
-  /// - "FLUID" : Fluid size (i.e., responsive size) can be resized
-  /// automatically with the change of outside environment.
+  /// - "FLUID" : Fluid size (responsive size) can be resized automatically with
+  /// the change of outside environment.
   core.String? type;
 
   /// The width of the ad slot in pixels.
@@ -2769,8 +2772,8 @@ class Deal {
   ///
   /// This will generally be stored in the granularity of one second since deal
   /// serving starts at seconds boundary. Any time specified with more
-  /// granularity (e.g., in milliseconds) will be truncated towards the start of
-  /// time in seconds.
+  /// granularity (for example, in milliseconds) will be truncated towards the
+  /// start of time in seconds.
   core.String? flightStartTime;
 
   /// The unique identifier of the deal.
@@ -2997,7 +3000,7 @@ class DealPausingInfo {
 
 /// Message contains details about how the deal will be paced.
 class DeliveryControl {
-  /// Specifies roadblocking in a master companion lineitem.
+  /// Specifies roadblocking in a main companion lineitem.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3027,7 +3030,7 @@ class DeliveryControl {
   /// - "ROTATION_MANUAL" : Creatives are served roughly proportionally to their
   /// weights.
   /// - "ROTATION_SEQUENTIAL" : Creatives are served exactly in sequential
-  /// order, aka Storyboarding.
+  /// order, also known as Storyboarding.
   core.String? creativeRotationType;
 
   /// Specifies how the impression delivery will be paced.
@@ -3062,7 +3065,7 @@ class DeliveryControl {
   /// page will serve. This could mean anywhere from one to all of a deal's
   /// creatives given the size constraints of ad slots on a page.
   /// - "ALL_ROADBLOCK" : All or none of the creatives from a deal will serve.
-  /// - "CREATIVE_SET" : A master/companion creative set roadblocking type.
+  /// - "CREATIVE_SET" : A main/companion creative set roadblocking type.
   core.String? roadblockingType;
 
   DeliveryControl({
@@ -3111,8 +3114,7 @@ class DeliveryControl {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// A finalized deal is a snapshot of the deal when both buyer and seller accept
@@ -3120,10 +3122,10 @@ typedef Empty = $Empty;
 ///
 /// The buyer or seller can update the deal after it's been finalized and
 /// renegotiate on the deal targeting, terms and other fields, while at the same
-/// time the finalized snapshot of the deal can still be retrieved via this API.
-/// The finalized deal contains a copy of the deal as it existed when most
+/// time the finalized snapshot of the deal can still be retrieved using this
+/// API. The finalized deal contains a copy of the deal as it existed when most
 /// recently finalized, as well as fields related to deal serving such as
-/// pause/resume status, RTB metrics, etc.
+/// pause/resume status, RTB metrics, and more.
 class FinalizedDeal {
   /// A copy of the Deal made upon finalization.
   ///
@@ -3583,19 +3585,20 @@ class MarketplaceTargeting {
   /// Output only.
   InventorySizeTargeting? inventorySizeTargeting;
 
-  /// Placement targeting information, e.g., URL, mobile applications.
+  /// Placement targeting information, for example, URL, mobile applications.
   ///
   /// Output only.
   PlacementTargeting? placementTargeting;
 
-  /// Technology targeting information, e.g., operating system, device category.
+  /// Technology targeting information, for example, operating system, device
+  /// category.
   ///
   /// Output only.
   TechnologyTargeting? technologyTargeting;
 
   /// Buyer user list targeting information.
   ///
-  /// User lists can be uploaded via
+  /// User lists can be uploaded using
   /// https://developers.google.com/authorized-buyers/rtb/bulk-uploader.
   CriteriaTargeting? userListTargeting;
 
@@ -3793,8 +3796,8 @@ class PauseFinalizedDealRequest {
       };
 }
 
-/// Represents targeting about where the ads can appear, e.g., certain sites or
-/// mobile applications.
+/// Represents targeting about where the ads can appear, for example, certain
+/// sites or mobile applications.
 ///
 /// Different placement targeting types will be logically OR'ed.
 class PlacementTargeting {
@@ -4367,7 +4370,7 @@ class PublisherProfile {
 
   /// Up to three key metrics and rankings.
   ///
-  /// For example "#1 Mobile News Site for 20 Straight Months".
+  /// For example, "#1 Mobile News Site for 20 Straight Months".
   core.List<core.String>? topHeadlines;
 
   PublisherProfile({
@@ -4875,10 +4878,10 @@ class UpdateDealRequest {
   /// If empty or unspecified, the service will update all fields populated in
   /// the update request excluding the output only fields and primitive fields
   /// with default value. Note that explicit field mask is required in order to
-  /// reset a primitive field back to its default value, e.g. false for boolean
-  /// fields, 0 for integer fields. A special field mask consisting of a single
-  /// path "*" can be used to indicate full replacement(the equivalent of PUT
-  /// method), updatable fields unset or unspecified in the input will be
+  /// reset a primitive field back to its default value, for example, false for
+  /// boolean fields, 0 for integer fields. A special field mask consisting of a
+  /// single path "*" can be used to indicate full replacement(the equivalent of
+  /// PUT method), updatable fields unset or unspecified in the input will be
   /// cleared or set to default value. Output only fields will be ignored
   /// regardless of the value of updateMask.
   core.String? updateMask;
@@ -4905,7 +4908,7 @@ class UpdateDealRequest {
       };
 }
 
-/// Represents a list of targeted and excluded URLs (e.g., google.com).
+/// Represents a list of targeted and excluded URLs (for example, google.com).
 ///
 /// For Private Auction Deals, URLs are either included or excluded. For
 /// Programmatic Guaranteed and Preferred Deals, this doesn't apply.

@@ -14,7 +14,7 @@
 
 /// Google Chat API - v1
 ///
-/// Enables bots to fetch information and perform actions in Google Chat.
+/// Enables apps to fetch information and perform actions in Google Chat.
 /// Authentication using a service account is a prerequisite for using the
 /// Google Chat REST API.
 ///
@@ -55,7 +55,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-/// Enables bots to fetch information and perform actions in Google Chat.
+/// Enables apps to fetch information and perform actions in Google Chat.
 ///
 /// Authentication using a service account is a prerequisite for using the
 /// Google Chat REST API.
@@ -102,8 +102,8 @@ class DmsResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -162,8 +162,8 @@ class DmsResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -228,8 +228,8 @@ class DmsConversationsResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -355,8 +355,8 @@ class RoomsResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -415,8 +415,8 @@ class RoomsResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -481,8 +481,8 @@ class RoomsConversationsResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -532,6 +532,9 @@ class SpacesResource {
 
   /// Returns a space.
   ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the space, in the form "spaces / * ".
@@ -567,6 +570,9 @@ class SpacesResource {
   }
 
   /// Lists spaces the caller is a member of.
+  ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// Request parameters:
   ///
@@ -629,8 +635,8 @@ class SpacesResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -677,6 +683,9 @@ class SpacesMembersResource {
 
   /// Returns a membership.
   ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the membership to be retrieved, in the
@@ -714,6 +723,9 @@ class SpacesMembersResource {
   }
 
   /// Lists human memberships in a space.
+  ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// Request parameters:
   ///
@@ -773,6 +785,9 @@ class SpacesMessagesResource {
 
   /// Creates a message.
   ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -789,8 +804,8 @@ class SpacesMessagesResource {
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
   /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves bots and webhooks from having to store the
-  /// Google Chat thread ID of a thread (created earlier by them) to post
+  /// the same thread. This relieves Chat apps and webhooks from having to store
+  /// the Google Chat thread ID of a thread (created earlier by them) to post
   /// further updates to it. Has no effect if thread field, corresponding to an
   /// existing thread, is set in message.
   ///
@@ -831,6 +846,9 @@ class SpacesMessagesResource {
 
   /// Deletes a message.
   ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the message to be deleted, in the form
@@ -868,6 +886,9 @@ class SpacesMessagesResource {
 
   /// Returns a message.
   ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the message to be retrieved, in the
@@ -904,6 +925,9 @@ class SpacesMessagesResource {
   }
 
   /// Updates a message.
+  ///
+  /// Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// [request] - The metadata request object.
   ///
@@ -959,12 +983,13 @@ class SpacesMessagesAttachmentsResource {
 
   /// Gets the metadata of a message attachment.
   ///
-  /// The attachment data is fetched using the media API.
+  /// The attachment data is fetched using the media API. Requires
+  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the attachment, in the form "spaces / *
-  /// /messages / * /attachments / * ".
+  /// [name] - Required. Resource name of the attachment, in the form "spaces /
+  /// * /messages / * /attachments / * ".
   /// Value must have pattern
   /// `^spaces/\[^/\]+/messages/\[^/\]+/attachments/\[^/\]+$`.
   ///
@@ -1005,32 +1030,35 @@ class SpacesMessagesAttachmentsResource {
 /// and snooze time in the list of string parameters.
 typedef ActionParameter = $ActionParameter;
 
-/// Parameters that a bot can use to configure how it's response is posted.
+/// Parameters that a Chat app can use to configure how it's response is posted.
 class ActionResponse {
-  /// A response to an event related to a
-  /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
+  /// Input only.
   ///
-  /// Must be accompanied by `ResponseType.Dialog`.
+  /// A response to an event related to a
+  /// [dialog](https://developers.google.com/chat/how-tos/dialogs). Must be
+  /// accompanied by `ResponseType.Dialog`.
   DialogAction? dialogAction;
 
-  /// The type of bot response.
+  /// Input only.
+  ///
+  /// The type of Chat app response.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default type; will be handled as NEW_MESSAGE.
   /// - "NEW_MESSAGE" : Post as a new message in the topic.
-  /// - "UPDATE_MESSAGE" : Update the bot's message. This is only permitted on a
-  /// CARD_CLICKED event where the message sender type is BOT.
+  /// - "UPDATE_MESSAGE" : Update the Chat app's message. This is only permitted
+  /// on a CARD_CLICKED event where the message sender type is BOT.
   /// - "UPDATE_USER_MESSAGE_CARDS" : Update the cards on a user's message. This
   /// is only permitted as a response to a MESSAGE event with a matched url, or
   /// a CARD_CLICKED event where the message sender type is HUMAN. Text will be
   /// ignored.
   /// - "REQUEST_CONFIG" : Privately ask the user for additional auth or config.
   /// - "DIALOG" : Presents a
-  /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
+  /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
   core.String? type;
 
-  /// URL for users to auth or config.
+  /// Input only.
   ///
-  /// (Only for REQUEST_CONFIG response types.)
+  /// URL for users to auth or config. (Only for REQUEST_CONFIG response types.)
   core.String? url;
 
   ActionResponse({
@@ -1248,7 +1276,7 @@ class Attachment {
   /// The download URL which should be used to allow a human user to download
   /// the attachment.
   ///
-  /// Bots should not use this URL to download attachment content.
+  /// Chat apps should not use this URL to download attachment content.
   ///
   /// Output only.
   core.String? downloadUri;
@@ -1272,7 +1300,7 @@ class Attachment {
   /// The thumbnail URL which should be used to preview the attachment to a
   /// human user.
   ///
-  /// Bots should not use this URL to download attachment content.
+  /// Chat apps should not use this URL to download attachment content.
   ///
   /// Output only.
   core.String? thumbnailUri;
@@ -1573,10 +1601,10 @@ typedef Color = $Color;
 
 /// Wrapper around the card body of the dialog.
 class Dialog {
-  /// Body of the dialog, which is rendered in a modal.
+  /// Input only.
   ///
-  /// Google Chat apps do not support the following card entities:
-  /// `DateTimePicker`, `OnChangeAction`.
+  /// Body of the dialog, which is rendered in a modal. Google Chat apps do not
+  /// support the following card entities: `DateTimePicker`, `OnChangeAction`.
   GoogleAppsCardV1Card? body;
 
   Dialog({
@@ -1596,17 +1624,20 @@ class Dialog {
       };
 }
 
-/// Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
-/// and request status code.
+/// Contains a [dialog](https://developers.google.com/chat/how-tos/dialogs) and
+/// request status code.
 class DialogAction {
-  /// Status for a request to either invoke or submit a
-  /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
+  /// Input only.
   ///
-  /// Displays a status and message to users, if necessary. For example, in case
-  /// of an error or success.
+  /// Status for a request to either invoke or submit a
+  /// [dialog](https://developers.google.com/chat/how-tos/dialogs). Displays a
+  /// status and message to users, if necessary. For example, in case of an
+  /// error or success.
   ActionStatus? actionStatus;
 
-  /// [Dialog](https://developers.google.com/chat/how-tos/bot-dialogs) for the
+  /// Input only.
+  ///
+  /// [Dialog](https://developers.google.com/chat/how-tos/dialogs) for the
   /// request.
   Dialog? dialog;
 
@@ -1659,8 +1690,7 @@ class DriveDataRef {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// A form action describes the behavior when the form is submitted.
@@ -1670,7 +1700,7 @@ class FormAction {
   /// The method name is used to identify which part of the form triggered the
   /// form submission.
   ///
-  /// This information is echoed back to the bot as part of the card click
+  /// This information is echoed back to the Chat app as part of the card click
   /// event. The same method name can be used for several elements that trigger
   /// a common behavior if desired.
   core.String? actionMethodName;
@@ -3589,7 +3619,7 @@ class ListSpacesResponse {
 
 /// A matched url in a Chat message.
 ///
-/// Chat bots can unfurl matched URLs. For more information, refer to \[Unfurl
+/// Chat apps can unfurl matched URLs. For more information, refer to \[Unfurl
 /// links\](/chat/how-tos/link-unfurling).
 class MatchedUrl {
   /// The url that was matched.
@@ -3675,7 +3705,8 @@ class Membership {
 class Message {
   /// Input only.
   ///
-  /// Parameters that a bot can use to configure how its response is posted.
+  /// Parameters that a Chat app can use to configure how its response is
+  /// posted.
   ActionResponse? actionResponse;
 
   /// Annotations associated with the text in this message.
@@ -3683,7 +3714,7 @@ class Message {
   /// Output only.
   core.List<Annotation>? annotations;
 
-  /// Plain-text body of the message with all bot mentions stripped out.
+  /// Plain-text body of the message with all Chat app mentions stripped out.
   core.String? argumentText;
 
   /// User uploaded attachment.
@@ -3713,8 +3744,10 @@ class Message {
 
   /// A URL in `spaces.messages.text` that matches a link unfurling pattern.
   ///
-  /// For more information, refer to \[Unfurl
-  /// links\](/chat/how-tos/link-unfurling).
+  /// For more information, refer to
+  /// [Unfurl links](https://developers.google.com/chat/how-tos/link-unfurling).
+  ///
+  /// Output only.
   MatchedUrl? matchedUrl;
 
   /// Resource name in the form `spaces / * /messages / * `.
@@ -3722,22 +3755,23 @@ class Message {
   /// Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   core.String? name;
 
-  /// Text for generating preview chips.
-  ///
-  /// This text will not be displayed to the user, but any links to images, web
-  /// pages, videos, etc. included here will generate preview chips.
-  core.String? previewText;
-
   /// The user who created the message.
+  ///
+  /// Output only.
   User? sender;
 
   /// Slash command information, if applicable.
+  ///
+  /// Output only.
   SlashCommand? slashCommand;
 
   /// The space the message belongs to.
   Space? space;
 
   /// Plain-text body of the message.
+  ///
+  /// The first link to an image, video, web page, or other preview-able item
+  /// generates a preview chip.
   core.String? text;
 
   /// The thread the message belongs to.
@@ -3754,7 +3788,6 @@ class Message {
     this.lastUpdateTime,
     this.matchedUrl,
     this.name,
-    this.previewText,
     this.sender,
     this.slashCommand,
     this.space,
@@ -3803,9 +3836,6 @@ class Message {
                   _json['matchedUrl'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          previewText: _json.containsKey('previewText')
-              ? _json['previewText'] as core.String
-              : null,
           sender: _json.containsKey('sender')
               ? User.fromJson(
                   _json['sender'] as core.Map<core.String, core.dynamic>)
@@ -3836,7 +3866,6 @@ class Message {
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (matchedUrl != null) 'matchedUrl': matchedUrl!,
         if (name != null) 'name': name!,
-        if (previewText != null) 'previewText': previewText!,
         if (sender != null) 'sender': sender!,
         if (slashCommand != null) 'slashCommand': slashCommand!,
         if (space != null) 'space': space!,
@@ -3955,7 +3984,7 @@ class SlashCommand {
 
 /// Annotation metadata for slash commands (/).
 class SlashCommandMetadata {
-  /// The bot whose command was invoked.
+  /// The Chat app whose command was invoked.
   User? bot;
 
   /// The command id of the invoked slash command.
@@ -3970,7 +3999,7 @@ class SlashCommandMetadata {
   /// The type of slash command.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
-  /// - "ADD" : Add bot to space.
+  /// - "ADD" : Add Chat app to space.
   /// - "INVOKE" : Invoke slash command in space.
   core.String? type;
 
@@ -4012,7 +4041,7 @@ class SlashCommandMetadata {
 /// A space in Google Chat.
 ///
 /// Spaces are conversations between two or more users or 1:1 messages between a
-/// user and a Chat bot.
+/// user and a Chat app.
 class Space {
   /// The space's display name.
   ///
@@ -4022,9 +4051,11 @@ class Space {
   /// Resource name of the space, in the form "spaces / * ".
   ///
   /// Example: spaces/AAAAAAAAAAAA
+  ///
+  /// Optional.
   core.String? name;
 
-  /// Whether the space is a DM between a bot and a single human.
+  /// Whether the space is a DM between a Chat app and a single human.
   ///
   /// Output only.
   core.bool? singleUserBotDm;
@@ -4042,7 +4073,7 @@ class Space {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED"
   /// - "ROOM" : Conversations between two or more humans.
-  /// - "DM" : 1:1 Direct Message between a human and a Chat bot, where all
+  /// - "DM" : 1:1 Direct Message between a human and a Chat app, where all
   /// messages are flat. Note that this does not include direct messages between
   /// two humans.
   core.String? type;
@@ -4156,7 +4187,7 @@ class User {
   /// Unique identifier of the user's Google Workspace domain.
   core.String? domainId;
 
-  /// True when the user is deleted or the user's profile is not visible.
+  /// When `true`, the user is deleted or their profile is not visible.
   core.bool? isAnonymous;
 
   /// Resource name for a Google Chat user.
@@ -4172,7 +4203,7 @@ class User {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
   /// - "HUMAN" : Human user.
-  /// - "BOT" : Bot user.
+  /// - "BOT" : Chat app user.
   core.String? type;
 
   User({

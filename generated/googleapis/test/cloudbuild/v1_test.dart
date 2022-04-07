@@ -26,53 +26,6 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.int buildCounterAddBitbucketServerConnectedRepositoryRequest = 0;
-api.AddBitbucketServerConnectedRepositoryRequest
-    buildAddBitbucketServerConnectedRepositoryRequest() {
-  final o = api.AddBitbucketServerConnectedRepositoryRequest();
-  buildCounterAddBitbucketServerConnectedRepositoryRequest++;
-  if (buildCounterAddBitbucketServerConnectedRepositoryRequest < 3) {
-    o.connectedRepository = buildBitbucketServerRepositoryId();
-  }
-  buildCounterAddBitbucketServerConnectedRepositoryRequest--;
-  return o;
-}
-
-void checkAddBitbucketServerConnectedRepositoryRequest(
-    api.AddBitbucketServerConnectedRepositoryRequest o) {
-  buildCounterAddBitbucketServerConnectedRepositoryRequest++;
-  if (buildCounterAddBitbucketServerConnectedRepositoryRequest < 3) {
-    checkBitbucketServerRepositoryId(o.connectedRepository!);
-  }
-  buildCounterAddBitbucketServerConnectedRepositoryRequest--;
-}
-
-core.int buildCounterAddBitbucketServerConnectedRepositoryResponse = 0;
-api.AddBitbucketServerConnectedRepositoryResponse
-    buildAddBitbucketServerConnectedRepositoryResponse() {
-  final o = api.AddBitbucketServerConnectedRepositoryResponse();
-  buildCounterAddBitbucketServerConnectedRepositoryResponse++;
-  if (buildCounterAddBitbucketServerConnectedRepositoryResponse < 3) {
-    o.config = 'foo';
-    o.connectedRepository = buildBitbucketServerRepositoryId();
-  }
-  buildCounterAddBitbucketServerConnectedRepositoryResponse--;
-  return o;
-}
-
-void checkAddBitbucketServerConnectedRepositoryResponse(
-    api.AddBitbucketServerConnectedRepositoryResponse o) {
-  buildCounterAddBitbucketServerConnectedRepositoryResponse++;
-  if (buildCounterAddBitbucketServerConnectedRepositoryResponse < 3) {
-    unittest.expect(
-      o.config!,
-      unittest.equals('foo'),
-    );
-    checkBitbucketServerRepositoryId(o.connectedRepository!);
-  }
-  buildCounterAddBitbucketServerConnectedRepositoryResponse--;
-}
-
 core.int buildCounterApprovalConfig = 0;
 api.ApprovalConfig buildApprovalConfig() {
   final o = api.ApprovalConfig();
@@ -3027,27 +2980,6 @@ void checkWorkerPool(api.WorkerPool o) {
 }
 
 void main() {
-  unittest.group('obj-schema-AddBitbucketServerConnectedRepositoryRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAddBitbucketServerConnectedRepositoryRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AddBitbucketServerConnectedRepositoryRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAddBitbucketServerConnectedRepositoryRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-AddBitbucketServerConnectedRepositoryResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAddBitbucketServerConnectedRepositoryResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AddBitbucketServerConnectedRepositoryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAddBitbucketServerConnectedRepositoryResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-ApprovalConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildApprovalConfig();
@@ -4682,68 +4614,6 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsBitbucketServerConfigsResource',
       () {
-    unittest.test('method--addBitbucketServerConnectedRepository', () async {
-      final mock = HttpServerMock();
-      final res =
-          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
-      final arg_request = buildAddBitbucketServerConnectedRepositoryRequest();
-      final arg_config = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.AddBitbucketServerConnectedRepositoryRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkAddBitbucketServerConnectedRepositoryRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildAddBitbucketServerConnectedRepositoryResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.addBitbucketServerConnectedRepository(
-          arg_request, arg_config,
-          $fields: arg_$fields);
-      checkAddBitbucketServerConnectedRepositoryResponse(
-          response as api.AddBitbucketServerConnectedRepositoryResponse);
-    });
-
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res =

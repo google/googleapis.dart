@@ -149,6 +149,43 @@ class FoldersResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves the service account that is used by Access Approval to access
+  /// KMS keys for signing approved approval requests.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the AccessApprovalServiceAccount to retrieve.
+  /// Value must have pattern `^folders/\[^/\]+/serviceAccount$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessApprovalServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessApprovalServiceAccount> getServiceAccount(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AccessApprovalServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the settings associated with a project, folder, or organization.
   ///
   /// Settings to update are determined by the value of field_mask.
@@ -487,6 +524,43 @@ class OrganizationsResource {
       queryParams: _queryParams,
     );
     return AccessApprovalSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the service account that is used by Access Approval to access
+  /// KMS keys for signing approved approval requests.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the AccessApprovalServiceAccount to retrieve.
+  /// Value must have pattern `^organizations/\[^/\]+/serviceAccount$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessApprovalServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessApprovalServiceAccount> getServiceAccount(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AccessApprovalServiceAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -834,6 +908,43 @@ class ProjectsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves the service account that is used by Access Approval to access
+  /// KMS keys for signing approved approval requests.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the AccessApprovalServiceAccount to retrieve.
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccount$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessApprovalServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessApprovalServiceAccount> getServiceAccount(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AccessApprovalServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the settings associated with a project, folder, or organization.
   ///
   /// Settings to update are determined by the value of field_mask.
@@ -1089,8 +1200,56 @@ class ProjectsApprovalRequestsResource {
   }
 }
 
+/// Access Approval service account related to a project/folder/organization.
+class AccessApprovalServiceAccount {
+  /// Email address of the service account.
+  core.String? accountEmail;
+
+  /// The resource name of the Access Approval service account.
+  ///
+  /// Format is one of: * "projects/{project}/serviceAccount" *
+  /// "folders/{folder}/serviceAccount" *
+  /// "organizations/{organization}/serviceAccount"
+  core.String? name;
+
+  AccessApprovalServiceAccount({
+    this.accountEmail,
+    this.name,
+  });
+
+  AccessApprovalServiceAccount.fromJson(core.Map _json)
+      : this(
+          accountEmail: _json.containsKey('accountEmail')
+              ? _json['accountEmail'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountEmail != null) 'accountEmail': accountEmail!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Settings on a Project/Folder/Organization related to Access Approval.
 class AccessApprovalSettings {
+  /// The asymmetric crypto key version to use for signing approval requests.
+  ///
+  /// Empty active_key_version indicates that a Google-managed key should be
+  /// used for signing. This property will be ignored if set by an ancestor of
+  /// this resource, and new non-empty values may not be set.
+  core.String? activeKeyVersion;
+
+  /// This field is read only (not settable via UpdateAccessApprovalSettings
+  /// method).
+  ///
+  /// If the field is true, that indicates that an ancestor of this Project or
+  /// Folder has set active_key_version (this field will always be unset for the
+  /// organization since organizations do not have ancestors).
+  ///
+  /// Output only.
+  core.bool? ancestorHasActiveKeyVersion;
+
   /// This field is read only (not settable via UpdateAccessApprovalSettings
   /// method).
   ///
@@ -1115,6 +1274,19 @@ class AccessApprovalSettings {
   /// expanded as the set of supported services is expanded.
   core.List<EnrolledService>? enrolledServices;
 
+  /// This field is read only (not settable via UpdateAccessApprovalSettings
+  /// method).
+  ///
+  /// If the field is true, that indicates that there is some configuration
+  /// issue with the active_key_version configured at this level in the resource
+  /// hierarchy (e.g. it doesn't exist or the Access Approval service account
+  /// doesn't have the correct permissions on it, etc.) This key version is not
+  /// necessarily the effective key version at this level, as key versions are
+  /// inherited top-down.
+  ///
+  /// Output only.
+  core.bool? invalidKeyVersion;
+
   /// The resource name of the settings.
   ///
   /// Format is one of: * "projects/{project}/accessApprovalSettings" *
@@ -1131,14 +1303,24 @@ class AccessApprovalSettings {
   core.List<core.String>? notificationEmails;
 
   AccessApprovalSettings({
+    this.activeKeyVersion,
+    this.ancestorHasActiveKeyVersion,
     this.enrolledAncestor,
     this.enrolledServices,
+    this.invalidKeyVersion,
     this.name,
     this.notificationEmails,
   });
 
   AccessApprovalSettings.fromJson(core.Map _json)
       : this(
+          activeKeyVersion: _json.containsKey('activeKeyVersion')
+              ? _json['activeKeyVersion'] as core.String
+              : null,
+          ancestorHasActiveKeyVersion:
+              _json.containsKey('ancestorHasActiveKeyVersion')
+                  ? _json['ancestorHasActiveKeyVersion'] as core.bool
+                  : null,
           enrolledAncestor: _json.containsKey('enrolledAncestor')
               ? _json['enrolledAncestor'] as core.bool
               : null,
@@ -1147,6 +1329,9 @@ class AccessApprovalSettings {
                   .map((value) => EnrolledService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          invalidKeyVersion: _json.containsKey('invalidKeyVersion')
+              ? _json['invalidKeyVersion'] as core.bool
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           notificationEmails: _json.containsKey('notificationEmails')
@@ -1157,8 +1342,12 @@ class AccessApprovalSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
+        if (ancestorHasActiveKeyVersion != null)
+          'ancestorHasActiveKeyVersion': ancestorHasActiveKeyVersion!,
         if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
         if (enrolledServices != null) 'enrolledServices': enrolledServices!,
+        if (invalidKeyVersion != null) 'invalidKeyVersion': invalidKeyVersion!,
         if (name != null) 'name': name!,
         if (notificationEmails != null)
           'notificationEmails': notificationEmails!,
@@ -1224,12 +1413,17 @@ class AccessReason {
   /// Number: #####" * "Case ID: #####" * "E-PIN Reference: #####" *
   /// "Google-#####" * "T-#####"
   /// - "GOOGLE_INITIATED_SERVICE" : The principal accessed customer data in
-  /// order to diagnose or resolve a suspected issue in services or a known
-  /// outage. Often this access is used to confirm that customers are not
-  /// affected by a suspected service issue or to remediate a reversible system
-  /// issue.
+  /// order to diagnose or resolve a suspected issue in services. Often this
+  /// access is used to confirm that customers are not affected by a suspected
+  /// service issue or to remediate a reversible system issue.
   /// - "GOOGLE_INITIATED_REVIEW" : Google initiated service for security,
   /// fraud, abuse, or compliance purposes.
+  /// - "THIRD_PARTY_DATA_REQUEST" : The principal was compelled to access
+  /// customer data in order to respond to a legal third party data request or
+  /// process, including legal processes from customers themselves.
+  /// - "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT" : The principal accessed customer
+  /// data in order to diagnose or resolve a suspected issue in services or a
+  /// known outage.
   core.String? type;
 
   AccessReason({
@@ -1383,12 +1577,20 @@ class ApproveDecision {
   /// The time at which approval was granted.
   core.String? approveTime;
 
+  /// True when the request has been auto-approved.
+  core.bool? autoApproved;
+
   /// The time at which the approval expires.
   core.String? expireTime;
 
+  /// The signature for the ApprovalRequest and details on how it was signed.
+  SignatureInfo? signatureInfo;
+
   ApproveDecision({
     this.approveTime,
+    this.autoApproved,
     this.expireTime,
+    this.signatureInfo,
   });
 
   ApproveDecision.fromJson(core.Map _json)
@@ -1396,14 +1598,23 @@ class ApproveDecision {
           approveTime: _json.containsKey('approveTime')
               ? _json['approveTime'] as core.String
               : null,
+          autoApproved: _json.containsKey('autoApproved')
+              ? _json['autoApproved'] as core.bool
+              : null,
           expireTime: _json.containsKey('expireTime')
               ? _json['expireTime'] as core.String
+              : null,
+          signatureInfo: _json.containsKey('signatureInfo')
+              ? SignatureInfo.fromJson(
+                  _json['signatureInfo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approveTime != null) 'approveTime': approveTime!,
+        if (autoApproved != null) 'autoApproved': autoApproved!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (signatureInfo != null) 'signatureInfo': signatureInfo!,
       };
 }
 
@@ -1446,8 +1657,7 @@ class DismissDecision {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents the enrollment of a cloud resource into a specific service.
@@ -1557,5 +1767,53 @@ class ResourceProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludesDescendants != null)
           'excludesDescendants': excludesDescendants!,
+      };
+}
+
+/// Information about the digital signature of the resource.
+class SignatureInfo {
+  /// The resource name of the customer CryptoKeyVersion used for signing.
+  core.String? customerKmsKeyVersion;
+
+  /// The public key for the Google default signing, encoded in PEM format.
+  ///
+  /// The signature was created using a private key which may be verified using
+  /// this public key.
+  core.String? googlePublicKeyPem;
+
+  /// The digital signature.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> _bytes) {
+    signature =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  SignatureInfo({
+    this.customerKmsKeyVersion,
+    this.googlePublicKeyPem,
+    this.signature,
+  });
+
+  SignatureInfo.fromJson(core.Map _json)
+      : this(
+          customerKmsKeyVersion: _json.containsKey('customerKmsKeyVersion')
+              ? _json['customerKmsKeyVersion'] as core.String
+              : null,
+          googlePublicKeyPem: _json.containsKey('googlePublicKeyPem')
+              ? _json['googlePublicKeyPem'] as core.String
+              : null,
+          signature: _json.containsKey('signature')
+              ? _json['signature'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customerKmsKeyVersion != null)
+          'customerKmsKeyVersion': customerKmsKeyVersion!,
+        if (googlePublicKeyPem != null)
+          'googlePublicKeyPem': googlePublicKeyPem!,
+        if (signature != null) 'signature': signature!,
       };
 }

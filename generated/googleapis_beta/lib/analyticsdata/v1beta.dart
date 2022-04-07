@@ -2001,7 +2001,10 @@ class NumericValue {
       };
 }
 
-/// The sort options.
+/// Order bys define how rows will be sorted in the response.
+///
+/// For example, ordering rows by descending event count is one ordering, and
+/// ordering rows by the event name string is a different ordering.
 class OrderBy {
   /// If true, sorts by descending order.
   core.bool? desc;

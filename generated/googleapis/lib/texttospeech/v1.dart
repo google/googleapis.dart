@@ -269,6 +269,47 @@ class AudioConfig {
       };
 }
 
+/// Description of the custom voice to be synthesized.
+class CustomVoiceParams {
+  /// The name of the AutoML model that synthesizes the custom voice.
+  ///
+  /// Required.
+  core.String? model;
+
+  /// The usage of the synthesized audio to be reported.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REPORTED_USAGE_UNSPECIFIED" : Request with reported usage unspecified
+  /// will be rejected.
+  /// - "REALTIME" : For scenarios where the synthesized audio is not
+  /// downloadable and can only be used once. For example, real-time request in
+  /// IVR system.
+  /// - "OFFLINE" : For scenarios where the synthesized audio is downloadable
+  /// and can be reused. For example, the synthesized audio is downloaded,
+  /// stored in customer service system and played repeatedly.
+  core.String? reportedUsage;
+
+  CustomVoiceParams({
+    this.model,
+    this.reportedUsage,
+  });
+
+  CustomVoiceParams.fromJson(core.Map _json)
+      : this(
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+          reportedUsage: _json.containsKey('reportedUsage')
+              ? _json['reportedUsage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (model != null) 'model': model!,
+        if (reportedUsage != null) 'reportedUsage': reportedUsage!,
+      };
+}
+
 /// The message returned to the client by the `ListVoices` method.
 class ListVoicesResponse {
   /// The list of voices.
@@ -466,6 +507,12 @@ class Voice {
 
 /// Description of which voice to use for a synthesis request.
 class VoiceSelectionParams {
+  /// The configuration for a custom voice.
+  ///
+  /// If \[CustomVoiceParams.model\] is set, the service will choose the custom
+  /// voice matching the specified configuration.
+  CustomVoiceParams? customVoice;
+
   /// The language (and potentially also the region) of the voice expressed as a
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag,
   /// e.g. "en-US".
@@ -507,6 +554,7 @@ class VoiceSelectionParams {
   core.String? ssmlGender;
 
   VoiceSelectionParams({
+    this.customVoice,
     this.languageCode,
     this.name,
     this.ssmlGender,
@@ -514,6 +562,10 @@ class VoiceSelectionParams {
 
   VoiceSelectionParams.fromJson(core.Map _json)
       : this(
+          customVoice: _json.containsKey('customVoice')
+              ? CustomVoiceParams.fromJson(
+                  _json['customVoice'] as core.Map<core.String, core.dynamic>)
+              : null,
           languageCode: _json.containsKey('languageCode')
               ? _json['languageCode'] as core.String
               : null,
@@ -524,6 +576,7 @@ class VoiceSelectionParams {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customVoice != null) 'customVoice': customVoice!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (ssmlGender != null) 'ssmlGender': ssmlGender!,

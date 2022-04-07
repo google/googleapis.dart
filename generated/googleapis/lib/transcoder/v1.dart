@@ -647,12 +647,12 @@ class AnimationStatic {
 class Audio {
   /// Enable boosting high frequency components.
   ///
-  /// The default is `false`.
+  /// The default is `false`. **Note:** This field is not supported.
   core.bool? highBoost;
 
   /// Enable boosting low frequency components.
   ///
-  /// The default is `false`.
+  /// The default is `false`. **Note:** This field is not supported.
   core.bool? lowBoost;
 
   /// Specify audio loudness normalization in loudness units relative to full
@@ -850,6 +850,8 @@ class AudioStream {
 }
 
 /// Color preprocessing configuration.
+///
+/// **Note:** This configuration is not supported.
 class Color {
   /// Control brightness of the video.
   ///
@@ -951,6 +953,8 @@ class Crop {
 }
 
 /// Deblock preprocessing configuration.
+///
+/// **Note:** This configuration is not supported.
 class Deblock {
   /// Enable deblocker.
   ///
@@ -985,6 +989,8 @@ class Deblock {
 }
 
 /// Denoise preprocessing configuration.
+///
+/// **Note:** This configuration is not supported.
 class Denoise {
   /// Set strength of the denoise.
   ///
@@ -1127,8 +1133,7 @@ class ElementaryStream {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// H264 codec settings.
@@ -1685,7 +1690,8 @@ class Input {
   ///
   /// Input files must be at least 5 seconds in duration and stored in Cloud
   /// Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value
-  /// will be populated from `Job.input_uri`.
+  /// is populated from `Job.input_uri`. See
+  /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
   Input({
@@ -1739,7 +1745,8 @@ class Job {
   /// Specify the `input_uri` to populate empty `uri` fields in each element of
   /// `Job.config.inputs` or `JobTemplate.config.inputs` when using template.
   /// URI of the media. Input files must be at least 5 seconds in duration and
-  /// stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+  /// stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See
+  /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? inputUri;
 
   /// The resource name of the job.
@@ -1751,7 +1758,8 @@ class Job {
   ///
   /// Specify the `output_uri` to populate an empty `Job.config.output.uri` or
   /// `JobTemplate.config.output.uri` when using template. URI for the output
-  /// file(s). For example, `gs://my-bucket/outputs/`.
+  /// file(s). For example, `gs://my-bucket/outputs/`. See
+  /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? outputUri;
 
   /// The time the transcoding started.
@@ -2149,7 +2157,8 @@ class MuxStream {
   /// The container format.
   ///
   /// The default is `mp4` Supported container formats: - `ts` - `fmp4`- the
-  /// corresponding file extension is `.m4s` - `mp4` - `vtt`
+  /// corresponding file extension is `.m4s` - `mp4` - `vtt` See also:
+  /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
   core.String? container;
 
   /// List of `ElementaryStream.key`s multiplexed in this stream.
@@ -2244,8 +2253,9 @@ class NormalizedCoordinate {
 class Output {
   /// URI for the output file(s).
   ///
-  /// For example, `gs://my-bucket/outputs/`. If empty the value is populated
-  /// from `Job.output_uri`.
+  /// For example, `gs://my-bucket/outputs/`. If empty, the value is populated
+  /// from `Job.output_uri`. See
+  /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
   Output({
@@ -2763,7 +2773,7 @@ class Vp9CodecSettings {
   /// Target CRF level.
   ///
   /// Must be between 10 and 36, where 10 is the highest quality and 36 is the
-  /// most efficient compression. The default is 21. *Note*: This field is not
+  /// most efficient compression. The default is 21. **Note:** This field is not
   /// supported.
   core.int? crfLevel;
 

@@ -1803,6 +1803,7 @@ api.ChannelToStoreLinkDetails buildChannelToStoreLinkDetails() {
   final o = api.ChannelToStoreLinkDetails();
   buildCounterChannelToStoreLinkDetails++;
   if (buildCounterChannelToStoreLinkDetails < 3) {
+    o.merchantId = 'foo';
     o.storeName = 'foo';
     o.storeUrl = 'foo';
   }
@@ -1813,6 +1814,10 @@ api.ChannelToStoreLinkDetails buildChannelToStoreLinkDetails() {
 void checkChannelToStoreLinkDetails(api.ChannelToStoreLinkDetails o) {
   buildCounterChannelToStoreLinkDetails++;
   if (buildCounterChannelToStoreLinkDetails < 3) {
+    unittest.expect(
+      o.merchantId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.storeName!,
       unittest.equals('foo'),
@@ -3633,6 +3638,40 @@ void checkLiveChatFanFundingEventDetails(api.LiveChatFanFundingEventDetails o) {
   buildCounterLiveChatFanFundingEventDetails--;
 }
 
+core.int buildCounterLiveChatGiftMembershipReceivedDetails = 0;
+api.LiveChatGiftMembershipReceivedDetails
+    buildLiveChatGiftMembershipReceivedDetails() {
+  final o = api.LiveChatGiftMembershipReceivedDetails();
+  buildCounterLiveChatGiftMembershipReceivedDetails++;
+  if (buildCounterLiveChatGiftMembershipReceivedDetails < 3) {
+    o.associatedMembershipGiftingMessageId = 'foo';
+    o.gifterChannelId = 'foo';
+    o.memberLevelName = 'foo';
+  }
+  buildCounterLiveChatGiftMembershipReceivedDetails--;
+  return o;
+}
+
+void checkLiveChatGiftMembershipReceivedDetails(
+    api.LiveChatGiftMembershipReceivedDetails o) {
+  buildCounterLiveChatGiftMembershipReceivedDetails++;
+  if (buildCounterLiveChatGiftMembershipReceivedDetails < 3) {
+    unittest.expect(
+      o.associatedMembershipGiftingMessageId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gifterChannelId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.memberLevelName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLiveChatGiftMembershipReceivedDetails--;
+}
+
 core.int buildCounterLiveChatMemberMilestoneChatDetails = 0;
 api.LiveChatMemberMilestoneChatDetails
     buildLiveChatMemberMilestoneChatDetails() {
@@ -3665,6 +3704,34 @@ void checkLiveChatMemberMilestoneChatDetails(
     );
   }
   buildCounterLiveChatMemberMilestoneChatDetails--;
+}
+
+core.int buildCounterLiveChatMembershipGiftingDetails = 0;
+api.LiveChatMembershipGiftingDetails buildLiveChatMembershipGiftingDetails() {
+  final o = api.LiveChatMembershipGiftingDetails();
+  buildCounterLiveChatMembershipGiftingDetails++;
+  if (buildCounterLiveChatMembershipGiftingDetails < 3) {
+    o.giftMembershipsCount = 42;
+    o.giftMembershipsLevelName = 'foo';
+  }
+  buildCounterLiveChatMembershipGiftingDetails--;
+  return o;
+}
+
+void checkLiveChatMembershipGiftingDetails(
+    api.LiveChatMembershipGiftingDetails o) {
+  buildCounterLiveChatMembershipGiftingDetails++;
+  if (buildCounterLiveChatMembershipGiftingDetails < 3) {
+    unittest.expect(
+      o.giftMembershipsCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.giftMembershipsLevelName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLiveChatMembershipGiftingDetails--;
 }
 
 core.int buildCounterLiveChatMessage = 0;
@@ -3870,9 +3937,12 @@ api.LiveChatMessageSnippet buildLiveChatMessageSnippet() {
     o.authorChannelId = 'foo';
     o.displayMessage = 'foo';
     o.fanFundingEventDetails = buildLiveChatFanFundingEventDetails();
+    o.giftMembershipReceivedDetails =
+        buildLiveChatGiftMembershipReceivedDetails();
     o.hasDisplayContent = true;
     o.liveChatId = 'foo';
     o.memberMilestoneChatDetails = buildLiveChatMemberMilestoneChatDetails();
+    o.membershipGiftingDetails = buildLiveChatMembershipGiftingDetails();
     o.messageDeletedDetails = buildLiveChatMessageDeletedDetails();
     o.messageRetractedDetails = buildLiveChatMessageRetractedDetails();
     o.newSponsorDetails = buildLiveChatNewSponsorDetails();
@@ -3899,12 +3969,15 @@ void checkLiveChatMessageSnippet(api.LiveChatMessageSnippet o) {
       unittest.equals('foo'),
     );
     checkLiveChatFanFundingEventDetails(o.fanFundingEventDetails!);
+    checkLiveChatGiftMembershipReceivedDetails(
+        o.giftMembershipReceivedDetails!);
     unittest.expect(o.hasDisplayContent!, unittest.isTrue);
     unittest.expect(
       o.liveChatId!,
       unittest.equals('foo'),
     );
     checkLiveChatMemberMilestoneChatDetails(o.memberMilestoneChatDetails!);
+    checkLiveChatMembershipGiftingDetails(o.membershipGiftingDetails!);
     checkLiveChatMessageDeletedDetails(o.messageDeletedDetails!);
     checkLiveChatMessageRetractedDetails(o.messageRetractedDetails!);
     checkLiveChatNewSponsorDetails(o.newSponsorDetails!);
@@ -9826,6 +9899,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LiveChatGiftMembershipReceivedDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLiveChatGiftMembershipReceivedDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiveChatGiftMembershipReceivedDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLiveChatGiftMembershipReceivedDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-LiveChatMemberMilestoneChatDetails', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLiveChatMemberMilestoneChatDetails();
@@ -9833,6 +9916,16 @@ void main() {
       final od = api.LiveChatMemberMilestoneChatDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkLiveChatMemberMilestoneChatDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-LiveChatMembershipGiftingDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLiveChatMembershipGiftingDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiveChatMembershipGiftingDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLiveChatMembershipGiftingDetails(od);
     });
   });
 

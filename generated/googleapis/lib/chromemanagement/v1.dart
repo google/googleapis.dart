@@ -534,7 +534,7 @@ class CustomersTelemetryDevicesResource {
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [filter] - Optional. Only include resources that match the filter.
-  /// Supported filter fields: - org_unit_id - serial_number
+  /// Supported filter fields: - org_unit_id - serial_number - device_id
   ///
   /// [pageSize] - Maximum number of results to return. Default value is 100.
   /// Maximum value is 200.
@@ -854,6 +854,89 @@ class GoogleChromeManagementV1AppDetails {
       };
 }
 
+/// Audio report.
+class GoogleChromeManagementV1AudioStatusReport {
+  /// Active input device's name.
+  ///
+  /// Output only.
+  core.String? inputDevice;
+
+  /// Active input device's gain in \[0, 100\].
+  ///
+  /// Output only.
+  core.int? inputGain;
+
+  /// Is active input device mute or not.
+  ///
+  /// Output only.
+  core.bool? inputMute;
+
+  /// Active output device's name.
+  ///
+  /// Output only.
+  core.String? outputDevice;
+
+  /// Is active output device mute or not.
+  ///
+  /// Output only.
+  core.bool? outputMute;
+
+  /// Active output device's volume in \[0, 100\].
+  ///
+  /// Output only.
+  core.int? outputVolume;
+
+  /// Timestamp of when the sample was collected on device.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  GoogleChromeManagementV1AudioStatusReport({
+    this.inputDevice,
+    this.inputGain,
+    this.inputMute,
+    this.outputDevice,
+    this.outputMute,
+    this.outputVolume,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1AudioStatusReport.fromJson(core.Map _json)
+      : this(
+          inputDevice: _json.containsKey('inputDevice')
+              ? _json['inputDevice'] as core.String
+              : null,
+          inputGain: _json.containsKey('inputGain')
+              ? _json['inputGain'] as core.int
+              : null,
+          inputMute: _json.containsKey('inputMute')
+              ? _json['inputMute'] as core.bool
+              : null,
+          outputDevice: _json.containsKey('outputDevice')
+              ? _json['outputDevice'] as core.String
+              : null,
+          outputMute: _json.containsKey('outputMute')
+              ? _json['outputMute'] as core.bool
+              : null,
+          outputVolume: _json.containsKey('outputVolume')
+              ? _json['outputVolume'] as core.int
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputDevice != null) 'inputDevice': inputDevice!,
+        if (inputGain != null) 'inputGain': inputGain!,
+        if (inputMute != null) 'inputMute': inputMute!,
+        if (outputDevice != null) 'outputDevice': outputDevice!,
+        if (outputMute != null) 'outputMute': outputMute!,
+        if (outputVolume != null) 'outputVolume': outputVolume!,
+        if (reportTime != null) 'reportTime': reportTime!,
+      };
+}
+
 /// Battery info
 class GoogleChromeManagementV1BatteryInfo {
   /// Design capacity (mAmpere-hours).
@@ -1056,7 +1139,7 @@ class GoogleChromeManagementV1BatteryStatusReport {
   /// Output only.
   core.String? reportTime;
 
-  /// Sampling data for the battery.
+  /// Sampling data for the battery sorted in a decreasing order of report_time.
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1BatterySampleReport>? sample;
@@ -1205,10 +1288,20 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? isCwsHosted;
 
+  /// Whether the app is only for Kiosk mode on Chrome OS devices
+  ///
+  /// Output only.
+  core.bool? isKioskOnly;
+
   /// Whether the app or extension is a theme.
   ///
   /// Output only.
   core.bool? isTheme;
+
+  /// Whether this app is enabled for Kiosk mode on Chrome OS devices
+  ///
+  /// Output only.
+  core.bool? kioskEnabled;
 
   /// The minimum number of users using this app.
   ///
@@ -1243,7 +1336,9 @@ class GoogleChromeManagementV1ChromeAppInfo {
   GoogleChromeManagementV1ChromeAppInfo({
     this.googleOwned,
     this.isCwsHosted,
+    this.isKioskOnly,
     this.isTheme,
+    this.kioskEnabled,
     this.minUserCount,
     this.permissions,
     this.siteAccess,
@@ -1258,8 +1353,14 @@ class GoogleChromeManagementV1ChromeAppInfo {
           isCwsHosted: _json.containsKey('isCwsHosted')
               ? _json['isCwsHosted'] as core.bool
               : null,
+          isKioskOnly: _json.containsKey('isKioskOnly')
+              ? _json['isKioskOnly'] as core.bool
+              : null,
           isTheme: _json.containsKey('isTheme')
               ? _json['isTheme'] as core.bool
+              : null,
+          kioskEnabled: _json.containsKey('kioskEnabled')
+              ? _json['kioskEnabled'] as core.bool
               : null,
           minUserCount: _json.containsKey('minUserCount')
               ? _json['minUserCount'] as core.int
@@ -1286,7 +1387,9 @@ class GoogleChromeManagementV1ChromeAppInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleOwned != null) 'googleOwned': googleOwned!,
         if (isCwsHosted != null) 'isCwsHosted': isCwsHosted!,
+        if (isKioskOnly != null) 'isKioskOnly': isKioskOnly!,
         if (isTheme != null) 'isTheme': isTheme!,
+        if (kioskEnabled != null) 'kioskEnabled': kioskEnabled!,
         if (minUserCount != null) 'minUserCount': minUserCount!,
         if (permissions != null) 'permissions': permissions!,
         if (siteAccess != null) 'siteAccess': siteAccess!,
@@ -2642,6 +2745,12 @@ class GoogleChromeManagementV1StorageStatusReport {
 
 /// Telemetry data collected from a managed device.
 class GoogleChromeManagementV1TelemetryDevice {
+  /// Audio reports collected periodically sorted in a decreasing order of
+  /// report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1AudioStatusReport>? audioStatusReport;
+
   /// Information on battery specs for the device.
   ///
   /// Output only.
@@ -2657,7 +2766,8 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.List<GoogleChromeManagementV1CpuInfo>? cpuInfo;
 
-  /// CPU status reports collected periodically.
+  /// CPU status reports collected periodically sorted in a decreasing order of
+  /// report_time.
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1CpuStatusReport>? cpuStatusReport;
@@ -2690,7 +2800,8 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   GoogleChromeManagementV1MemoryInfo? memoryInfo;
 
-  /// Memory status reports collected periodically.
+  /// Memory status reports collected periodically sorted decreasing by
+  /// report_time.
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1MemoryStatusReport>? memoryStatusReport;
@@ -2734,6 +2845,7 @@ class GoogleChromeManagementV1TelemetryDevice {
   core.List<GoogleChromeManagementV1StorageStatusReport>? storageStatusReport;
 
   GoogleChromeManagementV1TelemetryDevice({
+    this.audioStatusReport,
     this.batteryInfo,
     this.batteryStatusReport,
     this.cpuInfo,
@@ -2755,6 +2867,13 @@ class GoogleChromeManagementV1TelemetryDevice {
 
   GoogleChromeManagementV1TelemetryDevice.fromJson(core.Map _json)
       : this(
+          audioStatusReport: _json.containsKey('audioStatusReport')
+              ? (_json['audioStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1AudioStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           batteryInfo: _json.containsKey('batteryInfo')
               ? (_json['batteryInfo'] as core.List)
                   .map((value) => GoogleChromeManagementV1BatteryInfo.fromJson(
@@ -2844,6 +2963,7 @@ class GoogleChromeManagementV1TelemetryDevice {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (audioStatusReport != null) 'audioStatusReport': audioStatusReport!,
         if (batteryInfo != null) 'batteryInfo': batteryInfo!,
         if (batteryStatusReport != null)
           'batteryStatusReport': batteryStatusReport!,

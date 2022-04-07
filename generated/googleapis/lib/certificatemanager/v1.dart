@@ -1426,7 +1426,10 @@ class Certificate {
   core.String? pemCertificate;
 
   /// The list of Subject Alternative Names of dnsName type defined in the
-  /// certificate (see RFC 5280 4.2.1.6)
+  /// certificate (see RFC 5280 4.2.1.6).
+  ///
+  /// Managed certificates that haven't been provisioned yet have this field
+  /// populated with a value of the managed.domains field.
   ///
   /// Output only.
   core.List<core.String>? sanDnsnames;
@@ -1614,8 +1617,8 @@ class CertificateMapEntry {
   /// One or more paragraphs of text description of a certificate map entry.
   core.String? description;
 
-  /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression
-  /// (*.example.com) for a set of hostnames with common suffix.
+  /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression
+  /// (`*.example.com`) for a set of hostnames with common suffix.
   ///
   /// Used as Server Name Indication (SNI) for selecting a proper certificate.
   core.String? hostname;
@@ -1731,8 +1734,8 @@ class DnsAuthorization {
   /// A domain which is being authorized.
   ///
   /// A DnsAuthorization resource covers a single domain and its wildcard, e.g.
-  /// authorization for "example.com" can be used to issue certificates for
-  /// "example.com" and "*.example.com".
+  /// authorization for `example.com` can be used to issue certificates for
+  /// `example.com` and `*.example.com`.
   ///
   /// Required. Immutable.
   core.String? domain;
@@ -1811,7 +1814,7 @@ class DnsResourceRecord {
 
   /// Fully qualified name of the DNS Resource Record.
   ///
-  /// e.g. "_acme-challenge.example.com."
+  /// e.g. `_acme-challenge.example.com`
   ///
   /// Output only.
   core.String? name;
@@ -1848,8 +1851,7 @@ class DnsResourceRecord {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Describes a Target Proxy which uses this Certificate Map.

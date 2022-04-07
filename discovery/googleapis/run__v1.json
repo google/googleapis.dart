@@ -252,7 +252,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -295,7 +295,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/domainmappings/[^/]+$",
                                     "required": true,
@@ -325,7 +325,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/domainmappings/[^/]+$",
                                     "required": true,
@@ -376,7 +376,7 @@
                                     "type": "integer"
                                 },
                                 "parent": {
-                                    "description": "The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -425,7 +425,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "Required. The name of the execution to delete. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The name of the execution to delete. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/executions/[^/]+$",
                                     "required": true,
@@ -455,7 +455,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the execution to retrieve. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The name of the execution to retrieve. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/executions/[^/]+$",
                                     "required": true,
@@ -506,7 +506,7 @@
                                     "type": "integer"
                                 },
                                 "parent": {
-                                    "description": "Required. The namespace from which the executions should be listed. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The namespace from which the executions should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -545,7 +545,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. The namespace in which the job should be created. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The namespace in which the job should be created. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -583,7 +583,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "Required. The name of the job to delete. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The name of the job to delete. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/jobs/[^/]+$",
                                     "required": true,
@@ -613,7 +613,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the job to retrieve. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The name of the job to retrieve. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/jobs/[^/]+$",
                                     "required": true,
@@ -664,7 +664,7 @@
                                     "type": "integer"
                                 },
                                 "parent": {
-                                    "description": "Required. The namespace from which the jobs should be listed. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The namespace from which the jobs should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -699,7 +699,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the service being replaced. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The name of the service being replaced. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/jobs/[^/]+$",
                                     "required": true,
@@ -727,7 +727,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the job to run. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The name of the job to run. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/jobs/[^/]+$",
                                     "required": true,
@@ -774,7 +774,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/revisions/[^/]+$",
                                     "required": true,
@@ -804,7 +804,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/revisions/[^/]+$",
                                     "required": true,
@@ -855,7 +855,7 @@
                                     "type": "integer"
                                 },
                                 "parent": {
-                                    "description": "The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -894,7 +894,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/routes/[^/]+$",
                                     "required": true,
@@ -945,7 +945,7 @@
                                     "type": "integer"
                                 },
                                 "parent": {
-                                    "description": "The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -984,12 +984,12 @@
                             ],
                             "parameters": {
                                 "dryRun": {
-                                    "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`",
+                                    "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "The namespace in which the service should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -1032,7 +1032,7 @@
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The name of the service to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/services/[^/]+$",
                                     "required": true,
@@ -1062,7 +1062,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/services/[^/]+$",
                                     "required": true,
@@ -1113,7 +1113,7 @@
                                     "type": "integer"
                                 },
                                 "parent": {
-                                    "description": "The namespace from which the services should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "The namespace from which the services should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -1148,12 +1148,12 @@
                             ],
                             "parameters": {
                                 "dryRun": {
-                                    "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`",
+                                    "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "name": {
-                                    "description": "The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                    "description": "LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/services/[^/]+$",
                                     "required": true,
@@ -1185,7 +1185,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the task to retrieve. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The name of the task to retrieve. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+/tasks/[^/]+$",
                                     "required": true,
@@ -1236,7 +1236,7 @@
                                     "type": "integer"
                                 },
                                 "parent": {
-                                    "description": "Required. The namespace from which the tasks should be listed. Replace {namespace_id} with the project ID or number.",
+                                    "description": "Required. The namespace from which the tasks should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                     "location": "path",
                                     "pattern": "^namespaces/[^/]+$",
                                     "required": true,
@@ -1319,7 +1319,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like \"displayName=tokyo\", and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                                    "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1499,7 +1499,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1542,7 +1542,7 @@
                                             "type": "string"
                                         },
                                         "name": {
-                                            "description": "The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$",
                                             "required": true,
@@ -1572,7 +1572,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$",
                                             "required": true,
@@ -1623,7 +1623,7 @@
                                             "type": "integer"
                                         },
                                         "parent": {
-                                            "description": "The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1768,7 +1768,7 @@
                                             "type": "string"
                                         },
                                         "name": {
-                                            "description": "The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/revisions/[^/]+$",
                                             "required": true,
@@ -1798,7 +1798,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/revisions/[^/]+$",
                                             "required": true,
@@ -1849,7 +1849,7 @@
                                             "type": "integer"
                                         },
                                         "parent": {
-                                            "description": "The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1888,7 +1888,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/routes/[^/]+$",
                                             "required": true,
@@ -1939,7 +1939,7 @@
                                             "type": "integer"
                                         },
                                         "parent": {
-                                            "description": "The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -1978,12 +1978,12 @@
                                     ],
                                     "parameters": {
                                         "dryRun": {
-                                            "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`",
+                                            "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "The namespace in which the service should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "LINT.IfChange() The namespace in which the service should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -2026,7 +2026,7 @@
                                             "type": "string"
                                         },
                                         "name": {
-                                            "description": "The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The name of the service to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+$",
                                             "required": true,
@@ -2056,7 +2056,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+$",
                                             "required": true,
@@ -2138,7 +2138,7 @@
                                             "type": "integer"
                                         },
                                         "parent": {
-                                            "description": "The namespace from which the services should be listed. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "The namespace from which the services should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -2173,12 +2173,12 @@
                                     ],
                                     "parameters": {
                                         "dryRun": {
-                                            "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`",
+                                            "description": "Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "name": {
-                                            "description": "The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.",
+                                            "description": "LINT.IfChange() The name of the service being replaced. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+$",
                                             "required": true,
@@ -2259,7 +2259,7 @@
             }
         }
     },
-    "revision": "20220225",
+    "revision": "20220401",
     "rootUrl": "https://run.googleapis.com/",
     "schemas": {
         "Addressable": {
@@ -2824,7 +2824,7 @@
             "id": "ExecutionSpec",
             "properties": {
                 "parallelism": {
-                    "description": "Optional. Specifies the maximum desired number of tasks the execution should run at any given time. Must be <= task_count. The actual number of tasks running in steady state will be less than this number when ((.spec.task_count - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional",
+                    "description": "Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -2844,6 +2844,11 @@
             "description": "ExecutionStatus represents the current state of a Execution.",
             "id": "ExecutionStatus",
             "properties": {
+                "cancelledCount": {
+                    "description": "Optional. The number of tasks which reached phase Cancelled. +optional",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "completionTime": {
                     "description": "Optional. Represents time when the execution was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional",
                     "format": "google-datetime",
@@ -2867,6 +2872,11 @@
                 },
                 "observedGeneration": {
                     "description": "Optional. The 'generation' of the execution that was last processed by the controller.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "retriedCount": {
+                    "description": "Optional. The number of tasks which have retried at least once. +optional",
                     "format": "int32",
                     "type": "integer"
                 },

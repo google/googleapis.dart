@@ -253,6 +253,7 @@ api.Release buildRelease() {
   buildCounterRelease++;
   if (buildCounterRelease < 3) {
     o.fraction = 42.0;
+    o.fractionGroup = 'foo';
     o.name = 'foo';
     o.serving = buildInterval();
     o.version = 'foo';
@@ -267,6 +268,10 @@ void checkRelease(api.Release o) {
     unittest.expect(
       o.fraction!,
       unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.fractionGroup!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.name!,

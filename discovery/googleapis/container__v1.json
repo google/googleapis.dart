@@ -2457,7 +2457,7 @@
             }
         }
     },
-    "revision": "20220215",
+    "revision": "20220317",
     "rootUrl": "https://container.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -4188,7 +4188,7 @@
             "type": "object"
         },
         "NodeConfig": {
-            "description": "Parameters that describe the nodes in a cluster.",
+            "description": "Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.",
             "id": "NodeConfig",
             "properties": {
                 "accelerators": {

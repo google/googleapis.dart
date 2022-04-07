@@ -113,9 +113,6 @@ class BucketAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -130,13 +127,10 @@ class BucketAccessControlsResource {
   async.Future<void> delete(
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -164,9 +158,6 @@ class BucketAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -183,13 +174,10 @@ class BucketAccessControlsResource {
   async.Future<BucketAccessControl> get(
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -216,9 +204,6 @@ class BucketAccessControlsResource {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -235,14 +220,11 @@ class BucketAccessControlsResource {
   async.Future<BucketAccessControl> insert(
     BucketAccessControl request,
     core.String bucket, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -265,9 +247,6 @@ class BucketAccessControlsResource {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -283,13 +262,10 @@ class BucketAccessControlsResource {
   /// this method will complete with the same error.
   async.Future<BucketAccessControls> list(
     core.String bucket, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -317,9 +293,6 @@ class BucketAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -337,14 +310,11 @@ class BucketAccessControlsResource {
     BucketAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -376,9 +346,6 @@ class BucketAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -396,14 +363,11 @@ class BucketAccessControlsResource {
     BucketAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -441,9 +405,6 @@ class BucketsResource {
   /// [ifMetagenerationNotMatch] - If set, only deletes the bucket if its
   /// metageneration does not match this value.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -459,7 +420,6 @@ class BucketsResource {
     core.String bucket, {
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -468,8 +428,6 @@ class BucketsResource {
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -503,9 +461,6 @@ class BucketsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -524,7 +479,6 @@ class BucketsResource {
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -534,8 +488,6 @@ class BucketsResource {
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -560,9 +512,6 @@ class BucketsResource {
   /// returned. If the optionsRequestedPolicyVersion is for an older version
   /// that doesn't support part of the requested IAM policy, the request fails.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -579,15 +528,12 @@ class BucketsResource {
   async.Future<Policy> getIamPolicy(
     core.String bucket, {
     core.int? optionsRequestedPolicyVersion,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (optionsRequestedPolicyVersion != null)
         'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -645,9 +591,6 @@ class BucketsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -666,7 +609,6 @@ class BucketsResource {
     core.String? predefinedAcl,
     core.String? predefinedDefaultObjectAcl,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -677,8 +619,6 @@ class BucketsResource {
       if (predefinedDefaultObjectAcl != null)
         'predefinedDefaultObjectAcl': [predefinedDefaultObjectAcl],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -713,9 +653,6 @@ class BucketsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -734,7 +671,6 @@ class BucketsResource {
     core.String? pageToken,
     core.String? prefix,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -744,8 +680,6 @@ class BucketsResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -769,9 +703,6 @@ class BucketsResource {
   /// [ifMetagenerationMatch] - Makes the operation conditional on whether
   /// bucket's current metageneration matches the given value.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -788,14 +719,11 @@ class BucketsResource {
   async.Future<Bucket> lockRetentionPolicy(
     core.String bucket,
     core.String ifMetagenerationMatch, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       'ifMetagenerationMatch': [ifMetagenerationMatch],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -863,9 +791,6 @@ class BucketsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -887,7 +812,6 @@ class BucketsResource {
     core.String? predefinedAcl,
     core.String? predefinedDefaultObjectAcl,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -901,8 +825,6 @@ class BucketsResource {
       if (predefinedDefaultObjectAcl != null)
         'predefinedDefaultObjectAcl': [predefinedDefaultObjectAcl],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -926,9 +848,6 @@ class BucketsResource {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -945,14 +864,11 @@ class BucketsResource {
   async.Future<Policy> setIamPolicy(
     Policy request,
     core.String bucket, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -977,9 +893,6 @@ class BucketsResource {
   ///
   /// [permissions] - Permissions to test.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -996,7 +909,6 @@ class BucketsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     core.String bucket,
     core.List<core.String> permissions, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -1005,8 +917,6 @@ class BucketsResource {
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'permissions': permissions,
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1075,9 +985,6 @@ class BucketsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1099,7 +1006,6 @@ class BucketsResource {
     core.String? predefinedAcl,
     core.String? predefinedDefaultObjectAcl,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -1113,8 +1019,6 @@ class BucketsResource {
       if (predefinedDefaultObjectAcl != null)
         'predefinedDefaultObjectAcl': [predefinedDefaultObjectAcl],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1188,9 +1092,6 @@ class DefaultObjectAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1205,13 +1106,10 @@ class DefaultObjectAccessControlsResource {
   async.Future<void> delete(
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1240,9 +1138,6 @@ class DefaultObjectAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1259,13 +1154,10 @@ class DefaultObjectAccessControlsResource {
   async.Future<ObjectAccessControl> get(
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1292,9 +1184,6 @@ class DefaultObjectAccessControlsResource {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1311,14 +1200,11 @@ class DefaultObjectAccessControlsResource {
   async.Future<ObjectAccessControl> insert(
     ObjectAccessControl request,
     core.String bucket, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1347,9 +1233,6 @@ class DefaultObjectAccessControlsResource {
   /// [ifMetagenerationNotMatch] - If present, only return default ACL listing
   /// if the bucket's current metageneration does not match the given value.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1367,7 +1250,6 @@ class DefaultObjectAccessControlsResource {
     core.String bucket, {
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -1376,8 +1258,6 @@ class DefaultObjectAccessControlsResource {
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1405,9 +1285,6 @@ class DefaultObjectAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1425,14 +1302,11 @@ class DefaultObjectAccessControlsResource {
     ObjectAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1464,9 +1338,6 @@ class DefaultObjectAccessControlsResource {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1484,14 +1355,11 @@ class DefaultObjectAccessControlsResource {
     ObjectAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1525,9 +1393,6 @@ class NotificationsResource {
   ///
   /// [notification] - ID of the notification to delete.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1542,13 +1407,10 @@ class NotificationsResource {
   async.Future<void> delete(
     core.String bucket,
     core.String notification, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1574,9 +1436,6 @@ class NotificationsResource {
   ///
   /// [notification] - Notification ID
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1593,13 +1452,10 @@ class NotificationsResource {
   async.Future<Notification> get(
     core.String bucket,
     core.String notification, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1626,9 +1482,6 @@ class NotificationsResource {
   ///
   /// [bucket] - The parent bucket of the notification.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1645,14 +1498,11 @@ class NotificationsResource {
   async.Future<Notification> insert(
     Notification request,
     core.String bucket, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1676,9 +1526,6 @@ class NotificationsResource {
   ///
   /// [bucket] - Name of a Google Cloud Storage bucket.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1694,13 +1541,10 @@ class NotificationsResource {
   /// this method will complete with the same error.
   async.Future<Notifications> list(
     core.String bucket, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1741,9 +1585,6 @@ class ObjectAccessControlsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1760,14 +1601,11 @@ class ObjectAccessControlsResource {
     core.String object,
     core.String entity, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1803,9 +1641,6 @@ class ObjectAccessControlsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1824,14 +1659,11 @@ class ObjectAccessControlsResource {
     core.String object,
     core.String entity, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1866,9 +1698,6 @@ class ObjectAccessControlsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1887,15 +1716,12 @@ class ObjectAccessControlsResource {
     core.String bucket,
     core.String object, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1928,9 +1754,6 @@ class ObjectAccessControlsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1948,14 +1771,11 @@ class ObjectAccessControlsResource {
     core.String bucket,
     core.String object, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1993,9 +1813,6 @@ class ObjectAccessControlsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2015,15 +1832,12 @@ class ObjectAccessControlsResource {
     core.String object,
     core.String entity, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2063,9 +1877,6 @@ class ObjectAccessControlsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2085,15 +1896,12 @@ class ObjectAccessControlsResource {
     core.String object,
     core.String entity, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2161,9 +1969,6 @@ class ObjectsResource {
   /// that will be used to encrypt the object. Overrides the object metadata's
   /// kms_key_name value, if any.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2185,7 +1990,6 @@ class ObjectsResource {
     core.String? ifGenerationMatch,
     core.String? ifMetagenerationMatch,
     core.String? kmsKeyName,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -2197,8 +2001,6 @@ class ObjectsResource {
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (kmsKeyName != null) 'kmsKeyName': [kmsKeyName],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2296,9 +2098,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [sourceGeneration] - If present, selects a specific revision of the source
   /// object (as opposed to the latest version, the default).
   ///
@@ -2332,7 +2131,6 @@ class ObjectsResource {
     core.String? ifSourceMetagenerationMatch,
     core.String? ifSourceMetagenerationNotMatch,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? sourceGeneration,
     core.String? userProject,
     core.String? $fields,
@@ -2359,8 +2157,6 @@ class ObjectsResource {
       if (ifSourceMetagenerationNotMatch != null)
         'ifSourceMetagenerationNotMatch': [ifSourceMetagenerationNotMatch],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (sourceGeneration != null) 'sourceGeneration': [sourceGeneration],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
@@ -2414,9 +2210,6 @@ class ObjectsResource {
   /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
   /// the object's current metageneration does not match the given value.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2436,7 +2229,6 @@ class ObjectsResource {
     core.String? ifGenerationNotMatch,
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -2449,8 +2241,6 @@ class ObjectsResource {
         'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2500,9 +2290,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2533,7 +2320,6 @@ class ObjectsResource {
     core.String? ifMetagenerationMatch,
     core.String? ifMetagenerationNotMatch,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
@@ -2548,8 +2334,6 @@ class ObjectsResource {
       if (ifMetagenerationNotMatch != null)
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2584,9 +2368,6 @@ class ObjectsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2604,14 +2385,11 @@ class ObjectsResource {
     core.String bucket,
     core.String object, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2691,9 +2469,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2725,7 +2500,6 @@ class ObjectsResource {
     core.String? name,
     core.String? predefinedAcl,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
@@ -2745,8 +2519,6 @@ class ObjectsResource {
       if (name != null) 'name': [name],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2808,9 +2580,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [startOffset] - Filter results to objects whose names are
   /// lexicographically equal to or after startOffset. If endOffset is also set,
   /// the objects listed will have names between startOffset (inclusive) and
@@ -2841,7 +2610,6 @@ class ObjectsResource {
     core.String? pageToken,
     core.String? prefix,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? startOffset,
     core.String? userProject,
     core.bool? versions,
@@ -2856,8 +2624,6 @@ class ObjectsResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (startOffset != null) 'startOffset': [startOffset],
       if (userProject != null) 'userProject': [userProject],
       if (versions != null) 'versions': ['${versions}'],
@@ -2923,9 +2689,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request, for Requester
   /// Pays buckets.
   ///
@@ -2950,7 +2713,6 @@ class ObjectsResource {
     core.String? ifMetagenerationNotMatch,
     core.String? predefinedAcl,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -2966,8 +2728,6 @@ class ObjectsResource {
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3070,9 +2830,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [rewriteToken] - Include this field (from the previous rewrite response)
   /// on each rewrite request after the first one, until the rewrite response
   /// 'done' flag is true. Calls that provide a rewriteToken can omit all other
@@ -3113,7 +2870,6 @@ class ObjectsResource {
     core.String? ifSourceMetagenerationNotMatch,
     core.String? maxBytesRewrittenPerCall,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? rewriteToken,
     core.String? sourceGeneration,
     core.String? userProject,
@@ -3143,8 +2899,6 @@ class ObjectsResource {
       if (maxBytesRewrittenPerCall != null)
         'maxBytesRewrittenPerCall': [maxBytesRewrittenPerCall],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (rewriteToken != null) 'rewriteToken': [rewriteToken],
       if (sourceGeneration != null) 'sourceGeneration': [sourceGeneration],
       if (userProject != null) 'userProject': [userProject],
@@ -3184,9 +2938,6 @@ class ObjectsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3205,15 +2956,12 @@ class ObjectsResource {
     core.String bucket,
     core.String object, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3248,9 +2996,6 @@ class ObjectsResource {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3269,7 +3014,6 @@ class ObjectsResource {
     core.String object,
     core.List<core.String> permissions, {
     core.String? generation,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -3279,8 +3023,6 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{
       'permissions': permissions,
       if (generation != null) 'generation': [generation],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3349,9 +3091,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3376,7 +3115,6 @@ class ObjectsResource {
     core.String? ifMetagenerationNotMatch,
     core.String? predefinedAcl,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -3392,8 +3130,6 @@ class ObjectsResource {
         'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3449,9 +3185,6 @@ class ObjectsResource {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [startOffset] - Filter results to objects whose names are
   /// lexicographically equal to or after startOffset. If endOffset is also set,
   /// the objects listed will have names between startOffset (inclusive) and
@@ -3483,7 +3216,6 @@ class ObjectsResource {
     core.String? pageToken,
     core.String? prefix,
     core.String? projection,
-    core.String? provisionalUserProject,
     core.String? startOffset,
     core.String? userProject,
     core.bool? versions,
@@ -3499,8 +3231,6 @@ class ObjectsResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],
       if (projection != null) 'projection': [projection],
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (startOffset != null) 'startOffset': [startOffset],
       if (userProject != null) 'userProject': [userProject],
       if (versions != null) 'versions': ['${versions}'],
@@ -3794,9 +3524,6 @@ class ProjectsServiceAccountResource {
   ///
   /// [projectId] - Project ID
   ///
-  /// [provisionalUserProject] - The project to be billed for this request if
-  /// the target bucket is requester-pays bucket.
-  ///
   /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3811,13 +3538,10 @@ class ProjectsServiceAccountResource {
   /// this method will complete with the same error.
   async.Future<ServiceAccount> get(
     core.String projectId, {
-    core.String? provisionalUserProject,
     core.String? userProject,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (provisionalUserProject != null)
-        'provisionalUserProject': [provisionalUserProject],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3940,29 +3664,6 @@ class BucketCors {
         if (method != null) 'method': method!,
         if (origin != null) 'origin': origin!,
         if (responseHeader != null) 'responseHeader': responseHeader!,
-      };
-}
-
-/// The bucket's custom placement configuration for Custom Dual Regions.
-class BucketCustomPlacementConfig {
-  /// The list of regional locations in which data is placed.
-  core.List<core.String>? dataLocations;
-
-  BucketCustomPlacementConfig({
-    this.dataLocations,
-  });
-
-  BucketCustomPlacementConfig.fromJson(core.Map _json)
-      : this(
-          dataLocations: _json.containsKey('dataLocations')
-              ? (_json['dataLocations'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dataLocations != null) 'dataLocations': dataLocations!,
       };
 }
 
@@ -4534,9 +4235,6 @@ class Bucket {
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
   core.List<BucketCors>? cors;
 
-  /// The bucket's custom placement configuration for Custom Dual Regions.
-  BucketCustomPlacementConfig? customPlacementConfig;
-
   /// The default value for event-based hold on newly created objects in this
   /// bucket.
   ///
@@ -4665,7 +4363,6 @@ class Bucket {
     this.autoclass,
     this.billing,
     this.cors,
-    this.customPlacementConfig,
     this.defaultEventBasedHold,
     this.defaultObjectAcl,
     this.encryption,
@@ -4714,11 +4411,6 @@ class Bucket {
                   .map((value) => BucketCors.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
-              : null,
-          customPlacementConfig: _json.containsKey('customPlacementConfig')
-              ? BucketCustomPlacementConfig.fromJson(
-                  _json['customPlacementConfig']
-                      as core.Map<core.String, core.dynamic>)
               : null,
           defaultEventBasedHold: _json.containsKey('defaultEventBasedHold')
               ? _json['defaultEventBasedHold'] as core.bool
@@ -4808,8 +4500,6 @@ class Bucket {
         if (autoclass != null) 'autoclass': autoclass!,
         if (billing != null) 'billing': billing!,
         if (cors != null) 'cors': cors!,
-        if (customPlacementConfig != null)
-          'customPlacementConfig': customPlacementConfig!,
         if (defaultEventBasedHold != null)
           'defaultEventBasedHold': defaultEventBasedHold!,
         if (defaultObjectAcl != null) 'defaultObjectAcl': defaultObjectAcl!,

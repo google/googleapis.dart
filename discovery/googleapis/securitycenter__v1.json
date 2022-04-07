@@ -216,7 +216,7 @@
                                     "type": "string"
                                 },
                                 "startTime": {
-                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be smaller or equal to the server time.",
+                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be earlier or equal to the server time.",
                                     "format": "google-datetime",
                                     "location": "query",
                                     "type": "string"
@@ -828,7 +828,7 @@
                                             "type": "string"
                                         },
                                         "startTime": {
-                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be smaller or equal to the server time.",
+                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be earlier or equal to the server time.",
                                             "format": "google-datetime",
                                             "location": "query",
                                             "type": "string"
@@ -865,7 +865,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/123456/externalSystems/jira projects/1234/sources/5678/findings/123456/externalSystems/jira",
+                                                    "description": "External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/123456/externalSystems/jira`",
                                                     "location": "path",
                                                     "pattern": "^folders/[^/]+/sources/[^/]+/findings/[^/]+/externalSystems/[^/]+$",
                                                     "required": true,
@@ -1099,7 +1099,7 @@
                                     "type": "string"
                                 },
                                 "startTime": {
-                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be smaller or equal to the server time.",
+                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be earlier or equal to the server time.",
                                     "format": "google-datetime",
                                     "location": "query",
                                     "type": "string"
@@ -2192,7 +2192,7 @@
                                             "type": "string"
                                         },
                                         "startTime": {
-                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be smaller or equal to the server time.",
+                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be earlier or equal to the server time.",
                                             "format": "google-datetime",
                                             "location": "query",
                                             "type": "string"
@@ -2229,7 +2229,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/123456/externalSystems/jira projects/1234/sources/5678/findings/123456/externalSystems/jira",
+                                                    "description": "External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/123456/externalSystems/jira`",
                                                     "location": "path",
                                                     "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/externalSystems/[^/]+$",
                                                     "required": true,
@@ -2374,7 +2374,7 @@
                                     "type": "string"
                                 },
                                 "startTime": {
-                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be smaller or equal to the server time.",
+                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be earlier or equal to the server time.",
                                     "format": "google-datetime",
                                     "location": "query",
                                     "type": "string"
@@ -2986,7 +2986,7 @@
                                             "type": "string"
                                         },
                                         "startTime": {
-                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be smaller or equal to the server time.",
+                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must be earlier or equal to the server time.",
                                             "format": "google-datetime",
                                             "location": "query",
                                             "type": "string"
@@ -3023,7 +3023,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/123456/externalSystems/jira projects/1234/sources/5678/findings/123456/externalSystems/jira",
+                                                    "description": "External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/123456/externalSystems/jira`",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/sources/[^/]+/findings/[^/]+/externalSystems/[^/]+$",
                                                     "required": true,
@@ -3056,7 +3056,7 @@
             }
         }
     },
-    "revision": "20220224",
+    "revision": "20220401",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Access": {
@@ -3417,7 +3417,7 @@
             "type": "object"
         },
         "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
             "properties": {},
             "type": "object"
@@ -3503,6 +3503,13 @@
                     ],
                     "type": "string"
                 },
+                "iamBindings": {
+                    "description": "Represents IAM bindings associated with the Finding.",
+                    "items": {
+                        "$ref": "IamBinding"
+                    },
+                    "type": "array"
+                },
                 "indicator": {
                     "$ref": "Indicator",
                     "description": "Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise"
@@ -3512,7 +3519,7 @@
                     "description": "MITRE ATT&CK tactics and techniques related to this finding. See: https://attack.mitre.org"
                 },
                 "mute": {
-                    "description": "Indicates the mute state of a finding (either unspecified, muted, unmuted or undefined). Unlike other attributes of a finding, a finding provider shouldn't set the value of mute.",
+                    "description": "Indicates the mute state of a finding (either muted, unmuted or undefined). Unlike other attributes of a finding, a finding provider shouldn't set the value of mute.",
                     "enum": [
                         "MUTE_UNSPECIFIED",
                         "MUTED",
@@ -3539,6 +3546,10 @@
                 },
                 "name": {
                     "description": "The relative resource name of this finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
+                    "type": "string"
+                },
+                "nextSteps": {
+                    "description": "Next steps associate to the finding.",
                     "type": "string"
                 },
                 "parent": {
@@ -3568,7 +3579,7 @@
                         "Vulnerability: A critical vulnerability is easily discoverable by an external actor, exploitable, and results in the direct ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. Examples include publicly accessible unprotected user data, public SSH access with weak or no passwords, etc. Threat: Indicates a threat that is able to access, modify, or delete data or execute unauthorized code within existing resources.",
                         "Vulnerability: A high risk vulnerability can be easily discovered and exploited in combination with other vulnerabilities in order to gain direct access and the ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. An example is a database with weak or no passwords that is only accessible internally. This database could easily be compromised by an actor that had access to the internal network. Threat: Indicates a threat that is able to create new computational resources in an environment but not able to access data or execute code in existing resources.",
                         "Vulnerability: A medium risk vulnerability could be used by an actor to gain access to resources or privileges that enable them to eventually (through multiple steps or a complex exploit) gain access and the ability to execute arbitrary code or exfiltrate data. An example is a service account with access to more projects than it should have. If an actor gains access to the service account, they could potentially use that access to manipulate a project the service account was not intended to. Threat: Indicates a threat that is able to cause operational impact but may not access data or execute unauthorized code.",
-                        "Vulnerability: A low risk vulnerability hampers a security organization’s ability to detect vulnerabilities or active threats in their deployment, or prevents the root cause investigation of security issues. An example is monitoring and logs being disabled for resource configurations and access. Threat: Indicates a threat that has obtained minimal access to an environment but is not able to access data, execute code, or create resources."
+                        "Vulnerability: A low risk vulnerability hampers a security organization's ability to detect vulnerabilities or active threats in their deployment, or prevents the root cause investigation of security issues. An example is monitoring and logs being disabled for resource configurations and access. Threat: Indicates a threat that has obtained minimal access to an environment but is not able to access data, execute code, or create resources."
                     ],
                     "type": "string"
                 },
@@ -3668,7 +3679,7 @@
                     "type": "string"
                 },
                 "filter": {
-                    "description": "Expression that defines the filter to apply across create/update events of findings. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. Please see the proto documentation in the finding (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/finding.proto) and in the ListFindingsRequest for valid filter syntax. (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/securitycenter_service.proto).",
+                    "description": "Expression that defines the filter to apply across create/update events of findings. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.",
                     "type": "string"
                 },
                 "mostRecentEditor": {
@@ -3721,7 +3732,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/123456/externalSystems/jira projects/1234/sources/5678/findings/123456/externalSystems/jira",
+                    "description": "External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/123456/externalSystems/jira`",
                     "type": "string"
                 },
                 "status": {
@@ -3823,7 +3834,7 @@
                     "type": "string"
                 },
                 "projectDisplayName": {
-                    "description": "The project id that the resource belongs to.",
+                    "description": "The project ID that the resource belongs to.",
                     "type": "string"
                 },
                 "type": {
@@ -4236,6 +4247,35 @@
             },
             "type": "object"
         },
+        "IamBinding": {
+            "description": "Represents a particular IAM binding, which captures a member's role addition, removal, or state.",
+            "id": "IamBinding",
+            "properties": {
+                "action": {
+                    "description": "The action that was performed on a Binding.",
+                    "enum": [
+                        "ACTION_UNSPECIFIED",
+                        "ADD",
+                        "REMOVE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Addition of a Binding.",
+                        "Removal of a Binding."
+                    ],
+                    "type": "string"
+                },
+                "member": {
+                    "description": "A single identity requesting access for a Cloud Platform resource, e.g. \"foo@google.com\".",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Role that is assigned to \"members\". For example, \"roles/viewer\", \"roles/editor\", or \"roles/owner\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "IamPolicy": {
             "description": "Cloud IAM Policy information associated with the Google Cloud resource described by the Security Command Center asset. This information is managed and defined by the Google Cloud resource and cannot be modified by the user.",
             "id": "IamPolicy",
@@ -4552,7 +4592,8 @@
                             "STEAL_WEB_SESSION_COOKIE",
                             "MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE",
                             "EXPLOIT_PUBLIC_FACING_APPLICATION",
-                            "MODIFY_AUTHENTICATION_PROCESS"
+                            "MODIFY_AUTHENTICATION_PROCESS",
+                            "DATA_DESTRUCTION"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -4583,7 +4624,8 @@
                             "T1539",
                             "T1578",
                             "T1190",
-                            "T1556"
+                            "T1556",
+                            "T1485"
                         ],
                         "type": "string"
                     },
@@ -4628,7 +4670,7 @@
                     "type": "string"
                 },
                 "primaryTechniques": {
-                    "description": "The MITRE ATT&CK technique most closely represented by this finding, if any. primary_techniques is a repeated field because there are multiple levels of MITRE ATT&CK techniques. If the technique most closely represented by this finding is a sub-technique (e.g. SCANNING_IP_BLOCKS), both the sub-technique and its parent technique(s) will be listed (e.g. SCANNING_IP_BLOCKS, ACTIVE_SCANNING).",
+                    "description": "The MITRE ATT&CK technique most closely represented by this finding, if any. primary_techniques is a repeated field because there are multiple levels of MITRE ATT&CK techniques. If the technique most closely represented by this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the sub-technique and its parent technique(s) will be listed (e.g. `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`).",
                     "items": {
                         "enum": [
                             "TECHNIQUE_UNSPECIFIED",
@@ -4659,7 +4701,8 @@
                             "STEAL_WEB_SESSION_COOKIE",
                             "MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE",
                             "EXPLOIT_PUBLIC_FACING_APPLICATION",
-                            "MODIFY_AUTHENTICATION_PROCESS"
+                            "MODIFY_AUTHENTICATION_PROCESS",
+                            "DATA_DESTRUCTION"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -4690,7 +4733,8 @@
                             "T1539",
                             "T1578",
                             "T1190",
-                            "T1556"
+                            "T1556",
+                            "T1485"
                         ],
                         "type": "string"
                     },
@@ -4859,7 +4903,7 @@
                     "type": "string"
                 },
                 "projectDisplayName": {
-                    "description": "The project id that the resource belongs to.",
+                    "description": "The project ID that the resource belongs to.",
                     "type": "string"
                 },
                 "projectName": {

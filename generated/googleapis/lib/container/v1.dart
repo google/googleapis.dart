@@ -7272,6 +7272,9 @@ class NetworkTags {
 }
 
 /// Parameters that describe the nodes in a cluster.
+///
+/// *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`.
+/// Use AutoprovisioningNodePoolDefaults instead.
 class NodeConfig {
   /// A list of hardware accelerators to be attached to each node.
   ///

@@ -91,6 +91,7 @@ api.CmekSettings buildCmekSettings() {
   buildCounterCmekSettings++;
   if (buildCounterCmekSettings < 3) {
     o.kmsKeyName = 'foo';
+    o.kmsKeyVersionName = 'foo';
     o.name = 'foo';
     o.serviceAccountId = 'foo';
   }
@@ -103,6 +104,10 @@ void checkCmekSettings(api.CmekSettings o) {
   if (buildCounterCmekSettings < 3) {
     unittest.expect(
       o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyVersionName!,
       unittest.equals('foo'),
     );
     unittest.expect(

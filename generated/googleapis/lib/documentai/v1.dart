@@ -226,7 +226,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -1304,7 +1304,7 @@ class Uiv1beta3ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -1618,12 +1618,11 @@ typedef GoogleCloudDocumentaiV1DeployProcessorVersionRequest = $Empty;
 /// Request message for the disable processor method.
 typedef GoogleCloudDocumentaiV1DisableProcessorRequest = $Empty;
 
-/// Document represents the canonical document resource in Document
-/// Understanding AI.
+/// Document represents the canonical document resource in Document AI.
 ///
 /// It is an interchange format that provides insights into documents and allows
-/// for collaboration between users and Document Understanding AI to iterate and
-/// optimize for quality.
+/// for collaboration between users and Document AI to iterate and optimize for
+/// quality.
 class GoogleCloudDocumentaiV1Document {
   /// Inline document content, represented as a stream of bytes.
   ///
@@ -1821,6 +1820,15 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   /// Optional.
   core.String? mentionText;
 
+  /// This attribute indicates that the processing didn't actually identify this
+  /// entity, but a confidence score was assigned that represent the potential
+  /// that this could be a false negative.
+  ///
+  /// A non-present entity should have an empty mention_text and text_anchor.
+  ///
+  /// Optional.
+  core.bool? nonPresent;
+
   /// Normalized entity value.
   ///
   /// Absent if the extracted value could not be converted or the type (e.g.
@@ -1861,6 +1869,8 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   GoogleCloudDocumentaiV1DocumentTextAnchor? textAnchor;
 
   /// Entity type from a schema e.g. `Address`.
+  ///
+  /// Required.
   core.String? type;
 
   GoogleCloudDocumentaiV1DocumentEntity({
@@ -1868,6 +1878,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
     this.id,
     this.mentionId,
     this.mentionText,
+    this.nonPresent,
     this.normalizedValue,
     this.pageAnchor,
     this.properties,
@@ -1888,6 +1899,9 @@ class GoogleCloudDocumentaiV1DocumentEntity {
               : null,
           mentionText: _json.containsKey('mentionText')
               ? _json['mentionText'] as core.String
+              : null,
+          nonPresent: _json.containsKey('nonPresent')
+              ? _json['nonPresent'] as core.bool
               : null,
           normalizedValue: _json.containsKey('normalizedValue')
               ? GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
@@ -1924,6 +1938,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (mentionText != null) 'mentionText': mentionText!,
+        if (nonPresent != null) 'nonPresent': nonPresent!,
         if (normalizedValue != null) 'normalizedValue': normalizedValue!,
         if (pageAnchor != null) 'pageAnchor': pageAnchor!,
         if (properties != null) 'properties': properties!,
@@ -4227,13 +4242,16 @@ class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo {
 /// Each processor can have multiple versions, pre-trained by Google internally
 /// or up-trained by the customer. At a time, a processor can only have one
 /// default version version. So the processor's behavior (when processing
-/// documents) is defined by a default version.
+/// documents) is defined by a default version
 class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The time the processor version was created.
   core.String? createTime;
 
   /// The display name of the processor version.
   core.String? displayName;
+
+  /// Denotes that this ProcessorVersion is managed by google.
+  core.bool? googleManaged;
 
   /// The KMS key name used for encryption.
   core.String? kmsKeyName;
@@ -4265,6 +4283,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   GoogleCloudDocumentaiV1ProcessorVersion({
     this.createTime,
     this.displayName,
+    this.googleManaged,
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,
@@ -4278,6 +4297,9 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          googleManaged: _json.containsKey('googleManaged')
+              ? _json['googleManaged'] as core.bool
               : null,
           kmsKeyName: _json.containsKey('kmsKeyName')
               ? _json['kmsKeyName'] as core.String
@@ -4293,6 +4315,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (googleManaged != null) 'googleManaged': googleManaged!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
@@ -4583,8 +4606,7 @@ class GoogleLongrunningOperation {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4652,10 +4674,11 @@ typedef GoogleTypeColor = $Color;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;
 
 /// Represents civil time (or occasionally physical time).
@@ -4796,7 +4819,7 @@ typedef GoogleTypeMoney = $Money;
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress00;
+typedef GoogleTypePostalAddress = $PostalAddress;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

@@ -29,6 +29,7 @@
 /// - [TagBindingsResource]
 /// - [TagKeysResource]
 /// - [TagValuesResource]
+///   - [TagValuesTagHoldsResource]
 library cloudresourcemanager.v3;
 
 import 'dart:async' as async;
@@ -1810,11 +1811,13 @@ class TagBindingsResource {
   ///
   /// [pageSize] - Optional. The maximum number of TagBindings to return in the
   /// response. The server allows a maximum of 300 TagBindings to return. If
-  /// unspecified, the server will use 100 as the default.
+  /// unspecified, the server will use 100 as the default. Currently this api
+  /// returns unpaginated response and `page_size` is ignored.
   ///
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagBindings` that indicates where this listing should continue
-  /// from.
+  /// from. Currently this api returns unpaginated response and `page_token` is
+  /// ignored.
   ///
   /// [parent] - Required. The full resource name of a resource for which you
   /// want to list existing TagBindings. E.g.
@@ -2241,6 +2244,9 @@ class TagKeysResource {
 class TagValuesResource {
   final commons.ApiRequester _requester;
 
+  TagValuesTagHoldsResource get tagHolds =>
+      TagValuesTagHoldsResource(_requester);
+
   TagValuesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a TagValue as a child of the specified TagKey.
@@ -2618,6 +2624,162 @@ class TagValuesResource {
   }
 }
 
+class TagValuesTagHoldsResource {
+  final commons.ApiRequester _requester;
+
+  TagValuesTagHoldsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a TagHold.
+  ///
+  /// Returns ALREADY_EXISTS if a TagHold with the same resource and origin
+  /// exists under the same TagValue.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the TagHold's parent TagValue.
+  /// Must be of the form: `tagValues/{tag-value-id}`.
+  /// Value must have pattern `^tagValues/\[^/\]+$`.
+  ///
+  /// [validateOnly] - Optional. Set to true to perform the validations
+  /// necessary for creating the resource, but not actually perform the action.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    TagHold request,
+    core.String parent, {
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/tagHolds';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a TagHold.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the TagHold to delete. Must be of
+  /// the form: `tagValues/{tag-value-id}/tagHolds/{tag-hold-id}`.
+  /// Value must have pattern `^tagValues/\[^/\]+/tagHolds/\[^/\]+$`.
+  ///
+  /// [validateOnly] - Optional. Set to true to perform the validations
+  /// necessary for deleting the resource, but not actually perform the action.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists TagHolds under a TagValue.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent TagValue. Must be of
+  /// the form: `tagValues/{tag-value-id}`.
+  /// Value must have pattern `^tagValues/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Criteria used to select a subset of TagHolds parented
+  /// by the TagValue to return. This field follows the syntax defined by
+  /// aip.dev/160; the `holder` and `origin` fields are supported for filtering.
+  /// Currently only `AND` syntax is supported. Some example queries are: *
+  /// `holder =
+  /// //compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group`
+  /// * `origin = 35678234` * `holder =
+  /// //compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group
+  /// AND origin = 35678234`
+  ///
+  /// [pageSize] - Optional. The maximum number of TagHolds to return in the
+  /// response. The server allows a maximum of 300 TagHolds to return. If
+  /// unspecified, the server will use 100 as the default.
+  ///
+  /// [pageToken] - Optional. A pagination token returned from a previous call
+  /// to `ListTagHolds` that indicates where this listing should continue from.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTagHoldsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTagHoldsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/tagHolds';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListTagHoldsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -2690,7 +2852,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -2759,8 +2921,7 @@ class Binding {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3072,6 +3233,45 @@ class ListTagBindingsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tagBindings != null) 'tagBindings': tagBindings!,
+      };
+}
+
+/// The ListTagHolds response.
+class ListTagHoldsResponse {
+  /// Pagination token.
+  ///
+  /// If the result set is too large to fit in a single response, this token is
+  /// returned. It encodes the position of the current result cursor. Feeding
+  /// this value into a new list request with the `page_token` parameter gives
+  /// the next page of the results. When `next_page_token` is not filled in,
+  /// there is no next page and the list returned is the last page in the result
+  /// set. Pagination tokens have a limited lifetime.
+  core.String? nextPageToken;
+
+  /// A possibly paginated list of TagHolds.
+  core.List<TagHold>? tagHolds;
+
+  ListTagHoldsResponse({
+    this.nextPageToken,
+    this.tagHolds,
+  });
+
+  ListTagHoldsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          tagHolds: _json.containsKey('tagHolds')
+              ? (_json['tagHolds'] as core.List)
+                  .map((value) => TagHold.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tagHolds != null) 'tagHolds': tagHolds!,
       };
 }
 
@@ -3771,7 +3971,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -3858,6 +4058,86 @@ class TagBinding {
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (tagValue != null) 'tagValue': tagValue!,
+      };
+}
+
+/// A TagHold represents the use of a TagValue that is not captured by
+/// TagBindings.
+///
+/// If a TagValue has any TagHolds, deletion will be blocked. This resource is
+/// intended to be created in the same cloud location as the `holder`.
+class TagHold {
+  /// The time this TagHold was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A URL where an end user can learn more about removing this hold.
+  ///
+  /// E.g.
+  /// `https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing`
+  ///
+  /// Optional.
+  core.String? helpLink;
+
+  /// The name of the resource where the TagValue is being used.
+  ///
+  /// Must be less than 200 characters. E.g.
+  /// `//compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group`
+  ///
+  /// Required.
+  core.String? holder;
+
+  /// The resource name of a TagHold.
+  ///
+  /// This is a String of the form:
+  /// `tagValues/{tag-value-id}/tagHolds/{tag-hold-id}` (e.g.
+  /// `tagValues/123/tagHolds/456`). This resource name is generated by the
+  /// server.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// An optional string representing the origin of this request.
+  ///
+  /// This field should include human-understandable information to distinguish
+  /// origins from each other. Must be less than 200 characters. E.g.
+  /// `migs-35678234`
+  ///
+  /// Optional.
+  core.String? origin;
+
+  TagHold({
+    this.createTime,
+    this.helpLink,
+    this.holder,
+    this.name,
+    this.origin,
+  });
+
+  TagHold.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          helpLink: _json.containsKey('helpLink')
+              ? _json['helpLink'] as core.String
+              : null,
+          holder: _json.containsKey('holder')
+              ? _json['holder'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          origin: _json.containsKey('origin')
+              ? _json['origin'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (helpLink != null) 'helpLink': helpLink!,
+        if (holder != null) 'holder': holder!,
+        if (name != null) 'name': name!,
+        if (origin != null) 'origin': origin!,
       };
 }
 
@@ -4073,7 +4353,7 @@ class TagValue {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

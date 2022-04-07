@@ -290,8 +290,9 @@ class NamespacesDomainmappingsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace in which the domain mapping should be created.
-  /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
-  /// or number.
+  /// For Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
@@ -339,7 +340,8 @@ class NamespacesDomainmappingsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the domain mapping to delete. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
@@ -396,7 +398,8 @@ class NamespacesDomainmappingsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the domain mapping to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -433,8 +436,9 @@ class NamespacesDomainmappingsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the domain mappings should be listed.
-  /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
-  /// or number.
+  /// For Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -514,7 +518,8 @@ class NamespacesExecutionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the execution to delete. Replace
-  /// {namespace_id} with the project ID or number.
+  /// {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/executions/\[^/\]+$`.
   ///
   /// [apiVersion] - Optional. Cloud Run currently ignores this parameter.
@@ -566,7 +571,8 @@ class NamespacesExecutionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the execution to retrieve. Replace
-  /// {namespace_id} with the project ID or number.
+  /// {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/executions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -602,7 +608,8 @@ class NamespacesExecutionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The namespace from which the executions should be
-  /// listed. Replace {namespace_id} with the project ID or number.
+  /// listed. Replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Optional encoded string to continue paging.
@@ -683,7 +690,8 @@ class NamespacesJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The namespace in which the job should be created.
-  /// Replace {namespace_id} with the project ID or number.
+  /// Replace {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -723,8 +731,9 @@ class NamespacesJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the job to delete. Replace {namespace_id}
-  /// with the project ID or number.
+  /// [name] - Required. The name of the job to delete. Replace {namespace} with
+  /// the project ID or number. It takes the form namespaces/{namespace}. For
+  /// example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [apiVersion] - Optional. Cloud Run currently ignores this parameter.
@@ -775,8 +784,9 @@ class NamespacesJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the job to retrieve. Replace {namespace_id}
-  /// with the project ID or number.
+  /// [name] - Required. The name of the job to retrieve. Replace {namespace}
+  /// with the project ID or number. It takes the form namespaces/{namespace}.
+  /// For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -812,7 +822,8 @@ class NamespacesJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The namespace from which the jobs should be listed.
-  /// Replace {namespace_id} with the project ID or number.
+  /// Replace {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Optional encoded string to continue paging.
@@ -892,7 +903,8 @@ class NamespacesJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the service being replaced. Replace
-  /// {namespace_id} with the project ID or number.
+  /// {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -932,8 +944,9 @@ class NamespacesJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the job to run. Replace {namespace_id} with
-  /// the project ID or number.
+  /// [name] - Required. The name of the job to run. Replace {namespace} with
+  /// the project ID or number. It takes the form namespaces/{namespace}. For
+  /// example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -980,7 +993,8 @@ class NamespacesRevisionsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the revision to delete. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
@@ -1037,7 +1051,8 @@ class NamespacesRevisionsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the revision to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1073,8 +1088,9 @@ class NamespacesRevisionsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the revisions should be listed. For
-  /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
-  /// number.
+  /// Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -1153,7 +1169,8 @@ class NamespacesRoutesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the route to retrieve. For Cloud Run (fully managed),
-  /// replace {namespace_id} with the project ID or number.
+  /// replace {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/routes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1189,7 +1206,8 @@ class NamespacesRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the routes should be listed. For Cloud
-  /// Run (fully managed), replace {namespace_id} with the project ID or number.
+  /// Run (fully managed), replace {namespace} with the project ID or number. It
+  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -1269,13 +1287,16 @@ class NamespacesServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The namespace in which the service should be created. For Cloud
-  /// Run (fully managed), replace {namespace_id} with the project ID or number.
+  /// [parent] - LINT.IfChange() The namespace in which the service should be
+  /// created. For Cloud Run (fully managed), replace {namespace} with the
+  /// project ID or number. It takes the form namespaces/{namespace}. For
+  /// example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
+  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1320,7 +1341,8 @@ class NamespacesServicesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the service to delete. For Cloud Run (fully managed),
-  /// replace {namespace_id} with the project ID or number.
+  /// replace {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
@@ -1377,7 +1399,8 @@ class NamespacesServicesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the service to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1413,8 +1436,9 @@ class NamespacesServicesResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the services should be listed. For
-  /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
-  /// number.
+  /// Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -1493,13 +1517,15 @@ class NamespacesServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service being replaced. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// [name] - LINT.IfChange() The name of the service being replaced. For Cloud
+  /// Run (fully managed), replace {namespace} with the project ID or number. It
+  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
+  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1544,8 +1570,9 @@ class NamespacesTasksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the task to retrieve. Replace
-  /// {namespace_id} with the project ID or number.
+  /// [name] - Required. The name of the task to retrieve. Replace {namespace}
+  /// with the project ID or number. It takes the form namespaces/{namespace}.
+  /// For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/tasks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1581,7 +1608,8 @@ class NamespacesTasksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The namespace from which the tasks should be listed.
-  /// Replace {namespace_id} with the project ID or number.
+  /// Replace {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Optional encoded string to continue paging.
@@ -1741,7 +1769,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -1968,8 +1996,9 @@ class ProjectsLocationsDomainmappingsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace in which the domain mapping should be created.
-  /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
-  /// or number.
+  /// For Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
@@ -2015,7 +2044,8 @@ class ProjectsLocationsDomainmappingsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the domain mapping to delete. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
@@ -2073,7 +2103,8 @@ class ProjectsLocationsDomainmappingsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the domain mapping to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
@@ -2111,8 +2142,9 @@ class ProjectsLocationsDomainmappingsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the domain mappings should be listed.
-  /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
-  /// or number.
+  /// For Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -2344,7 +2376,8 @@ class ProjectsLocationsRevisionsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the revision to delete. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -2402,7 +2435,8 @@ class ProjectsLocationsRevisionsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the revision to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -2439,8 +2473,9 @@ class ProjectsLocationsRevisionsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the revisions should be listed. For
-  /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
-  /// number.
+  /// Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -2518,7 +2553,8 @@ class ProjectsLocationsRoutesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the route to retrieve. For Cloud Run (fully managed),
-  /// replace {namespace_id} with the project ID or number.
+  /// replace {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/routes/\[^/\]+$`.
   ///
@@ -2555,7 +2591,8 @@ class ProjectsLocationsRoutesResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the routes should be listed. For Cloud
-  /// Run (fully managed), replace {namespace_id} with the project ID or number.
+  /// Run (fully managed), replace {namespace} with the project ID or number. It
+  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -2634,13 +2671,16 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The namespace in which the service should be created. For Cloud
-  /// Run (fully managed), replace {namespace_id} with the project ID or number.
+  /// [parent] - LINT.IfChange() The namespace in which the service should be
+  /// created. For Cloud Run (fully managed), replace {namespace} with the
+  /// project ID or number. It takes the form namespaces/{namespace}. For
+  /// example: namespaces/PROJECT_ID
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
+  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2683,7 +2723,8 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the service to delete. For Cloud Run (fully managed),
-  /// replace {namespace_id} with the project ID or number.
+  /// replace {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -2741,7 +2782,8 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the service to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -2834,8 +2876,9 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the services should be listed. For
-  /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
-  /// number.
+  /// Cloud Run (fully managed), replace {namespace} with the project ID or
+  /// number. It takes the form namespaces/{namespace}. For example:
+  /// namespaces/PROJECT_ID
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
@@ -2912,14 +2955,16 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service being replaced. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// [name] - LINT.IfChange() The name of the service being replaced. For Cloud
+  /// Run (fully managed), replace {namespace} with the project ID or number. It
+  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
+  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4309,14 +4354,13 @@ class ExecutionReference {
 /// ExecutionSpec describes how the execution will look.
 class ExecutionSpec {
   /// Specifies the maximum desired number of tasks the execution should run at
-  /// any given time.
+  /// given time.
   ///
-  /// Must be \<= task_count. The actual number of tasks running in steady state
-  /// will be less than this number when ((.spec.task_count -
-  /// .status.successful) \< .spec.parallelism), i.e. when the work left to do
-  /// is less than max parallelism. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-  /// +optional
+  /// Must be \<= task_count. When the job is run, if this field is 0 or unset,
+  /// the maximum possible value will be used for that execution. The actual
+  /// number of tasks running in steady state will be less than this number when
+  /// there are fewer tasks waiting to be completed remaining, i.e. when the
+  /// work left to do is less than max parallelism. +optional
   ///
   /// Optional.
   core.int? parallelism;
@@ -4365,6 +4409,13 @@ class ExecutionSpec {
 
 /// ExecutionStatus represents the current state of a Execution.
 class ExecutionStatus {
+  /// The number of tasks which reached phase Cancelled.
+  ///
+  /// +optional
+  ///
+  /// Optional.
+  core.int? cancelledCount;
+
   /// Represents time when the execution was completed.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
@@ -4400,6 +4451,13 @@ class ExecutionStatus {
   /// Optional.
   core.int? observedGeneration;
 
+  /// The number of tasks which have retried at least once.
+  ///
+  /// +optional
+  ///
+  /// Optional.
+  core.int? retriedCount;
+
   /// The number of actively running tasks.
   ///
   /// +optional
@@ -4423,11 +4481,13 @@ class ExecutionStatus {
   core.int? succeededCount;
 
   ExecutionStatus({
+    this.cancelledCount,
     this.completionTime,
     this.conditions,
     this.failedCount,
     this.logUri,
     this.observedGeneration,
+    this.retriedCount,
     this.runningCount,
     this.startTime,
     this.succeededCount,
@@ -4435,6 +4495,9 @@ class ExecutionStatus {
 
   ExecutionStatus.fromJson(core.Map _json)
       : this(
+          cancelledCount: _json.containsKey('cancelledCount')
+              ? _json['cancelledCount'] as core.int
+              : null,
           completionTime: _json.containsKey('completionTime')
               ? _json['completionTime'] as core.String
               : null,
@@ -4453,6 +4516,9 @@ class ExecutionStatus {
           observedGeneration: _json.containsKey('observedGeneration')
               ? _json['observedGeneration'] as core.int
               : null,
+          retriedCount: _json.containsKey('retriedCount')
+              ? _json['retriedCount'] as core.int
+              : null,
           runningCount: _json.containsKey('runningCount')
               ? _json['runningCount'] as core.int
               : null,
@@ -4465,12 +4531,14 @@ class ExecutionStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cancelledCount != null) 'cancelledCount': cancelledCount!,
         if (completionTime != null) 'completionTime': completionTime!,
         if (conditions != null) 'conditions': conditions!,
         if (failedCount != null) 'failedCount': failedCount!,
         if (logUri != null) 'logUri': logUri!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
+        if (retriedCount != null) 'retriedCount': retriedCount!,
         if (runningCount != null) 'runningCount': runningCount!,
         if (startTime != null) 'startTime': startTime!,
         if (succeededCount != null) 'succeededCount': succeededCount!,

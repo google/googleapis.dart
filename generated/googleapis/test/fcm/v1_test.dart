@@ -169,6 +169,7 @@ api.AndroidNotification buildAndroidNotification() {
     o.body = 'foo';
     o.bodyLocArgs = buildUnnamed1();
     o.bodyLocKey = 'foo';
+    o.bypassProxyNotification = true;
     o.channelId = 'foo';
     o.clickAction = 'foo';
     o.color = 'foo';
@@ -208,6 +209,7 @@ void checkAndroidNotification(api.AndroidNotification o) {
       o.bodyLocKey!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.bypassProxyNotification!, unittest.isTrue);
     unittest.expect(
       o.channelId!,
       unittest.equals('foo'),

@@ -900,6 +900,12 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   core.List<GoogleChromePolicyV1PolicySchemaFieldDescription>?
       nestedFieldDescriptions;
 
+  /// Provides a list of fields that are required to be set if this field has a
+  /// certain value.
+  ///
+  /// Output only.
+  core.List<GoogleChromePolicyV1PolicySchemaRequiredItems>? requiredItems;
+
   GoogleChromePolicyV1PolicySchemaFieldDescription({
     this.description,
     this.field,
@@ -907,6 +913,7 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
     this.inputConstraint,
     this.knownValueDescriptions,
     this.nestedFieldDescriptions,
+    this.requiredItems,
   });
 
   GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(core.Map _json)
@@ -942,6 +949,13 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          requiredItems: _json.containsKey('requiredItems')
+              ? (_json['requiredItems'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyV1PolicySchemaRequiredItems.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -953,6 +967,7 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
           'knownValueDescriptions': knownValueDescriptions!,
         if (nestedFieldDescriptions != null)
           'nestedFieldDescriptions': nestedFieldDescriptions!,
+        if (requiredItems != null) 'requiredItems': requiredItems!,
       };
 }
 
@@ -1045,6 +1060,42 @@ class GoogleChromePolicyV1PolicySchemaNoticeDescription {
         if (field != null) 'field': field!,
         if (noticeMessage != null) 'noticeMessage': noticeMessage!,
         if (noticeValue != null) 'noticeValue': noticeValue!,
+      };
+}
+
+/// The fields that will become required based on the value of this field.
+class GoogleChromePolicyV1PolicySchemaRequiredItems {
+  /// The value(s) of the field that provoke required field enforcement.
+  ///
+  /// An empty field_conditions implies that any value assigned to this field
+  /// will provoke required field enforcement.
+  core.List<core.String>? fieldConditions;
+
+  /// The fields that are required as a consequence of the field conditions.
+  core.List<core.String>? requiredFields;
+
+  GoogleChromePolicyV1PolicySchemaRequiredItems({
+    this.fieldConditions,
+    this.requiredFields,
+  });
+
+  GoogleChromePolicyV1PolicySchemaRequiredItems.fromJson(core.Map _json)
+      : this(
+          fieldConditions: _json.containsKey('fieldConditions')
+              ? (_json['fieldConditions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          requiredFields: _json.containsKey('requiredFields')
+              ? (_json['requiredFields'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldConditions != null) 'fieldConditions': fieldConditions!,
+        if (requiredFields != null) 'requiredFields': requiredFields!,
       };
 }
 
@@ -1345,8 +1396,7 @@ class GoogleChromePolicyV1UploadPolicyFileResponse {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// Represents a whole or partial calendar date, such as a birthday.

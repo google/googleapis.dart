@@ -1430,7 +1430,7 @@ class Instance {
   /// Output only.
   core.String? statusMessage;
 
-  /// field indicates all the reasons the instance is in "SUSPENDED" state.
+  /// Field indicates all the reasons the instance is in "SUSPENDED" state.
   ///
   /// Output only.
   core.List<core.String>? suspensionReasons;

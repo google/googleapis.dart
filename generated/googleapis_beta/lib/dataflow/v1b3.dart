@@ -8415,6 +8415,12 @@ class SDKInfo {
 
 /// Defines a SDK harness container for executing Dataflow pipelines.
 class SdkHarnessContainerImage {
+  /// The set of capabilities enumerated in the above Environment proto.
+  ///
+  /// See also
+  /// https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+  core.List<core.String>? capabilities;
+
   /// A docker container image that resides in Google Container Registry.
   core.String? containerImage;
 
@@ -8431,6 +8437,7 @@ class SdkHarnessContainerImage {
   core.bool? useSingleCorePerContainer;
 
   SdkHarnessContainerImage({
+    this.capabilities,
     this.containerImage,
     this.environmentId,
     this.useSingleCorePerContainer,
@@ -8438,6 +8445,11 @@ class SdkHarnessContainerImage {
 
   SdkHarnessContainerImage.fromJson(core.Map _json)
       : this(
+          capabilities: _json.containsKey('capabilities')
+              ? (_json['capabilities'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           containerImage: _json.containsKey('containerImage')
               ? _json['containerImage'] as core.String
               : null,
@@ -8451,6 +8463,7 @@ class SdkHarnessContainerImage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (capabilities != null) 'capabilities': capabilities!,
         if (containerImage != null) 'containerImage': containerImage!,
         if (environmentId != null) 'environmentId': environmentId!,
         if (useSingleCorePerContainer != null)
@@ -8506,12 +8519,25 @@ class SdkVersion {
 }
 
 /// Request to send encoded debug information.
+///
+/// Next ID: 8
 class SendDebugCaptureRequest {
   /// The internal component id for which debug information is sent.
   core.String? componentId;
 
   /// The encoded debug information.
   core.String? data;
+
+  /// Format for the data field above (id=5).
+  /// Possible string values are:
+  /// - "DATA_FORMAT_UNSPECIFIED" : Format unspecified, parsing is determined
+  /// based upon page type and legacy encoding.
+  /// (go/protodosdonts#do-include-an-unspecified-value-in-an-enum)
+  /// - "RAW" : Raw HTML string.
+  /// - "JSON" : JSON-encoded string.
+  /// - "ZLIB" : Websafe encoded zlib-compressed string.
+  /// - "BROTLI" : Websafe encoded brotli-compressed string.
+  core.String? dataFormat;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
@@ -8524,6 +8550,7 @@ class SendDebugCaptureRequest {
   SendDebugCaptureRequest({
     this.componentId,
     this.data,
+    this.dataFormat,
     this.location,
     this.workerId,
   });
@@ -8534,6 +8561,9 @@ class SendDebugCaptureRequest {
               ? _json['componentId'] as core.String
               : null,
           data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          dataFormat: _json.containsKey('dataFormat')
+              ? _json['dataFormat'] as core.String
+              : null,
           location: _json.containsKey('location')
               ? _json['location'] as core.String
               : null,
@@ -8545,6 +8575,7 @@ class SendDebugCaptureRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (componentId != null) 'componentId': componentId!,
         if (data != null) 'data': data!,
+        if (dataFormat != null) 'dataFormat': dataFormat!,
         if (location != null) 'location': location!,
         if (workerId != null) 'workerId': workerId!,
       };

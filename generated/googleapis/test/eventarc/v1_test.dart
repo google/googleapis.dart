@@ -185,6 +185,7 @@ api.Destination buildDestination() {
     o.cloudFunction = 'foo';
     o.cloudRun = buildCloudRun();
     o.gke = buildGKE();
+    o.workflow = 'foo';
   }
   buildCounterDestination--;
   return o;
@@ -199,6 +200,10 @@ void checkDestination(api.Destination o) {
     );
     checkCloudRun(o.cloudRun!);
     checkGKE(o.gke!);
+    unittest.expect(
+      o.workflow!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDestination--;
 }

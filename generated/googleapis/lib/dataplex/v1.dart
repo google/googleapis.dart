@@ -7929,7 +7929,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for TestIamPermissions method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest02;
 
 /// Response message for TestIamPermissions method.
 typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse;

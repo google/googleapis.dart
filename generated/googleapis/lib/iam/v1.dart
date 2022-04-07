@@ -27,6 +27,8 @@
 ///   - [LocationsWorkforcePoolsResource]
 ///     - [LocationsWorkforcePoolsOperationsResource]
 ///     - [LocationsWorkforcePoolsProvidersResource]
+///       - [LocationsWorkforcePoolsProvidersKeysResource]
+///         - [LocationsWorkforcePoolsProvidersKeysOperationsResource]
 ///       - [LocationsWorkforcePoolsProvidersOperationsResource]
 ///     - [LocationsWorkforcePoolsSubjectsResource]
 ///       - [LocationsWorkforcePoolsSubjectsOperationsResource]
@@ -247,11 +249,70 @@ class LocationsWorkforcePoolsOperationsResource {
 class LocationsWorkforcePoolsProvidersResource {
   final commons.ApiRequester _requester;
 
+  LocationsWorkforcePoolsProvidersKeysResource get keys =>
+      LocationsWorkforcePoolsProvidersKeysResource(_requester);
   LocationsWorkforcePoolsProvidersOperationsResource get operations =>
       LocationsWorkforcePoolsProvidersOperationsResource(_requester);
 
   LocationsWorkforcePoolsProvidersResource(commons.ApiRequester client)
       : _requester = client;
+}
+
+class LocationsWorkforcePoolsProvidersKeysResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsProvidersKeysOperationsResource get operations =>
+      LocationsWorkforcePoolsProvidersKeysOperationsResource(_requester);
+
+  LocationsWorkforcePoolsProvidersKeysResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class LocationsWorkforcePoolsProvidersKeysOperationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsProvidersKeysOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class LocationsWorkforcePoolsProvidersOperationsResource {
@@ -2969,7 +3030,11 @@ class ProjectsServiceAccountsKeysResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a ServiceAccountKey, using a public key that you provide.
+  /// Uploads the public key portion of a key pair that you manage, and
+  /// associates the public key with a ServiceAccount.
+  ///
+  /// After you upload the public key, you can use the private key from the key
+  /// pair as a service account key.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3517,8 +3582,7 @@ typedef DisableServiceAccountRequest = $Empty;
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// The service account key enable request.
@@ -5106,11 +5170,11 @@ typedef UndeleteWorkloadIdentityPoolRequest = $Empty;
 
 /// The service account key upload request.
 class UploadServiceAccountKeyRequest {
-  /// A field that allows clients to upload their own public key.
+  /// The public key to associate with the service account.
   ///
-  /// If set, use this public key data to create a service account key for given
-  /// service account. Please note, the expected format for this field is
-  /// X509_PEM.
+  /// Must be an RSA public key that is wrapped in an X.509 v3 certificate.
+  /// Include the first line, `-----BEGIN CERTIFICATE-----`, and the last line,
+  /// `-----END CERTIFICATE-----`.
   core.String? publicKeyData;
   core.List<core.int> get publicKeyDataAsBytes =>
       convert.base64.decode(publicKeyData!);

@@ -3042,6 +3042,10 @@ class ConnectSettings {
   /// version is 18.
   /// - "MYSQL_8_0_26" : The database major version is MySQL 8.0 and the minor
   /// version is 26.
+  /// - "MYSQL_8_0_27" : The database major version is MySQL 8.0 and the minor
+  /// version is 27.
+  /// - "MYSQL_8_0_28" : The database major version is MySQL 8.0 and the minor
+  /// version is 28.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
@@ -3337,6 +3341,10 @@ class DatabaseInstance {
   /// version is 18.
   /// - "MYSQL_8_0_26" : The database major version is MySQL 8.0 and the minor
   /// version is 26.
+  /// - "MYSQL_8_0_27" : The database major version is MySQL 8.0 and the minor
+  /// version is 27.
+  /// - "MYSQL_8_0_28" : The database major version is MySQL 8.0 and the minor
+  /// version is 28.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
@@ -5894,6 +5902,9 @@ class PasswordValidationPolicy {
   /// Disallow username as a part of the password.
   core.bool? disallowUsernameSubstring;
 
+  /// Whether the password policy is enabled or not.
+  core.bool? enablePasswordPolicy;
+
   /// Minimum number of characters allowed.
   core.int? minLength;
 
@@ -5908,6 +5919,7 @@ class PasswordValidationPolicy {
   PasswordValidationPolicy({
     this.complexity,
     this.disallowUsernameSubstring,
+    this.enablePasswordPolicy,
     this.minLength,
     this.passwordChangeInterval,
     this.reuseInterval,
@@ -5922,6 +5934,9 @@ class PasswordValidationPolicy {
               _json.containsKey('disallowUsernameSubstring')
                   ? _json['disallowUsernameSubstring'] as core.bool
                   : null,
+          enablePasswordPolicy: _json.containsKey('enablePasswordPolicy')
+              ? _json['enablePasswordPolicy'] as core.bool
+              : null,
           minLength: _json.containsKey('minLength')
               ? _json['minLength'] as core.int
               : null,
@@ -5937,6 +5952,8 @@ class PasswordValidationPolicy {
         if (complexity != null) 'complexity': complexity!,
         if (disallowUsernameSubstring != null)
           'disallowUsernameSubstring': disallowUsernameSubstring!,
+        if (enablePasswordPolicy != null)
+          'enablePasswordPolicy': enablePasswordPolicy!,
         if (minLength != null) 'minLength': minLength!,
         if (passwordChangeInterval != null)
           'passwordChangeInterval': passwordChangeInterval!,
@@ -6530,6 +6547,8 @@ class SqlExternalSyncSettingError {
   /// binary log format.
   /// - "BINLOG_RETENTION_SETTING" : The primary instance's binary log retention
   /// setting.
+  /// - "UNSUPPORTED_STORAGE_ENGINE" : The primary instance has tables with
+  /// unsupported storage engine.
   core.String? type;
 
   SqlExternalSyncSettingError({
@@ -6817,9 +6836,17 @@ class SqlServerAuditConfig {
   /// This is always sql#sqlServerAuditConfig
   core.String? kind;
 
+  /// How long to keep generated audit files.
+  core.String? retentionInterval;
+
+  /// How often to upload generated audit files.
+  core.String? uploadInterval;
+
   SqlServerAuditConfig({
     this.bucket,
     this.kind,
+    this.retentionInterval,
+    this.uploadInterval,
   });
 
   SqlServerAuditConfig.fromJson(core.Map _json)
@@ -6828,11 +6855,19 @@ class SqlServerAuditConfig {
               ? _json['bucket'] as core.String
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          retentionInterval: _json.containsKey('retentionInterval')
+              ? _json['retentionInterval'] as core.String
+              : null,
+          uploadInterval: _json.containsKey('uploadInterval')
+              ? _json['uploadInterval'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
         if (kind != null) 'kind': kind!,
+        if (retentionInterval != null) 'retentionInterval': retentionInterval!,
+        if (uploadInterval != null) 'uploadInterval': uploadInterval!,
       };
 }
 

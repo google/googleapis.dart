@@ -1115,10 +1115,11 @@ typedef CancelOperationRequest = $Empty;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1126,8 +1127,7 @@ typedef Date = $Date;
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// In a GcsData resource, an object's name is the Cloud Storage object's name
@@ -1403,9 +1403,6 @@ class LoggingConfig {
 }
 
 /// Specifies the metadata options for running a transfer.
-///
-/// These options only apply to transfers involving a POSIX filesystem and are
-/// ignored for other transfers.
 class MetadataOptions {
   /// Specifies how each object's ACLs should be preserved for transfers between
   /// Google Cloud Storage buckets.
@@ -1426,7 +1423,8 @@ class MetadataOptions {
   /// Specifies how each file's POSIX group ID (GID) attribute should be handled
   /// by the transfer.
   ///
-  /// By default, GID is not preserved.
+  /// By default, GID is not preserved. Only applicable to transfers involving
+  /// POSIX file systems, and ignored for other transfers.
   /// Possible string values are:
   /// - "GID_UNSPECIFIED" : GID behavior is unspecified.
   /// - "GID_SKIP" : Do not preserve GID during a transfer job.
@@ -1451,7 +1449,8 @@ class MetadataOptions {
   /// Specifies how each file's mode attribute should be handled by the
   /// transfer.
   ///
-  /// By default, mode is not preserved.
+  /// By default, mode is not preserved. Only applicable to transfers involving
+  /// POSIX file systems, and ignored for other transfers.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED" : Mode behavior is unspecified.
   /// - "MODE_SKIP" : Do not preserve mode during a transfer job.
@@ -1477,7 +1476,8 @@ class MetadataOptions {
 
   /// Specifies how symlinks should be handled by the transfer.
   ///
-  /// By default, symlinks are not preserved.
+  /// By default, symlinks are not preserved. Only applicable to transfers
+  /// involving POSIX file systems, and ignored for other transfers.
   /// Possible string values are:
   /// - "SYMLINK_UNSPECIFIED" : Symlink behavior is unspecified.
   /// - "SYMLINK_SKIP" : Do not preserve symlinks during a transfer job.
@@ -1514,7 +1514,8 @@ class MetadataOptions {
   /// Specifies how each file's POSIX user ID (UID) attribute should be handled
   /// by the transfer.
   ///
-  /// By default, UID is not preserved.
+  /// By default, UID is not preserved. Only applicable to transfers involving
+  /// POSIX file systems, and ignored for other transfers.
   /// Possible string values are:
   /// - "UID_UNSPECIFIED" : UID behavior is unspecified.
   /// - "UID_SKIP" : Do not preserve UID during a transfer job.
@@ -2221,11 +2222,24 @@ class TransferOptions {
   /// in the source are overwritten with the source object.
   core.bool? overwriteObjectsAlreadyExistingInSink;
 
+  /// When to overwrite objects that already exist in the sink.
+  ///
+  /// If not set overwrite behavior is determined by
+  /// overwrite_objects_already_existing_in_sink.
+  /// Possible string values are:
+  /// - "OVERWRITE_WHEN_UNSPECIFIED" : Indicate the option is not set.
+  /// - "DIFFERENT" : Overwrite destination object with source if the two
+  /// objects are different.
+  /// - "NEVER" : Never overwrite destination object.
+  /// - "ALWAYS" : Always overwrite destination object.
+  core.String? overwriteWhen;
+
   TransferOptions({
     this.deleteObjectsFromSourceAfterTransfer,
     this.deleteObjectsUniqueInSink,
     this.metadataOptions,
     this.overwriteObjectsAlreadyExistingInSink,
+    this.overwriteWhen,
   });
 
   TransferOptions.fromJson(core.Map _json)
@@ -2246,6 +2260,9 @@ class TransferOptions {
               _json.containsKey('overwriteObjectsAlreadyExistingInSink')
                   ? _json['overwriteObjectsAlreadyExistingInSink'] as core.bool
                   : null,
+          overwriteWhen: _json.containsKey('overwriteWhen')
+              ? _json['overwriteWhen'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2258,6 +2275,7 @@ class TransferOptions {
         if (overwriteObjectsAlreadyExistingInSink != null)
           'overwriteObjectsAlreadyExistingInSink':
               overwriteObjectsAlreadyExistingInSink!,
+        if (overwriteWhen != null) 'overwriteWhen': overwriteWhen!,
       };
 }
 

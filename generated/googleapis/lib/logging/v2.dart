@@ -9148,6 +9148,18 @@ class CmekSettings {
   /// more information.
   core.String? kmsKeyName;
 
+  /// The CryptoKeyVersion resource name for the configured Cloud KMS key.KMS
+  /// key name format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]/cryptoKeyVersions/\[VERSION\]"
+  /// For
+  /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"This
+  /// is a read-only field used to convey the specific configured
+  /// CryptoKeyVersion of kms_key that has been configured.
+  ///
+  /// It will be populated in cases where the CMEK settings are bound to a
+  /// single key version.
+  core.String? kmsKeyVersionName;
+
   /// The resource name of the CMEK settings.
   ///
   /// Output only.
@@ -9168,6 +9180,7 @@ class CmekSettings {
 
   CmekSettings({
     this.kmsKeyName,
+    this.kmsKeyVersionName,
     this.name,
     this.serviceAccountId,
   });
@@ -9177,6 +9190,9 @@ class CmekSettings {
           kmsKeyName: _json.containsKey('kmsKeyName')
               ? _json['kmsKeyName'] as core.String
               : null,
+          kmsKeyVersionName: _json.containsKey('kmsKeyVersionName')
+              ? _json['kmsKeyVersionName'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           serviceAccountId: _json.containsKey('serviceAccountId')
               ? _json['serviceAccountId'] as core.String
@@ -9185,6 +9201,7 @@ class CmekSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
       };
@@ -9240,8 +9257,7 @@ class CopyLogEntriesRequest {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
-/// object {}.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1

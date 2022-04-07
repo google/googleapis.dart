@@ -941,6 +941,10 @@ class PlayersResource {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [playerIdConsistencyToken] - Consistency token of the player id. The call
+  /// returns a 'not found' result when the token is present and invalid. Empty
+  /// value is ignored. See also GlobalPlayerIdConsistencyTokenProto
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -954,10 +958,13 @@ class PlayersResource {
   async.Future<Player> get(
     core.String playerId, {
     core.String? language,
+    core.String? playerIdConsistencyToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
+      if (playerIdConsistencyToken != null)
+        'playerIdConsistencyToken': [playerIdConsistencyToken],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3617,6 +3624,9 @@ class Player {
   /// - "FRIEND" : The player and requester are friends.
   core.String? friendStatus;
 
+  /// Per-application unique player identifier.
+  core.String? gamePlayerId;
+
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#player`
@@ -3651,6 +3661,7 @@ class Player {
     this.displayName,
     this.experienceInfo,
     this.friendStatus,
+    this.gamePlayerId,
     this.kind,
     this.name,
     this.originalPlayerId,
@@ -3680,6 +3691,9 @@ class Player {
           friendStatus: _json.containsKey('friendStatus')
               ? _json['friendStatus'] as core.String
               : null,
+          gamePlayerId: _json.containsKey('gamePlayerId')
+              ? _json['gamePlayerId'] as core.String
+              : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           name: _json.containsKey('name')
               ? PlayerName.fromJson(
@@ -3707,6 +3721,7 @@ class Player {
         if (displayName != null) 'displayName': displayName!,
         if (experienceInfo != null) 'experienceInfo': experienceInfo!,
         if (friendStatus != null) 'friendStatus': friendStatus!,
+        if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,

@@ -416,10 +416,35 @@ class CompleteVerificationResponse {
 
 /// Indicates that the location fails to comply with our
 /// [guidelines](https://support.google.com/business/answer/3038177).
-///
-/// To fix this issue, consult the
-/// [Help Center Article](https://support.google.com/business/answer/4569145).
-typedef ComplyWithGuidelines = $Empty;
+class ComplyWithGuidelines {
+  /// The reason why the location is being recommended to comply with
+  /// guidelines.
+  /// Possible string values are:
+  /// - "RECOMMENDATION_REASON_UNSPECIFIED" : Not specified.
+  /// - "BUSINESS_LOCATION_SUSPENDED" : The business location is suspended. To
+  /// fix this issue, consult the
+  /// [Help Center article](https://support.google.com/business/answer/4569145).
+  /// - "BUSINESS_LOCATION_DISABLED" : The business location is disabled. To fix
+  /// this issue, consult the
+  /// [Help Center article](https://support.google.com/business/answer/9334246).
+  core.String? recommendationReason;
+
+  ComplyWithGuidelines({
+    this.recommendationReason,
+  });
+
+  ComplyWithGuidelines.fromJson(core.Map _json)
+      : this(
+          recommendationReason: _json.containsKey('recommendationReason')
+              ? _json['recommendationReason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recommendationReason != null)
+          'recommendationReason': recommendationReason!,
+      };
+}
 
 /// Display data for verifications through email.
 class EmailVerificationData {
@@ -713,7 +738,7 @@ class Location {
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress00;
+typedef PostalAddress = $PostalAddress;
 
 /// Indicates that the location duplicates another location that is in good
 /// standing.

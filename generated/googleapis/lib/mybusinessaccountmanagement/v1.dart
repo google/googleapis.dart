@@ -1044,8 +1044,7 @@ typedef DeclineInvitationRequest = $Empty;
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents a pending invitation.
@@ -1288,7 +1287,7 @@ class OrganizationInfo {
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress00;
+typedef PostalAddress = $PostalAddress;
 
 /// Represents a target location for a pending invitation.
 class TargetLocation {

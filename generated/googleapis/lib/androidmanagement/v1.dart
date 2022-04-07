@@ -1576,13 +1576,130 @@ class AppTrackInfo {
       };
 }
 
+/// This represents a single version of the app.
+class AppVersion {
+  /// True if this version is a production track.
+  core.bool? production;
+
+  /// Track ids that the app version is published in.
+  ///
+  /// This doesn't include the production track (see production instead).
+  core.List<core.String>? trackIds;
+
+  /// Unique increasing identifier for the app version.
+  core.int? versionCode;
+
+  /// The string used in the Play store by the app developer to identify the
+  /// version.
+  ///
+  /// The string is not necessarily unique or localized (for example, the string
+  /// could be "1.4").
+  core.String? versionString;
+
+  AppVersion({
+    this.production,
+    this.trackIds,
+    this.versionCode,
+    this.versionString,
+  });
+
+  AppVersion.fromJson(core.Map _json)
+      : this(
+          production: _json.containsKey('production')
+              ? _json['production'] as core.bool
+              : null,
+          trackIds: _json.containsKey('trackIds')
+              ? (_json['trackIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          versionCode: _json.containsKey('versionCode')
+              ? _json['versionCode'] as core.int
+              : null,
+          versionString: _json.containsKey('versionString')
+              ? _json['versionString'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (production != null) 'production': production!,
+        if (trackIds != null) 'trackIds': trackIds!,
+        if (versionCode != null) 'versionCode': versionCode!,
+        if (versionString != null) 'versionString': versionString!,
+      };
+}
+
 /// Information about an app.
 class Application {
+  /// Whether this app is free, free with in-app purchases, or paid.
+  ///
+  /// If the pricing is unspecified, this means the app is not generally
+  /// available anymore (even though it might still be available to people who
+  /// own it).
+  /// Possible string values are:
+  /// - "APP_PRICING_UNSPECIFIED" : Unknown pricing, used to denote an approved
+  /// app that is not generally available.
+  /// - "FREE" : The app is free.
+  /// - "FREE_WITH_IN_APP_PURCHASE" : The app is free, but offers in-app
+  /// purchases.
+  /// - "PAID" : The app is paid.
+  core.String? appPricing;
+
   /// Application tracks visible to the enterprise.
   core.List<AppTrackInfo>? appTracks;
 
+  /// Versions currently available for this app.
+  core.List<AppVersion>? appVersions;
+
+  /// The name of the author of the apps (for example, the app developer).
+  core.String? author;
+
+  /// The countries which this app is available in as per ISO 3166-1 alpha-2.
+  core.List<core.String>? availableCountries;
+
+  /// The app category (e.g. RACING, SOCIAL, etc.)
+  core.String? category;
+
+  /// The content rating for this app.
+  /// Possible string values are:
+  /// - "CONTENT_RATING_UNSPECIFIED" : Unspecified.
+  /// - "THREE_YEARS" : Content suitable for ages 3 and above only.
+  /// - "SEVEN_YEARS" : Content suitable for ages 7 and above only.
+  /// - "TWELVE_YEARS" : Content suitable for ages 12 and above only.
+  /// - "SIXTEEN_YEARS" : Content suitable for ages 16 and above only.
+  /// - "EIGHTEEN_YEARS" : Content suitable for ages 18 and above only.
+  core.String? contentRating;
+
+  /// The localized promotional description, if available.
+  core.String? description;
+
+  /// How and to whom the package is made available.
+  /// Possible string values are:
+  /// - "DISTRIBUTION_CHANNEL_UNSPECIFIED" : Unspecified.
+  /// - "PUBLIC_GOOGLE_HOSTED" : Package is available through the Play store and
+  /// not restricted to a specific enterprise.
+  /// - "PRIVATE_GOOGLE_HOSTED" : Package is a private app (restricted to an
+  /// enterprise) but hosted by Google.
+  /// - "PRIVATE_SELF_HOSTED" : Private app (restricted to an enterprise) and is
+  /// privately hosted.
+  core.String? distributionChannel;
+
+  /// Noteworthy features (if any) of this app.
+  core.List<core.String>? features;
+
+  /// Full app description, if available.
+  core.String? fullDescription;
+
+  /// A link to an image that can be used as an icon for the app.
+  ///
+  /// This image is suitable for use at up to 512px x 512px
+  core.String? iconUrl;
+
   /// The set of managed properties available to be pre-configured for the app.
   core.List<ManagedProperty>? managedProperties;
+
+  /// The minimum Android SDK necessary to run the app.
+  core.int? minAndroidSdkVersion;
 
   /// The name of the app in the form
   /// enterprises/{enterprise}/applications/{package_name}.
@@ -1591,32 +1708,111 @@ class Application {
   /// The permissions required by the app.
   core.List<ApplicationPermission>? permissions;
 
+  /// A link to the (consumer) Google Play details page for the app.
+  core.String? playStoreUrl;
+
+  /// A localised description of the recent changes made to the app.
+  core.String? recentChanges;
+
+  /// A list of screenshot links representing the app.
+  core.List<core.String>? screenshotUrls;
+
+  /// A link to a smaller image that can be used as an icon for the app.
+  ///
+  /// This image is suitable for use at up to 128px x 128px.
+  core.String? smallIconUrl;
+
   /// The title of the app.
   ///
   /// Localized.
   core.String? title;
 
+  /// The approximate time (within 7 days) the app was last published.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   Application({
+    this.appPricing,
     this.appTracks,
+    this.appVersions,
+    this.author,
+    this.availableCountries,
+    this.category,
+    this.contentRating,
+    this.description,
+    this.distributionChannel,
+    this.features,
+    this.fullDescription,
+    this.iconUrl,
     this.managedProperties,
+    this.minAndroidSdkVersion,
     this.name,
     this.permissions,
+    this.playStoreUrl,
+    this.recentChanges,
+    this.screenshotUrls,
+    this.smallIconUrl,
     this.title,
+    this.updateTime,
   });
 
   Application.fromJson(core.Map _json)
       : this(
+          appPricing: _json.containsKey('appPricing')
+              ? _json['appPricing'] as core.String
+              : null,
           appTracks: _json.containsKey('appTracks')
               ? (_json['appTracks'] as core.List)
                   .map((value) => AppTrackInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          appVersions: _json.containsKey('appVersions')
+              ? (_json['appVersions'] as core.List)
+                  .map((value) => AppVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          author: _json.containsKey('author')
+              ? _json['author'] as core.String
+              : null,
+          availableCountries: _json.containsKey('availableCountries')
+              ? (_json['availableCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          contentRating: _json.containsKey('contentRating')
+              ? _json['contentRating'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          distributionChannel: _json.containsKey('distributionChannel')
+              ? _json['distributionChannel'] as core.String
+              : null,
+          features: _json.containsKey('features')
+              ? (_json['features'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fullDescription: _json.containsKey('fullDescription')
+              ? _json['fullDescription'] as core.String
+              : null,
+          iconUrl: _json.containsKey('iconUrl')
+              ? _json['iconUrl'] as core.String
+              : null,
           managedProperties: _json.containsKey('managedProperties')
               ? (_json['managedProperties'] as core.List)
                   .map((value) => ManagedProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          minAndroidSdkVersion: _json.containsKey('minAndroidSdkVersion')
+              ? _json['minAndroidSdkVersion'] as core.int
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           permissions: _json.containsKey('permissions')
@@ -1625,16 +1821,53 @@ class Application {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          playStoreUrl: _json.containsKey('playStoreUrl')
+              ? _json['playStoreUrl'] as core.String
+              : null,
+          recentChanges: _json.containsKey('recentChanges')
+              ? _json['recentChanges'] as core.String
+              : null,
+          screenshotUrls: _json.containsKey('screenshotUrls')
+              ? (_json['screenshotUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          smallIconUrl: _json.containsKey('smallIconUrl')
+              ? _json['smallIconUrl'] as core.String
+              : null,
           title:
               _json.containsKey('title') ? _json['title'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appPricing != null) 'appPricing': appPricing!,
         if (appTracks != null) 'appTracks': appTracks!,
+        if (appVersions != null) 'appVersions': appVersions!,
+        if (author != null) 'author': author!,
+        if (availableCountries != null)
+          'availableCountries': availableCountries!,
+        if (category != null) 'category': category!,
+        if (contentRating != null) 'contentRating': contentRating!,
+        if (description != null) 'description': description!,
+        if (distributionChannel != null)
+          'distributionChannel': distributionChannel!,
+        if (features != null) 'features': features!,
+        if (fullDescription != null) 'fullDescription': fullDescription!,
+        if (iconUrl != null) 'iconUrl': iconUrl!,
         if (managedProperties != null) 'managedProperties': managedProperties!,
+        if (minAndroidSdkVersion != null)
+          'minAndroidSdkVersion': minAndroidSdkVersion!,
         if (name != null) 'name': name!,
         if (permissions != null) 'permissions': permissions!,
+        if (playStoreUrl != null) 'playStoreUrl': playStoreUrl!,
+        if (recentChanges != null) 'recentChanges': recentChanges!,
+        if (screenshotUrls != null) 'screenshotUrls': screenshotUrls!,
+        if (smallIconUrl != null) 'smallIconUrl': smallIconUrl!,
         if (title != null) 'title': title!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1731,6 +1964,27 @@ class ApplicationPolicy {
   /// devices only have access to the app’s production track. More details about
   /// each track are available in AppTrackInfo.
   core.List<core.String>? accessibleTrackIds;
+
+  /// Specifies whether the app is allowed networking when the VPN is not
+  /// connected and alwaysOnVpnPackage.lockdownEnabled is enabled.
+  ///
+  /// If set to VPN_LOCKDOWN_ENFORCED, the app is not allowed networking, and if
+  /// set to VPN_LOCKDOWN_EXEMPTION, the app is allowed networking. Only
+  /// supported on devices running Android 10 and above. If this is not
+  /// supported by the device, the device will contain a NonComplianceDetail
+  /// with non_compliance_reason set to API_LEVEL and a fieldPath. If this is
+  /// not applicable to the app, the device will contain a NonComplianceDetail
+  /// with non_compliance_reason set to UNSUPPORTED and a fieldPath. The
+  /// fieldPath is set to applications\[i\].alwaysOnVpnLockdownExemption, where
+  /// i is the index of the package in the applications policy.
+  /// Possible string values are:
+  /// - "ALWAYS_ON_VPN_LOCKDOWN_EXEMPTION_UNSPECIFIED" : Unspecified. Defaults
+  /// to VPN_LOCKDOWN_ENFORCED.
+  /// - "VPN_LOCKDOWN_ENFORCED" : The app respects the always-on VPN lockdown
+  /// setting.
+  /// - "VPN_LOCKDOWN_EXEMPTION" : The app is exempt from the always-on VPN
+  /// lockdown setting.
+  core.String? alwaysOnVpnLockdownExemption;
 
   /// Controls the auto-update mode for the app.
   /// Possible string values are:
@@ -1862,6 +2116,7 @@ class ApplicationPolicy {
 
   ApplicationPolicy({
     this.accessibleTrackIds,
+    this.alwaysOnVpnLockdownExemption,
     this.autoUpdateMode,
     this.connectedWorkAndPersonalApp,
     this.defaultPermissionPolicy,
@@ -1884,6 +2139,10 @@ class ApplicationPolicy {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          alwaysOnVpnLockdownExemption:
+              _json.containsKey('alwaysOnVpnLockdownExemption')
+                  ? _json['alwaysOnVpnLockdownExemption'] as core.String
+                  : null,
           autoUpdateMode: _json.containsKey('autoUpdateMode')
               ? _json['autoUpdateMode'] as core.String
               : null,
@@ -1939,6 +2198,8 @@ class ApplicationPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessibleTrackIds != null)
           'accessibleTrackIds': accessibleTrackIds!,
+        if (alwaysOnVpnLockdownExemption != null)
+          'alwaysOnVpnLockdownExemption': alwaysOnVpnLockdownExemption!,
         if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
         if (connectedWorkAndPersonalApp != null)
           'connectedWorkAndPersonalApp': connectedWorkAndPersonalApp!,
@@ -2640,10 +2901,10 @@ class CrossProfilePolicies {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: A full date, with non-zero year, month, and
-/// day values A month and day, with a zero year (e.g., an anniversary) A year
-/// on its own, with a zero month and a zero day A year and month, with a zero
-/// day (e.g., a credit card expiration date)Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// day values. A month and day, with a zero year (for example, an anniversary).
+/// A year on its own, with a zero month and a zero day. A year and month, with
+/// a zero day (for example, a credit card expiration date).Related types:
+/// google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A device owned by an enterprise.
@@ -3246,8 +3507,7 @@ class Display {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
-/// object {}.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// An enrollment token.
@@ -5464,29 +5724,32 @@ class Policy {
   /// - "CAMERA_ACCESS_UNSPECIFIED" : If camera_disabled is true, this is
   /// equivalent to CAMERA_ACCESS_DISABLED. Otherwise, this is equivalent to
   /// CAMERA_ACCESS_USER_CHOICE.
-  /// - "CAMERA_ACCESS_USER_CHOICE" : The field
-  /// camera_disabled(google.android.devicemanagement.v1.Policy.camera_disabled\]
-  /// is ignored. This is the default device behaviour: all cameras on the
-  /// device are available. On Android 12 and above, the user can use the camera
-  /// access toggle.
-  /// - "CAMERA_ACCESS_DISABLED" : The field
-  /// camera_disabled(google.android.devicemanagement.v1.Policy.camera_disabled\]
-  /// is ignored. All cameras on the device are disabled (for fully managed
-  /// devices, this applies device-wide and for work profiles this applies only
-  /// to the work profile).There are no explicit restrictions placed on the
-  /// camera access toggle on Android 12 and above: on fully managed devices,
-  /// the camera access toggle has no effect as all cameras are disabled. On
-  /// devices with a work profile, this toggle has no effect on apps in the work
-  /// profile, but it affects apps outside the work profile.
-  /// - "CAMERA_ACCESS_ENFORCED" : The field
-  /// camera_disabled(google.android.devicemanagement.v1.Policy.camera_disabled\]
-  /// is ignored. All cameras on the device are available. On fully managed
-  /// devices running Android 12 and above, the user is unable to use the camera
-  /// access toggle. On devices which are not fully managed or which run Android
-  /// 11 or below, this is equivalent to CAMERA_ACCESS_USER_CHOICE.
+  /// - "CAMERA_ACCESS_USER_CHOICE" : The field camera_disabled is ignored. This
+  /// is the default device behaviour: all cameras on the device are available.
+  /// On Android 12 and above, the user can use the camera access toggle.
+  /// - "CAMERA_ACCESS_DISABLED" : The field camera_disabled is ignored. All
+  /// cameras on the device are disabled (for fully managed devices, this
+  /// applies device-wide and for work profiles this applies only to the work
+  /// profile).There are no explicit restrictions placed on the camera access
+  /// toggle on Android 12 and above: on fully managed devices, the camera
+  /// access toggle has no effect as all cameras are disabled. On devices with a
+  /// work profile, this toggle has no effect on apps in the work profile, but
+  /// it affects apps outside the work profile.
+  /// - "CAMERA_ACCESS_ENFORCED" : The field camera_disabled is ignored. All
+  /// cameras on the device are available. On fully managed devices running
+  /// Android 12 and above, the user is unable to use the camera access toggle.
+  /// On devices which are not fully managed or which run Android 11 or below,
+  /// this is equivalent to CAMERA_ACCESS_USER_CHOICE.
   core.String? cameraAccess;
 
-  /// Whether all cameras on the device are disabled.
+  /// If camera_access is set to any value other than CAMERA_ACCESS_UNSPECIFIED,
+  /// this has no effect.
+  ///
+  /// Otherwise this field controls whether cameras are disabled: If true, all
+  /// cameras are disabled, otherwise they are available. For fully managed
+  /// devices this field applies for all apps on the device. For work profiles,
+  /// this field applies only to apps in the work profile, and the camera access
+  /// of apps outside the work profile is unaffected.
   core.bool? cameraDisabled;
 
   /// Whether configuring cell broadcast is disabled.
@@ -5624,19 +5887,16 @@ class Policy {
   /// - "MICROPHONE_ACCESS_UNSPECIFIED" : If unmute_microphone_disabled is true,
   /// this is equivalent to MICROPHONE_ACCESS_DISABLED. Otherwise, this is
   /// equivalent to MICROPHONE_ACCESS_USER_CHOICE.
-  /// - "MICROPHONE_ACCESS_USER_CHOICE" : The field
-  /// unmute_microphone_disabled(google.android.devicemanagement.v1.Policy.unmute_microphone_disabled\]
+  /// - "MICROPHONE_ACCESS_USER_CHOICE" : The field unmute_microphone_disabled
   /// is ignored. This is the default device behaviour: the microphone on the
   /// device is available. On Android 12 and above, the user can use the
   /// microphone access toggle.
-  /// - "MICROPHONE_ACCESS_DISABLED" : The field
-  /// unmute_microphone_disabled(google.android.devicemanagement.v1.Policy.unmute_microphone_disabled\]
-  /// is ignored. The microphone on the device is disabled (for fully managed
+  /// - "MICROPHONE_ACCESS_DISABLED" : The field unmute_microphone_disabled is
+  /// ignored. The microphone on the device is disabled (for fully managed
   /// devices, this applies device-wide).The microphone access toggle has no
   /// effect as the microphone is disabled.
-  /// - "MICROPHONE_ACCESS_ENFORCED" : The field
-  /// unmute_microphone_disabled(google.android.devicemanagement.v1.Policy.unmute_microphone_disabled\]
-  /// is ignored. The microphone on the device is available. On devices running
+  /// - "MICROPHONE_ACCESS_ENFORCED" : The field unmute_microphone_disabled is
+  /// ignored. The microphone on the device is available. On devices running
   /// Android 12 and above, the user is unable to use the microphone access
   /// toggle. On devices which run Android 11 or below, this is equivalent to
   /// MICROPHONE_ACCESS_USER_CHOICE.
@@ -5700,7 +5960,7 @@ class Policy {
   /// Password requirements.
   ///
   /// The field password_requirements.require_password_unlock must not be set.
-  /// DEPRECATED - Use password_policies.Note:Complexity-based values of
+  /// DEPRECATED - Use passwordPolicies.Note:Complexity-based values of
   /// PasswordQuality, that is, COMPLEXITY_LOW, COMPLEXITY_MEDIUM, and
   /// COMPLEXITY_HIGH, cannot be used here.
   PasswordRequirements? passwordRequirements;
@@ -5716,7 +5976,9 @@ class Policy {
   /// field is set, only the accessibility services in this list and the
   /// system's built-in accessibility service can be used. In particular, if the
   /// field is set to empty, only the system's built-in accessibility servicess
-  /// can be used.
+  /// can be used. This can be set on fully managed devices and on work
+  /// profiles. When applied to a work profile, this affects both the personal
+  /// profile and the work profile.
   PackageNameList? permittedAccessibilityServices;
 
   /// If present, only the input methods provided by packages in this list are
@@ -5795,7 +6057,9 @@ class Policy {
   /// Whether changing the wallpaper is disabled.
   core.bool? setWallpaperDisabled;
 
-  /// Actions to take during the setup process.
+  /// Action to take during the setup process.
+  ///
+  /// At most one action may be specified.
   core.List<SetupAction>? setupActions;
 
   /// Whether location sharing is disabled.
@@ -5845,8 +6109,12 @@ class Policy {
   /// Whether user uninstallation of applications is disabled.
   core.bool? uninstallAppsDisabled;
 
-  /// Whether the microphone is muted and adjusting microphone volume is
-  /// disabled.
+  /// If microphone_access is set to any value other than
+  /// MICROPHONE_ACCESS_UNSPECIFIED, this has no effect.
+  ///
+  /// Otherwise this field controls whether microphones are disabled: If true,
+  /// all microphones are disabled, otherwise they are available. This is
+  /// available only on fully managed devices.
   core.bool? unmuteMicrophoneDisabled;
 
   /// Whether transferring files over USB is disabled.

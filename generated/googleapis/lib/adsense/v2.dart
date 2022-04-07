@@ -1507,6 +1507,17 @@ class Account {
   /// Output only.
   core.bool? premium;
 
+  /// State of the account.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "READY" : The account is open and ready to serve ads.
+  /// - "NEEDS_ATTENTION" : There are some issues with this account. Publishers
+  /// should visit AdSense in order to fix the account.
+  /// - "CLOSED" : The account is closed and can't serve ads.
+  core.String? state;
+
   /// The account time zone, as used by reporting.
   ///
   /// For more information, see
@@ -1519,6 +1530,7 @@ class Account {
     this.name,
     this.pendingTasks,
     this.premium,
+    this.state,
     this.timeZone,
   });
 
@@ -1539,6 +1551,8 @@ class Account {
           premium: _json.containsKey('premium')
               ? _json['premium'] as core.bool
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
           timeZone: _json.containsKey('timeZone')
               ? TimeZone.fromJson(
                   _json['timeZone'] as core.Map<core.String, core.dynamic>)
@@ -1551,6 +1565,7 @@ class Account {
         if (name != null) 'name': name!,
         if (pendingTasks != null) 'pendingTasks': pendingTasks!,
         if (premium != null) 'premium': premium!,
+        if (state != null) 'state': state!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -1580,10 +1595,23 @@ class AdClient {
   /// Output only.
   core.String? reportingDimensionId;
 
+  /// State of the ad client.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "READY" : The ad client is ready to show ads.
+  /// - "GETTING_READY" : Running some checks on the ad client before it is
+  /// ready to serve ads.
+  /// - "REQUIRES_REVIEW" : The ad client hasn't been checked yet. There are
+  /// tasks pending before AdSense will start the review.
+  core.String? state;
+
   AdClient({
     this.name,
     this.productCode,
     this.reportingDimensionId,
+    this.state,
   });
 
   AdClient.fromJson(core.Map _json)
@@ -1595,6 +1623,8 @@ class AdClient {
           reportingDimensionId: _json.containsKey('reportingDimensionId')
               ? _json['reportingDimensionId'] as core.String
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1602,6 +1632,7 @@ class AdClient {
         if (productCode != null) 'productCode': productCode!,
         if (reportingDimensionId != null)
           'reportingDimensionId': reportingDimensionId!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1660,11 +1691,15 @@ class AdUnit {
   ContentAdsSettings? contentAdsSettings;
 
   /// Display name of the ad unit, as provided when the ad unit was created.
+  ///
+  /// Required.
   core.String? displayName;
 
   /// Resource name of the ad unit.
   ///
   /// Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+  ///
+  /// Required.
   core.String? name;
 
   /// Unique ID of the ad unit as used in the `AD_UNIT_ID` reporting dimension.
