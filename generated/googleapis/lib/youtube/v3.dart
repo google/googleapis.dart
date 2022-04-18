@@ -9109,6 +9109,7 @@ class ContentRating {
   /// - "mibacUnspecified"
   /// - "mibacT"
   /// - "mibacVap"
+  /// - "mibacVm6"
   /// - "mibacVm12"
   /// - "mibacVm14"
   /// - "mibacVm16"

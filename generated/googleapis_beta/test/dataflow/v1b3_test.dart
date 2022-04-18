@@ -458,6 +458,9 @@ api.ContainerSpec buildContainerSpec() {
   if (buildCounterContainerSpec < 3) {
     o.defaultEnvironment = buildFlexTemplateRuntimeEnvironment();
     o.image = 'foo';
+    o.imageRepositoryCertPath = 'foo';
+    o.imageRepositoryPasswordSecretId = 'foo';
+    o.imageRepositoryUsernameSecretId = 'foo';
     o.metadata = buildTemplateMetadata();
     o.sdkInfo = buildSDKInfo();
   }
@@ -471,6 +474,18 @@ void checkContainerSpec(api.ContainerSpec o) {
     checkFlexTemplateRuntimeEnvironment(o.defaultEnvironment!);
     unittest.expect(
       o.image!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageRepositoryCertPath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageRepositoryPasswordSecretId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageRepositoryUsernameSecretId!,
       unittest.equals('foo'),
     );
     checkTemplateMetadata(o.metadata!);

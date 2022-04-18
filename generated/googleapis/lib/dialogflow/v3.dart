@@ -4724,8 +4724,8 @@ class ProjectsLocationsAgentsTestCasesResource {
 
   /// Imports the test cases from a Cloud Storage bucket or a local file.
   ///
-  /// It always creates new test cases and won't overwite any existing ones. The
-  /// provided ID in the imported test case is neglected. This method is a
+  /// It always creates new test cases and won't overwrite any existing ones.
+  /// The provided ID in the imported test case is neglected. This method is a
   /// \[long-running
   /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
   /// The returned `Operation` type has the following method-specific fields: -
@@ -8003,7 +8003,7 @@ class GoogleCloudDialogflowCxV3Flow {
   /// can be handled in a common way regardless of the current page. Transition
   /// routes defined in the page have higher priority than those defined in the
   /// flow. TransitionRoutes are evalauted in the following order: *
-  /// TransitionRoutes with intent specified.. * TransitionRoutes with only
+  /// TransitionRoutes with intent specified. * TransitionRoutes with only
   /// condition specified. TransitionRoutes with intent specified are inherited
   /// by pages in the flow.
   core.List<GoogleCloudDialogflowCxV3TransitionRoute>? transitionRoutes;
@@ -8435,9 +8435,13 @@ class GoogleCloudDialogflowCxV3Fulfillment {
   core.List<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>?
       setParameterActions;
 
-  /// The tag used by the webhook to identify which fulfillment is being called.
+  /// The value of this field will be populated in the WebhookRequest
+  /// `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is
+  /// called.
   ///
-  /// This field is required if `webhook` is specified.
+  /// The tag is typically used by the webhook service to identify which
+  /// fulfillment is being called, but it could be used for other purposes. This
+  /// field is required if `webhook` is specified.
   core.String? tag;
 
   /// The webhook to call.
@@ -10286,7 +10290,7 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
 /// conversational state represented by the page. For more information, see the
 /// [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 class GoogleCloudDialogflowCxV3Page {
-  /// The human-readable name of the page, unique within the agent.
+  /// The human-readable name of the page, unique within the flow.
   ///
   /// Required.
   core.String? displayName;
@@ -12401,7 +12405,7 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
 /// by a Page.
 class GoogleCloudDialogflowCxV3TransitionRouteGroup {
   /// The human-readable name of the transition route group, unique within the
-  /// Agent.
+  /// flow.
   ///
   /// The display name can be no longer than 30 characters.
   ///

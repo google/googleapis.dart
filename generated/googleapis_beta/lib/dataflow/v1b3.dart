@@ -284,7 +284,8 @@ class ProjectsJobsResource {
   /// a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
-  /// start in `us-central1`.
+  /// start in `us-central1`. Do not enter confidential information when you
+  /// supply string values using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1131,7 +1132,8 @@ class ProjectsLocationsJobsResource {
   /// a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
-  /// start in `us-central1`.
+  /// start in `us-central1`. Do not enter confidential information when you
+  /// supply string values using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2289,6 +2291,9 @@ class ProjectsLocationsTemplatesResource {
 
   /// Creates a Cloud Dataflow job from a template.
   ///
+  /// Do not enter confidential information when you supply string values using
+  /// the API.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2567,6 +2572,9 @@ class ProjectsTemplatesResource {
   ProjectsTemplatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Cloud Dataflow job from a template.
+  ///
+  /// Do not enter confidential information when you supply string values using
+  /// the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3316,6 +3324,15 @@ class ContainerSpec {
   /// E.g., gcr.io/project/some-image
   core.String? image;
 
+  /// Cloud Storage path to self-signed certificate of private registry.
+  core.String? imageRepositoryCertPath;
+
+  /// Secret Manager secret id for password to authenticate to private registry.
+  core.String? imageRepositoryPasswordSecretId;
+
+  /// Secret Manager secret id for username to authenticate to private registry.
+  core.String? imageRepositoryUsernameSecretId;
+
   /// Metadata describing a template including description and validation rules.
   TemplateMetadata? metadata;
 
@@ -3327,6 +3344,9 @@ class ContainerSpec {
   ContainerSpec({
     this.defaultEnvironment,
     this.image,
+    this.imageRepositoryCertPath,
+    this.imageRepositoryPasswordSecretId,
+    this.imageRepositoryUsernameSecretId,
     this.metadata,
     this.sdkInfo,
   });
@@ -3340,6 +3360,17 @@ class ContainerSpec {
               : null,
           image:
               _json.containsKey('image') ? _json['image'] as core.String : null,
+          imageRepositoryCertPath: _json.containsKey('imageRepositoryCertPath')
+              ? _json['imageRepositoryCertPath'] as core.String
+              : null,
+          imageRepositoryPasswordSecretId:
+              _json.containsKey('imageRepositoryPasswordSecretId')
+                  ? _json['imageRepositoryPasswordSecretId'] as core.String
+                  : null,
+          imageRepositoryUsernameSecretId:
+              _json.containsKey('imageRepositoryUsernameSecretId')
+                  ? _json['imageRepositoryUsernameSecretId'] as core.String
+                  : null,
           metadata: _json.containsKey('metadata')
               ? TemplateMetadata.fromJson(
                   _json['metadata'] as core.Map<core.String, core.dynamic>)
@@ -3354,6 +3385,12 @@ class ContainerSpec {
         if (defaultEnvironment != null)
           'defaultEnvironment': defaultEnvironment!,
         if (image != null) 'image': image!,
+        if (imageRepositoryCertPath != null)
+          'imageRepositoryCertPath': imageRepositoryCertPath!,
+        if (imageRepositoryPasswordSecretId != null)
+          'imageRepositoryPasswordSecretId': imageRepositoryPasswordSecretId!,
+        if (imageRepositoryUsernameSecretId != null)
+          'imageRepositoryUsernameSecretId': imageRepositoryUsernameSecretId!,
         if (metadata != null) 'metadata': metadata!,
         if (sdkInfo != null) 'sdkInfo': sdkInfo!,
       };
@@ -5444,6 +5481,9 @@ class IntegerMean {
 }
 
 /// Defines a job to be run by the Cloud Dataflow service.
+///
+/// Do not enter confidential information when you supply string values using
+/// the API.
 class Job {
   /// The client's unique identifier of the job, re-used across retried
   /// attempts.
@@ -6413,6 +6453,10 @@ class LaunchFlexTemplateResponse {
 }
 
 /// Parameters to provide to the template being launched.
+///
+/// Note that the
+/// [metadata in the pipeline code](https://cloud.google.com/dataflow/docs/guides/templates/creating-templates#metadata)
+/// determines which runtime parameters are valid.
 class LaunchTemplateParameters {
   /// The runtime environment for the job.
   RuntimeEnvironment? environment;
@@ -8195,7 +8239,7 @@ class RuntimeEnvironment {
   /// If empty or unspecified, the service will use the network "default".
   core.String? network;
 
-  /// The initial number of Google Compute Engine instnaces for the job.
+  /// The initial number of Google Compute Engine instances for the job.
   core.int? numWorkers;
 
   /// The email address of the service account to run the job as.

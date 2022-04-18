@@ -1084,7 +1084,8 @@ class ActionResponse {
       };
 }
 
-/// Represents the status of a request.
+/// Represents the status for a request to either invoke or submit a
+/// [dialog](https://developers.google.com/chat/how-tos/dialogs).
 class ActionStatus {
   /// The status code.
   /// Possible string values are:
@@ -3619,10 +3620,12 @@ class ListSpacesResponse {
 
 /// A matched url in a Chat message.
 ///
-/// Chat apps can unfurl matched URLs. For more information, refer to \[Unfurl
-/// links\](/chat/how-tos/link-unfurling).
+/// Chat apps can unfurl matched URLs. For more information, refer to
+/// [Unfurl links](https://developers.google.com/chat/how-tos/link-unfurling).
 class MatchedUrl {
   /// The url that was matched.
+  ///
+  /// Output only.
   core.String? url;
 
   MatchedUrl({
@@ -3657,6 +3660,8 @@ class Membership {
   /// People API or a
   /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
   /// in the Admin SDK Directory API. Format: `users/{user}`
+  ///
+  /// Output only.
   User? member;
   core.String? name;
 
@@ -4065,11 +4070,11 @@ class Space {
   /// Output only.
   core.bool? threaded;
 
-  /// Use `single_user_bot_dm` instead.
+  /// Deprecated: Use `single_user_bot_dm` instead.
   ///
   /// Output only. The type of a space.
   ///
-  /// Deprecated.
+  /// Output only.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED"
   /// - "ROOM" : Conversations between two or more humans.
@@ -4182,12 +4187,16 @@ class Thread {
 /// A user in Google Chat.
 class User {
   /// The user's display name.
+  ///
+  /// Output only.
   core.String? displayName;
 
   /// Unique identifier of the user's Google Workspace domain.
   core.String? domainId;
 
   /// When `true`, the user is deleted or their profile is not visible.
+  ///
+  /// Output only.
   core.bool? isAnonymous;
 
   /// Resource name for a Google Chat user.

@@ -1444,12 +1444,13 @@ class V1Resource {
   /// camelCase are supported. Examples: `"*"`, `"name,location"`,
   /// `"name,versionedResources"`. The read_mask paths must be valid field paths
   /// listed but not limited to (both snake_case and camelCase are supported): *
-  /// name * assetType * project * displayName * description * location * labels
-  /// * networkTags * kmsKey * createTime * updateTime * state *
-  /// additionalAttributes * versionedResources If read_mask is not specified,
-  /// all fields except versionedResources will be returned. If only '*' is
-  /// specified, all fields including versionedResources will be returned. Any
-  /// invalid field path will trigger INVALID_ARGUMENT error.
+  /// name * assetType * project * displayName * description * location *
+  /// tagKeys * tagValues * tagValueIds * labels * networkTags * kmsKey *
+  /// createTime * updateTime * state * additionalAttributes *
+  /// versionedResources If read_mask is not specified, all fields except
+  /// versionedResources will be returned. If only '*' is specified, all fields
+  /// including versionedResources will be returned. Any invalid field path will
+  /// trigger INVALID_ARGUMENT error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2116,7 +2117,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -5910,6 +5911,29 @@ class ResourceSearchResult {
   /// `state:RUNNING` * use a free text query. Example: `RUNNING`
   core.String? state;
 
+  /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.
+  ///
+  /// To search against the `tagKeys`: * use a field query. Example: -
+  /// `tagKeys:"123456789/e*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` *
+  /// use a free text query. Example: - `env`
+  core.List<core.String>? tagKeys;
+
+  /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}.
+  ///
+  /// To search against the `tagValueIds`: * use a field query. Example: -
+  /// `tagValueIds:"456"` - `tagValueIds="tagValues/456"` * use a free text
+  /// query. Example: - `456`
+  core.List<core.String>? tagValueIds;
+
+  /// TagValue namespaced names, in the format of
+  /// {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.
+  ///
+  /// To search against the `tagValues`: * use a field query. Example: -
+  /// `tagValues:"env"` - `tagValues:"env/prod"` -
+  /// `tagValues:"123456789/env/pr*"` - `tagValues="123456789/env/prod"` * use a
+  /// free text query. Example: - `prod`
+  core.List<core.String>? tagValues;
+
   /// The last update timestamp of this resource, at which the resource was last
   /// modified or deleted.
   ///
@@ -5949,6 +5973,9 @@ class ResourceSearchResult {
     this.project,
     this.relationships,
     this.state,
+    this.tagKeys,
+    this.tagValueIds,
+    this.tagValues,
     this.updateTime,
     this.versionedResources,
   });
@@ -6026,6 +6053,21 @@ class ResourceSearchResult {
               : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
+          tagKeys: _json.containsKey('tagKeys')
+              ? (_json['tagKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tagValueIds: _json.containsKey('tagValueIds')
+              ? (_json['tagValueIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tagValues: _json.containsKey('tagValues')
+              ? (_json['tagValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -6058,6 +6100,9 @@ class ResourceSearchResult {
         if (project != null) 'project': project!,
         if (relationships != null) 'relationships': relationships!,
         if (state != null) 'state': state!,
+        if (tagKeys != null) 'tagKeys': tagKeys!,
+        if (tagValueIds != null) 'tagValueIds': tagValueIds!,
+        if (tagValues != null) 'tagValues': tagValues!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (versionedResources != null)
           'versionedResources': versionedResources!,

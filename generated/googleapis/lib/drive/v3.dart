@@ -1676,7 +1676,7 @@ class FilesResource {
 
   /// Subscribes to changes to a file.
   ///
-  /// While you can establish a channel forchanges to a file on a shared drive,
+  /// While you can establish a channel for changes to a file on a shared drive,
   /// a change to a shared drive file won't create a notification.
   ///
   /// [request] - The metadata request object.

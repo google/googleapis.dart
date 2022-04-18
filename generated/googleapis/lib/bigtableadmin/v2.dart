@@ -28,6 +28,7 @@
 ///     - [ProjectsInstancesAppProfilesResource]
 ///     - [ProjectsInstancesClustersResource]
 ///       - [ProjectsInstancesClustersBackupsResource]
+///       - [ProjectsInstancesClustersHotTabletsResource]
 ///     - [ProjectsInstancesTablesResource]
 ///   - [ProjectsLocationsResource]
 library bigtableadmin.v2;
@@ -967,6 +968,8 @@ class ProjectsInstancesClustersResource {
 
   ProjectsInstancesClustersBackupsResource get backups =>
       ProjectsInstancesClustersBackupsResource(_requester);
+  ProjectsInstancesClustersHotTabletsResource get hotTablets =>
+      ProjectsInstancesClustersHotTabletsResource(_requester);
 
   ProjectsInstancesClustersResource(commons.ApiRequester client)
       : _requester = client;
@@ -1665,6 +1668,81 @@ class ProjectsInstancesClustersBackupsResource {
       queryParams: _queryParams,
     );
     return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsInstancesClustersHotTabletsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesClustersHotTabletsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists hot tablets in a cluster, within the time range provided.
+  ///
+  /// Hot tablets are ordered based on CPU usage.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The cluster name to list hot tablets. Value is in the
+  /// following form:
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [endTime] - The end time to list hot tablets.
+  ///
+  /// [pageSize] - Maximum number of results per page. A page_size that is empty
+  /// or zero lets the server choose the number of items to return. A page_size
+  /// which is strictly positive will return at most that many items. A negative
+  /// page_size will cause an error. Following the first request, subsequent
+  /// paginated calls do not need a page_size field. If a page_size is set in
+  /// subsequent calls, it must match the page_size given in the first request.
+  ///
+  /// [pageToken] - The value of `next_page_token` returned by a previous call.
+  ///
+  /// [startTime] - The start time to list hot tablets. The hot tablets in the
+  /// response will have start times between the requested start time and end
+  /// time. Start time defaults to Now if it is unset, and end time defaults to
+  /// Now - 24 hours if it is unset. The start time should be less than the end
+  /// time, and the maximum allowed time range between start time and end time
+  /// is 48 hours. Start time and end time should have values between Now and
+  /// Now - 14 days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListHotTabletsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListHotTabletsResponse> list(
+    core.String parent, {
+    core.String? endTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endTime != null) 'endTime': [endTime],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startTime != null) 'startTime': [startTime],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/hotTablets';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListHotTabletsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3084,8 +3162,7 @@ class CreateInstanceRequest {
   /// ID, e.g., just `mycluster` rather than
   /// `projects/myproject/instances/myinstance/clusters/mycluster`.
   ///
-  /// Fields marked `OutputOnly` must be left blank. Currently, at most four
-  /// clusters can be specified.
+  /// Fields marked `OutputOnly` must be left blank.
   ///
   /// Required.
   core.Map<core.String, Cluster>? clusters;
@@ -3472,6 +3549,96 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
 
+/// A tablet is a defined by a start and end key and is explained in
+/// https://cloud.google.com/bigtable/docs/overview#architecture and
+/// https://cloud.google.com/bigtable/docs/performance#optimization.
+///
+/// A Hot tablet is a tablet that exhibits high average cpu usage during the
+/// time interval from start time to end time.
+class HotTablet {
+  /// Tablet End Key (inclusive).
+  core.String? endKey;
+
+  /// The end time of the hot tablet.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The unique name of the hot tablet.
+  ///
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/hotTablets/[a-zA-Z0-9_-]*`.
+  core.String? name;
+
+  /// The average CPU usage spent by a node on this tablet over the start_time
+  /// to end_time time range.
+  ///
+  /// The percentage is the amount of CPU used by the node to serve the tablet,
+  /// from 0% (tablet was not interacted with) to 100% (the node spent all
+  /// cycles serving the hot tablet).
+  ///
+  /// Output only.
+  core.double? nodeCpuUsagePercent;
+
+  /// Tablet Start Key (inclusive).
+  core.String? startKey;
+
+  /// The start time of the hot tablet.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// Name of the table that contains the tablet.
+  ///
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`.
+  core.String? tableName;
+
+  HotTablet({
+    this.endKey,
+    this.endTime,
+    this.name,
+    this.nodeCpuUsagePercent,
+    this.startKey,
+    this.startTime,
+    this.tableName,
+  });
+
+  HotTablet.fromJson(core.Map _json)
+      : this(
+          endKey: _json.containsKey('endKey')
+              ? _json['endKey'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodeCpuUsagePercent: _json.containsKey('nodeCpuUsagePercent')
+              ? (_json['nodeCpuUsagePercent'] as core.num).toDouble()
+              : null,
+          startKey: _json.containsKey('startKey')
+              ? _json['startKey'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          tableName: _json.containsKey('tableName')
+              ? _json['tableName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endKey != null) 'endKey': endKey!,
+        if (endTime != null) 'endTime': endTime!,
+        if (name != null) 'name': name!,
+        if (nodeCpuUsagePercent != null)
+          'nodeCpuUsagePercent': nodeCpuUsagePercent!,
+        if (startKey != null) 'startKey': startKey!,
+        if (startTime != null) 'startTime': startTime!,
+        if (tableName != null) 'tableName': tableName!,
+      };
+}
+
 /// A collection of Bigtable Tables and the resources that serve them.
 ///
 /// All tables in an instance are served from all Clusters in the instance.
@@ -3727,6 +3894,47 @@ class ListClustersResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null) 'clusters': clusters!,
         if (failedLocations != null) 'failedLocations': failedLocations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for BigtableInstanceAdmin.ListHotTablets.
+class ListHotTabletsResponse {
+  /// List of hot tablets in the tables of the requested cluster that fall
+  /// within the requested time range.
+  ///
+  /// Hot tablets are ordered by node cpu usage percent. If there are multiple
+  /// hot tablets that correspond to the same tablet within a 15-minute
+  /// interval, only the hot tablet with the highest node cpu usage will be
+  /// included in the response.
+  core.List<HotTablet>? hotTablets;
+
+  /// Set if not all hot tablets could be returned in a single response.
+  ///
+  /// Pass this value to `page_token` in another request to get the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  ListHotTabletsResponse({
+    this.hotTablets,
+    this.nextPageToken,
+  });
+
+  ListHotTabletsResponse.fromJson(core.Map _json)
+      : this(
+          hotTablets: _json.containsKey('hotTablets')
+              ? (_json['hotTablets'] as core.List)
+                  .map((value) => HotTablet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hotTablets != null) 'hotTablets': hotTablets!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

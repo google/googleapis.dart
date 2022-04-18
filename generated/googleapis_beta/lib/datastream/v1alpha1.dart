@@ -173,7 +173,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -2073,6 +2073,9 @@ class DiscoverConnectionProfileResponse {
       };
 }
 
+/// Configuration to drop large object values.
+typedef DropLargeObjects = $Empty;
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3171,9 +3174,6 @@ class OracleColumn {
       };
 }
 
-/// Configuration to drop large object values.
-typedef OracleDropLargeObjects = $Empty;
-
 /// Oracle data source object identifier.
 class OracleObjectIdentifier {
   /// The schema name.
@@ -3343,7 +3343,7 @@ class OracleSourceConfig {
   OracleRdbms? allowlist;
 
   /// Drop large object values.
-  OracleDropLargeObjects? dropLargeObjects;
+  DropLargeObjects? dropLargeObjects;
 
   /// Oracle objects to exclude from the stream.
   OracleRdbms? rejectlist;
@@ -3361,7 +3361,7 @@ class OracleSourceConfig {
                   _json['allowlist'] as core.Map<core.String, core.dynamic>)
               : null,
           dropLargeObjects: _json.containsKey('dropLargeObjects')
-              ? OracleDropLargeObjects.fromJson(_json['dropLargeObjects']
+              ? DropLargeObjects.fromJson(_json['dropLargeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
           rejectlist: _json.containsKey('rejectlist')

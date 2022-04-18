@@ -1996,7 +1996,10 @@ class MediaItem {
   /// Description of the media item.
   ///
   /// This is shown to the user in the item's info section in the Google Photos
-  /// app.
+  /// app. Must be shorter than 1000 characters. Only include text written by
+  /// users. Descriptions should add context and help users understand media. Do
+  /// not include any auto-generated strings such as filenames, tags, and other
+  /// metadata.
   core.String? description;
 
   /// Filename of the media item.
@@ -2245,8 +2248,11 @@ class NewEnrichmentItem {
 class NewMediaItem {
   /// Description of the media item.
   ///
-  /// This will be shown to the user in the item's info section in the Google
-  /// Photos app. This string shouldn't be more than 1000 characters.
+  /// This is shown to the user in the item's info section in the Google Photos
+  /// app. Must be shorter than 1000 characters. Only include text written by
+  /// users. Descriptions should add context and help users understand media. Do
+  /// not include any auto-generated strings such as filenames, tags, and other
+  /// metadata.
   core.String? description;
 
   /// A new media item that has been uploaded via the included `uploadToken`.

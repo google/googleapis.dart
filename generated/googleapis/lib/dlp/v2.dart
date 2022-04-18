@@ -6405,8 +6405,8 @@ class GooglePrivacyDlpV2ByteContentItem {
   /// - "TEXT_UTF8" : plain text
   /// - "WORD_DOCUMENT" : docx, docm, dotx, dotm
   /// - "PDF" : pdf
-  /// - "POWERPOINT_DOCUMENT" : powerpoint
-  /// - "EXCEL_DOCUMENT" : excel
+  /// - "POWERPOINT_DOCUMENT" : pptx, pptm, potx, potm, pot
+  /// - "EXCEL_DOCUMENT" : xlsx, xlsm, xltx, xltm
   /// - "AVRO" : avro
   /// - "CSV" : csv
   /// - "TSV" : tsv

@@ -3902,8 +3902,6 @@ class Event {
   core.bool? anyoneCanAddSelf;
 
   /// File attachments for the event.
-  ///
-  /// Currently only Google Drive attachments are supported.
   /// In order to modify attachments the supportsAttachments request parameter
   /// should be set to true.
   /// There can be at most 25 attachments per event,
@@ -4406,7 +4404,7 @@ class EventAttachment {
 
   /// URL link to the attachment's icon.
   ///
-  /// Read-only.
+  /// This field can only be modified for custom third-party attachments.
   core.String? iconLink;
 
   /// Internet media type (MIME type) of the attachment.

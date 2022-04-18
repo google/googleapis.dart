@@ -4017,6 +4017,9 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   /// The time the processor version was created.
   core.String? createTime;
 
+  /// If set, information about the eventual deprecation of this version.
+  GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo? deprecationInfo;
+
   /// The display name of the processor version.
   core.String? displayName;
 
@@ -4052,6 +4055,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
 
   GoogleCloudDocumentaiV1beta3ProcessorVersion({
     this.createTime,
+    this.deprecationInfo,
     this.displayName,
     this.googleManaged,
     this.kmsKeyName,
@@ -4064,6 +4068,11 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
       : this(
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          deprecationInfo: _json.containsKey('deprecationInfo')
+              ? GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo
+                  .fromJson(_json['deprecationInfo']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
@@ -4084,12 +4093,45 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (deprecationInfo != null) 'deprecationInfo': deprecationInfo!,
         if (displayName != null) 'displayName': displayName!,
         if (googleManaged != null) 'googleManaged': googleManaged!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Information about the upcoming deprecation of this processor version.
+class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo {
+  /// The time at which this processor version will be deprecated.
+  core.String? deprecationTime;
+
+  /// If set, the processor version that will be used as a replacement.
+  core.String? replacementProcessorVersion;
+
+  GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo({
+    this.deprecationTime,
+    this.replacementProcessorVersion,
+  });
+
+  GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo.fromJson(
+      core.Map _json)
+      : this(
+          deprecationTime: _json.containsKey('deprecationTime')
+              ? _json['deprecationTime'] as core.String
+              : null,
+          replacementProcessorVersion:
+              _json.containsKey('replacementProcessorVersion')
+                  ? _json['replacementProcessorVersion'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecationTime != null) 'deprecationTime': deprecationTime!,
+        if (replacementProcessorVersion != null)
+          'replacementProcessorVersion': replacementProcessorVersion!,
       };
 }
 

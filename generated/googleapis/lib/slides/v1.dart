@@ -3313,18 +3313,20 @@ class Page {
   /// - "NOTES_MASTER" : A notes master page.
   core.String? pageType;
 
-  /// The revision ID of the presentation containing this page.
+  /// The revision ID of the presentation.
   ///
-  /// Can be used in update requests to assert that the presentation revision
-  /// hasn't changed since the last read operation. Only populated if the user
-  /// has edit access to the presentation. The format of the revision ID may
-  /// change over time, so it should be treated opaquely. A returned revision ID
-  /// is only guaranteed to be valid for 24 hours after it has been returned and
-  /// cannot be shared across users. If the revision ID is unchanged between
-  /// calls, then the presentation has not changed. Conversely, a changed ID
-  /// (for the same presentation and user) usually means the presentation has
-  /// been updated; however, a changed ID can also be due to internal factors
-  /// such as ID format changes.
+  /// Can be used in update requests to assert the presentation revision hasn't
+  /// changed since the last read operation. Only populated if the user has edit
+  /// access to the presentation. The revision ID is not a sequential number but
+  /// an opaque string. The format of the revision ID might change over time. A
+  /// returned revision ID is only guaranteed to be valid for 24 hours after it
+  /// has been returned and cannot be shared across users. If the revision ID is
+  /// unchanged between calls, then the presentation has not changed.
+  /// Conversely, a changed ID (for the same presentation and user) usually
+  /// means the presentation has been updated. However, a changed ID can also be
+  /// due to internal factors such as ID format changes.
+  ///
+  /// Output only.
   core.String? revisionId;
 
   /// Slide specific properties.
@@ -3960,16 +3962,19 @@ class Presentation {
 
   /// The revision ID of the presentation.
   ///
-  /// Can be used in update requests to assert that the presentation revision
-  /// hasn't changed since the last read operation. Only populated if the user
-  /// has edit access to the presentation. The format of the revision ID may
-  /// change over time, so it should be treated opaquely. A returned revision ID
-  /// is only guaranteed to be valid for 24 hours after it has been returned and
-  /// cannot be shared across users. If the revision ID is unchanged between
-  /// calls, then the presentation has not changed. Conversely, a changed ID
-  /// (for the same presentation and user) usually means the presentation has
-  /// been updated; however, a changed ID can also be due to internal factors
-  /// such as ID format changes.
+  /// Can be used in update requests to assert the presentation revision hasn't
+  /// changed since the last read operation. Only populated if the user has edit
+  /// access to the presentation. The revision ID is not a sequential number but
+  /// a nebulous string. The format of the revision ID may change over time, so
+  /// it should be treated opaquely. A returned revision ID is only guaranteed
+  /// to be valid for 24 hours after it has been returned and cannot be shared
+  /// across users. If the revision ID is unchanged between calls, then the
+  /// presentation has not changed. Conversely, a changed ID (for the same
+  /// presentation and user) usually means the presentation has been updated.
+  /// However, a changed ID can also be due to internal factors such as ID
+  /// format changes.
+  ///
+  /// Output only.
   core.String? revisionId;
 
   /// The slides in the presentation.
@@ -4233,7 +4238,7 @@ class ReplaceAllShapesWithImageRequest {
   /// default method when one is not specified.
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
   /// original shape. The image may be cropped in order to fill the shape. The
-  /// rendered size of the image will be the same as that of the original shape.
+  /// rendered size of the image will be the same as the original shape.
   core.String? imageReplaceMethod;
 
   /// The image URL.
@@ -4479,6 +4484,8 @@ typedef ReplaceAllTextResponse = $ReplaceAllTextResponse;
 /// Replacing an image removes some image effects from the existing image.
 class ReplaceImageRequest {
   /// The ID of the existing image that will be replaced.
+  ///
+  /// The ID can be retrieved from the response of a get request.
   core.String? imageObjectId;
 
   /// The replacement method.
@@ -4491,16 +4498,16 @@ class ReplaceImageRequest {
   /// default method when one is not specified.
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
   /// original shape. The image may be cropped in order to fill the shape. The
-  /// rendered size of the image will be the same as that of the original shape.
+  /// rendered size of the image will be the same as the original shape.
   core.String? imageReplaceMethod;
 
   /// The image URL.
   ///
   /// The image is fetched once at insertion time and a copy is stored for
-  /// display inside the presentation. Images must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
-  /// format. The provided URL can be at most 2 kB in length. The URL itself is
-  /// saved with the image, and exposed via the Image.source_url field.
+  /// display inside the presentation. Images must be less than 50MB, cannot
+  /// exceed 25 megapixels, and must be in PNG, JPEG, or GIF format. The
+  /// provided URL can't surpass 2 KB in length. The URL is saved with the
+  /// image, and exposed through the Image.source_url field.
   core.String? url;
 
   ReplaceImageRequest({
@@ -8127,9 +8134,10 @@ class WordArt {
 class WriteControl {
   /// The revision ID of the presentation required for the write request.
   ///
-  /// If specified and the `required_revision_id` doesn't exactly match the
-  /// presentation's current `revision_id`, the request will not be processed
-  /// and will return a 400 bad request error.
+  /// If specified and the required revision ID doesn't match the presentation's
+  /// current revision ID, the request is not processed and returns a 400 bad
+  /// request error. When a required revision ID is returned in a response, it
+  /// indicates the revision ID of the document after the request was applied.
   core.String? requiredRevisionId;
 
   WriteControl({

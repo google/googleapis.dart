@@ -322,7 +322,7 @@
             }
         }
     },
-    "revision": "20220405",
+    "revision": "20220414",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "schemas": {
         "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle": {

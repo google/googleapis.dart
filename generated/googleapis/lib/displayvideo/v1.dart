@@ -3447,8 +3447,8 @@ class AdvertisersLineItemsResource {
   /// The length of this field should be no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// "displayName" (default) * "entityStatus" * “flight.dateRange.endDate” *
-  /// "updateTime" The default sorting order is ascending. To specify descending
+  /// `displayName` (default) * `entityStatus` * `flight.dateRange.endDate` *
+  /// `updateTime` The default sorting order is ascending. To specify descending
   /// order for a field, a suffix "desc" should be added to the field name.
   /// Example: `displayName desc`.
   ///
@@ -11016,7 +11016,7 @@ class AgeRangeAssignedTargetingOptionDetails {
   /// age range represented in this field can be 1) targeted solely, or, 2) part
   /// of a larger continuous age range. The reach of a continuous age range
   /// targeting can be expanded by also targeting an audience of an unknown age.
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
   /// in this version. This enum is a placeholder for default value and does not
@@ -12516,7 +12516,7 @@ class AudienceGroupAssignedTargetingOptionDetails {
 class AudioContentTypeAssignedTargetingOptionDetails {
   /// The audio content type.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
   /// in this version. This enum is a place holder for a default value and does
@@ -15160,7 +15160,7 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
 
   /// The content instream position for video or audio ads.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -15273,7 +15273,7 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
 
   /// The content outstream position.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -17380,7 +17380,7 @@ class DeviceMakeModelTargetingOptionDetails {
 class DeviceTypeAssignedTargetingOptionDetails {
   /// The display name of the device type.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
   /// specified in this version. This enum is a placeholder for default value
@@ -18014,7 +18014,7 @@ typedef Empty = $Empty;
 class EnvironmentAssignedTargetingOptionDetails {
   /// The serving environment.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
   /// specified in this version. This enum is a placeholder for default value
@@ -19065,8 +19065,7 @@ class FrequencyCap {
   /// The maximum number of times a user may be shown the same ad during this
   /// period.
   ///
-  /// Must be greater than 0. Required when unlimited is `false` and max_views
-  /// is not set.
+  /// Must be greater than 0. Required when unlimited is `false`.
   core.int? maxImpressions;
 
   /// The time unit in which the frequency cap will be applied.
@@ -19143,7 +19142,7 @@ class FrequencyCap {
 class GenderAssignedTargetingOptionDetails {
   /// The gender of the audience.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
   /// this version. This enum is a place holder for default value and does not
@@ -23163,7 +23162,7 @@ class MaximizeSpendBidStrategy {
   /// impressions.
   core.String? performanceGoalType;
 
-  /// Controls whether the strategy takes deal floor prices into account.
+  /// Whether the strategy takes deal floor prices into account.
   core.bool? raiseBidForDeals;
 
   MaximizeSpendBidStrategy({
@@ -23331,7 +23330,7 @@ typedef Money = $Money;
 class NativeContentPositionAssignedTargetingOptionDetails {
   /// The content position.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
   /// specified in this version. This enum is a place holder for a default value
@@ -23667,7 +23666,7 @@ class ObaIcon {
 class OmidAssignedTargetingOptionDetails {
   /// The type of Open Measurement enabled inventory.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
   /// in this version.
@@ -25709,7 +25708,7 @@ class SensitiveCategoryAssignedTargetingOptionDetails {
 
   /// An enum for the DV360 Sensitive category content classifier.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "SENSITIVE_CATEGORY_UNSPECIFIED" : This enum is only a placeholder and
   /// doesn't specify a DV360 sensitive category.
@@ -27086,7 +27085,7 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
 
   /// The video player size.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
   /// this version. This enum is a place holder for a default value and does not
@@ -27176,7 +27175,7 @@ class ViewabilityAssignedTargetingOptionDetails {
 
   /// The predicted viewability percentage.
   ///
-  /// Output only in v1. Required in v2.
+  /// Output only in v1.
   /// Possible string values are:
   /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
   /// specified in this version. This enum is a placeholder for default value

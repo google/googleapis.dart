@@ -457,10 +457,10 @@ class $Date {
 /// - datastream:v1alpha1 : AvroFileFormat
 /// - datastream:v1alpha1 : BackfillNoneStrategy
 /// - datastream:v1alpha1 : CancelOperationRequest
+/// - datastream:v1alpha1 : DropLargeObjects
 /// - datastream:v1alpha1 : Empty
 /// - datastream:v1alpha1 : FetchErrorsRequest
 /// - datastream:v1alpha1 : NoConnectivitySettings
-/// - datastream:v1alpha1 : OracleDropLargeObjects
 /// - datastream:v1alpha1 : StaticServiceIpConnectivity
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DisableProcessorRequest
@@ -472,7 +472,6 @@ class $Date {
 /// - factchecktools:v1alpha1 : GoogleProtobufEmpty
 /// - firebase:v1beta1 : Empty
 /// - firebaseappcheck:v1beta : GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
-/// - firebaseappcheck:v1beta : GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest
 /// - firebaseappcheck:v1beta : GoogleProtobufEmpty
 /// - firebasedatabase:v1beta : DisableDatabaseInstanceRequest
 /// - firebasedatabase:v1beta : ReenableDatabaseInstanceRequest
@@ -2331,7 +2330,6 @@ class $Status {
 /// - containeranalysis:v1beta1 : TestIamPermissionsRequest
 /// - datacatalog:v1beta1 : TestIamPermissionsRequest
 /// - domains:v1beta1 : TestIamPermissionsRequest
-/// - networkconnectivity:v1alpha1 : TestIamPermissionsRequest
 /// - networksecurity:v1beta1 : GoogleIamV1TestIamPermissionsRequest
 /// - privateca:v1beta1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest {

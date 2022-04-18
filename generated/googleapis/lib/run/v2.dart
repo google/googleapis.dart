@@ -855,23 +855,23 @@ class GoogleCloudRunV2CloudSqlInstance {
   /// Visit https://cloud.google.com/sql/docs/mysql/connect-run for more
   /// information on how to connect Cloud SQL and Cloud Run. Format:
   /// {project}:{location}:{instance}
-  core.List<core.String>? connections;
+  core.List<core.String>? instances;
 
   GoogleCloudRunV2CloudSqlInstance({
-    this.connections,
+    this.instances,
   });
 
   GoogleCloudRunV2CloudSqlInstance.fromJson(core.Map _json)
       : this(
-          connections: _json.containsKey('connections')
-              ? (_json['connections'] as core.List)
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connections != null) 'connections': connections!,
+        if (instances != null) 'instances': instances!,
       };
 }
 
@@ -912,8 +912,8 @@ class GoogleCloudRunV2Condition {
   /// this is a transient reason.
   /// - "REVISION_ORG_POLICY_VIOLATION" : The revision can't be created because
   /// it violates an org policy setting.
-  /// - "ENABLING_GCFV2_URI_SUPPORT" : Enabling GCFv2 URI support; this is a
-  /// transient reason.
+  /// - "UPDATING_GCFV2_URI_DATA" : Updating GCFv2 URI data; this is a transient
+  /// reason.
   core.String? internalReason;
 
   /// Last time the condition transitioned from one status to another.
@@ -2799,7 +2799,7 @@ class GoogleIamV1Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -2989,7 +2989,7 @@ class GoogleIamV1SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   GoogleIamV1Policy? policy;
 
@@ -3022,7 +3022,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;

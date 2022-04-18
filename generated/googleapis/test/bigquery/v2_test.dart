@@ -6003,6 +6003,14 @@ api.Table buildTable() {
     o.numLongTermBytes = 'foo';
     o.numPhysicalBytes = 'foo';
     o.numRows = 'foo';
+    o.numActiveLogicalBytes = 'foo';
+    o.numActivePhysicalBytes = 'foo';
+    o.numLongTermLogicalBytes = 'foo';
+    o.numLongTermPhysicalBytes = 'foo';
+    o.numPartitions = 'foo';
+    o.numTimeTravelPhysicalBytes = 'foo';
+    o.numTotalLogicalBytes = 'foo';
+    o.numTotalPhysicalBytes = 'foo';
     o.rangePartitioning = buildRangePartitioning();
     o.requirePartitionFilter = true;
     o.schema = buildTableSchema();
@@ -6082,6 +6090,38 @@ void checkTable(api.Table o) {
     );
     unittest.expect(
       o.numRows!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numActiveLogicalBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numActivePhysicalBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numLongTermLogicalBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numLongTermPhysicalBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numPartitions!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numTimeTravelPhysicalBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numTotalLogicalBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numTotalPhysicalBytes!,
       unittest.equals('foo'),
     );
     checkRangePartitioning(o.rangePartitioning!);

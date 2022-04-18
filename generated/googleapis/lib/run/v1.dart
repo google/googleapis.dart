@@ -3215,7 +3215,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -6078,14 +6078,16 @@ class Probe {
   /// (Optional) Number of seconds after the container has started before
   /// liveness probes are initiated.
   ///
-  /// More info:
+  /// Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is
+  /// 3600. Max value for startup probe is 240. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   core.int? initialDelaySeconds;
 
   /// (Optional) How often (in seconds) to perform the probe.
   ///
-  /// Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be
-  /// greater or equal than timeout_seconds.
+  /// Default to 10 seconds. Minimum value is 1. Max value for liveness probe is
+  /// 3600. Max value for startup probe is 240. Must be greater or equal than
+  /// timeout_seconds.
   core.int? periodSeconds;
 
   /// (Optional) Minimum consecutive successes for the probe to be considered
@@ -7171,7 +7173,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -7798,7 +7800,7 @@ class TaskTemplateSpec {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

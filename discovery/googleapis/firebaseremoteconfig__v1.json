@@ -237,6 +237,53 @@
                         }
                     }
                 },
+                "projects": {
+                    "resources": {
+                        "remoteConfig": {
+                            "methods": {
+                                "downloadDefaults": {
+                                    "description": "Get a project's Remote Config template defaults. Returns a RemoteConfigDefaults as the payload in the requested string format.",
+                                    "flatPath": "v1/projects/projects/{projectsId}/remoteConfig:downloadDefaults",
+                                    "httpMethod": "GET",
+                                    "id": "firebaseremoteconfig.projects.projects.remoteConfig.downloadDefaults",
+                                    "parameterOrder": [
+                                        "project"
+                                    ],
+                                    "parameters": {
+                                        "format": {
+                                            "description": "Required. The file structure that the default value response should be presented in.",
+                                            "enum": [
+                                                "FORMAT_UNSPECIFIED",
+                                                "XML",
+                                                "PLIST",
+                                                "JSON"
+                                            ],
+                                            "enumDescriptions": [
+                                                "Catch-all for unrecognized enum values.",
+                                                "This value is used if the returned file should be an XML as expected by the Android SDK.",
+                                                "This value is used if the returned file should be an PLIST as expected by the IOS SDK.",
+                                                "This value is used if the returned file should be an JSON as expected by the Web SDK."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "project": {
+                                            "description": "Required. The Firebase project's Project ID or Project Number, prefixed with \"projects/\".",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/projects/{+project}/remoteConfig:downloadDefaults",
+                                    "response": {
+                                        "$ref": "HttpBody"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 "remoteConfig": {
                     "methods": {
                         "listVersions": {
@@ -326,7 +373,7 @@
             }
         }
     },
-    "revision": "20220405",
+    "revision": "20220414",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
         "ExperimentDescription": {
@@ -396,6 +443,11 @@
                 },
                 "countryCode": {
                     "description": "Optional - If omitted and the template has any conditions that depend on country_code, they will be evaluated as false. Should be 2 lower-case letters, e.g. \"us\", \"tr\", or \"gb\", as defined in ISO 3166-1 alpha-2. This is case-insensitive. See https://www.iso.org/obp/ui/#search .",
+                    "type": "string"
+                },
+                "firstOpenTime": {
+                    "description": "The first time a user launches an app after installing or re-installing it. This value comes from GA, and will not be set if GA SDK is not available on the client or if GA does not have the first-open time value.",
+                    "format": "google-datetime",
                     "type": "string"
                 },
                 "languageCode": {
@@ -472,6 +524,33 @@
                     "description": "Used to record the current template in the response.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HttpBody": {
+            "description": "Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged.",
+            "id": "HttpBody",
+            "properties": {
+                "contentType": {
+                    "description": "The HTTP Content-Type header value specifying the content type of the body.",
+                    "type": "string"
+                },
+                "data": {
+                    "description": "The HTTP request/response body as raw binary.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "extensions": {
+                    "description": "Application specific response metadata. Must be set in the first response for streaming APIs.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

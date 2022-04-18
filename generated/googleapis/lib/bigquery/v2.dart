@@ -5166,9 +5166,9 @@ class Explanation {
   /// Attribution of feature.
   core.double? attribution;
 
-  /// Full name of the feature.
+  /// The full feature name.
   ///
-  /// For non-numerical features, will be formatted like .. Overall size of
+  /// For non-numerical features, will be formatted like `.`. Overall size of
   /// feature name will always be truncated to first 120 characters.
   core.String? featureName;
 
@@ -6035,7 +6035,9 @@ class HparamSearchSpaces {
       };
 }
 
-/// Training info of a trial in hyperparameter tuning.
+/// Training info of a trial in \[hyperparameter
+/// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+/// models.
 class HparamTuningTrial {
   /// Ending time of the trial.
   core.String? endTimeMs;
@@ -8810,9 +8812,11 @@ class Model {
 
   /// The default trial_id to use in TVFs when the trial_id is not passed in.
   ///
-  /// For single-objective hyperparameter tuning, this is the best trial id. For
-  /// multi-objective hyperparameter tuning, this is the smallest trial id among
-  /// all Pareto optimal trials.
+  /// For single-objective \[hyperparameter
+  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// models, this is the best trial ID. For multi-objective \[hyperparameter
+  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// models, this is the smallest trial ID among all Pareto optimal trials.
   ///
   /// Output only.
   core.String? defaultTrialId;
@@ -8859,7 +8863,9 @@ class Model {
   /// Output only.
   HparamSearchSpaces? hparamSearchSpaces;
 
-  /// Trials of a hyperparameter tuning model sorted by trial_id.
+  /// Trials of a \[hyperparameter
+  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// model sorted by trial_id.
   ///
   /// Output only.
   core.List<HparamTuningTrial>? hparamTrials;
@@ -8919,11 +8925,13 @@ class Model {
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
   core.String? modelType;
 
-  /// For single-objective hyperparameter tuning, it only contains the best
-  /// trial.
+  /// For single-objective \[hyperparameter
+  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// models, it only contains the best trial.
   ///
-  /// For multi-objective hyperparameter tuning, it contains all Pareto optimal
-  /// trials sorted by trial_id.
+  /// For multi-objective \[hyperparameter
+  /// tuning\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// models, it contains all Pareto optimal trials sorted by trial_id.
   ///
   /// Output only.
   core.List<core.String>? optimalTrialIds;
@@ -11266,6 +11274,48 @@ class Table {
   /// data in the streaming buffer.
   core.String? numRows;
 
+  /// \[Output-only\] Number of logical bytes that are less than 90 days old.
+  core.String? numActiveLogicalBytes;
+
+  /// \[Output-only\] Number of physical bytes less than 90 days old.
+  ///
+  /// This data is not kept in real time, and might be delayed by a few seconds
+  /// to a few minutes.
+  core.String? numActivePhysicalBytes;
+
+  /// \[Output-only\] Number of logical bytes that are more than 90 days old.
+  core.String? numLongTermLogicalBytes;
+
+  /// \[Output-only\] Number of physical bytes more than 90 days old.
+  ///
+  /// This data is not kept in real time, and might be delayed by a few seconds
+  /// to a few minutes.
+  core.String? numLongTermPhysicalBytes;
+
+  /// \[Output-only\] The number of partitions present in the table or
+  /// materialized view.
+  ///
+  /// This data is not kept in real time, and might be delayed by a few seconds
+  /// to a few minutes.
+  core.String? numPartitions;
+
+  /// \[Output-only\] Number of physical bytes used by time travel storage
+  /// (deleted or changed data).
+  ///
+  /// This data is not kept in real time, and might be delayed by a few seconds
+  /// to a few minutes.
+  core.String? numTimeTravelPhysicalBytes;
+
+  /// \[Output-only\] Total number of logical bytes in the table or materialized
+  /// view.
+  core.String? numTotalLogicalBytes;
+
+  /// \[Output-only\] The physical size of this table in bytes.
+  ///
+  /// This also includes storage used for time travel. This data is not kept in
+  /// real time, and might be delayed by a few seconds to a few minutes.
+  core.String? numTotalPhysicalBytes;
+
   /// \[TrustedTester\] Range partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
@@ -11342,6 +11392,14 @@ class Table {
     this.numLongTermBytes,
     this.numPhysicalBytes,
     this.numRows,
+    this.numActiveLogicalBytes,
+    this.numActivePhysicalBytes,
+    this.numLongTermLogicalBytes,
+    this.numLongTermPhysicalBytes,
+    this.numPartitions,
+    this.numTimeTravelPhysicalBytes,
+    this.numTotalLogicalBytes,
+    this.numTotalPhysicalBytes,
     this.rangePartitioning,
     this.requirePartitionFilter,
     this.schema,
@@ -11427,6 +11485,33 @@ class Table {
           numRows: _json.containsKey('numRows')
               ? _json['numRows'] as core.String
               : null,
+          numActiveLogicalBytes: _json.containsKey('num_active_logical_bytes')
+              ? _json['num_active_logical_bytes'] as core.String
+              : null,
+          numActivePhysicalBytes: _json.containsKey('num_active_physical_bytes')
+              ? _json['num_active_physical_bytes'] as core.String
+              : null,
+          numLongTermLogicalBytes:
+              _json.containsKey('num_long_term_logical_bytes')
+                  ? _json['num_long_term_logical_bytes'] as core.String
+                  : null,
+          numLongTermPhysicalBytes:
+              _json.containsKey('num_long_term_physical_bytes')
+                  ? _json['num_long_term_physical_bytes'] as core.String
+                  : null,
+          numPartitions: _json.containsKey('num_partitions')
+              ? _json['num_partitions'] as core.String
+              : null,
+          numTimeTravelPhysicalBytes:
+              _json.containsKey('num_time_travel_physical_bytes')
+                  ? _json['num_time_travel_physical_bytes'] as core.String
+                  : null,
+          numTotalLogicalBytes: _json.containsKey('num_total_logical_bytes')
+              ? _json['num_total_logical_bytes'] as core.String
+              : null,
+          numTotalPhysicalBytes: _json.containsKey('num_total_physical_bytes')
+              ? _json['num_total_physical_bytes'] as core.String
+              : null,
           rangePartitioning: _json.containsKey('rangePartitioning')
               ? RangePartitioning.fromJson(_json['rangePartitioning']
                   as core.Map<core.String, core.dynamic>)
@@ -11488,6 +11573,21 @@ class Table {
         if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes!,
         if (numPhysicalBytes != null) 'numPhysicalBytes': numPhysicalBytes!,
         if (numRows != null) 'numRows': numRows!,
+        if (numActiveLogicalBytes != null)
+          'num_active_logical_bytes': numActiveLogicalBytes!,
+        if (numActivePhysicalBytes != null)
+          'num_active_physical_bytes': numActivePhysicalBytes!,
+        if (numLongTermLogicalBytes != null)
+          'num_long_term_logical_bytes': numLongTermLogicalBytes!,
+        if (numLongTermPhysicalBytes != null)
+          'num_long_term_physical_bytes': numLongTermPhysicalBytes!,
+        if (numPartitions != null) 'num_partitions': numPartitions!,
+        if (numTimeTravelPhysicalBytes != null)
+          'num_time_travel_physical_bytes': numTimeTravelPhysicalBytes!,
+        if (numTotalLogicalBytes != null)
+          'num_total_logical_bytes': numTotalLogicalBytes!,
+        if (numTotalPhysicalBytes != null)
+          'num_total_physical_bytes': numTotalPhysicalBytes!,
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,

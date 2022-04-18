@@ -1338,7 +1338,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
