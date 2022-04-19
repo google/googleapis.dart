@@ -27,6 +27,7 @@
 ///   - [BillingAccountsLocationsResource]
 ///     - [BillingAccountsLocationsBucketsResource]
 ///       - [BillingAccountsLocationsBucketsViewsResource]
+///         - [BillingAccountsLocationsBucketsViewsLogsResource]
 ///     - [BillingAccountsLocationsOperationsResource]
 ///   - [BillingAccountsLogsResource]
 ///   - [BillingAccountsOperationsResource]
@@ -38,6 +39,7 @@
 ///   - [FoldersLocationsResource]
 ///     - [FoldersLocationsBucketsResource]
 ///       - [FoldersLocationsBucketsViewsResource]
+///         - [FoldersLocationsBucketsViewsLogsResource]
 ///     - [FoldersLocationsOperationsResource]
 ///   - [FoldersLogsResource]
 ///   - [FoldersSinksResource]
@@ -52,6 +54,7 @@
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsBucketsResource]
 ///       - [OrganizationsLocationsBucketsViewsResource]
+///         - [OrganizationsLocationsBucketsViewsLogsResource]
 ///     - [OrganizationsLocationsOperationsResource]
 ///   - [OrganizationsLogsResource]
 ///   - [OrganizationsSinksResource]
@@ -60,6 +63,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBucketsResource]
 ///       - [ProjectsLocationsBucketsViewsResource]
+///         - [ProjectsLocationsBucketsViewsLogsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///   - [ProjectsLogsResource]
 ///   - [ProjectsMetricsResource]
@@ -963,6 +967,9 @@ class BillingAccountsLocationsBucketsResource {
 class BillingAccountsLocationsBucketsViewsResource {
   final commons.ApiRequester _requester;
 
+  BillingAccountsLocationsBucketsViewsLogsResource get logs =>
+      BillingAccountsLocationsBucketsViewsLogsResource(_requester);
+
   BillingAccountsLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -1165,6 +1172,78 @@ class BillingAccountsLocationsBucketsViewsResource {
       queryParams: _queryParams,
     );
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BillingAccountsLocationsBucketsViewsLogsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsBucketsViewsLogsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the logs in projects, organizations, folders, or billing accounts.
+  ///
+  /// Only logs that have entries are listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceNames != null) 'resourceNames': resourceNames,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3038,6 +3117,9 @@ class FoldersLocationsBucketsResource {
 class FoldersLocationsBucketsViewsResource {
   final commons.ApiRequester _requester;
 
+  FoldersLocationsBucketsViewsLogsResource get logs =>
+      FoldersLocationsBucketsViewsLogsResource(_requester);
+
   FoldersLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -3279,6 +3361,78 @@ class FoldersLocationsBucketsViewsResource {
       queryParams: _queryParams,
     );
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersLocationsBucketsViewsLogsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsBucketsViewsLogsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the logs in projects, organizations, folders, or billing accounts.
+  ///
+  /// Only logs that have entries are listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceNames != null) 'resourceNames': resourceNames,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5782,6 +5936,9 @@ class OrganizationsLocationsBucketsResource {
 class OrganizationsLocationsBucketsViewsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsBucketsViewsLogsResource get logs =>
+      OrganizationsLocationsBucketsViewsLogsResource(_requester);
+
   OrganizationsLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -6023,6 +6180,78 @@ class OrganizationsLocationsBucketsViewsResource {
       queryParams: _queryParams,
     );
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsBucketsViewsLogsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsBucketsViewsLogsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the logs in projects, organizations, folders, or billing accounts.
+  ///
+  /// Only logs that have entries are listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceNames != null) 'resourceNames': resourceNames,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7418,6 +7647,9 @@ class ProjectsLocationsBucketsResource {
 class ProjectsLocationsBucketsViewsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBucketsViewsLogsResource get logs =>
+      ProjectsLocationsBucketsViewsLogsResource(_requester);
+
   ProjectsLocationsBucketsViewsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -7659,6 +7891,78 @@ class ProjectsLocationsBucketsViewsResource {
       queryParams: _queryParams,
     );
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBucketsViewsLogsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsViewsLogsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the logs in projects, organizations, folders, or billing accounts.
+  ///
+  /// Only logs that have entries are listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]To
+  /// support legacy queries, it could also be: projects/\[PROJECT_ID\]
+  /// organizations/\[ORGANIZATION_ID\] billingAccounts/\[BILLING_ACCOUNT_ID\]
+  /// folders/\[FOLDER_ID\]
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLogsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLogsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceNames != null) 'resourceNames': resourceNames,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9446,6 +9750,57 @@ class HttpRequest {
       };
 }
 
+/// Configuration for an indexed field.
+class IndexConfig {
+  /// The timestamp when the index was last modified.This is used to return the
+  /// timestamp, and will be ignored if supplied during update.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The LogEntry field path to index.Note that some paths are automatically
+  /// indexed, and other paths are not eligible for indexing.
+  ///
+  /// See indexing documentation(
+  /// https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields)
+  /// for details.For example: jsonPayload.request.status
+  ///
+  /// Required.
+  core.String? fieldPath;
+
+  /// The type of data in this index.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INDEX_TYPE_UNSPECIFIED" : The index's type is unspecified.
+  /// - "INDEX_TYPE_STRING" : The index is a string-type index.
+  /// - "INDEX_TYPE_INTEGER" : The index is a integer-type index.
+  core.String? type;
+
+  IndexConfig({
+    this.createTime,
+    this.fieldPath,
+    this.type,
+  });
+
+  IndexConfig.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          fieldPath: _json.containsKey('fieldPath')
+              ? _json['fieldPath'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (fieldPath != null) 'fieldPath': fieldPath!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// A description of a label.
 typedef LabelDescriptor = $LabelDescriptor;
 
@@ -9956,6 +10311,9 @@ class LogBucket {
   /// Describes this bucket.
   core.String? description;
 
+  /// A list of indexed fields and related configuration data.
+  core.List<IndexConfig>? indexConfigs;
+
   /// The bucket lifecycle state.
   ///
   /// Output only.
@@ -10009,6 +10367,7 @@ class LogBucket {
     this.cmekSettings,
     this.createTime,
     this.description,
+    this.indexConfigs,
     this.lifecycleState,
     this.locked,
     this.name,
@@ -10028,6 +10387,12 @@ class LogBucket {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
+              : null,
+          indexConfigs: _json.containsKey('indexConfigs')
+              ? (_json['indexConfigs'] as core.List)
+                  .map((value) => IndexConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           lifecycleState: _json.containsKey('lifecycleState')
               ? _json['lifecycleState'] as core.String
@@ -10052,6 +10417,7 @@ class LogBucket {
         if (cmekSettings != null) 'cmekSettings': cmekSettings!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (indexConfigs != null) 'indexConfigs': indexConfigs!,
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,
         if (locked != null) 'locked': locked!,
         if (name != null) 'name': name!,

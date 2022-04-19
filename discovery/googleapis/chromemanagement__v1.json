@@ -486,7 +486,7 @@
             }
         }
     },
-    "revision": "20220405",
+    "revision": "20220414",
     "rootUrl": "https://chromemanagement.googleapis.com/",
     "schemas": {
         "GoogleChromeManagementV1AndroidAppInfo": {

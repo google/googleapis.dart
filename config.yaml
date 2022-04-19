@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 8.1.0
+    version: 8.2.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -124,6 +124,7 @@ packages:
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
     - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
     - gameservices:v1
+    - gkebackup:v1
     - gkehub:v1
     - gmail:v1 # https://developers.google.com/gmail/
     - gmailpostmastertools:v1

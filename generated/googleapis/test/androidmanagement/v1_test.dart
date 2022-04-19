@@ -3438,6 +3438,7 @@ api.Policy buildPolicy() {
     o.tetheringConfigDisabled = true;
     o.uninstallAppsDisabled = true;
     o.unmuteMicrophoneDisabled = true;
+    o.usageLog = buildUsageLog();
     o.usbFileTransferDisabled = true;
     o.usbMassStorageEnabled = true;
     o.version = 'foo';
@@ -3569,6 +3570,7 @@ void checkPolicy(api.Policy o) {
     unittest.expect(o.tetheringConfigDisabled!, unittest.isTrue);
     unittest.expect(o.uninstallAppsDisabled!, unittest.isTrue);
     unittest.expect(o.unmuteMicrophoneDisabled!, unittest.isTrue);
+    checkUsageLog(o.usageLog!);
     unittest.expect(o.usbFileTransferDisabled!, unittest.isTrue);
     unittest.expect(o.usbMassStorageEnabled!, unittest.isTrue);
     unittest.expect(
@@ -4161,6 +4163,61 @@ void checkTermsAndConditions(api.TermsAndConditions o) {
   buildCounterTermsAndConditions--;
 }
 
+core.List<core.String> buildUnnamed85() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed85(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed86() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed86(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUsageLog = 0;
+api.UsageLog buildUsageLog() {
+  final o = api.UsageLog();
+  buildCounterUsageLog++;
+  if (buildCounterUsageLog < 3) {
+    o.enabledLogTypes = buildUnnamed85();
+    o.uploadOnCellularAllowed = buildUnnamed86();
+  }
+  buildCounterUsageLog--;
+  return o;
+}
+
+void checkUsageLog(api.UsageLog o) {
+  buildCounterUsageLog++;
+  if (buildCounterUsageLog < 3) {
+    checkUnnamed85(o.enabledLogTypes!);
+    checkUnnamed86(o.uploadOnCellularAllowed!);
+  }
+  buildCounterUsageLog--;
+}
+
 core.int buildCounterUser = 0;
 api.User buildUser() {
   final o = api.User();
@@ -4183,12 +4240,12 @@ void checkUser(api.User o) {
   buildCounterUser--;
 }
 
-core.Map<core.String, core.String> buildUnnamed85() => {
+core.Map<core.String, core.String> buildUnnamed87() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed85(core.Map<core.String, core.String> o) {
+void checkUnnamed87(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4206,7 +4263,7 @@ api.UserFacingMessage buildUserFacingMessage() {
   buildCounterUserFacingMessage++;
   if (buildCounterUserFacingMessage < 3) {
     o.defaultMessage = 'foo';
-    o.localizedMessages = buildUnnamed85();
+    o.localizedMessages = buildUnnamed87();
   }
   buildCounterUserFacingMessage--;
   return o;
@@ -4219,17 +4276,17 @@ void checkUserFacingMessage(api.UserFacingMessage o) {
       o.defaultMessage!,
       unittest.equals('foo'),
     );
-    checkUnnamed85(o.localizedMessages!);
+    checkUnnamed87(o.localizedMessages!);
   }
   buildCounterUserFacingMessage--;
 }
 
-core.List<api.WebAppIcon> buildUnnamed86() => [
+core.List<api.WebAppIcon> buildUnnamed88() => [
       buildWebAppIcon(),
       buildWebAppIcon(),
     ];
 
-void checkUnnamed86(core.List<api.WebAppIcon> o) {
+void checkUnnamed88(core.List<api.WebAppIcon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebAppIcon(o[0]);
   checkWebAppIcon(o[1]);
@@ -4241,7 +4298,7 @@ api.WebApp buildWebApp() {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     o.displayMode = 'foo';
-    o.icons = buildUnnamed86();
+    o.icons = buildUnnamed88();
     o.name = 'foo';
     o.startUrl = 'foo';
     o.title = 'foo';
@@ -4258,7 +4315,7 @@ void checkWebApp(api.WebApp o) {
       o.displayMode!,
       unittest.equals('foo'),
     );
-    checkUnnamed86(o.icons!);
+    checkUnnamed88(o.icons!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4301,12 +4358,12 @@ void checkWebAppIcon(api.WebAppIcon o) {
   buildCounterWebAppIcon--;
 }
 
-core.List<core.String> buildUnnamed87() => [
+core.List<core.String> buildUnnamed89() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed87(core.List<core.String> o) {
+void checkUnnamed89(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4318,12 +4375,12 @@ void checkUnnamed87(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed88() => [
+core.List<core.String> buildUnnamed90() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed88(core.List<core.String> o) {
+void checkUnnamed90(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4340,10 +4397,10 @@ api.WebToken buildWebToken() {
   final o = api.WebToken();
   buildCounterWebToken++;
   if (buildCounterWebToken < 3) {
-    o.enabledFeatures = buildUnnamed87();
+    o.enabledFeatures = buildUnnamed89();
     o.name = 'foo';
     o.parentFrameUrl = 'foo';
-    o.permissions = buildUnnamed88();
+    o.permissions = buildUnnamed90();
     o.value = 'foo';
   }
   buildCounterWebToken--;
@@ -4353,7 +4410,7 @@ api.WebToken buildWebToken() {
 void checkWebToken(api.WebToken o) {
   buildCounterWebToken++;
   if (buildCounterWebToken < 3) {
-    checkUnnamed87(o.enabledFeatures!);
+    checkUnnamed89(o.enabledFeatures!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4362,7 +4419,7 @@ void checkWebToken(api.WebToken o) {
       o.parentFrameUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed88(o.permissions!);
+    checkUnnamed90(o.permissions!);
     unittest.expect(
       o.value!,
       unittest.equals('foo'),
@@ -4395,12 +4452,12 @@ void checkWipeAction(api.WipeAction o) {
   buildCounterWipeAction--;
 }
 
-core.List<core.String> buildUnnamed89() => [
+core.List<core.String> buildUnnamed91() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed89(core.List<core.String> o) {
+void checkUnnamed91(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5123,6 +5180,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UsageLog', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUsageLog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.UsageLog.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkUsageLog(od);
+    });
+  });
+
   unittest.group('obj-schema-User', () {
     unittest.test('to-json--from-json', () async {
       final o = buildUser();
@@ -5572,7 +5639,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AndroidManagementApi(mock).enterprises.devices;
       final arg_name = 'foo';
-      final arg_wipeDataFlags = buildUnnamed89();
+      final arg_wipeDataFlags = buildUnnamed91();
       final arg_wipeReasonMessage = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

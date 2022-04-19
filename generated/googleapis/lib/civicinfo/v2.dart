@@ -1342,9 +1342,9 @@ class GeocodingSummary {
   /// - "typeTransitLine" : A transit line is a collection of transit legs,
   /// associated with some invariant properties of the trips that run over the
   /// legs. See also transitline.proto
-  /// - "typeTransitAgency" : A transit agency operates a number of lines,
-  /// typically all in the same city, region or country. See also
-  /// transitagency.proto
+  /// - "typeTransitAgencyDeprecatedValue" : TYPE_TRANSIT_AGENCY was moved to
+  /// 0xC91. This deprecated enum value still exists for debugging purposes
+  /// only.
   /// - "typeTransitTransfer" : DEPRECATED
   /// - "typeSegmentPath" : ABSTRACT
   /// - "typeRoadSign" : Road sign features have names, point geometry, etc.
@@ -1749,6 +1749,11 @@ class GeocodingSummary {
   /// region-specific conventions for structuring addresses. These features
   /// aren't necessarily defined by physical geographic features, so they are
   /// classified as meta-features.
+  /// - "typeTransitAgency" : A transit agency operates a number of lines,
+  /// typically all in the same city, region or country. See also
+  /// transitagency.proto
+  /// - "typeFutureGeometry" : A feature whose geometry is planned to replace
+  /// the geometry on another feature.
   /// - "typeEvent" : DEPRECATED
   /// - "typeEarthquake" : DEPRECATED
   /// - "typeHurricane" : DEPRECATED
@@ -2230,6 +2235,155 @@ class PollingLocation {
       };
 }
 
+class Precinct {
+  /// ID of the AdministrationRegion message for this precinct.
+  ///
+  /// Corresponds to LocalityId xml tag.
+  core.String? administrationRegionId;
+
+  /// ID(s) of the Contest message(s) for this precinct.
+  core.List<core.String>? contestId;
+
+  /// Dataset ID.
+  ///
+  /// What datasets our Precincts come from.
+  ///
+  /// Required.
+  core.String? datasetId;
+
+  /// ID(s) of the PollingLocation message(s) for this precinct.
+  core.List<core.String>? earlyVoteSiteId;
+
+  /// ID(s) of the ElectoralDistrict message(s) for this precinct.
+  core.List<core.String>? electoralDistrictId;
+
+  /// A unique identifier for this precinct.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Specifies if the precinct runs mail-only elections.
+  core.bool? mailOnly;
+
+  /// The name of the precinct.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The number of the precinct.
+  core.String? number;
+
+  /// Encouraged.
+  ///
+  /// The OCD ID of the precinct
+  core.List<core.String>? ocdId;
+
+  /// ID(s) of the PollingLocation message(s) for this precinct.
+  core.List<core.String>? pollingLocationId;
+
+  /// ID(s) of the SpatialBoundary message(s) for this precinct.
+  ///
+  /// Used to specify a geometrical boundary of the precinct.
+  core.List<core.String>? spatialBoundaryId;
+
+  /// If present, this proto corresponds to one portion of split precinct.
+  ///
+  /// Other portions of this precinct are guaranteed to have the same `name`. If
+  /// not present, this proto represents a full precicnt.
+  core.String? splitName;
+
+  /// Specifies the ward the precinct is contained within.
+  core.String? ward;
+
+  Precinct({
+    this.administrationRegionId,
+    this.contestId,
+    this.datasetId,
+    this.earlyVoteSiteId,
+    this.electoralDistrictId,
+    this.id,
+    this.mailOnly,
+    this.name,
+    this.number,
+    this.ocdId,
+    this.pollingLocationId,
+    this.spatialBoundaryId,
+    this.splitName,
+    this.ward,
+  });
+
+  Precinct.fromJson(core.Map _json)
+      : this(
+          administrationRegionId: _json.containsKey('administrationRegionId')
+              ? _json['administrationRegionId'] as core.String
+              : null,
+          contestId: _json.containsKey('contestId')
+              ? (_json['contestId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          datasetId: _json.containsKey('datasetId')
+              ? _json['datasetId'] as core.String
+              : null,
+          earlyVoteSiteId: _json.containsKey('earlyVoteSiteId')
+              ? (_json['earlyVoteSiteId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          electoralDistrictId: _json.containsKey('electoralDistrictId')
+              ? (_json['electoralDistrictId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          mailOnly: _json.containsKey('mailOnly')
+              ? _json['mailOnly'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          number: _json.containsKey('number')
+              ? _json['number'] as core.String
+              : null,
+          ocdId: _json.containsKey('ocdId')
+              ? (_json['ocdId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          pollingLocationId: _json.containsKey('pollingLocationId')
+              ? (_json['pollingLocationId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          spatialBoundaryId: _json.containsKey('spatialBoundaryId')
+              ? (_json['spatialBoundaryId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          splitName: _json.containsKey('splitName')
+              ? _json['splitName'] as core.String
+              : null,
+          ward: _json.containsKey('ward') ? _json['ward'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (administrationRegionId != null)
+          'administrationRegionId': administrationRegionId!,
+        if (contestId != null) 'contestId': contestId!,
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (earlyVoteSiteId != null) 'earlyVoteSiteId': earlyVoteSiteId!,
+        if (electoralDistrictId != null)
+          'electoralDistrictId': electoralDistrictId!,
+        if (id != null) 'id': id!,
+        if (mailOnly != null) 'mailOnly': mailOnly!,
+        if (name != null) 'name': name!,
+        if (number != null) 'number': number!,
+        if (ocdId != null) 'ocdId': ocdId!,
+        if (pollingLocationId != null) 'pollingLocationId': pollingLocationId!,
+        if (spatialBoundaryId != null) 'spatialBoundaryId': spatialBoundaryId!,
+        if (splitName != null) 'splitName': splitName!,
+        if (ward != null) 'ward': ward!,
+      };
+}
+
 class RepresentativeInfoData {
   /// A map of political geographic divisions that contain the requested
   /// address, keyed by the unique Open Civic Data identifier for this division.
@@ -2491,6 +2645,12 @@ class VoterInfoResponse {
   core.List<PollingLocation>? pollingLocations;
   core.String? precinctId;
 
+  /// The precincts that match this voter's address.
+  ///
+  /// Will only be returned for project IDs which have been whitelisted as
+  /// "partner projects".
+  core.List<Precinct>? precincts;
+
   /// Local Election Information for the state that the voter votes in.
   ///
   /// For the US, there will only be one element in this array.
@@ -2507,6 +2667,7 @@ class VoterInfoResponse {
     this.otherElections,
     this.pollingLocations,
     this.precinctId,
+    this.precincts,
     this.state,
   });
 
@@ -2557,6 +2718,12 @@ class VoterInfoResponse {
           precinctId: _json.containsKey('precinctId')
               ? _json['precinctId'] as core.String
               : null,
+          precincts: _json.containsKey('precincts')
+              ? (_json['precincts'] as core.List)
+                  .map((value) => Precinct.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           state: _json.containsKey('state')
               ? (_json['state'] as core.List)
                   .map((value) => AdministrationRegion.fromJson(
@@ -2576,6 +2743,7 @@ class VoterInfoResponse {
         if (otherElections != null) 'otherElections': otherElections!,
         if (pollingLocations != null) 'pollingLocations': pollingLocations!,
         if (precinctId != null) 'precinctId': precinctId!,
+        if (precincts != null) 'precincts': precincts!,
         if (state != null) 'state': state!,
       };
 }

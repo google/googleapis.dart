@@ -1,6 +1,9 @@
-## 8.2.0-dev
+## 8.2.0
 
+- `dfareporting` - **removed** v3.4.
 - `dns` - new v2
+- `forms` - new!
+- `gkebackup` - new!
 
 ## 8.1.0
 

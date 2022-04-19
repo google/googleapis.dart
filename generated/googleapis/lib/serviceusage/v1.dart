@@ -1298,55 +1298,7 @@ class GoogleApiServiceusageV1ServiceConfig {
 }
 
 /// Specifies a location to extract JWT from an API request.
-class JwtLocation {
-  /// Specifies cookie name to extract JWT token.
-  core.String? cookie;
-
-  /// Specifies HTTP header name to extract JWT token.
-  core.String? header;
-
-  /// Specifies URL query parameter name to extract JWT token.
-  core.String? query;
-
-  /// The value prefix.
-  ///
-  /// The value format is "value_prefix{token}" Only applies to "in" header
-  /// type. Must be empty for "in" query type. If not empty, the header value
-  /// has to match (case sensitive) this prefix. If not matched, JWT will not be
-  /// extracted. If matched, JWT will be extracted after the prefix is removed.
-  /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
-  /// with a space at the end.
-  core.String? valuePrefix;
-
-  JwtLocation({
-    this.cookie,
-    this.header,
-    this.query,
-    this.valuePrefix,
-  });
-
-  JwtLocation.fromJson(core.Map _json)
-      : this(
-          cookie: _json.containsKey('cookie')
-              ? _json['cookie'] as core.String
-              : null,
-          header: _json.containsKey('header')
-              ? _json['header'] as core.String
-              : null,
-          query:
-              _json.containsKey('query') ? _json['query'] as core.String : null,
-          valuePrefix: _json.containsKey('valuePrefix')
-              ? _json['valuePrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cookie != null) 'cookie': cookie!,
-        if (header != null) 'header': header!,
-        if (query != null) 'query': query!,
-        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
-      };
-}
+typedef JwtLocation = $JwtLocation;
 
 /// A description of a label.
 typedef LabelDescriptor = $LabelDescriptor;

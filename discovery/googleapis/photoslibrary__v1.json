@@ -639,7 +639,7 @@
             }
         }
     },
-    "revision": "20220404",
+    "revision": "20220413",
     "rootUrl": "https://photoslibrary.googleapis.com/",
     "schemas": {
         "AddEnrichmentToAlbumRequest": {
@@ -1280,7 +1280,7 @@
                     "description": "Information about the user who added this media item. Note that this is only included when using mediaItems.search with the ID of a shared album. The album must be created by your app and you must have the sharing scope."
                 },
                 "description": {
-                    "description": "Description of the media item. This is shown to the user in the item's info section in the Google Photos app.",
+                    "description": "Description of the media item. This is shown to the user in the item's info section in the Google Photos app. Must be shorter than 1000 characters. Only include text written by users. Descriptions should add context and help users understand media. Do not include any auto-generated strings such as filenames, tags, and other metadata.",
                     "type": "string"
                 },
                 "filename": {
@@ -1399,7 +1399,7 @@
             "id": "NewMediaItem",
             "properties": {
                 "description": {
-                    "description": "Description of the media item. This will be shown to the user in the item's info section in the Google Photos app. This string shouldn't be more than 1000 characters.",
+                    "description": "Description of the media item. This is shown to the user in the item's info section in the Google Photos app. Must be shorter than 1000 characters. Only include text written by users. Descriptions should add context and help users understand media. Do not include any auto-generated strings such as filenames, tags, and other metadata.",
                     "type": "string"
                 },
                 "simpleMediaItem": {

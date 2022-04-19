@@ -130,6 +130,28 @@ void checkAvailableUpdates(api.AvailableUpdates o) {
   buildCounterAvailableUpdates--;
 }
 
+core.int buildCounterAwsSourceVmDetails = 0;
+api.AwsSourceVmDetails buildAwsSourceVmDetails() {
+  final o = api.AwsSourceVmDetails();
+  buildCounterAwsSourceVmDetails++;
+  if (buildCounterAwsSourceVmDetails < 3) {
+    o.firmware = 'foo';
+  }
+  buildCounterAwsSourceVmDetails--;
+  return o;
+}
+
+void checkAwsSourceVmDetails(api.AwsSourceVmDetails o) {
+  buildCounterAwsSourceVmDetails++;
+  if (buildCounterAwsSourceVmDetails < 3) {
+    unittest.expect(
+      o.firmware!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAwsSourceVmDetails--;
+}
+
 core.int buildCounterCancelCloneJobRequest = 0;
 api.CancelCloneJobRequest buildCancelCloneJobRequest() {
   final o = api.CancelCloneJobRequest();
@@ -1455,6 +1477,7 @@ api.MigratingVm buildMigratingVm() {
   final o = api.MigratingVm();
   buildCounterMigratingVm++;
   if (buildCounterMigratingVm < 3) {
+    o.awsSourceVmDetails = buildAwsSourceVmDetails();
     o.computeEngineTargetDefaults = buildComputeEngineTargetDefaults();
     o.createTime = 'foo';
     o.currentSyncInfo = buildReplicationCycle();
@@ -1480,6 +1503,7 @@ api.MigratingVm buildMigratingVm() {
 void checkMigratingVm(api.MigratingVm o) {
   buildCounterMigratingVm++;
   if (buildCounterMigratingVm < 3) {
+    checkAwsSourceVmDetails(o.awsSourceVmDetails!);
     checkComputeEngineTargetDefaults(o.computeEngineTargetDefaults!);
     unittest.expect(
       o.createTime!,
@@ -2454,6 +2478,16 @@ void main() {
       final od = api.AvailableUpdates.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAvailableUpdates(od);
+    });
+  });
+
+  unittest.group('obj-schema-AwsSourceVmDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAwsSourceVmDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AwsSourceVmDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAwsSourceVmDetails(od);
     });
   });
 

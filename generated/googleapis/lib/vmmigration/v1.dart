@@ -133,7 +133,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -2861,6 +2861,31 @@ class AvailableUpdates {
       };
 }
 
+/// Represent the source AWS VM details.
+class AwsSourceVmDetails {
+  /// The firmware type of the source VM.
+  /// Possible string values are:
+  /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
+  /// - "EFI" : The firmware is EFI.
+  /// - "BIOS" : The firmware is BIOS.
+  core.String? firmware;
+
+  AwsSourceVmDetails({
+    this.firmware,
+  });
+
+  AwsSourceVmDetails.fromJson(core.Map _json)
+      : this(
+          firmware: _json.containsKey('firmware')
+              ? _json['firmware'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firmware != null) 'firmware': firmware!,
+      };
+}
+
 /// Request message for 'CancelCloneJob' request.
 typedef CancelCloneJobRequest = $Empty;
 
@@ -4307,6 +4332,11 @@ typedef Location = $Location00;
 /// MigratingVm describes the VM that will be migrated from a Source environment
 /// and its replication state.
 class MigratingVm {
+  /// Details of the VM from an AWS source.
+  ///
+  /// Output only.
+  AwsSourceVmDetails? awsSourceVmDetails;
+
   /// Details of the target VM in Compute Engine.
   ComputeEngineTargetDefaults? computeEngineTargetDefaults;
 
@@ -4421,6 +4451,7 @@ class MigratingVm {
   core.String? updateTime;
 
   MigratingVm({
+    this.awsSourceVmDetails,
     this.computeEngineTargetDefaults,
     this.createTime,
     this.currentSyncInfo,
@@ -4442,6 +4473,10 @@ class MigratingVm {
 
   MigratingVm.fromJson(core.Map _json)
       : this(
+          awsSourceVmDetails: _json.containsKey('awsSourceVmDetails')
+              ? AwsSourceVmDetails.fromJson(_json['awsSourceVmDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           computeEngineTargetDefaults:
               _json.containsKey('computeEngineTargetDefaults')
                   ? ComputeEngineTargetDefaults.fromJson(
@@ -4510,6 +4545,8 @@ class MigratingVm {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (awsSourceVmDetails != null)
+          'awsSourceVmDetails': awsSourceVmDetails!,
         if (computeEngineTargetDefaults != null)
           'computeEngineTargetDefaults': computeEngineTargetDefaults!,
         if (createTime != null) 'createTime': createTime!,

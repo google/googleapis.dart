@@ -1172,7 +1172,7 @@
             }
         }
     },
-    "revision": "20220406",
+    "revision": "20220414",
     "rootUrl": "https://realtimebidding.googleapis.com/",
     "schemas": {
         "ActivatePretargetingConfigRequest": {

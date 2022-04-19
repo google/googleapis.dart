@@ -119,7 +119,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -1065,7 +1065,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1262,7 +1262,8 @@ class ListSecretVersionsResponse {
   /// next page.
   core.String? nextPageToken;
 
-  /// The total number of SecretVersions.
+  /// The total number of SecretVersions but 0 when the
+  /// ListSecretsRequest.filter field is set.
   core.int? totalSize;
 
   /// The list of SecretVersions sorted in reverse by create_time (newest
@@ -1309,7 +1310,8 @@ class ListSecretsResponse {
   /// The list of Secrets sorted in reverse by create_time (newest first).
   core.List<Secret>? secrets;
 
-  /// The total number of Secrets.
+  /// The total number of Secrets but 0 when the ListSecretsRequest.filter field
+  /// is set.
   core.int? totalSize;
 
   ListSecretsResponse({
@@ -1933,7 +1935,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -1966,7 +1968,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

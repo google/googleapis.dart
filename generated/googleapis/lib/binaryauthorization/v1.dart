@@ -959,8 +959,11 @@ class Attestor {
   /// Optional.
   core.String? description;
 
-  /// Used to prevent updating the attestor when another request has updated it
-  /// since it was retrieved.
+  /// A checksum, returned by the server, that can be sent on update requests to
+  /// ensure the attestor has an up-to-date value before attempting to update
+  /// it.
+  ///
+  /// See https://google.aip.dev/154.
   ///
   /// Optional.
   core.String? etag;
@@ -1098,7 +1101,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1445,8 +1448,10 @@ class Policy {
   /// Optional.
   core.String? description;
 
-  /// Used to prevent updating the policy when another request has updated it
-  /// since it was retrieved.
+  /// A checksum, returned by the server, that can be sent on update requests to
+  /// ensure the policy has an up-to-date value before attempting to update it.
+  ///
+  /// See https://google.aip.dev/154.
   ///
   /// Optional.
   core.String? etag;
@@ -1619,7 +1624,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   IamPolicy? policy;
 
@@ -1662,7 +1667,7 @@ class SetIamPolicyRequest {
 typedef Signature = $Signature;
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

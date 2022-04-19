@@ -88,7 +88,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -1946,6 +1946,60 @@ class Runtime {
       };
 }
 
+/// Configuration for a secret environment variable.
+///
+/// It has the information necessary to fetch the secret value from secret
+/// manager and expose it as an environment variable.
+class SecretEnvVar {
+  /// Name of the environment variable.
+  core.String? key;
+
+  /// Project identifier (preferably project number but can also be the project
+  /// ID) of the project that contains the secret.
+  ///
+  /// If not set, it will be populated with the function's project assuming that
+  /// the secret exists in the same project as of the function.
+  core.String? projectId;
+
+  /// Name of the secret in secret manager (not the full resource name).
+  core.String? secret;
+
+  /// Version of the secret (version number or the string 'latest').
+  ///
+  /// It is recommended to use a numeric version for secret environment
+  /// variables as any updates to the secret value is not reflected until new
+  /// instances start.
+  core.String? version;
+
+  SecretEnvVar({
+    this.key,
+    this.projectId,
+    this.secret,
+    this.version,
+  });
+
+  SecretEnvVar.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (projectId != null) 'projectId': projectId!,
+        if (secret != null) 'secret': secret!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Describes the Service being deployed.
 ///
 /// Currently Supported : Cloud Run (fully managed).
@@ -2008,6 +2062,9 @@ class ServiceConfig {
   /// Output only.
   core.String? revision;
 
+  /// Secret environment variables configuration.
+  core.List<SecretEnvVar>? secretEnvironmentVariables;
+
   /// Name of the service associated with a Function.
   ///
   /// The format of this field is
@@ -2058,6 +2115,7 @@ class ServiceConfig {
     this.maxInstanceCount,
     this.minInstanceCount,
     this.revision,
+    this.secretEnvironmentVariables,
     this.service,
     this.serviceAccountEmail,
     this.timeoutSeconds,
@@ -2097,6 +2155,13 @@ class ServiceConfig {
           revision: _json.containsKey('revision')
               ? _json['revision'] as core.String
               : null,
+          secretEnvironmentVariables:
+              _json.containsKey('secretEnvironmentVariables')
+                  ? (_json['secretEnvironmentVariables'] as core.List)
+                      .map((value) => SecretEnvVar.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           service: _json.containsKey('service')
               ? _json['service'] as core.String
               : null,
@@ -2126,6 +2191,8 @@ class ServiceConfig {
         if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
         if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
         if (revision != null) 'revision': revision!,
+        if (secretEnvironmentVariables != null)
+          'secretEnvironmentVariables': secretEnvironmentVariables!,
         if (service != null) 'service': service!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,

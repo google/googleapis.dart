@@ -1061,7 +1061,7 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Remove a Bitbucket Server repository from an given BitbucketServerConfig’s
+  /// Remove a Bitbucket Server repository from a given BitbucketServerConfig's
   /// connected repositories.
   ///
   /// This API is experimental.

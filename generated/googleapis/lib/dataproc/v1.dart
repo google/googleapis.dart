@@ -3934,6 +3934,44 @@ class AutoscalingPolicy {
       };
 }
 
+/// Auxiliary services configuration for a Cluster.
+class AuxiliaryServicesConfig {
+  /// The Hive Metastore configuration for this workload.
+  ///
+  /// Optional.
+  MetastoreConfig? metastoreConfig;
+
+  /// The Spark History Server configuration for the workload.
+  ///
+  /// Optional.
+  SparkHistoryServerConfig? sparkHistoryServerConfig;
+
+  AuxiliaryServicesConfig({
+    this.metastoreConfig,
+    this.sparkHistoryServerConfig,
+  });
+
+  AuxiliaryServicesConfig.fromJson(core.Map _json)
+      : this(
+          metastoreConfig: _json.containsKey('metastoreConfig')
+              ? MetastoreConfig.fromJson(_json['metastoreConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sparkHistoryServerConfig:
+              _json.containsKey('sparkHistoryServerConfig')
+                  ? SparkHistoryServerConfig.fromJson(
+                      _json['sparkHistoryServerConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metastoreConfig != null) 'metastoreConfig': metastoreConfig!,
+        if (sparkHistoryServerConfig != null)
+          'sparkHistoryServerConfig': sparkHistoryServerConfig!,
+      };
+}
+
 /// Basic algorithm for autoscaling.
 class BasicAutoscalingAlgorithm {
   /// Duration between scaling events.
@@ -4307,7 +4345,7 @@ class Binding {
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// members can have the following values: allUsers: A special identifier that
   /// represents anyone who is on the internet; with or without a Google
@@ -4395,7 +4433,8 @@ class Cluster {
   /// The cluster config for a cluster of Compute Engine Instances.
   ///
   /// Note that Dataproc may set default values, and values may change when
-  /// clusters are updated.
+  /// clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig
+  /// must be specified.
   ///
   /// Optional.
   ClusterConfig? config;
@@ -4434,6 +4473,18 @@ class Cluster {
   /// Output only.
   core.List<ClusterStatus>? statusHistory;
 
+  /// The virtual cluster config, used when creating a Dataproc cluster that
+  /// does not directly control the underlying compute resources, for example,
+  /// when creating a Dataproc-on-GKE cluster
+  /// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+  ///
+  /// Note that Dataproc may set default values, and values may change when
+  /// clusters are updated. Exactly one of config or virtualClusterConfig must
+  /// be specified.
+  ///
+  /// Optional.
+  VirtualClusterConfig? virtualClusterConfig;
+
   Cluster({
     this.clusterName,
     this.clusterUuid,
@@ -4443,6 +4494,7 @@ class Cluster {
     this.projectId,
     this.status,
     this.statusHistory,
+    this.virtualClusterConfig,
   });
 
   Cluster.fromJson(core.Map _json)
@@ -4482,6 +4534,10 @@ class Cluster {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          virtualClusterConfig: _json.containsKey('virtualClusterConfig')
+              ? VirtualClusterConfig.fromJson(_json['virtualClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4493,6 +4549,8 @@ class Cluster {
         if (projectId != null) 'projectId': projectId!,
         if (status != null) 'status': status!,
         if (statusHistory != null) 'statusHistory': statusHistory!,
+        if (virtualClusterConfig != null)
+          'virtualClusterConfig': virtualClusterConfig!,
       };
 }
 
@@ -4540,14 +4598,14 @@ class ClusterConfig {
   /// Optional.
   GceClusterConfig? gceClusterConfig;
 
-  /// BETA.
+  /// Use VirtualClusterConfig based clusters instead.
   ///
-  /// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes.
-  /// Setting this is considered mutually exclusive with Compute Engine-based
-  /// options such as gce_cluster_config, master_config, worker_config,
-  /// secondary_worker_config, and autoscaling_config.
+  /// BETA. The Kubernetes Engine config for Dataproc clusters deployed to
+  /// Kubernetes. Setting this is considered mutually exclusive with Compute
+  /// Engine-based options such as gce_cluster_config, master_config,
+  /// worker_config, secondary_worker_config, and autoscaling_config.
   ///
-  /// Optional.
+  /// Optional. Deprecated.
   GkeClusterConfig? gkeClusterConfig;
 
   /// Commands to execute on each node after config is completed.
@@ -5488,28 +5546,333 @@ class GetPolicyOptions {
 
 /// The cluster's GKE config.
 class GkeClusterConfig {
-  /// A target for the deployment.
+  /// A target GKE cluster to deploy to.
+  ///
+  /// It must be in the same project and region as the Dataproc cluster (the GKE
+  /// cluster can be zonal or regional). Format:
+  /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   ///
   /// Optional.
+  core.String? gkeClusterTarget;
+
+  /// Use gkeClusterTarget.
+  ///
+  /// Used only for the deprecated beta. A target for the deployment.
+  ///
+  /// Optional. Deprecated.
   NamespacedGkeDeploymentTarget? namespacedGkeDeploymentTarget;
 
+  /// GKE NodePools where workloads will be scheduled.
+  ///
+  /// At least one node pool must be assigned the 'default' role. Each role can
+  /// be given to only a single NodePoolTarget. All NodePools must have the same
+  /// location settings. If a nodePoolTarget is not specified, Dataproc
+  /// constructs a default nodePoolTarget.
+  ///
+  /// Optional.
+  core.List<GkeNodePoolTarget>? nodePoolTarget;
+
   GkeClusterConfig({
+    this.gkeClusterTarget,
     this.namespacedGkeDeploymentTarget,
+    this.nodePoolTarget,
   });
 
   GkeClusterConfig.fromJson(core.Map _json)
       : this(
+          gkeClusterTarget: _json.containsKey('gkeClusterTarget')
+              ? _json['gkeClusterTarget'] as core.String
+              : null,
           namespacedGkeDeploymentTarget:
               _json.containsKey('namespacedGkeDeploymentTarget')
                   ? NamespacedGkeDeploymentTarget.fromJson(
                       _json['namespacedGkeDeploymentTarget']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          nodePoolTarget: _json.containsKey('nodePoolTarget')
+              ? (_json['nodePoolTarget'] as core.List)
+                  .map((value) => GkeNodePoolTarget.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gkeClusterTarget != null) 'gkeClusterTarget': gkeClusterTarget!,
         if (namespacedGkeDeploymentTarget != null)
           'namespacedGkeDeploymentTarget': namespacedGkeDeploymentTarget!,
+        if (nodePoolTarget != null) 'nodePoolTarget': nodePoolTarget!,
+      };
+}
+
+/// Parameters that describe cluster nodes.
+class GkeNodeConfig {
+  /// A list of hardware accelerators
+  /// (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+  ///
+  /// Optional.
+  core.List<GkeNodePoolAcceleratorConfig>? accelerators;
+
+  /// The number of local SSD disks to attach to the node, which is limited by
+  /// the maximum number of disks allowable per zone (see Adding Local SSDs
+  /// (https://cloud.google.com/compute/docs/disks/local-ssd)).
+  ///
+  /// Optional.
+  core.int? localSsdCount;
+
+  /// The name of a Compute Engine machine type
+  /// (https://cloud.google.com/compute/docs/machine-types).
+  ///
+  /// Optional.
+  core.String? machineType;
+
+  /// Minimum CPU platform
+  /// (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+  /// to be used by this instance.
+  ///
+  /// The instance may be scheduled on the specified or a newer CPU platform.
+  /// Specify the friendly names of CPU platforms, such as "Intel Haswell"\` or
+  /// Intel Sandy Bridge".
+  ///
+  /// Optional.
+  core.String? minCpuPlatform;
+
+  /// Whether the nodes are created as preemptible VM instances
+  /// (https://cloud.google.com/compute/docs/instances/preemptible).
+  ///
+  /// Optional.
+  core.bool? preemptible;
+
+  /// Spot flag for enabling Spot VM, which is a rebrand of the existing
+  /// preemptible flag.
+  ///
+  /// Optional.
+  core.bool? spot;
+
+  GkeNodeConfig({
+    this.accelerators,
+    this.localSsdCount,
+    this.machineType,
+    this.minCpuPlatform,
+    this.preemptible,
+    this.spot,
+  });
+
+  GkeNodeConfig.fromJson(core.Map _json)
+      : this(
+          accelerators: _json.containsKey('accelerators')
+              ? (_json['accelerators'] as core.List)
+                  .map((value) => GkeNodePoolAcceleratorConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          localSsdCount: _json.containsKey('localSsdCount')
+              ? _json['localSsdCount'] as core.int
+              : null,
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+          minCpuPlatform: _json.containsKey('minCpuPlatform')
+              ? _json['minCpuPlatform'] as core.String
+              : null,
+          preemptible: _json.containsKey('preemptible')
+              ? _json['preemptible'] as core.bool
+              : null,
+          spot: _json.containsKey('spot') ? _json['spot'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accelerators != null) 'accelerators': accelerators!,
+        if (localSsdCount != null) 'localSsdCount': localSsdCount!,
+        if (machineType != null) 'machineType': machineType!,
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
+        if (preemptible != null) 'preemptible': preemptible!,
+        if (spot != null) 'spot': spot!,
+      };
+}
+
+/// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request
+/// for a NodePool.
+class GkeNodePoolAcceleratorConfig {
+  /// The number of accelerator cards exposed to an instance.
+  core.String? acceleratorCount;
+
+  /// The accelerator type resource namename (see GPUs on Compute Engine).
+  core.String? acceleratorType;
+
+  /// Size of partitions to create on the GPU.
+  ///
+  /// Valid values are described in the NVIDIA mig user guide
+  /// (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+  core.String? gpuPartitionSize;
+
+  GkeNodePoolAcceleratorConfig({
+    this.acceleratorCount,
+    this.acceleratorType,
+    this.gpuPartitionSize,
+  });
+
+  GkeNodePoolAcceleratorConfig.fromJson(core.Map _json)
+      : this(
+          acceleratorCount: _json.containsKey('acceleratorCount')
+              ? _json['acceleratorCount'] as core.String
+              : null,
+          acceleratorType: _json.containsKey('acceleratorType')
+              ? _json['acceleratorType'] as core.String
+              : null,
+          gpuPartitionSize: _json.containsKey('gpuPartitionSize')
+              ? _json['gpuPartitionSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
+        if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (gpuPartitionSize != null) 'gpuPartitionSize': gpuPartitionSize!,
+      };
+}
+
+/// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to
+/// adjust the size of the node pool to the current cluster usage.
+class GkeNodePoolAutoscalingConfig {
+  /// The maximum number of nodes in the NodePool.
+  ///
+  /// Must be \>= min_node_count. Note: Quota must be sufficient to scale up the
+  /// cluster.
+  core.int? maxNodeCount;
+
+  /// The minimum number of nodes in the NodePool.
+  ///
+  /// Must be \>= 0 and \<= max_node_count.
+  core.int? minNodeCount;
+
+  GkeNodePoolAutoscalingConfig({
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
+
+  GkeNodePoolAutoscalingConfig.fromJson(core.Map _json)
+      : this(
+          maxNodeCount: _json.containsKey('maxNodeCount')
+              ? _json['maxNodeCount'] as core.int
+              : null,
+          minNodeCount: _json.containsKey('minNodeCount')
+              ? _json['minNodeCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+      };
+}
+
+/// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster
+/// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+class GkeNodePoolConfig {
+  /// The autoscaler configuration for this NodePool.
+  ///
+  /// The autoscaler is enabled only when a valid configuration is present.
+  ///
+  /// Optional.
+  GkeNodePoolAutoscalingConfig? autoscaling;
+
+  /// The node pool configuration.
+  ///
+  /// Optional.
+  GkeNodeConfig? config;
+
+  /// The list of Compute Engine zones
+  /// (https://cloud.google.com/compute/docs/zones#available) where NodePool's
+  /// nodes will be located.Note: Currently, only one zone may be specified.If a
+  /// location is not specified during NodePool creation, Dataproc will choose a
+  /// location.
+  ///
+  /// Optional.
+  core.List<core.String>? locations;
+
+  GkeNodePoolConfig({
+    this.autoscaling,
+    this.config,
+    this.locations,
+  });
+
+  GkeNodePoolConfig.fromJson(core.Map _json)
+      : this(
+          autoscaling: _json.containsKey('autoscaling')
+              ? GkeNodePoolAutoscalingConfig.fromJson(
+                  _json['autoscaling'] as core.Map<core.String, core.dynamic>)
+              : null,
+          config: _json.containsKey('config')
+              ? GkeNodeConfig.fromJson(
+                  _json['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscaling != null) 'autoscaling': autoscaling!,
+        if (config != null) 'config': config!,
+        if (locations != null) 'locations': locations!,
+      };
+}
+
+/// GKE NodePools that Dataproc workloads run on.
+class GkeNodePoolTarget {
+  /// The target GKE NodePool.
+  ///
+  /// Format:
+  /// 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+  ///
+  /// Required.
+  core.String? nodePool;
+
+  /// Input only.
+  ///
+  /// The configuration for the GKE NodePool.If specified, Dataproc attempts to
+  /// create a NodePool with the specified shape. If one with the same name
+  /// already exists, it is verified against all specified fields. If a field
+  /// differs, the virtual cluster creation will fail.If omitted, any NodePool
+  /// with the specified name is used. If a NodePool with the specified name
+  /// does not exist, Dataproc create a NodePool with default values.This is an
+  /// input only field. It will not be returned by the API.
+  GkeNodePoolConfig? nodePoolConfig;
+
+  /// The types of role for a GKE NodePool
+  ///
+  /// Required.
+  core.List<core.String>? roles;
+
+  GkeNodePoolTarget({
+    this.nodePool,
+    this.nodePoolConfig,
+    this.roles,
+  });
+
+  GkeNodePoolTarget.fromJson(core.Map _json)
+      : this(
+          nodePool: _json.containsKey('nodePool')
+              ? _json['nodePool'] as core.String
+              : null,
+          nodePoolConfig: _json.containsKey('nodePoolConfig')
+              ? GkeNodePoolConfig.fromJson(_json['nodePoolConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          roles: _json.containsKey('roles')
+              ? (_json['roles'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodePool != null) 'nodePool': nodePool!,
+        if (nodePoolConfig != null) 'nodePoolConfig': nodePoolConfig!,
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -6827,6 +7190,112 @@ class KerberosConfig {
       };
 }
 
+/// The configuration for running the Dataproc cluster on Kubernetes.
+class KubernetesClusterConfig {
+  /// The configuration for running the Dataproc cluster on GKE.
+  ///
+  /// Required.
+  GkeClusterConfig? gkeClusterConfig;
+
+  /// A namespace within the Kubernetes cluster to deploy into.
+  ///
+  /// If this namespace does not exist, it is created. If it exists, Dataproc
+  /// verifies that another Dataproc VirtualCluster is not installed into it. If
+  /// not specified, the name of the Dataproc Cluster is used.
+  ///
+  /// Optional.
+  core.String? kubernetesNamespace;
+
+  /// The software configuration for this Dataproc cluster running on
+  /// Kubernetes.
+  ///
+  /// Optional.
+  KubernetesSoftwareConfig? kubernetesSoftwareConfig;
+
+  KubernetesClusterConfig({
+    this.gkeClusterConfig,
+    this.kubernetesNamespace,
+    this.kubernetesSoftwareConfig,
+  });
+
+  KubernetesClusterConfig.fromJson(core.Map _json)
+      : this(
+          gkeClusterConfig: _json.containsKey('gkeClusterConfig')
+              ? GkeClusterConfig.fromJson(_json['gkeClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kubernetesNamespace: _json.containsKey('kubernetesNamespace')
+              ? _json['kubernetesNamespace'] as core.String
+              : null,
+          kubernetesSoftwareConfig:
+              _json.containsKey('kubernetesSoftwareConfig')
+                  ? KubernetesSoftwareConfig.fromJson(
+                      _json['kubernetesSoftwareConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gkeClusterConfig != null) 'gkeClusterConfig': gkeClusterConfig!,
+        if (kubernetesNamespace != null)
+          'kubernetesNamespace': kubernetesNamespace!,
+        if (kubernetesSoftwareConfig != null)
+          'kubernetesSoftwareConfig': kubernetesSoftwareConfig!,
+      };
+}
+
+/// The software configuration for this Dataproc cluster running on Kubernetes.
+class KubernetesSoftwareConfig {
+  /// The components that should be installed in this Dataproc cluster.
+  ///
+  /// The key must be a string from the KubernetesComponent enumeration. The
+  /// value is the version of the software to be installed. At least one entry
+  /// must be specified.
+  core.Map<core.String, core.String>? componentVersion;
+
+  /// The properties to set on daemon config files.Property keys are specified
+  /// in prefix:property format, for example
+  /// spark:spark.kubernetes.container.image.
+  ///
+  /// The following are supported prefixes and their mappings: spark:
+  /// spark-defaults.confFor more information, see Cluster properties
+  /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+  core.Map<core.String, core.String>? properties;
+
+  KubernetesSoftwareConfig({
+    this.componentVersion,
+    this.properties,
+  });
+
+  KubernetesSoftwareConfig.fromJson(core.Map _json)
+      : this(
+          componentVersion: _json.containsKey('componentVersion')
+              ? (_json['componentVersion']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (componentVersion != null) 'componentVersion': componentVersion!,
+        if (properties != null) 'properties': properties!,
+      };
+}
+
 /// Specifies the cluster auto-delete schedule configuration.
 class LifecycleConfig {
   /// The time when cluster will be auto-deleted (see JSON representation of
@@ -7314,7 +7783,11 @@ class Metric {
       };
 }
 
+/// Used only for the deprecated beta.
+///
 /// A full, namespace-isolated deployment target for an existing GKE cluster.
+///
+/// Deprecated.
 class NamespacedGkeDeploymentTarget {
   /// A namespace within the GKE cluster to deploy into.
   ///
@@ -8568,7 +9041,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the resource.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -9633,7 +10106,31 @@ class TemplateParameter {
 }
 
 /// Request message for TestIamPermissions method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest02;
+class TestIamPermissionsRequest {
+  /// The set of permissions to check for the resource.
+  ///
+  /// Permissions with wildcards (such as * or storage.*) are not allowed. For
+  /// more information see IAM Overview
+  /// (https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
+
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// Response message for TestIamPermissions method.
 typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
@@ -9660,6 +10157,67 @@ class ValueValidation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (values != null) 'values': values!,
+      };
+}
+
+/// Dataproc cluster config for a cluster that does not directly control the
+/// underlying compute resources, such as a Dataproc-on-GKE cluster
+/// (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+class VirtualClusterConfig {
+  /// Configuration of auxiliary services used by this cluster.
+  ///
+  /// Optional.
+  AuxiliaryServicesConfig? auxiliaryServicesConfig;
+
+  /// The configuration for running the Dataproc cluster on Kubernetes.
+  ///
+  /// Required.
+  KubernetesClusterConfig? kubernetesClusterConfig;
+
+  /// A Storage bucket used to stage job dependencies, config files, and job
+  /// driver console output.
+  ///
+  /// If you do not specify a staging bucket, Cloud Dataproc will determine a
+  /// Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket
+  /// according to the Compute Engine zone where your cluster is deployed, and
+  /// then create and manage this project-level, per-location bucket (see
+  /// Dataproc staging and temp buckets
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+  /// This field requires a Cloud Storage bucket name, not a gs://... URI to a
+  /// Cloud Storage bucket.
+  ///
+  /// Optional.
+  core.String? stagingBucket;
+
+  VirtualClusterConfig({
+    this.auxiliaryServicesConfig,
+    this.kubernetesClusterConfig,
+    this.stagingBucket,
+  });
+
+  VirtualClusterConfig.fromJson(core.Map _json)
+      : this(
+          auxiliaryServicesConfig: _json.containsKey('auxiliaryServicesConfig')
+              ? AuxiliaryServicesConfig.fromJson(
+                  _json['auxiliaryServicesConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          kubernetesClusterConfig: _json.containsKey('kubernetesClusterConfig')
+              ? KubernetesClusterConfig.fromJson(
+                  _json['kubernetesClusterConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          stagingBucket: _json.containsKey('stagingBucket')
+              ? _json['stagingBucket'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auxiliaryServicesConfig != null)
+          'auxiliaryServicesConfig': auxiliaryServicesConfig!,
+        if (kubernetesClusterConfig != null)
+          'kubernetesClusterConfig': kubernetesClusterConfig!,
+        if (stagingBucket != null) 'stagingBucket': stagingBucket!,
       };
 }
 
