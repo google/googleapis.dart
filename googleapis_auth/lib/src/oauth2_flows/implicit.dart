@@ -147,6 +147,7 @@ class ImplicitFlow {
       if (hostedDomain != null) 'hosted_domain': hostedDomain,
       if (loginHint != null) 'login_hint': loginHint,
       // include_granted_scopes - missing
+      'plugin_name': 'dart-googleapis_auth',
     };
 
     _gapiAuth2.callMethod('authorize', [
