@@ -1399,9 +1399,11 @@ class AuthProvider {
 
   /// Defines the locations to extract the JWT.
   ///
-  /// JWT locations can be either from HTTP headers or URL query parameters. The
-  /// rule is that the first match wins. The checking order is: checking all
-  /// headers first, then URL query parameters. If not specified, default to use
+  /// For now it is only used by the Cloud Endpoints to store the OpenAPI
+  /// extension
+  /// \[x-google-jwt-locations\](https://cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-locations)
+  /// JWT locations can be one of HTTP headers, URL query parameters or cookies.
+  /// The rule is that the first match wins. If not specified, default to use
   /// following 3 locations: 1) Authorization: Bearer 2)
   /// x-goog-iap-jwt-assertion 3) access_token query parameter Default locations
   /// can be specified as followings: jwt_locations: - header: Authorization
@@ -1814,7 +1816,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -3175,47 +3177,7 @@ class HttpRule {
 }
 
 /// Specifies a location to extract JWT from an API request.
-class JwtLocation {
-  /// Specifies HTTP header name to extract JWT token.
-  core.String? header;
-
-  /// Specifies URL query parameter name to extract JWT token.
-  core.String? query;
-
-  /// The value prefix.
-  ///
-  /// The value format is "value_prefix{token}" Only applies to "in" header
-  /// type. Must be empty for "in" query type. If not empty, the header value
-  /// has to match (case sensitive) this prefix. If not matched, JWT will not be
-  /// extracted. If matched, JWT will be extracted after the prefix is removed.
-  /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
-  /// with a space at the end.
-  core.String? valuePrefix;
-
-  JwtLocation({
-    this.header,
-    this.query,
-    this.valuePrefix,
-  });
-
-  JwtLocation.fromJson(core.Map _json)
-      : this(
-          header: _json.containsKey('header')
-              ? _json['header'] as core.String
-              : null,
-          query:
-              _json.containsKey('query') ? _json['query'] as core.String : null,
-          valuePrefix: _json.containsKey('valuePrefix')
-              ? _json['valuePrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
-        if (query != null) 'query': query!,
-        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
-      };
-}
+typedef JwtLocation = $JwtLocation;
 
 /// A description of a label.
 typedef LabelDescriptor = $LabelDescriptor;
@@ -4949,7 +4911,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -5182,7 +5144,7 @@ class SystemParameters {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

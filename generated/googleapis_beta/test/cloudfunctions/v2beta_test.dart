@@ -1059,6 +1059,43 @@ void checkRuntime(api.Runtime o) {
   buildCounterRuntime--;
 }
 
+core.int buildCounterSecretEnvVar = 0;
+api.SecretEnvVar buildSecretEnvVar() {
+  final o = api.SecretEnvVar();
+  buildCounterSecretEnvVar++;
+  if (buildCounterSecretEnvVar < 3) {
+    o.key = 'foo';
+    o.projectId = 'foo';
+    o.secret = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterSecretEnvVar--;
+  return o;
+}
+
+void checkSecretEnvVar(api.SecretEnvVar o) {
+  buildCounterSecretEnvVar++;
+  if (buildCounterSecretEnvVar < 3) {
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.secret!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSecretEnvVar--;
+}
+
 core.Map<core.String, core.String> buildUnnamed19() => {
       'x': 'foo',
       'y': 'foo',
@@ -1076,6 +1113,17 @@ void checkUnnamed19(core.Map<core.String, core.String> o) {
   );
 }
 
+core.List<api.SecretEnvVar> buildUnnamed20() => [
+      buildSecretEnvVar(),
+      buildSecretEnvVar(),
+    ];
+
+void checkUnnamed20(core.List<api.SecretEnvVar> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSecretEnvVar(o[0]);
+  checkSecretEnvVar(o[1]);
+}
+
 core.int buildCounterServiceConfig = 0;
 api.ServiceConfig buildServiceConfig() {
   final o = api.ServiceConfig();
@@ -1088,6 +1136,7 @@ api.ServiceConfig buildServiceConfig() {
     o.maxInstanceCount = 42;
     o.minInstanceCount = 42;
     o.revision = 'foo';
+    o.secretEnvironmentVariables = buildUnnamed20();
     o.service = 'foo';
     o.serviceAccountEmail = 'foo';
     o.timeoutSeconds = 42;
@@ -1124,6 +1173,7 @@ void checkServiceConfig(api.ServiceConfig o) {
       o.revision!,
       unittest.equals('foo'),
     );
+    checkUnnamed20(o.secretEnvironmentVariables!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -1218,7 +1268,7 @@ void checkSourceProvenance(api.SourceProvenance o) {
   buildCounterSourceProvenance--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed20() => {
+core.Map<core.String, core.Object?> buildUnnamed21() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1231,7 +1281,7 @@ core.Map<core.String, core.Object?> buildUnnamed20() => {
       },
     };
 
-void checkUnnamed20(core.Map<core.String, core.Object?> o) {
+void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1263,15 +1313,15 @@ void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed21() => [
-      buildUnnamed20(),
-      buildUnnamed20(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed22() => [
+      buildUnnamed21(),
+      buildUnnamed21(),
     ];
 
-void checkUnnamed21(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed22(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed20(o[0]);
-  checkUnnamed20(o[1]);
+  checkUnnamed21(o[0]);
+  checkUnnamed21(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1280,7 +1330,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed21();
+    o.details = buildUnnamed22();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1294,7 +1344,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed21(o.details!);
+    checkUnnamed22(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1335,42 +1385,6 @@ void checkStorageSource(api.StorageSource o) {
   buildCounterStorageSource--;
 }
 
-core.List<core.String> buildUnnamed22() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed22();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed22(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
@@ -1388,12 +1402,48 @@ void checkUnnamed23(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed23();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed23(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed24() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed24(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed23();
+    o.permissions = buildUnnamed24();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1402,7 +1452,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed23(o.permissions!);
+    checkUnnamed24(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1625,6 +1675,16 @@ void main() {
       final od =
           api.Runtime.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRuntime(od);
+    });
+  });
+
+  unittest.group('obj-schema-SecretEnvVar', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSecretEnvVar();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SecretEnvVar.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSecretEnvVar(od);
     });
   });
 

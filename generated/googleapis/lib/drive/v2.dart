@@ -2524,7 +2524,10 @@ class FilesResource {
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Subscribe to changes on a file
+  /// Subscribes to changes to a file.
+  ///
+  /// While you can establish a channel for changes to a file on a shared drive,
+  /// a change to a shared drive file won't create a notification.
   ///
   /// [request] - The metadata request object.
   ///

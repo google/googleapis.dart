@@ -2235,6 +2235,8 @@ api.GoogleCloudDocumentaiV1ProcessorVersion
   buildCounterGoogleCloudDocumentaiV1ProcessorVersion++;
   if (buildCounterGoogleCloudDocumentaiV1ProcessorVersion < 3) {
     o.createTime = 'foo';
+    o.deprecationInfo =
+        buildGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo();
     o.displayName = 'foo';
     o.googleManaged = true;
     o.kmsKeyName = 'foo';
@@ -2254,6 +2256,8 @@ void checkGoogleCloudDocumentaiV1ProcessorVersion(
       o.createTime!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo(
+        o.deprecationInfo!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -2277,6 +2281,35 @@ void checkGoogleCloudDocumentaiV1ProcessorVersion(
     );
   }
   buildCounterGoogleCloudDocumentaiV1ProcessorVersion--;
+}
+
+core.int buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo = 0;
+api.GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
+    buildGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo() {
+  final o = api.GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo();
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo < 3) {
+    o.deprecationTime = 'foo';
+    o.replacementProcessorVersion = 'foo';
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo(
+    api.GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo o) {
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo < 3) {
+    unittest.expect(
+      o.deprecationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replacementProcessorVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo--;
 }
 
 core.int buildCounterGoogleCloudDocumentaiV1RawDocument = 0;
@@ -3664,6 +3697,18 @@ void main() {
       final od = api.GoogleCloudDocumentaiV1ProcessorVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1ProcessorVersion(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo(od);
     });
   });
 

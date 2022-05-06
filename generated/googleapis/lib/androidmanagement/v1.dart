@@ -93,18 +93,26 @@ class EnterprisesResource {
   ///
   /// [agreementAccepted] - Whether the enterprise admin has seen and agreed to
   /// the managed Google Play Agreement
-  /// (https://www.android.com/enterprise/terms/). Always set this to true when
-  /// creating an EMM-managed enterprise. Do not create the enterprise until the
-  /// admin has viewed and accepted the agreement.
+  /// (https://www.android.com/enterprise/terms/). Do not set this field for any
+  /// customer-managed enterprise
+  /// (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises).
+  /// Set this to field to true for all EMM-managed enterprises
+  /// (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
   ///
-  /// [enterpriseToken] - The enterprise token appended to the callback URL.
-  /// Only set this when creating a customer-managed enterprise.
+  /// [enterpriseToken] - The enterprise token appended to the callback URL. Set
+  /// this when creating a customer-managed enterprise
+  /// (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises)
+  /// and not when creating a deprecated EMM-managed enterprise
+  /// (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
   ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
   /// [signupUrlName] - The name of the SignupUrl used to sign up for the
-  /// enterprise. Only set this when creating a customer-managed enterprise.
+  /// enterprise. Set this when creating a customer-managed enterprise
+  /// (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises)
+  /// and not when creating a deprecated EMM-managed enterprise
+  /// (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1578,12 +1586,13 @@ class AppTrackInfo {
 
 /// This represents a single version of the app.
 class AppVersion {
-  /// True if this version is a production track.
+  /// If the value is True, it indicates that this version is a production
+  /// track.
   core.bool? production;
 
-  /// Track ids that the app version is published in.
+  /// Track identifiers that the app version is published in.
   ///
-  /// This doesn't include the production track (see production instead).
+  /// This does not include the production track (see production instead).
   core.List<core.String>? trackIds;
 
   /// Unique increasing identifier for the app version.
@@ -1692,7 +1701,7 @@ class Application {
 
   /// A link to an image that can be used as an icon for the app.
   ///
-  /// This image is suitable for use at up to 512px x 512px
+  /// This image is suitable for use up to a pixel size of 512 x 512.
   core.String? iconUrl;
 
   /// The set of managed properties available to be pre-configured for the app.
@@ -1719,7 +1728,7 @@ class Application {
 
   /// A link to a smaller image that can be used as an icon for the app.
   ///
-  /// This image is suitable for use at up to 128px x 128px.
+  /// This image is suitable for use up to a pixel size of 128 x 128.
   core.String? smallIconUrl;
 
   /// The title of the app.
@@ -3682,7 +3691,7 @@ class Enterprise {
   /// | blue, where the value of each component is between 0 and 255, inclusive.
   core.int? primaryColor;
 
-  /// The topic that Cloud Pub/Sub notifications are published to, in the form
+  /// The topic which Pub/Sub notifications are published to, in the form
   /// projects/{project}/topics/{topic}.
   ///
   /// This field is only required if Pub/Sub notifications are enabled.
@@ -3779,7 +3788,7 @@ class ExtensionConfig {
   /// updates.
   core.String? notificationReceiver;
 
-  /// Hex-encoded SHA256 hash of the signing certificate of the extension app.
+  /// Hex-encoded SHA-256 hash of the signing certificate of the extension app.
   ///
   /// Only hexadecimal string representations of 64 characters are valid.If not
   /// specified, the signature for the corresponding package name is obtained
@@ -6117,6 +6126,9 @@ class Policy {
   /// available only on fully managed devices.
   core.bool? unmuteMicrophoneDisabled;
 
+  /// Configuration of device activity logging.
+  UsageLog? usageLog;
+
   /// Whether transferring files over USB is disabled.
   core.bool? usbFileTransferDisabled;
 
@@ -6225,6 +6237,7 @@ class Policy {
     this.tetheringConfigDisabled,
     this.uninstallAppsDisabled,
     this.unmuteMicrophoneDisabled,
+    this.usageLog,
     this.usbFileTransferDisabled,
     this.usbMassStorageEnabled,
     this.version,
@@ -6552,6 +6565,10 @@ class Policy {
               _json.containsKey('unmuteMicrophoneDisabled')
                   ? _json['unmuteMicrophoneDisabled'] as core.bool
                   : null,
+          usageLog: _json.containsKey('usageLog')
+              ? UsageLog.fromJson(
+                  _json['usageLog'] as core.Map<core.String, core.dynamic>)
+              : null,
           usbFileTransferDisabled: _json.containsKey('usbFileTransferDisabled')
               ? _json['usbFileTransferDisabled'] as core.bool
               : null,
@@ -6713,6 +6730,7 @@ class Policy {
           'uninstallAppsDisabled': uninstallAppsDisabled!,
         if (unmuteMicrophoneDisabled != null)
           'unmuteMicrophoneDisabled': unmuteMicrophoneDisabled!,
+        if (usageLog != null) 'usageLog': usageLog!,
         if (usbFileTransferDisabled != null)
           'usbFileTransferDisabled': usbFileTransferDisabled!,
         if (usbMassStorageEnabled != null)
@@ -7531,6 +7549,47 @@ class TermsAndConditions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (header != null) 'header': header!,
+      };
+}
+
+/// Controls types of device activity logs collected from the device and
+/// reported via Pub/Sub notification
+/// (https://developers.google.com/android/management/notifications).
+class UsageLog {
+  /// Specifies which log types are enabled.
+  ///
+  /// Note that users will receive on-device messaging when usage logging is
+  /// enabled.
+  core.List<core.String>? enabledLogTypes;
+
+  /// Specifies which of the enabled log types can be uploaded over mobile data.
+  ///
+  /// By default logs are queued for upload when the device connects to WiFi.
+  core.List<core.String>? uploadOnCellularAllowed;
+
+  UsageLog({
+    this.enabledLogTypes,
+    this.uploadOnCellularAllowed,
+  });
+
+  UsageLog.fromJson(core.Map _json)
+      : this(
+          enabledLogTypes: _json.containsKey('enabledLogTypes')
+              ? (_json['enabledLogTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          uploadOnCellularAllowed: _json.containsKey('uploadOnCellularAllowed')
+              ? (_json['uploadOnCellularAllowed'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledLogTypes != null) 'enabledLogTypes': enabledLogTypes!,
+        if (uploadOnCellularAllowed != null)
+          'uploadOnCellularAllowed': uploadOnCellularAllowed!,
       };
 }
 

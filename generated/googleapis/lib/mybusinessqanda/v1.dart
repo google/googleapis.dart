@@ -146,41 +146,6 @@ class LocationsQuestionsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes the answer written by the current user to a question.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the question to delete an answer for.
-  /// Value must have pattern `^locations/\[^/\]+/questions/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> deleteAnswers(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/answers';
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Returns the paginated list of questions and some of its answers for a
   /// specified location.
   ///
@@ -301,12 +266,47 @@ class LocationsQuestionsAnswersResource {
   LocationsQuestionsAnswersResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Deletes the answer written by the current user to a question.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the question to delete an answer for.
+  /// Value must have pattern `^locations/\[^/\]+/questions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/answers:delete';
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the paginated list of answers for a specified question.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the question to fetch answers for.
-  /// Value must have pattern `^locations/\[^/\]+/questions/\[^/\]+/answers$`.
+  /// Value must have pattern `^locations/\[^/\]+/questions/\[^/\]+$`.
   ///
   /// [orderBy] - Optional. The order to return the answers. Valid options
   /// include 'update_time desc' and 'upvote_count desc', which will return the
@@ -343,7 +343,7 @@ class LocationsQuestionsAnswersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent');
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/answers';
 
     final _response = await _requester.request(
       _url,

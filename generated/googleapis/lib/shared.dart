@@ -298,6 +298,7 @@ class $Attribution {
 /// - deploymentmanager:v2 : AuditLogConfig
 /// - domains:v1 : AuditLogConfig
 /// - eventarc:v1 : AuditLogConfig
+/// - gkebackup:v1 : AuditLogConfig
 /// - gkehub:v1 : AuditLogConfig
 /// - healthcare:v1 : AuditLogConfig
 /// - iam:v1 : AuditLogConfig
@@ -1577,8 +1578,8 @@ class $EgressFrom {
 /// - datastream:v1 : AvroFileFormat
 /// - datastream:v1 : BackfillNoneStrategy
 /// - datastream:v1 : CancelOperationRequest
+/// - datastream:v1 : DropLargeObjects
 /// - datastream:v1 : Empty
-/// - datastream:v1 : OracleDropLargeObjects
 /// - datastream:v1 : StartBackfillJobRequest
 /// - datastream:v1 : StaticServiceIpConnectivity
 /// - datastream:v1 : StopBackfillJobRequest
@@ -1652,6 +1653,8 @@ class $EgressFrom {
 /// - gameservices:v1 : CancelOperationRequest
 /// - gameservices:v1 : Empty
 /// - gameservices:v1 : FetchDeploymentStateRequest
+/// - gkebackup:v1 : Empty
+/// - gkebackup:v1 : GoogleLongrunningCancelOperationRequest
 /// - gkehub:v1 : AppDevExperienceFeatureSpec
 /// - gkehub:v1 : CancelOperationRequest
 /// - gkehub:v1 : Empty
@@ -2051,6 +2054,7 @@ class $ExportOptions {
 /// - domains:v1 : Expr
 /// - eventarc:v1 : Expr
 /// - gameservices:v1 : Expr
+/// - gkebackup:v1 : Expr
 /// - gkehub:v1 : Expr
 /// - healthcare:v1 : Expr
 /// - iam:v1 : Expr
@@ -2418,6 +2422,7 @@ class $Header {
 /// - apigee:v1 : GoogleApiHttpBody
 /// - cloudbuild:v1 : HttpBody
 /// - domainsrdap:v1 : HttpBody
+/// - firebaseremoteconfig:v1 : HttpBody
 /// - healthcare:v1 : HttpBody
 /// - ml:v1 : GoogleApi__HttpBody
 /// - retail:v2 : GoogleApiHttpBody
@@ -2774,6 +2779,60 @@ class $Jwt {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compactJwt != null) 'compactJwt': compactJwt!,
+      };
+}
+
+/// Used by:
+///
+/// - servicemanagement:v1 : JwtLocation
+/// - serviceusage:v1 : JwtLocation
+class $JwtLocation {
+  /// Specifies cookie name to extract JWT token.
+  core.String? cookie;
+
+  /// Specifies HTTP header name to extract JWT token.
+  core.String? header;
+
+  /// Specifies URL query parameter name to extract JWT token.
+  core.String? query;
+
+  /// The value prefix.
+  ///
+  /// The value format is "value_prefix{token}" Only applies to "in" header
+  /// type. Must be empty for "in" query type. If not empty, the header value
+  /// has to match (case sensitive) this prefix. If not matched, JWT will not be
+  /// extracted. If matched, JWT will be extracted after the prefix is removed.
+  /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
+  /// with a space at the end.
+  core.String? valuePrefix;
+
+  $JwtLocation({
+    this.cookie,
+    this.header,
+    this.query,
+    this.valuePrefix,
+  });
+
+  $JwtLocation.fromJson(core.Map _json)
+      : this(
+          cookie: _json.containsKey('cookie')
+              ? _json['cookie'] as core.String
+              : null,
+          header: _json.containsKey('header')
+              ? _json['header'] as core.String
+              : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+          valuePrefix: _json.containsKey('valuePrefix')
+              ? _json['valuePrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cookie != null) 'cookie': cookie!,
+        if (header != null) 'header': header!,
+        if (query != null) 'query': query!,
+        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
       };
 }
 
@@ -3232,6 +3291,7 @@ class $ListPolicy {
 /// - file:v1 : Location
 /// - firestore:v1 : Location
 /// - gameservices:v1 : Location
+/// - gkebackup:v1 : Location
 /// - gkehub:v1 : Location
 /// - healthcare:v1 : Location
 /// - ids:v1 : Location
@@ -4445,6 +4505,7 @@ class $PathElement {
 /// - domains:v1 : TestIamPermissionsResponse
 /// - eventarc:v1 : TestIamPermissionsResponse
 /// - gameservices:v1 : TestIamPermissionsResponse
+/// - gkebackup:v1 : TestIamPermissionsResponse
 /// - gkehub:v1 : TestIamPermissionsResponse
 /// - healthcare:v1 : TestIamPermissionsResponse
 /// - iam:v1 : TestIamPermissionsResponse
@@ -6461,6 +6522,7 @@ class $StartPageToken {
 /// - firebaseml:v1 : Status
 /// - firestore:v1 : Status
 /// - gameservices:v1 : Status
+/// - gkebackup:v1 : GoogleRpcStatus
 /// - gkehub:v1 : GoogleRpcStatus
 /// - healthcare:v1 : Status
 /// - iam:v1 : Status
@@ -6650,12 +6712,9 @@ class $TenantProjectRequest {
 
 /// Used by:
 ///
-/// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
-/// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - artifactregistry:v1 : TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest
 /// - bigtableadmin:v2 : TestIamPermissionsRequest
-/// - binaryauthorization:v1 : TestIamPermissionsRequest
 /// - clouddeploy:v1 : TestIamPermissionsRequest
 /// - cloudfunctions:v1 : TestIamPermissionsRequest
 /// - cloudiot:v1 : TestIamPermissionsRequest
@@ -6667,29 +6726,18 @@ class $TenantProjectRequest {
 /// - datafusion:v1 : TestIamPermissionsRequest
 /// - datamigration:v1 : TestIamPermissionsRequest
 /// - domains:v1 : TestIamPermissionsRequest
-/// - eventarc:v1 : TestIamPermissionsRequest
 /// - gameservices:v1 : TestIamPermissionsRequest
 /// - gkehub:v1 : TestIamPermissionsRequest
 /// - healthcare:v1 : TestIamPermissionsRequest
 /// - iam:v1 : TestIamPermissionsRequest
-/// - iap:v1 : TestIamPermissionsRequest
 /// - ids:v1 : TestIamPermissionsRequest
 /// - managedidentities:v1 : TestIamPermissionsRequest
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
-/// - networkconnectivity:v1 : TestIamPermissionsRequest
 /// - networkmanagement:v1 : TestIamPermissionsRequest
 /// - networksecurity:v1 : GoogleIamV1TestIamPermissionsRequest
-/// - networkservices:v1 : TestIamPermissionsRequest
 /// - notebooks:v1 : TestIamPermissionsRequest
 /// - privateca:v1 : TestIamPermissionsRequest
-/// - pubsub:v1 : TestIamPermissionsRequest
-/// - run:v1 : TestIamPermissionsRequest
-/// - run:v2 : GoogleIamV1TestIamPermissionsRequest
-/// - secretmanager:v1 : TestIamPermissionsRequest
-/// - securitycenter:v1 : TestIamPermissionsRequest
 /// - servicedirectory:v1 : TestIamPermissionsRequest
-/// - servicemanagement:v1 : TestIamPermissionsRequest
-/// - sourcerepo:v1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest00 {
   /// The set of permissions to check for the `resource`.
   ///
@@ -6719,10 +6767,25 @@ class $TestIamPermissionsRequest00 {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : TestIamPermissionsRequest
+/// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
+/// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - binaryauthorization:v1 : TestIamPermissionsRequest
 /// - cloudbilling:v1 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v1 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v2 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v3 : TestIamPermissionsRequest
+/// - eventarc:v1 : TestIamPermissionsRequest
+/// - gkebackup:v1 : TestIamPermissionsRequest
+/// - iap:v1 : TestIamPermissionsRequest
+/// - networkconnectivity:v1 : TestIamPermissionsRequest
+/// - networkservices:v1 : TestIamPermissionsRequest
+/// - pubsub:v1 : TestIamPermissionsRequest
+/// - run:v1 : TestIamPermissionsRequest
+/// - run:v2 : GoogleIamV1TestIamPermissionsRequest
+/// - secretmanager:v1 : TestIamPermissionsRequest
+/// - securitycenter:v1 : TestIamPermissionsRequest
+/// - servicemanagement:v1 : TestIamPermissionsRequest
+/// - sourcerepo:v1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest01 {
   /// The set of permissions to check for the `resource`.
   ///
@@ -6736,36 +6799,6 @@ class $TestIamPermissionsRequest01 {
   });
 
   $TestIamPermissionsRequest01.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-/// Used by:
-///
-/// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
-/// - dataproc:v1 : TestIamPermissionsRequest
-class $TestIamPermissionsRequest02 {
-  /// The set of permissions to check for the resource.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see IAM Overview
-  /// (https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  $TestIamPermissionsRequest02({
-    this.permissions,
-  });
-
-  $TestIamPermissionsRequest02.fromJson(core.Map _json)
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)

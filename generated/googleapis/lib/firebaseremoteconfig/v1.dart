@@ -26,6 +26,8 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsNamespacesResource]
+///   - [ProjectsProjectsResource]
+///     - [ProjectsProjectsRemoteConfigResource]
 ///   - [ProjectsRemoteConfigResource]
 library firebaseremoteconfig.v1;
 
@@ -36,6 +38,8 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -68,6 +72,7 @@ class ProjectsResource {
 
   ProjectsNamespacesResource get namespaces =>
       ProjectsNamespacesResource(_requester);
+  ProjectsProjectsResource get projects => ProjectsProjectsResource(_requester);
   ProjectsRemoteConfigResource get remoteConfig =>
       ProjectsRemoteConfigResource(_requester);
 
@@ -292,6 +297,76 @@ class ProjectsNamespacesResource {
     );
     return StreamFetchInvalidationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsProjectsRemoteConfigResource get remoteConfig =>
+      ProjectsProjectsRemoteConfigResource(_requester);
+
+  ProjectsProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsProjectsRemoteConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsProjectsRemoteConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a project's Remote Config template defaults.
+  ///
+  /// Returns a RemoteConfigDefaults as the payload in the requested string
+  /// format.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The Firebase project's Project ID or Project Number,
+  /// prefixed with "projects/".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [format] - Required. The file structure that the default value response
+  /// should be presented in.
+  /// Possible string values are:
+  /// - "FORMAT_UNSPECIFIED" : Catch-all for unrecognized enum values.
+  /// - "XML" : This value is used if the returned file should be an XML as
+  /// expected by the Android SDK.
+  /// - "PLIST" : This value is used if the returned file should be an PLIST as
+  /// expected by the IOS SDK.
+  /// - "JSON" : This value is used if the returned file should be an JSON as
+  /// expected by the Web SDK.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> downloadDefaults(
+    core.String project, {
+    core.String? format,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (format != null) 'format': [format],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/projects/' +
+        core.Uri.encodeFull('$project') +
+        '/remoteConfig:downloadDefaults';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -547,6 +622,13 @@ class FetchRemoteConfigRequest {
   /// https://www.iso.org/obp/ui/#search .
   core.String? countryCode;
 
+  /// The first time a user launches an app after installing or re-installing
+  /// it.
+  ///
+  /// This value comes from GA, and will not be set if GA SDK is not available
+  /// on the client or if GA does not have the first-open time value.
+  core.String? firstOpenTime;
+
   /// Optional - If omitted and the template has any conditions that depend on
   /// locale, they will be evaluated as false.
   ///
@@ -589,6 +671,7 @@ class FetchRemoteConfigRequest {
     this.appInstanceIdToken,
     this.appVersion,
     this.countryCode,
+    this.firstOpenTime,
     this.languageCode,
     this.packageName,
     this.platformVersion,
@@ -625,6 +708,9 @@ class FetchRemoteConfigRequest {
           countryCode: _json.containsKey('countryCode')
               ? _json['countryCode'] as core.String
               : null,
+          firstOpenTime: _json.containsKey('firstOpenTime')
+              ? _json['firstOpenTime'] as core.String
+              : null,
           languageCode: _json.containsKey('languageCode')
               ? _json['languageCode'] as core.String
               : null,
@@ -652,6 +738,7 @@ class FetchRemoteConfigRequest {
           'appInstanceIdToken': appInstanceIdToken!,
         if (appVersion != null) 'appVersion': appVersion!,
         if (countryCode != null) 'countryCode': countryCode!,
+        if (firstOpenTime != null) 'firstOpenTime': firstOpenTime!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (packageName != null) 'packageName': packageName!,
         if (platformVersion != null) 'platformVersion': platformVersion!,
@@ -751,6 +838,26 @@ class FetchRemoteConfigResponse {
         if (templateVersion != null) 'templateVersion': templateVersion!,
       };
 }
+
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
+typedef HttpBody = $HttpBody;
 
 /// Contains a paginated list of versions of the RemoteConfig.
 class ListVersionsResponse {

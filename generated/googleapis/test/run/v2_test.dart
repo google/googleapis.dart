@@ -79,7 +79,7 @@ api.GoogleCloudRunV2CloudSqlInstance buildGoogleCloudRunV2CloudSqlInstance() {
   final o = api.GoogleCloudRunV2CloudSqlInstance();
   buildCounterGoogleCloudRunV2CloudSqlInstance++;
   if (buildCounterGoogleCloudRunV2CloudSqlInstance < 3) {
-    o.connections = buildUnnamed0();
+    o.instances = buildUnnamed0();
   }
   buildCounterGoogleCloudRunV2CloudSqlInstance--;
   return o;
@@ -89,7 +89,7 @@ void checkGoogleCloudRunV2CloudSqlInstance(
     api.GoogleCloudRunV2CloudSqlInstance o) {
   buildCounterGoogleCloudRunV2CloudSqlInstance++;
   if (buildCounterGoogleCloudRunV2CloudSqlInstance < 3) {
-    checkUnnamed0(o.connections!);
+    checkUnnamed0(o.instances!);
   }
   buildCounterGoogleCloudRunV2CloudSqlInstance--;
 }

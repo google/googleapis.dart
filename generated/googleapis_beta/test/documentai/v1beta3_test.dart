@@ -2378,6 +2378,8 @@ api.GoogleCloudDocumentaiV1beta3ProcessorVersion
   buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersion++;
   if (buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersion < 3) {
     o.createTime = 'foo';
+    o.deprecationInfo =
+        buildGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo();
     o.displayName = 'foo';
     o.googleManaged = true;
     o.kmsKeyName = 'foo';
@@ -2397,6 +2399,8 @@ void checkGoogleCloudDocumentaiV1beta3ProcessorVersion(
       o.createTime!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo(
+        o.deprecationInfo!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -2420,6 +2424,38 @@ void checkGoogleCloudDocumentaiV1beta3ProcessorVersion(
     );
   }
   buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersion--;
+}
+
+core.int
+    buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo = 0;
+api.GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo
+    buildGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo() {
+  final o = api.GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo();
+  buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo <
+      3) {
+    o.deprecationTime = 'foo';
+    o.replacementProcessorVersion = 'foo';
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo(
+    api.GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo o) {
+  buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo <
+      3) {
+    unittest.expect(
+      o.deprecationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replacementProcessorVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo--;
 }
 
 core.int buildCounterGoogleCloudDocumentaiV1beta3RawDocument = 0;
@@ -3880,6 +3916,19 @@ void main() {
       final od = api.GoogleCloudDocumentaiV1beta3ProcessorVersion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1beta3ProcessorVersion(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo(od);
     });
   });
 

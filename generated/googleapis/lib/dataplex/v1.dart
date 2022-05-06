@@ -3716,8 +3716,7 @@ class ProjectsLocationsOperationsResource {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
-/// object {}.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Action represents an issue requiring administrator action for resolution.
@@ -7929,7 +7928,31 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for TestIamPermissions method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest02;
+class GoogleIamV1TestIamPermissionsRequest {
+  /// The set of permissions to check for the resource.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see IAM Overview
+  /// (https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String>? permissions;
+
+  GoogleIamV1TestIamPermissionsRequest({
+    this.permissions,
+  });
+
+  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// Response message for TestIamPermissions method.
 typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse;

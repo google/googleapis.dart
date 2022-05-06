@@ -17681,6 +17681,8 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
       };
 }
 
+/// To change this message, in the same CL add a change log in
+/// go/changing-api-proto-breaks-ui
 class GoogleCloudApigeeV1ListApiProxiesResponse {
   core.List<GoogleCloudApigeeV1ApiProxy>? proxies;
 
@@ -18355,6 +18357,8 @@ class GoogleCloudApigeeV1ListRatePlansResponse {
       };
 }
 
+/// To change this message, in the same CL add a change log in
+/// go/changing-api-proto-breaks-ui
 class GoogleCloudApigeeV1ListSharedFlowsResponse {
   core.List<GoogleCloudApigeeV1SharedFlow>? sharedFlows;
 
@@ -22129,7 +22133,7 @@ class GoogleIamV1Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -22319,7 +22323,7 @@ class GoogleIamV1SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   GoogleIamV1Policy? policy;
 
@@ -22352,7 +22356,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;

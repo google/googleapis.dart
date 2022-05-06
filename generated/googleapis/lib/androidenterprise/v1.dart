@@ -4785,6 +4785,26 @@ class EnterpriseAccount {
       };
 }
 
+/// An authentication URL configuration for the authenticator app of an identity
+/// provider.
+class EnterpriseAuthenticationAppLinkConfig {
+  /// An authentication url.
+  core.String? uri;
+
+  EnterpriseAuthenticationAppLinkConfig({
+    this.uri,
+  });
+
+  EnterpriseAuthenticationAppLinkConfig.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 class EnterprisesListResponse {
   /// An enterprise.
   core.List<Enterprise>? enterprise;
@@ -6537,6 +6557,17 @@ class ProductPolicy {
   /// app update after it is published by the developer.
   core.String? autoUpdateMode;
 
+  /// An authentication URL configuration for the authenticator app of an
+  /// identity provider.
+  ///
+  /// This helps to launch the identity provider's authenticator app during the
+  /// authentication happening in a private app using Android WebView.
+  /// Authenticator app should already be the
+  /// [default handler](https://developer.android.com/training/app-links/verify-site-associations)
+  /// for the authentication url on the device.
+  core.List<EnterpriseAuthenticationAppLinkConfig>?
+      enterpriseAuthenticationAppLinkConfigs;
+
   /// The managed configuration for the product.
   ManagedConfiguration? managedConfiguration;
 
@@ -6560,6 +6591,7 @@ class ProductPolicy {
   ProductPolicy({
     this.autoInstallPolicy,
     this.autoUpdateMode,
+    this.enterpriseAuthenticationAppLinkConfigs,
     this.managedConfiguration,
     this.productId,
     this.trackIds,
@@ -6574,6 +6606,14 @@ class ProductPolicy {
               : null,
           autoUpdateMode: _json.containsKey('autoUpdateMode')
               ? _json['autoUpdateMode'] as core.String
+              : null,
+          enterpriseAuthenticationAppLinkConfigs: _json
+                  .containsKey('enterpriseAuthenticationAppLinkConfigs')
+              ? (_json['enterpriseAuthenticationAppLinkConfigs'] as core.List)
+                  .map((value) =>
+                      EnterpriseAuthenticationAppLinkConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           managedConfiguration: _json.containsKey('managedConfiguration')
               ? ManagedConfiguration.fromJson(_json['managedConfiguration']
@@ -6597,6 +6637,9 @@ class ProductPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoInstallPolicy != null) 'autoInstallPolicy': autoInstallPolicy!,
         if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
+        if (enterpriseAuthenticationAppLinkConfigs != null)
+          'enterpriseAuthenticationAppLinkConfigs':
+              enterpriseAuthenticationAppLinkConfigs!,
         if (managedConfiguration != null)
           'managedConfiguration': managedConfiguration!,
         if (productId != null) 'productId': productId!,

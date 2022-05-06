@@ -313,7 +313,7 @@
             }
         }
     },
-    "revision": "20220401",
+    "revision": "20220414",
     "rootUrl": "https://admob.googleapis.com/",
     "schemas": {
         "AdUnit": {
