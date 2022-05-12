@@ -299,8 +299,8 @@ class ResourceTest extends TestHelper {
           registerRequestHandlerMock(paramValues);
 
           // Build the method call arguments.
-          final args = [];
-          void addArg(MethodParameter p, name) {
+          final args = <String>[];
+          void addArg(MethodParameter p, String name) {
             if (p.required) {
               args.add(name);
             } else {
@@ -310,13 +310,13 @@ class ResourceTest extends TestHelper {
 
           if (method.requestParameter != null) {
             addArg(method.requestParameter!,
-                paramValues[method.requestParameter!]);
+                paramValues[method.requestParameter!]!);
           }
           for (var p in method.parameters) {
-            addArg(p, paramValues[p]);
+            addArg(p, paramValues[p]!);
           }
           for (var p in method.namedParameters) {
-            addArg(p, paramValues[p]);
+            addArg(p, paramValues[p]!);
           }
 
           // Call the method & check the result
