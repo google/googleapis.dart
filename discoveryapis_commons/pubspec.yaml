@@ -1,5 +1,5 @@
 name: _discoveryapis_commons
-version: 1.0.3-dev
+version: 1.0.3
 description: Library for use by client APIs generated from Discovery Documents.
 repository: https://github.com/google/googleapis.dart/tree/master/discoveryapis_commons
 
