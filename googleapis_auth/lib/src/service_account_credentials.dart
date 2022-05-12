@@ -38,7 +38,8 @@ class ServiceAccountCredentials {
   ///
   /// The optional named argument [impersonatedUser] is used to set the user
   /// to impersonate if impersonating a user.
-  factory ServiceAccountCredentials.fromJson(json, {String? impersonatedUser}) {
+  factory ServiceAccountCredentials.fromJson(Object? json,
+      {String? impersonatedUser}) {
     if (json is String) {
       json = jsonDecode(json);
     }
