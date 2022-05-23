@@ -2280,8 +2280,9 @@ class ProjectsServiceAccountsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The maximum policy version
@@ -2448,8 +2449,9 @@ class ProjectsServiceAccountsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2601,8 +2603,9 @@ class ProjectsServiceAccountsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2840,7 +2843,7 @@ class ProjectsServiceAccountsKeysResource {
 
   /// Disable a ServiceAccountKey.
   ///
-  /// A disabled service account key can be enabled through
+  /// A disabled service account key can be re-enabled with
   /// EnableServiceAccountKey.
   ///
   /// [request] - The metadata request object.
@@ -3287,8 +3290,8 @@ class RolesResource {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -3388,7 +3391,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -4053,7 +4056,7 @@ class Operation {
       };
 }
 
-/// The request for PatchServiceAccount.
+/// The service account patch request.
 ///
 /// You can patch only the `display_name` and `description` fields. You must use
 /// the `update_mask` field to specify which of these fields you want to patch.
@@ -4613,6 +4616,42 @@ class Role {
       };
 }
 
+/// Represents an SAML 2.0 identity provider.
+class Saml {
+  /// SAML Identity provider configuration metadata xml doc.
+  ///
+  /// The xml document should comply with
+  /// [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf).
+  /// The max size of the acceptable xml document will be bounded to 128k
+  /// characters. The metadata xml document should satisfy the following
+  /// constraints: 1) Must contain an Identity Provider Entity ID. 2) Must
+  /// contain at least one non-expired signing key certificate. 3) For each
+  /// signing key: a) Valid from should be no more than 7 days from now. b)
+  /// Valid to should be no more than 10 years in the future. 4) Upto 3 IdP
+  /// signing keys are allowed in the metadata xml. When updating the provider's
+  /// metadata xml, at lease one non-expired signing key must overlap with the
+  /// existing metadata. This requirement is skipped if there are no non-expired
+  /// signing keys present in the existing metadata
+  ///
+  /// Required.
+  core.String? idpMetadataXml;
+
+  Saml({
+    this.idpMetadataXml,
+  });
+
+  Saml.fromJson(core.Map _json)
+      : this(
+          idpMetadataXml: _json.containsKey('idpMetadataXml')
+              ? _json['idpMetadataXml'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (idpMetadataXml != null) 'idpMetadataXml': idpMetadataXml!,
+      };
+}
+
 /// An IAM service account.
 ///
 /// A service account is an account for an application or a virtual machine (VM)
@@ -4909,7 +4948,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -5364,6 +5403,9 @@ class WorkloadIdentityPoolProvider {
   /// An OpenId Connect 1.0 identity provider.
   Oidc? oidc;
 
+  /// An SAML 2.0 identity provider.
+  Saml? saml;
+
   /// The state of the provider.
   ///
   /// Output only.
@@ -5387,6 +5429,7 @@ class WorkloadIdentityPoolProvider {
     this.displayName,
     this.name,
     this.oidc,
+    this.saml,
     this.state,
   });
 
@@ -5423,6 +5466,10 @@ class WorkloadIdentityPoolProvider {
               ? Oidc.fromJson(
                   _json['oidc'] as core.Map<core.String, core.dynamic>)
               : null,
+          saml: _json.containsKey('saml')
+              ? Saml.fromJson(
+                  _json['saml'] as core.Map<core.String, core.dynamic>)
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
         );
@@ -5437,6 +5484,7 @@ class WorkloadIdentityPoolProvider {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (oidc != null) 'oidc': oidc!,
+        if (saml != null) 'saml': saml!,
         if (state != null) 'state': state!,
       };
 }

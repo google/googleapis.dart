@@ -273,7 +273,7 @@ class ProjectsGroupStatsResource {
   /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written as `projects/{projectID}` or `projects/{projectNumber}`,
   /// where `{projectID}` and `{projectNumber}` can be found in the
-  /// [Google Cloud Console](https://support.google.com/cloud/answer/6158840).
+  /// [Google Cloud console](https://support.google.com/cloud/answer/6158840).
   /// Examples: `projects/my-project-123`, `projects/5551234`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -283,11 +283,10 @@ class ProjectsGroupStatsResource {
   /// - "ERROR_COUNT_ALIGNMENT_UNSPECIFIED" : No alignment specified.
   /// - "ALIGNMENT_EQUAL_ROUNDED" : The time periods shall be consecutive, have
   /// width equal to the requested duration, and be aligned at the
-  /// `alignment_time` provided in the request. The `alignment_time` does not
-  /// have to be inside the query period but even if it is outside, only time
-  /// periods are returned which overlap with the query period. A rounded
-  /// alignment will typically result in a different size of the first or the
-  /// last time period.
+  /// alignment_time provided in the request. The alignment_time does not have
+  /// to be inside the query period but even if it is outside, only time periods
+  /// are returned which overlap with the query period. A rounded alignment will
+  /// typically result in a different size of the first or the last time period.
   /// - "ALIGNMENT_EQUAL_AT_END" : The time periods shall be consecutive, have
   /// width equal to the requested duration, and be aligned at the end of the
   /// requested time period. This can result in a different size of the first
@@ -314,9 +313,9 @@ class ProjectsGroupStatsResource {
   /// [pageSize] - Optional. The maximum number of results to return per
   /// response. Default is 20.
   ///
-  /// [pageToken] - Optional. A `next_page_token` provided by a previous
-  /// response. To view additional results, pass this token along with the
-  /// identical query parameters as the first request.
+  /// [pageToken] - Optional. A next_page_token provided by a previous response.
+  /// To view additional results, pass this token along with the identical query
+  /// parameters as the first request.
   ///
   /// [serviceFilter_resourceType] - Optional. The exact value to match against
   /// \[`ServiceContext.resource_type`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
@@ -342,7 +341,7 @@ class ProjectsGroupStatsResource {
   /// minimum timed count duration: 1 day.
   ///
   /// [timedCountDuration] - Optional. The preferred duration for a single
-  /// returned `TimedCount`. If not set, no timed counts are returned.
+  /// returned TimedCount. If not set, no timed counts are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -411,9 +410,8 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [groupName] - Required. The group resource name. Written as
-  /// `projects/{projectID}/groups/{group_name}`. Call
-  /// \[`groupStats.list`\](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
-  /// to return a list of groups belonging to this project. Example:
+  /// `projects/{projectID}/groups/{group_name}`. Call groupStats.list to return
+  /// a list of groups belonging to this project. Example:
   /// `projects/my-project-123/groups/my-group`
   /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
@@ -685,7 +683,7 @@ class ErrorGroupStats {
   /// Approximate number of affected users in the given group that match the
   /// filter criteria.
   ///
-  /// Users are distinguished by data in the `ErrorContext` of the individual
+  /// Users are distinguished by data in the ErrorContext of the individual
   /// error events, such as their login name or their remote IP address in case
   /// of HTTP requests. The number of affected users can be zero even if the
   /// number of errors is non-zero if no data was provided from which the
@@ -995,9 +993,9 @@ class ReportedErrorEvent {
   /// \[`Exception.backtrace`\](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).
   /// * **C#**: Must be the return value of
   /// \[`Exception.ToString()`\](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).
-  /// * **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`
-  /// and contain the result of
-  /// \[`(string)$exception`\](http://php.net/manual/en/exception.tostring.php).
+  /// * **PHP**: Must be prefixed with `"PHP (Notice|Parse error|Fatal
+  /// error|Warning): "` and contain the result of
+  /// \[`(string)$exception`\](https://php.net/manual/en/exception.tostring.php).
   /// * **Go**: Must be the return value of
   /// \[`runtime.Stack()`\](https://golang.org/pkg/runtime/debug/#Stack).
   ///

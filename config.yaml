@@ -31,6 +31,7 @@ packages:
     - androidpublisher:v3 # https://developers.google.com/android-publisher/
     - apigateway:v1
     - apigee:v1
+    - apigeeregistry:v1
     - apikeys:v2
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - artifactregistry:v1
@@ -61,6 +62,7 @@ packages:
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
+    - cloudfunctions:v2
     - cloudidentity:v1 # https://cloud.google.com/identity/
     - cloudiot:v1 # https://cloud.google.com/iot
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
@@ -98,7 +100,6 @@ packages:
     - displayvideo:v1
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
-    - dns:v2
     - docs:v1
     - documentai:v1
     - domains:v1
@@ -112,6 +113,7 @@ packages:
     - eventarc:v1
     - fcm:v1
     - file:v1
+    - firebaseappcheck:v1
     - firebasedynamiclinks:v1 # https://firebase.google.com/docs/dynamic-links/
     - firebasehosting:v1
     - firebaseml:v1
@@ -226,6 +228,7 @@ packages:
     - translate:v3
     - vault:v1 # https://apps.google.com/products/vault/
     - verifiedaccess:v1
+    - verifiedaccess:v2
     - versionhistory:v1
     - videointelligence:v1 # https://cloud.google.com/video-intelligence/
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
@@ -294,11 +297,13 @@ additional_apis:
 skipped_apis:
 - accesscontextmanager:v1beta
 - admob:v1beta #v1 included
+- analyticshub:v1beta1
 - apigateway:v1beta # v1 included
 - appengine:v1alpha # v1 included
 - appengine:v1beta
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
+- beyondcorp:v1alpha
 - bigqueryreservation:v1beta1 # v1 included
 - billingbudgets:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
@@ -325,7 +330,6 @@ skipped_apis:
 - compute:beta # v1 included
 - container:v1beta1 # v1 included
 - containeranalysis:v1alpha1 # v1beta1 included
-- content:v2 # v2.1 included
 - datafusion:v1beta1 # v1 included
 - datamigration:v1beta1
 - datastore:v1beta1 # v1 included
@@ -351,6 +355,7 @@ skipped_apis:
 - gkehub:v1beta1
 - gmailpostmastertools:v1beta1 # v1 included
 - healthcare:v1beta1 # v1 included
+- iam:v2beta
 - iap:v1beta1 # v1 included
 - ideahub:v1alpha
 - jobs:v3p1beta1 # v3 included

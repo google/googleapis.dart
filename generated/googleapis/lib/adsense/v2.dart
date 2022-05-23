@@ -224,6 +224,42 @@ class AccountsAdclientsResource {
 
   AccountsAdclientsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Gets the ad client from the given resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ad client to retrieve. Format:
+  /// accounts/{account}/adclients/{adclient}
+  /// Value must have pattern `^accounts/\[^/\]+/adclients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdClient].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdClient> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AdClient.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the AdSense code for a given ad client.
   ///
   /// This returns what was previously known as the 'auto ad code'. This is only
@@ -657,6 +693,44 @@ class AccountsAdclientsUrlchannelsResource {
 
   AccountsAdclientsUrlchannelsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets information about the selected url channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the url channel to retrieve. Format:
+  /// accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/adclients/\[^/\]+/urlchannels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UrlChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UrlChannel> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return UrlChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Lists active url channels.
   ///
@@ -1096,6 +1170,43 @@ class AccountsReportsResource {
       queryParams: _queryParams,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the saved report from the given resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the saved report to retrieve. Format:
+  /// accounts/{account}/reports/{report}
+  /// Value must have pattern `^accounts/\[^/\]+/reports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedReport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedReport> getSaved(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/saved';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SavedReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1580,9 +1691,11 @@ class AdClient {
   /// Format: accounts/{account}/adclients/{adclient}
   core.String? name;
 
-  /// Product code of the ad client.
+  /// Reporting product code of the ad client.
   ///
-  /// For example, "AFC" for AdSense for Content.
+  /// For example, "AFC" for AdSense for Content. Corresponds to the
+  /// `PRODUCT_CODE` dimension, and present only if the ad client supports
+  /// reporting.
   ///
   /// Output only.
   core.String? productCode;
@@ -1688,6 +1801,8 @@ class AdClientAdCode {
 /// that have been customized within an account.
 class AdUnit {
   /// Settings specific to content ads (AFC).
+  ///
+  /// Required.
   ContentAdsSettings? contentAdsSettings;
 
   /// Display name of the ad unit, as provided when the ad unit was created.
@@ -1698,8 +1813,6 @@ class AdUnit {
   /// Resource name of the ad unit.
   ///
   /// Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
-  ///
-  /// Required.
   core.String? name;
 
   /// Unique ID of the ad unit as used in the `AD_UNIT_ID` reporting dimension.
@@ -1862,9 +1975,13 @@ class ContentAdsSettings {
   /// Size of the ad unit.
   ///
   /// e.g. "728x90", "1x3" (for responsive ad units).
+  ///
+  /// Required.
   core.String? size;
 
   /// Type of the ad unit.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified ad unit type.
   /// - "DISPLAY" : Display ad unit.
@@ -1895,6 +2012,8 @@ class ContentAdsSettings {
 /// Representation of a custom channel.
 class CustomChannel {
   /// Display name of the custom channel.
+  ///
+  /// Required.
   core.String? displayName;
 
   /// Resource name of the custom channel.

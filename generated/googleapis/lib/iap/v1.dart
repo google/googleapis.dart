@@ -472,13 +472,14 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. GCP Project number/id and location. In the following
-  /// format: projects/{project_number/id}/iap_tunnel/locations/{location}.
+  /// [parent] - Required. Google Cloud Project ID and location. In the
+  /// following format:
+  /// `projects/{project_number/id}/iap_tunnel/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+$`.
   ///
   /// [tunnelDestGroupId] - Required. The ID to use for the TunnelDestGroup,
-  /// which will become the final component of the resource name. This value
-  /// should be 4-63 characters, and valid characters are /a-z-/.
+  /// which becomes the final component of the resource name. This value must be
+  /// 4-63 characters, and valid characters are `a-z-`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -518,9 +519,9 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the TunnelDestGroup to be deleted. In the
-  /// following format:
-  /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+  /// [name] - Required. Name of the TunnelDestGroup to delete. In the following
+  /// format:
+  /// `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+/destGroups/\[^/\]+$`.
   ///
@@ -558,7 +559,7 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   ///
   /// [name] - Required. Name of the TunnelDestGroup to be fetched. In the
   /// following format:
-  /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+  /// `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+/destGroups/\[^/\]+$`.
   ///
@@ -594,18 +595,19 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   /// Lists the existing TunnelDestGroups.
   ///
   /// To group across all locations, use a `-` as the location ID. For example:
-  /// /v1/projects/123/iap_tunnel/locations/-/destGroups
+  /// `/v1/projects/123/iap_tunnel/locations/-/destGroups`
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. GCP Project number/id and location. In the following
-  /// format: projects/{project_number/id}/iap_tunnel/locations/{location}. A
-  /// `-` can be used for the location to group across all locations.
+  /// [parent] - Required. Google Cloud Project ID and location. In the
+  /// following format:
+  /// `projects/{project_number/id}/iap_tunnel/locations/{location}`. A `-` can
+  /// be used for the location to group across all locations.
   /// Value must have pattern `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of groups to return. The service may
-  /// return fewer than this value. If unspecified, at most 100 groups will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// [pageSize] - The maximum number of groups to return. The service might
+  /// return fewer than this value. If unspecified, at most 100 groups are
+  /// returned. The maximum value is 1000; values above 1000 are coerced to
   /// 1000.
   ///
   /// [pageToken] - A page token, received from a previous
@@ -657,8 +659,8 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+/destGroups/\[^/\]+$`.
   ///
-  /// [updateMask] - The field mask specifying which IAP settings should be
-  /// updated. If omitted, then all of the settings are updated. See
+  /// [updateMask] - A field mask that specifies which IAP settings to update.
+  /// If omitted, then all of the settings are updated. See
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -712,8 +714,9 @@ class V1Resource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -797,8 +800,9 @@ class V1Resource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -843,8 +847,9 @@ class V1Resource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1492,7 +1497,7 @@ class ListIdentityAwareProxyClientsResponse {
 
 /// The response from ListTunnelDestGroups.
 class ListTunnelDestGroupsResponse {
-  /// A token, which can be send as `page_token` to retrieve the next page.
+  /// A token that you can send as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
@@ -1774,12 +1779,11 @@ class ReauthSettings {
   /// Reauth method required by the policy.
   /// Possible string values are:
   /// - "METHOD_UNSPECIFIED" : Reauthentication disabled.
-  /// - "LOGIN" : Mimicks the behavior as if the user had logged out and tried
-  /// to log in again. Users with 2SV (step verification) enabled will see their
-  /// 2SV challenges if they did not opt to have their second factor responses
+  /// - "LOGIN" : Mimics the behavior as if the user had logged out and tried to
+  /// log in again. Users with 2SV (2-step verification) enabled see their 2SV
+  /// challenges if they did not opt to have their second factor responses
   /// saved. Apps Core (GSuites) admins can configure settings to disable 2SV
-  /// cookies and require 2-step verification for all Apps Core users in their
-  /// domains.
+  /// cookies and require 2SV for all Apps Core users in their domains.
   /// - "PASSWORD" : User must type their password.
   /// - "SECURE_KEY" : User must use their secure key 2nd factor device.
   core.String? method;
@@ -1789,7 +1793,7 @@ class ReauthSettings {
   /// Policies are merged from higher in the hierarchy to lower in the
   /// hierarchy.
   /// Possible string values are:
-  /// - "POLICY_TYPE_UNSPECIFIED" : Default value. This value is unused/invalid.
+  /// - "POLICY_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "MINIMUM" : This policy acts as a minimum to other policies, lower in
   /// the hierarchy. Effective policy may only be the same or stricter.
   /// - "DEFAULT" : This policy acts as a default if no other reauth policy is
@@ -1933,7 +1937,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

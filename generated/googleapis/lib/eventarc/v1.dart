@@ -14,6 +14,8 @@
 
 /// Eventarc API - v1
 ///
+/// Build event-driven applications on Google Cloud Platform.
+///
 /// For more information, see <https://cloud.google.com/eventarc>
 ///
 /// Create an instance of [EventarcApi] to access these resources:
@@ -41,6 +43,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Build event-driven applications on Google Cloud Platform.
 class EventarcApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -336,6 +339,135 @@ class ProjectsLocationsChannelsResource {
   ProjectsLocationsChannelsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a new channel in a particular project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which to add this channel.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [channelId] - Required. The user-provided ID to be assigned to the
+  /// channel.
+  ///
+  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    Channel request,
+    core.String parent, {
+    core.String? channelId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (channelId != null) 'channelId': [channelId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/channels';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a single channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the channel to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
+  ///
+  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a single Channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the channel to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -390,6 +522,116 @@ class ProjectsLocationsChannelsResource {
       queryParams: _queryParams,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List channels.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection to list channels on.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [orderBy] - The sorting order of the resources returned. Value should be a
+  /// comma-separated list of fields. The default sorting order is ascending. To
+  /// specify descending order for a field, append a `desc` suffix; for example:
+  /// `name desc, channel_id`.
+  ///
+  /// [pageSize] - The maximum number of channels to return on each page. Note:
+  /// The service may send fewer.
+  ///
+  /// [pageToken] - The page token; provide the value from the `next_page_token`
+  /// field in a previous `ListChannels` call to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListChannels` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListChannelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListChannelsResponse> list(
+    core.String parent, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/channels';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListChannelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a single channel.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the channel. Must be unique within
+  /// the location on the project and must be in
+  /// `projects/{project}/locations/{location}/channels/{channel_id}` format.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
+  ///
+  /// [updateMask] - The fields to be updated; only fields explicitly provided
+  /// are updated. If no field mask is provided, all provided fields in the
+  /// request are updated. To update all fields, provide a field mask of "*".
+  ///
+  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// review, but do not post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    Channel request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1219,8 +1461,8 @@ class ProjectsLocationsTriggersResource {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -1337,6 +1579,128 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// A representation of the Channel resource.
+///
+/// A Channel is a resource on which event providers publish their events. The
+/// published events are delivered through the transport associated with the
+/// channel. Note that a channel is associated with exactly one event provider.
+class Channel {
+  /// The activation token for the channel.
+  ///
+  /// The token must be used by the provider to register the channel for
+  /// publishing.
+  ///
+  /// Output only.
+  core.String? activationToken;
+
+  /// The creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The resource name of the channel.
+  ///
+  /// Must be unique within the location on the project and must be in
+  /// `projects/{project}/locations/{location}/channels/{channel_id}` format.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The name of the event provider (e.g. Eventarc SaaS partner) associated
+  /// with the channel.
+  ///
+  /// This provider will be granted permissions to publish events to the
+  /// channel. Format:
+  /// `projects/{project}/locations/{location}/providers/{provider_id}`.
+  core.String? provider;
+
+  /// The name of the Pub/Sub topic created and managed by Eventarc system as a
+  /// transport for the event delivery.
+  ///
+  /// Format: `projects/{project}/topics/{topic_id}`.
+  ///
+  /// Output only.
+  core.String? pubsubTopic;
+
+  /// The state of a Channel.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PENDING" : The PENDING state indicates that a Channel has been created
+  /// successfully and there is a new activation token available for the
+  /// subscriber to use to convey the Channel to the provider in order to create
+  /// a Connection.
+  /// - "ACTIVE" : The ACTIVE state indicates that a Channel has been
+  /// successfully connected with the event provider. An ACTIVE Channel is ready
+  /// to receive and route events from the event provider.
+  /// - "INACTIVE" : The INACTIVE state means that the Channel cannot receive
+  /// events permanently. There are two possible cases this state can happen: 1.
+  /// The SaaS provider disconnected from this Channel. 2. The Channel
+  /// activation token has expired but the SaaS provider wasn't connected. To
+  /// re-establish a Connection with a provider, the subscriber should create a
+  /// new Channel and give it to the provider.
+  core.String? state;
+
+  /// Server assigned unique identifier for the channel.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Channel({
+    this.activationToken,
+    this.createTime,
+    this.name,
+    this.provider,
+    this.pubsubTopic,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  Channel.fromJson(core.Map _json)
+      : this(
+          activationToken: _json.containsKey('activationToken')
+              ? _json['activationToken'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          provider: _json.containsKey('provider')
+              ? _json['provider'] as core.String
+              : null,
+          pubsubTopic: _json.containsKey('pubsubTopic')
+              ? _json['pubsubTopic'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activationToken != null) 'activationToken': activationToken!,
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (provider != null) 'provider': provider!,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1839,6 +2203,50 @@ class GoogleLongrunningOperation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
 
+/// The response message for the `ListChannels` method.
+class ListChannelsResponse {
+  /// The requested channels, up to the number specified in `page_size`.
+  core.List<Channel>? channels;
+
+  /// A page token that can be sent to ListChannels to request the next page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListChannelsResponse({
+    this.channels,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListChannelsResponse.fromJson(core.Map _json)
+      : this(
+          channels: _json.containsKey('channels')
+              ? (_json['channels'] as core.List)
+                  .map((value) => Channel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (channels != null) 'channels': channels!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -2209,7 +2617,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
@@ -2240,6 +2648,14 @@ class Transport {
 
 /// A representation of the trigger resource.
 class Trigger {
+  /// The name of the channel associated with the trigger in
+  /// `projects/{project}/locations/{location}/channels/{channel}` format.
+  ///
+  /// You must provide a channel to receive events from Eventarc SaaS partners.
+  ///
+  /// Optional.
+  core.String? channel;
+
   /// The creation time.
   ///
   /// Output only.
@@ -2317,6 +2733,7 @@ class Trigger {
   core.String? updateTime;
 
   Trigger({
+    this.channel,
     this.createTime,
     this.destination,
     this.etag,
@@ -2331,6 +2748,9 @@ class Trigger {
 
   Trigger.fromJson(core.Map _json)
       : this(
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.String
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -2368,6 +2788,7 @@ class Trigger {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (channel != null) 'channel': channel!,
         if (createTime != null) 'createTime': createTime!,
         if (destination != null) 'destination': destination!,
         if (etag != null) 'etag': etag!,

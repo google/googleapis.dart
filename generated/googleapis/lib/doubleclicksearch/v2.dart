@@ -34,6 +34,8 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -389,6 +391,67 @@ class ReportsResource {
     );
     if (downloadOptions.isMetadataDownload) {
       return null;
+    } else {
+      return _response as commons.Media;
+    }
+  }
+
+  /// Downloads a csv file(encoded in UTF-8) that contains ID mappings between
+  /// legacy SA360 and new SA360.
+  ///
+  /// The file includes all children entities of the given advertiser(e.g.
+  /// engine accounts, campaigns, ad groups, etc.) that exist in both legacy
+  /// SA360 and new SA360.
+  ///
+  /// Request parameters:
+  ///
+  /// [agencyId] - Legacy SA360 agency ID.
+  ///
+  /// [advertiserId] - Legacy SA360 advertiser ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [IdMappingFile] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> getIdMappingFile(
+    core.String agencyId,
+    core.String advertiserId, {
+    core.String? $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'doubleclicksearch/v2/agency/' +
+        commons.escapeVariable('$agencyId') +
+        '/advertiser/' +
+        commons.escapeVariable('$advertiserId') +
+        '/idmapping';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return IdMappingFile.fromJson(
+          _response as core.Map<core.String, core.dynamic>);
     } else {
       return _response as commons.Media;
     }
@@ -947,6 +1010,10 @@ class CustomMetric {
         if (value != null) 'value': value!,
       };
 }
+
+/// File returned to
+/// https://developers.google.com/search-ads/v2/reference/reports/getIdMappingFile.
+typedef IdMappingFile = $Empty;
 
 class ReportFiles {
   /// The size of this report file in bytes.

@@ -380,8 +380,9 @@ class ProjectsLocationsFunctionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
@@ -548,8 +549,9 @@ class ProjectsLocationsFunctionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
@@ -596,8 +598,9 @@ class ProjectsLocationsFunctionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
@@ -810,8 +813,8 @@ class ProjectsLocationsRuntimesResource {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -867,7 +870,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1103,6 +1106,14 @@ class EventFilter {
 /// Describes EventTrigger, used to request events to be sent from another
 /// service.
 class EventTrigger {
+  /// The name of the channel associated with the trigger in
+  /// `projects/{project}/locations/{location}/channels/{channel}` format.
+  ///
+  /// You must provide a channel to receive events from Eventarc SaaS partners.
+  ///
+  /// Optional.
+  core.String? channel;
+
   /// Criteria used to filter events.
   core.List<EventFilter>? eventFilters;
 
@@ -1161,6 +1172,7 @@ class EventTrigger {
   core.String? triggerRegion;
 
   EventTrigger({
+    this.channel,
     this.eventFilters,
     this.eventType,
     this.pubsubTopic,
@@ -1172,6 +1184,9 @@ class EventTrigger {
 
   EventTrigger.fromJson(core.Map _json)
       : this(
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.String
+              : null,
           eventFilters: _json.containsKey('eventFilters')
               ? (_json['eventFilters'] as core.List)
                   .map((value) => EventFilter.fromJson(
@@ -1199,6 +1214,7 @@ class EventTrigger {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (channel != null) 'channel': channel!,
         if (eventFilters != null) 'eventFilters': eventFilters!,
         if (eventType != null) 'eventType': eventType!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
@@ -1957,8 +1973,8 @@ class SecretEnvVar {
   /// Project identifier (preferably project number but can also be the project
   /// ID) of the project that contains the secret.
   ///
-  /// If not set, it will be populated with the function's project assuming that
-  /// the secret exists in the same project as of the function.
+  /// If not set, it is assumed that the secret is in the same project as the
+  /// function.
   core.String? projectId;
 
   /// Name of the secret in secret manager (not the full resource name).
@@ -1997,6 +2013,105 @@ class SecretEnvVar {
         if (projectId != null) 'projectId': projectId!,
         if (secret != null) 'secret': secret!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for a single version.
+class SecretVersion {
+  /// Relative path of the file under the mount path where the secret value for
+  /// this version will be fetched and made available.
+  ///
+  /// For example, setting the mount_path as '/etc/secrets' and path as
+  /// `secret_foo` would mount the secret value file at
+  /// `/etc/secrets/secret_foo`.
+  core.String? path;
+
+  /// Version of the secret (version number or the string 'latest').
+  ///
+  /// It is preferable to use `latest` version with secret volumes as secret
+  /// value changes are reflected immediately.
+  core.String? version;
+
+  SecretVersion({
+    this.path,
+    this.version,
+  });
+
+  SecretVersion.fromJson(core.Map _json)
+      : this(
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for a secret volume.
+///
+/// It has the information necessary to fetch the secret value from secret
+/// manager and make it available as files mounted at the requested paths within
+/// the application container.
+class SecretVolume {
+  /// The path within the container to mount the secret volume.
+  ///
+  /// For example, setting the mount_path as `/etc/secrets` would mount the
+  /// secret value files under the `/etc/secrets` directory. This directory will
+  /// also be completely shadowed and unavailable to mount any other secrets.
+  /// Recommended mount path: /etc/secrets
+  core.String? mountPath;
+
+  /// Project identifier (preferably project number but can also be the project
+  /// ID) of the project that contains the secret.
+  ///
+  /// If not set, it is assumed that the secret is in the same project as the
+  /// function.
+  core.String? projectId;
+
+  /// Name of the secret in secret manager (not the full resource name).
+  core.String? secret;
+
+  /// List of secret versions to mount for this secret.
+  ///
+  /// If empty, the `latest` version of the secret will be made available in a
+  /// file named after the secret under the mount point.
+  core.List<SecretVersion>? versions;
+
+  SecretVolume({
+    this.mountPath,
+    this.projectId,
+    this.secret,
+    this.versions,
+  });
+
+  SecretVolume.fromJson(core.Map _json)
+      : this(
+          mountPath: _json.containsKey('mountPath')
+              ? _json['mountPath'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+          versions: _json.containsKey('versions')
+              ? (_json['versions'] as core.List)
+                  .map((value) => SecretVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mountPath != null) 'mountPath': mountPath!,
+        if (projectId != null) 'projectId': projectId!,
+        if (secret != null) 'secret': secret!,
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -2065,6 +2180,9 @@ class ServiceConfig {
   /// Secret environment variables configuration.
   core.List<SecretEnvVar>? secretEnvironmentVariables;
 
+  /// Secret volumes configuration.
+  core.List<SecretVolume>? secretVolumes;
+
   /// Name of the service associated with a Function.
   ///
   /// The format of this field is
@@ -2116,6 +2234,7 @@ class ServiceConfig {
     this.minInstanceCount,
     this.revision,
     this.secretEnvironmentVariables,
+    this.secretVolumes,
     this.service,
     this.serviceAccountEmail,
     this.timeoutSeconds,
@@ -2162,6 +2281,12 @@ class ServiceConfig {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
+          secretVolumes: _json.containsKey('secretVolumes')
+              ? (_json['secretVolumes'] as core.List)
+                  .map((value) => SecretVolume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           service: _json.containsKey('service')
               ? _json['service'] as core.String
               : null,
@@ -2193,6 +2318,7 @@ class ServiceConfig {
         if (revision != null) 'revision': revision!,
         if (secretEnvironmentVariables != null)
           'secretEnvironmentVariables': secretEnvironmentVariables!,
+        if (secretVolumes != null) 'secretVolumes': secretVolumes!,
         if (service != null) 'service': service!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
@@ -2209,7 +2335,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 

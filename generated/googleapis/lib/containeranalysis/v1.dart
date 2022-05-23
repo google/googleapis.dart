@@ -251,8 +251,9 @@ class ProjectsNotesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -394,8 +395,9 @@ class ProjectsNotesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -442,8 +444,9 @@ class ProjectsNotesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -719,8 +722,9 @@ class ProjectsOccurrencesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -946,8 +950,9 @@ class ProjectsOccurrencesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -994,8 +999,9 @@ class ProjectsOccurrencesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1259,7 +1265,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1556,10 +1562,8 @@ typedef BuilderConfig = $Shared00;
 /// Common Vulnerability Scoring System.
 ///
 /// For details, see https://www.first.org/cvss/specification-document This is a
-/// message we will try to use for storing multiple versions of CVSS. The
-/// intention is that as new versions of CVSS scores get added, we will be able
-/// to modify this message rather than adding new protos for each new version of
-/// the score.
+/// message we will try to use for storing various versions of CVSS rather than
+/// making a separate proto for storing a specific version.
 typedef CVSS = $CVSS;
 
 /// Common Vulnerability Scoring System version 3.
@@ -2220,6 +2224,35 @@ class Detail {
       };
 }
 
+/// Digest information.
+class Digest {
+  /// `SHA1`, `SHA512` etc.
+  core.String? algo;
+
+  /// Value of the digest encoded.
+  ///
+  /// For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+  core.String? digestValue;
+
+  Digest({
+    this.algo,
+    this.digestValue,
+  });
+
+  Digest.fromJson(core.Map _json)
+      : this(
+          algo: _json.containsKey('algo') ? _json['algo'] as core.String : null,
+          digestValue: _json.containsKey('digestValue')
+              ? _json['digestValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (algo != null) 'algo': algo!,
+        if (digestValue != null) 'digestValue': digestValue!,
+      };
+}
+
 /// A note that indicates a type of analysis a provider would perform.
 ///
 /// This note exists in a provider's project. A `Discovery` occurrence is
@@ -2648,6 +2681,9 @@ typedef GetPolicyOptions = $GetPolicyOptions;
 /// repository (e.g., GitHub).
 typedef GitSourceContext = $GitSourceContext;
 
+/// Indicates the location at which a package was found.
+typedef GrafeasV1FileLocation = $FileLocation;
+
 /// Container message for hash values.
 typedef Hash = $Hash;
 
@@ -2923,6 +2959,9 @@ class KnowledgeBase {
 /// Layer holds metadata specific to a layer of a Docker image.
 typedef Layer = $Layer;
 
+/// License information.
+typedef License = $License;
+
 /// Response for listing occurrences for a note.
 class ListNoteOccurrencesResponse {
   /// Token to provide to skip to a particular spot in the list.
@@ -3030,16 +3069,17 @@ class ListOccurrencesResponse {
 ///
 /// E.g., glibc was found in `/var/lib/dpkg/status`.
 class Location {
-  /// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting
-  /// the package manager version distributing a package.
+  /// The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   ///
-  /// Required.
+  /// Deprecated.
   core.String? cpeUri;
 
   /// The path from which we gathered that this package/version is installed.
   core.String? path;
 
   /// The version installed at this location.
+  ///
+  /// Deprecated.
   Version? version;
 
   Location({
@@ -3577,6 +3617,9 @@ class PackageIssue {
   /// - "CRITICAL" : Critical severity.
   core.String? effectiveSeverity;
 
+  /// The location at which this package was found.
+  core.List<GrafeasV1FileLocation>? fileLocation;
+
   /// Whether a fix is available for this package.
   ///
   /// Output only.
@@ -3608,6 +3651,7 @@ class PackageIssue {
     this.affectedPackage,
     this.affectedVersion,
     this.effectiveSeverity,
+    this.fileLocation,
     this.fixAvailable,
     this.fixedCpeUri,
     this.fixedPackage,
@@ -3629,6 +3673,12 @@ class PackageIssue {
               : null,
           effectiveSeverity: _json.containsKey('effectiveSeverity')
               ? _json['effectiveSeverity'] as core.String
+              : null,
+          fileLocation: _json.containsKey('fileLocation')
+              ? (_json['fileLocation'] as core.List)
+                  .map((value) => GrafeasV1FileLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           fixAvailable: _json.containsKey('fixAvailable')
               ? _json['fixAvailable'] as core.bool
@@ -3653,6 +3703,7 @@ class PackageIssue {
         if (affectedPackage != null) 'affectedPackage': affectedPackage!,
         if (affectedVersion != null) 'affectedVersion': affectedVersion!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
+        if (fileLocation != null) 'fileLocation': fileLocation!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri!,
         if (fixedPackage != null) 'fixedPackage': fixedPackage!,
@@ -3661,61 +3712,194 @@ class PackageIssue {
       };
 }
 
-/// This represents a particular package that is distributed over various
-/// channels.
-///
-/// E.g., glibc (aka libc6) is distributed by many, at various versions.
+/// PackageNote represents a particular package version.
 class PackageNote {
+  /// The CPU architecture for which packages in this distribution channel were
+  /// built.
+  ///
+  /// Architecture will be blank for language packages.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Unknown architecture.
+  /// - "X86" : X86 architecture.
+  /// - "X64" : X64 architecture.
+  core.String? architecture;
+
+  /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting
+  /// the package manager version distributing a package.
+  ///
+  /// The cpe_uri will be blank for language packages.
+  core.String? cpeUri;
+
+  /// The description of this package.
+  core.String? description;
+
+  /// Hash value, typically a file digest, that allows unique identification a
+  /// specific package.
+  core.List<Digest>? digest;
+
   /// The various channels by which a package is distributed.
+  ///
+  /// Deprecated.
   core.List<Distribution>? distribution;
+
+  /// Licenses that have been declared by the authors of the package.
+  License? license;
+
+  /// A freeform text denoting the maintainer of this package.
+  core.String? maintainer;
 
   /// The name of the package.
   ///
   /// Required. Immutable.
   core.String? name;
 
+  /// The type of package; whether native or non native (e.g., ruby gems,
+  /// node.js packages, etc.).
+  core.String? packageType;
+
+  /// The homepage for this package.
+  core.String? url;
+
+  /// The version of the package.
+  Version? version;
+
   PackageNote({
+    this.architecture,
+    this.cpeUri,
+    this.description,
+    this.digest,
     this.distribution,
+    this.license,
+    this.maintainer,
     this.name,
+    this.packageType,
+    this.url,
+    this.version,
   });
 
   PackageNote.fromJson(core.Map _json)
       : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          cpeUri: _json.containsKey('cpeUri')
+              ? _json['cpeUri'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.List)
+                  .map((value) => Digest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           distribution: _json.containsKey('distribution')
               ? (_json['distribution'] as core.List)
                   .map((value) => Distribution.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          license: _json.containsKey('license')
+              ? License.fromJson(
+                  _json['license'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maintainer: _json.containsKey('maintainer')
+              ? _json['maintainer'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          version: _json.containsKey('version')
+              ? Version.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (description != null) 'description': description!,
+        if (digest != null) 'digest': digest!,
         if (distribution != null) 'distribution': distribution!,
+        if (license != null) 'license': license!,
+        if (maintainer != null) 'maintainer': maintainer!,
         if (name != null) 'name': name!,
+        if (packageType != null) 'packageType': packageType!,
+        if (url != null) 'url': url!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// Details on how a particular software package was installed on a system.
 class PackageOccurrence {
+  /// The CPU architecture for which packages in this distribution channel were
+  /// built.
+  ///
+  /// Architecture will be blank for language packages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Unknown architecture.
+  /// - "X86" : X86 architecture.
+  /// - "X64" : X64 architecture.
+  core.String? architecture;
+
+  /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting
+  /// the package manager version distributing a package.
+  ///
+  /// The cpe_uri will be blank for language packages.
+  ///
+  /// Output only.
+  core.String? cpeUri;
+
+  /// Licenses that have been declared by the authors of the package.
+  License? license;
+
   /// All of the places within the filesystem versions of this package have been
   /// found.
-  ///
-  /// Required.
   core.List<Location>? location;
 
   /// The name of the installed package.
   ///
-  /// Output only.
+  /// Required. Output only.
   core.String? name;
 
+  /// The type of package; whether native or non native (e.g., ruby gems,
+  /// node.js packages, etc.).
+  ///
+  /// Output only.
+  core.String? packageType;
+
+  /// The version of the package.
+  ///
+  /// Output only.
+  Version? version;
+
   PackageOccurrence({
+    this.architecture,
+    this.cpeUri,
+    this.license,
     this.location,
     this.name,
+    this.packageType,
+    this.version,
   });
 
   PackageOccurrence.fromJson(core.Map _json)
       : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          cpeUri: _json.containsKey('cpeUri')
+              ? _json['cpeUri'] as core.String
+              : null,
+          license: _json.containsKey('license')
+              ? License.fromJson(
+                  _json['license'] as core.Map<core.String, core.dynamic>)
+              : null,
           location: _json.containsKey('location')
               ? (_json['location'] as core.List)
                   .map((value) => Location.fromJson(
@@ -3723,11 +3907,23 @@ class PackageOccurrence {
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? Version.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (license != null) 'license': license!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
+        if (packageType != null) 'packageType': packageType!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3887,7 +4083,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 

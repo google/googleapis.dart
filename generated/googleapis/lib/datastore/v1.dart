@@ -2730,6 +2730,8 @@ typedef RollbackResponse = $Empty;
 /// The request for Datastore.RunQuery.
 class RunQueryRequest {
   /// The GQL query to run.
+  ///
+  /// This query must be a non-aggregation query.
   GqlQuery? gqlQuery;
 
   /// Entities are partitioned into subsets, identified by a partition ID.

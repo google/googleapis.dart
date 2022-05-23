@@ -3897,12 +3897,24 @@ class BucketLifecycleRuleCondition {
   /// not guaranteed to be released.
   core.String? matchesPattern;
 
+  /// List of object name prefixes.
+  ///
+  /// This condition will be satisfied when at least one of the prefixes exactly
+  /// matches the beginning of the object name.
+  core.List<core.String>? matchesPrefix;
+
   /// Objects having any of the storage classes specified by this condition will
   /// be matched.
   ///
   /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE,
   /// STANDARD, and DURABLE_REDUCED_AVAILABILITY.
   core.List<core.String>? matchesStorageClass;
+
+  /// List of object name suffixes.
+  ///
+  /// This condition will be satisfied when at least one of the suffixes exactly
+  /// matches the end of the object name.
+  core.List<core.String>? matchesSuffix;
 
   /// A date in RFC 3339 format with only the date part (for instance,
   /// "2013-01-15").
@@ -3927,7 +3939,9 @@ class BucketLifecycleRuleCondition {
     this.daysSinceNoncurrentTime,
     this.isLive,
     this.matchesPattern,
+    this.matchesPrefix,
     this.matchesStorageClass,
+    this.matchesSuffix,
     this.noncurrentTimeBefore,
     this.numNewerVersions,
   });
@@ -3952,8 +3966,18 @@ class BucketLifecycleRuleCondition {
           matchesPattern: _json.containsKey('matchesPattern')
               ? _json['matchesPattern'] as core.String
               : null,
+          matchesPrefix: _json.containsKey('matchesPrefix')
+              ? (_json['matchesPrefix'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           matchesStorageClass: _json.containsKey('matchesStorageClass')
               ? (_json['matchesStorageClass'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          matchesSuffix: _json.containsKey('matchesSuffix')
+              ? (_json['matchesSuffix'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3980,8 +4004,10 @@ class BucketLifecycleRuleCondition {
           'daysSinceNoncurrentTime': daysSinceNoncurrentTime!,
         if (isLive != null) 'isLive': isLive!,
         if (matchesPattern != null) 'matchesPattern': matchesPattern!,
+        if (matchesPrefix != null) 'matchesPrefix': matchesPrefix!,
         if (matchesStorageClass != null)
           'matchesStorageClass': matchesStorageClass!,
+        if (matchesSuffix != null) 'matchesSuffix': matchesSuffix!,
         if (noncurrentTimeBefore != null)
           'noncurrentTimeBefore':
               "${(noncurrentTimeBefore!).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore!).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore!).day.toString().padLeft(2, '0')}",

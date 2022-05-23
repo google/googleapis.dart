@@ -27,6 +27,7 @@
 ///     - [ProjectsAppsAppAttestConfigResource]
 ///     - [ProjectsAppsDebugTokensResource]
 ///     - [ProjectsAppsDeviceCheckConfigResource]
+///     - [ProjectsAppsPlayIntegrityConfigResource]
 ///     - [ProjectsAppsRecaptchaConfigResource]
 ///     - [ProjectsAppsRecaptchaEnterpriseConfigResource]
 ///     - [ProjectsAppsRecaptchaV3ConfigResource]
@@ -137,6 +138,8 @@ class ProjectsAppsResource {
       ProjectsAppsDebugTokensResource(_requester);
   ProjectsAppsDeviceCheckConfigResource get deviceCheckConfig =>
       ProjectsAppsDeviceCheckConfigResource(_requester);
+  ProjectsAppsPlayIntegrityConfigResource get playIntegrityConfig =>
+      ProjectsAppsPlayIntegrityConfigResource(_requester);
   ProjectsAppsRecaptchaConfigResource get recaptchaConfig =>
       ProjectsAppsRecaptchaConfigResource(_requester);
   ProjectsAppsRecaptchaEnterpriseConfigResource get recaptchaEnterpriseConfig =>
@@ -404,6 +407,56 @@ class ProjectsAppsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Validates an
+  /// [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify).
+  ///
+  /// If valid, returns an AppCheckToken.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the Android app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAppCheckToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken>
+      exchangePlayIntegrityToken(
+    GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1beta/' + core.Uri.encodeFull('$app') + ':exchangePlayIntegrityToken';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Validates a
   /// [reCAPTCHA Enterprise response token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token).
   ///
@@ -654,6 +707,61 @@ class ProjectsAppsResource {
       queryParams: _queryParams,
     );
     return GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates a challenge that protects the integrity of an immediately
+  /// following integrity verdict request to the Play Integrity API.
+  ///
+  /// The next call to ExchangePlayIntegrityToken using the resulting integrity
+  /// token will verify the presence and validity of the challenge. A challenge
+  /// should not be reused for multiple calls.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the app, in the format:
+  /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse>
+      generatePlayIntegrityChallenge(
+    GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' +
+        core.Uri.encodeFull('$app') +
+        ':generatePlayIntegrityChallenge';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1205,6 +1313,155 @@ class ProjectsAppsDeviceCheckConfigResource {
       queryParams: _queryParams,
     );
     return GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsAppsPlayIntegrityConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAppsPlayIntegrityConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Atomically gets the PlayIntegrityConfigs for the specified list of apps.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project name shared by all
+  /// PlayIntegrityConfigs being retrieved, in the format ```
+  /// projects/{project_number} ``` The parent collection in the `name` field of
+  /// any resource being retrieved must match this field, or the entire batch
+  /// fails.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [names] - Required. The relative resource names of the
+  /// PlayIntegrityConfigs to retrieve, in the format ```
+  /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ``` A maximum
+  /// of 100 objects can be retrieved in a batch.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse>
+      batchGet(
+    core.String parent, {
+    core.List<core.String>? names,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (names != null) 'names': names,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' +
+        core.Uri.encodeFull('$parent') +
+        '/apps/-/playIntegrityConfig:batchGet';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the PlayIntegrityConfig for the specified app.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the PlayIntegrityConfig,
+  /// in the format: ```
+  /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/apps/\[^/\]+/playIntegrityConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaPlayIntegrityConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the PlayIntegrityConfig for the specified app.
+  ///
+  /// While this configuration is incomplete or invalid, the app will be unable
+  /// to exchange Play Integrity tokens for App Check tokens.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the Play Integrity
+  /// configuration object, in the format: ```
+  /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/apps/\[^/\]+/playIntegrityConfig$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// PlayIntegrityConfig Gets to update. Example: `token_ttl`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaPlayIntegrityConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig> patch(
+    GoogleFirebaseAppcheckV1betaPlayIntegrityConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2022,7 +2279,7 @@ class ProjectsServicesResource {
 
 /// An app's App Attest configuration object.
 ///
-/// This configuration controls certain properties of the App Check token
+/// This configuration controls certain properties of the `AppCheckToken`
 /// returned by ExchangeAppAttestAttestation and ExchangeAppAttestAssertion,
 /// such as its ttl. Note that the Team ID registered with your app is used as
 /// part of the validation process. Please register it via the Firebase Console
@@ -2186,6 +2443,32 @@ class GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse {
               ? (_json['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configs != null) 'configs': configs!,
+      };
+}
+
+/// Response message for the BatchGetPlayIntegrityConfigs method.
+class GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse {
+  /// PlayIntegrityConfigs retrieved.
+  core.List<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>? configs;
+
+  GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse({
+    this.configs,
+  });
+
+  GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse.fromJson(
+      core.Map _json)
+      : this(
+          configs: _json.containsKey('configs')
+              ? (_json['configs'] as core.List)
+                  .map((value) =>
+                      GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2426,7 +2709,7 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
 ///
 /// This configuration is used by ExchangeDeviceCheckToken to validate device
 /// tokens issued to apps by DeviceCheck. It also controls certain properties of
-/// the returned App Check token, such as its ttl. Note that the Team ID
+/// the returned `AppCheckToken`, such as its ttl. Note that the Team ID
 /// registered with your app is used as part of the validation process. Please
 /// register it via the Firebase Console or programmatically via the
 /// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps/patch).
@@ -2755,6 +3038,33 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
       };
 }
 
+/// Request message for the ExchangePlayIntegrityToken method.
+class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
+  /// The
+  /// [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify)
+  /// issued to your app.
+  ///
+  /// Required.
+  core.String? playIntegrityToken;
+
+  GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest({
+    this.playIntegrityToken,
+  });
+
+  GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest.fromJson(
+      core.Map _json)
+      : this(
+          playIntegrityToken: _json.containsKey('playIntegrityToken')
+              ? _json['playIntegrityToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (playIntegrityToken != null)
+          'playIntegrityToken': playIntegrityToken!,
+      };
+}
+
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
   /// The reCAPTCHA token as returned by the
@@ -2899,6 +3209,44 @@ class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse {
       };
 }
 
+/// Request message for the GeneratePlayIntegrityChallenge method.
+typedef GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest
+    = $Empty;
+
+/// Response message for the GeneratePlayIntegrityChallenge method.
+class GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse {
+  /// A one-time use
+  /// [challenge](https://developer.android.com/google/play/integrity/verdict#protect-against-replay-attacks)
+  /// for the client to pass to the Play Integrity API.
+  core.String? challenge;
+
+  /// The duration from the time this challenge is minted until its expiration.
+  ///
+  /// This field is intended to ease client-side token management, since the
+  /// client may have clock skew, but is still able to accurately measure a
+  /// duration.
+  core.String? ttl;
+
+  GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse({
+    this.challenge,
+    this.ttl,
+  });
+
+  GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse.fromJson(
+      core.Map _json)
+      : this(
+          challenge: _json.containsKey('challenge')
+              ? _json['challenge'] as core.String
+              : null,
+          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (challenge != null) 'challenge': challenge!,
+        if (ttl != null) 'ttl': ttl!,
+      };
+}
+
 /// Response message for the ListDebugTokens method.
 class GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
   /// The DebugTokens retrieved.
@@ -2973,6 +3321,48 @@ class GoogleFirebaseAppcheckV1betaListServicesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null) 'services': services!,
+      };
+}
+
+/// An app's Play Integrity configuration object.
+///
+/// This configuration controls certain properties of the `AppCheckToken`
+/// returned by ExchangePlayIntegrityToken, such as its ttl. Note that your
+/// registered SHA-256 certificate fingerprints are used to validate tokens
+/// issued by the Play Integrity API; please register them via the Firebase
+/// Console or programmatically via the
+/// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.androidApps.sha/create).
+class GoogleFirebaseAppcheckV1betaPlayIntegrityConfig {
+  /// The relative resource name of the Play Integrity configuration object, in
+  /// the format: ```
+  /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Specifies the duration for which App Check tokens exchanged from Play
+  /// Integrity tokens will be valid.
+  ///
+  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
+  /// and 7 days, inclusive.
+  core.String? tokenTtl;
+
+  GoogleFirebaseAppcheckV1betaPlayIntegrityConfig({
+    this.name,
+    this.tokenTtl,
+  });
+
+  GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          tokenTtl: _json.containsKey('tokenTtl')
+              ? _json['tokenTtl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (tokenTtl != null) 'tokenTtl': tokenTtl!,
       };
 }
 
@@ -3070,7 +3460,7 @@ class GoogleFirebaseAppcheckV1betaPublicJwkSet {
 ///
 /// This configuration is used by ExchangeRecaptchaToken to validate reCAPTCHA
 /// tokens issued to apps by reCAPTCHA v3. It also controls certain properties
-/// of the returned App Check token, such as its ttl.
+/// of the returned `AppCheckToken`, such as its ttl.
 class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
   /// The relative resource name of the reCAPTCHA v3 configuration object, in
   /// the format: ``` projects/{project_number}/apps/{app_id}/recaptchaConfig
@@ -3136,7 +3526,7 @@ class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
 ///
 /// This configuration is used by ExchangeRecaptchaEnterpriseToken to validate
 /// reCAPTCHA tokens issued to apps by reCAPTCHA Enterprise. It also controls
-/// certain properties of the returned App Check token, such as its ttl.
+/// certain properties of the returned `AppCheckToken`, such as its ttl.
 class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig {
   /// The relative resource name of the reCAPTCHA Enterprise configuration
   /// object, in the format: ```
@@ -3190,7 +3580,7 @@ class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig {
 ///
 /// This configuration is used by ExchangeRecaptchaV3Token to validate reCAPTCHA
 /// tokens issued to apps by reCAPTCHA v3. It also controls certain properties
-/// of the returned App Check token, such as its ttl.
+/// of the returned `AppCheckToken`, such as its ttl.
 class GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
   /// The relative resource name of the reCAPTCHA v3 configuration object, in
   /// the format: ``` projects/{project_number}/apps/{app_id}/recaptchaV3Config
@@ -3254,7 +3644,7 @@ class GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
 
 /// An app's SafetyNet configuration object.
 ///
-/// This configuration controls certain properties of the App Check token
+/// This configuration controls certain properties of the `AppCheckToken`
 /// returned by ExchangeSafetyNetToken, such as its ttl. Note that your
 /// registered SHA-256 certificate fingerprints are used to validate tokens
 /// issued by SafetyNet; please register them via the Firebase Console or

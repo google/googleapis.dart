@@ -995,6 +995,12 @@ class ServicesProjectsGlobalNetworksResource {
   /// Value must have pattern
   /// `^services/\[^/\]+/projects/\[^/\]+/global/networks/\[^/\]+$`.
   ///
+  /// [includeUsedIpRanges] - Optional. When true, include the used IP ranges as
+  /// part of the GetConsumerConfig output. This includes routes created inside
+  /// the service networking network, consumer network, peers of the consumer
+  /// network, and reserved ranges inside the service networking network. By
+  /// default, this is false
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1007,9 +1013,12 @@ class ServicesProjectsGlobalNetworksResource {
   /// this method will complete with the same error.
   async.Future<ConsumerConfig> get(
     core.String name, {
+    core.bool? includeUsedIpRanges,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (includeUsedIpRanges != null)
+        'includeUsedIpRanges': ['${includeUsedIpRanges}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1747,6 +1756,11 @@ class ConsumerConfig {
   core.List<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>?
       reservedRanges;
 
+  /// The IP ranges already in use by consumer or producer
+  ///
+  /// Output only.
+  core.List<core.String>? usedIpRanges;
+
   /// Indicates whether the VPC Service Controls reference architecture is
   /// configured for the producer VPC host network.
   ///
@@ -1764,6 +1778,7 @@ class ConsumerConfig {
     this.producerImportSubnetRoutesWithPublicIp,
     this.producerNetwork,
     this.reservedRanges,
+    this.usedIpRanges,
     this.vpcScReferenceArchitectureEnabled,
   });
 
@@ -1812,6 +1827,11 @@ class ConsumerConfig {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          usedIpRanges: _json.containsKey('usedIpRanges')
+              ? (_json['usedIpRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           vpcScReferenceArchitectureEnabled:
               _json.containsKey('vpcScReferenceArchitectureEnabled')
                   ? _json['vpcScReferenceArchitectureEnabled'] as core.bool
@@ -1841,6 +1861,7 @@ class ConsumerConfig {
               producerImportSubnetRoutesWithPublicIp!,
         if (producerNetwork != null) 'producerNetwork': producerNetwork!,
         if (reservedRanges != null) 'reservedRanges': reservedRanges!,
+        if (usedIpRanges != null) 'usedIpRanges': usedIpRanges!,
         if (vpcScReferenceArchitectureEnabled != null)
           'vpcScReferenceArchitectureEnabled':
               vpcScReferenceArchitectureEnabled!,

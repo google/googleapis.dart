@@ -3787,7 +3787,7 @@
             }
         }
     },
-    "revision": "20220412",
+    "revision": "20220522",
     "rootUrl": "https://youtube.googleapis.com/",
     "schemas": {
         "AbuseReport": {
@@ -4479,11 +4479,9 @@
                         "rtmp",
                         "dash",
                         "webrtc",
-                        "hls",
-                        "srt"
+                        "hls"
                     ],
                     "enumDescriptions": [
-                        "",
                         "",
                         "",
                         "",
@@ -5740,6 +5738,9 @@
                         "cbfcUnspecified",
                         "cbfcU",
                         "cbfcUA",
+                        "cbfcUA7plus",
+                        "cbfcUA13plus",
+                        "cbfcUA16plus",
                         "cbfcA",
                         "cbfcS",
                         "cbfcUnrated"
@@ -5748,6 +5749,9 @@
                         "",
                         "U",
                         "U/A",
+                        "U/A 7+",
+                        "U/A 13+",
+                        "U/A 16+",
                         "A",
                         "S",
                         ""

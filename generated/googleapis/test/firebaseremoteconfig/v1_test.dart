@@ -1240,11 +1240,10 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsProjectsRemoteConfigResource', () {
+  unittest.group('resource-ProjectsRemoteConfigResource', () {
     unittest.test('method--downloadDefaults', () async {
       final mock = HttpServerMock();
-      final res =
-          api.FirebaseRemoteConfigApi(mock).projects.projects.remoteConfig;
+      final res = api.FirebaseRemoteConfigApi(mock).projects.remoteConfig;
       final arg_project = 'foo';
       final arg_format = 'foo';
       final arg_$fields = 'foo';
@@ -1259,10 +1258,10 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('v1/projects/'),
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
         );
-        pathOffset += 12;
+        pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
@@ -1299,9 +1298,7 @@ void main() {
           format: arg_format, $fields: arg_$fields);
       checkHttpBody(response as api.HttpBody);
     });
-  });
 
-  unittest.group('resource-ProjectsRemoteConfigResource', () {
     unittest.test('method--listVersions', () async {
       final mock = HttpServerMock();
       final res = api.FirebaseRemoteConfigApi(mock).projects.remoteConfig;

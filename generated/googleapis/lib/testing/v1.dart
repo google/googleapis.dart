@@ -772,9 +772,6 @@ class AndroidModel {
   core.List<core.String>? tags;
 
   /// URL of a thumbnail image (photo) of the device.
-  ///
-  /// e.g.
-  /// https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...
   core.String? thumbnailUrl;
 
   AndroidModel({
@@ -2878,6 +2875,8 @@ class Shard {
   core.int? shardIndex;
 
   /// Test targets for each shard.
+  ///
+  /// Only set for manual sharding.
   ///
   /// Output only.
   TestTargetsForShard? testTargetsForShard;

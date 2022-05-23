@@ -230,14 +230,14 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location within which to create the BackupPlan.
-  /// Format: projects/{project}/locations/{location}
+  /// Format: projects / * /locations / *
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupPlanId] - Required. The client-provided short name for the
-  /// BackupPlan resource. This name must: a. be between 1 and 63 characters
-  /// long (inclusive) b. consist of only lower-case ASCII letters, numbers, and
-  /// dashes c. start with a lower-case letter d. end with a lower-case letter
-  /// or number e. be unique within the set of BackupPlans in this location
+  /// BackupPlan resource. This name must: - be between 1 and 63 characters long
+  /// (inclusive) - consist of only lower-case ASCII letters, numbers, and
+  /// dashes - start with a lower-case letter - end with a lower-case letter or
+  /// number - be unique within the set of BackupPlans in this location
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -277,13 +277,13 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified BackupPlan name. Format:
-  /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+  /// [name] - Required. Fully qualified BackupPlan name. Format: projects / *
+  /// /locations / * /backupPlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the value currently assigned
-  /// to the target resource.
+  /// [etag] - If provided, this value must match the current value of the
+  /// target BackupPlan's etag field or the request is rejected.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -320,8 +320,8 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified BackupPlan name. Format:
-  /// projects/{project}/locations/{location}/backupPlans/{backup_plan}
+  /// [name] - Required. Fully qualified BackupPlan name. Format: projects / *
+  /// /locations / * /backupPlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -362,8 +362,9 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -415,12 +416,12 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location that contains the BackupPlans to list.
-  /// Format: projects/{project}/locations/{location}
+  /// Format: projects / * /locations / *
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - List filter.
+  /// [filter] - Field match expression used to filter the results.
   ///
-  /// [orderBy] - Sort results.
+  /// [orderBy] - Field by which to sort the results.
   ///
   /// [pageSize] - The target number of results to return in a single response.
   /// If not specified, a default value will be chosen by the service. Note that
@@ -476,8 +477,8 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. \[Output Only\] The full name of the BackupPlan
-  /// resource. Format: projects / * /locations / * /backupPlans / *
+  /// [name] - Output only. The full name of the BackupPlan resource. Format:
+  /// projects / * /locations / * /backupPlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -535,8 +536,9 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -583,8 +585,9 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -638,14 +641,14 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BackupPlan within which to create the Backup.
-  /// Format: projects/{project}/locations/{location}/backupPlans/{backup_plan}
+  /// Format: projects / * /locations / * /backupPlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
   /// [backupId] - The client-provided short name for the Backup resource. This
-  /// name must: a. be between 1 and 63 characters long (inclusive) b. consist
-  /// of only lower-case ASCII letters, numbers, and dashes c. start with a
-  /// lower-case letter d. end with a lower-case letter or number e. be unique
+  /// name must: - be between 1 and 63 characters long (inclusive) - consist of
+  /// only lower-case ASCII letters, numbers, and dashes - start with a
+  /// lower-case letter - end with a lower-case letter or number - be unique
   /// within the set of Backups in this BackupPlan
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -686,17 +689,17 @@ class ProjectsLocationsBackupPlansBackupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the Backup resource. Format:
-  /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+  /// [name] - Required. Name of the Backup resource. Format: projects / *
+  /// /locations / * /backupPlans / * /backups / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [etag] - etag, if provided, it must match the server's etag for the delete
-  /// to happen.
+  /// [etag] - If provided, this value must match the current value of the
+  /// target Backup's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any volumeBackups below this backup will also be
-  /// deleted. Otherwise, the request will only succeed if the backup has no
-  /// volumeBackups.
+  /// [force] - If set to true, any VolumeBackups below this Backup will also be
+  /// deleted. Otherwise, the request will only succeed if the Backup has no
+  /// VolumeBackups.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -735,8 +738,8 @@ class ProjectsLocationsBackupPlansBackupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full name of the Backup resource. Format:
-  /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+  /// [name] - Required. Full name of the Backup resource. Format: projects / *
+  /// /locations / * /backupPlans / * /backups / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -776,8 +779,9 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -829,13 +833,13 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BackupPlan that contains the Backups to list.
-  /// Format: projects/{project}/locations/{location}/backupPlans/{backup_plan}
+  /// Format: projects / * /locations / * /backupPlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [filter] - List filter.
+  /// [filter] - Field match expression used to filter the results.
   ///
-  /// [orderBy] - Sort results.
+  /// [orderBy] - Field by which to sort the results.
   ///
   /// [pageSize] - The target number of results to return in a single response.
   /// If not specified, a default value will be chosen by the service. Note that
@@ -948,8 +952,9 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -996,8 +1001,9 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1047,7 +1053,8 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Full name of the VolumeBackup resource. Format:
-  /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}/volumeBackups/{volume_backup}
+  /// projects / * /locations / * /backupPlans / * /backups / * /volumeBackups /
+  /// *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+/volumeBackups/\[^/\]+$`.
   ///
@@ -1088,8 +1095,9 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+/volumeBackups/\[^/\]+$`.
   ///
@@ -1141,14 +1149,13 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The Backup that contains the VolumeBackups to list.
-  /// Format:
-  /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
+  /// Format: projects / * /locations / * /backupPlans / * /backups / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [filter] - List filter.
+  /// [filter] - Field match expression used to filter the results.
   ///
-  /// [orderBy] - Sort results.
+  /// [orderBy] - Field by which to sort the results.
   ///
   /// [pageSize] - The target number of results to return in a single response.
   /// If not specified, a default value will be chosen by the service. Note that
@@ -1209,8 +1216,9 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+/volumeBackups/\[^/\]+$`.
   ///
@@ -1257,8 +1265,9 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+/volumeBackups/\[^/\]+$`.
   ///
@@ -1466,14 +1475,14 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location within which to create the RestorePlan.
-  /// Format: projects/{project}/locations/{location}
+  /// Format: projects / * /locations / *
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [restorePlanId] - Required. The client-provided short name for the
-  /// RestorePlan resource. This name must: a. be between 1 and 63 characters
-  /// long (inclusive) b. consist of only lower-case ASCII letters, numbers, and
-  /// dashes c. start with a lower-case letter d. end with a lower-case letter
-  /// or number e. be unique within the set of RestorePlans in this location
+  /// RestorePlan resource. This name must: - be between 1 and 63 characters
+  /// long (inclusive) - consist of only lower-case ASCII letters, numbers, and
+  /// dashes - start with a lower-case letter - end with a lower-case letter or
+  /// number - be unique within the set of RestorePlans in this location
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1513,17 +1522,17 @@ class ProjectsLocationsRestorePlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified RestorePlan name. Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+  /// [name] - Required. Fully qualified RestorePlan name. Format: projects / *
+  /// /locations / * /restorePlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the value currently assigned
-  /// to the target resource.
+  /// [etag] - If provided, this value must match the current value of the
+  /// target RestorePlan's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any restores below this restorePlan will also be
-  /// deleted. Otherwise, the request will only succeed if the restorePlan has
-  /// no restores.
+  /// [force] - If set to true, any Restores below this RestorePlan will also be
+  /// deleted. Otherwise, the request will only succeed if the RestorePlan has
+  /// no Restores.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1562,8 +1571,8 @@ class ProjectsLocationsRestorePlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified RestorePlan name. Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+  /// [name] - Required. Fully qualified RestorePlan name. Format: projects / *
+  /// /locations / * /restorePlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1604,8 +1613,9 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1657,12 +1667,12 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location that contains the RestorePlans to list.
-  /// Format: projects/{project}/locations/{location}
+  /// Format: projects / * /locations / *
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - List filter.
+  /// [filter] - Field match expression used to filter the results.
   ///
-  /// [orderBy] - Sort results.
+  /// [orderBy] - Field by which to sort the results.
   ///
   /// [pageSize] - The target number of results to return in a single response.
   /// If not specified, a default value will be chosen by the service. Note that
@@ -1718,8 +1728,8 @@ class ProjectsLocationsRestorePlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. \[Output Only\] The full name of the RestorePlan
-  /// resource. Format: projects / * /locations / * /restorePlans / *
+  /// [name] - Output only. The full name of the RestorePlan resource. Format:
+  /// projects / * /locations / * /restorePlans / * .
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1776,8 +1786,9 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1824,8 +1835,9 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1881,16 +1893,15 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The RestorePlan within which to create the Restore.
-  /// Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+  /// Format: projects / * /locations / * /restorePlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
   /// [restoreId] - Required. The client-provided short name for the Restore
-  /// resource. This name must: a. be between 1 and 63 characters long
-  /// (inclusive) b. consist of only lower-case ASCII letters, numbers, and
-  /// dashes c. start with a lower-case letter d. end with a lower-case letter
-  /// or number e. be unique within the set of Restores in this RestorePlan.
+  /// resource. This name must: - be between 1 and 63 characters long
+  /// (inclusive) - consist of only lower-case ASCII letters, numbers, and
+  /// dashes - start with a lower-case letter - end with a lower-case letter or
+  /// number - be unique within the set of Restores in this RestorePlan.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1930,17 +1941,17 @@ class ProjectsLocationsRestorePlansRestoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full name of the Restore Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+  /// [name] - Required. Full name of the Restore Format: projects / *
+  /// /locations / * /restorePlans / * /restores / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [etag] - etag, if provided, it must match the server's etag for delete to
-  /// happen.
+  /// [etag] - If provided, this value must match the current value of the
+  /// target Restore's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any volumeRestores below this restore will also
+  /// [force] - If set to true, any VolumeRestores below this restore will also
   /// be deleted. Otherwise, the request will only succeed if the restore has no
-  /// volumeRestores.
+  /// VolumeRestores.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1979,8 +1990,8 @@ class ProjectsLocationsRestorePlansRestoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the restore resource. Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+  /// [name] - Required. Name of the restore resource. Format: projects / *
+  /// /locations / * /restorePlans / * /restores / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -2020,8 +2031,9 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -2073,14 +2085,13 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The RestorePlan that contains the Restores to list.
-  /// Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}
+  /// Format: projects / * /locations / * /restorePlans / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [filter] - List filter.
+  /// [filter] - Field match expression used to filter the results.
   ///
-  /// [orderBy] - Sort results.
+  /// [orderBy] - Field by which to sort the results.
   ///
   /// [pageSize] - The target number of results to return in a single response.
   /// If not specified, a default value will be chosen by the service. Note that
@@ -2193,8 +2204,9 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -2241,8 +2253,9 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -2292,7 +2305,8 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Request parameters:
   ///
   /// [name] - Required. Full name of the VolumeRestore resource. Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}/volumeRestores/{volume_restore}
+  /// projects / * /locations / * /restorePlans / * /restores / *
+  /// /volumeRestores / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+/volumeRestores/\[^/\]+$`.
   ///
@@ -2333,8 +2347,9 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+/volumeRestores/\[^/\]+$`.
   ///
@@ -2386,14 +2401,13 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The Restore that contains the VolumeRestores to list.
-  /// Format:
-  /// projects/{project}/locations/{location}/restorePlans/{restore_plan}/restores/{restore}
+  /// Format: projects / * /locations / * /restorePlans / * /restores / *
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [filter] - List filter.
+  /// [filter] - Field match expression used to filter the results.
   ///
-  /// [orderBy] - Sort results.
+  /// [orderBy] - Field by which to sort the results.
   ///
   /// [pageSize] - The target number of results to return in a single response.
   /// If not specified, a default value will be chosen by the service. Note that
@@ -2454,8 +2468,9 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+/volumeRestores/\[^/\]+$`.
   ///
@@ -2502,8 +2517,9 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+/volumeRestores/\[^/\]+$`.
   ///
@@ -2556,8 +2572,8 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -2622,27 +2638,26 @@ class Backup {
   /// Output only.
   core.String? completeTime;
 
-  /// cluster config backup size in bytes.
+  /// The size of the config backup in bytes.
   ///
   /// Output only.
   core.String? configBackupSizeBytes;
 
   /// Whether or not the Backup contains Kubernetes Secrets.
   ///
-  /// Inherited from the parent BackupPlan's backup_config.include_secrets.
+  /// Controlled by the parent BackupPlan's include_secrets value.
   ///
   /// Output only.
   core.bool? containsSecrets;
 
   /// Whether or not the Backup contains volume data.
   ///
-  /// Inherited from the parent BackupPlan's backup_config.include_volume_data.
+  /// Controlled by the parent BackupPlan's include_volume_data value.
   ///
   /// Output only.
   core.bool? containsVolumeData;
 
-  /// The timestamp when this Backup resource was created - can be converted to
-  /// and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this Backup resource was created.
   ///
   /// Output only.
   core.String? createTime;
@@ -2651,12 +2666,10 @@ class Backup {
   ///
   /// If this field is set to a non-zero value, the Backup will be "locked"
   /// against deletion (either manual or automatic deletion) for the number of
-  /// days provided (measured from the creation time of the Backup). This value
-  /// is inherited from the parent BackupPlan's
-  /// retention_policy.backup_delete_lock_days value and may only be increased
-  /// (either at creation time or in a subsequent update). This field MUST be an
-  /// integer value between 0-90 (inclusive). Default: inherited from
-  /// BackupPlan.
+  /// days provided (measured from the creation time of the Backup). MUST be an
+  /// integer value between 0-90 (inclusive). Defaults to parent BackupPlan's
+  /// backup_delete_lock_days setting and may only be increased (either at
+  /// creation time or in a subsequent update).
   core.int? deleteLockDays;
 
   /// The time at which an existing delete lock will expire for this backup
@@ -2671,7 +2684,7 @@ class Backup {
   /// The customer managed encryption key that was used to encrypt the Backup's
   /// artifacts.
   ///
-  /// Inherited from the parent BackupPlan's backup_config.encryption_key.
+  /// Inherited from the parent BackupPlan's encryption_key value.
   ///
   /// Output only.
   EncryptionKey? encryptionKey;
@@ -2682,8 +2695,9 @@ class Backup {
   /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform backup updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `GetBackup`, and
-  /// systems are expected to put that etag in the request to `UpdateBackup` to
-  /// ensure that their change will be applied to the same version.
+  /// systems are expected to put that etag in the request to `UpdateBackup` or
+  /// `DeleteBackup` to ensure that their change will be applied to the same
+  /// version of the resource.
   ///
   /// Output only.
   core.String? etag;
@@ -2718,12 +2732,10 @@ class Backup {
 
   /// The age (in days) after which this Backup will be automatically deleted.
   ///
-  /// If not specified at Backup creation time, this value is inherited from the
-  /// parent BackupPlan's retention_policy.backup_retain_days value. Once a
-  /// Backup is created, this value may only be increased. This must be an
-  /// integer value \>= 0. If 0, no automatic deletion will occur for this
-  /// Backup. If not 0, this must be \>= delete_lock_days. Default: inherited
-  /// from BackupPlan.
+  /// Must be an integer value \>= 0: - If 0, no automatic deletion will occur
+  /// for this Backup. - If not 0, this must be \>= delete_lock_days. Once a
+  /// Backup is created, this value may only be increased. Defaults to the
+  /// parent BackupPlan's backup_retain_days value.
   core.int? retainDays;
 
   /// The time at which this Backup will be automatically deleted (calculated
@@ -2776,8 +2788,7 @@ class Backup {
   /// Output only.
   core.String? uid;
 
-  /// The timestamp when this Backup resource was last updated - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this Backup resource was last updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -2946,7 +2957,10 @@ class BackupConfig {
   core.bool? allNamespaces;
 
   /// This defines a customer managed encryption key that will be used to
-  /// encrypt the Backup artifacts for Backups created via this BackupPlan.
+  /// encrypt the "config" portion (the Kubernetes resources) of Backups created
+  /// via this plan.
+  ///
+  /// Default (empty): Config backup artifacts will not be encrypted.
   EncryptionKey? encryptionKey;
 
   /// This flag specifies whether Kubernetes Secret resources should be included
@@ -2965,7 +2979,7 @@ class BackupConfig {
   /// ProtectedApplications.
   NamespacedNames? selectedApplications;
 
-  /// If set, include just the resources in the listed namespaces
+  /// If set, include just the resources in the listed namespaces.
   Namespaces? selectedNamespaces;
 
   BackupConfig({
@@ -3024,14 +3038,13 @@ class BackupPlan {
 
   /// The source cluster from which Backups will be created via this BackupPlan.
   ///
-  /// Possible formats: 1. projects / * /locations / * /clusters / * 2. projects
-  /// / * /zones / * /clusters / *
+  /// Valid formats: - projects / * /locations / * /clusters / * - projects / *
+  /// /zones / * /clusters / *
   ///
   /// Required. Immutable.
   core.String? cluster;
 
-  /// The timestamp when this BackupPlan resource was created - can be converted
-  /// to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this BackupPlan resource was created.
   ///
   /// Output only.
   core.String? createTime;
@@ -3039,9 +3052,9 @@ class BackupPlan {
   /// This flag indicates whether this BackupPlan has been deactivated.
   ///
   /// Setting this field to True locks the BackupPlan such that no further
-  /// updates will be allowed, including the deactivated field. It also prevents
-  /// any new Backups from being created via this BackupPlan (including
-  /// scheduled Backups). Default: False
+  /// updates will be allowed (except deletes), including the deactivated field
+  /// itself. It also prevents any new Backups from being created via this
+  /// BackupPlan (including scheduled Backups). Default: False
   core.bool? deactivated;
 
   /// User specified descriptive string for this BackupPlan.
@@ -3054,8 +3067,8 @@ class BackupPlan {
   /// read-modify-write cycle to perform BackupPlan updates in order to avoid
   /// race conditions: An `etag` is returned in the response to `GetBackupPlan`,
   /// and systems are expected to put that etag in the request to
-  /// `UpdateBackupPlan` to ensure that their change will be applied to the same
-  /// version.
+  /// `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will
+  /// be applied to the same version of the resource.
   ///
   /// Output only.
   core.String? etag;
@@ -3070,8 +3083,8 @@ class BackupPlan {
   /// Output only.
   core.String? name;
 
-  /// Represents the number of Kubernetes Pods backed up in the last successful
-  /// Backup created underneath this BackupPlan.
+  /// The number of Kubernetes Pods backed up in the last successful Backup
+  /// created via this BackupPlan.
   ///
   /// Output only.
   core.int? protectedPodCount;
@@ -3086,8 +3099,7 @@ class BackupPlan {
   /// Output only.
   core.String? uid;
 
-  /// The timestamp when this BackupPlan resource was last updated - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this BackupPlan resource was last updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3257,9 +3269,9 @@ class ClusterMetadata {
 
   /// The source cluster from which this Backup was created.
   ///
-  /// Possible formats: 1. projects / * /locations / * /clusters / * 2. projects
-  /// / * /zones / * /clusters / * This will be the same value as the parent
-  /// BackupPlan's cluster field.
+  /// Valid formats: - projects / * /locations / * /clusters / * - projects / *
+  /// /zones / * /clusters / * This is inherited from the parent BackupPlan's
+  /// cluster field.
   core.String? cluster;
 
   /// GKE version
@@ -3354,7 +3366,7 @@ typedef Empty = $Empty;
 class EncryptionKey {
   /// Google Cloud KMS encryption key.
   ///
-  /// Format: projects//locations//keyRings//cryptoKeys/
+  /// Format: projects / * /locations / * /keyRings / * /cryptoKeys / *
   core.String? gcpKmsEncryptionKey;
 
   EncryptionKey({
@@ -3551,11 +3563,11 @@ class GroupKind {
 
 /// Response message for ListBackupPlans.
 class ListBackupPlansResponse {
-  /// The list of BackupPlans.
+  /// The list of BackupPlans matching the given criteria.
   core.List<BackupPlan>? backupPlans;
 
-  /// A token which may be sent as `page_token` in a subsequent
-  /// `ListBackupPlans` call to retrieve the next page of results.
+  /// A token which may be sent as page_token in a subsequent `ListBackupPlans`
+  /// call to retrieve the next page of results.
   ///
   /// If this field is omitted or empty, then there are no more results to
   /// return.
@@ -3597,11 +3609,11 @@ class ListBackupPlansResponse {
 
 /// Response message for ListBackups.
 class ListBackupsResponse {
-  /// The list of restore resources within the parent.
+  /// The list of Backups matching the given criteria.
   core.List<Backup>? backups;
 
-  /// A token which may be sent as `page_token` in a subsequent `ListBackups`
-  /// call to retrieve the next page of results.
+  /// A token which may be sent as page_token in a subsequent `ListBackups` call
+  /// to retrieve the next page of results.
   ///
   /// If this field is omitted or empty, then there are no more results to
   /// return.
@@ -3665,14 +3677,14 @@ class ListLocationsResponse {
 
 /// Response message for ListRestorePlans.
 class ListRestorePlansResponse {
-  /// A token which may be sent as `page_token` in a subsequent
-  /// `ListRestorePlans` call to retrieve the next page of results.
+  /// A token which may be sent as page_token in a subsequent `ListRestorePlans`
+  /// call to retrieve the next page of results.
   ///
   /// If this field is omitted or empty, then there are no more results to
   /// return.
   core.String? nextPageToken;
 
-  /// The list of RestorePlans.
+  /// The list of RestorePlans matching the given criteria.
   core.List<RestorePlan>? restorePlans;
 
   /// Locations that could not be reached.
@@ -3711,14 +3723,14 @@ class ListRestorePlansResponse {
 
 /// Response message for ListRestores.
 class ListRestoresResponse {
-  /// A token which may be sent as `page_token` in a subsequent `ListRestores`
+  /// A token which may be sent as page_token in a subsequent `ListRestores`
   /// call to retrieve the next page of results.
   ///
   /// If this field is omitted or empty, then there are no more results to
   /// return.
   core.String? nextPageToken;
 
-  /// The list of restore resources within the parent.
+  /// The list of Restores matching the given criteria.
   core.List<Restore>? restores;
 
   /// Locations that could not be reached.
@@ -3757,14 +3769,14 @@ class ListRestoresResponse {
 
 /// Response message for ListVolumeBackups.
 class ListVolumeBackupsResponse {
-  /// A token which may be sent as `page_token` in a subsequent
+  /// A token which may be sent as page_token in a subsequent
   /// `ListVolumeBackups` call to retrieve the next page of results.
   ///
   /// If this field is omitted or empty, then there are no more results to
   /// return.
   core.String? nextPageToken;
 
-  /// The list of VolumeBackups resources within the parent.
+  /// The list of VolumeBackups matching the given criteria.
   core.List<VolumeBackup>? volumeBackups;
 
   ListVolumeBackupsResponse({
@@ -3793,14 +3805,14 @@ class ListVolumeBackupsResponse {
 
 /// Response message for ListVolumeRestores.
 class ListVolumeRestoresResponse {
-  /// A token which may be sent as `page_token` in a subsequent
+  /// A token which may be sent as page_token in a subsequent
   /// `ListVolumeRestores` call to retrieve the next page of results.
   ///
   /// If this field is omitted or empty, then there are no more results to
   /// return.
   core.String? nextPageToken;
 
-  /// The list of VolumeRestores resources within the parent.
+  /// The list of VolumeRestores matching the given criteria.
   core.List<VolumeRestore>? volumeRestores;
 
   ListVolumeRestoresResponse({
@@ -4030,7 +4042,8 @@ class Policy {
 ///
 /// Next id: 18
 class Restore {
-  /// The Backup used as the source from which this Restore will restore.
+  /// A reference to the Backup used as the source from which this Restore will
+  /// restore.
   ///
   /// Note that this Backup must be a sub-resource of the RestorePlan's
   /// backup_plan. Format: projects / * /locations / * /backupPlans / * /backups
@@ -4041,20 +4054,19 @@ class Restore {
 
   /// The target cluster into which this Restore will restore data.
   ///
-  /// Possible formats: 1. projects / * /locations / * /clusters / * 2. projects
-  /// / * /zones / * /clusters / * Inherited from parent RestorePlan's cluster
-  /// field.
+  /// Valid formats: - projects / * /locations / * /clusters / * - projects / *
+  /// /zones / * /clusters / * Inherited from parent RestorePlan's cluster
+  /// value.
   ///
   /// Output only.
   core.String? cluster;
 
-  /// When the restore operation either successfully completed or failed.
+  /// Timestamp of when the restore operation completed.
   ///
   /// Output only.
   core.String? completeTime;
 
-  /// The timestamp when this Restore resource was created - can be converted to
-  /// and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this Restore resource was created.
   ///
   /// Output only.
   core.String? createTime;
@@ -4068,13 +4080,14 @@ class Restore {
   /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform restore updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `GetRestore`, and
-  /// systems are expected to put that etag in the request to `UpdateRestore` to
-  /// ensure that their change will be applied to the same version.
+  /// systems are expected to put that etag in the request to `UpdateRestore` or
+  /// `DeleteRestore` to ensure that their change will be applied to the same
+  /// version of the resource.
   ///
   /// Output only.
   core.String? etag;
 
-  /// GCP Labels.
+  /// A set of custom labels supplied by user.
   core.Map<core.String, core.String>? labels;
 
   /// The full name of the Restore resource.
@@ -4084,17 +4097,18 @@ class Restore {
   /// Output only.
   core.String? name;
 
-  /// Number of resources excluded in this restore action.
+  /// Number of resources excluded during the restore execution.
   ///
   /// Output only.
   core.int? resourcesExcludedCount;
 
-  /// Number of resources failed to be restored in this restore action.
+  /// Number of resources that failed to be restored during the restore
+  /// execution.
   ///
   /// Output only.
   core.int? resourcesFailedCount;
 
-  /// Number of resources restored in this restore action.
+  /// Number of resources restored during the restore execution.
   ///
   /// Output only.
   core.int? resourcesRestoredCount;
@@ -4134,13 +4148,12 @@ class Restore {
   /// Output only.
   core.String? uid;
 
-  /// The timestamp when this Restore resource was last updated - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this Restore resource was last updated.
   ///
   /// Output only.
   core.String? updateTime;
 
-  /// Number of volumes restored in this restore action.
+  /// Number of volumes restored during the restore execution.
   ///
   /// Output only.
   core.int? volumesRestoredCount;
@@ -4279,11 +4292,9 @@ class RestoreConfig {
   /// resources being restored already exist in the target cluster.
   ///
   /// This MUST be set to a value other than
-  /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration
-  /// is configured via namespaced_resource_restore_scope .
+  /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
   /// Possible string values are:
-  /// - "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED" : Unspecified. Only
-  /// allowed if no namespaced resources will be restored.
+  /// - "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED" : Unspecified (invalid).
   /// - "DELETE_AND_RESTORE" : When conflicting top-level resources (either
   /// Namespaces or ProtectedApplications, depending upon the scope) are
   /// encountered, this will first trigger a delete of the conflicting resource
@@ -4324,7 +4335,7 @@ class RestoreConfig {
   /// Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as
   /// NO_VOLUME_DATA_RESTORATION).
   /// Possible string values are:
-  /// - "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" : unspecified, default value
+  /// - "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" : Unspecified (illegal).
   /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, will
   /// create a new underlying volume (and PV) from the corresponding
   /// VolumeBackup contained within the Backup.
@@ -4411,8 +4422,8 @@ class RestoreConfig {
 ///
 /// Next id: 11
 class RestorePlan {
-  /// The BackupPlan from which Backups may be used as the source for Restores
-  /// created via this RestorePlan.
+  /// A reference to the BackupPlan from which Backups may be used as the source
+  /// for Restores created via this RestorePlan.
   ///
   /// Format: projects / * /locations / * /backupPlans / * .
   ///
@@ -4422,15 +4433,14 @@ class RestorePlan {
   /// The target cluster into which Restores created via this RestorePlan will
   /// restore data.
   ///
-  /// NOTE: the cluster's region must be the same as the RestorePlan. Possible
-  /// formats: 1. projects / * /locations / * /clusters / * 2. projects / *
-  /// /zones / * /clusters / *
+  /// NOTE: the cluster's region must be the same as the RestorePlan. Valid
+  /// formats: - projects / * /locations / * /clusters / * - projects / * /zones
+  /// / * /clusters / *
   ///
   /// Required. Immutable.
   core.String? cluster;
 
-  /// The timestamp when this RestorePlan resource was created - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this RestorePlan resource was created.
   ///
   /// Output only.
   core.String? createTime;
@@ -4445,8 +4455,8 @@ class RestorePlan {
   /// read-modify-write cycle to perform restore updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `GetRestorePlan`, and
   /// systems are expected to put that etag in the request to
-  /// `UpdateRestorePlan` to ensure that their change will be applied to the
-  /// same version.
+  /// `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change
+  /// will be applied to the same version of the resource.
   ///
   /// Output only.
   core.String? etag;
@@ -4456,7 +4466,7 @@ class RestorePlan {
 
   /// The full name of the RestorePlan resource.
   ///
-  /// Format: projects / * /locations / * /restorePlans / *
+  /// Format: projects / * /locations / * /restorePlans / * .
   ///
   /// Output only.
   core.String? name;
@@ -4473,8 +4483,7 @@ class RestorePlan {
   /// Output only.
   core.String? uid;
 
-  /// The timestamp when this RestorePlan resource was last updated - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this RestorePlan resource was last updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -4540,19 +4549,13 @@ class RestorePlan {
       };
 }
 
-/// RentionPolicy is an inner message type to define: 1.
-///
-/// Minimum age for Backups created via this BackupPlan - deletion (either
-/// manual or automatic) of Backups younger than this age will be blocked 2.
-/// Default maximum age of Backups created via this BackupPlan, after which
-/// automatic deletion will occur 3. Lock to disallow any changes to any
-/// RetentionPolicy settings
+/// RetentionPolicy defines a Backup retention policy for a BackupPlan.
 class RetentionPolicy {
   /// Minimum age for Backups created via this BackupPlan (in days).
   ///
-  /// This field MUST be an integer value between 0-90(inclusive). A Backup
+  /// This field MUST be an integer value between 0-90 (inclusive). A Backup
   /// created under this BackupPlan will NOT be deletable until it reaches
-  /// Backup's create_time + backup_delete_lock_days. Updating this field of a
+  /// Backup's (create_time + backup_delete_lock_days). Updating this field of a
   /// BackupPlan does NOT affect existing Backups under it. Backups created
   /// AFTER a successful update will inherit the new value. Default: 0 (no
   /// delete blocking)
@@ -4562,13 +4565,12 @@ class RetentionPolicy {
   ///
   /// This field MUST be an integer value \>= 0. If specified, a Backup created
   /// under this BackupPlan will be automatically deleted after its age reaches
-  /// create_time + backup_retain_days. If not specified, Backups created under
-  /// this BackupPlan will NOT be subject to automatic deletion. Updating this
-  /// field does NOT affect existing Backups under it. Backups created AFTER a
-  /// successful update will automatically pick up the new value. NOTE:
-  /// Specifying a backup_retain_days smaller than backup_delete_lock_days at
-  /// creation/updating time will be considered as invalid, and the request will
-  /// be rejected immediately. Default: 0 (no automatic deletion)
+  /// (create_time + backup_retain_days). If not specified, Backups created
+  /// under this BackupPlan will NOT be subject to automatic deletion. Updating
+  /// this field does NOT affect existing Backups under it. Backups created
+  /// AFTER a successful update will automatically pick up the new value. NOTE:
+  /// backup_retain_days must be \>= backup_delete_lock_days. Default: 0 (no
+  /// automatic deletion)
   core.int? backupRetainDays;
 
   /// This flag denotes whether the retention policy of this BackupPlan is
@@ -4607,8 +4609,10 @@ class RetentionPolicy {
 /// Schedule defines scheduling parameters for automatically creating Backups
 /// via this BackupPlan.
 class Schedule {
-  /// A standard cron-style string that defines a repeating schedule for
-  /// creating Backups via this BackupPlan.
+  /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a
+  /// repeating schedule for creating Backups via this BackupPlan.
+  ///
+  /// Default (empty): no automatic backup creation will occur.
   core.String? cronSchedule;
 
   /// This flag denotes whether automatic Backup creation is paused for this
@@ -4771,7 +4775,7 @@ class SubstitutionRule {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
@@ -4783,14 +4787,12 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// Next id: 14
 class VolumeBackup {
   /// The timestamp when the associated underlying volume backup operation
-  /// completes - can be converted to and from
-  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// completed.
   ///
   /// Output only.
   core.String? completeTime;
 
-  /// The timestamp when this VolumeBackup resource was created - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this VolumeBackup resource was created.
   ///
   /// Output only.
   core.String? createTime;
@@ -4800,16 +4802,12 @@ class VolumeBackup {
   /// Output only.
   core.String? diskSizeBytes;
 
-  /// \`etag\` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a volume backup from overwriting each
-  /// other.
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a volume backup from overwriting each other.
   ///
-  /// It is strongly suggested that systems make use of the \`etag\` in the
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform volume backup updates in order to avoid
-  /// race conditions: An \`etag\` is returned in the response to
-  /// \`GetVolumeBackup', and systems are expected to put that etag in the
-  /// request to \`UpdateVolumeBackup\` to ensure that their change will be
-  /// applied to the same version.
+  /// race conditions.
   ///
   /// Output only.
   core.String? etag;
@@ -4826,8 +4824,7 @@ class VolumeBackup {
   /// The full name of the VolumeBackup resource.
   ///
   /// Format: projects / * /locations / * /backupPlans / * /backups / *
-  /// /volumeBackups / * Note that the last segment of the name will have the
-  /// format: 'pvc-'.
+  /// /volumeBackups / * .
   ///
   /// Output only.
   core.String? name;
@@ -4882,16 +4879,12 @@ class VolumeBackup {
   /// Output only.
   core.String? uid;
 
-  /// The timestamp when this VolumeBackup resource was last updated - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this VolumeBackup resource was last updated.
   ///
   /// Output only.
   core.String? updateTime;
 
   /// A storage system-specific opaque handle to the underlying volume backup.
-  ///
-  /// This field is interpreted by the volume backup and restore drivers running
-  /// in the GKE cluster and not by the service.
   ///
   /// Output only.
   core.String? volumeBackupHandle;
@@ -4971,29 +4964,22 @@ class VolumeBackup {
 ///
 /// Next id: 13
 class VolumeRestore {
-  /// The timestamp when the associated underlying volume restoration completed
-  /// - can be converted to and from
-  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when the associated underlying volume restoration completed.
   ///
   /// Output only.
   core.String? completeTime;
 
-  /// The timestamp when this VolumeRestore resource was created - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this VolumeRestore resource was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// \`etag\` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a volume restore from overwriting each
-  /// other.
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a volume restore from overwriting each other.
   ///
-  /// It is strongly suggested that systems make use of the \`etag\` in the
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform volume restore updates in order to
-  /// avoid race conditions: An \`etag\` is returned in the response to
-  /// \`GetVolumeRestore', and systems are expected to put that etag in the
-  /// request to \`UpdateVolumeRestore\` to ensure that their change will be
-  /// applied to the same version.
+  /// avoid race conditions.
   ///
   /// Output only.
   core.String? etag;
@@ -5001,13 +4987,12 @@ class VolumeRestore {
   /// Full name of the VolumeRestore resource.
   ///
   /// Format: projects / * /locations / * /restorePlans / * /restores / *
-  /// /volumeRestores / * Note that the last segment of the name will have the
-  /// format: 'pvc-'.
+  /// /volumeRestores / * .
   ///
   /// Output only.
   core.String? name;
 
-  /// The current state of this VolumeRestore
+  /// The current state of this VolumeRestore.
   ///
   /// Output only.
   /// Possible string values are:
@@ -5040,8 +5025,7 @@ class VolumeRestore {
   /// Output only.
   core.String? uid;
 
-  /// The timestamp when this VolumeRestore resource was last updated - can be
-  /// converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// The timestamp when this VolumeRestore resource was last updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -5049,16 +5033,13 @@ class VolumeRestore {
   /// The full name of the VolumeBackup from which the volume will be restored.
   ///
   /// Format: projects / * /locations / * /backupPlans / * /backups / *
-  /// /volumeBackups / *
+  /// /volumeBackups / * .
   ///
   /// Output only.
   core.String? volumeBackup;
 
   /// A storage system-specific opaque handler to the underlying volume created
   /// for the target PVC from the volume backup.
-  ///
-  /// This field is interpreted by the volume backup and restore drivers running
-  /// in the GKE cluster and not by the service.
   ///
   /// Output only.
   core.String? volumeHandle;

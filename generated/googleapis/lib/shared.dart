@@ -287,6 +287,7 @@ class $Attribution {
 /// - cloudbilling:v1 : AuditLogConfig
 /// - clouddeploy:v1 : AuditLogConfig
 /// - cloudfunctions:v1 : AuditLogConfig
+/// - cloudfunctions:v2 : AuditLogConfig
 /// - cloudkms:v1 : AuditLogConfig
 /// - cloudresourcemanager:v1 : AuditLogConfig
 /// - cloudresourcemanager:v2 : AuditLogConfig
@@ -296,6 +297,7 @@ class $Attribution {
 /// - datamigration:v1 : AuditLogConfig
 /// - dataplex:v1 : GoogleIamV1AuditLogConfig
 /// - deploymentmanager:v2 : AuditLogConfig
+/// - dns:v1 : GoogleIamV1AuditLogConfig
 /// - domains:v1 : AuditLogConfig
 /// - eventarc:v1 : AuditLogConfig
 /// - gkebackup:v1 : AuditLogConfig
@@ -1025,6 +1027,7 @@ class $Completeness {
 /// - chromepolicy:v1 : GoogleTypeDate
 /// - classroom:v1 : Date
 /// - cloudasset:v1 : Date
+/// - cloudchannel:v1 : GoogleTypeDate
 /// - clouddeploy:v1 : Date
 /// - composer:v1 : Date
 /// - content:v2.1 : Date
@@ -1427,11 +1430,22 @@ class $EgressFrom {
 ///
 /// - accessapproval:v1 : DismissApprovalRequestMessage
 /// - accessapproval:v1 : Empty
+/// - accessapproval:v1 : InvalidateApprovalRequestMessage
 /// - accesscontextmanager:v1 : CancelOperationRequest
 /// - accesscontextmanager:v1 : Empty
 /// - admin:directory_v1 : Empty
 /// - androiddeviceprovisioning:v1 : Empty
 /// - androidmanagement:v1 : Empty
+/// - androidpublisher:v3 : ActivateBasePlanRequest
+/// - androidpublisher:v3 : ActivateSubscriptionOfferRequest
+/// - androidpublisher:v3 : ArchiveSubscriptionRequest
+/// - androidpublisher:v3 : DeactivateBasePlanRequest
+/// - androidpublisher:v3 : DeactivateSubscriptionOfferRequest
+/// - androidpublisher:v3 : DeveloperInitiatedCancellation
+/// - androidpublisher:v3 : MigrateBasePlanPricesResponse
+/// - androidpublisher:v3 : ReplacementCancellation
+/// - androidpublisher:v3 : SystemInitiatedCancellation
+/// - androidpublisher:v3 : TestPurchase
 /// - apigateway:v1 : ApigatewayCancelOperationRequest
 /// - apigateway:v1 : Empty
 /// - apigee:v1 : GoogleCloudApigeeV1ActivateNatAddressRequest
@@ -1441,6 +1455,8 @@ class $EgressFrom {
 /// - apigee:v1 : GoogleCloudApigeeV1GetSyncAuthorizationRequest
 /// - apigee:v1 : GoogleCloudApigeeV1ReportInstanceStatusResponse
 /// - apigee:v1 : GoogleProtobufEmpty
+/// - apigeeregistry:v1 : CancelOperationRequest
+/// - apigeeregistry:v1 : Empty
 /// - apikeys:v2 : V2UndeleteKeyRequest
 /// - appengine:v1 : Empty
 /// - appengine:v1 : RepairApplicationRequest
@@ -1462,10 +1478,9 @@ class $EgressFrom {
 /// - baremetalsolution:v1 : Empty
 /// - baremetalsolution:v1 : ResetInstanceRequest
 /// - baremetalsolution:v1 : ResetInstanceResponse
-/// - baremetalsolution:v2 : Empty
 /// - baremetalsolution:v2 : ResetInstanceRequest
-/// - baremetalsolution:v2 : RestoreVolumeSnapshotRequest
 /// - baremetalsolution:v2 : StartInstanceRequest
+/// - baremetalsolution:v2 : StopInstanceRequest
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
 /// - bigquerydatatransfer:v1 : Empty
 /// - bigqueryreservation:v1 : Empty
@@ -1490,6 +1505,7 @@ class $EgressFrom {
 /// - cloudbuild:v1 : CancelOperationRequest
 /// - cloudbuild:v1 : Empty
 /// - cloudbuild:v1 : ReceiveTriggerWebhookResponse
+/// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
 /// - cloudchannel:v1 : GoogleLongrunningCancelOperationRequest
 /// - cloudchannel:v1 : GoogleProtobufEmpty
 /// - clouddebugger:v2 : Empty
@@ -1572,6 +1588,7 @@ class $EgressFrom {
 /// - dataproc:v1 : CancelJobRequest
 /// - dataproc:v1 : DiagnoseClusterRequest
 /// - dataproc:v1 : Empty
+/// - dataproc:v1 : InjectableCredentialsConfig
 /// - datastore:v1 : Empty
 /// - datastore:v1 : ReserveIdsResponse
 /// - datastore:v1 : RollbackResponse
@@ -1622,6 +1639,7 @@ class $EgressFrom {
 /// - documentai:v1 : GoogleProtobufEmpty
 /// - domains:v1 : ExportRegistrationRequest
 /// - domains:v1 : ResetAuthorizationCodeRequest
+/// - doubleclicksearch:v2 : IdMappingFile
 /// - driveactivity:v2 : Administrator
 /// - driveactivity:v2 : AnonymousUser
 /// - driveactivity:v2 : Anyone
@@ -1639,6 +1657,9 @@ class $EgressFrom {
 /// - eventarc:v1 : GoogleLongrunningCancelOperationRequest
 /// - file:v1 : CancelOperationRequest
 /// - file:v1 : Empty
+/// - firebaseappcheck:v1 : GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest
+/// - firebaseappcheck:v1 : GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest
+/// - firebaseappcheck:v1 : GoogleProtobufEmpty
 /// - firebasehosting:v1 : CancelOperationRequest
 /// - firebasehosting:v1 : Empty
 /// - firebaseml:v1 : CancelOperationRequest
@@ -1658,6 +1679,10 @@ class $EgressFrom {
 /// - gkehub:v1 : AppDevExperienceFeatureSpec
 /// - gkehub:v1 : CancelOperationRequest
 /// - gkehub:v1 : Empty
+/// - gkehub:v1 : MigrateSpec
+/// - gkehub:v1 : MigrateState
+/// - gkehub:v1 : ServiceMeshSpec
+/// - gkehub:v1 : ServiceMeshState
 /// - healthcare:v1 : ArchiveUserDataMappingRequest
 /// - healthcare:v1 : ArchiveUserDataMappingResponse
 /// - healthcare:v1 : CancelOperationRequest
@@ -1813,6 +1838,7 @@ class $EgressFrom {
 /// - vault:v1 : ReopenMatterRequest
 /// - vault:v1 : UndeleteMatterRequest
 /// - verifiedaccess:v1 : Empty
+/// - verifiedaccess:v2 : Empty
 /// - videointelligence:v1 : GoogleLongrunning_CancelOperationRequest
 /// - videointelligence:v1 : GoogleProtobuf_Empty
 /// - vision:v1 : CancelOperationRequest
@@ -2028,6 +2054,7 @@ class $ExportOptions {
 /// - accesscontextmanager:v1 : Expr
 /// - apigateway:v1 : ApigatewayExpr
 /// - apigee:v1 : GoogleTypeExpr
+/// - apigeeregistry:v1 : Expr
 /// - artifactregistry:v1 : Expr
 /// - bigquery:v2 : Expr
 /// - bigtableadmin:v2 : Expr
@@ -2036,6 +2063,7 @@ class $ExportOptions {
 /// - cloudbilling:v1 : Expr
 /// - clouddeploy:v1 : Expr
 /// - cloudfunctions:v1 : Expr
+/// - cloudfunctions:v2 : Expr
 /// - cloudiot:v1 : Expr
 /// - cloudkms:v1 : Expr
 /// - cloudresourcemanager:v1 : Expr
@@ -2051,6 +2079,7 @@ class $ExportOptions {
 /// - dataplex:v1 : GoogleTypeExpr
 /// - dataproc:v1 : Expr
 /// - deploymentmanager:v2 : Expr
+/// - dns:v1 : Expr
 /// - domains:v1 : Expr
 /// - eventarc:v1 : Expr
 /// - gameservices:v1 : Expr
@@ -2162,6 +2191,32 @@ class $FcmOptions {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : GrafeasV1FileLocation
+/// - ondemandscanning:v1 : FileLocation
+/// - ondemandscanning:v1 : GrafeasV1FileLocation
+class $FileLocation {
+  /// For jars that are contained inside .war files, this filepath can indicate
+  /// the path to war file combined with the path to jar file.
+  core.String? filePath;
+
+  $FileLocation({
+    this.filePath,
+  });
+
+  $FileLocation.fromJson(core.Map _json)
+      : this(
+          filePath: _json.containsKey('filePath')
+              ? _json['filePath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filePath != null) 'filePath': filePath!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : Fingerprint
 /// - ondemandscanning:v1 : Fingerprint
 class $Fingerprint {
@@ -2256,6 +2311,7 @@ class $GcsSource {
 /// - cloudtasks:v2 : GetPolicyOptions
 /// - containeranalysis:v1 : GetPolicyOptions
 /// - datacatalog:v1 : GetPolicyOptions
+/// - dns:v1 : GoogleIamV1GetPolicyOptions
 /// - iap:v1 : GetPolicyOptions
 /// - securitycenter:v1 : GetPolicyOptions
 /// - servicedirectory:v1 : GetPolicyOptions
@@ -2420,6 +2476,7 @@ class $Header {
 ///
 /// - adsense:v2 : HttpBody
 /// - apigee:v1 : GoogleApiHttpBody
+/// - apigeeregistry:v1 : HttpBody
 /// - cloudbuild:v1 : HttpBody
 /// - domainsrdap:v1 : HttpBody
 /// - firebaseremoteconfig:v1 : HttpBody
@@ -3013,6 +3070,42 @@ class $Layer {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : License
+/// - ondemandscanning:v1 : License
+class $License {
+  /// Comments
+  core.String? comments;
+
+  /// Often a single license can be used to represent the licensing terms.
+  ///
+  /// Sometimes it is necessary to include a choice of one or more licenses or
+  /// some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT",
+  /// "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+  core.String? expression;
+
+  $License({
+    this.comments,
+    this.expression,
+  });
+
+  $License.fromJson(core.Map _json)
+      : this(
+          comments: _json.containsKey('comments')
+              ? _json['comments'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comments != null) 'comments': comments!,
+        if (expression != null) 'expression': expression!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudresourcemanager:v1 : Lien
 /// - cloudresourcemanager:v3 : Lien
 class $Lien {
@@ -3269,6 +3362,7 @@ class $ListPolicy {
 /// Used by:
 ///
 /// - apigateway:v1 : ApigatewayLocation
+/// - apigeeregistry:v1 : Location
 /// - artifactregistry:v1 : Location
 /// - baremetalsolution:v2 : Location
 /// - bigquerydatatransfer:v1 : Location
@@ -3276,6 +3370,7 @@ class $ListPolicy {
 /// - certificatemanager:v1 : Location
 /// - clouddeploy:v1 : Location
 /// - cloudfunctions:v1 : Location
+/// - cloudfunctions:v2 : Location
 /// - cloudkms:v1 : Location
 /// - cloudscheduler:v1 : Location
 /// - cloudtasks:v2 : Location
@@ -3453,176 +3548,8 @@ class $Location01 {
 
 /// Used by:
 ///
-/// - dns:v1 : ManagedZoneCloudLoggingConfig
-/// - dns:v2 : ManagedZoneCloudLoggingConfig
-class $ManagedZoneCloudLoggingConfig {
-  /// If set, enable query logging for this ManagedZone.
-  ///
-  /// False by default, making logging opt-in.
-  core.bool? enableLogging;
-  core.String? kind;
-
-  $ManagedZoneCloudLoggingConfig({
-    this.enableLogging,
-    this.kind,
-  });
-
-  $ManagedZoneCloudLoggingConfig.fromJson(core.Map _json)
-      : this(
-          enableLogging: _json.containsKey('enableLogging')
-              ? _json['enableLogging'] as core.bool
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enableLogging != null) 'enableLogging': enableLogging!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
-/// - dns:v1 : ManagedZonePeeringConfigTargetNetwork
-/// - dns:v2 : ManagedZonePeeringConfigTargetNetwork
-class $ManagedZonePeeringConfigTargetNetwork {
-  /// The time at which the zone was deactivated, in RFC 3339 date-time format.
-  ///
-  /// An empty string indicates that the peering connection is active. The
-  /// producer network can deactivate a zone. The zone is automatically
-  /// deactivated if the producer network that the zone targeted is deleted.
-  /// Output only.
-  core.String? deactivateTime;
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to forward queries to.
-  ///
-  /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  $ManagedZonePeeringConfigTargetNetwork({
-    this.deactivateTime,
-    this.kind,
-    this.networkUrl,
-  });
-
-  $ManagedZonePeeringConfigTargetNetwork.fromJson(core.Map _json)
-      : this(
-          deactivateTime: _json.containsKey('deactivateTime')
-              ? _json['deactivateTime'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deactivateTime != null) 'deactivateTime': deactivateTime!,
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
-      };
-}
-
-/// Used by:
-///
-/// - dns:v1 : ManagedZonePrivateVisibilityConfigNetwork
-/// - dns:v2 : ManagedZonePrivateVisibilityConfigNetwork
-class $ManagedZonePrivateVisibilityConfigNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// Format this URL like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  $ManagedZonePrivateVisibilityConfigNetwork({
-    this.kind,
-    this.networkUrl,
-  });
-
-  $ManagedZonePrivateVisibilityConfigNetwork.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
-      };
-}
-
-/// Used by:
-///
-/// - dns:v1 : ManagedZoneReverseLookupConfig
-/// - dns:v2 : ManagedZoneReverseLookupConfig
-class $ManagedZoneReverseLookupConfig {
-  core.String? kind;
-
-  $ManagedZoneReverseLookupConfig({
-    this.kind,
-  });
-
-  $ManagedZoneReverseLookupConfig.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
-/// - dns:v1 : ManagedZoneServiceDirectoryConfigNamespace
-/// - dns:v2 : ManagedZoneServiceDirectoryConfigNamespace
-class $ManagedZoneServiceDirectoryConfigNamespace {
-  /// The time that the namespace backing this zone was deleted; an empty string
-  /// if it still exists.
-  ///
-  /// This is in RFC3339 text format. Output only.
-  core.String? deletionTime;
-  core.String? kind;
-
-  /// The fully qualified URL of the namespace associated with the zone.
-  ///
-  /// Format must be
-  /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
-  core.String? namespaceUrl;
-
-  $ManagedZoneServiceDirectoryConfigNamespace({
-    this.deletionTime,
-    this.kind,
-    this.namespaceUrl,
-  });
-
-  $ManagedZoneServiceDirectoryConfigNamespace.fromJson(core.Map _json)
-      : this(
-          deletionTime: _json.containsKey('deletionTime')
-              ? _json['deletionTime'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          namespaceUrl: _json.containsKey('namespaceUrl')
-              ? _json['namespaceUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deletionTime != null) 'deletionTime': deletionTime!,
-        if (kind != null) 'kind': kind!,
-        if (namespaceUrl != null) 'namespaceUrl': namespaceUrl!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Material
+/// - ondemandscanning:v1 : GrafeasV1SlsaProvenance_0_2SlsaMaterial
 /// - ondemandscanning:v1 : Material
 class $Material {
   core.Map<core.String, core.String>? digest;
@@ -3792,51 +3719,6 @@ class $MetricDescriptorMetadata {
         if (ingestDelay != null) 'ingestDelay': ingestDelay!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (samplePeriod != null) 'samplePeriod': samplePeriod!,
-      };
-}
-
-/// Used by:
-///
-/// - servicemanagement:v1 : MetricRule
-/// - serviceusage:v1 : MetricRule
-class $MetricRule {
-  /// Metrics to update when the selected methods are called, and the associated
-  /// cost applied to each metric.
-  ///
-  /// The key of the map is the metric name, and the values are the amount
-  /// increased for the metric against which the quota limits are defined. The
-  /// value must not be negative.
-  core.Map<core.String, core.String>? metricCosts;
-
-  /// Selects the methods to which this rule applies.
-  ///
-  /// Refer to selector for syntax details.
-  core.String? selector;
-
-  $MetricRule({
-    this.metricCosts,
-    this.selector,
-  });
-
-  $MetricRule.fromJson(core.Map _json)
-      : this(
-          metricCosts: _json.containsKey('metricCosts')
-              ? (_json['metricCosts'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          selector: _json.containsKey('selector')
-              ? _json['selector'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (metricCosts != null) 'metricCosts': metricCosts!,
-        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -4157,6 +4039,8 @@ class $OrderAddress {
   core.String? region;
 
   /// Street-level part of the address.
+  ///
+  /// Use `\n` to add a second line.
   core.List<core.String>? streetAddress;
 
   $OrderAddress({
@@ -4482,6 +4366,7 @@ class $PathElement {
 /// - accesscontextmanager:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - apigeeregistry:v1 : TestIamPermissionsResponse
 /// - artifactregistry:v1 : TestIamPermissionsResponse
 /// - bigquery:v2 : TestIamPermissionsResponse
 /// - bigtableadmin:v2 : TestIamPermissionsResponse
@@ -4489,6 +4374,7 @@ class $PathElement {
 /// - cloudbilling:v1 : TestIamPermissionsResponse
 /// - clouddeploy:v1 : TestIamPermissionsResponse
 /// - cloudfunctions:v1 : TestIamPermissionsResponse
+/// - cloudfunctions:v2 : TestIamPermissionsResponse
 /// - cloudiot:v1 : TestIamPermissionsResponse
 /// - cloudkms:v1 : TestIamPermissionsResponse
 /// - cloudresourcemanager:v1 : TestIamPermissionsResponse
@@ -4502,6 +4388,7 @@ class $PathElement {
 /// - datafusion:v1 : TestIamPermissionsResponse
 /// - datamigration:v1 : TestIamPermissionsResponse
 /// - deploymentmanager:v2 : TestPermissionsResponse
+/// - dns:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - domains:v1 : TestIamPermissionsResponse
 /// - eventarc:v1 : TestIamPermissionsResponse
 /// - gameservices:v1 : TestIamPermissionsResponse
@@ -4548,38 +4435,6 @@ class $PermissionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-/// Used by:
-///
-/// - dns:v1 : PolicyNetwork
-/// - dns:v2 : PolicyNetwork
-class $PolicyNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  $PolicyNetwork({
-    this.kind,
-    this.networkUrl,
-  });
-
-  $PolicyNetwork.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
       };
 }
 
@@ -4899,7 +4754,8 @@ class $PubsubMessage {
   /// published with the same non-empty `ordering_key` value will be delivered
   /// to subscribers in the order in which they are received by the Pub/Sub
   /// system. All `PubsubMessage`s published in a given `PublishRequest` must
-  /// specify the same `ordering_key` value.
+  /// specify the same `ordering_key` value. For more information, see
+  /// [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
   core.String? orderingKey;
 
   /// The time at which the message was published, populated by the server when
@@ -5159,114 +5015,6 @@ class $QuotaLimit {
         if (name != null) 'name': name!,
         if (unit != null) 'unit': unit!,
         if (values != null) 'values': values!,
-      };
-}
-
-/// Used by:
-///
-/// - dns:v1 : RRSetRoutingPolicyGeoPolicyGeoPolicyItem
-/// - dns:v2 : RRSetRoutingPolicyGeoPolicyGeoPolicyItem
-class $RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
-  core.String? kind;
-
-  /// The geo-location granularity is a GCP region.
-  ///
-  /// This location string should correspond to a GCP region. e.g. "us-east1",
-  /// "southamerica-east1", "asia-east1", etc.
-  core.String? location;
-  core.List<core.String>? rrdatas;
-
-  /// DNSSEC generated signatures for all the rrdata within this item.
-  ///
-  /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 ip per item. .
-  core.List<core.String>? signatureRrdatas;
-
-  $RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
-    this.kind,
-    this.location,
-    this.rrdatas,
-    this.signatureRrdatas,
-  });
-
-  $RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          rrdatas: _json.containsKey('rrdatas')
-              ? (_json['rrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          signatureRrdatas: _json.containsKey('signatureRrdatas')
-              ? (_json['signatureRrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (location != null) 'location': location!,
-        if (rrdatas != null) 'rrdatas': rrdatas!,
-        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
-      };
-}
-
-/// Used by:
-///
-/// - dns:v1 : RRSetRoutingPolicyWrrPolicyWrrPolicyItem
-/// - dns:v2 : RRSetRoutingPolicyWrrPolicyWrrPolicyItem
-class $RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
-  core.String? kind;
-  core.List<core.String>? rrdatas;
-
-  /// DNSSEC generated signatures for all the rrdata within this item.
-  ///
-  /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 ip per item. .
-  core.List<core.String>? signatureRrdatas;
-
-  /// The weight corresponding to this subset of rrdata.
-  ///
-  /// When multiple WeightedRoundRobinPolicyItems are configured, the
-  /// probability of returning an rrset is proportional to its weight relative
-  /// to the sum of weights configured for all items. This weight should be
-  /// non-negative.
-  core.double? weight;
-
-  $RRSetRoutingPolicyWrrPolicyWrrPolicyItem({
-    this.kind,
-    this.rrdatas,
-    this.signatureRrdatas,
-    this.weight,
-  });
-
-  $RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          rrdatas: _json.containsKey('rrdatas')
-              ? (_json['rrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          signatureRrdatas: _json.containsKey('signatureRrdatas')
-              ? (_json['signatureRrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          weight: _json.containsKey('weight')
-              ? (_json['weight'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (rrdatas != null) 'rrdatas': rrdatas!,
-        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
-        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -5741,33 +5489,6 @@ class $Request07 {
 
 /// Used by:
 ///
-/// - dns:v1 : ResponseHeader
-/// - dns:v2 : ResponseHeader
-class $ResponseHeader {
-  /// For mutating operation requests that completed successfully.
-  ///
-  /// This is the client_operation_id if the client specified it, otherwise it
-  /// is generated by the server (output only).
-  core.String? operationId;
-
-  $ResponseHeader({
-    this.operationId,
-  });
-
-  $ResponseHeader.fromJson(core.Map _json)
-      : this(
-          operationId: _json.containsKey('operationId')
-              ? _json['operationId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (operationId != null) 'operationId': operationId!,
-      };
-}
-
-/// Used by:
-///
 /// - jobs:v3 : ResponseMetadata
 /// - jobs:v4 : ResponseMetadata
 class $ResponseMetadata {
@@ -5794,33 +5515,27 @@ class $ResponseMetadata {
 
 /// Used by:
 ///
-/// - dns:v1 : ResponsePolicyNetwork
-/// - dns:v2 : ResponsePolicyNetwork
-class $ResponsePolicyNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
+/// - apigeeregistry:v1 : TagApiDeploymentRevisionRequest
+/// - apigeeregistry:v1 : TagApiSpecRevisionRequest
+class $RevisionRequest {
+  /// The tag to apply.
   ///
-  /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
+  /// The tag should be at most 40 characters, and match `a-z{3,39}`.
+  ///
+  /// Required.
+  core.String? tag;
 
-  $ResponsePolicyNetwork({
-    this.kind,
-    this.networkUrl,
+  $RevisionRequest({
+    this.tag,
   });
 
-  $ResponsePolicyNetwork.fromJson(core.Map _json)
+  $RevisionRequest.fromJson(core.Map _json)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
+          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -6008,6 +5723,7 @@ class $SetupTag {
 /// - containeranalysis:v1 : BuilderConfig
 /// - containeranalysis:v1 : SlsaBuilder
 /// - ondemandscanning:v1 : BuilderConfig
+/// - ondemandscanning:v1 : GrafeasV1SlsaProvenance_0_2SlsaBuilder
 /// - ondemandscanning:v1 : SlsaBuilder
 /// - youtube:v3 : AbuseType
 class $Shared00 {
@@ -6472,6 +6188,7 @@ class $StartPageToken {
 /// - androidmanagement:v1 : Status
 /// - apigateway:v1 : ApigatewayStatus
 /// - apigee:v1 : GoogleRpcStatus
+/// - apigeeregistry:v1 : Status
 /// - apikeys:v2 : Status
 /// - appengine:v1 : Status
 /// - artifactregistry:v1 : Status
@@ -6488,6 +6205,7 @@ class $StartPageToken {
 /// - cloudchannel:v1 : GoogleRpcStatus
 /// - clouddeploy:v1 : Status
 /// - cloudfunctions:v1 : Status
+/// - cloudfunctions:v2 : Status
 /// - cloudidentity:v1 : Status
 /// - cloudiot:v1 : Status
 /// - cloudresourcemanager:v1 : Status
@@ -6543,6 +6261,7 @@ class $StartPageToken {
 /// - people:v1 : Status
 /// - photoslibrary:v1 : Status
 /// - policysimulator:v1 : GoogleRpcStatus
+/// - policytroubleshooter:v1 : GoogleRpcStatus
 /// - privateca:v1 : Status
 /// - pubsublite:v1 : Status
 /// - redis:v1 : Status
@@ -6712,36 +6431,56 @@ class $TenantProjectRequest {
 
 /// Used by:
 ///
+/// - accesscontextmanager:v1 : TestIamPermissionsRequest
+/// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
+/// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - apigeeregistry:v1 : TestIamPermissionsRequest
 /// - artifactregistry:v1 : TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest
 /// - bigtableadmin:v2 : TestIamPermissionsRequest
+/// - binaryauthorization:v1 : TestIamPermissionsRequest
+/// - cloudbilling:v1 : TestIamPermissionsRequest
 /// - clouddeploy:v1 : TestIamPermissionsRequest
 /// - cloudfunctions:v1 : TestIamPermissionsRequest
+/// - cloudfunctions:v2 : TestIamPermissionsRequest
 /// - cloudiot:v1 : TestIamPermissionsRequest
 /// - cloudkms:v1 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v1 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v2 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v3 : TestIamPermissionsRequest
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
 /// - datamigration:v1 : TestIamPermissionsRequest
+/// - dns:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - domains:v1 : TestIamPermissionsRequest
+/// - eventarc:v1 : TestIamPermissionsRequest
 /// - gameservices:v1 : TestIamPermissionsRequest
+/// - gkebackup:v1 : TestIamPermissionsRequest
 /// - gkehub:v1 : TestIamPermissionsRequest
 /// - healthcare:v1 : TestIamPermissionsRequest
 /// - iam:v1 : TestIamPermissionsRequest
-/// - ids:v1 : TestIamPermissionsRequest
-/// - managedidentities:v1 : TestIamPermissionsRequest
+/// - iap:v1 : TestIamPermissionsRequest
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
+/// - networkconnectivity:v1 : TestIamPermissionsRequest
 /// - networkmanagement:v1 : TestIamPermissionsRequest
-/// - networksecurity:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - networkservices:v1 : TestIamPermissionsRequest
 /// - notebooks:v1 : TestIamPermissionsRequest
 /// - privateca:v1 : TestIamPermissionsRequest
+/// - pubsub:v1 : TestIamPermissionsRequest
+/// - run:v1 : TestIamPermissionsRequest
+/// - run:v2 : GoogleIamV1TestIamPermissionsRequest
+/// - secretmanager:v1 : TestIamPermissionsRequest
+/// - securitycenter:v1 : TestIamPermissionsRequest
 /// - servicedirectory:v1 : TestIamPermissionsRequest
+/// - servicemanagement:v1 : TestIamPermissionsRequest
+/// - sourcerepo:v1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest00 {
   /// The set of permissions to check for the `resource`.
   ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
@@ -6766,30 +6505,13 @@ class $TestIamPermissionsRequest00 {
 
 /// Used by:
 ///
-/// - accesscontextmanager:v1 : TestIamPermissionsRequest
-/// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
-/// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
-/// - binaryauthorization:v1 : TestIamPermissionsRequest
-/// - cloudbilling:v1 : TestIamPermissionsRequest
-/// - cloudresourcemanager:v1 : TestIamPermissionsRequest
-/// - cloudresourcemanager:v2 : TestIamPermissionsRequest
-/// - cloudresourcemanager:v3 : TestIamPermissionsRequest
-/// - eventarc:v1 : TestIamPermissionsRequest
-/// - gkebackup:v1 : TestIamPermissionsRequest
-/// - iap:v1 : TestIamPermissionsRequest
-/// - networkconnectivity:v1 : TestIamPermissionsRequest
-/// - networkservices:v1 : TestIamPermissionsRequest
-/// - pubsub:v1 : TestIamPermissionsRequest
-/// - run:v1 : TestIamPermissionsRequest
-/// - run:v2 : GoogleIamV1TestIamPermissionsRequest
-/// - secretmanager:v1 : TestIamPermissionsRequest
-/// - securitycenter:v1 : TestIamPermissionsRequest
-/// - servicemanagement:v1 : TestIamPermissionsRequest
-/// - sourcerepo:v1 : TestIamPermissionsRequest
+/// - ids:v1 : TestIamPermissionsRequest
+/// - managedidentities:v1 : TestIamPermissionsRequest
+/// - networksecurity:v1 : GoogleIamV1TestIamPermissionsRequest
 class $TestIamPermissionsRequest01 {
   /// The set of permissions to check for the `resource`.
   ///
-  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
@@ -6799,6 +6521,36 @@ class $TestIamPermissionsRequest01 {
   });
 
   $TestIamPermissionsRequest01.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Used by:
+///
+/// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - dataproc:v1 : TestIamPermissionsRequest
+class $TestIamPermissionsRequest02 {
+  /// The set of permissions to check for the resource.
+  ///
+  /// Permissions with wildcards (such as * or storage.*) are not allowed. For
+  /// more information see IAM Overview
+  /// (https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String>? permissions;
+
+  $TestIamPermissionsRequest02({
+    this.permissions,
+  });
+
+  $TestIamPermissionsRequest02.fromJson(core.Map _json)
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)

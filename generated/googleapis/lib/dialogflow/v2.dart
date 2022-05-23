@@ -12829,6 +12829,16 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
   /// Parameters for a human assist query.
   GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
 
+  /// Additional parameters to be put into Dialogflow CX session parameters.
+  ///
+  /// To remove a parameter from the session, clients should explicitly set the
+  /// parameter value to null. Note: this field should only be used if you are
+  /// connecting to a Dialogflow CX agent.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? cxParameters;
+
   /// An input event to send to Dialogflow.
   GoogleCloudDialogflowV2EventInput? eventInput;
 
@@ -12854,6 +12864,7 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
 
   GoogleCloudDialogflowV2AnalyzeContentRequest({
     this.assistQueryParams,
+    this.cxParameters,
     this.eventInput,
     this.queryParams,
     this.replyAudioConfig,
@@ -12867,6 +12878,9 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
               ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
                   _json['assistQueryParams']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          cxParameters: _json.containsKey('cxParameters')
+              ? _json['cxParameters'] as core.Map<core.String, core.dynamic>
               : null,
           eventInput: _json.containsKey('eventInput')
               ? GoogleCloudDialogflowV2EventInput.fromJson(
@@ -12892,6 +12906,7 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
+        if (cxParameters != null) 'cxParameters': cxParameters!,
         if (eventInput != null) 'eventInput': eventInput!,
         if (queryParams != null) 'queryParams': queryParams!,
         if (replyAudioConfig != null) 'replyAudioConfig': replyAudioConfig!,

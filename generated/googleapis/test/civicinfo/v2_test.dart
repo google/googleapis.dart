@@ -566,6 +566,7 @@ api.Election buildElection() {
     o.id = 'foo';
     o.name = 'foo';
     o.ocdDivisionId = 'foo';
+    o.shapeLookupBehavior = 'foo';
   }
   buildCounterElection--;
   return o;
@@ -588,6 +589,10 @@ void checkElection(api.Election o) {
     );
     unittest.expect(
       o.ocdDivisionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shapeLookupBehavior!,
       unittest.equals('foo'),
     );
   }

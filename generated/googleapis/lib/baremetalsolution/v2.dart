@@ -23,15 +23,14 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsInstanceProvisioningSettingsResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsNetworksResource]
 ///     - [ProjectsLocationsNfsSharesResource]
 ///     - [ProjectsLocationsProvisioningConfigsResource]
 ///     - [ProjectsLocationsProvisioningQuotasResource]
-///     - [ProjectsLocationsSnapshotSchedulePoliciesResource]
 ///     - [ProjectsLocationsVolumesResource]
 ///       - [ProjectsLocationsVolumesLunsResource]
-///       - [ProjectsLocationsVolumesSnapshotsResource]
 library baremetalsolution.v2;
 
 import 'dart:async' as async;
@@ -79,6 +78,9 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsInstanceProvisioningSettingsResource
+      get instanceProvisioningSettings =>
+          ProjectsLocationsInstanceProvisioningSettingsResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
       ProjectsLocationsInstancesResource(_requester);
   ProjectsLocationsNetworksResource get networks =>
@@ -89,9 +91,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsProvisioningConfigsResource(_requester);
   ProjectsLocationsProvisioningQuotasResource get provisioningQuotas =>
       ProjectsLocationsProvisioningQuotasResource(_requester);
-  ProjectsLocationsSnapshotSchedulePoliciesResource
-      get snapshotSchedulePolicies =>
-          ProjectsLocationsSnapshotSchedulePoliciesResource(_requester);
   ProjectsLocationsVolumesResource get volumes =>
       ProjectsLocationsVolumesResource(_requester);
 
@@ -140,7 +139,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -185,11 +184,101 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsInstanceProvisioningSettingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstanceProvisioningSettingsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get instance provisioning settings for a given project.
+  ///
+  /// This is hidden method used by UI only.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The parent project and location containing the
+  /// ProvisioningSettings.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchInstanceProvisioningSettingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchInstanceProvisioningSettingsResponse> fetch(
+    core.String location, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' +
+        core.Uri.encodeFull('$location') +
+        '/instanceProvisioningSettings:fetch';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return FetchInstanceProvisioningSettingsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Detach LUN from Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [instance] - Required. Name of the instance.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> detachLun(
+    DetachLunRequest request,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$instance') + ':detachLun';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Get details about a single server.
   ///
@@ -289,8 +378,8 @@ class ProjectsLocationsInstancesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to update. The only currently supported
-  /// fields are: `labels`
+  /// [updateMask] - The list of fields to update. The currently supported
+  /// fields are: `labels` `hyperthreading_enabled` `os_image`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -399,6 +488,47 @@ class ProjectsLocationsInstancesResource {
     };
 
     final _url = 'v2/' + core.Uri.encodeFull('$name') + ':start';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stop a running server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stop(
+    StopInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':stop';
 
     final _response = await _requester.request(
       _url,
@@ -967,238 +1097,11 @@ class ProjectsLocationsProvisioningQuotasResource {
   }
 }
 
-class ProjectsLocationsSnapshotSchedulePoliciesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsSnapshotSchedulePoliciesResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Create a snapshot schedule policy in the specified project.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent project and location containing the
-  /// SnapshotSchedulePolicy.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [snapshotSchedulePolicyId] - Required. Snapshot policy ID
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SnapshotSchedulePolicy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SnapshotSchedulePolicy> create(
-    SnapshotSchedulePolicy request,
-    core.String parent, {
-    core.String? snapshotSchedulePolicyId,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (snapshotSchedulePolicyId != null)
-        'snapshotSchedulePolicyId': [snapshotSchedulePolicyId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url =
-        'v2/' + core.Uri.encodeFull('$parent') + '/snapshotSchedulePolicies';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return SnapshotSchedulePolicy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Delete a named snapshot schedule policy.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the snapshot schedule policy to delete.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/snapshotSchedulePolicies/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Get details of a single snapshot schedule policy.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/snapshotSchedulePolicies/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SnapshotSchedulePolicy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SnapshotSchedulePolicy> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return SnapshotSchedulePolicy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// List snapshot schedule policies in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent project containing the Snapshot Schedule
-  /// Policies.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - List filter.
-  ///
-  /// [pageSize] - The maximum number of items to return.
-  ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListSnapshotSchedulePoliciesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListSnapshotSchedulePoliciesResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url =
-        'v2/' + core.Uri.encodeFull('$parent') + '/snapshotSchedulePolicies';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return ListSnapshotSchedulePoliciesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Update a snapshot schedule policy in the specified project.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. The name of the snapshot schedule policy.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/snapshotSchedulePolicies/\[^/\]+$`.
-  ///
-  /// [updateMask] - Required. The list of fields to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SnapshotSchedulePolicy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SnapshotSchedulePolicy> patch(
-    SnapshotSchedulePolicy request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return SnapshotSchedulePolicy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsLocationsVolumesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsVolumesLunsResource get luns =>
       ProjectsLocationsVolumesLunsResource(_requester);
-  ProjectsLocationsVolumesSnapshotsResource get snapshots =>
-      ProjectsLocationsVolumesSnapshotsResource(_requester);
 
   ProjectsLocationsVolumesResource(commons.ApiRequester client)
       : _requester = client;
@@ -1429,217 +1332,6 @@ class ProjectsLocationsVolumesLunsResource {
   }
 }
 
-class ProjectsLocationsVolumesSnapshotsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsVolumesSnapshotsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Create a storage volume snapshot in a containing volume.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The volume to snapshot.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [VolumeSnapshot].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<VolumeSnapshot> create(
-    VolumeSnapshot request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/snapshots';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return VolumeSnapshot.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a storage volume snapshot for a given volume.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the snapshot to delete.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/snapshots/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Get details of a single storage volume snapshot.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/snapshots/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [VolumeSnapshot].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<VolumeSnapshot> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return VolumeSnapshot.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// List storage volume snapshots for given storage volume.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListVolumesRequest.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
-  ///
-  /// [pageSize] - Requested page size. The server might return fewer items than
-  /// requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - A token identifying a page of results from the server.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListVolumeSnapshotsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListVolumeSnapshotsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/snapshots';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return ListVolumeSnapshotsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Restore a storage volume snapshot to its containing volume.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [volumeSnapshot] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+/snapshots/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> restoreVolumeSnapshot(
-    RestoreVolumeSnapshotRequest request,
-    core.String volumeSnapshot, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' +
-        core.Uri.encodeFull('$volumeSnapshot') +
-        ':restoreVolumeSnapshot';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-}
-
 /// Represents an 'access point' for the share.
 class AllowedClient {
   /// Allow dev flag.
@@ -1719,13 +1411,50 @@ class AllowedClient {
       };
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); }
-typedef Empty = $Empty;
+/// Message for detach specific LUN from an Instance.
+class DetachLunRequest {
+  /// Name of the Lun to detach.
+  ///
+  /// Required.
+  core.String? lun;
+
+  DetachLunRequest({
+    this.lun,
+  });
+
+  DetachLunRequest.fromJson(core.Map _json)
+      : this(
+          lun: _json.containsKey('lun') ? _json['lun'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lun != null) 'lun': lun!,
+      };
+}
+
+/// Response with all provisioning settings.
+class FetchInstanceProvisioningSettingsResponse {
+  /// The OS images available.
+  core.List<OSImage>? images;
+
+  FetchInstanceProvisioningSettingsResponse({
+    this.images,
+  });
+
+  FetchInstanceProvisioningSettingsResponse.fromJson(core.Map _json)
+      : this(
+          images: _json.containsKey('images')
+              ? (_json['images'] as core.List)
+                  .map((value) => OSImage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (images != null) 'images': images!,
+      };
+}
 
 /// A server.
 class Instance {
@@ -1771,6 +1500,17 @@ class Instance {
   /// List of networks associated with this server.
   core.List<Network>? networks;
 
+  /// The OS image currently installed on the server.
+  core.String? osImage;
+
+  /// Pod name.
+  ///
+  /// Pod is an independent part of infrastructure. Instance can be connected to
+  /// the assets (networks, volumes) allocated in the same pod only.
+  ///
+  /// Immutable.
+  core.String? pod;
+
   /// The state of the server.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The server is in an unknown state.
@@ -1794,6 +1534,8 @@ class Instance {
     this.machineType,
     this.name,
     this.networks,
+    this.osImage,
+    this.pod,
     this.state,
     this.updateTime,
   });
@@ -1835,6 +1577,10 @@ class Instance {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          osImage: _json.containsKey('osImage')
+              ? _json['osImage'] as core.String
+              : null,
+          pod: _json.containsKey('pod') ? _json['pod'] as core.String : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
@@ -1854,6 +1600,8 @@ class Instance {
         if (machineType != null) 'machineType': machineType!,
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
+        if (osImage != null) 'osImage': osImage!,
+        if (pod != null) 'pod': pod!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -2284,83 +2032,6 @@ class ListProvisioningQuotasResponse {
       };
 }
 
-/// Response message containing the list of snapshot schedule policies.
-class ListSnapshotSchedulePoliciesResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
-  core.String? nextPageToken;
-
-  /// The snapshot schedule policies registered in this project.
-  core.List<SnapshotSchedulePolicy>? snapshotSchedulePolicies;
-
-  ListSnapshotSchedulePoliciesResponse({
-    this.nextPageToken,
-    this.snapshotSchedulePolicies,
-  });
-
-  ListSnapshotSchedulePoliciesResponse.fromJson(core.Map _json)
-      : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
-              : null,
-          snapshotSchedulePolicies:
-              _json.containsKey('snapshotSchedulePolicies')
-                  ? (_json['snapshotSchedulePolicies'] as core.List)
-                      .map((value) => SnapshotSchedulePolicy.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (snapshotSchedulePolicies != null)
-          'snapshotSchedulePolicies': snapshotSchedulePolicies!,
-      };
-}
-
-/// Response message containing the list of storage volume snapshots.
-class ListVolumeSnapshotsResponse {
-  /// A token identifying a page of results from the server.
-  core.String? nextPageToken;
-
-  /// Locations that could not be reached.
-  core.List<core.String>? unreachable;
-
-  /// The list of storage volumes.
-  core.List<VolumeSnapshot>? volumeSnapshots;
-
-  ListVolumeSnapshotsResponse({
-    this.nextPageToken,
-    this.unreachable,
-    this.volumeSnapshots,
-  });
-
-  ListVolumeSnapshotsResponse.fromJson(core.Map _json)
-      : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
-              : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          volumeSnapshots: _json.containsKey('volumeSnapshots')
-              ? (_json['volumeSnapshots'] as core.List)
-                  .map((value) => VolumeSnapshot.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-        if (volumeSnapshots != null) 'volumeSnapshots': volumeSnapshots!,
-      };
-}
-
 /// Response message containing the list of storage volumes.
 class ListVolumesResponse {
   /// A token identifying a page of results from the server.
@@ -2405,6 +2076,46 @@ class ListVolumesResponse {
 
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
+
+/// Logical interface.
+class LogicalInterface {
+  /// Interface name.
+  ///
+  /// This is not a globally unique identifier. Name is unique only inside the
+  /// ServerNetworkTemplate.
+  core.String? name;
+
+  /// If true, interface must have network connected.
+  core.bool? required;
+
+  /// Interface type.
+  /// Possible string values are:
+  /// - "INTERFACE_TYPE_UNSPECIFIED" : Unspecified value.
+  /// - "BOND" : Bond interface type.
+  /// - "NIC" : NIC interface ytpe.
+  core.String? type;
+
+  LogicalInterface({
+    this.name,
+    this.required,
+    this.type,
+  });
+
+  LogicalInterface.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          required: _json.containsKey('required')
+              ? _json['required'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (required != null) 'required': required!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// A storage volume logical unit number (LUN).
 class Lun {
@@ -2562,6 +2273,12 @@ class Network {
   /// Output only.
   core.String? name;
 
+  /// List of IP address reservations in this network.
+  ///
+  /// When updating this field, an error will be generated if a reservation
+  /// conflicts with an IP address already allocated to a physical server.
+  core.List<NetworkAddressReservation>? reservations;
+
   /// IP range for reserved for services (e.g. NFS).
   core.String? servicesCidr;
 
@@ -2593,6 +2310,7 @@ class Network {
     this.labels,
     this.macAddress,
     this.name,
+    this.reservations,
     this.servicesCidr,
     this.state,
     this.type,
@@ -2621,6 +2339,12 @@ class Network {
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          reservations: _json.containsKey('reservations')
+              ? (_json['reservations'] as core.List)
+                  .map((value) => NetworkAddressReservation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           servicesCidr: _json.containsKey('servicesCidr')
               ? _json['servicesCidr'] as core.String
               : null,
@@ -2643,6 +2367,7 @@ class Network {
         if (labels != null) 'labels': labels!,
         if (macAddress != null) 'macAddress': macAddress!,
         if (name != null) 'name': name!,
+        if (reservations != null) 'reservations': reservations!,
         if (servicesCidr != null) 'servicesCidr': servicesCidr!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
@@ -2685,6 +2410,47 @@ class NetworkAddress {
         if (address != null) 'address': address!,
         if (existingNetworkId != null) 'existingNetworkId': existingNetworkId!,
         if (networkId != null) 'networkId': networkId!,
+      };
+}
+
+/// A reservation of one or more addresses in a network.
+class NetworkAddressReservation {
+  /// The last address of this reservation block, inclusive.
+  ///
+  /// I.e., for cases when reservations are only single addresses, end_address
+  /// and start_address will be the same. Must be specified as a single IPv4
+  /// address, e.g. 10.1.2.2.
+  core.String? endAddress;
+
+  /// A note about this reservation, intended for human consumption.
+  core.String? note;
+
+  /// The first address of this reservation block.
+  ///
+  /// Must be specified as a single IPv4 address, e.g. 10.1.2.2.
+  core.String? startAddress;
+
+  NetworkAddressReservation({
+    this.endAddress,
+    this.note,
+    this.startAddress,
+  });
+
+  NetworkAddressReservation.fromJson(core.Map _json)
+      : this(
+          endAddress: _json.containsKey('endAddress')
+              ? _json['endAddress'] as core.String
+              : null,
+          note: _json.containsKey('note') ? _json['note'] as core.String : null,
+          startAddress: _json.containsKey('startAddress')
+              ? _json['startAddress'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endAddress != null) 'endAddress': endAddress!,
+        if (note != null) 'note': note!,
+        if (startAddress != null) 'startAddress': startAddress!,
       };
 }
 
@@ -2984,6 +2750,67 @@ class NfsShare {
       };
 }
 
+/// Operation System image.
+class OSImage {
+  /// Instance types this image is applicable to.
+  ///
+  /// [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+  core.List<core.String>? applicableInstanceTypes;
+
+  /// OS Image code.
+  core.String? code;
+
+  /// OS Image description.
+  core.String? description;
+
+  /// OS Image's unique name.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Network templates that can be used with this OS Image.
+  core.List<ServerNetworkTemplate>? supportedNetworkTemplates;
+
+  OSImage({
+    this.applicableInstanceTypes,
+    this.code,
+    this.description,
+    this.name,
+    this.supportedNetworkTemplates,
+  });
+
+  OSImage.fromJson(core.Map _json)
+      : this(
+          applicableInstanceTypes: _json.containsKey('applicableInstanceTypes')
+              ? (_json['applicableInstanceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          supportedNetworkTemplates:
+              _json.containsKey('supportedNetworkTemplates')
+                  ? (_json['supportedNetworkTemplates'] as core.List)
+                      .map((value) => ServerNetworkTemplate.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicableInstanceTypes != null)
+          'applicableInstanceTypes': applicableInstanceTypes!,
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (supportedNetworkTemplates != null)
+          'supportedNetworkTemplates': supportedNetworkTemplates!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -3102,6 +2929,14 @@ class ProvisioningConfig {
   /// - "DRAFT" : ProvisioningConfig is a draft and can be freely modified.
   /// - "SUBMITTED" : ProvisioningConfig was already submitted and cannot be
   /// modified.
+  /// - "PROVISIONING" : ProvisioningConfig was in the provisioning state.
+  /// Initially this state comes from the work order table in big query when
+  /// SNOW is used. Later this field can be set by the work order API.
+  /// - "PROVISIONED" : ProvisioningConfig was provisioned, meaning the
+  /// resources exist.
+  /// - "VALIDATED" : ProvisioningConfig was validated. A validation tool will
+  /// be run to set this state.
+  /// - "CANCELLED" : ProvisioningConfig was canceled.
   core.String? state;
 
   /// A generated buganizer id to track provisioning request.
@@ -3302,43 +3137,46 @@ class QosPolicy {
 /// Message requesting to reset a server.
 typedef ResetInstanceRequest = $Empty;
 
-/// Message for restoring a volume snapshot.
-typedef RestoreVolumeSnapshotRequest = $Empty;
+/// Network template.
+class ServerNetworkTemplate {
+  /// Instance types this template is applicable to.
+  core.List<core.String>? applicableInstanceTypes;
 
-/// A snapshot schedule.
-class Schedule {
-  /// A crontab-like specification that the schedule uses to take snapshots.
-  core.String? crontabSpec;
+  /// Logical interfaces.
+  core.List<LogicalInterface>? logicalInterfaces;
 
-  /// A list of snapshot names created in this schedule.
-  core.String? prefix;
+  /// Template's unique name.
+  ///
+  /// Output only.
+  core.String? name;
 
-  /// The maximum number of snapshots to retain in this schedule.
-  core.int? retentionCount;
-
-  Schedule({
-    this.crontabSpec,
-    this.prefix,
-    this.retentionCount,
+  ServerNetworkTemplate({
+    this.applicableInstanceTypes,
+    this.logicalInterfaces,
+    this.name,
   });
 
-  Schedule.fromJson(core.Map _json)
+  ServerNetworkTemplate.fromJson(core.Map _json)
       : this(
-          crontabSpec: _json.containsKey('crontabSpec')
-              ? _json['crontabSpec'] as core.String
+          applicableInstanceTypes: _json.containsKey('applicableInstanceTypes')
+              ? (_json['applicableInstanceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
-          prefix: _json.containsKey('prefix')
-              ? _json['prefix'] as core.String
+          logicalInterfaces: _json.containsKey('logicalInterfaces')
+              ? (_json['logicalInterfaces'] as core.List)
+                  .map((value) => LogicalInterface.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
-          retentionCount: _json.containsKey('retentionCount')
-              ? _json['retentionCount'] as core.int
-              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (crontabSpec != null) 'crontabSpec': crontabSpec!,
-        if (prefix != null) 'prefix': prefix!,
-        if (retentionCount != null) 'retentionCount': retentionCount!,
+        if (applicableInstanceTypes != null)
+          'applicableInstanceTypes': applicableInstanceTypes!,
+        if (logicalInterfaces != null) 'logicalInterfaces': logicalInterfaces!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3401,77 +3239,6 @@ class SnapshotReservationDetail {
       };
 }
 
-/// A snapshot schedule policy.
-class SnapshotSchedulePolicy {
-  /// The description of the snapshot schedule policy.
-  core.String? description;
-
-  /// An identifier for the snapshot schedule policy, generated by the backend.
-  core.String? id;
-
-  /// Labels as key value pairs.
-  core.Map<core.String, core.String>? labels;
-
-  /// The name of the snapshot schedule policy.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The snapshot schedules contained in this policy.
-  ///
-  /// You can specify a maximum of 5 schedules.
-  core.List<Schedule>? schedules;
-
-  /// The state of the snapshot schedule policy.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The policy is in an unknown state.
-  /// - "PROVISIONED" : The policy is been provisioned.
-  core.String? state;
-
-  SnapshotSchedulePolicy({
-    this.description,
-    this.id,
-    this.labels,
-    this.name,
-    this.schedules,
-    this.state,
-  });
-
-  SnapshotSchedulePolicy.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          schedules: _json.containsKey('schedules')
-              ? (_json['schedules'] as core.List)
-                  .map((value) => Schedule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (id != null) 'id': id!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (schedules != null) 'schedules': schedules!,
-        if (state != null) 'state': state!,
-      };
-}
-
 /// Message requesting to start a server.
 typedef StartInstanceRequest = $Empty;
 
@@ -3483,6 +3250,9 @@ typedef StartInstanceRequest = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Message requesting to stop a server.
+typedef StopInstanceRequest = $Empty;
 
 /// Request for SubmitProvisioningConfig.
 class SubmitProvisioningConfigRequest {
@@ -3643,6 +3413,11 @@ class Volume {
   /// has been configured with auto grow or auto shrink.
   core.String? currentSizeGib;
 
+  /// Additional emergency size that was requested for this Volume, in GiB.
+  ///
+  /// current_size_gib includes this value.
+  core.String? emergencySizeGib;
+
   /// An identifier for the `Volume`, generated by the backend.
   core.String? id;
 
@@ -3657,6 +3432,11 @@ class Volume {
   ///
   /// Output only.
   core.String? name;
+
+  /// Pod name.
+  ///
+  /// Immutable.
+  core.String? pod;
 
   /// The space remaining in the storage volume for new LUNs, in GiB, excluding
   /// space reserved for snapshots.
@@ -3702,9 +3482,11 @@ class Volume {
   Volume({
     this.autoGrownSizeGib,
     this.currentSizeGib,
+    this.emergencySizeGib,
     this.id,
     this.labels,
     this.name,
+    this.pod,
     this.remainingSpaceGib,
     this.requestedSizeGib,
     this.snapshotAutoDeleteBehavior,
@@ -3723,6 +3505,9 @@ class Volume {
           currentSizeGib: _json.containsKey('currentSizeGib')
               ? _json['currentSizeGib'] as core.String
               : null,
+          emergencySizeGib: _json.containsKey('emergencySizeGib')
+              ? _json['emergencySizeGib'] as core.String
+              : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3733,6 +3518,7 @@ class Volume {
                 )
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pod: _json.containsKey('pod') ? _json['pod'] as core.String : null,
           remainingSpaceGib: _json.containsKey('remainingSpaceGib')
               ? _json['remainingSpaceGib'] as core.String
               : null,
@@ -3765,9 +3551,11 @@ class Volume {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoGrownSizeGib != null) 'autoGrownSizeGib': autoGrownSizeGib!,
         if (currentSizeGib != null) 'currentSizeGib': currentSizeGib!,
+        if (emergencySizeGib != null) 'emergencySizeGib': emergencySizeGib!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (pod != null) 'pod': pod!,
         if (remainingSpaceGib != null) 'remainingSpaceGib': remainingSpaceGib!,
         if (requestedSizeGib != null) 'requestedSizeGib': requestedSizeGib!,
         if (snapshotAutoDeleteBehavior != null)
@@ -3902,66 +3690,5 @@ class VolumeConfig {
         if (snapshotsEnabled != null) 'snapshotsEnabled': snapshotsEnabled!,
         if (type != null) 'type': type!,
         if (userNote != null) 'userNote': userNote!,
-      };
-}
-
-/// Snapshot registered for a given storage volume.
-class VolumeSnapshot {
-  /// The creation time of the storage volume snapshot.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The description of the storage volume snapshot.
-  core.String? description;
-
-  /// An identifier for the snapshot, generated by the backend.
-  core.String? id;
-
-  /// The name of the storage volume snapshot.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The size of the storage volume snapshot, in bytes.
-  core.String? sizeBytes;
-
-  /// The storage volume this snapshot belongs to.
-  core.String? storageVolume;
-
-  VolumeSnapshot({
-    this.createTime,
-    this.description,
-    this.id,
-    this.name,
-    this.sizeBytes,
-    this.storageVolume,
-  });
-
-  VolumeSnapshot.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          sizeBytes: _json.containsKey('sizeBytes')
-              ? _json['sizeBytes'] as core.String
-              : null,
-          storageVolume: _json.containsKey('storageVolume')
-              ? _json['storageVolume'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-        if (storageVolume != null) 'storageVolume': storageVolume!,
       };
 }

@@ -22,7 +22,7 @@ Accesses the latest features for managing Authorized Buyers accounts, Real-Time 
 
 #### Google Workspace Alert Center API - `alertcenter.v1beta1`
 
-Manages alerts on issues affecting your domain.
+Manages alerts on issues affecting your domain. Note: The current version of this API (v1beta1) is available to all Google Workspace customers. 
 
 - [Documentation](https://developers.google.com/admin-sdk/alertcenter/)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.0.0/alertcenter.v1beta1/alertcenter.v1beta1-library.html)

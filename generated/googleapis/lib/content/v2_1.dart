@@ -45,6 +45,7 @@
 /// - [OrdersResource]
 /// - [OrdertrackingsignalsResource]
 /// - [PosResource]
+/// - [ProductdeliverytimeResource]
 /// - [ProductsResource]
 /// - [ProductstatusesResource]
 ///   - [ProductstatusesRepricingreportsResource]
@@ -115,6 +116,8 @@ class ShoppingContentApi {
   OrdertrackingsignalsResource get ordertrackingsignals =>
       OrdertrackingsignalsResource(_requester);
   PosResource get pos => PosResource(_requester);
+  ProductdeliverytimeResource get productdeliverytime =>
+      ProductdeliverytimeResource(_requester);
   ProductsResource get products => ProductsResource(_requester);
   ProductstatusesResource get productstatuses =>
       ProductstatusesResource(_requester);
@@ -5467,6 +5470,135 @@ class PosResource {
   }
 }
 
+class ProductdeliverytimeResource {
+  final commons.ApiRequester _requester;
+
+  ProductdeliverytimeResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates or updates the delivery time of a product.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The Google merchant ID of the account that contains the
+  /// product. This account cannot be a multi-client account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductDeliveryTime].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductDeliveryTime> create(
+    ProductDeliveryTime request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') + '/productdeliverytime';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ProductDeliveryTime.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the delivery time of a product.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The Google merchant ID of the account that
+  /// contains the product. This account cannot be a multi-client account.
+  ///
+  /// [productId] - Required. The Content API ID of the product, in the form
+  /// `channel:contentLanguage:targetCountry:offerId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String merchantId,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/productdeliverytime/' +
+        commons.escapeVariable('$productId');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets `productDeliveryTime` by `productId`.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The Google merchant ID of the account that
+  /// contains the product. This account cannot be a multi-client account.
+  ///
+  /// [productId] - Required. The Content API ID of the product, in the form
+  /// `channel:contentLanguage:targetCountry:offerId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductDeliveryTime].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductDeliveryTime> get(
+    core.String merchantId,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/productdeliverytime/' +
+        commons.escapeVariable('$productId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ProductDeliveryTime.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProductsResource {
   final commons.ApiRequester _requester;
 
@@ -8201,6 +8333,8 @@ class AccountAddress {
   core.String? region;
 
   /// Street-level part of the address.
+  ///
+  /// Use `\n` to add a second line.
   core.String? streetAddress;
 
   AccountAddress({
@@ -8348,6 +8482,8 @@ class AccountAutomaticImprovements {
 
 class AccountBusinessInformation {
   /// The address of the business.
+  ///
+  /// Use `\n` to add a second address line.
   AccountAddress? address;
 
   /// The customer service information of the business.
@@ -9402,12 +9538,16 @@ class AccountUser {
   /// Whether user can manage payment settings.
   core.bool? paymentsManager;
 
+  /// Whether user is a reporting manager.
+  core.bool? reportingManager;
+
   AccountUser({
     this.admin,
     this.emailAddress,
     this.orderManager,
     this.paymentsAnalyst,
     this.paymentsManager,
+    this.reportingManager,
   });
 
   AccountUser.fromJson(core.Map _json)
@@ -9426,6 +9566,9 @@ class AccountUser {
           paymentsManager: _json.containsKey('paymentsManager')
               ? _json['paymentsManager'] as core.bool
               : null,
+          reportingManager: _json.containsKey('reportingManager')
+              ? _json['reportingManager'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9434,6 +9577,7 @@ class AccountUser {
         if (orderManager != null) 'orderManager': orderManager!,
         if (paymentsAnalyst != null) 'paymentsAnalyst': paymentsAnalyst!,
         if (paymentsManager != null) 'paymentsManager': paymentsManager!,
+        if (reportingManager != null) 'reportingManager': reportingManager!,
       };
 }
 
@@ -10435,6 +10579,8 @@ class Address {
   core.String? postalCode;
 
   /// Street-level part of the address.
+  ///
+  /// Use `\n` to add a second line.
   core.String? streetAddress;
 
   Address({
@@ -12447,6 +12593,106 @@ class DateTime {
         if (timeZone != null) 'timeZone': timeZone!,
         if (utcOffset != null) 'utcOffset': utcOffset!,
         if (year != null) 'year': year!,
+      };
+}
+
+/// A delivery area for the product.
+///
+/// Only one of `countryCode` or `postalCodeRange` must be set.
+class DeliveryArea {
+  /// The country that the product can be delivered to.
+  ///
+  /// Submit a
+  /// [unicode CLDR region](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// such as `US` or `CH`.
+  ///
+  /// Required.
+  core.String? countryCode;
+
+  /// A postal code, postal code range or postal code prefix that defines this
+  /// area.
+  ///
+  /// Limited to US and AUS.
+  DeliveryAreaPostalCodeRange? postalCodeRange;
+
+  /// A state, territory, or prefecture.
+  ///
+  /// This is supported for the United States, Australia, and Japan. Provide a
+  /// subdivision code from the ISO 3166-2 code tables
+  /// ([US](https://en.wikipedia.org/wiki/ISO_3166-2:US),
+  /// [AU](https://en.wikipedia.org/wiki/ISO_3166-2:AU), or
+  /// [JP](https://en.wikipedia.org/wiki/ISO_3166-2:JP)) without country prefix
+  /// (for example, `"NY"`, `"NSW"`, `"03"`).
+  core.String? regionCode;
+
+  DeliveryArea({
+    this.countryCode,
+    this.postalCodeRange,
+    this.regionCode,
+  });
+
+  DeliveryArea.fromJson(core.Map _json)
+      : this(
+          countryCode: _json.containsKey('countryCode')
+              ? _json['countryCode'] as core.String
+              : null,
+          postalCodeRange: _json.containsKey('postalCodeRange')
+              ? DeliveryAreaPostalCodeRange.fromJson(_json['postalCodeRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (postalCodeRange != null) 'postalCodeRange': postalCodeRange!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// A range of postal codes that defines the delivery area.
+///
+/// Only set `firstPostalCode` when specifying a single postal code.
+class DeliveryAreaPostalCodeRange {
+  /// A postal code or a pattern of the form prefix* denoting the inclusive
+  /// lower bound of the range defining the area.
+  ///
+  /// Examples values: `"94108"`, `"9410*"`, `"9*"`.
+  ///
+  /// Required.
+  core.String? firstPostalCode;
+
+  /// A postal code or a pattern of the form prefix* denoting the inclusive
+  /// upper bound of the range defining the area (for example \[070* - 078*\]
+  /// results in the range \[07000 - 07899\]).
+  ///
+  /// It must have the same length as `firstPostalCode`: if `firstPostalCode` is
+  /// a postal code then `lastPostalCode` must be a postal code too; if
+  /// firstPostalCode is a pattern then `lastPostalCode` must be a pattern with
+  /// the same prefix length. Ignored if not set, then the area is defined as
+  /// being all the postal codes matching `firstPostalCode`.
+  core.String? lastPostalCode;
+
+  DeliveryAreaPostalCodeRange({
+    this.firstPostalCode,
+    this.lastPostalCode,
+  });
+
+  DeliveryAreaPostalCodeRange.fromJson(core.Map _json)
+      : this(
+          firstPostalCode: _json.containsKey('firstPostalCode')
+              ? _json['firstPostalCode'] as core.String
+              : null,
+          lastPostalCode: _json.containsKey('lastPostalCode')
+              ? _json['lastPostalCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstPostalCode != null) 'firstPostalCode': firstPostalCode!,
+        if (lastPostalCode != null) 'lastPostalCode': lastPostalCode!,
       };
 }
 
@@ -15025,6 +15271,33 @@ class Metrics {
   /// Number of clicks.
   core.String? clicks;
 
+  /// Number of conversions divided by the number of clicks, reported on the
+  /// impression date.
+  ///
+  /// The metric is currently available only for the FREE_PRODUCT_LISTING
+  /// program.
+  core.double? conversionRate;
+
+  /// Value of conversions in micros attributed to the product, reported on the
+  /// conversion date.
+  ///
+  /// The metric is currently available only for the FREE_PRODUCT_LISTING
+  /// program. The currency of the returned value is stored in the currency_code
+  /// segment. If this metric is selected, 'segments.currency_code' is
+  /// automatically added to the SELECT clause in the search query (unless it is
+  /// explicitly selected by the user) and the currency_code segment is
+  /// populated in the response.
+  core.String? conversionValueMicros;
+
+  /// Number of conversions attributed to the product, reported on the
+  /// conversion date.
+  ///
+  /// Depending on the attribution model, a conversion might be distributed
+  /// across multiple clicks, where each click gets its own credit assigned.
+  /// This metric is a sum of all such credits. The metric is currently
+  /// available only for the FREE_PRODUCT_LISTING program.
+  core.double? conversions;
+
   /// Click-through rate - the number of clicks merchant's products receive
   /// (clicks) divided by the number of times the products are shown
   /// (impressions).
@@ -15134,6 +15407,9 @@ class Metrics {
     this.aos,
     this.aovMicros,
     this.clicks,
+    this.conversionRate,
+    this.conversionValueMicros,
+    this.conversions,
     this.ctr,
     this.daysToShip,
     this.impressions,
@@ -15163,6 +15439,15 @@ class Metrics {
               : null,
           clicks: _json.containsKey('clicks')
               ? _json['clicks'] as core.String
+              : null,
+          conversionRate: _json.containsKey('conversionRate')
+              ? (_json['conversionRate'] as core.num).toDouble()
+              : null,
+          conversionValueMicros: _json.containsKey('conversionValueMicros')
+              ? _json['conversionValueMicros'] as core.String
+              : null,
+          conversions: _json.containsKey('conversions')
+              ? (_json['conversions'] as core.num).toDouble()
               : null,
           ctr: _json.containsKey('ctr')
               ? (_json['ctr'] as core.num).toDouble()
@@ -15221,6 +15506,10 @@ class Metrics {
         if (aos != null) 'aos': aos!,
         if (aovMicros != null) 'aovMicros': aovMicros!,
         if (clicks != null) 'clicks': clicks!,
+        if (conversionRate != null) 'conversionRate': conversionRate!,
+        if (conversionValueMicros != null)
+          'conversionValueMicros': conversionValueMicros!,
+        if (conversions != null) 'conversions': conversions!,
         if (ctr != null) 'ctr': ctr!,
         if (daysToShip != null) 'daysToShip': daysToShip!,
         if (impressions != null) 'impressions': impressions!,
@@ -21693,6 +21982,11 @@ class Product {
   /// The item's pattern (for example, polka dots).
   core.String? pattern;
 
+  /// Publication of this item should be temporarily paused.
+  ///
+  /// Acceptable values are: - "`ads`"
+  core.String? pause;
+
   /// The pick up option for the item.
   ///
   /// Acceptable values are: - "`buy`" - "`reserve`" - "`ship to store`" - "`not
@@ -21887,6 +22181,7 @@ class Product {
     this.multipack,
     this.offerId,
     this.pattern,
+    this.pause,
     this.pickupMethod,
     this.pickupSla,
     this.price,
@@ -22100,6 +22395,8 @@ class Product {
           pattern: _json.containsKey('pattern')
               ? _json['pattern'] as core.String
               : null,
+          pause:
+              _json.containsKey('pause') ? _json['pause'] as core.String : null,
           pickupMethod: _json.containsKey('pickupMethod')
               ? _json['pickupMethod'] as core.String
               : null,
@@ -22302,6 +22599,7 @@ class Product {
         if (multipack != null) 'multipack': multipack!,
         if (offerId != null) 'offerId': offerId!,
         if (pattern != null) 'pattern': pattern!,
+        if (pause != null) 'pause': pause!,
         if (pickupMethod != null) 'pickupMethod': pickupMethod!,
         if (pickupSla != null) 'pickupSla': pickupSla!,
         if (price != null) 'price': price!,
@@ -22382,6 +22680,151 @@ class ProductAmount {
       };
 }
 
+/// The estimated days to deliver a product after an order is placed.
+///
+/// Only authorized shipping signals partners working with a merchant can use
+/// this resource. Merchants should use the
+/// \[`products`\](https://developers.google.com/shopping-content/reference/rest/v2.1/products#productshipping)
+/// resource instead.
+class ProductDeliveryTime {
+  /// A set of associations between `DeliveryArea` and `DeliveryTime` entries.
+  ///
+  /// The total number of `areaDeliveryTimes` can be at most 100.
+  ///
+  /// Required.
+  core.List<ProductDeliveryTimeAreaDeliveryTime>? areaDeliveryTimes;
+
+  /// The `id` of the product.
+  ///
+  /// Required.
+  ProductId? productId;
+
+  ProductDeliveryTime({
+    this.areaDeliveryTimes,
+    this.productId,
+  });
+
+  ProductDeliveryTime.fromJson(core.Map _json)
+      : this(
+          areaDeliveryTimes: _json.containsKey('areaDeliveryTimes')
+              ? (_json['areaDeliveryTimes'] as core.List)
+                  .map((value) => ProductDeliveryTimeAreaDeliveryTime.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          productId: _json.containsKey('productId')
+              ? ProductId.fromJson(
+                  _json['productId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (areaDeliveryTimes != null) 'areaDeliveryTimes': areaDeliveryTimes!,
+        if (productId != null) 'productId': productId!,
+      };
+}
+
+/// A pairing of `DeliveryArea` associated with a `DeliveryTime` for this
+/// product.
+class ProductDeliveryTimeAreaDeliveryTime {
+  /// The delivery area associated with `deliveryTime` for this product.
+  ///
+  /// Required.
+  DeliveryArea? deliveryArea;
+
+  /// The delivery time associated with `deliveryArea` for this product.
+  ///
+  /// Required.
+  ProductDeliveryTimeAreaDeliveryTimeDeliveryTime? deliveryTime;
+
+  ProductDeliveryTimeAreaDeliveryTime({
+    this.deliveryArea,
+    this.deliveryTime,
+  });
+
+  ProductDeliveryTimeAreaDeliveryTime.fromJson(core.Map _json)
+      : this(
+          deliveryArea: _json.containsKey('deliveryArea')
+              ? DeliveryArea.fromJson(
+                  _json['deliveryArea'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deliveryTime: _json.containsKey('deliveryTime')
+              ? ProductDeliveryTimeAreaDeliveryTimeDeliveryTime.fromJson(
+                  _json['deliveryTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deliveryArea != null) 'deliveryArea': deliveryArea!,
+        if (deliveryTime != null) 'deliveryTime': deliveryTime!,
+      };
+}
+
+/// A delivery time for this product.
+class ProductDeliveryTimeAreaDeliveryTimeDeliveryTime {
+  /// The maximum number of business days (inclusive) between when an order is
+  /// placed and when the product ships.
+  ///
+  /// If a product ships in the same day, set this value to 0.
+  ///
+  /// Required.
+  core.int? maxHandlingTimeDays;
+
+  /// The maximum number of business days (inclusive) between when the product
+  /// ships and when the product is delivered.
+  ///
+  /// Required.
+  core.int? maxTransitTimeDays;
+
+  /// The minimum number of business days (inclusive) between when an order is
+  /// placed and when the product ships.
+  ///
+  /// If a product ships in the same day, set this value to 0.
+  ///
+  /// Required.
+  core.int? minHandlingTimeDays;
+
+  /// The minimum number of business days (inclusive) between when the product
+  /// ships and when the product is delivered.
+  ///
+  /// Required.
+  core.int? minTransitTimeDays;
+
+  ProductDeliveryTimeAreaDeliveryTimeDeliveryTime({
+    this.maxHandlingTimeDays,
+    this.maxTransitTimeDays,
+    this.minHandlingTimeDays,
+    this.minTransitTimeDays,
+  });
+
+  ProductDeliveryTimeAreaDeliveryTimeDeliveryTime.fromJson(core.Map _json)
+      : this(
+          maxHandlingTimeDays: _json.containsKey('maxHandlingTimeDays')
+              ? _json['maxHandlingTimeDays'] as core.int
+              : null,
+          maxTransitTimeDays: _json.containsKey('maxTransitTimeDays')
+              ? _json['maxTransitTimeDays'] as core.int
+              : null,
+          minHandlingTimeDays: _json.containsKey('minHandlingTimeDays')
+              ? _json['minHandlingTimeDays'] as core.int
+              : null,
+          minTransitTimeDays: _json.containsKey('minTransitTimeDays')
+              ? _json['minTransitTimeDays'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxHandlingTimeDays != null)
+          'maxHandlingTimeDays': maxHandlingTimeDays!,
+        if (maxTransitTimeDays != null)
+          'maxTransitTimeDays': maxTransitTimeDays!,
+        if (minHandlingTimeDays != null)
+          'minHandlingTimeDays': minHandlingTimeDays!,
+        if (minTransitTimeDays != null)
+          'minTransitTimeDays': minTransitTimeDays!,
+      };
+}
+
 class ProductDimension {
   /// The length units.
   ///
@@ -22413,6 +22856,28 @@ class ProductDimension {
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// The Content API ID of the product.
+class ProductId {
+  /// The Content API ID of the product, in the form
+  /// `channel:contentLanguage:targetCountry:offerId`.
+  core.String? productId;
+
+  ProductId({
+    this.productId,
+  });
+
+  ProductId.fromJson(core.Map _json)
+      : this(
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
       };
 }
 
@@ -23495,10 +23960,9 @@ class ProductstatusesListResponse {
       };
 }
 
-/// The Promotions feature is currently in alpha and is not yet publicly
-/// available in Content API for Shopping.
+/// The Promotions feature is publicly available for the US, CA, IN, UK, AU
+/// target countries (en language only) in Content API for Shopping.
 ///
-/// This documentation is provided for reference only may be subject to change.
 /// Represents a promotion. See the following articles for more details. *
 /// [Promotions feed specification](https://support.google.com/merchants/answer/2906014)
 /// *
@@ -23567,8 +24031,8 @@ class Promotion {
   ///
   /// Content API methods that operate on promotions take this as their
   /// promotionId parameter. The REST ID for a promotion is of the form
-  /// channel:contentLanguage:targetCountry:promotionId The channel field will
-  /// have a value of "online", "in_store", or "online_in_store".
+  /// \[channel\]:contentLanguage:targetCountry:promotionId The channel field
+  /// will have a value of "online", "in_store", or "online_in_store".
   ///
   /// Required. Output only.
   core.String? id;
@@ -23592,6 +24056,8 @@ class Promotion {
   PriceAmount? limitValue;
 
   /// Long title for the promotion.
+  ///
+  /// Required.
   core.String? longTitle;
 
   /// Minimum purchase amount for the promotion.

@@ -1281,8 +1281,8 @@ class TypesResource {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -2150,6 +2150,9 @@ class OperationWarnings {
   /// due to errors
   /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
   /// exceedingly large number of resources
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an ipv6 interface on the same
+  /// network as the route.
   core.String? code;
 
   /// Metadata about this warning in key: value format.
@@ -2737,6 +2740,9 @@ class ResourceWarnings {
   /// due to errors
   /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
   /// exceedingly large number of resources
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an ipv6 interface on the same
+  /// network as the route.
   core.String? code;
 
   /// Metadata about this warning in key: value format.
@@ -3093,6 +3099,9 @@ class ResourceUpdateWarnings {
   /// due to errors
   /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
   /// exceedingly large number of resources
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an ipv6 interface on the same
+  /// network as the route.
   core.String? code;
 
   /// Metadata about this warning in key: value format.

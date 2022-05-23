@@ -1144,6 +1144,14 @@ class DrivesResource {
   ///
   /// [driveId] - The ID of the shared drive.
   ///
+  /// [allowItemDeletion] - Whether any items inside the shared drive should
+  /// also be deleted. This option is only supported when useDomainAdminAccess
+  /// is also set to true.
+  ///
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the shared drive belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1154,9 +1162,15 @@ class DrivesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String driveId, {
+    core.bool? allowItemDeletion,
+    core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (allowItemDeletion != null)
+        'allowItemDeletion': ['${allowItemDeletion}'],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6092,6 +6106,10 @@ class DriveCapabilities {
   /// Whether the current user can rename this shared drive.
   core.bool? canRenameDrive;
 
+  /// Whether the current user can reset the shared drive restrictions to
+  /// defaults.
+  core.bool? canResetDriveRestrictions;
+
   /// Whether the current user can share files or folders in this shared drive.
   core.bool? canShare;
 
@@ -6116,6 +6134,7 @@ class DriveCapabilities {
     this.canReadRevisions,
     this.canRename,
     this.canRenameDrive,
+    this.canResetDriveRestrictions,
     this.canShare,
     this.canTrashChildren,
   });
@@ -6175,6 +6194,10 @@ class DriveCapabilities {
           canRenameDrive: _json.containsKey('canRenameDrive')
               ? _json['canRenameDrive'] as core.bool
               : null,
+          canResetDriveRestrictions:
+              _json.containsKey('canResetDriveRestrictions')
+                  ? _json['canResetDriveRestrictions'] as core.bool
+                  : null,
           canShare: _json.containsKey('canShare')
               ? _json['canShare'] as core.bool
               : null,
@@ -6207,6 +6230,8 @@ class DriveCapabilities {
         if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
         if (canRename != null) 'canRename': canRename!,
         if (canRenameDrive != null) 'canRenameDrive': canRenameDrive!,
+        if (canResetDriveRestrictions != null)
+          'canResetDriveRestrictions': canResetDriveRestrictions!,
         if (canShare != null) 'canShare': canShare!,
         if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
       };
@@ -9159,6 +9184,10 @@ class TeamDriveCapabilities {
   /// Whether the current user can rename this Team Drive.
   core.bool? canRenameTeamDrive;
 
+  /// Whether the current user can reset the Team Drive restrictions to
+  /// defaults.
+  core.bool? canResetTeamDriveRestrictions;
+
   /// Whether the current user can share files or folders in this Team Drive.
   core.bool? canShare;
 
@@ -9184,6 +9213,7 @@ class TeamDriveCapabilities {
     this.canRemoveChildren,
     this.canRename,
     this.canRenameTeamDrive,
+    this.canResetTeamDriveRestrictions,
     this.canShare,
     this.canTrashChildren,
   });
@@ -9246,6 +9276,10 @@ class TeamDriveCapabilities {
           canRenameTeamDrive: _json.containsKey('canRenameTeamDrive')
               ? _json['canRenameTeamDrive'] as core.bool
               : null,
+          canResetTeamDriveRestrictions:
+              _json.containsKey('canResetTeamDriveRestrictions')
+                  ? _json['canResetTeamDriveRestrictions'] as core.bool
+                  : null,
           canShare: _json.containsKey('canShare')
               ? _json['canShare'] as core.bool
               : null,
@@ -9281,6 +9315,8 @@ class TeamDriveCapabilities {
         if (canRename != null) 'canRename': canRename!,
         if (canRenameTeamDrive != null)
           'canRenameTeamDrive': canRenameTeamDrive!,
+        if (canResetTeamDriveRestrictions != null)
+          'canResetTeamDriveRestrictions': canResetTeamDriveRestrictions!,
         if (canShare != null) 'canShare': canShare!,
         if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
       };

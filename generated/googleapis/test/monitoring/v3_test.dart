@@ -383,6 +383,33 @@ void checkCloudEndpoints(api.CloudEndpoints o) {
   buildCounterCloudEndpoints--;
 }
 
+core.int buildCounterCloudRun = 0;
+api.CloudRun buildCloudRun() {
+  final o = api.CloudRun();
+  buildCounterCloudRun++;
+  if (buildCounterCloudRun < 3) {
+    o.location = 'foo';
+    o.serviceName = 'foo';
+  }
+  buildCounterCloudRun--;
+  return o;
+}
+
+void checkCloudRun(api.CloudRun o) {
+  buildCounterCloudRun++;
+  if (buildCounterCloudRun < 3) {
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCloudRun--;
+}
+
 core.int buildCounterClusterIstio = 0;
 api.ClusterIstio buildClusterIstio() {
   final o = api.ClusterIstio();
@@ -625,6 +652,7 @@ api.ContentMatcher buildContentMatcher() {
   buildCounterContentMatcher++;
   if (buildCounterContentMatcher < 3) {
     o.content = 'foo';
+    o.jsonPathMatcher = buildJsonPathMatcher();
     o.matcher = 'foo';
   }
   buildCounterContentMatcher--;
@@ -638,6 +666,7 @@ void checkContentMatcher(api.ContentMatcher o) {
       o.content!,
       unittest.equals('foo'),
     );
+    checkJsonPathMatcher(o.jsonPathMatcher!);
     unittest.expect(
       o.matcher!,
       unittest.equals('foo'),
@@ -1166,6 +1195,132 @@ void checkGetNotificationChannelVerificationCodeResponse(
   buildCounterGetNotificationChannelVerificationCodeResponse--;
 }
 
+core.int buildCounterGkeNamespace = 0;
+api.GkeNamespace buildGkeNamespace() {
+  final o = api.GkeNamespace();
+  buildCounterGkeNamespace++;
+  if (buildCounterGkeNamespace < 3) {
+    o.clusterName = 'foo';
+    o.location = 'foo';
+    o.namespaceName = 'foo';
+    o.projectId = 'foo';
+  }
+  buildCounterGkeNamespace--;
+  return o;
+}
+
+void checkGkeNamespace(api.GkeNamespace o) {
+  buildCounterGkeNamespace++;
+  if (buildCounterGkeNamespace < 3) {
+    unittest.expect(
+      o.clusterName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.namespaceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGkeNamespace--;
+}
+
+core.int buildCounterGkeService = 0;
+api.GkeService buildGkeService() {
+  final o = api.GkeService();
+  buildCounterGkeService++;
+  if (buildCounterGkeService < 3) {
+    o.clusterName = 'foo';
+    o.location = 'foo';
+    o.namespaceName = 'foo';
+    o.projectId = 'foo';
+    o.serviceName = 'foo';
+  }
+  buildCounterGkeService--;
+  return o;
+}
+
+void checkGkeService(api.GkeService o) {
+  buildCounterGkeService++;
+  if (buildCounterGkeService < 3) {
+    unittest.expect(
+      o.clusterName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.namespaceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGkeService--;
+}
+
+core.int buildCounterGkeWorkload = 0;
+api.GkeWorkload buildGkeWorkload() {
+  final o = api.GkeWorkload();
+  buildCounterGkeWorkload++;
+  if (buildCounterGkeWorkload < 3) {
+    o.clusterName = 'foo';
+    o.location = 'foo';
+    o.namespaceName = 'foo';
+    o.projectId = 'foo';
+    o.topLevelControllerName = 'foo';
+    o.topLevelControllerType = 'foo';
+  }
+  buildCounterGkeWorkload--;
+  return o;
+}
+
+void checkGkeWorkload(api.GkeWorkload o) {
+  buildCounterGkeWorkload++;
+  if (buildCounterGkeWorkload < 3) {
+    unittest.expect(
+      o.clusterName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.namespaceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.topLevelControllerName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.topLevelControllerType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGkeWorkload--;
+}
+
 core.int buildCounterGoogleMonitoringV3Range = 0;
 api.GoogleMonitoringV3Range buildGoogleMonitoringV3Range() {
   final o = api.GoogleMonitoringV3Range();
@@ -1378,6 +1533,33 @@ void checkIstioCanonicalService(api.IstioCanonicalService o) {
     );
   }
   buildCounterIstioCanonicalService--;
+}
+
+core.int buildCounterJsonPathMatcher = 0;
+api.JsonPathMatcher buildJsonPathMatcher() {
+  final o = api.JsonPathMatcher();
+  buildCounterJsonPathMatcher++;
+  if (buildCounterJsonPathMatcher < 3) {
+    o.jsonMatcher = 'foo';
+    o.jsonPath = 'foo';
+  }
+  buildCounterJsonPathMatcher--;
+  return o;
+}
+
+void checkJsonPathMatcher(api.JsonPathMatcher o) {
+  buildCounterJsonPathMatcher++;
+  if (buildCounterJsonPathMatcher < 3) {
+    unittest.expect(
+      o.jsonMatcher!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jsonPath!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterJsonPathMatcher--;
 }
 
 core.int buildCounterLabelDescriptor = 0;
@@ -3049,9 +3231,13 @@ api.Service buildService() {
   if (buildCounterService < 3) {
     o.appEngine = buildAppEngine();
     o.cloudEndpoints = buildCloudEndpoints();
+    o.cloudRun = buildCloudRun();
     o.clusterIstio = buildClusterIstio();
     o.custom = buildCustom();
     o.displayName = 'foo';
+    o.gkeNamespace = buildGkeNamespace();
+    o.gkeService = buildGkeService();
+    o.gkeWorkload = buildGkeWorkload();
     o.istioCanonicalService = buildIstioCanonicalService();
     o.meshIstio = buildMeshIstio();
     o.name = 'foo';
@@ -3067,12 +3253,16 @@ void checkService(api.Service o) {
   if (buildCounterService < 3) {
     checkAppEngine(o.appEngine!);
     checkCloudEndpoints(o.cloudEndpoints!);
+    checkCloudRun(o.cloudRun!);
     checkClusterIstio(o.clusterIstio!);
     checkCustom(o.custom!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
     );
+    checkGkeNamespace(o.gkeNamespace!);
+    checkGkeService(o.gkeService!);
+    checkGkeWorkload(o.gkeWorkload!);
     checkIstioCanonicalService(o.istioCanonicalService!);
     checkMeshIstio(o.meshIstio!);
     unittest.expect(
@@ -3974,6 +4164,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CloudRun', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudRun();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.CloudRun.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCloudRun(od);
+    });
+  });
+
   unittest.group('obj-schema-ClusterIstio', () {
     unittest.test('to-json--from-json', () async {
       final o = buildClusterIstio();
@@ -4196,6 +4396,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GkeNamespace', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGkeNamespace();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GkeNamespace.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGkeNamespace(od);
+    });
+  });
+
+  unittest.group('obj-schema-GkeService', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGkeService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GkeService.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGkeService(od);
+    });
+  });
+
+  unittest.group('obj-schema-GkeWorkload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGkeWorkload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GkeWorkload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGkeWorkload(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleMonitoringV3Range', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleMonitoringV3Range();
@@ -4243,6 +4473,16 @@ void main() {
       final od = api.IstioCanonicalService.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkIstioCanonicalService(od);
+    });
+  });
+
+  unittest.group('obj-schema-JsonPathMatcher', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJsonPathMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.JsonPathMatcher.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkJsonPathMatcher(od);
     });
   });
 

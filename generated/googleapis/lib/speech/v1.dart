@@ -201,8 +201,9 @@ class ProjectsLocationsCustomClassesResource {
   /// Speech-to-Text supports three locations: `global`, `us` (US North
   /// America), and `eu` (Europe). If you are calling the
   /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
-  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
-  /// matching `us` or `eu` location value.
+  /// region, use a
+  /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+  /// with matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -246,8 +247,9 @@ class ProjectsLocationsCustomClassesResource {
   /// Speech-to-Text supports three locations: `global`, `us` (US North
   /// America), and `eu` (Europe). If you are calling the
   /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
-  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
-  /// matching `us` or `eu` location value.
+  /// region, use a
+  /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+  /// with matching `us` or `eu` location value.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/customClasses/\[^/\]+$`.
   ///
@@ -326,8 +328,9 @@ class ProjectsLocationsCustomClassesResource {
   /// Speech-to-Text supports three locations: `global`, `us` (US North
   /// America), and `eu` (Europe). If you are calling the
   /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
-  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
-  /// matching `us` or `eu` location value.
+  /// region, use a
+  /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+  /// with matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of custom classes to return. The service
@@ -441,8 +444,9 @@ class ProjectsLocationsPhraseSetsResource {
   /// Speech-to-Text supports three locations: `global`, `us` (US North
   /// America), and `eu` (Europe). If you are calling the
   /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
-  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
-  /// matching `us` or `eu` location value.
+  /// region, use a
+  /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+  /// with matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -522,8 +526,9 @@ class ProjectsLocationsPhraseSetsResource {
   /// Speech-to-Text supports three locations: `global`, `us` (US North
   /// America), and `eu` (Europe). If you are calling the
   /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
-  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
-  /// matching `us` or `eu` location value.
+  /// region, use a
+  /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+  /// with matching `us` or `eu` location value.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/phraseSets/\[^/\]+$`.
   ///
@@ -563,9 +568,9 @@ class ProjectsLocationsPhraseSetsResource {
   /// Format: `projects/{project}/locations/{location}` Speech-to-Text supports
   /// three locations: `global`, `us` (US North America), and `eu` (Europe). If
   /// you are calling the `speech.googleapis.com` endpoint, use the `global`
-  /// location. To specify a region, use a \[regional
-  /// endpoint\](/speech-to-text/docs/endpoints) with matching `us` or `eu`
-  /// location value.
+  /// location. To specify a region, use a
+  /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+  /// with matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of phrase sets to return. The service may
@@ -1436,7 +1441,9 @@ class RecognitionConfig {
   ///
   /// Select the model best suited to your domain to get best results. If a
   /// model is not explicitly specified, then we auto-select a model based on
-  /// the parameters in the RecognitionConfig. *Model* *Description*
+  /// the parameters in the RecognitionConfig. *Model* *Description* latest_long
+  /// Best for long form content like media or conversation. latest_short Best
+  /// for short form content like commands or single shot directed speech.
   /// command_and_search Best for short queries such as voice commands or voice
   /// search. phone_call Best for audio that originated from a phone call
   /// (typically recorded at an 8khz sampling rate). video Best for audio that

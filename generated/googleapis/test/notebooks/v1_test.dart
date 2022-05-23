@@ -2167,6 +2167,7 @@ api.RuntimeSoftwareConfig buildRuntimeSoftwareConfig() {
     o.kernels = buildUnnamed36();
     o.notebookUpgradeSchedule = 'foo';
     o.postStartupScript = 'foo';
+    o.postStartupScriptBehavior = 'foo';
     o.upgradeable = true;
   }
   buildCounterRuntimeSoftwareConfig--;
@@ -2194,6 +2195,10 @@ void checkRuntimeSoftwareConfig(api.RuntimeSoftwareConfig o) {
     );
     unittest.expect(
       o.postStartupScript!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postStartupScriptBehavior!,
       unittest.equals('foo'),
     );
     unittest.expect(o.upgradeable!, unittest.isTrue);
@@ -6417,6 +6422,76 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListRuntimesResponse(response as api.ListRuntimesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
+      final arg_request = buildRuntime();
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Runtime.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRuntime(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--refreshRuntimeTokenInternal', () async {

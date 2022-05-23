@@ -333,8 +333,9 @@ class ProjectsLocationsFeaturesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
   ///
@@ -514,8 +515,9 @@ class ProjectsLocationsFeaturesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
   ///
@@ -562,8 +564,9 @@ class ProjectsLocationsFeaturesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
   ///
@@ -856,8 +859,9 @@ class ProjectsLocationsMembershipsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
   ///
@@ -1039,8 +1043,9 @@ class ProjectsLocationsMembershipsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
   ///
@@ -1087,8 +1092,9 @@ class ProjectsLocationsMembershipsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
   ///
@@ -1319,6 +1325,169 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// AnthosVMMembershipSpec contains the AnthosVM feature configuration for a
+/// membership/cluster.
+class AnthosVMMembershipSpec {
+  /// List of configurations of the Anthos For VM subfeatures that are to be
+  /// enabled
+  core.List<AnthosVMSubFeatureSpec>? subfeaturesSpec;
+
+  AnthosVMMembershipSpec({
+    this.subfeaturesSpec,
+  });
+
+  AnthosVMMembershipSpec.fromJson(core.Map _json)
+      : this(
+          subfeaturesSpec: _json.containsKey('subfeaturesSpec')
+              ? (_json['subfeaturesSpec'] as core.List)
+                  .map((value) => AnthosVMSubFeatureSpec.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subfeaturesSpec != null) 'subfeaturesSpec': subfeaturesSpec!,
+      };
+}
+
+/// AnthosVMFeatureState contains the state of the AnthosVM feature.
+///
+/// It represents the actual state in the cluster, while the
+/// AnthosVMMembershipSpec represents the desired state.
+class AnthosVMMembershipState {
+  /// State of the local PE-controller inside the cluster
+  LocalControllerState? localControllerState;
+
+  /// List of AnthosVM subfeature states
+  core.List<AnthosVMSubFeatureState>? subfeatureState;
+
+  AnthosVMMembershipState({
+    this.localControllerState,
+    this.subfeatureState,
+  });
+
+  AnthosVMMembershipState.fromJson(core.Map _json)
+      : this(
+          localControllerState: _json.containsKey('localControllerState')
+              ? LocalControllerState.fromJson(_json['localControllerState']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          subfeatureState: _json.containsKey('subfeatureState')
+              ? (_json['subfeatureState'] as core.List)
+                  .map((value) => AnthosVMSubFeatureState.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (localControllerState != null)
+          'localControllerState': localControllerState!,
+        if (subfeatureState != null) 'subfeatureState': subfeatureState!,
+      };
+}
+
+/// AnthosVMSubFeatureSpec contains the subfeature configuration for a
+/// membership/cluster.
+class AnthosVMSubFeatureSpec {
+  /// Indicates whether the subfeature should be enabled on the cluster or not.
+  ///
+  /// If set to true, the subfeature's control plane and resources will be
+  /// installed in the cluster. If set to false, the oneof spec if present will
+  /// be ignored and nothing will be installed in the cluster.
+  core.bool? enabled;
+
+  /// MigrateSpec repsents the configuration for Migrate subfeature.
+  MigrateSpec? migrateSpec;
+
+  /// ServiceMeshSpec repsents the configuration for Service Mesh subfeature.
+  ServiceMeshSpec? serviceMeshSpec;
+
+  AnthosVMSubFeatureSpec({
+    this.enabled,
+    this.migrateSpec,
+    this.serviceMeshSpec,
+  });
+
+  AnthosVMSubFeatureSpec.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          migrateSpec: _json.containsKey('migrateSpec')
+              ? MigrateSpec.fromJson(
+                  _json['migrateSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceMeshSpec: _json.containsKey('serviceMeshSpec')
+              ? ServiceMeshSpec.fromJson(_json['serviceMeshSpec']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (migrateSpec != null) 'migrateSpec': migrateSpec!,
+        if (serviceMeshSpec != null) 'serviceMeshSpec': serviceMeshSpec!,
+      };
+}
+
+/// AnthosVMSubFeatureState contains the state of the AnthosVM subfeatures.
+class AnthosVMSubFeatureState {
+  /// Description represents human readable description of the subfeature state.
+  ///
+  /// If the deployment failed, this should also contain the reason for the
+  /// failure.
+  core.String? description;
+
+  /// InstallationState represents the state of installation of the subfeature
+  /// in the cluster.
+  /// Possible string values are:
+  /// - "INSTALLATION_STATE_UNSPECIFIED" : state of installation is unknown
+  /// - "INSTALLATION_STATE_NOT_INSTALLED" : component is not installed
+  /// - "INSTALLATION_STATE_INSTALLED" : component is successfully installed
+  /// - "INSTALLATION_STATE_FAILED" : installation failed
+  core.String? installationState;
+
+  /// MigrateState represents the state of the Migrate subfeature.
+  MigrateState? migrateState;
+
+  /// ServiceMeshState represents the state of the Service Mesh subfeature.
+  ServiceMeshState? serviceMeshState;
+
+  AnthosVMSubFeatureState({
+    this.description,
+    this.installationState,
+    this.migrateState,
+    this.serviceMeshState,
+  });
+
+  AnthosVMSubFeatureState.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          installationState: _json.containsKey('installationState')
+              ? _json['installationState'] as core.String
+              : null,
+          migrateState: _json.containsKey('migrateState')
+              ? MigrateState.fromJson(
+                  _json['migrateState'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceMeshState: _json.containsKey('serviceMeshState')
+              ? ServiceMeshState.fromJson(_json['serviceMeshState']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (installationState != null) 'installationState': installationState!,
+        if (migrateState != null) 'migrateState': migrateState!,
+        if (serviceMeshState != null) 'serviceMeshState': serviceMeshState!,
+      };
+}
+
 /// Spec for App Dev Experience Feature.
 typedef AppDevExperienceFeatureSpec = $Empty;
 
@@ -1361,8 +1530,8 @@ class AppDevExperienceFeatureState {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -1499,7 +1668,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -3102,6 +3271,259 @@ class GkeCluster {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
 
+/// Configuration of an auth method for a member/cluster.
+///
+/// Only one authentication method (e.g., OIDC and LDAP) can be set per
+/// AuthMethod.
+class IdentityServiceAuthMethod {
+  /// Identifier for auth config.
+  core.String? name;
+
+  /// OIDC specific configuration.
+  IdentityServiceOidcConfig? oidcConfig;
+
+  /// Proxy server address to use for auth method.
+  core.String? proxy;
+
+  IdentityServiceAuthMethod({
+    this.name,
+    this.oidcConfig,
+    this.proxy,
+  });
+
+  IdentityServiceAuthMethod.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          oidcConfig: _json.containsKey('oidcConfig')
+              ? IdentityServiceOidcConfig.fromJson(
+                  _json['oidcConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          proxy:
+              _json.containsKey('proxy') ? _json['proxy'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (oidcConfig != null) 'oidcConfig': oidcConfig!,
+        if (proxy != null) 'proxy': proxy!,
+      };
+}
+
+/// **Anthos Identity Service**: Configuration for a single Membership.
+class IdentityServiceMembershipSpec {
+  /// A member may support multiple auth methods.
+  core.List<IdentityServiceAuthMethod>? authMethods;
+
+  IdentityServiceMembershipSpec({
+    this.authMethods,
+  });
+
+  IdentityServiceMembershipSpec.fromJson(core.Map _json)
+      : this(
+          authMethods: _json.containsKey('authMethods')
+              ? (_json['authMethods'] as core.List)
+                  .map((value) => IdentityServiceAuthMethod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authMethods != null) 'authMethods': authMethods!,
+      };
+}
+
+/// **Anthos Identity Service**: State for a single Membership.
+class IdentityServiceMembershipState {
+  /// The reason of the failure.
+  core.String? failureReason;
+
+  /// Installed AIS version.
+  ///
+  /// This is the AIS version installed on this member. The values makes sense
+  /// iff state is OK.
+  core.String? installedVersion;
+
+  /// Last reconciled membership configuration
+  IdentityServiceMembershipSpec? memberConfig;
+
+  /// Deployment state on this member
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Unspecified state
+  /// - "OK" : deployment succeeds
+  /// - "ERROR" : Failure with error.
+  core.String? state;
+
+  IdentityServiceMembershipState({
+    this.failureReason,
+    this.installedVersion,
+    this.memberConfig,
+    this.state,
+  });
+
+  IdentityServiceMembershipState.fromJson(core.Map _json)
+      : this(
+          failureReason: _json.containsKey('failureReason')
+              ? _json['failureReason'] as core.String
+              : null,
+          installedVersion: _json.containsKey('installedVersion')
+              ? _json['installedVersion'] as core.String
+              : null,
+          memberConfig: _json.containsKey('memberConfig')
+              ? IdentityServiceMembershipSpec.fromJson(
+                  _json['memberConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failureReason != null) 'failureReason': failureReason!,
+        if (installedVersion != null) 'installedVersion': installedVersion!,
+        if (memberConfig != null) 'memberConfig': memberConfig!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Configuration for OIDC Auth flow.
+class IdentityServiceOidcConfig {
+  /// PEM-encoded CA for OIDC provider.
+  core.String? certificateAuthorityData;
+
+  /// ID for OIDC client application.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+  core.String? clientSecret;
+
+  /// Flag to denote if reverse proxy is used to connect to auth provider.
+  ///
+  /// This flag should be set to true when provider is not reachable by Google
+  /// Cloud Console.
+  core.bool? deployCloudConsoleProxy;
+
+  /// Encrypted OIDC Client secret
+  ///
+  /// Output only.
+  core.String? encryptedClientSecret;
+  core.List<core.int> get encryptedClientSecretAsBytes =>
+      convert.base64.decode(encryptedClientSecret!);
+
+  set encryptedClientSecretAsBytes(core.List<core.int> _bytes) {
+    encryptedClientSecret =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Comma-separated list of key-value pairs.
+  core.String? extraParams;
+
+  /// Prefix to prepend to group name.
+  core.String? groupPrefix;
+
+  /// Claim in OIDC ID token that holds group information.
+  core.String? groupsClaim;
+
+  /// URI for the OIDC provider.
+  ///
+  /// This should point to the level below .well-known/openid-configuration.
+  core.String? issuerUri;
+
+  /// Registered redirect uri to redirect users going through OAuth flow using
+  /// kubectl plugin.
+  core.String? kubectlRedirectUri;
+
+  /// Comma-separated list of identifiers.
+  core.String? scopes;
+
+  /// Claim in OIDC ID token that holds username.
+  core.String? userClaim;
+
+  /// Prefix to prepend to user name.
+  core.String? userPrefix;
+
+  IdentityServiceOidcConfig({
+    this.certificateAuthorityData,
+    this.clientId,
+    this.clientSecret,
+    this.deployCloudConsoleProxy,
+    this.encryptedClientSecret,
+    this.extraParams,
+    this.groupPrefix,
+    this.groupsClaim,
+    this.issuerUri,
+    this.kubectlRedirectUri,
+    this.scopes,
+    this.userClaim,
+    this.userPrefix,
+  });
+
+  IdentityServiceOidcConfig.fromJson(core.Map _json)
+      : this(
+          certificateAuthorityData:
+              _json.containsKey('certificateAuthorityData')
+                  ? _json['certificateAuthorityData'] as core.String
+                  : null,
+          clientId: _json.containsKey('clientId')
+              ? _json['clientId'] as core.String
+              : null,
+          clientSecret: _json.containsKey('clientSecret')
+              ? _json['clientSecret'] as core.String
+              : null,
+          deployCloudConsoleProxy: _json.containsKey('deployCloudConsoleProxy')
+              ? _json['deployCloudConsoleProxy'] as core.bool
+              : null,
+          encryptedClientSecret: _json.containsKey('encryptedClientSecret')
+              ? _json['encryptedClientSecret'] as core.String
+              : null,
+          extraParams: _json.containsKey('extraParams')
+              ? _json['extraParams'] as core.String
+              : null,
+          groupPrefix: _json.containsKey('groupPrefix')
+              ? _json['groupPrefix'] as core.String
+              : null,
+          groupsClaim: _json.containsKey('groupsClaim')
+              ? _json['groupsClaim'] as core.String
+              : null,
+          issuerUri: _json.containsKey('issuerUri')
+              ? _json['issuerUri'] as core.String
+              : null,
+          kubectlRedirectUri: _json.containsKey('kubectlRedirectUri')
+              ? _json['kubectlRedirectUri'] as core.String
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? _json['scopes'] as core.String
+              : null,
+          userClaim: _json.containsKey('userClaim')
+              ? _json['userClaim'] as core.String
+              : null,
+          userPrefix: _json.containsKey('userPrefix')
+              ? _json['userPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityData != null)
+          'certificateAuthorityData': certificateAuthorityData!,
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (deployCloudConsoleProxy != null)
+          'deployCloudConsoleProxy': deployCloudConsoleProxy!,
+        if (encryptedClientSecret != null)
+          'encryptedClientSecret': encryptedClientSecret!,
+        if (extraParams != null) 'extraParams': extraParams!,
+        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
+        if (groupsClaim != null) 'groupsClaim': groupsClaim!,
+        if (issuerUri != null) 'issuerUri': issuerUri!,
+        if (kubectlRedirectUri != null)
+          'kubectlRedirectUri': kubectlRedirectUri!,
+        if (scopes != null) 'scopes': scopes!,
+        if (userClaim != null) 'userClaim': userClaim!,
+        if (userPrefix != null) 'userPrefix': userPrefix!,
+      };
+}
+
 /// KubernetesMetadata provides informational metadata for Memberships
 /// representing Kubernetes clusters.
 class KubernetesMetadata {
@@ -3416,6 +3838,43 @@ class ListOperationsResponse {
       };
 }
 
+/// LocalControllerState contains the state of the local controller deployed in
+/// the cluster.
+class LocalControllerState {
+  /// Description represents the human readable description of the current state
+  /// of the local PE controller
+  core.String? description;
+
+  /// InstallationState represents the state of deployment of the local PE
+  /// controller in the cluster.
+  /// Possible string values are:
+  /// - "INSTALLATION_STATE_UNSPECIFIED" : state of installation is unknown
+  /// - "INSTALLATION_STATE_NOT_INSTALLED" : component is not installed
+  /// - "INSTALLATION_STATE_INSTALLED" : component is successfully installed
+  /// - "INSTALLATION_STATE_FAILED" : installation failed
+  core.String? installationState;
+
+  LocalControllerState({
+    this.description,
+    this.installationState,
+  });
+
+  LocalControllerState.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          installationState: _json.containsKey('installationState')
+              ? _json['installationState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (installationState != null) 'installationState': installationState!,
+      };
+}
+
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
@@ -3680,47 +4139,90 @@ class MembershipEndpoint {
 /// MembershipFeatureSpec contains configuration information for a single
 /// Membership.
 class MembershipFeatureSpec {
+  /// AnthosVM spec.
+  AnthosVMMembershipSpec? anthosvm;
+
   /// Config Management-specific spec.
   ConfigManagementMembershipSpec? configmanagement;
 
+  /// Identity Service-specific spec.
+  IdentityServiceMembershipSpec? identityservice;
+
+  /// Anthos Service Mesh-specific spec
+  ServiceMeshMembershipSpec? mesh;
+
   MembershipFeatureSpec({
+    this.anthosvm,
     this.configmanagement,
+    this.identityservice,
+    this.mesh,
   });
 
   MembershipFeatureSpec.fromJson(core.Map _json)
       : this(
+          anthosvm: _json.containsKey('anthosvm')
+              ? AnthosVMMembershipSpec.fromJson(
+                  _json['anthosvm'] as core.Map<core.String, core.dynamic>)
+              : null,
           configmanagement: _json.containsKey('configmanagement')
               ? ConfigManagementMembershipSpec.fromJson(
                   _json['configmanagement']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          identityservice: _json.containsKey('identityservice')
+              ? IdentityServiceMembershipSpec.fromJson(_json['identityservice']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mesh: _json.containsKey('mesh')
+              ? ServiceMeshMembershipSpec.fromJson(
+                  _json['mesh'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (anthosvm != null) 'anthosvm': anthosvm!,
         if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (identityservice != null) 'identityservice': identityservice!,
+        if (mesh != null) 'mesh': mesh!,
       };
 }
 
 /// MembershipFeatureState contains Feature status information for a single
 /// Membership.
 class MembershipFeatureState {
+  /// AnthosVM state.
+  AnthosVMMembershipState? anthosvm;
+
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
 
   /// Config Management-specific state.
   ConfigManagementMembershipState? configmanagement;
 
+  /// Identity Service-specific state.
+  IdentityServiceMembershipState? identityservice;
+
+  /// Service Mesh-specific state.
+  ServiceMeshMembershipState? servicemesh;
+
   /// The high-level state of this Feature for a single membership.
   FeatureState? state;
 
   MembershipFeatureState({
+    this.anthosvm,
     this.appdevexperience,
     this.configmanagement,
+    this.identityservice,
+    this.servicemesh,
     this.state,
   });
 
   MembershipFeatureState.fromJson(core.Map _json)
       : this(
+          anthosvm: _json.containsKey('anthosvm')
+              ? AnthosVMMembershipState.fromJson(
+                  _json['anthosvm'] as core.Map<core.String, core.dynamic>)
+              : null,
           appdevexperience: _json.containsKey('appdevexperience')
               ? AppDevExperienceFeatureState.fromJson(_json['appdevexperience']
                   as core.Map<core.String, core.dynamic>)
@@ -3730,6 +4232,14 @@ class MembershipFeatureState {
                   _json['configmanagement']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          identityservice: _json.containsKey('identityservice')
+              ? IdentityServiceMembershipState.fromJson(_json['identityservice']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          servicemesh: _json.containsKey('servicemesh')
+              ? ServiceMeshMembershipState.fromJson(
+                  _json['servicemesh'] as core.Map<core.String, core.dynamic>)
+              : null,
           state: _json.containsKey('state')
               ? FeatureState.fromJson(
                   _json['state'] as core.Map<core.String, core.dynamic>)
@@ -3737,8 +4247,11 @@ class MembershipFeatureState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (anthosvm != null) 'anthosvm': anthosvm!,
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
         if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (identityservice != null) 'identityservice': identityservice!,
+        if (servicemesh != null) 'servicemesh': servicemesh!,
         if (state != null) 'state': state!,
       };
 }
@@ -3770,6 +4283,12 @@ class MembershipState {
         if (code != null) 'code': code!,
       };
 }
+
+/// MigrateSpec contains the migrate subfeature configuration.
+typedef MigrateSpec = $Empty;
+
+/// MigrateState contains the state of Migrate subfeature
+typedef MigrateState = $Empty;
 
 /// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 class MultiCloudCluster {
@@ -4167,12 +4686,145 @@ class ResourceOptions {
       };
 }
 
+/// Status of control plane management.
+class ServiceMeshControlPlaneManagement {
+  /// Explanation of state.
+  core.List<ServiceMeshStatusDetails>? details;
+
+  /// LifecycleState of control plane management.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified
+  /// - "DISABLED" : DISABLED means that the component is not enabled.
+  /// - "FAILED_PRECONDITION" : FAILED_PRECONDITION means that provisioning
+  /// cannot proceed because of some characteristic of the member cluster.
+  /// - "PROVISIONING" : PROVISIONING means that provisioning is in progress.
+  /// - "ACTIVE" : ACTIVE means that the component is ready for use.
+  /// - "STALLED" : STALLED means that provisioning could not be done.
+  /// - "NEEDS_ATTENTION" : NEEDS_ATTENTION means that the component is ready,
+  /// but some user intervention is required. (For example that the user should
+  /// migrate workloads to a new control plane revision.)
+  /// - "DEGRADED" : DEGRADED means that the component is ready, but operating
+  /// in a degraded state.
+  core.String? state;
+
+  ServiceMeshControlPlaneManagement({
+    this.details,
+    this.state,
+  });
+
+  ServiceMeshControlPlaneManagement.fromJson(core.Map _json)
+      : this(
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map((value) => ServiceMeshStatusDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// **Service Mesh**: Spec for a single Membership for the servicemesh feature
+class ServiceMeshMembershipSpec {
+  /// Enables automatic control plane management.
+  /// Possible string values are:
+  /// - "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED" : Unspecified
+  /// - "AUTOMATIC" : Google should provision a control plane revision and make
+  /// it available in the cluster. Google will enroll this revision in a release
+  /// channel and keep it up to date. The control plane revision may be a
+  /// managed service, or a managed install.
+  /// - "MANUAL" : User will manually configure the control plane (e.g. via CLI,
+  /// or via the ControlPlaneRevision KRM API)
+  core.String? controlPlane;
+
+  ServiceMeshMembershipSpec({
+    this.controlPlane,
+  });
+
+  ServiceMeshMembershipSpec.fromJson(core.Map _json)
+      : this(
+          controlPlane: _json.containsKey('controlPlane')
+              ? _json['controlPlane'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlPlane != null) 'controlPlane': controlPlane!,
+      };
+}
+
+/// **Service Mesh**: State for a single Membership, as analyzed by the Service
+/// Mesh Hub Controller.
+class ServiceMeshMembershipState {
+  /// Status of control plane management
+  ///
+  /// Output only.
+  ServiceMeshControlPlaneManagement? controlPlaneManagement;
+
+  ServiceMeshMembershipState({
+    this.controlPlaneManagement,
+  });
+
+  ServiceMeshMembershipState.fromJson(core.Map _json)
+      : this(
+          controlPlaneManagement: _json.containsKey('controlPlaneManagement')
+              ? ServiceMeshControlPlaneManagement.fromJson(
+                  _json['controlPlaneManagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlPlaneManagement != null)
+          'controlPlaneManagement': controlPlaneManagement!,
+      };
+}
+
+/// ServiceMeshSpec contains the serviceMesh subfeature configuration.
+typedef ServiceMeshSpec = $Empty;
+
+/// ServiceMeshState contains the state of Service Mesh subfeature
+typedef ServiceMeshState = $Empty;
+
+/// Structured and human-readable details for a status.
+class ServiceMeshStatusDetails {
+  /// A machine-readable code that further describes a broad status.
+  core.String? code;
+
+  /// Human-readable explanation of code.
+  core.String? details;
+
+  ServiceMeshStatusDetails({
+    this.code,
+    this.details,
+  });
+
+  ServiceMeshStatusDetails.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          details: _json.containsKey('details')
+              ? _json['details'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 

@@ -1499,6 +1499,7 @@ api.DriveCapabilities buildDriveCapabilities() {
     o.canReadRevisions = true;
     o.canRename = true;
     o.canRenameDrive = true;
+    o.canResetDriveRestrictions = true;
     o.canShare = true;
     o.canTrashChildren = true;
   }
@@ -1526,6 +1527,7 @@ void checkDriveCapabilities(api.DriveCapabilities o) {
     unittest.expect(o.canReadRevisions!, unittest.isTrue);
     unittest.expect(o.canRename!, unittest.isTrue);
     unittest.expect(o.canRenameDrive!, unittest.isTrue);
+    unittest.expect(o.canResetDriveRestrictions!, unittest.isTrue);
     unittest.expect(o.canShare!, unittest.isTrue);
     unittest.expect(o.canTrashChildren!, unittest.isTrue);
   }
@@ -3315,6 +3317,7 @@ api.TeamDriveCapabilities buildTeamDriveCapabilities() {
     o.canRemoveChildren = true;
     o.canRename = true;
     o.canRenameTeamDrive = true;
+    o.canResetTeamDriveRestrictions = true;
     o.canShare = true;
     o.canTrashChildren = true;
   }
@@ -3343,6 +3346,7 @@ void checkTeamDriveCapabilities(api.TeamDriveCapabilities o) {
     unittest.expect(o.canRemoveChildren!, unittest.isTrue);
     unittest.expect(o.canRename!, unittest.isTrue);
     unittest.expect(o.canRenameTeamDrive!, unittest.isTrue);
+    unittest.expect(o.canResetTeamDriveRestrictions!, unittest.isTrue);
     unittest.expect(o.canShare!, unittest.isTrue);
     unittest.expect(o.canTrashChildren!, unittest.isTrue);
   }
@@ -5723,6 +5727,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DriveApi(mock).drives;
       final arg_driveId = 'foo';
+      final arg_allowItemDeletion = true;
+      final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5767,6 +5773,14 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['allowItemDeletion']!.first,
+          unittest.equals('$arg_allowItemDeletion'),
+        );
+        unittest.expect(
+          queryMap['useDomainAdminAccess']!.first,
+          unittest.equals('$arg_useDomainAdminAccess'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -5777,7 +5791,10 @@ void main() {
         final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      await res.delete(arg_driveId, $fields: arg_$fields);
+      await res.delete(arg_driveId,
+          allowItemDeletion: arg_allowItemDeletion,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {

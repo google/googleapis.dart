@@ -1397,8 +1397,9 @@ class RowAccessPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
   ///
@@ -1503,8 +1504,9 @@ class RowAccessPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
   ///
@@ -1551,8 +1553,9 @@ class RowAccessPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
   ///
@@ -1830,8 +1833,9 @@ class TablesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+$`.
   ///
@@ -2034,8 +2038,9 @@ class TablesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+$`.
   ///
@@ -2082,8 +2087,9 @@ class TablesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+$`.
   ///
@@ -2610,8 +2616,8 @@ class ArimaSingleModelForecastingMetrics {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -3179,7 +3185,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -4134,7 +4140,7 @@ class Dataset {
   core.String? maxTimeTravelHours;
 
   /// \[Output-only\] Reserved for future use.
-  core.bool? satisfiesPZS;
+  core.bool? satisfiesPzs;
 
   /// \[Output-only\] A URL that can be used to access the resource again.
   ///
@@ -4164,7 +4170,7 @@ class Dataset {
     this.lastModifiedTime,
     this.location,
     this.maxTimeTravelHours,
-    this.satisfiesPZS,
+    this.satisfiesPzs,
     this.selfLink,
     this.tags,
   });
@@ -4230,8 +4236,8 @@ class Dataset {
           maxTimeTravelHours: _json.containsKey('maxTimeTravelHours')
               ? _json['maxTimeTravelHours'] as core.String
               : null,
-          satisfiesPZS: _json.containsKey('satisfiesPZS')
-              ? _json['satisfiesPZS'] as core.bool
+          satisfiesPzs: _json.containsKey('satisfiesPzs')
+              ? _json['satisfiesPzs'] as core.bool
               : null,
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
@@ -4266,7 +4272,7 @@ class Dataset {
         if (location != null) 'location': location!,
         if (maxTimeTravelHours != null)
           'maxTimeTravelHours': maxTimeTravelHours!,
-        if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (tags != null) 'tags': tags!,
       };
@@ -8723,6 +8729,19 @@ class MaterializedViewDefinition {
   /// last modified, in milliseconds since the epoch.
   core.String? lastRefreshTime;
 
+  /// Max staleness of data that could be returned when materizlized view is
+  /// queried (formatted as Google SQL Interval type).
+  ///
+  /// Optional.
+  core.String? maxStaleness;
+  core.List<core.int> get maxStalenessAsBytes =>
+      convert.base64.decode(maxStaleness!);
+
+  set maxStalenessAsBytes(core.List<core.int> _bytes) {
+    maxStaleness =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// A query whose result is persisted.
   ///
   /// Required.
@@ -8739,6 +8758,7 @@ class MaterializedViewDefinition {
   MaterializedViewDefinition({
     this.enableRefresh,
     this.lastRefreshTime,
+    this.maxStaleness,
     this.query,
     this.refreshIntervalMs,
   });
@@ -8751,6 +8771,9 @@ class MaterializedViewDefinition {
           lastRefreshTime: _json.containsKey('lastRefreshTime')
               ? _json['lastRefreshTime'] as core.String
               : null,
+          maxStaleness: _json.containsKey('maxStaleness')
+              ? _json['maxStaleness'] as core.String
+              : null,
           query:
               _json.containsKey('query') ? _json['query'] as core.String : null,
           refreshIntervalMs: _json.containsKey('refreshIntervalMs')
@@ -8761,6 +8784,7 @@ class MaterializedViewDefinition {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableRefresh != null) 'enableRefresh': enableRefresh!,
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+        if (maxStaleness != null) 'maxStaleness': maxStaleness!,
         if (query != null) 'query': query!,
         if (refreshIntervalMs != null) 'refreshIntervalMs': refreshIntervalMs!,
       };
@@ -10322,6 +10346,69 @@ class RegressionMetrics {
       };
 }
 
+/// Options for a remote user-defined function.
+class RemoteFunctionOptions {
+  /// Fully qualified name of the user-provided connection object which holds
+  /// the authentication information to send requests to the remote service.
+  ///
+  /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+  core.String? connection;
+
+  /// Endpoint of the user-provided remote service (e.g. a function url in
+  /// Google Cloud Functions).
+  core.String? endpoint;
+
+  /// Max number of rows in each batch sent to the remote service.
+  ///
+  /// If absent or if 0, it means no limit.
+  core.String? maxBatchingRows;
+
+  /// User-defined context as a set of key/value pairs, which will be sent as
+  /// function invocation context together with batched arguments in the
+  /// requests to the remote service.
+  ///
+  /// The total number of bytes of keys and values must be less than 8KB.
+  core.Map<core.String, core.String>? userDefinedContext;
+
+  RemoteFunctionOptions({
+    this.connection,
+    this.endpoint,
+    this.maxBatchingRows,
+    this.userDefinedContext,
+  });
+
+  RemoteFunctionOptions.fromJson(core.Map _json)
+      : this(
+          connection: _json.containsKey('connection')
+              ? _json['connection'] as core.String
+              : null,
+          endpoint: _json.containsKey('endpoint')
+              ? _json['endpoint'] as core.String
+              : null,
+          maxBatchingRows: _json.containsKey('maxBatchingRows')
+              ? _json['maxBatchingRows'] as core.String
+              : null,
+          userDefinedContext: _json.containsKey('userDefinedContext')
+              ? (_json['userDefinedContext']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connection != null) 'connection': connection!,
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (maxBatchingRows != null) 'maxBatchingRows': maxBatchingRows!,
+        if (userDefinedContext != null)
+          'userDefinedContext': userDefinedContext!,
+      };
+}
+
 /// A user-defined function or a stored procedure.
 class Routine {
   /// Optional.
@@ -10391,6 +10478,11 @@ class Routine {
   /// Output only.
   core.String? lastModifiedTime;
 
+  /// Remote function specific options.
+  ///
+  /// Optional.
+  RemoteFunctionOptions? remoteFunctionOptions;
+
   /// Can be set only if routine_type = "TABLE_VALUED_FUNCTION".
   ///
   /// If absent, the return table type is inferred from definition_body at query
@@ -10453,6 +10545,7 @@ class Routine {
     this.importedLibraries,
     this.language,
     this.lastModifiedTime,
+    this.remoteFunctionOptions,
     this.returnTableType,
     this.returnType,
     this.routineReference,
@@ -10492,6 +10585,10 @@ class Routine {
           lastModifiedTime: _json.containsKey('lastModifiedTime')
               ? _json['lastModifiedTime'] as core.String
               : null,
+          remoteFunctionOptions: _json.containsKey('remoteFunctionOptions')
+              ? RemoteFunctionOptions.fromJson(_json['remoteFunctionOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           returnTableType: _json.containsKey('returnTableType')
               ? StandardSqlTableType.fromJson(_json['returnTableType']
                   as core.Map<core.String, core.dynamic>)
@@ -10522,6 +10619,8 @@ class Routine {
         if (importedLibraries != null) 'importedLibraries': importedLibraries!,
         if (language != null) 'language': language!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (remoteFunctionOptions != null)
+          'remoteFunctionOptions': remoteFunctionOptions!,
         if (returnTableType != null) 'returnTableType': returnTableType!,
         if (returnType != null) 'returnType': returnType!,
         if (routineReference != null) 'routineReference': routineReference!,
@@ -10878,7 +10977,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -11911,7 +12010,20 @@ class TableFieldSchema {
   /// It only can be set on string type field.
   ///
   /// Optional.
-  core.String? collationSpec;
+  core.String? collation;
+
+  /// A SQL expression to specify the default value for this field.
+  ///
+  /// It can only be set for top level fields (columns). You can use struct or
+  /// array expression to specify default value for the entire struct or array.
+  /// The valid SQL expressions are: - Literals for all data types, including
+  /// STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP -
+  /// CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND -
+  /// SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above
+  /// allowed functions, for example, \[CURRENT_DATE(), DATE '2020-01-01'\]
+  ///
+  /// Optional.
+  core.String? defaultValueExpression;
 
   /// The field description.
   ///
@@ -11994,7 +12106,8 @@ class TableFieldSchema {
 
   TableFieldSchema({
     this.categories,
-    this.collationSpec,
+    this.collation,
+    this.defaultValueExpression,
     this.description,
     this.fields,
     this.maxLength,
@@ -12012,8 +12125,11 @@ class TableFieldSchema {
               ? TableFieldSchemaCategories.fromJson(
                   _json['categories'] as core.Map<core.String, core.dynamic>)
               : null,
-          collationSpec: _json.containsKey('collationSpec')
-              ? _json['collationSpec'] as core.String
+          collation: _json.containsKey('collation')
+              ? _json['collation'] as core.String
+              : null,
+          defaultValueExpression: _json.containsKey('defaultValueExpression')
+              ? _json['defaultValueExpression'] as core.String
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
@@ -12043,7 +12159,9 @@ class TableFieldSchema {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null) 'categories': categories!,
-        if (collationSpec != null) 'collationSpec': collationSpec!,
+        if (collation != null) 'collation': collation!,
+        if (defaultValueExpression != null)
+          'defaultValueExpression': defaultValueExpression!,
         if (description != null) 'description': description!,
         if (fields != null) 'fields': fields!,
         if (maxLength != null) 'maxLength': maxLength!,

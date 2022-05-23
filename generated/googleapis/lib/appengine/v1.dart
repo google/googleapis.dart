@@ -5182,8 +5182,8 @@ class Version {
   /// in GET requests if view=FULL is set.
   ApiConfigHandler? apiConfig;
 
-  /// app_engine_apis allows second generation runtimes to access the App Engine
-  /// APIs.
+  /// Allows App Engine second generation runtimes to access the legacy bundled
+  /// services.
   core.bool? appEngineApis;
 
   /// Automatic scaling is based on request rate, response latencies, and other

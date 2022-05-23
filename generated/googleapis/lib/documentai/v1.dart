@@ -2190,8 +2190,8 @@ class GoogleCloudDocumentaiV1DocumentPage {
   /// A list of visually detected tokens on the page.
   core.List<GoogleCloudDocumentaiV1DocumentPageToken>? tokens;
 
-  /// Transformation matrices that were applied to the original document image
-  /// to produce Page.image.
+  /// Transformation matrices (both already applied and not) to the original
+  /// document image to produce Page.image.
   core.List<GoogleCloudDocumentaiV1DocumentPageMatrix>? transforms;
 
   /// A list of detected non-text visual elements e.g. checkbox, signature etc.
@@ -2814,6 +2814,11 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
 /// Representation for transformation matrix, intended to be compatible and used
 /// with OpenCV format for image manipulation.
 class GoogleCloudDocumentaiV1DocumentPageMatrix {
+  /// Has the transformation already been applied to the current Document?
+  /// Needed to disambiguate pre-processing transformations already applied vs
+  /// transformations added at annotation time by HITL operators.
+  core.bool? applied;
+
   /// Number of columns in the matrix.
   core.int? cols;
 
@@ -2837,6 +2842,7 @@ class GoogleCloudDocumentaiV1DocumentPageMatrix {
   core.int? type;
 
   GoogleCloudDocumentaiV1DocumentPageMatrix({
+    this.applied,
     this.cols,
     this.data,
     this.rows,
@@ -2845,6 +2851,9 @@ class GoogleCloudDocumentaiV1DocumentPageMatrix {
 
   GoogleCloudDocumentaiV1DocumentPageMatrix.fromJson(core.Map _json)
       : this(
+          applied: _json.containsKey('applied')
+              ? _json['applied'] as core.bool
+              : null,
           cols: _json.containsKey('cols') ? _json['cols'] as core.int : null,
           data: _json.containsKey('data') ? _json['data'] as core.String : null,
           rows: _json.containsKey('rows') ? _json['rows'] as core.int : null,
@@ -2852,6 +2861,7 @@ class GoogleCloudDocumentaiV1DocumentPageMatrix {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (applied != null) 'applied': applied!,
         if (cols != null) 'cols': cols!,
         if (data != null) 'data': data!,
         if (rows != null) 'rows': rows!,
@@ -3936,6 +3946,9 @@ class GoogleCloudDocumentaiV1NormalizedVertex {
 
 /// Request message for the process document method.
 class GoogleCloudDocumentaiV1ProcessRequest {
+  /// Specifies which fields to include in ProcessResponse's document.
+  core.String? fieldMask;
+
   /// An inline document proto.
   GoogleCloudDocumentaiV1Document? inlineDocument;
 
@@ -3948,6 +3961,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   core.bool? skipHumanReview;
 
   GoogleCloudDocumentaiV1ProcessRequest({
+    this.fieldMask,
     this.inlineDocument,
     this.rawDocument,
     this.skipHumanReview,
@@ -3955,6 +3969,9 @@ class GoogleCloudDocumentaiV1ProcessRequest {
 
   GoogleCloudDocumentaiV1ProcessRequest.fromJson(core.Map _json)
       : this(
+          fieldMask: _json.containsKey('fieldMask')
+              ? _json['fieldMask'] as core.String
+              : null,
           inlineDocument: _json.containsKey('inlineDocument')
               ? GoogleCloudDocumentaiV1Document.fromJson(_json['inlineDocument']
                   as core.Map<core.String, core.dynamic>)
@@ -3969,6 +3986,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldMask != null) 'fieldMask': fieldMask!,
         if (inlineDocument != null) 'inlineDocument': inlineDocument!,
         if (rawDocument != null) 'rawDocument': rawDocument!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,

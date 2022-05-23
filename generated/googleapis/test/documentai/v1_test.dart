@@ -1008,6 +1008,7 @@ api.GoogleCloudDocumentaiV1DocumentPageMatrix
   final o = api.GoogleCloudDocumentaiV1DocumentPageMatrix();
   buildCounterGoogleCloudDocumentaiV1DocumentPageMatrix++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageMatrix < 3) {
+    o.applied = true;
     o.cols = 42;
     o.data = 'foo';
     o.rows = 42;
@@ -1021,6 +1022,7 @@ void checkGoogleCloudDocumentaiV1DocumentPageMatrix(
     api.GoogleCloudDocumentaiV1DocumentPageMatrix o) {
   buildCounterGoogleCloudDocumentaiV1DocumentPageMatrix++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageMatrix < 3) {
+    unittest.expect(o.applied!, unittest.isTrue);
     unittest.expect(
       o.cols!,
       unittest.equals(42),
@@ -2048,6 +2050,7 @@ api.GoogleCloudDocumentaiV1ProcessRequest
   final o = api.GoogleCloudDocumentaiV1ProcessRequest();
   buildCounterGoogleCloudDocumentaiV1ProcessRequest++;
   if (buildCounterGoogleCloudDocumentaiV1ProcessRequest < 3) {
+    o.fieldMask = 'foo';
     o.inlineDocument = buildGoogleCloudDocumentaiV1Document();
     o.rawDocument = buildGoogleCloudDocumentaiV1RawDocument();
     o.skipHumanReview = true;
@@ -2060,6 +2063,10 @@ void checkGoogleCloudDocumentaiV1ProcessRequest(
     api.GoogleCloudDocumentaiV1ProcessRequest o) {
   buildCounterGoogleCloudDocumentaiV1ProcessRequest++;
   if (buildCounterGoogleCloudDocumentaiV1ProcessRequest < 3) {
+    unittest.expect(
+      o.fieldMask!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDocumentaiV1Document(o.inlineDocument!);
     checkGoogleCloudDocumentaiV1RawDocument(o.rawDocument!);
     unittest.expect(o.skipHumanReview!, unittest.isTrue);

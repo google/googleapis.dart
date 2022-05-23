@@ -171,6 +171,7 @@ api.AutoscalingTargets buildAutoscalingTargets() {
   buildCounterAutoscalingTargets++;
   if (buildCounterAutoscalingTargets < 3) {
     o.cpuUtilizationPercent = 42;
+    o.storageUtilizationGibPerNode = 42;
   }
   buildCounterAutoscalingTargets--;
   return o;
@@ -181,6 +182,10 @@ void checkAutoscalingTargets(api.AutoscalingTargets o) {
   if (buildCounterAutoscalingTargets < 3) {
     unittest.expect(
       o.cpuUtilizationPercent!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.storageUtilizationGibPerNode!,
       unittest.equals(42),
     );
   }
