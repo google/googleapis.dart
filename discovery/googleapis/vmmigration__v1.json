@@ -1884,7 +1884,7 @@
             }
         }
     },
-    "revision": "20220408",
+    "revision": "20220512",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "schemas": {
         "AddGroupMigrationRequest": {
@@ -2118,6 +2118,10 @@
                     ],
                     "type": "string"
                 },
+                "hostname": {
+                    "description": "The hostname to assign to the VM.",
+                    "type": "string"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -2238,6 +2242,10 @@
                         "SSD hard disk type.",
                         "An alternative to SSD persistent disks that balance performance and cost."
                     ],
+                    "type": "string"
+                },
+                "hostname": {
+                    "description": "The hostname to assign to the VM.",
                     "type": "string"
                 },
                 "labels": {

@@ -1058,6 +1058,7 @@ api.BuildTrigger buildBuildTrigger() {
     o.github = buildGitHubEventsConfig();
     o.id = 'foo';
     o.ignoredFiles = buildUnnamed20();
+    o.includeBuildLogs = 'foo';
     o.includedFiles = buildUnnamed21();
     o.name = 'foo';
     o.pubsubConfig = buildPubsubConfig();
@@ -1108,6 +1109,10 @@ void checkBuildTrigger(api.BuildTrigger o) {
       unittest.equals('foo'),
     );
     checkUnnamed20(o.ignoredFiles!);
+    unittest.expect(
+      o.includeBuildLogs!,
+      unittest.equals('foo'),
+    );
     checkUnnamed21(o.includedFiles!);
     unittest.expect(
       o.name!,

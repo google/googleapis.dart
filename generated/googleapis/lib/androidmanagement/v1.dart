@@ -6807,6 +6807,10 @@ class PostureDetail {
   /// OS (basicIntegrity check succeeds but ctsProfileMatch fails).
   /// - "COMPROMISED_OS" : SafetyNet detects that the device is running a
   /// compromised OS (basicIntegrity check fails).
+  /// - "HARDWARE_BACKED_EVALUATION_FAILED" : SafetyNet detects that the device
+  /// does not have a strong guarantee of system integrity, such as a
+  /// hardware-backed keystore
+  /// (https://developer.android.com/training/articles/security-key-attestation).
   core.String? securityRisk;
 
   PostureDetail({

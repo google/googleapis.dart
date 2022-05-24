@@ -98,14 +98,11 @@ class DmsResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -158,14 +155,11 @@ class DmsResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -224,14 +218,11 @@ class DmsConversationsResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -351,14 +342,11 @@ class RoomsResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -411,14 +399,11 @@ class RoomsResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -477,14 +462,11 @@ class RoomsConversationsResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -538,7 +520,7 @@ class SpacesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the space, in the form "spaces / * ".
-  /// Example: spaces/AAAAAAAAAAAA
+  /// Format: spaces/{space}
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -631,14 +613,11 @@ class SpacesResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -688,9 +667,8 @@ class SpacesMembersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the membership to be retrieved, in the
-  /// form "spaces / * /members / * ". Example:
-  /// spaces/AAAAAAAAAAAA/members/111111111111111111111
+  /// [name] - Required. Resource name of the membership to retrieve. Format:
+  /// spaces/{space}/members/{member}
   /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -729,9 +707,8 @@ class SpacesMembersResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the space for which membership
-  /// list is to be fetched, in the form "spaces / * ". Example:
-  /// spaces/AAAAAAAAAAAA
+  /// [parent] - Required. The resource name of the space for which to fetch a
+  /// membership list. Format: spaces/{space}
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The value is capped at 1000. Server may
@@ -800,14 +777,11 @@ class SpacesMessagesResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Opaque thread identifier string that can be
-  /// specified to group messages into a single thread. If this is the first
-  /// message with a given thread identifier, a new thread is created.
-  /// Subsequent messages with the same thread identifier will be posted into
-  /// the same thread. This relieves Chat apps and webhooks from having to store
-  /// the Google Chat thread ID of a thread (created earlier by them) to post
-  /// further updates to it. Has no effect if thread field, corresponding to an
-  /// existing thread, is set in message.
+  /// [threadKey] - Optional. Opaque thread identifier. To start or add to a
+  /// thread, create a message and specify a `threadKey` instead of thread.name.
+  /// (Setting thread.name has no effect.) The first message with a given
+  /// `threadKey` starts a new thread. Subsequent messages with the same
+  /// `threadKey` post into the same thread.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3620,8 +3594,8 @@ class ListSpacesResponse {
 
 /// A matched url in a Chat message.
 ///
-/// Chat apps can unfurl matched URLs. For more information, refer to
-/// [Unfurl links](https://developers.google.com/chat/how-tos/link-unfurling).
+/// Chat apps can preview matched URLs. For more information, refer to
+/// [Preview links](https://developers.google.com/chat/how-tos/preview-links).
 class MatchedUrl {
   /// The url that was matched.
   ///
@@ -3645,24 +3619,28 @@ class MatchedUrl {
 /// Media resource.
 typedef Media = $Media;
 
-/// Represents a membership relation in Google Chat.
+/// Represents a membership relation in Google Chat, such as whether a user or
+/// Chat app is invited to, part of, or absent from a space.
 class Membership {
-  /// The creation time of the membership a.k.a. the time at which the member
-  /// joined the space, if applicable.
+  /// The creation time of the membership, such as when a member joined or was
+  /// invited to join a space.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// A user in Google Chat.
+  /// A Google Chat user or app.
   ///
-  /// Represents a
+  /// Format: `users/{user}` or `users/app` When `users/{user}`, represents a
   /// [person](https://developers.google.com/people/api/rest/v1/people) in the
   /// People API or a
   /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
-  /// in the Admin SDK Directory API. Format: `users/{user}`
-  ///
-  /// Output only.
+  /// in the Admin SDK Directory API. When `users/app`, represents a Chat app
+  /// creating membership for itself.
   User? member;
+
+  /// Resource name of the membership.
+  ///
+  /// Format: spaces/{space}/members/{member}
   core.String? name;
 
   /// State of the membership.
@@ -3740,17 +3718,17 @@ class Message {
   /// cards cannot be displayed (e.g. mobile notifications).
   core.String? fallbackText;
 
-  /// The time at which the message was last updated in Google Chat server.
+  /// The time at which the message was last updated.
   ///
-  /// If the message was never updated, this field will be same as create_time.
+  /// If the message was never updated, this field matches `create_time`.
   ///
   /// Output only.
   core.String? lastUpdateTime;
 
-  /// A URL in `spaces.messages.text` that matches a link unfurling pattern.
+  /// A URL in `spaces.messages.text` that matches a link preview pattern.
   ///
   /// For more information, refer to
-  /// [Unfurl links](https://developers.google.com/chat/how-tos/link-unfurling).
+  /// [Preview links](https://developers.google.com/chat/how-tos/preview-links).
   ///
   /// Output only.
   MatchedUrl? matchedUrl;
@@ -4053,11 +4031,9 @@ class Space {
   /// For direct messages between humans, this field might be empty.
   core.String? displayName;
 
-  /// Resource name of the space, in the form "spaces / * ".
+  /// Resource name of the space.
   ///
-  /// Example: spaces/AAAAAAAAAAAA
-  ///
-  /// Optional.
+  /// Format: spaces/{space}
   core.String? name;
 
   /// Whether the space is a DM between a Chat app and a single human.
@@ -4065,14 +4041,15 @@ class Space {
   /// Output only.
   core.bool? singleUserBotDm;
 
-  /// Whether the messages are threaded in this space.
+  /// Whether messages are threaded in this space.
   ///
   /// Output only.
   core.bool? threaded;
 
-  /// Deprecated: Use `single_user_bot_dm` instead.
+  /// Deprecated: Use `single_user_bot_dm` or `space_type` (developer preview)
+  /// instead.
   ///
-  /// Output only. The type of a space.
+  /// The type of a space.
   ///
   /// Output only.
   /// Possible string values are:

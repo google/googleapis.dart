@@ -12238,11 +12238,12 @@ class WriteLogEntriesRequest {
   /// Optional.
   core.String? logName;
 
-  /// Whether valid entries should be written even if some other entries fail
-  /// due to INVALID_ARGUMENT or PERMISSION_DENIED errors.
+  /// Whether a batch's valid entries should be written even if some other entry
+  /// failed due to a permanent error such as INVALID_ARGUMENT or
+  /// PERMISSION_DENIED.
   ///
-  /// If any entry is not written, then the response status is the error
-  /// associated with one of the failed entries and the response includes error
+  /// If any entry failed, then the response status is the response status is
+  /// the status of one of the failed entries. The response will include error
   /// details keyed by the entries' zero-based index in the entries.write
   /// method.
   ///

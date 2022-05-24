@@ -53,6 +53,33 @@ void checkAllowedIpRange(api.AllowedIpRange o) {
   buildCounterAllowedIpRange--;
 }
 
+core.int buildCounterCidrBlock = 0;
+api.CidrBlock buildCidrBlock() {
+  final o = api.CidrBlock();
+  buildCounterCidrBlock++;
+  if (buildCounterCidrBlock < 3) {
+    o.cidrBlock = 'foo';
+    o.displayName = 'foo';
+  }
+  buildCounterCidrBlock--;
+  return o;
+}
+
+void checkCidrBlock(api.CidrBlock o) {
+  buildCounterCidrBlock++;
+  if (buildCounterCidrBlock < 3) {
+    unittest.expect(
+      o.cidrBlock!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCidrBlock--;
+}
+
 core.int buildCounterDatabaseConfig = 0;
 api.DatabaseConfig buildDatabaseConfig() {
   final o = api.DatabaseConfig();
@@ -219,6 +246,7 @@ api.EnvironmentConfig buildEnvironmentConfig() {
     o.environmentSize = 'foo';
     o.gkeCluster = 'foo';
     o.maintenanceWindow = buildMaintenanceWindow();
+    o.masterAuthorizedNetworksConfig = buildMasterAuthorizedNetworksConfig();
     o.nodeConfig = buildNodeConfig();
     o.nodeCount = 42;
     o.privateEnvironmentConfig = buildPrivateEnvironmentConfig();
@@ -253,6 +281,7 @@ void checkEnvironmentConfig(api.EnvironmentConfig o) {
       unittest.equals('foo'),
     );
     checkMaintenanceWindow(o.maintenanceWindow!);
+    checkMasterAuthorizedNetworksConfig(o.masterAuthorizedNetworksConfig!);
     checkNodeConfig(o.nodeConfig!);
     unittest.expect(
       o.nodeCount!,
@@ -492,21 +521,36 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
+core.List<api.CidrBlock> buildUnnamed5() => [
+      buildCidrBlock(),
+      buildCidrBlock(),
     ];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed5(core.List<api.CidrBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  checkCidrBlock(o[0]);
+  checkCidrBlock(o[1]);
+}
+
+core.int buildCounterMasterAuthorizedNetworksConfig = 0;
+api.MasterAuthorizedNetworksConfig buildMasterAuthorizedNetworksConfig() {
+  final o = api.MasterAuthorizedNetworksConfig();
+  buildCounterMasterAuthorizedNetworksConfig++;
+  if (buildCounterMasterAuthorizedNetworksConfig < 3) {
+    o.cidrBlocks = buildUnnamed5();
+    o.enabled = true;
+  }
+  buildCounterMasterAuthorizedNetworksConfig--;
+  return o;
+}
+
+void checkMasterAuthorizedNetworksConfig(api.MasterAuthorizedNetworksConfig o) {
+  buildCounterMasterAuthorizedNetworksConfig++;
+  if (buildCounterMasterAuthorizedNetworksConfig < 3) {
+    checkUnnamed5(o.cidrBlocks!);
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterMasterAuthorizedNetworksConfig--;
 }
 
 core.List<core.String> buildUnnamed6() => [
@@ -526,20 +570,38 @@ void checkUnnamed6(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed7() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterNodeConfig = 0;
 api.NodeConfig buildNodeConfig() {
   final o = api.NodeConfig();
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     o.diskSizeGb = 42;
+    o.enableIpMasqAgent = true;
     o.ipAllocationPolicy = buildIPAllocationPolicy();
     o.location = 'foo';
     o.machineType = 'foo';
     o.network = 'foo';
-    o.oauthScopes = buildUnnamed5();
+    o.oauthScopes = buildUnnamed6();
     o.serviceAccount = 'foo';
     o.subnetwork = 'foo';
-    o.tags = buildUnnamed6();
+    o.tags = buildUnnamed7();
   }
   buildCounterNodeConfig--;
   return o;
@@ -552,6 +614,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.diskSizeGb!,
       unittest.equals(42),
     );
+    unittest.expect(o.enableIpMasqAgent!, unittest.isTrue);
     checkIPAllocationPolicy(o.ipAllocationPolicy!);
     unittest.expect(
       o.location!,
@@ -565,7 +628,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.network!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.oauthScopes!);
+    checkUnnamed6(o.oauthScopes!);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -574,12 +637,12 @@ void checkNodeConfig(api.NodeConfig o) {
       o.subnetwork!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.tags!);
+    checkUnnamed7(o.tags!);
   }
   buildCounterNodeConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -592,7 +655,7 @@ core.Map<core.String, core.Object?> buildUnnamed7() => {
       },
     };
 
-void checkUnnamed7(core.Map<core.String, core.Object?> o) {
+void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -624,7 +687,7 @@ void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -637,7 +700,7 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -676,9 +739,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed7();
+    o.metadata = buildUnnamed8();
     o.name = 'foo';
-    o.response = buildUnnamed8();
+    o.response = buildUnnamed9();
   }
   buildCounterOperation--;
   return o;
@@ -689,12 +752,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed7(o.metadata!);
+    checkUnnamed8(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.response!);
+    checkUnnamed9(o.response!);
   }
   buildCounterOperation--;
 }
@@ -738,6 +801,7 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
     o.cloudComposerNetworkIpv4ReservedRange = 'foo';
     o.cloudSqlIpv4CidrBlock = 'foo';
     o.enablePrivateEnvironment = true;
+    o.enablePrivatelyUsedPublicIps = true;
     o.privateClusterConfig = buildPrivateClusterConfig();
     o.webServerIpv4CidrBlock = 'foo';
     o.webServerIpv4ReservedRange = 'foo';
@@ -766,6 +830,7 @@ void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.enablePrivateEnvironment!, unittest.isTrue);
+    unittest.expect(o.enablePrivatelyUsedPublicIps!, unittest.isTrue);
     checkPrivateClusterConfig(o.privateClusterConfig!);
     unittest.expect(
       o.webServerIpv4CidrBlock!,
@@ -816,23 +881,6 @@ void checkSchedulerResource(api.SchedulerResource o) {
   buildCounterSchedulerResource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed9() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed9(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
 core.Map<core.String, core.String> buildUnnamed10() => {
       'x': 'foo',
       'y': 'foo',
@@ -867,15 +915,32 @@ void checkUnnamed11(core.Map<core.String, core.String> o) {
   );
 }
 
+core.Map<core.String, core.String> buildUnnamed12() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed12(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterSoftwareConfig = 0;
 api.SoftwareConfig buildSoftwareConfig() {
   final o = api.SoftwareConfig();
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
-    o.airflowConfigOverrides = buildUnnamed9();
-    o.envVariables = buildUnnamed10();
+    o.airflowConfigOverrides = buildUnnamed10();
+    o.envVariables = buildUnnamed11();
     o.imageVersion = 'foo';
-    o.pypiPackages = buildUnnamed11();
+    o.pypiPackages = buildUnnamed12();
     o.pythonVersion = 'foo';
     o.schedulerCount = 42;
   }
@@ -886,13 +951,13 @@ api.SoftwareConfig buildSoftwareConfig() {
 void checkSoftwareConfig(api.SoftwareConfig o) {
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
-    checkUnnamed9(o.airflowConfigOverrides!);
-    checkUnnamed10(o.envVariables!);
+    checkUnnamed10(o.airflowConfigOverrides!);
+    checkUnnamed11(o.envVariables!);
     unittest.expect(
       o.imageVersion!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.pypiPackages!);
+    checkUnnamed12(o.pypiPackages!);
     unittest.expect(
       o.pythonVersion!,
       unittest.equals('foo'),
@@ -905,7 +970,7 @@ void checkSoftwareConfig(api.SoftwareConfig o) {
   buildCounterSoftwareConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed12() => {
+core.Map<core.String, core.Object?> buildUnnamed13() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -918,7 +983,7 @@ core.Map<core.String, core.Object?> buildUnnamed12() => {
       },
     };
 
-void checkUnnamed12(core.Map<core.String, core.Object?> o) {
+void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -950,15 +1015,15 @@ void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed13() => [
-      buildUnnamed12(),
-      buildUnnamed12(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed14() => [
+      buildUnnamed13(),
+      buildUnnamed13(),
     ];
 
-void checkUnnamed13(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed14(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed12(o[0]);
-  checkUnnamed12(o[1]);
+  checkUnnamed13(o[0]);
+  checkUnnamed13(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -967,7 +1032,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed13();
+    o.details = buildUnnamed14();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -981,7 +1046,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed13(o.details!);
+    checkUnnamed14(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1012,12 +1077,12 @@ void checkWebServerConfig(api.WebServerConfig o) {
   buildCounterWebServerConfig--;
 }
 
-core.List<api.AllowedIpRange> buildUnnamed14() => [
+core.List<api.AllowedIpRange> buildUnnamed15() => [
       buildAllowedIpRange(),
       buildAllowedIpRange(),
     ];
 
-void checkUnnamed14(core.List<api.AllowedIpRange> o) {
+void checkUnnamed15(core.List<api.AllowedIpRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAllowedIpRange(o[0]);
   checkAllowedIpRange(o[1]);
@@ -1028,7 +1093,7 @@ api.WebServerNetworkAccessControl buildWebServerNetworkAccessControl() {
   final o = api.WebServerNetworkAccessControl();
   buildCounterWebServerNetworkAccessControl++;
   if (buildCounterWebServerNetworkAccessControl < 3) {
-    o.allowedIpRanges = buildUnnamed14();
+    o.allowedIpRanges = buildUnnamed15();
   }
   buildCounterWebServerNetworkAccessControl--;
   return o;
@@ -1037,7 +1102,7 @@ api.WebServerNetworkAccessControl buildWebServerNetworkAccessControl() {
 void checkWebServerNetworkAccessControl(api.WebServerNetworkAccessControl o) {
   buildCounterWebServerNetworkAccessControl++;
   if (buildCounterWebServerNetworkAccessControl < 3) {
-    checkUnnamed14(o.allowedIpRanges!);
+    checkUnnamed15(o.allowedIpRanges!);
   }
   buildCounterWebServerNetworkAccessControl--;
 }
@@ -1147,6 +1212,16 @@ void main() {
       final od = api.AllowedIpRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAllowedIpRange(od);
+    });
+  });
+
+  unittest.group('obj-schema-CidrBlock', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCidrBlock();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.CidrBlock.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCidrBlock(od);
     });
   });
 
@@ -1267,6 +1342,16 @@ void main() {
       final od = api.MaintenanceWindow.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMaintenanceWindow(od);
+    });
+  });
+
+  unittest.group('obj-schema-MasterAuthorizedNetworksConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMasterAuthorizedNetworksConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MasterAuthorizedNetworksConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMasterAuthorizedNetworksConfig(od);
     });
   });
 

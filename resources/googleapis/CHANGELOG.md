@@ -4,10 +4,13 @@
 
 ### API changes
 
+- `apigeeregistry` - new!
+- `cloudfunctions` - Added v2
 - `dfareporting` - **removed** v3.4.
-- `dns` - new v2
 - `forms` - new!
 - `gkebackup` - new!
+- `firebaseappcheck` - new!
+- `verifiedaccess` - Added v2
 
 ## 8.1.0
 

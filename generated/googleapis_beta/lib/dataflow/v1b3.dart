@@ -4783,11 +4783,14 @@ class FlexTemplateRuntimeEnvironment {
   /// Worker disk size, in gigabytes.
   core.int? diskSizeGb;
 
-  /// If true, save a heap dump before killing a thread or process which is GC
-  /// thrashing or out of memory.
+  /// If true, when processing time is spent almost entirely on garbage
+  /// collection (GC), saves a heap dump before ending the thread or process.
   ///
-  /// The location of the heap file will either be echoed back to the user, or
-  /// the user will be given the opportunity to download the heap file.
+  /// If false, ends the thread or process without saving a heap dump. Does not
+  /// save a heap dump when the Java Virtual Machine (JVM) has an out of memory
+  /// error during processing. The location of the heap file is either echoed
+  /// back to the user, or the user is given the opportunity to download the
+  /// heap file.
   core.bool? dumpHeapOnOom;
 
   /// Whether to enable Streaming Engine for the job.
@@ -4836,11 +4839,9 @@ class FlexTemplateRuntimeEnvironment {
   /// The initial number of Google Compute Engine instances for the job.
   core.int? numWorkers;
 
-  /// Cloud Storage bucket (directory) to upload heap dumps to the given
-  /// location.
+  /// Cloud Storage bucket (directory) to upload heap dumps to.
   ///
-  /// Enabling this implies that heap dumps should be generated on OOM
-  /// (dump_heap_on_oom is set to true).
+  /// Enabling this field implies that `dump_heap_on_oom` is set to true.
   core.String? saveHeapDumpsToGcsPath;
 
   /// Docker registry location of container image to use for the 'worker
@@ -5599,10 +5600,11 @@ class Job {
 
   /// The user-specified Cloud Dataflow job name.
   ///
-  /// Only one Job with a given name may exist in a project at any given time.
-  /// If a caller attempts to create a Job with the same name as an
-  /// already-existing Job, the attempt returns the existing Job. The name must
-  /// match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+  /// Only one Job with a given name can exist in a project within one region at
+  /// any given time. Jobs in different regions can have the same name. If a
+  /// caller attempts to create a Job with the same name as an already-existing
+  /// Job, the attempt returns the existing Job. The name must match the regular
+  /// expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
   core.String? name;
 
   /// Preliminary field: The format of this data may change at any time.
@@ -8457,12 +8459,12 @@ class SDKInfo {
       };
 }
 
-/// Defines a SDK harness container for executing Dataflow pipelines.
+/// Defines an SDK harness container for executing Dataflow pipelines.
 class SdkHarnessContainerImage {
   /// The set of capabilities enumerated in the above Environment proto.
   ///
   /// See also
-  /// https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+  /// [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
   core.List<core.String>? capabilities;
 
   /// A docker container image that resides in Google Container Registry.

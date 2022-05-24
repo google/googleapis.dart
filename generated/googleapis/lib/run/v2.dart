@@ -25,6 +25,9 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsJobsResource]
+///       - [ProjectsLocationsJobsExecutionsResource]
+///         - [ProjectsLocationsJobsExecutionsTasksResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesRevisionsResource]
@@ -79,12 +82,719 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsJobsResource get jobs =>
+      ProjectsLocationsJobsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServicesResource get services =>
       ProjectsLocationsServicesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsExecutionsResource get executions =>
+      ProjectsLocationsJobsExecutionsResource(_requester);
+
+  ProjectsLocationsJobsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a Job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location and project in which this Job should be
+  /// created. Format: projects/{projectnumber}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [jobId] - Required. The unique identifier for the Job. The name of the job
+  /// becomes {parent}/jobs/{job_id}.
+  ///
+  /// [validateOnly] - Indicates that the request should be validated and
+  /// default values populated, without persisting the request or creating any
+  /// resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudRunV2Job request,
+    core.String parent, {
+    core.String? jobId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (jobId != null) 'jobId': [jobId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/jobs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the Job. Format:
+  /// projects/{projectnumber}/locations/{location}/jobs/{job}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [etag] - A system-generated fingerprint for this version of the resource.
+  /// May be used to detect modification conflict during updates.
+  ///
+  /// [force] - If set to true, the Job and its Executions will be deleted no
+  /// matter whether any Executions are still running or not. If set to false or
+  /// unset, the Job and its Executions can only be deleted if there are no
+  /// running Executions. Any running Execution will fail the deletion.
+  ///
+  /// [validateOnly] - Indicates that the request should be validated without
+  /// actually deleting any resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? force,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (force != null) 'force': ['${force}'],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a Job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the Job. Format:
+  /// projects/{projectnumber}/locations/{location}/jobs/{job}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2Job].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2Job> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRunV2Job.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get the IAM Access Control policy currently in effect for the given Job.
+  ///
+  /// This result does not include any inherited policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List Jobs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location and project to list resources on.
+  /// Format: projects/{projectnumber}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of Jobs to return in this call.
+  ///
+  /// [pageToken] - A page token received from a previous call to ListJobs. All
+  /// other parameters must match.
+  ///
+  /// [showDeleted] - If true, returns deleted (but unexpired) resources along
+  /// with active ones.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ListJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ListJobsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/jobs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRunV2ListJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The fully qualified name of this Job. Format:
+  /// projects/{project}/locations/{location}/jobs/{job}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [allowMissing] - If set to true, and if the Job does not exist, it will
+  /// create a new one. Caller must have both create and update permissions for
+  /// this call if this is set to true.
+  ///
+  /// [validateOnly] - Indicates that the request should be validated and
+  /// default values populated, without persisting the request or updating any
+  /// resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudRunV2Job request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Triggers creation of a new Execution of this Job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the Job. Format:
+  /// projects/{projectnumber}/locations/{location}/jobs/{job}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> run(
+    GoogleCloudRunV2RunJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':run';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the IAM Access control policy for the specified Job.
+  ///
+  /// Overwrites any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified Project.
+  ///
+  /// There are no permissions required for making this API call.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsJobsExecutionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsExecutionsTasksResource get tasks =>
+      ProjectsLocationsJobsExecutionsTasksResource(_requester);
+
+  ProjectsLocationsJobsExecutionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Delete an Execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Execution to delete. Format:
+  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [etag] - A system-generated fingerprint for this version of the resource.
+  /// This may be used to detect modification conflict during updates.
+  ///
+  /// [validateOnly] - Indicates that the request should be validated without
+  /// actually deleting any resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a Execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the Execution. Format:
+  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2Execution> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRunV2Execution.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List Executions from a Job.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Execution from which the Executions should be
+  /// listed. To list all Executions across Jobs, use "-" instead of Job name.
+  /// Format: projects/{project}/locations/{location}/jobs/{job}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of Executions to return in this call.
+  ///
+  /// [pageToken] - A page token received from a previous call to
+  /// ListExecutions. All other parameters must match.
+  ///
+  /// [showDeleted] - If true, returns deleted (but unexpired) resources along
+  /// with active ones.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ListExecutionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ListExecutionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/executions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRunV2ListExecutionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsJobsExecutionsTasksResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsExecutionsTasksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets information about a Task.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the Task. Format:
+  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}/tasks/{task}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+/tasks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2Task> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRunV2Task.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List Tasks from an Execution of a Job.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Execution from which the Tasks should be listed.
+  /// To list all Tasks across Executions of a Job, use "-" instead of Execution
+  /// name. To list all Tasks across Jobs, use "-" instead of Job name. Format:
+  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of Tasks to return in this call.
+  ///
+  /// [pageToken] - A page token received from a previous call to ListTasks. All
+  /// other parameters must match.
+  ///
+  /// [showDeleted] - If true, returns deleted (but unexpired) resources along
+  /// with active ones.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRunV2ListTasksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2ListTasksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRunV2ListTasksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -398,8 +1108,9 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -516,8 +1227,6 @@ class ProjectsLocationsServicesResource {
   /// will create a new one. Caller must have both create and update permissions
   /// for this call if this is set to true.
   ///
-  /// [updateMask] - The list of fields to be updated.
-  ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or updating any
   /// resources.
@@ -536,14 +1245,12 @@ class ProjectsLocationsServicesResource {
     GoogleCloudRunV2Service request,
     core.String name, {
     core.bool? allowMissing,
-    core.String? updateMask,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -569,8 +1276,9 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -615,8 +1323,9 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -809,11 +1518,6 @@ class GoogleCloudRunV2BinaryAuthorization {
   /// https://cloud.google.com/binary-authorization/docs/using-breakglass
   core.String? breakglassJustification;
 
-  /// The path to a binary authorization policy.
-  ///
-  /// Format: projects/{project}/platforms/cloudRun/{policy-name}
-  core.String? policy;
-
   /// If True, indicates to use the default project's binary authorization
   /// policy.
   ///
@@ -822,7 +1526,6 @@ class GoogleCloudRunV2BinaryAuthorization {
 
   GoogleCloudRunV2BinaryAuthorization({
     this.breakglassJustification,
-    this.policy,
     this.useDefault,
   });
 
@@ -830,9 +1533,6 @@ class GoogleCloudRunV2BinaryAuthorization {
       : this(
           breakglassJustification: _json.containsKey('breakglassJustification')
               ? _json['breakglassJustification'] as core.String
-              : null,
-          policy: _json.containsKey('policy')
-              ? _json['policy'] as core.String
               : null,
           useDefault: _json.containsKey('useDefault')
               ? _json['useDefault'] as core.bool
@@ -842,7 +1542,6 @@ class GoogleCloudRunV2BinaryAuthorization {
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakglassJustification != null)
           'breakglassJustification': breakglassJustification!,
-        if (policy != null) 'policy': policy!,
         if (useDefault != null) 'useDefault': useDefault!,
       };
 }
@@ -877,17 +1576,6 @@ class GoogleCloudRunV2CloudSqlInstance {
 
 /// Defines a status condition for a resource.
 class GoogleCloudRunV2Condition {
-  /// A reason for the domain mapping condition.
-  /// Possible string values are:
-  /// - "DOMAIN_MAPPING_REASON_UNDEFINED" : Default value.
-  /// - "ROUTE_NOT_READY" : Internal route is not yet ready.
-  /// - "PERMISSION_DENIED" : Insufficient permissions.
-  /// - "CERTIFICATE_ALREADY_EXISTS" : Certificate already exists.
-  /// - "MAPPING_ALREADY_EXISTS" : Mapping already exists.
-  /// - "CERTIFICATE_PENDING" : Certificate issuance pending.
-  /// - "CERTIFICATE_FAILED" : Certificate issuance failed.
-  core.String? domainMappingReason;
-
   /// A reason for the execution condition.
   /// Possible string values are:
   /// - "EXECUTION_REASON_UNDEFINED" : Default value.
@@ -897,24 +1585,6 @@ class GoogleCloudRunV2Condition {
   /// attempt failed due to the user container exiting with a non-zero exit
   /// code.
   core.String? executionReason;
-
-  /// A reason for the internal condition.
-  /// Possible string values are:
-  /// - "INTERNAL_REASON_UNDEFINED" : Default value.
-  /// - "CONFLICTING_REVISION_NAME" : The revision name provided conflicts with
-  /// an existing one.
-  /// - "REVISION_MISSING" : Revision is missing; this is usually a transient
-  /// reason.
-  /// - "CONFIGURATION_MISSING" : Internal configuration is missing; this is
-  /// usually a transient reason.
-  /// - "ASSIGNING_TRAFFIC" : Assigning traffic; this is a transient reason.
-  /// - "UPDATING_INGRESS_TRAFFIC_ALLOWED" : Updating ingress traffic settings;
-  /// this is a transient reason.
-  /// - "REVISION_ORG_POLICY_VIOLATION" : The revision can't be created because
-  /// it violates an org policy setting.
-  /// - "UPDATING_GCFV2_URI_DATA" : Updating GCFv2 URI data; this is a transient
-  /// reason.
-  core.String? internalReason;
 
   /// Last time the condition transitioned from one status to another.
   core.String? lastTransitionTime;
@@ -926,10 +1596,8 @@ class GoogleCloudRunV2Condition {
   /// Possible string values are:
   /// - "COMMON_REASON_UNDEFINED" : Default value.
   /// - "UNKNOWN" : Reason unknown. Further details will be in message.
-  /// - "ROUTE_MISSING" : The internal route is missing.
   /// - "REVISION_FAILED" : Revision creation process failed.
   /// - "PROGRESS_DEADLINE_EXCEEDED" : Timed out waiting for completion.
-  /// - "BUILD_STEP_FAILED" : There was a build error.
   /// - "CONTAINER_MISSING" : The container image path is incorrect.
   /// - "CONTAINER_PERMISSION_DENIED" : Insufficient permissions on the
   /// container image.
@@ -946,6 +1614,8 @@ class GoogleCloudRunV2Condition {
   /// - "WAITING_FOR_OPERATION" : Waiting for operation to complete.
   /// - "IMMEDIATE_RETRY" : System will retry immediately.
   /// - "POSTPONED_RETRY" : System will retry later; current attempt failed.
+  /// - "INTERNAL" : An internal error occurred. Further information may be in
+  /// the message.
   core.String? reason;
 
   /// A reason for the revision condition.
@@ -1002,9 +1672,7 @@ class GoogleCloudRunV2Condition {
   core.String? type;
 
   GoogleCloudRunV2Condition({
-    this.domainMappingReason,
     this.executionReason,
-    this.internalReason,
     this.lastTransitionTime,
     this.message,
     this.reason,
@@ -1016,14 +1684,8 @@ class GoogleCloudRunV2Condition {
 
   GoogleCloudRunV2Condition.fromJson(core.Map _json)
       : this(
-          domainMappingReason: _json.containsKey('domainMappingReason')
-              ? _json['domainMappingReason'] as core.String
-              : null,
           executionReason: _json.containsKey('executionReason')
               ? _json['executionReason'] as core.String
-              : null,
-          internalReason: _json.containsKey('internalReason')
-              ? _json['internalReason'] as core.String
               : null,
           lastTransitionTime: _json.containsKey('lastTransitionTime')
               ? _json['lastTransitionTime'] as core.String
@@ -1046,10 +1708,7 @@ class GoogleCloudRunV2Condition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainMappingReason != null)
-          'domainMappingReason': domainMappingReason!,
         if (executionReason != null) 'executionReason': executionReason!,
-        if (internalReason != null) 'internalReason': internalReason!,
         if (lastTransitionTime != null)
           'lastTransitionTime': lastTransitionTime!,
         if (message != null) 'message': message!,
@@ -1092,8 +1751,10 @@ class GoogleCloudRunV2Container {
   /// List of environment variables to set in the container.
   core.List<GoogleCloudRunV2EnvVar>? env;
 
-  /// URL of the Container image in Google Container Registry or Docker More
-  /// info: https://kubernetes.io/docs/concepts/containers/images
+  /// URL of the Container image in Google Container Registry or Google Artifact
+  /// Registry.
+  ///
+  /// More info: https://kubernetes.io/docs/concepts/containers/images
   ///
   /// Required.
   core.String? image;
@@ -1280,6 +1941,851 @@ class GoogleCloudRunV2EnvVarSource {
       };
 }
 
+/// Execution represents the configuration of a single execution.
+///
+/// A execution an immutable resource that references a container image which is
+/// run to completion.
+class GoogleCloudRunV2Execution {
+  /// KRM-style annotations for the resource.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Represents time when the execution was completed.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations.
+  ///
+  /// Output only.
+  core.String? completionTime;
+
+  /// The Condition of this Execution, containing its readiness status, and
+  /// detailed error information in case it did not reach the desired state.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRunV2Condition>? conditions;
+
+  /// Represents time when the execution was acknowledged by the execution
+  /// controller.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// For a deleted resource, the deletion time.
+  ///
+  /// It is only populated as a response to a Delete request.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// A system-generated fingerprint for this version of the resource.
+  ///
+  /// May be used to detect modification conflict during updates.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// For a deleted resource, the time after which it will be permamently
+  /// deleted.
+  ///
+  /// It is only populated as a response to a Delete request.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// The number of tasks which reached phase Failed.
+  ///
+  /// Output only.
+  core.int? failedCount;
+
+  /// A number that monotonically increases every time the user modifies the
+  /// desired state.
+  ///
+  /// Output only.
+  core.String? generation;
+
+  /// The name of the parent Job.
+  ///
+  /// Output only.
+  core.String? job;
+
+  /// KRM-style labels for the resource.
+  ///
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
+  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
+  /// namespaces. Those labels are read-only, and user changes will not be
+  /// preserved.
+  core.Map<core.String, core.String>? labels;
+
+  /// Set the launch stage to a preview stage on write to allow use of preview
+  /// features in that stage.
+  ///
+  /// On read, describes whether the resource uses preview features. Launch
+  /// Stages are defined at
+  /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don't have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the "Deprecation Policy" section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? launchStage;
+
+  /// The unique name of this Execution.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The generation of this Execution.
+  ///
+  /// See comments in `reconciling` for additional information on reconciliation
+  /// process in Cloud Run.
+  ///
+  /// Output only.
+  core.String? observedGeneration;
+
+  /// Specifies the maximum desired number of tasks the execution should run at
+  /// any given time.
+  ///
+  /// Must be \<= task_count. The actual number of tasks running in steady state
+  /// will be less than this number when ((.spec.task_count -
+  /// .status.successful) \< .spec.parallelism), i.e. when the work left to do
+  /// is less than max parallelism. More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  ///
+  /// Output only.
+  core.int? parallelism;
+
+  /// Indicates whether the resource's reconciliation is still in progress.
+  ///
+  /// See comments in `Job.reconciling` for additional information on
+  /// reconciliation process in Cloud Run.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The number of actively running tasks.
+  ///
+  /// Output only.
+  core.int? runningCount;
+
+  /// Represents time when the execution started to run.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The number of tasks which reached phase Succeeded.
+  ///
+  /// Output only.
+  core.int? succeededCount;
+
+  /// Specifies the desired number of tasks the execution should run.
+  ///
+  /// Setting to 1 means that parallelism is limited to 1 and the success of
+  /// that task signals the success of the execution. More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  ///
+  /// Output only.
+  core.int? taskCount;
+
+  /// Describes the task(s) that will be created when executing an execution.
+  ///
+  /// Output only.
+  GoogleCloudRunV2TaskTemplate? template;
+
+  /// Server assigned unique identifier for the Execution.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudRunV2Execution({
+    this.annotations,
+    this.completionTime,
+    this.conditions,
+    this.createTime,
+    this.deleteTime,
+    this.etag,
+    this.expireTime,
+    this.failedCount,
+    this.generation,
+    this.job,
+    this.labels,
+    this.launchStage,
+    this.name,
+    this.observedGeneration,
+    this.parallelism,
+    this.reconciling,
+    this.runningCount,
+    this.startTime,
+    this.succeededCount,
+    this.taskCount,
+    this.template,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudRunV2Execution.fromJson(core.Map _json)
+      : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          completionTime: _json.containsKey('completionTime')
+              ? _json['completionTime'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map((value) => GoogleCloudRunV2Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          failedCount: _json.containsKey('failedCount')
+              ? _json['failedCount'] as core.int
+              : null,
+          generation: _json.containsKey('generation')
+              ? _json['generation'] as core.String
+              : null,
+          job: _json.containsKey('job') ? _json['job'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          launchStage: _json.containsKey('launchStage')
+              ? _json['launchStage'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          observedGeneration: _json.containsKey('observedGeneration')
+              ? _json['observedGeneration'] as core.String
+              : null,
+          parallelism: _json.containsKey('parallelism')
+              ? _json['parallelism'] as core.int
+              : null,
+          reconciling: _json.containsKey('reconciling')
+              ? _json['reconciling'] as core.bool
+              : null,
+          runningCount: _json.containsKey('runningCount')
+              ? _json['runningCount'] as core.int
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          succeededCount: _json.containsKey('succeededCount')
+              ? _json['succeededCount'] as core.int
+              : null,
+          taskCount: _json.containsKey('taskCount')
+              ? _json['taskCount'] as core.int
+              : null,
+          template: _json.containsKey('template')
+              ? GoogleCloudRunV2TaskTemplate.fromJson(
+                  _json['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (completionTime != null) 'completionTime': completionTime!,
+        if (conditions != null) 'conditions': conditions!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (failedCount != null) 'failedCount': failedCount!,
+        if (generation != null) 'generation': generation!,
+        if (job != null) 'job': job!,
+        if (labels != null) 'labels': labels!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
+        if (parallelism != null) 'parallelism': parallelism!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (runningCount != null) 'runningCount': runningCount!,
+        if (startTime != null) 'startTime': startTime!,
+        if (succeededCount != null) 'succeededCount': succeededCount!,
+        if (taskCount != null) 'taskCount': taskCount!,
+        if (template != null) 'template': template!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Reference to an Execution.
+///
+/// Use /Executions.GetExecution with the given name to get full execution
+/// including the latest status.
+class GoogleCloudRunV2ExecutionReference {
+  /// Creation timestamp of the execution.
+  core.String? createTime;
+
+  /// Name of the execution.
+  core.String? name;
+
+  GoogleCloudRunV2ExecutionReference({
+    this.createTime,
+    this.name,
+  });
+
+  GoogleCloudRunV2ExecutionReference.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// ExecutionTemplate describes the data an execution should have when created
+/// from a template.
+class GoogleCloudRunV2ExecutionTemplate {
+  /// KRM-style annotations for the resource.
+  core.Map<core.String, core.String>? annotations;
+
+  /// KRM-style labels for the resource.
+  core.Map<core.String, core.String>? labels;
+
+  /// Specifies the maximum desired number of tasks the execution should run at
+  /// given time.
+  ///
+  /// Must be \<= task_count. When the job is run, if this field is 0 or unset,
+  /// the maximum possible value will be used for that execution. The actual
+  /// number of tasks running in steady state will be less than this number when
+  /// there are fewer tasks waiting to be completed remaining, i.e. when the
+  /// work left to do is less than max parallelism.
+  core.int? parallelism;
+
+  /// Specifies the desired number of tasks the execution should run.
+  ///
+  /// Setting to 1 means that parallelism is limited to 1 and the success of
+  /// that task signals the success of the execution. More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  core.int? taskCount;
+
+  /// Describes the task(s) that will be created when executing an execution.
+  ///
+  /// Required.
+  GoogleCloudRunV2TaskTemplate? template;
+
+  GoogleCloudRunV2ExecutionTemplate({
+    this.annotations,
+    this.labels,
+    this.parallelism,
+    this.taskCount,
+    this.template,
+  });
+
+  GoogleCloudRunV2ExecutionTemplate.fromJson(core.Map _json)
+      : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          parallelism: _json.containsKey('parallelism')
+              ? _json['parallelism'] as core.int
+              : null,
+          taskCount: _json.containsKey('taskCount')
+              ? _json['taskCount'] as core.int
+              : null,
+          template: _json.containsKey('template')
+              ? GoogleCloudRunV2TaskTemplate.fromJson(
+                  _json['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (labels != null) 'labels': labels!,
+        if (parallelism != null) 'parallelism': parallelism!,
+        if (taskCount != null) 'taskCount': taskCount!,
+        if (template != null) 'template': template!,
+      };
+}
+
+/// Job represents the configuration of a single job.
+///
+/// A job an immutable resource that references a container image which is run
+/// to completion.
+class GoogleCloudRunV2Job {
+  /// KRM-style annotations for the resource.
+  ///
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata. They are not queryable and should be preserved when
+  /// modifying objects. Cloud Run will populate some annotations using
+  /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field
+  /// follows Kubernetes annotations' namespacing, limits, and rules. More info:
+  /// https://kubernetes.io/docs/user-guide/annotations
+  core.Map<core.String, core.String>? annotations;
+
+  /// Settings for the Binary Authorization feature.
+  GoogleCloudRunV2BinaryAuthorization? binaryAuthorization;
+
+  /// Arbitrary identifier for the API client.
+  core.String? client;
+
+  /// Arbitrary version identifier for the API client.
+  core.String? clientVersion;
+
+  /// The Conditions of all other associated sub-resources.
+  ///
+  /// They contain additional diagnostics information in case the Job does not
+  /// reach its desired state. See comments in `reconciling` for additional
+  /// information on reconciliation process in Cloud Run.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRunV2Condition>? conditions;
+
+  /// The creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Email address of the authenticated creator.
+  ///
+  /// Output only.
+  core.String? creator;
+
+  /// The deletion time.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// A system-generated fingerprint for this version of the resource.
+  ///
+  /// May be used to detect modification conflict during updates.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Number of executions created for this job.
+  ///
+  /// Output only.
+  core.int? executionCount;
+
+  /// For a deleted resource, the time after which it will be permamently
+  /// deleted.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// A number that monotonically increases every time the user modifies the
+  /// desired state.
+  ///
+  /// Output only.
+  core.String? generation;
+
+  /// KRM-style labels for the resource.
+  ///
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
+  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
+  /// namespaces. Those labels are read-only, and user changes will not be
+  /// preserved.
+  core.Map<core.String, core.String>? labels;
+
+  /// Email address of the last authenticated modifier.
+  ///
+  /// Output only.
+  core.String? lastModifier;
+
+  /// Name of the last created execution.
+  ///
+  /// Output only.
+  GoogleCloudRunV2ExecutionReference? latestCreatedExecution;
+
+  /// The launch stage as defined by
+  /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
+  /// is assumed.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don't have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the "Deprecation Policy" section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? launchStage;
+
+  /// The fully qualified name of this Job.
+  ///
+  /// Format: projects/{project}/locations/{location}/jobs/{job}
+  core.String? name;
+
+  /// The generation of this Job.
+  ///
+  /// See comments in `reconciling` for additional information on reconciliation
+  /// process in Cloud Run.
+  ///
+  /// Output only.
+  core.String? observedGeneration;
+
+  /// Returns true if the Job is currently being acted upon by the system to
+  /// bring it into the desired state.
+  ///
+  /// When a new Job is created, or an existing one is updated, Cloud Run will
+  /// asynchronously perform all necessary steps to bring the Job to the desired
+  /// state. This process is called reconciliation. While reconciliation is in
+  /// process, `observed_generation` and `latest_succeeded_execution`, will have
+  /// transient values that might mismatch the intended state: Once
+  /// reconciliation is over (and this field is false), there are two possible
+  /// outcomes: reconciliation succeeded and the state matches the Job, or there
+  /// was an error, and reconciliation failed. This state can be found in
+  /// `terminal_condition.state`. If reconciliation succeeded, the following
+  /// fields will match: `observed_generation` and `generation`,
+  /// `latest_succeeded_execution` and `latest_created_execution`. If
+  /// reconciliation failed, `observed_generation` and
+  /// `latest_succeeded_execution` will have the state of the last succeeded
+  /// execution or empty for newly created Job. Additional information on the
+  /// failure can be found in `terminal_condition` and `conditions`.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The template used to create executions for this Job.
+  ///
+  /// Required.
+  GoogleCloudRunV2ExecutionTemplate? template;
+
+  /// The Condition of this Job, containing its readiness status, and detailed
+  /// error information in case it did not reach the desired state.
+  ///
+  /// Output only.
+  GoogleCloudRunV2Condition? terminalCondition;
+
+  /// Server assigned unique identifier for the Execution.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudRunV2Job({
+    this.annotations,
+    this.binaryAuthorization,
+    this.client,
+    this.clientVersion,
+    this.conditions,
+    this.createTime,
+    this.creator,
+    this.deleteTime,
+    this.etag,
+    this.executionCount,
+    this.expireTime,
+    this.generation,
+    this.labels,
+    this.lastModifier,
+    this.latestCreatedExecution,
+    this.launchStage,
+    this.name,
+    this.observedGeneration,
+    this.reconciling,
+    this.template,
+    this.terminalCondition,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudRunV2Job.fromJson(core.Map _json)
+      : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          binaryAuthorization: _json.containsKey('binaryAuthorization')
+              ? GoogleCloudRunV2BinaryAuthorization.fromJson(
+                  _json['binaryAuthorization']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          client: _json.containsKey('client')
+              ? _json['client'] as core.String
+              : null,
+          clientVersion: _json.containsKey('clientVersion')
+              ? _json['clientVersion'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map((value) => GoogleCloudRunV2Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          creator: _json.containsKey('creator')
+              ? _json['creator'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          executionCount: _json.containsKey('executionCount')
+              ? _json['executionCount'] as core.int
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          generation: _json.containsKey('generation')
+              ? _json['generation'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          lastModifier: _json.containsKey('lastModifier')
+              ? _json['lastModifier'] as core.String
+              : null,
+          latestCreatedExecution: _json.containsKey('latestCreatedExecution')
+              ? GoogleCloudRunV2ExecutionReference.fromJson(
+                  _json['latestCreatedExecution']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          launchStage: _json.containsKey('launchStage')
+              ? _json['launchStage'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          observedGeneration: _json.containsKey('observedGeneration')
+              ? _json['observedGeneration'] as core.String
+              : null,
+          reconciling: _json.containsKey('reconciling')
+              ? _json['reconciling'] as core.bool
+              : null,
+          template: _json.containsKey('template')
+              ? GoogleCloudRunV2ExecutionTemplate.fromJson(
+                  _json['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+          terminalCondition: _json.containsKey('terminalCondition')
+              ? GoogleCloudRunV2Condition.fromJson(_json['terminalCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (binaryAuthorization != null)
+          'binaryAuthorization': binaryAuthorization!,
+        if (client != null) 'client': client!,
+        if (clientVersion != null) 'clientVersion': clientVersion!,
+        if (conditions != null) 'conditions': conditions!,
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (etag != null) 'etag': etag!,
+        if (executionCount != null) 'executionCount': executionCount!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (generation != null) 'generation': generation!,
+        if (labels != null) 'labels': labels!,
+        if (lastModifier != null) 'lastModifier': lastModifier!,
+        if (latestCreatedExecution != null)
+          'latestCreatedExecution': latestCreatedExecution!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (template != null) 'template': template!,
+        if (terminalCondition != null) 'terminalCondition': terminalCondition!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Response message containing a list of Executions.
+class GoogleCloudRunV2ListExecutionsResponse {
+  /// The resulting list of Executions.
+  core.List<GoogleCloudRunV2Execution>? executions;
+
+  /// A token indicating there are more items than page_size.
+  ///
+  /// Use it in the next ListExecutions request to continue.
+  core.String? nextPageToken;
+
+  GoogleCloudRunV2ListExecutionsResponse({
+    this.executions,
+    this.nextPageToken,
+  });
+
+  GoogleCloudRunV2ListExecutionsResponse.fromJson(core.Map _json)
+      : this(
+          executions: _json.containsKey('executions')
+              ? (_json['executions'] as core.List)
+                  .map((value) => GoogleCloudRunV2Execution.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executions != null) 'executions': executions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message containing a list of Jobs.
+class GoogleCloudRunV2ListJobsResponse {
+  /// The resulting list of Jobs.
+  core.List<GoogleCloudRunV2Job>? jobs;
+
+  /// A token indicating there are more items than page_size.
+  ///
+  /// Use it in the next ListJobs request to continue.
+  core.String? nextPageToken;
+
+  GoogleCloudRunV2ListJobsResponse({
+    this.jobs,
+    this.nextPageToken,
+  });
+
+  GoogleCloudRunV2ListJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map((value) => GoogleCloudRunV2Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobs != null) 'jobs': jobs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message containing a list of Revisions.
 class GoogleCloudRunV2ListRevisionsResponse {
   /// A token indicating there are more items than page_size.
@@ -1348,6 +2854,40 @@ class GoogleCloudRunV2ListServicesResponse {
       };
 }
 
+/// Response message containing a list of Tasks.
+class GoogleCloudRunV2ListTasksResponse {
+  /// A token indicating there are more items than page_size.
+  ///
+  /// Use it in the next ListTasks request to continue.
+  core.String? nextPageToken;
+
+  /// The resulting list of Tasks.
+  core.List<GoogleCloudRunV2Task>? tasks;
+
+  GoogleCloudRunV2ListTasksResponse({
+    this.nextPageToken,
+    this.tasks,
+  });
+
+  GoogleCloudRunV2ListTasksResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          tasks: _json.containsKey('tasks')
+              ? (_json['tasks'] as core.List)
+                  .map((value) => GoogleCloudRunV2Task.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tasks != null) 'tasks': tasks!,
+      };
+}
+
 /// ResourceRequirements describes the compute resource requirements.
 class GoogleCloudRunV2ResourceRequirements {
   /// Determines whether CPU should be throttled or not outside of requests.
@@ -1400,13 +2940,6 @@ class GoogleCloudRunV2Revision {
   ///
   /// Output only.
   core.List<GoogleCloudRunV2Condition>? conditions;
-
-  /// Indicates whether Confidential Cloud Run is enabled in this Revision.
-  core.bool? confidential;
-
-  /// Sets the maximum number of requests that each serving instance can
-  /// receive.
-  core.int? containerConcurrency;
 
   /// Holds the single container that defines the unit of execution for this
   /// Revision.
@@ -1516,6 +3049,10 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.String? logUri;
 
+  /// Sets the maximum number of requests that each serving instance can
+  /// receive.
+  core.int? maxInstanceRequestConcurrency;
+
   /// The unique name of this Revision.
   ///
   /// Output only.
@@ -1580,8 +3117,6 @@ class GoogleCloudRunV2Revision {
   GoogleCloudRunV2Revision({
     this.annotations,
     this.conditions,
-    this.confidential,
-    this.containerConcurrency,
     this.containers,
     this.createTime,
     this.deleteTime,
@@ -1593,6 +3128,7 @@ class GoogleCloudRunV2Revision {
     this.labels,
     this.launchStage,
     this.logUri,
+    this.maxInstanceRequestConcurrency,
     this.name,
     this.observedGeneration,
     this.reconciling,
@@ -1622,12 +3158,6 @@ class GoogleCloudRunV2Revision {
                   .map((value) => GoogleCloudRunV2Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
-              : null,
-          confidential: _json.containsKey('confidential')
-              ? _json['confidential'] as core.bool
-              : null,
-          containerConcurrency: _json.containsKey('containerConcurrency')
-              ? _json['containerConcurrency'] as core.int
               : null,
           containers: _json.containsKey('containers')
               ? (_json['containers'] as core.List)
@@ -1668,6 +3198,10 @@ class GoogleCloudRunV2Revision {
           logUri: _json.containsKey('logUri')
               ? _json['logUri'] as core.String
               : null,
+          maxInstanceRequestConcurrency:
+              _json.containsKey('maxInstanceRequestConcurrency')
+                  ? _json['maxInstanceRequestConcurrency'] as core.int
+                  : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           observedGeneration: _json.containsKey('observedGeneration')
               ? _json['observedGeneration'] as core.String
@@ -1707,9 +3241,6 @@ class GoogleCloudRunV2Revision {
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (conditions != null) 'conditions': conditions!,
-        if (confidential != null) 'confidential': confidential!,
-        if (containerConcurrency != null)
-          'containerConcurrency': containerConcurrency!,
         if (containers != null) 'containers': containers!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
@@ -1722,6 +3253,8 @@ class GoogleCloudRunV2Revision {
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (logUri != null) 'logUri': logUri!,
+        if (maxInstanceRequestConcurrency != null)
+          'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
         if (name != null) 'name': name!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
@@ -1772,13 +3305,6 @@ class GoogleCloudRunV2RevisionTemplate {
   /// KRM-style annotations for the resource.
   core.Map<core.String, core.String>? annotations;
 
-  /// Enables Confidential Cloud Run in Revisions created using this template.
-  core.bool? confidential;
-
-  /// Sets the maximum number of requests that each serving instance can
-  /// receive.
-  core.int? containerConcurrency;
-
   /// Holds the single container that defines the unit of execution for this
   /// Revision.
   core.List<GoogleCloudRunV2Container>? containers;
@@ -1799,6 +3325,10 @@ class GoogleCloudRunV2RevisionTemplate {
 
   /// KRM-style labels for the resource.
   core.Map<core.String, core.String>? labels;
+
+  /// Sets the maximum number of requests that each serving instance can
+  /// receive.
+  core.int? maxInstanceRequestConcurrency;
 
   /// The unique name for the revision.
   ///
@@ -1831,12 +3361,11 @@ class GoogleCloudRunV2RevisionTemplate {
 
   GoogleCloudRunV2RevisionTemplate({
     this.annotations,
-    this.confidential,
-    this.containerConcurrency,
     this.containers,
     this.encryptionKey,
     this.executionEnvironment,
     this.labels,
+    this.maxInstanceRequestConcurrency,
     this.revision,
     this.scaling,
     this.serviceAccount,
@@ -1855,12 +3384,6 @@ class GoogleCloudRunV2RevisionTemplate {
                     item as core.String,
                   ),
                 )
-              : null,
-          confidential: _json.containsKey('confidential')
-              ? _json['confidential'] as core.bool
-              : null,
-          containerConcurrency: _json.containsKey('containerConcurrency')
-              ? _json['containerConcurrency'] as core.int
               : null,
           containers: _json.containsKey('containers')
               ? (_json['containers'] as core.List)
@@ -1882,6 +3405,10 @@ class GoogleCloudRunV2RevisionTemplate {
                   ),
                 )
               : null,
+          maxInstanceRequestConcurrency:
+              _json.containsKey('maxInstanceRequestConcurrency')
+                  ? _json['maxInstanceRequestConcurrency'] as core.int
+                  : null,
           revision: _json.containsKey('revision')
               ? _json['revision'] as core.String
               : null,
@@ -1909,20 +3436,49 @@ class GoogleCloudRunV2RevisionTemplate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
-        if (confidential != null) 'confidential': confidential!,
-        if (containerConcurrency != null)
-          'containerConcurrency': containerConcurrency!,
         if (containers != null) 'containers': containers!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
         if (labels != null) 'labels': labels!,
+        if (maxInstanceRequestConcurrency != null)
+          'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
         if (revision != null) 'revision': revision!,
         if (scaling != null) 'scaling': scaling!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (timeout != null) 'timeout': timeout!,
         if (volumes != null) 'volumes': volumes!,
         if (vpcAccess != null) 'vpcAccess': vpcAccess!,
+      };
+}
+
+/// Request message to create a new Execution of a Job.
+class GoogleCloudRunV2RunJobRequest {
+  /// A system-generated fingerprint for this version of the resource.
+  ///
+  /// May be used to detect modification conflict during updates.
+  core.String? etag;
+
+  /// Indicates that the request should be validated without actually deleting
+  /// any resources.
+  core.bool? validateOnly;
+
+  GoogleCloudRunV2RunJobRequest({
+    this.etag,
+    this.validateOnly,
+  });
+
+  GoogleCloudRunV2RunJobRequest.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -2101,6 +3657,9 @@ class GoogleCloudRunV2Service {
   /// A number that monotonically increases every time the user modifies the
   /// desired state.
   ///
+  /// Please note that unlike v1, this is an int64 value. As with most Google
+  /// APIs, its JSON representation will be a `string` instead of an `integer`.
+  ///
   /// Output only.
   core.String? generation;
 
@@ -2199,7 +3758,9 @@ class GoogleCloudRunV2Service {
   /// The generation of this Service currently serving traffic.
   ///
   /// See comments in `reconciling` for additional information on reconciliation
-  /// process in Cloud Run.
+  /// process in Cloud Run. Please note that unlike v1, this is an int64 value.
+  /// As with most Google APIs, its JSON representation will be a `string`
+  /// instead of an `integer`.
   ///
   /// Output only.
   core.String? observedGeneration;
@@ -2442,6 +4003,548 @@ class GoogleCloudRunV2Service {
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Task represents a single run of a container to completion.
+class GoogleCloudRunV2Task {
+  /// KRM-style annotations for the resource.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Represents time when the Task was completed.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations.
+  ///
+  /// Output only.
+  core.String? completionTime;
+
+  /// The Condition of this Task, containing its readiness status, and detailed
+  /// error information in case it did not reach the desired state.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRunV2Condition>? conditions;
+
+  /// Holds the single container that defines the unit of execution for this
+  /// task.
+  core.List<GoogleCloudRunV2Container>? containers;
+
+  /// Represents time when the task was created by the job controller.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// For a deleted resource, the deletion time.
+  ///
+  /// It is only populated as a response to a Delete request.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// A reference to a customer managed encryption key (CMEK) to use to encrypt
+  /// this container image.
+  ///
+  /// For more information, go to
+  /// https://cloud.google.com/run/docs/securing/using-cmek
+  ///
+  /// Output only.
+  core.String? encryptionKey;
+
+  /// A system-generated fingerprint for this version of the resource.
+  ///
+  /// May be used to detect modification conflict during updates.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The name of the parent Execution.
+  ///
+  /// Output only.
+  core.String? execution;
+
+  /// The execution environment being used to host this Task.
+  /// Possible string values are:
+  /// - "EXECUTION_ENVIRONMENT_UNSPECIFIED" : Unspecified
+  /// - "EXECUTION_ENVIRONMENT_GEN1" : Uses the First Generation environment.
+  /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
+  core.String? executionEnvironment;
+
+  /// For a deleted resource, the time after which it will be permamently
+  /// deleted.
+  ///
+  /// It is only populated as a response to a Delete request.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// A number that monotonically increases every time the user modifies the
+  /// desired state.
+  ///
+  /// Output only.
+  core.String? generation;
+
+  /// Index of the Task, unique per execution, and beginning at 0.
+  ///
+  /// Output only.
+  core.int? index;
+
+  /// The name of the parent Job.
+  ///
+  /// Output only.
+  core.String? job;
+
+  /// KRM-style labels for the resource.
+  ///
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
+  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
+  /// namespaces. Those labels are read-only, and user changes will not be
+  /// preserved.
+  core.Map<core.String, core.String>? labels;
+
+  /// Result of the last attempt of this Task.
+  ///
+  /// Output only.
+  GoogleCloudRunV2TaskAttemptResult? lastAttemptResult;
+
+  /// Set the launch stage to a preview stage on write to allow use of preview
+  /// features in that stage.
+  ///
+  /// On read, describes whether the resource uses preview features. Launch
+  /// Stages are defined at
+  /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don't have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the "Deprecation Policy" section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? launchStage;
+
+  /// Number of retries allowed per Task, before marking this Task failed.
+  core.int? maxRetries;
+
+  /// The unique name of this Task.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The generation of this Task.
+  ///
+  /// See comments in `Job.reconciling` for additional information on
+  /// reconciliation process in Cloud Run.
+  ///
+  /// Output only.
+  core.String? observedGeneration;
+
+  /// Indicates whether the resource's reconciliation is still in progress.
+  ///
+  /// See comments in `Job.reconciling` for additional information on
+  /// reconciliation process in Cloud Run.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The number of times this Task was retried.
+  ///
+  /// Tasks are retried when they fail up to the maxRetries limit.
+  ///
+  /// Output only.
+  core.int? retried;
+
+  /// Email address of the IAM service account associated with the Task of a
+  /// Job.
+  ///
+  /// The service account represents the identity of the running task, and
+  /// determines what permissions the task has. If not provided, the task will
+  /// use the project's default service account.
+  core.String? serviceAccount;
+
+  /// Represents time when the task started to run.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// Max allowed time duration the Task may be active before the system will
+  /// actively try to mark it failed and kill associated containers.
+  ///
+  /// This applies per attempt of a task, meaning each retry can run for the
+  /// full timeout.
+  core.String? timeout;
+
+  /// Server assigned unique identifier for the Task.
+  ///
+  /// The value is a UUID4 string and guaranteed to remain unchanged until the
+  /// resource is deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// A list of Volumes to make available to containers.
+  core.List<GoogleCloudRunV2Volume>? volumes;
+
+  /// VPC Access configuration to use for this Task.
+  ///
+  /// For more information, visit
+  /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  ///
+  /// Output only.
+  GoogleCloudRunV2VpcAccess? vpcAccess;
+
+  GoogleCloudRunV2Task({
+    this.annotations,
+    this.completionTime,
+    this.conditions,
+    this.containers,
+    this.createTime,
+    this.deleteTime,
+    this.encryptionKey,
+    this.etag,
+    this.execution,
+    this.executionEnvironment,
+    this.expireTime,
+    this.generation,
+    this.index,
+    this.job,
+    this.labels,
+    this.lastAttemptResult,
+    this.launchStage,
+    this.maxRetries,
+    this.name,
+    this.observedGeneration,
+    this.reconciling,
+    this.retried,
+    this.serviceAccount,
+    this.startTime,
+    this.timeout,
+    this.uid,
+    this.updateTime,
+    this.volumes,
+    this.vpcAccess,
+  });
+
+  GoogleCloudRunV2Task.fromJson(core.Map _json)
+      : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          completionTime: _json.containsKey('completionTime')
+              ? _json['completionTime'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map((value) => GoogleCloudRunV2Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          containers: _json.containsKey('containers')
+              ? (_json['containers'] as core.List)
+                  .map((value) => GoogleCloudRunV2Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          encryptionKey: _json.containsKey('encryptionKey')
+              ? _json['encryptionKey'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          execution: _json.containsKey('execution')
+              ? _json['execution'] as core.String
+              : null,
+          executionEnvironment: _json.containsKey('executionEnvironment')
+              ? _json['executionEnvironment'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          generation: _json.containsKey('generation')
+              ? _json['generation'] as core.String
+              : null,
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          job: _json.containsKey('job') ? _json['job'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          lastAttemptResult: _json.containsKey('lastAttemptResult')
+              ? GoogleCloudRunV2TaskAttemptResult.fromJson(
+                  _json['lastAttemptResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          launchStage: _json.containsKey('launchStage')
+              ? _json['launchStage'] as core.String
+              : null,
+          maxRetries: _json.containsKey('maxRetries')
+              ? _json['maxRetries'] as core.int
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          observedGeneration: _json.containsKey('observedGeneration')
+              ? _json['observedGeneration'] as core.String
+              : null,
+          reconciling: _json.containsKey('reconciling')
+              ? _json['reconciling'] as core.bool
+              : null,
+          retried: _json.containsKey('retried')
+              ? _json['retried'] as core.int
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          timeout: _json.containsKey('timeout')
+              ? _json['timeout'] as core.String
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          volumes: _json.containsKey('volumes')
+              ? (_json['volumes'] as core.List)
+                  .map((value) => GoogleCloudRunV2Volume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          vpcAccess: _json.containsKey('vpcAccess')
+              ? GoogleCloudRunV2VpcAccess.fromJson(
+                  _json['vpcAccess'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (completionTime != null) 'completionTime': completionTime!,
+        if (conditions != null) 'conditions': conditions!,
+        if (containers != null) 'containers': containers!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (etag != null) 'etag': etag!,
+        if (execution != null) 'execution': execution!,
+        if (executionEnvironment != null)
+          'executionEnvironment': executionEnvironment!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (generation != null) 'generation': generation!,
+        if (index != null) 'index': index!,
+        if (job != null) 'job': job!,
+        if (labels != null) 'labels': labels!,
+        if (lastAttemptResult != null) 'lastAttemptResult': lastAttemptResult!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (maxRetries != null) 'maxRetries': maxRetries!,
+        if (name != null) 'name': name!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (retried != null) 'retried': retried!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (startTime != null) 'startTime': startTime!,
+        if (timeout != null) 'timeout': timeout!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (volumes != null) 'volumes': volumes!,
+        if (vpcAccess != null) 'vpcAccess': vpcAccess!,
+      };
+}
+
+/// Result of a task attempt.
+class GoogleCloudRunV2TaskAttemptResult {
+  /// The exit code of this attempt.
+  ///
+  /// This may be unset if the container was unable to exit cleanly with a code
+  /// due to some other failure. See status field for possible failure details.
+  ///
+  /// Output only.
+  core.int? exitCode;
+
+  /// The status of this attempt.
+  ///
+  /// If the status code is OK, then the attempt succeeded.
+  ///
+  /// Output only.
+  GoogleRpcStatus? status;
+
+  GoogleCloudRunV2TaskAttemptResult({
+    this.exitCode,
+    this.status,
+  });
+
+  GoogleCloudRunV2TaskAttemptResult.fromJson(core.Map _json)
+      : this(
+          exitCode: _json.containsKey('exitCode')
+              ? _json['exitCode'] as core.int
+              : null,
+          status: _json.containsKey('status')
+              ? GoogleRpcStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exitCode != null) 'exitCode': exitCode!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// TaskTemplate describes the data a task should have when created from a
+/// template.
+class GoogleCloudRunV2TaskTemplate {
+  /// Holds the single container that defines the unit of execution for this
+  /// task.
+  core.List<GoogleCloudRunV2Container>? containers;
+
+  /// A reference to a customer managed encryption key (CMEK) to use to encrypt
+  /// this container image.
+  ///
+  /// For more information, go to
+  /// https://cloud.google.com/run/docs/securing/using-cmek
+  core.String? encryptionKey;
+
+  /// The execution environment being used to host this Task.
+  /// Possible string values are:
+  /// - "EXECUTION_ENVIRONMENT_UNSPECIFIED" : Unspecified
+  /// - "EXECUTION_ENVIRONMENT_GEN1" : Uses the First Generation environment.
+  /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
+  core.String? executionEnvironment;
+
+  /// Number of retries allowed per Task, before marking this Task failed.
+  core.int? maxRetries;
+
+  /// Email address of the IAM service account associated with the Task of a
+  /// Job.
+  ///
+  /// The service account represents the identity of the running task, and
+  /// determines what permissions the task has. If not provided, the task will
+  /// use the project's default service account.
+  core.String? serviceAccount;
+
+  /// Max allowed time duration the Task may be active before the system will
+  /// actively try to mark it failed and kill associated containers.
+  ///
+  /// This applies per attempt of a task, meaning each retry can run for the
+  /// full timeout.
+  core.String? timeout;
+
+  /// A list of Volumes to make available to containers.
+  core.List<GoogleCloudRunV2Volume>? volumes;
+
+  /// VPC Access configuration to use for this Task.
+  ///
+  /// For more information, visit
+  /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  GoogleCloudRunV2VpcAccess? vpcAccess;
+
+  GoogleCloudRunV2TaskTemplate({
+    this.containers,
+    this.encryptionKey,
+    this.executionEnvironment,
+    this.maxRetries,
+    this.serviceAccount,
+    this.timeout,
+    this.volumes,
+    this.vpcAccess,
+  });
+
+  GoogleCloudRunV2TaskTemplate.fromJson(core.Map _json)
+      : this(
+          containers: _json.containsKey('containers')
+              ? (_json['containers'] as core.List)
+                  .map((value) => GoogleCloudRunV2Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          encryptionKey: _json.containsKey('encryptionKey')
+              ? _json['encryptionKey'] as core.String
+              : null,
+          executionEnvironment: _json.containsKey('executionEnvironment')
+              ? _json['executionEnvironment'] as core.String
+              : null,
+          maxRetries: _json.containsKey('maxRetries')
+              ? _json['maxRetries'] as core.int
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          timeout: _json.containsKey('timeout')
+              ? _json['timeout'] as core.String
+              : null,
+          volumes: _json.containsKey('volumes')
+              ? (_json['volumes'] as core.List)
+                  .map((value) => GoogleCloudRunV2Volume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          vpcAccess: _json.containsKey('vpcAccess')
+              ? GoogleCloudRunV2VpcAccess.fromJson(
+                  _json['vpcAccess'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containers != null) 'containers': containers!,
+        if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (executionEnvironment != null)
+          'executionEnvironment': executionEnvironment!,
+        if (maxRetries != null) 'maxRetries': maxRetries!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (timeout != null) 'timeout': timeout!,
+        if (volumes != null) 'volumes': volumes!,
+        if (vpcAccess != null) 'vpcAccess': vpcAccess!,
       };
 }
 
@@ -2742,8 +4845,8 @@ class GoogleCloudRunV2VpcAccess {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
@@ -3022,7 +5125,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;

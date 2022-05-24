@@ -255,8 +255,9 @@ class ProjectsNotesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -399,8 +400,9 @@ class ProjectsNotesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -448,8 +450,9 @@ class ProjectsNotesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -726,8 +729,9 @@ class ProjectsOccurrencesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -954,8 +958,9 @@ class ProjectsOccurrencesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1003,8 +1008,9 @@ class ProjectsOccurrencesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1454,7 +1460,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1769,11 +1775,180 @@ class BuildSignature {
 /// Defines an object for the byproducts field in in-toto links.
 ///
 /// The suggested fields are "stderr", "stdout", and "return-value".
-typedef ByProducts = $Shared01;
+typedef ByProducts = $Shared02;
+
+/// Common Vulnerability Scoring System.
+///
+/// This message is compatible with CVSS v2 and v3. For CVSS v2 details, see
+/// https://www.first.org/cvss/v2/guide CVSS v2 calculator:
+/// https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details,
+/// see https://www.first.org/cvss/specification-document CVSS v3 calculator:
+/// https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+class CVSS {
+  /// Defined in CVSS v3, CVSS v2
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED" : Defined in CVSS v3, CVSS v2
+  /// - "ATTACK_COMPLEXITY_LOW" : Defined in CVSS v3, CVSS v2
+  /// - "ATTACK_COMPLEXITY_HIGH" : Defined in CVSS v3, CVSS v2
+  /// - "ATTACK_COMPLEXITY_MEDIUM" : Defined in CVSS v2
+  core.String? attackComplexity;
+
+  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
+  /// that are constant over time and across user environments.
+  ///
+  /// Defined in CVSS v3, CVSS v2
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED" : Defined in CVSS v3, CVSS v2
+  /// - "ATTACK_VECTOR_NETWORK" : Defined in CVSS v3, CVSS v2
+  /// - "ATTACK_VECTOR_ADJACENT" : Defined in CVSS v3, CVSS v2
+  /// - "ATTACK_VECTOR_LOCAL" : Defined in CVSS v3, CVSS v2
+  /// - "ATTACK_VECTOR_PHYSICAL" : Defined in CVSS v3
+  core.String? attackVector;
+
+  /// Defined in CVSS v2
+  /// Possible string values are:
+  /// - "AUTHENTICATION_UNSPECIFIED" : Defined in CVSS v2
+  /// - "AUTHENTICATION_MULTIPLE" : Defined in CVSS v2
+  /// - "AUTHENTICATION_SINGLE" : Defined in CVSS v2
+  /// - "AUTHENTICATION_NONE" : Defined in CVSS v2
+  core.String? authentication;
+
+  /// Defined in CVSS v3, CVSS v2
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Defined in CVSS v3, CVSS v2
+  /// - "IMPACT_HIGH" : Defined in CVSS v3
+  /// - "IMPACT_LOW" : Defined in CVSS v3
+  /// - "IMPACT_NONE" : Defined in CVSS v3, CVSS v2
+  /// - "IMPACT_PARTIAL" : Defined in CVSS v2
+  /// - "IMPACT_COMPLETE" : Defined in CVSS v2
+  core.String? availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  core.double? baseScore;
+
+  /// Defined in CVSS v3, CVSS v2
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Defined in CVSS v3, CVSS v2
+  /// - "IMPACT_HIGH" : Defined in CVSS v3
+  /// - "IMPACT_LOW" : Defined in CVSS v3
+  /// - "IMPACT_NONE" : Defined in CVSS v3, CVSS v2
+  /// - "IMPACT_PARTIAL" : Defined in CVSS v2
+  /// - "IMPACT_COMPLETE" : Defined in CVSS v2
+  core.String? confidentialityImpact;
+  core.double? exploitabilityScore;
+  core.double? impactScore;
+
+  /// Defined in CVSS v3, CVSS v2
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED" : Defined in CVSS v3, CVSS v2
+  /// - "IMPACT_HIGH" : Defined in CVSS v3
+  /// - "IMPACT_LOW" : Defined in CVSS v3
+  /// - "IMPACT_NONE" : Defined in CVSS v3, CVSS v2
+  /// - "IMPACT_PARTIAL" : Defined in CVSS v2
+  /// - "IMPACT_COMPLETE" : Defined in CVSS v2
+  core.String? integrityImpact;
+
+  /// Defined in CVSS v3
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED" : Defined in CVSS v3
+  /// - "PRIVILEGES_REQUIRED_NONE" : Defined in CVSS v3
+  /// - "PRIVILEGES_REQUIRED_LOW" : Defined in CVSS v3
+  /// - "PRIVILEGES_REQUIRED_HIGH" : Defined in CVSS v3
+  core.String? privilegesRequired;
+
+  /// Defined in CVSS v3
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : Defined in CVSS v3
+  /// - "SCOPE_UNCHANGED" : Defined in CVSS v3
+  /// - "SCOPE_CHANGED" : Defined in CVSS v3
+  core.String? scope;
+
+  /// Defined in CVSS v3
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED" : Defined in CVSS v3
+  /// - "USER_INTERACTION_NONE" : Defined in CVSS v3
+  /// - "USER_INTERACTION_REQUIRED" : Defined in CVSS v3
+  core.String? userInteraction;
+
+  CVSS({
+    this.attackComplexity,
+    this.attackVector,
+    this.authentication,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.exploitabilityScore,
+    this.impactScore,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
+
+  CVSS.fromJson(core.Map _json)
+      : this(
+          attackComplexity: _json.containsKey('attackComplexity')
+              ? _json['attackComplexity'] as core.String
+              : null,
+          attackVector: _json.containsKey('attackVector')
+              ? _json['attackVector'] as core.String
+              : null,
+          authentication: _json.containsKey('authentication')
+              ? _json['authentication'] as core.String
+              : null,
+          availabilityImpact: _json.containsKey('availabilityImpact')
+              ? _json['availabilityImpact'] as core.String
+              : null,
+          baseScore: _json.containsKey('baseScore')
+              ? (_json['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: _json.containsKey('confidentialityImpact')
+              ? _json['confidentialityImpact'] as core.String
+              : null,
+          exploitabilityScore: _json.containsKey('exploitabilityScore')
+              ? (_json['exploitabilityScore'] as core.num).toDouble()
+              : null,
+          impactScore: _json.containsKey('impactScore')
+              ? (_json['impactScore'] as core.num).toDouble()
+              : null,
+          integrityImpact: _json.containsKey('integrityImpact')
+              ? _json['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: _json.containsKey('privilegesRequired')
+              ? _json['privilegesRequired'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          userInteraction: _json.containsKey('userInteraction')
+              ? _json['userInteraction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (authentication != null) 'authentication': authentication!,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact!,
+        if (baseScore != null) 'baseScore': baseScore!,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact!,
+        if (exploitabilityScore != null)
+          'exploitabilityScore': exploitabilityScore!,
+        if (impactScore != null) 'impactScore': impactScore!,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired!,
+        if (scope != null) 'scope': scope!,
+        if (userInteraction != null) 'userInteraction': userInteraction!,
+      };
+}
 
 /// Common Vulnerability Scoring System version 3.
 ///
 /// For details, see https://www.first.org/cvss/specification-document
+///
+/// Deprecated.
 class CVSSv3 {
   ///
   /// Possible string values are:
@@ -1981,7 +2156,7 @@ class Deployable {
 }
 
 /// The period during which some deployable was active in a runtime.
-typedef Deployment = $Shared02;
+typedef Deployment = $Shared03;
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage
 /// relationship.
@@ -2198,6 +2373,35 @@ class Details {
       };
 }
 
+/// Digest information.
+class Digest {
+  /// `SHA1`, `SHA512` etc.
+  core.String? algo;
+
+  /// Value of the digest encoded.
+  ///
+  /// For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+  core.String? digestValue;
+
+  Digest({
+    this.algo,
+    this.digestValue,
+  });
+
+  Digest.fromJson(core.Map _json)
+      : this(
+          algo: _json.containsKey('algo') ? _json['algo'] as core.String : null,
+          digestValue: _json.containsKey('digestValue')
+              ? _json['digestValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (algo != null) 'algo': algo!,
+        if (digestValue != null) 'digestValue': digestValue!,
+      };
+}
+
 /// Provides information about the analysis status of a discovered resource.
 class Discovered {
   /// The status of discovery for the resource.
@@ -2376,7 +2580,7 @@ class Distribution {
       };
 }
 
-/// DocumentNote represents an SPDX Document Creation Infromation section:
+/// DocumentNote represents an SPDX Document Creation Information section:
 /// https://spdx.github.io/spdx-spec/2-document-creation-information/
 class DocumentNote {
   /// Compliance with the SPDX specification includes populating the SPDX fields
@@ -2517,10 +2721,57 @@ class DocumentOccurrence {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// MUST match
+/// https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto.
+///
+/// An authenticated message of arbitrary type.
+class Envelope {
+  core.String? payload;
+  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
+
+  set payloadAsBytes(core.List<core.int> _bytes) {
+    payload =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  core.String? payloadType;
+  core.List<EnvelopeSignature>? signatures;
+
+  Envelope({
+    this.payload,
+    this.payloadType,
+    this.signatures,
+  });
+
+  Envelope.fromJson(core.Map _json)
+      : this(
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.String
+              : null,
+          payloadType: _json.containsKey('payloadType')
+              ? _json['payloadType'] as core.String
+              : null,
+          signatures: _json.containsKey('signatures')
+              ? (_json['signatures'] as core.List)
+                  .map((value) => EnvelopeSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (payloadType != null) 'payloadType': payloadType!,
+        if (signatures != null) 'signatures': signatures!,
+      };
+}
+
+typedef EnvelopeSignature = $EnvelopeSignature;
+
 /// Defines an object for the environment field in in-toto links.
 ///
 /// The suggested fields are "variables", "filesystem", and "workdir".
-typedef Environment = $Shared01;
+typedef Environment = $Shared02;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3471,24 +3722,71 @@ class InToto {
 /// This represents how a particular software package may be installed on a
 /// system.
 class Installation {
+  /// The CPU architecture for which packages in this distribution channel were
+  /// built.
+  ///
+  /// Architecture will be blank for language packages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Unknown architecture.
+  /// - "X86" : X86 architecture.
+  /// - "X64" : X64 architecture.
+  core.String? architecture;
+
+  /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting
+  /// the package manager version distributing a package.
+  ///
+  /// The cpe_uri will be blank for language packages.
+  ///
+  /// Output only.
+  core.String? cpeUri;
+
+  /// Licenses that have been declared by the authors of the package.
+  License? license;
+
   /// All of the places within the filesystem versions of this package have been
   /// found.
-  ///
-  /// Required.
   core.List<Location>? location;
 
   /// The name of the installed package.
   ///
-  /// Output only.
+  /// Required. Output only.
   core.String? name;
 
+  /// The type of package; whether native or non native (e.g., ruby gems,
+  /// node.js packages, etc.).
+  ///
+  /// Output only.
+  core.String? packageType;
+
+  /// The version of the package.
+  ///
+  /// Output only.
+  Version? version;
+
   Installation({
+    this.architecture,
+    this.cpeUri,
+    this.license,
     this.location,
     this.name,
+    this.packageType,
+    this.version,
   });
 
   Installation.fromJson(core.Map _json)
       : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          cpeUri: _json.containsKey('cpeUri')
+              ? _json['cpeUri'] as core.String
+              : null,
+          license: _json.containsKey('license')
+              ? License.fromJson(
+                  _json['license'] as core.Map<core.String, core.dynamic>)
+              : null,
           location: _json.containsKey('location')
               ? (_json['location'] as core.List)
                   .map((value) => Location.fromJson(
@@ -3496,11 +3794,23 @@ class Installation {
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? Version.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (license != null) 'license': license!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
+        if (packageType != null) 'packageType': packageType!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3580,36 +3890,8 @@ class Layer {
       };
 }
 
-/// License information:
-/// https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
-class License {
-  /// Comments
-  core.String? comments;
-
-  /// Expression:
-  /// https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
-  core.String? expression;
-
-  License({
-    this.comments,
-    this.expression,
-  });
-
-  License.fromJson(core.Map _json)
-      : this(
-          comments: _json.containsKey('comments')
-              ? _json['comments'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (comments != null) 'comments': comments!,
-        if (expression != null) 'expression': expression!,
-      };
-}
+/// License information.
+typedef License = $License;
 
 /// This corresponds to an in-toto link.
 class Link {
@@ -3840,13 +4122,15 @@ class Location {
   /// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting
   /// the package manager version distributing a package.
   ///
-  /// Required.
+  /// Deprecated.
   core.String? cpeUri;
 
   /// The path from which we gathered that this package/version is installed.
   core.String? path;
 
   /// The version installed at this location.
+  ///
+  /// Deprecated.
   Version? version;
 
   Location({
@@ -4125,6 +4409,9 @@ class Occurrence {
   /// Describes when a resource was discovered.
   GrafeasV1beta1DiscoveryDetails? discovered;
 
+  /// https://github.com/secure-systems-lab/dsse
+  Envelope? envelope;
+
   /// Describes the installation of a package on the linked resource.
   GrafeasV1beta1PackageDetails? installation;
 
@@ -4204,6 +4491,7 @@ class Occurrence {
     this.deployment,
     this.derivedImage,
     this.discovered,
+    this.envelope,
     this.installation,
     this.intoto,
     this.kind,
@@ -4243,6 +4531,10 @@ class Occurrence {
           discovered: _json.containsKey('discovered')
               ? GrafeasV1beta1DiscoveryDetails.fromJson(
                   _json['discovered'] as core.Map<core.String, core.dynamic>)
+              : null,
+          envelope: _json.containsKey('envelope')
+              ? Envelope.fromJson(
+                  _json['envelope'] as core.Map<core.String, core.dynamic>)
               : null,
           installation: _json.containsKey('installation')
               ? GrafeasV1beta1PackageDetails.fromJson(
@@ -4296,6 +4588,7 @@ class Occurrence {
         if (deployment != null) 'deployment': deployment!,
         if (derivedImage != null) 'derivedImage': derivedImage!,
         if (discovered != null) 'discovered': discovered!,
+        if (envelope != null) 'envelope': envelope!,
         if (installation != null) 'installation': installation!,
         if (intoto != null) 'intoto': intoto!,
         if (kind != null) 'kind': kind!,
@@ -4312,38 +4605,122 @@ class Occurrence {
       };
 }
 
-/// This represents a particular package that is distributed over various
-/// channels.
-///
-/// E.g., glibc (aka libc6) is distributed by many, at various versions.
+/// Package represents a particular package version.
 class Package {
+  /// The CPU architecture for which packages in this distribution channel were
+  /// built.
+  ///
+  /// Architecture will be blank for language packages.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Unknown architecture.
+  /// - "X86" : X86 architecture.
+  /// - "X64" : X64 architecture.
+  core.String? architecture;
+
+  /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting
+  /// the package manager version distributing a package.
+  ///
+  /// The cpe_uri will be blank for language packages.
+  core.String? cpeUri;
+
+  /// The description of this package.
+  core.String? description;
+
+  /// Hash value, typically a file digest, that allows unique identification a
+  /// specific package.
+  core.List<Digest>? digest;
+
   /// The various channels by which a package is distributed.
   core.List<Distribution>? distribution;
+
+  /// Licenses that have been declared by the authors of the package.
+  License? license;
+
+  /// A freeform text denoting the maintainer of this package.
+  core.String? maintainer;
 
   /// The name of the package.
   ///
   /// Required. Immutable.
   core.String? name;
 
+  /// The type of package; whether native or non native (e.g., ruby gems,
+  /// node.js packages, etc.).
+  core.String? packageType;
+
+  /// The homepage for this package.
+  core.String? url;
+
+  /// The version of the package.
+  Version? version;
+
   Package({
+    this.architecture,
+    this.cpeUri,
+    this.description,
+    this.digest,
     this.distribution,
+    this.license,
+    this.maintainer,
     this.name,
+    this.packageType,
+    this.url,
+    this.version,
   });
 
   Package.fromJson(core.Map _json)
       : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          cpeUri: _json.containsKey('cpeUri')
+              ? _json['cpeUri'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.List)
+                  .map((value) => Digest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           distribution: _json.containsKey('distribution')
               ? (_json['distribution'] as core.List)
                   .map((value) => Distribution.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          license: _json.containsKey('license')
+              ? License.fromJson(
+                  _json['license'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maintainer: _json.containsKey('maintainer')
+              ? _json['maintainer'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          version: _json.containsKey('version')
+              ? Version.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (description != null) 'description': description!,
+        if (digest != null) 'digest': digest!,
         if (distribution != null) 'distribution': distribution!,
+        if (license != null) 'license': license!,
+        if (maintainer != null) 'maintainer': maintainer!,
         if (name != null) 'name': name!,
+        if (packageType != null) 'packageType': packageType!,
+        if (url != null) 'url': url!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4724,7 +5101,7 @@ class PgpSignedAttestation {
   /// as output by, e.g. `gpg --list-keys`.
   ///
   /// This should be the version 4, full 160-bit fingerprint, expressed as a 40
-  /// character hexidecimal string. See
+  /// character hexadecimal string. See
   /// https://tools.ietf.org/html/rfc4880#section-12.2 for details.
   /// Implementations may choose to acknowledge "LONG", "SHORT", or other
   /// abbreviated key IDs, but only the full fingerprint is guaranteed to work.
@@ -5267,7 +5644,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -5574,8 +5951,16 @@ class Vulnerability {
   /// The CVSS score for this vulnerability.
   core.double? cvssScore;
 
-  /// The full description of the CVSSv3.
+  /// The full description of the CVSS for version 2.
+  CVSS? cvssV2;
+
+  /// The full description of the CVSS for version 3.
   CVSSv3? cvssV3;
+
+  /// A list of CWE for this vulnerability.
+  ///
+  /// For details, see: https://cwe.mitre.org/index.html
+  core.List<core.String>? cwe;
 
   /// All information about the package to specifically identify this
   /// vulnerability.
@@ -5610,7 +5995,9 @@ class Vulnerability {
 
   Vulnerability({
     this.cvssScore,
+    this.cvssV2,
     this.cvssV3,
+    this.cwe,
     this.details,
     this.severity,
     this.sourceUpdateTime,
@@ -5622,9 +6009,18 @@ class Vulnerability {
           cvssScore: _json.containsKey('cvssScore')
               ? (_json['cvssScore'] as core.num).toDouble()
               : null,
+          cvssV2: _json.containsKey('cvssV2')
+              ? CVSS.fromJson(
+                  _json['cvssV2'] as core.Map<core.String, core.dynamic>)
+              : null,
           cvssV3: _json.containsKey('cvssV3')
               ? CVSSv3.fromJson(
                   _json['cvssV3'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cwe: _json.containsKey('cwe')
+              ? (_json['cwe'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           details: _json.containsKey('details')
               ? (_json['details'] as core.List)
@@ -5648,7 +6044,9 @@ class Vulnerability {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssV2 != null) 'cvssV2': cvssV2!,
         if (cvssV3 != null) 'cvssV3': cvssV3!,
+        if (cwe != null) 'cwe': cwe!,
         if (details != null) 'details': details!,
         if (severity != null) 'severity': severity!,
         if (sourceUpdateTime != null) 'sourceUpdateTime': sourceUpdateTime!,

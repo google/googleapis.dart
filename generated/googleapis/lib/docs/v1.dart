@@ -4832,6 +4832,12 @@ class ParagraphStyle {
   /// - "HEADING_6" : Heading 6.
   core.String? namedStyleType;
 
+  /// Whether the current paragraph should always start at the beginning of a
+  /// page.
+  ///
+  /// If unset, the value is inherited from the parent.
+  core.bool? pageBreakBefore;
+
   /// The shading of the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
@@ -4877,6 +4883,7 @@ class ParagraphStyle {
     this.keepWithNext,
     this.lineSpacing,
     this.namedStyleType,
+    this.pageBreakBefore,
     this.shading,
     this.spaceAbove,
     this.spaceBelow,
@@ -4942,6 +4949,9 @@ class ParagraphStyle {
           namedStyleType: _json.containsKey('namedStyleType')
               ? _json['namedStyleType'] as core.String
               : null,
+          pageBreakBefore: _json.containsKey('pageBreakBefore')
+              ? _json['pageBreakBefore'] as core.bool
+              : null,
           shading: _json.containsKey('shading')
               ? Shading.fromJson(
                   _json['shading'] as core.Map<core.String, core.dynamic>)
@@ -4983,6 +4993,7 @@ class ParagraphStyle {
         if (keepWithNext != null) 'keepWithNext': keepWithNext!,
         if (lineSpacing != null) 'lineSpacing': lineSpacing!,
         if (namedStyleType != null) 'namedStyleType': namedStyleType!,
+        if (pageBreakBefore != null) 'pageBreakBefore': pageBreakBefore!,
         if (shading != null) 'shading': shading!,
         if (spaceAbove != null) 'spaceAbove': spaceAbove!,
         if (spaceBelow != null) 'spaceBelow': spaceBelow!,
@@ -5044,6 +5055,9 @@ class ParagraphStyleSuggestionState {
   /// Indicates if there was a suggested change to named_style_type.
   core.bool? namedStyleTypeSuggested;
 
+  /// Indicates if there was a suggested change to page_break_before.
+  core.bool? pageBreakBeforeSuggested;
+
   /// A mask that indicates which of the fields in shading have been changed in
   /// this suggestion.
   ShadingSuggestionState? shadingSuggestionState;
@@ -5074,6 +5088,7 @@ class ParagraphStyleSuggestionState {
     this.keepWithNextSuggested,
     this.lineSpacingSuggested,
     this.namedStyleTypeSuggested,
+    this.pageBreakBeforeSuggested,
     this.shadingSuggestionState,
     this.spaceAboveSuggested,
     this.spaceBelowSuggested,
@@ -5133,6 +5148,10 @@ class ParagraphStyleSuggestionState {
           namedStyleTypeSuggested: _json.containsKey('namedStyleTypeSuggested')
               ? _json['namedStyleTypeSuggested'] as core.bool
               : null,
+          pageBreakBeforeSuggested:
+              _json.containsKey('pageBreakBeforeSuggested')
+                  ? _json['pageBreakBeforeSuggested'] as core.bool
+                  : null,
           shadingSuggestionState: _json.containsKey('shadingSuggestionState')
               ? ShadingSuggestionState.fromJson(_json['shadingSuggestionState']
                   as core.Map<core.String, core.dynamic>)
@@ -5181,6 +5200,8 @@ class ParagraphStyleSuggestionState {
           'lineSpacingSuggested': lineSpacingSuggested!,
         if (namedStyleTypeSuggested != null)
           'namedStyleTypeSuggested': namedStyleTypeSuggested!,
+        if (pageBreakBeforeSuggested != null)
+          'pageBreakBeforeSuggested': pageBreakBeforeSuggested!,
         if (shadingSuggestionState != null)
           'shadingSuggestionState': shadingSuggestionState!,
         if (spaceAboveSuggested != null)
@@ -5318,6 +5339,39 @@ class PersonProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Updates the number of pinned table header rows in a table.
+class PinTableHeaderRowsRequest {
+  /// The number of table rows to pin, where 0 implies that all rows are
+  /// unpinned.
+  core.int? pinnedHeaderRowsCount;
+
+  /// The location where the table starts in the document.
+  Location? tableStartLocation;
+
+  PinTableHeaderRowsRequest({
+    this.pinnedHeaderRowsCount,
+    this.tableStartLocation,
+  });
+
+  PinTableHeaderRowsRequest.fromJson(core.Map _json)
+      : this(
+          pinnedHeaderRowsCount: _json.containsKey('pinnedHeaderRowsCount')
+              ? _json['pinnedHeaderRowsCount'] as core.int
+              : null,
+          tableStartLocation: _json.containsKey('tableStartLocation')
+              ? Location.fromJson(_json['tableStartLocation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pinnedHeaderRowsCount != null)
+          'pinnedHeaderRowsCount': pinnedHeaderRowsCount!,
+        if (tableStartLocation != null)
+          'tableStartLocation': tableStartLocation!,
       };
 }
 
@@ -5827,6 +5881,9 @@ class Request {
   /// Merges cells in a table.
   MergeTableCellsRequest? mergeTableCells;
 
+  /// Updates the number of pinned header rows in a table.
+  PinTableHeaderRowsRequest? pinTableHeaderRows;
+
   /// Replaces all instances of the specified text.
   ReplaceAllTextRequest? replaceAllText;
 
@@ -5882,6 +5939,7 @@ class Request {
     this.insertTableRow,
     this.insertText,
     this.mergeTableCells,
+    this.pinTableHeaderRows,
     this.replaceAllText,
     this.replaceImage,
     this.replaceNamedRangeContent,
@@ -5984,6 +6042,10 @@ class Request {
               ? MergeTableCellsRequest.fromJson(_json['mergeTableCells']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          pinTableHeaderRows: _json.containsKey('pinTableHeaderRows')
+              ? PinTableHeaderRowsRequest.fromJson(_json['pinTableHeaderRows']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           replaceAllText: _json.containsKey('replaceAllText')
               ? ReplaceAllTextRequest.fromJson(_json['replaceAllText']
                   as core.Map<core.String, core.dynamic>)
@@ -6063,6 +6125,8 @@ class Request {
         if (insertTableRow != null) 'insertTableRow': insertTableRow!,
         if (insertText != null) 'insertText': insertText!,
         if (mergeTableCells != null) 'mergeTableCells': mergeTableCells!,
+        if (pinTableHeaderRows != null)
+          'pinTableHeaderRows': pinTableHeaderRows!,
         if (replaceAllText != null) 'replaceAllText': replaceAllText!,
         if (replaceImage != null) 'replaceImage': replaceImage!,
         if (replaceNamedRangeContent != null)
@@ -8146,8 +8210,16 @@ class TableRowStyle {
   /// cells.
   Dimension? minRowHeight;
 
+  /// Whether the row cannot overflow across page or column boundaries.
+  core.bool? preventOverflow;
+
+  /// Whether the row is a table header.
+  core.bool? tableHeader;
+
   TableRowStyle({
     this.minRowHeight,
+    this.preventOverflow,
+    this.tableHeader,
   });
 
   TableRowStyle.fromJson(core.Map _json)
@@ -8156,10 +8228,18 @@ class TableRowStyle {
               ? Dimension.fromJson(
                   _json['minRowHeight'] as core.Map<core.String, core.dynamic>)
               : null,
+          preventOverflow: _json.containsKey('preventOverflow')
+              ? _json['preventOverflow'] as core.bool
+              : null,
+          tableHeader: _json.containsKey('tableHeader')
+              ? _json['tableHeader'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (minRowHeight != null) 'minRowHeight': minRowHeight!,
+        if (preventOverflow != null) 'preventOverflow': preventOverflow!,
+        if (tableHeader != null) 'tableHeader': tableHeader!,
       };
 }
 

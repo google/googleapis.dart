@@ -287,6 +287,7 @@ api.BinaryAuthorization buildBinaryAuthorization() {
   buildCounterBinaryAuthorization++;
   if (buildCounterBinaryAuthorization < 3) {
     o.enabled = true;
+    o.evaluationMode = 'foo';
   }
   buildCounterBinaryAuthorization--;
   return o;
@@ -296,6 +297,10 @@ void checkBinaryAuthorization(api.BinaryAuthorization o) {
   buildCounterBinaryAuthorization++;
   if (buildCounterBinaryAuthorization < 3) {
     unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.evaluationMode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBinaryAuthorization--;
 }
@@ -2071,6 +2076,25 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
+core.int buildCounterManagedPrometheusConfig = 0;
+api.ManagedPrometheusConfig buildManagedPrometheusConfig() {
+  final o = api.ManagedPrometheusConfig();
+  buildCounterManagedPrometheusConfig++;
+  if (buildCounterManagedPrometheusConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterManagedPrometheusConfig--;
+  return o;
+}
+
+void checkManagedPrometheusConfig(api.ManagedPrometheusConfig o) {
+  buildCounterManagedPrometheusConfig++;
+  if (buildCounterManagedPrometheusConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterManagedPrometheusConfig--;
+}
+
 core.int buildCounterMasterAuth = 0;
 api.MasterAuth buildMasterAuth() {
   final o = api.MasterAuth();
@@ -2267,6 +2291,7 @@ api.MonitoringConfig buildMonitoringConfig() {
   buildCounterMonitoringConfig++;
   if (buildCounterMonitoringConfig < 3) {
     o.componentConfig = buildMonitoringComponentConfig();
+    o.managedPrometheusConfig = buildManagedPrometheusConfig();
   }
   buildCounterMonitoringConfig--;
   return o;
@@ -2276,6 +2301,7 @@ void checkMonitoringConfig(api.MonitoringConfig o) {
   buildCounterMonitoringConfig++;
   if (buildCounterMonitoringConfig < 3) {
     checkMonitoringComponentConfig(o.componentConfig!);
+    checkManagedPrometheusConfig(o.managedPrometheusConfig!);
   }
   buildCounterMonitoringConfig--;
 }
@@ -2325,6 +2351,28 @@ void checkNetworkConfig(api.NetworkConfig o) {
     );
   }
   buildCounterNetworkConfig--;
+}
+
+core.int buildCounterNetworkPerformanceConfig = 0;
+api.NetworkPerformanceConfig buildNetworkPerformanceConfig() {
+  final o = api.NetworkPerformanceConfig();
+  buildCounterNetworkPerformanceConfig++;
+  if (buildCounterNetworkPerformanceConfig < 3) {
+    o.totalEgressBandwidthTier = 'foo';
+  }
+  buildCounterNetworkPerformanceConfig--;
+  return o;
+}
+
+void checkNetworkPerformanceConfig(api.NetworkPerformanceConfig o) {
+  buildCounterNetworkPerformanceConfig++;
+  if (buildCounterNetworkPerformanceConfig < 3) {
+    unittest.expect(
+      o.totalEgressBandwidthTier!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNetworkPerformanceConfig--;
 }
 
 core.int buildCounterNetworkPolicy = 0;
@@ -2710,6 +2758,7 @@ api.NodeNetworkConfig buildNodeNetworkConfig() {
   buildCounterNodeNetworkConfig++;
   if (buildCounterNodeNetworkConfig < 3) {
     o.createPodRange = true;
+    o.networkPerformanceConfig = buildNetworkPerformanceConfig();
     o.podIpv4CidrBlock = 'foo';
     o.podRange = 'foo';
   }
@@ -2721,6 +2770,7 @@ void checkNodeNetworkConfig(api.NodeNetworkConfig o) {
   buildCounterNodeNetworkConfig++;
   if (buildCounterNodeNetworkConfig < 3) {
     unittest.expect(o.createPodRange!, unittest.isTrue);
+    checkNetworkPerformanceConfig(o.networkPerformanceConfig!);
     unittest.expect(
       o.podIpv4CidrBlock!,
       unittest.equals('foo'),
@@ -5278,6 +5328,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ManagedPrometheusConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildManagedPrometheusConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ManagedPrometheusConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkManagedPrometheusConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-MasterAuth', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMasterAuth();
@@ -5355,6 +5415,16 @@ void main() {
       final od = api.NetworkConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkNetworkConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-NetworkPerformanceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNetworkPerformanceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkPerformanceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNetworkPerformanceConfig(od);
     });
   });
 

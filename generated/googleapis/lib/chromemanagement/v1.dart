@@ -525,6 +525,42 @@ class CustomersTelemetryDevicesResource {
   CustomersTelemetryDevicesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Get telemetry device.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `TelemetryDevice` to return.
+  /// Value must have pattern `^customers/\[^/\]+/telemetry/devices/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1TelemetryDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1TelemetryDevice> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1TelemetryDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// List all telemetry devices.
   ///
   /// Request parameters:
@@ -537,7 +573,7 @@ class CustomersTelemetryDevicesResource {
   /// Supported filter fields: - org_unit_id - serial_number - device_id
   ///
   /// [pageSize] - Maximum number of results to return. Default value is 100.
-  /// Maximum value is 200.
+  /// Maximum value is 1000.
   ///
   /// [pageToken] - Token to specify next page in the list.
   ///
@@ -1226,7 +1262,7 @@ class GoogleChromeManagementV1BrowserVersion {
   /// - "SYSTEM_OTHER" : Other operating system.
   /// - "SYSTEM_ANDROID" : Android operating system.
   /// - "SYSTEM_IOS" : Apple iOS operating system.
-  /// - "SYSTEM_CROS" : Chrome OS operating system.
+  /// - "SYSTEM_CROS" : ChromeOS operating system.
   /// - "SYSTEM_WINDOWS" : Microsoft Windows operating system.
   /// - "SYSTEM_MAC" : Apple macOS operating system.
   /// - "SYSTEM_LINUX" : Linux operating system.
@@ -1288,7 +1324,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? isCwsHosted;
 
-  /// Whether the app is only for Kiosk mode on Chrome OS devices
+  /// Whether the app is only for Kiosk mode on ChromeOS devices
   ///
   /// Output only.
   core.bool? isKioskOnly;
@@ -1298,7 +1334,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? isTheme;
 
-  /// Whether this app is enabled for Kiosk mode on Chrome OS devices
+  /// Whether this app is enabled for Kiosk mode on ChromeOS devices
   ///
   /// Output only.
   core.bool? kioskEnabled;
@@ -2709,7 +2745,7 @@ class GoogleChromeManagementV1StorageInfoDiskVolume {
 
 /// Status data for storage.
 class GoogleChromeManagementV1StorageStatusReport {
-  /// Reports on disk
+  /// Reports on disk.
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1DiskInfo>? disk;
@@ -2780,7 +2816,7 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// The unique Directory API ID of the device.
   ///
   /// This value is the same as the Admin Console's Directory API ID in the
-  /// Chrome OS Devices tab
+  /// ChromeOS Devices tab
   ///
   /// Output only.
   core.String? deviceId;
@@ -2828,8 +2864,8 @@ class GoogleChromeManagementV1TelemetryDevice {
 
   /// Device serial number.
   ///
-  /// This value is the same as the Admin Console's Serial Number in the Chrome
-  /// OS Devices tab.
+  /// This value is the same as the Admin Console's Serial Number in the
+  /// ChromeOS Devices tab.
   ///
   /// Output only.
   core.String? serialNumber;

@@ -6333,6 +6333,7 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
   if (buildCounterGoogleCloudApigeeV1Organization < 3) {
     o.addonsConfig = buildGoogleCloudApigeeV1AddonsConfig();
     o.analyticsRegion = 'foo';
+    o.apigeeProjectId = 'foo';
     o.attributes = buildUnnamed125();
     o.authorizedNetwork = 'foo';
     o.billingType = 'foo';
@@ -6365,6 +6366,10 @@ void checkGoogleCloudApigeeV1Organization(
     checkGoogleCloudApigeeV1AddonsConfig(o.addonsConfig!);
     unittest.expect(
       o.analyticsRegion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.apigeeProjectId!,
       unittest.equals('foo'),
     );
     checkUnnamed125(o.attributes!);
@@ -11597,6 +11602,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ApigeeApi(mock).organizations;
       final arg_name = 'foo';
+      final arg_retention = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -11631,6 +11637,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['retention']!.first,
+          unittest.equals(arg_retention),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -11641,7 +11651,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(arg_name,
+          retention: arg_retention, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
           response as api.GoogleLongrunningOperation);
     });

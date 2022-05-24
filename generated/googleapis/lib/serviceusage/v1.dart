@@ -1444,7 +1444,67 @@ class Method {
 ///
 /// Binding a method to a metric causes that metric's configured quota behaviors
 /// to apply to the method call.
-typedef MetricRule = $MetricRule;
+class MetricRule {
+  /// Metrics to update when the selected methods are called.
+  ///
+  /// The key of the map is the metric name, the value is the DynamicCostType to
+  /// specify how to calculate the cost from the request. The cost amount will
+  /// be increased for the metric against which the quota limits are defined. It
+  /// is only implemented in CloudESF(go/cloudesf)
+  core.Map<core.String, core.String>? dynamicMetricCosts;
+
+  /// Metrics to update when the selected methods are called, and the associated
+  /// cost applied to each metric.
+  ///
+  /// The key of the map is the metric name, and the values are the amount
+  /// increased for the metric against which the quota limits are defined. The
+  /// value must not be negative.
+  core.Map<core.String, core.String>? metricCosts;
+
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
+  core.String? selector;
+
+  MetricRule({
+    this.dynamicMetricCosts,
+    this.metricCosts,
+    this.selector,
+  });
+
+  MetricRule.fromJson(core.Map _json)
+      : this(
+          dynamicMetricCosts: _json.containsKey('dynamicMetricCosts')
+              ? (_json['dynamicMetricCosts']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          metricCosts: _json.containsKey('metricCosts')
+              ? (_json['metricCosts'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          selector: _json.containsKey('selector')
+              ? _json['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicMetricCosts != null)
+          'dynamicMetricCosts': dynamicMetricCosts!,
+        if (metricCosts != null) 'metricCosts': metricCosts!,
+        if (selector != null) 'selector': selector!,
+      };
+}
 
 /// Declares an API Interface to be included in this interface.
 ///

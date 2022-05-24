@@ -2053,10 +2053,10 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   /// that it originates from.
   core.Map<core.String, core.String>? metadata;
 
-  /// Name of the query record.
+  /// The name of the answer record.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/queryRecords/{query_record}
+  /// projects/{project}/locations/{location}/answerRecords/{answer_record}
   core.String? queryRecord;
 
   /// The knowledge document that this answer was extracted from.
@@ -3477,10 +3477,10 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerData {
   /// originates from.
   core.Map<core.String, core.String>? metadata;
 
-  /// Name of the query record.
+  /// The name of the answer record.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/queryRecords/{query_record}.
+  /// projects/{project}/locations/{location}/answerRecords/{answer_record}
   core.String? queryRecord;
 
   /// The corresponding FAQ question.
@@ -4764,10 +4764,10 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   /// document from which it originates.
   core.Map<core.String, core.String>? metadata;
 
-  /// Name of the query record.
+  /// The name of the answer record.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/queryRecords/{query_record}
+  /// projects/{project}/locations/{location}/answerRecords/{answer_record}
   core.String? queryRecord;
 
   /// The content of the suggestion.
@@ -4821,10 +4821,10 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
   /// which it originates.
   core.Map<core.String, core.String>? metadata;
 
-  /// Name of the query record.
+  /// The name of the answer record.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/queryRecords/{query_record}
+  /// projects/{project}/locations/{location}/answerRecords/{answer_record}
   core.String? queryRecord;
 
   /// The content of the reply.

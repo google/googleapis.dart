@@ -472,6 +472,7 @@ class $Date {
 /// - factchecktools:v1alpha1 : GoogleProtobufEmpty
 /// - firebase:v1beta1 : Empty
 /// - firebaseappcheck:v1beta : GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
+/// - firebaseappcheck:v1beta : GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest
 /// - firebaseappcheck:v1beta : GoogleProtobufEmpty
 /// - firebasedatabase:v1beta : DisableDatabaseInstanceRequest
 /// - firebasedatabase:v1beta : ReenableDatabaseInstanceRequest
@@ -548,6 +549,38 @@ class $Entry {
 
 /// Used by:
 ///
+/// - containeranalysis:v1beta1 : EnvelopeSignature
+/// - ondemandscanning:v1beta1 : EnvelopeSignature
+class $EnvelopeSignature {
+  core.String? keyid;
+  core.String? sig;
+  core.List<core.int> get sigAsBytes => convert.base64.decode(sig!);
+
+  set sigAsBytes(core.List<core.int> _bytes) {
+    sig =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  $EnvelopeSignature({
+    this.keyid,
+    this.sig,
+  });
+
+  $EnvelopeSignature.fromJson(core.Map _json)
+      : this(
+          keyid:
+              _json.containsKey('keyid') ? _json['keyid'] as core.String : null,
+          sig: _json.containsKey('sig') ? _json['sig'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyid != null) 'keyid': keyid!,
+        if (sig != null) 'sig': sig!,
+      };
+}
+
+/// Used by:
+///
 /// - bigqueryconnection:v1beta1 : Expr
 /// - cloudfunctions:v2beta : Expr
 /// - containeranalysis:v1beta1 : Expr
@@ -611,6 +644,31 @@ class $Expr {
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// Used by:
+///
+/// - ondemandscanning:v1beta1 : FileLocation
+/// - ondemandscanning:v1beta1 : GrafeasV1FileLocation
+class $FileLocation {
+  /// For jars that are contained inside .war files, this filepath can indicate
+  /// the path to war file combined with the path to jar file.
+  core.String? filePath;
+
+  $FileLocation({
+    this.filePath,
+  });
+
+  $FileLocation.fromJson(core.Map _json)
+      : this(
+          filePath: _json.containsKey('filePath')
+              ? _json['filePath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filePath != null) 'filePath': filePath!,
       };
 }
 
@@ -734,6 +792,42 @@ class $GitSourceContext {
 
 /// Used by:
 ///
+/// - containeranalysis:v1beta1 : License
+/// - ondemandscanning:v1beta1 : License
+class $License {
+  /// Comments
+  core.String? comments;
+
+  /// Often a single license can be used to represent the licensing terms.
+  ///
+  /// Sometimes it is necessary to include a choice of one or more licenses or
+  /// some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT",
+  /// "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+  core.String? expression;
+
+  $License({
+    this.comments,
+    this.expression,
+  });
+
+  $License.fromJson(core.Map _json)
+      : this(
+          comments: _json.containsKey('comments')
+              ? _json['comments'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comments != null) 'comments': comments!,
+        if (expression != null) 'expression': expression!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudfunctions:v2beta : Location
 /// - datastream:v1alpha1 : Location
 /// - documentai:v1beta3 : GoogleCloudLocationLocation
@@ -809,6 +903,38 @@ class $Location {
         if (locationId != null) 'locationId': locationId!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Used by:
+///
+/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenance_0_2SlsaMaterial
+/// - ondemandscanning:v1beta1 : Material
+class $Material {
+  core.Map<core.String, core.String>? digest;
+  core.String? uri;
+
+  $Material({
+    this.digest,
+    this.uri,
+  });
+
+  $Material.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2028,16 +2154,38 @@ class $Shared00 {
 
 /// Used by:
 ///
-/// - containeranalysis:v1beta1 : ByProducts
-/// - containeranalysis:v1beta1 : Environment
+/// - ondemandscanning:v1beta1 : BuilderConfig
+/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenance_0_2SlsaBuilder
+/// - ondemandscanning:v1beta1 : SlsaBuilder
 class $Shared01 {
-  core.Map<core.String, core.String>? customValues;
+  core.String? id;
 
   $Shared01({
-    this.customValues,
+    this.id,
   });
 
   $Shared01.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1beta1 : ByProducts
+/// - containeranalysis:v1beta1 : Environment
+class $Shared02 {
+  core.Map<core.String, core.String>? customValues;
+
+  $Shared02({
+    this.customValues,
+  });
+
+  $Shared02.fromJson(core.Map _json)
       : this(
           customValues: _json.containsKey('customValues')
               ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
@@ -2059,7 +2207,7 @@ class $Shared01 {
 ///
 /// - containeranalysis:v1beta1 : Deployment
 /// - ondemandscanning:v1beta1 : DeploymentOccurrence
-class $Shared02 {
+class $Shared03 {
   /// Address of the runtime element hosting this deployment.
   core.String? address;
 
@@ -2091,7 +2239,7 @@ class $Shared02 {
   /// Identity of the user that triggered this deployment.
   core.String? userEmail;
 
-  $Shared02({
+  $Shared03({
     this.address,
     this.config,
     this.deployTime,
@@ -2101,7 +2249,7 @@ class $Shared02 {
     this.userEmail,
   });
 
-  $Shared02.fromJson(core.Map _json)
+  $Shared03.fromJson(core.Map _json)
       : this(
           address: _json.containsKey('address')
               ? _json['address'] as core.String
@@ -2136,27 +2284,6 @@ class $Shared02 {
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (undeployTime != null) 'undeployTime': undeployTime!,
         if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
-
-/// Used by:
-///
-/// - ondemandscanning:v1beta1 : BuilderConfig
-/// - ondemandscanning:v1beta1 : SlsaBuilder
-class $Shared03 {
-  core.String? id;
-
-  $Shared03({
-    this.id,
-  });
-
-  $Shared03.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
       };
 }
 
@@ -2330,12 +2457,12 @@ class $Status {
 /// - containeranalysis:v1beta1 : TestIamPermissionsRequest
 /// - datacatalog:v1beta1 : TestIamPermissionsRequest
 /// - domains:v1beta1 : TestIamPermissionsRequest
-/// - networksecurity:v1beta1 : GoogleIamV1TestIamPermissionsRequest
+/// - networkconnectivity:v1alpha1 : TestIamPermissionsRequest
 /// - privateca:v1beta1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;

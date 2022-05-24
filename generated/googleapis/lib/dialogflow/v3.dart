@@ -10645,8 +10645,18 @@ class GoogleCloudDialogflowCxV3QueryResult {
 
   /// The free-form diagnostic info.
   ///
-  /// For example, this field could contain webhook call latency. The string
-  /// keys of the Struct's fields map can change without notice.
+  /// For example, this field could contain webhook call latency. The fields of
+  /// this data can change without notice, so you should not write code that
+  /// depends on its structure. One of the fields is called "Alternative Matched
+  /// Intents", which may aid with debugging. The following describes these
+  /// intent results: - The list is empty if no intent was matched to end-user
+  /// input. - Only intents that are referenced in the currently active flow are
+  /// included. - The matched intent is included. - Other intents that could
+  /// have matched end-user input, but did not match because they are referenced
+  /// by intent routes that are out of
+  /// [scope](https://cloud.google.com/dialogflow/cx/docs/concept/handler#scope),
+  /// are included. - Other intents referenced by intent routes in scope that
+  /// matched end-user input, but had a lower confidence score.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11538,6 +11548,20 @@ class GoogleCloudDialogflowCxV3RunTestCaseRequest {
 /// It may take hours for updates on the settings to propagate to all the
 /// related components and take effect.
 class GoogleCloudDialogflowCxV3SecuritySettings {
+  /// Controls audio export settings for post-conversation analytics when
+  /// ingesting audio to conversations via Participants.AnalyzeContent or
+  /// Participants.StreamingAnalyzeContent.
+  ///
+  /// If retention_strategy is set to REMOVE_AFTER_CONVERSATION or
+  /// audio_export_settings.gcs_bucket is empty, audio export is disabled. If
+  /// audio export is enabled, audio is recorded and saved to
+  /// audio_export_settings.gcs_bucket, subject to retention policy of
+  /// audio_export_settings.gcs_bucket. This setting won't effect audio input
+  /// for implicit sessions via Sessions.DetectIntent or
+  /// Sessions.StreamingDetectIntent.
+  GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings?
+      audioExportSettings;
+
   /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name.
   ///
   /// Use this template to define de-identification configuration for the
@@ -11618,6 +11642,7 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   core.int? retentionWindowDays;
 
   GoogleCloudDialogflowCxV3SecuritySettings({
+    this.audioExportSettings,
     this.deidentifyTemplate,
     this.displayName,
     this.insightsExportSettings,
@@ -11631,6 +11656,11 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
 
   GoogleCloudDialogflowCxV3SecuritySettings.fromJson(core.Map _json)
       : this(
+          audioExportSettings: _json.containsKey('audioExportSettings')
+              ? GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings
+                  .fromJson(_json['audioExportSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           deidentifyTemplate: _json.containsKey('deidentifyTemplate')
               ? _json['deidentifyTemplate'] as core.String
               : null,
@@ -11663,6 +11693,8 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (audioExportSettings != null)
+          'audioExportSettings': audioExportSettings!,
         if (deidentifyTemplate != null)
           'deidentifyTemplate': deidentifyTemplate!,
         if (displayName != null) 'displayName': displayName!,
@@ -11675,6 +11707,64 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
         if (redactionStrategy != null) 'redactionStrategy': redactionStrategy!,
         if (retentionWindowDays != null)
           'retentionWindowDays': retentionWindowDays!,
+      };
+}
+
+/// Settings for exporting audio.
+class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
+  /// Filename pattern for exported audio.
+  core.String? audioExportPattern;
+
+  /// File format for exported audio file.
+  ///
+  /// Currently only in telephony recordings.
+  /// Possible string values are:
+  /// - "AUDIO_FORMAT_UNSPECIFIED" : Unspecified. Do not use.
+  /// - "MULAW" : G.711 mu-law PCM with 8kHz sample rate.
+  /// - "MP3" : MP3 file format.
+  /// - "OGG" : OGG Vorbis.
+  core.String? audioFormat;
+
+  /// Enable audio redaction if it is true.
+  core.bool? enableAudioRedaction;
+
+  /// Cloud Storage bucket to export audio record to.
+  ///
+  /// You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the
+  /// `Storage Object Admin` role in this bucket.
+  core.String? gcsBucket;
+
+  GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings({
+    this.audioExportPattern,
+    this.audioFormat,
+    this.enableAudioRedaction,
+    this.gcsBucket,
+  });
+
+  GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings.fromJson(
+      core.Map _json)
+      : this(
+          audioExportPattern: _json.containsKey('audioExportPattern')
+              ? _json['audioExportPattern'] as core.String
+              : null,
+          audioFormat: _json.containsKey('audioFormat')
+              ? _json['audioFormat'] as core.String
+              : null,
+          enableAudioRedaction: _json.containsKey('enableAudioRedaction')
+              ? _json['enableAudioRedaction'] as core.bool
+              : null,
+          gcsBucket: _json.containsKey('gcsBucket')
+              ? _json['gcsBucket'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audioExportPattern != null)
+          'audioExportPattern': audioExportPattern!,
+        if (audioFormat != null) 'audioFormat': audioFormat!,
+        if (enableAudioRedaction != null)
+          'enableAudioRedaction': enableAudioRedaction!,
+        if (gcsBucket != null) 'gcsBucket': gcsBucket!,
       };
 }
 

@@ -470,6 +470,7 @@ api.ExecutionConfig buildExecutionConfig() {
   if (buildCounterExecutionConfig < 3) {
     o.artifactStorage = 'foo';
     o.defaultPool = buildDefaultPool();
+    o.executionTimeout = 'foo';
     o.privatePool = buildPrivatePool();
     o.serviceAccount = 'foo';
     o.usages = buildUnnamed6();
@@ -487,6 +488,10 @@ void checkExecutionConfig(api.ExecutionConfig o) {
       unittest.equals('foo'),
     );
     checkDefaultPool(o.defaultPool!);
+    unittest.expect(
+      o.executionTimeout!,
+      unittest.equals('foo'),
+    );
     checkPrivatePool(o.privatePool!);
     unittest.expect(
       o.serviceAccount!,

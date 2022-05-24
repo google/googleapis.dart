@@ -14,8 +14,8 @@
 
 /// Enterprise License Manager API - v1
 ///
-/// The Google Enterprise License Manager API's allows you to license apps for
-/// all the users of a domain managed by you.
+/// The Google Enterprise License Manager API lets you manage Google Workspace
+/// and related licenses for all users of a customer that you manage.
 ///
 /// For more information, see
 /// <https://developers.google.com/admin-sdk/licensing/>
@@ -39,8 +39,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Google Enterprise License Manager API's allows you to license apps for
-/// all the users of a domain managed by you.
+/// The Google Enterprise License Manager API lets you manage Google Workspace
+/// and related licenses for all users of a customer that you manage.
 class LicensingApi {
   /// View and manage G Suite licenses for your domain
   static const appsLicensingScope =
@@ -222,9 +222,9 @@ class LicenseAssignmentsResource {
   /// [productId] - A product's unique identifier. For more information about
   /// products in this version of the API, see Products and SKUs.
   ///
-  /// [customerId] - Customer's `customerId`. A previous version of this API
-  /// accepted the primary domain name as a value for this field. If the
-  /// customer is suspended, the server returns an error.
+  /// [customerId] - The customer's unique ID as defined in the Admin console,
+  /// such as `C00000000`. If the customer is suspended, the server returns an
+  /// error.
   ///
   /// [maxResults] - The `maxResults` query string determines how many entries
   /// are returned on each page of a large response. This is an optional
@@ -283,9 +283,9 @@ class LicenseAssignmentsResource {
   /// [skuId] - A product SKU's unique identifier. For more information about
   /// available SKUs in this version of the API, see Products and SKUs.
   ///
-  /// [customerId] - Customer's `customerId`. A previous version of this API
-  /// accepted the primary domain name as a value for this field. If the
-  /// customer is suspended, the server returns an error.
+  /// [customerId] - The customer's unique ID as defined in the Admin console,
+  /// such as `C00000000`. If the customer is suspended, the server returns an
+  /// error.
   ///
   /// [maxResults] - The `maxResults` query string determines how many entries
   /// are returned on each page of a large response. This is an optional

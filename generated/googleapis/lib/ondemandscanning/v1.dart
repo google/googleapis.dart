@@ -762,10 +762,8 @@ typedef BuilderConfig = $Shared00;
 /// Common Vulnerability Scoring System.
 ///
 /// For details, see https://www.first.org/cvss/specification-document This is a
-/// message we will try to use for storing multiple versions of CVSS. The
-/// intention is that as new versions of CVSS scores get added, we will be able
-/// to modify this message rather than adding new protos for each new version of
-/// the score.
+/// message we will try to use for storing various versions of CVSS rather than
+/// making a separate proto for storing a specific version.
 typedef CVSS = $CVSS;
 
 /// The category to which the update belongs.
@@ -1046,6 +1044,9 @@ class FileHashes {
       };
 }
 
+/// Indicates the location at which a package was found.
+typedef FileLocation = $FileLocation;
+
 /// A set of properties that uniquely identify a given Docker image.
 typedef Fingerprint = $Fingerprint;
 
@@ -1101,6 +1102,175 @@ class GerritSourceContext {
 /// A GitSourceContext denotes a particular revision in a third party Git
 /// repository (e.g., GitHub).
 typedef GitSourceContext = $GitSourceContext;
+
+/// Indicates the location at which a package was found.
+typedef GrafeasV1FileLocation = $FileLocation;
+
+/// Identifies the entity that executed the recipe, which is trusted to have
+/// correctly performed the operation and populated this provenance.
+typedef GrafeasV1SlsaProvenance02SlsaBuilder = $Shared00;
+
+/// Indicates that the builder claims certain fields in this message to be
+/// complete.
+class GrafeasV1SlsaProvenance02SlsaCompleteness {
+  core.bool? environment;
+  core.bool? materials;
+  core.bool? parameters;
+
+  GrafeasV1SlsaProvenance02SlsaCompleteness({
+    this.environment,
+    this.materials,
+    this.parameters,
+  });
+
+  GrafeasV1SlsaProvenance02SlsaCompleteness.fromJson(core.Map _json)
+      : this(
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.bool
+              : null,
+          materials: _json.containsKey('materials')
+              ? _json['materials'] as core.bool
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? _json['parameters'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (environment != null) 'environment': environment!,
+        if (materials != null) 'materials': materials!,
+        if (parameters != null) 'parameters': parameters!,
+      };
+}
+
+/// Describes where the config file that kicked off the build came from.
+///
+/// This is effectively a pointer to the source where buildConfig came from.
+class GrafeasV1SlsaProvenance02SlsaConfigSource {
+  core.Map<core.String, core.String>? digest;
+  core.String? entryPoint;
+  core.String? uri;
+
+  GrafeasV1SlsaProvenance02SlsaConfigSource({
+    this.digest,
+    this.entryPoint,
+    this.uri,
+  });
+
+  GrafeasV1SlsaProvenance02SlsaConfigSource.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          entryPoint: _json.containsKey('entryPoint')
+              ? _json['entryPoint'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (entryPoint != null) 'entryPoint': entryPoint!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Identifies the event that kicked off the build.
+class GrafeasV1SlsaProvenance02SlsaInvocation {
+  GrafeasV1SlsaProvenance02SlsaConfigSource? configSource;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? environment;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+
+  GrafeasV1SlsaProvenance02SlsaInvocation({
+    this.configSource,
+    this.environment,
+    this.parameters,
+  });
+
+  GrafeasV1SlsaProvenance02SlsaInvocation.fromJson(core.Map _json)
+      : this(
+          configSource: _json.containsKey('configSource')
+              ? GrafeasV1SlsaProvenance02SlsaConfigSource.fromJson(
+                  _json['configSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.Map<core.String, core.dynamic>
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configSource != null) 'configSource': configSource!,
+        if (environment != null) 'environment': environment!,
+        if (parameters != null) 'parameters': parameters!,
+      };
+}
+
+/// The collection of artifacts that influenced the build including sources,
+/// dependencies, build tools, base images, and so on.
+typedef GrafeasV1SlsaProvenance02SlsaMaterial = $Material;
+
+/// Other properties of the build.
+class GrafeasV1SlsaProvenance02SlsaMetadata {
+  core.String? buildFinishedOn;
+  core.String? buildInvocationId;
+  core.String? buildStartedOn;
+  GrafeasV1SlsaProvenance02SlsaCompleteness? completeness;
+  core.bool? reproducible;
+
+  GrafeasV1SlsaProvenance02SlsaMetadata({
+    this.buildFinishedOn,
+    this.buildInvocationId,
+    this.buildStartedOn,
+    this.completeness,
+    this.reproducible,
+  });
+
+  GrafeasV1SlsaProvenance02SlsaMetadata.fromJson(core.Map _json)
+      : this(
+          buildFinishedOn: _json.containsKey('buildFinishedOn')
+              ? _json['buildFinishedOn'] as core.String
+              : null,
+          buildInvocationId: _json.containsKey('buildInvocationId')
+              ? _json['buildInvocationId'] as core.String
+              : null,
+          buildStartedOn: _json.containsKey('buildStartedOn')
+              ? _json['buildStartedOn'] as core.String
+              : null,
+          completeness: _json.containsKey('completeness')
+              ? GrafeasV1SlsaProvenance02SlsaCompleteness.fromJson(
+                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reproducible: _json.containsKey('reproducible')
+              ? _json['reproducible'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildFinishedOn != null) 'buildFinishedOn': buildFinishedOn!,
+        if (buildInvocationId != null) 'buildInvocationId': buildInvocationId!,
+        if (buildStartedOn != null) 'buildStartedOn': buildStartedOn!,
+        if (completeness != null) 'completeness': completeness!,
+        if (reproducible != null) 'reproducible': reproducible!,
+      };
+}
 
 /// Container message for hash values.
 typedef Hash = $Hash;
@@ -1236,6 +1406,7 @@ class InTotoStatement {
   core.String? predicateType;
   InTotoProvenance? provenance;
   SlsaProvenance? slsaProvenance;
+  SlsaProvenance02? slsaProvenance02;
   core.List<Subject>? subject;
 
   InTotoStatement({
@@ -1243,6 +1414,7 @@ class InTotoStatement {
     this.predicateType,
     this.provenance,
     this.slsaProvenance,
+    this.slsaProvenance02,
     this.subject,
   });
 
@@ -1261,6 +1433,10 @@ class InTotoStatement {
               ? SlsaProvenance.fromJson(_json['slsaProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          slsaProvenance02: _json.containsKey('slsaProvenance02')
+              ? SlsaProvenance02.fromJson(_json['slsaProvenance02']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           subject: _json.containsKey('subject')
               ? (_json['subject'] as core.List)
                   .map((value) => Subject.fromJson(
@@ -1274,6 +1450,7 @@ class InTotoStatement {
         if (predicateType != null) 'predicateType': predicateType!,
         if (provenance != null) 'provenance': provenance!,
         if (slsaProvenance != null) 'slsaProvenance': slsaProvenance!,
+        if (slsaProvenance02 != null) 'slsaProvenance02': slsaProvenance02!,
         if (subject != null) 'subject': subject!,
       };
 }
@@ -1282,6 +1459,9 @@ typedef Jwt = $Jwt;
 
 /// Layer holds metadata specific to a layer of a Docker image.
 typedef Layer = $Layer;
+
+/// License information.
+typedef License = $License;
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
@@ -1354,16 +1534,17 @@ class ListVulnerabilitiesResponseV1 {
 ///
 /// E.g., glibc was found in `/var/lib/dpkg/status`.
 class Location {
-  /// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting
-  /// the package manager version distributing a package.
+  /// The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   ///
-  /// Required.
+  /// Deprecated.
   core.String? cpeUri;
 
   /// The path from which we gathered that this package/version is installed.
   core.String? path;
 
   /// The version installed at this location.
+  ///
+  /// Deprecated.
   Version? version;
 
   Location({
@@ -1742,6 +1923,15 @@ class PackageData {
   /// Examples include distro or storage location for vulnerable jar.
   core.String? cpeUri;
 
+  /// The path to the jar file / go binary file.
+  core.List<FileLocation>? fileLocation;
+
+  /// HashDigest stores the SHA512 hash digest of the jar file if the package is
+  /// of type Maven.
+  ///
+  /// This field will be unset for non Maven packages.
+  core.String? hashDigest;
+
   /// The OS affected by a vulnerability This field is deprecated and the
   /// information is in cpe_uri
   core.String? os;
@@ -1768,6 +1958,8 @@ class PackageData {
 
   PackageData({
     this.cpeUri,
+    this.fileLocation,
+    this.hashDigest,
     this.os,
     this.osVersion,
     this.package,
@@ -1780,6 +1972,15 @@ class PackageData {
       : this(
           cpeUri: _json.containsKey('cpeUri')
               ? _json['cpeUri'] as core.String
+              : null,
+          fileLocation: _json.containsKey('fileLocation')
+              ? (_json['fileLocation'] as core.List)
+                  .map((value) => FileLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          hashDigest: _json.containsKey('hashDigest')
+              ? _json['hashDigest'] as core.String
               : null,
           os: _json.containsKey('os') ? _json['os'] as core.String : null,
           osVersion: _json.containsKey('osVersion')
@@ -1801,6 +2002,8 @@ class PackageData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (fileLocation != null) 'fileLocation': fileLocation!,
+        if (hashDigest != null) 'hashDigest': hashDigest!,
         if (os != null) 'os': os!,
         if (osVersion != null) 'osVersion': osVersion!,
         if (package != null) 'package': package!,
@@ -1844,6 +2047,9 @@ class PackageIssue {
   /// - "CRITICAL" : Critical severity.
   core.String? effectiveSeverity;
 
+  /// The location at which this package was found.
+  core.List<GrafeasV1FileLocation>? fileLocation;
+
   /// Whether a fix is available for this package.
   ///
   /// Output only.
@@ -1875,6 +2081,7 @@ class PackageIssue {
     this.affectedPackage,
     this.affectedVersion,
     this.effectiveSeverity,
+    this.fileLocation,
     this.fixAvailable,
     this.fixedCpeUri,
     this.fixedPackage,
@@ -1896,6 +2103,12 @@ class PackageIssue {
               : null,
           effectiveSeverity: _json.containsKey('effectiveSeverity')
               ? _json['effectiveSeverity'] as core.String
+              : null,
+          fileLocation: _json.containsKey('fileLocation')
+              ? (_json['fileLocation'] as core.List)
+                  .map((value) => GrafeasV1FileLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           fixAvailable: _json.containsKey('fixAvailable')
               ? _json['fixAvailable'] as core.bool
@@ -1920,6 +2133,7 @@ class PackageIssue {
         if (affectedPackage != null) 'affectedPackage': affectedPackage!,
         if (affectedVersion != null) 'affectedVersion': affectedVersion!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
+        if (fileLocation != null) 'fileLocation': fileLocation!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri!,
         if (fixedPackage != null) 'fixedPackage': fixedPackage!,
@@ -1930,24 +2144,71 @@ class PackageIssue {
 
 /// Details on how a particular software package was installed on a system.
 class PackageOccurrence {
+  /// The CPU architecture for which packages in this distribution channel were
+  /// built.
+  ///
+  /// Architecture will be blank for language packages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Unknown architecture.
+  /// - "X86" : X86 architecture.
+  /// - "X64" : X64 architecture.
+  core.String? architecture;
+
+  /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting
+  /// the package manager version distributing a package.
+  ///
+  /// The cpe_uri will be blank for language packages.
+  ///
+  /// Output only.
+  core.String? cpeUri;
+
+  /// Licenses that have been declared by the authors of the package.
+  License? license;
+
   /// All of the places within the filesystem versions of this package have been
   /// found.
-  ///
-  /// Required.
   core.List<Location>? location;
 
   /// The name of the installed package.
   ///
-  /// Output only.
+  /// Required. Output only.
   core.String? name;
 
+  /// The type of package; whether native or non native (e.g., ruby gems,
+  /// node.js packages, etc.).
+  ///
+  /// Output only.
+  core.String? packageType;
+
+  /// The version of the package.
+  ///
+  /// Output only.
+  Version? version;
+
   PackageOccurrence({
+    this.architecture,
+    this.cpeUri,
+    this.license,
     this.location,
     this.name,
+    this.packageType,
+    this.version,
   });
 
   PackageOccurrence.fromJson(core.Map _json)
       : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          cpeUri: _json.containsKey('cpeUri')
+              ? _json['cpeUri'] as core.String
+              : null,
+          license: _json.containsKey('license')
+              ? License.fromJson(
+                  _json['license'] as core.Map<core.String, core.dynamic>)
+              : null,
           location: _json.containsKey('location')
               ? (_json['location'] as core.List)
                   .map((value) => Location.fromJson(
@@ -1955,11 +2216,23 @@ class PackageOccurrence {
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? Version.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (license != null) 'license': license!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
+        if (packageType != null) 'packageType': packageType!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2142,6 +2415,67 @@ class SlsaProvenance {
         if (materials != null) 'materials': materials!,
         if (metadata != null) 'metadata': metadata!,
         if (recipe != null) 'recipe': recipe!,
+      };
+}
+
+/// See full explanation of fields at slsa.dev/provenance/v0.2.
+class SlsaProvenance02 {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? buildConfig;
+  core.String? buildType;
+  GrafeasV1SlsaProvenance02SlsaBuilder? builder;
+  GrafeasV1SlsaProvenance02SlsaInvocation? invocation;
+  core.List<GrafeasV1SlsaProvenance02SlsaMaterial>? materials;
+  GrafeasV1SlsaProvenance02SlsaMetadata? metadata;
+
+  SlsaProvenance02({
+    this.buildConfig,
+    this.buildType,
+    this.builder,
+    this.invocation,
+    this.materials,
+    this.metadata,
+  });
+
+  SlsaProvenance02.fromJson(core.Map _json)
+      : this(
+          buildConfig: _json.containsKey('buildConfig')
+              ? _json['buildConfig'] as core.Map<core.String, core.dynamic>
+              : null,
+          buildType: _json.containsKey('buildType')
+              ? _json['buildType'] as core.String
+              : null,
+          builder: _json.containsKey('builder')
+              ? GrafeasV1SlsaProvenance02SlsaBuilder.fromJson(
+                  _json['builder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          invocation: _json.containsKey('invocation')
+              ? GrafeasV1SlsaProvenance02SlsaInvocation.fromJson(
+                  _json['invocation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map((value) =>
+                      GrafeasV1SlsaProvenance02SlsaMaterial.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? GrafeasV1SlsaProvenance02SlsaMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildConfig != null) 'buildConfig': buildConfig!,
+        if (buildType != null) 'buildType': buildType!,
+        if (builder != null) 'builder': builder!,
+        if (invocation != null) 'invocation': invocation!,
+        if (materials != null) 'materials': materials!,
+        if (metadata != null) 'metadata': metadata!,
       };
 }
 

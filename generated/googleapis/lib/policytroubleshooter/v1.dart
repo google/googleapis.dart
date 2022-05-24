@@ -427,6 +427,9 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   /// to all of the policies that Policy Troubleshooter needs to evaluate.
   core.String? access;
 
+  /// The general errors contained in the troubleshooting response.
+  core.List<GoogleRpcStatus>? errors;
+
   /// List of IAM policies that were evaluated to check the principal's
   /// permissions, with annotations to indicate how each policy contributed to
   /// the final result.
@@ -441,6 +444,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
 
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse({
     this.access,
+    this.errors,
     this.explainedPolicies,
   });
 
@@ -449,6 +453,12 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
       : this(
           access: _json.containsKey('access')
               ? _json['access'] as core.String
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           explainedPolicies: _json.containsKey('explainedPolicies')
               ? (_json['explainedPolicies'] as core.List)
@@ -461,6 +471,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
+        if (errors != null) 'errors': errors!,
         if (explainedPolicies != null) 'explainedPolicies': explainedPolicies!,
       };
 }
@@ -480,8 +491,8 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
@@ -721,6 +732,15 @@ class GoogleIamV1Policy {
         if (version != null) 'version': version!,
       };
 }
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef GoogleRpcStatus = $Status;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

@@ -563,9 +563,9 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the capacity commitment, e.g.,
-  /// `projects/myproject/locations/US/capacityCommitments/123` For the
-  /// commitment id, it must only contain lower case alphanumeric characters or
-  /// dashes.It must start with a letter and must not end with a dash. Its
+  /// `projects/myproject/locations/US/capacityCommitments/123` The
+  /// commitment_id must only contain lower case alphanumeric characters or
+  /// dashes. It must start with a letter and must not end with a dash. Its
   /// maximum length is 64 characters.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/capacityCommitments/\[^/\]+$`.
@@ -611,8 +611,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
   ///
   /// A common use case is to enable downgrading commitments. For example, in
   /// order to downgrade from 10000 slots to 8000, you might split a 10000
-  /// capacity commitment into commitments of 2000 and 8000. Then, you would
-  /// change the plan of the first one to `FLEX` and then delete it.
+  /// capacity commitment into commitments of 2000 and 8000. Then, you delete
+  /// the first one after the commitment end time passes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -676,8 +676,8 @@ class ProjectsLocationsReservationsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [reservationId] - The reservation ID. It must only contain lower case
-  /// alphanumeric characters or dashes.It must start with a letter and must not
-  /// end with a dash. Its maximum length is 64 characters.
+  /// alphanumeric characters or dashes. It must start with a letter and must
+  /// not end with a dash. Its maximum length is 64 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -844,10 +844,9 @@ class ProjectsLocationsReservationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name of the reservation, e.g., `projects / *
-  /// /locations / * /reservations/team1-prod`. For the reservation id, it must
-  /// only contain lower case alphanumeric characters or dashes.It must start
-  /// with a letter and must not end with a dash. Its maximum length is 64
-  /// characters.
+  /// /locations / * /reservations/team1-prod`. The reservation_id must only
+  /// contain lower case alphanumeric characters or dashes. It must start with a
+  /// letter and must not end with a dash. Its maximum length is 64 characters.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
@@ -1115,6 +1114,57 @@ class ProjectsLocationsReservationsAssignmentsResource {
     return Assignment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates an existing assignment.
+  ///
+  /// Only the `priority` field can be updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the resource. E.g.:
+  /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+  /// The assignment_id must only contain lower case alphanumeric characters or
+  /// dashes and the max length is 64 characters.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+/assignments/\[^/\]+$`.
+  ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Assignment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Assignment> patch(
+    Assignment request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Assignment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// An assignment allows a project to submit jobs of a certain type using slots
@@ -1141,8 +1191,8 @@ class Assignment {
   ///
   /// E.g.:
   /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-  /// For the assignment id, it must only contain lower case alphanumeric
-  /// characters or dashes and the max length is 64 characters.
+  /// The assignment_id must only contain lower case alphanumeric characters or
+  /// dashes and the max length is 64 characters.
   ///
   /// Output only.
   core.String? name;
@@ -1193,6 +1243,9 @@ class BiReservation {
   /// `projects/{project_id}/locations/{location_id}/biReservation`.
   core.String? name;
 
+  /// Preferred tables to use BI capacity for.
+  core.List<TableReference>? preferredTables;
+
   /// Size of a reservation, in bytes.
   core.String? size;
 
@@ -1203,6 +1256,7 @@ class BiReservation {
 
   BiReservation({
     this.name,
+    this.preferredTables,
     this.size,
     this.updateTime,
   });
@@ -1210,6 +1264,12 @@ class BiReservation {
   BiReservation.fromJson(core.Map _json)
       : this(
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          preferredTables: _json.containsKey('preferredTables')
+              ? (_json['preferredTables'] as core.List)
+                  .map((value) => TableReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           size: _json.containsKey('size') ? _json['size'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
@@ -1218,6 +1278,7 @@ class BiReservation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (preferredTables != null) 'preferredTables': preferredTables!,
         if (size != null) 'size': size!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1259,11 +1320,12 @@ class CapacityCommitment {
   core.bool? multiRegionAuxiliary;
 
   /// The resource name of the capacity commitment, e.g.,
-  /// `projects/myproject/locations/US/capacityCommitments/123` For the
-  /// commitment id, it must only contain lower case alphanumeric characters or
-  /// dashes.It must start with a letter and must not end with a dash.
+  /// `projects/myproject/locations/US/capacityCommitments/123` The
+  /// commitment_id must only contain lower case alphanumeric characters or
+  /// dashes.
   ///
-  /// Its maximum length is 64 characters.
+  /// It must start with a letter and must not end with a dash. Its maximum
+  /// length is 64 characters.
   ///
   /// Output only.
   core.String? name;
@@ -1576,22 +1638,22 @@ class Reservation {
   /// The resource name of the reservation, e.g., `projects / * /locations / *
   /// /reservations/team1-prod`.
   ///
-  /// For the reservation id, it must only contain lower case alphanumeric
-  /// characters or dashes.It must start with a letter and must not end with a
-  /// dash. Its maximum length is 64 characters.
+  /// The reservation_id must only contain lower case alphanumeric characters or
+  /// dashes. It must start with a letter and must not end with a dash. Its
+  /// maximum length is 64 characters.
   core.String? name;
 
   /// Minimum slots available to this reservation.
   ///
   /// A slot is a unit of computational power in BigQuery, and serves as the
   /// unit of parallelism. Queries using this reservation might use more slots
-  /// during runtime if ignore_idle_slots is set to false. If the new
-  /// reservation's slot capacity exceed the project's slot capacity or if total
-  /// slot capacity of the new reservation and its siblings exceeds the
-  /// project's slot capacity, the request will fail with
+  /// during runtime if ignore_idle_slots is set to false. If total
+  /// slot_capacity of the reservation and its siblings exceeds the total
+  /// slot_count of all capacity commitments, the request will fail with
   /// `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU
-  /// multi-regions slot capacity constraints are checked separately for default
-  /// and auxiliary regions. See multi_region_auxiliary flag for more details.
+  /// multi-regions, slot capacity constraints are checked separately for
+  /// default and auxiliary regions. See multi_region_auxiliary flag for more
+  /// details.
   core.String? slotCapacity;
 
   /// Last update time of the reservation.
@@ -1770,3 +1832,42 @@ class SplitCapacityCommitmentResponse {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Fully qualified reference to BigQuery table.
+///
+/// Internally stored as google.cloud.bi.v1.BqTableReference.
+class TableReference {
+  /// The ID of the dataset in the above project.
+  core.String? datasetId;
+
+  /// The assigned project ID of the project.
+  core.String? projectId;
+
+  /// The ID of the table in the above dataset.
+  core.String? tableId;
+
+  TableReference({
+    this.datasetId,
+    this.projectId,
+    this.tableId,
+  });
+
+  TableReference.fromJson(core.Map _json)
+      : this(
+          datasetId: _json.containsKey('datasetId')
+              ? _json['datasetId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          tableId: _json.containsKey('tableId')
+              ? _json['tableId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
+      };
+}

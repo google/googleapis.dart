@@ -53,6 +53,30 @@ void checkAcceleratorConfig(api.AcceleratorConfig o) {
   buildCounterAcceleratorConfig--;
 }
 
+core.int buildCounterAuthenticationConfig = 0;
+api.AuthenticationConfig buildAuthenticationConfig() {
+  final o = api.AuthenticationConfig();
+  buildCounterAuthenticationConfig++;
+  if (buildCounterAuthenticationConfig < 3) {
+    o.authenticationType = 'foo';
+    o.injectableCredentialsConfig = buildInjectableCredentialsConfig();
+  }
+  buildCounterAuthenticationConfig--;
+  return o;
+}
+
+void checkAuthenticationConfig(api.AuthenticationConfig o) {
+  buildCounterAuthenticationConfig++;
+  if (buildCounterAuthenticationConfig < 3) {
+    unittest.expect(
+      o.authenticationType!,
+      unittest.equals('foo'),
+    );
+    checkInjectableCredentialsConfig(o.injectableCredentialsConfig!);
+  }
+  buildCounterAuthenticationConfig--;
+}
+
 core.int buildCounterAutoscalingConfig = 0;
 api.AutoscalingConfig buildAutoscalingConfig() {
   final o = api.AutoscalingConfig();
@@ -1584,6 +1608,21 @@ void checkInjectCredentialsRequest(api.InjectCredentialsRequest o) {
     );
   }
   buildCounterInjectCredentialsRequest--;
+}
+
+core.int buildCounterInjectableCredentialsConfig = 0;
+api.InjectableCredentialsConfig buildInjectableCredentialsConfig() {
+  final o = api.InjectableCredentialsConfig();
+  buildCounterInjectableCredentialsConfig++;
+  if (buildCounterInjectableCredentialsConfig < 3) {}
+  buildCounterInjectableCredentialsConfig--;
+  return o;
+}
+
+void checkInjectableCredentialsConfig(api.InjectableCredentialsConfig o) {
+  buildCounterInjectableCredentialsConfig++;
+  if (buildCounterInjectableCredentialsConfig < 3) {}
+  buildCounterInjectableCredentialsConfig--;
 }
 
 core.int buildCounterInstanceGroupAutoscalingPolicyConfig = 0;
@@ -3564,6 +3603,7 @@ api.RuntimeConfig buildRuntimeConfig() {
   if (buildCounterRuntimeConfig < 3) {
     o.containerImage = 'foo';
     o.properties = buildUnnamed72();
+    o.sessionAuthenticationConfig = buildAuthenticationConfig();
     o.version = 'foo';
   }
   buildCounterRuntimeConfig--;
@@ -3578,6 +3618,7 @@ void checkRuntimeConfig(api.RuntimeConfig o) {
       unittest.equals('foo'),
     );
     checkUnnamed72(o.properties!);
+    checkAuthenticationConfig(o.sessionAuthenticationConfig!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -4909,6 +4950,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AuthenticationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAuthenticationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AuthenticationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAuthenticationConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-AutoscalingConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAutoscalingConfig();
@@ -5266,6 +5317,16 @@ void main() {
       final od = api.InjectCredentialsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInjectCredentialsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-InjectableCredentialsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInjectableCredentialsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InjectableCredentialsConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInjectableCredentialsConfig(od);
     });
   });
 

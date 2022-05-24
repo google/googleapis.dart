@@ -29,6 +29,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsInstancesResource]
+///       - [ProjectsLocationsInstancesDnsPeeringsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsVersionsResource]
 library datafusion.v1;
@@ -136,7 +137,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [includeUnrevealedLocations] - If true, the returned list will include
@@ -189,6 +190,9 @@ class ProjectsLocationsResource {
 
 class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesDnsPeeringsResource get dnsPeerings =>
+      ProjectsLocationsInstancesDnsPeeringsResource(_requester);
 
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
@@ -320,8 +324,9 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -531,8 +536,9 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -579,8 +585,9 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -614,6 +621,149 @@ class ProjectsLocationsInstancesResource {
       queryParams: _queryParams,
     );
     return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInstancesDnsPeeringsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesDnsPeeringsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates DNS peering on the given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource on which DNS peering will be created.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [dnsPeeringId] - Required. The name of the peering to create.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsPeering].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsPeering> create(
+    DnsPeering request,
+    core.String parent, {
+    core.String? dnsPeeringId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (dnsPeeringId != null) 'dnsPeeringId': [dnsPeeringId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsPeerings';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return DnsPeering.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes DNS peering on the given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DNS peering zone to delete. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/dnsPeerings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists DNS peerings for a given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of dns
+  /// peerings. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of dns peerings to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 dns peerings will
+  /// be returned. The maximum value is 200; values above 200 will be coerced to
+  /// 200.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListDnsPeerings`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListDnsPeerings` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDnsPeeringsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDnsPeeringsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsPeerings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListDnsPeeringsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -933,8 +1083,8 @@ class Accelerator {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -990,7 +1140,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1083,14 +1233,121 @@ class CryptoKeyConfig {
       };
 }
 
+/// DNS peering configuration.
+///
+/// These configurations are used to create DNS peering with the customer Cloud
+/// DNS.
+class DnsPeering {
+  /// Optional description of the dns zone.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The dns name suffix of the zone.
+  ///
+  /// Required.
+  core.String? domain;
+
+  /// The resource name of the dns peering zone.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Optional target network to which dns peering should happen.
+  ///
+  /// Optional.
+  core.String? targetNetwork;
+
+  /// Optional target project to which dns peering should happen.
+  ///
+  /// Optional.
+  core.String? targetProject;
+
+  DnsPeering({
+    this.description,
+    this.domain,
+    this.name,
+    this.targetNetwork,
+    this.targetProject,
+  });
+
+  DnsPeering.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          targetNetwork: _json.containsKey('targetNetwork')
+              ? _json['targetNetwork'] as core.String
+              : null,
+          targetProject: _json.containsKey('targetProject')
+              ? _json['targetProject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (domain != null) 'domain': domain!,
+        if (name != null) 'name': name!,
+        if (targetNetwork != null) 'targetNetwork': targetNetwork!,
+        if (targetProject != null) 'targetProject': targetProject!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Confirguration of PubSubEventWriter.
+class EventPublishConfig {
+  /// Option to enable Event Publishing.
+  ///
+  /// Required.
+  core.bool? eventPublishEnabled;
+
+  /// Project name.
+  core.String? project;
+
+  /// Pub/Sub Topic.
+  ///
+  /// Required.
+  core.String? topic;
+
+  EventPublishConfig({
+    this.eventPublishEnabled,
+    this.project,
+    this.topic,
+  });
+
+  EventPublishConfig.fromJson(core.Map _json)
+      : this(
+          eventPublishEnabled: _json.containsKey('eventPublishEnabled')
+              ? _json['eventPublishEnabled'] as core.bool
+              : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          topic:
+              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventPublishEnabled != null)
+          'eventPublishEnabled': eventPublishEnabled!,
+        if (project != null) 'project': project!,
+        if (topic != null) 'topic': topic!,
+      };
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -1162,6 +1419,9 @@ class Instance {
 
   /// Option to enable Stackdriver Monitoring.
   core.bool? enableStackdriverMonitoring;
+
+  /// Option to enable and pass metadata for event publishing.
+  EventPublishConfig? eventPublishConfig;
 
   /// Cloud Storage bucket generated by Data Fusion in the customer project.
   ///
@@ -1285,6 +1545,7 @@ class Instance {
     this.enableRbac,
     this.enableStackdriverLogging,
     this.enableStackdriverMonitoring,
+    this.eventPublishConfig,
     this.gcsBucket,
     this.labels,
     this.name,
@@ -1352,6 +1613,10 @@ class Instance {
               _json.containsKey('enableStackdriverMonitoring')
                   ? _json['enableStackdriverMonitoring'] as core.bool
                   : null,
+          eventPublishConfig: _json.containsKey('eventPublishConfig')
+              ? EventPublishConfig.fromJson(_json['eventPublishConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gcsBucket: _json.containsKey('gcsBucket')
               ? _json['gcsBucket'] as core.String
               : null,
@@ -1422,6 +1687,8 @@ class Instance {
           'enableStackdriverLogging': enableStackdriverLogging!,
         if (enableStackdriverMonitoring != null)
           'enableStackdriverMonitoring': enableStackdriverMonitoring!,
+        if (eventPublishConfig != null)
+          'eventPublishConfig': eventPublishConfig!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -1470,6 +1737,40 @@ class ListAvailableVersionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableVersions != null) 'availableVersions': availableVersions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for list DNS peerings.
+class ListDnsPeeringsResponse {
+  /// List of dns peering.
+  core.List<DnsPeering>? dnsPeerings;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListDnsPeeringsResponse({
+    this.dnsPeerings,
+    this.nextPageToken,
+  });
+
+  ListDnsPeeringsResponse.fromJson(core.Map _json)
+      : this(
+          dnsPeerings: _json.containsKey('dnsPeerings')
+              ? (_json['dnsPeerings'] as core.List)
+                  .map((value) => DnsPeering.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsPeerings != null) 'dnsPeerings': dnsPeerings!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1834,7 +2135,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 

@@ -2379,6 +2379,7 @@ api.GoogleCloudDataplexV1Task buildGoogleCloudDataplexV1Task() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.executionSpec = buildGoogleCloudDataplexV1TaskExecutionSpec();
+    o.executionStatus = buildGoogleCloudDataplexV1TaskExecutionStatus();
     o.labels = buildUnnamed29();
     o.name = 'foo';
     o.spark = buildGoogleCloudDataplexV1TaskSparkTaskConfig();
@@ -2407,6 +2408,7 @@ void checkGoogleCloudDataplexV1Task(api.GoogleCloudDataplexV1Task o) {
       unittest.equals('foo'),
     );
     checkGoogleCloudDataplexV1TaskExecutionSpec(o.executionSpec!);
+    checkGoogleCloudDataplexV1TaskExecutionStatus(o.executionStatus!);
     checkUnnamed29(o.labels!);
     unittest.expect(
       o.name!,
@@ -2455,6 +2457,7 @@ api.GoogleCloudDataplexV1TaskExecutionSpec
   if (buildCounterGoogleCloudDataplexV1TaskExecutionSpec < 3) {
     o.args = buildUnnamed30();
     o.maxJobExecutionLifetime = 'foo';
+    o.project = 'foo';
     o.serviceAccount = 'foo';
   }
   buildCounterGoogleCloudDataplexV1TaskExecutionSpec--;
@@ -2471,11 +2474,41 @@ void checkGoogleCloudDataplexV1TaskExecutionSpec(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.project!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
     );
   }
   buildCounterGoogleCloudDataplexV1TaskExecutionSpec--;
+}
+
+core.int buildCounterGoogleCloudDataplexV1TaskExecutionStatus = 0;
+api.GoogleCloudDataplexV1TaskExecutionStatus
+    buildGoogleCloudDataplexV1TaskExecutionStatus() {
+  final o = api.GoogleCloudDataplexV1TaskExecutionStatus();
+  buildCounterGoogleCloudDataplexV1TaskExecutionStatus++;
+  if (buildCounterGoogleCloudDataplexV1TaskExecutionStatus < 3) {
+    o.latestJob = buildGoogleCloudDataplexV1Job();
+    o.updateTime = 'foo';
+  }
+  buildCounterGoogleCloudDataplexV1TaskExecutionStatus--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1TaskExecutionStatus(
+    api.GoogleCloudDataplexV1TaskExecutionStatus o) {
+  buildCounterGoogleCloudDataplexV1TaskExecutionStatus++;
+  if (buildCounterGoogleCloudDataplexV1TaskExecutionStatus < 3) {
+    checkGoogleCloudDataplexV1Job(o.latestJob!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDataplexV1TaskExecutionStatus--;
 }
 
 core.int buildCounterGoogleCloudDataplexV1TaskInfrastructureSpec = 0;
@@ -4351,6 +4384,16 @@ void main() {
       final od = api.GoogleCloudDataplexV1TaskExecutionSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDataplexV1TaskExecutionSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDataplexV1TaskExecutionStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDataplexV1TaskExecutionStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDataplexV1TaskExecutionStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1TaskExecutionStatus(od);
     });
   });
 
@@ -6349,6 +6392,7 @@ void main() {
           .environments
           .sessions;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -6385,6 +6429,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -6405,6 +6453,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

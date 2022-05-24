@@ -38,10 +38,14 @@
 /// - [InappproductsResource]
 /// - [InternalappsharingartifactsResource]
 /// - [MonetizationResource]
+///   - [MonetizationSubscriptionsResource]
+///     - [MonetizationSubscriptionsBasePlansResource]
+///       - [MonetizationSubscriptionsBasePlansOffersResource]
 /// - [OrdersResource]
 /// - [PurchasesResource]
 ///   - [PurchasesProductsResource]
 ///   - [PurchasesSubscriptionsResource]
+///   - [PurchasesSubscriptionsv2Resource]
 ///   - [PurchasesVoidedpurchasesResource]
 /// - [ReviewsResource]
 /// - [SystemapksResource]
@@ -2954,6 +2958,9 @@ class InternalappsharingartifactsResource {
 class MonetizationResource {
   final commons.ApiRequester _requester;
 
+  MonetizationSubscriptionsResource get subscriptions =>
+      MonetizationSubscriptionsResource(_requester);
+
   MonetizationResource(commons.ApiRequester client) : _requester = client;
 
   /// Calculates the region prices, using today's exchange rate and
@@ -2997,6 +3004,1006 @@ class MonetizationResource {
       queryParams: _queryParams,
     );
     return ConvertRegionPricesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MonetizationSubscriptionsResource {
+  final commons.ApiRequester _requester;
+
+  MonetizationSubscriptionsBasePlansResource get basePlans =>
+      MonetizationSubscriptionsBasePlansResource(_requester);
+
+  MonetizationSubscriptionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Archives a subscription.
+  ///
+  /// Can only be done if at least one base plan was active in the past, and no
+  /// base plan is available for new or existing subscribers currently. This
+  /// action is irreversible, and the subscription ID will remain reserved.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the app of the
+  /// subscription to delete.
+  ///
+  /// [productId] - Required. The unique product ID of the subscription to
+  /// delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> archive(
+    ArchiveSubscriptionRequest request,
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        ':archive';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new subscription.
+  ///
+  /// Newly added base plans will remain in draft state until activated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// subscription should be created. Must be equal to the package_name field on
+  /// the Subscription resource.
+  ///
+  /// [productId] - Required. The ID to use for the subscription. For the
+  /// requirements on this format, see the documentation of the product_id field
+  /// on the Subscription resource.
+  ///
+  /// [regionsVersion_version] - Required. A string representing version of the
+  /// available regions being used for the specified resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> create(
+    Subscription request,
+    core.String packageName, {
+    core.String? productId,
+    core.String? regionsVersion_version,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (productId != null) 'productId': [productId],
+      if (regionsVersion_version != null)
+        'regionsVersion.version': [regionsVersion_version],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a subscription.
+  ///
+  /// A subscription can only be deleted if it has never had a base plan
+  /// published.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the app of the
+  /// subscription to delete.
+  ///
+  /// [productId] - Required. The unique product ID of the subscription to
+  /// delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Reads a single subscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the
+  /// subscription to get.
+  ///
+  /// [productId] - Required. The unique product ID of the subscription to get.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> get(
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all subscriptions under a given app.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// subscriptions should be read.
+  ///
+  /// [pageSize] - The maximum number of subscriptions to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 subscriptions
+  /// will be returned. The maximum value is 1000; values above 1000 will be
+  /// coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListSubscriptions`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListSubscriptions` must match the call that
+  /// provided the page token.
+  ///
+  /// [showArchived] - Whether archived subscriptions should be included in the
+  /// response. Defaults to false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSubscriptionsResponse> list(
+    core.String packageName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showArchived,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showArchived != null) 'showArchived': ['${showArchived}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListSubscriptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing subscription.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Immutable. Package name of the parent app.
+  ///
+  /// [productId] - Immutable. Unique product ID of the product. Unique within
+  /// the parent app. Product IDs must be composed of lower-case letters (a-z),
+  /// numbers (0-9), underscores (_) and dots (.). It must start with a
+  /// lower-case letter or number, and be between 1 and 40 (inclusive)
+  /// characters in length.
+  ///
+  /// [regionsVersion_version] - Required. A string representing version of the
+  /// available regions being used for the specified resource.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> patch(
+    Subscription request,
+    core.String packageName,
+    core.String productId, {
+    core.String? regionsVersion_version,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (regionsVersion_version != null)
+        'regionsVersion.version': [regionsVersion_version],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MonetizationSubscriptionsBasePlansResource {
+  final commons.ApiRequester _requester;
+
+  MonetizationSubscriptionsBasePlansOffersResource get offers =>
+      MonetizationSubscriptionsBasePlansOffersResource(_requester);
+
+  MonetizationSubscriptionsBasePlansResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Activates a base plan.
+  ///
+  /// Once activated, base plans will be available to new subscribers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the base plan
+  /// to activate.
+  ///
+  /// [productId] - Required. The parent subscription (ID) of the base plan to
+  /// activate.
+  ///
+  /// [basePlanId] - Required. The unique base plan ID of the base plan to
+  /// activate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> activate(
+    ActivateBasePlanRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        ':activate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deactivates a base plan.
+  ///
+  /// Once deactivated, the base plan will become unavailable to new
+  /// subscribers, but existing subscribers will maintain their subscription
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the base plan
+  /// to deactivate.
+  ///
+  /// [productId] - Required. The parent subscription (ID) of the base plan to
+  /// deactivate.
+  ///
+  /// [basePlanId] - Required. The unique base plan ID of the base plan to
+  /// deactivate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> deactivate(
+    DeactivateBasePlanRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        ':deactivate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a base plan.
+  ///
+  /// Can only be done for draft base plans. This action is irreversible.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the base plan
+  /// to delete.
+  ///
+  /// [productId] - Required. The parent subscription (ID) of the base plan to
+  /// delete.
+  ///
+  /// [basePlanId] - Required. The unique offer ID of the base plan to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Migrates subscribers who are receiving an historical subscription price to
+  /// the currently-offered price for the specified region.
+  ///
+  /// Requests will cause price change notifications to be sent to users who are
+  /// currently receiving an historical price older than the supplied timestamp.
+  /// Subscribers who do not agree to the new price will have their subscription
+  /// ended at the next renewal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the parent app. Must be equal to
+  /// the package_name field on the Subscription resource.
+  ///
+  /// [productId] - Required. The ID of the subscription to update. Must be
+  /// equal to the product_id field on the Subscription resource.
+  ///
+  /// [basePlanId] - Required. The unique base plan ID of the base plan to
+  /// update prices on.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MigrateBasePlanPricesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MigrateBasePlanPricesResponse> migratePrices(
+    MigrateBasePlanPricesRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        ':migratePrices';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return MigrateBasePlanPricesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MonetizationSubscriptionsBasePlansOffersResource {
+  final commons.ApiRequester _requester;
+
+  MonetizationSubscriptionsBasePlansOffersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Activates a subscription offer.
+  ///
+  /// Once activated, subscription offers will be available to new subscribers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offer to
+  /// activate.
+  ///
+  /// [productId] - Required. The parent subscription (ID) of the offer to
+  /// activate.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) of the offer to
+  /// activate.
+  ///
+  /// [offerId] - Required. The unique offer ID of the offer to activate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SubscriptionOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionOffer> activate(
+    ActivateSubscriptionOfferRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId,
+    core.String offerId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId') +
+        ':activate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SubscriptionOffer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new subscription offer.
+  ///
+  /// Only auto-renewing base plans can have subscription offers. The offer
+  /// state will be DRAFT until it is activated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// offer should be created. Must be equal to the package_name field on the
+  /// Subscription resource.
+  ///
+  /// [productId] - Required. The parent subscription (ID) for which the offer
+  /// should be created. Must be equal to the product_id field on the
+  /// SubscriptionOffer resource.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) for which the offer
+  /// should be created. Must be equal to the base_plan_id field on the
+  /// SubscriptionOffer resource.
+  ///
+  /// [offerId] - Required. The ID to use for the offer. For the requirements on
+  /// this format, see the documentation of the offer_id field on the
+  /// SubscriptionOffer resource.
+  ///
+  /// [regionsVersion_version] - Required. A string representing version of the
+  /// available regions being used for the specified resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SubscriptionOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionOffer> create(
+    SubscriptionOffer request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.String? offerId,
+    core.String? regionsVersion_version,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (offerId != null) 'offerId': [offerId],
+      if (regionsVersion_version != null)
+        'regionsVersion.version': [regionsVersion_version],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SubscriptionOffer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deactivates a subscription offer.
+  ///
+  /// Once deactivated, existing subscribers will maintain their subscription,
+  /// but the offer will become unavailable to new subscribers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offer to
+  /// deactivate.
+  ///
+  /// [productId] - Required. The parent subscription (ID) of the offer to
+  /// deactivate.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) of the offer to
+  /// deactivate.
+  ///
+  /// [offerId] - Required. The unique offer ID of the offer to deactivate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SubscriptionOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionOffer> deactivate(
+    DeactivateSubscriptionOfferRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId,
+    core.String offerId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId') +
+        ':deactivate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SubscriptionOffer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a subscription offer.
+  ///
+  /// Can only be done for draft offers. This action is irreversible.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offer to
+  /// delete.
+  ///
+  /// [productId] - Required. The parent subscription (ID) of the offer to
+  /// delete.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) of the offer to delete.
+  ///
+  /// [offerId] - Required. The unique offer ID of the offer to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId,
+    core.String offerId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Reads a single offer
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offer to
+  /// get.
+  ///
+  /// [productId] - Required. The parent subscription (ID) of the offer to get.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) of the offer to get.
+  ///
+  /// [offerId] - Required. The unique offer ID of the offer to get.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SubscriptionOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionOffer> get(
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId,
+    core.String offerId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SubscriptionOffer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all offers under a given subscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// subscriptions should be read.
+  ///
+  /// [productId] - Required. The parent subscription (ID) for which the offers
+  /// should be read.
+  ///
+  /// [basePlanId] - Required. The parent base plan (ID) for which the offers
+  /// should be read. May be specified as '-' to read all offers under a
+  /// subscription.
+  ///
+  /// [pageSize] - The maximum number of subscriptions to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 subscriptions
+  /// will be returned. The maximum value is 1000; values above 1000 will be
+  /// coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListSubscriptionsOffers` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListSubscriptionOffers` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSubscriptionOffersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSubscriptionOffersResponse> list(
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListSubscriptionOffersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing subscription offer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Immutable. The package name of the app the
+  /// parent subscription belongs to.
+  ///
+  /// [productId] - Required. Immutable. The ID of the parent subscription this
+  /// offer belongs to.
+  ///
+  /// [basePlanId] - Required. Immutable. The ID of the base plan to which this
+  /// offer is an extension.
+  ///
+  /// [offerId] - Required. Immutable. Unique ID of this subscription offer.
+  /// Must be unique within the base plan.
+  ///
+  /// [regionsVersion_version] - Required. A string representing version of the
+  /// available regions being used for the specified resource.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SubscriptionOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionOffer> patch(
+    SubscriptionOffer request,
+    core.String packageName,
+    core.String productId,
+    core.String basePlanId,
+    core.String offerId, {
+    core.String? regionsVersion_version,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (regionsVersion_version != null)
+        'regionsVersion.version': [regionsVersion_version],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/subscriptions/' +
+        commons.escapeVariable('$productId') +
+        '/basePlans/' +
+        commons.escapeVariable('$basePlanId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SubscriptionOffer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3065,6 +4072,8 @@ class PurchasesResource {
       PurchasesProductsResource(_requester);
   PurchasesSubscriptionsResource get subscriptions =>
       PurchasesSubscriptionsResource(_requester);
+  PurchasesSubscriptionsv2Resource get subscriptionsv2 =>
+      PurchasesSubscriptionsv2Resource(_requester);
   PurchasesVoidedpurchasesResource get voidedpurchases =>
       PurchasesVoidedpurchasesResource(_requester);
 
@@ -3487,6 +4496,56 @@ class PurchasesSubscriptionsResource {
       queryParams: _queryParams,
       downloadOptions: null,
     );
+  }
+}
+
+class PurchasesSubscriptionsv2Resource {
+  final commons.ApiRequester _requester;
+
+  PurchasesSubscriptionsv2Resource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get metadata about a subscription
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package of the application for which this subscription
+  /// was purchased (for example, 'com.some.thing').
+  ///
+  /// [token] - Required. The token provided to the user's device when the
+  /// subscription was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SubscriptionPurchaseV2].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionPurchaseV2> get(
+    core.String packageName,
+    core.String token, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/purchases/subscriptionsv2/tokens/' +
+        commons.escapeVariable('$token');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SubscriptionPurchaseV2.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4111,6 +5170,38 @@ class UsersResource {
   }
 }
 
+/// Represents a targeting rule of the form: User never had {scope} before.
+class AcquisitionTargetingRule {
+  /// The scope of subscriptions this rule considers.
+  ///
+  /// Only allows "this subscription" and "any subscription in app".
+  ///
+  /// Required.
+  TargetingRuleScope? scope;
+
+  AcquisitionTargetingRule({
+    this.scope,
+  });
+
+  AcquisitionTargetingRule.fromJson(core.Map _json)
+      : this(
+          scope: _json.containsKey('scope')
+              ? TargetingRuleScope.fromJson(
+                  _json['scope'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scope != null) 'scope': scope!,
+      };
+}
+
+/// Request message for ActivateBasePlan.
+typedef ActivateBasePlanRequest = $Empty;
+
+/// Request message for ActivateSubscriptionOffer.
+typedef ActivateSubscriptionOfferRequest = $Empty;
+
 /// Information about an APK.
 ///
 /// The resource for ApksService.
@@ -4331,6 +5422,228 @@ class AppEdit {
       };
 }
 
+/// Request message for ArchiveSubscription.
+typedef ArchiveSubscriptionRequest = $Empty;
+
+/// Represents a base plan that automatically renews at the end of its
+/// subscription period.
+class AutoRenewingBasePlanType {
+  /// Subscription period, specified in ISO 8601 format.
+  ///
+  /// For a list of acceptable billing periods, refer to the help center.
+  ///
+  /// Required.
+  core.String? billingPeriodDuration;
+
+  /// Grace period of the subscription, specified in ISO 8601 format.
+  ///
+  /// Acceptable values are P0D (zero days), P3D (3 days), P7D (7 days), P14D
+  /// (14 days), and P30D (30 days). If not specified, a default value will be
+  /// used based on the recurring period duration.
+  core.String? gracePeriodDuration;
+
+  /// Whether the renewing base plan is compatible with legacy version of the
+  /// Play Billing Library (prior to version 3) or not.
+  ///
+  /// Only one renewing base plan can be marked as legacy compatible for a given
+  /// subscription.
+  core.bool? legacyCompatible;
+
+  /// The proration mode for the base plan determines what happens when a user
+  /// switches to this plan from another base plan.
+  ///
+  /// If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED" : Unspecified mode.
+  /// - "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE" : Users will
+  /// be charged for their new base plan at the end of their current billing
+  /// period.
+  /// - "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY" : Users will
+  /// be charged for their new base plan immediately and in full. Any remaining
+  /// period of their existing subscription will be used to extend the duration
+  /// of the new billing plan.
+  core.String? prorationMode;
+
+  /// Whether users should be able to resubscribe to this base plan in Google
+  /// Play surfaces.
+  ///
+  /// Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified.
+  /// Possible string values are:
+  /// - "RESUBSCRIBE_STATE_UNSPECIFIED" : Unspecified state.
+  /// - "RESUBSCRIBE_STATE_ACTIVE" : Resubscribe is active.
+  /// - "RESUBSCRIBE_STATE_INACTIVE" : Resubscribe is inactive.
+  core.String? resubscribeState;
+
+  AutoRenewingBasePlanType({
+    this.billingPeriodDuration,
+    this.gracePeriodDuration,
+    this.legacyCompatible,
+    this.prorationMode,
+    this.resubscribeState,
+  });
+
+  AutoRenewingBasePlanType.fromJson(core.Map _json)
+      : this(
+          billingPeriodDuration: _json.containsKey('billingPeriodDuration')
+              ? _json['billingPeriodDuration'] as core.String
+              : null,
+          gracePeriodDuration: _json.containsKey('gracePeriodDuration')
+              ? _json['gracePeriodDuration'] as core.String
+              : null,
+          legacyCompatible: _json.containsKey('legacyCompatible')
+              ? _json['legacyCompatible'] as core.bool
+              : null,
+          prorationMode: _json.containsKey('prorationMode')
+              ? _json['prorationMode'] as core.String
+              : null,
+          resubscribeState: _json.containsKey('resubscribeState')
+              ? _json['resubscribeState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingPeriodDuration != null)
+          'billingPeriodDuration': billingPeriodDuration!,
+        if (gracePeriodDuration != null)
+          'gracePeriodDuration': gracePeriodDuration!,
+        if (legacyCompatible != null) 'legacyCompatible': legacyCompatible!,
+        if (prorationMode != null) 'prorationMode': prorationMode!,
+        if (resubscribeState != null) 'resubscribeState': resubscribeState!,
+      };
+}
+
+/// Information related to an auto renewing plan.
+class AutoRenewingPlan {
+  /// If the subscription is currently set to auto-renew, e.g. the user has not
+  /// canceled the subscription
+  core.bool? autoRenewEnabled;
+
+  AutoRenewingPlan({
+    this.autoRenewEnabled,
+  });
+
+  AutoRenewingPlan.fromJson(core.Map _json)
+      : this(
+          autoRenewEnabled: _json.containsKey('autoRenewEnabled')
+              ? _json['autoRenewEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoRenewEnabled != null) 'autoRenewEnabled': autoRenewEnabled!,
+      };
+}
+
+/// A single base plan for a subscription.
+class BasePlan {
+  /// Set when the base plan automatically renews at a regular interval.
+  AutoRenewingBasePlanType? autoRenewingBasePlanType;
+
+  /// The unique identifier of this base plan.
+  ///
+  /// Must be unique within the subscription, and conform with RFC-1034. That
+  /// is, this ID can only contain lower-case letters (a-z), numbers (0-9), and
+  /// hyphens (-), and be at most 63 characters.
+  ///
+  /// Required. Immutable.
+  core.String? basePlanId;
+
+  /// List of up to 20 custom tags specified for this base plan, and returned to
+  /// the app through the billing library.
+  ///
+  /// Subscription offers for this base plan will also receive these offer tags
+  /// in the billing library.
+  core.List<OfferTag>? offerTags;
+
+  /// Pricing information for any new locations Play may launch in the future.
+  ///
+  /// If omitted, the BasePlan will not be automatically available any new
+  /// locations Play may launch in the future.
+  OtherRegionsBasePlanConfig? otherRegionsConfig;
+
+  /// Set when the base plan does not automatically renew at the end of the
+  /// billing period.
+  PrepaidBasePlanType? prepaidBasePlanType;
+
+  /// Region-specific information for this base plan.
+  core.List<RegionalBasePlanConfig>? regionalConfigs;
+
+  /// The state of the base plan, i.e. whether it's active.
+  ///
+  /// Draft and inactive base plans can be activated or deleted. Active base
+  /// plans can be made inactive. Inactive base plans can be canceled. This
+  /// field cannot be changed by updating the resource. Use the dedicated
+  /// endpoints instead.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "DRAFT" : The base plan is currently in a draft state, and hasn't been
+  /// activated. It can be safely deleted at this point.
+  /// - "ACTIVE" : The base plan is active and available for new subscribers.
+  /// - "INACTIVE" : The base plan is inactive and only available for existing
+  /// subscribers.
+  core.String? state;
+
+  BasePlan({
+    this.autoRenewingBasePlanType,
+    this.basePlanId,
+    this.offerTags,
+    this.otherRegionsConfig,
+    this.prepaidBasePlanType,
+    this.regionalConfigs,
+    this.state,
+  });
+
+  BasePlan.fromJson(core.Map _json)
+      : this(
+          autoRenewingBasePlanType:
+              _json.containsKey('autoRenewingBasePlanType')
+                  ? AutoRenewingBasePlanType.fromJson(
+                      _json['autoRenewingBasePlanType']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          basePlanId: _json.containsKey('basePlanId')
+              ? _json['basePlanId'] as core.String
+              : null,
+          offerTags: _json.containsKey('offerTags')
+              ? (_json['offerTags'] as core.List)
+                  .map((value) => OfferTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          otherRegionsConfig: _json.containsKey('otherRegionsConfig')
+              ? OtherRegionsBasePlanConfig.fromJson(_json['otherRegionsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          prepaidBasePlanType: _json.containsKey('prepaidBasePlanType')
+              ? PrepaidBasePlanType.fromJson(_json['prepaidBasePlanType']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          regionalConfigs: _json.containsKey('regionalConfigs')
+              ? (_json['regionalConfigs'] as core.List)
+                  .map((value) => RegionalBasePlanConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoRenewingBasePlanType != null)
+          'autoRenewingBasePlanType': autoRenewingBasePlanType!,
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (offerTags != null) 'offerTags': offerTags!,
+        if (otherRegionsConfig != null)
+          'otherRegionsConfig': otherRegionsConfig!,
+        if (prepaidBasePlanType != null)
+          'prepaidBasePlanType': prepaidBasePlanType!,
+        if (regionalConfigs != null) 'regionalConfigs': regionalConfigs!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Information about an app bundle.
 ///
 /// The resource for BundlesService.
@@ -4398,6 +5711,107 @@ class BundlesListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bundles != null) 'bundles': bundles!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Result of the cancel survey when the subscription was canceled by the user.
+class CancelSurveyResult {
+  /// The reason the user selected in the cancel survey.
+  /// Possible string values are:
+  /// - "CANCEL_SURVEY_REASON_UNSPECIFIED" : Unspecified cancel survey reason.
+  /// - "CANCEL_SURVEY_REASON_NOT_ENOUGH_USAGE" : Not enough usage of the
+  /// subscription.
+  /// - "CANCEL_SURVEY_REASON_TECHNICAL_ISSUES" : Technical issues while using
+  /// the app.
+  /// - "CANCEL_SURVEY_REASON_COST_RELATED" : Cost related issues.
+  /// - "CANCEL_SURVEY_REASON_FOUND_BETTER_APP" : The user found a better app.
+  /// - "CANCEL_SURVEY_REASON_OTHERS" : Other reasons.
+  core.String? reason;
+
+  /// Only set for CANCEL_SURVEY_REASON_OTHERS.
+  ///
+  /// This is the user's freeform response to the survey.
+  core.String? reasonUserInput;
+
+  CancelSurveyResult({
+    this.reason,
+    this.reasonUserInput,
+  });
+
+  CancelSurveyResult.fromJson(core.Map _json)
+      : this(
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+          reasonUserInput: _json.containsKey('reasonUserInput')
+              ? _json['reasonUserInput'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reason != null) 'reason': reason!,
+        if (reasonUserInput != null) 'reasonUserInput': reasonUserInput!,
+      };
+}
+
+/// Information specific to a subscription in canceled state.
+class CanceledStateContext {
+  /// Subscription was canceled by the developer.
+  DeveloperInitiatedCancellation? developerInitiatedCancellation;
+
+  /// Subscription was replaced by a new subscription.
+  ReplacementCancellation? replacementCancellation;
+
+  /// Subscription was canceled by the system, for example because of a billing
+  /// problem.
+  SystemInitiatedCancellation? systemInitiatedCancellation;
+
+  /// Subscription was canceled by user.
+  UserInitiatedCancellation? userInitiatedCancellation;
+
+  CanceledStateContext({
+    this.developerInitiatedCancellation,
+    this.replacementCancellation,
+    this.systemInitiatedCancellation,
+    this.userInitiatedCancellation,
+  });
+
+  CanceledStateContext.fromJson(core.Map _json)
+      : this(
+          developerInitiatedCancellation:
+              _json.containsKey('developerInitiatedCancellation')
+                  ? DeveloperInitiatedCancellation.fromJson(
+                      _json['developerInitiatedCancellation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          replacementCancellation: _json.containsKey('replacementCancellation')
+              ? ReplacementCancellation.fromJson(
+                  _json['replacementCancellation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          systemInitiatedCancellation:
+              _json.containsKey('systemInitiatedCancellation')
+                  ? SystemInitiatedCancellation.fromJson(
+                      _json['systemInitiatedCancellation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          userInitiatedCancellation:
+              _json.containsKey('userInitiatedCancellation')
+                  ? UserInitiatedCancellation.fromJson(
+                      _json['userInitiatedCancellation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (developerInitiatedCancellation != null)
+          'developerInitiatedCancellation': developerInitiatedCancellation!,
+        if (replacementCancellation != null)
+          'replacementCancellation': replacementCancellation!,
+        if (systemInitiatedCancellation != null)
+          'systemInitiatedCancellation': systemInitiatedCancellation!,
+        if (userInitiatedCancellation != null)
+          'userInitiatedCancellation': userInitiatedCancellation!,
       };
 }
 
@@ -4602,6 +6016,12 @@ class CountryTargeting {
       };
 }
 
+/// Request message for DeactivateBasePlan.
+typedef DeactivateBasePlanRequest = $Empty;
+
+/// Request message for DeactivateSubscriptionOffer.
+typedef DeactivateSubscriptionOfferRequest = $Empty;
+
 /// Represents a deobfuscation file.
 class DeobfuscationFile {
   /// The type of the deobfuscation file.
@@ -4677,6 +6097,9 @@ class DeveloperComment {
         if (text != null) 'text': text!,
       };
 }
+
+/// Information specific to cancellations initiated by developers.
+typedef DeveloperInitiatedCancellation = $Empty;
 
 /// LINT.IfChange A group of devices.
 ///
@@ -5167,6 +6590,61 @@ class ExpansionFilesUploadResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expansionFile != null) 'expansionFile': expansionFile!,
+      };
+}
+
+/// User account identifier in the third-party service.
+class ExternalAccountIdentifiers {
+  /// User account identifier in the third-party service.
+  ///
+  /// Only present if account linking happened as part of the subscription
+  /// purchase flow.
+  core.String? externalAccountId;
+
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's account in your app.
+  ///
+  /// Present for the following purchases: * If account linking happened as part
+  /// of the subscription purchase flow. * It was specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+  /// when the purchase was made.
+  core.String? obfuscatedExternalAccountId;
+
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's profile in your app.
+  ///
+  /// Only present if specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+  /// when the purchase was made.
+  core.String? obfuscatedExternalProfileId;
+
+  ExternalAccountIdentifiers({
+    this.externalAccountId,
+    this.obfuscatedExternalAccountId,
+    this.obfuscatedExternalProfileId,
+  });
+
+  ExternalAccountIdentifiers.fromJson(core.Map _json)
+      : this(
+          externalAccountId: _json.containsKey('externalAccountId')
+              ? _json['externalAccountId'] as core.String
+              : null,
+          obfuscatedExternalAccountId:
+              _json.containsKey('obfuscatedExternalAccountId')
+                  ? _json['obfuscatedExternalAccountId'] as core.String
+                  : null,
+          obfuscatedExternalProfileId:
+              _json.containsKey('obfuscatedExternalProfileId')
+                  ? _json['obfuscatedExternalProfileId'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalAccountId != null) 'externalAccountId': externalAccountId!,
+        if (obfuscatedExternalAccountId != null)
+          'obfuscatedExternalAccountId': obfuscatedExternalAccountId!,
+        if (obfuscatedExternalProfileId != null)
+          'obfuscatedExternalProfileId': obfuscatedExternalProfileId!,
       };
 }
 
@@ -6134,6 +7612,75 @@ class ListDeviceTierConfigsResponse {
       };
 }
 
+/// Response message for ListSubscriptionOffers.
+class ListSubscriptionOffersResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The subscription offers from the specified subscription.
+  core.List<SubscriptionOffer>? subscriptionOffers;
+
+  ListSubscriptionOffersResponse({
+    this.nextPageToken,
+    this.subscriptionOffers,
+  });
+
+  ListSubscriptionOffersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          subscriptionOffers: _json.containsKey('subscriptionOffers')
+              ? (_json['subscriptionOffers'] as core.List)
+                  .map((value) => SubscriptionOffer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (subscriptionOffers != null)
+          'subscriptionOffers': subscriptionOffers!,
+      };
+}
+
+/// Response message for ListSubscriptions.
+class ListSubscriptionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The subscriptions from the specified app.
+  core.List<Subscription>? subscriptions;
+
+  ListSubscriptionsResponse({
+    this.nextPageToken,
+    this.subscriptions,
+  });
+
+  ListSubscriptionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          subscriptions: _json.containsKey('subscriptions')
+              ? (_json['subscriptions'] as core.List)
+                  .map((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (subscriptions != null) 'subscriptions': subscriptions!,
+      };
+}
+
 /// A response containing one or more users with access to an account.
 class ListUsersResponse {
   /// A token to pass to subsequent calls in order to retrieve subsequent
@@ -6332,14 +7879,340 @@ class ManagedProductTaxAndComplianceSettings {
       };
 }
 
+/// Request message for MigrateBasePlanPrices.
+class MigrateBasePlanPricesRequest {
+  /// The regional prices to update.
+  ///
+  /// Required.
+  core.List<RegionalPriceMigrationConfig>? regionalPriceMigrations;
+
+  /// The version of the available regions being used for the
+  /// regional_price_migrations.
+  ///
+  /// Required.
+  RegionsVersion? regionsVersion;
+
+  MigrateBasePlanPricesRequest({
+    this.regionalPriceMigrations,
+    this.regionsVersion,
+  });
+
+  MigrateBasePlanPricesRequest.fromJson(core.Map _json)
+      : this(
+          regionalPriceMigrations: _json.containsKey('regionalPriceMigrations')
+              ? (_json['regionalPriceMigrations'] as core.List)
+                  .map((value) => RegionalPriceMigrationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          regionsVersion: _json.containsKey('regionsVersion')
+              ? RegionsVersion.fromJson(_json['regionsVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionalPriceMigrations != null)
+          'regionalPriceMigrations': regionalPriceMigrations!,
+        if (regionsVersion != null) 'regionsVersion': regionsVersion!,
+      };
+}
+
+/// Response message for MigrateBasePlanPrices.
+typedef MigrateBasePlanPricesResponse = $Empty;
+
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
+
+/// Represents a custom tag specified for base plans and subscription offers.
+class OfferTag {
+  /// Must conform with RFC-1034.
+  ///
+  /// That is, this string can only contain lower-case letters (a-z), numbers
+  /// (0-9), and hyphens (-), and be at most 20 characters.
+  core.String? tag;
+
+  OfferTag({
+    this.tag,
+  });
+
+  OfferTag.fromJson(core.Map _json)
+      : this(
+          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tag != null) 'tag': tag!,
+      };
+}
+
+/// Pricing information for any new locations Play may launch in.
+class OtherRegionsBasePlanConfig {
+  /// Price in EUR to use for any new locations Play may launch in.
+  ///
+  /// Required.
+  Money? eurPrice;
+
+  /// Whether the base plan is available for new subscribers in any new
+  /// locations Play may launch in.
+  ///
+  /// If not specified, this will default to false.
+  core.bool? newSubscriberAvailability;
+
+  /// Price in USD to use for any new locations Play may launch in.
+  ///
+  /// Required.
+  Money? usdPrice;
+
+  OtherRegionsBasePlanConfig({
+    this.eurPrice,
+    this.newSubscriberAvailability,
+    this.usdPrice,
+  });
+
+  OtherRegionsBasePlanConfig.fromJson(core.Map _json)
+      : this(
+          eurPrice: _json.containsKey('eurPrice')
+              ? Money.fromJson(
+                  _json['eurPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          newSubscriberAvailability:
+              _json.containsKey('newSubscriberAvailability')
+                  ? _json['newSubscriberAvailability'] as core.bool
+                  : null,
+          usdPrice: _json.containsKey('usdPrice')
+              ? Money.fromJson(
+                  _json['usdPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eurPrice != null) 'eurPrice': eurPrice!,
+        if (newSubscriberAvailability != null)
+          'newSubscriberAvailability': newSubscriberAvailability!,
+        if (usdPrice != null) 'usdPrice': usdPrice!,
+      };
+}
+
+/// Configuration for any new locations Play may launch in specified on a
+/// subscription offer.
+class OtherRegionsSubscriptionOfferConfig {
+  /// Whether the subscription offer in any new locations Play may launch in the
+  /// future.
+  ///
+  /// If not specified, this will default to false.
+  core.bool? otherRegionsNewSubscriberAvailability;
+
+  OtherRegionsSubscriptionOfferConfig({
+    this.otherRegionsNewSubscriberAvailability,
+  });
+
+  OtherRegionsSubscriptionOfferConfig.fromJson(core.Map _json)
+      : this(
+          otherRegionsNewSubscriberAvailability:
+              _json.containsKey('otherRegionsNewSubscriberAvailability')
+                  ? _json['otherRegionsNewSubscriberAvailability'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (otherRegionsNewSubscriberAvailability != null)
+          'otherRegionsNewSubscriberAvailability':
+              otherRegionsNewSubscriberAvailability!,
+      };
+}
+
+/// Configuration for any new locations Play may launch in for a single offer
+/// phase.
+class OtherRegionsSubscriptionOfferPhaseConfig {
+  /// The absolute amount of money subtracted from the base plan price prorated
+  /// over the phase duration that the user pays for this offer phase.
+  ///
+  /// For example, if the base plan price for this region is $12 for a period of
+  /// 1 year, then a $1 absolute discount for a phase of a duration of 3 months
+  /// would correspond to a price of $2. The resulting price may not be smaller
+  /// than the minimum price allowed for any new locations Play may launch in.
+  OtherRegionsSubscriptionOfferPhasePrices? absoluteDiscounts;
+
+  /// The absolute price the user pays for this offer phase.
+  ///
+  /// The price must not be smaller than the minimum price allowed for any new
+  /// locations Play may launch in.
+  OtherRegionsSubscriptionOfferPhasePrices? otherRegionsPrices;
+
+  /// The fraction of the base plan price prorated over the phase duration that
+  /// the user pays for this offer phase.
+  ///
+  /// For example, if the base plan price for this region is $12 for a period of
+  /// 1 year, then a 50% discount for a phase of a duration of 3 months would
+  /// correspond to a price of $1.50. The discount must be specified as a
+  /// fraction strictly larger than 0 and strictly smaller than 1. The resulting
+  /// price will be rounded to the nearest billable unit (e.g. cents for USD).
+  /// The relative discount is considered invalid if the discounted price ends
+  /// up being smaller than the minimum price allowed in any new locations Play
+  /// may launch in.
+  core.double? relativeDiscount;
+
+  OtherRegionsSubscriptionOfferPhaseConfig({
+    this.absoluteDiscounts,
+    this.otherRegionsPrices,
+    this.relativeDiscount,
+  });
+
+  OtherRegionsSubscriptionOfferPhaseConfig.fromJson(core.Map _json)
+      : this(
+          absoluteDiscounts: _json.containsKey('absoluteDiscounts')
+              ? OtherRegionsSubscriptionOfferPhasePrices.fromJson(
+                  _json['absoluteDiscounts']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          otherRegionsPrices: _json.containsKey('otherRegionsPrices')
+              ? OtherRegionsSubscriptionOfferPhasePrices.fromJson(
+                  _json['otherRegionsPrices']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          relativeDiscount: _json.containsKey('relativeDiscount')
+              ? (_json['relativeDiscount'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (absoluteDiscounts != null) 'absoluteDiscounts': absoluteDiscounts!,
+        if (otherRegionsPrices != null)
+          'otherRegionsPrices': otherRegionsPrices!,
+        if (relativeDiscount != null) 'relativeDiscount': relativeDiscount!,
+      };
+}
+
+/// Pricing information for any new locations Play may launch in.
+class OtherRegionsSubscriptionOfferPhasePrices {
+  /// Price in EUR to use for any new locations Play may launch in.
+  ///
+  /// Required.
+  Money? eurPrice;
+
+  /// Price in USD to use for any new locations Play may launch in.
+  ///
+  /// Required.
+  Money? usdPrice;
+
+  OtherRegionsSubscriptionOfferPhasePrices({
+    this.eurPrice,
+    this.usdPrice,
+  });
+
+  OtherRegionsSubscriptionOfferPhasePrices.fromJson(core.Map _json)
+      : this(
+          eurPrice: _json.containsKey('eurPrice')
+              ? Money.fromJson(
+                  _json['eurPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          usdPrice: _json.containsKey('usdPrice')
+              ? Money.fromJson(
+                  _json['usdPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eurPrice != null) 'eurPrice': eurPrice!,
+        if (usdPrice != null) 'usdPrice': usdPrice!,
+      };
+}
 
 /// Information about the current page.
 ///
 /// List operations that supports paging return only one "page" of results. This
 /// protocol buffer message describes the page that has been returned.
 typedef PageInfo = $PageInfo;
+
+/// Information specific to a subscription in paused state.
+class PausedStateContext {
+  /// Time at which the subscription will be automatically resumed.
+  core.String? autoResumeTime;
+
+  PausedStateContext({
+    this.autoResumeTime,
+  });
+
+  PausedStateContext.fromJson(core.Map _json)
+      : this(
+          autoResumeTime: _json.containsKey('autoResumeTime')
+              ? _json['autoResumeTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoResumeTime != null) 'autoResumeTime': autoResumeTime!,
+      };
+}
+
+/// Represents a base plan that does not automatically renew at the end of the
+/// base plan, and must be manually renewed by the user.
+class PrepaidBasePlanType {
+  /// Subscription period, specified in ISO 8601 format.
+  ///
+  /// For a list of acceptable billing periods, refer to the help center.
+  ///
+  /// Required.
+  core.String? billingPeriodDuration;
+
+  /// Whether users should be able to extend this prepaid base plan in Google
+  /// Play surfaces.
+  ///
+  /// Defaults to TIME_EXTENSION_ACTIVE if not specified.
+  /// Possible string values are:
+  /// - "TIME_EXTENSION_UNSPECIFIED" : Unspecified state.
+  /// - "TIME_EXTENSION_ACTIVE" : Time extension is active. Users are allowed to
+  /// top-up or extend their prepaid plan.
+  /// - "TIME_EXTENSION_INACTIVE" : Time extension is inactive. Users cannot
+  /// top-up or extend their prepaid plan.
+  core.String? timeExtension;
+
+  PrepaidBasePlanType({
+    this.billingPeriodDuration,
+    this.timeExtension,
+  });
+
+  PrepaidBasePlanType.fromJson(core.Map _json)
+      : this(
+          billingPeriodDuration: _json.containsKey('billingPeriodDuration')
+              ? _json['billingPeriodDuration'] as core.String
+              : null,
+          timeExtension: _json.containsKey('timeExtension')
+              ? _json['timeExtension'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingPeriodDuration != null)
+          'billingPeriodDuration': billingPeriodDuration!,
+        if (timeExtension != null) 'timeExtension': timeExtension!,
+      };
+}
+
+/// Information related to a prepaid plan.
+class PrepaidPlan {
+  /// After this time, the subscription is allowed for a new top-up purchase.
+  ///
+  /// Not present if the subscription is already extended by a top-up purchase.
+  core.String? allowExtendAfterTime;
+
+  PrepaidPlan({
+    this.allowExtendAfterTime,
+  });
+
+  PrepaidPlan.fromJson(core.Map _json)
+      : this(
+          allowExtendAfterTime: _json.containsKey('allowExtendAfterTime')
+              ? _json['allowExtendAfterTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowExtendAfterTime != null)
+          'allowExtendAfterTime': allowExtendAfterTime!,
+      };
+}
 
 /// Definition of a price, i.e. currency and units.
 class Price {
@@ -6413,6 +8286,8 @@ class ProductPurchase {
   core.String? orderId;
 
   /// The inapp product SKU.
+  ///
+  /// May not be present.
   core.String? productId;
 
   /// The purchase state of the order.
@@ -6425,6 +8300,8 @@ class ProductPurchase {
   core.String? purchaseTimeMillis;
 
   /// The purchase token generated to identify this purchase.
+  ///
+  /// May not be present.
   core.String? purchaseToken;
 
   /// The type of purchase of the inapp product.
@@ -6436,6 +8313,8 @@ class ProductPurchase {
   core.int? purchaseType;
 
   /// The quantity associated with the purchase of the inapp product.
+  ///
+  /// If not present, the quantity is 1.
   core.int? quantity;
 
   /// ISO 3166-1 alpha-2 billing region code of the user at the time the product
@@ -6530,6 +8409,203 @@ class ProductPurchase {
 /// Request for the product.purchases.acknowledge API.
 typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
 
+/// Configuration for a base plan specific to a region.
+class RegionalBasePlanConfig {
+  /// Whether the base plan in the specified region is available for new
+  /// subscribers.
+  ///
+  /// Existing subscribers will not have their subscription canceled if this
+  /// value is set to false. If not specified, this will default to false.
+  core.bool? newSubscriberAvailability;
+
+  /// The price of the base plan in the specified region.
+  ///
+  /// Must be set if the base plan is available to new subscribers. Must be set
+  /// in the currency that is linked to the specified region.
+  Money? price;
+
+  /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
+  /// "US".
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  RegionalBasePlanConfig({
+    this.newSubscriberAvailability,
+    this.price,
+    this.regionCode,
+  });
+
+  RegionalBasePlanConfig.fromJson(core.Map _json)
+      : this(
+          newSubscriberAvailability:
+              _json.containsKey('newSubscriberAvailability')
+                  ? _json['newSubscriberAvailability'] as core.bool
+                  : null,
+          price: _json.containsKey('price')
+              ? Money.fromJson(
+                  _json['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newSubscriberAvailability != null)
+          'newSubscriberAvailability': newSubscriberAvailability!,
+        if (price != null) 'price': price!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Configuration for a price migration.
+class RegionalPriceMigrationConfig {
+  /// The cutoff time for historical prices that subscribers can remain paying.
+  ///
+  /// Subscribers who are on a price that was created before this cutoff time
+  /// will be migrated to the currently-offered price. These subscribers will
+  /// receive a notification that they will be paying a different price.
+  /// Subscribers who do not agree to the new price will have their subscription
+  /// ended at the next renewal.
+  ///
+  /// Required.
+  core.String? oldestAllowedPriceVersionTime;
+
+  /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
+  /// "US".
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  RegionalPriceMigrationConfig({
+    this.oldestAllowedPriceVersionTime,
+    this.regionCode,
+  });
+
+  RegionalPriceMigrationConfig.fromJson(core.Map _json)
+      : this(
+          oldestAllowedPriceVersionTime:
+              _json.containsKey('oldestAllowedPriceVersionTime')
+                  ? _json['oldestAllowedPriceVersionTime'] as core.String
+                  : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oldestAllowedPriceVersionTime != null)
+          'oldestAllowedPriceVersionTime': oldestAllowedPriceVersionTime!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Configuration for a subscription offer in a single region.
+class RegionalSubscriptionOfferConfig {
+  /// Whether the subscription offer in the specified region is available for
+  /// new subscribers.
+  ///
+  /// Existing subscribers will not have their subscription cancelled if this
+  /// value is set to false. If not specified, this will default to false.
+  core.bool? newSubscriberAvailability;
+
+  /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
+  /// "US".
+  ///
+  /// Required. Immutable.
+  core.String? regionCode;
+
+  RegionalSubscriptionOfferConfig({
+    this.newSubscriberAvailability,
+    this.regionCode,
+  });
+
+  RegionalSubscriptionOfferConfig.fromJson(core.Map _json)
+      : this(
+          newSubscriberAvailability:
+              _json.containsKey('newSubscriberAvailability')
+                  ? _json['newSubscriberAvailability'] as core.bool
+                  : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newSubscriberAvailability != null)
+          'newSubscriberAvailability': newSubscriberAvailability!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Configuration for a single phase of a subscription offer in a single region.
+class RegionalSubscriptionOfferPhaseConfig {
+  /// The absolute amount of money subtracted from the base plan price prorated
+  /// over the phase duration that the user pays for this offer phase.
+  ///
+  /// For example, if the base plan price for this region is $12 for a period of
+  /// 1 year, then a $1 absolute discount for a phase of a duration of 3 months
+  /// would correspond to a price of $2. The resulting price may not be smaller
+  /// than the minimum price allowed for this region.
+  Money? absoluteDiscount;
+
+  /// The absolute price the user pays for this offer phase.
+  ///
+  /// The price must not be smaller than the minimum price allowed for this
+  /// region.
+  Money? price;
+
+  /// The region to which this config applies.
+  ///
+  /// Required. Immutable.
+  core.String? regionCode;
+
+  /// The fraction of the base plan price prorated over the phase duration that
+  /// the user pays for this offer phase.
+  ///
+  /// For example, if the base plan price for this region is $12 for a period of
+  /// 1 year, then a 50% discount for a phase of a duration of 3 months would
+  /// correspond to a price of $1.50. The discount must be specified as a
+  /// fraction strictly larger than 0 and strictly smaller than 1. The resulting
+  /// price will be rounded to the nearest billable unit (e.g. cents for USD).
+  /// The relative discount is considered invalid if the discounted price ends
+  /// up being smaller than the minimum price allowed in this region.
+  core.double? relativeDiscount;
+
+  RegionalSubscriptionOfferPhaseConfig({
+    this.absoluteDiscount,
+    this.price,
+    this.regionCode,
+    this.relativeDiscount,
+  });
+
+  RegionalSubscriptionOfferPhaseConfig.fromJson(core.Map _json)
+      : this(
+          absoluteDiscount: _json.containsKey('absoluteDiscount')
+              ? Money.fromJson(_json['absoluteDiscount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          price: _json.containsKey('price')
+              ? Money.fromJson(
+                  _json['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          relativeDiscount: _json.containsKey('relativeDiscount')
+              ? (_json['relativeDiscount'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (absoluteDiscount != null) 'absoluteDiscount': absoluteDiscount!,
+        if (price != null) 'price': price!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (relativeDiscount != null) 'relativeDiscount': relativeDiscount!,
+      };
+}
+
 /// Specified details about taxation in a given geographical region.
 class RegionalTaxRateInfo {
   /// You must tell us if your app contains streaming products to correctly
@@ -6575,6 +8651,33 @@ class RegionalTaxRateInfo {
         if (taxTier != null) 'taxTier': taxTier!,
       };
 }
+
+/// The version of the available regions being used for the specified resource.
+class RegionsVersion {
+  /// A string representing version of the available regions being used for the
+  /// specified resource.
+  ///
+  /// Required.
+  core.String? version;
+
+  RegionsVersion({
+    this.version,
+  });
+
+  RegionsVersion.fromJson(core.Map _json)
+      : this(
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Information specific to cancellations caused by subscription replacement.
+typedef ReplacementCancellation = $Empty;
 
 /// An Android app review.
 class Review {
@@ -6734,6 +8837,152 @@ class ReviewsReplyResponse {
       };
 }
 
+/// Information associated with purchases made with 'Subscribe with Google'.
+class SubscribeWithGoogleInfo {
+  /// The email address of the user when the subscription was purchased.
+  core.String? emailAddress;
+
+  /// The family name of the user when the subscription was purchased.
+  core.String? familyName;
+
+  /// The given name of the user when the subscription was purchased.
+  core.String? givenName;
+
+  /// The Google profile id of the user when the subscription was purchased.
+  core.String? profileId;
+
+  /// The profile name of the user when the subscription was purchased.
+  core.String? profileName;
+
+  SubscribeWithGoogleInfo({
+    this.emailAddress,
+    this.familyName,
+    this.givenName,
+    this.profileId,
+    this.profileName,
+  });
+
+  SubscribeWithGoogleInfo.fromJson(core.Map _json)
+      : this(
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          familyName: _json.containsKey('familyName')
+              ? _json['familyName'] as core.String
+              : null,
+          givenName: _json.containsKey('givenName')
+              ? _json['givenName'] as core.String
+              : null,
+          profileId: _json.containsKey('profileId')
+              ? _json['profileId'] as core.String
+              : null,
+          profileName: _json.containsKey('profileName')
+              ? _json['profileName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (familyName != null) 'familyName': familyName!,
+        if (givenName != null) 'givenName': givenName!,
+        if (profileId != null) 'profileId': profileId!,
+        if (profileName != null) 'profileName': profileName!,
+      };
+}
+
+/// A single subscription for an app.
+class Subscription {
+  /// Whether this subscription is archived.
+  ///
+  /// Archived subscriptions are not available to any subscriber any longer,
+  /// cannot be updated, and are not returned in list requests unless the show
+  /// archived flag is passed in.
+  ///
+  /// Output only.
+  core.bool? archived;
+
+  /// The set of base plans for this subscription.
+  ///
+  /// Represents the prices and duration of the subscription if no other offers
+  /// apply.
+  core.List<BasePlan>? basePlans;
+
+  /// List of localized listings for this subscription.
+  ///
+  /// Must contain at least an entry for the default language of the parent app.
+  ///
+  /// Required.
+  core.List<SubscriptionListing>? listings;
+
+  /// Package name of the parent app.
+  ///
+  /// Immutable.
+  core.String? packageName;
+
+  /// Unique product ID of the product.
+  ///
+  /// Unique within the parent app. Product IDs must be composed of lower-case
+  /// letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start
+  /// with a lower-case letter or number, and be between 1 and 40 (inclusive)
+  /// characters in length.
+  ///
+  /// Immutable.
+  core.String? productId;
+
+  /// Details about taxes and legal compliance.
+  SubscriptionTaxAndComplianceSettings? taxAndComplianceSettings;
+
+  Subscription({
+    this.archived,
+    this.basePlans,
+    this.listings,
+    this.packageName,
+    this.productId,
+    this.taxAndComplianceSettings,
+  });
+
+  Subscription.fromJson(core.Map _json)
+      : this(
+          archived: _json.containsKey('archived')
+              ? _json['archived'] as core.bool
+              : null,
+          basePlans: _json.containsKey('basePlans')
+              ? (_json['basePlans'] as core.List)
+                  .map((value) => BasePlan.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          listings: _json.containsKey('listings')
+              ? (_json['listings'] as core.List)
+                  .map((value) => SubscriptionListing.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+          taxAndComplianceSettings:
+              _json.containsKey('taxAndComplianceSettings')
+                  ? SubscriptionTaxAndComplianceSettings.fromJson(
+                      _json['taxAndComplianceSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archived != null) 'archived': archived!,
+        if (basePlans != null) 'basePlans': basePlans!,
+        if (listings != null) 'listings': listings!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (taxAndComplianceSettings != null)
+          'taxAndComplianceSettings': taxAndComplianceSettings!,
+      };
+}
+
 /// Information provided by the user when they complete the subscription
 /// cancellation flow (cancellation reason survey).
 class SubscriptionCancelSurveyResult {
@@ -6808,6 +9057,303 @@ class SubscriptionDeferralInfo {
           'desiredExpiryTimeMillis': desiredExpiryTimeMillis!,
         if (expectedExpiryTimeMillis != null)
           'expectedExpiryTimeMillis': expectedExpiryTimeMillis!,
+      };
+}
+
+/// The consumer-visible metadata of a subscription.
+class SubscriptionListing {
+  /// A list of benefits shown to the user on platforms such as the Play Store
+  /// and in restoration flows in the language of this listing.
+  ///
+  /// Plain text. Ordered list of at most four benefits.
+  core.List<core.String>? benefits;
+
+  /// The description of this subscription in the language of this listing.
+  ///
+  /// Maximum length - 80 characters. Plain text.
+  core.String? description;
+
+  /// The language of this listing, as defined by BCP-47, e.g. "en-US".
+  ///
+  /// Required.
+  core.String? languageCode;
+
+  /// The title of this subscription in the language of this listing.
+  ///
+  /// Plain text.
+  ///
+  /// Required.
+  core.String? title;
+
+  SubscriptionListing({
+    this.benefits,
+    this.description,
+    this.languageCode,
+    this.title,
+  });
+
+  SubscriptionListing.fromJson(core.Map _json)
+      : this(
+          benefits: _json.containsKey('benefits')
+              ? (_json['benefits'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (benefits != null) 'benefits': benefits!,
+        if (description != null) 'description': description!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// A single, temporary offer
+class SubscriptionOffer {
+  /// The ID of the base plan to which this offer is an extension.
+  ///
+  /// Required. Immutable.
+  core.String? basePlanId;
+
+  /// Unique ID of this subscription offer.
+  ///
+  /// Must be unique within the base plan.
+  ///
+  /// Required. Immutable.
+  core.String? offerId;
+
+  /// List of up to 20 custom tags specified for this offer, and returned to the
+  /// app through the billing library.
+  core.List<OfferTag>? offerTags;
+
+  /// The configuration for any new locations Play may launch in the future.
+  OtherRegionsSubscriptionOfferConfig? otherRegionsConfig;
+
+  /// The package name of the app the parent subscription belongs to.
+  ///
+  /// Required. Immutable.
+  core.String? packageName;
+
+  /// The phases of this subscription offer.
+  ///
+  /// Must contain at least one entry, and may contain at most five. Users will
+  /// always receive all these phases in the specified order. Phases may not be
+  /// added, removed, or reordered after initial creation.
+  ///
+  /// Required.
+  core.List<SubscriptionOfferPhase>? phases;
+
+  /// The ID of the parent subscription this offer belongs to.
+  ///
+  /// Required. Immutable.
+  core.String? productId;
+
+  /// The region-specific configuration of this offer.
+  ///
+  /// Must contain at least one entry.
+  ///
+  /// Required.
+  core.List<RegionalSubscriptionOfferConfig>? regionalConfigs;
+
+  /// The current state of this offer.
+  ///
+  /// Can be changed using Activate and Deactivate actions. NB: the base plan
+  /// state supersedes this state, so an active offer may not be available if
+  /// the base plan is not active.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value, should never be used.
+  /// - "DRAFT" : The subscription offer is not and has never been available to
+  /// users.
+  /// - "ACTIVE" : The subscription offer is available to new and existing
+  /// users.
+  /// - "INACTIVE" : The subscription offer is not available to new users.
+  /// Existing users retain access.
+  core.String? state;
+
+  /// The requirements that users need to fulfil to be eligible for this offer.
+  ///
+  /// Represents the requirements that Play will evaluate to decide whether an
+  /// offer should be returned. Developers may further filter these offers
+  /// themselves.
+  SubscriptionOfferTargeting? targeting;
+
+  SubscriptionOffer({
+    this.basePlanId,
+    this.offerId,
+    this.offerTags,
+    this.otherRegionsConfig,
+    this.packageName,
+    this.phases,
+    this.productId,
+    this.regionalConfigs,
+    this.state,
+    this.targeting,
+  });
+
+  SubscriptionOffer.fromJson(core.Map _json)
+      : this(
+          basePlanId: _json.containsKey('basePlanId')
+              ? _json['basePlanId'] as core.String
+              : null,
+          offerId: _json.containsKey('offerId')
+              ? _json['offerId'] as core.String
+              : null,
+          offerTags: _json.containsKey('offerTags')
+              ? (_json['offerTags'] as core.List)
+                  .map((value) => OfferTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          otherRegionsConfig: _json.containsKey('otherRegionsConfig')
+              ? OtherRegionsSubscriptionOfferConfig.fromJson(
+                  _json['otherRegionsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          phases: _json.containsKey('phases')
+              ? (_json['phases'] as core.List)
+                  .map((value) => SubscriptionOfferPhase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+          regionalConfigs: _json.containsKey('regionalConfigs')
+              ? (_json['regionalConfigs'] as core.List)
+                  .map((value) => RegionalSubscriptionOfferConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          targeting: _json.containsKey('targeting')
+              ? SubscriptionOfferTargeting.fromJson(
+                  _json['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (offerId != null) 'offerId': offerId!,
+        if (offerTags != null) 'offerTags': offerTags!,
+        if (otherRegionsConfig != null)
+          'otherRegionsConfig': otherRegionsConfig!,
+        if (packageName != null) 'packageName': packageName!,
+        if (phases != null) 'phases': phases!,
+        if (productId != null) 'productId': productId!,
+        if (regionalConfigs != null) 'regionalConfigs': regionalConfigs!,
+        if (state != null) 'state': state!,
+        if (targeting != null) 'targeting': targeting!,
+      };
+}
+
+/// A single phase of a subscription offer.
+class SubscriptionOfferPhase {
+  /// The duration of a single recurrence of this phase.
+  ///
+  /// Specified in ISO 8601 format.
+  ///
+  /// Required.
+  core.String? duration;
+
+  /// Pricing information for any new locations Play may launch in.
+  OtherRegionsSubscriptionOfferPhaseConfig? otherRegionsConfig;
+
+  /// The number of times this phase repeats.
+  ///
+  /// If this offer phase is not free, each recurrence charges the user the
+  /// price of this offer phase.
+  ///
+  /// Required.
+  core.int? recurrenceCount;
+
+  /// The region-specific configuration of this offer phase.
+  ///
+  /// This list must contain exactly one entry for each region for which the
+  /// subscription offer has a regional config.
+  ///
+  /// Required.
+  core.List<RegionalSubscriptionOfferPhaseConfig>? regionalConfigs;
+
+  SubscriptionOfferPhase({
+    this.duration,
+    this.otherRegionsConfig,
+    this.recurrenceCount,
+    this.regionalConfigs,
+  });
+
+  SubscriptionOfferPhase.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          otherRegionsConfig: _json.containsKey('otherRegionsConfig')
+              ? OtherRegionsSubscriptionOfferPhaseConfig.fromJson(
+                  _json['otherRegionsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          recurrenceCount: _json.containsKey('recurrenceCount')
+              ? _json['recurrenceCount'] as core.int
+              : null,
+          regionalConfigs: _json.containsKey('regionalConfigs')
+              ? (_json['regionalConfigs'] as core.List)
+                  .map((value) => RegionalSubscriptionOfferPhaseConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (otherRegionsConfig != null)
+          'otherRegionsConfig': otherRegionsConfig!,
+        if (recurrenceCount != null) 'recurrenceCount': recurrenceCount!,
+        if (regionalConfigs != null) 'regionalConfigs': regionalConfigs!,
+      };
+}
+
+/// Defines the rule a user needs to satisfy to receive this offer.
+class SubscriptionOfferTargeting {
+  /// Offer targeting rule for new user acquisition.
+  AcquisitionTargetingRule? acquisitionRule;
+
+  /// Offer targeting rule for upgrading users' existing plans.
+  UpgradeTargetingRule? upgradeRule;
+
+  SubscriptionOfferTargeting({
+    this.acquisitionRule,
+    this.upgradeRule,
+  });
+
+  SubscriptionOfferTargeting.fromJson(core.Map _json)
+      : this(
+          acquisitionRule: _json.containsKey('acquisitionRule')
+              ? AcquisitionTargetingRule.fromJson(_json['acquisitionRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          upgradeRule: _json.containsKey('upgradeRule')
+              ? UpgradeTargetingRule.fromJson(
+                  _json['upgradeRule'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acquisitionRule != null) 'acquisitionRule': acquisitionRule!,
+        if (upgradeRule != null) 'upgradeRule': upgradeRule!,
       };
 }
 
@@ -7202,6 +9748,240 @@ class SubscriptionPurchase {
       };
 }
 
+/// Item-level info for a subscription purchase.
+class SubscriptionPurchaseLineItem {
+  /// The item is auto renewing.
+  AutoRenewingPlan? autoRenewingPlan;
+
+  /// Time at which the subscription expired or will expire unless the access is
+  /// extended (ex.
+  ///
+  /// renews).
+  core.String? expiryTime;
+
+  /// The item is prepaid.
+  PrepaidPlan? prepaidPlan;
+
+  /// The purchased product ID (for example, 'monthly001').
+  core.String? productId;
+
+  SubscriptionPurchaseLineItem({
+    this.autoRenewingPlan,
+    this.expiryTime,
+    this.prepaidPlan,
+    this.productId,
+  });
+
+  SubscriptionPurchaseLineItem.fromJson(core.Map _json)
+      : this(
+          autoRenewingPlan: _json.containsKey('autoRenewingPlan')
+              ? AutoRenewingPlan.fromJson(_json['autoRenewingPlan']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          expiryTime: _json.containsKey('expiryTime')
+              ? _json['expiryTime'] as core.String
+              : null,
+          prepaidPlan: _json.containsKey('prepaidPlan')
+              ? PrepaidPlan.fromJson(
+                  _json['prepaidPlan'] as core.Map<core.String, core.dynamic>)
+              : null,
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoRenewingPlan != null) 'autoRenewingPlan': autoRenewingPlan!,
+        if (expiryTime != null) 'expiryTime': expiryTime!,
+        if (prepaidPlan != null) 'prepaidPlan': prepaidPlan!,
+        if (productId != null) 'productId': productId!,
+      };
+}
+
+/// Indicates the status of a user's subscription purchase.
+class SubscriptionPurchaseV2 {
+  /// The acknowledgement state of the subscription.
+  /// Possible string values are:
+  /// - "ACKNOWLEDGEMENT_STATE_UNSPECIFIED" : Unspecified acknowledgement state.
+  /// - "ACKNOWLEDGEMENT_STATE_PENDING" : The subscription is not acknowledged
+  /// yet.
+  /// - "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED" : The subscription is acknowledged.
+  core.String? acknowledgementState;
+
+  /// Additional context around canceled subscriptions.
+  ///
+  /// Only present if the subscription currently has subscription_state
+  /// SUBSCRIPTION_STATE_CANCELED.
+  CanceledStateContext? canceledStateContext;
+
+  /// User account identifier in the third-party service.
+  ExternalAccountIdentifiers? externalAccountIdentifiers;
+
+  /// This kind represents a SubscriptionPurchaseV2 object in the
+  /// androidpublisher service.
+  core.String? kind;
+
+  /// The order id of the latest order associated with the purchase of the
+  /// subscription.
+  ///
+  /// For autoRenewing subscription, this is the order id of signup order if it
+  /// is not renewed yet, or the last recurring order id (success, pending, or
+  /// declined order). For prepaid subscription, this is the order id associated
+  /// with the queried purchase token.
+  core.String? latestOrderId;
+
+  /// Item-level info for a subscription purchase.
+  ///
+  /// The items in the same purchase should be either all with AutoRenewingPlan
+  /// or all with PrepaidPlan.
+  core.List<SubscriptionPurchaseLineItem>? lineItems;
+
+  /// The purchase token of the old subscription if this subscription is one of
+  /// the following: * Re-signup of a canceled but non-lapsed subscription *
+  /// Upgrade/downgrade from a previous subscription.
+  ///
+  /// * Convert from prepaid to auto renewing subscription. * Convert from an
+  /// auto renewing subscription to prepaid. * Topup a prepaid subscription.
+  core.String? linkedPurchaseToken;
+
+  /// Additional context around paused subscriptions.
+  ///
+  /// Only present if the subscription currently has subscription_state
+  /// SUBSCRIPTION_STATE_PAUSED.
+  PausedStateContext? pausedStateContext;
+
+  /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the
+  /// subscription was granted.
+  core.String? regionCode;
+
+  /// Time at which the subscription was granted.
+  ///
+  /// Not set for pending subscriptions (subscription was created but awaiting
+  /// payment during signup).
+  core.String? startTime;
+
+  /// User profile associated with purchases made with 'Subscribe with Google'.
+  SubscribeWithGoogleInfo? subscribeWithGoogleInfo;
+
+  /// The current state of the subscription.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_STATE_UNSPECIFIED" : Unspecified subscription state.
+  /// - "SUBSCRIPTION_STATE_PENDING" : Subscription was created but awaiting
+  /// payment during signup. In this state, all items are awaiting payment.
+  /// - "SUBSCRIPTION_STATE_ACTIVE" : Subscription is active. - (1) If the
+  /// subscription is an auto renewing plan, at least one item is
+  /// auto_renew_enabled and not expired. - (2) If the subscription is a prepaid
+  /// plan, at least one item is not expired.
+  /// - "SUBSCRIPTION_STATE_PAUSED" : Subscription is paused. The state is only
+  /// available when the subscription is an auto renewing plan. In this state,
+  /// all items are in paused state.
+  /// - "SUBSCRIPTION_STATE_IN_GRACE_PERIOD" : Subscription is in grace period.
+  /// The state is only available when the subscription is an auto renewing
+  /// plan. In this state, all items are in grace period.
+  /// - "SUBSCRIPTION_STATE_ON_HOLD" : Subscription is on hold (suspended). The
+  /// state is only available when the subscription is an auto renewing plan. In
+  /// this state, all items are on hold.
+  /// - "SUBSCRIPTION_STATE_CANCELED" : Subscription is canceled but not expired
+  /// yet. The state is only available when the subscription is an auto renewing
+  /// plan. All items have auto_renew_enabled set to false.
+  /// - "SUBSCRIPTION_STATE_EXPIRED" : Subscription is expired. All items have
+  /// expiry_time in the past.
+  core.String? subscriptionState;
+
+  /// Only present if this subscription purchase is a test purchase.
+  TestPurchase? testPurchase;
+
+  SubscriptionPurchaseV2({
+    this.acknowledgementState,
+    this.canceledStateContext,
+    this.externalAccountIdentifiers,
+    this.kind,
+    this.latestOrderId,
+    this.lineItems,
+    this.linkedPurchaseToken,
+    this.pausedStateContext,
+    this.regionCode,
+    this.startTime,
+    this.subscribeWithGoogleInfo,
+    this.subscriptionState,
+    this.testPurchase,
+  });
+
+  SubscriptionPurchaseV2.fromJson(core.Map _json)
+      : this(
+          acknowledgementState: _json.containsKey('acknowledgementState')
+              ? _json['acknowledgementState'] as core.String
+              : null,
+          canceledStateContext: _json.containsKey('canceledStateContext')
+              ? CanceledStateContext.fromJson(_json['canceledStateContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          externalAccountIdentifiers:
+              _json.containsKey('externalAccountIdentifiers')
+                  ? ExternalAccountIdentifiers.fromJson(
+                      _json['externalAccountIdentifiers']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          latestOrderId: _json.containsKey('latestOrderId')
+              ? _json['latestOrderId'] as core.String
+              : null,
+          lineItems: _json.containsKey('lineItems')
+              ? (_json['lineItems'] as core.List)
+                  .map((value) => SubscriptionPurchaseLineItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          linkedPurchaseToken: _json.containsKey('linkedPurchaseToken')
+              ? _json['linkedPurchaseToken'] as core.String
+              : null,
+          pausedStateContext: _json.containsKey('pausedStateContext')
+              ? PausedStateContext.fromJson(_json['pausedStateContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          subscribeWithGoogleInfo: _json.containsKey('subscribeWithGoogleInfo')
+              ? SubscribeWithGoogleInfo.fromJson(
+                  _json['subscribeWithGoogleInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          subscriptionState: _json.containsKey('subscriptionState')
+              ? _json['subscriptionState'] as core.String
+              : null,
+          testPurchase: _json.containsKey('testPurchase')
+              ? TestPurchase.fromJson(
+                  _json['testPurchase'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgementState != null)
+          'acknowledgementState': acknowledgementState!,
+        if (canceledStateContext != null)
+          'canceledStateContext': canceledStateContext!,
+        if (externalAccountIdentifiers != null)
+          'externalAccountIdentifiers': externalAccountIdentifiers!,
+        if (kind != null) 'kind': kind!,
+        if (latestOrderId != null) 'latestOrderId': latestOrderId!,
+        if (lineItems != null) 'lineItems': lineItems!,
+        if (linkedPurchaseToken != null)
+          'linkedPurchaseToken': linkedPurchaseToken!,
+        if (pausedStateContext != null)
+          'pausedStateContext': pausedStateContext!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (startTime != null) 'startTime': startTime!,
+        if (subscribeWithGoogleInfo != null)
+          'subscribeWithGoogleInfo': subscribeWithGoogleInfo!,
+        if (subscriptionState != null) 'subscriptionState': subscriptionState!,
+        if (testPurchase != null) 'testPurchase': testPurchase!,
+      };
+}
+
 /// Request for the purchases.subscriptions.acknowledge API.
 typedef SubscriptionPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
 
@@ -7343,6 +10123,39 @@ class SystemFeature {
         if (name != null) 'name': name!,
       };
 }
+
+/// Information specific to cancellations initiated by Google system.
+typedef SystemInitiatedCancellation = $Empty;
+
+/// Defines the scope of subscriptions which a targeting rule can match to
+/// target offers to users based on past or current entitlement.
+class TargetingRuleScope {
+  /// The scope of the current targeting rule is the subscription with the
+  /// specified subscription ID.
+  ///
+  /// Must be a subscription within the same parent app.
+  core.String? specificSubscriptionInApp;
+
+  TargetingRuleScope({
+    this.specificSubscriptionInApp,
+  });
+
+  TargetingRuleScope.fromJson(core.Map _json)
+      : this(
+          specificSubscriptionInApp:
+              _json.containsKey('specificSubscriptionInApp')
+                  ? _json['specificSubscriptionInApp'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (specificSubscriptionInApp != null)
+          'specificSubscriptionInApp': specificSubscriptionInApp!,
+      };
+}
+
+/// Whether this subscription purchase is a test purchase.
+typedef TestPurchase = $Empty;
 
 /// The testers of an app.
 ///
@@ -7654,6 +10467,56 @@ class TracksListResponse {
       };
 }
 
+/// Represents a targeting rule of the form: User currently has {scope} \[with
+/// billing period {billing_period}\].
+class UpgradeTargetingRule {
+  /// The specific billing period duration, specified in ISO 8601 format, that a
+  /// user must be currently subscribed to to be eligible for this rule.
+  ///
+  /// If not specified, users subscribed to any billing period are matched.
+  core.String? billingPeriodDuration;
+
+  /// Limit this offer to only once per user.
+  ///
+  /// If set to true, a user can never be eligible for this offer again if they
+  /// ever subscribed to this offer.
+  core.bool? oncePerUser;
+
+  /// The scope of subscriptions this rule considers.
+  ///
+  /// Only allows "this subscription" and "specific subscription in app".
+  ///
+  /// Required.
+  TargetingRuleScope? scope;
+
+  UpgradeTargetingRule({
+    this.billingPeriodDuration,
+    this.oncePerUser,
+    this.scope,
+  });
+
+  UpgradeTargetingRule.fromJson(core.Map _json)
+      : this(
+          billingPeriodDuration: _json.containsKey('billingPeriodDuration')
+              ? _json['billingPeriodDuration'] as core.String
+              : null,
+          oncePerUser: _json.containsKey('oncePerUser')
+              ? _json['oncePerUser'] as core.bool
+              : null,
+          scope: _json.containsKey('scope')
+              ? TargetingRuleScope.fromJson(
+                  _json['scope'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingPeriodDuration != null)
+          'billingPeriodDuration': billingPeriodDuration!,
+        if (oncePerUser != null) 'oncePerUser': oncePerUser!,
+        if (scope != null) 'scope': scope!,
+      };
+}
+
 /// A user resource.
 class User {
   /// The state of the user's access to the Play Console.
@@ -7881,6 +10744,41 @@ class UserComment {
         if (text != null) 'text': text!,
         if (thumbsDownCount != null) 'thumbsDownCount': thumbsDownCount!,
         if (thumbsUpCount != null) 'thumbsUpCount': thumbsUpCount!,
+      };
+}
+
+/// Information specific to cancellations initiated by users.
+class UserInitiatedCancellation {
+  /// Information provided by the user when they complete the subscription
+  /// cancellation flow (cancellation reason survey).
+  CancelSurveyResult? cancelSurveyResult;
+
+  /// The time at which the subscription was canceled by the user.
+  ///
+  /// The user might still have access to the subscription after this time. Use
+  /// line_items.expiry_time to determine if a user still has access.
+  core.String? cancelTime;
+
+  UserInitiatedCancellation({
+    this.cancelSurveyResult,
+    this.cancelTime,
+  });
+
+  UserInitiatedCancellation.fromJson(core.Map _json)
+      : this(
+          cancelSurveyResult: _json.containsKey('cancelSurveyResult')
+              ? CancelSurveyResult.fromJson(_json['cancelSurveyResult']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cancelTime: _json.containsKey('cancelTime')
+              ? _json['cancelTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cancelSurveyResult != null)
+          'cancelSurveyResult': cancelSurveyResult!,
+        if (cancelTime != null) 'cancelTime': cancelTime!,
       };
 }
 

@@ -214,6 +214,7 @@ api.Asset buildAsset() {
     o.name = 'foo';
     o.orgPolicy = buildUnnamed5();
     o.osInventory = buildInventory();
+    o.relatedAsset = buildRelatedAsset();
     o.relatedAssets = buildRelatedAssets();
     o.resource = buildResource();
     o.servicePerimeter =
@@ -241,6 +242,7 @@ void checkAsset(api.Asset o) {
     );
     checkUnnamed5(o.orgPolicy!);
     checkInventory(o.osInventory!);
+    checkRelatedAsset(o.relatedAsset!);
     checkRelatedAssets(o.relatedAssets!);
     checkResource(o.resource!);
     checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(
@@ -3216,6 +3218,7 @@ api.RelatedAsset buildRelatedAsset() {
     o.ancestors = buildUnnamed64();
     o.asset = 'foo';
     o.assetType = 'foo';
+    o.relationshipType = 'foo';
   }
   buildCounterRelatedAsset--;
   return o;
@@ -3231,6 +3234,10 @@ void checkRelatedAsset(api.RelatedAsset o) {
     );
     unittest.expect(
       o.assetType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.relationshipType!,
       unittest.equals('foo'),
     );
   }

@@ -120,7 +120,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -1099,6 +1099,12 @@ class Instance {
   /// Output only.
   core.String? currentLocationId;
 
+  /// The KMS key reference that the customer provides when trying to create the
+  /// instance.
+  ///
+  /// Optional.
+  core.String? customerManagedKey;
+
   /// An arbitrary and optional user-provided name for the instance.
   core.String? displayName;
 
@@ -1290,6 +1296,11 @@ class Instance {
   /// Output only.
   core.String? statusMessage;
 
+  /// reasons that causes instance in "SUSPENDED" state.
+  ///
+  /// Optional.
+  core.List<core.String>? suspensionReasons;
+
   /// The service tier of the instance.
   ///
   /// Required.
@@ -1319,6 +1330,7 @@ class Instance {
     this.connectMode,
     this.createTime,
     this.currentLocationId,
+    this.customerManagedKey,
     this.displayName,
     this.host,
     this.labels,
@@ -1342,6 +1354,7 @@ class Instance {
     this.serverCaCerts,
     this.state,
     this.statusMessage,
+    this.suspensionReasons,
     this.tier,
     this.transitEncryptionMode,
   });
@@ -1365,6 +1378,9 @@ class Instance {
               : null,
           currentLocationId: _json.containsKey('currentLocationId')
               ? _json['currentLocationId'] as core.String
+              : null,
+          customerManagedKey: _json.containsKey('customerManagedKey')
+              ? _json['customerManagedKey'] as core.String
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
@@ -1448,6 +1464,11 @@ class Instance {
           statusMessage: _json.containsKey('statusMessage')
               ? _json['statusMessage'] as core.String
               : null,
+          suspensionReasons: _json.containsKey('suspensionReasons')
+              ? (_json['suspensionReasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
           transitEncryptionMode: _json.containsKey('transitEncryptionMode')
               ? _json['transitEncryptionMode'] as core.String
@@ -1462,6 +1483,8 @@ class Instance {
         if (connectMode != null) 'connectMode': connectMode!,
         if (createTime != null) 'createTime': createTime!,
         if (currentLocationId != null) 'currentLocationId': currentLocationId!,
+        if (customerManagedKey != null)
+          'customerManagedKey': customerManagedKey!,
         if (displayName != null) 'displayName': displayName!,
         if (host != null) 'host': host!,
         if (labels != null) 'labels': labels!,
@@ -1487,6 +1510,7 @@ class Instance {
         if (serverCaCerts != null) 'serverCaCerts': serverCaCerts!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
         if (tier != null) 'tier': tier!,
         if (transitEncryptionMode != null)
           'transitEncryptionMode': transitEncryptionMode!,

@@ -874,8 +874,10 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   /// Output only.
   core.String? field;
 
-  /// Provides a list of fields and the values they must have for this field to
-  /// be allowed to be set.
+  /// Provides a list of fields and values.
+  ///
+  /// At least one of the fields must have the corresponding value in order for
+  /// this field to be allowed to be set.
   ///
   /// Output only.
   core.List<GoogleChromePolicyV1PolicySchemaFieldDependencies>?

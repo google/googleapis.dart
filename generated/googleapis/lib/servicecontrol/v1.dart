@@ -1687,12 +1687,6 @@ class Operation {
   /// optional when the operation is used in ServiceController.Check.
   core.String? endTime;
 
-  /// Unimplemented.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? extensions;
-
   /// DO NOT USE.
   ///
   /// This is an experimental field.
@@ -1786,7 +1780,6 @@ class Operation {
   Operation({
     this.consumerId,
     this.endTime,
-    this.extensions,
     this.importance,
     this.labels,
     this.logEntries,
@@ -1807,11 +1800,6 @@ class Operation {
               : null,
           endTime: _json.containsKey('endTime')
               ? _json['endTime'] as core.String
-              : null,
-          extensions: _json.containsKey('extensions')
-              ? (_json['extensions'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
               : null,
           importance: _json.containsKey('importance')
               ? _json['importance'] as core.String
@@ -1875,7 +1863,6 @@ class Operation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerId != null) 'consumerId': consumerId!,
         if (endTime != null) 'endTime': endTime!,
-        if (extensions != null) 'extensions': extensions!,
         if (importance != null) 'importance': importance!,
         if (labels != null) 'labels': labels!,
         if (logEntries != null) 'logEntries': logEntries!,
@@ -2101,8 +2088,6 @@ class QuotaOperation {
   /// - "CHECK_ONLY" : For AllocateQuota request, only checks if there is enough
   /// quota available and does not change the available quota. No lock is placed
   /// on the available quota either.
-  /// - "QUERY_ONLY" : Deprecated. Please use QueryLimits API to query quota
-  /// limits.
   /// - "ADJUST_ONLY" : The operation allocates quota for the amount specified
   /// in the service configuration or specified using the quota metrics. If the
   /// requested amount is higher than the available quota, request does not fail

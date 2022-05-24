@@ -14,7 +14,8 @@
 
 /// Google Workspace Alert Center API - v1beta1
 ///
-/// Manages alerts on issues affecting your domain.
+/// Manages alerts on issues affecting your domain. Note: The current version of
+/// this API (v1beta1) is available to all Google Workspace customers.
 ///
 /// For more information, see
 /// <https://developers.google.com/admin-sdk/alertcenter/>
@@ -41,6 +42,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages alerts on issues affecting your domain.
+///
+/// Note: The current version of this API (v1beta1) is available to all Google
+/// Workspace customers.
 class AlertCenterApi {
   /// See and delete your domain's G Suite alerts, and send alert feedback
   static const appsAlertsScope = 'https://www.googleapis.com/auth/apps.alerts';

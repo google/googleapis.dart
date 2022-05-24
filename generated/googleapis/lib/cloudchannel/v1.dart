@@ -24,8 +24,10 @@
 ///
 /// - [AccountsResource]
 ///   - [AccountsChannelPartnerLinksResource]
+///     - [AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource]
 ///     - [AccountsChannelPartnerLinksCustomersResource]
 ///   - [AccountsCustomersResource]
+///     - [AccountsCustomersCustomerRepricingConfigsResource]
 ///     - [AccountsCustomersEntitlementsResource]
 ///   - [AccountsOffersResource]
 /// - [OperationsResource]
@@ -411,6 +413,10 @@ class AccountsResource {
 class AccountsChannelPartnerLinksResource {
   final commons.ApiRequester _requester;
 
+  AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource
+      get channelPartnerRepricingConfigs =>
+          AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource(
+              _requester);
   AccountsChannelPartnerLinksCustomersResource get customers =>
       AccountsChannelPartnerLinksCustomersResource(_requester);
 
@@ -653,6 +659,317 @@ class AccountsChannelPartnerLinksResource {
       queryParams: _queryParams,
     );
     return GoogleCloudChannelV1ChannelPartnerLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a ChannelPartnerRepricingConfig.
+  ///
+  /// Call this method to set modifications for a specific ChannelPartner's
+  /// bill. You can only create configs if the
+  /// RepricingConfig.effective_invoice_month is a future month. If needed, you
+  /// can create a config for the current month, with some restrictions. When
+  /// creating a config for a future month, make sure there are no existing
+  /// configs for that RepricingConfig.effective_invoice_month. The following
+  /// restrictions are for creating configs in the current month. * This
+  /// functionality is reserved for recovering from an erroneous config, and
+  /// should not be used for regular business cases. * The new config will not
+  /// modify exports used with other configs. Changes to the config may be
+  /// immediate, but may take up to 24 hours. * There is a limit of ten configs
+  /// for any ChannelPartner or RepricingConfig.effective_invoice_month. * The
+  /// contained ChannelPartnerRepricingConfig.repricing_config vaule must be
+  /// different from the value used in the current config for a ChannelPartner.
+  /// Possible Error Codes: * PERMISSION_DENIED: If the account making the
+  /// request and the account being queried are different. * INVALID_ARGUMENT:
+  /// Missing or invalid required parameters in the request. Also displays if
+  /// the updated config is for the current month or past months. * NOT_FOUND:
+  /// The ChannelPartnerRepricingConfig specified does not exist or is not
+  /// associated with the given account. * INTERNAL: Any non-user error related
+  /// to technical issues in the backend. In this case, contact Cloud Channel
+  /// support. Return Value: If successful, the updated
+  /// ChannelPartnerRepricingConfig resource, otherwise returns an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the ChannelPartner that will
+  /// receive the repricing config. Parent uses the format:
+  /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}
+  /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ChannelPartnerRepricingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ChannelPartnerRepricingConfig> create(
+    GoogleCloudChannelV1ChannelPartnerRepricingConfig request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/channelPartnerRepricingConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the given ChannelPartnerRepricingConfig permanently.
+  ///
+  /// You can only delete configs if their
+  /// RepricingConfig.effective_invoice_month is set to a date after the current
+  /// month. Possible error codes: * PERMISSION_DENIED: The account making the
+  /// request does not own this customer. * INVALID_ARGUMENT: Required request
+  /// parameters are missing or invalid. * FAILED_PRECONDITION: The
+  /// ChannelPartnerRepricingConfig is active or in the past. * NOT_FOUND: No
+  /// ChannelPartnerRepricingConfig found for the name in the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the channel partner repricing
+  /// config rule to delete.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+/channelPartnerRepricingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about how a Distributor modifies their bill before
+  /// sending it to a ChannelPartner.
+  ///
+  /// Possible Error Codes: * PERMISSION_DENIED: If the account making the
+  /// request and the account being queried are different. * NOT_FOUND: The
+  /// ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user
+  /// error related to technical issues in the backend. In this case, contact
+  /// Cloud Channel support. Return Value: If successful, the
+  /// ChannelPartnerRepricingConfig resource, otherwise returns an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the ChannelPartnerRepricingConfig
+  /// Format:
+  /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+/channelPartnerRepricingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ChannelPartnerRepricingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ChannelPartnerRepricingConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about how a Reseller modifies their bill before sending
+  /// it to a ChannelPartner.
+  ///
+  /// Possible Error Codes: * PERMISSION_DENIED: If the account making the
+  /// request and the account being queried are different. * NOT_FOUND: The
+  /// ChannelPartnerRepricingConfig specified does not exist or is not
+  /// associated with the given account. * INTERNAL: Any non-user error related
+  /// to technical issues in the backend. In this case, contact Cloud Channel
+  /// support. Return Value: If successful, the ChannelPartnerRepricingConfig
+  /// resources. The data for each resource is displayed in the ascending order
+  /// of: * channel partner ID * RepricingConfig.effective_invoice_month *
+  /// ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an
+  /// error.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the account's
+  /// ChannelPartnerLink. Parent uses the format:
+  /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}. Supports
+  /// accounts/{account_id}/channelPartnerLinks/- to retrieve configs for all
+  /// channel partners.
+  /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter for
+  /// \[CloudChannelService.ListChannelPartnerRepricingConfigs\] results
+  /// (channel_partner_link only). You can use this filter when you support a
+  /// BatchGet-like query. To use the filter, you must set
+  /// `parent=accounts/{account_id}/channelPartnerLinks/-`. Example:
+  /// `channel_partner_link = accounts/account_id/channelPartnerLinks/c1` OR
+  /// `channel_partner_link = accounts/account_id/channelPartnerLinks/c2`.
+  ///
+  /// [pageSize] - Optional. The maximum number of repricing configs to return.
+  /// The service may return fewer than this value. If unspecified, returns a
+  /// maximum of 50 rules. The maximum value is 100; values above 100 will be
+  /// coerced to 100.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results beyond the
+  /// first page. Obtained through
+  /// ListChannelPartnerRepricingConfigsResponse.next_page_token of the previous
+  /// CloudChannelService.ListChannelPartnerRepricingConfigs call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse>
+      list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/channelPartnerRepricingConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a ChannelPartnerRepricingConfig.
+  ///
+  /// Call this method to set modifications for a specific ChannelPartner's
+  /// bill. This method overwrites the existing CustomerRepricingConfig. You can
+  /// only update configs if the RepricingConfig.effective_invoice_month is a
+  /// future month. To make changes to configs for the current month, use
+  /// CreateChannelPartnerRepricingConfig, taking note of its restrictions. You
+  /// cannot update the RepricingConfig.effective_invoice_month. When updating a
+  /// config in the future: * This config must already exist. Possible Error
+  /// Codes: * PERMISSION_DENIED: If the account making the request and the
+  /// account being queried are different. * INVALID_ARGUMENT: Missing or
+  /// invalid required parameters in the request. Also displays if the updated
+  /// config is for the current month or past months. * NOT_FOUND: The
+  /// ChannelPartnerRepricingConfig specified does not exist or is not
+  /// associated with the given account. * INTERNAL: Any non-user error related
+  /// to technical issues in the backend. In this case, contact Cloud Channel
+  /// support. Return Value: If successful, the updated
+  /// ChannelPartnerRepricingConfig resource, otherwise returns an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the ChannelPartnerRepricingConfig.
+  /// Format:
+  /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+/channelPartnerRepricingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ChannelPartnerRepricingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ChannelPartnerRepricingConfig> patch(
+    GoogleCloudChannelV1ChannelPartnerRepricingConfig request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -970,6 +1287,9 @@ class AccountsChannelPartnerLinksCustomersResource {
 class AccountsCustomersResource {
   final commons.ApiRequester _requester;
 
+  AccountsCustomersCustomerRepricingConfigsResource
+      get customerRepricingConfigs =>
+          AccountsCustomersCustomerRepricingConfigsResource(_requester);
   AccountsCustomersEntitlementsResource get entitlements =>
       AccountsCustomersEntitlementsResource(_requester);
 
@@ -1620,6 +1940,312 @@ class AccountsCustomersResource {
       queryParams: _queryParams,
     );
     return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsCustomersCustomerRepricingConfigsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsCustomersCustomerRepricingConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a CustomerRepricingConfig.
+  ///
+  /// Call this method to set modifications for a specific customer's bill. You
+  /// can only create configs if the RepricingConfig.effective_invoice_month is
+  /// a future month. If needed, you can create a config for the current month,
+  /// with some restrictions. When creating a config for a future month, make
+  /// sure there are no existing configs for that
+  /// RepricingConfig.effective_invoice_month. The following restrictions are
+  /// for creating configs in the current month. * This functionality is
+  /// reserved for recovering from an erroneous config, and should not be used
+  /// for regular business cases. * The new config will not modify exports used
+  /// with other configs. Changes to the config may be immediate, but may take
+  /// up to 24 hours. * There is a limit of ten configs for any
+  /// RepricingConfig.EntitlementGranularity.entitlement or
+  /// RepricingConfig.effective_invoice_month. * The contained
+  /// CustomerRepricingConfig.repricing_config vaule must be different from the
+  /// value used in the current config for a
+  /// RepricingConfig.EntitlementGranularity.entitlement. Possible Error Codes:
+  /// * PERMISSION_DENIED: If the account making the request and the account
+  /// being queried are different. * INVALID_ARGUMENT: Missing or invalid
+  /// required parameters in the request. Also displays if the updated config is
+  /// for the current month or past months. * NOT_FOUND: The
+  /// CustomerRepricingConfig specified does not exist or is not associated with
+  /// the given account. * INTERNAL: Any non-user error related to technical
+  /// issues in the backend. In this case, contact Cloud Channel support. Return
+  /// Value: If successful, the updated CustomerRepricingConfig resource,
+  /// otherwise returns an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the customer that will receive
+  /// this repricing config. Parent uses the format:
+  /// accounts/{account_id}/customers/{customer_id}
+  /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1CustomerRepricingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1CustomerRepricingConfig> create(
+    GoogleCloudChannelV1CustomerRepricingConfig request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/customerRepricingConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1CustomerRepricingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the given CustomerRepricingConfig permanently.
+  ///
+  /// You can only delete configs if their
+  /// RepricingConfig.effective_invoice_month is set to a date after the current
+  /// month. Possible error codes: * PERMISSION_DENIED: The account making the
+  /// request does not own this customer. * INVALID_ARGUMENT: Required request
+  /// parameters are missing or invalid. * FAILED_PRECONDITION: The
+  /// CustomerRepricingConfig is active or in the past. * NOT_FOUND: No
+  /// CustomerRepricingConfig found for the name in the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the customer repricing config rule
+  /// to delete. Format:
+  /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/customers/\[^/\]+/customerRepricingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about how a Reseller modifies their bill before sending
+  /// it to a Customer.
+  ///
+  /// Possible Error Codes: * PERMISSION_DENIED: If the account making the
+  /// request and the account being queried are different. * NOT_FOUND: The
+  /// CustomerRepricingConfig was not found. * INTERNAL: Any non-user error
+  /// related to technical issues in the backend. In this case, contact Cloud
+  /// Channel support. Return Value: If successful, the CustomerRepricingConfig
+  /// resource, otherwise returns an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CustomerRepricingConfig.
+  /// Format:
+  /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/customers/\[^/\]+/customerRepricingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1CustomerRepricingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1CustomerRepricingConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1CustomerRepricingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about how a Reseller modifies their bill before sending
+  /// it to a Customer.
+  ///
+  /// Possible Error Codes: * PERMISSION_DENIED: If the account making the
+  /// request and the account being queried are different. * NOT_FOUND: The
+  /// CustomerRepricingConfig specified does not exist or is not associated with
+  /// the given account. * INTERNAL: Any non-user error related to technical
+  /// issues in the backend. In this case, contact Cloud Channel support. Return
+  /// Value: If successful, the CustomerRepricingConfig resources. The data for
+  /// each resource is displayed in the ascending order of: * customer ID *
+  /// RepricingConfig.EntitlementGranularity.entitlement *
+  /// RepricingConfig.effective_invoice_month *
+  /// CustomerRepricingConfig.update_time If unsuccessful, returns an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the customer. Parent uses the
+  /// format: accounts/{account_id}/customers/{customer_id}. Supports
+  /// accounts/{account_id}/customers/- to retrieve configs for all customers.
+  /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter for
+  /// \[CloudChannelService.ListCustomerRepricingConfigs\] results (customer
+  /// only). You can use this filter when you support a BatchGet-like query. To
+  /// use the filter, you must set `parent=accounts/{account_id}/customers/-`.
+  /// Example: customer = accounts/account_id/customers/c1 OR customer =
+  /// accounts/account_id/customers/c2.
+  ///
+  /// [pageSize] - Optional. The maximum number of repricing configs to return.
+  /// The service may return fewer than this value. If unspecified, returns a
+  /// maximum of 50 rules. The maximum value is 100; values above 100 will be
+  /// coerced to 100.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results beyond the
+  /// first page. Obtained through
+  /// ListCustomerRepricingConfigsResponse.next_page_token of the previous
+  /// CloudChannelService.ListCustomerRepricingConfigs call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudChannelV1ListCustomerRepricingConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListCustomerRepricingConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/customerRepricingConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1ListCustomerRepricingConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a CustomerRepricingConfig.
+  ///
+  /// Call this method to set modifications for a specific customer's bill. This
+  /// method overwrites the existing CustomerRepricingConfig. You can only
+  /// update configs if the RepricingConfig.effective_invoice_month is a future
+  /// month. To make changes to configs for the current month, use
+  /// CreateCustomerRepricingConfig, taking note of its restrictions. You cannot
+  /// update the RepricingConfig.effective_invoice_month. When updating a config
+  /// in the future: * This config must already exist. Possible Error Codes: *
+  /// PERMISSION_DENIED: If the account making the request and the account being
+  /// queried are different. * INVALID_ARGUMENT: Missing or invalid required
+  /// parameters in the request. Also displays if the updated config is for the
+  /// current month or past months. * NOT_FOUND: The CustomerRepricingConfig
+  /// specified does not exist or is not associated with the given account. *
+  /// INTERNAL: Any non-user error related to technical issues in the backend.
+  /// In this case, contact Cloud Channel support. Return Value: If successful,
+  /// the updated CustomerRepricingConfig resource, otherwise returns an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the CustomerRepricingConfig.
+  /// Format:
+  /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/customers/\[^/\]+/customerRepricingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1CustomerRepricingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1CustomerRepricingConfig> patch(
+    GoogleCloudChannelV1CustomerRepricingConfig request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudChannelV1CustomerRepricingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2983,6 +3609,57 @@ class GoogleCloudChannelV1ChannelPartnerLink {
       };
 }
 
+/// Configuration for how a distributor will rebill a channel partner (also
+/// known as a distributor-authorized reseller).
+class GoogleCloudChannelV1ChannelPartnerRepricingConfig {
+  /// Resource name of the ChannelPartnerRepricingConfig.
+  ///
+  /// Format:
+  /// accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The configuration for bill modifications made by a reseller before sending
+  /// it to ChannelPartner.
+  ///
+  /// Required.
+  GoogleCloudChannelV1RepricingConfig? repricingConfig;
+
+  /// Timestamp of an update to the repricing rule.
+  ///
+  /// If `update_time` is after RepricingConfig.effective_invoice_month then it
+  /// indicates this was set mid-month.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudChannelV1ChannelPartnerRepricingConfig({
+    this.name,
+    this.repricingConfig,
+    this.updateTime,
+  });
+
+  GoogleCloudChannelV1ChannelPartnerRepricingConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          repricingConfig: _json.containsKey('repricingConfig')
+              ? GoogleCloudChannelV1RepricingConfig.fromJson(
+                  _json['repricingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (repricingConfig != null) 'repricingConfig': repricingConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Request message for CloudChannelService.CheckCloudIdentityAccountsExist.
 class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
   /// Domain to fetch for Cloud Identity account customer.
@@ -3562,6 +4239,56 @@ class GoogleCloudChannelV1CustomerConstraints {
       };
 }
 
+/// Configuration for how a reseller will reprice a Customer.
+class GoogleCloudChannelV1CustomerRepricingConfig {
+  /// Resource name of the CustomerRepricingConfig.
+  ///
+  /// Format:
+  /// accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The configuration for bill modifications made by a reseller before sending
+  /// it to customers.
+  ///
+  /// Required.
+  GoogleCloudChannelV1RepricingConfig? repricingConfig;
+
+  /// Timestamp of an update to the repricing rule.
+  ///
+  /// If `update_time` is after RepricingConfig.effective_invoice_month then it
+  /// indicates this was set mid-month.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudChannelV1CustomerRepricingConfig({
+    this.name,
+    this.repricingConfig,
+    this.updateTime,
+  });
+
+  GoogleCloudChannelV1CustomerRepricingConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          repricingConfig: _json.containsKey('repricingConfig')
+              ? GoogleCloudChannelV1RepricingConfig.fromJson(
+                  _json['repricingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (repricingConfig != null) 'repricingConfig': repricingConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Required Edu Attributes
 class GoogleCloudChannelV1EduData {
   /// Size of the institute.
@@ -3890,6 +4617,87 @@ class GoogleCloudChannelV1ListChannelPartnerLinksResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelPartnerLinks != null)
           'channelPartnerLinks': channelPartnerLinks!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for CloudChannelService.ListChannelPartnerRepricingConfigs.
+class GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse {
+  /// The repricing configs for this channel partner.
+  core.List<GoogleCloudChannelV1ChannelPartnerRepricingConfig>?
+      channelPartnerRepricingConfigs;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass to ListChannelPartnerRepricingConfigsRequest.page_token to obtain
+  /// that page.
+  core.String? nextPageToken;
+
+  GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse({
+    this.channelPartnerRepricingConfigs,
+    this.nextPageToken,
+  });
+
+  GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse.fromJson(
+      core.Map _json)
+      : this(
+          channelPartnerRepricingConfigs:
+              _json.containsKey('channelPartnerRepricingConfigs')
+                  ? (_json['channelPartnerRepricingConfigs'] as core.List)
+                      .map((value) =>
+                          GoogleCloudChannelV1ChannelPartnerRepricingConfig
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (channelPartnerRepricingConfigs != null)
+          'channelPartnerRepricingConfigs': channelPartnerRepricingConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for CloudChannelService.ListCustomerRepricingConfigs.
+class GoogleCloudChannelV1ListCustomerRepricingConfigsResponse {
+  /// The repricing configs for this channel partner.
+  core.List<GoogleCloudChannelV1CustomerRepricingConfig>?
+      customerRepricingConfigs;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass to ListCustomerRepricingConfigsRequest.page_token to obtain that
+  /// page.
+  core.String? nextPageToken;
+
+  GoogleCloudChannelV1ListCustomerRepricingConfigsResponse({
+    this.customerRepricingConfigs,
+    this.nextPageToken,
+  });
+
+  GoogleCloudChannelV1ListCustomerRepricingConfigsResponse.fromJson(
+      core.Map _json)
+      : this(
+          customerRepricingConfigs:
+              _json.containsKey('customerRepricingConfigs')
+                  ? (_json['customerRepricingConfigs'] as core.List)
+                      .map((value) =>
+                          GoogleCloudChannelV1CustomerRepricingConfig.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customerRepricingConfigs != null)
+          'customerRepricingConfigs': customerRepricingConfigs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4687,6 +5495,31 @@ class GoogleCloudChannelV1ParameterDefinition {
       };
 }
 
+/// An adjustment that applies a flat markup or markdown to an entire bill.
+class GoogleCloudChannelV1PercentageAdjustment {
+  /// The percentage of the bill to adjust.
+  ///
+  /// For example: Mark down by 1% =\> "-1.00" Mark up by 1% =\> "1.00"
+  /// Pass-Through =\> "0.00"
+  GoogleTypeDecimal? percentage;
+
+  GoogleCloudChannelV1PercentageAdjustment({
+    this.percentage,
+  });
+
+  GoogleCloudChannelV1PercentageAdjustment.fromJson(core.Map _json)
+      : this(
+          percentage: _json.containsKey('percentage')
+              ? GoogleTypeDecimal.fromJson(
+                  _json['percentage'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (percentage != null) 'percentage': percentage!,
+      };
+}
+
 /// Represents period in days/months/years.
 class GoogleCloudChannelV1Period {
   /// Total duration of Period Type defined.
@@ -5280,6 +6113,148 @@ class GoogleCloudChannelV1RenewalSettings {
       };
 }
 
+/// A type that represents the various adjustments you can apply to a bill.
+class GoogleCloudChannelV1RepricingAdjustment {
+  /// Flat markup or markdown on an entire bill.
+  GoogleCloudChannelV1PercentageAdjustment? percentageAdjustment;
+
+  GoogleCloudChannelV1RepricingAdjustment({
+    this.percentageAdjustment,
+  });
+
+  GoogleCloudChannelV1RepricingAdjustment.fromJson(core.Map _json)
+      : this(
+          percentageAdjustment: _json.containsKey('percentageAdjustment')
+              ? GoogleCloudChannelV1PercentageAdjustment.fromJson(
+                  _json['percentageAdjustment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (percentageAdjustment != null)
+          'percentageAdjustment': percentageAdjustment!,
+      };
+}
+
+/// Configuration for repricing a Google bill over a period of time.
+class GoogleCloudChannelV1RepricingConfig {
+  /// Information about the adjustment.
+  ///
+  /// Required.
+  GoogleCloudChannelV1RepricingAdjustment? adjustment;
+
+  /// Applies the repricing configuration at the channel partner level.
+  ///
+  /// This is the only supported value for ChannelPartnerRepricingConfig.
+  GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity?
+      channelPartnerGranularity;
+
+  /// The YearMonth when these adjustments activate.
+  ///
+  /// The Day field needs to be "0" since we only accept YearMonth repricing
+  /// boundaries.
+  ///
+  /// Required.
+  GoogleTypeDate? effectiveInvoiceMonth;
+
+  /// Applies the repricing configuration at the entitlement level.
+  ///
+  /// This is the only supported value for CustomerRepricingConfig.
+  GoogleCloudChannelV1RepricingConfigEntitlementGranularity?
+      entitlementGranularity;
+
+  /// The RebillingBasis to use for this bill.
+  ///
+  /// Specifies the relative cost based on repricing costs you will apply.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REBILLING_BASIS_UNSPECIFIED" : Not used.
+  /// - "COST_AT_LIST" : Use the list cost, also known as the MSRP.
+  /// - "DIRECT_CUSTOMER_COST" : Pass through all discounts except the Reseller
+  /// Program Discount. If this is the default cost base and no adjustments are
+  /// specified, the output cost will be exactly what the customer would see if
+  /// they viewed the bill in the Google Cloud Console.
+  core.String? rebillingBasis;
+
+  GoogleCloudChannelV1RepricingConfig({
+    this.adjustment,
+    this.channelPartnerGranularity,
+    this.effectiveInvoiceMonth,
+    this.entitlementGranularity,
+    this.rebillingBasis,
+  });
+
+  GoogleCloudChannelV1RepricingConfig.fromJson(core.Map _json)
+      : this(
+          adjustment: _json.containsKey('adjustment')
+              ? GoogleCloudChannelV1RepricingAdjustment.fromJson(
+                  _json['adjustment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          channelPartnerGranularity:
+              _json.containsKey('channelPartnerGranularity')
+                  ? GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+                      .fromJson(_json['channelPartnerGranularity']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          effectiveInvoiceMonth: _json.containsKey('effectiveInvoiceMonth')
+              ? GoogleTypeDate.fromJson(_json['effectiveInvoiceMonth']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          entitlementGranularity: _json.containsKey('entitlementGranularity')
+              ? GoogleCloudChannelV1RepricingConfigEntitlementGranularity
+                  .fromJson(_json['entitlementGranularity']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rebillingBasis: _json.containsKey('rebillingBasis')
+              ? _json['rebillingBasis'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adjustment != null) 'adjustment': adjustment!,
+        if (channelPartnerGranularity != null)
+          'channelPartnerGranularity': channelPartnerGranularity!,
+        if (effectiveInvoiceMonth != null)
+          'effectiveInvoiceMonth': effectiveInvoiceMonth!,
+        if (entitlementGranularity != null)
+          'entitlementGranularity': entitlementGranularity!,
+        if (rebillingBasis != null) 'rebillingBasis': rebillingBasis!,
+      };
+}
+
+/// Applies the repricing configuration at the channel partner level.
+///
+/// The channel partner value is derived from the resource name. Takes an empty
+/// json object.
+typedef GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity = $Empty;
+
+/// Applies the repricing configuration at the entitlement level.
+class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
+  /// Resource name of the entitlement.
+  ///
+  /// Format:
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+  core.String? entitlement;
+
+  GoogleCloudChannelV1RepricingConfigEntitlementGranularity({
+    this.entitlement,
+  });
+
+  GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromJson(
+      core.Map _json)
+      : this(
+          entitlement: _json.containsKey('entitlement')
+              ? _json['entitlement'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entitlement != null) 'entitlement': entitlement!,
+      };
+}
+
 /// Represents a product's purchasable Stock Keeping Unit (SKU).
 ///
 /// SKUs represent the different variations of the product. For example, Google
@@ -5847,6 +6822,79 @@ typedef GoogleProtobufEmpty = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef GoogleTypeDate = $Date;
+
+/// A representation of a decimal value, such as 2.5.
+///
+/// Clients may convert values into language-native decimal formats, such as
+/// Java's BigDecimal or Python's decimal.Decimal. \[BigDecimal\]:
+/// https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html
+/// \[decimal.Decimal\]: https://docs.python.org/3/library/decimal.html
+class GoogleTypeDecimal {
+  /// The decimal value, as a string.
+  ///
+  /// The string representation consists of an optional sign, `+` (`U+002B`) or
+  /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits
+  /// ("the integer"), optionally followed by a fraction, optionally followed by
+  /// an exponent. The fraction consists of a decimal point followed by zero or
+  /// more decimal digits. The string must contain at least one digit in either
+  /// the integer or the fraction. The number formed by the sign, the integer
+  /// and the fraction is referred to as the significand. The exponent consists
+  /// of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more
+  /// decimal digits. Services **should** normalize decimal values before
+  /// storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -\>
+  /// `2.5`). - Replacing a zero-length integer value with `0` (`.5` -\> `0.5`).
+  /// - Coercing the exponent character to lower-case (`2.5E8` -\> `2.5e8`). -
+  /// Removing an explicitly-provided zero exponent (`2.5e0` -\> `2.5`).
+  /// Services **may** perform additional normalization based on its own needs
+  /// and the internal decimal implementation selected, such as shifting the
+  /// decimal point and exponent value together (example: `2.5e-1` \<-\>
+  /// `0.25`). Additionally, services **may** preserve trailing zeroes in the
+  /// fraction to indicate increased precision, but are not required to do so.
+  /// Note that only the `.` character is supported to divide the integer and
+  /// the fraction; `,` **should not** be supported regardless of locale.
+  /// Additionally, thousand separators **should not** be supported. If a
+  /// service does support them, values **must** be normalized. The ENBF grammar
+  /// is: DecimalString = \[Sign\] Significand \[Exponent\]; Sign = '+' | '-';
+  /// Significand = Digits '.' | \[Digits\] '.' Digits; Exponent = ('e' | 'E')
+  /// \[Sign\] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7'
+  /// | '8' | '9' }; Services **should** clearly document the range of supported
+  /// values, the maximum supported precision (total number of digits), and, if
+  /// applicable, the scale (number of digits after the decimal point), as well
+  /// as how it behaves when receiving out-of-bounds values. Services **may**
+  /// choose to accept values passed as input even when the value has a higher
+  /// precision or scale than the service supports, and **should** round the
+  /// value to fit the supported scale. Alternatively, the service **may** error
+  /// with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be
+  /// lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT`
+  /// in gRPC) if the service receives a value outside of the supported range.
+  core.String? value;
+
+  GoogleTypeDecimal({
+    this.value,
+  });
+
+  GoogleTypeDecimal.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;

@@ -6571,7 +6571,6 @@ class CdnSettings {
   /// - "dash"
   /// - "webrtc"
   /// - "hls"
-  /// - "srt"
   core.String? ingestionType;
 
   /// The resolution of the inbound video data.
@@ -8615,6 +8614,9 @@ class ContentRating {
   /// - "cbfcUnspecified"
   /// - "cbfcU" : U
   /// - "cbfcUA" : U/A
+  /// - "cbfcUA7plus" : U/A 7+
+  /// - "cbfcUA13plus" : U/A 13+
+  /// - "cbfcUA16plus" : U/A 16+
   /// - "cbfcA" : A
   /// - "cbfcS" : S
   /// - "cbfcUnrated"

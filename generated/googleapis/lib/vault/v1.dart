@@ -3153,6 +3153,8 @@ class Query {
   /// **AccountInfo** or **OrgUnitInfo**.
   /// - "ROOM" : Search messages in the Chat spaces specified in
   /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
+  /// - "SITES_URL" : Search for sites by the published site URLs specified in
+  /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
   /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
   core.String? method;
@@ -3176,12 +3178,17 @@ class Query {
   /// **AccountInfo** or **OrgUnitInfo**.
   /// - "ROOM" : Search messages in the Chat spaces specified in
   /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
+  /// - "SITES_URL" : Search for sites by the published site URLs specified in
+  /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
   /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
   core.String? searchMethod;
 
   /// Required when **SearchMethod** is **SHARED_DRIVE**.
   SharedDriveInfo? sharedDriveInfo;
+
+  /// Required when **SearchMethod** is **SITES_URL**.
+  SitesUrlInfo? sitesUrlInfo;
 
   /// The start time for the search query.
   ///
@@ -3221,6 +3228,7 @@ class Query {
     this.orgUnitInfo,
     this.searchMethod,
     this.sharedDriveInfo,
+    this.sitesUrlInfo,
     this.startTime,
     this.teamDriveInfo,
     this.terms,
@@ -3273,6 +3281,10 @@ class Query {
               ? SharedDriveInfo.fromJson(_json['sharedDriveInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sitesUrlInfo: _json.containsKey('sitesUrlInfo')
+              ? SitesUrlInfo.fromJson(
+                  _json['sitesUrlInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           startTime: _json.containsKey('startTime')
               ? _json['startTime'] as core.String
               : null,
@@ -3305,6 +3317,7 @@ class Query {
         if (orgUnitInfo != null) 'orgUnitInfo': orgUnitInfo!,
         if (searchMethod != null) 'searchMethod': searchMethod!,
         if (sharedDriveInfo != null) 'sharedDriveInfo': sharedDriveInfo!,
+        if (sitesUrlInfo != null) 'sitesUrlInfo': sitesUrlInfo!,
         if (startTime != null) 'startTime': startTime!,
         if (teamDriveInfo != null) 'teamDriveInfo': teamDriveInfo!,
         if (terms != null) 'terms': terms!,
@@ -3496,6 +3509,29 @@ class SharedDriveInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sharedDriveIds != null) 'sharedDriveIds': sharedDriveIds!,
+      };
+}
+
+/// The published site URLs of new Google Sites to search
+class SitesUrlInfo {
+  /// A list of published site URLs.
+  core.List<core.String>? urls;
+
+  SitesUrlInfo({
+    this.urls,
+  });
+
+  SitesUrlInfo.fromJson(core.Map _json)
+      : this(
+          urls: _json.containsKey('urls')
+              ? (_json['urls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (urls != null) 'urls': urls!,
       };
 }
 

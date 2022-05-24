@@ -28,6 +28,7 @@
 ///   - [BiddersCreativesResource]
 ///   - [BiddersEndpointsResource]
 ///   - [BiddersPretargetingConfigsResource]
+///   - [BiddersPublisherConnectionsResource]
 /// - [BuyersResource]
 ///   - [BuyersCreativesResource]
 ///   - [BuyersUserListsResource]
@@ -79,6 +80,8 @@ class BiddersResource {
       BiddersEndpointsResource(_requester);
   BiddersPretargetingConfigsResource get pretargetingConfigs =>
       BiddersPretargetingConfigsResource(_requester);
+  BiddersPublisherConnectionsResource get publisherConnections =>
+      BiddersPublisherConnectionsResource(_requester);
 
   BiddersResource(commons.ApiRequester client) : _requester = client;
 
@@ -1018,6 +1021,212 @@ class BiddersPretargetingConfigsResource {
   }
 }
 
+class BiddersPublisherConnectionsResource {
+  final commons.ApiRequester _requester;
+
+  BiddersPublisherConnectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Batch approves multiple publisher connections.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bidder for whom publisher connections will be
+  /// approved. Format: `bidders/{bidder}` where `{bidder}` is the account ID of
+  /// the bidder.
+  /// Value must have pattern `^bidders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchApprovePublisherConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchApprovePublisherConnectionsResponse> batchApprove(
+    BatchApprovePublisherConnectionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/publisherConnections:batchApprove';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BatchApprovePublisherConnectionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Batch rejects multiple publisher connections.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bidder for whom publisher connections will be
+  /// rejected. Format: `bidders/{bidder}` where `{bidder}` is the account ID of
+  /// the bidder.
+  /// Value must have pattern `^bidders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchRejectPublisherConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchRejectPublisherConnectionsResponse> batchReject(
+    BatchRejectPublisherConnectionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/publisherConnections:batchReject';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BatchRejectPublisherConnectionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a publisher connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the publisher whose connection information is
+  /// to be retrieved. In the pattern
+  /// `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is
+  /// the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt
+  /// publisher ID. See publisherConnection.name.
+  /// Value must have pattern `^bidders/\[^/\]+/publisherConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublisherConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublisherConnection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PublisherConnection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists publisher connections for a given bidder.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the bidder for which publishers have
+  /// initiated connections. The pattern for this resource is `bidders/{bidder}`
+  /// where `{bidder}` represents the account ID of the bidder.
+  /// Value must have pattern `^bidders/\[^/\]+$`.
+  ///
+  /// [filter] - Query string to filter publisher connections. Connections can
+  /// be filtered by `displayName`, `publisherPlatform`, and `biddingState`. If
+  /// no filter is specified, all publisher connections will be returned.
+  /// Example: 'displayName="Great Publisher*" AND publisherPlatform=ADMOB AND
+  /// biddingState != PENDING' See https://google.aip.dev/160 for more
+  /// information about filtering syntax.
+  ///
+  /// [orderBy] - Order specification by which results should be sorted. If no
+  /// sort order is specified, the results will be returned in an arbitrary
+  /// order. Currently results can be sorted by `createTime`. Example:
+  /// 'createTime DESC'.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested (due to timeout constraint) even if more are available via
+  /// another call. If unspecified, the server will pick an appropriate default.
+  /// Acceptable values are 1 to 5000, inclusive.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListPublisherConnectionsResponse.nextPageToken returned from the previous
+  /// call to the 'ListPublisherConnections' method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPublisherConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPublisherConnectionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/publisherConnections';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListPublisherConnectionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class BuyersResource {
   final commons.ApiRequester _requester;
 
@@ -1724,7 +1933,7 @@ class AdTechnologyProviders {
   /// The detected IAB Global Vendor List (GVL) IDs for this creative.
   ///
   /// See the IAB Global Vendor List at
-  /// https://vendorlist.consensu.org/v2/vendor-list.json for details about the
+  /// https://vendor-list.consensu.org/v2/vendor-list.json for details about the
   /// vendors.
   core.List<core.String>? detectedGvlIds;
 
@@ -2027,6 +2236,114 @@ class AppTargeting {
           'mobileAppCategoryTargeting': mobileAppCategoryTargeting!,
         if (mobileAppTargeting != null)
           'mobileAppTargeting': mobileAppTargeting!,
+      };
+}
+
+/// A request to approve a batch of publisher connections.
+class BatchApprovePublisherConnectionsRequest {
+  /// The names of the publishers with which connections will be approved.
+  ///
+  /// In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where
+  /// `{bidder}` is the account ID of the bidder, and `{publisher}` is the
+  /// ads.txt/app-ads.txt publisher ID.
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  BatchApprovePublisherConnectionsRequest({
+    this.names,
+  });
+
+  BatchApprovePublisherConnectionsRequest.fromJson(core.Map _json)
+      : this(
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
+      };
+}
+
+/// A response for the request to approve a batch of publisher connections.
+class BatchApprovePublisherConnectionsResponse {
+  /// The publisher connections that have been approved.
+  core.List<PublisherConnection>? publisherConnections;
+
+  BatchApprovePublisherConnectionsResponse({
+    this.publisherConnections,
+  });
+
+  BatchApprovePublisherConnectionsResponse.fromJson(core.Map _json)
+      : this(
+          publisherConnections: _json.containsKey('publisherConnections')
+              ? (_json['publisherConnections'] as core.List)
+                  .map((value) => PublisherConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publisherConnections != null)
+          'publisherConnections': publisherConnections!,
+      };
+}
+
+/// A request to reject a batch of publisher connections.
+class BatchRejectPublisherConnectionsRequest {
+  /// The names of the publishers with whom connection will be rejected.
+  ///
+  /// In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where
+  /// `{bidder}` is the account ID of the bidder, and `{publisher}` is the
+  /// ads.txt/app-ads.txt publisher ID.
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  BatchRejectPublisherConnectionsRequest({
+    this.names,
+  });
+
+  BatchRejectPublisherConnectionsRequest.fromJson(core.Map _json)
+      : this(
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
+      };
+}
+
+/// A response for the request to reject a batch of publisher connections.
+class BatchRejectPublisherConnectionsResponse {
+  /// The publisher connections that have been rejected.
+  core.List<PublisherConnection>? publisherConnections;
+
+  BatchRejectPublisherConnectionsResponse({
+    this.publisherConnections,
+  });
+
+  BatchRejectPublisherConnectionsResponse.fromJson(core.Map _json)
+      : this(
+          publisherConnections: _json.containsKey('publisherConnections')
+              ? (_json['publisherConnections'] as core.List)
+                  .map((value) => PublisherConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publisherConnections != null)
+          'publisherConnections': publisherConnections!,
       };
 }
 
@@ -3433,6 +3750,43 @@ class ListPretargetingConfigsResponse {
       };
 }
 
+/// A response to a request for listing publisher connections.
+class ListPublisherConnectionsResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the ListPublisherConnectionsRequest.pageToken field in
+  /// the subsequent call to the `ListPublisherConnections` method to retrieve
+  /// the next page of results.
+  core.String? nextPageToken;
+
+  /// The list of publisher connections.
+  core.List<PublisherConnection>? publisherConnections;
+
+  ListPublisherConnectionsResponse({
+    this.nextPageToken,
+    this.publisherConnections,
+  });
+
+  ListPublisherConnectionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          publisherConnections: _json.containsKey('publisherConnections')
+              ? (_json['publisherConnections'] as core.List)
+                  .map((value) => PublisherConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (publisherConnections != null)
+          'publisherConnections': publisherConnections!,
+      };
+}
+
 /// The list user list response.
 class ListUserListsResponse {
   /// The continuation page token to send back to the server in a subsequent
@@ -4195,6 +4549,88 @@ class PretargetingConfig {
         if (userListTargeting != null) 'userListTargeting': userListTargeting!,
         if (verticalTargeting != null) 'verticalTargeting': verticalTargeting!,
         if (webTargeting != null) 'webTargeting': webTargeting!,
+      };
+}
+
+/// An Open Bidding exchange's connection to a publisher.
+///
+/// This is initiated by the publisher for the bidder to review. If approved by
+/// the bidder, this means that the bidder agrees to receive bid requests from
+/// the publisher.
+class PublisherConnection {
+  /// Whether the publisher has been approved by the bidder.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : An unspecified bidding status.
+  /// - "PENDING" : Indicates a request for connection from the publisher that
+  /// the bidder needs to review.
+  /// - "REJECTED" : Indicates that the publisher was rejected.
+  /// - "APPROVED" : Indicates that the publisher was approved.
+  core.String? biddingState;
+
+  /// The time at which the publisher initiated a connection with the bidder
+  /// (irrespective of if or when the bidder approves it).
+  ///
+  /// This is subsequently updated if the publisher revokes and re-initiates the
+  /// connection.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Publisher display name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Name of the publisher connection.
+  ///
+  /// This follows the pattern
+  /// `bidders/{bidder}/publisherConnections/{publisher}`, where `{bidder}`
+  /// represents the account ID of the bidder, and `{publisher}` is the
+  /// ads.txt/app-ads.txt publisher ID.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Whether the publisher is an Ad Manager or AdMob publisher.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PUBLISHER_PLATFORM_UNSPECIFIED" : An unspecified publisher platform.
+  /// - "GOOGLE_AD_MANAGER" : A Google Ad Manager publisher.
+  /// - "ADMOB" : An AdMob publisher.
+  core.String? publisherPlatform;
+
+  PublisherConnection({
+    this.biddingState,
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.publisherPlatform,
+  });
+
+  PublisherConnection.fromJson(core.Map _json)
+      : this(
+          biddingState: _json.containsKey('biddingState')
+              ? _json['biddingState'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          publisherPlatform: _json.containsKey('publisherPlatform')
+              ? _json['publisherPlatform'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (biddingState != null) 'biddingState': biddingState!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (publisherPlatform != null) 'publisherPlatform': publisherPlatform!,
       };
 }
 

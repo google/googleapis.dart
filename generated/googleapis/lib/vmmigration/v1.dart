@@ -3034,6 +3034,9 @@ class ComputeEngineTargetDefaults {
   /// disks that balance performance and cost.
   core.String? diskType;
 
+  /// The hostname to assign to the VM.
+  core.String? hostname;
+
   /// A map of labels to associate with the VM.
   core.Map<core.String, core.String>? labels;
 
@@ -3086,6 +3089,7 @@ class ComputeEngineTargetDefaults {
     this.bootOption,
     this.computeScheduling,
     this.diskType,
+    this.hostname,
     this.labels,
     this.licenseType,
     this.machineType,
@@ -3120,6 +3124,9 @@ class ComputeEngineTargetDefaults {
               : null,
           diskType: _json.containsKey('diskType')
               ? _json['diskType'] as core.String
+              : null,
+          hostname: _json.containsKey('hostname')
+              ? _json['hostname'] as core.String
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3179,6 +3186,7 @@ class ComputeEngineTargetDefaults {
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
         if (diskType != null) 'diskType': diskType!,
+        if (hostname != null) 'hostname': hostname!,
         if (labels != null) 'labels': labels!,
         if (licenseType != null) 'licenseType': licenseType!,
         if (machineType != null) 'machineType': machineType!,
@@ -3222,6 +3230,9 @@ class ComputeEngineTargetDetails {
   /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
   /// disks that balance performance and cost.
   core.String? diskType;
+
+  /// The hostname to assign to the VM.
+  core.String? hostname;
 
   /// A map of labels to associate with the VM.
   core.Map<core.String, core.String>? labels;
@@ -3274,6 +3285,7 @@ class ComputeEngineTargetDetails {
     this.bootOption,
     this.computeScheduling,
     this.diskType,
+    this.hostname,
     this.labels,
     this.licenseType,
     this.machineType,
@@ -3308,6 +3320,9 @@ class ComputeEngineTargetDetails {
               : null,
           diskType: _json.containsKey('diskType')
               ? _json['diskType'] as core.String
+              : null,
+          hostname: _json.containsKey('hostname')
+              ? _json['hostname'] as core.String
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3367,6 +3382,7 @@ class ComputeEngineTargetDetails {
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
         if (diskType != null) 'diskType': diskType!,
+        if (hostname != null) 'hostname': hostname!,
         if (labels != null) 'labels': labels!,
         if (licenseType != null) 'licenseType': licenseType!,
         if (machineType != null) 'machineType': machineType!,

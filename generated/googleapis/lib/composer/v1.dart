@@ -616,6 +616,35 @@ class AllowedIpRange {
       };
 }
 
+/// CIDR block with an optional name.
+class CidrBlock {
+  /// CIDR block that must be specified in CIDR notation.
+  core.String? cidrBlock;
+
+  /// User-defined name that identifies the CIDR block.
+  core.String? displayName;
+
+  CidrBlock({
+    this.cidrBlock,
+    this.displayName,
+  });
+
+  CidrBlock.fromJson(core.Map _json)
+      : this(
+          cidrBlock: _json.containsKey('cidrBlock')
+              ? _json['cidrBlock'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cidrBlock != null) 'cidrBlock': cidrBlock!,
+        if (displayName != null) 'displayName': displayName!,
+      };
+}
+
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
 /// software.
 class DatabaseConfig {
@@ -858,6 +887,15 @@ class EnvironmentConfig {
   /// Optional.
   MaintenanceWindow? maintenanceWindow;
 
+  /// The configuration options for GKE cluster master authorized networks.
+  ///
+  /// By default master authorized networks feature is: - in case of private
+  /// environment: enabled with no external networks allowlisted. - in case of
+  /// public environment: disabled.
+  ///
+  /// Optional.
+  MasterAuthorizedNetworksConfig? masterAuthorizedNetworksConfig;
+
   /// The configuration used for the Kubernetes Engine cluster.
   NodeConfig? nodeConfig;
 
@@ -904,6 +942,7 @@ class EnvironmentConfig {
     this.environmentSize,
     this.gkeCluster,
     this.maintenanceWindow,
+    this.masterAuthorizedNetworksConfig,
     this.nodeConfig,
     this.nodeCount,
     this.privateEnvironmentConfig,
@@ -939,6 +978,12 @@ class EnvironmentConfig {
               ? MaintenanceWindow.fromJson(_json['maintenanceWindow']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          masterAuthorizedNetworksConfig:
+              _json.containsKey('masterAuthorizedNetworksConfig')
+                  ? MasterAuthorizedNetworksConfig.fromJson(
+                      _json['masterAuthorizedNetworksConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           nodeConfig: _json.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
                   _json['nodeConfig'] as core.Map<core.String, core.dynamic>)
@@ -980,6 +1025,8 @@ class EnvironmentConfig {
         if (environmentSize != null) 'environmentSize': environmentSize!,
         if (gkeCluster != null) 'gkeCluster': gkeCluster!,
         if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+        if (masterAuthorizedNetworksConfig != null)
+          'masterAuthorizedNetworksConfig': masterAuthorizedNetworksConfig!,
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (privateEnvironmentConfig != null)
@@ -1313,6 +1360,43 @@ class MaintenanceWindow {
       };
 }
 
+/// Configuration options for the master authorized networks feature.
+///
+/// Enabled master authorized networks will disallow all external traffic to
+/// access Kubernetes master through HTTPS except traffic from the given CIDR
+/// blocks, Google Compute Engine Public IPs and Google Prod IPs.
+class MasterAuthorizedNetworksConfig {
+  /// Up to 50 external networks that could access Kubernetes master through
+  /// HTTPS.
+  core.List<CidrBlock>? cidrBlocks;
+
+  /// Whether or not master authorized networks feature is enabled.
+  core.bool? enabled;
+
+  MasterAuthorizedNetworksConfig({
+    this.cidrBlocks,
+    this.enabled,
+  });
+
+  MasterAuthorizedNetworksConfig.fromJson(core.Map _json)
+      : this(
+          cidrBlocks: _json.containsKey('cidrBlocks')
+              ? (_json['cidrBlocks'] as core.List)
+                  .map((value) => CidrBlock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cidrBlocks != null) 'cidrBlocks': cidrBlocks!,
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// The configuration information for the Kubernetes Engine nodes running the
 /// Apache Airflow software.
 class NodeConfig {
@@ -1324,6 +1408,16 @@ class NodeConfig {
   ///
   /// Optional.
   core.int? diskSizeGb;
+
+  /// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+  /// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+  /// all destination addresses, except between pods traffic.
+  ///
+  /// See:
+  /// https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+  ///
+  /// Optional.
+  core.bool? enableIpMasqAgent;
 
   /// The configuration for controlling how IPs are allocated in the GKE
   /// cluster.
@@ -1431,6 +1525,7 @@ class NodeConfig {
 
   NodeConfig({
     this.diskSizeGb,
+    this.enableIpMasqAgent,
     this.ipAllocationPolicy,
     this.location,
     this.machineType,
@@ -1445,6 +1540,9 @@ class NodeConfig {
       : this(
           diskSizeGb: _json.containsKey('diskSizeGb')
               ? _json['diskSizeGb'] as core.int
+              : null,
+          enableIpMasqAgent: _json.containsKey('enableIpMasqAgent')
+              ? _json['enableIpMasqAgent'] as core.bool
               : null,
           ipAllocationPolicy: _json.containsKey('ipAllocationPolicy')
               ? IPAllocationPolicy.fromJson(_json['ipAllocationPolicy']
@@ -1479,6 +1577,7 @@ class NodeConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+        if (enableIpMasqAgent != null) 'enableIpMasqAgent': enableIpMasqAgent!,
         if (ipAllocationPolicy != null)
           'ipAllocationPolicy': ipAllocationPolicy!,
         if (location != null) 'location': location!,
@@ -1667,6 +1766,13 @@ class PrivateEnvironmentConfig {
   /// Optional.
   core.bool? enablePrivateEnvironment;
 
+  /// When enabled, IPs from public (non-RFC1918) ranges can be used for
+  /// `IPAllocationPolicy.cluster_ipv4_cidr_block` and
+  /// `IPAllocationPolicy.service_ipv4_cidr_block`.
+  ///
+  /// Optional.
+  core.bool? enablePrivatelyUsedPublicIps;
+
   /// Configuration for the private GKE cluster for a Private IP Cloud Composer
   /// environment.
   ///
@@ -1696,6 +1802,7 @@ class PrivateEnvironmentConfig {
     this.cloudComposerNetworkIpv4ReservedRange,
     this.cloudSqlIpv4CidrBlock,
     this.enablePrivateEnvironment,
+    this.enablePrivatelyUsedPublicIps,
     this.privateClusterConfig,
     this.webServerIpv4CidrBlock,
     this.webServerIpv4ReservedRange,
@@ -1721,6 +1828,10 @@ class PrivateEnvironmentConfig {
           enablePrivateEnvironment:
               _json.containsKey('enablePrivateEnvironment')
                   ? _json['enablePrivateEnvironment'] as core.bool
+                  : null,
+          enablePrivatelyUsedPublicIps:
+              _json.containsKey('enablePrivatelyUsedPublicIps')
+                  ? _json['enablePrivatelyUsedPublicIps'] as core.bool
                   : null,
           privateClusterConfig: _json.containsKey('privateClusterConfig')
               ? PrivateClusterConfig.fromJson(_json['privateClusterConfig']
@@ -1749,6 +1860,8 @@ class PrivateEnvironmentConfig {
           'cloudSqlIpv4CidrBlock': cloudSqlIpv4CidrBlock!,
         if (enablePrivateEnvironment != null)
           'enablePrivateEnvironment': enablePrivateEnvironment!,
+        if (enablePrivatelyUsedPublicIps != null)
+          'enablePrivatelyUsedPublicIps': enablePrivatelyUsedPublicIps!,
         if (privateClusterConfig != null)
           'privateClusterConfig': privateClusterConfig!,
         if (webServerIpv4CidrBlock != null)

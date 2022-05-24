@@ -132,7 +132,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -665,8 +665,9 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -1075,8 +1076,9 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -1291,8 +1293,9 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -1880,8 +1883,9 @@ class ProjectsLocationsRuntimesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
   ///
@@ -1972,6 +1976,65 @@ class ProjectsLocationsRuntimesResource {
     );
     return ListRuntimesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update Notebook Runtime configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the runtime. Format:
+  /// `projects/{project}/locations/{location}/runtimes/{runtimeId}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [requestId] - Idempotent request UUID.
+  ///
+  /// [updateMask] - Required. Specifies the path, relative to `Runtime`, of the
+  /// field to update. For example, to change the software configuration
+  /// kernels, the `update_mask` parameter would be specified as
+  /// `software_config.kernels`, and the `PATCH` request body would specify the
+  /// new value, as follows: { "software_config":{ "kernels": \[{ 'repository':
+  /// 'gcr.io/deeplearning-platform-release/pytorch-gpu', 'tag': 'latest' }\], }
+  /// } Currently, only the following fields can be updated: -
+  /// software_config.kernels - software_config.post_startup_script -
+  /// software_config.custom_gpu_driver_path - software_config.idle_shutdown -
+  /// software_config.idle_shutdown_timeout
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Runtime request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an access token for the consumer service account that the customer
@@ -2115,8 +2178,9 @@ class ProjectsLocationsRuntimesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
   ///
@@ -2297,8 +2361,9 @@ class ProjectsLocationsRuntimesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
   ///
@@ -2618,7 +2683,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -3513,6 +3578,7 @@ class Instance {
   /// - "PD_STANDARD" : Standard persistent disk type.
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
+  /// - "PD_EXTREME" : Extreme persistent disk type.
   core.String? bootDiskType;
 
   /// Flag to enable ip forwarding or not, default false/off.
@@ -3556,6 +3622,7 @@ class Instance {
   /// - "PD_STANDARD" : Standard persistent disk type.
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
+  /// - "PD_EXTREME" : Extreme persistent disk type.
   core.String? dataDiskType;
 
   /// Input only.
@@ -4530,6 +4597,7 @@ class LocalDiskInitializeParams {
   /// - "PD_STANDARD" : Standard persistent disk type.
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
+  /// - "PD_EXTREME" : Extreme persistent disk type.
   core.String? diskType;
 
   /// Labels to apply to this disk.
@@ -5340,6 +5408,16 @@ class RuntimeSoftwareConfig {
   /// (`gs://path-to-file/file-name`).
   core.String? postStartupScript;
 
+  /// Behavior for the post startup script.
+  /// Possible string values are:
+  /// - "POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED" : Unspecified post startup
+  /// script behavior. Will run only once at creation.
+  /// - "RUN_EVERY_START" : Runs the post startup script provided during
+  /// creation at every start.
+  /// - "DOWNLOAD_AND_RUN_EVERY_START" : Downloads and runs the provided post
+  /// startup script at every start.
+  core.String? postStartupScriptBehavior;
+
   /// Bool indicating whether an newer image is available in an image family.
   ///
   /// Output only.
@@ -5354,6 +5432,7 @@ class RuntimeSoftwareConfig {
     this.kernels,
     this.notebookUpgradeSchedule,
     this.postStartupScript,
+    this.postStartupScriptBehavior,
     this.upgradeable,
   });
 
@@ -5386,6 +5465,10 @@ class RuntimeSoftwareConfig {
           postStartupScript: _json.containsKey('postStartupScript')
               ? _json['postStartupScript'] as core.String
               : null,
+          postStartupScriptBehavior:
+              _json.containsKey('postStartupScriptBehavior')
+                  ? _json['postStartupScriptBehavior'] as core.String
+                  : null,
           upgradeable: _json.containsKey('upgradeable')
               ? _json['upgradeable'] as core.bool
               : null,
@@ -5404,6 +5487,8 @@ class RuntimeSoftwareConfig {
         if (notebookUpgradeSchedule != null)
           'notebookUpgradeSchedule': notebookUpgradeSchedule!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
+        if (postStartupScriptBehavior != null)
+          'postStartupScriptBehavior': postStartupScriptBehavior!,
         if (upgradeable != null) 'upgradeable': upgradeable!,
       };
 }
@@ -5588,7 +5673,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 
@@ -6426,7 +6511,7 @@ class VmImage {
 
   /// The name of the Google Cloud project that this VM image belongs to.
   ///
-  /// Format: `projects/{project_id}`
+  /// Format: `{project_id}`
   ///
   /// Required.
   core.String? project;

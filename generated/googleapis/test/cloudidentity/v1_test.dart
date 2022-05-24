@@ -499,6 +499,7 @@ api.GoogleAppsCloudidentityDevicesV1Device
     o.buildNumber = 'foo';
     o.compromisedState = 'foo';
     o.createTime = 'foo';
+    o.deviceId = 'foo';
     o.deviceType = 'foo';
     o.enabledDeveloperOptions = true;
     o.enabledUsbDebugging = true;
@@ -556,6 +557,10 @@ void checkGoogleAppsCloudidentityDevicesV1Device(
     );
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deviceId!,
       unittest.equals('foo'),
     );
     unittest.expect(

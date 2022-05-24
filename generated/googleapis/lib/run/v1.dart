@@ -1287,16 +1287,14 @@ class NamespacesServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - LINT.IfChange() The namespace in which the service should be
-  /// created. For Cloud Run (fully managed), replace {namespace} with the
-  /// project ID or number. It takes the form namespaces/{namespace}. For
-  /// example: namespaces/PROJECT_ID
+  /// [parent] - The namespace in which the service should be created. For Cloud
+  /// Run (fully managed), replace {namespace} with the project ID or number. It
+  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
-  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1517,15 +1515,14 @@ class NamespacesServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - LINT.IfChange() The name of the service being replaced. For Cloud
-  /// Run (fully managed), replace {namespace} with the project ID or number. It
-  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - The name of the service being replaced. For Cloud Run (fully
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
-  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2224,8 +2221,9 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -2281,8 +2279,9 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -2326,8 +2325,9 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -2671,16 +2671,14 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - LINT.IfChange() The namespace in which the service should be
-  /// created. For Cloud Run (fully managed), replace {namespace} with the
-  /// project ID or number. It takes the form namespaces/{namespace}. For
-  /// example: namespaces/PROJECT_ID
+  /// [parent] - The namespace in which the service should be created. For Cloud
+  /// Run (fully managed), replace {namespace} with the project ID or number. It
+  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
-  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2823,8 +2821,9 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -2955,16 +2954,15 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - LINT.IfChange() The name of the service being replaced. For Cloud
-  /// Run (fully managed), replace {namespace} with the project ID or number. It
-  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - The name of the service being replaced. For Cloud Run (fully
+  /// managed), replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
-  /// LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:replace_internal_service_request)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3008,8 +3006,9 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -3053,8 +3052,9 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -3125,8 +3125,8 @@ class Addressable {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -3871,36 +3871,6 @@ class ContainerPort {
       };
 }
 
-/// ContainerStatus holds the information of container name and image digest
-/// value.
-class ContainerStatus {
-  /// ImageDigest holds the resolved digest for the image specified, regardless
-  /// of whether a tag or digest was originally specified in the Container
-  /// object.
-  core.String? imageDigest;
-
-  /// The name of the container, if specified.
-  core.String? name;
-
-  ContainerStatus({
-    this.imageDigest,
-    this.name,
-  });
-
-  ContainerStatus.fromJson(core.Map _json)
-      : this(
-          imageDigest: _json.containsKey('imageDigest')
-              ? _json['imageDigest'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageDigest != null) 'imageDigest': imageDigest!,
-        if (name != null) 'name': name!,
-      };
-}
-
 /// Resource to hold the state and status of a user's domain mapping.
 ///
 /// NOTE: This resource is currently in Beta.
@@ -4614,6 +4584,39 @@ class ExecutionTemplateSpec {
 /// information.
 typedef Expr = $Expr;
 
+/// Not supported by Cloud Run GRPCAction describes an action involving a GRPC
+/// port.
+class GRPCAction {
+  /// Port number of the gRPC service.
+  ///
+  /// Number must be in the range 1 to 65535.
+  core.int? port;
+
+  /// Service is the name of the service to place in the gRPC HealthCheckRequest
+  /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+  ///
+  /// If this is not specified, the default behavior is defined by gRPC.
+  core.String? service;
+
+  GRPCAction({
+    this.port,
+    this.service,
+  });
+
+  GRPCAction.fromJson(core.Map _json)
+      : this(
+          port: _json.containsKey('port') ? _json['port'] as core.int : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (port != null) 'port': port!,
+        if (service != null) 'service': service!,
+      };
+}
+
 /// Condition defines a generic condition for a Resource.
 class GoogleCloudRunV1Condition {
   /// Last time the condition transitioned from one status to another.
@@ -4897,12 +4900,6 @@ class JobStatus {
   /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
   core.List<GoogleCloudRunV1Condition>? conditions;
 
-  /// Status information for each of the specified containers.
-  ///
-  /// The status includes the resolved digest for specified images, which occurs
-  /// during creation of the job.
-  core.List<ContainerStatus>? containerStatuses;
-
   /// Number of executions created for this job.
   core.int? executionCount;
 
@@ -4916,7 +4913,6 @@ class JobStatus {
 
   JobStatus({
     this.conditions,
-    this.containerStatuses,
     this.executionCount,
     this.latestCreatedExecution,
     this.observedGeneration,
@@ -4927,12 +4923,6 @@ class JobStatus {
           conditions: _json.containsKey('conditions')
               ? (_json['conditions'] as core.List)
                   .map((value) => GoogleCloudRunV1Condition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          containerStatuses: _json.containsKey('containerStatuses')
-              ? (_json['containerStatuses'] as core.List)
-                  .map((value) => ContainerStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4950,7 +4940,6 @@ class JobStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conditions != null) 'conditions': conditions!,
-        if (containerStatuses != null) 'containerStatuses': containerStatuses!,
         if (executionCount != null) 'executionCount': executionCount!,
         if (latestCreatedExecution != null)
           'latestCreatedExecution': latestCreatedExecution!,
@@ -6070,6 +6059,11 @@ class Probe {
   /// Defaults to 3. Minimum value is 1.
   core.int? failureThreshold;
 
+  /// (Optional) GRPCAction specifies an action involving a GRPC port.
+  ///
+  /// A field inlined from the Handler message.
+  GRPCAction? grpc;
+
   /// (Optional) HTTPGet specifies the http request to perform.
   ///
   /// A field inlined from the Handler message.
@@ -6111,6 +6105,7 @@ class Probe {
   Probe({
     this.exec,
     this.failureThreshold,
+    this.grpc,
     this.httpGet,
     this.initialDelaySeconds,
     this.periodSeconds,
@@ -6127,6 +6122,10 @@ class Probe {
               : null,
           failureThreshold: _json.containsKey('failureThreshold')
               ? _json['failureThreshold'] as core.int
+              : null,
+          grpc: _json.containsKey('grpc')
+              ? GRPCAction.fromJson(
+                  _json['grpc'] as core.Map<core.String, core.dynamic>)
               : null,
           httpGet: _json.containsKey('httpGet')
               ? HTTPGetAction.fromJson(
@@ -6153,6 +6152,7 @@ class Probe {
   core.Map<core.String, core.dynamic> toJson() => {
         if (exec != null) 'exec': exec!,
         if (failureThreshold != null) 'failureThreshold': failureThreshold!,
+        if (grpc != null) 'grpc': grpc!,
         if (httpGet != null) 'httpGet': httpGet!,
         if (initialDelaySeconds != null)
           'initialDelaySeconds': initialDelaySeconds!,
@@ -7800,7 +7800,7 @@ class TaskTemplateSpec {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

@@ -21,6 +21,7 @@
 ///
 /// Create an instance of [CloudResourceManagerApi] to access these resources:
 ///
+/// - [EffectiveTagsResource]
 /// - [FoldersResource]
 /// - [LiensResource]
 /// - [OperationsResource]
@@ -61,6 +62,7 @@ class CloudResourceManagerApi {
 
   final commons.ApiRequester _requester;
 
+  EffectiveTagsResource get effectiveTags => EffectiveTagsResource(_requester);
   FoldersResource get folders => FoldersResource(_requester);
   LiensResource get liens => LiensResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
@@ -75,6 +77,63 @@ class CloudResourceManagerApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class EffectiveTagsResource {
+  final commons.ApiRequester _requester;
+
+  EffectiveTagsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Return a list of effective tags for the given cloud resource, as specified
+  /// in `parent`.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Optional. The maximum number of effective tags to return in
+  /// the response. The server allows a maximum of 300 effective tags to return
+  /// in a single page. If unspecified, the server will use 100 as the default.
+  ///
+  /// [pageToken] - Optional. A pagination token returned from a previous call
+  /// to `ListEffectiveTags` that indicates from where this listing should
+  /// continue.
+  ///
+  /// [parent] - Required. The full resource name of a resource for which you
+  /// want to list the effective tags. E.g.
+  /// "//cloudresourcemanager.googleapis.com/projects/123"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEffectiveTagsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEffectiveTagsResponse> list({
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v3/effectiveTags';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListEffectiveTagsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class FoldersResource {
@@ -232,8 +291,9 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -522,8 +582,9 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -568,8 +629,9 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -936,8 +998,9 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1049,8 +1112,9 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1095,8 +1159,9 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1279,8 +1344,9 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1589,8 +1655,9 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1632,8 +1699,9 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2009,8 +2077,9 @@ class TagKeysResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^tagKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2157,8 +2226,9 @@ class TagKeysResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^tagKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2203,8 +2273,9 @@ class TagKeysResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^tagKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2394,8 +2465,9 @@ class TagValuesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^tagValues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2540,8 +2612,9 @@ class TagValuesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^tagValues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2586,8 +2659,9 @@ class TagValuesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^tagValues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2795,8 +2869,8 @@ class TagValuesTagHoldsResource {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -2913,6 +2987,76 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// An EffectiveTag represents a tag that applies to a resource during policy
+/// evaluation.
+///
+/// Tags can be either directly bound to a resource or inherited from its
+/// ancestor. EffectiveTag contains the name and namespaced_name of the tag
+/// value and tag key, with additional fields of `inherited` to indicate the
+/// inheritance status of the effective tag.
+class EffectiveTag {
+  /// Indicates the inheritance status of a tag value attached to the given
+  /// resource.
+  ///
+  /// If the tag value is inherited from one of the resource's ancestors,
+  /// inherited will be true. If false, then the tag value is directly attached
+  /// to the resource, inherited will be false.
+  core.bool? inherited;
+
+  /// The namespaced_name of the TagKey, in the format of
+  /// `{organization_id}/{tag_key_short_name}`
+  core.String? namespacedTagKey;
+
+  /// Namespaced name of the TagValue.
+  ///
+  /// Must be in the format
+  /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}`.
+  core.String? namespacedTagValue;
+
+  /// The name of the TagKey, in the format `tagKeys/{id}`, such as
+  /// `tagKeys/123`.
+  core.String? tagKey;
+
+  /// Resource name for TagValue in the format `tagValues/456`.
+  core.String? tagValue;
+
+  EffectiveTag({
+    this.inherited,
+    this.namespacedTagKey,
+    this.namespacedTagValue,
+    this.tagKey,
+    this.tagValue,
+  });
+
+  EffectiveTag.fromJson(core.Map _json)
+      : this(
+          inherited: _json.containsKey('inherited')
+              ? _json['inherited'] as core.bool
+              : null,
+          namespacedTagKey: _json.containsKey('namespacedTagKey')
+              ? _json['namespacedTagKey'] as core.String
+              : null,
+          namespacedTagValue: _json.containsKey('namespacedTagValue')
+              ? _json['namespacedTagValue'] as core.String
+              : null,
+          tagKey: _json.containsKey('tagKey')
+              ? _json['tagKey'] as core.String
+              : null,
+          tagValue: _json.containsKey('tagValue')
+              ? _json['tagValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inherited != null) 'inherited': inherited!,
+        if (namespacedTagKey != null) 'namespacedTagKey': namespacedTagKey!,
+        if (namespacedTagValue != null)
+          'namespacedTagValue': namespacedTagValue!,
+        if (tagKey != null) 'tagKey': tagKey!,
+        if (tagValue != null) 'tagValue': tagValue!,
       };
 }
 
@@ -3083,6 +3227,45 @@ typedef GetPolicyOptions = $GetPolicyOptions;
 /// A Lien represents an encumbrance on the actions that can be performed on a
 /// resource.
 typedef Lien = $Lien;
+
+/// The response of ListEffectiveTags.
+class ListEffectiveTagsResponse {
+  /// A possibly paginated list of effective tags for the specified resource.
+  core.List<EffectiveTag>? effectiveTags;
+
+  /// Pagination token.
+  ///
+  /// If the result set is too large to fit in a single response, this token is
+  /// returned. It encodes the position of the current result cursor. Feeding
+  /// this value into a new list request with the `page_token` parameter gives
+  /// the next page of the results. When `next_page_token` is not filled in,
+  /// there is no next page and the list returned is the last page in the result
+  /// set. Pagination tokens have a limited lifetime.
+  core.String? nextPageToken;
+
+  ListEffectiveTagsResponse({
+    this.effectiveTags,
+    this.nextPageToken,
+  });
+
+  ListEffectiveTagsResponse.fromJson(core.Map _json)
+      : this(
+          effectiveTags: _json.containsKey('effectiveTags')
+              ? (_json['effectiveTags'] as core.List)
+                  .map((value) => EffectiveTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
 
 /// The ListFolders response message.
 class ListFoldersResponse {
@@ -4353,7 +4536,7 @@ class TagValue {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

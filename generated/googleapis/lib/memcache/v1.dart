@@ -123,7 +123,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -456,6 +456,50 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Reschedules upcoming maintenance event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [instance] - Required. Memcache instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rescheduleMaintenance(
+    RescheduleMaintenanceRequest request,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$instance') + ':rescheduleMaintenance';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the defined Memcached parameters for an existing instance.
   ///
   /// This method only stages the parameters, it must be followed by
@@ -738,8 +782,7 @@ typedef CancelOperationRequest = $Empty;
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Maintenance policy per instance.
@@ -1453,6 +1496,47 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Request for RescheduleMaintenance.
+class RescheduleMaintenanceRequest {
+  /// If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESCHEDULE_TYPE_UNSPECIFIED" : Not set.
+  /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
+  /// now.
+  /// - "NEXT_AVAILABLE_WINDOW" : If the user wants to use the existing
+  /// maintenance policy to find the next available window.
+  /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
+  /// specific time.
+  core.String? rescheduleType;
+
+  /// Timestamp when the maintenance shall be rescheduled to if
+  /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
+  /// `2012-11-15T16:19:00.094Z`.
+  core.String? scheduleTime;
+
+  RescheduleMaintenanceRequest({
+    this.rescheduleType,
+    this.scheduleTime,
+  });
+
+  RescheduleMaintenanceRequest.fromJson(core.Map _json)
+      : this(
+          rescheduleType: _json.containsKey('rescheduleType')
+              ? _json['rescheduleType'] as core.String
+              : null,
+          scheduleTime: _json.containsKey('scheduleTime')
+              ? _json['scheduleTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rescheduleType != null) 'rescheduleType': rescheduleType!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
       };
 }
 
