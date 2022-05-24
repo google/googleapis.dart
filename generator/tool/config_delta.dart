@@ -89,7 +89,7 @@ Iterable<Configuration> _configs(String version, String path) sync* {
       final apiName = split[0];
       final apiVersion = split[1];
 
-      apis.putIfAbsent(apiName, () => SplayTreeSet()).add(apiVersion);
+      apis.putIfAbsent(apiName, SplayTreeSet.new).add(apiVersion);
     }
     yield Configuration(name, version, apis);
   }
