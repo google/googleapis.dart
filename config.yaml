@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 8.2.0
+    version: 8.2.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -243,7 +243,7 @@ packages:
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 8.0.0
+    version: 8.1.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE

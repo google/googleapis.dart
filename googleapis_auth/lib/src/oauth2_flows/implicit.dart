@@ -254,7 +254,7 @@ String _responseTypeToString(ResponseType responseType) {
 /// More specifically, the script has the correct `nonce` value set.
 final html.ScriptElement Function() _createScript = (() {
   final nonce = _getNonce();
-  if (nonce == null) return () => html.ScriptElement();
+  if (nonce == null) return html.ScriptElement.new;
 
   return () => html.ScriptElement()..nonce = nonce;
 })();

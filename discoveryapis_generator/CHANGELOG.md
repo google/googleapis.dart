@@ -1,5 +1,6 @@
 ## 1.1.0-dev
 
+- Require Dart 2.16 or later.
 - Add positional parameters to all schema types.
 - Added `Function` to the set of reserved names.
 

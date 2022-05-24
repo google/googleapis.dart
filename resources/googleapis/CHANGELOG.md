@@ -1,4 +1,8 @@
-## 8.2.0
+## 8.2.0-dev
+
+- Require Dart 2.16 or later.
+
+### API changes
 
 - `apigeeregistry` - new!
 - `cloudfunctions` - Added v2

@@ -100,7 +100,7 @@ mixin DedupeMixin {
 
         final content = _schemaUniqueId(schema);
 
-        final innerMap = dupes.putIfAbsent(content, () => SplayTreeSet());
+        final innerMap = dupes.putIfAbsent(content, SplayTreeSet.new);
 
         final entry = _Replacement(api.id!, schema.id!);
 

@@ -1,6 +1,7 @@
 ## 1.0.3
 
 - Throw a more helpful error message when a resumable upload fails.
+- Require Dart 2.16 or later.
 
 ## 1.0.2
 
