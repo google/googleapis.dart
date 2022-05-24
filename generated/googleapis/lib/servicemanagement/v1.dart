@@ -424,8 +424,9 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -525,8 +526,9 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -572,8 +574,9 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -874,8 +877,9 @@ class ServicesConsumersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -919,8 +923,9 @@ class ServicesConsumersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -966,8 +971,9 @@ class ServicesConsumersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1112,10 +1118,9 @@ class ServicesRolloutsResource {
   /// naming requirements. For example: `example.googleapis.com`.
   ///
   /// [filter] - Required. Use `filter` to return subset of rollouts. The
-  /// following filters are supported: -- To limit the results to only those in
-  /// status 'SUCCESS', use filter='status=SUCCESS' -- To limit the results to
-  /// those in status 'CANCELLED' or 'FAILED', use filter='status=CANCELLED OR
-  /// status=FAILED'
+  /// following filters are supported: -- By status. For example,
+  /// `filter='status=SUCCESS'` -- By strategy. For example,
+  /// `filter='strategy=TrafficPercentStrategy'`
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
   /// size is 50 if not specified. Maximum value is 100.
@@ -1304,8 +1309,8 @@ class Api {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -3476,7 +3481,8 @@ class ManagedService {
 
   /// The name of the service.
   ///
-  /// See the [overview](https://cloud.google.com/service-management/overview)
+  /// See the
+  /// [overview](https://cloud.google.com/service-infrastructure/docs/overview)
   /// for naming requirements.
   core.String? serviceName;
 
@@ -3893,7 +3899,46 @@ class MetricDescriptorMetadata {
 ///
 /// Binding a method to a metric causes that metric's configured quota behaviors
 /// to apply to the method call.
-typedef MetricRule = $MetricRule;
+class MetricRule {
+  /// Metrics to update when the selected methods are called, and the associated
+  /// cost applied to each metric.
+  ///
+  /// The key of the map is the metric name, and the values are the amount
+  /// increased for the metric against which the quota limits are defined. The
+  /// value must not be negative.
+  core.Map<core.String, core.String>? metricCosts;
+
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
+  core.String? selector;
+
+  MetricRule({
+    this.metricCosts,
+    this.selector,
+  });
+
+  MetricRule.fromJson(core.Map _json)
+      : this(
+          metricCosts: _json.containsKey('metricCosts')
+              ? (_json['metricCosts'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          selector: _json.containsKey('selector')
+              ? _json['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metricCosts != null) 'metricCosts': metricCosts!,
+        if (selector != null) 'selector': selector!,
+      };
+}
 
 /// Declares an API Interface to be included in this interface.
 ///
@@ -5144,7 +5189,7 @@ class SystemParameters {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

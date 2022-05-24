@@ -2077,20 +2077,25 @@ class AdvertisersCreativesResource {
   /// form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`
   /// for the following fields: - `entityStatus` - `creativeType`. -
   /// `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` -
-  /// `exchangeReviewStatus` - `dynamic` - `creativeId` * The operator must be
-  /// `HAS (:)` for the following fields: - `lineItemIds` * For `entityStatus`,
-  /// `minDuration`, `maxDuration`, and `dynamic` there may be at most one
-  /// restriction. * For `dimensions`, the value is in the form of
-  /// `"{width}x{height}"`. * For `exchangeReviewStatus`, the value is in the
-  /// form of `{exchange}-{reviewStatus}`. * For `minDuration` and
+  /// `exchangeReviewStatus` - `dynamic` - `creativeId` - `minModifiedTime` -
+  /// `maxModifiedTime` * The operator must be `HAS (:)` for the following
+  /// fields: - `lineItemIds` * For `entityStatus`, `minDuration`,
+  /// `maxDuration`, `minModifiedTime`, `maxModifiedTime`, and `dynamic`, there
+  /// may be at most one restriction. * For `dimensions`, the value is in the
+  /// form of `"{width}x{height}"`. * For `exchangeReviewStatus`, the value is
+  /// in the form of `{exchange}-{reviewStatus}`. * For `minDuration` and
   /// `maxDuration`, the value is in the form of `"{duration}s"`. Only seconds
-  /// are supported with millisecond granularity. * There may be multiple
-  /// `lineItemIds` restrictions in order to search against multiple possible
-  /// line item IDs. * There may be multiple `creativeId` restrictions in order
-  /// to search against multiple possible creative IDs. Examples: * All native
-  /// creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives
-  /// with 300x400 or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE"
-  /// AND (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives
+  /// are supported with millisecond granularity. * For `minModifiedTime` and
+  /// `maxModifiedTime`, the value is a unix timestamp (GMT) in seconds. The
+  /// time filtered is against the update_time field in the creative, which
+  /// includes system updates to the creative (e.g. creative review updates). *
+  /// There may be multiple `lineItemIds` restrictions in order to search
+  /// against multiple possible line item IDs. * There may be multiple
+  /// `creativeId` restrictions in order to search against multiple possible
+  /// creative IDs. Examples: * All native creatives:
+  /// `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400
+  /// or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND
+  /// (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives
   /// that are approved by AdX or AppNexus, with a minimum duration of 5 seconds
   /// and 200ms. `dynamic="true" AND minDuration="5.2s" AND
   /// (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED"
@@ -14952,6 +14957,9 @@ class ContactInfo {
 /// audience members.
 class ContactInfoList {
   /// A list of ContactInfo objects defining Customer Match audience members.
+  ///
+  /// The size of members after splitting the contact_infos mustn't be greater
+  /// than 500,000.
   core.List<ContactInfo>? contactInfos;
 
   ContactInfoList({
@@ -15746,6 +15754,7 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_2" : SDF version 5.2
   /// - "SDF_VERSION_5_3" : SDF version 5.3
   /// - "SDF_VERSION_5_4" : SDF version 5.4
+  /// - "SDF_VERSION_5_5" : SDF version 5.5
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -16255,7 +16264,8 @@ class Creative {
   /// Optional.
   UniversalAdId? universalAdId;
 
-  /// The timestamp when the creative was last updated.
+  /// The timestamp when the creative was last updated, either by the user or
+  /// system (e.g. creative review).
   ///
   /// Assigned by the system.
   ///
@@ -16729,6 +16739,18 @@ class CustomBiddingAlgorithm {
   /// deletion.
   core.String? entityStatus;
 
+  /// The custom bidding model readiness state for each advertiser who have
+  /// access.
+  ///
+  /// This field may only include the state of the queried advertiser if the
+  /// algorithm
+  /// \[`owner`\](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner)
+  /// is a partner and is being retrieved using an advertiser
+  /// \[`accessor`\](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor).
+  ///
+  /// Output only.
+  core.List<CustomBiddingModelReadinessState>? modelReadiness;
+
   /// The resource name of the custom bidding algorithm.
   ///
   /// Output only.
@@ -16755,6 +16777,7 @@ class CustomBiddingAlgorithm {
     this.customBiddingAlgorithmType,
     this.displayName,
     this.entityStatus,
+    this.modelReadiness,
     this.name,
     this.partnerId,
     this.sharedAdvertiserIds,
@@ -16783,6 +16806,12 @@ class CustomBiddingAlgorithm {
           entityStatus: _json.containsKey('entityStatus')
               ? _json['entityStatus'] as core.String
               : null,
+          modelReadiness: _json.containsKey('modelReadiness')
+              ? (_json['modelReadiness'] as core.List)
+                  .map((value) => CustomBiddingModelReadinessState.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           partnerId: _json.containsKey('partnerId')
               ? _json['partnerId'] as core.String
@@ -16804,10 +16833,53 @@ class CustomBiddingAlgorithm {
           'customBiddingAlgorithmType': customBiddingAlgorithmType!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
+        if (modelReadiness != null) 'modelReadiness': modelReadiness!,
         if (name != null) 'name': name!,
         if (partnerId != null) 'partnerId': partnerId!,
         if (sharedAdvertiserIds != null)
           'sharedAdvertiserIds': sharedAdvertiserIds!,
+      };
+}
+
+/// The custom bidding algorithm model readiness state for a single shared
+/// advertiser.
+class CustomBiddingModelReadinessState {
+  /// The unique ID of the advertiser with access to the custom bidding
+  /// algorithm.
+  core.String? advertiserId;
+
+  /// The readiness state of custom bidding model.
+  /// Possible string values are:
+  /// - "READINESS_STATE_UNSPECIFIED" : State is not specified or is unknown in
+  /// this version.
+  /// - "READINESS_STATE_ACTIVE" : The model is trained and ready for serving.
+  /// - "READINESS_STATE_INSUFFICIENT_DATA" : There is not enough data to train
+  /// the serving model.
+  /// - "READINESS_STATE_TRAINING" : The model is training and not ready for
+  /// serving.
+  /// - "READINESS_STATE_NO_VALID_SCRIPT" : The model will not be trained until
+  /// a valid custom bidding script linked. This state will only be applied to
+  /// algorithms whose `custom_bidding_algorithm_type` is `SCRIPT_BASED`.
+  core.String? readinessState;
+
+  CustomBiddingModelReadinessState({
+    this.advertiserId,
+    this.readinessState,
+  });
+
+  CustomBiddingModelReadinessState.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          readinessState: _json.containsKey('readinessState')
+              ? _json['readinessState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (readinessState != null) 'readinessState': readinessState!,
       };
 }
 
@@ -19138,7 +19210,7 @@ class FrequencyCap {
 /// Details for assigned gender targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
-/// when targeting_type is `TARTGETING_TYPE_GENDER`.
+/// when targeting_type is `TARGETING_TYPE_GENDER`.
 class GenderAssignedTargetingOptionDetails {
   /// The gender of the audience.
   ///
@@ -23298,6 +23370,8 @@ class MobileApp {
 /// audience members.
 class MobileDeviceIdList {
   /// A list of mobile device IDs defining Customer Match audience members.
+  ///
+  /// The size of mobile_device_ids mustn't be greater than 500,000.
   core.List<core.String>? mobileDeviceIds;
 
   MobileDeviceIdList({
@@ -24140,7 +24214,7 @@ class ParentEntityFilter {
 /// Details for assigned parental status targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
-/// when targeting_type is `TARTGETING_TYPE_PARENTAL_STATUS`.
+/// when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`.
 class ParentalStatusAssignedTargetingOptionDetails {
   /// The parental status of the audience.
   ///
@@ -25553,6 +25627,7 @@ class SdfConfig {
   /// - "SDF_VERSION_5_2" : SDF version 5.2
   /// - "SDF_VERSION_5_3" : SDF version 5.3
   /// - "SDF_VERSION_5_4" : SDF version 5.4
+  /// - "SDF_VERSION_5_5" : SDF version 5.5
   core.String? version;
 
   SdfConfig({

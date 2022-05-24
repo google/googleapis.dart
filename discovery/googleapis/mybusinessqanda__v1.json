@@ -321,7 +321,7 @@
             }
         }
     },
-    "revision": "20220413",
+    "revision": "20220522",
     "rootUrl": "https://mybusinessqanda.googleapis.com/",
     "schemas": {
         "Answer": {

@@ -380,6 +380,52 @@ class FoldersApprovalRequestsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Invalidates an existing ApprovalRequest.
+  ///
+  /// Returns the updated ApprovalRequest. NOTE: This does not deny access to
+  /// the resource if another request has been made and approved. It only
+  /// invalidates a single approval. Returns FAILED_PRECONDITION if the request
+  /// exists but is not in an approved state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the ApprovalRequest to invalidate.
+  /// Value must have pattern `^folders/\[^/\]+/approvalRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ApprovalRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApprovalRequest> invalidate(
+    InvalidateApprovalRequestMessage request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists approval requests associated with a project, folder, or
   /// organization.
   ///
@@ -761,6 +807,53 @@ class OrganizationsApprovalRequestsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Invalidates an existing ApprovalRequest.
+  ///
+  /// Returns the updated ApprovalRequest. NOTE: This does not deny access to
+  /// the resource if another request has been made and approved. It only
+  /// invalidates a single approval. Returns FAILED_PRECONDITION if the request
+  /// exists but is not in an approved state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the ApprovalRequest to invalidate.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/approvalRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ApprovalRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApprovalRequest> invalidate(
+    InvalidateApprovalRequestMessage request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists approval requests associated with a project, folder, or
   /// organization.
   ///
@@ -1133,6 +1226,52 @@ class ProjectsApprovalRequestsResource {
     final _response = await _requester.request(
       _url,
       'GET',
+      queryParams: _queryParams,
+    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Invalidates an existing ApprovalRequest.
+  ///
+  /// Returns the updated ApprovalRequest. NOTE: This does not deny access to
+  /// the resource if another request has been made and approved. It only
+  /// invalidates a single approval. Returns FAILED_PRECONDITION if the request
+  /// exists but is not in an approved state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the ApprovalRequest to invalidate.
+  /// Value must have pattern `^projects/\[^/\]+/approvalRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ApprovalRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApprovalRequest> invalidate(
+    InvalidateApprovalRequestMessage request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
       queryParams: _queryParams,
     );
     return ApprovalRequest.fromJson(
@@ -1583,6 +1722,9 @@ class ApproveDecision {
   /// The time at which the approval expires.
   core.String? expireTime;
 
+  /// If set, denotes the timestamp at which the approval is invalidated.
+  core.String? invalidateTime;
+
   /// The signature for the ApprovalRequest and details on how it was signed.
   SignatureInfo? signatureInfo;
 
@@ -1590,6 +1732,7 @@ class ApproveDecision {
     this.approveTime,
     this.autoApproved,
     this.expireTime,
+    this.invalidateTime,
     this.signatureInfo,
   });
 
@@ -1604,6 +1747,9 @@ class ApproveDecision {
           expireTime: _json.containsKey('expireTime')
               ? _json['expireTime'] as core.String
               : null,
+          invalidateTime: _json.containsKey('invalidateTime')
+              ? _json['invalidateTime'] as core.String
+              : null,
           signatureInfo: _json.containsKey('signatureInfo')
               ? SignatureInfo.fromJson(
                   _json['signatureInfo'] as core.Map<core.String, core.dynamic>)
@@ -1614,6 +1760,7 @@ class ApproveDecision {
         if (approveTime != null) 'approveTime': approveTime!,
         if (autoApproved != null) 'autoApproved': autoApproved!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (invalidateTime != null) 'invalidateTime': invalidateTime!,
         if (signatureInfo != null) 'signatureInfo': signatureInfo!,
       };
 }
@@ -1714,6 +1861,9 @@ class EnrolledService {
         if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel!,
       };
 }
+
+/// Request to invalidate an existing approval.
+typedef InvalidateApprovalRequestMessage = $Empty;
 
 /// Response to listing of ApprovalRequest objects.
 class ListApprovalRequestsResponse {

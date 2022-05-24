@@ -201,8 +201,9 @@ class AccessPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -344,8 +345,9 @@ class AccessPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -390,8 +392,9 @@ class AccessPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -743,8 +746,9 @@ class AccessPoliciesAccessLevelsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1129,8 +1133,9 @@ class AccessPoliciesServicePerimetersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
@@ -1732,8 +1737,8 @@ class ApiOperation {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -3241,7 +3246,7 @@ class SetIamPolicyRequest {
 typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

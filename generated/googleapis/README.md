@@ -144,6 +144,11 @@ Use the Apigee API to programmatically develop and manage APIs with a set of RES
 - [Documentation](https://cloud.google.com/apigee-api-management/)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0/apigee.v1/apigee.v1-library.html)
 
+#### Apigee Registry API - `apigeeregistry.v1`
+
+- [Documentation](https://cloud.google.com/apigee/docs/api-hub/what-is-api-hub)
+- [API details](https://pub.dev/documentation/googleapis/8.2.0/apigeeregistry.v1/apigeeregistry.v1-library.html)
+
 #### API Keys API - `apikeys.v2`
 
 Manages the API keys associated with developer projects.
@@ -347,6 +352,13 @@ Manages lightweight user-provided functions executed in response to events.
 
 - [Documentation](https://cloud.google.com/functions)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0/cloudfunctions.v1/cloudfunctions.v1-library.html)
+
+#### Cloud Functions API - `cloudfunctions.v2`
+
+Manages lightweight user-provided functions executed in response to events.
+
+- [Documentation](https://cloud.google.com/functions)
+- [API details](https://pub.dev/documentation/googleapis/8.2.0/cloudfunctions.v2/cloudfunctions.v2-library.html)
 
 #### Cloud Identity API - `cloudidentity.v1`
 
@@ -601,11 +613,6 @@ Provides methods for detection, risk analysis, and de-identification of privacy-
 - [Documentation](https://cloud.google.com/dns/docs)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0/dns.v1/dns.v1-library.html)
 
-#### Cloud DNS API - `dns.v2`
-
-- [Documentation](https://cloud.google.com/dns/docs)
-- [API details](https://pub.dev/documentation/googleapis/8.2.0/dns.v2/dns.v2-library.html)
-
 #### Google Docs API - `docs.v1`
 
 Reads and writes Google Docs documents.
@@ -676,6 +683,8 @@ Provides a historical view of activity in Google Drive.
 
 #### Eventarc API - `eventarc.v1`
 
+Build event-driven applications on Google Cloud Platform.
+
 - [Documentation](https://cloud.google.com/eventarc)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0/eventarc.v1/eventarc.v1-library.html)
 
@@ -692,6 +701,13 @@ The Cloud Filestore API is used for creating and managing cloud file servers.
 
 - [Documentation](https://cloud.google.com/filestore/)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0/file.v1/file.v1-library.html)
+
+#### Firebase App Check API - `firebaseappcheck.v1`
+
+Firebase App Check works alongside other Firebase services to help protect your backend resources from abuse, such as billing fraud or phishing.
+
+- [Documentation](https://firebase.google.com/docs/app-check)
+- [API details](https://pub.dev/documentation/googleapis/8.2.0/firebaseappcheck.v1/firebaseappcheck.v1-library.html)
 
 #### Firebase Dynamic Links API - `firebasedynamiclinks.v1`
 
@@ -915,7 +931,7 @@ A simple Google Example Library API.
 
 #### Enterprise License Manager API - `licensing.v1`
 
-The Google Enterprise License Manager API's allows you to license apps for all the users of a domain managed by you.
+The Google Enterprise License Manager API lets you manage Google Workspace and related licenses for all users of a customer that you manage.
 
 - [Documentation](https://developers.google.com/admin-sdk/licensing/)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0/licensing.v1/licensing.v1-library.html)
@@ -1466,6 +1482,13 @@ API for Verified Access chrome extension to provide credential verification for 
 
 - [Documentation](https://developers.google.com/chrome/verified-access)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0/verifiedaccess.v1/verifiedaccess.v1-library.html)
+
+#### Chrome Verified Access API - `verifiedaccess.v2`
+
+API for Verified Access chrome extension to provide credential verification for chrome devices connecting to an enterprise network
+
+- [Documentation](https://developers.google.com/chrome/verified-access)
+- [API details](https://pub.dev/documentation/googleapis/8.2.0/verifiedaccess.v2/verifiedaccess.v2-library.html)
 
 #### Version History API - `versionhistory.v1`
 

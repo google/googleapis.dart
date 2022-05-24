@@ -1391,7 +1391,7 @@ class SetIamPolicyRequest {
 typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

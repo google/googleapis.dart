@@ -70,15 +70,23 @@ class PartnersProductsResource {
 
   PartnersProductsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Used by partners to list products that can be resold to their customers.
+  /// To retrieve the products that can be resold by the partner.
   ///
-  /// It should be called directly by the partner using service accounts.
+  /// It should be autenticated with a service account.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, the partner that can resell. Format:
   /// partners/{partner}
   /// Value must have pattern `^partners/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Specifies the filters for the products results. The
+  /// syntax defined in the EBNF grammar:
+  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be
+  /// thrown if any specified parameter is not supported. Currently, it can only
+  /// be used by Youtube partners. Allowed parameters are: - regionCodes -
+  /// zipCode - eligibilityId Multiple parameters can be specified, for example:
+  /// "regionCodes=US zipCode=94043 eligibilityId=2022H1Campaign"
   ///
   /// [pageSize] - Optional. The maximum number of products to return. The
   /// service may return fewer than this value. If unspecified, at most 50
@@ -104,11 +112,13 @@ class PartnersProductsResource {
   async.Future<GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse>
       list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -131,10 +141,60 @@ class PartnersPromotionsResource {
 
   PartnersPromotionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Used by partners to list promotions, such as free trial, that can be
-  /// applied on subscriptions.
+  /// To find eligible promotions for the current user.
   ///
-  /// It should be called directly by the partner using service accounts.
+  /// The API requires user authorization via OAuth. The user is inferred from
+  /// the authenticated OAuth credential.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, the partner that can resell. Format:
+  /// partners/{partner}
+  /// Value must have pattern `^partners/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse>
+      findEligible(
+    GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest
+        request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/promotions:findEligible';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// To retrieve the promotions, such as free trial, that can be used by the
+  /// partner.
+  ///
+  /// It should be autenticated with a service account.
   ///
   /// Request parameters:
   ///
@@ -144,9 +204,12 @@ class PartnersPromotionsResource {
   ///
   /// [filter] - Optional. Specifies the filters for the promotion results. The
   /// syntax defined in the EBNF grammar:
-  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. Examples: -
-  /// applicable_products: "sku1" - region_codes: "US" - applicable_products:
-  /// "sku1" AND region_codes: "US"
+  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be
+  /// thrown if the specified parameter(s) is not supported. Currently, it can
+  /// only be used by Youtube partners. Allowed parameters are: - region_codes:
+  /// "US" - zip_code: "94043" - eligibility_id: "2022H1Campaign" Multiple
+  /// parameters can be specified, for example: "region_codes=US zip_code=94043
+  /// eligibility_id=2022H1Campaign"
   ///
   /// [pageSize] - Optional. The maximum number of promotions to return. The
   /// service may return fewer than this value. If unspecified, at most 50
@@ -806,6 +869,103 @@ class GoogleCloudPaymentsResellerSubscriptionV1Extension {
       };
 }
 
+class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
+  /// Specifies the filters for the promotion results.
+  ///
+  /// The syntax defined in the EBNF grammar:
+  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be
+  /// thrown if any specified parameter is not supported. Currently, it can only
+  /// be used by Youtube partners. Allowed parameters are: - regionCodes -
+  /// zipCode - eligibilityId - applicableProducts Multiple parameters can be
+  /// specified, for example: "regionCodes=US zipCode=94043
+  /// eligibilityId=2022H1Campaign", or
+  /// "applicableProducts=partners/p1/products/product2"
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// The maximum number of promotions to return.
+  ///
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// products will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A page token, received from a previous `ListPromotions` call.
+  ///
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListPromotions` must match the call that provided
+  /// the page token.
+  ///
+  /// Optional.
+  core.String? pageToken;
+
+  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest({
+    this.filter,
+    this.pageSize,
+    this.pageToken,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest.fromJson(
+      core.Map _json)
+      : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+      };
+}
+
+/// Response containing the found promotions for the current user.
+class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The promotions for the current user.
+  core.List<GoogleCloudPaymentsResellerSubscriptionV1Promotion>? promotions;
+
+  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse({
+    this.nextPageToken,
+    this.promotions,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse.fromJson(
+      core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          promotions: _json.containsKey('promotions')
+              ? (_json['promotions'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1Promotion
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (promotions != null) 'promotions': promotions!,
+      };
+}
+
 class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -1202,6 +1362,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Output only.
   core.String? freeTrialEndTime;
 
+  /// The line items of the subscription.
+  ///
+  /// Required.
+  core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>?
+      lineItems;
+
   /// Response only.
   ///
   /// Resource name of the subscription. It will have the format of
@@ -1229,17 +1395,29 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// - "PROCESSING_STATE_RECURRING" : The subscription is recurring.
   core.String? processingState;
 
-  /// Resource name that identifies the purchased products.
+  /// Deprecated: consider using `line_items` as the input.
   ///
-  /// The format will be 'partners/{partner_id}/products/{product_id}'.
+  /// Required. Resource name that identifies the purchased products. The format
+  /// will be 'partners/{partner_id}/products/{product_id}'.
   ///
   /// Required.
   core.List<core.String>? products;
 
-  /// Resource name that identifies one or more promotions that can be applied
-  /// on the product.
+  /// Subscription-level promotions.
   ///
-  /// A typical promotion for a subscription is Free trial. The format will be
+  /// Only free trial is supported on this level. It determines the first
+  /// renewal time of the subscription to be the end of the free trial period.
+  /// Specify the promotion resource name only when used as input.
+  ///
+  /// Optional.
+  core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>?
+      promotionSpecs;
+
+  /// Deprecated: consider using the top-level `promotion_specs` as the input.
+  ///
+  /// Optional. Resource name that identifies one or more promotions that can be
+  /// applied on the product. A typical promotion for a subscription is Free
+  /// trial. The format will be
   /// 'partners/{partner_id}/promotions/{promotion_id}'.
   ///
   /// Optional.
@@ -1310,10 +1488,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
     this.cycleEndTime,
     this.endUserEntitled,
     this.freeTrialEndTime,
+    this.lineItems,
     this.name,
     this.partnerUserToken,
     this.processingState,
     this.products,
+    this.promotionSpecs,
     this.promotions,
     this.redirectUri,
     this.renewalTime,
@@ -1342,6 +1522,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
           freeTrialEndTime: _json.containsKey('freeTrialEndTime')
               ? _json['freeTrialEndTime'] as core.String
               : null,
+          lineItems: _json.containsKey('lineItems')
+              ? (_json['lineItems'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           partnerUserToken: _json.containsKey('partnerUserToken')
               ? _json['partnerUserToken'] as core.String
@@ -1352,6 +1540,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
           products: _json.containsKey('products')
               ? (_json['products'] as core.List)
                   .map((value) => value as core.String)
+                  .toList()
+              : null,
+          promotionSpecs: _json.containsKey('promotionSpecs')
+              ? (_json['promotionSpecs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           promotions: _json.containsKey('promotions')
@@ -1389,10 +1585,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         if (cycleEndTime != null) 'cycleEndTime': cycleEndTime!,
         if (endUserEntitled != null) 'endUserEntitled': endUserEntitled!,
         if (freeTrialEndTime != null) 'freeTrialEndTime': freeTrialEndTime!,
+        if (lineItems != null) 'lineItems': lineItems!,
         if (name != null) 'name': name!,
         if (partnerUserToken != null) 'partnerUserToken': partnerUserToken!,
         if (processingState != null) 'processingState': processingState!,
         if (products != null) 'products': products!,
+        if (promotionSpecs != null) 'promotionSpecs': promotionSpecs!,
         if (promotions != null) 'promotions': promotions!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
         if (renewalTime != null) 'renewalTime': renewalTime!,
@@ -1435,6 +1633,158 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reason != null) 'reason': reason!,
+      };
+}
+
+/// Individual line item definition of a subscription.
+///
+/// Next id: 5
+class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
+  /// It is set only if the line item has its own free trial applied.
+  ///
+  /// End time of the line item free trial period, in ISO 8061 format. For
+  /// example, "2019-08-31T17:28:54.564Z". It will be set the same as createTime
+  /// if no free trial promotion is specified.
+  ///
+  /// Output only.
+  core.String? lineItemFreeTrialEndTime;
+
+  /// The promotions applied on the line item.
+  ///
+  /// It can be: - a free trial promotion, which overrides the
+  /// subscription-level free trial promotion. - an introductory pricing
+  /// promotion. When used as input in Create or Provision API, specify its
+  /// resource name only.
+  ///
+  /// Optional.
+  core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>?
+      lineItemPromotionSpecs;
+
+  /// Product resource name that identifies one the line item The format is
+  /// 'partners/{partner_id}/products/{product_id}'.
+  ///
+  /// Required.
+  core.String? product;
+
+  /// The state of the line item.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LINE_ITEM_STATE_UNSPECIFIED" : Unspecified state.
+  /// - "LINE_ITEM_STATE_ACTIVE" : The line item is in ACTIVE state.
+  /// - "LINE_ITEM_STATE_INACTIVE" : The line item is in INACTIVE state.
+  /// - "LINE_ITEM_STATE_NEW" : The line item is new, and is not activated or
+  /// charged yet.
+  /// - "LINE_ITEM_STATE_ACTIVATING" : The line item is being activated in order
+  /// to be charged. If a free trial applies to the line item, the line item is
+  /// pending a prorated charge at the end of the free trial period, as
+  /// indicated by `line_item_free_trial_end_time`.
+  /// - "LINE_ITEM_STATE_DEACTIVATING" : The line item is being deactivated.
+  core.String? state;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({
+    this.lineItemFreeTrialEndTime,
+    this.lineItemPromotionSpecs,
+    this.product,
+    this.state,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem.fromJson(
+      core.Map _json)
+      : this(
+          lineItemFreeTrialEndTime:
+              _json.containsKey('lineItemFreeTrialEndTime')
+                  ? _json['lineItemFreeTrialEndTime'] as core.String
+                  : null,
+          lineItemPromotionSpecs: _json.containsKey('lineItemPromotionSpecs')
+              ? (_json['lineItemPromotionSpecs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          product: _json.containsKey('product')
+              ? _json['product'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lineItemFreeTrialEndTime != null)
+          'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,
+        if (lineItemPromotionSpecs != null)
+          'lineItemPromotionSpecs': lineItemPromotionSpecs!,
+        if (product != null) 'product': product!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Describes the spec for one promotion.
+class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec {
+  /// The duration of the free trial if the promotion is of type FREE_TRIAL.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1Duration? freeTrialDuration;
+
+  /// The details of the introductory pricing spec if the promotion is of type
+  /// INTRODUCTORY_PRICING.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails?
+      introductoryPricingDetails;
+
+  /// Promotion resource name that identifies a promotion.
+  ///
+  /// The format is 'partners/{partner_id}/promotions/{promotion_id}'.
+  ///
+  /// Required.
+  core.String? promotion;
+
+  /// The type of the promotion for the spec.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROMOTION_TYPE_UNSPECIFIED" : The promotion type is unspecified.
+  /// - "PROMOTION_TYPE_FREE_TRIAL" : The promotion is a free trial.
+  /// - "PROMOTION_TYPE_INTRODUCTORY_PRICING" : The promotion is a reduced
+  /// introductory pricing.
+  core.String? type;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec({
+    this.freeTrialDuration,
+    this.introductoryPricingDetails,
+    this.promotion,
+    this.type,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec.fromJson(
+      core.Map _json)
+      : this(
+          freeTrialDuration: _json.containsKey('freeTrialDuration')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
+                  _json['freeTrialDuration']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          introductoryPricingDetails: _json
+                  .containsKey('introductoryPricingDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+                  .fromJson(_json['introductoryPricingDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          promotion: _json.containsKey('promotion')
+              ? _json['promotion'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (freeTrialDuration != null) 'freeTrialDuration': freeTrialDuration!,
+        if (introductoryPricingDetails != null)
+          'introductoryPricingDetails': introductoryPricingDetails!,
+        if (promotion != null) 'promotion': promotion!,
+        if (type != null) 'type': type!,
       };
 }
 

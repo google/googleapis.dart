@@ -281,7 +281,7 @@
             }
         }
     },
-    "revision": "20220404",
+    "revision": "20220510",
     "rootUrl": "https://testing.googleapis.com/",
     "schemas": {
         "Account": {
@@ -545,7 +545,7 @@
                     "type": "array"
                 },
                 "thumbnailUrl": {
-                    "description": "URL of a thumbnail image (photo) of the device. e.g. https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...",
+                    "description": "URL of a thumbnail image (photo) of the device.",
                     "type": "string"
                 }
             },
@@ -1597,7 +1597,7 @@
                 },
                 "testTargetsForShard": {
                     "$ref": "TestTargetsForShard",
-                    "description": "Output only. Test targets for each shard."
+                    "description": "Output only. Test targets for each shard. Only set for manual sharding."
                 }
             },
             "type": "object"

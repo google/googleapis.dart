@@ -2597,6 +2597,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// Output only.
   core.String? createTime;
 
+  /// Unique identifier for the device.
+  core.String? deviceId;
+
   /// Type of device.
   ///
   /// Output only.
@@ -2745,6 +2748,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
     this.buildNumber,
     this.compromisedState,
     this.createTime,
+    this.deviceId,
     this.deviceType,
     this.enabledDeveloperOptions,
     this.enabledUsbDebugging,
@@ -2794,6 +2798,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          deviceId: _json.containsKey('deviceId')
+              ? _json['deviceId'] as core.String
               : null,
           deviceType: _json.containsKey('deviceType')
               ? _json['deviceType'] as core.String
@@ -2864,6 +2871,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
         if (buildNumber != null) 'buildNumber': buildNumber!,
         if (compromisedState != null) 'compromisedState': compromisedState!,
         if (createTime != null) 'createTime': createTime!,
+        if (deviceId != null) 'deviceId': deviceId!,
         if (deviceType != null) 'deviceType': deviceType!,
         if (enabledDeveloperOptions != null)
           'enabledDeveloperOptions': enabledDeveloperOptions!,

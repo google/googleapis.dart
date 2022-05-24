@@ -360,6 +360,21 @@ void checkCustomMetric(api.CustomMetric o) {
   buildCounterCustomMetric--;
 }
 
+core.int buildCounterIdMappingFile = 0;
+api.IdMappingFile buildIdMappingFile() {
+  final o = api.IdMappingFile();
+  buildCounterIdMappingFile++;
+  if (buildCounterIdMappingFile < 3) {}
+  buildCounterIdMappingFile--;
+  return o;
+}
+
+void checkIdMappingFile(api.IdMappingFile o) {
+  buildCounterIdMappingFile++;
+  if (buildCounterIdMappingFile < 3) {}
+  buildCounterIdMappingFile--;
+}
+
 core.int buildCounterReportFiles = 0;
 api.ReportFiles buildReportFiles() {
   final o = api.ReportFiles();
@@ -1028,6 +1043,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-IdMappingFile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIdMappingFile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IdMappingFile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIdMappingFile(od);
+    });
+  });
+
   unittest.group('obj-schema-ReportFiles', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReportFiles();
@@ -1659,6 +1684,91 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.getFile(arg_reportId, arg_reportFragment, $fields: arg_$fields);
+    });
+
+    unittest.test('method--getIdMappingFile', () async {
+      // TODO: Implement tests for media upload;
+      // TODO: Implement tests for media download;
+
+      final mock = HttpServerMock();
+      final res = api.DoubleclicksearchApi(mock).reports;
+      final arg_agencyId = 'foo';
+      final arg_advertiserId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 28),
+          unittest.equals('doubleclicksearch/v2/agency/'),
+        );
+        pathOffset += 28;
+        index = path.indexOf('/advertiser/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_agencyId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/advertiser/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/idmapping', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_advertiserId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals('/idmapping'),
+        );
+        pathOffset += 10;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildIdMappingFile());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIdMappingFile(
+          arg_agencyId, arg_advertiserId,
+          $fields: arg_$fields);
+      checkIdMappingFile(response as api.IdMappingFile);
     });
 
     unittest.test('method--request', () async {

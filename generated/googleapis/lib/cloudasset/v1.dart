@@ -1739,9 +1739,16 @@ class Asset {
   /// for more information.
   Inventory? osInventory;
 
-  /// The related assets of the asset of one relationship type.
+  /// One related asset of the current asset.
+  RelatedAsset? relatedAsset;
+
+  /// This field only presents for the purpose of backward-compatibility.
   ///
-  /// One asset only represents one type of relationship.
+  /// The server will never generate responses with this field. The related
+  /// assets of the asset of one relationship type. One asset only represents
+  /// one type of relationship.
+  ///
+  /// Deprecated.
   RelatedAssets? relatedAssets;
 
   /// A representation of the resource.
@@ -1765,6 +1772,7 @@ class Asset {
     this.name,
     this.orgPolicy,
     this.osInventory,
+    this.relatedAsset,
     this.relatedAssets,
     this.resource,
     this.servicePerimeter,
@@ -1804,6 +1812,10 @@ class Asset {
               ? Inventory.fromJson(
                   _json['osInventory'] as core.Map<core.String, core.dynamic>)
               : null,
+          relatedAsset: _json.containsKey('relatedAsset')
+              ? RelatedAsset.fromJson(
+                  _json['relatedAsset'] as core.Map<core.String, core.dynamic>)
+              : null,
           relatedAssets: _json.containsKey('relatedAssets')
               ? RelatedAssets.fromJson(
                   _json['relatedAssets'] as core.Map<core.String, core.dynamic>)
@@ -1831,6 +1843,7 @@ class Asset {
         if (name != null) 'name': name!,
         if (orgPolicy != null) 'orgPolicy': orgPolicy!,
         if (osInventory != null) 'osInventory': osInventory!,
+        if (relatedAsset != null) 'relatedAsset': relatedAsset!,
         if (relatedAssets != null) 'relatedAssets': relatedAssets!,
         if (resource != null) 'resource': resource!,
         if (servicePerimeter != null) 'servicePerimeter': servicePerimeter!,
@@ -1896,8 +1909,8 @@ class AttachedResource {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -5461,10 +5474,16 @@ class RelatedAsset {
   /// for more information.
   core.String? assetType;
 
+  /// The unique identifier of the relationship type.
+  ///
+  /// Example: `INSTANCE_TO_INSTANCEGROUP`
+  core.String? relationshipType;
+
   RelatedAsset({
     this.ancestors,
     this.asset,
     this.assetType,
+    this.relationshipType,
   });
 
   RelatedAsset.fromJson(core.Map _json)
@@ -5479,16 +5498,25 @@ class RelatedAsset {
           assetType: _json.containsKey('assetType')
               ? _json['assetType'] as core.String
               : null,
+          relationshipType: _json.containsKey('relationshipType')
+              ? _json['relationshipType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ancestors != null) 'ancestors': ancestors!,
         if (asset != null) 'asset': asset!,
         if (assetType != null) 'assetType': assetType!,
+        if (relationshipType != null) 'relationshipType': relationshipType!,
       };
 }
 
-/// The detailed related assets with the `relationship_type`.
+/// This message only presents for the purpose of backward-compatibility.
+///
+/// The server will never populate this message in responses. The detailed
+/// related assets with the `relationship_type`.
+///
+/// Deprecated.
 class RelatedAssets {
   /// The peer resources of the relationship.
   core.List<RelatedAsset>? assets;
@@ -5580,8 +5608,13 @@ class RelatedResources {
       };
 }
 
-/// The relationship attributes which include `type`, `source_resource_type`,
+/// This message only presents for the purpose of backward-compatibility.
+///
+/// The server will never populate this message in responses. The relationship
+/// attributes which include `type`, `source_resource_type`,
 /// `target_resource_type` and `action`.
+///
+/// Deprecated.
 class RelationshipAttributes {
   /// The detail of the relationship, e.g. `contains`, `attaches`
   core.String? action;
@@ -5914,7 +5947,7 @@ class ResourceSearchResult {
   /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.
   ///
   /// To search against the `tagKeys`: * use a field query. Example: -
-  /// `tagKeys:"123456789/e*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` *
+  /// `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` *
   /// use a free text query. Example: - `env`
   core.List<core.String>? tagKeys;
 
@@ -5930,8 +5963,8 @@ class ResourceSearchResult {
   ///
   /// To search against the `tagValues`: * use a field query. Example: -
   /// `tagValues:"env"` - `tagValues:"env/prod"` -
-  /// `tagValues:"123456789/env/pr*"` - `tagValues="123456789/env/prod"` * use a
-  /// free text query. Example: - `prod`
+  /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * use
+  /// a free text query. Example: - `prod`
   core.List<core.String>? tagValues;
 
   /// The last update timestamp of this resource, at which the resource was last

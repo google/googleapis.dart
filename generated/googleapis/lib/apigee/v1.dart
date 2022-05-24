@@ -282,13 +282,28 @@ class OrganizationsResource {
 
   /// Delete an Apigee organization.
   ///
-  /// Only supported for SubscriptionType TRIAL.
+  /// For organizations with BillingType EVALUATION, an immediate deletion is
+  /// performed. For paid organizations, a soft-deletion is performed. The
+  /// organization can be restored within the soft-deletion period - which can
+  /// be controlled using the retention field in the request.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Name of the organization. Use the following structure
   /// in your request: `organizations/{org}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [retention] - Optional. This setting is only applicable for organizations
+  /// that are soft-deleted (i.e. BillingType is not EVALUATION). It controls
+  /// how long Organization data will be retained after the initial delete
+  /// operation completes. During this period, the Organization may be restored
+  /// to its last known state. After this period, the Organization will no
+  /// longer be able to be restored.
+  /// Possible string values are:
+  /// - "DELETION_RETENTION_UNSPECIFIED" : Default data retention settings will
+  /// be applied.
+  /// - "MINIMUM" : Organization data will be retained for the minimum period of
+  /// 24 hours.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -302,9 +317,11 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.String? retention,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (retention != null) 'retention': [retention],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5510,8 +5527,9 @@ class OrganizationsEnvironmentsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The maximum policy version
@@ -5610,8 +5628,9 @@ class OrganizationsEnvironmentsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5697,8 +5716,9 @@ class OrganizationsEnvironmentsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -12661,7 +12681,7 @@ class GoogleCloudApigeeV1ApiProxy {
   /// Output only.
   core.bool? readOnly;
 
-  /// List of revisons defined for the API proxy.
+  /// List of revisions defined for the API proxy.
   ///
   /// Output only.
   core.List<core.String>? revision;
@@ -18832,6 +18852,14 @@ class GoogleCloudApigeeV1Organization {
   /// Required.
   core.String? analyticsRegion;
 
+  /// Apigee Project ID associated with the organization.
+  ///
+  /// Use this project to allowlist Apigee in the Service Attachment when using
+  /// private service connect with Apigee.
+  ///
+  /// Output only.
+  core.String? apigeeProjectId;
+
   /// Not used by Apigee.
   core.List<core.String>? attributes;
 
@@ -18987,6 +19015,7 @@ class GoogleCloudApigeeV1Organization {
   GoogleCloudApigeeV1Organization({
     this.addonsConfig,
     this.analyticsRegion,
+    this.apigeeProjectId,
     this.attributes,
     this.authorizedNetwork,
     this.billingType,
@@ -19017,6 +19046,9 @@ class GoogleCloudApigeeV1Organization {
               : null,
           analyticsRegion: _json.containsKey('analyticsRegion')
               ? _json['analyticsRegion'] as core.String
+              : null,
+          apigeeProjectId: _json.containsKey('apigeeProjectId')
+              ? _json['apigeeProjectId'] as core.String
               : null,
           attributes: _json.containsKey('attributes')
               ? (_json['attributes'] as core.List)
@@ -19084,6 +19116,7 @@ class GoogleCloudApigeeV1Organization {
   core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!,
         if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
+        if (apigeeProjectId != null) 'apigeeProjectId': apigeeProjectId!,
         if (attributes != null) 'attributes': attributes!,
         if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
         if (billingType != null) 'billingType': billingType!,
@@ -22076,8 +22109,8 @@ class GoogleCloudApigeeV1UpdateError {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
@@ -22356,7 +22389,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;

@@ -1403,59 +1403,6 @@ class ProjectsDatabasesDocumentsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Runs an aggregation query.
-  ///
-  /// Rather than producing Document results like Firestore.RunQuery, this API
-  /// allows running an aggregation to produce a series of AggregationResult
-  /// server-side. High-Level Example: ``` -- Return the number of documents in
-  /// table given a filter. SELECT COUNT(*) FROM ( SELECT * FROM k where a =
-  /// true ); ```
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource name. In the format:
-  /// `projects/{project_id}/databases/{database_id}/documents` or
-  /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  /// For example: `projects/my-project/databases/my-database/documents` or
-  /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RunAggregationQueryResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RunAggregationQueryResponse> runAggregationQuery(
-    RunAggregationQueryRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url =
-        'v1/' + core.Uri.encodeFull('$parent') + ':runAggregationQuery';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return RunAggregationQueryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Runs a query.
   ///
   /// [request] - The metadata request object.
@@ -1498,7 +1445,8 @@ class ProjectsDatabasesDocumentsResource {
       body: _body,
       queryParams: _queryParams,
     );
-    return RunQueryResponse.fromJson(_response as core.List);
+    return RunQueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -1830,75 +1778,6 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-}
-
-/// Defines a aggregation that produces a single result.
-class Aggregation {
-  /// The name of the field to store the result of the aggregation into.
-  ///
-  /// Requires: * Must be present. * Must be unique across all aggregation
-  /// aliases. * Conform to existing document field name limitations.
-  ///
-  /// Required.
-  core.String? alias;
-
-  /// Count aggregator.
-  Count? count;
-
-  Aggregation({
-    this.alias,
-    this.count,
-  });
-
-  Aggregation.fromJson(core.Map _json)
-      : this(
-          alias:
-              _json.containsKey('alias') ? _json['alias'] as core.String : null,
-          count: _json.containsKey('count')
-              ? Count.fromJson(
-                  _json['count'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alias != null) 'alias': alias!,
-        if (count != null) 'count': count!,
-      };
-}
-
-/// The result of a single bucket from a Firestore aggregation query.
-///
-/// The keys of `aggregate_fields` are the same for all results in an
-/// aggregation query, unlike document queries which can have different fields
-/// present for each result.
-class AggregationResult {
-  /// The result of the aggregation functions, ex: `COUNT(*) AS total_docs`.
-  ///
-  /// The key is the alias assigned to the aggregation function on input and the
-  /// size of this map equals the number of aggregation functions in the query.
-  core.Map<core.String, Value>? aggregateFields;
-
-  AggregationResult({
-    this.aggregateFields,
-  });
-
-  AggregationResult.fromJson(core.Map _json)
-      : this(
-          aggregateFields: _json.containsKey('aggregateFields')
-              ? (_json['aggregateFields']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregateFields != null) 'aggregateFields': aggregateFields!,
-      };
 }
 
 /// An array value.
@@ -2341,35 +2220,6 @@ class CompositeFilter {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filters != null) 'filters': filters!,
         if (op != null) 'op': op!,
-      };
-}
-
-/// Count of documents that match the query.
-///
-/// The `COUNT(*)` aggregation function operates on the entire document so it
-/// does not require a field reference.
-class Count {
-  /// Optional constraint on the maximum number of documents to count.
-  ///
-  /// This provides a way to set an upper bound on the number of documents to
-  /// scan, limiting latency and cost. High-Level Example: ``` SELECT
-  /// COUNT_UP_TO(1000) FROM ( SELECT * FROM k ); ``` Requires: * Must be
-  /// greater than zero when present.
-  ///
-  /// Optional.
-  core.int? upTo;
-
-  Count({
-    this.upTo,
-  });
-
-  Count.fromJson(core.Map _json)
-      : this(
-          upTo: _json.containsKey('upTo') ? _json['upTo'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (upTo != null) 'upTo': upTo!,
       };
 }
 
@@ -3926,123 +3776,7 @@ class RollbackRequest {
       };
 }
 
-/// The request for Firestore.RunAggregationQuery.
-class RunAggregationQueryRequest {
-  /// Starts a new transaction as part of the query, defaulting to read-only.
-  ///
-  /// The new transaction ID will be returned as the first response in the
-  /// stream.
-  TransactionOptions? newTransaction;
-
-  /// Executes the query at the given timestamp.
-  ///
-  /// Requires: * Cannot be more than 270 seconds in the past.
-  core.String? readTime;
-
-  /// An aggregation query.
-  StructuredAggregationQuery? structuredAggregationQuery;
-
-  /// Run the aggregation within an already active transaction.
-  ///
-  /// The value here is the opaque transaction ID to execute the query in.
-  core.String? transaction;
-  core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction!);
-
-  set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  RunAggregationQueryRequest({
-    this.newTransaction,
-    this.readTime,
-    this.structuredAggregationQuery,
-    this.transaction,
-  });
-
-  RunAggregationQueryRequest.fromJson(core.Map _json)
-      : this(
-          newTransaction: _json.containsKey('newTransaction')
-              ? TransactionOptions.fromJson(_json['newTransaction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
-              : null,
-          structuredAggregationQuery:
-              _json.containsKey('structuredAggregationQuery')
-                  ? StructuredAggregationQuery.fromJson(
-                      _json['structuredAggregationQuery']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (newTransaction != null) 'newTransaction': newTransaction!,
-        if (readTime != null) 'readTime': readTime!,
-        if (structuredAggregationQuery != null)
-          'structuredAggregationQuery': structuredAggregationQuery!,
-        if (transaction != null) 'transaction': transaction!,
-      };
-}
-
-/// The response for Firestore.RunAggregationQuery.
-class RunAggregationQueryResponse {
-  /// The time at which the aggregate value is valid for.
-  core.String? readTime;
-
-  /// A single aggregation result.
-  ///
-  /// Not present when reporting partial progress or when the query produced
-  /// zero results.
-  AggregationResult? result;
-
-  /// The transaction that was started as part of this request.
-  ///
-  /// Only present on the first response when the request requested to start a
-  /// new transaction.
-  core.String? transaction;
-  core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction!);
-
-  set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  RunAggregationQueryResponse({
-    this.readTime,
-    this.result,
-    this.transaction,
-  });
-
-  RunAggregationQueryResponse.fromJson(core.Map _json)
-      : this(
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
-              : null,
-          result: _json.containsKey('result')
-              ? AggregationResult.fromJson(
-                  _json['result'] as core.Map<core.String, core.dynamic>)
-              : null,
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (readTime != null) 'readTime': readTime!,
-        if (result != null) 'result': result!,
-        if (transaction != null) 'transaction': transaction!,
-      };
-}
-
-/// The request for Firestore.RunQuery.
-class RunQueryRequest {
+class RunQueryRequestElement {
   /// Starts a new transaction and reads the documents.
   ///
   /// Defaults to a read-only transaction. The new transaction ID will be
@@ -4069,14 +3803,14 @@ class RunQueryRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  RunQueryRequest({
+  RunQueryRequestElement({
     this.newTransaction,
     this.readTime,
     this.structuredQuery,
     this.transaction,
   });
 
-  RunQueryRequest.fromJson(core.Map _json)
+  RunQueryRequestElement.fromJson(core.Map _json)
       : this(
           newTransaction: _json.containsKey('newTransaction')
               ? TransactionOptions.fromJson(_json['newTransaction']
@@ -4102,9 +3836,48 @@ class RunQueryRequest {
       };
 }
 
-class RunQueryResponseElement {
+/// The request for Firestore.RunQuery.
+class RunQueryRequest extends collection.ListBase<RunQueryRequestElement> {
+  final core.List<RunQueryRequestElement> _inner;
+
+  RunQueryRequest() : _inner = [];
+
+  RunQueryRequest.fromJson(core.List json)
+      : _inner = json
+            .map((value) => RunQueryRequestElement.fromJson(
+                value as core.Map<core.String, core.dynamic>))
+            .toList();
+
+  @core.override
+  RunQueryRequestElement operator [](core.int key) => _inner[key];
+
+  @core.override
+  void operator []=(core.int key, RunQueryRequestElement value) {
+    _inner[key] = value;
+  }
+
+  @core.override
+  core.int get length => _inner.length;
+
+  @core.override
+  set length(core.int newLength) {
+    _inner.length = newLength;
+  }
+
+  @core.override
+  void add(RunQueryRequestElement element) {
+    _inner.add(element);
+  }
+}
+
+/// The response for Firestore.RunQuery.
+class RunQueryResponse {
   /// A query result, not set when reporting partial progress.
   Document? document;
+
+  /// If present, Firestore has completely finished the request and no more
+  /// documents will be returned.
+  core.bool? done;
 
   /// The time at which the document was read.
   ///
@@ -4133,19 +3906,21 @@ class RunQueryResponseElement {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  RunQueryResponseElement({
+  RunQueryResponse({
     this.document,
+    this.done,
     this.readTime,
     this.skippedResults,
     this.transaction,
   });
 
-  RunQueryResponseElement.fromJson(core.Map _json)
+  RunQueryResponse.fromJson(core.Map _json)
       : this(
           document: _json.containsKey('document')
               ? Document.fromJson(
                   _json['document'] as core.Map<core.String, core.dynamic>)
               : null,
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
           readTime: _json.containsKey('readTime')
               ? _json['readTime'] as core.String
               : null,
@@ -4159,44 +3934,11 @@ class RunQueryResponseElement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!,
+        if (done != null) 'done': done!,
         if (readTime != null) 'readTime': readTime!,
         if (skippedResults != null) 'skippedResults': skippedResults!,
         if (transaction != null) 'transaction': transaction!,
       };
-}
-
-/// The response for Firestore.RunQuery.
-class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
-  final core.List<RunQueryResponseElement> _inner;
-
-  RunQueryResponse() : _inner = [];
-
-  RunQueryResponse.fromJson(core.List json)
-      : _inner = json
-            .map((value) => RunQueryResponseElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  RunQueryResponseElement operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, RunQueryResponseElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(RunQueryResponseElement element) {
-    _inner.add(element);
-  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4207,41 +3949,6 @@ class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
-
-/// Firestore query for running an aggregation over a StructuredQuery.
-class StructuredAggregationQuery {
-  /// Series of aggregations to apply on top of the `structured_query`.
-  ///
-  /// Optional.
-  core.List<Aggregation>? aggregations;
-
-  /// Nested structured query.
-  StructuredQuery? structuredQuery;
-
-  StructuredAggregationQuery({
-    this.aggregations,
-    this.structuredQuery,
-  });
-
-  StructuredAggregationQuery.fromJson(core.Map _json)
-      : this(
-          aggregations: _json.containsKey('aggregations')
-              ? (_json['aggregations'] as core.List)
-                  .map((value) => Aggregation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          structuredQuery: _json.containsKey('structuredQuery')
-              ? StructuredQuery.fromJson(_json['structuredQuery']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregations != null) 'aggregations': aggregations!,
-        if (structuredQuery != null) 'structuredQuery': structuredQuery!,
-      };
-}
 
 /// A Firestore query.
 class StructuredQuery {

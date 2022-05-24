@@ -1217,7 +1217,7 @@ class ProjectsAlertPoliciesResource {
   /// create the alerting policy. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\] Note that this field names the parent
   /// container in which the alerting policy will be written, not the name of
-  /// the created policy. |name| must be a host project of a workspace,
+  /// the created policy. |name| must be a host project of a Metrics Scope,
   /// otherwise INVALID_ARGUMENT error will return. The alerting policy that is
   /// returned will have a name that contains a normalized representation of
   /// this name as a prefix but adds a suffix of the form
@@ -1412,9 +1412,9 @@ class ProjectsAlertPoliciesResource {
   /// [name] - Required if the policy exists. The resource name for this policy.
   /// The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\]
-  /// \[ALERT_POLICY_ID\] is assigned by Stackdriver Monitoring when the policy
-  /// is created. When calling the alertPolicies.create method, do not include
-  /// the name field in the alerting policy passed as part of the request.
+  /// \[ALERT_POLICY_ID\] is assigned by Cloud Monitoring when the policy is
+  /// created. When calling the alertPolicies.create method, do not include the
+  /// name field in the alerting policy passed as part of the request.
   /// Value must have pattern `^projects/\[^/\]+/alertPolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. A list of alerting policy field names. If this
@@ -1476,8 +1476,8 @@ class ProjectsCollectdTimeSeriesResource {
   ProjectsCollectdTimeSeriesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Stackdriver Monitoring Agent only: Creates a new time series.This method
-  /// is only for use by the Stackdriver Monitoring Agent.
+  /// Cloud Monitoring Agent only: Creates a new time series.This method is only
+  /// for use by the Cloud Monitoring Agent.
   ///
   /// Use projects.timeSeries.create instead.
   ///
@@ -3609,7 +3609,7 @@ class ServicesResource {
   ///
   /// [parent] - Required. Resource name
   /// (https://cloud.google.com/monitoring/api/v3#project_name) of the parent
-  /// workspace. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Metrics Scope. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [serviceId] - Optional. The Service id to use for this Service. If
@@ -3721,30 +3721,33 @@ class ServicesResource {
     return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Services for this workspace.
+  /// List Services for this Metrics Scope.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent containing the listed
   /// services, either a project
   /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring
-  /// Workspace. The formats are: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Metrics Scope. The formats are: projects/\[PROJECT_ID_OR_NUMBER\]
   /// workspaces/\[HOST_PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [filter] - A filter specifying what Services to return. The filter
-  /// currently supports the following fields: - `identifier_case` -
-  /// `app_engine.module_id` - `cloud_endpoints.service` (reserved for future
-  /// use) - `mesh_istio.mesh_uid` - `mesh_istio.service_namespace` -
-  /// `mesh_istio.service_name` - `cluster_istio.location` (deprecated) -
-  /// `cluster_istio.cluster_name` (deprecated) -
-  /// `cluster_istio.service_namespace` (deprecated) -
-  /// `cluster_istio.service_name` (deprecated) identifier_case refers to which
-  /// option in the identifier oneof is populated. For example, the filter
-  /// identifier_case = "CUSTOM" would match all services with a value for the
-  /// custom field. Valid options are "CUSTOM", "APP_ENGINE", "MESH_ISTIO", plus
-  /// "CLUSTER_ISTIO" (deprecated) and "CLOUD_ENDPOINTS" (reserved for future
-  /// use).
+  /// supports filtering on a particular service-identifier type or one of its
+  /// attributes.To filter on a particular service-identifier type, the
+  /// identifier_case refers to which option in the identifier field is
+  /// populated. For example, the filter identifier_case = "CUSTOM" would match
+  /// all services with a value for the custom field. Valid options include
+  /// "CUSTOM", "APP_ENGINE", "MESH_ISTIO", and the other options listed at
+  /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#ServiceTo
+  /// filter on an attribute of a service-identifier type, apply the filter name
+  /// by using the snake case of the service-identifier type and the attribute
+  /// of that service-identifier type, and join the two with a period. For
+  /// example, to filter by the meshUid field of the MeshIstio
+  /// service-identifier type, you must filter on mesh_istio.mesh_uid = "123" to
+  /// match all services with mesh UID "123". Service-identifier types and their
+  /// attributes are described at
+  /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#Service
   ///
   /// [pageSize] - A non-negative number that is the maximum number of results
   /// to return. When 0, use default page size.
@@ -3990,7 +3993,7 @@ class ServicesServiceLevelObjectivesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent containing the listed
-  /// SLOs, either a project or a Monitoring Workspace. The formats are:
+  /// SLOs, either a project or a Monitoring Metrics Scope. The formats are:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
   /// workspaces/\[HOST_PROJECT_ID_OR_NUMBER\]/services/-
   /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
@@ -4501,9 +4504,9 @@ class AlertPolicy {
   ///
   /// The resource name for this policy. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\]
-  /// \[ALERT_POLICY_ID\] is assigned by Stackdriver Monitoring when the policy
-  /// is created. When calling the alertPolicies.create method, do not include
-  /// the name field in the alerting policy passed as part of the request.
+  /// \[ALERT_POLICY_ID\] is assigned by Cloud Monitoring when the policy is
+  /// created. When calling the alertPolicies.create method, do not include the
+  /// name field in the alerting policy passed as part of the request.
   core.String? name;
 
   /// Identifies the notification channels to which notifications should be sent
@@ -4876,6 +4879,45 @@ class CloudEndpoints {
       };
 }
 
+/// Cloud Run service.
+///
+/// Learn more at https://cloud.google.com/run.
+class CloudRun {
+  /// The location the service is run.
+  ///
+  /// Corresponds to the location resource label in the cloud_run_revision
+  /// monitored resource:
+  /// https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+  core.String? location;
+
+  /// The name of the Cloud Run service.
+  ///
+  /// Corresponds to the service_name resource label in the cloud_run_revision
+  /// monitored resource:
+  /// https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+  core.String? serviceName;
+
+  CloudRun({
+    this.location,
+    this.serviceName,
+  });
+
+  CloudRun.fromJson(core.Map _json)
+      : this(
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          serviceName: _json.containsKey('serviceName')
+              ? _json['serviceName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
+        if (serviceName != null) 'serviceName': serviceName!,
+      };
+}
+
 /// Istio service scoped to a single Kubernetes cluster.
 ///
 /// Learn more at https://istio.io. Clusters running OSS Istio will have their
@@ -5186,18 +5228,18 @@ class Condition {
   ///
   /// The unique resource name for this condition. Its format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[POLICY_ID\]/conditions/\[CONDITION_ID\]
-  /// \[CONDITION_ID\] is assigned by Stackdriver Monitoring when the condition
-  /// is created as part of a new or updated alerting policy.When calling the
+  /// \[CONDITION_ID\] is assigned by Cloud Monitoring when the condition is
+  /// created as part of a new or updated alerting policy.When calling the
   /// alertPolicies.create method, do not include the name field in the
-  /// conditions of the requested alerting policy. Stackdriver Monitoring
-  /// creates the condition identifiers and includes them in the new policy.When
-  /// calling the alertPolicies.update method to update a policy, including a
-  /// condition name causes the existing condition to be updated. Conditions
-  /// without names are added to the updated policy. Existing conditions are
-  /// deleted if they are not updated.Best practice is to preserve
-  /// \[CONDITION_ID\] if you make only small changes, such as those to
-  /// condition thresholds, durations, or trigger values. Otherwise, treat the
-  /// change as a new condition and let the existing condition be deleted.
+  /// conditions of the requested alerting policy. Cloud Monitoring creates the
+  /// condition identifiers and includes them in the new policy.When calling the
+  /// alertPolicies.update method to update a policy, including a condition name
+  /// causes the existing condition to be updated. Conditions without names are
+  /// added to the updated policy. Existing conditions are deleted if they are
+  /// not updated.Best practice is to preserve \[CONDITION_ID\] if you make only
+  /// small changes, such as those to condition thresholds, durations, or
+  /// trigger values. Otherwise, treat the change as a new condition and let the
+  /// existing condition be deleted.
   core.String? name;
 
   Condition({
@@ -5263,6 +5305,9 @@ class ContentMatcher {
   /// is to be performed.
   core.String? content;
 
+  /// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+  JsonPathMatcher? jsonPathMatcher;
+
   /// The type of content matcher that will be applied to the server output,
   /// compared to the content string when the check is run.
   /// Possible string values are:
@@ -5282,10 +5327,17 @@ class ContentMatcher {
   /// The match succeeds if the output does NOT match the regular expression
   /// specified in the content string. Regex matching is only supported for
   /// HTTP/HTTPS checks.
+  /// - "MATCHES_JSON_PATH" : Selects JSONPath matching. See JsonPathMatcher for
+  /// details on when the match succeeds. JSONPath matching is only supported
+  /// for HTTP/HTTPS checks.
+  /// - "NOT_MATCHES_JSON_PATH" : Selects JSONPath matching. See JsonPathMatcher
+  /// for details on when the match succeeds. Succeeds when output does NOT
+  /// match as specified. JSONPath is only supported for HTTP/HTTPS checks.
   core.String? matcher;
 
   ContentMatcher({
     this.content,
+    this.jsonPathMatcher,
     this.matcher,
   });
 
@@ -5294,6 +5346,10 @@ class ContentMatcher {
           content: _json.containsKey('content')
               ? _json['content'] as core.String
               : null,
+          jsonPathMatcher: _json.containsKey('jsonPathMatcher')
+              ? JsonPathMatcher.fromJson(_json['jsonPathMatcher']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           matcher: _json.containsKey('matcher')
               ? _json['matcher'] as core.String
               : null,
@@ -5301,6 +5357,7 @@ class ContentMatcher {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
+        if (jsonPathMatcher != null) 'jsonPathMatcher': jsonPathMatcher!,
         if (matcher != null) 'matcher': matcher!,
       };
 }
@@ -5843,6 +5900,199 @@ class GetNotificationChannelVerificationCodeResponse {
       };
 }
 
+/// GKE Namespace.
+///
+/// The field names correspond to the resource metadata labels on monitored
+/// resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+class GkeNamespace {
+  /// The name of the parent cluster.
+  core.String? clusterName;
+
+  /// The location of the parent cluster.
+  ///
+  /// This may be a zone or region.
+  core.String? location;
+
+  /// The name of this namespace.
+  core.String? namespaceName;
+
+  /// The project this resource lives in.
+  ///
+  /// For legacy services migrated from the Custom type, this may be a distinct
+  /// project from the one parenting the service itself.
+  ///
+  /// Output only.
+  core.String? projectId;
+
+  GkeNamespace({
+    this.clusterName,
+    this.location,
+    this.namespaceName,
+    this.projectId,
+  });
+
+  GkeNamespace.fromJson(core.Map _json)
+      : this(
+          clusterName: _json.containsKey('clusterName')
+              ? _json['clusterName'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          namespaceName: _json.containsKey('namespaceName')
+              ? _json['namespaceName'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (location != null) 'location': location!,
+        if (namespaceName != null) 'namespaceName': namespaceName!,
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
+/// GKE Service.
+///
+/// The "service" here represents a Kubernetes service object
+/// (https://kubernetes.io/docs/concepts/services-networking/service). The field
+/// names correspond to the resource labels on k8s_service monitored resources:
+/// https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+class GkeService {
+  /// The name of the parent cluster.
+  core.String? clusterName;
+
+  /// The location of the parent cluster.
+  ///
+  /// This may be a zone or region.
+  core.String? location;
+
+  /// The name of the parent namespace.
+  core.String? namespaceName;
+
+  /// The project this resource lives in.
+  ///
+  /// For legacy services migrated from the Custom type, this may be a distinct
+  /// project from the one parenting the service itself.
+  ///
+  /// Output only.
+  core.String? projectId;
+
+  /// The name of this service.
+  core.String? serviceName;
+
+  GkeService({
+    this.clusterName,
+    this.location,
+    this.namespaceName,
+    this.projectId,
+    this.serviceName,
+  });
+
+  GkeService.fromJson(core.Map _json)
+      : this(
+          clusterName: _json.containsKey('clusterName')
+              ? _json['clusterName'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          namespaceName: _json.containsKey('namespaceName')
+              ? _json['namespaceName'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          serviceName: _json.containsKey('serviceName')
+              ? _json['serviceName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (location != null) 'location': location!,
+        if (namespaceName != null) 'namespaceName': namespaceName!,
+        if (projectId != null) 'projectId': projectId!,
+        if (serviceName != null) 'serviceName': serviceName!,
+      };
+}
+
+/// A GKE Workload (Deployment, StatefulSet, etc).
+///
+/// The field names correspond to the metadata labels on monitored resources
+/// that fall under a workload (e.g. k8s_container, k8s_pod).
+class GkeWorkload {
+  /// The name of the parent cluster.
+  core.String? clusterName;
+
+  /// The location of the parent cluster.
+  ///
+  /// This may be a zone or region.
+  core.String? location;
+
+  /// The name of the parent namespace.
+  core.String? namespaceName;
+
+  /// The project this resource lives in.
+  ///
+  /// For legacy services migrated from the Custom type, this may be a distinct
+  /// project from the one parenting the service itself.
+  ///
+  /// Output only.
+  core.String? projectId;
+
+  /// The name of this workload.
+  core.String? topLevelControllerName;
+
+  /// The type of this workload (e.g. "Deployment" or "DaemonSet")
+  core.String? topLevelControllerType;
+
+  GkeWorkload({
+    this.clusterName,
+    this.location,
+    this.namespaceName,
+    this.projectId,
+    this.topLevelControllerName,
+    this.topLevelControllerType,
+  });
+
+  GkeWorkload.fromJson(core.Map _json)
+      : this(
+          clusterName: _json.containsKey('clusterName')
+              ? _json['clusterName'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          namespaceName: _json.containsKey('namespaceName')
+              ? _json['namespaceName'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          topLevelControllerName: _json.containsKey('topLevelControllerName')
+              ? _json['topLevelControllerName'] as core.String
+              : null,
+          topLevelControllerType: _json.containsKey('topLevelControllerType')
+              ? _json['topLevelControllerType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (location != null) 'location': location!,
+        if (namespaceName != null) 'namespaceName': namespaceName!,
+        if (projectId != null) 'projectId': projectId!,
+        if (topLevelControllerName != null)
+          'topLevelControllerName': topLevelControllerName!,
+        if (topLevelControllerType != null)
+          'topLevelControllerType': topLevelControllerType!,
+      };
+}
+
 /// Range of numerical values within min and max.
 class GoogleMonitoringV3Range {
   /// Range maximum.
@@ -6114,8 +6364,9 @@ class HttpCheck {
 class InternalChecker {
   /// The checker's human-readable name.
   ///
-  /// The display name should be unique within a Stackdriver Workspace in order
-  /// to make it easier to identify; however, uniqueness is not enforced.
+  /// The display name should be unique within a Cloud Monitoring Metrics Scope
+  /// in order to make it easier to identify; however, uniqueness is not
+  /// enforced.
   core.String? displayName;
 
   /// The GCP zone the Uptime check should egress from.
@@ -6128,8 +6379,8 @@ class InternalChecker {
   ///
   /// The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/internalCheckers/\[INTERNAL_CHECKER_ID\]
-  /// \[PROJECT_ID_OR_NUMBER\] is the Stackdriver Workspace project for the
-  /// Uptime check config associated with the internal checker.
+  /// \[PROJECT_ID_OR_NUMBER\] is the Cloud Monitoring Metrics Scope project for
+  /// the Uptime check config associated with the internal checker.
   core.String? name;
 
   /// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the
@@ -6138,7 +6389,7 @@ class InternalChecker {
 
   /// The GCP project ID where the internal checker lives.
   ///
-  /// Not necessary the same as the Workspace project.
+  /// Not necessary the same as the Metrics Scope project.
   core.String? peerProjectId;
 
   /// The current operational state of the internal checker.
@@ -6245,6 +6496,49 @@ class IstioCanonicalService {
         if (canonicalServiceNamespace != null)
           'canonicalServiceNamespace': canonicalServiceNamespace!,
         if (meshUid != null) 'meshUid': meshUid!,
+      };
+}
+
+/// Information needed to perform a JSONPath content match.
+///
+/// Used for ContentMatcherOption::MATCHES_JSON_PATH and
+/// ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+class JsonPathMatcher {
+  /// The type of JSONPath match that will be applied to the JSON output
+  /// (ContentMatcher.content)
+  /// Possible string values are:
+  /// - "JSON_PATH_MATCHER_OPTION_UNSPECIFIED" : No JSONPath matcher type
+  /// specified (not valid).
+  /// - "EXACT_MATCH" : Selects 'exact string' matching. The match succeeds if
+  /// the content at the json_path within the output is exactly the same as the
+  /// content string.
+  /// - "REGEX_MATCH" : Selects regular-expression matching. The match succeeds
+  /// if the content at the json_path within the output matches the regular
+  /// expression specified in the content string.
+  core.String? jsonMatcher;
+
+  /// JSONPath within the response output pointing to the expected
+  /// ContentMatcher::content to match against.
+  core.String? jsonPath;
+
+  JsonPathMatcher({
+    this.jsonMatcher,
+    this.jsonPath,
+  });
+
+  JsonPathMatcher.fromJson(core.Map _json)
+      : this(
+          jsonMatcher: _json.containsKey('jsonMatcher')
+              ? _json['jsonMatcher'] as core.String
+              : null,
+          jsonPath: _json.containsKey('jsonPath')
+              ? _json['jsonPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jsonMatcher != null) 'jsonMatcher': jsonMatcher!,
+        if (jsonPath != null) 'jsonPath': jsonPath!,
       };
 }
 
@@ -8503,6 +8797,9 @@ class Service {
   /// Type used for Cloud Endpoints services.
   CloudEndpoints? cloudEndpoints;
 
+  /// Type used for Cloud Run services.
+  CloudRun? cloudRun;
+
   /// Type used for Istio services that live in a Kubernetes cluster.
   ClusterIstio? clusterIstio;
 
@@ -8511,6 +8808,15 @@ class Service {
 
   /// Name used for UI elements listing this Service.
   core.String? displayName;
+
+  /// Type used for GKE Namespaces.
+  GkeNamespace? gkeNamespace;
+
+  /// Type used for GKE Services (the Kubernetes concept of a service).
+  GkeService? gkeService;
+
+  /// Type used for GKE Workloads.
+  GkeWorkload? gkeWorkload;
 
   /// Type used for canonical services scoped to an Istio mesh.
   ///
@@ -8541,9 +8847,13 @@ class Service {
   Service({
     this.appEngine,
     this.cloudEndpoints,
+    this.cloudRun,
     this.clusterIstio,
     this.custom,
     this.displayName,
+    this.gkeNamespace,
+    this.gkeService,
+    this.gkeWorkload,
     this.istioCanonicalService,
     this.meshIstio,
     this.name,
@@ -8561,6 +8871,10 @@ class Service {
               ? CloudEndpoints.fromJson(_json['cloudEndpoints']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          cloudRun: _json.containsKey('cloudRun')
+              ? CloudRun.fromJson(
+                  _json['cloudRun'] as core.Map<core.String, core.dynamic>)
+              : null,
           clusterIstio: _json.containsKey('clusterIstio')
               ? ClusterIstio.fromJson(
                   _json['clusterIstio'] as core.Map<core.String, core.dynamic>)
@@ -8571,6 +8885,18 @@ class Service {
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          gkeNamespace: _json.containsKey('gkeNamespace')
+              ? GkeNamespace.fromJson(
+                  _json['gkeNamespace'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gkeService: _json.containsKey('gkeService')
+              ? GkeService.fromJson(
+                  _json['gkeService'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gkeWorkload: _json.containsKey('gkeWorkload')
+              ? GkeWorkload.fromJson(
+                  _json['gkeWorkload'] as core.Map<core.String, core.dynamic>)
               : null,
           istioCanonicalService: _json.containsKey('istioCanonicalService')
               ? IstioCanonicalService.fromJson(_json['istioCanonicalService']
@@ -8599,9 +8925,13 @@ class Service {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngine != null) 'appEngine': appEngine!,
         if (cloudEndpoints != null) 'cloudEndpoints': cloudEndpoints!,
+        if (cloudRun != null) 'cloudRun': cloudRun!,
         if (clusterIstio != null) 'clusterIstio': clusterIstio!,
         if (custom != null) 'custom': custom!,
         if (displayName != null) 'displayName': displayName!,
+        if (gkeNamespace != null) 'gkeNamespace': gkeNamespace!,
+        if (gkeService != null) 'gkeService': gkeService!,
+        if (gkeWorkload != null) 'gkeWorkload': gkeWorkload!,
         if (istioCanonicalService != null)
           'istioCanonicalService': istioCanonicalService!,
         if (meshIstio != null) 'meshIstio': meshIstio!,
@@ -9282,8 +9612,8 @@ class UptimeCheckConfig {
 
   /// A human-friendly name for the Uptime check configuration.
   ///
-  /// The display name should be unique within a Stackdriver Workspace in order
-  /// to make it easier to identify; however, uniqueness is not enforced.
+  /// The display name should be unique within a Cloud Monitoring Workspace in
+  /// order to make it easier to identify; however, uniqueness is not enforced.
   /// Required.
   core.String? displayName;
 

@@ -454,8 +454,9 @@ class ProjectsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -588,8 +589,9 @@ class ProjectsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -631,8 +633,9 @@ class ProjectsInstancesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1399,8 +1402,9 @@ class ProjectsInstancesClustersBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1590,8 +1594,9 @@ class ProjectsInstancesClustersBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1633,8 +1638,9 @@ class ProjectsInstancesClustersBackupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -2039,8 +2045,9 @@ class ProjectsInstancesTablesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
@@ -2247,8 +2254,9 @@ class ProjectsInstancesTablesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
@@ -2290,8 +2298,9 @@ class ProjectsInstancesTablesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
@@ -2377,7 +2386,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -2504,8 +2513,8 @@ class AppProfile {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -2592,8 +2601,18 @@ class AutoscalingTargets {
   /// INVALID_ARGUMENT error.
   core.int? cpuUtilizationPercent;
 
+  /// The storage utilization that the Autoscaler should be trying to achieve.
+  ///
+  /// This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD
+  /// cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster,
+  /// otherwise it will return INVALID_ARGUMENT error. If this value is set to
+  /// 0, it will be treated as if it were set to the default value: 2560 for
+  /// SSD, 8192 for HDD.
+  core.int? storageUtilizationGibPerNode;
+
   AutoscalingTargets({
     this.cpuUtilizationPercent,
+    this.storageUtilizationGibPerNode,
   });
 
   AutoscalingTargets.fromJson(core.Map _json)
@@ -2601,11 +2620,17 @@ class AutoscalingTargets {
           cpuUtilizationPercent: _json.containsKey('cpuUtilizationPercent')
               ? _json['cpuUtilizationPercent'] as core.int
               : null,
+          storageUtilizationGibPerNode:
+              _json.containsKey('storageUtilizationGibPerNode')
+                  ? _json['storageUtilizationGibPerNode'] as core.int
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuUtilizationPercent != null)
           'cpuUtilizationPercent': cpuUtilizationPercent!,
+        if (storageUtilizationGibPerNode != null)
+          'storageUtilizationGibPerNode': storageUtilizationGibPerNode!,
       };
 }
 
@@ -2793,7 +2818,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -3343,8 +3368,7 @@ class EncryptionConfig {
   /// associated with the project that contains this cluster must be granted the
   /// `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only
   /// regional keys can be used and the region of the CMEK key must match the
-  /// region of the cluster. 3) All clusters within an instance must use the
-  /// same CMEK key. Values are of the form
+  /// region of the cluster. Values are of the form
   /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
   core.String? kmsKeyName;
 
@@ -4470,7 +4494,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 

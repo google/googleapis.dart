@@ -341,8 +341,9 @@ class ProjectsLocationsLakesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
   ///
@@ -512,8 +513,9 @@ class ProjectsLocationsLakesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
   ///
@@ -561,8 +563,9 @@ class ProjectsLocationsLakesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+$`.
   ///
@@ -673,8 +676,9 @@ class ProjectsLocationsLakesContentResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/\[^/\]+$`.
   ///
@@ -732,8 +736,9 @@ class ProjectsLocationsLakesContentResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/\[^/\]+$`.
   ///
@@ -781,8 +786,9 @@ class ProjectsLocationsLakesContentResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/content/\[^/\]+$`.
   ///
@@ -1224,8 +1230,9 @@ class ProjectsLocationsLakesEnvironmentsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
   ///
@@ -1396,8 +1403,9 @@ class ProjectsLocationsLakesEnvironmentsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
   ///
@@ -1445,8 +1453,9 @@ class ProjectsLocationsLakesEnvironmentsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
   ///
@@ -1500,6 +1509,14 @@ class ProjectsLocationsLakesEnvironmentsSessionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/environments/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter request. The following mode filter is
+  /// supported to return only the sessions belonging to the requester when the
+  /// mode is USER and return sessions of all the users when the mode is ADMIN.
+  /// When no filter is sent default to USER mode. NOTE: When the mode is ADMIN,
+  /// the requester should have dataplex.environments.listAllSessions permission
+  /// to list all sessions, in absence of the permission, the request fails.mode
+  /// = ADMIN | USER
+  ///
   /// [pageSize] - Optional. Maximum number of sessions to return. The service
   /// may return fewer than this value. If unspecified, at most 10 sessions will
   /// be returned. The maximum value is 1000; values above 1000 will be coerced
@@ -1522,11 +1539,13 @@ class ProjectsLocationsLakesEnvironmentsSessionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDataplexV1ListSessionsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1691,8 +1710,9 @@ class ProjectsLocationsLakesTasksResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/tasks/\[^/\]+$`.
   ///
@@ -1863,8 +1883,9 @@ class ProjectsLocationsLakesTasksResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/tasks/\[^/\]+$`.
   ///
@@ -1912,8 +1933,9 @@ class ProjectsLocationsLakesTasksResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/tasks/\[^/\]+$`.
   ///
@@ -2251,8 +2273,9 @@ class ProjectsLocationsLakesZonesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+$`.
   ///
@@ -2422,8 +2445,9 @@ class ProjectsLocationsLakesZonesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+$`.
   ///
@@ -2471,8 +2495,9 @@ class ProjectsLocationsLakesZonesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+$`.
   ///
@@ -2724,8 +2749,9 @@ class ProjectsLocationsLakesZonesAssetsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+/assets/\[^/\]+$`.
   ///
@@ -2897,8 +2923,9 @@ class ProjectsLocationsLakesZonesAssetsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+/assets/\[^/\]+$`.
   ///
@@ -2946,8 +2973,9 @@ class ProjectsLocationsLakesZonesAssetsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+/assets/\[^/\]+$`.
   ///
@@ -6749,6 +6777,11 @@ class GoogleCloudDataplexV1Task {
   /// Required.
   GoogleCloudDataplexV1TaskExecutionSpec? executionSpec;
 
+  /// Status of the latest task executions.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1TaskExecutionStatus? executionStatus;
+
   /// User-defined labels for the task.
   ///
   /// Optional.
@@ -6798,6 +6831,7 @@ class GoogleCloudDataplexV1Task {
     this.description,
     this.displayName,
     this.executionSpec,
+    this.executionStatus,
     this.labels,
     this.name,
     this.spark,
@@ -6821,6 +6855,11 @@ class GoogleCloudDataplexV1Task {
           executionSpec: _json.containsKey('executionSpec')
               ? GoogleCloudDataplexV1TaskExecutionSpec.fromJson(
                   _json['executionSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          executionStatus: _json.containsKey('executionStatus')
+              ? GoogleCloudDataplexV1TaskExecutionStatus.fromJson(
+                  _json['executionStatus']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -6852,6 +6891,7 @@ class GoogleCloudDataplexV1Task {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (executionSpec != null) 'executionSpec': executionSpec!,
+        if (executionStatus != null) 'executionStatus': executionStatus!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (spark != null) 'spark': spark!,
@@ -6884,6 +6924,15 @@ class GoogleCloudDataplexV1TaskExecutionSpec {
   /// Optional.
   core.String? maxJobExecutionLifetime;
 
+  /// The project in which jobs are run.
+  ///
+  /// By default, the project containing the Lake is used. If a project is
+  /// provided, the executionspec.service_account must belong to this same
+  /// project.
+  ///
+  /// Optional.
+  core.String? project;
+
   /// Service account to use to execute a task.
   ///
   /// If not provided, the default Compute service account for the project is
@@ -6895,6 +6944,7 @@ class GoogleCloudDataplexV1TaskExecutionSpec {
   GoogleCloudDataplexV1TaskExecutionSpec({
     this.args,
     this.maxJobExecutionLifetime,
+    this.project,
     this.serviceAccount,
   });
 
@@ -6911,6 +6961,9 @@ class GoogleCloudDataplexV1TaskExecutionSpec {
           maxJobExecutionLifetime: _json.containsKey('maxJobExecutionLifetime')
               ? _json['maxJobExecutionLifetime'] as core.String
               : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
           serviceAccount: _json.containsKey('serviceAccount')
               ? _json['serviceAccount'] as core.String
               : null,
@@ -6920,7 +6973,42 @@ class GoogleCloudDataplexV1TaskExecutionSpec {
         if (args != null) 'args': args!,
         if (maxJobExecutionLifetime != null)
           'maxJobExecutionLifetime': maxJobExecutionLifetime!,
+        if (project != null) 'project': project!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+      };
+}
+
+/// Status of the task execution (e.g. Jobs).
+class GoogleCloudDataplexV1TaskExecutionStatus {
+  /// latest job execution
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1Job? latestJob;
+
+  /// Last update time of the status.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1TaskExecutionStatus({
+    this.latestJob,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1TaskExecutionStatus.fromJson(core.Map _json)
+      : this(
+          latestJob: _json.containsKey('latestJob')
+              ? GoogleCloudDataplexV1Job.fromJson(
+                  _json['latestJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latestJob != null) 'latestJob': latestJob!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -6971,12 +7059,15 @@ class GoogleCloudDataplexV1TaskInfrastructureSpec {
 class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources {
   /// Total number of job executors.
   ///
+  /// Executor Count should be between 2 and 100. Default=2
+  ///
   /// Optional.
   core.int? executorsCount;
 
   /// Max configurable executors.
   ///
   /// If max_executors_count \> executors_count, then auto-scaling is enabled.
+  /// Max Executor Count should be between 2 and 1000. Default=1000
   ///
   /// Optional.
   core.int? maxExecutorsCount;
@@ -7707,7 +7798,7 @@ class GoogleIamV1Binding {
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// members can have the following values: allUsers: A special identifier that
   /// represents anyone who is on the internet; with or without a Google
@@ -7895,7 +7986,7 @@ class GoogleIamV1SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the resource.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   GoogleIamV1Policy? policy;
 
@@ -7928,31 +8019,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for TestIamPermissions method.
-class GoogleIamV1TestIamPermissionsRequest {
-  /// The set of permissions to check for the resource.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see IAM Overview
-  /// (https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest02;
 
 /// Response message for TestIamPermissions method.
 typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse;

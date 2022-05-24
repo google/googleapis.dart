@@ -332,6 +332,7 @@ api.ComputeEngineTargetDefaults buildComputeEngineTargetDefaults() {
     o.bootOption = 'foo';
     o.computeScheduling = buildComputeScheduling();
     o.diskType = 'foo';
+    o.hostname = 'foo';
     o.labels = buildUnnamed1();
     o.licenseType = 'foo';
     o.machineType = 'foo';
@@ -361,6 +362,10 @@ void checkComputeEngineTargetDefaults(api.ComputeEngineTargetDefaults o) {
     checkComputeScheduling(o.computeScheduling!);
     unittest.expect(
       o.diskType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
       unittest.equals('foo'),
     );
     checkUnnamed1(o.labels!);
@@ -489,6 +494,7 @@ api.ComputeEngineTargetDetails buildComputeEngineTargetDetails() {
     o.bootOption = 'foo';
     o.computeScheduling = buildComputeScheduling();
     o.diskType = 'foo';
+    o.hostname = 'foo';
     o.labels = buildUnnamed6();
     o.licenseType = 'foo';
     o.machineType = 'foo';
@@ -518,6 +524,10 @@ void checkComputeEngineTargetDetails(api.ComputeEngineTargetDetails o) {
     checkComputeScheduling(o.computeScheduling!);
     unittest.expect(
       o.diskType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
       unittest.equals('foo'),
     );
     checkUnnamed6(o.labels!);

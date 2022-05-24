@@ -671,6 +671,8 @@ class Location {
   /// Id of the category that best describes the core business this location
   /// engages in.
   ///
+  /// e.g. gcid:bakery.
+  ///
   /// Required.
   core.String? primaryCategoryId;
 

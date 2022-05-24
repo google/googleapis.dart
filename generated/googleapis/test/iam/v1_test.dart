@@ -1196,6 +1196,28 @@ void checkRole(api.Role o) {
   buildCounterRole--;
 }
 
+core.int buildCounterSaml = 0;
+api.Saml buildSaml() {
+  final o = api.Saml();
+  buildCounterSaml++;
+  if (buildCounterSaml < 3) {
+    o.idpMetadataXml = 'foo';
+  }
+  buildCounterSaml--;
+  return o;
+}
+
+void checkSaml(api.Saml o) {
+  buildCounterSaml++;
+  if (buildCounterSaml < 3) {
+    unittest.expect(
+      o.idpMetadataXml!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSaml--;
+}
+
 core.int buildCounterServiceAccount = 0;
 api.ServiceAccount buildServiceAccount() {
   final o = api.ServiceAccount();
@@ -1779,6 +1801,7 @@ api.WorkloadIdentityPoolProvider buildWorkloadIdentityPoolProvider() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.oidc = buildOidc();
+    o.saml = buildSaml();
     o.state = 'foo';
   }
   buildCounterWorkloadIdentityPoolProvider--;
@@ -1808,6 +1831,7 @@ void checkWorkloadIdentityPoolProvider(api.WorkloadIdentityPoolProvider o) {
       unittest.equals('foo'),
     );
     checkOidc(o.oidc!);
+    checkSaml(o.saml!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -2170,6 +2194,16 @@ void main() {
       final od =
           api.Role.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRole(od);
+    });
+  });
+
+  unittest.group('obj-schema-Saml', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSaml();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Saml.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSaml(od);
     });
   });
 

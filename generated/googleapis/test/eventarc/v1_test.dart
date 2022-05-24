@@ -145,6 +145,63 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterChannel = 0;
+api.Channel buildChannel() {
+  final o = api.Channel();
+  buildCounterChannel++;
+  if (buildCounterChannel < 3) {
+    o.activationToken = 'foo';
+    o.createTime = 'foo';
+    o.name = 'foo';
+    o.provider = 'foo';
+    o.pubsubTopic = 'foo';
+    o.state = 'foo';
+    o.uid = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterChannel--;
+  return o;
+}
+
+void checkChannel(api.Channel o) {
+  buildCounterChannel++;
+  if (buildCounterChannel < 3) {
+    unittest.expect(
+      o.activationToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.provider!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pubsubTopic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterChannel--;
+}
+
 core.int buildCounterCloudRun = 0;
 api.CloudRun buildCloudRun() {
   final o = api.CloudRun();
@@ -669,58 +726,23 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus--;
 }
 
-core.List<api.Location> buildUnnamed9() => [
-      buildLocation(),
-      buildLocation(),
+core.List<api.Channel> buildUnnamed9() => [
+      buildChannel(),
+      buildChannel(),
     ];
 
-void checkUnnamed9(core.List<api.Location> o) {
+void checkUnnamed9(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkChannel(o[0]);
+  checkChannel(o[1]);
 }
 
-core.int buildCounterListLocationsResponse = 0;
-api.ListLocationsResponse buildListLocationsResponse() {
-  final o = api.ListLocationsResponse();
-  buildCounterListLocationsResponse++;
-  if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed9();
-    o.nextPageToken = 'foo';
-  }
-  buildCounterListLocationsResponse--;
-  return o;
-}
-
-void checkListLocationsResponse(api.ListLocationsResponse o) {
-  buildCounterListLocationsResponse++;
-  if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed9(o.locations!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterListLocationsResponse--;
-}
-
-core.List<api.Provider> buildUnnamed10() => [
-      buildProvider(),
-      buildProvider(),
-    ];
-
-void checkUnnamed10(core.List<api.Provider> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkProvider(o[0]);
-  checkProvider(o[1]);
-}
-
-core.List<core.String> buildUnnamed11() => [
+core.List<core.String> buildUnnamed10() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -732,41 +754,76 @@ void checkUnnamed11(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterListProvidersResponse = 0;
-api.ListProvidersResponse buildListProvidersResponse() {
-  final o = api.ListProvidersResponse();
-  buildCounterListProvidersResponse++;
-  if (buildCounterListProvidersResponse < 3) {
+core.int buildCounterListChannelsResponse = 0;
+api.ListChannelsResponse buildListChannelsResponse() {
+  final o = api.ListChannelsResponse();
+  buildCounterListChannelsResponse++;
+  if (buildCounterListChannelsResponse < 3) {
+    o.channels = buildUnnamed9();
     o.nextPageToken = 'foo';
-    o.providers = buildUnnamed10();
-    o.unreachable = buildUnnamed11();
+    o.unreachable = buildUnnamed10();
   }
-  buildCounterListProvidersResponse--;
+  buildCounterListChannelsResponse--;
   return o;
 }
 
-void checkListProvidersResponse(api.ListProvidersResponse o) {
-  buildCounterListProvidersResponse++;
-  if (buildCounterListProvidersResponse < 3) {
+void checkListChannelsResponse(api.ListChannelsResponse o) {
+  buildCounterListChannelsResponse++;
+  if (buildCounterListChannelsResponse < 3) {
+    checkUnnamed9(o.channels!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.providers!);
-    checkUnnamed11(o.unreachable!);
+    checkUnnamed10(o.unreachable!);
   }
-  buildCounterListProvidersResponse--;
+  buildCounterListChannelsResponse--;
 }
 
-core.List<api.Trigger> buildUnnamed12() => [
-      buildTrigger(),
-      buildTrigger(),
+core.List<api.Location> buildUnnamed11() => [
+      buildLocation(),
+      buildLocation(),
     ];
 
-void checkUnnamed12(core.List<api.Trigger> o) {
+void checkUnnamed11(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrigger(o[0]);
-  checkTrigger(o[1]);
+  checkLocation(o[0]);
+  checkLocation(o[1]);
+}
+
+core.int buildCounterListLocationsResponse = 0;
+api.ListLocationsResponse buildListLocationsResponse() {
+  final o = api.ListLocationsResponse();
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    o.locations = buildUnnamed11();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListLocationsResponse--;
+  return o;
+}
+
+void checkListLocationsResponse(api.ListLocationsResponse o) {
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    checkUnnamed11(o.locations!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListLocationsResponse--;
+}
+
+core.List<api.Provider> buildUnnamed12() => [
+      buildProvider(),
+      buildProvider(),
+    ];
+
+void checkUnnamed12(core.List<api.Provider> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProvider(o[0]);
+  checkProvider(o[1]);
 }
 
 core.List<core.String> buildUnnamed13() => [
@@ -786,14 +843,68 @@ void checkUnnamed13(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterListProvidersResponse = 0;
+api.ListProvidersResponse buildListProvidersResponse() {
+  final o = api.ListProvidersResponse();
+  buildCounterListProvidersResponse++;
+  if (buildCounterListProvidersResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.providers = buildUnnamed12();
+    o.unreachable = buildUnnamed13();
+  }
+  buildCounterListProvidersResponse--;
+  return o;
+}
+
+void checkListProvidersResponse(api.ListProvidersResponse o) {
+  buildCounterListProvidersResponse++;
+  if (buildCounterListProvidersResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed12(o.providers!);
+    checkUnnamed13(o.unreachable!);
+  }
+  buildCounterListProvidersResponse--;
+}
+
+core.List<api.Trigger> buildUnnamed14() => [
+      buildTrigger(),
+      buildTrigger(),
+    ];
+
+void checkUnnamed14(core.List<api.Trigger> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTrigger(o[0]);
+  checkTrigger(o[1]);
+}
+
+core.List<core.String> buildUnnamed15() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed15(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterListTriggersResponse = 0;
 api.ListTriggersResponse buildListTriggersResponse() {
   final o = api.ListTriggersResponse();
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.triggers = buildUnnamed12();
-    o.unreachable = buildUnnamed13();
+    o.triggers = buildUnnamed14();
+    o.unreachable = buildUnnamed15();
   }
   buildCounterListTriggersResponse--;
   return o;
@@ -806,18 +917,18 @@ void checkListTriggersResponse(api.ListTriggersResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.triggers!);
-    checkUnnamed13(o.unreachable!);
+    checkUnnamed14(o.triggers!);
+    checkUnnamed15(o.unreachable!);
   }
   buildCounterListTriggersResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed14() => {
+core.Map<core.String, core.String> buildUnnamed16() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed14(core.Map<core.String, core.String> o) {
+void checkUnnamed16(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -829,7 +940,7 @@ void checkUnnamed14(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed15() => {
+core.Map<core.String, core.Object?> buildUnnamed17() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -842,7 +953,7 @@ core.Map<core.String, core.Object?> buildUnnamed15() => {
       },
     };
 
-void checkUnnamed15(core.Map<core.String, core.Object?> o) {
+void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -880,9 +991,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed14();
+    o.labels = buildUnnamed16();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed15();
+    o.metadata = buildUnnamed17();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -896,12 +1007,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.labels!);
+    checkUnnamed16(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.metadata!);
+    checkUnnamed17(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -910,23 +1021,23 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.List<api.AuditConfig> buildUnnamed16() => [
+core.List<api.AuditConfig> buildUnnamed18() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed16(core.List<api.AuditConfig> o) {
+void checkUnnamed18(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed17() => [
+core.List<api.Binding> buildUnnamed19() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed17(core.List<api.Binding> o) {
+void checkUnnamed19(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -937,8 +1048,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed16();
-    o.bindings = buildUnnamed17();
+    o.auditConfigs = buildUnnamed18();
+    o.bindings = buildUnnamed19();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -949,8 +1060,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed16(o.auditConfigs!);
-    checkUnnamed17(o.bindings!);
+    checkUnnamed18(o.auditConfigs!);
+    checkUnnamed19(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -963,12 +1074,12 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.List<api.EventType> buildUnnamed18() => [
+core.List<api.EventType> buildUnnamed20() => [
       buildEventType(),
       buildEventType(),
     ];
 
-void checkUnnamed18(core.List<api.EventType> o) {
+void checkUnnamed20(core.List<api.EventType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventType(o[0]);
   checkEventType(o[1]);
@@ -980,7 +1091,7 @@ api.Provider buildProvider() {
   buildCounterProvider++;
   if (buildCounterProvider < 3) {
     o.displayName = 'foo';
-    o.eventTypes = buildUnnamed18();
+    o.eventTypes = buildUnnamed20();
     o.name = 'foo';
   }
   buildCounterProvider--;
@@ -994,7 +1105,7 @@ void checkProvider(api.Provider o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.eventTypes!);
+    checkUnnamed20(o.eventTypes!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1054,12 +1165,12 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed21() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1076,7 +1187,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed19();
+    o.permissions = buildUnnamed21();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1085,17 +1196,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed19(o.permissions!);
+    checkUnnamed21(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1112,7 +1223,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed20();
+    o.permissions = buildUnnamed22();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1121,7 +1232,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed20(o.permissions!);
+    checkUnnamed22(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1145,23 +1256,23 @@ void checkTransport(api.Transport o) {
   buildCounterTransport--;
 }
 
-core.List<api.EventFilter> buildUnnamed21() => [
+core.List<api.EventFilter> buildUnnamed23() => [
       buildEventFilter(),
       buildEventFilter(),
     ];
 
-void checkUnnamed21(core.List<api.EventFilter> o) {
+void checkUnnamed23(core.List<api.EventFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventFilter(o[0]);
   checkEventFilter(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed22() => {
+core.Map<core.String, core.String> buildUnnamed24() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed22(core.Map<core.String, core.String> o) {
+void checkUnnamed24(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1178,11 +1289,12 @@ api.Trigger buildTrigger() {
   final o = api.Trigger();
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
+    o.channel = 'foo';
     o.createTime = 'foo';
     o.destination = buildDestination();
     o.etag = 'foo';
-    o.eventFilters = buildUnnamed21();
-    o.labels = buildUnnamed22();
+    o.eventFilters = buildUnnamed23();
+    o.labels = buildUnnamed24();
     o.name = 'foo';
     o.serviceAccount = 'foo';
     o.transport = buildTransport();
@@ -1197,6 +1309,10 @@ void checkTrigger(api.Trigger o) {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     unittest.expect(
+      o.channel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
     );
@@ -1205,8 +1321,8 @@ void checkTrigger(api.Trigger o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.eventFilters!);
-    checkUnnamed22(o.labels!);
+    checkUnnamed23(o.eventFilters!);
+    checkUnnamed24(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1256,6 +1372,16 @@ void main() {
       final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-Channel', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChannel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Channel.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkChannel(od);
     });
   });
 
@@ -1375,6 +1501,16 @@ void main() {
       final od = api.GoogleRpcStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListChannelsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListChannelsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListChannelsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListChannelsResponse(od);
     });
   });
 
@@ -1802,6 +1938,188 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsChannelsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.EventarcApi(mock).projects.locations.channels;
+      final arg_request = buildChannel();
+      final arg_parent = 'foo';
+      final arg_channelId = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['channelId']!.first,
+          unittest.equals(arg_channelId),
+        );
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          channelId: arg_channelId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.EventarcApi(mock).projects.locations.channels;
+      final arg_name = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name,
+          validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.EventarcApi(mock).projects.locations.channels;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildChannel());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkChannel(response as api.Channel);
+    });
+
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.EventarcApi(mock).projects.locations.channels;
@@ -1859,6 +2177,148 @@ void main() {
           options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.EventarcApi(mock).projects.locations.channels;
+      final arg_parent = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListChannelsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListChannelsResponse(response as api.ListChannelsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.EventarcApi(mock).projects.locations.channels;
+      final arg_request = buildChannel();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
     unittest.test('method--setIamPolicy', () async {

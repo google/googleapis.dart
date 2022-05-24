@@ -224,8 +224,9 @@ class ProjectsSchemasResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The maximum policy version
@@ -340,8 +341,9 @@ class ProjectsSchemasResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -387,8 +389,9 @@ class ProjectsSchemasResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/schemas/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -623,9 +626,11 @@ class ProjectsSnapshotsResource {
 
   /// Gets the configuration details of a snapshot.
   ///
-  /// Snapshots are used in Seek operations, which allow you to manage message
-  /// acknowledgments in bulk. That is, you can set the acknowledgment state of
-  /// messages in an existing subscription to the state captured by a snapshot.
+  /// Snapshots are used in
+  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+  /// which allow you to manage message acknowledgments in bulk. That is, you
+  /// can set the acknowledgment state of messages in an existing subscription
+  /// to the state captured by a snapshot.
   ///
   /// Request parameters:
   ///
@@ -669,8 +674,9 @@ class ProjectsSnapshotsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The maximum policy version
@@ -771,9 +777,11 @@ class ProjectsSnapshotsResource {
 
   /// Updates an existing snapshot.
   ///
-  /// Snapshots are used in Seek operations, which allow you to manage message
-  /// acknowledgments in bulk. That is, you can set the acknowledgment state of
-  /// messages in an existing subscription to the state captured by a snapshot.
+  /// Snapshots are used in
+  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+  /// which allow you to manage message acknowledgments in bulk. That is, you
+  /// can set the acknowledgment state of messages in an existing subscription
+  /// to the state captured by a snapshot.
   ///
   /// [request] - The metadata request object.
   ///
@@ -823,8 +831,9 @@ class ProjectsSnapshotsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -870,8 +879,9 @@ class ProjectsSnapshotsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1145,8 +1155,9 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The maximum policy version
@@ -1486,8 +1497,9 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1533,8 +1545,9 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1715,8 +1728,9 @@ class ProjectsTopicsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The maximum policy version
@@ -1910,8 +1924,9 @@ class ProjectsTopicsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1957,8 +1972,9 @@ class ProjectsTopicsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2135,6 +2151,81 @@ class AcknowledgeRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ackIds != null) 'ackIds': ackIds!,
+      };
+}
+
+/// Configuration for a BigQuery subscription.
+class BigQueryConfig {
+  /// When true and use_topic_schema is true, any fields that are a part of the
+  /// topic schema that are not part of the BigQuery table schema are dropped
+  /// when writing to BigQuery.
+  ///
+  /// Otherwise, the schemas must be kept in sync and any messages with extra
+  /// fields are not written and remain in the subscription's backlog.
+  core.bool? dropUnknownFields;
+
+  /// An output-only field that indicates whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively send messages to BigQuery
+  /// - "PERMISSION_DENIED" : Cannot write to the BigQuery table because of
+  /// permission denied errors.
+  /// - "NOT_FOUND" : Cannot write to the BigQuery table because it does not
+  /// exist.
+  /// - "SCHEMA_MISMATCH" : Cannot write to the BigQuery table due to a schema
+  /// mismatch.
+  core.String? state;
+
+  /// The name of the table to which to write data, of the form
+  /// {projectId}:{datasetId}.{tableId}
+  core.String? table;
+
+  /// When true, use the topic's schema as the columns to write to in BigQuery,
+  /// if it exists.
+  core.bool? useTopicSchema;
+
+  /// When true, write the subscription name, message_id, publish_time,
+  /// attributes, and ordering_key to additional columns in the table.
+  ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own columns while all other message properties (other than data) are
+  /// written to a JSON object in the attributes column.
+  core.bool? writeMetadata;
+
+  BigQueryConfig({
+    this.dropUnknownFields,
+    this.state,
+    this.table,
+    this.useTopicSchema,
+    this.writeMetadata,
+  });
+
+  BigQueryConfig.fromJson(core.Map _json)
+      : this(
+          dropUnknownFields: _json.containsKey('dropUnknownFields')
+              ? _json['dropUnknownFields'] as core.bool
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          table:
+              _json.containsKey('table') ? _json['table'] as core.String : null,
+          useTopicSchema: _json.containsKey('useTopicSchema')
+              ? _json['useTopicSchema'] as core.bool
+              : null,
+          writeMetadata: _json.containsKey('writeMetadata')
+              ? _json['writeMetadata'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
+        if (state != null) 'state': state!,
+        if (table != null) 'table': table!,
+        if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
+        if (writeMetadata != null) 'writeMetadata': writeMetadata!,
       };
 }
 
@@ -2673,6 +2764,11 @@ class ModifyPushConfigRequest {
 
 /// Contains information needed for generating an
 /// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
+///
+/// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+/// used for generating the OIDC token. For more information on setting up
+/// authentication, see
+/// [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 class OidcToken {
   /// Audience to be used when generating OIDC token.
   ///
@@ -2683,13 +2779,6 @@ class OidcToken {
   /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
   /// the Push endpoint URL will be used.
   core.String? audience;
-
-  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-  /// to be used for generating the OIDC token.
-  ///
-  /// See \[Setting up push
-  /// authentication\](/pubsub/docs/push#setting_up_for_push_authentication) for
-  /// more details.
   core.String? serviceAccountEmail;
 
   OidcToken({
@@ -3368,6 +3457,13 @@ class Subscription {
   /// message, the Pub/Sub system will eventually redeliver the message.
   core.int? ackDeadlineSeconds;
 
+  /// If delivery to BigQuery is used with this subscription, this field is used
+  /// to configure it.
+  ///
+  /// At most one of `pushConfig` and `bigQueryConfig` can be set. If both are
+  /// empty, then the subscriber will pull and ack messages using API methods.
+  BigQueryConfig? bigqueryConfig;
+
   /// A policy that specifies the conditions for dead lettering messages in this
   /// subscription.
   ///
@@ -3507,6 +3603,7 @@ class Subscription {
 
   Subscription({
     this.ackDeadlineSeconds,
+    this.bigqueryConfig,
     this.deadLetterPolicy,
     this.detached,
     this.enableExactlyOnceDelivery,
@@ -3528,6 +3625,10 @@ class Subscription {
       : this(
           ackDeadlineSeconds: _json.containsKey('ackDeadlineSeconds')
               ? _json['ackDeadlineSeconds'] as core.int
+              : null,
+          bigqueryConfig: _json.containsKey('bigqueryConfig')
+              ? BigQueryConfig.fromJson(_json['bigqueryConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           deadLetterPolicy: _json.containsKey('deadLetterPolicy')
               ? DeadLetterPolicy.fromJson(_json['deadLetterPolicy']
@@ -3587,6 +3688,7 @@ class Subscription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ackDeadlineSeconds != null)
           'ackDeadlineSeconds': ackDeadlineSeconds!,
+        if (bigqueryConfig != null) 'bigqueryConfig': bigqueryConfig!,
         if (deadLetterPolicy != null) 'deadLetterPolicy': deadLetterPolicy!,
         if (detached != null) 'detached': detached!,
         if (enableExactlyOnceDelivery != null)
@@ -3611,7 +3713,7 @@ class Subscription {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

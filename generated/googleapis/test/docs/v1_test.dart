@@ -2952,6 +2952,7 @@ api.ParagraphStyle buildParagraphStyle() {
     o.keepWithNext = true;
     o.lineSpacing = 42.0;
     o.namedStyleType = 'foo';
+    o.pageBreakBefore = true;
     o.shading = buildShading();
     o.spaceAbove = buildDimension();
     o.spaceBelow = buildDimension();
@@ -2996,6 +2997,7 @@ void checkParagraphStyle(api.ParagraphStyle o) {
       o.namedStyleType!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.pageBreakBefore!, unittest.isTrue);
     checkShading(o.shading!);
     checkDimension(o.spaceAbove!);
     checkDimension(o.spaceBelow!);
@@ -3029,6 +3031,7 @@ api.ParagraphStyleSuggestionState buildParagraphStyleSuggestionState() {
     o.keepWithNextSuggested = true;
     o.lineSpacingSuggested = true;
     o.namedStyleTypeSuggested = true;
+    o.pageBreakBeforeSuggested = true;
     o.shadingSuggestionState = buildShadingSuggestionState();
     o.spaceAboveSuggested = true;
     o.spaceBelowSuggested = true;
@@ -3057,6 +3060,7 @@ void checkParagraphStyleSuggestionState(api.ParagraphStyleSuggestionState o) {
     unittest.expect(o.keepWithNextSuggested!, unittest.isTrue);
     unittest.expect(o.lineSpacingSuggested!, unittest.isTrue);
     unittest.expect(o.namedStyleTypeSuggested!, unittest.isTrue);
+    unittest.expect(o.pageBreakBeforeSuggested!, unittest.isTrue);
     checkShadingSuggestionState(o.shadingSuggestionState!);
     unittest.expect(o.spaceAboveSuggested!, unittest.isTrue);
     unittest.expect(o.spaceBelowSuggested!, unittest.isTrue);
@@ -3167,6 +3171,30 @@ void checkPersonProperties(api.PersonProperties o) {
     );
   }
   buildCounterPersonProperties--;
+}
+
+core.int buildCounterPinTableHeaderRowsRequest = 0;
+api.PinTableHeaderRowsRequest buildPinTableHeaderRowsRequest() {
+  final o = api.PinTableHeaderRowsRequest();
+  buildCounterPinTableHeaderRowsRequest++;
+  if (buildCounterPinTableHeaderRowsRequest < 3) {
+    o.pinnedHeaderRowsCount = 42;
+    o.tableStartLocation = buildLocation();
+  }
+  buildCounterPinTableHeaderRowsRequest--;
+  return o;
+}
+
+void checkPinTableHeaderRowsRequest(api.PinTableHeaderRowsRequest o) {
+  buildCounterPinTableHeaderRowsRequest++;
+  if (buildCounterPinTableHeaderRowsRequest < 3) {
+    unittest.expect(
+      o.pinnedHeaderRowsCount!,
+      unittest.equals(42),
+    );
+    checkLocation(o.tableStartLocation!);
+  }
+  buildCounterPinTableHeaderRowsRequest--;
 }
 
 core.List<core.String> buildUnnamed55() => [
@@ -3498,6 +3526,7 @@ api.Request buildRequest() {
     o.insertTableRow = buildInsertTableRowRequest();
     o.insertText = buildInsertTextRequest();
     o.mergeTableCells = buildMergeTableCellsRequest();
+    o.pinTableHeaderRows = buildPinTableHeaderRowsRequest();
     o.replaceAllText = buildReplaceAllTextRequest();
     o.replaceImage = buildReplaceImageRequest();
     o.replaceNamedRangeContent = buildReplaceNamedRangeContentRequest();
@@ -3538,6 +3567,7 @@ void checkRequest(api.Request o) {
     checkInsertTableRowRequest(o.insertTableRow!);
     checkInsertTextRequest(o.insertText!);
     checkMergeTableCellsRequest(o.mergeTableCells!);
+    checkPinTableHeaderRowsRequest(o.pinTableHeaderRows!);
     checkReplaceAllTextRequest(o.replaceAllText!);
     checkReplaceImageRequest(o.replaceImage!);
     checkReplaceNamedRangeContentRequest(o.replaceNamedRangeContent!);
@@ -4866,6 +4896,8 @@ api.TableRowStyle buildTableRowStyle() {
   buildCounterTableRowStyle++;
   if (buildCounterTableRowStyle < 3) {
     o.minRowHeight = buildDimension();
+    o.preventOverflow = true;
+    o.tableHeader = true;
   }
   buildCounterTableRowStyle--;
   return o;
@@ -4875,6 +4907,8 @@ void checkTableRowStyle(api.TableRowStyle o) {
   buildCounterTableRowStyle++;
   if (buildCounterTableRowStyle < 3) {
     checkDimension(o.minRowHeight!);
+    unittest.expect(o.preventOverflow!, unittest.isTrue);
+    unittest.expect(o.tableHeader!, unittest.isTrue);
   }
   buildCounterTableRowStyle--;
 }
@@ -6247,6 +6281,16 @@ void main() {
       final od = api.PersonProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPersonProperties(od);
+    });
+  });
+
+  unittest.group('obj-schema-PinTableHeaderRowsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPinTableHeaderRowsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PinTableHeaderRowsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPinTableHeaderRowsRequest(od);
     });
   });
 

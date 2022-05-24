@@ -648,6 +648,53 @@ class ManagedZonesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^projects/\[^/\]+/managedZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    GoogleIamV1GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Enumerates ManagedZones that have been created but not yet deleted.
   ///
   /// Request parameters:
@@ -749,6 +796,103 @@ class ManagedZonesResource {
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^projects/\[^/\]+/managedZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^projects/\[^/\]+/managedZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'dns/v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing ManagedZone.
@@ -2508,6 +2652,352 @@ class DnsKeysListResponse {
       };
 }
 
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
+typedef Expr = $Expr;
+
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
+class GoogleIamV1AuditConfig {
+  /// The configuration for logging of each type of permission.
+  core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String? service;
+
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
+
+  GoogleIamV1AuditConfig.fromJson(core.Map _json)
+      : this(
+          auditLogConfigs: _json.containsKey('auditLogConfigs')
+              ? (_json['auditLogConfigs'] as core.List)
+                  .map((value) => GoogleIamV1AuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+        if (service != null) 'service': service!,
+      };
+}
+
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+
+/// Associates `members`, or principals, with a `role`.
+class GoogleIamV1Binding {
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  Expr? condition;
+
+  /// Specifies the principals requesting access for a Google Cloud resource.
+  ///
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
+  core.List<core.String>? members;
+
+  /// Role that is assigned to the list of `members`, or principals.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  core.String? role;
+
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
+
+  GoogleIamV1Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
+      };
+}
+
+/// Request message for `GetIamPolicy` method.
+class GoogleIamV1GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`.
+  GoogleIamV1GetPolicyOptions? options;
+
+  GoogleIamV1GetIamPolicyRequest({
+    this.options,
+  });
+
+  GoogleIamV1GetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          options: _json.containsKey('options')
+              ? GoogleIamV1GetPolicyOptions.fromJson(
+                  _json['options'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (options != null) 'options': options!,
+      };
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+typedef GoogleIamV1GetPolicyOptions = $GetPolicyOptions;
+
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
+class GoogleIamV1Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<GoogleIamV1AuditConfig>? auditConfigs;
+
+  /// Associates a list of `members`, or principals, with a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
+  core.List<GoogleIamV1Binding>? bindings;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
+
+  set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  core.int? version;
+
+  GoogleIamV1Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
+
+  GoogleIamV1Policy.fromJson(core.Map _json)
+      : this(
+          auditConfigs: _json.containsKey('auditConfigs')
+              ? (_json['auditConfigs'] as core.List)
+                  .map((value) => GoogleIamV1AuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map((value) => GoogleIamV1Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Request message for `SetIamPolicy` method.
+class GoogleIamV1SetIamPolicyRequest {
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Google Cloud services (such as Projects) might
+  /// reject them.
+  GoogleIamV1Policy? policy;
+
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
+  core.String? updateMask;
+
+  GoogleIamV1SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
+
+  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? GoogleIamV1Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message for `TestIamPermissions` method.
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+
+/// Response message for `TestIamPermissions` method.
+typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+
 /// A zone is a subtree of the DNS namespace under one administrative
 /// responsibility.
 ///
@@ -2706,7 +3196,31 @@ class ManagedZone {
 }
 
 /// Cloud Logging configurations for publicly visible zones.
-typedef ManagedZoneCloudLoggingConfig = $ManagedZoneCloudLoggingConfig;
+class ManagedZoneCloudLoggingConfig {
+  /// If set, enable query logging for this ManagedZone.
+  ///
+  /// False by default, making logging opt-in.
+  core.bool? enableLogging;
+  core.String? kind;
+
+  ManagedZoneCloudLoggingConfig({
+    this.enableLogging,
+    this.kind,
+  });
+
+  ManagedZoneCloudLoggingConfig.fromJson(core.Map _json)
+      : this(
+          enableLogging: _json.containsKey('enableLogging')
+              ? _json['enableLogging'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableLogging != null) 'enableLogging': enableLogging!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 class ManagedZoneDnsSecConfig {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone.
@@ -2915,8 +3429,45 @@ class ManagedZonePeeringConfig {
       };
 }
 
-typedef ManagedZonePeeringConfigTargetNetwork
-    = $ManagedZonePeeringConfigTargetNetwork;
+class ManagedZonePeeringConfigTargetNetwork {
+  /// The time at which the zone was deactivated, in RFC 3339 date-time format.
+  ///
+  /// An empty string indicates that the peering connection is active. The
+  /// producer network can deactivate a zone. The zone is automatically
+  /// deactivated if the producer network that the zone targeted is deleted.
+  /// Output only.
+  core.String? deactivateTime;
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to forward queries to.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  ManagedZonePeeringConfigTargetNetwork({
+    this.deactivateTime,
+    this.kind,
+    this.networkUrl,
+  });
+
+  ManagedZonePeeringConfigTargetNetwork.fromJson(core.Map _json)
+      : this(
+          deactivateTime: _json.containsKey('deactivateTime')
+              ? _json['deactivateTime'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deactivateTime != null) 'deactivateTime': deactivateTime!,
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
 
 class ManagedZonePrivateVisibilityConfig {
   core.String? kind;
@@ -2947,9 +3498,50 @@ class ManagedZonePrivateVisibilityConfig {
       };
 }
 
-typedef ManagedZonePrivateVisibilityConfigNetwork
-    = $ManagedZonePrivateVisibilityConfigNetwork;
-typedef ManagedZoneReverseLookupConfig = $ManagedZoneReverseLookupConfig;
+class ManagedZonePrivateVisibilityConfigNetwork {
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// Format this URL like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  ManagedZonePrivateVisibilityConfigNetwork({
+    this.kind,
+    this.networkUrl,
+  });
+
+  ManagedZonePrivateVisibilityConfigNetwork.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
+
+class ManagedZoneReverseLookupConfig {
+  core.String? kind;
+
+  ManagedZoneReverseLookupConfig({
+    this.kind,
+  });
+
+  ManagedZoneReverseLookupConfig.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfig {
@@ -2978,8 +3570,43 @@ class ManagedZoneServiceDirectoryConfig {
       };
 }
 
-typedef ManagedZoneServiceDirectoryConfigNamespace
-    = $ManagedZoneServiceDirectoryConfigNamespace;
+class ManagedZoneServiceDirectoryConfigNamespace {
+  /// The time that the namespace backing this zone was deleted; an empty string
+  /// if it still exists.
+  ///
+  /// This is in RFC3339 text format. Output only.
+  core.String? deletionTime;
+  core.String? kind;
+
+  /// The fully qualified URL of the namespace associated with the zone.
+  ///
+  /// Format must be
+  /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+  core.String? namespaceUrl;
+
+  ManagedZoneServiceDirectoryConfigNamespace({
+    this.deletionTime,
+    this.kind,
+    this.namespaceUrl,
+  });
+
+  ManagedZoneServiceDirectoryConfigNamespace.fromJson(core.Map _json)
+      : this(
+          deletionTime: _json.containsKey('deletionTime')
+              ? _json['deletionTime'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          namespaceUrl: _json.containsKey('namespaceUrl')
+              ? _json['namespaceUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionTime != null) 'deletionTime': deletionTime!,
+        if (kind != null) 'kind': kind!,
+        if (namespaceUrl != null) 'namespaceUrl': namespaceUrl!,
+      };
+}
 
 class ManagedZonesListResponse {
   ResponseHeader? header;
@@ -3462,7 +4089,33 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
       };
 }
 
-typedef PolicyNetwork = $PolicyNetwork;
+class PolicyNetwork {
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  PolicyNetwork({
+    this.kind,
+    this.networkUrl,
+  });
+
+  PolicyNetwork.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
 
 /// A project resource.
 ///
@@ -3513,12 +4166,26 @@ class Quota {
   /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int? dnsKeysPerManagedZone;
 
+  /// Maximum allowed number of GKE clusters to which a privately scoped zone
+  /// can be attached.
+  core.int? gkeClustersPerManagedZone;
+
+  /// Maximum allowed number of GKE clusters per policy.
+  core.int? gkeClustersPerPolicy;
+
+  /// Maximum allowed number of GKE clusters per response policy.
+  core.int? gkeClustersPerResponsePolicy;
+
   /// Maximum allowed number of items per routing policy.
   core.int? itemsPerRoutingPolicy;
   core.String? kind;
 
   /// Maximum allowed number of managed zones in the project.
   core.int? managedZones;
+
+  /// Maximum allowed number of managed zones which can be attached to a GKE
+  /// cluster.
+  core.int? managedZonesPerGkeCluster;
 
   /// Maximum allowed number of managed zones which can be attached to a
   /// network.
@@ -3531,6 +4198,9 @@ class Quota {
   /// Maximum allowed number of networks per policy.
   core.int? networksPerPolicy;
 
+  /// Maximum allowed number of networks per response policy.
+  core.int? networksPerResponsePolicy;
+
   /// Maximum allowed number of consumer peering zones per target network owned
   /// by this producer project
   core.int? peeringZonesPerTargetNetwork;
@@ -3540,6 +4210,12 @@ class Quota {
 
   /// Maximum allowed number of ResourceRecords per ResourceRecordSet.
   core.int? resourceRecordsPerRrset;
+
+  /// Maximum allowed number of response policies per project.
+  core.int? responsePolicies;
+
+  /// Maximum allowed number of rules per response policy.
+  core.int? responsePolicyRulesPerResponsePolicy;
 
   /// Maximum allowed number of ResourceRecordSets to add per
   /// ChangesCreateRequest.
@@ -3567,15 +4243,22 @@ class Quota {
 
   Quota({
     this.dnsKeysPerManagedZone,
+    this.gkeClustersPerManagedZone,
+    this.gkeClustersPerPolicy,
+    this.gkeClustersPerResponsePolicy,
     this.itemsPerRoutingPolicy,
     this.kind,
     this.managedZones,
+    this.managedZonesPerGkeCluster,
     this.managedZonesPerNetwork,
     this.networksPerManagedZone,
     this.networksPerPolicy,
+    this.networksPerResponsePolicy,
     this.peeringZonesPerTargetNetwork,
     this.policies,
     this.resourceRecordsPerRrset,
+    this.responsePolicies,
+    this.responsePolicyRulesPerResponsePolicy,
     this.rrsetAdditionsPerChange,
     this.rrsetDeletionsPerChange,
     this.rrsetsPerManagedZone,
@@ -3590,6 +4273,17 @@ class Quota {
           dnsKeysPerManagedZone: _json.containsKey('dnsKeysPerManagedZone')
               ? _json['dnsKeysPerManagedZone'] as core.int
               : null,
+          gkeClustersPerManagedZone:
+              _json.containsKey('gkeClustersPerManagedZone')
+                  ? _json['gkeClustersPerManagedZone'] as core.int
+                  : null,
+          gkeClustersPerPolicy: _json.containsKey('gkeClustersPerPolicy')
+              ? _json['gkeClustersPerPolicy'] as core.int
+              : null,
+          gkeClustersPerResponsePolicy:
+              _json.containsKey('gkeClustersPerResponsePolicy')
+                  ? _json['gkeClustersPerResponsePolicy'] as core.int
+                  : null,
           itemsPerRoutingPolicy: _json.containsKey('itemsPerRoutingPolicy')
               ? _json['itemsPerRoutingPolicy'] as core.int
               : null,
@@ -3597,6 +4291,10 @@ class Quota {
           managedZones: _json.containsKey('managedZones')
               ? _json['managedZones'] as core.int
               : null,
+          managedZonesPerGkeCluster:
+              _json.containsKey('managedZonesPerGkeCluster')
+                  ? _json['managedZonesPerGkeCluster'] as core.int
+                  : null,
           managedZonesPerNetwork: _json.containsKey('managedZonesPerNetwork')
               ? _json['managedZonesPerNetwork'] as core.int
               : null,
@@ -3606,6 +4304,10 @@ class Quota {
           networksPerPolicy: _json.containsKey('networksPerPolicy')
               ? _json['networksPerPolicy'] as core.int
               : null,
+          networksPerResponsePolicy:
+              _json.containsKey('networksPerResponsePolicy')
+                  ? _json['networksPerResponsePolicy'] as core.int
+                  : null,
           peeringZonesPerTargetNetwork:
               _json.containsKey('peeringZonesPerTargetNetwork')
                   ? _json['peeringZonesPerTargetNetwork'] as core.int
@@ -3616,6 +4318,13 @@ class Quota {
           resourceRecordsPerRrset: _json.containsKey('resourceRecordsPerRrset')
               ? _json['resourceRecordsPerRrset'] as core.int
               : null,
+          responsePolicies: _json.containsKey('responsePolicies')
+              ? _json['responsePolicies'] as core.int
+              : null,
+          responsePolicyRulesPerResponsePolicy:
+              _json.containsKey('responsePolicyRulesPerResponsePolicy')
+                  ? _json['responsePolicyRulesPerResponsePolicy'] as core.int
+                  : null,
           rrsetAdditionsPerChange: _json.containsKey('rrsetAdditionsPerChange')
               ? _json['rrsetAdditionsPerChange'] as core.int
               : null,
@@ -3648,20 +4357,34 @@ class Quota {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dnsKeysPerManagedZone != null)
           'dnsKeysPerManagedZone': dnsKeysPerManagedZone!,
+        if (gkeClustersPerManagedZone != null)
+          'gkeClustersPerManagedZone': gkeClustersPerManagedZone!,
+        if (gkeClustersPerPolicy != null)
+          'gkeClustersPerPolicy': gkeClustersPerPolicy!,
+        if (gkeClustersPerResponsePolicy != null)
+          'gkeClustersPerResponsePolicy': gkeClustersPerResponsePolicy!,
         if (itemsPerRoutingPolicy != null)
           'itemsPerRoutingPolicy': itemsPerRoutingPolicy!,
         if (kind != null) 'kind': kind!,
         if (managedZones != null) 'managedZones': managedZones!,
+        if (managedZonesPerGkeCluster != null)
+          'managedZonesPerGkeCluster': managedZonesPerGkeCluster!,
         if (managedZonesPerNetwork != null)
           'managedZonesPerNetwork': managedZonesPerNetwork!,
         if (networksPerManagedZone != null)
           'networksPerManagedZone': networksPerManagedZone!,
         if (networksPerPolicy != null) 'networksPerPolicy': networksPerPolicy!,
+        if (networksPerResponsePolicy != null)
+          'networksPerResponsePolicy': networksPerResponsePolicy!,
         if (peeringZonesPerTargetNetwork != null)
           'peeringZonesPerTargetNetwork': peeringZonesPerTargetNetwork!,
         if (policies != null) 'policies': policies!,
         if (resourceRecordsPerRrset != null)
           'resourceRecordsPerRrset': resourceRecordsPerRrset!,
+        if (responsePolicies != null) 'responsePolicies': responsePolicies!,
+        if (responsePolicyRulesPerResponsePolicy != null)
+          'responsePolicyRulesPerResponsePolicy':
+              responsePolicyRulesPerResponsePolicy!,
         if (rrsetAdditionsPerChange != null)
           'rrsetAdditionsPerChange': rrsetAdditionsPerChange!,
         if (rrsetDeletionsPerChange != null)
@@ -3747,8 +4470,54 @@ class RRSetRoutingPolicyGeoPolicy {
 }
 
 /// ResourceRecordSet data for one geo location.
-typedef RRSetRoutingPolicyGeoPolicyGeoPolicyItem
-    = $RRSetRoutingPolicyGeoPolicyGeoPolicyItem;
+class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
+  core.String? kind;
+
+  /// The geo-location granularity is a GCP region.
+  ///
+  /// This location string should correspond to a GCP region. e.g. "us-east1",
+  /// "southamerica-east1", "asia-east1", etc.
+  core.String? location;
+  core.List<core.String>? rrdatas;
+
+  /// DNSSEC generated signatures for all the rrdata within this item.
+  ///
+  /// Note that if health checked targets are provided for DNSSEC enabled zones,
+  /// there's a restriction of 1 ip per item. .
+  core.List<core.String>? signatureRrdatas;
+
+  RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
+    this.kind,
+    this.location,
+    this.rrdatas,
+    this.signatureRrdatas,
+  });
+
+  RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          rrdatas: _json.containsKey('rrdatas')
+              ? (_json['rrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          signatureRrdatas: _json.containsKey('signatureRrdatas')
+              ? (_json['signatureRrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
+        if (rrdatas != null) 'rrdatas': rrdatas!,
+        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+      };
+}
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin
 /// fashion.
@@ -3780,8 +4549,56 @@ class RRSetRoutingPolicyWrrPolicy {
 }
 
 /// A routing block which contains the routing information for one WRR item.
-typedef RRSetRoutingPolicyWrrPolicyWrrPolicyItem
-    = $RRSetRoutingPolicyWrrPolicyWrrPolicyItem;
+class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
+  core.String? kind;
+  core.List<core.String>? rrdatas;
+
+  /// DNSSEC generated signatures for all the rrdata within this item.
+  ///
+  /// Note that if health checked targets are provided for DNSSEC enabled zones,
+  /// there's a restriction of 1 ip per item. .
+  core.List<core.String>? signatureRrdatas;
+
+  /// The weight corresponding to this subset of rrdata.
+  ///
+  /// When multiple WeightedRoundRobinPolicyItems are configured, the
+  /// probability of returning an rrset is proportional to its weight relative
+  /// to the sum of weights configured for all items. This weight should be
+  /// non-negative.
+  core.double? weight;
+
+  RRSetRoutingPolicyWrrPolicyWrrPolicyItem({
+    this.kind,
+    this.rrdatas,
+    this.signatureRrdatas,
+    this.weight,
+  });
+
+  RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          rrdatas: _json.containsKey('rrdatas')
+              ? (_json['rrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          signatureRrdatas: _json.containsKey('signatureRrdatas')
+              ? (_json['signatureRrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          weight: _json.containsKey('weight')
+              ? (_json['weight'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (rrdatas != null) 'rrdatas': rrdatas!,
+        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+        if (weight != null) 'weight': weight!,
+      };
+}
 
 /// A unit of data that is returned by the DNS servers.
 class ResourceRecordSet {
@@ -3912,7 +4729,28 @@ class ResourceRecordSetsListResponse {
 }
 
 /// Elements common to every response.
-typedef ResponseHeader = $ResponseHeader;
+class ResponseHeader {
+  /// For mutating operation requests that completed successfully.
+  ///
+  /// This is the client_operation_id if the client specified it, otherwise it
+  /// is generated by the server (output only).
+  core.String? operationId;
+
+  ResponseHeader({
+    this.operationId,
+  });
+
+  ResponseHeader.fromJson(core.Map _json)
+      : this(
+          operationId: _json.containsKey('operationId')
+              ? _json['operationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+      };
+}
 
 class ResponsePoliciesListResponse {
   ResponseHeader? header;
@@ -4067,7 +4905,33 @@ class ResponsePolicy {
       };
 }
 
-typedef ResponsePolicyNetwork = $ResponsePolicyNetwork;
+class ResponsePolicyNetwork {
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  ResponsePolicyNetwork({
+    this.kind,
+    this.networkUrl,
+  });
+
+  ResponsePolicyNetwork.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
 
 /// A Response Policy Rule is a selector that applies its behavior to queries
 /// that match the selector.

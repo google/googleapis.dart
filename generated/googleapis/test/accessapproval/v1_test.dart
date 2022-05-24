@@ -249,6 +249,7 @@ api.ApproveDecision buildApproveDecision() {
     o.approveTime = 'foo';
     o.autoApproved = true;
     o.expireTime = 'foo';
+    o.invalidateTime = 'foo';
     o.signatureInfo = buildSignatureInfo();
   }
   buildCounterApproveDecision--;
@@ -265,6 +266,10 @@ void checkApproveDecision(api.ApproveDecision o) {
     unittest.expect(o.autoApproved!, unittest.isTrue);
     unittest.expect(
       o.expireTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.invalidateTime!,
       unittest.equals('foo'),
     );
     checkSignatureInfo(o.signatureInfo!);
@@ -351,6 +356,22 @@ void checkEnrolledService(api.EnrolledService o) {
     );
   }
   buildCounterEnrolledService--;
+}
+
+core.int buildCounterInvalidateApprovalRequestMessage = 0;
+api.InvalidateApprovalRequestMessage buildInvalidateApprovalRequestMessage() {
+  final o = api.InvalidateApprovalRequestMessage();
+  buildCounterInvalidateApprovalRequestMessage++;
+  if (buildCounterInvalidateApprovalRequestMessage < 3) {}
+  buildCounterInvalidateApprovalRequestMessage--;
+  return o;
+}
+
+void checkInvalidateApprovalRequestMessage(
+    api.InvalidateApprovalRequestMessage o) {
+  buildCounterInvalidateApprovalRequestMessage++;
+  if (buildCounterInvalidateApprovalRequestMessage < 3) {}
+  buildCounterInvalidateApprovalRequestMessage--;
 }
 
 core.List<api.ApprovalRequest> buildUnnamed2() => [
@@ -547,6 +568,16 @@ void main() {
       final od = api.EnrolledService.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnrolledService(od);
+    });
+  });
+
+  unittest.group('obj-schema-InvalidateApprovalRequestMessage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInvalidateApprovalRequestMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InvalidateApprovalRequestMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInvalidateApprovalRequestMessage(od);
     });
   });
 
@@ -972,6 +1003,64 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
+    });
+
+    unittest.test('method--invalidate', () async {
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders.approvalRequests;
+      final arg_request = buildInvalidateApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InvalidateApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInvalidateApprovalRequestMessage(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildApprovalRequest());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.invalidate(arg_request, arg_name, $fields: arg_$fields);
       checkApprovalRequest(response as api.ApprovalRequest);
     });
 
@@ -1443,6 +1532,64 @@ void main() {
       checkApprovalRequest(response as api.ApprovalRequest);
     });
 
+    unittest.test('method--invalidate', () async {
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations.approvalRequests;
+      final arg_request = buildInvalidateApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InvalidateApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInvalidateApprovalRequestMessage(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildApprovalRequest());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.invalidate(arg_request, arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.AccessApprovalApi(mock).organizations.approvalRequests;
@@ -1908,6 +2055,64 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
+    });
+
+    unittest.test('method--invalidate', () async {
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects.approvalRequests;
+      final arg_request = buildInvalidateApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InvalidateApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInvalidateApprovalRequestMessage(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildApprovalRequest());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.invalidate(arg_request, arg_name, $fields: arg_$fields);
       checkApprovalRequest(response as api.ApprovalRequest);
     });
 

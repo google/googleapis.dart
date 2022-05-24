@@ -62,6 +62,39 @@ void checkAcknowledgeRequest(api.AcknowledgeRequest o) {
   buildCounterAcknowledgeRequest--;
 }
 
+core.int buildCounterBigQueryConfig = 0;
+api.BigQueryConfig buildBigQueryConfig() {
+  final o = api.BigQueryConfig();
+  buildCounterBigQueryConfig++;
+  if (buildCounterBigQueryConfig < 3) {
+    o.dropUnknownFields = true;
+    o.state = 'foo';
+    o.table = 'foo';
+    o.useTopicSchema = true;
+    o.writeMetadata = true;
+  }
+  buildCounterBigQueryConfig--;
+  return o;
+}
+
+void checkBigQueryConfig(api.BigQueryConfig o) {
+  buildCounterBigQueryConfig++;
+  if (buildCounterBigQueryConfig < 3) {
+    unittest.expect(o.dropUnknownFields!, unittest.isTrue);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.table!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.useTopicSchema!, unittest.isTrue);
+    unittest.expect(o.writeMetadata!, unittest.isTrue);
+  }
+  buildCounterBigQueryConfig--;
+}
+
 core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
@@ -1126,6 +1159,7 @@ api.Subscription buildSubscription() {
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
     o.ackDeadlineSeconds = 42;
+    o.bigqueryConfig = buildBigQueryConfig();
     o.deadLetterPolicy = buildDeadLetterPolicy();
     o.detached = true;
     o.enableExactlyOnceDelivery = true;
@@ -1153,6 +1187,7 @@ void checkSubscription(api.Subscription o) {
       o.ackDeadlineSeconds!,
       unittest.equals(42),
     );
+    checkBigQueryConfig(o.bigqueryConfig!);
     checkDeadLetterPolicy(o.deadLetterPolicy!);
     unittest.expect(o.detached!, unittest.isTrue);
     unittest.expect(o.enableExactlyOnceDelivery!, unittest.isTrue);
@@ -1482,6 +1517,16 @@ void main() {
       final od = api.AcknowledgeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAcknowledgeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-BigQueryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBigQueryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BigQueryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBigQueryConfig(od);
     });
   });
 

@@ -237,55 +237,50 @@
                         }
                     }
                 },
-                "projects": {
-                    "resources": {
-                        "remoteConfig": {
-                            "methods": {
-                                "downloadDefaults": {
-                                    "description": "Get a project's Remote Config template defaults. Returns a RemoteConfigDefaults as the payload in the requested string format.",
-                                    "flatPath": "v1/projects/projects/{projectsId}/remoteConfig:downloadDefaults",
-                                    "httpMethod": "GET",
-                                    "id": "firebaseremoteconfig.projects.projects.remoteConfig.downloadDefaults",
-                                    "parameterOrder": [
-                                        "project"
-                                    ],
-                                    "parameters": {
-                                        "format": {
-                                            "description": "Required. The file structure that the default value response should be presented in.",
-                                            "enum": [
-                                                "FORMAT_UNSPECIFIED",
-                                                "XML",
-                                                "PLIST",
-                                                "JSON"
-                                            ],
-                                            "enumDescriptions": [
-                                                "Catch-all for unrecognized enum values.",
-                                                "This value is used if the returned file should be an XML as expected by the Android SDK.",
-                                                "This value is used if the returned file should be an PLIST as expected by the IOS SDK.",
-                                                "This value is used if the returned file should be an JSON as expected by the Web SDK."
-                                            ],
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "project": {
-                                            "description": "Required. The Firebase project's Project ID or Project Number, prefixed with \"projects/\".",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{+project}/remoteConfig:downloadDefaults",
-                                    "response": {
-                                        "$ref": "HttpBody"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
                 "remoteConfig": {
                     "methods": {
+                        "downloadDefaults": {
+                            "description": "Get a project's current Remote Config template parameters and default values in JSON, property list (plist), or XML format.",
+                            "flatPath": "v1/projects/{projectsId}/remoteConfig:downloadDefaults",
+                            "httpMethod": "GET",
+                            "id": "firebaseremoteconfig.projects.remoteConfig.downloadDefaults",
+                            "parameterOrder": [
+                                "project"
+                            ],
+                            "parameters": {
+                                "format": {
+                                    "description": "Required. The file structure to return.",
+                                    "enum": [
+                                        "FORMAT_UNSPECIFIED",
+                                        "XML",
+                                        "PLIST",
+                                        "JSON"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Catch-all for unrecognized enum values.",
+                                        "Returns a response in XML format.",
+                                        "Returns a response in property list (plist) format.",
+                                        "Returns a response in JSON format."
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "project": {
+                                    "description": "Required. The Firebase project's Project ID or Project Number, prefixed with \"projects/\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+project}/remoteConfig:downloadDefaults",
+                            "response": {
+                                "$ref": "HttpBody"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "listVersions": {
                             "description": "Get a list of Remote Config template versions that have been published, sorted in reverse chronological order. Only the last 300 versions are stored. All versions that correspond to non-active Remote Config templates (i.e., all except the template that is being fetched by clients) are also deleted if they are older than 90 days.",
                             "flatPath": "v1/projects/{projectsId}/remoteConfig:listVersions",
@@ -373,7 +368,7 @@
             }
         }
     },
-    "revision": "20220414",
+    "revision": "20220522",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
         "ExperimentDescription": {

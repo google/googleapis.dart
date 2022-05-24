@@ -2223,7 +2223,7 @@
             }
         }
     },
-    "revision": "20220405",
+    "revision": "20220513",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "ApproximateProgress": {
@@ -3344,7 +3344,7 @@
                     "type": "integer"
                 },
                 "dumpHeapOnOom": {
-                    "description": "If true, save a heap dump before killing a thread or process which is GC thrashing or out of memory. The location of the heap file will either be echoed back to the user, or the user will be given the opportunity to download the heap file.",
+                    "description": "If true, when processing time is spent almost entirely on garbage collection (GC), saves a heap dump before ending the thread or process. If false, ends the thread or process without saving a heap dump. Does not save a heap dump when the Java Virtual Machine (JVM) has an out of memory error during processing. The location of the heap file is either echoed back to the user, or the user is given the opportunity to download the heap file.",
                     "type": "boolean"
                 },
                 "enableStreamingEngine": {
@@ -3406,7 +3406,7 @@
                     "type": "integer"
                 },
                 "saveHeapDumpsToGcsPath": {
-                    "description": "Cloud Storage bucket (directory) to upload heap dumps to the given location. Enabling this implies that heap dumps should be generated on OOM (dump_heap_on_oom is set to true).",
+                    "description": "Cloud Storage bucket (directory) to upload heap dumps to. Enabling this field implies that `dump_heap_on_oom` is set to true.",
                     "type": "string"
                 },
                 "sdkContainerImage": {
@@ -3759,7 +3759,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`",
+                    "description": "The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`",
                     "type": "string"
                 },
                 "pipelineDescription": {
@@ -5196,11 +5196,11 @@
             "type": "object"
         },
         "SdkHarnessContainerImage": {
-            "description": "Defines a SDK harness container for executing Dataflow pipelines.",
+            "description": "Defines an SDK harness container for executing Dataflow pipelines.",
             "id": "SdkHarnessContainerImage",
             "properties": {
                 "capabilities": {
-                    "description": "The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto",
+                    "description": "The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)",
                     "items": {
                         "type": "string"
                     },

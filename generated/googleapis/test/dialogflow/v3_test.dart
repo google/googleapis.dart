@@ -4750,6 +4750,8 @@ api.GoogleCloudDialogflowCxV3SecuritySettings
   final o = api.GoogleCloudDialogflowCxV3SecuritySettings();
   buildCounterGoogleCloudDialogflowCxV3SecuritySettings++;
   if (buildCounterGoogleCloudDialogflowCxV3SecuritySettings < 3) {
+    o.audioExportSettings =
+        buildGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings();
     o.deidentifyTemplate = 'foo';
     o.displayName = 'foo';
     o.insightsExportSettings =
@@ -4769,6 +4771,8 @@ void checkGoogleCloudDialogflowCxV3SecuritySettings(
     api.GoogleCloudDialogflowCxV3SecuritySettings o) {
   buildCounterGoogleCloudDialogflowCxV3SecuritySettings++;
   if (buildCounterGoogleCloudDialogflowCxV3SecuritySettings < 3) {
+    checkGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings(
+        o.audioExportSettings!);
     unittest.expect(
       o.deidentifyTemplate!,
       unittest.equals('foo'),
@@ -4802,6 +4806,46 @@ void checkGoogleCloudDialogflowCxV3SecuritySettings(
     );
   }
   buildCounterGoogleCloudDialogflowCxV3SecuritySettings--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings =
+    0;
+api.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings
+    buildGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings() {
+  final o = api.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings();
+  buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings <
+      3) {
+    o.audioExportPattern = 'foo';
+    o.audioFormat = 'foo';
+    o.enableAudioRedaction = true;
+    o.gcsBucket = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings(
+    api.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings o) {
+  buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings <
+      3) {
+    unittest.expect(
+      o.audioExportPattern!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.audioFormat!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.enableAudioRedaction!, unittest.isTrue);
+    unittest.expect(
+      o.gcsBucket!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings--;
 }
 
 core.int
@@ -7559,6 +7603,20 @@ void main() {
       final od = api.GoogleCloudDialogflowCxV3SecuritySettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowCxV3SecuritySettings(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings(od);
     });
   });
 

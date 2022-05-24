@@ -924,6 +924,7 @@ api.DeidentifyDatasetRequest buildDeidentifyDatasetRequest() {
   if (buildCounterDeidentifyDatasetRequest < 3) {
     o.config = buildDeidentifyConfig();
     o.destinationDataset = 'foo';
+    o.gcsConfigUri = 'foo';
   }
   buildCounterDeidentifyDatasetRequest--;
   return o;
@@ -935,6 +936,10 @@ void checkDeidentifyDatasetRequest(api.DeidentifyDatasetRequest o) {
     checkDeidentifyConfig(o.config!);
     unittest.expect(
       o.destinationDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcsConfigUri!,
       unittest.equals('foo'),
     );
   }
@@ -949,6 +954,7 @@ api.DeidentifyDicomStoreRequest buildDeidentifyDicomStoreRequest() {
     o.config = buildDeidentifyConfig();
     o.destinationStore = 'foo';
     o.filterConfig = buildDicomFilterConfig();
+    o.gcsConfigUri = 'foo';
   }
   buildCounterDeidentifyDicomStoreRequest--;
   return o;
@@ -963,6 +969,10 @@ void checkDeidentifyDicomStoreRequest(api.DeidentifyDicomStoreRequest o) {
       unittest.equals('foo'),
     );
     checkDicomFilterConfig(o.filterConfig!);
+    unittest.expect(
+      o.gcsConfigUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeidentifyDicomStoreRequest--;
 }
@@ -974,6 +984,7 @@ api.DeidentifyFhirStoreRequest buildDeidentifyFhirStoreRequest() {
   if (buildCounterDeidentifyFhirStoreRequest < 3) {
     o.config = buildDeidentifyConfig();
     o.destinationStore = 'foo';
+    o.gcsConfigUri = 'foo';
     o.resourceFilter = buildFhirFilter();
   }
   buildCounterDeidentifyFhirStoreRequest--;
@@ -986,6 +997,10 @@ void checkDeidentifyFhirStoreRequest(api.DeidentifyFhirStoreRequest o) {
     checkDeidentifyConfig(o.config!);
     unittest.expect(
       o.destinationStore!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcsConfigUri!,
       unittest.equals('foo'),
     );
     checkFhirFilter(o.resourceFilter!);

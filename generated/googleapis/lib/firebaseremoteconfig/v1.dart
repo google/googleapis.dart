@@ -26,8 +26,6 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsNamespacesResource]
-///   - [ProjectsProjectsResource]
-///     - [ProjectsProjectsRemoteConfigResource]
 ///   - [ProjectsRemoteConfigResource]
 library firebaseremoteconfig.v1;
 
@@ -72,7 +70,6 @@ class ProjectsResource {
 
   ProjectsNamespacesResource get namespaces =>
       ProjectsNamespacesResource(_requester);
-  ProjectsProjectsResource get projects => ProjectsProjectsResource(_requester);
   ProjectsRemoteConfigResource get remoteConfig =>
       ProjectsRemoteConfigResource(_requester);
 
@@ -300,25 +297,14 @@ class ProjectsNamespacesResource {
   }
 }
 
-class ProjectsProjectsResource {
+class ProjectsRemoteConfigResource {
   final commons.ApiRequester _requester;
 
-  ProjectsProjectsRemoteConfigResource get remoteConfig =>
-      ProjectsProjectsRemoteConfigResource(_requester);
-
-  ProjectsProjectsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsProjectsRemoteConfigResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsProjectsRemoteConfigResource(commons.ApiRequester client)
+  ProjectsRemoteConfigResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get a project's Remote Config template defaults.
-  ///
-  /// Returns a RemoteConfigDefaults as the payload in the requested string
-  /// format.
+  /// Get a project's current Remote Config template parameters and default
+  /// values in JSON, property list (plist), or XML format.
   ///
   /// Request parameters:
   ///
@@ -326,16 +312,12 @@ class ProjectsProjectsRemoteConfigResource {
   /// prefixed with "projects/".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [format] - Required. The file structure that the default value response
-  /// should be presented in.
+  /// [format] - Required. The file structure to return.
   /// Possible string values are:
   /// - "FORMAT_UNSPECIFIED" : Catch-all for unrecognized enum values.
-  /// - "XML" : This value is used if the returned file should be an XML as
-  /// expected by the Android SDK.
-  /// - "PLIST" : This value is used if the returned file should be an PLIST as
-  /// expected by the IOS SDK.
-  /// - "JSON" : This value is used if the returned file should be an JSON as
-  /// expected by the Web SDK.
+  /// - "XML" : Returns a response in XML format.
+  /// - "PLIST" : Returns a response in property list (plist) format.
+  /// - "JSON" : Returns a response in JSON format.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,7 +339,7 @@ class ProjectsProjectsRemoteConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final _url = 'v1/' +
         core.Uri.encodeFull('$project') +
         '/remoteConfig:downloadDefaults';
 
@@ -368,13 +350,6 @@ class ProjectsProjectsRemoteConfigResource {
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
-}
-
-class ProjectsRemoteConfigResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsRemoteConfigResource(commons.ApiRequester client)
-      : _requester = client;
 
   /// Get a list of Remote Config template versions that have been published,
   /// sorted in reverse chronological order.

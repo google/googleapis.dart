@@ -397,8 +397,9 @@ class ProjectsLocationsEntryGroupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
@@ -552,8 +553,9 @@ class ProjectsLocationsEntryGroupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
@@ -602,8 +604,9 @@ class ProjectsLocationsEntryGroupsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
@@ -802,8 +805,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -1107,8 +1111,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
@@ -1750,8 +1755,9 @@ class ProjectsLocationsTagTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
@@ -1862,8 +1868,9 @@ class ProjectsLocationsTagTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
@@ -1912,8 +1919,9 @@ class ProjectsLocationsTagTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
@@ -2408,8 +2416,9 @@ class ProjectsLocationsTaxonomiesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
@@ -2646,8 +2655,9 @@ class ProjectsLocationsTaxonomiesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
@@ -2689,8 +2699,9 @@ class ProjectsLocationsTaxonomiesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
@@ -2861,8 +2872,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
@@ -3004,8 +3016,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
@@ -3047,8 +3060,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
@@ -3099,7 +3113,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -6373,7 +6387,8 @@ class GoogleCloudDatacatalogV1Taxonomy {
   ///
   /// The name can't start or end with spaces, must contain only Unicode
   /// letters, numbers, underscores, dashes, and spaces, and be at most 200
-  /// bytes long when encoded in UTF-8.
+  /// bytes long when encoded in UTF-8. The taxonomy display name must be unique
+  /// within an organization.
   ///
   /// Required.
   core.String? displayName;
@@ -6686,7 +6701,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 

@@ -136,7 +136,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -4975,7 +4975,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// match the resource type in the provided content.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [profile] - A profile that this resource should be validated against.
+  /// [profile] - The canonical URL of a profile that this resource should be
+  /// validated against. For example, to validate a Patient resource against the
+  /// US Core Patient profile this parameter would be
+  /// `http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient`. A
+  /// StructureDefinition with this canonical URL must exist in the FHIR store.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7141,8 +7145,8 @@ class AttributeDefinition {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -7198,7 +7202,7 @@ class Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -7976,6 +7980,8 @@ class DeidentifyConfig {
 /// Redacts identifying information from the specified dataset.
 class DeidentifyDatasetRequest {
   /// Deidentify configuration.
+  ///
+  /// Only one of `config` and `gcs_config_uri` can be specified.
   DeidentifyConfig? config;
 
   /// The name of the dataset resource to create and write the redacted data to.
@@ -7985,9 +7991,20 @@ class DeidentifyDatasetRequest {
   /// multiple locations is not supported.
   core.String? destinationDataset;
 
+  /// Cloud Storage location to read the JSON
+  /// cloud.healthcare.deidentify.DeidentifyConfig from, overriding the default
+  /// config.
+  ///
+  /// Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage
+  /// location must grant the Cloud IAM role `roles/storage.objectViewer` to the
+  /// project's Cloud Healthcare Service Agent service account. Only one of
+  /// `config` and `gcs_config_uri` can be specified.
+  core.String? gcsConfigUri;
+
   DeidentifyDatasetRequest({
     this.config,
     this.destinationDataset,
+    this.gcsConfigUri,
   });
 
   DeidentifyDatasetRequest.fromJson(core.Map _json)
@@ -7999,18 +8016,24 @@ class DeidentifyDatasetRequest {
           destinationDataset: _json.containsKey('destinationDataset')
               ? _json['destinationDataset'] as core.String
               : null,
+          gcsConfigUri: _json.containsKey('gcsConfigUri')
+              ? _json['gcsConfigUri'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!,
         if (destinationDataset != null)
           'destinationDataset': destinationDataset!,
+        if (gcsConfigUri != null) 'gcsConfigUri': gcsConfigUri!,
       };
 }
 
 /// Creates a new DICOM store with sensitive information de-identified.
 class DeidentifyDicomStoreRequest {
   /// Deidentify configuration.
+  ///
+  /// Only one of `config` and `gcs_config_uri` can be specified.
   DeidentifyConfig? config;
 
   /// The name of the DICOM store to create and write the redacted data to.
@@ -8027,10 +8050,21 @@ class DeidentifyDicomStoreRequest {
   /// Filter configuration.
   DicomFilterConfig? filterConfig;
 
+  /// Cloud Storage location to read the JSON
+  /// cloud.healthcare.deidentify.DeidentifyConfig from, overriding the default
+  /// config.
+  ///
+  /// Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage
+  /// location must grant the Cloud IAM role `roles/storage.objectViewer` to the
+  /// project's Cloud Healthcare Service Agent service account. Only one of
+  /// `config` and `gcs_config_uri` can be specified.
+  core.String? gcsConfigUri;
+
   DeidentifyDicomStoreRequest({
     this.config,
     this.destinationStore,
     this.filterConfig,
+    this.gcsConfigUri,
   });
 
   DeidentifyDicomStoreRequest.fromJson(core.Map _json)
@@ -8046,18 +8080,24 @@ class DeidentifyDicomStoreRequest {
               ? DicomFilterConfig.fromJson(
                   _json['filterConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          gcsConfigUri: _json.containsKey('gcsConfigUri')
+              ? _json['gcsConfigUri'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!,
         if (destinationStore != null) 'destinationStore': destinationStore!,
         if (filterConfig != null) 'filterConfig': filterConfig!,
+        if (gcsConfigUri != null) 'gcsConfigUri': gcsConfigUri!,
       };
 }
 
 /// Creates a new FHIR store with sensitive information de-identified.
 class DeidentifyFhirStoreRequest {
   /// Deidentify configuration.
+  ///
+  /// Only one of `config` and `gcs_config_uri` can be specified.
   DeidentifyConfig? config;
 
   /// The name of the FHIR store to create and write the redacted data to.
@@ -8071,6 +8111,16 @@ class DeidentifyFhirStoreRequest {
   /// permission to write to the destination FHIR store.
   core.String? destinationStore;
 
+  /// Cloud Storage location to read the JSON
+  /// cloud.healthcare.deidentify.DeidentifyConfig from, overriding the default
+  /// config.
+  ///
+  /// Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage
+  /// location must grant the Cloud IAM role `roles/storage.objectViewer` to the
+  /// project's Cloud Healthcare Service Agent service account. Only one of
+  /// `config` and `gcs_config_uri` can be specified.
+  core.String? gcsConfigUri;
+
   /// A filter specifying the resources to include in the output.
   ///
   /// If not specified, all resources are included in the output.
@@ -8079,6 +8129,7 @@ class DeidentifyFhirStoreRequest {
   DeidentifyFhirStoreRequest({
     this.config,
     this.destinationStore,
+    this.gcsConfigUri,
     this.resourceFilter,
   });
 
@@ -8091,6 +8142,9 @@ class DeidentifyFhirStoreRequest {
           destinationStore: _json.containsKey('destinationStore')
               ? _json['destinationStore'] as core.String
               : null,
+          gcsConfigUri: _json.containsKey('gcsConfigUri')
+              ? _json['gcsConfigUri'] as core.String
+              : null,
           resourceFilter: _json.containsKey('resourceFilter')
               ? FhirFilter.fromJson(_json['resourceFilter']
                   as core.Map<core.String, core.dynamic>)
@@ -8100,6 +8154,7 @@ class DeidentifyFhirStoreRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!,
         if (destinationStore != null) 'destinationStore': destinationStore!,
+        if (gcsConfigUri != null) 'gcsConfigUri': gcsConfigUri!,
         if (resourceFilter != null) 'resourceFilter': resourceFilter!,
       };
 }
@@ -11722,7 +11777,7 @@ class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   Policy? policy;
 

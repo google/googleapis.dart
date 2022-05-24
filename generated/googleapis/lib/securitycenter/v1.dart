@@ -2833,8 +2833,9 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2971,8 +2972,9 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3013,8 +3015,9 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5113,8 +5116,8 @@ class AssetDiscoveryConfig {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
@@ -5275,6 +5278,70 @@ class BulkMuteFindingsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
         if (muteAnnotation != null) 'muteAnnotation': muteAnnotation!,
+      };
+}
+
+/// Contains information about the IP connection associated with the finding.
+class Connection {
+  /// Destination IP address.
+  ///
+  /// Not present for sockets that are listening and not connected.
+  core.String? destinationIp;
+
+  /// Destination port.
+  ///
+  /// Not present for sockets that are listening and not connected.
+  core.int? destinationPort;
+
+  /// IANA Internet Protocol Number such as TCP(6) and UDP(17).
+  /// Possible string values are:
+  /// - "PROTOCOL_UNSPECIFIED" : Unspecified protocol (not HOPOPT).
+  /// - "ICMP" : Internet Control Message Protocol.
+  /// - "TCP" : Transmission Control Protocol.
+  /// - "UDP" : User Datagram Protocol.
+  /// - "GRE" : Generic Routing Encapsulation.
+  /// - "ESP" : Encap Security Payload.
+  core.String? protocol;
+
+  /// Source IP address.
+  core.String? sourceIp;
+
+  /// Source port.
+  core.int? sourcePort;
+
+  Connection({
+    this.destinationIp,
+    this.destinationPort,
+    this.protocol,
+    this.sourceIp,
+    this.sourcePort,
+  });
+
+  Connection.fromJson(core.Map _json)
+      : this(
+          destinationIp: _json.containsKey('destinationIp')
+              ? _json['destinationIp'] as core.String
+              : null,
+          destinationPort: _json.containsKey('destinationPort')
+              ? _json['destinationPort'] as core.int
+              : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
+          sourceIp: _json.containsKey('sourceIp')
+              ? _json['sourceIp'] as core.String
+              : null,
+          sourcePort: _json.containsKey('sourcePort')
+              ? _json['sourcePort'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationIp != null) 'destinationIp': destinationIp!,
+        if (destinationPort != null) 'destinationPort': destinationPort!,
+        if (protocol != null) 'protocol': protocol!,
+        if (sourceIp != null) 'sourceIp': sourceIp!,
+        if (sourcePort != null) 'sourcePort': sourcePort!,
       };
 }
 
@@ -5553,8 +5620,14 @@ class Finding {
   /// "XSS_FLASH_INJECTION"
   core.String? category;
 
+  /// Contains information about the IP connection associated with the finding.
+  core.List<Connection>? connections;
+
   /// The time at which the finding was created in Security Command Center.
   core.String? createTime;
+
+  /// Contains more detail about the finding.
+  core.String? description;
 
   /// The time the finding was first detected.
   ///
@@ -5743,7 +5816,9 @@ class Finding {
     this.access,
     this.canonicalName,
     this.category,
+    this.connections,
     this.createTime,
+    this.description,
     this.eventTime,
     this.externalSystems,
     this.externalUri,
@@ -5777,8 +5852,17 @@ class Finding {
           category: _json.containsKey('category')
               ? _json['category'] as core.String
               : null,
+          connections: _json.containsKey('connections')
+              ? (_json['connections'] as core.List)
+                  .map((value) => Connection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
               : null,
           eventTime: _json.containsKey('eventTime')
               ? _json['eventTime'] as core.String
@@ -5853,7 +5937,9 @@ class Finding {
         if (access != null) 'access': access!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
+        if (connections != null) 'connections': connections!,
         if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (externalSystems != null) 'externalSystems': externalSystems!,
         if (externalUri != null) 'externalUri': externalUri!,
@@ -8000,7 +8086,7 @@ class StreamingConfig {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

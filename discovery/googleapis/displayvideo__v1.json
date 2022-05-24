@@ -1523,7 +1523,7 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Allows filtering by creative properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restriction for the same field must be combined by `OR`. * Restriction for different fields must be combined by `AND`. * Between `(` and `)` there can only be restrictions combined by `OR` for the same field. * A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)` for the following fields: - `entityStatus` - `creativeType`. - `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` - `exchangeReviewStatus` - `dynamic` - `creativeId` * The operator must be `HAS (:)` for the following fields: - `lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may be at most one restriction. * For `dimensions`, the value is in the form of `\"{width}x{height}\"`. * For `exchangeReviewStatus`, the value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration` and `maxDuration`, the value is in the form of `\"{duration}s\"`. Only seconds are supported with millisecond granularity. * There may be multiple `lineItemIds` restrictions in order to search against multiple possible line item IDs. * There may be multiple `creativeId` restrictions in order to search against multiple possible creative IDs. Examples: * All native creatives: `creativeType=\"CREATIVE_TYPE_NATIVE\"` * All active creatives with 300x400 or 50x100 dimensions: `entityStatus=\"ENTITY_STATUS_ACTIVE\" AND (dimensions=\"300x400\" OR dimensions=\"50x100\")` * All dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and 200ms. `dynamic=\"true\" AND minDuration=\"5.2s\" AND (exchangeReviewStatus=\"EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED\" OR exchangeReviewStatus=\"EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED\")` * All video creatives that are associated with line item ID 1 or 2: `creativeType=\"CREATIVE_TYPE_VIDEO\" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` The length of this field should be no more than 500 characters.",
+                                    "description": "Allows filtering by creative properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restriction for the same field must be combined by `OR`. * Restriction for different fields must be combined by `AND`. * Between `(` and `)` there can only be restrictions combined by `OR` for the same field. * A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)` for the following fields: - `entityStatus` - `creativeType`. - `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` - `exchangeReviewStatus` - `dynamic` - `creativeId` - `minModifiedTime` - `maxModifiedTime` * The operator must be `HAS (:)` for the following fields: - `lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`, `minModifiedTime`, `maxModifiedTime`, and `dynamic`, there may be at most one restriction. * For `dimensions`, the value is in the form of `\"{width}x{height}\"`. * For `exchangeReviewStatus`, the value is in the form of `{exchange}-{reviewStatus}`. * For `minDuration` and `maxDuration`, the value is in the form of `\"{duration}s\"`. Only seconds are supported with millisecond granularity. * For `minModifiedTime` and `maxModifiedTime`, the value is a unix timestamp (GMT) in seconds. The time filtered is against the update_time field in the creative, which includes system updates to the creative (e.g. creative review updates). * There may be multiple `lineItemIds` restrictions in order to search against multiple possible line item IDs. * There may be multiple `creativeId` restrictions in order to search against multiple possible creative IDs. Examples: * All native creatives: `creativeType=\"CREATIVE_TYPE_NATIVE\"` * All active creatives with 300x400 or 50x100 dimensions: `entityStatus=\"ENTITY_STATUS_ACTIVE\" AND (dimensions=\"300x400\" OR dimensions=\"50x100\")` * All dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and 200ms. `dynamic=\"true\" AND minDuration=\"5.2s\" AND (exchangeReviewStatus=\"EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED\" OR exchangeReviewStatus=\"EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED\")` * All video creatives that are associated with line item ID 1 or 2: `creativeType=\"CREATIVE_TYPE_VIDEO\" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` The length of this field should be no more than 500 characters.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -7842,7 +7842,7 @@
             }
         }
     },
-    "revision": "20220414",
+    "revision": "20220518",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
         "ActivateManualTriggerRequest": {
@@ -10069,7 +10069,7 @@
             "id": "ContactInfoList",
             "properties": {
                 "contactInfos": {
-                    "description": "A list of ContactInfo objects defining Customer Match audience members.",
+                    "description": "A list of ContactInfo objects defining Customer Match audience members. The size of members after splitting the contact_infos mustn't be greater than 500,000.",
                     "items": {
                         "$ref": "ContactInfo"
                     },
@@ -10582,7 +10582,8 @@
                         "SDF_VERSION_5_1",
                         "SDF_VERSION_5_2",
                         "SDF_VERSION_5_3",
-                        "SDF_VERSION_5_4"
+                        "SDF_VERSION_5_4",
+                        "SDF_VERSION_5_5"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -10594,7 +10595,8 @@
                         "SDF version 5.1",
                         "SDF version 5.2",
                         "SDF version 5.3",
-                        "SDF version 5.4"
+                        "SDF version 5.4",
+                        "SDF version 5.5"
                     ],
                     "type": "string"
                 }
@@ -10942,7 +10944,7 @@
                     "description": "Optional. An optional creative identifier provided by a registry that is unique across all platforms. Universal Ad ID is part of the VAST 4.0 standard. It can be modified after the creative is created. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`"
                 },
                 "updateTime": {
-                    "description": "Output only. The timestamp when the creative was last updated. Assigned by the system.",
+                    "description": "Output only. The timestamp when the creative was last updated, either by the user or system (e.g. creative review). Assigned by the system.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -11084,6 +11086,14 @@
                     ],
                     "type": "string"
                 },
+                "modelReadiness": {
+                    "description": "Output only. The custom bidding model readiness state for each advertiser who have access. This field may only include the state of the queried advertiser if the algorithm [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a partner and is being retrieved using an advertiser [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor).",
+                    "items": {
+                        "$ref": "CustomBiddingModelReadinessState"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "name": {
                     "description": "Output only. The resource name of the custom bidding algorithm.",
                     "readOnly": true,
@@ -11101,6 +11111,36 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CustomBiddingModelReadinessState": {
+            "description": "The custom bidding algorithm model readiness state for a single shared advertiser.",
+            "id": "CustomBiddingModelReadinessState",
+            "properties": {
+                "advertiserId": {
+                    "description": "The unique ID of the advertiser with access to the custom bidding algorithm.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "readinessState": {
+                    "description": "The readiness state of custom bidding model.",
+                    "enum": [
+                        "READINESS_STATE_UNSPECIFIED",
+                        "READINESS_STATE_ACTIVE",
+                        "READINESS_STATE_INSUFFICIENT_DATA",
+                        "READINESS_STATE_TRAINING",
+                        "READINESS_STATE_NO_VALID_SCRIPT"
+                    ],
+                    "enumDescriptions": [
+                        "State is not specified or is unknown in this version.",
+                        "The model is trained and ready for serving.",
+                        "There is not enough data to train the serving model.",
+                        "The model is training and not ready for serving.",
+                        "The model will not be trained until a valid custom bidding script linked. This state will only be applied to algorithms whose `custom_bidding_algorithm_type` is `SCRIPT_BASED`."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -12923,7 +12963,7 @@
             "type": "object"
         },
         "GenderAssignedTargetingOptionDetails": {
-            "description": "Details for assigned gender targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARTGETING_TYPE_GENDER`.",
+            "description": "Details for assigned gender targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_GENDER`.",
             "id": "GenderAssignedTargetingOptionDetails",
             "properties": {
                 "gender": {
@@ -15416,7 +15456,7 @@
             "id": "MobileDeviceIdList",
             "properties": {
                 "mobileDeviceIds": {
-                    "description": "A list of mobile device IDs defining Customer Match audience members.",
+                    "description": "A list of mobile device IDs defining Customer Match audience members. The size of mobile_device_ids mustn't be greater than 500,000.",
                     "items": {
                         "type": "string"
                     },
@@ -15909,7 +15949,7 @@
             "type": "object"
         },
         "ParentalStatusAssignedTargetingOptionDetails": {
-            "description": "Details for assigned parental status targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARTGETING_TYPE_PARENTAL_STATUS`.",
+            "description": "Details for assigned parental status targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`.",
             "id": "ParentalStatusAssignedTargetingOptionDetails",
             "properties": {
                 "parentalStatus": {
@@ -16750,7 +16790,8 @@
                         "SDF_VERSION_5_1",
                         "SDF_VERSION_5_2",
                         "SDF_VERSION_5_3",
-                        "SDF_VERSION_5_4"
+                        "SDF_VERSION_5_4",
+                        "SDF_VERSION_5_5"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -16762,7 +16803,8 @@
                         "SDF version 5.1",
                         "SDF version 5.2",
                         "SDF version 5.3",
-                        "SDF version 5.4"
+                        "SDF version 5.4",
+                        "SDF version 5.5"
                     ],
                     "type": "string"
                 }
@@ -16806,7 +16848,8 @@
                         "SDF_VERSION_5_1",
                         "SDF_VERSION_5_2",
                         "SDF_VERSION_5_3",
-                        "SDF_VERSION_5_4"
+                        "SDF_VERSION_5_4",
+                        "SDF_VERSION_5_5"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -16818,7 +16861,8 @@
                         "SDF version 5.1",
                         "SDF version 5.2",
                         "SDF version 5.3",
-                        "SDF version 5.4"
+                        "SDF version 5.4",
+                        "SDF version 5.5"
                     ],
                     "type": "string"
                 }
