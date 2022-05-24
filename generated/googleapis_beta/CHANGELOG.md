@@ -1,3 +1,7 @@
+## 8.1.0-dev
+
+- Require Dart 2.16 or later.
+
 ## 8.0.0
 
 - `cloudfunctions` new!
