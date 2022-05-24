@@ -1,3 +1,11 @@
+| Package source                                      | Description                                                                                            | Published Version                                                                                                            |
+|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| [_discoveryapis_commons](discoveryapis_commons/)    | Library for use by client APIs generated from Discovery Documents.                                     | [![pub package](https://img.shields.io/pub/v/_discoveryapis_commons.svg)](https://pub.dev/packages/_discoveryapis_commons)   |
+| [discoveryapis_generator](discoveryapis_generator/) | Create API Client libraries based on the Discovery API Service.                                        | [![pub package](https://img.shields.io/pub/v/discoveryapis_generator.svg)](https://pub.dev/packages/discoveryapis_generator) |
+| [googleapis](generated/googleapis/)                 | Auto-generated client libraries for accessing Google APIs described through the API discovery service. | [![pub package](https://img.shields.io/pub/v/googleapis.svg)](https://pub.dev/packages/googleapis)                           |
+| [googleapis_beta](generated/googleapis_beta/)       | Auto-generated client libraries for accessing Google APIs described through the API discovery service. | [![pub package](https://img.shields.io/pub/v/googleapis_beta.svg)](https://pub.dev/packages/googleapis_beta)                 |
+| [googleapis_auth](googleapis_auth/)                 | Obtain Access credentials for Google services using OAuth 2.0                                          | [![pub package](https://img.shields.io/pub/v/googleapis_auth.svg)](https://pub.dev/packages/googleapis_auth)                 |
+
 # Google API Client Libraries with Dart
 
 Google provides a large set of APIs that your applications can use
