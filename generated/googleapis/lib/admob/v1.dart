@@ -322,7 +322,7 @@ class AccountsMediationReportResource {
       queryParams: _queryParams,
     );
     return GenerateMediationReportResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        _response as core.List<core.dynamic>);
   }
 }
 
