@@ -27,6 +27,7 @@
 ///   - [AccountsMediationReportResource]
 ///   - [AccountsNetworkReportResource]
 library admob.v1;
+
 import 'dart:async' as async;
 import 'dart:collection' as collection;
 import 'dart:convert' as convert;
@@ -734,10 +735,12 @@ class GenerateMediationReportResponse
             .toList();
 
   @core.override
-  GenerateMediationReportResponseElement operator [](core.int key) => _inner[key];
+  GenerateMediationReportResponseElement operator [](core.int key) =>
+      _inner[key];
 
   @core.override
-  void operator []=(core.int key, GenerateMediationReportResponseElement value) {
+  void operator []=(
+      core.int key, GenerateMediationReportResponseElement value) {
     _inner[key] = value;
   }
 

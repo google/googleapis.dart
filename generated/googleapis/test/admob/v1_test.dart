@@ -245,7 +245,8 @@ void checkGenerateMediationReportRequest(api.GenerateMediationReportRequest o) {
 }
 
 core.int buildCounterGenerateMediationReportResponseElement = 0;
-api.GenerateMediationReportResponseElement buildGenerateMediationReportResponseElement() {
+api.GenerateMediationReportResponseElement
+    buildGenerateMediationReportResponseElement() {
   final o = api.GenerateMediationReportResponseElement();
   buildCounterGenerateMediationReportResponseElement++;
   if (buildCounterGenerateMediationReportResponseElement < 3) {
@@ -275,7 +276,8 @@ api.GenerateMediationReportResponse buildGenerateMediationReportResponse() {
   return o;
 }
 
-void checkGenerateMediationReportResponse(api.GenerateMediationReportResponse o) {
+void checkGenerateMediationReportResponse(
+    api.GenerateMediationReportResponse o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGenerateMediationReportResponseElement(o[0]);
   checkGenerateMediationReportResponseElement(o[1]);
