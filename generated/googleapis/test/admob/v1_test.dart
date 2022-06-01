@@ -244,28 +244,43 @@ void checkGenerateMediationReportRequest(api.GenerateMediationReportRequest o) {
   buildCounterGenerateMediationReportRequest--;
 }
 
-core.int buildCounterGenerateMediationReportResponse = 0;
-api.GenerateMediationReportResponse buildGenerateMediationReportResponse() {
-  final o = api.GenerateMediationReportResponse();
-  buildCounterGenerateMediationReportResponse++;
-  if (buildCounterGenerateMediationReportResponse < 3) {
+core.int buildCounterGenerateMediationReportResponseElement = 0;
+api.GenerateMediationReportResponseElement
+    buildGenerateMediationReportResponseElement() {
+  final o = api.GenerateMediationReportResponseElement();
+  buildCounterGenerateMediationReportResponseElement++;
+  if (buildCounterGenerateMediationReportResponseElement < 3) {
     o.footer = buildReportFooter();
     o.header = buildReportHeader();
     o.row = buildReportRow();
   }
-  buildCounterGenerateMediationReportResponse--;
+  buildCounterGenerateMediationReportResponseElement--;
+  return o;
+}
+
+void checkGenerateMediationReportResponseElement(
+    api.GenerateMediationReportResponseElement o) {
+  buildCounterGenerateMediationReportResponseElement++;
+  if (buildCounterGenerateMediationReportResponseElement < 3) {
+    checkReportFooter(o.footer!);
+    checkReportHeader(o.header!);
+    checkReportRow(o.row!);
+  }
+  buildCounterGenerateMediationReportResponseElement--;
+}
+
+api.GenerateMediationReportResponse buildGenerateMediationReportResponse() {
+  final o = api.GenerateMediationReportResponse();
+  o.add(buildGenerateMediationReportResponseElement());
+  o.add(buildGenerateMediationReportResponseElement());
   return o;
 }
 
 void checkGenerateMediationReportResponse(
     api.GenerateMediationReportResponse o) {
-  buildCounterGenerateMediationReportResponse++;
-  if (buildCounterGenerateMediationReportResponse < 3) {
-    checkReportFooter(o.footer!);
-    checkReportHeader(o.header!);
-    checkReportRow(o.row!);
-  }
-  buildCounterGenerateMediationReportResponse--;
+  unittest.expect(o, unittest.hasLength(2));
+  checkGenerateMediationReportResponseElement(o[0]);
+  checkGenerateMediationReportResponseElement(o[1]);
 }
 
 core.int buildCounterGenerateNetworkReportRequest = 0;
@@ -1096,13 +1111,13 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GenerateMediationReportResponse', () {
+  unittest.group('obj-schema-GenerateMediationReportResponseElement', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGenerateMediationReportResponse();
+      final o = buildGenerateMediationReportResponseElement();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateMediationReportResponse.fromJson(
+      final od = api.GenerateMediationReportResponseElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateMediationReportResponse(od);
+      checkGenerateMediationReportResponseElement(od);
     });
   });
 

@@ -321,8 +321,7 @@ class AccountsMediationReportResource {
       body: _body,
       queryParams: _queryParams,
     );
-    return GenerateMediationReportResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+    return GenerateMediationReportResponse.fromJson(_response as core.List);
   }
 }
 
@@ -670,19 +669,7 @@ class GenerateMediationReportRequest {
       };
 }
 
-/// The streaming response for the AdMob Mediation report where the first
-/// response contains the report header, then a stream of row responses, and
-/// finally a footer as the last response message.
-///
-/// For example: \[{ "header": { "date_range": { "start_date": {"year": 2018,
-/// "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9, "day": 1} },
-/// "localization_settings": { "currency_code": "USD", "language_code": "en-US"
-/// } } }, { "row": { "dimension_values": { "DATE": {"value": "20180918"},
-/// "APP": { "value": "ca-app-pub-8123415297019784~1001342552", "display_label":
-/// "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
-/// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1}
-/// }\]
-class GenerateMediationReportResponse {
+class GenerateMediationReportResponseElement {
   /// Additional information about the generated report, such as warnings about
   /// the data.
   ReportFooter? footer;
@@ -694,13 +681,13 @@ class GenerateMediationReportResponse {
   /// Actual report data.
   ReportRow? row;
 
-  GenerateMediationReportResponse({
+  GenerateMediationReportResponseElement({
     this.footer,
     this.header,
     this.row,
   });
 
-  GenerateMediationReportResponse.fromJson(core.Map _json)
+  GenerateMediationReportResponseElement.fromJson(core.Map _json)
       : this(
           footer: _json.containsKey('footer')
               ? ReportFooter.fromJson(
@@ -721,6 +708,54 @@ class GenerateMediationReportResponse {
         if (header != null) 'header': header!,
         if (row != null) 'row': row!,
       };
+}
+
+/// The streaming response for the AdMob Mediation report where the first
+/// response contains the report header, then a stream of row responses, and
+/// finally a footer as the last response message.
+///
+/// For example: \[{ "header": { "date_range": { "start_date": {"year": 2018,
+/// "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9, "day": 1} },
+/// "localization_settings": { "currency_code": "USD", "language_code": "en-US"
+/// } } }, { "row": { "dimension_values": { "DATE": {"value": "20180918"},
+/// "APP": { "value": "ca-app-pub-8123415297019784~1001342552", "display_label":
+/// "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
+/// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1}
+/// }\]
+class GenerateMediationReportResponse
+    extends collection.ListBase<GenerateMediationReportResponseElement> {
+  final core.List<GenerateMediationReportResponseElement> _inner;
+
+  GenerateMediationReportResponse() : _inner = [];
+
+  GenerateMediationReportResponse.fromJson(core.List json)
+      : _inner = json
+            .map((value) => GenerateMediationReportResponseElement.fromJson(
+                value as core.Map<core.String, core.dynamic>))
+            .toList();
+
+  @core.override
+  GenerateMediationReportResponseElement operator [](core.int key) =>
+      _inner[key];
+
+  @core.override
+  void operator []=(
+      core.int key, GenerateMediationReportResponseElement value) {
+    _inner[key] = value;
+  }
+
+  @core.override
+  core.int get length => _inner.length;
+
+  @core.override
+  set length(core.int newLength) {
+    _inner.length = newLength;
+  }
+
+  @core.override
+  void add(GenerateMediationReportResponseElement element) {
+    _inner.add(element);
+  }
 }
 
 /// Request to generate an AdMob Network report.
