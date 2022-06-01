@@ -1,4 +1,4 @@
-## 8.2.0-dev
+## 9.0.0
 
 - Require Dart 2.16 or later.
 - Fixed issue in AdMob `accounts.mediationReport.generate` return type.
@@ -7,6 +7,7 @@
 ### API changes
 
 - `apigeeregistry` - new!
+- `buildnessprofileperformance` - new!
 - `cloudfunctions` - Added v2
 - `dfareporting` - **removed** v3.4.
 - `forms` - new!
