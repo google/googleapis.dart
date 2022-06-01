@@ -4366,6 +4366,33 @@ class TagKey {
   /// Immutable.
   core.String? parent;
 
+  /// A purpose denotes that this Tag is intended for use in policies of a
+  /// specific policy engine, and will involve that policy engine in management
+  /// operations involving this Tag.
+  ///
+  /// A purpose does not grant a policy engine exclusive rights to the Tag, and
+  /// it may be referenced by other policy engines. A purpose cannot be changed
+  /// once set.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PURPOSE_UNSPECIFIED" : Unspecified purpose.
+  /// - "GCE_FIREWALL" : Purpose for Compute Engine firewalls. A corresponding
+  /// purpose_data should be set for the network the tag is intended for. The
+  /// key should be 'network' and the value should be in the format of the
+  /// network url id string:
+  /// http://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+  core.String? purpose;
+
+  /// Purpose data corresponds to the policy system that the tag is intended
+  /// for.
+  ///
+  /// See documentation for `Purpose` for formatting of this field. Purpose data
+  /// cannot be changed once set.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? purposeData;
+
   /// The user friendly name for a TagKey.
   ///
   /// The short name should be unique for TagKeys within the same tag namespace.
@@ -4388,6 +4415,8 @@ class TagKey {
     this.name,
     this.namespacedName,
     this.parent,
+    this.purpose,
+    this.purposeData,
     this.shortName,
     this.updateTime,
   });
@@ -4408,6 +4437,18 @@ class TagKey {
           parent: _json.containsKey('parent')
               ? _json['parent'] as core.String
               : null,
+          purpose: _json.containsKey('purpose')
+              ? _json['purpose'] as core.String
+              : null,
+          purposeData: _json.containsKey('purposeData')
+              ? (_json['purposeData'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           shortName: _json.containsKey('shortName')
               ? _json['shortName'] as core.String
               : null,
@@ -4423,6 +4464,8 @@ class TagKey {
         if (name != null) 'name': name!,
         if (namespacedName != null) 'namespacedName': namespacedName!,
         if (parent != null) 'parent': parent!,
+        if (purpose != null) 'purpose': purpose!,
+        if (purposeData != null) 'purposeData': purposeData!,
         if (shortName != null) 'shortName': shortName!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

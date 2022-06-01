@@ -11734,7 +11734,44 @@ typedef GooglePrivacyDlpV2PartitionId = $PartitionId;
 ///
 /// If either name or ID is set, the element is complete. If neither is set, the
 /// element is incomplete.
-typedef GooglePrivacyDlpV2PathElement = $PathElement;
+class GooglePrivacyDlpV2PathElement {
+  /// The auto-allocated ID of the entity.
+  ///
+  /// Never equal to zero. Values less than zero are discouraged and may not be
+  /// supported in the future.
+  core.String? id;
+
+  /// The kind of the entity.
+  ///
+  /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
+  /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
+  core.String? kind;
+
+  /// The name of the entity.
+  ///
+  /// A name matching regex `__.*__` is reserved/read-only. A name must not be
+  /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
+  core.String? name;
+
+  GooglePrivacyDlpV2PathElement({
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  GooglePrivacyDlpV2PathElement.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// A rule for transforming a value.
 class GooglePrivacyDlpV2PrimitiveTransformation {

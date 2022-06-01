@@ -1433,6 +1433,21 @@ class AddSubnetworkRequest {
   /// Optional.
   core.bool? checkServiceNetworkingUsePermission;
 
+  /// Specifies a custom time bucket for Arcus subnetwork request idempotency.
+  ///
+  /// If two equivalent concurrent requests are made, Arcus will know to ignore
+  /// the request if it has already been completed or is in progress. Only
+  /// requests with matching compute_idempotency_window have guaranteed
+  /// idempotency. Changing this time window between requests results in
+  /// undefined behavior. Zero (or empty) value with
+  /// custom_compute_idempotency_window=true specifies no idempotency (i.e. no
+  /// request ID is provided to Arcus). Maximum value of 14 days (enforced by
+  /// Arcus limit). For more information on how to use, see:
+  /// go/revisit-sn-idempotency-window
+  ///
+  /// Optional.
+  core.String? computeIdempotencyWindow;
+
   /// A resource that represents the service consumer, such as
   /// `projects/123456`.
   ///
@@ -1536,12 +1551,24 @@ class AddSubnetworkRequest {
   /// Required.
   core.String? subnetwork;
 
-  /// A list of members that are granted the `compute.networkUser` role on the
-  /// subnet.
+  /// A list of members that are granted the
+  /// `roles/servicenetworking.subnetworkAdmin` role on the subnet.
   core.List<core.String>? subnetworkUsers;
+
+  /// Specifies if Service Networking should use a custom time bucket for Arcus
+  /// idempotency.
+  ///
+  /// If false, Service Networking uses a 300 second (5 minute) Arcus
+  /// idempotency window. If true, Service Networking uses a custom idempotency
+  /// window provided by the user in field compute_idempotency_window. For more
+  /// information on how to use, see: go/revisit-sn-idempotency-window
+  ///
+  /// Optional.
+  core.bool? useCustomComputeIdempotencyWindow;
 
   AddSubnetworkRequest({
     this.checkServiceNetworkingUsePermission,
+    this.computeIdempotencyWindow,
     this.consumer,
     this.consumerNetwork,
     this.description,
@@ -1555,6 +1582,7 @@ class AddSubnetworkRequest {
     this.secondaryIpRangeSpecs,
     this.subnetwork,
     this.subnetworkUsers,
+    this.useCustomComputeIdempotencyWindow,
   });
 
   AddSubnetworkRequest.fromJson(core.Map _json)
@@ -1562,6 +1590,10 @@ class AddSubnetworkRequest {
           checkServiceNetworkingUsePermission:
               _json.containsKey('checkServiceNetworkingUsePermission')
                   ? _json['checkServiceNetworkingUsePermission'] as core.bool
+                  : null,
+          computeIdempotencyWindow:
+              _json.containsKey('computeIdempotencyWindow')
+                  ? _json['computeIdempotencyWindow'] as core.String
                   : null,
           consumer: _json.containsKey('consumer')
               ? _json['consumer'] as core.String
@@ -1610,12 +1642,18 @@ class AddSubnetworkRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          useCustomComputeIdempotencyWindow:
+              _json.containsKey('useCustomComputeIdempotencyWindow')
+                  ? _json['useCustomComputeIdempotencyWindow'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (checkServiceNetworkingUsePermission != null)
           'checkServiceNetworkingUsePermission':
               checkServiceNetworkingUsePermission!,
+        if (computeIdempotencyWindow != null)
+          'computeIdempotencyWindow': computeIdempotencyWindow!,
         if (consumer != null) 'consumer': consumer!,
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (description != null) 'description': description!,
@@ -1632,6 +1670,9 @@ class AddSubnetworkRequest {
           'secondaryIpRangeSpecs': secondaryIpRangeSpecs!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (subnetworkUsers != null) 'subnetworkUsers': subnetworkUsers!,
+        if (useCustomComputeIdempotencyWindow != null)
+          'useCustomComputeIdempotencyWindow':
+              useCustomComputeIdempotencyWindow!,
       };
 }
 

@@ -173,6 +173,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
     o.checkServiceNetworkingUsePermission = true;
+    o.computeIdempotencyWindow = 'foo';
     o.consumer = 'foo';
     o.consumerNetwork = 'foo';
     o.description = 'foo';
@@ -186,6 +187,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
     o.secondaryIpRangeSpecs = buildUnnamed2();
     o.subnetwork = 'foo';
     o.subnetworkUsers = buildUnnamed3();
+    o.useCustomComputeIdempotencyWindow = true;
   }
   buildCounterAddSubnetworkRequest--;
   return o;
@@ -195,6 +197,10 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
     unittest.expect(o.checkServiceNetworkingUsePermission!, unittest.isTrue);
+    unittest.expect(
+      o.computeIdempotencyWindow!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.consumer!,
       unittest.equals('foo'),
@@ -238,6 +244,7 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
       unittest.equals('foo'),
     );
     checkUnnamed3(o.subnetworkUsers!);
+    unittest.expect(o.useCustomComputeIdempotencyWindow!, unittest.isTrue);
   }
   buildCounterAddSubnetworkRequest--;
 }

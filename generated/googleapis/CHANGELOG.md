@@ -1,6 +1,8 @@
 ## 8.2.0-dev
 
 - Require Dart 2.16 or later.
+- Fixed issue in AdMob `accounts.mediationReport.generate` return type.
+  [#411](https://github.com/google/googleapis.dart/issues/411)
 
 ### API changes
 

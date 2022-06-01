@@ -908,7 +908,7 @@ class $Location {
 
 /// Used by:
 ///
-/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenance_0_2SlsaMaterial
+/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
 /// - ondemandscanning:v1beta1 : Material
 class $Material {
   core.Map<core.String, core.String>? digest;
@@ -2155,7 +2155,7 @@ class $Shared00 {
 /// Used by:
 ///
 /// - ondemandscanning:v1beta1 : BuilderConfig
-/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenance_0_2SlsaBuilder
+/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
 /// - ondemandscanning:v1beta1 : SlsaBuilder
 class $Shared01 {
   core.String? id;

@@ -1318,6 +1318,23 @@ void checkTagHold(api.TagHold o) {
   buildCounterTagHold--;
 }
 
+core.Map<core.String, core.String> buildUnnamed22() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed22(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTagKey = 0;
 api.TagKey buildTagKey() {
   final o = api.TagKey();
@@ -1329,6 +1346,8 @@ api.TagKey buildTagKey() {
     o.name = 'foo';
     o.namespacedName = 'foo';
     o.parent = 'foo';
+    o.purpose = 'foo';
+    o.purposeData = buildUnnamed22();
     o.shortName = 'foo';
     o.updateTime = 'foo';
   }
@@ -1363,6 +1382,11 @@ void checkTagKey(api.TagKey o) {
       o.parent!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.purpose!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed22(o.purposeData!);
     unittest.expect(
       o.shortName!,
       unittest.equals('foo'),
@@ -1432,42 +1456,6 @@ void checkTagValue(api.TagValue o) {
   buildCounterTagValue--;
 }
 
-core.List<core.String> buildUnnamed22() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed22();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed22(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
@@ -1485,12 +1473,48 @@ void checkUnnamed23(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed23();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed23(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed24() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed24(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed23();
+    o.permissions = buildUnnamed24();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1499,7 +1523,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed23(o.permissions!);
+    checkUnnamed24(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }

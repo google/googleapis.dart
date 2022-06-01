@@ -266,7 +266,7 @@
             }
         }
     },
-    "revision": "20220506",
+    "revision": "20220524",
     "rootUrl": "https://baremetalsolution.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {

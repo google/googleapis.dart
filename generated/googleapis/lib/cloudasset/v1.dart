@@ -1288,8 +1288,8 @@ class V1Resource {
   /// compared against each Cloud IAM policy binding, including its principals,
   /// roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
   /// contain the bindings that match your query. To learn more about the IAM
-  /// policy structure, see
-  /// [IAM policy doc](https://cloud.google.com/iam/docs/policies#structure).
+  /// policy structure, see the
+  /// [IAM policy documentation](https://cloud.google.com/iam/help/allow-policies/structure).
   /// Examples: * `policy:amy@gmail.com` to find IAM policy bindings that
   /// specify user "amy@gmail.com". * `policy:roles/compute.admin` to find IAM
   /// policy bindings that specify the Compute Admin role. * `policy:comp*` to
@@ -1712,8 +1712,8 @@ class Asset {
   /// the effectively policy is the union of both the policy set on this
   /// resource and each policy set on all of the resource's ancestry resource
   /// levels in the hierarchy. See
-  /// [this topic](https://cloud.google.com/iam/docs/policies#inheritance) for
-  /// more information.
+  /// [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance)
+  /// for more information.
   Policy? iamPolicy;
 
   /// The full name of the asset.
@@ -3655,6 +3655,12 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
 /// succeed. The request must match `operations` AND `resources` fields in order
 /// to be allowed egress out of the perimeter.
 class GoogleIdentityAccesscontextmanagerV1EgressTo {
+  /// A list of external resources that are allowed to be accessed.
+  ///
+  /// A request matches if it contains an external resource in this list
+  /// (Example: s3://bucket/path). Currently '*' is not allowed.
+  core.List<core.String>? externalResources;
+
   /// A list of ApiOperations allowed to be performed by the sources specified
   /// in the corresponding EgressFrom.
   ///
@@ -3671,12 +3677,18 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
   core.List<core.String>? resources;
 
   GoogleIdentityAccesscontextmanagerV1EgressTo({
+    this.externalResources,
     this.operations,
     this.resources,
   });
 
   GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(core.Map _json)
       : this(
+          externalResources: _json.containsKey('externalResources')
+              ? (_json['externalResources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
                   .map((value) =>
@@ -3692,6 +3704,7 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (externalResources != null) 'externalResources': externalResources!,
         if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
       };

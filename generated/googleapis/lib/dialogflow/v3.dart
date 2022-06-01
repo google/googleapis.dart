@@ -7165,6 +7165,9 @@ class GoogleCloudDialogflowCxV3Environment {
   /// Required.
   core.List<GoogleCloudDialogflowCxV3EnvironmentVersionConfig>? versionConfigs;
 
+  /// The webhook configuration for this environment.
+  GoogleCloudDialogflowCxV3EnvironmentWebhookConfig? webhookConfig;
+
   GoogleCloudDialogflowCxV3Environment({
     this.description,
     this.displayName,
@@ -7172,6 +7175,7 @@ class GoogleCloudDialogflowCxV3Environment {
     this.testCasesConfig,
     this.updateTime,
     this.versionConfigs,
+    this.webhookConfig,
   });
 
   GoogleCloudDialogflowCxV3Environment.fromJson(core.Map _json)
@@ -7199,6 +7203,10 @@ class GoogleCloudDialogflowCxV3Environment {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          webhookConfig: _json.containsKey('webhookConfig')
+              ? GoogleCloudDialogflowCxV3EnvironmentWebhookConfig.fromJson(
+                  _json['webhookConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7208,6 +7216,7 @@ class GoogleCloudDialogflowCxV3Environment {
         if (testCasesConfig != null) 'testCasesConfig': testCasesConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (versionConfigs != null) 'versionConfigs': versionConfigs!,
+        if (webhookConfig != null) 'webhookConfig': webhookConfig!,
       };
 }
 
@@ -7280,6 +7289,33 @@ class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for webhooks.
+class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
+  /// The list of webhooks to override for the agent environment.
+  ///
+  /// The webhook must exist in the agent. You can override fields in
+  /// `generic_web_service` and `service_directory`.
+  core.List<GoogleCloudDialogflowCxV3Webhook>? webhookOverrides;
+
+  GoogleCloudDialogflowCxV3EnvironmentWebhookConfig({
+    this.webhookOverrides,
+  });
+
+  GoogleCloudDialogflowCxV3EnvironmentWebhookConfig.fromJson(core.Map _json)
+      : this(
+          webhookOverrides: _json.containsKey('webhookOverrides')
+              ? (_json['webhookOverrides'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3Webhook.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (webhookOverrides != null) 'webhookOverrides': webhookOverrides!,
       };
 }
 

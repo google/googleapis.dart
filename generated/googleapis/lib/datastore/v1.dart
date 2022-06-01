@@ -2147,7 +2147,48 @@ typedef PartitionId = $PartitionId;
 ///
 /// If either name or ID is set, the element is complete. If neither is set, the
 /// element is incomplete.
-typedef PathElement = $PathElement;
+class PathElement {
+  /// The auto-allocated ID of the entity.
+  ///
+  /// Never equal to zero. Values less than zero are discouraged and may not be
+  /// supported in the future.
+  core.String? id;
+
+  /// The kind of the entity.
+  ///
+  /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
+  /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be
+  /// valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as
+  /// `__bytes__` where `` is the base-64 encoding of the bytes.
+  core.String? kind;
+
+  /// The name of the entity.
+  ///
+  /// A name matching regex `__.*__` is reserved/read-only. A name must not be
+  /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be valid
+  /// UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as
+  /// `__bytes__` where `` is the base-64 encoding of the bytes.
+  core.String? name;
+
+  PathElement({
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  PathElement.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// A representation of a property in a projection.
 class Projection {

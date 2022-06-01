@@ -766,6 +766,7 @@ api.FetchInventoryResponse buildFetchInventoryResponse() {
   final o = api.FetchInventoryResponse();
   buildCounterFetchInventoryResponse++;
   if (buildCounterFetchInventoryResponse < 3) {
+    o.nextPageToken = 'foo';
     o.updateTime = 'foo';
     o.vmwareVms = buildVmwareVmsDetails();
   }
@@ -776,6 +777,10 @@ api.FetchInventoryResponse buildFetchInventoryResponse() {
 void checkFetchInventoryResponse(api.FetchInventoryResponse o) {
   buildCounterFetchInventoryResponse++;
   if (buildCounterFetchInventoryResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -3898,6 +3903,8 @@ void main() {
       final res = api.VMMigrationServiceApi(mock).projects.locations.sources;
       final arg_source = 'foo';
       final arg_forceRefresh = true;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -3936,6 +3943,14 @@ void main() {
           unittest.equals('$arg_forceRefresh'),
         );
         unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -3947,7 +3962,10 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.fetchInventory(arg_source,
-          forceRefresh: arg_forceRefresh, $fields: arg_$fields);
+          forceRefresh: arg_forceRefresh,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
       checkFetchInventoryResponse(response as api.FetchInventoryResponse);
     });
 

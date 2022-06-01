@@ -2325,6 +2325,33 @@ void checkRevisionCheckResponse(api.RevisionCheckResponse o) {
   buildCounterRevisionCheckResponse--;
 }
 
+core.int buildCounterScopedPlayerIds = 0;
+api.ScopedPlayerIds buildScopedPlayerIds() {
+  final o = api.ScopedPlayerIds();
+  buildCounterScopedPlayerIds++;
+  if (buildCounterScopedPlayerIds < 3) {
+    o.developerPlayerKey = 'foo';
+    o.gamePlayerId = 'foo';
+  }
+  buildCounterScopedPlayerIds--;
+  return o;
+}
+
+void checkScopedPlayerIds(api.ScopedPlayerIds o) {
+  buildCounterScopedPlayerIds++;
+  if (buildCounterScopedPlayerIds < 3) {
+    unittest.expect(
+      o.developerPlayerKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gamePlayerId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterScopedPlayerIds--;
+}
+
 core.int buildCounterScoreSubmission = 0;
 api.ScoreSubmission buildScoreSubmission() {
   final o = api.ScoreSubmission();
@@ -3148,6 +3175,16 @@ void main() {
       final od = api.RevisionCheckResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRevisionCheckResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ScopedPlayerIds', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildScopedPlayerIds();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScopedPlayerIds.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkScopedPlayerIds(od);
     });
   });
 
@@ -4507,6 +4544,56 @@ void main() {
           playerIdConsistencyToken: arg_playerIdConsistencyToken,
           $fields: arg_$fields);
       checkPlayer(response as api.Player);
+    });
+
+    unittest.test('method--getScopedPlayerIds', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).players;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 29),
+          unittest.equals('games/v1/players/me/scopedIds'),
+        );
+        pathOffset += 29;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildScopedPlayerIds());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getScopedPlayerIds($fields: arg_$fields);
+      checkScopedPlayerIds(response as api.ScopedPlayerIds);
     });
 
     unittest.test('method--list', () async {

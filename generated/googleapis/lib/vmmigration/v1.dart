@@ -865,6 +865,17 @@ class ProjectsLocationsSourcesResource {
   /// instead of using cached results. Using this flag will make the call
   /// slower.
   ///
+  /// [pageSize] - The maximum number of VMs to return. The service may return
+  /// fewer than this value. For AWS source: If unspecified, at most 500 VMs
+  /// will be returned. The maximum value is 1000; values above 1000 will be
+  /// coerced to 1000. For VMWare source: If unspecified, all VMs will be
+  /// returned. There is no limit for maximum value.
+  ///
+  /// [pageToken] - A page token, received from a previous `FetchInventory`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `FetchInventory` must match the call that
+  /// provided the page token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -878,10 +889,14 @@ class ProjectsLocationsSourcesResource {
   async.Future<FetchInventoryResponse> fetchInventory(
     core.String source, {
     core.bool? forceRefresh,
+    core.int? pageSize,
+    core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (forceRefresh != null) 'forceRefresh': ['${forceRefresh}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3783,6 +3798,13 @@ typedef Empty = $Empty;
 
 /// Response message for fetchInventory.
 class FetchInventoryResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
   /// The timestamp when the source was last queried (if the result is from the
   /// cache).
   ///
@@ -3793,12 +3815,16 @@ class FetchInventoryResponse {
   VmwareVmsDetails? vmwareVms;
 
   FetchInventoryResponse({
+    this.nextPageToken,
     this.updateTime,
     this.vmwareVms,
   });
 
   FetchInventoryResponse.fromJson(core.Map _json)
       : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -3809,6 +3835,7 @@ class FetchInventoryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vmwareVms != null) 'vmwareVms': vmwareVms!,
       };

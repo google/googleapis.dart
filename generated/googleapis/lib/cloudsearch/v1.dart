@@ -4061,7 +4061,8 @@ class FacetOptions {
 
 /// Source specific facet response
 class FacetResult {
-  /// FacetBuckets for values in response containing at least a single result.
+  /// FacetBuckets for values in response containing at least a single result
+  /// with the corresponding filter.
   core.List<FacetBucket>? buckets;
 
   /// Object type for which facet results are returned.

@@ -4435,7 +4435,8 @@ class GoogleCloudMlV1Model {
   ///
   /// Each label is a key-value pair, where both the key and the value are
   /// arbitrary strings that you supply. For more information, see the
-  /// documentation on using labels.
+  /// documentation on using labels. Note that this field is not updatable for
+  /// mls1* models.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -6258,7 +6259,8 @@ class GoogleCloudMlV1Version {
   ///
   /// Each label is a key-value pair, where both the key and the value are
   /// arbitrary strings that you supply. For more information, see the
-  /// documentation on using labels.
+  /// documentation on using labels. Note that this field is not updatable for
+  /// mls1* models.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;

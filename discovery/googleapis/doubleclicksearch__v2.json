@@ -433,7 +433,7 @@
             }
         }
     },
-    "revision": "20220518",
+    "revision": "20220524",
     "rootUrl": "https://doubleclicksearch.googleapis.com/",
     "schemas": {
         "Availability": {

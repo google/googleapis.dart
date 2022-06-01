@@ -2684,6 +2684,113 @@ typedef GitSourceContext = $GitSourceContext;
 /// Indicates the location at which a package was found.
 typedef GrafeasV1FileLocation = $FileLocation;
 
+/// Identifies the entity that executed the recipe, which is trusted to have
+/// correctly performed the operation and populated this provenance.
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared00;
+
+/// Indicates that the builder claims certain fields in this message to be
+/// complete.
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+    = $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness;
+
+/// Describes where the config file that kicked off the build came from.
+///
+/// This is effectively a pointer to the source where buildConfig came from.
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+    = $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource;
+
+/// Identifies the event that kicked off the build.
+class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
+  GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource? configSource;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? environment;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+
+  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation({
+    this.configSource,
+    this.environment,
+    this.parameters,
+  });
+
+  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(core.Map _json)
+      : this(
+          configSource: _json.containsKey('configSource')
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(
+                  _json['configSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.Map<core.String, core.dynamic>
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? _json['parameters'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configSource != null) 'configSource': configSource!,
+        if (environment != null) 'environment': environment!,
+        if (parameters != null) 'parameters': parameters!,
+      };
+}
+
+/// The collection of artifacts that influenced the build including sources,
+/// dependencies, build tools, base images, and so on.
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial = $Material;
+
+/// Other properties of the build.
+class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
+  core.String? buildFinishedOn;
+  core.String? buildInvocationId;
+  core.String? buildStartedOn;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness? completeness;
+  core.bool? reproducible;
+
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata({
+    this.buildFinishedOn,
+    this.buildInvocationId,
+    this.buildStartedOn,
+    this.completeness,
+    this.reproducible,
+  });
+
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(core.Map _json)
+      : this(
+          buildFinishedOn: _json.containsKey('buildFinishedOn')
+              ? _json['buildFinishedOn'] as core.String
+              : null,
+          buildInvocationId: _json.containsKey('buildInvocationId')
+              ? _json['buildInvocationId'] as core.String
+              : null,
+          buildStartedOn: _json.containsKey('buildStartedOn')
+              ? _json['buildStartedOn'] as core.String
+              : null,
+          completeness: _json.containsKey('completeness')
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(
+                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reproducible: _json.containsKey('reproducible')
+              ? _json['reproducible'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildFinishedOn != null) 'buildFinishedOn': buildFinishedOn!,
+        if (buildInvocationId != null) 'buildInvocationId': buildInvocationId!,
+        if (buildStartedOn != null) 'buildStartedOn': buildStartedOn!,
+        if (completeness != null) 'completeness': completeness!,
+        if (reproducible != null) 'reproducible': reproducible!,
+      };
+}
+
 /// Container message for hash values.
 typedef Hash = $Hash;
 
@@ -2887,6 +2994,7 @@ class InTotoStatement {
   core.String? predicateType;
   InTotoProvenance? provenance;
   SlsaProvenance? slsaProvenance;
+  SlsaProvenanceZeroTwo? slsaProvenanceZeroTwo;
   core.List<Subject>? subject;
 
   InTotoStatement({
@@ -2894,6 +3002,7 @@ class InTotoStatement {
     this.predicateType,
     this.provenance,
     this.slsaProvenance,
+    this.slsaProvenanceZeroTwo,
     this.subject,
   });
 
@@ -2912,6 +3021,10 @@ class InTotoStatement {
               ? SlsaProvenance.fromJson(_json['slsaProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          slsaProvenanceZeroTwo: _json.containsKey('slsaProvenanceZeroTwo')
+              ? SlsaProvenanceZeroTwo.fromJson(_json['slsaProvenanceZeroTwo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           subject: _json.containsKey('subject')
               ? (_json['subject'] as core.List)
                   .map((value) => Subject.fromJson(
@@ -2925,6 +3038,8 @@ class InTotoStatement {
         if (predicateType != null) 'predicateType': predicateType!,
         if (provenance != null) 'provenance': provenance!,
         if (slsaProvenance != null) 'slsaProvenance': slsaProvenance!,
+        if (slsaProvenanceZeroTwo != null)
+          'slsaProvenanceZeroTwo': slsaProvenanceZeroTwo!,
         if (subject != null) 'subject': subject!,
       };
 }
@@ -4242,6 +4357,67 @@ class SlsaProvenance {
         if (materials != null) 'materials': materials!,
         if (metadata != null) 'metadata': metadata!,
         if (recipe != null) 'recipe': recipe!,
+      };
+}
+
+/// See full explanation of fields at slsa.dev/provenance/v0.2.
+class SlsaProvenanceZeroTwo {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? buildConfig;
+  core.String? buildType;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder? builder;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation? invocation;
+  core.List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>? materials;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata? metadata;
+
+  SlsaProvenanceZeroTwo({
+    this.buildConfig,
+    this.buildType,
+    this.builder,
+    this.invocation,
+    this.materials,
+    this.metadata,
+  });
+
+  SlsaProvenanceZeroTwo.fromJson(core.Map _json)
+      : this(
+          buildConfig: _json.containsKey('buildConfig')
+              ? _json['buildConfig'] as core.Map<core.String, core.dynamic>
+              : null,
+          buildType: _json.containsKey('buildType')
+              ? _json['buildType'] as core.String
+              : null,
+          builder: _json.containsKey('builder')
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromJson(
+                  _json['builder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          invocation: _json.containsKey('invocation')
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(
+                  _json['invocation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map((value) =>
+                      GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildConfig != null) 'buildConfig': buildConfig!,
+        if (buildType != null) 'buildType': buildType!,
+        if (builder != null) 'builder': builder!,
+        if (invocation != null) 'invocation': invocation!,
+        if (materials != null) 'materials': materials!,
+        if (metadata != null) 'metadata': metadata!,
       };
 }
 

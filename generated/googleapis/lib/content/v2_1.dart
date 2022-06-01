@@ -17357,14 +17357,15 @@ class OrderShipment {
   /// post`" (Canada Post) - "`purolator`" (Purolator) - "`canpar`" (Canpar) -
   /// "`india post`" (India Post) - "`blue dart`" (Blue Dart) - "`delhivery`"
   /// (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`lso`" (Lone
-  /// Star Overnight) - "`tww`" (Team Worldwide) Supported carriers for FR are:
-  /// - "`la poste`" (La Poste) *automatic status updates * - "`colissimo`"
-  /// (Colissimo by La Poste) *automatic status updates* - "`ups`" (United
-  /// Parcel Service) *automatic status updates * - "`chronopost`" (Chronopost
-  /// by La Poste) - "`gls`" (General Logistics Systems France) - "`dpd`" (DPD
-  /// Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`"
-  /// (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT)
-  /// - "`db schenker`" (DB Schenker) - "`aramex`" (Aramex)
+  /// Star Overnight) - "`tww`" (Team Worldwide) - "`deliver-it`" (Deliver-IT)
+  /// Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status
+  /// updates * - "`colissimo`" (Colissimo by La Poste) *automatic status
+  /// updates* - "`ups`" (United Parcel Service) *automatic status updates * -
+  /// "`chronopost`" (Chronopost by La Poste) - "`gls`" (General Logistics
+  /// Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post
+  /// Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`"
+  /// (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) - "`aramex`"
+  /// (Aramex)
   core.String? carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -23960,7 +23961,7 @@ class ProductstatusesListResponse {
       };
 }
 
-/// The Promotions feature is publicly available for the US, CA, IN, UK, AU
+/// The Promotions feature is publicly available for the US, CA, IN, GB, AU
 /// target countries (en language only) in Content API for Shopping.
 ///
 /// Represents a promotion. See the following articles for more details. *

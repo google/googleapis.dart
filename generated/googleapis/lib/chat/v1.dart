@@ -15,8 +15,7 @@
 /// Google Chat API - v1
 ///
 /// Enables apps to fetch information and perform actions in Google Chat.
-/// Authentication using a service account is a prerequisite for using the
-/// Google Chat REST API.
+/// Authentication is a prerequisite for using the Google Chat REST API.
 ///
 /// For more information, see <https://developers.google.com/hangouts/chat>
 ///
@@ -57,8 +56,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Enables apps to fetch information and perform actions in Google Chat.
 ///
-/// Authentication using a service account is a prerequisite for using the
-/// Google Chat REST API.
+/// Authentication is a prerequisite for using the Google Chat REST API.
 class HangoutsChatApi {
   final commons.ApiRequester _requester;
 

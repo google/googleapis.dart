@@ -683,7 +683,7 @@ class ProjectsLocationsNetworksResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/networks/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to update. The only currently supported
-  /// fields are: `labels`
+  /// fields are: `labels`, `reservations`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1456,6 +1456,96 @@ class FetchInstanceProvisioningSettingsResponse {
       };
 }
 
+/// Each logical interface represents a logical abstraction of the underlying
+/// physical interface (for eg.
+///
+/// bond, nic) of the instance. Each logical interface can effectively map to
+/// multiple network-IP pairs and still be mapped to one underlying physical
+/// interface.
+class GoogleCloudBaremetalsolutionV2LogicalInterface {
+  /// The index of the logical interface mapping to the index of the hardware
+  /// bond or nic on the chosen network template.
+  core.int? interfaceIndex;
+
+  /// List of logical network interfaces within a logical interface.
+  core.List<LogicalNetworkInterface>? logicalNetworkInterfaces;
+
+  /// Interface name.
+  ///
+  /// This is of syntax or and forms part of the network template name.
+  core.String? name;
+
+  GoogleCloudBaremetalsolutionV2LogicalInterface({
+    this.interfaceIndex,
+    this.logicalNetworkInterfaces,
+    this.name,
+  });
+
+  GoogleCloudBaremetalsolutionV2LogicalInterface.fromJson(core.Map _json)
+      : this(
+          interfaceIndex: _json.containsKey('interfaceIndex')
+              ? _json['interfaceIndex'] as core.int
+              : null,
+          logicalNetworkInterfaces:
+              _json.containsKey('logicalNetworkInterfaces')
+                  ? (_json['logicalNetworkInterfaces'] as core.List)
+                      .map((value) => LogicalNetworkInterface.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (interfaceIndex != null) 'interfaceIndex': interfaceIndex!,
+        if (logicalNetworkInterfaces != null)
+          'logicalNetworkInterfaces': logicalNetworkInterfaces!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Logical interface.
+class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface {
+  /// Interface name.
+  ///
+  /// This is not a globally unique identifier. Name is unique only inside the
+  /// ServerNetworkTemplate. This is of syntax or and forms part of the network
+  /// template name.
+  core.String? name;
+
+  /// If true, interface must have network connected.
+  core.bool? required;
+
+  /// Interface type.
+  /// Possible string values are:
+  /// - "INTERFACE_TYPE_UNSPECIFIED" : Unspecified value.
+  /// - "BOND" : Bond interface type.
+  /// - "NIC" : NIC interface type.
+  core.String? type;
+
+  GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface({
+    this.name,
+    this.required,
+    this.type,
+  });
+
+  GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface.fromJson(
+      core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          required: _json.containsKey('required')
+              ? _json['required'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (required != null) 'required': required!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// A server.
 class Instance {
   /// Create a time stamp.
@@ -1480,6 +1570,17 @@ class Instance {
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
 
+  /// List of logical interfaces for the instance.
+  ///
+  /// The number of logical interfaces will be the same as number of hardware
+  /// bond/nic on the chosen network template. For the non-multivlan
+  /// configurations (for eg, existing servers) that use existing default
+  /// network template (bondaa-bondaa), both the Instance.networks field and the
+  /// Instance.logical_interfaces fields will be filled to ensure backward
+  /// compatibility. For the others, only Instance.logical_interfaces will be
+  /// filled.
+  core.List<GoogleCloudBaremetalsolutionV2LogicalInterface>? logicalInterfaces;
+
   /// List of LUNs associated with this server.
   core.List<Lun>? luns;
 
@@ -1496,6 +1597,12 @@ class Instance {
   ///
   /// Output only.
   core.String? name;
+
+  /// Instance network template name.
+  ///
+  /// For eg, bondaa-bondaa, bondab-nic, etc. Generally, the template name
+  /// follows the syntax of "bond" or "nic".
+  core.String? networkTemplate;
 
   /// List of networks associated with this server.
   core.List<Network>? networks;
@@ -1530,9 +1637,11 @@ class Instance {
     this.id,
     this.interactiveSerialConsoleEnabled,
     this.labels,
+    this.logicalInterfaces,
     this.luns,
     this.machineType,
     this.name,
+    this.networkTemplate,
     this.networks,
     this.osImage,
     this.pod,
@@ -1561,6 +1670,13 @@ class Instance {
                   ),
                 )
               : null,
+          logicalInterfaces: _json.containsKey('logicalInterfaces')
+              ? (_json['logicalInterfaces'] as core.List)
+                  .map((value) =>
+                      GoogleCloudBaremetalsolutionV2LogicalInterface.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           luns: _json.containsKey('luns')
               ? (_json['luns'] as core.List)
                   .map((value) => Lun.fromJson(
@@ -1571,6 +1687,9 @@ class Instance {
               ? _json['machineType'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkTemplate: _json.containsKey('networkTemplate')
+              ? _json['networkTemplate'] as core.String
+              : null,
           networks: _json.containsKey('networks')
               ? (_json['networks'] as core.List)
                   .map((value) => Network.fromJson(
@@ -1596,9 +1715,11 @@ class Instance {
         if (interactiveSerialConsoleEnabled != null)
           'interactiveSerialConsoleEnabled': interactiveSerialConsoleEnabled!,
         if (labels != null) 'labels': labels!,
+        if (logicalInterfaces != null) 'logicalInterfaces': logicalInterfaces!,
         if (luns != null) 'luns': luns!,
         if (machineType != null) 'machineType': machineType!,
         if (name != null) 'name': name!,
+        if (networkTemplate != null) 'networkTemplate': networkTemplate!,
         if (networks != null) 'networks': networks!,
         if (osImage != null) 'osImage': osImage!,
         if (pod != null) 'pod': pod!,
@@ -1614,6 +1735,8 @@ class InstanceConfig {
   core.bool? accountNetworksEnabled;
 
   /// Client network address.
+  ///
+  /// Filled if InstanceConfig.multivlan_config is false.
   NetworkAddress? clientNetwork;
 
   /// Whether the instance should be provisioned with Hyperthreading enabled.
@@ -1628,10 +1751,31 @@ class InstanceConfig {
   /// [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
   core.String? instanceType;
 
+  /// List of logical interfaces for the instance.
+  ///
+  /// The number of logical interfaces will be the same as number of hardware
+  /// bond/nic on the chosen network template. Filled if
+  /// InstanceConfig.multivlan_config is true.
+  core.List<GoogleCloudBaremetalsolutionV2LogicalInterface>? logicalInterfaces;
+
   /// The name of the instance config.
   ///
   /// Output only.
   core.String? name;
+
+  /// The type of network configuration on the instance.
+  /// Possible string values are:
+  /// - "NETWORKCONFIG_UNSPECIFIED" : The unspecified network configuration.
+  /// - "SINGLE_VLAN" : Instance part of single client network and single
+  /// private network.
+  /// - "MULTI_VLAN" : Instance part of multiple (or single) client networks and
+  /// private networks.
+  core.String? networkConfig;
+
+  /// Server network template name.
+  ///
+  /// Filled if InstanceConfig.multivlan_config is true.
+  core.String? networkTemplate;
 
   /// OS image to initialize the instance.
   ///
@@ -1639,6 +1783,8 @@ class InstanceConfig {
   core.String? osImage;
 
   /// Private network address, if any.
+  ///
+  /// Filled if InstanceConfig.multivlan_config is false.
   NetworkAddress? privateNetwork;
 
   /// User note field, it can be used by customers to add additional information
@@ -1651,7 +1797,10 @@ class InstanceConfig {
     this.hyperthreading,
     this.id,
     this.instanceType,
+    this.logicalInterfaces,
     this.name,
+    this.networkConfig,
+    this.networkTemplate,
     this.osImage,
     this.privateNetwork,
     this.userNote,
@@ -1673,7 +1822,20 @@ class InstanceConfig {
           instanceType: _json.containsKey('instanceType')
               ? _json['instanceType'] as core.String
               : null,
+          logicalInterfaces: _json.containsKey('logicalInterfaces')
+              ? (_json['logicalInterfaces'] as core.List)
+                  .map((value) =>
+                      GoogleCloudBaremetalsolutionV2LogicalInterface.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkConfig: _json.containsKey('networkConfig')
+              ? _json['networkConfig'] as core.String
+              : null,
+          networkTemplate: _json.containsKey('networkTemplate')
+              ? _json['networkTemplate'] as core.String
+              : null,
           osImage: _json.containsKey('osImage')
               ? _json['osImage'] as core.String
               : null,
@@ -1693,7 +1855,10 @@ class InstanceConfig {
         if (hyperthreading != null) 'hyperthreading': hyperthreading!,
         if (id != null) 'id': id!,
         if (instanceType != null) 'instanceType': instanceType!,
+        if (logicalInterfaces != null) 'logicalInterfaces': logicalInterfaces!,
         if (name != null) 'name': name!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (networkTemplate != null) 'networkTemplate': networkTemplate!,
         if (osImage != null) 'osImage': osImage!,
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
         if (userNote != null) 'userNote': userNote!,
@@ -2077,43 +2242,61 @@ class ListVolumesResponse {
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
-/// Logical interface.
-class LogicalInterface {
-  /// Interface name.
+/// Each logical network interface is effectively a network and IP pair.
+class LogicalNetworkInterface {
+  /// Whether this interface is the default gateway for the instance.
   ///
-  /// This is not a globally unique identifier. Name is unique only inside the
-  /// ServerNetworkTemplate.
-  core.String? name;
+  /// Only one interface can be the default gateway for the instance.
+  core.bool? defaultGateway;
 
-  /// If true, interface must have network connected.
-  core.bool? required;
+  /// An identifier for the `Network`, generated by the backend.
+  core.String? id;
 
-  /// Interface type.
+  /// IP address in the network
+  core.String? ipAddress;
+
+  /// Name of the network
+  core.String? network;
+
+  /// Type of network.
   /// Possible string values are:
-  /// - "INTERFACE_TYPE_UNSPECIFIED" : Unspecified value.
-  /// - "BOND" : Bond interface type.
-  /// - "NIC" : NIC interface ytpe.
-  core.String? type;
+  /// - "TYPE_UNSPECIFIED" : Unspecified value.
+  /// - "CLIENT" : Client network, a network peered to a Google Cloud VPC.
+  /// - "PRIVATE" : Private network, a network local to the Bare Metal Solution
+  /// environment.
+  core.String? networkType;
 
-  LogicalInterface({
-    this.name,
-    this.required,
-    this.type,
+  LogicalNetworkInterface({
+    this.defaultGateway,
+    this.id,
+    this.ipAddress,
+    this.network,
+    this.networkType,
   });
 
-  LogicalInterface.fromJson(core.Map _json)
+  LogicalNetworkInterface.fromJson(core.Map _json)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          required: _json.containsKey('required')
-              ? _json['required'] as core.bool
+          defaultGateway: _json.containsKey('defaultGateway')
+              ? _json['defaultGateway'] as core.bool
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+          networkType: _json.containsKey('networkType')
+              ? _json['networkType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (required != null) 'required': required!,
-        if (type != null) 'type': type!,
+        if (defaultGateway != null) 'defaultGateway': defaultGateway!,
+        if (id != null) 'id': id!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (network != null) 'network': network!,
+        if (networkType != null) 'networkType': networkType!,
       };
 }
 
@@ -2502,7 +2685,7 @@ class NetworkConfig {
   core.String? type;
 
   /// User note field, it can be used by customers to add additional information
-  /// for the BMS Ops team (b/194021617).
+  /// for the BMS Ops team .
   core.String? userNote;
 
   /// List of VLAN attachments.
@@ -2939,7 +3122,7 @@ class ProvisioningConfig {
   /// - "CANCELLED" : ProvisioningConfig was canceled.
   core.String? state;
 
-  /// A generated buganizer id to track provisioning request.
+  /// A generated ticket id to track provisioning request.
   core.String? ticketId;
 
   /// Last update timestamp.
@@ -3143,9 +3326,16 @@ class ServerNetworkTemplate {
   core.List<core.String>? applicableInstanceTypes;
 
   /// Logical interfaces.
-  core.List<LogicalInterface>? logicalInterfaces;
+  core.List<
+          GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>?
+      logicalInterfaces;
 
   /// Template's unique name.
+  ///
+  /// The full resource name follows the pattern:
+  /// `projects/{project}/locations/{location}/serverNetworkTemplate/{server_network_template}`
+  /// Generally, the {server_network_template} follows the syntax of "bond" or
+  /// "nic".
   ///
   /// Output only.
   core.String? name;
@@ -3165,8 +3355,10 @@ class ServerNetworkTemplate {
               : null,
           logicalInterfaces: _json.containsKey('logicalInterfaces')
               ? (_json['logicalInterfaces'] as core.List)
-                  .map((value) => LogicalInterface.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -3623,7 +3815,7 @@ class VolumeConfig {
   core.String? type;
 
   /// User note field, it can be used by customers to add additional information
-  /// for the BMS Ops team (b/194021617).
+  /// for the BMS Ops team .
   core.String? userNote;
 
   VolumeConfig({

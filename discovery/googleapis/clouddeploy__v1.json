@@ -1199,7 +1199,7 @@
             }
         }
     },
-    "revision": "20220504",
+    "revision": "20220518",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "schemas": {
         "AnthosCluster": {

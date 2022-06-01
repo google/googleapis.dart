@@ -311,7 +311,7 @@
             }
         }
     },
-    "revision": "20220522",
+    "revision": "20220530",
     "rootUrl": "https://analyticsdata.googleapis.com/",
     "schemas": {
         "ActiveMetricRestriction": {

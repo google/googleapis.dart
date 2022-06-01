@@ -473,7 +473,7 @@ class ServicesResource {
   /// project:
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
-  /// size is 50 if not specified. Maximum value is 100.
+  /// size is 50 if not specified. Maximum value is 500.
   ///
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list call.
@@ -3899,46 +3899,7 @@ class MetricDescriptorMetadata {
 ///
 /// Binding a method to a metric causes that metric's configured quota behaviors
 /// to apply to the method call.
-class MetricRule {
-  /// Metrics to update when the selected methods are called, and the associated
-  /// cost applied to each metric.
-  ///
-  /// The key of the map is the metric name, and the values are the amount
-  /// increased for the metric against which the quota limits are defined. The
-  /// value must not be negative.
-  core.Map<core.String, core.String>? metricCosts;
-
-  /// Selects the methods to which this rule applies.
-  ///
-  /// Refer to selector for syntax details.
-  core.String? selector;
-
-  MetricRule({
-    this.metricCosts,
-    this.selector,
-  });
-
-  MetricRule.fromJson(core.Map _json)
-      : this(
-          metricCosts: _json.containsKey('metricCosts')
-              ? (_json['metricCosts'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          selector: _json.containsKey('selector')
-              ? _json['selector'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (metricCosts != null) 'metricCosts': metricCosts!,
-        if (selector != null) 'selector': selector!,
-      };
-}
+typedef MetricRule = $MetricRule;
 
 /// Declares an API Interface to be included in this interface.
 ///

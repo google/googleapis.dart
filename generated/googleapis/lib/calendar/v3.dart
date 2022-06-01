@@ -1578,8 +1578,9 @@ class EventsResource {
   /// be repeated multiple times to return events that match all given
   /// constraints.
   ///
-  /// [q] - Free text search terms to find events that match these terms in any
-  /// field, except for extended properties. Optional.
+  /// [q] - Free text search terms to find events that match these terms in the
+  /// following fields: summary, description, location, attendee's displayName,
+  /// attendee's email. Optional.
   ///
   /// [sharedExtendedProperty] - Extended properties constraint specified as
   /// propertyName=value. Matches only shared properties. This parameter might
@@ -2082,8 +2083,9 @@ class EventsResource {
   /// be repeated multiple times to return events that match all given
   /// constraints.
   ///
-  /// [q] - Free text search terms to find events that match these terms in any
-  /// field, except for extended properties. Optional.
+  /// [q] - Free text search terms to find events that match these terms in the
+  /// following fields: summary, description, location, attendee's displayName,
+  /// attendee's email. Optional.
   ///
   /// [sharedExtendedProperty] - Extended properties constraint specified as
   /// propertyName=value. Matches only shared properties. This parameter might

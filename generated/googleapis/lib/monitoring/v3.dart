@@ -4660,7 +4660,7 @@ class AppEngine {
   /// The ID of the App Engine module underlying this service.
   ///
   /// Corresponds to the module_id resource label in the gae_app monitored
-  /// resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+  /// resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
   core.String? moduleId;
 
   AppEngine({
@@ -4859,8 +4859,8 @@ class BucketOptions {
 class CloudEndpoints {
   /// The name of the Cloud Endpoints service underlying this service.
   ///
-  /// Corresponds to the service resource label in the api monitored resource:
-  /// https://cloud.google.com/monitoring/api/resources#tag_api
+  /// Corresponds to the service resource label in the api monitored resource
+  /// (https://cloud.google.com/monitoring/api/resources#tag_api).
   core.String? service;
 
   CloudEndpoints({
@@ -4886,15 +4886,15 @@ class CloudRun {
   /// The location the service is run.
   ///
   /// Corresponds to the location resource label in the cloud_run_revision
-  /// monitored resource:
-  /// https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+  /// monitored resource
+  /// (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
   core.String? location;
 
   /// The name of the Cloud Run service.
   ///
   /// Corresponds to the service_name resource label in the cloud_run_revision
-  /// monitored resource:
-  /// https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+  /// monitored resource
+  /// (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
   core.String? serviceName;
 
   CloudRun({
@@ -5903,7 +5903,8 @@ class GetNotificationChannelVerificationCodeResponse {
 /// GKE Namespace.
 ///
 /// The field names correspond to the resource metadata labels on monitored
-/// resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+/// resources that fall under a namespace (for example, k8s_container or
+/// k8s_pod).
 class GkeNamespace {
   /// The name of the parent cluster.
   core.String? clusterName;
@@ -5959,8 +5960,8 @@ class GkeNamespace {
 ///
 /// The "service" here represents a Kubernetes service object
 /// (https://kubernetes.io/docs/concepts/services-networking/service). The field
-/// names correspond to the resource labels on k8s_service monitored resources:
-/// https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+/// names correspond to the resource labels on k8s_service monitored resources
+/// (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 class GkeService {
   /// The name of the parent cluster.
   core.String? clusterName;
@@ -6023,7 +6024,7 @@ class GkeService {
 /// A GKE Workload (Deployment, StatefulSet, etc).
 ///
 /// The field names correspond to the metadata labels on monitored resources
-/// that fall under a workload (e.g. k8s_container, k8s_pod).
+/// that fall under a workload (for example, k8s_container or k8s_pod).
 class GkeWorkload {
   /// The name of the parent cluster.
   core.String? clusterName;
@@ -6047,7 +6048,7 @@ class GkeWorkload {
   /// The name of this workload.
   core.String? topLevelControllerName;
 
-  /// The type of this workload (e.g. "Deployment" or "DaemonSet")
+  /// The type of this workload (for example, "Deployment" or "DaemonSet")
   core.String? topLevelControllerType;
 
   GkeWorkload({

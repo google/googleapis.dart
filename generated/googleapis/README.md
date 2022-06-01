@@ -252,6 +252,13 @@ The Google Books API allows clients to access the Google Books repository.
 - [Documentation](https://code.google.com/apis/books/docs/v1/getting_started.html)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0-dev/books.v1/books.v1-library.html)
 
+#### Business Profile Performance API - `businessprofileperformance.v1`
+
+The Business Profile Performance API allows merchants to fetch performance insights about their business profile on Google.
+
+- [Documentation](https://developers.google.com/my-business/)
+- [API details](https://pub.dev/documentation/googleapis/8.2.0-dev/businessprofileperformance.v1/businessprofileperformance.v1-library.html)
+
 #### Calendar API - `calendar.v3`
 
 Manipulates events and other calendar data.
@@ -266,7 +273,7 @@ Manipulates events and other calendar data.
 
 #### Google Chat API - `chat.v1`
 
-Enables apps to fetch information and perform actions in Google Chat. Authentication using a service account is a prerequisite for using the Google Chat REST API.
+Enables apps to fetch information and perform actions in Google Chat. Authentication is a prerequisite for using the Google Chat REST API.
 
 - [Documentation](https://developers.google.com/hangouts/chat)
 - [API details](https://pub.dev/documentation/googleapis/8.2.0-dev/chat.v1/chat.v1-library.html)

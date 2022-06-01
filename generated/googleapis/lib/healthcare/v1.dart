@@ -386,8 +386,9 @@ class ProjectsLocationsDatasetsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
@@ -539,8 +540,9 @@ class ProjectsLocationsDatasetsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
@@ -587,8 +589,9 @@ class ProjectsLocationsDatasetsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
@@ -875,8 +878,9 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/consentStores/\[^/\]+$`.
   ///
@@ -1108,8 +1112,9 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/consentStores/\[^/\]+$`.
   ///
@@ -1156,8 +1161,9 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/consentStores/\[^/\]+$`.
   ///
@@ -2724,8 +2730,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
@@ -3115,8 +3122,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
@@ -3223,8 +3231,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
@@ -4431,8 +4440,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -4710,8 +4720,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -4758,8 +4769,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
@@ -4851,11 +4863,13 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// [P_type] - String of comma-delimited FHIR resource types. If provided,
   /// only resources of the specified resource type(s) are returned.
   ///
-  /// [end] - The response includes records prior to the end date. If no end
-  /// date is provided, all records subsequent to the start date are in scope.
+  /// [end] - The response includes records prior to the end date. The date uses
+  /// the format YYYY-MM-DD. If no end date is provided, all records subsequent
+  /// to the start date are in scope.
   ///
-  /// [start] - The response includes records subsequent to the start date. If
-  /// no start date is provided, all records prior to the end date are in scope.
+  /// [start] - The response includes records subsequent to the start date. The
+  /// date uses the format YYYY-MM-DD. If no start date is provided, all records
+  /// prior to the end date are in scope.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5935,8 +5949,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -6184,8 +6199,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -6232,8 +6248,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///

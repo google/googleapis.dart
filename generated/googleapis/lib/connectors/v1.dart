@@ -1766,6 +1766,11 @@ class ConfigVariableTemplate {
   /// Display name of the parameter.
   core.String? displayName;
 
+  /// Enum options.
+  ///
+  /// To be populated if `ValueType` is `ENUM`
+  core.List<EnumOption>? enumOptions;
+
   /// Key of the config variable.
   core.String? key;
 
@@ -1789,11 +1794,13 @@ class ConfigVariableTemplate {
   /// - "INT" : Value type is integer.
   /// - "BOOL" : Value type is boolean.
   /// - "SECRET" : Value type is secret.
+  /// - "ENUM" : Value type is enum.
   core.String? valueType;
 
   ConfigVariableTemplate({
     this.description,
     this.displayName,
+    this.enumOptions,
     this.key,
     this.required,
     this.roleGrant,
@@ -1808,6 +1815,12 @@ class ConfigVariableTemplate {
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          enumOptions: _json.containsKey('enumOptions')
+              ? (_json['enumOptions'] as core.List)
+                  .map((value) => EnumOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           key: _json.containsKey('key') ? _json['key'] as core.String : null,
           required: _json.containsKey('required')
@@ -1828,6 +1841,7 @@ class ConfigVariableTemplate {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (enumOptions != null) 'enumOptions': enumOptions!,
         if (key != null) 'key': key!,
         if (required != null) 'required': required!,
         if (roleGrant != null) 'roleGrant': roleGrant!,
@@ -2469,6 +2483,33 @@ class EgressControlConfig {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// EnumOption definition
+class EnumOption {
+  /// Display name of the option.
+  core.String? displayName;
+
+  /// Id of the option.
+  core.String? id;
+
+  EnumOption({
+    this.displayName,
+    this.id,
+  });
+
+  EnumOption.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+      };
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

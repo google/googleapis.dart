@@ -802,6 +802,11 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Output only.
   core.String? name;
 
+  /// The private password leak verification field contains the parameters used
+  /// to check for leaks privately without sharing user credentials.
+  GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification?
+      privatePasswordLeakVerification;
+
   /// The risk analysis result for the event being assessed.
   ///
   /// Output only.
@@ -816,6 +821,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
     this.accountDefenderAssessment,
     this.event,
     this.name,
+    this.privatePasswordLeakVerification,
     this.riskAnalysis,
     this.tokenProperties,
   });
@@ -833,6 +839,12 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
                   _json['event'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          privatePasswordLeakVerification: _json
+                  .containsKey('privatePasswordLeakVerification')
+              ? GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
+                  .fromJson(_json['privatePasswordLeakVerification']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           riskAnalysis: _json.containsKey('riskAnalysis')
               ? GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(
                   _json['riskAnalysis'] as core.Map<core.String, core.dynamic>)
@@ -849,6 +861,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
           'accountDefenderAssessment': accountDefenderAssessment!,
         if (event != null) 'event': event!,
         if (name != null) 'name': name!,
+        if (privatePasswordLeakVerification != null)
+          'privatePasswordLeakVerification': privatePasswordLeakVerification!,
         if (riskAnalysis != null) 'riskAnalysis': riskAnalysis!,
         if (tokenProperties != null) 'tokenProperties': tokenProperties!,
       };
@@ -1300,6 +1314,102 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
 
 /// The migrate key request message.
 typedef GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest = $Empty;
+
+/// Private password leak verification info.
+class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
+  /// List of prefixes of the encrypted potential password leaks that matched
+  /// the given parameters.
+  ///
+  /// They should be compared with the client-side decryption prefix of
+  /// `reencrypted_user_credentials_hash`
+  ///
+  /// Output only.
+  core.List<core.String>? encryptedLeakMatchPrefixes;
+
+  /// Encrypted Scrypt hash of the canonicalized username+password.
+  ///
+  /// It is re-encrypted by the server and returned through
+  /// `reencrypted_user_credentials_hash`.
+  ///
+  /// Optional.
+  core.String? encryptedUserCredentialsHash;
+  core.List<core.int> get encryptedUserCredentialsHashAsBytes =>
+      convert.base64.decode(encryptedUserCredentialsHash!);
+
+  set encryptedUserCredentialsHashAsBytes(core.List<core.int> _bytes) {
+    encryptedUserCredentialsHash =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Exactly 26-bit prefix of the SHA-256 hash of the canonicalized username.
+  ///
+  /// It is used to look up password leaks associated with that hash prefix.
+  ///
+  /// Optional.
+  core.String? lookupHashPrefix;
+  core.List<core.int> get lookupHashPrefixAsBytes =>
+      convert.base64.decode(lookupHashPrefix!);
+
+  set lookupHashPrefixAsBytes(core.List<core.int> _bytes) {
+    lookupHashPrefix =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Corresponds to the re-encryption of the `encrypted_user_credentials_hash`
+  /// field.
+  ///
+  /// Used to match potential password leaks within
+  /// `encrypted_leak_match_prefixes`.
+  ///
+  /// Output only.
+  core.String? reencryptedUserCredentialsHash;
+  core.List<core.int> get reencryptedUserCredentialsHashAsBytes =>
+      convert.base64.decode(reencryptedUserCredentialsHash!);
+
+  set reencryptedUserCredentialsHashAsBytes(core.List<core.int> _bytes) {
+    reencryptedUserCredentialsHash =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification({
+    this.encryptedLeakMatchPrefixes,
+    this.encryptedUserCredentialsHash,
+    this.lookupHashPrefix,
+    this.reencryptedUserCredentialsHash,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification.fromJson(
+      core.Map _json)
+      : this(
+          encryptedLeakMatchPrefixes:
+              _json.containsKey('encryptedLeakMatchPrefixes')
+                  ? (_json['encryptedLeakMatchPrefixes'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          encryptedUserCredentialsHash:
+              _json.containsKey('encryptedUserCredentialsHash')
+                  ? _json['encryptedUserCredentialsHash'] as core.String
+                  : null,
+          lookupHashPrefix: _json.containsKey('lookupHashPrefix')
+              ? _json['lookupHashPrefix'] as core.String
+              : null,
+          reencryptedUserCredentialsHash:
+              _json.containsKey('reencryptedUserCredentialsHash')
+                  ? _json['reencryptedUserCredentialsHash'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptedLeakMatchPrefixes != null)
+          'encryptedLeakMatchPrefixes': encryptedLeakMatchPrefixes!,
+        if (encryptedUserCredentialsHash != null)
+          'encryptedUserCredentialsHash': encryptedUserCredentialsHash!,
+        if (lookupHashPrefix != null) 'lookupHashPrefix': lookupHashPrefix!,
+        if (reencryptedUserCredentialsHash != null)
+          'reencryptedUserCredentialsHash': reencryptedUserCredentialsHash!,
+      };
+}
 
 /// A group of related accounts.
 class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup {

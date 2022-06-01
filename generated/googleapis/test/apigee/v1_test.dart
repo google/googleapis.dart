@@ -6467,6 +6467,7 @@ api.GoogleCloudApigeeV1OrganizationProjectMapping
   final o = api.GoogleCloudApigeeV1OrganizationProjectMapping();
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping++;
   if (buildCounterGoogleCloudApigeeV1OrganizationProjectMapping < 3) {
+    o.location = 'foo';
     o.organization = 'foo';
     o.projectId = 'foo';
     o.projectIds = buildUnnamed127();
@@ -6479,6 +6480,10 @@ void checkGoogleCloudApigeeV1OrganizationProjectMapping(
     api.GoogleCloudApigeeV1OrganizationProjectMapping o) {
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping++;
   if (buildCounterGoogleCloudApigeeV1OrganizationProjectMapping < 3) {
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.organization!,
       unittest.equals('foo'),
@@ -11769,6 +11774,61 @@ void main() {
           view: arg_view, $fields: arg_$fields);
       checkGoogleCloudApigeeV1IngressConfig(
           response as api.GoogleCloudApigeeV1IngressConfig);
+    });
+
+    unittest.test('method--getProjectMapping', () async {
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudApigeeV1OrganizationProjectMapping());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getProjectMapping(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1OrganizationProjectMapping(
+          response as api.GoogleCloudApigeeV1OrganizationProjectMapping);
     });
 
     unittest.test('method--getRuntimeConfig', () async {

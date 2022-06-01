@@ -1121,6 +1121,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GenerateMediationReportResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateMediationReportResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GenerateMediationReportResponse.fromJson(oJson as core.List);
+      checkGenerateMediationReportResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GenerateNetworkReportRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateNetworkReportRequest();

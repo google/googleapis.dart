@@ -4036,11 +4036,6 @@ class ProjectsAnswerRecordsResource {
   /// chronological order. Format: `projects//locations/`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - Required. Filters to restrict results to specific answer
-  /// records. Filter on answer record type. Currently predicates on `type` is
-  /// supported, valid values are `ARTICLE_ANSWER`, `FAQ_ANSWER`. For more
-  /// information about filtering, see [API Filtering](https://aip.dev/160).
-  ///
   /// [pageSize] - Optional. The maximum number of records to return in a single
   /// page. The server may return fewer records than this. If unspecified, we
   /// use 10. The maximum is 100.
@@ -4061,13 +4056,11 @@ class ProjectsAnswerRecordsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListAnswerRecordsResponse> list(
     core.String parent, {
-    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -9794,11 +9787,6 @@ class ProjectsLocationsAnswerRecordsResource {
   /// chronological order. Format: `projects//locations/`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Required. Filters to restrict results to specific answer
-  /// records. Filter on answer record type. Currently predicates on `type` is
-  /// supported, valid values are `ARTICLE_ANSWER`, `FAQ_ANSWER`. For more
-  /// information about filtering, see [API Filtering](https://aip.dev/160).
-  ///
   /// [pageSize] - Optional. The maximum number of records to return in a single
   /// page. The server may return fewer records than this. If unspecified, we
   /// use 10. The maximum is 100.
@@ -9819,13 +9807,11 @@ class ProjectsLocationsAnswerRecordsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListAnswerRecordsResponse> list(
     core.String parent, {
-    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -15928,7 +15914,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
 
 /// Custom conversation models used in agent assist feature.
 ///
-/// Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+/// Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY,
+/// CONVERSATION_SUMMARIZATION.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
   /// Conversation model resource name.
   ///

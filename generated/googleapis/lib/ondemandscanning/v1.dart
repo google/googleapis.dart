@@ -1108,81 +1108,22 @@ typedef GrafeasV1FileLocation = $FileLocation;
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenance02SlsaBuilder = $Shared00;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared00;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
-class GrafeasV1SlsaProvenance02SlsaCompleteness {
-  core.bool? environment;
-  core.bool? materials;
-  core.bool? parameters;
-
-  GrafeasV1SlsaProvenance02SlsaCompleteness({
-    this.environment,
-    this.materials,
-    this.parameters,
-  });
-
-  GrafeasV1SlsaProvenance02SlsaCompleteness.fromJson(core.Map _json)
-      : this(
-          environment: _json.containsKey('environment')
-              ? _json['environment'] as core.bool
-              : null,
-          materials: _json.containsKey('materials')
-              ? _json['materials'] as core.bool
-              : null,
-          parameters: _json.containsKey('parameters')
-              ? _json['parameters'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
-        if (materials != null) 'materials': materials!,
-        if (parameters != null) 'parameters': parameters!,
-      };
-}
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+    = $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness;
 
 /// Describes where the config file that kicked off the build came from.
 ///
 /// This is effectively a pointer to the source where buildConfig came from.
-class GrafeasV1SlsaProvenance02SlsaConfigSource {
-  core.Map<core.String, core.String>? digest;
-  core.String? entryPoint;
-  core.String? uri;
-
-  GrafeasV1SlsaProvenance02SlsaConfigSource({
-    this.digest,
-    this.entryPoint,
-    this.uri,
-  });
-
-  GrafeasV1SlsaProvenance02SlsaConfigSource.fromJson(core.Map _json)
-      : this(
-          digest: _json.containsKey('digest')
-              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          entryPoint: _json.containsKey('entryPoint')
-              ? _json['entryPoint'] as core.String
-              : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (entryPoint != null) 'entryPoint': entryPoint!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+    = $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource;
 
 /// Identifies the event that kicked off the build.
-class GrafeasV1SlsaProvenance02SlsaInvocation {
-  GrafeasV1SlsaProvenance02SlsaConfigSource? configSource;
+class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
+  GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource? configSource;
 
   ///
   ///
@@ -1196,16 +1137,16 @@ class GrafeasV1SlsaProvenance02SlsaInvocation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? parameters;
 
-  GrafeasV1SlsaProvenance02SlsaInvocation({
+  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation({
     this.configSource,
     this.environment,
     this.parameters,
   });
 
-  GrafeasV1SlsaProvenance02SlsaInvocation.fromJson(core.Map _json)
+  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(core.Map _json)
       : this(
           configSource: _json.containsKey('configSource')
-              ? GrafeasV1SlsaProvenance02SlsaConfigSource.fromJson(
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(
                   _json['configSource'] as core.Map<core.String, core.dynamic>)
               : null,
           environment: _json.containsKey('environment')
@@ -1225,17 +1166,17 @@ class GrafeasV1SlsaProvenance02SlsaInvocation {
 
 /// The collection of artifacts that influenced the build including sources,
 /// dependencies, build tools, base images, and so on.
-typedef GrafeasV1SlsaProvenance02SlsaMaterial = $Material;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial = $Material;
 
 /// Other properties of the build.
-class GrafeasV1SlsaProvenance02SlsaMetadata {
+class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
   core.String? buildFinishedOn;
   core.String? buildInvocationId;
   core.String? buildStartedOn;
-  GrafeasV1SlsaProvenance02SlsaCompleteness? completeness;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness? completeness;
   core.bool? reproducible;
 
-  GrafeasV1SlsaProvenance02SlsaMetadata({
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata({
     this.buildFinishedOn,
     this.buildInvocationId,
     this.buildStartedOn,
@@ -1243,7 +1184,7 @@ class GrafeasV1SlsaProvenance02SlsaMetadata {
     this.reproducible,
   });
 
-  GrafeasV1SlsaProvenance02SlsaMetadata.fromJson(core.Map _json)
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(core.Map _json)
       : this(
           buildFinishedOn: _json.containsKey('buildFinishedOn')
               ? _json['buildFinishedOn'] as core.String
@@ -1255,7 +1196,7 @@ class GrafeasV1SlsaProvenance02SlsaMetadata {
               ? _json['buildStartedOn'] as core.String
               : null,
           completeness: _json.containsKey('completeness')
-              ? GrafeasV1SlsaProvenance02SlsaCompleteness.fromJson(
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(
                   _json['completeness'] as core.Map<core.String, core.dynamic>)
               : null,
           reproducible: _json.containsKey('reproducible')
@@ -1406,7 +1347,7 @@ class InTotoStatement {
   core.String? predicateType;
   InTotoProvenance? provenance;
   SlsaProvenance? slsaProvenance;
-  SlsaProvenance02? slsaProvenance02;
+  SlsaProvenanceZeroTwo? slsaProvenanceZeroTwo;
   core.List<Subject>? subject;
 
   InTotoStatement({
@@ -1414,7 +1355,7 @@ class InTotoStatement {
     this.predicateType,
     this.provenance,
     this.slsaProvenance,
-    this.slsaProvenance02,
+    this.slsaProvenanceZeroTwo,
     this.subject,
   });
 
@@ -1433,8 +1374,8 @@ class InTotoStatement {
               ? SlsaProvenance.fromJson(_json['slsaProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          slsaProvenance02: _json.containsKey('slsaProvenance02')
-              ? SlsaProvenance02.fromJson(_json['slsaProvenance02']
+          slsaProvenanceZeroTwo: _json.containsKey('slsaProvenanceZeroTwo')
+              ? SlsaProvenanceZeroTwo.fromJson(_json['slsaProvenanceZeroTwo']
                   as core.Map<core.String, core.dynamic>)
               : null,
           subject: _json.containsKey('subject')
@@ -1450,7 +1391,8 @@ class InTotoStatement {
         if (predicateType != null) 'predicateType': predicateType!,
         if (provenance != null) 'provenance': provenance!,
         if (slsaProvenance != null) 'slsaProvenance': slsaProvenance!,
-        if (slsaProvenance02 != null) 'slsaProvenance02': slsaProvenance02!,
+        if (slsaProvenanceZeroTwo != null)
+          'slsaProvenanceZeroTwo': slsaProvenanceZeroTwo!,
         if (subject != null) 'subject': subject!,
       };
 }
@@ -2419,19 +2361,19 @@ class SlsaProvenance {
 }
 
 /// See full explanation of fields at slsa.dev/provenance/v0.2.
-class SlsaProvenance02 {
+class SlsaProvenanceZeroTwo {
   ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? buildConfig;
   core.String? buildType;
-  GrafeasV1SlsaProvenance02SlsaBuilder? builder;
-  GrafeasV1SlsaProvenance02SlsaInvocation? invocation;
-  core.List<GrafeasV1SlsaProvenance02SlsaMaterial>? materials;
-  GrafeasV1SlsaProvenance02SlsaMetadata? metadata;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder? builder;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation? invocation;
+  core.List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>? materials;
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata? metadata;
 
-  SlsaProvenance02({
+  SlsaProvenanceZeroTwo({
     this.buildConfig,
     this.buildType,
     this.builder,
@@ -2440,7 +2382,7 @@ class SlsaProvenance02 {
     this.metadata,
   });
 
-  SlsaProvenance02.fromJson(core.Map _json)
+  SlsaProvenanceZeroTwo.fromJson(core.Map _json)
       : this(
           buildConfig: _json.containsKey('buildConfig')
               ? _json['buildConfig'] as core.Map<core.String, core.dynamic>
@@ -2449,22 +2391,22 @@ class SlsaProvenance02 {
               ? _json['buildType'] as core.String
               : null,
           builder: _json.containsKey('builder')
-              ? GrafeasV1SlsaProvenance02SlsaBuilder.fromJson(
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromJson(
                   _json['builder'] as core.Map<core.String, core.dynamic>)
               : null,
           invocation: _json.containsKey('invocation')
-              ? GrafeasV1SlsaProvenance02SlsaInvocation.fromJson(
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(
                   _json['invocation'] as core.Map<core.String, core.dynamic>)
               : null,
           materials: _json.containsKey('materials')
               ? (_json['materials'] as core.List)
                   .map((value) =>
-                      GrafeasV1SlsaProvenance02SlsaMaterial.fromJson(
+                      GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           metadata: _json.containsKey('metadata')
-              ? GrafeasV1SlsaProvenance02SlsaMetadata.fromJson(
+              ? GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(
                   _json['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
         );

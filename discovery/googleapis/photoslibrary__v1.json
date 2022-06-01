@@ -639,7 +639,7 @@
             }
         }
     },
-    "revision": "20220518",
+    "revision": "20220530",
     "rootUrl": "https://photoslibrary.googleapis.com/",
     "schemas": {
         "AddEnrichmentToAlbumRequest": {

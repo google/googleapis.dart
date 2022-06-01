@@ -978,6 +978,38 @@ class PlayersResource {
     return Player.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves scoped player identifiers for currently authenticated user.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ScopedPlayerIds].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ScopedPlayerIds> getScopedPlayerIds({
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'games/v1/players/me/scopedIds';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ScopedPlayerIds.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Get the collection of players for the currently authenticated user.
   ///
   /// Request parameters:
@@ -4541,6 +4573,43 @@ class RevisionCheckResponse {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
         if (revisionStatus != null) 'revisionStatus': revisionStatus!,
+      };
+}
+
+/// Scoped player identifiers.
+class ScopedPlayerIds {
+  /// Identifier of the player across all games of the given developer.
+  ///
+  /// Every player has the same developer_player_key in all games of one
+  /// developer. Developer player key changes for the game if the game is
+  /// transferred to another developer. Note that game_player_id will stay
+  /// unchanged.
+  core.String? developerPlayerKey;
+
+  /// Game-scoped player identifier.
+  ///
+  /// This is the same id that is returned in GetPlayer game_player_id field.
+  core.String? gamePlayerId;
+
+  ScopedPlayerIds({
+    this.developerPlayerKey,
+    this.gamePlayerId,
+  });
+
+  ScopedPlayerIds.fromJson(core.Map _json)
+      : this(
+          developerPlayerKey: _json.containsKey('developerPlayerKey')
+              ? _json['developerPlayerKey'] as core.String
+              : null,
+          gamePlayerId: _json.containsKey('gamePlayerId')
+              ? _json['gamePlayerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (developerPlayerKey != null)
+          'developerPlayerKey': developerPlayerKey!,
+        if (gamePlayerId != null) 'gamePlayerId': gamePlayerId!,
       };
 }
 

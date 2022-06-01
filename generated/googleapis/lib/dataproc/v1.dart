@@ -242,8 +242,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
@@ -341,8 +342,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
@@ -389,8 +391,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
@@ -830,8 +833,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
@@ -1057,8 +1061,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
@@ -1105,8 +1110,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
@@ -1367,8 +1373,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
@@ -1466,8 +1473,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
@@ -1514,8 +1522,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
@@ -1863,8 +1872,9 @@ class ProjectsRegionsClustersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+$`.
   ///
@@ -2183,8 +2193,9 @@ class ProjectsRegionsClustersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+$`.
   ///
@@ -2335,8 +2346,9 @@ class ProjectsRegionsClustersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+$`.
   ///
@@ -2543,8 +2555,9 @@ class ProjectsRegionsJobsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2727,8 +2740,9 @@ class ProjectsRegionsJobsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2868,8 +2882,9 @@ class ProjectsRegionsJobsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3046,8 +3061,9 @@ class ProjectsRegionsOperationsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
@@ -3149,8 +3165,9 @@ class ProjectsRegionsOperationsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
@@ -3197,8 +3214,9 @@ class ProjectsRegionsOperationsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
@@ -3401,8 +3419,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
@@ -3628,8 +3647,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
@@ -3676,8 +3696,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
@@ -3808,45 +3829,6 @@ class AcceleratorConfig {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorTypeUri != null)
           'acceleratorTypeUri': acceleratorTypeUri!,
-      };
-}
-
-/// Configuration for using injectable credentials or service account
-class AuthenticationConfig {
-  /// Authentication type for session execution.
-  /// Possible string values are:
-  /// - "AUTHENTICATION_TYPE_UNSPECIFIED" : If AuthenticationType is
-  /// unspecified, SERVICE_ACCOUNT is used
-  /// - "SERVICE_ACCOUNT" : Defaults to using service account credentials
-  /// - "INJECTABLE_CREDENTIALS" : Injectable credentials authentication type
-  core.String? authenticationType;
-
-  /// Configuration for using end user authentication
-  InjectableCredentialsConfig? injectableCredentialsConfig;
-
-  AuthenticationConfig({
-    this.authenticationType,
-    this.injectableCredentialsConfig,
-  });
-
-  AuthenticationConfig.fromJson(core.Map _json)
-      : this(
-          authenticationType: _json.containsKey('authenticationType')
-              ? _json['authenticationType'] as core.String
-              : null,
-          injectableCredentialsConfig:
-              _json.containsKey('injectableCredentialsConfig')
-                  ? InjectableCredentialsConfig.fromJson(
-                      _json['injectableCredentialsConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (authenticationType != null)
-          'authenticationType': authenticationType!,
-        if (injectableCredentialsConfig != null)
-          'injectableCredentialsConfig': injectableCredentialsConfig!,
       };
 }
 
@@ -6217,9 +6199,6 @@ class InjectCredentialsRequest {
           'credentialsCiphertext': credentialsCiphertext!,
       };
 }
-
-/// Specific injectable credentials authentication parameters
-typedef InjectableCredentialsConfig = $Empty;
 
 /// Configuration for the size bounds of an instance group, including its
 /// proportional size to other groups.
@@ -8962,11 +8941,6 @@ class RuntimeConfig {
   /// Optional.
   core.Map<core.String, core.String>? properties;
 
-  /// Authentication configuration for the session execution.
-  ///
-  /// Optional.
-  AuthenticationConfig? sessionAuthenticationConfig;
-
   /// Version of the batch runtime.
   ///
   /// Optional.
@@ -8975,7 +8949,6 @@ class RuntimeConfig {
   RuntimeConfig({
     this.containerImage,
     this.properties,
-    this.sessionAuthenticationConfig,
     this.version,
   });
 
@@ -8993,12 +8966,6 @@ class RuntimeConfig {
                   ),
                 )
               : null,
-          sessionAuthenticationConfig:
-              _json.containsKey('sessionAuthenticationConfig')
-                  ? AuthenticationConfig.fromJson(
-                      _json['sessionAuthenticationConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
           version: _json.containsKey('version')
               ? _json['version'] as core.String
               : null,
@@ -9007,8 +8974,6 @@ class RuntimeConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerImage != null) 'containerImage': containerImage!,
         if (properties != null) 'properties': properties!,
-        if (sessionAuthenticationConfig != null)
-          'sessionAuthenticationConfig': sessionAuthenticationConfig!,
         if (version != null) 'version': version!,
       };
 }

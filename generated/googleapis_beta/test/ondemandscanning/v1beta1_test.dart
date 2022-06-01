@@ -1012,53 +1012,53 @@ void checkGrafeasV1FileLocation(api.GrafeasV1FileLocation o) {
   buildCounterGrafeasV1FileLocation--;
 }
 
-core.int buildCounterGrafeasV1SlsaProvenance02SlsaBuilder = 0;
-api.GrafeasV1SlsaProvenance02SlsaBuilder
-    buildGrafeasV1SlsaProvenance02SlsaBuilder() {
-  final o = api.GrafeasV1SlsaProvenance02SlsaBuilder();
-  buildCounterGrafeasV1SlsaProvenance02SlsaBuilder++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaBuilder < 3) {
+core.int buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = 0;
+api.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
+    buildGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder() {
+  final o = api.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder();
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder < 3) {
     o.id = 'foo';
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaBuilder--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder--;
   return o;
 }
 
-void checkGrafeasV1SlsaProvenance02SlsaBuilder(
-    api.GrafeasV1SlsaProvenance02SlsaBuilder o) {
-  buildCounterGrafeasV1SlsaProvenance02SlsaBuilder++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaBuilder < 3) {
+void checkGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder(
+    api.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder o) {
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder < 3) {
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
     );
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaBuilder--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder--;
 }
 
-core.int buildCounterGrafeasV1SlsaProvenance02SlsaCompleteness = 0;
-api.GrafeasV1SlsaProvenance02SlsaCompleteness
-    buildGrafeasV1SlsaProvenance02SlsaCompleteness() {
-  final o = api.GrafeasV1SlsaProvenance02SlsaCompleteness();
-  buildCounterGrafeasV1SlsaProvenance02SlsaCompleteness++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaCompleteness < 3) {
+core.int buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness = 0;
+api.GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+    buildGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness() {
+  final o = api.GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness();
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness < 3) {
     o.environment = true;
     o.materials = true;
     o.parameters = true;
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaCompleteness--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness--;
   return o;
 }
 
-void checkGrafeasV1SlsaProvenance02SlsaCompleteness(
-    api.GrafeasV1SlsaProvenance02SlsaCompleteness o) {
-  buildCounterGrafeasV1SlsaProvenance02SlsaCompleteness++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaCompleteness < 3) {
+void checkGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness(
+    api.GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness o) {
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness < 3) {
     unittest.expect(o.environment!, unittest.isTrue);
     unittest.expect(o.materials!, unittest.isTrue);
     unittest.expect(o.parameters!, unittest.isTrue);
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaCompleteness--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness--;
 }
 
 core.Map<core.String, core.String> buildUnnamed15() => {
@@ -1078,24 +1078,24 @@ void checkUnnamed15(core.Map<core.String, core.String> o) {
   );
 }
 
-core.int buildCounterGrafeasV1SlsaProvenance02SlsaConfigSource = 0;
-api.GrafeasV1SlsaProvenance02SlsaConfigSource
-    buildGrafeasV1SlsaProvenance02SlsaConfigSource() {
-  final o = api.GrafeasV1SlsaProvenance02SlsaConfigSource();
-  buildCounterGrafeasV1SlsaProvenance02SlsaConfigSource++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaConfigSource < 3) {
+core.int buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource = 0;
+api.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+    buildGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource() {
+  final o = api.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource();
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource < 3) {
     o.digest = buildUnnamed15();
     o.entryPoint = 'foo';
     o.uri = 'foo';
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaConfigSource--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource--;
   return o;
 }
 
-void checkGrafeasV1SlsaProvenance02SlsaConfigSource(
-    api.GrafeasV1SlsaProvenance02SlsaConfigSource o) {
-  buildCounterGrafeasV1SlsaProvenance02SlsaConfigSource++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaConfigSource < 3) {
+void checkGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource(
+    api.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource o) {
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource < 3) {
     checkUnnamed15(o.digest!);
     unittest.expect(
       o.entryPoint!,
@@ -1106,7 +1106,7 @@ void checkGrafeasV1SlsaProvenance02SlsaConfigSource(
       unittest.equals('foo'),
     );
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaConfigSource--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed16() => {
@@ -1199,29 +1199,29 @@ void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.int buildCounterGrafeasV1SlsaProvenance02SlsaInvocation = 0;
-api.GrafeasV1SlsaProvenance02SlsaInvocation
-    buildGrafeasV1SlsaProvenance02SlsaInvocation() {
-  final o = api.GrafeasV1SlsaProvenance02SlsaInvocation();
-  buildCounterGrafeasV1SlsaProvenance02SlsaInvocation++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaInvocation < 3) {
-    o.configSource = buildGrafeasV1SlsaProvenance02SlsaConfigSource();
+core.int buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation = 0;
+api.GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation
+    buildGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation() {
+  final o = api.GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation();
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation < 3) {
+    o.configSource = buildGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource();
     o.environment = buildUnnamed16();
     o.parameters = buildUnnamed17();
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaInvocation--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation--;
   return o;
 }
 
-void checkGrafeasV1SlsaProvenance02SlsaInvocation(
-    api.GrafeasV1SlsaProvenance02SlsaInvocation o) {
-  buildCounterGrafeasV1SlsaProvenance02SlsaInvocation++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaInvocation < 3) {
-    checkGrafeasV1SlsaProvenance02SlsaConfigSource(o.configSource!);
+void checkGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation(
+    api.GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation o) {
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation < 3) {
+    checkGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource(o.configSource!);
     checkUnnamed16(o.environment!);
     checkUnnamed17(o.parameters!);
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaInvocation--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation--;
 }
 
 core.Map<core.String, core.String> buildUnnamed18() => {
@@ -1241,52 +1241,52 @@ void checkUnnamed18(core.Map<core.String, core.String> o) {
   );
 }
 
-core.int buildCounterGrafeasV1SlsaProvenance02SlsaMaterial = 0;
-api.GrafeasV1SlsaProvenance02SlsaMaterial
-    buildGrafeasV1SlsaProvenance02SlsaMaterial() {
-  final o = api.GrafeasV1SlsaProvenance02SlsaMaterial();
-  buildCounterGrafeasV1SlsaProvenance02SlsaMaterial++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaMaterial < 3) {
+core.int buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial = 0;
+api.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
+    buildGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial() {
+  final o = api.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial();
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial < 3) {
     o.digest = buildUnnamed18();
     o.uri = 'foo';
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaMaterial--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial--;
   return o;
 }
 
-void checkGrafeasV1SlsaProvenance02SlsaMaterial(
-    api.GrafeasV1SlsaProvenance02SlsaMaterial o) {
-  buildCounterGrafeasV1SlsaProvenance02SlsaMaterial++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaMaterial < 3) {
+void checkGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(
+    api.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial o) {
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial < 3) {
     checkUnnamed18(o.digest!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
     );
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaMaterial--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial--;
 }
 
-core.int buildCounterGrafeasV1SlsaProvenance02SlsaMetadata = 0;
-api.GrafeasV1SlsaProvenance02SlsaMetadata
-    buildGrafeasV1SlsaProvenance02SlsaMetadata() {
-  final o = api.GrafeasV1SlsaProvenance02SlsaMetadata();
-  buildCounterGrafeasV1SlsaProvenance02SlsaMetadata++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaMetadata < 3) {
+core.int buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata = 0;
+api.GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata
+    buildGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata() {
+  final o = api.GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata();
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata < 3) {
     o.buildFinishedOn = 'foo';
     o.buildInvocationId = 'foo';
     o.buildStartedOn = 'foo';
-    o.completeness = buildGrafeasV1SlsaProvenance02SlsaCompleteness();
+    o.completeness = buildGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness();
     o.reproducible = true;
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaMetadata--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata--;
   return o;
 }
 
-void checkGrafeasV1SlsaProvenance02SlsaMetadata(
-    api.GrafeasV1SlsaProvenance02SlsaMetadata o) {
-  buildCounterGrafeasV1SlsaProvenance02SlsaMetadata++;
-  if (buildCounterGrafeasV1SlsaProvenance02SlsaMetadata < 3) {
+void checkGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata(
+    api.GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata o) {
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata++;
+  if (buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata < 3) {
     unittest.expect(
       o.buildFinishedOn!,
       unittest.equals('foo'),
@@ -1299,10 +1299,10 @@ void checkGrafeasV1SlsaProvenance02SlsaMetadata(
       o.buildStartedOn!,
       unittest.equals('foo'),
     );
-    checkGrafeasV1SlsaProvenance02SlsaCompleteness(o.completeness!);
+    checkGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness(o.completeness!);
     unittest.expect(o.reproducible!, unittest.isTrue);
   }
-  buildCounterGrafeasV1SlsaProvenance02SlsaMetadata--;
+  buildCounterGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata--;
 }
 
 core.int buildCounterHash = 0;
@@ -1463,7 +1463,7 @@ api.InTotoStatement buildInTotoStatement() {
     o.predicateType = 'foo';
     o.provenance = buildInTotoProvenance();
     o.slsaProvenance = buildSlsaProvenance();
-    o.slsaProvenance02 = buildSlsaProvenance02();
+    o.slsaProvenanceZeroTwo = buildSlsaProvenanceZeroTwo();
     o.subject = buildUnnamed21();
   }
   buildCounterInTotoStatement--;
@@ -1483,7 +1483,7 @@ void checkInTotoStatement(api.InTotoStatement o) {
     );
     checkInTotoProvenance(o.provenance!);
     checkSlsaProvenance(o.slsaProvenance!);
-    checkSlsaProvenance02(o.slsaProvenance02!);
+    checkSlsaProvenanceZeroTwo(o.slsaProvenanceZeroTwo!);
     checkUnnamed21(o.subject!);
   }
   buildCounterInTotoStatement--;
@@ -2572,47 +2572,48 @@ void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.GrafeasV1SlsaProvenance02SlsaMaterial> buildUnnamed36() => [
-      buildGrafeasV1SlsaProvenance02SlsaMaterial(),
-      buildGrafeasV1SlsaProvenance02SlsaMaterial(),
+core.List<api.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial> buildUnnamed36() => [
+      buildGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(),
+      buildGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(),
     ];
 
-void checkUnnamed36(core.List<api.GrafeasV1SlsaProvenance02SlsaMaterial> o) {
+void checkUnnamed36(
+    core.List<api.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGrafeasV1SlsaProvenance02SlsaMaterial(o[0]);
-  checkGrafeasV1SlsaProvenance02SlsaMaterial(o[1]);
+  checkGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(o[0]);
+  checkGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(o[1]);
 }
 
-core.int buildCounterSlsaProvenance02 = 0;
-api.SlsaProvenance02 buildSlsaProvenance02() {
-  final o = api.SlsaProvenance02();
-  buildCounterSlsaProvenance02++;
-  if (buildCounterSlsaProvenance02 < 3) {
+core.int buildCounterSlsaProvenanceZeroTwo = 0;
+api.SlsaProvenanceZeroTwo buildSlsaProvenanceZeroTwo() {
+  final o = api.SlsaProvenanceZeroTwo();
+  buildCounterSlsaProvenanceZeroTwo++;
+  if (buildCounterSlsaProvenanceZeroTwo < 3) {
     o.buildConfig = buildUnnamed35();
     o.buildType = 'foo';
-    o.builder = buildGrafeasV1SlsaProvenance02SlsaBuilder();
-    o.invocation = buildGrafeasV1SlsaProvenance02SlsaInvocation();
+    o.builder = buildGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder();
+    o.invocation = buildGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation();
     o.materials = buildUnnamed36();
-    o.metadata = buildGrafeasV1SlsaProvenance02SlsaMetadata();
+    o.metadata = buildGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata();
   }
-  buildCounterSlsaProvenance02--;
+  buildCounterSlsaProvenanceZeroTwo--;
   return o;
 }
 
-void checkSlsaProvenance02(api.SlsaProvenance02 o) {
-  buildCounterSlsaProvenance02++;
-  if (buildCounterSlsaProvenance02 < 3) {
+void checkSlsaProvenanceZeroTwo(api.SlsaProvenanceZeroTwo o) {
+  buildCounterSlsaProvenanceZeroTwo++;
+  if (buildCounterSlsaProvenanceZeroTwo < 3) {
     checkUnnamed35(o.buildConfig!);
     unittest.expect(
       o.buildType!,
       unittest.equals('foo'),
     );
-    checkGrafeasV1SlsaProvenance02SlsaBuilder(o.builder!);
-    checkGrafeasV1SlsaProvenance02SlsaInvocation(o.invocation!);
+    checkGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder(o.builder!);
+    checkGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation(o.invocation!);
     checkUnnamed36(o.materials!);
-    checkGrafeasV1SlsaProvenance02SlsaMetadata(o.metadata!);
+    checkGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata(o.metadata!);
   }
-  buildCounterSlsaProvenance02--;
+  buildCounterSlsaProvenanceZeroTwo--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed37() => {
@@ -3481,63 +3482,65 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GrafeasV1SlsaProvenance02SlsaBuilder', () {
+  unittest.group('obj-schema-GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGrafeasV1SlsaProvenance02SlsaBuilder();
+      final o = buildGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GrafeasV1SlsaProvenance02SlsaBuilder.fromJson(
+      final od = api.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGrafeasV1SlsaProvenance02SlsaBuilder(od);
+      checkGrafeasV1SlsaProvenanceZeroTwoSlsaBuilder(od);
     });
   });
 
-  unittest.group('obj-schema-GrafeasV1SlsaProvenance02SlsaCompleteness', () {
+  unittest.group('obj-schema-GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness',
+      () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGrafeasV1SlsaProvenance02SlsaCompleteness();
+      final o = buildGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GrafeasV1SlsaProvenance02SlsaCompleteness.fromJson(
+      final od = api.GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGrafeasV1SlsaProvenance02SlsaCompleteness(od);
+      checkGrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness(od);
     });
   });
 
-  unittest.group('obj-schema-GrafeasV1SlsaProvenance02SlsaConfigSource', () {
+  unittest.group('obj-schema-GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource',
+      () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGrafeasV1SlsaProvenance02SlsaConfigSource();
+      final o = buildGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GrafeasV1SlsaProvenance02SlsaConfigSource.fromJson(
+      final od = api.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGrafeasV1SlsaProvenance02SlsaConfigSource(od);
+      checkGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource(od);
     });
   });
 
-  unittest.group('obj-schema-GrafeasV1SlsaProvenance02SlsaInvocation', () {
+  unittest.group('obj-schema-GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGrafeasV1SlsaProvenance02SlsaInvocation();
+      final o = buildGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GrafeasV1SlsaProvenance02SlsaInvocation.fromJson(
+      final od = api.GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGrafeasV1SlsaProvenance02SlsaInvocation(od);
+      checkGrafeasV1SlsaProvenanceZeroTwoSlsaInvocation(od);
     });
   });
 
-  unittest.group('obj-schema-GrafeasV1SlsaProvenance02SlsaMaterial', () {
+  unittest.group('obj-schema-GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGrafeasV1SlsaProvenance02SlsaMaterial();
+      final o = buildGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GrafeasV1SlsaProvenance02SlsaMaterial.fromJson(
+      final od = api.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGrafeasV1SlsaProvenance02SlsaMaterial(od);
+      checkGrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(od);
     });
   });
 
-  unittest.group('obj-schema-GrafeasV1SlsaProvenance02SlsaMetadata', () {
+  unittest.group('obj-schema-GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGrafeasV1SlsaProvenance02SlsaMetadata();
+      final o = buildGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GrafeasV1SlsaProvenance02SlsaMetadata.fromJson(
+      final od = api.GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGrafeasV1SlsaProvenance02SlsaMetadata(od);
+      checkGrafeasV1SlsaProvenanceZeroTwoSlsaMetadata(od);
     });
   });
 
@@ -3820,13 +3823,13 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-SlsaProvenance02', () {
+  unittest.group('obj-schema-SlsaProvenanceZeroTwo', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildSlsaProvenance02();
+      final o = buildSlsaProvenanceZeroTwo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.SlsaProvenance02.fromJson(
+      final od = api.SlsaProvenanceZeroTwo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSlsaProvenance02(od);
+      checkSlsaProvenanceZeroTwo(od);
     });
   });
 

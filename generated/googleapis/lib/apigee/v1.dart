@@ -428,6 +428,43 @@ class OrganizationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the project ID and region for an Apigee organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Apigee organization name in the following format:
+  /// `organizations/{org}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1OrganizationProjectMapping].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1OrganizationProjectMapping> getProjectMapping(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':getProjectMapping';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Get runtime config for an organization.
   ///
   /// Request parameters:
@@ -14827,20 +14864,19 @@ class GoogleCloudApigeeV1Deployment {
 
   /// Errors reported for this deployment.
   ///
-  /// Populated only when state == ERROR. This field is not populated in List
-  /// APIs.
+  /// Populated only when state == ERROR. **Note**: This field is displayed only
+  /// when viewing deployment status.
   core.List<GoogleRpcStatus>? errors;
 
   /// Status reported by each runtime instance.
   ///
-  /// This field is not populated in List APIs.
+  /// **Note**: This field is displayed only when viewing deployment status.
   core.List<GoogleCloudApigeeV1InstanceDeploymentStatus>? instances;
 
   /// Status reported by runtime pods.
   ///
-  /// This field is not populated for List APIs. **Note**: **This field is
-  /// deprecated**. Runtime versions 1.3 and above report instance level status
-  /// rather than pod status.
+  /// **Note**: **This field is deprecated**. Runtime versions 1.3 and above
+  /// report instance level status rather than pod status.
   core.List<GoogleCloudApigeeV1PodStatus>? pods;
 
   /// API proxy revision.
@@ -14852,7 +14888,8 @@ class GoogleCloudApigeeV1Deployment {
   /// will mean that some of the deployment's base paths are not routed to its
   /// environment. If the conflicts change, the state will transition to
   /// `PROGRESSING` until the latest configuration is rolled out to all
-  /// instances. This field is not populated in List APIs.
+  /// instances. **Note**: This field is displayed only when viewing deployment
+  /// status.
   core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>?
       routeConflicts;
 
@@ -14862,7 +14899,7 @@ class GoogleCloudApigeeV1Deployment {
 
   /// Current state of the deployment.
   ///
-  /// This field is not populated in List APIs.
+  /// **Note**: This field is displayed only when viewing deployment status.
   /// Possible string values are:
   /// - "RUNTIME_STATE_UNSPECIFIED" : This value should never be returned.
   /// - "READY" : Runtime has loaded the deployment.
@@ -19142,6 +19179,13 @@ class GoogleCloudApigeeV1Organization {
 }
 
 class GoogleCloudApigeeV1OrganizationProjectMapping {
+  /// The Google Cloud region where control plane data is located.
+  ///
+  /// For more information, see https://cloud.google.com/about/locations/.
+  ///
+  /// Output only.
+  core.String? location;
+
   /// Name of the Apigee organization.
   core.String? organization;
 
@@ -19154,6 +19198,7 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
   core.List<core.String>? projectIds;
 
   GoogleCloudApigeeV1OrganizationProjectMapping({
+    this.location,
     this.organization,
     this.projectId,
     this.projectIds,
@@ -19161,6 +19206,9 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
 
   GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(core.Map _json)
       : this(
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
           organization: _json.containsKey('organization')
               ? _json['organization'] as core.String
               : null,
@@ -19175,6 +19223,7 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
         if (organization != null) 'organization': organization!,
         if (projectId != null) 'projectId': projectId!,
         if (projectIds != null) 'projectIds': projectIds!,

@@ -2180,7 +2180,7 @@ class BigQueryConfig {
   core.String? state;
 
   /// The name of the table to which to write data, of the form
-  /// {projectId}:{datasetId}.{tableId}
+  /// {projectId}.{datasetId}.{tableId}
   core.String? table;
 
   /// When true, use the topic's schema as the columns to write to in BigQuery,

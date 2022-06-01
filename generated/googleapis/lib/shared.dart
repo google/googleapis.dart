@@ -1023,6 +1023,7 @@ class $Completeness {
 /// - adsense:v2 : Date
 /// - androidmanagement:v1 : Date
 /// - billingbudgets:v1 : GoogleTypeDate
+/// - businessprofileperformance:v1 : Date
 /// - chromemanagement:v1 : GoogleTypeDate
 /// - chromepolicy:v1 : GoogleTypeDate
 /// - classroom:v1 : Date
@@ -1588,7 +1589,6 @@ class $EgressFrom {
 /// - dataproc:v1 : CancelJobRequest
 /// - dataproc:v1 : DiagnoseClusterRequest
 /// - dataproc:v1 : Empty
-/// - dataproc:v1 : InjectableCredentialsConfig
 /// - datastore:v1 : Empty
 /// - datastore:v1 : ReserveIdsResponse
 /// - datastore:v1 : RollbackResponse
@@ -2377,6 +2377,79 @@ class $GitSourceContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+/// - ondemandscanning:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+class $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
+  core.bool? environment;
+  core.bool? materials;
+  core.bool? parameters;
+
+  $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness({
+    this.environment,
+    this.materials,
+    this.parameters,
+  });
+
+  $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(core.Map _json)
+      : this(
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.bool
+              : null,
+          materials: _json.containsKey('materials')
+              ? _json['materials'] as core.bool
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? _json['parameters'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (environment != null) 'environment': environment!,
+        if (materials != null) 'materials': materials!,
+        if (parameters != null) 'parameters': parameters!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+/// - ondemandscanning:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+class $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
+  core.Map<core.String, core.String>? digest;
+  core.String? entryPoint;
+  core.String? uri;
+
+  $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource({
+    this.digest,
+    this.entryPoint,
+    this.uri,
+  });
+
+  $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          entryPoint: _json.containsKey('entryPoint')
+              ? _json['entryPoint'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (entryPoint != null) 'entryPoint': entryPoint!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -3548,8 +3621,9 @@ class $Location01 {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
 /// - containeranalysis:v1 : Material
-/// - ondemandscanning:v1 : GrafeasV1SlsaProvenance_0_2SlsaMaterial
+/// - ondemandscanning:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
 /// - ondemandscanning:v1 : Material
 class $Material {
   core.Map<core.String, core.String>? digest;
@@ -3719,6 +3793,72 @@ class $MetricDescriptorMetadata {
         if (ingestDelay != null) 'ingestDelay': ingestDelay!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (samplePeriod != null) 'samplePeriod': samplePeriod!,
+      };
+}
+
+/// Used by:
+///
+/// - servicemanagement:v1 : MetricRule
+/// - serviceusage:v1 : MetricRule
+class $MetricRule {
+  /// Metrics to update when the selected methods are called.
+  ///
+  /// The key of the map is the metric name, the value is the DynamicCostType to
+  /// specify how to calculate the cost from the request. The cost amount will
+  /// be increased for the metric against which the quota limits are defined. It
+  /// is only implemented in CloudESF(go/cloudesf)
+  core.Map<core.String, core.String>? dynamicMetricCosts;
+
+  /// Metrics to update when the selected methods are called, and the associated
+  /// cost applied to each metric.
+  ///
+  /// The key of the map is the metric name, and the values are the amount
+  /// increased for the metric against which the quota limits are defined. The
+  /// value must not be negative.
+  core.Map<core.String, core.String>? metricCosts;
+
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
+  core.String? selector;
+
+  $MetricRule({
+    this.dynamicMetricCosts,
+    this.metricCosts,
+    this.selector,
+  });
+
+  $MetricRule.fromJson(core.Map _json)
+      : this(
+          dynamicMetricCosts: _json.containsKey('dynamicMetricCosts')
+              ? (_json['dynamicMetricCosts']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          metricCosts: _json.containsKey('metricCosts')
+              ? (_json['metricCosts'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          selector: _json.containsKey('selector')
+              ? _json['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicMetricCosts != null)
+          'dynamicMetricCosts': dynamicMetricCosts!,
+        if (metricCosts != null) 'metricCosts': metricCosts!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -4315,49 +4455,6 @@ class $PartitionId {
   core.Map<core.String, core.dynamic> toJson() => {
         if (namespaceId != null) 'namespaceId': namespaceId!,
         if (projectId != null) 'projectId': projectId!,
-      };
-}
-
-/// Used by:
-///
-/// - datastore:v1 : PathElement
-/// - dlp:v2 : GooglePrivacyDlpV2PathElement
-class $PathElement {
-  /// The auto-allocated ID of the entity.
-  ///
-  /// Never equal to zero. Values less than zero are discouraged and may not be
-  /// supported in the future.
-  core.String? id;
-
-  /// The kind of the entity.
-  ///
-  /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
-  /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String? kind;
-
-  /// The name of the entity.
-  ///
-  /// A name matching regex `__.*__` is reserved/read-only. A name must not be
-  /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String? name;
-
-  $PathElement({
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $PathElement.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
       };
 }
 
@@ -5721,9 +5818,10 @@ class $SetupTag {
 /// Used by:
 ///
 /// - containeranalysis:v1 : BuilderConfig
+/// - containeranalysis:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
 /// - containeranalysis:v1 : SlsaBuilder
 /// - ondemandscanning:v1 : BuilderConfig
-/// - ondemandscanning:v1 : GrafeasV1SlsaProvenance_0_2SlsaBuilder
+/// - ondemandscanning:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
 /// - ondemandscanning:v1 : SlsaBuilder
 /// - youtube:v3 : AbuseType
 class $Shared00 {

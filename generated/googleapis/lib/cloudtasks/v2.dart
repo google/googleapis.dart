@@ -320,8 +320,9 @@ class ProjectsLocationsQueuesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
@@ -640,8 +641,9 @@ class ProjectsLocationsQueuesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
@@ -688,8 +690,9 @@ class ProjectsLocationsQueuesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///

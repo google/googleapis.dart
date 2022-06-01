@@ -51,6 +51,7 @@
 /// - [FirstAndThirdPartyAudiencesResource]
 /// - [FloodlightGroupsResource]
 /// - [GoogleAudiencesResource]
+/// - [GuaranteedOrdersResource]
 /// - [InventorySourceGroupsResource]
 ///   - [InventorySourceGroupsAssignedInventorySourcesResource]
 /// - [InventorySourcesResource]
@@ -126,6 +127,8 @@ class DisplayVideoApi {
       FloodlightGroupsResource(_requester);
   GoogleAudiencesResource get googleAudiences =>
       GoogleAudiencesResource(_requester);
+  GuaranteedOrdersResource get guaranteedOrders =>
+      GuaranteedOrdersResource(_requester);
   InventorySourceGroupsResource get inventorySourceGroups =>
       InventorySourceGroupsResource(_requester);
   InventorySourcesResource get inventorySources =>
@@ -2071,39 +2074,44 @@ class AdvertisersCreativesResource {
   ///
   /// [filter] - Allows filtering by creative properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restriction
-  /// for the same field must be combined by `OR`. * Restriction for different
-  /// fields must be combined by `AND`. * Between `(` and `)` there can only be
-  /// restrictions combined by `OR` for the same field. * A restriction has the
-  /// form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`
-  /// for the following fields: - `entityStatus` - `creativeType`. -
-  /// `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` -
-  /// `exchangeReviewStatus` - `dynamic` - `creativeId` - `minModifiedTime` -
-  /// `maxModifiedTime` * The operator must be `HAS (:)` for the following
-  /// fields: - `lineItemIds` * For `entityStatus`, `minDuration`,
-  /// `maxDuration`, `minModifiedTime`, `maxModifiedTime`, and `dynamic`, there
-  /// may be at most one restriction. * For `dimensions`, the value is in the
-  /// form of `"{width}x{height}"`. * For `exchangeReviewStatus`, the value is
-  /// in the form of `{exchange}-{reviewStatus}`. * For `minDuration` and
-  /// `maxDuration`, the value is in the form of `"{duration}s"`. Only seconds
-  /// are supported with millisecond granularity. * For `minModifiedTime` and
-  /// `maxModifiedTime`, the value is a unix timestamp (GMT) in seconds. The
-  /// time filtered is against the update_time field in the creative, which
-  /// includes system updates to the creative (e.g. creative review updates). *
-  /// There may be multiple `lineItemIds` restrictions in order to search
+  /// for the same field must be combined by \`OR\`. * Restriction for different
+  /// fields must be combined by \`AND\`. * Between \`(\` and \`)\` there can
+  /// only be restrictions combined by \`OR\` for the same field. * A
+  /// restriction has the form of \`{field} {operator} {value}\`. * The operator
+  /// must be \`EQUALS (=)\` for the following fields: - \`entityStatus\` -
+  /// \`creativeType\`. - \`dimensions\` - \`minDuration\` - \`maxDuration\` -
+  /// \`approvalStatus\` - \`exchangeReviewStatus\` - \`dynamic\` -
+  /// \`creativeId\` * The operator must be \`HAS (:)\` for the following
+  /// fields: - \`lineItemIds\` * The operator must be \`GREATER THAN OR EQUAL
+  /// TO (\>=)\` or \`LESS THAN OR EQUAL TO (\<=)\` for the following fields: -
+  /// \`updateTime\` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * For
+  /// \`entityStatus\`, \`minDuration\`, \`maxDuration\`, \`updateTime\`, \`and
+  /// \`dynamic\`, there may be at most one restriction. * For \`dimensions\`,
+  /// the value is in the form of \`"{width}x{height}"\`. * For
+  /// \`exchangeReviewStatus\`, the value is in the form of
+  /// \`{exchange}-{reviewStatus}\`. * For \`minDuration\` and \`maxDuration\`,
+  /// the value is in the form of \`"{duration}s"\`. Only seconds are supported
+  /// with millisecond granularity. * For \`updateTime\`, a creative resource's
+  /// field value reflects the last time that a creative has been updated, which
+  /// includes updates made by the system (e.g. creative review updates). *
+  /// There may be multiple \`lineItemIds\` restrictions in order to search
   /// against multiple possible line item IDs. * There may be multiple
-  /// `creativeId` restrictions in order to search against multiple possible
+  /// \`creativeId\` restrictions in order to search against multiple possible
   /// creative IDs. Examples: * All native creatives:
-  /// `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400
-  /// or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND
-  /// (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives
+  /// \`creativeType="CREATIVE_TYPE_NATIVE"\` * All active creatives with
+  /// 300x400 or 50x100 dimensions: \`entityStatus="ENTITY_STATUS_ACTIVE" AND
+  /// (dimensions="300x400" OR dimensions="50x100")\` * All dynamic creatives
   /// that are approved by AdX or AppNexus, with a minimum duration of 5 seconds
-  /// and 200ms. `dynamic="true" AND minDuration="5.2s" AND
+  /// and 200ms. \`dynamic="true" AND minDuration="5.2s" AND
   /// (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED"
-  /// OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All
-  /// video creatives that are associated with line item ID 1 or 2:
-  /// `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)`
-  /// * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2`
-  /// The length of this field should be no more than 500 characters.
+  /// OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")\` *
+  /// All video creatives that are associated with line item ID 1 or 2:
+  /// \`creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR
+  /// lineItemIds:2)\` * Find creatives by multiple creative IDs: \`creativeId=1
+  /// OR creativeId=2\` * All creatives with an update time greater than or
+  /// equal to \`2020-11-04T18:54:47Z (format of ISO 8601)\`:
+  /// \`updateTime\>="2020-11-04T18:54:47Z"\` The length of this field should be
+  /// no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions`
@@ -7442,6 +7450,291 @@ class GoogleAudiencesResource {
   }
 }
 
+class GuaranteedOrdersResource {
+  final commons.ApiRequester _requester;
+
+  GuaranteedOrdersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new guaranteed order.
+  ///
+  /// Returns the newly created guaranteed order if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - The ID of the advertiser that the request is being made
+  /// within.
+  ///
+  /// [partnerId] - The ID of the partner that the request is being made within.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GuaranteedOrder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GuaranteedOrder> create(
+    GuaranteedOrder request, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/guaranteedOrders';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GuaranteedOrder.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Edits read advertisers of a guaranteed order.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [guaranteedOrderId] - Required. The ID of the guaranteed order to edit.
+  /// The ID is of the format `{exchange}-{legacy_guaranteed_order_id}`
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EditGuaranteedOrderReadAccessorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EditGuaranteedOrderReadAccessorsResponse>
+      editGuaranteedOrderReadAccessors(
+    EditGuaranteedOrderReadAccessorsRequest request,
+    core.String guaranteedOrderId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/guaranteedOrders/' +
+        core.Uri.encodeFull('$guaranteedOrderId') +
+        ':editGuaranteedOrderReadAccessors';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return EditGuaranteedOrderReadAccessorsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a guaranteed order.
+  ///
+  /// Request parameters:
+  ///
+  /// [guaranteedOrderId] - Required. The ID of the guaranteed order to fetch.
+  /// The ID is of the format `{exchange}-{legacy_guaranteed_order_id}`
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - The ID of the advertiser that has access to the
+  /// guaranteed order.
+  ///
+  /// [partnerId] - The ID of the partner that has access to the guaranteed
+  /// order.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GuaranteedOrder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GuaranteedOrder> get(
+    core.String guaranteedOrderId, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/guaranteedOrders/' + core.Uri.encodeFull('$guaranteedOrderId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GuaranteedOrder.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists guaranteed orders that are accessible to the current user.
+  ///
+  /// The order is defined by the order_by parameter. If a filter by
+  /// entity_status is not specified, guaranteed orders with entity status
+  /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - The ID of the advertiser that has access to the
+  /// guaranteed order.
+  ///
+  /// [filter] - Allows filtering by guaranteed order properties. * Filter
+  /// expressions are made up of one or more restrictions. * Restrictions can be
+  /// combined by `AND` or `OR` logical operators. A sequence of restrictions
+  /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+  /// {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
+  /// `guaranteed_order_id` - `exchange` - `display_name` -
+  /// `status.entityStatus` Examples: * All active guaranteed orders:
+  /// `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Guaranteed orders belonging
+  /// to Google Ad Manager or Rubicon exchanges:
+  /// `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The
+  /// length of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `displayName` (default) The default sorting order is ascending. To specify
+  /// descending order for a field, a suffix "desc" should be added to the field
+  /// name. For example, `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified or greater than `100` will default to `100`.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListGuaranteedOrders` method. If not specified, the
+  /// first page of results will be returned.
+  ///
+  /// [partnerId] - The ID of the partner that has access to the guaranteed
+  /// order.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGuaranteedOrdersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGuaranteedOrdersResponse> list({
+    core.String? advertiserId,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/guaranteedOrders';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListGuaranteedOrdersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing guaranteed order.
+  ///
+  /// Returns the updated guaranteed order if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [guaranteedOrderId] - Output only. The unique identifier of the guaranteed
+  /// order. The guaranteed order IDs have the format
+  /// `{exchange}-{legacy_guaranteed_order_id}`.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - The ID of the advertiser that the request is being made
+  /// within.
+  ///
+  /// [partnerId] - The ID of the partner that the request is being made within.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GuaranteedOrder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GuaranteedOrder> patch(
+    GuaranteedOrder request,
+    core.String guaranteedOrderId, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/guaranteedOrders/' + core.Uri.encodeFull('$guaranteedOrderId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GuaranteedOrder.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class InventorySourceGroupsResource {
   final commons.ApiRequester _requester;
 
@@ -7993,6 +8286,99 @@ class InventorySourcesResource {
 
   InventorySourcesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Creates a new inventory source.
+  ///
+  /// Returns the newly created inventory source if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - The ID of the advertiser that the request is being made
+  /// within.
+  ///
+  /// [partnerId] - The ID of the partner that the request is being made within.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InventorySource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InventorySource> create(
+    InventorySource request, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/inventorySources';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return InventorySource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Edits read/write accessors of an inventory source.
+  ///
+  /// Returns the updated read_write_accessors for the inventory source.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [inventorySourceId] - Required. The ID of inventory source to update.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InventorySourceAccessors].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InventorySourceAccessors> editInventorySourceReadWriteAccessors(
+    EditInventorySourceReadWriteAccessorsRequest request,
+    core.String inventorySourceId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/inventorySources/' +
+        core.Uri.encodeFull('$inventorySourceId') +
+        ':editInventorySourceReadWriteAccessors';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return InventorySourceAccessors.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets an inventory source.
   ///
   /// Request parameters:
@@ -8111,6 +8497,64 @@ class InventorySourcesResource {
       queryParams: _queryParams,
     );
     return ListInventorySourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing inventory source.
+  ///
+  /// Returns the updated inventory source if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [inventorySourceId] - Output only. The unique ID of the inventory source.
+  /// Assigned by the system.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - The ID of the advertiser that the request is being made
+  /// within.
+  ///
+  /// [partnerId] - The ID of the partner that the request is being made within.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InventorySource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InventorySource> patch(
+    InventorySource request,
+    core.String inventorySourceId, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/inventorySources/' + core.Uri.encodeFull('$inventorySourceId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return InventorySource.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -16739,7 +17183,7 @@ class CustomBiddingAlgorithm {
   /// deletion.
   core.String? entityStatus;
 
-  /// The custom bidding model readiness state for each advertiser who have
+  /// The state of custom bidding model readiness for each advertiser who has
   /// access.
   ///
   /// This field may only include the state of the queried advertiser if the
@@ -16844,8 +17288,7 @@ class CustomBiddingAlgorithm {
 /// The custom bidding algorithm model readiness state for a single shared
 /// advertiser.
 class CustomBiddingModelReadinessState {
-  /// The unique ID of the advertiser with access to the custom bidding
-  /// algorithm.
+  /// The unique ID of the relevant advertiser.
   core.String? advertiserId;
 
   /// The readiness state of custom bidding model.
@@ -16857,9 +17300,10 @@ class CustomBiddingModelReadinessState {
   /// the serving model.
   /// - "READINESS_STATE_TRAINING" : The model is training and not ready for
   /// serving.
-  /// - "READINESS_STATE_NO_VALID_SCRIPT" : The model will not be trained until
-  /// a valid custom bidding script linked. This state will only be applied to
-  /// algorithms whose `custom_bidding_algorithm_type` is `SCRIPT_BASED`.
+  /// - "READINESS_STATE_NO_VALID_SCRIPT" : A valid custom bidding script has
+  /// not been provided with which to train the model. This state will only be
+  /// applied to algorithms whose `custom_bidding_algorithm_type` is
+  /// `SCRIPT_BASED`.
   core.String? readinessState;
 
   CustomBiddingModelReadinessState({
@@ -18068,6 +18512,178 @@ class EditCustomerMatchMembersResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstAndThirdPartyAudienceId != null)
           'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId!,
+      };
+}
+
+/// Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.
+class EditGuaranteedOrderReadAccessorsRequest {
+  /// The advertisers to add as read accessors to the guaranteed order.
+  core.List<core.String>? addedAdvertisers;
+
+  /// The partner context in which the change is being made.
+  ///
+  /// Required.
+  core.String? partnerId;
+
+  /// Whether to give all advertisers of the read/write accessor partner read
+  /// access to the guaranteed order.
+  ///
+  /// Only applicable if read_write_partner_id is set in the guaranteed order.
+  core.bool? readAccessInherited;
+
+  /// The advertisers to remove as read accessors to the guaranteed order.
+  core.List<core.String>? removedAdvertisers;
+
+  EditGuaranteedOrderReadAccessorsRequest({
+    this.addedAdvertisers,
+    this.partnerId,
+    this.readAccessInherited,
+    this.removedAdvertisers,
+  });
+
+  EditGuaranteedOrderReadAccessorsRequest.fromJson(core.Map _json)
+      : this(
+          addedAdvertisers: _json.containsKey('addedAdvertisers')
+              ? (_json['addedAdvertisers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+          readAccessInherited: _json.containsKey('readAccessInherited')
+              ? _json['readAccessInherited'] as core.bool
+              : null,
+          removedAdvertisers: _json.containsKey('removedAdvertisers')
+              ? (_json['removedAdvertisers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
+        if (partnerId != null) 'partnerId': partnerId!,
+        if (readAccessInherited != null)
+          'readAccessInherited': readAccessInherited!,
+        if (removedAdvertisers != null)
+          'removedAdvertisers': removedAdvertisers!,
+      };
+}
+
+class EditGuaranteedOrderReadAccessorsResponse {
+  /// Whether all advertisers of read_write_partner_id have read access to the
+  /// guaranteed order.
+  core.bool? readAccessInherited;
+
+  /// The IDs of advertisers with read access to the guaranteed order.
+  core.List<core.String>? readAdvertiserIds;
+
+  EditGuaranteedOrderReadAccessorsResponse({
+    this.readAccessInherited,
+    this.readAdvertiserIds,
+  });
+
+  EditGuaranteedOrderReadAccessorsResponse.fromJson(core.Map _json)
+      : this(
+          readAccessInherited: _json.containsKey('readAccessInherited')
+              ? _json['readAccessInherited'] as core.bool
+              : null,
+          readAdvertiserIds: _json.containsKey('readAdvertiserIds')
+              ? (_json['readAdvertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readAccessInherited != null)
+          'readAccessInherited': readAccessInherited!,
+        if (readAdvertiserIds != null) 'readAdvertiserIds': readAdvertiserIds!,
+      };
+}
+
+/// Request message for
+/// InventorySourceService.EditInventorySourceReadWriteAccessors.
+class EditInventorySourceReadWriteAccessorsRequest {
+  /// The advertisers to add or remove from the list of advertisers that have
+  /// read/write access to the inventory source.
+  ///
+  /// This change will remove an existing partner read/write accessor.
+  EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate?
+      advertisersUpdate;
+
+  /// Set the partner context as read/write accessor of the inventory source.
+  ///
+  /// This will remove all other current read/write advertiser accessors.
+  core.bool? assignPartner;
+
+  /// The partner context by which the accessors change is being made.
+  ///
+  /// Required.
+  core.String? partnerId;
+
+  EditInventorySourceReadWriteAccessorsRequest({
+    this.advertisersUpdate,
+    this.assignPartner,
+    this.partnerId,
+  });
+
+  EditInventorySourceReadWriteAccessorsRequest.fromJson(core.Map _json)
+      : this(
+          advertisersUpdate: _json.containsKey('advertisersUpdate')
+              ? EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
+                  .fromJson(_json['advertisersUpdate']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          assignPartner: _json.containsKey('assignPartner')
+              ? _json['assignPartner'] as core.bool
+              : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertisersUpdate != null) 'advertisersUpdate': advertisersUpdate!,
+        if (assignPartner != null) 'assignPartner': assignPartner!,
+        if (partnerId != null) 'partnerId': partnerId!,
+      };
+}
+
+/// Update to the list of advertisers with read/write access to the inventory
+/// source.
+class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
+  /// The advertisers to add.
+  core.List<core.String>? addedAdvertisers;
+
+  /// The advertisers to remove.
+  core.List<core.String>? removedAdvertisers;
+
+  EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate({
+    this.addedAdvertisers,
+    this.removedAdvertisers,
+  });
+
+  EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate.fromJson(
+      core.Map _json)
+      : this(
+          addedAdvertisers: _json.containsKey('addedAdvertisers')
+              ? (_json['addedAdvertisers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          removedAdvertisers: _json.containsKey('removedAdvertisers')
+              ? (_json['removedAdvertisers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addedAdvertisers != null) 'addedAdvertisers': addedAdvertisers!,
+        if (removedAdvertisers != null)
+          'removedAdvertisers': removedAdvertisers!,
       };
 }
 
@@ -19684,6 +20300,325 @@ class GoogleAudienceTargetingSetting {
 /// Media resource.
 typedef GoogleBytestreamMedia = $Media;
 
+/// A guaranteed order.
+///
+/// Guaranteed orders are parent entity of guaranteed inventory sources. When
+/// creating a guaranteed inventory source, a guaranteed order ID must be
+/// assigned to the inventory source.
+class GuaranteedOrder {
+  /// The ID of default advertiser of the guaranteed order.
+  ///
+  /// The default advertiser is either the read_write_advertiser_id or, if that
+  /// is not set, the first advertiser listed in read_advertiser_ids. Otherwise,
+  /// there is no default advertiser.
+  ///
+  /// Output only.
+  core.String? defaultAdvertiserId;
+
+  /// The ID of the default campaign that is assigned to the guaranteed order.
+  ///
+  /// The default campaign must belong to the default advertiser.
+  core.String? defaultCampaignId;
+
+  /// The display name of the guaranteed order.
+  ///
+  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The exchange where the guaranteed order originated.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "EXCHANGE_UNSPECIFIED" : Exchange is not specified or is unknown in this
+  /// version.
+  /// - "EXCHANGE_GOOGLE_AD_MANAGER" : Google Ad Manager.
+  /// - "EXCHANGE_APPNEXUS" : AppNexus.
+  /// - "EXCHANGE_BRIGHTROLL" : BrightRoll Exchange for Video from Yahoo!.
+  /// - "EXCHANGE_ADFORM" : Adform.
+  /// - "EXCHANGE_ADMETA" : Admeta.
+  /// - "EXCHANGE_ADMIXER" : Admixer.
+  /// - "EXCHANGE_ADSMOGO" : AdsMogo.
+  /// - "EXCHANGE_ADSWIZZ" : AdsWizz.
+  /// - "EXCHANGE_BIDSWITCH" : BidSwitch.
+  /// - "EXCHANGE_BRIGHTROLL_DISPLAY" : BrightRoll Exchange for Display from
+  /// Yahoo!.
+  /// - "EXCHANGE_CADREON" : Cadreon.
+  /// - "EXCHANGE_DAILYMOTION" : Dailymotion.
+  /// - "EXCHANGE_FIVE" : Five.
+  /// - "EXCHANGE_FLUCT" : Fluct.
+  /// - "EXCHANGE_FREEWHEEL" : FreeWheel SSP.
+  /// - "EXCHANGE_GENIEE" : Geniee.
+  /// - "EXCHANGE_GUMGUM" : GumGum.
+  /// - "EXCHANGE_IMOBILE" : i-mobile.
+  /// - "EXCHANGE_IBILLBOARD" : iBILLBOARD.
+  /// - "EXCHANGE_IMPROVE_DIGITAL" : Improve Digital.
+  /// - "EXCHANGE_INDEX" : Index Exchange.
+  /// - "EXCHANGE_KARGO" : Kargo.
+  /// - "EXCHANGE_MICROAD" : MicroAd.
+  /// - "EXCHANGE_MOPUB" : MoPub.
+  /// - "EXCHANGE_NEND" : Nend.
+  /// - "EXCHANGE_ONE_BY_AOL_DISPLAY" : ONE by AOL: Display Market Place.
+  /// - "EXCHANGE_ONE_BY_AOL_MOBILE" : ONE by AOL: Mobile.
+  /// - "EXCHANGE_ONE_BY_AOL_VIDEO" : ONE by AOL: Video.
+  /// - "EXCHANGE_OOYALA" : Ooyala.
+  /// - "EXCHANGE_OPENX" : OpenX.
+  /// - "EXCHANGE_PERMODO" : Permodo.
+  /// - "EXCHANGE_PLATFORMONE" : Platform One.
+  /// - "EXCHANGE_PLATFORMID" : PlatformId.
+  /// - "EXCHANGE_PUBMATIC" : PubMatic.
+  /// - "EXCHANGE_PULSEPOINT" : PulsePoint.
+  /// - "EXCHANGE_REVENUEMAX" : RevenueMax.
+  /// - "EXCHANGE_RUBICON" : Rubicon.
+  /// - "EXCHANGE_SMARTCLIP" : SmartClip.
+  /// - "EXCHANGE_SMARTRTB" : SmartRTB+.
+  /// - "EXCHANGE_SMARTSTREAMTV" : SmartstreamTv.
+  /// - "EXCHANGE_SOVRN" : Sovrn.
+  /// - "EXCHANGE_SPOTXCHANGE" : SpotXchange.
+  /// - "EXCHANGE_STROER" : Ströer SSP.
+  /// - "EXCHANGE_TEADSTV" : TeadsTv.
+  /// - "EXCHANGE_TELARIA" : Telaria.
+  /// - "EXCHANGE_TVN" : TVN.
+  /// - "EXCHANGE_UNITED" : United.
+  /// - "EXCHANGE_YIELDLAB" : Yieldlab.
+  /// - "EXCHANGE_YIELDMO" : Yieldmo.
+  /// - "EXCHANGE_UNRULYX" : UnrulyX.
+  /// - "EXCHANGE_OPEN8" : Open8.
+  /// - "EXCHANGE_TRITON" : Triton.
+  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
+  /// - "EXCHANGE_TABOOLA" : Taboola.
+  /// - "EXCHANGE_INMOBI" : InMobi.
+  /// - "EXCHANGE_SMAATO" : Smaato.
+  /// - "EXCHANGE_AJA" : Aja.
+  /// - "EXCHANGE_SUPERSHIP" : Supership.
+  /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
+  /// - "EXCHANGE_WAZE" : Waze.
+  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
+  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
+  /// - "EXCHANGE_MEDIANET" : Media.net.
+  /// - "EXCHANGE_TAPJOY" : Tapjoy.
+  core.String? exchange;
+
+  /// The unique identifier of the guaranteed order.
+  ///
+  /// The guaranteed order IDs have the format
+  /// `{exchange}-{legacy_guaranteed_order_id}`.
+  ///
+  /// Output only.
+  core.String? guaranteedOrderId;
+
+  /// The legacy ID of the guaranteed order.
+  ///
+  /// Assigned by the original exchange. The legacy ID is unique within one
+  /// exchange, but is not guaranteed to be unique across all guaranteed orders.
+  /// This ID is used in SDF and UI.
+  ///
+  /// Output only.
+  core.String? legacyGuaranteedOrderId;
+
+  /// The resource name of the guaranteed order.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The publisher name of the guaranteed order.
+  ///
+  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
+  ///
+  /// Required.
+  core.String? publisherName;
+
+  /// Whether all advertisers of read_write_partner_id have read access to the
+  /// guaranteed order.
+  ///
+  /// Only applicable if read_write_partner_id is set. If True, overrides
+  /// read_advertiser_ids.
+  core.bool? readAccessInherited;
+
+  /// The IDs of advertisers with read access to the guaranteed order.
+  ///
+  /// This field must not include the advertiser assigned to
+  /// read_write_advertiser_id if it is set. All advertisers in this field must
+  /// belong to read_write_partner_id or the same partner as
+  /// read_write_advertiser_id.
+  core.List<core.String>? readAdvertiserIds;
+
+  /// The advertiser with read/write access to the guaranteed order.
+  ///
+  /// This is also the default advertiser of the guaranteed order.
+  core.String? readWriteAdvertiserId;
+
+  /// The partner with read/write access to the guaranteed order.
+  core.String? readWritePartnerId;
+
+  /// The status settings of the guaranteed order.
+  GuaranteedOrderStatus? status;
+
+  /// The timestamp when the guaranteed order was last updated.
+  ///
+  /// Assigned by the system.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GuaranteedOrder({
+    this.defaultAdvertiserId,
+    this.defaultCampaignId,
+    this.displayName,
+    this.exchange,
+    this.guaranteedOrderId,
+    this.legacyGuaranteedOrderId,
+    this.name,
+    this.publisherName,
+    this.readAccessInherited,
+    this.readAdvertiserIds,
+    this.readWriteAdvertiserId,
+    this.readWritePartnerId,
+    this.status,
+    this.updateTime,
+  });
+
+  GuaranteedOrder.fromJson(core.Map _json)
+      : this(
+          defaultAdvertiserId: _json.containsKey('defaultAdvertiserId')
+              ? _json['defaultAdvertiserId'] as core.String
+              : null,
+          defaultCampaignId: _json.containsKey('defaultCampaignId')
+              ? _json['defaultCampaignId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          exchange: _json.containsKey('exchange')
+              ? _json['exchange'] as core.String
+              : null,
+          guaranteedOrderId: _json.containsKey('guaranteedOrderId')
+              ? _json['guaranteedOrderId'] as core.String
+              : null,
+          legacyGuaranteedOrderId: _json.containsKey('legacyGuaranteedOrderId')
+              ? _json['legacyGuaranteedOrderId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          publisherName: _json.containsKey('publisherName')
+              ? _json['publisherName'] as core.String
+              : null,
+          readAccessInherited: _json.containsKey('readAccessInherited')
+              ? _json['readAccessInherited'] as core.bool
+              : null,
+          readAdvertiserIds: _json.containsKey('readAdvertiserIds')
+              ? (_json['readAdvertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          readWriteAdvertiserId: _json.containsKey('readWriteAdvertiserId')
+              ? _json['readWriteAdvertiserId'] as core.String
+              : null,
+          readWritePartnerId: _json.containsKey('readWritePartnerId')
+              ? _json['readWritePartnerId'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? GuaranteedOrderStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultAdvertiserId != null)
+          'defaultAdvertiserId': defaultAdvertiserId!,
+        if (defaultCampaignId != null) 'defaultCampaignId': defaultCampaignId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (exchange != null) 'exchange': exchange!,
+        if (guaranteedOrderId != null) 'guaranteedOrderId': guaranteedOrderId!,
+        if (legacyGuaranteedOrderId != null)
+          'legacyGuaranteedOrderId': legacyGuaranteedOrderId!,
+        if (name != null) 'name': name!,
+        if (publisherName != null) 'publisherName': publisherName!,
+        if (readAccessInherited != null)
+          'readAccessInherited': readAccessInherited!,
+        if (readAdvertiserIds != null) 'readAdvertiserIds': readAdvertiserIds!,
+        if (readWriteAdvertiserId != null)
+          'readWriteAdvertiserId': readWriteAdvertiserId!,
+        if (readWritePartnerId != null)
+          'readWritePartnerId': readWritePartnerId!,
+        if (status != null) 'status': status!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The status settings of the guaranteed order.
+class GuaranteedOrderStatus {
+  /// The configuration status of the guaranteed order.
+  ///
+  /// Acceptable values are `PENDING` and `COMPLETED`. A guaranteed order must
+  /// be configured (fill in the required fields, choose creatives, and select a
+  /// default campaign) before it can serve. Currently the configuration action
+  /// can only be performed via UI.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GUARANTEED_ORDER_CONFIG_STATUS_UNSPECIFIED" : The approval status is
+  /// not specified or is unknown in this version.
+  /// - "PENDING" : The beginning state of a guaranteed order. The guaranteed
+  /// order in this state needs to be configured before it can serve.
+  /// - "COMPLETED" : The state after the buyer configures a guaranteed order.
+  core.String? configStatus;
+
+  /// The user-provided reason for pausing this guaranteed order.
+  ///
+  /// Must be UTF-8 encoded with a maximum length of 100 bytes. Only applicable
+  /// when entity_status is set to `ENTITY_STATUS_PAUSED`.
+  core.String? entityPauseReason;
+
+  /// Whether or not the guaranteed order is servable.
+  ///
+  /// Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`,
+  /// and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.
+  /// Possible string values are:
+  /// - "ENTITY_STATUS_UNSPECIFIED" : Default value when status is not specified
+  /// or is unknown in this version.
+  /// - "ENTITY_STATUS_ACTIVE" : The entity is enabled to bid and spend budget.
+  /// - "ENTITY_STATUS_ARCHIVED" : The entity is archived. Bidding and budget
+  /// spending are disabled. An entity can be deleted after archived. Deleted
+  /// entities cannot be retrieved.
+  /// - "ENTITY_STATUS_DRAFT" : The entity is under draft. Bidding and budget
+  /// spending are disabled.
+  /// - "ENTITY_STATUS_PAUSED" : Bidding and budget spending are paused for the
+  /// entity.
+  /// - "ENTITY_STATUS_SCHEDULED_FOR_DELETION" : The entity is scheduled for
+  /// deletion.
+  core.String? entityStatus;
+
+  GuaranteedOrderStatus({
+    this.configStatus,
+    this.entityPauseReason,
+    this.entityStatus,
+  });
+
+  GuaranteedOrderStatus.fromJson(core.Map _json)
+      : this(
+          configStatus: _json.containsKey('configStatus')
+              ? _json['configStatus'] as core.String
+              : null,
+          entityPauseReason: _json.containsKey('entityPauseReason')
+              ? _json['entityPauseReason'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configStatus != null) 'configStatus': configStatus!,
+        if (entityPauseReason != null) 'entityPauseReason': entityPauseReason!,
+        if (entityStatus != null) 'entityStatus': entityStatus!,
+      };
+}
+
 /// Details for assigned household income targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -20607,12 +21542,52 @@ class InventorySource {
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
   core.String? exchange;
 
+  /// The ID of the guaranteed order that this inventory source belongs to.
+  ///
+  /// Only applicable when commitment is
+  /// `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`.
+  ///
+  /// Immutable.
+  core.String? guaranteedOrderId;
+
   /// The unique ID of the inventory source.
   ///
   /// Assigned by the system.
   ///
   /// Output only.
   core.String? inventorySourceId;
+
+  /// The product type of the inventory source, denoting the way through which
+  /// it sells inventory.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INVENTORY_SOURCE_PRODUCT_TYPE_UNSPECIFIED" : The product type is not
+  /// specified or is unknown in this version. Modifying inventory sources of
+  /// this product type are not supported via API.
+  /// - "PREFERRED_DEAL" : The inventory source sells inventory through
+  /// Preferred Deal.
+  /// - "PRIVATE_AUCTION" : The inventory source sells inventory through Private
+  /// Auction.
+  /// - "PROGRAMMATIC_GUARANTEED" : The inventory source sells inventory through
+  /// Programmatic Guaranteed.
+  /// - "TAG_GUARANTEED" : The inventory source sells inventory through Tag
+  /// Guaranteed.
+  /// - "YOUTUBE_RESERVE" : The inventory source sells inventory through YouTube
+  /// Reserve.
+  /// - "INSTANT_RESERVE" : The inventory source sells inventory through Instant
+  /// Reserve. Modifying inventory sources of this product type are not
+  /// supported via API.
+  /// - "GUARANTEED_PACKAGE" : The inventory source sells inventory through
+  /// Guaranteed Package. Modifying inventory sources of this product type are
+  /// not supported via API.
+  /// - "PROGRAMMATIC_TV" : The inventory source sells inventory through
+  /// Programmtic TV. Modifying inventory sources of this product type are not
+  /// supported via API.
+  /// - "AUCTION_PACKAGE" : The inventory source sells inventory through Auction
+  /// Package. Modifying inventory sources of this product type are not
+  /// supported via API.
+  core.String? inventorySourceProductType;
 
   /// Denotes the type of the inventory source.
   /// Possible string values are:
@@ -20635,8 +21610,39 @@ class InventorySource {
   /// Required.
   RateDetails? rateDetails;
 
+  /// The IDs of advertisers with read-only access to the inventory source.
+  ///
+  /// Output only.
+  core.List<core.String>? readAdvertiserIds;
+
+  /// The IDs of partners with read-only access to the inventory source.
+  ///
+  /// All advertisers of partners in this field inherit read-only access to the
+  /// inventory source.
+  ///
+  /// Output only.
+  core.List<core.String>? readPartnerIds;
+
+  /// The partner or advertisers that have read/write access to the inventory
+  /// source.
+  ///
+  /// Output only when commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`,
+  /// in which case the read/write accessors are inherited from the parent
+  /// guaranteed order. Required when commitment is
+  /// `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED`. If commitment is
+  /// `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED` and a partner is set in this
+  /// field, all advertisers under this partner will automatically have
+  /// read-only access to the inventory source. These advertisers will not be
+  /// included in read_advertiser_ids.
+  InventorySourceAccessors? readWriteAccessors;
+
   /// The status settings of the inventory source.
   InventorySourceStatus? status;
+
+  /// The unique ID of the sub-site property assigned to this inventory source.
+  ///
+  /// Immutable.
+  core.String? subSitePropertyId;
 
   /// The time range when this inventory source starts and stops serving.
   TimeRange? timeRange;
@@ -20655,12 +21661,18 @@ class InventorySource {
     this.deliveryMethod,
     this.displayName,
     this.exchange,
+    this.guaranteedOrderId,
     this.inventorySourceId,
+    this.inventorySourceProductType,
     this.inventorySourceType,
     this.name,
     this.publisherName,
     this.rateDetails,
+    this.readAdvertiserIds,
+    this.readPartnerIds,
+    this.readWriteAccessors,
     this.status,
+    this.subSitePropertyId,
     this.timeRange,
     this.updateTime,
   });
@@ -20688,9 +21700,16 @@ class InventorySource {
           exchange: _json.containsKey('exchange')
               ? _json['exchange'] as core.String
               : null,
+          guaranteedOrderId: _json.containsKey('guaranteedOrderId')
+              ? _json['guaranteedOrderId'] as core.String
+              : null,
           inventorySourceId: _json.containsKey('inventorySourceId')
               ? _json['inventorySourceId'] as core.String
               : null,
+          inventorySourceProductType:
+              _json.containsKey('inventorySourceProductType')
+                  ? _json['inventorySourceProductType'] as core.String
+                  : null,
           inventorySourceType: _json.containsKey('inventorySourceType')
               ? _json['inventorySourceType'] as core.String
               : null,
@@ -20702,9 +21721,26 @@ class InventorySource {
               ? RateDetails.fromJson(
                   _json['rateDetails'] as core.Map<core.String, core.dynamic>)
               : null,
+          readAdvertiserIds: _json.containsKey('readAdvertiserIds')
+              ? (_json['readAdvertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          readPartnerIds: _json.containsKey('readPartnerIds')
+              ? (_json['readPartnerIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          readWriteAccessors: _json.containsKey('readWriteAccessors')
+              ? InventorySourceAccessors.fromJson(_json['readWriteAccessors']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           status: _json.containsKey('status')
               ? InventorySourceStatus.fromJson(
                   _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subSitePropertyId: _json.containsKey('subSitePropertyId')
+              ? _json['subSitePropertyId'] as core.String
               : null,
           timeRange: _json.containsKey('timeRange')
               ? TimeRange.fromJson(
@@ -20722,15 +21758,100 @@ class InventorySource {
         if (deliveryMethod != null) 'deliveryMethod': deliveryMethod!,
         if (displayName != null) 'displayName': displayName!,
         if (exchange != null) 'exchange': exchange!,
+        if (guaranteedOrderId != null) 'guaranteedOrderId': guaranteedOrderId!,
         if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
+        if (inventorySourceProductType != null)
+          'inventorySourceProductType': inventorySourceProductType!,
         if (inventorySourceType != null)
           'inventorySourceType': inventorySourceType!,
         if (name != null) 'name': name!,
         if (publisherName != null) 'publisherName': publisherName!,
         if (rateDetails != null) 'rateDetails': rateDetails!,
+        if (readAdvertiserIds != null) 'readAdvertiserIds': readAdvertiserIds!,
+        if (readPartnerIds != null) 'readPartnerIds': readPartnerIds!,
+        if (readWriteAccessors != null)
+          'readWriteAccessors': readWriteAccessors!,
         if (status != null) 'status': status!,
+        if (subSitePropertyId != null) 'subSitePropertyId': subSitePropertyId!,
         if (timeRange != null) 'timeRange': timeRange!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The partner or advertisers with access to the inventory source.
+class InventorySourceAccessors {
+  /// The advertisers with access to the inventory source.
+  ///
+  /// All advertisers must belong to the same partner.
+  InventorySourceAccessorsAdvertiserAccessors? advertisers;
+
+  /// The partner with access to the inventory source.
+  InventorySourceAccessorsPartnerAccessor? partner;
+
+  InventorySourceAccessors({
+    this.advertisers,
+    this.partner,
+  });
+
+  InventorySourceAccessors.fromJson(core.Map _json)
+      : this(
+          advertisers: _json.containsKey('advertisers')
+              ? InventorySourceAccessorsAdvertiserAccessors.fromJson(
+                  _json['advertisers'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partner: _json.containsKey('partner')
+              ? InventorySourceAccessorsPartnerAccessor.fromJson(
+                  _json['partner'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertisers != null) 'advertisers': advertisers!,
+        if (partner != null) 'partner': partner!,
+      };
+}
+
+/// The advertisers with access to the inventory source.
+class InventorySourceAccessorsAdvertiserAccessors {
+  /// The IDs of the advertisers.
+  core.List<core.String>? advertiserIds;
+
+  InventorySourceAccessorsAdvertiserAccessors({
+    this.advertiserIds,
+  });
+
+  InventorySourceAccessorsAdvertiserAccessors.fromJson(core.Map _json)
+      : this(
+          advertiserIds: _json.containsKey('advertiserIds')
+              ? (_json['advertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertiserIds != null) 'advertiserIds': advertiserIds!,
+      };
+}
+
+/// The partner with access to the inventory source.
+class InventorySourceAccessorsPartnerAccessor {
+  /// The ID of the partner.
+  core.String? partnerId;
+
+  InventorySourceAccessorsPartnerAccessor({
+    this.partnerId,
+  });
+
+  InventorySourceAccessorsPartnerAccessor.fromJson(core.Map _json)
+      : this(
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (partnerId != null) 'partnerId': partnerId!,
       };
 }
 
@@ -22371,6 +23492,42 @@ class ListGoogleAudiencesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleAudiences != null) 'googleAudiences': googleAudiences!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+class ListGuaranteedOrdersResponse {
+  /// The list of guaranteed orders.
+  ///
+  /// This list will be absent if empty.
+  core.List<GuaranteedOrder>? guaranteedOrders;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `ListGuaranteedOrders` method to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  ListGuaranteedOrdersResponse({
+    this.guaranteedOrders,
+    this.nextPageToken,
+  });
+
+  ListGuaranteedOrdersResponse.fromJson(core.Map _json)
+      : this(
+          guaranteedOrders: _json.containsKey('guaranteedOrders')
+              ? (_json['guaranteedOrders'] as core.List)
+                  .map((value) => GuaranteedOrder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (guaranteedOrders != null) 'guaranteedOrders': guaranteedOrders!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -24218,7 +25375,7 @@ class ParentEntityFilter {
 class ParentalStatusAssignedTargetingOptionDetails {
   /// The parental status of the audience.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "PARENTAL_STATUS_UNSPECIFIED" : Default value when parental status is
   /// not specified in this version. This enum is a place holder for default
@@ -25783,7 +26940,7 @@ class SensitiveCategoryAssignedTargetingOptionDetails {
 
   /// An enum for the DV360 Sensitive category content classifier.
   ///
-  /// Output only in v1.
+  /// Output only.
   /// Possible string values are:
   /// - "SENSITIVE_CATEGORY_UNSPECIFIED" : This enum is only a placeholder and
   /// doesn't specify a DV360 sensitive category.

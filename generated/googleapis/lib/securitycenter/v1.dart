@@ -2334,7 +2334,8 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is "organizations/\[organization_id\]".
+  /// parent. Its format is "organizations/\[organization_id\]" or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
@@ -2456,7 +2457,8 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization to list notification
-  /// configs. Its format is "organizations/\[organization_id\]".
+  /// configs. Its format is "organizations/\[organization_id\]" or
+  /// "projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -5281,6 +5283,46 @@ class BulkMuteFindingsRequest {
       };
 }
 
+/// Contains compliance information about a security standard indicating unmet
+/// recommendations.
+class Compliance {
+  /// e.g. A.12.4.1
+  core.List<core.String>? ids;
+
+  /// e.g. "cis", "pci", "owasp", etc.
+  core.String? standard;
+
+  /// e.g. 1.1
+  core.String? version;
+
+  Compliance({
+    this.ids,
+    this.standard,
+    this.version,
+  });
+
+  Compliance.fromJson(core.Map _json)
+      : this(
+          ids: _json.containsKey('ids')
+              ? (_json['ids'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          standard: _json.containsKey('standard')
+              ? _json['standard'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ids != null) 'ids': ids!,
+        if (standard != null) 'standard': standard!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Contains information about the IP connection associated with the finding.
 class Connection {
   /// Destination IP address.
@@ -5342,6 +5384,50 @@ class Connection {
         if (protocol != null) 'protocol': protocol!,
         if (sourceIp != null) 'sourceIp': sourceIp!,
         if (sourcePort != null) 'sourcePort': sourcePort!,
+      };
+}
+
+/// Representa a single contact's email address
+class Contact {
+  /// An email address e.g. "person123@company.com"
+  core.String? email;
+
+  Contact({
+    this.email,
+  });
+
+  Contact.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+      };
+}
+
+/// The details pertaining to specific contacts
+class ContactDetails {
+  /// A list of contacts
+  core.List<Contact>? contacts;
+
+  ContactDetails({
+    this.contacts,
+  });
+
+  ContactDetails.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? (_json['contacts'] as core.List)
+                  .map((value) => Contact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contacts != null) 'contacts': contacts!,
       };
 }
 
@@ -5572,6 +5658,108 @@ class Cvssv3 {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// EnvironmentVariable is a name-value pair to store env variables for Process.
+class EnvironmentVariable {
+  /// Environment variable name as a JSON encoded string.
+  core.String? name;
+
+  /// Environment variable value as a JSON encoded string.
+  core.String? val;
+
+  EnvironmentVariable({
+    this.name,
+    this.val,
+  });
+
+  EnvironmentVariable.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          val: _json.containsKey('val') ? _json['val'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (val != null) 'val': val!,
+      };
+}
+
+/// Resource that has been exfiltrated or exfiltrated_to.
+class ExfilResource {
+  /// Subcomponents of the asset that is exfiltrated - these could be URIs used
+  /// during exfiltration, table names, databases, filenames, etc.
+  ///
+  /// For example, multiple tables may be exfiltrated from the same CloudSQL
+  /// instance, or multiple files from the same Cloud Storage bucket.
+  core.List<core.String>? components;
+
+  /// Resource’s URI (https://google.aip.dev/122#full-resource-names)
+  core.String? name;
+
+  ExfilResource({
+    this.components,
+    this.name,
+  });
+
+  ExfilResource.fromJson(core.Map _json)
+      : this(
+          components: _json.containsKey('components')
+              ? (_json['components'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (components != null) 'components': components!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Exfiltration represents a data exfiltration attempt of one or more source(s)
+/// to one or more target(s).
+///
+/// Source(s) represent the source of data that is exfiltrated, and Target(s)
+/// represents the destination the data was copied to.
+class Exfiltration {
+  /// If there are multiple sources, then the data is considered “joined”
+  /// between them.
+  ///
+  /// For instance, BigQuery can join multiple tables, and each table would be
+  /// considered a source.
+  core.List<ExfilResource>? sources;
+
+  /// If there are multiple targets, each target would get a complete copy of
+  /// the “joined” source data.
+  core.List<ExfilResource>? targets;
+
+  Exfiltration({
+    this.sources,
+    this.targets,
+  });
+
+  Exfiltration.fromJson(core.Map _json)
+      : this(
+          sources: _json.containsKey('sources')
+              ? (_json['sources'] as core.List)
+                  .map((value) => ExfilResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targets: _json.containsKey('targets')
+              ? (_json['targets'] as core.List)
+                  .map((value) => ExfilResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sources != null) 'sources': sources!,
+        if (targets != null) 'targets': targets!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -5591,6 +5779,72 @@ typedef Empty = $Empty;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// File information about the related binary/library used by an executable, or
+/// the script used by a script interpreter
+class File {
+  /// Prefix of the file contents as a JSON encoded string.
+  ///
+  /// (Currently only populated for Malicious Script Executed findings.)
+  core.String? contents;
+
+  /// The length in bytes of the file prefix that was hashed.
+  ///
+  /// If hashed_size == size, any hashes reported represent the entire file.
+  core.String? hashedSize;
+
+  /// True when the hash covers only a prefix of the file.
+  core.bool? partiallyHashed;
+
+  /// Absolute path of the file as a JSON encoded string.
+  core.String? path;
+
+  /// SHA256 hash of the first hashed_size bytes of the file encoded as a hex
+  /// string.
+  ///
+  /// If hashed_size == size, hash_sha256 represents the SHA256 hash of the
+  /// entire file.
+  core.String? sha256;
+
+  /// Size of the file in bytes.
+  core.String? size;
+
+  File({
+    this.contents,
+    this.hashedSize,
+    this.partiallyHashed,
+    this.path,
+    this.sha256,
+    this.size,
+  });
+
+  File.fromJson(core.Map _json)
+      : this(
+          contents: _json.containsKey('contents')
+              ? _json['contents'] as core.String
+              : null,
+          hashedSize: _json.containsKey('hashedSize')
+              ? _json['hashedSize'] as core.String
+              : null,
+          partiallyHashed: _json.containsKey('partiallyHashed')
+              ? _json['partiallyHashed'] as core.bool
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          sha256: _json.containsKey('sha256')
+              ? _json['sha256'] as core.String
+              : null,
+          size: _json.containsKey('size') ? _json['size'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (hashedSize != null) 'hashedSize': hashedSize!,
+        if (partiallyHashed != null) 'partiallyHashed': partiallyHashed!,
+        if (path != null) 'path': path!,
+        if (sha256 != null) 'sha256': sha256!,
+        if (size != null) 'size': size!,
+      };
+}
 
 /// Security Command Center finding.
 ///
@@ -5620,8 +5874,23 @@ class Finding {
   /// "XSS_FLASH_INJECTION"
   core.String? category;
 
+  /// Contains compliance information for security standards associated to the
+  /// finding.
+  core.List<Compliance>? compliances;
+
   /// Contains information about the IP connection associated with the finding.
   core.List<Connection>? connections;
+
+  /// Map containing the point of contacts for the given finding.
+  ///
+  /// The key represents the type of contact, while the value contains a list of
+  /// all the contacts that pertain. Please refer to:
+  /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories
+  /// { “security”: {contact: {email: “person1@company.com”} contact: {email:
+  /// “person2@company.com”} }
+  ///
+  /// Output only.
+  core.Map<core.String, ContactDetails>? contacts;
 
   /// The time at which the finding was created in Security Command Center.
   core.String? createTime;
@@ -5638,6 +5907,9 @@ class Finding {
   /// resolved, then this time reflects when the finding was resolved. This must
   /// not be set to a value greater than the current timestamp.
   core.String? eventTime;
+
+  /// Represents exfiltrations associated with the Finding.
+  Exfiltration? exfiltration;
 
   /// Third party SIEM/SOAR fields within SCC, contains external system
   /// information and external system finding fields.
@@ -5725,6 +5997,9 @@ class Finding {
   /// This field is immutable after creation time. For example:
   /// "organizations/{organization_id}/sources/{source_id}"
   core.String? parent;
+
+  /// Represents operating system processes associated with the Finding.
+  core.List<Process>? processes;
 
   /// For findings on Google Cloud resources, the full resource name of the
   /// Google Cloud resource this finding is for.
@@ -5816,10 +6091,13 @@ class Finding {
     this.access,
     this.canonicalName,
     this.category,
+    this.compliances,
     this.connections,
+    this.contacts,
     this.createTime,
     this.description,
     this.eventTime,
+    this.exfiltration,
     this.externalSystems,
     this.externalUri,
     this.findingClass,
@@ -5832,6 +6110,7 @@ class Finding {
     this.name,
     this.nextSteps,
     this.parent,
+    this.processes,
     this.resourceName,
     this.securityMarks,
     this.severity,
@@ -5852,11 +6131,26 @@ class Finding {
           category: _json.containsKey('category')
               ? _json['category'] as core.String
               : null,
+          compliances: _json.containsKey('compliances')
+              ? (_json['compliances'] as core.List)
+                  .map((value) => Compliance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           connections: _json.containsKey('connections')
               ? (_json['connections'] as core.List)
                   .map((value) => Connection.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          contacts: _json.containsKey('contacts')
+              ? (_json['contacts'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ContactDetails.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
@@ -5866,6 +6160,10 @@ class Finding {
               : null,
           eventTime: _json.containsKey('eventTime')
               ? _json['eventTime'] as core.String
+              : null,
+          exfiltration: _json.containsKey('exfiltration')
+              ? Exfiltration.fromJson(
+                  _json['exfiltration'] as core.Map<core.String, core.dynamic>)
               : null,
           externalSystems: _json.containsKey('externalSystems')
               ? (_json['externalSystems']
@@ -5912,6 +6210,12 @@ class Finding {
           parent: _json.containsKey('parent')
               ? _json['parent'] as core.String
               : null,
+          processes: _json.containsKey('processes')
+              ? (_json['processes'] as core.List)
+                  .map((value) => Process.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           resourceName: _json.containsKey('resourceName')
               ? _json['resourceName'] as core.String
               : null,
@@ -5937,10 +6241,13 @@ class Finding {
         if (access != null) 'access': access!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
+        if (compliances != null) 'compliances': compliances!,
         if (connections != null) 'connections': connections!,
+        if (contacts != null) 'contacts': contacts!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (eventTime != null) 'eventTime': eventTime!,
+        if (exfiltration != null) 'exfiltration': exfiltration!,
         if (externalSystems != null) 'externalSystems': externalSystems!,
         if (externalUri != null) 'externalUri': externalUri!,
         if (findingClass != null) 'findingClass': findingClass!,
@@ -5953,6 +6260,7 @@ class Finding {
         if (name != null) 'name': name!,
         if (nextSteps != null) 'nextSteps': nextSteps!,
         if (parent != null) 'parent': parent!,
+        if (processes != null) 'processes': processes!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (securityMarks != null) 'securityMarks': securityMarks!,
         if (severity != null) 'severity': severity!,
@@ -7579,6 +7887,103 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Represents an operating system process.
+class Process {
+  /// Process arguments as JSON encoded strings.
+  core.List<core.String>? args;
+
+  /// True if arguments is incomplete.
+  core.bool? argumentsTruncated;
+
+  /// File information for the process executable.
+  File? binary;
+
+  /// Process environment variables.
+  core.List<EnvironmentVariable>? envVariables;
+
+  /// True if env_variables is incomplete.
+  core.bool? envVariablesTruncated;
+
+  /// File information for libraries loaded by the process.
+  core.List<File>? libraries;
+
+  /// The parent process id.
+  core.String? parentPid;
+
+  /// The process id.
+  core.String? pid;
+
+  /// When the process represents the invocation of a script, binary provides
+  /// information about the interpreter while script provides information about
+  /// the script file provided to the interpreter.
+  File? script;
+
+  Process({
+    this.args,
+    this.argumentsTruncated,
+    this.binary,
+    this.envVariables,
+    this.envVariablesTruncated,
+    this.libraries,
+    this.parentPid,
+    this.pid,
+    this.script,
+  });
+
+  Process.fromJson(core.Map _json)
+      : this(
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          argumentsTruncated: _json.containsKey('argumentsTruncated')
+              ? _json['argumentsTruncated'] as core.bool
+              : null,
+          binary: _json.containsKey('binary')
+              ? File.fromJson(
+                  _json['binary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          envVariables: _json.containsKey('envVariables')
+              ? (_json['envVariables'] as core.List)
+                  .map((value) => EnvironmentVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          envVariablesTruncated: _json.containsKey('envVariablesTruncated')
+              ? _json['envVariablesTruncated'] as core.bool
+              : null,
+          libraries: _json.containsKey('libraries')
+              ? (_json['libraries'] as core.List)
+                  .map((value) => File.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentPid: _json.containsKey('parentPid')
+              ? _json['parentPid'] as core.String
+              : null,
+          pid: _json.containsKey('pid') ? _json['pid'] as core.String : null,
+          script: _json.containsKey('script')
+              ? File.fromJson(
+                  _json['script'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (args != null) 'args': args!,
+        if (argumentsTruncated != null)
+          'argumentsTruncated': argumentsTruncated!,
+        if (binary != null) 'binary': binary!,
+        if (envVariables != null) 'envVariables': envVariables!,
+        if (envVariablesTruncated != null)
+          'envVariablesTruncated': envVariablesTruncated!,
+        if (libraries != null) 'libraries': libraries!,
+        if (parentPid != null) 'parentPid': parentPid!,
+        if (pid != null) 'pid': pid!,
+        if (script != null) 'script': script!,
       };
 }
 
