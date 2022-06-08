@@ -1445,8 +1445,7 @@ class ProjectsDatabasesDocumentsResource {
       body: _body,
       queryParams: _queryParams,
     );
-    return RunQueryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+    return RunQueryResponse.fromJson(_response as core.List);
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -3776,7 +3775,8 @@ class RollbackRequest {
       };
 }
 
-class RunQueryRequestElement {
+/// The request for Firestore.RunQuery.
+class RunQueryRequest {
   /// Starts a new transaction and reads the documents.
   ///
   /// Defaults to a read-only transaction. The new transaction ID will be
@@ -3803,14 +3803,14 @@ class RunQueryRequestElement {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  RunQueryRequestElement({
+  RunQueryRequest({
     this.newTransaction,
     this.readTime,
     this.structuredQuery,
     this.transaction,
   });
 
-  RunQueryRequestElement.fromJson(core.Map _json)
+  RunQueryRequest.fromJson(core.Map _json)
       : this(
           newTransaction: _json.containsKey('newTransaction')
               ? TransactionOptions.fromJson(_json['newTransaction']
@@ -3836,42 +3836,7 @@ class RunQueryRequestElement {
       };
 }
 
-/// The request for Firestore.RunQuery.
-class RunQueryRequest extends collection.ListBase<RunQueryRequestElement> {
-  final core.List<RunQueryRequestElement> _inner;
-
-  RunQueryRequest() : _inner = [];
-
-  RunQueryRequest.fromJson(core.List json)
-      : _inner = json
-            .map((value) => RunQueryRequestElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  RunQueryRequestElement operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, RunQueryRequestElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(RunQueryRequestElement element) {
-    _inner.add(element);
-  }
-}
-
-/// The response for Firestore.RunQuery.
-class RunQueryResponse {
+class RunQueryResponseElement {
   /// A query result, not set when reporting partial progress.
   Document? document;
 
@@ -3906,7 +3871,7 @@ class RunQueryResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  RunQueryResponse({
+  RunQueryResponseElement({
     this.document,
     this.done,
     this.readTime,
@@ -3914,7 +3879,7 @@ class RunQueryResponse {
     this.transaction,
   });
 
-  RunQueryResponse.fromJson(core.Map _json)
+  RunQueryResponseElement.fromJson(core.Map _json)
       : this(
           document: _json.containsKey('document')
               ? Document.fromJson(
@@ -3939,6 +3904,40 @@ class RunQueryResponse {
         if (skippedResults != null) 'skippedResults': skippedResults!,
         if (transaction != null) 'transaction': transaction!,
       };
+}
+
+/// The response for Firestore.RunQuery.
+class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
+  final core.List<RunQueryResponseElement> _inner;
+
+  RunQueryResponse() : _inner = [];
+
+  RunQueryResponse.fromJson(core.List json)
+      : _inner = json
+            .map((value) => RunQueryResponseElement.fromJson(
+                value as core.Map<core.String, core.dynamic>))
+            .toList();
+
+  @core.override
+  RunQueryResponseElement operator [](core.int key) => _inner[key];
+
+  @core.override
+  void operator []=(core.int key, RunQueryResponseElement value) {
+    _inner[key] = value;
+  }
+
+  @core.override
+  core.int get length => _inner.length;
+
+  @core.override
+  set length(core.int newLength) {
+    _inner.length = newLength;
+  }
+
+  @core.override
+  void add(RunQueryResponseElement element) {
+    _inner.add(element);
+  }
 }
 
 /// The `Status` type defines a logical error model that is suitable for

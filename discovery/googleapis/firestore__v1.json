@@ -2787,60 +2787,60 @@
         "RunQueryRequest": {
             "description": "The request for Firestore.RunQuery.",
             "id": "RunQueryRequest",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "newTransaction": {
-                        "$ref": "TransactionOptions",
-                        "description": "Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream."
-                    },
-                    "readTime": {
-                        "description": "Reads documents as they were at the given time. This may not be older than 270 seconds.",
-                        "format": "google-datetime",
-                        "type": "string"
-                    },
-                    "structuredQuery": {
-                        "$ref": "StructuredQuery",
-                        "description": "A structured query."
-                    },
-                    "transaction": {
-                        "description": "Run the query within an already active transaction. The value here is the opaque transaction ID to execute the query in.",
-                        "format": "byte",
-                        "type": "string"
-                    }
-                }
-            },
-            "type": "array"
-        },
-        "RunQueryResponse": {
-            "description": "The response for Firestore.RunQuery.",
-            "id": "RunQueryResponse",
             "properties": {
-                "document": {
-                    "$ref": "Document",
-                    "description": "A query result, not set when reporting partial progress."
-                },
-                "done": {
-                    "description": "If present, Firestore has completely finished the request and no more documents will be returned.",
-                    "type": "boolean"
+                "newTransaction": {
+                    "$ref": "TransactionOptions",
+                    "description": "Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream."
                 },
                 "readTime": {
-                    "description": "The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.",
+                    "description": "Reads documents as they were at the given time. This may not be older than 270 seconds.",
                     "format": "google-datetime",
                     "type": "string"
                 },
-                "skippedResults": {
-                    "description": "The number of results that have been skipped due to an offset between the last response and the current response.",
-                    "format": "int32",
-                    "type": "integer"
+                "structuredQuery": {
+                    "$ref": "StructuredQuery",
+                    "description": "A structured query."
                 },
                 "transaction": {
-                    "description": "The transaction that was started as part of this request. Can only be set in the first response, and only if RunQueryRequest.new_transaction was set in the request. If set, no other fields will be set in this response.",
+                    "description": "Run the query within an already active transaction. The value here is the opaque transaction ID to execute the query in.",
                     "format": "byte",
                     "type": "string"
                 }
             },
             "type": "object"
+        },
+        "RunQueryResponse": {
+            "description": "The response for Firestore.RunQuery.",
+            "id": "RunQueryResponse",
+            "items": {
+                "properties": {
+                    "document": {
+                        "$ref": "Document",
+                        "description": "A query result, not set when reporting partial progress."
+                    },
+                    "done": {
+                        "description": "If present, Firestore has completely finished the request and no more documents will be returned.",
+                        "type": "boolean"
+                    },
+                    "readTime": {
+                        "description": "The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.",
+                        "format": "google-datetime",
+                        "type": "string"
+                    },
+                    "skippedResults": {
+                        "description": "The number of results that have been skipped due to an offset between the last response and the current response.",
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "transaction": {
+                        "description": "The transaction that was started as part of this request. Can only be set in the first response, and only if RunQueryRequest.new_transaction was set in the request. If set, no other fields will be set in this response.",
+                        "format": "byte",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "type":"array"
         },
         "Status": {
             "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
