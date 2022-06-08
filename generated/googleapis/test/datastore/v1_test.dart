@@ -42,6 +42,7 @@ api.AllocateIdsRequest buildAllocateIdsRequest() {
   final o = api.AllocateIdsRequest();
   buildCounterAllocateIdsRequest++;
   if (buildCounterAllocateIdsRequest < 3) {
+    o.databaseId = 'foo';
     o.keys = buildUnnamed0();
   }
   buildCounterAllocateIdsRequest--;
@@ -51,6 +52,10 @@ api.AllocateIdsRequest buildAllocateIdsRequest() {
 void checkAllocateIdsRequest(api.AllocateIdsRequest o) {
   buildCounterAllocateIdsRequest++;
   if (buildCounterAllocateIdsRequest < 3) {
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed0(o.keys!);
   }
   buildCounterAllocateIdsRequest--;
@@ -121,6 +126,7 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
   final o = api.BeginTransactionRequest();
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
+    o.databaseId = 'foo';
     o.transactionOptions = buildTransactionOptions();
   }
   buildCounterBeginTransactionRequest--;
@@ -130,6 +136,10 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
 void checkBeginTransactionRequest(api.BeginTransactionRequest o) {
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkTransactionOptions(o.transactionOptions!);
   }
   buildCounterBeginTransactionRequest--;
@@ -173,6 +183,7 @@ api.CommitRequest buildCommitRequest() {
   final o = api.CommitRequest();
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
+    o.databaseId = 'foo';
     o.mode = 'foo';
     o.mutations = buildUnnamed3();
     o.transaction = 'foo';
@@ -184,6 +195,10 @@ api.CommitRequest buildCommitRequest() {
 void checkCommitRequest(api.CommitRequest o) {
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.mode!,
       unittest.equals('foo'),
@@ -970,6 +985,7 @@ api.LookupRequest buildLookupRequest() {
   final o = api.LookupRequest();
   buildCounterLookupRequest++;
   if (buildCounterLookupRequest < 3) {
+    o.databaseId = 'foo';
     o.keys = buildUnnamed19();
     o.readOptions = buildReadOptions();
   }
@@ -980,6 +996,10 @@ api.LookupRequest buildLookupRequest() {
 void checkLookupRequest(api.LookupRequest o) {
   buildCounterLookupRequest++;
   if (buildCounterLookupRequest < 3) {
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed19(o.keys!);
     checkReadOptions(o.readOptions!);
   }
@@ -1118,6 +1138,7 @@ api.PartitionId buildPartitionId() {
   final o = api.PartitionId();
   buildCounterPartitionId++;
   if (buildCounterPartitionId < 3) {
+    o.databaseId = 'foo';
     o.namespaceId = 'foo';
     o.projectId = 'foo';
   }
@@ -1128,6 +1149,10 @@ api.PartitionId buildPartitionId() {
 void checkPartitionId(api.PartitionId o) {
   buildCounterPartitionId++;
   if (buildCounterPartitionId < 3) {
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.namespaceId!,
       unittest.equals('foo'),
@@ -1550,6 +1575,7 @@ api.RollbackRequest buildRollbackRequest() {
   final o = api.RollbackRequest();
   buildCounterRollbackRequest++;
   if (buildCounterRollbackRequest < 3) {
+    o.databaseId = 'foo';
     o.transaction = 'foo';
   }
   buildCounterRollbackRequest--;
@@ -1559,6 +1585,10 @@ api.RollbackRequest buildRollbackRequest() {
 void checkRollbackRequest(api.RollbackRequest o) {
   buildCounterRollbackRequest++;
   if (buildCounterRollbackRequest < 3) {
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.transaction!,
       unittest.equals('foo'),
@@ -1587,6 +1617,7 @@ api.RunQueryRequest buildRunQueryRequest() {
   final o = api.RunQueryRequest();
   buildCounterRunQueryRequest++;
   if (buildCounterRunQueryRequest < 3) {
+    o.databaseId = 'foo';
     o.gqlQuery = buildGqlQuery();
     o.partitionId = buildPartitionId();
     o.query = buildQuery();
@@ -1599,6 +1630,10 @@ api.RunQueryRequest buildRunQueryRequest() {
 void checkRunQueryRequest(api.RunQueryRequest o) {
   buildCounterRunQueryRequest++;
   if (buildCounterRunQueryRequest < 3) {
+    unittest.expect(
+      o.databaseId!,
+      unittest.equals('foo'),
+    );
     checkGqlQuery(o.gqlQuery!);
     checkPartitionId(o.partitionId!);
     checkQuery(o.query!);

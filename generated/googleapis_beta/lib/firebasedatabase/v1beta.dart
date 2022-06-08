@@ -457,7 +457,7 @@ class ProjectsLocationsInstancesResource {
 class DatabaseInstance {
   /// The globally unique hostname of the database.
   ///
-  /// Immutable.
+  /// Output only.
   core.String? databaseUrl;
 
   /// The fully qualified resource name of the database instance, in the form:
@@ -467,11 +467,15 @@ class DatabaseInstance {
   /// The resource name of the project this instance belongs to.
   ///
   /// For example: `projects/{project-number}`.
+  ///
+  /// Output only.
   core.String? project;
 
   /// The database's lifecycle state.
   ///
   /// Read-only.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state, likely the result of
   /// an error on the backend. This is only used for distinguishing unset
@@ -486,6 +490,8 @@ class DatabaseInstance {
   ///
   /// On creation only USER_DATABASE is allowed, which is also the default when
   /// omitted.
+  ///
+  /// Immutable.
   /// Possible string values are:
   /// - "DATABASE_INSTANCE_TYPE_UNSPECIFIED" : Unknown state, likely the result
   /// of an error on the backend. This is only used for distinguishing unset

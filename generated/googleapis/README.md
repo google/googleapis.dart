@@ -254,7 +254,7 @@ The Google Books API allows clients to access the Google Books repository.
 
 #### Business Profile Performance API - `businessprofileperformance.v1`
 
-The Business Profile Performance API allows merchants to fetch performance insights about their business profile on Google.
+The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google.
 
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/9.1.0/businessprofileperformance.v1/businessprofileperformance.v1-library.html)
@@ -654,6 +654,13 @@ DoubleClick Bid Manager API allows users to manage and create campaigns and repo
 
 - [Documentation](https://developers.google.com/bid-manager/)
 - [API details](https://pub.dev/documentation/googleapis/9.1.0/doubleclickbidmanager.v1_1/doubleclickbidmanager.v1_1-library.html)
+
+#### DoubleClick Bid Manager API - `doubleclickbidmanager.v2`
+
+DoubleClick Bid Manager API allows users to manage and create campaigns and reports.
+
+- [Documentation](https://developers.google.com/bid-manager/)
+- [API details](https://pub.dev/documentation/googleapis/9.1.0/doubleclickbidmanager.v2/doubleclickbidmanager.v2-library.html)
 
 #### Search Ads 360 API - `doubleclicksearch.v2`
 

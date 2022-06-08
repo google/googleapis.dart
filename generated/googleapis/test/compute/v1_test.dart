@@ -38476,9 +38476,15 @@ api.UsableSubnetwork buildUsableSubnetwork() {
   final o = api.UsableSubnetwork();
   buildCounterUsableSubnetwork++;
   if (buildCounterUsableSubnetwork < 3) {
+    o.externalIpv6Prefix = 'foo';
+    o.internalIpv6Prefix = 'foo';
     o.ipCidrRange = 'foo';
+    o.ipv6AccessType = 'foo';
     o.network = 'foo';
+    o.purpose = 'foo';
+    o.role = 'foo';
     o.secondaryIpRanges = buildUnnamed658();
+    o.stackType = 'foo';
     o.subnetwork = 'foo';
   }
   buildCounterUsableSubnetwork--;
@@ -38489,14 +38495,38 @@ void checkUsableSubnetwork(api.UsableSubnetwork o) {
   buildCounterUsableSubnetwork++;
   if (buildCounterUsableSubnetwork < 3) {
     unittest.expect(
+      o.externalIpv6Prefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.internalIpv6Prefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.ipCidrRange!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ipv6AccessType!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.network!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.purpose!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
     checkUnnamed658(o.secondaryIpRanges!);
+    unittest.expect(
+      o.stackType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.subnetwork!,
       unittest.equals('foo'),
@@ -101875,6 +101905,7 @@ void main() {
       final arg_request = buildSecurityPolicyRule();
       final arg_project = 'foo';
       final arg_securityPolicy = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.SecurityPolicyRule.fromJson(
@@ -101945,6 +101976,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -101957,7 +101992,7 @@ void main() {
       }), true);
       final response = await res.addRule(
           arg_request, arg_project, arg_securityPolicy,
-          $fields: arg_$fields);
+          validateOnly: arg_validateOnly, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -102327,6 +102362,7 @@ void main() {
       final arg_request = buildSecurityPolicy();
       final arg_project = 'foo';
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.SecurityPolicy.fromJson(
@@ -102387,6 +102423,10 @@ void main() {
           unittest.equals(arg_requestId),
         );
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -102398,7 +102438,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_project,
-          requestId: arg_requestId, $fields: arg_$fields);
+          requestId: arg_requestId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -102705,6 +102747,7 @@ void main() {
       final arg_project = 'foo';
       final arg_securityPolicy = 'foo';
       final arg_priority = 42;
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.SecurityPolicyRule.fromJson(
@@ -102779,6 +102822,10 @@ void main() {
           unittest.equals(arg_priority),
         );
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -102791,7 +102838,9 @@ void main() {
       }), true);
       final response = await res.patchRule(
           arg_request, arg_project, arg_securityPolicy,
-          priority: arg_priority, $fields: arg_$fields);
+          priority: arg_priority,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

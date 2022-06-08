@@ -775,6 +775,7 @@ api.GoogleFirestoreAdminV1Field buildGoogleFirestoreAdminV1Field() {
   if (buildCounterGoogleFirestoreAdminV1Field < 3) {
     o.indexConfig = buildGoogleFirestoreAdminV1IndexConfig();
     o.name = 'foo';
+    o.ttlConfig = buildGoogleFirestoreAdminV1TtlConfig();
   }
   buildCounterGoogleFirestoreAdminV1Field--;
   return o;
@@ -788,6 +789,7 @@ void checkGoogleFirestoreAdminV1Field(api.GoogleFirestoreAdminV1Field o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkGoogleFirestoreAdminV1TtlConfig(o.ttlConfig!);
   }
   buildCounterGoogleFirestoreAdminV1Field--;
 }
@@ -1059,6 +1061,29 @@ void checkGoogleFirestoreAdminV1ListIndexesResponse(
   buildCounterGoogleFirestoreAdminV1ListIndexesResponse--;
 }
 
+core.int buildCounterGoogleFirestoreAdminV1TtlConfig = 0;
+api.GoogleFirestoreAdminV1TtlConfig buildGoogleFirestoreAdminV1TtlConfig() {
+  final o = api.GoogleFirestoreAdminV1TtlConfig();
+  buildCounterGoogleFirestoreAdminV1TtlConfig++;
+  if (buildCounterGoogleFirestoreAdminV1TtlConfig < 3) {
+    o.state = 'foo';
+  }
+  buildCounterGoogleFirestoreAdminV1TtlConfig--;
+  return o;
+}
+
+void checkGoogleFirestoreAdminV1TtlConfig(
+    api.GoogleFirestoreAdminV1TtlConfig o) {
+  buildCounterGoogleFirestoreAdminV1TtlConfig++;
+  if (buildCounterGoogleFirestoreAdminV1TtlConfig < 3) {
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleFirestoreAdminV1TtlConfig--;
+}
+
 core.int buildCounterGoogleLongrunningCancelOperationRequest = 0;
 api.GoogleLongrunningCancelOperationRequest
     buildGoogleLongrunningCancelOperationRequest() {
@@ -1267,6 +1292,7 @@ api.ListCollectionIdsRequest buildListCollectionIdsRequest() {
   if (buildCounterListCollectionIdsRequest < 3) {
     o.pageSize = 42;
     o.pageToken = 'foo';
+    o.readTime = 'foo';
   }
   buildCounterListCollectionIdsRequest--;
   return o;
@@ -1281,6 +1307,10 @@ void checkListCollectionIdsRequest(api.ListCollectionIdsRequest o) {
     );
     unittest.expect(
       o.pageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readTime!,
       unittest.equals('foo'),
     );
   }
@@ -1558,6 +1588,7 @@ api.PartitionQueryRequest buildPartitionQueryRequest() {
     o.pageSize = 42;
     o.pageToken = 'foo';
     o.partitionCount = 'foo';
+    o.readTime = 'foo';
     o.structuredQuery = buildStructuredQuery();
   }
   buildCounterPartitionQueryRequest--;
@@ -1577,6 +1608,10 @@ void checkPartitionQueryRequest(api.PartitionQueryRequest o) {
     );
     unittest.expect(
       o.partitionCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readTime!,
       unittest.equals('foo'),
     );
     checkStructuredQuery(o.structuredQuery!);
@@ -2655,6 +2690,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleFirestoreAdminV1TtlConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleFirestoreAdminV1TtlConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleFirestoreAdminV1TtlConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFirestoreAdminV1TtlConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleLongrunningCancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleLongrunningCancelOperationRequest();
@@ -2955,6 +3000,77 @@ void main() {
   });
 
   unittest.group('resource-ProjectsDatabasesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.FirestoreApi(mock).projects.databases;
+      final arg_request = buildGoogleFirestoreAdminV1Database();
+      final arg_parent = 'foo';
+      final arg_databaseId = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleFirestoreAdminV1Database.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirestoreAdminV1Database(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['databaseId']!.first,
+          unittest.equals(arg_databaseId),
+        );
+        unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          databaseId: arg_databaseId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
+    });
+
     unittest.test('method--exportDocuments', () async {
       final mock = HttpServerMock();
       final res = api.FirestoreApi(mock).projects.databases;

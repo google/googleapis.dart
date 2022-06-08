@@ -34,6 +34,7 @@ api.AcceleratorConfig buildAcceleratorConfig() {
     o.acceleratorCount = 'foo';
     o.acceleratorType = 'foo';
     o.gpuPartitionSize = 'foo';
+    o.gpuSharingConfig = buildGPUSharingConfig();
   }
   buildCounterAcceleratorConfig--;
   return o;
@@ -54,6 +55,7 @@ void checkAcceleratorConfig(api.AcceleratorConfig o) {
       o.gpuPartitionSize!,
       unittest.equals('foo'),
     );
+    checkGPUSharingConfig(o.gpuSharingConfig!);
   }
   buildCounterAcceleratorConfig--;
 }
@@ -1226,6 +1228,33 @@ void checkFilter(api.Filter o) {
     checkUnnamed9(o.eventType!);
   }
   buildCounterFilter--;
+}
+
+core.int buildCounterGPUSharingConfig = 0;
+api.GPUSharingConfig buildGPUSharingConfig() {
+  final o = api.GPUSharingConfig();
+  buildCounterGPUSharingConfig++;
+  if (buildCounterGPUSharingConfig < 3) {
+    o.gpuSharingStrategy = 'foo';
+    o.maxSharedClientsPerGpu = 'foo';
+  }
+  buildCounterGPUSharingConfig--;
+  return o;
+}
+
+void checkGPUSharingConfig(api.GPUSharingConfig o) {
+  buildCounterGPUSharingConfig++;
+  if (buildCounterGPUSharingConfig < 3) {
+    unittest.expect(
+      o.gpuSharingStrategy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxSharedClientsPerGpu!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGPUSharingConfig--;
 }
 
 core.int buildCounterGcePersistentDiskCsiDriverConfig = 0;
@@ -2552,6 +2581,7 @@ api.NodeConfig buildNodeConfig() {
     o.accelerators = buildUnnamed28();
     o.advancedMachineFeatures = buildAdvancedMachineFeatures();
     o.bootDiskKmsKey = 'foo';
+    o.confidentialNodes = buildConfidentialNodes();
     o.diskSizeGb = 42;
     o.diskType = 'foo';
     o.gcfsConfig = buildGcfsConfig();
@@ -2589,6 +2619,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.bootDiskKmsKey!,
       unittest.equals('foo'),
     );
+    checkConfidentialNodes(o.confidentialNodes!);
     unittest.expect(
       o.diskSizeGb!,
       unittest.equals(42),
@@ -4531,6 +4562,7 @@ api.UpdateNodePoolRequest buildUpdateNodePoolRequest() {
   buildCounterUpdateNodePoolRequest++;
   if (buildCounterUpdateNodePoolRequest < 3) {
     o.clusterId = 'foo';
+    o.confidentialNodes = buildConfidentialNodes();
     o.gcfsConfig = buildGcfsConfig();
     o.gvnic = buildVirtualNIC();
     o.imageType = 'foo';
@@ -4559,6 +4591,7 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
       o.clusterId!,
       unittest.equals('foo'),
     );
+    checkConfidentialNodes(o.confidentialNodes!);
     checkGcfsConfig(o.gcfsConfig!);
     checkVirtualNIC(o.gvnic!);
     unittest.expect(
@@ -5076,6 +5109,16 @@ void main() {
       final od =
           api.Filter.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFilter(od);
+    });
+  });
+
+  unittest.group('obj-schema-GPUSharingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGPUSharingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GPUSharingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGPUSharingConfig(od);
     });
   });
 

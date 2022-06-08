@@ -975,51 +975,6 @@ class ProjectsAndroidAppsResource {
     return AndroidApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-
-  /// Removes the specified AndroidApp from the project.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the AndroidApp, in the format:
-  /// projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a
-  /// unique identifier, the Unique Resource from Sub-Collection access pattern
-  /// may be used here, in the format: projects/-/androidApps/APP_ID Refer to
-  /// the AndroidApp \[name\](../projects.androidApps#AndroidApp.FIELDS.name)
-  /// field for details about PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> remove(
-    RemoveAndroidAppRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsAndroidAppsShaResource {
@@ -1564,51 +1519,6 @@ class ProjectsIosAppsResource {
     );
     return IosApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
-
-  /// Removes the specified IosApp from the project.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the IosApp, in the format:
-  /// projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique
-  /// identifier, the Unique Resource from Sub-Collection access pattern may be
-  /// used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp
-  /// \[name\](../projects.iosApps#IosApp.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> remove(
-    RemoveIosAppRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsWebAppsResource {
@@ -1853,51 +1763,6 @@ class ProjectsWebAppsResource {
       queryParams: _queryParams,
     );
     return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Removes the specified WebApp from the project.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The resource name of the WebApp, in the format:
-  /// projects/ PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique
-  /// identifier, the Unique Resource from Sub-Collection access pattern may be
-  /// used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp
-  /// \[name\](../projects.webApps#WebApp.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> remove(
-    RemoveWebAppRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3109,114 +2974,6 @@ class RemoveAnalyticsRequest {
       };
 }
 
-class RemoveAndroidAppRequest {
-  /// If set to true, and the App is not found, the request will succeed but no
-  /// action will be taken on the server.
-  core.bool? allowMissing;
-
-  /// Checksum provided in the AndroidApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
-  core.String? etag;
-
-  /// If set to true, only validate the request and do not delete the app.
-  core.bool? validateOnly;
-
-  RemoveAndroidAppRequest({
-    this.allowMissing,
-    this.etag,
-    this.validateOnly,
-  });
-
-  RemoveAndroidAppRequest.fromJson(core.Map _json)
-      : this(
-          allowMissing: _json.containsKey('allowMissing')
-              ? _json['allowMissing'] as core.bool
-              : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (etag != null) 'etag': etag!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
-}
-
-class RemoveIosAppRequest {
-  /// If set to true, and the App is not found, the request will succeed but no
-  /// action will be taken on the server.
-  core.bool? allowMissing;
-
-  /// Checksum provided in the IosApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
-  core.String? etag;
-
-  /// If set to true, only validate the request and do not delete the app.
-  core.bool? validateOnly;
-
-  RemoveIosAppRequest({
-    this.allowMissing,
-    this.etag,
-    this.validateOnly,
-  });
-
-  RemoveIosAppRequest.fromJson(core.Map _json)
-      : this(
-          allowMissing: _json.containsKey('allowMissing')
-              ? _json['allowMissing'] as core.bool
-              : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (etag != null) 'etag': etag!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
-}
-
-class RemoveWebAppRequest {
-  /// If set to true, and the App is not found, the request will succeed but no
-  /// action will be taken on the server.
-  core.bool? allowMissing;
-
-  /// Checksum provided in the WebApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
-  core.String? etag;
-
-  /// If set to true, only validate the request and do not delete the app.
-  core.bool? validateOnly;
-
-  RemoveWebAppRequest({
-    this.allowMissing,
-    this.etag,
-    this.validateOnly,
-  });
-
-  RemoveWebAppRequest.fromJson(core.Map _json)
-      : this(
-          allowMissing: _json.containsKey('allowMissing')
-              ? _json['allowMissing'] as core.bool
-              : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (etag != null) 'etag': etag!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
-}
-
 class SearchFirebaseAppsResponse {
   /// One page of results from a call to `SearchFirebaseApps`.
   core.List<FirebaseAppInfo>? apps;
@@ -3381,7 +3138,7 @@ class WebApp {
   /// This identifier should be treated as an opaque token, as the data format
   /// is not specified.
   ///
-  /// Immutable.
+  /// Output only. Immutable.
   core.String? appId;
 
   /// The URLs where the `WebApp` is hosted.
@@ -3407,7 +3164,7 @@ class WebApp {
   /// A user-assigned unique identifier of the parent FirebaseProject for the
   /// `WebApp`.
   ///
-  /// Immutable.
+  /// Output only. Immutable.
   core.String? projectId;
 
   /// A unique, Firebase-assigned identifier for the `WebApp`.

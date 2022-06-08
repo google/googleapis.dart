@@ -812,6 +812,12 @@ class EnterprisesEnrollmentTokensResource {
 
   /// Creates an enrollment token for a given enterprise.
   ///
+  /// It's up to the caller's responsibility to manage the lifecycle of newly
+  /// created tokens and deleting them when they're not intended to be used
+  /// anymore. Once an enrollment token has been created, it's not possible to
+  /// retrieve the token's content anymore using AM API. It is recommended for
+  /// EMMs to securely store the token if it's intended to be reused.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -888,6 +894,103 @@ class EnterprisesEnrollmentTokensResource {
       queryParams: _queryParams,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an active, unexpired enrollment token.
+  ///
+  /// Only a partial view of EnrollmentToken is returned: all the fields but
+  /// name and expiration_timestamp are empty. This method is meant to help
+  /// manage active enrollment tokens lifecycle. For security reasons, it's
+  /// recommended to delete active enrollment tokens as soon as they're not
+  /// intended to be used anymore.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the enrollment token in the form
+  /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
+  /// Value must have pattern `^enterprises/\[^/\]+/enrollmentTokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EnrollmentToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EnrollmentToken> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return EnrollmentToken.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists active, unexpired enrollment tokens for a given enterprise.
+  ///
+  /// The list items contain only a partial view of EnrollmentToken: all the
+  /// fields but name and expiration_timestamp are empty. This method is meant
+  /// to help manage active enrollment tokens lifecycle. For security reasons,
+  /// it's recommended to delete active enrollment tokens as soon as they're not
+  /// intended to be used anymore.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the enterprise in the form
+  /// enterprises/{enterpriseId}.
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
+  ///
+  /// [pageSize] - The requested page size. The service may return fewer than
+  /// this value. If unspecified, at most 10 items will be returned. The maximum
+  /// value is 100; values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEnrollmentTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEnrollmentTokensResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/enrollmentTokens';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListEnrollmentTokensResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4512,6 +4615,38 @@ class ListDevicesResponse {
       };
 }
 
+/// Response to a request to list enrollment tokens for a given enterprise.
+class ListEnrollmentTokensResponse {
+  /// The list of enrollment tokens.
+  core.List<EnrollmentToken>? enrollmentTokens;
+
+  /// If there are more results, a token to retrieve next page of results.
+  core.String? nextPageToken;
+
+  ListEnrollmentTokensResponse({
+    this.enrollmentTokens,
+    this.nextPageToken,
+  });
+
+  ListEnrollmentTokensResponse.fromJson(core.Map _json)
+      : this(
+          enrollmentTokens: _json.containsKey('enrollmentTokens')
+              ? (_json['enrollmentTokens'] as core.List)
+                  .map((value) => EnrollmentToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enrollmentTokens != null) 'enrollmentTokens': enrollmentTokens!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response to a request to list enterprises.
 class ListEnterprisesResponse {
   /// The list of enterprises.
@@ -5220,7 +5355,7 @@ class OncCertificateProvider {
 
 /// Additional context for non-compliance related to Wi-Fi configuration.
 class OncWifiContext {
-  /// The guid of non-compliant Wi-Fi configuration.
+  /// The GUID of non-compliant Wi-Fi configuration.
   core.String? wifiGuid;
 
   OncWifiContext({
@@ -7481,7 +7616,7 @@ class SpecificNonComplianceContext {
 
   /// Additional context for non-compliance related to password policies.
   ///
-  /// See PASSWORD_POLICIES_PASSWORD_EXPIRED, and
+  /// See PASSWORD_POLICIES_PASSWORD_EXPIRED and
   /// PASSWORD_POLICIES_PASSWORD_NOT_SUFFICIENT.
   PasswordPoliciesContext? passwordPoliciesContext;
 

@@ -1515,6 +1515,33 @@ class AppDevExperienceFeatureState {
       };
 }
 
+/// ApplianceCluster contains information specific to GDC Edge Appliance
+/// Clusters.
+class ApplianceCluster {
+  /// Self-link of the GCP resource for the Appliance Cluster.
+  ///
+  /// For example:
+  /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+  ///
+  /// Immutable.
+  core.String? resourceLink;
+
+  ApplianceCluster({
+    this.resourceLink,
+  });
+
+  ApplianceCluster.fromJson(core.Map _json)
+      : this(
+          resourceLink: _json.containsKey('resourceLink')
+              ? _json['resourceLink'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceLink != null) 'resourceLink': resourceLink!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1815,6 +1842,9 @@ class ConfigManagementConfigSync {
   /// Git repo configuration for the cluster.
   ConfigManagementGitConfig? git;
 
+  /// OCI repo configuration for the cluster
+  ConfigManagementOciConfig? oci;
+
   /// Set to true to enable the Config Sync admission webhook to prevent drifts.
   ///
   /// If set to `false`, disables the Config Sync admission webhook and does not
@@ -1828,6 +1858,7 @@ class ConfigManagementConfigSync {
   ConfigManagementConfigSync({
     this.enabled,
     this.git,
+    this.oci,
     this.preventDrift,
     this.sourceFormat,
   });
@@ -1841,6 +1872,10 @@ class ConfigManagementConfigSync {
               ? ConfigManagementGitConfig.fromJson(
                   _json['git'] as core.Map<core.String, core.dynamic>)
               : null,
+          oci: _json.containsKey('oci')
+              ? ConfigManagementOciConfig.fromJson(
+                  _json['oci'] as core.Map<core.String, core.dynamic>)
+              : null,
           preventDrift: _json.containsKey('preventDrift')
               ? _json['preventDrift'] as core.bool
               : null,
@@ -1852,6 +1887,7 @@ class ConfigManagementConfigSync {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (git != null) 'git': git!,
+        if (oci != null) 'oci': oci!,
         if (preventDrift != null) 'preventDrift': preventDrift!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
       };
@@ -2573,6 +2609,67 @@ class ConfigManagementMembershipState {
       };
 }
 
+/// OCI repo configuration for a single cluster
+class ConfigManagementOciConfig {
+  /// The GCP Service Account Email used for auth when secret_type is
+  /// gcpServiceAccount.
+  core.String? gcpServiceAccountEmail;
+
+  /// The absolute path of the directory that contains the local resources.
+  ///
+  /// Default: the root directory of the image.
+  core.String? policyDir;
+
+  /// Type of secret configured for access to the Git repo.
+  core.String? secretType;
+
+  /// The OCI image repository URL for the package to sync from.
+  ///
+  /// e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+  core.String? syncRepo;
+
+  /// Period in seconds between consecutive syncs.
+  ///
+  /// Default: 15.
+  core.String? syncWaitSecs;
+
+  ConfigManagementOciConfig({
+    this.gcpServiceAccountEmail,
+    this.policyDir,
+    this.secretType,
+    this.syncRepo,
+    this.syncWaitSecs,
+  });
+
+  ConfigManagementOciConfig.fromJson(core.Map _json)
+      : this(
+          gcpServiceAccountEmail: _json.containsKey('gcpServiceAccountEmail')
+              ? _json['gcpServiceAccountEmail'] as core.String
+              : null,
+          policyDir: _json.containsKey('policyDir')
+              ? _json['policyDir'] as core.String
+              : null,
+          secretType: _json.containsKey('secretType')
+              ? _json['secretType'] as core.String
+              : null,
+          syncRepo: _json.containsKey('syncRepo')
+              ? _json['syncRepo'] as core.String
+              : null,
+          syncWaitSecs: _json.containsKey('syncWaitSecs')
+              ? _json['syncWaitSecs'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcpServiceAccountEmail != null)
+          'gcpServiceAccountEmail': gcpServiceAccountEmail!,
+        if (policyDir != null) 'policyDir': policyDir!,
+        if (secretType != null) 'secretType': secretType!,
+        if (syncRepo != null) 'syncRepo': syncRepo!,
+        if (syncWaitSecs != null) 'syncWaitSecs': syncWaitSecs!,
+      };
+}
+
 /// State information for an ACM's Operator
 class ConfigManagementOperatorState {
   /// The state of the Operator's deployment
@@ -2638,6 +2735,9 @@ class ConfigManagementPolicyController {
   /// Logs all denies and dry run failures.
   core.bool? logDeniesEnabled;
 
+  /// Monitoring specifies the configuration of monitoring.
+  ConfigManagementPolicyControllerMonitoring? monitoring;
+
   /// Enables the ability to use Constraint Templates that reference to objects
   /// other than the object currently being evaluated.
   core.bool? referentialRulesEnabled;
@@ -2650,6 +2750,7 @@ class ConfigManagementPolicyController {
     this.enabled,
     this.exemptableNamespaces,
     this.logDeniesEnabled,
+    this.monitoring,
     this.referentialRulesEnabled,
     this.templateLibraryInstalled,
   });
@@ -2670,6 +2771,10 @@ class ConfigManagementPolicyController {
           logDeniesEnabled: _json.containsKey('logDeniesEnabled')
               ? _json['logDeniesEnabled'] as core.bool
               : null,
+          monitoring: _json.containsKey('monitoring')
+              ? ConfigManagementPolicyControllerMonitoring.fromJson(
+                  _json['monitoring'] as core.Map<core.String, core.dynamic>)
+              : null,
           referentialRulesEnabled: _json.containsKey('referentialRulesEnabled')
               ? _json['referentialRulesEnabled'] as core.bool
               : null,
@@ -2686,10 +2791,40 @@ class ConfigManagementPolicyController {
         if (exemptableNamespaces != null)
           'exemptableNamespaces': exemptableNamespaces!,
         if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
+        if (monitoring != null) 'monitoring': monitoring!,
         if (referentialRulesEnabled != null)
           'referentialRulesEnabled': referentialRulesEnabled!,
         if (templateLibraryInstalled != null)
           'templateLibraryInstalled': templateLibraryInstalled!,
+      };
+}
+
+/// PolicyControllerMonitoring specifies the backends Policy Controller should
+/// export metrics to.
+///
+/// For example, to specify metrics should be exported to Cloud Monitoring and
+/// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
+class ConfigManagementPolicyControllerMonitoring {
+  /// Specifies the list of backends Policy Controller will export to.
+  ///
+  /// An empty list would effectively disable metrics export.
+  core.List<core.String>? backends;
+
+  ConfigManagementPolicyControllerMonitoring({
+    this.backends,
+  });
+
+  ConfigManagementPolicyControllerMonitoring.fromJson(core.Map _json)
+      : this(
+          backends: _json.containsKey('backends')
+              ? (_json['backends'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backends != null) 'backends': backends!,
       };
 }
 
@@ -4048,6 +4183,11 @@ class Membership {
 /// MembershipEndpoint contains information needed to contact a Kubernetes API,
 /// endpoint and any additional Kubernetes metadata.
 class MembershipEndpoint {
+  /// Specific information for a GDC Edge Appliance cluster.
+  ///
+  /// Optional.
+  ApplianceCluster? applianceCluster;
+
   /// Specific information for a Google Edge cluster.
   ///
   /// Optional.
@@ -4088,6 +4228,7 @@ class MembershipEndpoint {
   OnPremCluster? onPremCluster;
 
   MembershipEndpoint({
+    this.applianceCluster,
     this.edgeCluster,
     this.gkeCluster,
     this.kubernetesMetadata,
@@ -4098,6 +4239,10 @@ class MembershipEndpoint {
 
   MembershipEndpoint.fromJson(core.Map _json)
       : this(
+          applianceCluster: _json.containsKey('applianceCluster')
+              ? ApplianceCluster.fromJson(_json['applianceCluster']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           edgeCluster: _json.containsKey('edgeCluster')
               ? EdgeCluster.fromJson(
                   _json['edgeCluster'] as core.Map<core.String, core.dynamic>)
@@ -4125,6 +4270,7 @@ class MembershipEndpoint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (applianceCluster != null) 'applianceCluster': applianceCluster!,
         if (edgeCluster != null) 'edgeCluster': edgeCluster!,
         if (gkeCluster != null) 'gkeCluster': gkeCluster!,
         if (kubernetesMetadata != null)

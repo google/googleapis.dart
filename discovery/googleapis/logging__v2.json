@@ -6019,7 +6019,7 @@
             }
         }
     },
-    "revision": "20220414",
+    "revision": "20220527",
     "rootUrl": "https://logging.googleapis.com/",
     "schemas": {
         "BigQueryOptions": {
@@ -7510,6 +7510,10 @@
                         "$ref": "SourceReference"
                     },
                     "type": "array"
+                },
+                "spanId": {
+                    "description": "Stackdriver Trace span identifier for this request.",
+                    "type": "string"
                 },
                 "startTime": {
                     "description": "Time when the request started.",

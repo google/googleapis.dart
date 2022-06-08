@@ -5286,13 +5286,14 @@ class BulkMuteFindingsRequest {
 /// Contains compliance information about a security standard indicating unmet
 /// recommendations.
 class Compliance {
-  /// e.g. A.12.4.1
+  /// Policies within the standard/benchmark e.g. A.12.4.1
   core.List<core.String>? ids;
 
-  /// e.g. "cis", "pci", "owasp", etc.
+  /// Refers to industry wide standards or benchmarks e.g. "cis", "pci",
+  /// "owasp", etc.
   core.String? standard;
 
-  /// e.g. 1.1
+  /// Version of the standard/benchmark e.g. 1.1
   core.String? version;
 
   Compliance({
@@ -5658,7 +5659,8 @@ class Cvssv3 {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// EnvironmentVariable is a name-value pair to store env variables for Process.
+/// EnvironmentVariable is a name-value pair to store environment variables for
+/// Process.
 class EnvironmentVariable {
   /// Environment variable name as a JSON encoded string.
   core.String? name;
@@ -5692,7 +5694,7 @@ class ExfilResource {
   /// instance, or multiple files from the same Cloud Storage bucket.
   core.List<core.String>? components;
 
-  /// Resource’s URI (https://google.aip.dev/122#full-resource-names)
+  /// Resource's URI (https://google.aip.dev/122#full-resource-names)
   core.String? name;
 
   ExfilResource({
@@ -5716,13 +5718,13 @@ class ExfilResource {
       };
 }
 
-/// Exfiltration represents a data exfiltration attempt of one or more source(s)
-/// to one or more target(s).
+/// Exfiltration represents a data exfiltration attempt of one or more sources
+/// to one or more targets.
 ///
-/// Source(s) represent the source of data that is exfiltrated, and Target(s)
+/// Sources represent the source of data that is exfiltrated, and Targets
 /// represents the destination the data was copied to.
 class Exfiltration {
-  /// If there are multiple sources, then the data is considered “joined”
+  /// If there are multiple sources, then the data is considered "joined"
   /// between them.
   ///
   /// For instance, BigQuery can join multiple tables, and each table would be
@@ -5730,7 +5732,7 @@ class Exfiltration {
   core.List<ExfilResource>? sources;
 
   /// If there are multiple targets, each target would get a complete copy of
-  /// the “joined” source data.
+  /// the "joined" source data.
   core.List<ExfilResource>? targets;
 
   Exfiltration({
@@ -5802,8 +5804,8 @@ class File {
   /// SHA256 hash of the first hashed_size bytes of the file encoded as a hex
   /// string.
   ///
-  /// If hashed_size == size, hash_sha256 represents the SHA256 hash of the
-  /// entire file.
+  /// If hashed_size == size, sha256 represents the SHA256 hash of the entire
+  /// file.
   core.String? sha256;
 
   /// Size of the file in bytes.
@@ -5908,7 +5910,7 @@ class Finding {
   /// not be set to a value greater than the current timestamp.
   core.String? eventTime;
 
-  /// Represents exfiltrations associated with the Finding.
+  /// Represents exfiltration associated with the Finding.
   Exfiltration? exfiltration;
 
   /// Third party SIEM/SOAR fields within SCC, contains external system
@@ -7895,7 +7897,7 @@ class Process {
   /// Process arguments as JSON encoded strings.
   core.List<core.String>? args;
 
-  /// True if arguments is incomplete.
+  /// True if `args` is incomplete.
   core.bool? argumentsTruncated;
 
   /// File information for the process executable.
@@ -7904,7 +7906,7 @@ class Process {
   /// Process environment variables.
   core.List<EnvironmentVariable>? envVariables;
 
-  /// True if env_variables is incomplete.
+  /// True if `env_variables` is incomplete.
   core.bool? envVariablesTruncated;
 
   /// File information for libraries loaded by the process.
@@ -7916,9 +7918,9 @@ class Process {
   /// The process id.
   core.String? pid;
 
-  /// When the process represents the invocation of a script, binary provides
-  /// information about the interpreter while script provides information about
-  /// the script file provided to the interpreter.
+  /// When the process represents the invocation of a script, `binary` provides
+  /// information about the interpreter while `script` provides information
+  /// about the script file provided to the interpreter.
   File? script;
 
   Process({

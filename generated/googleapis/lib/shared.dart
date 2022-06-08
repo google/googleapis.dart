@@ -1035,6 +1035,7 @@ class $Completeness {
 /// - displayvideo:v1 : Date
 /// - dlp:v2 : GoogleTypeDate
 /// - documentai:v1 : GoogleTypeDate
+/// - doubleclickbidmanager:v2 : Date
 /// - mybusinessbusinesscalls:v1 : Date
 /// - mybusinessbusinessinformation:v1 : Date
 /// - osconfig:v1 : Date
@@ -4428,38 +4429,6 @@ class $PageInfo {
 
 /// Used by:
 ///
-/// - datastore:v1 : PartitionId
-/// - dlp:v2 : GooglePrivacyDlpV2PartitionId
-class $PartitionId {
-  /// If not empty, the ID of the namespace to which the entities belong.
-  core.String? namespaceId;
-
-  /// The ID of the project to which the entities belong.
-  core.String? projectId;
-
-  $PartitionId({
-    this.namespaceId,
-    this.projectId,
-  });
-
-  $PartitionId.fromJson(core.Map _json)
-      : this(
-          namespaceId: _json.containsKey('namespaceId')
-              ? _json['namespaceId'] as core.String
-              : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (namespaceId != null) 'namespaceId': namespaceId!,
-        if (projectId != null) 'projectId': projectId!,
-      };
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
@@ -6561,6 +6530,8 @@ class $TenantProjectRequest {
 /// - healthcare:v1 : TestIamPermissionsRequest
 /// - iam:v1 : TestIamPermissionsRequest
 /// - iap:v1 : TestIamPermissionsRequest
+/// - ids:v1 : TestIamPermissionsRequest
+/// - managedidentities:v1 : TestIamPermissionsRequest
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
 /// - networkconnectivity:v1 : TestIamPermissionsRequest
 /// - networkmanagement:v1 : TestIamPermissionsRequest
@@ -6603,40 +6574,9 @@ class $TestIamPermissionsRequest00 {
 
 /// Used by:
 ///
-/// - ids:v1 : TestIamPermissionsRequest
-/// - managedidentities:v1 : TestIamPermissionsRequest
-/// - networksecurity:v1 : GoogleIamV1TestIamPermissionsRequest
-class $TestIamPermissionsRequest01 {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  $TestIamPermissionsRequest01({
-    this.permissions,
-  });
-
-  $TestIamPermissionsRequest01.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-/// Used by:
-///
 /// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - dataproc:v1 : TestIamPermissionsRequest
-class $TestIamPermissionsRequest02 {
+class $TestIamPermissionsRequest01 {
   /// The set of permissions to check for the resource.
   ///
   /// Permissions with wildcards (such as * or storage.*) are not allowed. For
@@ -6644,11 +6584,11 @@ class $TestIamPermissionsRequest02 {
   /// (https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsRequest02({
+  $TestIamPermissionsRequest01({
     this.permissions,
   });
 
-  $TestIamPermissionsRequest02.fromJson(core.Map _json)
+  $TestIamPermissionsRequest01.fromJson(core.Map _json)
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)

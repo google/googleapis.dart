@@ -1313,38 +1313,31 @@ class EventPublishConfig {
   /// Option to enable Event Publishing.
   ///
   /// Required.
-  core.bool? eventPublishEnabled;
+  core.bool? enabled;
 
-  /// Project name.
-  core.String? project;
-
-  /// Pub/Sub Topic.
+  /// The resource name of the Pub/Sub topic.
+  ///
+  /// Format: projects/{project_id}/topics/{topic_id}
   ///
   /// Required.
   core.String? topic;
 
   EventPublishConfig({
-    this.eventPublishEnabled,
-    this.project,
+    this.enabled,
     this.topic,
   });
 
   EventPublishConfig.fromJson(core.Map _json)
       : this(
-          eventPublishEnabled: _json.containsKey('eventPublishEnabled')
-              ? _json['eventPublishEnabled'] as core.bool
-              : null,
-          project: _json.containsKey('project')
-              ? _json['project'] as core.String
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
               : null,
           topic:
               _json.containsKey('topic') ? _json['topic'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventPublishEnabled != null)
-          'eventPublishEnabled': eventPublishEnabled!,
-        if (project != null) 'project': project!,
+        if (enabled != null) 'enabled': enabled!,
         if (topic != null) 'topic': topic!,
       };
 }

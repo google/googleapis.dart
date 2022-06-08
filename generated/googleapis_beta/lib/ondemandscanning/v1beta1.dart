@@ -2256,6 +2256,10 @@ class PackageData {
   /// - "GO" : Go third-party packages.
   /// - "GO_STDLIB" : Go toolchain + standard library packages.
   core.String? packageType;
+
+  /// CVEs that this package is no longer vulnerable to
+  /// go/drydock-dd-custom-binary-scanning
+  core.List<core.String>? patchedCve;
   core.String? unused;
 
   /// The version of the package being analysed
@@ -2269,6 +2273,7 @@ class PackageData {
     this.osVersion,
     this.package,
     this.packageType,
+    this.patchedCve,
     this.unused,
     this.version,
   });
@@ -2297,6 +2302,11 @@ class PackageData {
           packageType: _json.containsKey('packageType')
               ? _json['packageType'] as core.String
               : null,
+          patchedCve: _json.containsKey('patchedCve')
+              ? (_json['patchedCve'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           unused: _json.containsKey('unused')
               ? _json['unused'] as core.String
               : null,
@@ -2313,6 +2323,7 @@ class PackageData {
         if (osVersion != null) 'osVersion': osVersion!,
         if (package != null) 'package': package!,
         if (packageType != null) 'packageType': packageType!,
+        if (patchedCve != null) 'patchedCve': patchedCve!,
         if (unused != null) 'unused': unused!,
         if (version != null) 'version': version!,
       };

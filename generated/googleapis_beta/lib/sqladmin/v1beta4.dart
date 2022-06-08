@@ -1148,7 +1148,9 @@ class InstancesResource {
   /// instanceType:CLOUD_SQL_INSTANCE'. By default, each expression is an AND
   /// expression. However, you can include AND and OR expressions explicitly.
   ///
-  /// [maxResults] - The maximum number of results to return per response.
+  /// [maxResults] - The maximum number of instances to return. The service may
+  /// return fewer than this value. The maximum value is 1000; values above 1000
+  /// are coerced to 1000.
   ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
@@ -2473,6 +2475,8 @@ class ApiWarning {
   /// from Cloud SQL API.
   /// - "REGION_UNREACHABLE" : Warning when one or more regions are not
   /// reachable. The returned result set may be incomplete.
+  /// - "MAX_RESULTS_EXCEEDS_LIMIT" : Warning when user provided maxResults
+  /// parameter exceeds the limit. The returned result set may be incomplete.
   core.String? code;
 
   /// The warning message.
@@ -6554,6 +6558,8 @@ class SqlExternalSyncSettingError {
   /// setting.
   /// - "UNSUPPORTED_STORAGE_ENGINE" : The primary instance has tables with
   /// unsupported storage engine.
+  /// - "LIMITED_SUPPORT_TABLES" : Source has tables with limited support eg:
+  /// PostgreSQL tables without primary keys
   core.String? type;
 
   SqlExternalSyncSettingError({

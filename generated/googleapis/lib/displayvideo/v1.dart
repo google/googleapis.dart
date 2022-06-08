@@ -20626,7 +20626,7 @@ class GuaranteedOrderStatus {
 class HouseholdIncomeAssignedTargetingOptionDetails {
   /// The household income of the audience.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "HOUSEHOLD_INCOME_UNSPECIFIED" : Default value when household income is
   /// not specified in this version. This enum is a placeholder for default

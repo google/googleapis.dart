@@ -902,6 +902,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem <
       3) {
+    o.description = 'foo';
     o.lineItemFreeTrialEndTime = 'foo';
     o.lineItemPromotionSpecs = buildUnnamed13();
     o.product = 'foo';
@@ -916,6 +917,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem <
       3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.lineItemFreeTrialEndTime!,
       unittest.equals('foo'),

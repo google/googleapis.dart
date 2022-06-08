@@ -35,6 +35,7 @@
 ///   - [OrganizationsApisResource]
 ///     - [OrganizationsApisDeploymentsResource]
 ///     - [OrganizationsApisKeyvaluemapsResource]
+///       - [OrganizationsApisKeyvaluemapsEntriesResource]
 ///     - [OrganizationsApisRevisionsResource]
 ///       - [OrganizationsApisRevisionsDeploymentsResource]
 ///   - [OrganizationsAppsResource]
@@ -69,6 +70,7 @@
 ///     - [OrganizationsEnvironmentsKeystoresResource]
 ///       - [OrganizationsEnvironmentsKeystoresAliasesResource]
 ///     - [OrganizationsEnvironmentsKeyvaluemapsResource]
+///       - [OrganizationsEnvironmentsKeyvaluemapsEntriesResource]
 ///     - [OrganizationsEnvironmentsOptimizedStatsResource]
 ///     - [OrganizationsEnvironmentsQueriesResource]
 ///     - [OrganizationsEnvironmentsReferencesResource]
@@ -87,6 +89,7 @@
 ///     - [OrganizationsInstancesCanaryevaluationsResource]
 ///     - [OrganizationsInstancesNatAddressesResource]
 ///   - [OrganizationsKeyvaluemapsResource]
+///     - [OrganizationsKeyvaluemapsEntriesResource]
 ///   - [OrganizationsOperationsResource]
 ///   - [OrganizationsOptimizedHostStatsResource]
 ///   - [OrganizationsReportsResource]
@@ -2072,6 +2075,9 @@ class OrganizationsApisDeploymentsResource {
 class OrganizationsApisKeyvaluemapsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsApisKeyvaluemapsEntriesResource get entries =>
+      OrganizationsApisKeyvaluemapsEntriesResource(_requester);
+
   OrganizationsApisKeyvaluemapsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2154,6 +2160,194 @@ class OrganizationsApisKeyvaluemapsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsApisKeyvaluemapsEntriesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsApisKeyvaluemapsEntriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates key value entries in a org, env or apis scoped key value map.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Scope as indicated by the URI in which to create the
+  /// key value map entry. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> create(
+    GoogleCloudApigeeV1KeyValueEntry request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a key value entry from an org, environment or apis scoped key
+  /// value map.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to delete the
+  /// key value map entry. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get the Key value entry value for org, env or apis scoped Key value map.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map entry/value. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists key value entries for key values maps scoped to an organization,
+  /// environment, or API proxy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Scope as indicated by the URI in which to list key
+  /// value maps. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of key value entries to return. If
+  /// unspecified, at most 100 entries will be returned.
+  ///
+  /// [pageToken] - Optional. Page token, a key value entry returned from a
+  /// previous call that can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListKeyValueEntriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListKeyValueEntriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ListKeyValueEntriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7869,6 +8063,9 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
 class OrganizationsEnvironmentsKeyvaluemapsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsEnvironmentsKeyvaluemapsEntriesResource get entries =>
+      OrganizationsEnvironmentsKeyvaluemapsEntriesResource(_requester);
+
   OrganizationsEnvironmentsKeyvaluemapsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -7951,6 +8148,195 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEnvironmentsKeyvaluemapsEntriesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEnvironmentsKeyvaluemapsEntriesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates key value entries in a org, env or apis scoped key value map.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Scope as indicated by the URI in which to create the
+  /// key value map entry. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> create(
+    GoogleCloudApigeeV1KeyValueEntry request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a key value entry from an org, environment or apis scoped key
+  /// value map.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to delete the
+  /// key value map entry. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get the Key value entry value for org, env or apis scoped Key value map.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map entry/value. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists key value entries for key values maps scoped to an organization,
+  /// environment, or API proxy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Scope as indicated by the URI in which to list key
+  /// value maps. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of key value entries to return. If
+  /// unspecified, at most 100 entries will be returned.
+  ///
+  /// [pageToken] - Optional. Page token, a key value entry returned from a
+  /// previous call that can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListKeyValueEntriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListKeyValueEntriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ListKeyValueEntriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -10751,6 +11137,9 @@ class OrganizationsInstancesNatAddressesResource {
 class OrganizationsKeyvaluemapsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsKeyvaluemapsEntriesResource get entries =>
+      OrganizationsKeyvaluemapsEntriesResource(_requester);
+
   OrganizationsKeyvaluemapsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -10831,6 +11220,192 @@ class OrganizationsKeyvaluemapsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsKeyvaluemapsEntriesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsKeyvaluemapsEntriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates key value entries in a org, env or apis scoped key value map.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Scope as indicated by the URI in which to create the
+  /// key value map entry. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> create(
+    GoogleCloudApigeeV1KeyValueEntry request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a key value entry from an org, environment or apis scoped key
+  /// value map.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to delete the
+  /// key value map entry. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get the Key value entry value for org, env or apis scoped Key value map.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Scope as indicated by the URI in which to fetch the key
+  /// value map entry/value. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1KeyValueEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1KeyValueEntry> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1KeyValueEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists key value entries for key values maps scoped to an organization,
+  /// environment, or API proxy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Scope as indicated by the URI in which to list key
+  /// value maps. Use one of the following formats in your request:
+  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
+  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`
+  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of key value entries to return. If
+  /// unspecified, at most 100 entries will be returned.
+  ///
+  /// [pageToken] - Optional. Page token, a key value entry returned from a
+  /// previous call that can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListKeyValueEntriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListKeyValueEntriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/entries';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ListKeyValueEntriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -17560,6 +18135,37 @@ class GoogleCloudApigeeV1KeyAliasReference {
       };
 }
 
+/// Key value map pair where the value represents the data associated with the
+/// corresponding key.
+class GoogleCloudApigeeV1KeyValueEntry {
+  /// Resource URI that can be used to identify the scope of the key value map
+  /// entries.
+  core.String? name;
+
+  /// Data or payload that is being retrieved and associated with the unique
+  /// key.
+  ///
+  /// Required.
+  core.String? value;
+
+  GoogleCloudApigeeV1KeyValueEntry({
+    this.name,
+    this.value,
+  });
+
+  GoogleCloudApigeeV1KeyValueEntry.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// Collection of key/value string pairs.
 class GoogleCloudApigeeV1KeyValueMap {
   /// Flag that specifies whether entry values will be encrypted.
@@ -18294,6 +18900,41 @@ class GoogleCloudApigeeV1ListInstancesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null) 'instances': instances!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The request structure for listing Key value map keys and its corrresponding
+/// values.
+class GoogleCloudApigeeV1ListKeyValueEntriesResponse {
+  /// One or more key value map keys and values.
+  core.List<GoogleCloudApigeeV1KeyValueEntry>? keyValueEntries;
+
+  /// Token that can be sent as `next_page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudApigeeV1ListKeyValueEntriesResponse({
+    this.keyValueEntries,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApigeeV1ListKeyValueEntriesResponse.fromJson(core.Map _json)
+      : this(
+          keyValueEntries: _json.containsKey('keyValueEntries')
+              ? (_json['keyValueEntries'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1KeyValueEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyValueEntries != null) 'keyValueEntries': keyValueEntries!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

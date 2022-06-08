@@ -639,7 +639,7 @@
             }
         }
     },
-    "revision": "20220530",
+    "revision": "20220606",
     "rootUrl": "https://photoslibrary.googleapis.com/",
     "schemas": {
         "AddEnrichmentToAlbumRequest": {
@@ -774,7 +774,7 @@
                     "description": "Position in the album where the media items are added. If not specified, the media items are added to the end of the album (as per the default value, that is, `LAST_IN_ALBUM`). The request fails if this field is set and the `albumId` is not specified. The request will also fail if you set the field and are not the owner of the shared album."
                 },
                 "newMediaItems": {
-                    "description": "Required. List of media items to be created.",
+                    "description": "Required. List of media items to be created. Maximum 50 media items per call.",
                     "items": {
                         "$ref": "NewMediaItem"
                     },

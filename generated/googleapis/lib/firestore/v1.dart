@@ -91,6 +91,61 @@ class ProjectsDatabasesResource {
 
   ProjectsDatabasesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Create a database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. A parent name of the form `projects/{project_id}`
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [databaseId] - Required. The ID to use for the database, which will become
+  /// the final component of the database's resource name. This value should be
+  /// 4-63 characters. Valid characters are /a-z-/ with first character a letter
+  /// and the last a letter or a number. Must not be UUID-like
+  /// /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database id
+  /// is also valid.
+  ///
+  /// [validateOnly] - If set, validate the request and preview the response,
+  /// but do not actually create the database.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleFirestoreAdminV1Database request,
+    core.String parent, {
+    core.String? databaseId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (databaseId != null) 'databaseId': [databaseId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Exports a copy of all or a subset of documents from Google Cloud Firestore
   /// to another storage system, such as Google Cloud Storage.
   ///
@@ -2846,9 +2901,16 @@ class GoogleFirestoreAdminV1Field {
   /// Required.
   core.String? name;
 
+  /// The TTL configuration for this `Field`.
+  ///
+  /// Setting or unsetting this will enable or disable the TTL for documents
+  /// that have this `Field`.
+  GoogleFirestoreAdminV1TtlConfig? ttlConfig;
+
   GoogleFirestoreAdminV1Field({
     this.indexConfig,
     this.name,
+    this.ttlConfig,
   });
 
   GoogleFirestoreAdminV1Field.fromJson(core.Map _json)
@@ -2858,11 +2920,16 @@ class GoogleFirestoreAdminV1Field {
                   _json['indexConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ttlConfig: _json.containsKey('ttlConfig')
+              ? GoogleFirestoreAdminV1TtlConfig.fromJson(
+                  _json['ttlConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (indexConfig != null) 'indexConfig': indexConfig!,
         if (name != null) 'name': name!,
+        if (ttlConfig != null) 'ttlConfig': ttlConfig!,
       };
 }
 
@@ -3203,6 +3270,45 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
       };
 }
 
+/// The TTL (time-to-live) configuration for documents that have this `Field`
+/// set.
+///
+/// Storing a timestamp value into a TTL-enabled field will be treated as the
+/// document's absolute expiration time. Using any other data type or leaving
+/// the field absent will disable the TTL for the individual document.
+class GoogleFirestoreAdminV1TtlConfig {
+  /// The state of the TTL configuration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified or unknown.
+  /// - "CREATING" : The TTL is being applied. There is an active long-running
+  /// operation to track the change. Newly written documents will have TTLs
+  /// applied as requested. Requested TTLs on existing documents are still being
+  /// processed. When TTLs on all existing documents have been processed, the
+  /// state will move to 'ACTIVE'.
+  /// - "ACTIVE" : The TTL is active for all documents.
+  /// - "NEEDS_REPAIR" : The TTL configuration could not be enabled for all
+  /// existing documents. Newly written documents will continue to have their
+  /// TTL applied. The LRO returned when last attempting to enable TTL for this
+  /// `Field` has failed, and may have more details.
+  core.String? state;
+
+  GoogleFirestoreAdminV1TtlConfig({
+    this.state,
+  });
+
+  GoogleFirestoreAdminV1TtlConfig.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
@@ -3331,9 +3437,15 @@ class ListCollectionIdsRequest {
   /// Must be a value from ListCollectionIdsResponse.
   core.String? pageToken;
 
+  /// Reads documents as they were at the given time.
+  ///
+  /// This may not be older than 270 seconds.
+  core.String? readTime;
+
   ListCollectionIdsRequest({
     this.pageSize,
     this.pageToken,
+    this.readTime,
   });
 
   ListCollectionIdsRequest.fromJson(core.Map _json)
@@ -3344,11 +3456,15 @@ class ListCollectionIdsRequest {
           pageToken: _json.containsKey('pageToken')
               ? _json['pageToken'] as core.String
               : null,
+          readTime: _json.containsKey('readTime')
+              ? _json['readTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
+        if (readTime != null) 'readTime': readTime!,
       };
 }
 
@@ -3549,6 +3665,11 @@ class PartitionQueryRequest {
   /// than the number of workers or compute instances available.
   core.String? partitionCount;
 
+  /// Reads documents as they were at the given time.
+  ///
+  /// This may not be older than 270 seconds.
+  core.String? readTime;
+
   /// A structured query.
   ///
   /// Query must specify collection with all descendants and be ordered by name
@@ -3560,6 +3681,7 @@ class PartitionQueryRequest {
     this.pageSize,
     this.pageToken,
     this.partitionCount,
+    this.readTime,
     this.structuredQuery,
   });
 
@@ -3574,6 +3696,9 @@ class PartitionQueryRequest {
           partitionCount: _json.containsKey('partitionCount')
               ? _json['partitionCount'] as core.String
               : null,
+          readTime: _json.containsKey('readTime')
+              ? _json['readTime'] as core.String
+              : null,
           structuredQuery: _json.containsKey('structuredQuery')
               ? StructuredQuery.fromJson(_json['structuredQuery']
                   as core.Map<core.String, core.dynamic>)
@@ -3584,6 +3709,7 @@ class PartitionQueryRequest {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
         if (partitionCount != null) 'partitionCount': partitionCount!,
+        if (readTime != null) 'readTime': readTime!,
         if (structuredQuery != null) 'structuredQuery': structuredQuery!,
       };
 }

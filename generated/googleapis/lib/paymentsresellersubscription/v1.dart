@@ -1324,7 +1324,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
       };
 }
 
-/// A Subscription resource managed by 3P Partners.
+/// LINT.IfChange A Subscription resource managed by 3P Partners.
 class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Describes the details of a cancelled subscription.
   ///
@@ -1638,8 +1638,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
 
 /// Individual line item definition of a subscription.
 ///
-/// Next id: 5
+/// Next id: 6
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
+  /// Description of this line item.
+  ///
+  /// Output only.
+  core.String? description;
+
   /// It is set only if the line item has its own free trial applied.
   ///
   /// End time of the line item free trial period, in ISO 8061 format. For
@@ -1683,6 +1688,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   core.String? state;
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({
+    this.description,
     this.lineItemFreeTrialEndTime,
     this.lineItemPromotionSpecs,
     this.product,
@@ -1692,6 +1698,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem.fromJson(
       core.Map _json)
       : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
           lineItemFreeTrialEndTime:
               _json.containsKey('lineItemFreeTrialEndTime')
                   ? _json['lineItemFreeTrialEndTime'] as core.String
@@ -1712,6 +1721,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
         if (lineItemFreeTrialEndTime != null)
           'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,
         if (lineItemPromotionSpecs != null)

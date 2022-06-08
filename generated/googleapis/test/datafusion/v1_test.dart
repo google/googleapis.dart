@@ -271,8 +271,7 @@ api.EventPublishConfig buildEventPublishConfig() {
   final o = api.EventPublishConfig();
   buildCounterEventPublishConfig++;
   if (buildCounterEventPublishConfig < 3) {
-    o.eventPublishEnabled = true;
-    o.project = 'foo';
+    o.enabled = true;
     o.topic = 'foo';
   }
   buildCounterEventPublishConfig--;
@@ -282,11 +281,7 @@ api.EventPublishConfig buildEventPublishConfig() {
 void checkEventPublishConfig(api.EventPublishConfig o) {
   buildCounterEventPublishConfig++;
   if (buildCounterEventPublishConfig < 3) {
-    unittest.expect(o.eventPublishEnabled!, unittest.isTrue);
-    unittest.expect(
-      o.project!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.enabled!, unittest.isTrue);
     unittest.expect(
       o.topic!,
       unittest.equals('foo'),

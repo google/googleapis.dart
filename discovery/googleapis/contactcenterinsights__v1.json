@@ -1273,7 +1273,7 @@
             }
         }
     },
-    "revision": "20220522",
+    "revision": "20220604",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",
     "schemas": {
         "GoogleCloudContactcenterinsightsV1Analysis": {

@@ -3519,10 +3519,14 @@ class AcceleratorConfig {
   /// [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
   core.String? gpuPartitionSize;
 
+  /// The configuration for GPU sharing options.
+  GPUSharingConfig? gpuSharingConfig;
+
   AcceleratorConfig({
     this.acceleratorCount,
     this.acceleratorType,
     this.gpuPartitionSize,
+    this.gpuSharingConfig,
   });
 
   AcceleratorConfig.fromJson(core.Map _json)
@@ -3536,12 +3540,17 @@ class AcceleratorConfig {
           gpuPartitionSize: _json.containsKey('gpuPartitionSize')
               ? _json['gpuPartitionSize'] as core.String
               : null,
+          gpuSharingConfig: _json.containsKey('gpuSharingConfig')
+              ? GPUSharingConfig.fromJson(_json['gpuSharingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
         if (gpuPartitionSize != null) 'gpuPartitionSize': gpuPartitionSize!,
+        if (gpuSharingConfig != null) 'gpuSharingConfig': gpuSharingConfig!,
       };
 }
 
@@ -5825,6 +5834,41 @@ class Filter {
       };
 }
 
+/// GPUSharingConfig represents the GPU sharing configuration for Hardware
+/// Accelerators.
+class GPUSharingConfig {
+  /// The type of GPU sharing strategy to enable on the GPU node.
+  /// Possible string values are:
+  /// - "GPU_SHARING_STRATEGY_UNSPECIFIED" : Default value.
+  /// - "TIME_SHARING" : GPUs are time-shared between containers.
+  core.String? gpuSharingStrategy;
+
+  /// The max number of containers that can share a physical GPU.
+  core.String? maxSharedClientsPerGpu;
+
+  GPUSharingConfig({
+    this.gpuSharingStrategy,
+    this.maxSharedClientsPerGpu,
+  });
+
+  GPUSharingConfig.fromJson(core.Map _json)
+      : this(
+          gpuSharingStrategy: _json.containsKey('gpuSharingStrategy')
+              ? _json['gpuSharingStrategy'] as core.String
+              : null,
+          maxSharedClientsPerGpu: _json.containsKey('maxSharedClientsPerGpu')
+              ? _json['maxSharedClientsPerGpu'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gpuSharingStrategy != null)
+          'gpuSharingStrategy': gpuSharingStrategy!,
+        if (maxSharedClientsPerGpu != null)
+          'maxSharedClientsPerGpu': maxSharedClientsPerGpu!,
+      };
+}
+
 /// Configuration for the Compute Engine PD CSI driver.
 class GcePersistentDiskCsiDriverConfig {
   /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
@@ -7349,8 +7393,8 @@ class NetworkTags {
 
 /// Parameters that describe the nodes in a cluster.
 ///
-/// *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`.
-/// Use AutoprovisioningNodePoolDefaults instead.
+/// GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use
+/// AutoprovisioningNodePoolDefaults instead.
 class NodeConfig {
   /// A list of hardware accelerators to be attached to each node.
   ///
@@ -7370,6 +7414,11 @@ class NodeConfig {
   /// see:
   /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption
   core.String? bootDiskKmsKey;
+
+  /// Confidential nodes config.
+  ///
+  /// All the nodes in the node pool will be Confidential VM once enabled.
+  ConfidentialNodes? confidentialNodes;
 
   /// Size of the disk attached to each node, specified in GB.
   ///
@@ -7517,6 +7566,7 @@ class NodeConfig {
     this.accelerators,
     this.advancedMachineFeatures,
     this.bootDiskKmsKey,
+    this.confidentialNodes,
     this.diskSizeGb,
     this.diskType,
     this.gcfsConfig,
@@ -7557,6 +7607,10 @@ class NodeConfig {
               : null,
           bootDiskKmsKey: _json.containsKey('bootDiskKmsKey')
               ? _json['bootDiskKmsKey'] as core.String
+              : null,
+          confidentialNodes: _json.containsKey('confidentialNodes')
+              ? ConfidentialNodes.fromJson(_json['confidentialNodes']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           diskSizeGb: _json.containsKey('diskSizeGb')
               ? _json['diskSizeGb'] as core.int
@@ -7657,6 +7711,7 @@ class NodeConfig {
         if (advancedMachineFeatures != null)
           'advancedMachineFeatures': advancedMachineFeatures!,
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
+        if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
@@ -10583,6 +10638,11 @@ class UpdateNodePoolRequest {
   /// Deprecated.
   core.String? clusterId;
 
+  /// Confidential nodes config.
+  ///
+  /// All the nodes in the node pool will be Confidential VM once enabled.
+  ConfidentialNodes? confidentialNodes;
+
   /// GCFS config.
   GcfsConfig? gcfsConfig;
 
@@ -10678,6 +10738,7 @@ class UpdateNodePoolRequest {
 
   UpdateNodePoolRequest({
     this.clusterId,
+    this.confidentialNodes,
     this.gcfsConfig,
     this.gvnic,
     this.imageType,
@@ -10700,6 +10761,10 @@ class UpdateNodePoolRequest {
       : this(
           clusterId: _json.containsKey('clusterId')
               ? _json['clusterId'] as core.String
+              : null,
+          confidentialNodes: _json.containsKey('confidentialNodes')
+              ? ConfidentialNodes.fromJson(_json['confidentialNodes']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           gcfsConfig: _json.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
@@ -10760,6 +10825,7 @@ class UpdateNodePoolRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
+        if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,

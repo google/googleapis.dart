@@ -927,7 +927,7 @@
             }
         }
     },
-    "revision": "20220528",
+    "revision": "20220604",
     "rootUrl": "https://cloudasset.googleapis.com/",
     "schemas": {
         "AccessSelector": {
@@ -3218,7 +3218,7 @@
             "type": "object"
         },
         "ResourceSearchResult": {
-            "description": "A result of Resource Search, containing information of a cloud resource.",
+            "description": "A result of Resource Search, containing information of a cloud resource. Next ID: 28",
             "id": "ResourceSearchResult",
             "properties": {
                 "additionalAttributes": {

@@ -479,7 +479,7 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   ///
   /// [tunnelDestGroupId] - Required. The ID to use for the TunnelDestGroup,
   /// which becomes the final component of the resource name. This value must be
-  /// 4-63 characters, and valid characters are `a-z-`.
+  /// 4-63 characters, and valid characters are `[a-z]-`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,7 +655,8 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Immutable. Identifier for the TunnelDestGroup. Must be
-  /// unique within the project.
+  /// unique within the project and contain only lower case letters (a-z) and
+  /// dashes (-).
   /// Value must have pattern
   /// `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+/destGroups/\[^/\]+$`.
   ///
@@ -1047,7 +1048,7 @@ class ApplicationSettings {
   /// invalid.
   core.String? cookieDomain;
 
-  /// Settings to configure IAP's behavior for a CSM mesh.
+  /// Settings to configure IAP's behavior for a service mesh.
   CsmSettings? csmSettings;
 
   ApplicationSettings({
@@ -1235,11 +1236,12 @@ class CorsSettings {
       };
 }
 
-/// Configuration for RCTokens generated for CSM workloads protected by IAP.
+/// Configuration for RCTokens generated for service mesh workloads protected by
+/// IAP.
 ///
 /// RCTokens are IAP generated JWTs that can be verified at the application. The
-/// RCToken is primarily used for ISTIO deployments, and can be scoped to a
-/// single mesh by configuring the audience field accordingly
+/// RCToken is primarily used for service mesh deployments, and can be scoped to
+/// a single mesh by configuring the audience field accordingly
 class CsmSettings {
   /// Audience claim set in the generated RCToken.
   ///
@@ -1776,7 +1778,7 @@ class ReauthSettings {
   /// again.
   core.String? maxAge;
 
-  /// Reauth method required by the policy.
+  /// Reauth method requested.
   /// Possible string values are:
   /// - "METHOD_UNSPECIFIED" : Reauthentication disabled.
   /// - "LOGIN" : Mimics the behavior as if the user had logged out and tried to
@@ -1952,7 +1954,8 @@ class TunnelDestGroup {
 
   /// Identifier for the TunnelDestGroup.
   ///
-  /// Must be unique within the project.
+  /// Must be unique within the project and contain only lower case letters
+  /// (a-z) and dashes (-).
   ///
   /// Required. Immutable.
   core.String? name;

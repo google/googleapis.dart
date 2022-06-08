@@ -1216,6 +1216,8 @@ class BatchCreateMediaItemsRequest {
 
   /// List of media items to be created.
   ///
+  /// Maximum 50 media items per call.
+  ///
   /// Required.
   core.List<NewMediaItem>? newMediaItems;
 

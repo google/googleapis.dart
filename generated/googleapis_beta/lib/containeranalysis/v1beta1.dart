@@ -2378,27 +2378,32 @@ class Digest {
   /// `SHA1`, `SHA512` etc.
   core.String? algo;
 
-  /// Value of the digest encoded.
-  ///
-  /// For example: SHA512 - base64 encoding, SHA1 - hex encoding.
-  core.String? digestValue;
+  /// Value of the digest.
+  core.String? digestBytes;
+  core.List<core.int> get digestBytesAsBytes =>
+      convert.base64.decode(digestBytes!);
+
+  set digestBytesAsBytes(core.List<core.int> _bytes) {
+    digestBytes =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
 
   Digest({
     this.algo,
-    this.digestValue,
+    this.digestBytes,
   });
 
   Digest.fromJson(core.Map _json)
       : this(
           algo: _json.containsKey('algo') ? _json['algo'] as core.String : null,
-          digestValue: _json.containsKey('digestValue')
-              ? _json['digestValue'] as core.String
+          digestBytes: _json.containsKey('digestBytes')
+              ? _json['digestBytes'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (algo != null) 'algo': algo!,
-        if (digestValue != null) 'digestValue': digestValue!,
+        if (digestBytes != null) 'digestBytes': digestBytes!,
       };
 }
 

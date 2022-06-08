@@ -152,7 +152,7 @@
             }
         }
     },
-    "revision": "20220531",
+    "revision": "20220606",
     "rootUrl": "https://mybusinessnotifications.googleapis.com/",
     "schemas": {
         "NotificationSetting": {

@@ -260,6 +260,45 @@ void checkGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest(
   buildCounterGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest--;
 }
 
+core.int buildCounterGoogleAnalyticsAdminV1alphaAttributionSettings = 0;
+api.GoogleAnalyticsAdminV1alphaAttributionSettings
+    buildGoogleAnalyticsAdminV1alphaAttributionSettings() {
+  final o = api.GoogleAnalyticsAdminV1alphaAttributionSettings();
+  buildCounterGoogleAnalyticsAdminV1alphaAttributionSettings++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaAttributionSettings < 3) {
+    o.acquisitionConversionEventLookbackWindow = 'foo';
+    o.name = 'foo';
+    o.otherConversionEventLookbackWindow = 'foo';
+    o.reportingAttributionModel = 'foo';
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaAttributionSettings--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaAttributionSettings(
+    api.GoogleAnalyticsAdminV1alphaAttributionSettings o) {
+  buildCounterGoogleAnalyticsAdminV1alphaAttributionSettings++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaAttributionSettings < 3) {
+    unittest.expect(
+      o.acquisitionConversionEventLookbackWindow!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.otherConversionEventLookbackWindow!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reportingAttributionModel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaAttributionSettings--;
+}
+
 core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
@@ -666,6 +705,8 @@ api.GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
   if (buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource <
       3) {
     o.account = buildGoogleAnalyticsAdminV1alphaAccount();
+    o.attributionSettings =
+        buildGoogleAnalyticsAdminV1alphaAttributionSettings();
     o.conversionEvent = buildGoogleAnalyticsAdminV1alphaConversionEvent();
     o.customDimension = buildGoogleAnalyticsAdminV1alphaCustomDimension();
     o.customMetric = buildGoogleAnalyticsAdminV1alphaCustomMetric();
@@ -694,6 +735,7 @@ void checkGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource(
   if (buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource <
       3) {
     checkGoogleAnalyticsAdminV1alphaAccount(o.account!);
+    checkGoogleAnalyticsAdminV1alphaAttributionSettings(o.attributionSettings!);
     checkGoogleAnalyticsAdminV1alphaConversionEvent(o.conversionEvent!);
     checkGoogleAnalyticsAdminV1alphaCustomDimension(o.customDimension!);
     checkGoogleAnalyticsAdminV1alphaCustomMetric(o.customMetric!);
@@ -2556,6 +2598,17 @@ void main() {
           api.GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAttributionSettings',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAnalyticsAdminV1alphaAttributionSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaAttributionSettings(od);
     });
   });
 
@@ -4519,6 +4572,61 @@ void main() {
           response as api.GoogleAnalyticsAdminV1alphaProperty);
     });
 
+    unittest.test('method--getAttributionSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleAnalyticsAdminV1alphaAttributionSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getAttributionSettings(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAttributionSettings(
+          response as api.GoogleAnalyticsAdminV1alphaAttributionSettings);
+    });
+
     unittest.test('method--getDataRetentionSettings', () async {
       final mock = HttpServerMock();
       final res = api.GoogleAnalyticsAdminApi(mock).properties;
@@ -4769,6 +4877,72 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleAnalyticsAdminV1alphaProperty(
           response as api.GoogleAnalyticsAdminV1alphaProperty);
+    });
+
+    unittest.test('method--updateAttributionSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties;
+      final arg_request = buildGoogleAnalyticsAdminV1alphaAttributionSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleAnalyticsAdminV1alphaAttributionSettings(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleAnalyticsAdminV1alphaAttributionSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateAttributionSettings(
+          arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAttributionSettings(
+          response as api.GoogleAnalyticsAdminV1alphaAttributionSettings);
     });
 
     unittest.test('method--updateDataRetentionSettings', () async {
