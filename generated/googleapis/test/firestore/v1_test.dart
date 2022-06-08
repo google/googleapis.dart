@@ -1739,23 +1739,23 @@ void checkRollbackRequest(api.RollbackRequest o) {
   buildCounterRollbackRequest--;
 }
 
-core.int buildCounterRunQueryRequestElement = 0;
-api.RunQueryRequestElement buildRunQueryRequestElement() {
-  final o = api.RunQueryRequestElement();
-  buildCounterRunQueryRequestElement++;
-  if (buildCounterRunQueryRequestElement < 3) {
+core.int buildCounterRunQueryRequest = 0;
+api.RunQueryRequest buildRunQueryRequest() {
+  final o = api.RunQueryRequest();
+  buildCounterRunQueryRequest++;
+  if (buildCounterRunQueryRequest < 3) {
     o.newTransaction = buildTransactionOptions();
     o.readTime = 'foo';
     o.structuredQuery = buildStructuredQuery();
     o.transaction = 'foo';
   }
-  buildCounterRunQueryRequestElement--;
+  buildCounterRunQueryRequest--;
   return o;
 }
 
-void checkRunQueryRequestElement(api.RunQueryRequestElement o) {
-  buildCounterRunQueryRequestElement++;
-  if (buildCounterRunQueryRequestElement < 3) {
+void checkRunQueryRequest(api.RunQueryRequest o) {
+  buildCounterRunQueryRequest++;
+  if (buildCounterRunQueryRequest < 3) {
     checkTransactionOptions(o.newTransaction!);
     unittest.expect(
       o.readTime!,
@@ -1767,40 +1767,27 @@ void checkRunQueryRequestElement(api.RunQueryRequestElement o) {
       unittest.equals('foo'),
     );
   }
-  buildCounterRunQueryRequestElement--;
+  buildCounterRunQueryRequest--;
 }
 
-api.RunQueryRequest buildRunQueryRequest() {
-  final o = api.RunQueryRequest();
-  o.add(buildRunQueryRequestElement());
-  o.add(buildRunQueryRequestElement());
-  return o;
-}
-
-void checkRunQueryRequest(api.RunQueryRequest o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkRunQueryRequestElement(o[0]);
-  checkRunQueryRequestElement(o[1]);
-}
-
-core.int buildCounterRunQueryResponse = 0;
-api.RunQueryResponse buildRunQueryResponse() {
-  final o = api.RunQueryResponse();
-  buildCounterRunQueryResponse++;
-  if (buildCounterRunQueryResponse < 3) {
+core.int buildCounterRunQueryResponseElement = 0;
+api.RunQueryResponseElement buildRunQueryResponseElement() {
+  final o = api.RunQueryResponseElement();
+  buildCounterRunQueryResponseElement++;
+  if (buildCounterRunQueryResponseElement < 3) {
     o.document = buildDocument();
     o.done = true;
     o.readTime = 'foo';
     o.skippedResults = 42;
     o.transaction = 'foo';
   }
-  buildCounterRunQueryResponse--;
+  buildCounterRunQueryResponseElement--;
   return o;
 }
 
-void checkRunQueryResponse(api.RunQueryResponse o) {
-  buildCounterRunQueryResponse++;
-  if (buildCounterRunQueryResponse < 3) {
+void checkRunQueryResponseElement(api.RunQueryResponseElement o) {
+  buildCounterRunQueryResponseElement++;
+  if (buildCounterRunQueryResponseElement < 3) {
     checkDocument(o.document!);
     unittest.expect(o.done!, unittest.isTrue);
     unittest.expect(
@@ -1816,7 +1803,20 @@ void checkRunQueryResponse(api.RunQueryResponse o) {
       unittest.equals('foo'),
     );
   }
-  buildCounterRunQueryResponse--;
+  buildCounterRunQueryResponseElement--;
+}
+
+api.RunQueryResponse buildRunQueryResponse() {
+  final o = api.RunQueryResponse();
+  o.add(buildRunQueryResponseElement());
+  o.add(buildRunQueryResponseElement());
+  return o;
+}
+
+void checkRunQueryResponse(api.RunQueryResponse o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRunQueryResponseElement(o[0]);
+  checkRunQueryResponseElement(o[1]);
 }
 
 core.Map<core.String, core.Object?> buildUnnamed31() => {
@@ -2835,22 +2835,23 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-RunQueryRequestElement', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildRunQueryRequestElement();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RunQueryRequestElement.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkRunQueryRequestElement(od);
-    });
-  });
-
   unittest.group('obj-schema-RunQueryRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRunQueryRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RunQueryRequest.fromJson(oJson as core.List);
+      final od = api.RunQueryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRunQueryRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RunQueryResponseElement', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRunQueryResponseElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RunQueryResponseElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRunQueryResponseElement(od);
     });
   });
 
@@ -2858,8 +2859,7 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRunQueryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RunQueryResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = api.RunQueryResponse.fromJson(oJson as core.List);
       checkRunQueryResponse(od);
     });
   });
@@ -4581,7 +4581,8 @@ void main() {
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.RunQueryRequest.fromJson(json as core.List);
+        final obj = api.RunQueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
         checkRunQueryRequest(obj);
 
         final path = (req.url).path;

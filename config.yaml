@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 9.0.0
+    version: 9.1.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
