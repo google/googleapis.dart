@@ -852,6 +852,9 @@ class ProjectsOperationsResource {
 
 /// The request for Datastore.AllocateIds.
 class AllocateIdsRequest {
+  /// If not empty, the ID of the database against which to make the request.
+  core.String? databaseId;
+
   /// A list of keys with incomplete key paths for which to allocate IDs.
   ///
   /// No key may be reserved/read-only.
@@ -860,11 +863,15 @@ class AllocateIdsRequest {
   core.List<Key>? keys;
 
   AllocateIdsRequest({
+    this.databaseId,
     this.keys,
   });
 
   AllocateIdsRequest.fromJson(core.Map _json)
       : this(
+          databaseId: _json.containsKey('databaseId')
+              ? _json['databaseId'] as core.String
+              : null,
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
                   .map((value) => Key.fromJson(
@@ -874,6 +881,7 @@ class AllocateIdsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
         if (keys != null) 'keys': keys!,
       };
 }
@@ -932,15 +940,22 @@ class ArrayValue {
 
 /// The request for Datastore.BeginTransaction.
 class BeginTransactionRequest {
+  /// If not empty, the ID of the database against which to make the request.
+  core.String? databaseId;
+
   /// Options for a new transaction.
   TransactionOptions? transactionOptions;
 
   BeginTransactionRequest({
+    this.databaseId,
     this.transactionOptions,
   });
 
   BeginTransactionRequest.fromJson(core.Map _json)
       : this(
+          databaseId: _json.containsKey('databaseId')
+              ? _json['databaseId'] as core.String
+              : null,
           transactionOptions: _json.containsKey('transactionOptions')
               ? TransactionOptions.fromJson(_json['transactionOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -948,6 +963,7 @@ class BeginTransactionRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
         if (transactionOptions != null)
           'transactionOptions': transactionOptions!,
       };
@@ -983,6 +999,9 @@ class BeginTransactionResponse {
 
 /// The request for Datastore.Commit.
 class CommitRequest {
+  /// If not empty, the ID of the database against which to make the request.
+  core.String? databaseId;
+
   /// The type of commit to perform.
   ///
   /// Defaults to `TRANSACTIONAL`.
@@ -1019,6 +1038,7 @@ class CommitRequest {
   }
 
   CommitRequest({
+    this.databaseId,
     this.mode,
     this.mutations,
     this.transaction,
@@ -1026,6 +1046,9 @@ class CommitRequest {
 
   CommitRequest.fromJson(core.Map _json)
       : this(
+          databaseId: _json.containsKey('databaseId')
+              ? _json['databaseId'] as core.String
+              : null,
           mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
           mutations: _json.containsKey('mutations')
               ? (_json['mutations'] as core.List)
@@ -1039,6 +1062,7 @@ class CommitRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
         if (mode != null) 'mode': mode!,
         if (mutations != null) 'mutations': mutations!,
         if (transaction != null) 'transaction': transaction!,
@@ -1094,7 +1118,7 @@ class CommitResponse {
 class CompositeFilter {
   /// The list of filters to combine.
   ///
-  /// Must contain at least one filter.
+  /// Requires: * At least one filter is present.
   core.List<Filter>? filters;
 
   /// The operator for combining multiple filters.
@@ -1892,6 +1916,9 @@ typedef LatLng = $LatLng;
 
 /// The request for Datastore.Lookup.
 class LookupRequest {
+  /// If not empty, the ID of the database against which to make the request.
+  core.String? databaseId;
+
   /// Keys of entities to look up.
   ///
   /// Required.
@@ -1901,12 +1928,16 @@ class LookupRequest {
   ReadOptions? readOptions;
 
   LookupRequest({
+    this.databaseId,
     this.keys,
     this.readOptions,
   });
 
   LookupRequest.fromJson(core.Map _json)
       : this(
+          databaseId: _json.containsKey('databaseId')
+              ? _json['databaseId'] as core.String
+              : null,
           keys: _json.containsKey('keys')
               ? (_json['keys'] as core.List)
                   .map((value) => Key.fromJson(
@@ -1920,6 +1951,7 @@ class LookupRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
         if (keys != null) 'keys': keys!,
         if (readOptions != null) 'readOptions': readOptions!,
       };
@@ -2141,7 +2173,41 @@ class MutationResult {
 /// certain documented contexts. Foreign partition IDs (in which the project ID
 /// does not match the context project ID ) are discouraged. Reads and writes of
 /// foreign partition IDs may fail if the project is not in an active state.
-typedef PartitionId = $PartitionId;
+class PartitionId {
+  /// If not empty, the ID of the database to which the entities belong.
+  core.String? databaseId;
+
+  /// If not empty, the ID of the namespace to which the entities belong.
+  core.String? namespaceId;
+
+  /// The ID of the project to which the entities belong.
+  core.String? projectId;
+
+  PartitionId({
+    this.databaseId,
+    this.namespaceId,
+    this.projectId,
+  });
+
+  PartitionId.fromJson(core.Map _json)
+      : this(
+          databaseId: _json.containsKey('databaseId')
+              ? _json['databaseId'] as core.String
+              : null,
+          namespaceId: _json.containsKey('namespaceId')
+              ? _json['namespaceId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
+        if (namespaceId != null) 'namespaceId': namespaceId!,
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
 
 /// A (kind, ID/name) pair used to construct a key path.
 ///
@@ -2734,6 +2800,9 @@ typedef ReserveIdsResponse = $Empty;
 
 /// The request for Datastore.Rollback.
 class RollbackRequest {
+  /// If not empty, the ID of the database against which to make the request.
+  core.String? databaseId;
+
   /// The transaction identifier, returned by a call to
   /// Datastore.BeginTransaction.
   ///
@@ -2748,17 +2817,22 @@ class RollbackRequest {
   }
 
   RollbackRequest({
+    this.databaseId,
     this.transaction,
   });
 
   RollbackRequest.fromJson(core.Map _json)
       : this(
+          databaseId: _json.containsKey('databaseId')
+              ? _json['databaseId'] as core.String
+              : null,
           transaction: _json.containsKey('transaction')
               ? _json['transaction'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
         if (transaction != null) 'transaction': transaction!,
       };
 }
@@ -2770,6 +2844,9 @@ typedef RollbackResponse = $Empty;
 
 /// The request for Datastore.RunQuery.
 class RunQueryRequest {
+  /// If not empty, the ID of the database against which to make the request.
+  core.String? databaseId;
+
   /// The GQL query to run.
   ///
   /// This query must be a non-aggregation query.
@@ -2788,6 +2865,7 @@ class RunQueryRequest {
   ReadOptions? readOptions;
 
   RunQueryRequest({
+    this.databaseId,
     this.gqlQuery,
     this.partitionId,
     this.query,
@@ -2796,6 +2874,9 @@ class RunQueryRequest {
 
   RunQueryRequest.fromJson(core.Map _json)
       : this(
+          databaseId: _json.containsKey('databaseId')
+              ? _json['databaseId'] as core.String
+              : null,
           gqlQuery: _json.containsKey('gqlQuery')
               ? GqlQuery.fromJson(
                   _json['gqlQuery'] as core.Map<core.String, core.dynamic>)
@@ -2815,6 +2896,7 @@ class RunQueryRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
         if (gqlQuery != null) 'gqlQuery': gqlQuery!,
         if (partitionId != null) 'partitionId': partitionId!,
         if (query != null) 'query': query!,

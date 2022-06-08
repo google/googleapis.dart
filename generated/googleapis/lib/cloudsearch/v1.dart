@@ -510,7 +510,7 @@ class IndexingDatasourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source to delete Schema. Format:
+  /// [name] - The name of the data source to delete Schema. Format:
   /// datasources/{source_id}
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
@@ -554,7 +554,7 @@ class IndexingDatasourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source to get Schema. Format:
+  /// [name] - The name of the data source to get Schema. Format:
   /// datasources/{source_id}
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
@@ -602,7 +602,7 @@ class IndexingDatasourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source to update Schema. Format:
+  /// [name] - The name of the data source to update Schema. Format:
   /// datasources/{source_id}
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
@@ -651,11 +651,11 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the item to delete. Format:
+  /// [name] - Required. The name of the item to delete. Format:
   /// datasources/{source_id}/items/{item_id}
   /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
-  /// [connectorName] - Name of connector making this call. Format:
+  /// [connectorName] - The name of connector making this call. Format:
   /// datasources/{source_id}/connectors/{ID}
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
@@ -663,8 +663,8 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [mode] - Required. The RequestMode for this request.
   /// Possible string values are:
-  /// - "UNSPECIFIED" : Priority is not specified in the update request. Leaving
-  /// priority unspecified results in an update failure.
+  /// - "UNSPECIFIED" : The priority is not specified in the update request.
+  /// Leaving priority unspecified results in an update failure.
   /// - "SYNCHRONOUS" : For real-time updates.
   /// - "ASYNCHRONOUS" : For changes that are executed after the response is
   /// sent back to the caller.
@@ -726,7 +726,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to delete items in a queue. Format:
+  /// [name] - The name of the Data Source to delete items in a queue. Format:
   /// datasources/{source_id}
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
@@ -770,11 +770,11 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the item to get info. Format:
+  /// [name] - The name of the item to get info. Format:
   /// datasources/{source_id}/items/{item_id}
   /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
-  /// [connectorName] - Name of connector making this call. Format:
+  /// [connectorName] - The name of connector making this call. Format:
   /// datasources/{source_id}/connectors/{ID}
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
@@ -825,8 +825,9 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Item. Format: datasources/{source_id}/items/{item_id}
-  /// This is a required field. The maximum length is 1536 characters.
+  /// [name] - The name of the Item. Format:
+  /// datasources/{source_id}/items/{item_id} This is a required field. The
+  /// maximum length is 1536 characters.
   /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -867,7 +868,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to list Items. Format:
+  /// [name] - The name of the Data Source to list Items. Format:
   /// datasources/{source_id}
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
@@ -879,7 +880,7 @@ class IndexingDatasourcesItemsResource {
   /// itemStatus.processingError.code, itemStatus.repositoryError.type, If this
   /// value is false, then all the fields are populated in Item.
   ///
-  /// [connectorName] - Name of connector making this call. Format:
+  /// [connectorName] - The name of connector making this call. Format:
   /// datasources/{source_id}/connectors/{ID}
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
@@ -949,7 +950,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to poll items. Format:
+  /// [name] - The name of the Data Source to poll items. Format:
   /// datasources/{source_id}
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
@@ -994,7 +995,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the item to push into the indexing queue. Format:
+  /// [name] - The name of the item to push into the indexing queue. Format:
   /// datasources/{source_id}/items/{ID} This is a required field. The maximum
   /// length is 1536 characters.
   /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
@@ -1041,7 +1042,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to unreserve all items. Format:
+  /// [name] - The name of the Data Source to unreserve all items. Format:
   /// datasources/{source_id}
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
@@ -1088,7 +1089,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Item to start a resumable upload. Format:
+  /// [name] - The name of the Item to start a resumable upload. Format:
   /// datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes.
   /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
@@ -1631,7 +1632,7 @@ class SettingsDatasourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the datasource. Format: datasources/{source_id}.
+  /// [name] - The name of the datasource. Format: datasources/{source_id}.
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
@@ -1674,7 +1675,8 @@ class SettingsDatasourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the datasource resource. Format: datasources/{source_id}.
+  /// [name] - The name of the datasource resource. Format:
+  /// datasources/{source_id}.
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
@@ -1769,8 +1771,8 @@ class SettingsDatasourcesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the datasource resource. Format: datasources/{source_id}.
-  /// The name is ignored when creating a datasource.
+  /// [name] - The name of the datasource resource. Format:
+  /// datasources/{source_id}. The name is ignored when creating a datasource.
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1899,7 +1901,7 @@ class SettingsSearchapplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the search application. Format:
+  /// [name] - The name of the search application. Format:
   /// searchapplications/{application_id}.
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
@@ -2039,7 +2041,7 @@ class SettingsSearchapplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Search Application. Format:
+  /// [name] - The name of the Search Application. Format:
   /// searchapplications/{application_id}.
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
@@ -2846,7 +2848,7 @@ class BooleanOperatorOptions {
       };
 }
 
-/// Options for boolean properties.
+/// The options for boolean properties.
 class BooleanPropertyOptions {
   /// If set, describes how the boolean should be used as a search operator.
   BooleanOperatorOptions? operatorOptions;
@@ -2965,7 +2967,7 @@ class ContextAttribute {
 
 /// Aggregation of items by status code as of the specified date.
 class CustomerIndexStats {
-  /// Date for which statistics were calculated.
+  /// The date for which statistics were calculated.
   Date? date;
 
   /// Number of items aggregrated by status code.
@@ -2997,7 +2999,7 @@ class CustomerIndexStats {
 }
 
 class CustomerQueryStats {
-  /// Date for which query stats were calculated.
+  /// The date for which query stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
   Date? date;
@@ -3034,7 +3036,7 @@ class CustomerSearchApplicationStats {
   /// The count of search applications for the date.
   core.String? count;
 
-  /// Date for which search application stats were calculated.
+  /// The date for which search application stats were calculated.
   Date? date;
 
   CustomerSearchApplicationStats({
@@ -3059,7 +3061,7 @@ class CustomerSearchApplicationStats {
 }
 
 class CustomerSessionStats {
-  /// Date for which session stats were calculated.
+  /// The date for which session stats were calculated.
   ///
   /// Stats are calculated on the following day, close to midnight PST, and then
   /// returned.
@@ -3130,7 +3132,7 @@ class CustomerSettings {
 }
 
 class CustomerUserStats {
-  /// Date for which session stats were calculated.
+  /// The date for which session stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
   Date? date;
@@ -3213,7 +3215,7 @@ class DataSource {
   /// the individual items are not shared outside this visibility.
   core.List<GSuitePrincipal>? itemsVisibility;
 
-  /// Name of the datasource resource.
+  /// The name of the datasource resource.
   ///
   /// Format: datasources/{source_id}. The name is ignored when creating a
   /// datasource.
@@ -3304,7 +3306,7 @@ class DataSource {
 
 /// Aggregation of items by status code as of the specified date.
 class DataSourceIndexStats {
-  /// Date for which index stats were calculated.
+  /// The date for which index stats were calculated.
   ///
   /// If the date of request is not the current date then stats calculated on
   /// the next day are returned. Stats are calculated close to mid night in this
@@ -3491,7 +3493,7 @@ class DateOperatorOptions {
       };
 }
 
-/// Options for date properties.
+/// The options for date properties.
 class DatePropertyOptions {
   /// If set, describes how the date should be used as a search operator.
   DateOperatorOptions? operatorOptions;
@@ -3560,7 +3562,7 @@ class DebugOptions {
 }
 
 class DeleteQueueItemsRequest {
-  /// Name of connector making this call.
+  /// The name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
   core.String? connectorName;
@@ -3568,7 +3570,7 @@ class DeleteQueueItemsRequest {
   /// Common debug options.
   DebugOptions? debugOptions;
 
-  /// Name of a queue to delete items from.
+  /// The name of a queue to delete items from.
   core.String? queue;
 
   DeleteQueueItemsRequest({
@@ -3655,7 +3657,7 @@ class DoubleOperatorOptions {
       };
 }
 
-/// Options for double properties.
+/// The options for double properties.
 class DoublePropertyOptions {
   /// If set, describes how the double should be used as a search operator.
   DoubleOperatorOptions? operatorOptions;
@@ -3761,8 +3763,8 @@ class EnumOperatorOptions {
       };
 }
 
-/// Options for enum properties, which allow you to define a restricted set of
-/// strings to match user queries, set rankings for those string values, and
+/// The options for enum properties, which allow you to define a restricted set
+/// of strings to match user queries, set rankings for those string values, and
 /// define an operator name to be paired with those strings so that users can
 /// narrow results to only items with a specific value.
 ///
@@ -4018,7 +4020,7 @@ class FacetOptions {
   /// If empty, then all objects will be used to compute facets.
   core.String? objectType;
 
-  /// Name of the operator chosen for faceting.
+  /// The name of the operator chosen for faceting.
   ///
   /// @see cloudsearch.SchemaPropertyOptions
   core.String? operatorName;
@@ -4070,7 +4072,7 @@ class FacetResult {
   /// Can be empty.
   core.String? objectType;
 
-  /// Name of the operator chosen for faceting.
+  /// The name of the operator chosen for faceting.
   ///
   /// @see cloudsearch.SchemaPropertyOptions
   core.String? operatorName;
@@ -4115,7 +4117,7 @@ class FacetResult {
 }
 
 class FieldViolation {
-  /// Description of the error.
+  /// The description of the error.
   core.String? description;
 
   /// Path of field with violation.
@@ -4573,7 +4575,7 @@ class HtmlOperatorOptions {
       };
 }
 
-/// Options for html properties.
+/// The options for html properties.
 class HtmlPropertyOptions {
   /// If set, describes how the property should be used as a search operator.
   HtmlOperatorOptions? operatorOptions;
@@ -4655,7 +4657,7 @@ class IndexItemOptions {
 }
 
 class IndexItemRequest {
-  /// Name of connector making this call.
+  /// The name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
   core.String? connectorName;
@@ -4664,7 +4666,7 @@ class IndexItemRequest {
   DebugOptions? debugOptions;
   IndexItemOptions? indexItemOptions;
 
-  /// Name of the item.
+  /// The name of the item.
   ///
   /// Format: datasources/{source_id}/items/{item_id}
   Item? item;
@@ -4673,8 +4675,8 @@ class IndexItemRequest {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "UNSPECIFIED" : Priority is not specified in the update request. Leaving
-  /// priority unspecified results in an update failure.
+  /// - "UNSPECIFIED" : The priority is not specified in the update request.
+  /// Leaving priority unspecified results in an update failure.
   /// - "SYNCHRONOUS" : For real-time updates.
   /// - "ASYNCHRONOUS" : For changes that are executed after the response is
   /// sent back to the caller.
@@ -4787,7 +4789,7 @@ class IntegerOperatorOptions {
       };
 }
 
-/// Options for integer properties.
+/// The options for integer properties.
 class IntegerPropertyOptions {
   /// The maximum value of the property.
   ///
@@ -4926,7 +4928,7 @@ class Item {
   /// Item content to be indexed and made text searchable.
   ItemContent? content;
 
-  /// Type for this item.
+  /// The type for this item.
   /// Possible string values are:
   /// - "UNSPECIFIED"
   /// - "CONTENT_ITEM" : An item that is indexed for the only purpose of serving
@@ -4938,10 +4940,10 @@ class Item {
   /// otherwise has the same purpose as CONTAINER_ITEM.
   core.String? itemType;
 
-  /// Metadata information.
+  /// The metadata information.
   ItemMetadata? metadata;
 
-  /// Name of the Item.
+  /// The name of the Item.
   ///
   /// Format: datasources/{source_id}/items/{item_id} This is a required field.
   /// The maximum length is 1536 characters.
@@ -5056,7 +5058,8 @@ class Item {
 
 /// Access control list information for the item.
 ///
-/// For more information see \[Map ACLs\](/cloud-search/docs/guides/acls).
+/// For more information see
+/// [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
 class ItemAcl {
   /// Sets the type of access rules to apply when an item inherits its ACL from
   /// a parent.
@@ -5085,7 +5088,7 @@ class ItemAcl {
   /// number of elements is 100.
   core.List<Principal>? deniedReaders;
 
-  /// Name of the item to inherit the Access Permission List (ACL) from.
+  /// The name of the item to inherit the Access Permission List (ACL) from.
   ///
   /// Note: ACL inheritance *only* provides access permissions to child items
   /// and does not define structural relationships, nor does it provide
@@ -5885,7 +5888,7 @@ class Metaline {
 /// A person's name.
 class Name {
   /// The read-only display name formatted according to the locale specified by
-  /// the viewer's account or the Accept-Language HTTP header.
+  /// the viewer's account or the `Accept-Language` HTTP header.
   core.String? displayName;
 
   Name({
@@ -5995,7 +5998,7 @@ class NamedProperty {
 
 /// The definition for an object within a data source.
 class ObjectDefinition {
-  /// Name for the object, which then defines its type.
+  /// The name for the object, which then defines its type.
   ///
   /// Item indexing requests should set the objectType field equal to this
   /// value. For example, if *name* is *Document*, then indexing requests for
@@ -6088,7 +6091,7 @@ class ObjectDisplayOptions {
 
 /// The options for an object.
 class ObjectOptions {
-  /// Options that determine how the object is displayed in the Cloud Search
+  /// The options that determine how the object is displayed in the Cloud Search
   /// results page.
   ObjectDisplayOptions? displayOptions;
 
@@ -6118,7 +6121,7 @@ class ObjectOptions {
       };
 }
 
-/// Options for object properties.
+/// The options for object properties.
 class ObjectPropertyOptions {
   /// The properties of the sub-object.
   ///
@@ -6277,7 +6280,9 @@ class Person {
 
   /// The resource name of the person to provide information about.
   ///
-  /// See People.get from Google People API.
+  /// See
+  /// \[`People.get`\](https://developers.google.com/people/api/rest/v1/people/get)
+  /// from the Google People API.
   core.String? name;
 
   /// Obfuscated ID of a person.
@@ -6355,7 +6360,7 @@ class Photo {
 }
 
 class PollItemsRequest {
-  /// Name of connector making this call.
+  /// The name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
   core.String? connectorName;
@@ -6498,7 +6503,7 @@ class ProcessingError {
   /// - "ACL_CYCLE" : ACL inheritance graph formed a cycle.
   core.String? code;
 
-  /// Description of the error.
+  /// The description of the error.
   core.String? errorMessage;
 
   /// In case the item fields are invalid, this field contains the details about
@@ -6537,9 +6542,9 @@ class PropertyDefinition {
   BooleanPropertyOptions? booleanPropertyOptions;
   DatePropertyOptions? datePropertyOptions;
 
-  /// Options that determine how the property is displayed in the Cloud Search
-  /// results page if it is specified to be displayed in the object's display
-  /// options .
+  /// The options that determine how the property is displayed in the Cloud
+  /// Search results page if it's specified to be displayed in the object's
+  /// display options.
   PropertyDisplayOptions? displayOptions;
   DoublePropertyOptions? doublePropertyOptions;
   EnumPropertyOptions? enumPropertyOptions;
@@ -6549,7 +6554,7 @@ class PropertyDefinition {
   /// Indicates that the property can be used for generating facets.
   ///
   /// Cannot be true for properties whose type is object. IsReturnable must be
-  /// true to set this option. Only supported for Boolean, Enum, and Text
+  /// true to set this option. Only supported for boolean, enum, and text
   /// properties.
   core.bool? isFacetable;
 
@@ -6575,7 +6580,7 @@ class PropertyDefinition {
   ///
   /// Cannot be true for properties that are repeatable. Cannot be true for
   /// properties whose type is object. IsReturnable must be true to set this
-  /// option. Only supported for Boolean, Date, Double, Integer, and Timestamp
+  /// option. Only supported for boolean, date, double, integer, and timestamp
   /// properties.
   core.bool? isSortable;
 
@@ -6759,7 +6764,7 @@ class PushItem {
   /// maximum length is 2048 characters.
   core.String? contentHash;
 
-  /// Metadata hash of the item according to the repository.
+  /// The metadata hash of the item according to the repository.
   ///
   /// If specified, this is used to determine how to modify this item's status.
   /// Setting this field and the type field results in argument error. The
@@ -6778,9 +6783,9 @@ class PushItem {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Queue to which this item belongs to.
+  /// Queue to which this item belongs.
   ///
-  /// The default queue is chosen if this field is not specified. The maximum
+  /// The `default` queue is chosen if this field is not specified. The maximum
   /// length is 512 characters.
   core.String? queue;
 
@@ -6861,7 +6866,7 @@ class PushItem {
 }
 
 class PushItemRequest {
-  /// Name of connector making this call.
+  /// The name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
   core.String? connectorName;
@@ -7115,7 +7120,7 @@ class QueryOperator {
   /// the less-than operator.
   core.String? lessThanOperatorName;
 
-  /// Name of the object corresponding to the operator.
+  /// The name of the object corresponding to the operator.
   ///
   /// This field is only filled for schema-specific operators, and is unset for
   /// common operators.
@@ -7124,7 +7129,7 @@ class QueryOperator {
   /// The name of the operator.
   core.String? operatorName;
 
-  /// Type of the operator.
+  /// The type of the operator.
   /// Possible string values are:
   /// - "UNKNOWN" : Invalid value.
   /// - "INTEGER"
@@ -7223,7 +7228,7 @@ class QuerySource {
   /// This value can be used with the 'source' operator.
   core.String? shortName;
 
-  /// Name of the source
+  /// The name of the source
   Source? source;
 
   QuerySource({
@@ -7277,7 +7282,7 @@ class RepositoryError {
   /// Matches the definition of HTTP status codes.
   core.int? httpStatusCode;
 
-  /// Type of error.
+  /// The type of error.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown error.
   /// - "NETWORK_ERROR" : Unknown or unreachable host.
@@ -7657,7 +7662,7 @@ class SearchApplication {
   /// application in query APIs.
   core.bool? enableAuditLog;
 
-  /// Name of the Search Application.
+  /// The name of the Search Application.
   ///
   /// Format: searchapplications/{application_id}.
   core.String? name;
@@ -7771,7 +7776,7 @@ class SearchApplication {
 
 /// Search application level query stats per date
 class SearchApplicationQueryStats {
-  /// Date for which query stats were calculated.
+  /// The date for which query stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
   Date? date;
@@ -7804,7 +7809,7 @@ class SearchApplicationQueryStats {
 }
 
 class SearchApplicationSessionStats {
-  /// Date for which session stats were calculated.
+  /// The date for which session stats were calculated.
   ///
   /// Stats are calculated on the following day, close to midnight PST, and then
   /// returned.
@@ -7837,7 +7842,7 @@ class SearchApplicationSessionStats {
 }
 
 class SearchApplicationUserStats {
-  /// Date for which session stats were calculated.
+  /// The date for which session stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
   Date? date;
@@ -8321,7 +8326,7 @@ class Snippet {
 }
 
 class SortOptions {
-  /// Name of the operator corresponding to the field to sort on.
+  /// The name of the operator corresponding to the field to sort on.
   ///
   /// The corresponding property must be marked as sortable.
   core.String? operatorName;
@@ -8568,7 +8573,7 @@ class SpellResult {
 
 /// Start upload file request.
 class StartUploadItemRequest {
-  /// Name of connector making this call.
+  /// The name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
   core.String? connectorName;
@@ -8791,8 +8796,8 @@ class TextOperatorOptions {
   ///
   /// For example, if the operator name is "genre" and the value is
   /// "science-fiction" the query restrictions "genre:science" and
-  /// "genre:fiction" doesn't match the item; "genre:science-fiction" does.
-  /// Value matching is case-sensitive and does not remove special characters.
+  /// "genre:fiction" doesn't match the item; "genre:science-fiction" does. Text
+  /// value matching is case-sensitive and does not remove special characters.
   /// If false, the text is tokenized. For example, if the value is
   /// "science-fiction" the queries "genre:science" and "genre:fiction" matches
   /// the item.
@@ -8833,7 +8838,7 @@ class TextOperatorOptions {
       };
 }
 
-/// Options for text properties.
+/// The options for text properties.
 class TextPropertyOptions {
   /// If set, describes how the property should be used as a search operator.
   TextOperatorOptions? operatorOptions;
@@ -8955,7 +8960,7 @@ class TimestampOperatorOptions {
       };
 }
 
-/// Options for timestamp properties.
+/// The options for timestamp properties.
 class TimestampPropertyOptions {
   /// If set, describes how the timestamp should be used as a search operator.
   TimestampOperatorOptions? operatorOptions;
@@ -9042,7 +9047,7 @@ class UnmappedIdentity {
 }
 
 class UnreserveItemsRequest {
-  /// Name of connector making this call.
+  /// The name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
   core.String? connectorName;
@@ -9050,7 +9055,7 @@ class UnreserveItemsRequest {
   /// Common debug options.
   DebugOptions? debugOptions;
 
-  /// Name of a queue to unreserve items from.
+  /// The name of a queue to unreserve items from.
   core.String? queue;
 
   UnreserveItemsRequest({
@@ -9152,7 +9157,7 @@ class UpdateSchemaRequest {
 /// days after its creation. Updating of item content may refer to this uploaded
 /// content via contentDataRef.
 class UploadItemRef {
-  /// Name of the content reference.
+  /// The name of the content reference.
   ///
   /// The maximum length is 2048 characters.
   core.String? name;

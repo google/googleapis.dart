@@ -1103,6 +1103,44 @@ class PropertiesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lookup for a AttributionSettings singleton.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the attribution settings to retrieve.
+  /// Format: properties/{property}/attributionSettings
+  /// Value must have pattern `^properties/\[^/\]+/attributionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaAttributionSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaAttributionSettings>
+      getAttributionSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the singleton data retention settings for this property.
   ///
   /// Request parameters:
@@ -1297,6 +1335,57 @@ class PropertiesResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates attribution settings on a property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this attribution settings resource.
+  /// Format: properties/{property_id}/attributionSettings Example:
+  /// "properties/1000/attributionSettings"
+  /// Value must have pattern `^properties/\[^/\]+/attributionSettings$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaAttributionSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaAttributionSettings>
+      updateAttributionSettings(
+    GoogleAnalyticsAdminV1alphaAttributionSettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -4049,6 +4138,119 @@ typedef GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest = $Empty;
 /// Request message for ArchiveCustomMetric RPC.
 typedef GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest = $Empty;
 
+/// The attribution settings used for a given property.
+///
+/// This is a singleton resource.
+class GoogleAnalyticsAdminV1alphaAttributionSettings {
+  /// The lookback window configuration for acquisition conversion events.
+  ///
+  /// The default window size is 30 days.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED" : Lookback
+  /// window size unspecified.
+  /// - "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_7_DAYS" : 7-day lookback
+  /// window.
+  /// - "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS" : 30-day lookback
+  /// window.
+  core.String? acquisitionConversionEventLookbackWindow;
+
+  /// Resource name of this attribution settings resource.
+  ///
+  /// Format: properties/{property_id}/attributionSettings Example:
+  /// "properties/1000/attributionSettings"
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The lookback window for all other, non-acquisition conversion events.
+  ///
+  /// The default window size is 90 days.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED" : Lookback window
+  /// size unspecified.
+  /// - "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS" : 30-day lookback
+  /// window.
+  /// - "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_60_DAYS" : 60-day lookback
+  /// window.
+  /// - "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS" : 90-day lookback
+  /// window.
+  core.String? otherConversionEventLookbackWindow;
+
+  /// The reporting attribution model used to calculate conversion credit in
+  /// this property's reports.
+  ///
+  /// Changing the attribution model will apply to both historical and future
+  /// data. These changes will be reflected in reports with conversion and
+  /// revenue data. User and session data will be unaffected.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REPORTING_ATTRIBUTION_MODEL_UNSPECIFIED" : Reporting attribution model
+  /// unspecified.
+  /// - "CROSS_CHANNEL_DATA_DRIVEN" : Data-driven attribution distributes credit
+  /// for the conversion based on data for each conversion event. Each
+  /// Data-driven model is specific to each advertiser and each conversion
+  /// event.
+  /// - "CROSS_CHANNEL_LAST_CLICK" : Ignores direct traffic and attributes 100%
+  /// of the conversion value to the last channel that the customer clicked
+  /// through (or engaged view through for YouTube) before converting.
+  /// - "CROSS_CHANNEL_FIRST_CLICK" : Gives all credit for the conversion to the
+  /// first channel that a customer clicked (or engaged view through for
+  /// YouTube) before converting.
+  /// - "CROSS_CHANNEL_LINEAR" : Distributes the credit for the conversion
+  /// equally across all the channels a customer clicked (or engaged view
+  /// through for YouTube) before converting.
+  /// - "CROSS_CHANNEL_POSITION_BASED" : Attributes 40% credit to the first and
+  /// last interaction, and the remaining 20% credit is distributed evenly to
+  /// the middle interactions.
+  /// - "CROSS_CHANNEL_TIME_DECAY" : Gives more credit to the touchpoints that
+  /// happened closer in time to the conversion.
+  /// - "ADS_PREFERRED_LAST_CLICK" : Attributes 100% of the conversion value to
+  /// the last Google Ads channel that the customer clicked through before
+  /// converting.
+  core.String? reportingAttributionModel;
+
+  GoogleAnalyticsAdminV1alphaAttributionSettings({
+    this.acquisitionConversionEventLookbackWindow,
+    this.name,
+    this.otherConversionEventLookbackWindow,
+    this.reportingAttributionModel,
+  });
+
+  GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(core.Map _json)
+      : this(
+          acquisitionConversionEventLookbackWindow: _json
+                  .containsKey('acquisitionConversionEventLookbackWindow')
+              ? _json['acquisitionConversionEventLookbackWindow'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          otherConversionEventLookbackWindow:
+              _json.containsKey('otherConversionEventLookbackWindow')
+                  ? _json['otherConversionEventLookbackWindow'] as core.String
+                  : null,
+          reportingAttributionModel:
+              _json.containsKey('reportingAttributionModel')
+                  ? _json['reportingAttributionModel'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acquisitionConversionEventLookbackWindow != null)
+          'acquisitionConversionEventLookbackWindow':
+              acquisitionConversionEventLookbackWindow!,
+        if (name != null) 'name': name!,
+        if (otherConversionEventLookbackWindow != null)
+          'otherConversionEventLookbackWindow':
+              otherConversionEventLookbackWindow!,
+        if (reportingAttributionModel != null)
+          'reportingAttributionModel': reportingAttributionModel!,
+      };
+}
+
 /// Read-only resource used to summarize a principal's effective roles.
 class GoogleAnalyticsAdminV1alphaAuditUserLink {
   /// Roles directly assigned to this user for this entity.
@@ -4426,6 +4628,9 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of an Account resource in change history.
   GoogleAnalyticsAdminV1alphaAccount? account;
 
+  /// A snapshot of AttributionSettings resource in change history.
+  GoogleAnalyticsAdminV1alphaAttributionSettings? attributionSettings;
+
   /// A snapshot of a ConversionEvent resource in change history.
   GoogleAnalyticsAdminV1alphaConversionEvent? conversionEvent;
 
@@ -4468,6 +4673,7 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
 
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource({
     this.account,
+    this.attributionSettings,
     this.conversionEvent,
     this.customDimension,
     this.customMetric,
@@ -4488,6 +4694,11 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
           account: _json.containsKey('account')
               ? GoogleAnalyticsAdminV1alphaAccount.fromJson(
                   _json['account'] as core.Map<core.String, core.dynamic>)
+              : null,
+          attributionSettings: _json.containsKey('attributionSettings')
+              ? GoogleAnalyticsAdminV1alphaAttributionSettings.fromJson(
+                  _json['attributionSettings']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           conversionEvent: _json.containsKey('conversionEvent')
               ? GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
@@ -4551,6 +4762,8 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!,
+        if (attributionSettings != null)
+          'attributionSettings': attributionSettings!,
         if (conversionEvent != null) 'conversionEvent': conversionEvent!,
         if (customDimension != null) 'customDimension': customDimension!,
         if (customMetric != null) 'customMetric': customMetric!,

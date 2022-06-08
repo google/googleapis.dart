@@ -4835,7 +4835,10 @@ class ParagraphStyle {
   /// Whether the current paragraph should always start at the beginning of a
   /// page.
   ///
-  /// If unset, the value is inherited from the parent.
+  /// If unset, the value is inherited from the parent. Attempting to update
+  /// page_break_before for paragraphs in unsupported regions, including Table,
+  /// Header, Footer and Footnote can result in an invalid document state in
+  /// which case a 400 bad request error is returned.
   core.bool? pageBreakBefore;
 
   /// The shading of the paragraph.

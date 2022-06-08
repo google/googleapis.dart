@@ -1786,6 +1786,23 @@ class TablesResource {
   /// [selectedFields] - List of fields to return (comma-separated). If
   /// unspecified, all fields are returned
   ///
+  /// [view] - Specifies the view that determines which table information is
+  /// returned. By default, basic table information and storage statistics
+  /// (STORAGE_STATS) are returned.
+  /// Possible string values are:
+  /// - "BASIC" : Includes basic table information including schema and
+  /// partitioning specification. This view does not include storage statistics
+  /// such as numRows or numBytes. This view is significantly more efficient and
+  /// should be used to support high query rates.
+  /// - "FULL" : Includes all table information, including storage statistics.
+  /// It returns same information as STORAGE_STATS view, but may contain
+  /// additional information in the future.
+  /// - "STORAGE_STATS" : Includes all information in the BASIC view as well as
+  /// storage statistics (numBytes, numLongTermBytes, numRows and
+  /// lastModifiedTime).
+  /// - "TABLE_METADATA_VIEW_UNSPECIFIED" : The default value. Default to the
+  /// STORAGE_STATS view.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1801,10 +1818,12 @@ class TablesResource {
     core.String datasetId,
     core.String tableId, {
     core.String? selectedFields,
+    core.String? view,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (selectedFields != null) 'selectedFields': [selectedFields],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -6156,6 +6175,53 @@ class HparamTuningTrial {
       };
 }
 
+class IndexUnusedReason {
+  /// \[Output-only\] Specifies the base table involved in the reason that no
+  /// search index was used.
+  TableReference? baseTable;
+
+  /// \[Output-only\] Specifies the high-level reason for the scenario when no
+  /// search index was used.
+  core.String? code;
+
+  /// \[Output-only\] Specifies the name of the unused search index, if
+  /// available.
+  core.String? indexName;
+
+  /// \[Output-only\] Free form human-readable reason for the scenario when no
+  /// search index was used.
+  core.String? message;
+
+  IndexUnusedReason({
+    this.baseTable,
+    this.code,
+    this.indexName,
+    this.message,
+  });
+
+  IndexUnusedReason.fromJson(core.Map _json)
+      : this(
+          baseTable: _json.containsKey('base_table')
+              ? TableReference.fromJson(
+                  _json['base_table'] as core.Map<core.String, core.dynamic>)
+              : null,
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          indexName: _json.containsKey('index_name')
+              ? _json['index_name'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseTable != null) 'base_table': baseTable!,
+        if (code != null) 'code': code!,
+        if (indexName != null) 'index_name': indexName!,
+        if (message != null) 'message': message!,
+      };
+}
+
 /// An array of int.
 class IntArray {
   /// Elements in the int array.
@@ -8145,6 +8211,9 @@ class JobStatistics2 {
   /// Present only for successful dry run of non-legacy SQL queries.
   TableSchema? schema;
 
+  /// \[Output-only\] Search query specific statistics.
+  SearchStatistics? searchStatistics;
+
   /// The type of query statement, if valid.
   ///
   /// Possible values (new values might be added in the future): "SELECT":
@@ -8219,6 +8288,7 @@ class JobStatistics2 {
     this.referencedTables,
     this.reservationUsage,
     this.schema,
+    this.searchStatistics,
     this.statementType,
     this.timeline,
     this.totalBytesBilled,
@@ -8324,6 +8394,10 @@ class JobStatistics2 {
               ? TableSchema.fromJson(
                   _json['schema'] as core.Map<core.String, core.dynamic>)
               : null,
+          searchStatistics: _json.containsKey('searchStatistics')
+              ? SearchStatistics.fromJson(_json['searchStatistics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           statementType: _json.containsKey('statementType')
               ? _json['statementType'] as core.String
               : null,
@@ -8393,6 +8467,7 @@ class JobStatistics2 {
         if (referencedTables != null) 'referencedTables': referencedTables!,
         if (reservationUsage != null) 'reservationUsage': reservationUsage!,
         if (schema != null) 'schema': schema!,
+        if (searchStatistics != null) 'searchStatistics': searchStatistics!,
         if (statementType != null) 'statementType': statementType!,
         if (timeline != null) 'timeline': timeline!,
         if (totalBytesBilled != null) 'totalBytesBilled': totalBytesBilled!,
@@ -10949,6 +11024,40 @@ class ScriptStatistics {
   core.Map<core.String, core.dynamic> toJson() => {
         if (evaluationKind != null) 'evaluationKind': evaluationKind!,
         if (stackFrames != null) 'stackFrames': stackFrames!,
+      };
+}
+
+class SearchStatistics {
+  /// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why
+  /// index was not used in all or part of the search query.
+  ///
+  /// If index_usage_mode is FULLLY_USED, this field is not populated.
+  core.List<IndexUnusedReason>? indexUnusedReason;
+
+  /// Specifies index usage mode for the query.
+  core.String? indexUsageMode;
+
+  SearchStatistics({
+    this.indexUnusedReason,
+    this.indexUsageMode,
+  });
+
+  SearchStatistics.fromJson(core.Map _json)
+      : this(
+          indexUnusedReason: _json.containsKey('indexUnusedReason')
+              ? (_json['indexUnusedReason'] as core.List)
+                  .map((value) => IndexUnusedReason.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          indexUsageMode: _json.containsKey('indexUsageMode')
+              ? _json['indexUsageMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (indexUnusedReason != null) 'indexUnusedReason': indexUnusedReason!,
+        if (indexUsageMode != null) 'indexUsageMode': indexUsageMode!,
       };
 }
 

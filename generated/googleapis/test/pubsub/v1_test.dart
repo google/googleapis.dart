@@ -1003,6 +1003,8 @@ api.SchemaSettings buildSchemaSettings() {
   buildCounterSchemaSettings++;
   if (buildCounterSchemaSettings < 3) {
     o.encoding = 'foo';
+    o.firstRevisionId = 'foo';
+    o.lastRevisionId = 'foo';
     o.schema = 'foo';
   }
   buildCounterSchemaSettings--;
@@ -1014,6 +1016,14 @@ void checkSchemaSettings(api.SchemaSettings o) {
   if (buildCounterSchemaSettings < 3) {
     unittest.expect(
       o.encoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.firstRevisionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastRevisionId!,
       unittest.equals('foo'),
     );
     unittest.expect(

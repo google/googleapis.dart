@@ -5776,6 +5776,8 @@ class Resource {
 }
 
 /// A result of Resource Search, containing information of a cloud resource.
+///
+/// Next ID: 28
 class ResourceSearchResult {
   /// The additional searchable attributes of this resource.
   ///

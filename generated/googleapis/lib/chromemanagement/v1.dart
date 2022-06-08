@@ -532,6 +532,8 @@ class CustomersTelemetryDevicesResource {
   /// [name] - Required. Name of the `TelemetryDevice` to return.
   /// Value must have pattern `^customers/\[^/\]+/telemetry/devices/\[^/\]+$`.
   ///
+  /// [readMask] - Required. Read mask to specify which fields to return.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -544,9 +546,11 @@ class CustomersTelemetryDevicesResource {
   /// this method will complete with the same error.
   async.Future<GoogleChromeManagementV1TelemetryDevice> get(
     core.String name, {
+    core.String? readMask,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (readMask != null) 'readMask': [readMask],
       if ($fields != null) 'fields': [$fields],
     };
 

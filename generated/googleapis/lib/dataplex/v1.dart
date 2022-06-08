@@ -8019,7 +8019,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for TestIamPermissions method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest02;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for TestIamPermissions method.
 typedef GoogleIamV1TestIamPermissionsResponse = $TestIamPermissionsResponse;

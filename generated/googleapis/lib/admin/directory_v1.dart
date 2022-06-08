@@ -8798,11 +8798,15 @@ class Features {
 /// For more information about common tasks, see the \[Developer's
 /// Guide\](/admin-sdk/directory/v1/guides/manage-groups).
 class Group {
+  /// Read-only.
+  ///
   /// Value is `true` if this group was created by an administrator rather than
   /// a user.
   core.bool? adminCreated;
 
-  /// List of a group's alias email addresses.
+  /// Read-only.
+  ///
+  /// A list of a group's alias email addresses.
   core.List<core.String>? aliases;
 
   /// An extended description to help users determine the purpose of a group.
@@ -8831,9 +8835,10 @@ class Group {
   /// ETag of the resource.
   core.String? etag;
 
-  /// The unique ID of a group.
+  /// Read-only.
   ///
-  /// A group `id` can be used as a group request URI's `groupKey`.
+  /// The unique ID of a group. A group `id` can be used as a group request
+  /// URI's `groupKey`.
   core.String? id;
 
   /// The type of the API resource.
@@ -8844,12 +8849,13 @@ class Group {
   /// The group's display name.
   core.String? name;
 
-  /// List of the group's non-editable alias email addresses that are outside of
-  /// the account's primary domain or subdomains.
+  /// Read-only.
   ///
-  /// These are functioning email addresses used by the group. This is a
-  /// read-only property returned in the API's response for a group. If edited
-  /// in a group's POST or PUT request, the edit is ignored by the API service.
+  /// A list of the group's non-editable alias email addresses that are outside
+  /// of the account's primary domain or subdomains. These are functioning email
+  /// addresses used by the group. This is a read-only property returned in the
+  /// API's response for a group. If edited in a group's POST or PUT request,
+  /// the edit is ignored by the API service.
   core.List<core.String>? nonEditableAliases;
 
   Group({

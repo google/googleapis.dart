@@ -1,6 +1,10 @@
 ## 9.1.0
 
-- Fix `firestore/v1.dart` API.
+- Fixed `firestore/v1.dart` API.
+
+### API changes
+
+- `doubleclickbidmanager` - Added v2
 
 ## 9.0.0
 

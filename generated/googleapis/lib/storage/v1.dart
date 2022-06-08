@@ -3823,7 +3823,8 @@ class BucketLifecycleRuleAction {
 
   /// Type of the action.
   ///
-  /// Currently, only Delete and SetStorageClass are supported.
+  /// Currently, only Delete, SetStorageClass, and
+  /// AbortIncompleteMultipartUpload are supported.
   core.String? type;
 
   BucketLifecycleRuleAction({

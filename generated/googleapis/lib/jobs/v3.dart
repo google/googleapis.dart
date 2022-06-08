@@ -3530,7 +3530,7 @@ class LocationFilter {
   /// Possible string values are:
   /// - "TELECOMMUTE_PREFERENCE_UNSPECIFIED" : Default value if the telecommute
   /// preference is not specified.
-  /// - "TELECOMMUTE_EXCLUDED" : DEPRECATED. Ignore telecommute status of jobs.
+  /// - "TELECOMMUTE_EXCLUDED" : Deprecated: Ignore telecommute status of jobs.
   /// Use TELECOMMUTE_JOBS_EXCLUDED if want to exclude telecommute jobs.
   /// - "TELECOMMUTE_ALLOWED" : Allow telecommute jobs.
   /// - "TELECOMMUTE_JOBS_EXCLUDED" : Exclude telecommute jobs.

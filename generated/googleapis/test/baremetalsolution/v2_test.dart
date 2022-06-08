@@ -1255,6 +1255,7 @@ api.NetworkConfig buildNetworkConfig() {
     o.cidr = 'foo';
     o.gcpService = 'foo';
     o.id = 'foo';
+    o.jumboFramesEnabled = true;
     o.name = 'foo';
     o.serviceCidr = 'foo';
     o.type = 'foo';
@@ -1285,6 +1286,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
       o.id!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.jumboFramesEnabled!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1425,6 +1427,7 @@ api.NfsShare buildNfsShare() {
     o.labels = buildUnnamed28();
     o.name = 'foo';
     o.nfsShareId = 'foo';
+    o.requestedSizeGib = 'foo';
     o.state = 'foo';
     o.volume = 'foo';
   }
@@ -1443,6 +1446,10 @@ void checkNfsShare(api.NfsShare o) {
     );
     unittest.expect(
       o.nfsShareId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedSizeGib!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1690,6 +1697,7 @@ api.ProvisioningConfig buildProvisioningConfig() {
     o.ticketId = 'foo';
     o.updateTime = 'foo';
     o.volumes = buildUnnamed35();
+    o.vpcScEnabled = true;
   }
   buildCounterProvisioningConfig--;
   return o;
@@ -1733,6 +1741,7 @@ void checkProvisioningConfig(api.ProvisioningConfig o) {
       unittest.equals('foo'),
     );
     checkUnnamed35(o.volumes!);
+    unittest.expect(o.vpcScEnabled!, unittest.isTrue);
   }
   buildCounterProvisioningConfig--;
 }
@@ -1831,6 +1840,28 @@ void checkResetInstanceRequest(api.ResetInstanceRequest o) {
   buildCounterResetInstanceRequest++;
   if (buildCounterResetInstanceRequest < 3) {}
   buildCounterResetInstanceRequest--;
+}
+
+core.int buildCounterResizeVolumeRequest = 0;
+api.ResizeVolumeRequest buildResizeVolumeRequest() {
+  final o = api.ResizeVolumeRequest();
+  buildCounterResizeVolumeRequest++;
+  if (buildCounterResizeVolumeRequest < 3) {
+    o.sizeGib = 'foo';
+  }
+  buildCounterResizeVolumeRequest--;
+  return o;
+}
+
+void checkResizeVolumeRequest(api.ResizeVolumeRequest o) {
+  buildCounterResizeVolumeRequest++;
+  if (buildCounterResizeVolumeRequest < 3) {
+    unittest.expect(
+      o.sizeGib!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterResizeVolumeRequest--;
 }
 
 core.List<core.String> buildUnnamed36() => [
@@ -2192,7 +2223,9 @@ api.Volume buildVolume() {
     o.emergencySizeGib = 'foo';
     o.id = 'foo';
     o.labels = buildUnnamed41();
+    o.maxSizeGib = 'foo';
     o.name = 'foo';
+    o.originallyRequestedSizeGib = 'foo';
     o.pod = 'foo';
     o.remainingSpaceGib = 'foo';
     o.requestedSizeGib = 'foo';
@@ -2228,7 +2261,15 @@ void checkVolume(api.Volume o) {
     );
     checkUnnamed41(o.labels!);
     unittest.expect(
+      o.maxSizeGib!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originallyRequestedSizeGib!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2707,6 +2748,16 @@ void main() {
       final od = api.ResetInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkResetInstanceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ResizeVolumeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResizeVolumeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResizeVolumeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkResizeVolumeRequest(od);
     });
   });
 
@@ -4355,6 +4406,64 @@ void main() {
       }), true);
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--resize', () async {
+      final mock = HttpServerMock();
+      final res = api.BaremetalsolutionApi(mock).projects.locations.volumes;
+      final arg_request = buildResizeVolumeRequest();
+      final arg_volume = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ResizeVolumeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResizeVolumeRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.resize(arg_request, arg_volume, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
   });

@@ -2750,6 +2750,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ChromeManagementApi(mock).customers.telemetry.devices;
       final arg_name = 'foo';
+      final arg_readMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -2784,6 +2785,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['readMask']!.first,
+          unittest.equals(arg_readMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2795,7 +2800,8 @@ void main() {
             convert.json.encode(buildGoogleChromeManagementV1TelemetryDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response =
+          await res.get(arg_name, readMask: arg_readMask, $fields: arg_$fields);
       checkGoogleChromeManagementV1TelemetryDevice(
           response as api.GoogleChromeManagementV1TelemetryDevice);
     });

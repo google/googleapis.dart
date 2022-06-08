@@ -410,7 +410,7 @@
             }
         }
     },
-    "revision": "20220531",
+    "revision": "20220607",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
         "Empty": {

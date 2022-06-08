@@ -3273,6 +3273,18 @@ class SchemaSettings {
   /// schema types, binary encoding may not be available.
   core.String? encoding;
 
+  /// The minimum (inclusive) revision allowed for validating messages.
+  ///
+  /// If empty or not present, allow any revision to be validated against
+  /// last_revision or any revision created before.
+  core.String? firstRevisionId;
+
+  /// The maximum (inclusive) revision allowed for validating messages.
+  ///
+  /// If empty or not present, allow any revision to be validated against
+  /// first_revision or any revision created after.
+  core.String? lastRevisionId;
+
   /// The name of the schema that messages published should be validated
   /// against.
   ///
@@ -3284,6 +3296,8 @@ class SchemaSettings {
 
   SchemaSettings({
     this.encoding,
+    this.firstRevisionId,
+    this.lastRevisionId,
     this.schema,
   });
 
@@ -3292,6 +3306,12 @@ class SchemaSettings {
           encoding: _json.containsKey('encoding')
               ? _json['encoding'] as core.String
               : null,
+          firstRevisionId: _json.containsKey('firstRevisionId')
+              ? _json['firstRevisionId'] as core.String
+              : null,
+          lastRevisionId: _json.containsKey('lastRevisionId')
+              ? _json['lastRevisionId'] as core.String
+              : null,
           schema: _json.containsKey('schema')
               ? _json['schema'] as core.String
               : null,
@@ -3299,6 +3319,8 @@ class SchemaSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encoding != null) 'encoding': encoding!,
+        if (firstRevisionId != null) 'firstRevisionId': firstRevisionId!,
+        if (lastRevisionId != null) 'lastRevisionId': lastRevisionId!,
         if (schema != null) 'schema': schema!,
       };
 }
@@ -3460,8 +3482,9 @@ class Subscription {
   /// If delivery to BigQuery is used with this subscription, this field is used
   /// to configure it.
   ///
-  /// At most one of `pushConfig` and `bigQueryConfig` can be set. If both are
-  /// empty, then the subscriber will pull and ack messages using API methods.
+  /// Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both
+  /// are empty, then the subscriber will pull and ack messages using API
+  /// methods.
   BigQueryConfig? bigqueryConfig;
 
   /// A policy that specifies the conditions for dead lettering messages in this
@@ -3546,8 +3569,9 @@ class Subscription {
   /// If push delivery is used with this subscription, this field is used to
   /// configure it.
   ///
-  /// At most one of `pushConfig` and `bigQueryConfig` can be set. If both are
-  /// empty, then the subscriber will pull and ack messages using API methods.
+  /// Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both
+  /// are empty, then the subscriber will pull and ack messages using API
+  /// methods.
   PushConfig? pushConfig;
 
   /// Indicates whether to retain acknowledged messages.

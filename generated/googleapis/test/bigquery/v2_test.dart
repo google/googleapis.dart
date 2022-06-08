@@ -2745,6 +2745,40 @@ void checkHparamTuningTrial(api.HparamTuningTrial o) {
   buildCounterHparamTuningTrial--;
 }
 
+core.int buildCounterIndexUnusedReason = 0;
+api.IndexUnusedReason buildIndexUnusedReason() {
+  final o = api.IndexUnusedReason();
+  buildCounterIndexUnusedReason++;
+  if (buildCounterIndexUnusedReason < 3) {
+    o.baseTable = buildTableReference();
+    o.code = 'foo';
+    o.indexName = 'foo';
+    o.message = 'foo';
+  }
+  buildCounterIndexUnusedReason--;
+  return o;
+}
+
+void checkIndexUnusedReason(api.IndexUnusedReason o) {
+  buildCounterIndexUnusedReason++;
+  if (buildCounterIndexUnusedReason < 3) {
+    checkTableReference(o.baseTable!);
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.indexName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterIndexUnusedReason--;
+}
+
 core.List<core.String> buildUnnamed37() => [
       'foo',
       'foo',
@@ -3912,6 +3946,7 @@ api.JobStatistics2 buildJobStatistics2() {
     o.referencedTables = buildUnnamed57();
     o.reservationUsage = buildUnnamed58();
     o.schema = buildTableSchema();
+    o.searchStatistics = buildSearchStatistics();
     o.statementType = 'foo';
     o.timeline = buildUnnamed59();
     o.totalBytesBilled = 'foo';
@@ -3971,6 +4006,7 @@ void checkJobStatistics2(api.JobStatistics2 o) {
     checkUnnamed57(o.referencedTables!);
     checkUnnamed58(o.reservationUsage!);
     checkTableSchema(o.schema!);
+    checkSearchStatistics(o.searchStatistics!);
     unittest.expect(
       o.statementType!,
       unittest.equals('foo'),
@@ -5770,6 +5806,41 @@ void checkScriptStatistics(api.ScriptStatistics o) {
   buildCounterScriptStatistics--;
 }
 
+core.List<api.IndexUnusedReason> buildUnnamed92() => [
+      buildIndexUnusedReason(),
+      buildIndexUnusedReason(),
+    ];
+
+void checkUnnamed92(core.List<api.IndexUnusedReason> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkIndexUnusedReason(o[0]);
+  checkIndexUnusedReason(o[1]);
+}
+
+core.int buildCounterSearchStatistics = 0;
+api.SearchStatistics buildSearchStatistics() {
+  final o = api.SearchStatistics();
+  buildCounterSearchStatistics++;
+  if (buildCounterSearchStatistics < 3) {
+    o.indexUnusedReason = buildUnnamed92();
+    o.indexUsageMode = 'foo';
+  }
+  buildCounterSearchStatistics--;
+  return o;
+}
+
+void checkSearchStatistics(api.SearchStatistics o) {
+  buildCounterSearchStatistics++;
+  if (buildCounterSearchStatistics < 3) {
+    checkUnnamed92(o.indexUnusedReason!);
+    unittest.expect(
+      o.indexUsageMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSearchStatistics--;
+}
+
 core.int buildCounterSessionInfo = 0;
 api.SessionInfo buildSessionInfo() {
   final o = api.SessionInfo();
@@ -5890,36 +5961,6 @@ void checkStandardSqlField(api.StandardSqlField o) {
   buildCounterStandardSqlField--;
 }
 
-core.List<api.StandardSqlField> buildUnnamed92() => [
-      buildStandardSqlField(),
-      buildStandardSqlField(),
-    ];
-
-void checkUnnamed92(core.List<api.StandardSqlField> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkStandardSqlField(o[0]);
-  checkStandardSqlField(o[1]);
-}
-
-core.int buildCounterStandardSqlStructType = 0;
-api.StandardSqlStructType buildStandardSqlStructType() {
-  final o = api.StandardSqlStructType();
-  buildCounterStandardSqlStructType++;
-  if (buildCounterStandardSqlStructType < 3) {
-    o.fields = buildUnnamed92();
-  }
-  buildCounterStandardSqlStructType--;
-  return o;
-}
-
-void checkStandardSqlStructType(api.StandardSqlStructType o) {
-  buildCounterStandardSqlStructType++;
-  if (buildCounterStandardSqlStructType < 3) {
-    checkUnnamed92(o.fields!);
-  }
-  buildCounterStandardSqlStructType--;
-}
-
 core.List<api.StandardSqlField> buildUnnamed93() => [
       buildStandardSqlField(),
       buildStandardSqlField(),
@@ -5931,12 +5972,42 @@ void checkUnnamed93(core.List<api.StandardSqlField> o) {
   checkStandardSqlField(o[1]);
 }
 
+core.int buildCounterStandardSqlStructType = 0;
+api.StandardSqlStructType buildStandardSqlStructType() {
+  final o = api.StandardSqlStructType();
+  buildCounterStandardSqlStructType++;
+  if (buildCounterStandardSqlStructType < 3) {
+    o.fields = buildUnnamed93();
+  }
+  buildCounterStandardSqlStructType--;
+  return o;
+}
+
+void checkStandardSqlStructType(api.StandardSqlStructType o) {
+  buildCounterStandardSqlStructType++;
+  if (buildCounterStandardSqlStructType < 3) {
+    checkUnnamed93(o.fields!);
+  }
+  buildCounterStandardSqlStructType--;
+}
+
+core.List<api.StandardSqlField> buildUnnamed94() => [
+      buildStandardSqlField(),
+      buildStandardSqlField(),
+    ];
+
+void checkUnnamed94(core.List<api.StandardSqlField> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStandardSqlField(o[0]);
+  checkStandardSqlField(o[1]);
+}
+
 core.int buildCounterStandardSqlTableType = 0;
 api.StandardSqlTableType buildStandardSqlTableType() {
   final o = api.StandardSqlTableType();
   buildCounterStandardSqlTableType++;
   if (buildCounterStandardSqlTableType < 3) {
-    o.columns = buildUnnamed93();
+    o.columns = buildUnnamed94();
   }
   buildCounterStandardSqlTableType--;
   return o;
@@ -5945,7 +6016,7 @@ api.StandardSqlTableType buildStandardSqlTableType() {
 void checkStandardSqlTableType(api.StandardSqlTableType o) {
   buildCounterStandardSqlTableType++;
   if (buildCounterStandardSqlTableType < 3) {
-    checkUnnamed93(o.columns!);
+    checkUnnamed94(o.columns!);
   }
   buildCounterStandardSqlTableType--;
 }
@@ -5982,12 +6053,12 @@ void checkStreamingbuffer(api.Streamingbuffer o) {
   buildCounterStreamingbuffer--;
 }
 
-core.List<core.String> buildUnnamed94() => [
+core.List<core.String> buildUnnamed95() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed94(core.List<core.String> o) {
+void checkUnnamed95(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6004,7 +6075,7 @@ api.StringHparamSearchSpace buildStringHparamSearchSpace() {
   final o = api.StringHparamSearchSpace();
   buildCounterStringHparamSearchSpace++;
   if (buildCounterStringHparamSearchSpace < 3) {
-    o.candidates = buildUnnamed94();
+    o.candidates = buildUnnamed95();
   }
   buildCounterStringHparamSearchSpace--;
   return o;
@@ -6013,17 +6084,17 @@ api.StringHparamSearchSpace buildStringHparamSearchSpace() {
 void checkStringHparamSearchSpace(api.StringHparamSearchSpace o) {
   buildCounterStringHparamSearchSpace++;
   if (buildCounterStringHparamSearchSpace < 3) {
-    checkUnnamed94(o.candidates!);
+    checkUnnamed95(o.candidates!);
   }
   buildCounterStringHparamSearchSpace--;
 }
 
-core.Map<core.String, core.String> buildUnnamed95() => {
+core.Map<core.String, core.String> buildUnnamed96() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed95(core.Map<core.String, core.String> o) {
+void checkUnnamed96(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6052,7 +6123,7 @@ api.Table buildTable() {
     o.friendlyName = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed95();
+    o.labels = buildUnnamed96();
     o.lastModifiedTime = 'foo';
     o.location = 'foo';
     o.materializedView = buildMaterializedViewDefinition();
@@ -6123,7 +6194,7 @@ void checkTable(api.Table o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed95(o.labels!);
+    checkUnnamed96(o.labels!);
     unittest.expect(
       o.lastModifiedTime!,
       unittest.equals('foo'),
@@ -6262,12 +6333,12 @@ void checkTableDataInsertAllRequestRows(api.TableDataInsertAllRequestRows o) {
   buildCounterTableDataInsertAllRequestRows--;
 }
 
-core.List<api.TableDataInsertAllRequestRows> buildUnnamed96() => [
+core.List<api.TableDataInsertAllRequestRows> buildUnnamed97() => [
       buildTableDataInsertAllRequestRows(),
       buildTableDataInsertAllRequestRows(),
     ];
 
-void checkUnnamed96(core.List<api.TableDataInsertAllRequestRows> o) {
+void checkUnnamed97(core.List<api.TableDataInsertAllRequestRows> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableDataInsertAllRequestRows(o[0]);
   checkTableDataInsertAllRequestRows(o[1]);
@@ -6280,7 +6351,7 @@ api.TableDataInsertAllRequest buildTableDataInsertAllRequest() {
   if (buildCounterTableDataInsertAllRequest < 3) {
     o.ignoreUnknownValues = true;
     o.kind = 'foo';
-    o.rows = buildUnnamed96();
+    o.rows = buildUnnamed97();
     o.skipInvalidRows = true;
     o.templateSuffix = 'foo';
   }
@@ -6296,7 +6367,7 @@ void checkTableDataInsertAllRequest(api.TableDataInsertAllRequest o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed96(o.rows!);
+    checkUnnamed97(o.rows!);
     unittest.expect(o.skipInvalidRows!, unittest.isTrue);
     unittest.expect(
       o.templateSuffix!,
@@ -6306,12 +6377,12 @@ void checkTableDataInsertAllRequest(api.TableDataInsertAllRequest o) {
   buildCounterTableDataInsertAllRequest--;
 }
 
-core.List<api.ErrorProto> buildUnnamed97() => [
+core.List<api.ErrorProto> buildUnnamed98() => [
       buildErrorProto(),
       buildErrorProto(),
     ];
 
-void checkUnnamed97(core.List<api.ErrorProto> o) {
+void checkUnnamed98(core.List<api.ErrorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorProto(o[0]);
   checkErrorProto(o[1]);
@@ -6323,7 +6394,7 @@ api.TableDataInsertAllResponseInsertErrors
   final o = api.TableDataInsertAllResponseInsertErrors();
   buildCounterTableDataInsertAllResponseInsertErrors++;
   if (buildCounterTableDataInsertAllResponseInsertErrors < 3) {
-    o.errors = buildUnnamed97();
+    o.errors = buildUnnamed98();
     o.index = 42;
   }
   buildCounterTableDataInsertAllResponseInsertErrors--;
@@ -6334,7 +6405,7 @@ void checkTableDataInsertAllResponseInsertErrors(
     api.TableDataInsertAllResponseInsertErrors o) {
   buildCounterTableDataInsertAllResponseInsertErrors++;
   if (buildCounterTableDataInsertAllResponseInsertErrors < 3) {
-    checkUnnamed97(o.errors!);
+    checkUnnamed98(o.errors!);
     unittest.expect(
       o.index!,
       unittest.equals(42),
@@ -6343,12 +6414,12 @@ void checkTableDataInsertAllResponseInsertErrors(
   buildCounterTableDataInsertAllResponseInsertErrors--;
 }
 
-core.List<api.TableDataInsertAllResponseInsertErrors> buildUnnamed98() => [
+core.List<api.TableDataInsertAllResponseInsertErrors> buildUnnamed99() => [
       buildTableDataInsertAllResponseInsertErrors(),
       buildTableDataInsertAllResponseInsertErrors(),
     ];
 
-void checkUnnamed98(core.List<api.TableDataInsertAllResponseInsertErrors> o) {
+void checkUnnamed99(core.List<api.TableDataInsertAllResponseInsertErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableDataInsertAllResponseInsertErrors(o[0]);
   checkTableDataInsertAllResponseInsertErrors(o[1]);
@@ -6359,7 +6430,7 @@ api.TableDataInsertAllResponse buildTableDataInsertAllResponse() {
   final o = api.TableDataInsertAllResponse();
   buildCounterTableDataInsertAllResponse++;
   if (buildCounterTableDataInsertAllResponse < 3) {
-    o.insertErrors = buildUnnamed98();
+    o.insertErrors = buildUnnamed99();
     o.kind = 'foo';
   }
   buildCounterTableDataInsertAllResponse--;
@@ -6369,7 +6440,7 @@ api.TableDataInsertAllResponse buildTableDataInsertAllResponse() {
 void checkTableDataInsertAllResponse(api.TableDataInsertAllResponse o) {
   buildCounterTableDataInsertAllResponse++;
   if (buildCounterTableDataInsertAllResponse < 3) {
-    checkUnnamed98(o.insertErrors!);
+    checkUnnamed99(o.insertErrors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -6378,12 +6449,12 @@ void checkTableDataInsertAllResponse(api.TableDataInsertAllResponse o) {
   buildCounterTableDataInsertAllResponse--;
 }
 
-core.List<api.TableRow> buildUnnamed99() => [
+core.List<api.TableRow> buildUnnamed100() => [
       buildTableRow(),
       buildTableRow(),
     ];
 
-void checkUnnamed99(core.List<api.TableRow> o) {
+void checkUnnamed100(core.List<api.TableRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableRow(o[0]);
   checkTableRow(o[1]);
@@ -6397,7 +6468,7 @@ api.TableDataList buildTableDataList() {
     o.etag = 'foo';
     o.kind = 'foo';
     o.pageToken = 'foo';
-    o.rows = buildUnnamed99();
+    o.rows = buildUnnamed100();
     o.totalRows = 'foo';
   }
   buildCounterTableDataList--;
@@ -6419,7 +6490,7 @@ void checkTableDataList(api.TableDataList o) {
       o.pageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed99(o.rows!);
+    checkUnnamed100(o.rows!);
     unittest.expect(
       o.totalRows!,
       unittest.equals('foo'),
@@ -6428,12 +6499,12 @@ void checkTableDataList(api.TableDataList o) {
   buildCounterTableDataList--;
 }
 
-core.List<core.String> buildUnnamed100() => [
+core.List<core.String> buildUnnamed101() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed100(core.List<core.String> o) {
+void checkUnnamed101(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6450,7 +6521,7 @@ api.TableFieldSchemaCategories buildTableFieldSchemaCategories() {
   final o = api.TableFieldSchemaCategories();
   buildCounterTableFieldSchemaCategories++;
   if (buildCounterTableFieldSchemaCategories < 3) {
-    o.names = buildUnnamed100();
+    o.names = buildUnnamed101();
   }
   buildCounterTableFieldSchemaCategories--;
   return o;
@@ -6459,28 +6530,28 @@ api.TableFieldSchemaCategories buildTableFieldSchemaCategories() {
 void checkTableFieldSchemaCategories(api.TableFieldSchemaCategories o) {
   buildCounterTableFieldSchemaCategories++;
   if (buildCounterTableFieldSchemaCategories < 3) {
-    checkUnnamed100(o.names!);
+    checkUnnamed101(o.names!);
   }
   buildCounterTableFieldSchemaCategories--;
 }
 
-core.List<api.TableFieldSchema> buildUnnamed101() => [
+core.List<api.TableFieldSchema> buildUnnamed102() => [
       buildTableFieldSchema(),
       buildTableFieldSchema(),
     ];
 
-void checkUnnamed101(core.List<api.TableFieldSchema> o) {
+void checkUnnamed102(core.List<api.TableFieldSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableFieldSchema(o[0]);
   checkTableFieldSchema(o[1]);
 }
 
-core.List<core.String> buildUnnamed102() => [
+core.List<core.String> buildUnnamed103() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed102(core.List<core.String> o) {
+void checkUnnamed103(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6497,7 +6568,7 @@ api.TableFieldSchemaPolicyTags buildTableFieldSchemaPolicyTags() {
   final o = api.TableFieldSchemaPolicyTags();
   buildCounterTableFieldSchemaPolicyTags++;
   if (buildCounterTableFieldSchemaPolicyTags < 3) {
-    o.names = buildUnnamed102();
+    o.names = buildUnnamed103();
   }
   buildCounterTableFieldSchemaPolicyTags--;
   return o;
@@ -6506,7 +6577,7 @@ api.TableFieldSchemaPolicyTags buildTableFieldSchemaPolicyTags() {
 void checkTableFieldSchemaPolicyTags(api.TableFieldSchemaPolicyTags o) {
   buildCounterTableFieldSchemaPolicyTags++;
   if (buildCounterTableFieldSchemaPolicyTags < 3) {
-    checkUnnamed102(o.names!);
+    checkUnnamed103(o.names!);
   }
   buildCounterTableFieldSchemaPolicyTags--;
 }
@@ -6520,7 +6591,7 @@ api.TableFieldSchema buildTableFieldSchema() {
     o.collation = 'foo';
     o.defaultValueExpression = 'foo';
     o.description = 'foo';
-    o.fields = buildUnnamed101();
+    o.fields = buildUnnamed102();
     o.maxLength = 'foo';
     o.mode = 'foo';
     o.name = 'foo';
@@ -6549,7 +6620,7 @@ void checkTableFieldSchema(api.TableFieldSchema o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed101(o.fields!);
+    checkUnnamed102(o.fields!);
     unittest.expect(
       o.maxLength!,
       unittest.equals('foo'),
@@ -6579,12 +6650,12 @@ void checkTableFieldSchema(api.TableFieldSchema o) {
   buildCounterTableFieldSchema--;
 }
 
-core.Map<core.String, core.String> buildUnnamed103() => {
+core.Map<core.String, core.String> buildUnnamed104() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed103(core.Map<core.String, core.String> o) {
+void checkUnnamed104(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6626,7 +6697,7 @@ api.TableListTables buildTableListTables() {
     o.friendlyName = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed103();
+    o.labels = buildUnnamed104();
     o.rangePartitioning = buildRangePartitioning();
     o.tableReference = buildTableReference();
     o.timePartitioning = buildTimePartitioning();
@@ -6661,7 +6732,7 @@ void checkTableListTables(api.TableListTables o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed103(o.labels!);
+    checkUnnamed104(o.labels!);
     checkRangePartitioning(o.rangePartitioning!);
     checkTableReference(o.tableReference!);
     checkTimePartitioning(o.timePartitioning!);
@@ -6674,12 +6745,12 @@ void checkTableListTables(api.TableListTables o) {
   buildCounterTableListTables--;
 }
 
-core.List<api.TableListTables> buildUnnamed104() => [
+core.List<api.TableListTables> buildUnnamed105() => [
       buildTableListTables(),
       buildTableListTables(),
     ];
 
-void checkUnnamed104(core.List<api.TableListTables> o) {
+void checkUnnamed105(core.List<api.TableListTables> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableListTables(o[0]);
   checkTableListTables(o[1]);
@@ -6693,7 +6764,7 @@ api.TableList buildTableList() {
     o.etag = 'foo';
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.tables = buildUnnamed104();
+    o.tables = buildUnnamed105();
     o.totalItems = 42;
   }
   buildCounterTableList--;
@@ -6715,7 +6786,7 @@ void checkTableList(api.TableList o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed104(o.tables!);
+    checkUnnamed105(o.tables!);
     unittest.expect(
       o.totalItems!,
       unittest.equals(42),
@@ -6756,12 +6827,12 @@ void checkTableReference(api.TableReference o) {
   buildCounterTableReference--;
 }
 
-core.List<api.TableCell> buildUnnamed105() => [
+core.List<api.TableCell> buildUnnamed106() => [
       buildTableCell(),
       buildTableCell(),
     ];
 
-void checkUnnamed105(core.List<api.TableCell> o) {
+void checkUnnamed106(core.List<api.TableCell> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableCell(o[0]);
   checkTableCell(o[1]);
@@ -6772,7 +6843,7 @@ api.TableRow buildTableRow() {
   final o = api.TableRow();
   buildCounterTableRow++;
   if (buildCounterTableRow < 3) {
-    o.f = buildUnnamed105();
+    o.f = buildUnnamed106();
   }
   buildCounterTableRow--;
   return o;
@@ -6781,17 +6852,17 @@ api.TableRow buildTableRow() {
 void checkTableRow(api.TableRow o) {
   buildCounterTableRow++;
   if (buildCounterTableRow < 3) {
-    checkUnnamed105(o.f!);
+    checkUnnamed106(o.f!);
   }
   buildCounterTableRow--;
 }
 
-core.List<api.TableFieldSchema> buildUnnamed106() => [
+core.List<api.TableFieldSchema> buildUnnamed107() => [
       buildTableFieldSchema(),
       buildTableFieldSchema(),
     ];
 
-void checkUnnamed106(core.List<api.TableFieldSchema> o) {
+void checkUnnamed107(core.List<api.TableFieldSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableFieldSchema(o[0]);
   checkTableFieldSchema(o[1]);
@@ -6802,7 +6873,7 @@ api.TableSchema buildTableSchema() {
   final o = api.TableSchema();
   buildCounterTableSchema++;
   if (buildCounterTableSchema < 3) {
-    o.fields = buildUnnamed106();
+    o.fields = buildUnnamed107();
   }
   buildCounterTableSchema--;
   return o;
@@ -6811,45 +6882,9 @@ api.TableSchema buildTableSchema() {
 void checkTableSchema(api.TableSchema o) {
   buildCounterTableSchema++;
   if (buildCounterTableSchema < 3) {
-    checkUnnamed106(o.fields!);
+    checkUnnamed107(o.fields!);
   }
   buildCounterTableSchema--;
-}
-
-core.List<core.String> buildUnnamed107() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed107(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed107();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed107(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
 }
 
 core.List<core.String> buildUnnamed108() => [
@@ -6869,12 +6904,48 @@ void checkUnnamed108(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed108();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed108(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed109() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed109(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed108();
+    o.permissions = buildUnnamed109();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -6883,7 +6954,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed108(o.permissions!);
+    checkUnnamed109(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -6922,23 +6993,6 @@ void checkTimePartitioning(api.TimePartitioning o) {
   buildCounterTimePartitioning--;
 }
 
-core.List<core.String> buildUnnamed109() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed109(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed110() => [
       'foo',
       'foo',
@@ -6973,12 +7027,29 @@ void checkUnnamed111(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.double> buildUnnamed112() => {
+core.List<core.String> buildUnnamed112() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed112(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.double> buildUnnamed113() => {
       'x': 42.0,
       'y': 42.0,
     };
 
-void checkUnnamed112(core.Map<core.String, core.double> o) {
+void checkUnnamed113(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6990,12 +7061,12 @@ void checkUnnamed112(core.Map<core.String, core.double> o) {
   );
 }
 
-core.List<core.String> buildUnnamed113() => [
+core.List<core.String> buildUnnamed114() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed113(core.List<core.String> o) {
+void checkUnnamed114(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7033,20 +7104,20 @@ api.TrainingOptions buildTrainingOptions() {
     o.earlyStop = true;
     o.enableGlobalExplain = true;
     o.feedbackType = 'foo';
-    o.hiddenUnits = buildUnnamed109();
+    o.hiddenUnits = buildUnnamed110();
     o.holidayRegion = 'foo';
     o.horizon = 'foo';
-    o.hparamTuningObjectives = buildUnnamed110();
+    o.hparamTuningObjectives = buildUnnamed111();
     o.includeDrift = true;
     o.initialLearnRate = 42.0;
-    o.inputLabelColumns = buildUnnamed111();
+    o.inputLabelColumns = buildUnnamed112();
     o.integratedGradientsNumSteps = 'foo';
     o.itemColumn = 'foo';
     o.kmeansInitializationColumn = 'foo';
     o.kmeansInitializationMethod = 'foo';
     o.l1Regularization = 42.0;
     o.l2Regularization = 42.0;
-    o.labelClassWeights = buildUnnamed112();
+    o.labelClassWeights = buildUnnamed113();
     o.learnRate = 42.0;
     o.learnRateStrategy = 'foo';
     o.lossType = 'foo';
@@ -7068,7 +7139,7 @@ api.TrainingOptions buildTrainingOptions() {
     o.subsample = 42.0;
     o.timeSeriesDataColumn = 'foo';
     o.timeSeriesIdColumn = 'foo';
-    o.timeSeriesIdColumns = buildUnnamed113();
+    o.timeSeriesIdColumns = buildUnnamed114();
     o.timeSeriesTimestampColumn = 'foo';
     o.treeMethod = 'foo';
     o.userColumn = 'foo';
@@ -7145,7 +7216,7 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.feedbackType!,
       unittest.equals('foo'),
     );
-    checkUnnamed109(o.hiddenUnits!);
+    checkUnnamed110(o.hiddenUnits!);
     unittest.expect(
       o.holidayRegion!,
       unittest.equals('foo'),
@@ -7154,13 +7225,13 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.horizon!,
       unittest.equals('foo'),
     );
-    checkUnnamed110(o.hparamTuningObjectives!);
+    checkUnnamed111(o.hparamTuningObjectives!);
     unittest.expect(o.includeDrift!, unittest.isTrue);
     unittest.expect(
       o.initialLearnRate!,
       unittest.equals(42.0),
     );
-    checkUnnamed111(o.inputLabelColumns!);
+    checkUnnamed112(o.inputLabelColumns!);
     unittest.expect(
       o.integratedGradientsNumSteps!,
       unittest.equals('foo'),
@@ -7185,7 +7256,7 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.l2Regularization!,
       unittest.equals(42.0),
     );
-    checkUnnamed112(o.labelClassWeights!);
+    checkUnnamed113(o.labelClassWeights!);
     unittest.expect(
       o.learnRate!,
       unittest.equals(42.0),
@@ -7264,7 +7335,7 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.timeSeriesIdColumn!,
       unittest.equals('foo'),
     );
-    checkUnnamed113(o.timeSeriesIdColumns!);
+    checkUnnamed114(o.timeSeriesIdColumns!);
     unittest.expect(
       o.timeSeriesTimestampColumn!,
       unittest.equals('foo'),
@@ -7286,23 +7357,23 @@ void checkTrainingOptions(api.TrainingOptions o) {
   buildCounterTrainingOptions--;
 }
 
-core.List<api.GlobalExplanation> buildUnnamed114() => [
+core.List<api.GlobalExplanation> buildUnnamed115() => [
       buildGlobalExplanation(),
       buildGlobalExplanation(),
     ];
 
-void checkUnnamed114(core.List<api.GlobalExplanation> o) {
+void checkUnnamed115(core.List<api.GlobalExplanation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlobalExplanation(o[0]);
   checkGlobalExplanation(o[1]);
 }
 
-core.List<api.IterationResult> buildUnnamed115() => [
+core.List<api.IterationResult> buildUnnamed116() => [
       buildIterationResult(),
       buildIterationResult(),
     ];
 
-void checkUnnamed115(core.List<api.IterationResult> o) {
+void checkUnnamed116(core.List<api.IterationResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIterationResult(o[0]);
   checkIterationResult(o[1]);
@@ -7313,11 +7384,11 @@ api.TrainingRun buildTrainingRun() {
   final o = api.TrainingRun();
   buildCounterTrainingRun++;
   if (buildCounterTrainingRun < 3) {
-    o.classLevelGlobalExplanations = buildUnnamed114();
+    o.classLevelGlobalExplanations = buildUnnamed115();
     o.dataSplitResult = buildDataSplitResult();
     o.evaluationMetrics = buildEvaluationMetrics();
     o.modelLevelGlobalExplanation = buildGlobalExplanation();
-    o.results = buildUnnamed115();
+    o.results = buildUnnamed116();
     o.startTime = 'foo';
     o.trainingOptions = buildTrainingOptions();
     o.vertexAiModelId = 'foo';
@@ -7330,11 +7401,11 @@ api.TrainingRun buildTrainingRun() {
 void checkTrainingRun(api.TrainingRun o) {
   buildCounterTrainingRun++;
   if (buildCounterTrainingRun < 3) {
-    checkUnnamed114(o.classLevelGlobalExplanations!);
+    checkUnnamed115(o.classLevelGlobalExplanations!);
     checkDataSplitResult(o.dataSplitResult!);
     checkEvaluationMetrics(o.evaluationMetrics!);
     checkGlobalExplanation(o.modelLevelGlobalExplanation!);
-    checkUnnamed115(o.results!);
+    checkUnnamed116(o.results!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -7401,12 +7472,12 @@ void checkUserDefinedFunctionResource(api.UserDefinedFunctionResource o) {
   buildCounterUserDefinedFunctionResource--;
 }
 
-core.List<api.UserDefinedFunctionResource> buildUnnamed116() => [
+core.List<api.UserDefinedFunctionResource> buildUnnamed117() => [
       buildUserDefinedFunctionResource(),
       buildUserDefinedFunctionResource(),
     ];
 
-void checkUnnamed116(core.List<api.UserDefinedFunctionResource> o) {
+void checkUnnamed117(core.List<api.UserDefinedFunctionResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserDefinedFunctionResource(o[0]);
   checkUserDefinedFunctionResource(o[1]);
@@ -7420,7 +7491,7 @@ api.ViewDefinition buildViewDefinition() {
     o.query = 'foo';
     o.useExplicitColumnNames = true;
     o.useLegacySql = true;
-    o.userDefinedFunctionResources = buildUnnamed116();
+    o.userDefinedFunctionResources = buildUnnamed117();
   }
   buildCounterViewDefinition--;
   return o;
@@ -7435,17 +7506,17 @@ void checkViewDefinition(api.ViewDefinition o) {
     );
     unittest.expect(o.useExplicitColumnNames!, unittest.isTrue);
     unittest.expect(o.useLegacySql!, unittest.isTrue);
-    checkUnnamed116(o.userDefinedFunctionResources!);
+    checkUnnamed117(o.userDefinedFunctionResources!);
   }
   buildCounterViewDefinition--;
 }
 
-core.List<core.String> buildUnnamed117() => [
+core.List<core.String> buildUnnamed118() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed117(core.List<core.String> o) {
+void checkUnnamed118(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8088,6 +8159,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-IndexUnusedReason', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIndexUnusedReason();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IndexUnusedReason.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIndexUnusedReason(od);
+    });
+  });
+
   unittest.group('obj-schema-IntArray', () {
     unittest.test('to-json--from-json', () async {
       final o = buildIntArray();
@@ -8683,6 +8764,16 @@ void main() {
       final od = api.ScriptStatistics.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkScriptStatistics(od);
+    });
+  });
+
+  unittest.group('obj-schema-SearchStatistics', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSearchStatistics();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchStatistics.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSearchStatistics(od);
     });
   });
 
@@ -9953,7 +10044,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_parentJobId = 'foo';
       final arg_projection = 'foo';
-      final arg_stateFilter = buildUnnamed117();
+      final arg_stateFilter = buildUnnamed118();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -11445,6 +11536,7 @@ void main() {
       final arg_datasetId = 'foo';
       final arg_tableId = 'foo';
       final arg_selectedFields = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -11521,6 +11613,10 @@ void main() {
           unittest.equals(arg_selectedFields),
         );
         unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -11532,7 +11628,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_projectId, arg_datasetId, arg_tableId,
-          selectedFields: arg_selectedFields, $fields: arg_$fields);
+          selectedFields: arg_selectedFields,
+          view: arg_view,
+          $fields: arg_$fields);
       checkTable(response as api.Table);
     });
 

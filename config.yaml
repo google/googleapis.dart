@@ -106,6 +106,7 @@ packages:
     - domains:v1
     - domainsrdap:v1
     - doubleclickbidmanager:v1.1
+    - doubleclickbidmanager:v2
     - doubleclicksearch:v2 # https://developers.google.com/doubleclick-search/
     - drive:v2 # https://developers.google.com/drive/v2/reference/
     - drive:v3 # https://developers.google.com/drive/v3/reference/

@@ -4436,10 +4436,11 @@ typedef CancelJobRequest = $Empty;
 /// Describes the identifying information, config, and status of a Dataproc
 /// cluster
 class Cluster {
-  /// The cluster name.
+  /// The cluster name, which must be unique within a project.
   ///
-  /// Cluster names within a project must be unique. Names of deleted clusters
-  /// can be reused.
+  /// The name must start with a lowercase letter, and can contain up to 51
+  /// lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The
+  /// name of a deleted cluster can be reused.
   ///
   /// Required.
   core.String? clusterName;
@@ -5635,6 +5636,16 @@ class GkeNodeConfig {
   /// Optional.
   core.List<GkeNodePoolAcceleratorConfig>? accelerators;
 
+  /// The Customer Managed Encryption Key (CMEK)
+  /// (https://cloud.google.com/compute/docs/disks/customer-managed-encryption)
+  /// used to encrypt the boot disk attached to each node in the node pool.
+  ///
+  /// Specify the key using the following format: projects/KEY_PROJECT_ID
+  /// /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+  ///
+  /// Optional.
+  core.String? bootDiskKmsKey;
+
   /// The number of local SSD disks to attach to the node, which is limited by
   /// the maximum number of disks allowable per zone (see Adding Local SSDs
   /// (https://cloud.google.com/compute/docs/disks/local-ssd)).
@@ -5677,6 +5688,7 @@ class GkeNodeConfig {
 
   GkeNodeConfig({
     this.accelerators,
+    this.bootDiskKmsKey,
     this.localSsdCount,
     this.machineType,
     this.minCpuPlatform,
@@ -5691,6 +5703,9 @@ class GkeNodeConfig {
                   .map((value) => GkeNodePoolAcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          bootDiskKmsKey: _json.containsKey('bootDiskKmsKey')
+              ? _json['bootDiskKmsKey'] as core.String
               : null,
           localSsdCount: _json.containsKey('localSsdCount')
               ? _json['localSsdCount'] as core.int
@@ -5709,6 +5724,7 @@ class GkeNodeConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accelerators != null) 'accelerators': accelerators!,
+        if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
         if (machineType != null) 'machineType': machineType!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
@@ -7921,6 +7937,56 @@ class NodeInitializationAction {
       };
 }
 
+/// indicating a list of workers of same type
+class NodePool {
+  /// A unique id of the node pool.
+  ///
+  /// Primary and Secondary workers can be specified using special reserved ids
+  /// PRIMARY_WORKER_POOL and SECONDARY_WORKER_POOL respectively. Aux node pools
+  /// can be referenced using corresponding pool id.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Name of instances to be repaired.
+  ///
+  /// These instances must belong to specified node pool.
+  core.List<core.String>? instanceNames;
+
+  /// Repair action to take on specified resources of the node pool.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REPAIR_ACTION_UNSPECIFIED" : No action will be taken by default.
+  /// - "DELETE" : delete the specified list of nodes.
+  core.String? repairAction;
+
+  NodePool({
+    this.id,
+    this.instanceNames,
+    this.repairAction,
+  });
+
+  NodePool.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          instanceNames: _json.containsKey('instanceNames')
+              ? (_json['instanceNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          repairAction: _json.containsKey('repairAction')
+              ? _json['repairAction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (instanceNames != null) 'instanceNames': instanceNames!,
+        if (repairAction != null) 'repairAction': repairAction!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -8842,6 +8908,14 @@ class RepairClusterRequest {
   /// Optional.
   core.String? clusterUuid;
 
+  /// Node pools and corresponding repair action to be taken.
+  ///
+  /// All node pools should be unique in this request. i.e. Multiple entries for
+  /// the same node pool id are not allowed.
+  ///
+  /// Optional.
+  core.List<NodePool>? nodePools;
+
   /// A unique ID used to identify the request.
   ///
   /// If the server receives two RepairClusterRequests with the same ID, the
@@ -8857,6 +8931,7 @@ class RepairClusterRequest {
 
   RepairClusterRequest({
     this.clusterUuid,
+    this.nodePools,
     this.requestId,
   });
 
@@ -8865,6 +8940,12 @@ class RepairClusterRequest {
           clusterUuid: _json.containsKey('clusterUuid')
               ? _json['clusterUuid'] as core.String
               : null,
+          nodePools: _json.containsKey('nodePools')
+              ? (_json['nodePools'] as core.List)
+                  .map((value) => NodePool.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           requestId: _json.containsKey('requestId')
               ? _json['requestId'] as core.String
               : null,
@@ -8872,6 +8953,7 @@ class RepairClusterRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (nodePools != null) 'nodePools': nodePools!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -10134,7 +10216,7 @@ class TemplateParameter {
 }
 
 /// Request message for TestIamPermissions method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest02;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for TestIamPermissions method.
 typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;

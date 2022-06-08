@@ -2212,6 +2212,12 @@ class EgressPolicy {
 /// succeed. The request must match `operations` AND `resources` fields in order
 /// to be allowed egress out of the perimeter.
 class EgressTo {
+  /// A list of external resources that are allowed to be accessed.
+  ///
+  /// A request matches if it contains an external resource in this list
+  /// (Example: s3://bucket/path). Currently '*' is not allowed.
+  core.List<core.String>? externalResources;
+
   /// A list of ApiOperations allowed to be performed by the sources specified
   /// in the corresponding EgressFrom.
   ///
@@ -2228,12 +2234,18 @@ class EgressTo {
   core.List<core.String>? resources;
 
   EgressTo({
+    this.externalResources,
     this.operations,
     this.resources,
   });
 
   EgressTo.fromJson(core.Map _json)
       : this(
+          externalResources: _json.containsKey('externalResources')
+              ? (_json['externalResources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           operations: _json.containsKey('operations')
               ? (_json['operations'] as core.List)
                   .map((value) => ApiOperation.fromJson(
@@ -2248,6 +2260,7 @@ class EgressTo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (externalResources != null) 'externalResources': externalResources!,
         if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
       };

@@ -1261,8 +1261,8 @@ class ProjectsLocationsCatalogsPlacementsResource {
   ///
   /// Request parameters:
   ///
-  /// [placement] - Required. Full resource name of the format: {name=projects /
-  /// * /locations/global/catalogs/default_catalog/placements / * } The ID of
+  /// [placement] - Required. Full resource name of the format: `{name=projects
+  /// / * /locations/global/catalogs/default_catalog/placements / * }` The ID of
   /// the Recommendations AI placement. Before you can request predictions from
   /// your model, you must create at least one placement for it. For more
   /// information, see
@@ -4185,15 +4185,17 @@ class GoogleCloudRetailV2ProductLevelConfig {
       };
 }
 
-/// Promotion information.
+/// Promotion specification.
 class GoogleCloudRetailV2Promotion {
-  /// ID of the promotion.
+  /// Promotion identifier, which is the final component of name.
   ///
-  /// For example, "free gift". The value must be a UTF-8 encoded string with a
-  /// length limit of 128 characters, and match the pattern: `a-zA-Z*`. For
-  /// example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT
-  /// error is returned. Google Merchant Center property
-  /// [promotion](https://support.google.com/merchants/answer/7050148).
+  /// For example, this field is "free_gift", if name is `projects / *
+  /// /locations/global/catalogs/default_catalog/promotions/free_gift`. The
+  /// value must be a UTF-8 encoded string with a length limit of 128
+  /// characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or
+  /// ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Corresponds to Google Merchant Center property
+  /// [promotion_id](https://support.google.com/merchants/answer/7050148).
   core.String? promotionId;
 
   GoogleCloudRetailV2Promotion({

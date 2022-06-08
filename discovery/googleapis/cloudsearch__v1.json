@@ -394,7 +394,7 @@
                                     "type": "boolean"
                                 },
                                 "name": {
-                                    "description": "Name of the data source to delete Schema. Format: datasources/{source_id}",
+                                    "description": "The name of the data source to delete Schema. Format: datasources/{source_id}",
                                     "location": "path",
                                     "pattern": "^datasources/[^/]+$",
                                     "required": true,
@@ -426,7 +426,7 @@
                                     "type": "boolean"
                                 },
                                 "name": {
-                                    "description": "Name of the data source to get Schema. Format: datasources/{source_id}",
+                                    "description": "The name of the data source to get Schema. Format: datasources/{source_id}",
                                     "location": "path",
                                     "pattern": "^datasources/[^/]+$",
                                     "required": true,
@@ -453,7 +453,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Name of the data source to update Schema. Format: datasources/{source_id}",
+                                    "description": "The name of the data source to update Schema. Format: datasources/{source_id}",
                                     "location": "path",
                                     "pattern": "^datasources/[^/]+$",
                                     "required": true,
@@ -487,7 +487,7 @@
                                     ],
                                     "parameters": {
                                         "connectorName": {
-                                            "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                                            "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -504,7 +504,7 @@
                                                 "ASYNCHRONOUS"
                                             ],
                                             "enumDescriptions": [
-                                                "Priority is not specified in the update request. Leaving priority unspecified results in an update failure.",
+                                                "The priority is not specified in the update request. Leaving priority unspecified results in an update failure.",
                                                 "For real-time updates.",
                                                 "For changes that are executed after the response is sent back to the caller."
                                             ],
@@ -512,7 +512,7 @@
                                             "type": "string"
                                         },
                                         "name": {
-                                            "description": "Required. Name of the item to delete. Format: datasources/{source_id}/items/{item_id}",
+                                            "description": "Required. The name of the item to delete. Format: datasources/{source_id}/items/{item_id}",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+/items/[^/]+$",
                                             "required": true,
@@ -544,7 +544,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Name of the Data Source to delete items in a queue. Format: datasources/{source_id}",
+                                            "description": "The name of the Data Source to delete items in a queue. Format: datasources/{source_id}",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+$",
                                             "required": true,
@@ -573,7 +573,7 @@
                                     ],
                                     "parameters": {
                                         "connectorName": {
-                                            "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                                            "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -583,7 +583,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Name of the item to get info. Format: datasources/{source_id}/items/{item_id}",
+                                            "description": "The name of the item to get info. Format: datasources/{source_id}/items/{item_id}",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+/items/[^/]+$",
                                             "required": true,
@@ -609,7 +609,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum length is 1536 characters.",
+                                            "description": "The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum length is 1536 characters.",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+/items/[^/]+$",
                                             "required": true,
@@ -643,7 +643,7 @@
                                             "type": "boolean"
                                         },
                                         "connectorName": {
-                                            "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                                            "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -653,7 +653,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Name of the Data Source to list Items. Format: datasources/{source_id}",
+                                            "description": "The name of the Data Source to list Items. Format: datasources/{source_id}",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+$",
                                             "required": true,
@@ -690,7 +690,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Name of the Data Source to poll items. Format: datasources/{source_id}",
+                                            "description": "The name of the Data Source to poll items. Format: datasources/{source_id}",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+$",
                                             "required": true,
@@ -719,7 +719,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID} This is a required field. The maximum length is 1536 characters.",
+                                            "description": "The name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID} This is a required field. The maximum length is 1536 characters.",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+/items/[^/]+$",
                                             "required": true,
@@ -748,7 +748,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Name of the Data Source to unreserve all items. Format: datasources/{source_id}",
+                                            "description": "The name of the Data Source to unreserve all items. Format: datasources/{source_id}",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+$",
                                             "required": true,
@@ -777,7 +777,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes.",
+                                            "description": "The name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes.",
                                             "location": "path",
                                             "pattern": "^datasources/[^/]+/items/[^/]+$",
                                             "required": true,
@@ -1108,7 +1108,7 @@
                                     "type": "boolean"
                                 },
                                 "name": {
-                                    "description": "Name of the datasource. Format: datasources/{source_id}.",
+                                    "description": "The name of the datasource. Format: datasources/{source_id}.",
                                     "location": "path",
                                     "pattern": "^datasources/[^/]+$",
                                     "required": true,
@@ -1140,7 +1140,7 @@
                                     "type": "boolean"
                                 },
                                 "name": {
-                                    "description": "Name of the datasource resource. Format: datasources/{source_id}.",
+                                    "description": "The name of the datasource resource. Format: datasources/{source_id}.",
                                     "location": "path",
                                     "pattern": "^datasources/[^/]+$",
                                     "required": true,
@@ -1201,7 +1201,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.",
+                                    "description": "The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.",
                                     "location": "path",
                                     "pattern": "^datasources/[^/]+$",
                                     "required": true,
@@ -1292,7 +1292,7 @@
                                     "type": "boolean"
                                 },
                                 "name": {
-                                    "description": "Name of the search application. Format: searchapplications/{application_id}.",
+                                    "description": "The name of the search application. Format: searchapplications/{application_id}.",
                                     "location": "path",
                                     "pattern": "^searchapplications/[^/]+$",
                                     "required": true,
@@ -1383,7 +1383,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Name of the Search Application. Format: searchapplications/{application_id}.",
+                                    "description": "The name of the Search Application. Format: searchapplications/{application_id}.",
                                     "location": "path",
                                     "pattern": "^searchapplications/[^/]+$",
                                     "required": true,
@@ -1992,7 +1992,7 @@
             }
         }
     },
-    "revision": "20220524",
+    "revision": "20220530",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "schemas": {
         "AclInfo": {
@@ -2134,7 +2134,7 @@
             "type": "object"
         },
         "BooleanPropertyOptions": {
-            "description": "Options for boolean properties.",
+            "description": "The options for boolean properties.",
             "id": "BooleanPropertyOptions",
             "properties": {
                 "operatorOptions": {
@@ -2287,7 +2287,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which statistics were calculated."
+                    "description": "The date for which statistics were calculated."
                 },
                 "itemCountByStatus": {
                     "description": "Number of items aggregrated by status code.",
@@ -2304,7 +2304,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which query stats were calculated. Stats calculated on the next day close to midnight are returned."
+                    "description": "The date for which query stats were calculated. Stats calculated on the next day close to midnight are returned."
                 },
                 "queryCountByStatus": {
                     "items": {
@@ -2326,7 +2326,7 @@
                 },
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which search application stats were calculated."
+                    "description": "The date for which search application stats were calculated."
                 }
             },
             "type": "object"
@@ -2336,7 +2336,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned."
+                    "description": "The date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned."
                 },
                 "searchSessionsCount": {
                     "description": "The count of search sessions on the day",
@@ -2366,7 +2366,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which session stats were calculated. Stats calculated on the next day close to midnight are returned."
+                    "description": "The date for which session stats were calculated. Stats calculated on the next day close to midnight are returned."
                 },
                 "oneDayActiveUsersCount": {
                     "description": "The count of unique active users in the past one day",
@@ -2417,7 +2417,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.",
+                    "description": "The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.",
                     "type": "string"
                 },
                 "operationIds": {
@@ -2444,7 +2444,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which index stats were calculated. If the date of request is not the current date then stats calculated on the next day are returned. Stats are calculated close to mid night in this case. If date of request is current date, then real time stats are returned."
+                    "description": "The date for which index stats were calculated. If the date of request is not the current date then stats calculated on the next day are returned. Stats are calculated close to mid night in this case. If date of request is current date, then real time stats are returned."
                 },
                 "itemCountByStatus": {
                     "description": "Number of items aggregrated by status code.",
@@ -2516,7 +2516,7 @@
             "type": "object"
         },
         "DatePropertyOptions": {
-            "description": "Options for date properties.",
+            "description": "The options for date properties.",
             "id": "DatePropertyOptions",
             "properties": {
                 "operatorOptions": {
@@ -2554,7 +2554,7 @@
             "id": "DeleteQueueItemsRequest",
             "properties": {
                 "connectorName": {
-                    "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                    "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                     "type": "string"
                 },
                 "debugOptions": {
@@ -2562,7 +2562,7 @@
                     "description": "Common debug options."
                 },
                 "queue": {
-                    "description": "Name of a queue to delete items from.",
+                    "description": "The name of a queue to delete items from.",
                     "type": "string"
                 }
             },
@@ -2601,7 +2601,7 @@
             "type": "object"
         },
         "DoublePropertyOptions": {
-            "description": "Options for double properties.",
+            "description": "The options for double properties.",
             "id": "DoublePropertyOptions",
             "properties": {
                 "operatorOptions": {
@@ -2843,7 +2843,7 @@
             "type": "object"
         },
         "EnumPropertyOptions": {
-            "description": "Options for enum properties, which allow you to define a restricted set of strings to match user queries, set rankings for those string values, and define an operator name to be paired with those strings so that users can narrow results to only items with a specific value. For example, for items in a request tracking system with priority information, you could define *p0* as an allowable enum value and tie this enum to the operator name *priority* so that search users could add *priority:p0* to their query to restrict the set of results to only those items indexed with the value *p0*.",
+            "description": "The options for enum properties, which allow you to define a restricted set of strings to match user queries, set rankings for those string values, and define an operator name to be paired with those strings so that users can narrow results to only items with a specific value. For example, for items in a request tracking system with priority information, you could define *p0* as an allowable enum value and tie this enum to the operator name *priority* so that search users could add *priority:p0* to their query to restrict the set of results to only those items indexed with the value *p0*.",
             "id": "EnumPropertyOptions",
             "properties": {
                 "operatorOptions": {
@@ -2964,7 +2964,7 @@
                     "type": "string"
                 },
                 "operatorName": {
-                    "description": "Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions",
+                    "description": "The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions",
                     "type": "string"
                 },
                 "sourceName": {
@@ -2990,7 +2990,7 @@
                     "type": "string"
                 },
                 "operatorName": {
-                    "description": "Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions",
+                    "description": "The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions",
                     "type": "string"
                 },
                 "sourceName": {
@@ -3004,7 +3004,7 @@
             "id": "FieldViolation",
             "properties": {
                 "description": {
-                    "description": "Description of the error.",
+                    "description": "The description of the error.",
                     "type": "string"
                 },
                 "field": {
@@ -3344,7 +3344,7 @@
             "type": "object"
         },
         "HtmlPropertyOptions": {
-            "description": "Options for html properties.",
+            "description": "The options for html properties.",
             "id": "HtmlPropertyOptions",
             "properties": {
                 "operatorOptions": {
@@ -3407,7 +3407,7 @@
             "id": "IndexItemRequest",
             "properties": {
                 "connectorName": {
-                    "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                    "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                     "type": "string"
                 },
                 "debugOptions": {
@@ -3419,7 +3419,7 @@
                 },
                 "item": {
                     "$ref": "Item",
-                    "description": "Name of the item. Format: datasources/{source_id}/items/{item_id}"
+                    "description": "The name of the item. Format: datasources/{source_id}/items/{item_id}"
                 },
                 "mode": {
                     "description": "Required. The RequestMode for this request.",
@@ -3429,7 +3429,7 @@
                         "ASYNCHRONOUS"
                     ],
                     "enumDescriptions": [
-                        "Priority is not specified in the update request. Leaving priority unspecified results in an update failure.",
+                        "The priority is not specified in the update request. Leaving priority unspecified results in an update failure.",
                         "For real-time updates.",
                         "For changes that are executed after the response is sent back to the caller."
                     ],
@@ -3464,7 +3464,7 @@
             "type": "object"
         },
         "IntegerPropertyOptions": {
-            "description": "Options for integer properties.",
+            "description": "The options for integer properties.",
             "id": "IntegerPropertyOptions",
             "properties": {
                 "maximumValue": {
@@ -3554,7 +3554,7 @@
                     "description": "Item content to be indexed and made text searchable."
                 },
                 "itemType": {
-                    "description": "Type for this item.",
+                    "description": "The type for this item.",
                     "enum": [
                         "UNSPECIFIED",
                         "CONTENT_ITEM",
@@ -3571,10 +3571,10 @@
                 },
                 "metadata": {
                     "$ref": "ItemMetadata",
-                    "description": "Metadata information."
+                    "description": "The metadata information."
                 },
                 "name": {
-                    "description": "Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum length is 1536 characters.",
+                    "description": "The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum length is 1536 characters.",
                     "type": "string"
                 },
                 "payload": {
@@ -3603,7 +3603,7 @@
             "type": "object"
         },
         "ItemAcl": {
-            "description": "Access control list information for the item. For more information see [Map ACLs](/cloud-search/docs/guides/acls).",
+            "description": "Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).",
             "id": "ItemAcl",
             "properties": {
                 "aclInheritanceType": {
@@ -3630,7 +3630,7 @@
                     "type": "array"
                 },
                 "inheritAclFrom": {
-                    "description": "Name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters.",
+                    "description": "The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters.",
                     "type": "string"
                 },
                 "owners": {
@@ -4052,7 +4052,7 @@
             "id": "Name",
             "properties": {
                 "displayName": {
-                    "description": "The read-only display name formatted according to the locale specified by the viewer's account or the Accept-Language HTTP header.",
+                    "description": "The read-only display name formatted according to the locale specified by the viewer's account or the `Accept-Language` HTTP header.",
                     "type": "string"
                 }
             },
@@ -4101,7 +4101,7 @@
             "id": "ObjectDefinition",
             "properties": {
                 "name": {
-                    "description": "Name for the object, which then defines its type. Item indexing requests should set the objectType field equal to this value. For example, if *name* is *Document*, then indexing requests for items of type Document should set objectType equal to *Document*. Each object definition must be uniquely named within a schema. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The maximum length is 256 characters.",
+                    "description": "The name for the object, which then defines its type. Item indexing requests should set the objectType field equal to this value. For example, if *name* is *Document*, then indexing requests for items of type Document should set objectType equal to *Document*. Each object definition must be uniquely named within a schema. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The maximum length is 256 characters.",
                     "type": "string"
                 },
                 "options": {
@@ -4142,7 +4142,7 @@
             "properties": {
                 "displayOptions": {
                     "$ref": "ObjectDisplayOptions",
-                    "description": "Options that determine how the object is displayed in the Cloud Search results page."
+                    "description": "The options that determine how the object is displayed in the Cloud Search results page."
                 },
                 "freshnessOptions": {
                     "$ref": "FreshnessOptions",
@@ -4152,7 +4152,7 @@
             "type": "object"
         },
         "ObjectPropertyOptions": {
-            "description": "Options for object properties.",
+            "description": "The options for object properties.",
             "id": "ObjectPropertyOptions",
             "properties": {
                 "subobjectProperties": {
@@ -4236,7 +4236,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "The resource name of the person to provide information about. See People.get from Google People API.",
+                    "description": "The resource name of the person to provide information about. See [`People.get`](https://developers.google.com/people/api/rest/v1/people/get) from the Google People API.",
                     "type": "string"
                 },
                 "obfuscatedId": {
@@ -4275,7 +4275,7 @@
             "id": "PollItemsRequest",
             "properties": {
                 "connectorName": {
-                    "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                    "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                     "type": "string"
                 },
                 "debugOptions": {
@@ -4369,7 +4369,7 @@
                     "type": "string"
                 },
                 "errorMessage": {
-                    "description": "Description of the error.",
+                    "description": "The description of the error.",
                     "type": "string"
                 },
                 "fieldViolations": {
@@ -4394,7 +4394,7 @@
                 },
                 "displayOptions": {
                     "$ref": "PropertyDisplayOptions",
-                    "description": "Options that determine how the property is displayed in the Cloud Search results page if it is specified to be displayed in the object's display options ."
+                    "description": "The options that determine how the property is displayed in the Cloud Search results page if it's specified to be displayed in the object's display options."
                 },
                 "doublePropertyOptions": {
                     "$ref": "DoublePropertyOptions"
@@ -4409,7 +4409,7 @@
                     "$ref": "IntegerPropertyOptions"
                 },
                 "isFacetable": {
-                    "description": "Indicates that the property can be used for generating facets. Cannot be true for properties whose type is object. IsReturnable must be true to set this option. Only supported for Boolean, Enum, and Text properties.",
+                    "description": "Indicates that the property can be used for generating facets. Cannot be true for properties whose type is object. IsReturnable must be true to set this option. Only supported for boolean, enum, and text properties.",
                     "type": "boolean"
                 },
                 "isRepeatable": {
@@ -4421,7 +4421,7 @@
                     "type": "boolean"
                 },
                 "isSortable": {
-                    "description": "Indicates that the property can be used for sorting. Cannot be true for properties that are repeatable. Cannot be true for properties whose type is object. IsReturnable must be true to set this option. Only supported for Boolean, Date, Double, Integer, and Timestamp properties.",
+                    "description": "Indicates that the property can be used for sorting. Cannot be true for properties that are repeatable. Cannot be true for properties whose type is object. IsReturnable must be true to set this option. Only supported for boolean, date, double, integer, and timestamp properties.",
                     "type": "boolean"
                 },
                 "isSuggestable": {
@@ -4468,7 +4468,7 @@
                     "type": "string"
                 },
                 "metadataHash": {
-                    "description": "Metadata hash of the item according to the repository. If specified, this is used to determine how to modify this item's status. Setting this field and the type field results in argument error. The maximum length is 2048 characters.",
+                    "description": "The metadata hash of the item according to the repository. If specified, this is used to determine how to modify this item's status. Setting this field and the type field results in argument error. The maximum length is 2048 characters.",
                     "type": "string"
                 },
                 "payload": {
@@ -4477,7 +4477,7 @@
                     "type": "string"
                 },
                 "queue": {
-                    "description": "Queue to which this item belongs to. The default queue is chosen if this field is not specified. The maximum length is 512 characters.",
+                    "description": "Queue to which this item belongs. The `default` queue is chosen if this field is not specified. The maximum length is 512 characters.",
                     "type": "string"
                 },
                 "repositoryError": {
@@ -4513,7 +4513,7 @@
             "id": "PushItemRequest",
             "properties": {
                 "connectorName": {
-                    "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                    "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                     "type": "string"
                 },
                 "debugOptions": {
@@ -4668,7 +4668,7 @@
                     "type": "string"
                 },
                 "objectType": {
-                    "description": "Name of the object corresponding to the operator. This field is only filled for schema-specific operators, and is unset for common operators.",
+                    "description": "The name of the object corresponding to the operator. This field is only filled for schema-specific operators, and is unset for common operators.",
                     "type": "string"
                 },
                 "operatorName": {
@@ -4676,7 +4676,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Type of the operator.",
+                    "description": "The type of the operator.",
                     "enum": [
                         "UNKNOWN",
                         "INTEGER",
@@ -4725,7 +4725,7 @@
                 },
                 "source": {
                     "$ref": "Source",
-                    "description": "Name of the source"
+                    "description": "The name of the source"
                 }
             },
             "type": "object"
@@ -4750,7 +4750,7 @@
                     "type": "integer"
                 },
                 "type": {
-                    "description": "Type of error.",
+                    "description": "The type of error.",
                     "enum": [
                         "UNKNOWN",
                         "NETWORK_ERROR",
@@ -5013,7 +5013,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "Name of the Search Application. Format: searchapplications/{application_id}.",
+                    "description": "The name of the Search Application. Format: searchapplications/{application_id}.",
                     "type": "string"
                 },
                 "operationIds": {
@@ -5052,7 +5052,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which query stats were calculated. Stats calculated on the next day close to midnight are returned."
+                    "description": "The date for which query stats were calculated. Stats calculated on the next day close to midnight are returned."
                 },
                 "queryCountByStatus": {
                     "items": {
@@ -5068,7 +5068,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned."
+                    "description": "The date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned."
                 },
                 "searchSessionsCount": {
                     "description": "The count of search sessions on the day",
@@ -5083,7 +5083,7 @@
             "properties": {
                 "date": {
                     "$ref": "Date",
-                    "description": "Date for which session stats were calculated. Stats calculated on the next day close to midnight are returned."
+                    "description": "The date for which session stats were calculated. Stats calculated on the next day close to midnight are returned."
                 },
                 "oneDayActiveUsersCount": {
                     "description": "The count of unique active users in the past one day",
@@ -5353,7 +5353,7 @@
             "id": "SortOptions",
             "properties": {
                 "operatorName": {
-                    "description": "Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.",
+                    "description": "The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.",
                     "type": "string"
                 },
                 "sortOrder": {
@@ -5568,7 +5568,7 @@
             "id": "StartUploadItemRequest",
             "properties": {
                 "connectorName": {
-                    "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                    "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                     "type": "string"
                 },
                 "debugOptions": {
@@ -5694,7 +5694,7 @@
             "id": "TextOperatorOptions",
             "properties": {
                 "exactMatchWithOperator": {
-                    "description": "If true, the text value is tokenized as one atomic value in operator searches and facet matches. For example, if the operator name is \"genre\" and the value is \"science-fiction\" the query restrictions \"genre:science\" and \"genre:fiction\" doesn't match the item; \"genre:science-fiction\" does. Value matching is case-sensitive and does not remove special characters. If false, the text is tokenized. For example, if the value is \"science-fiction\" the queries \"genre:science\" and \"genre:fiction\" matches the item.",
+                    "description": "If true, the text value is tokenized as one atomic value in operator searches and facet matches. For example, if the operator name is \"genre\" and the value is \"science-fiction\" the query restrictions \"genre:science\" and \"genre:fiction\" doesn't match the item; \"genre:science-fiction\" does. Text value matching is case-sensitive and does not remove special characters. If false, the text is tokenized. For example, if the value is \"science-fiction\" the queries \"genre:science\" and \"genre:fiction\" matches the item.",
                     "type": "boolean"
                 },
                 "operatorName": {
@@ -5705,7 +5705,7 @@
             "type": "object"
         },
         "TextPropertyOptions": {
-            "description": "Options for text properties.",
+            "description": "The options for text properties.",
             "id": "TextPropertyOptions",
             "properties": {
                 "operatorOptions": {
@@ -5753,7 +5753,7 @@
             "type": "object"
         },
         "TimestampPropertyOptions": {
-            "description": "Options for timestamp properties.",
+            "description": "The options for timestamp properties.",
             "id": "TimestampPropertyOptions",
             "properties": {
                 "operatorOptions": {
@@ -5822,7 +5822,7 @@
             "id": "UnreserveItemsRequest",
             "properties": {
                 "connectorName": {
-                    "description": "Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
+                    "description": "The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}",
                     "type": "string"
                 },
                 "debugOptions": {
@@ -5830,7 +5830,7 @@
                     "description": "Common debug options."
                 },
                 "queue": {
-                    "description": "Name of a queue to unreserve items from.",
+                    "description": "The name of a queue to unreserve items from.",
                     "type": "string"
                 }
             },
@@ -5872,7 +5872,7 @@
             "id": "UploadItemRef",
             "properties": {
                 "name": {
-                    "description": "Name of the content reference. The maximum length is 2048 characters.",
+                    "description": "The name of the content reference. The maximum length is 2048 characters.",
                     "type": "string"
                 }
             },

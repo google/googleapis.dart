@@ -1206,8 +1206,8 @@ class ProjectsLocationsVolumesResource {
   ///
   /// [updateMask] - The list of fields to update. The only currently supported
   /// fields are: `snapshot_auto_delete_behavior`
-  /// `snapshot_schedule_policy_name` 'labels' 'requested_size_gib'
-  /// 'snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'
+  /// `snapshot_schedule_policy_name` 'labels' 'snapshot_enabled'
+  /// 'snapshot_reservation_detail.reserved_space_percent'
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1236,6 +1236,47 @@ class ProjectsLocationsVolumesResource {
     final _response = await _requester.request(
       _url,
       'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Emergency Volume resize.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [volume] - Required. Volume to resize.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resize(
+    ResizeVolumeRequest request,
+    core.String volume, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$volume') + ':resize';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
       body: _body,
       queryParams: _queryParams,
     );
@@ -1465,6 +1506,8 @@ class FetchInstanceProvisioningSettingsResponse {
 class GoogleCloudBaremetalsolutionV2LogicalInterface {
   /// The index of the logical interface mapping to the index of the hardware
   /// bond or nic on the chosen network template.
+  ///
+  /// This field is deprecated.
   core.int? interfaceIndex;
 
   /// List of logical network interfaces within a logical interface.
@@ -2663,6 +2706,9 @@ class NetworkConfig {
   /// ProvisioningConfig request.
   core.String? id;
 
+  /// The JumboFramesEnabled option for customer to set.
+  core.bool? jumboFramesEnabled;
+
   /// The name of the network config.
   ///
   /// Output only.
@@ -2702,6 +2748,7 @@ class NetworkConfig {
     this.cidr,
     this.gcpService,
     this.id,
+    this.jumboFramesEnabled,
     this.name,
     this.serviceCidr,
     this.type,
@@ -2720,6 +2767,9 @@ class NetworkConfig {
               ? _json['gcpService'] as core.String
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          jumboFramesEnabled: _json.containsKey('jumboFramesEnabled')
+              ? _json['jumboFramesEnabled'] as core.bool
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           serviceCidr: _json.containsKey('serviceCidr')
               ? _json['serviceCidr'] as core.String
@@ -2744,6 +2794,8 @@ class NetworkConfig {
         if (cidr != null) 'cidr': cidr!,
         if (gcpService != null) 'gcpService': gcpService!,
         if (id != null) 'id': id!,
+        if (jumboFramesEnabled != null)
+          'jumboFramesEnabled': jumboFramesEnabled!,
         if (name != null) 'name': name!,
         if (serviceCidr != null) 'serviceCidr': serviceCidr!,
         if (type != null) 'type': type!,
@@ -2878,6 +2930,9 @@ class NfsShare {
   /// Output only.
   core.String? nfsShareId;
 
+  /// The requested size, in GiB.
+  core.String? requestedSizeGib;
+
   /// The state of the NFS share.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The share is in an unknown state.
@@ -2892,6 +2947,7 @@ class NfsShare {
     this.labels,
     this.name,
     this.nfsShareId,
+    this.requestedSizeGib,
     this.state,
     this.volume,
   });
@@ -2916,6 +2972,9 @@ class NfsShare {
           nfsShareId: _json.containsKey('nfsShareId')
               ? _json['nfsShareId'] as core.String
               : null,
+          requestedSizeGib: _json.containsKey('requestedSizeGib')
+              ? _json['requestedSizeGib'] as core.String
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
           volume: _json.containsKey('volume')
@@ -2928,6 +2987,7 @@ class NfsShare {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nfsShareId != null) 'nfsShareId': nfsShareId!,
+        if (requestedSizeGib != null) 'requestedSizeGib': requestedSizeGib!,
         if (state != null) 'state': state!,
         if (volume != null) 'volume': volume!,
       };
@@ -3133,6 +3193,9 @@ class ProvisioningConfig {
   /// Volumes to be created.
   core.List<VolumeConfig>? volumes;
 
+  /// If true, VPC SC is enabled for the cluster.
+  core.bool? vpcScEnabled;
+
   ProvisioningConfig({
     this.cloudConsoleUri,
     this.email,
@@ -3145,6 +3208,7 @@ class ProvisioningConfig {
     this.ticketId,
     this.updateTime,
     this.volumes,
+    this.vpcScEnabled,
   });
 
   ProvisioningConfig.fromJson(core.Map _json)
@@ -3187,6 +3251,9 @@ class ProvisioningConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          vpcScEnabled: _json.containsKey('vpcScEnabled')
+              ? _json['vpcScEnabled'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3202,6 +3269,7 @@ class ProvisioningConfig {
         if (ticketId != null) 'ticketId': ticketId!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (volumes != null) 'volumes': volumes!,
+        if (vpcScEnabled != null) 'vpcScEnabled': vpcScEnabled!,
       };
 }
 
@@ -3319,6 +3387,27 @@ class QosPolicy {
 
 /// Message requesting to reset a server.
 typedef ResetInstanceRequest = $Empty;
+
+/// Request for emergency resize Volume.
+class ResizeVolumeRequest {
+  /// New Volume size, in GiB.
+  core.String? sizeGib;
+
+  ResizeVolumeRequest({
+    this.sizeGib,
+  });
+
+  ResizeVolumeRequest.fromJson(core.Map _json)
+      : this(
+          sizeGib: _json.containsKey('sizeGib')
+              ? _json['sizeGib'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sizeGib != null) 'sizeGib': sizeGib!,
+      };
+}
 
 /// Network template.
 class ServerNetworkTemplate {
@@ -3616,6 +3705,9 @@ class Volume {
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
 
+  /// Maximum size volume can be expanded to in case of evergency, in GiB.
+  core.String? maxSizeGib;
+
   /// The resource name of this `Volume`.
   ///
   /// Resource names are schemeless URIs that follow the conventions in
@@ -3624,6 +3716,9 @@ class Volume {
   ///
   /// Output only.
   core.String? name;
+
+  /// Originally requested size, in GiB.
+  core.String? originallyRequestedSizeGib;
 
   /// Pod name.
   ///
@@ -3677,7 +3772,9 @@ class Volume {
     this.emergencySizeGib,
     this.id,
     this.labels,
+    this.maxSizeGib,
     this.name,
+    this.originallyRequestedSizeGib,
     this.pod,
     this.remainingSpaceGib,
     this.requestedSizeGib,
@@ -3709,7 +3806,14 @@ class Volume {
                   ),
                 )
               : null,
+          maxSizeGib: _json.containsKey('maxSizeGib')
+              ? _json['maxSizeGib'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          originallyRequestedSizeGib:
+              _json.containsKey('originallyRequestedSizeGib')
+                  ? _json['originallyRequestedSizeGib'] as core.String
+                  : null,
           pod: _json.containsKey('pod') ? _json['pod'] as core.String : null,
           remainingSpaceGib: _json.containsKey('remainingSpaceGib')
               ? _json['remainingSpaceGib'] as core.String
@@ -3746,7 +3850,10 @@ class Volume {
         if (emergencySizeGib != null) 'emergencySizeGib': emergencySizeGib!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
+        if (maxSizeGib != null) 'maxSizeGib': maxSizeGib!,
         if (name != null) 'name': name!,
+        if (originallyRequestedSizeGib != null)
+          'originallyRequestedSizeGib': originallyRequestedSizeGib!,
         if (pod != null) 'pod': pod!,
         if (remainingSpaceGib != null) 'remainingSpaceGib': remainingSpaceGib!,
         if (requestedSizeGib != null) 'requestedSizeGib': requestedSizeGib!,

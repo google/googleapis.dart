@@ -25,7 +25,6 @@
 ///   - [AccountsCredentialsResource]
 ///   - [AccountsLabelsResource]
 ///   - [AccountsReturncarrierResource]
-/// - [AccountsbyexternalselleridResource]
 /// - [AccountstatusesResource]
 /// - [AccountstatusesbyexternalselleridResource]
 /// - [AccounttaxResource]
@@ -87,8 +86,6 @@ class ShoppingContentApi {
   final commons.ApiRequester _requester;
 
   AccountsResource get accounts => AccountsResource(_requester);
-  AccountsbyexternalselleridResource get accountsbyexternalsellerid =>
-      AccountsbyexternalselleridResource(_requester);
   AccountstatusesResource get accountstatuses =>
       AccountstatusesResource(_requester);
   AccountstatusesbyexternalselleridResource
@@ -1176,54 +1173,6 @@ class AccountsReturncarrierResource {
     );
     return AccountReturnCarrier.fromJson(
         _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class AccountsbyexternalselleridResource {
-  final commons.ApiRequester _requester;
-
-  AccountsbyexternalselleridResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets data of the account with the specified external_seller_id belonging
-  /// to the MCA with the specified merchant_id.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The ID of the MCA containing the seller.
-  ///
-  /// [externalSellerId] - Required. The External Seller ID of the seller
-  /// account to be retrieved.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Account].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Account> get(
-    core.String merchantId,
-    core.String externalSellerId, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = commons.escapeVariable('$merchantId') +
-        '/accountsbyexternalsellerid/' +
-        commons.escapeVariable('$externalSellerId');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2413,7 +2362,9 @@ class DatafeedsResource {
   /// Invokes a fetch for the datafeed in your Merchant Center account.
   ///
   /// If you need to call this method more than once per day, we recommend you
-  /// use the Products service to update your product data.
+  /// use the
+  /// [Products service](https://developers.google.com/shopping-content/reference/rest/v2.1/products)
+  /// to update your product data.
   ///
   /// Request parameters:
   ///
@@ -6109,8 +6060,7 @@ class PromotionsResource {
 
   /// Inserts a promotion for your Merchant Center account.
   ///
-  /// If the promotion already exists, then it will update the promotion
-  /// instead.
+  /// If the promotion already exists, then it updates the promotion instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6321,7 +6271,7 @@ class RegionalinventoryResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update the regional inventory of a product in your Merchant Center
+  /// Updates the regional inventory of a product in your Merchant Center
   /// account.
   ///
   /// If a regional inventory with the same region ID already exists, this
@@ -17357,15 +17307,15 @@ class OrderShipment {
   /// post`" (Canada Post) - "`purolator`" (Purolator) - "`canpar`" (Canpar) -
   /// "`india post`" (India Post) - "`blue dart`" (Blue Dart) - "`delhivery`"
   /// (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`lso`" (Lone
-  /// Star Overnight) - "`tww`" (Team Worldwide) - "`deliver-it`" (Deliver-IT)
-  /// Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status
-  /// updates * - "`colissimo`" (Colissimo by La Poste) *automatic status
-  /// updates* - "`ups`" (United Parcel Service) *automatic status updates * -
-  /// "`chronopost`" (Chronopost by La Poste) - "`gls`" (General Logistics
-  /// Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post
-  /// Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`"
-  /// (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) - "`aramex`"
-  /// (Aramex)
+  /// Star Overnight) - "`tww`" (Team Worldwide) - "`deliver-it`" (Deliver-IT) -
+  /// "`cdl last mile`" (CDL Last Mile) Supported carriers for FR are: - "`la
+  /// poste`" (La Poste) *automatic status updates * - "`colissimo`" (Colissimo
+  /// by La Poste) *automatic status updates* - "`ups`" (United Parcel Service)
+  /// *automatic status updates * - "`chronopost`" (Chronopost by La Poste) -
+  /// "`gls`" (General Logistics Systems France) - "`dpd`" (DPD Group by
+  /// GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (Colis Privé)
+  /// - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db
+  /// schenker`" (DB Schenker) - "`aramex`" (Aramex)
   core.String? carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -23961,8 +23911,8 @@ class ProductstatusesListResponse {
       };
 }
 
-/// The Promotions feature is publicly available for the US, CA, IN, GB, AU
-/// target countries (en language only) in Content API for Shopping.
+/// The Promotions feature is available for `AU`, `CA`, `DE`, `FR`, `GB`, `IN`
+/// and `US` target countries, and `en` content language.
 ///
 /// Represents a promotion. See the following articles for more details. *
 /// [Promotions feed specification](https://support.google.com/merchants/answer/2906014)
@@ -23979,7 +23929,7 @@ class Promotion {
 
   /// The content language used as part of the unique identifier.
   ///
-  /// Currently only en value is supported.
+  /// Currently only `en` value is supported.
   ///
   /// Required.
   core.String? contentLanguage;
@@ -23993,18 +23943,18 @@ class Promotion {
   /// - "MONEY_OFF" : Money off coupon value type.
   /// - "PERCENT_OFF" : Percent off coupon value type.
   /// - "BUY_M_GET_N_MONEY_OFF" : Buy M quantity, get N money off coupon value
-  /// type. buy_this_quantity and get_this_quantity must be present.
-  /// money_off_amount must also be present.
+  /// type. `buy_this_quantity` and `get_this_quantity` must be present.
+  /// `money_off_amount` must also be present.
   /// - "BUY_M_GET_N_PERCENT_OFF" : Buy M quantity, get N percent off coupon
-  /// value type. buy_this_quantity and get_this_quantity must be present.
-  /// percent_off_percentage must also be present.
-  /// - "BUY_M_GET_MONEY_OFF" : Buy M quantity, get money off. buy_this_quantity
-  /// and money_off_amount must be present.
+  /// value type. `buy_this_quantity` and `get_this_quantity` must be present.
+  /// `percent_off_percentage` must also be present.
+  /// - "BUY_M_GET_MONEY_OFF" : Buy M quantity, get money off.
+  /// `buy_this_quantity` and `money_off_amount` must be present.
   /// - "BUY_M_GET_PERCENT_OFF" : Buy M quantity, get money off.
-  /// buy_this_quantity and percent_off_percentage must be present.
-  /// - "FREE_GIFT" : Free gift with description only
+  /// `buy_this_quantity` and `percent_off_percentage` must be present.
+  /// - "FREE_GIFT" : Free gift with description only.
   /// - "FREE_GIFT_WITH_VALUE" : Free gift with value (description is optional).
-  /// - "FREE_GIFT_WITH_ITEM_ID" : Free gift with item id (description is
+  /// - "FREE_GIFT_WITH_ITEM_ID" : Free gift with item ID (description is
   /// optional).
   /// - "FREE_SHIPPING_STANDARD" : Standard free shipping coupon value type.
   /// - "FREE_SHIPPING_OVERNIGHT" : Overnight free shipping coupon value type.
@@ -24014,7 +23964,7 @@ class Promotion {
   /// Free gift description for the promotion.
   core.String? freeGiftDescription;
 
-  /// Free gift item id for the promotion.
+  /// Free gift item ID for the promotion.
   core.String? freeGiftItemId;
 
   /// Free gift value for the promotion.
@@ -24022,32 +23972,32 @@ class Promotion {
 
   /// Generic redemption code for the promotion.
   ///
-  /// To be used with the above field.
+  /// To be used with the `offerType` field.
   core.String? genericRedemptionCode;
 
   /// The number of items discounted in the promotion.
   core.int? getThisQuantityDiscounted;
 
-  /// The REST promotion id to uniquely identify the promotion.
+  /// The REST promotion ID to uniquely identify the promotion.
   ///
   /// Content API methods that operate on promotions take this as their
-  /// promotionId parameter. The REST ID for a promotion is of the form
-  /// \[channel\]:contentLanguage:targetCountry:promotionId The channel field
-  /// will have a value of "online", "in_store", or "online_in_store".
+  /// `promotionId` parameter. The REST ID for a promotion is of the form
+  /// channel:contentLanguage:targetCountry:promotionId The `channel` field has
+  /// a value of `"online"`, `"in_store"`, or `"online_in_store"`.
   ///
   /// Required. Output only.
   core.String? id;
 
-  /// Product filter by item group id for the promotion.
+  /// Product filter by item group ID for the promotion.
   core.List<core.String>? itemGroupId;
 
-  /// Product filter by item group id exclusion for the promotion.
+  /// Product filter by item group ID exclusion for the promotion.
   core.List<core.String>? itemGroupIdExclusion;
 
-  /// Product filter by item id for the promotion.
+  /// Product filter by item ID for the promotion.
   core.List<core.String>? itemId;
 
-  /// Product filter by item id exclusion for the promotion.
+  /// Product filter by item ID exclusion for the promotion.
   core.List<core.String>? itemIdExclusion;
 
   /// Maximum purchase quantity for the promotion.
@@ -24067,7 +24017,7 @@ class Promotion {
   /// Minimum purchase quantity for the promotion.
   core.int? minimumPurchaseQuantity;
 
-  /// Promotion cost cap of the promotion.
+  /// Cost cap for the promotion.
   PriceAmount? moneyBudget;
 
   /// The money off amount offered in the promotion.
@@ -24093,7 +24043,8 @@ class Promotion {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "PRODUCT_APPLICABILITY_UNSPECIFIED" : Unknown product applicability.
+  /// - "PRODUCT_APPLICABILITY_UNSPECIFIED" : Which products the promotion
+  /// applies to is unknown.
   /// - "ALL_PRODUCTS" : Applicable to all products.
   /// - "SPECIFIC_PRODUCTS" : Applicable to only a single product or list of
   /// products.
@@ -24108,23 +24059,25 @@ class Promotion {
   /// Destination ID for the promotion.
   core.List<core.String>? promotionDestinationIds;
 
-  /// String representation of the promotion display dates (deprecated: Use
-  /// promotion_display_time_period instead).
+  /// String representation of the promotion display dates.
+  ///
+  /// Deprecated. Use `promotion_display_time_period` instead.
   core.String? promotionDisplayDates;
 
-  /// TimePeriod representation of the promotion display dates.
+  /// `TimePeriod` representation of the promotion's display dates.
   TimePeriod? promotionDisplayTimePeriod;
 
-  /// String representation of the promotion effective dates (deprecated: Use
-  /// promotion_effective_time_period instead).
+  /// String representation of the promotion effective dates.
+  ///
+  /// Deprecated. Use `promotion_effective_time_period` instead.
   core.String? promotionEffectiveDates;
 
-  /// TimePeriod representation of the promotion effective dates.
+  /// `TimePeriod` representation of the promotion's effective dates.
   ///
   /// Required.
   TimePeriod? promotionEffectiveTimePeriod;
 
-  /// The user provided promotion id to uniquely identify the promotion.
+  /// The user provided promotion ID to uniquely identify the promotion.
   ///
   /// Required.
   core.String? promotionId;
@@ -24136,12 +24089,12 @@ class Promotion {
   /// Required.
   core.List<core.String>? redemptionChannel;
 
-  /// Shipping service names for thse promotion.
+  /// Shipping service names for the promotion.
   core.List<core.String>? shippingServiceNames;
 
   /// The target country used as part of the unique identifier.
   ///
-  /// Currently only US and CA are supported.
+  /// Can be `AU`, `CA`, `DE`, `FR`, `GB`, `IN` or `US`.
   ///
   /// Required.
   core.String? targetCountry;

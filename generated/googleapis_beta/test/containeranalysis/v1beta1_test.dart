@@ -1088,7 +1088,7 @@ api.Digest buildDigest() {
   buildCounterDigest++;
   if (buildCounterDigest < 3) {
     o.algo = 'foo';
-    o.digestValue = 'foo';
+    o.digestBytes = 'foo';
   }
   buildCounterDigest--;
   return o;
@@ -1102,7 +1102,7 @@ void checkDigest(api.Digest o) {
       unittest.equals('foo'),
     );
     unittest.expect(
-      o.digestValue!,
+      o.digestBytes!,
       unittest.equals('foo'),
     );
   }
