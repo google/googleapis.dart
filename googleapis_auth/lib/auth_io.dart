@@ -33,9 +33,9 @@ export 'src/typedefs.dart';
 ///     in a well-known location (`%APPDATA%/gcloud/application_default_credentials.json`
 ///     on Windows and `$HOME/.config/gcloud/application_default_credentials.json` on Linux/Mac).
 ///  3. On Google Compute Engine and App Engine Flex we fetch credentials from
-///     [GCE metadata service][metadata].
+///     [GCE metadata service][meta-data].
 ///
-/// [metadata]: https://cloud.google.com/compute/docs/storing-retrieving-metadata
+/// [meta-data]: https://cloud.google.com/compute/docs/storing-retrieving-metadata
 /// [svc-keys]: https://cloud.google.com/docs/authentication/getting-started
 /// [gcloud-login]: https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login
 ///
