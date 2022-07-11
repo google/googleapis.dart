@@ -434,7 +434,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "Field mask is used to specify the fields to be overwritten in the Connection resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
+                                            "description": "Required. Field mask is used to specify the fields to be overwritten in the Connection resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -1053,7 +1053,7 @@
             }
         }
     },
-    "revision": "20220523",
+    "revision": "20220718",
     "rootUrl": "https://connectors.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1121,13 +1121,15 @@
                         "AUTH_TYPE_UNSPECIFIED",
                         "USER_PASSWORD",
                         "OAUTH2_JWT_BEARER",
-                        "OAUTH2_CLIENT_CREDENTIALS"
+                        "OAUTH2_CLIENT_CREDENTIALS",
+                        "SSH_PUBLIC_KEY"
                     ],
                     "enumDescriptions": [
                         "Authentication type not specified.",
                         "Username and Password Authentication.",
                         "JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication",
-                        "Oauth 2.0 Client Credentials Grant Authentication"
+                        "Oauth 2.0 Client Credentials Grant Authentication",
+                        "SSH Public Key Authentication"
                     ],
                     "type": "string"
                 },
@@ -1138,6 +1140,10 @@
                 "oauth2JwtBearer": {
                     "$ref": "Oauth2JwtBearer",
                     "description": "Oauth2JwtBearer."
+                },
+                "sshPublicKey": {
+                    "$ref": "SshPublicKey",
+                    "description": "SSH Public Key."
                 },
                 "userPassword": {
                     "$ref": "UserPassword",
@@ -1156,13 +1162,15 @@
                         "AUTH_TYPE_UNSPECIFIED",
                         "USER_PASSWORD",
                         "OAUTH2_JWT_BEARER",
-                        "OAUTH2_CLIENT_CREDENTIALS"
+                        "OAUTH2_CLIENT_CREDENTIALS",
+                        "SSH_PUBLIC_KEY"
                     ],
                     "enumDescriptions": [
                         "Authentication type not specified.",
                         "Username and Password Authentication.",
                         "JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication",
-                        "Oauth 2.0 Client Credentials Grant Authentication"
+                        "Oauth 2.0 Client Credentials Grant Authentication",
+                        "SSH Public Key Authentication"
                     ],
                     "type": "string"
                 },
@@ -1172,6 +1180,24 @@
                         "$ref": "ConfigVariableTemplate"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AuthorizationCodeLink": {
+            "description": "This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.",
+            "id": "AuthorizationCodeLink",
+            "properties": {
+                "scopes": {
+                    "description": "The scopes for which the user will authorize GCP Connectors on the connector data source.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "uri": {
+                    "description": "The base URI the user must click to trigger the authorization code login flow.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1236,6 +1262,10 @@
             "description": "ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.",
             "id": "ConfigVariableTemplate",
             "properties": {
+                "authorizationCodeLink": {
+                    "$ref": "AuthorizationCodeLink",
+                    "description": "Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`"
+                },
                 "description": {
                     "description": "Description.",
                     "type": "string"
@@ -1263,6 +1293,20 @@
                     "$ref": "RoleGrant",
                     "description": "Role grant configuration for the config variable."
                 },
+                "state": {
+                    "description": "State of the config variable.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "DEPRECATED"
+                    ],
+                    "enumDescriptions": [
+                        "Status is unspecified.",
+                        "Config variable is active",
+                        "Config variable is deprecated."
+                    ],
+                    "type": "string"
+                },
                 "validationRegex": {
                     "description": "Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.",
                     "type": "string"
@@ -1275,7 +1319,8 @@
                         "INT",
                         "BOOL",
                         "SECRET",
-                        "ENUM"
+                        "ENUM",
+                        "AUTHORIZATION_CODE"
                     ],
                     "enumDescriptions": [
                         "Value type is not specified.",
@@ -1283,7 +1328,8 @@
                         "Value type is integer.",
                         "Value type is boolean.",
                         "Value type is secret.",
-                        "Value type is enum."
+                        "Value type is enum.",
+                        "Value type is authorization code."
                     ],
                     "type": "string"
                 }
@@ -1318,14 +1364,6 @@
                 "description": {
                     "description": "Optional. Description of the resource.",
                     "type": "string"
-                },
-                "egressBackends": {
-                    "description": "Output only. Outbound domains/hosts needs to be allowlisted.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "readOnly": true,
-                    "type": "array"
                 },
                 "envoyImageLocation": {
                     "description": "Output only. GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}",
@@ -2645,6 +2683,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "name": {
+                    "description": "Output only. Name of the runtimeConfig resource. Format: projects/{project}/locations/{location}/runtimeConfig",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "runtimeEndpoint": {
                     "description": "Output only. The endpoint of the connectors runtime ingress.",
                     "readOnly": true,
@@ -2751,6 +2794,33 @@
                         "Default SOURCE.",
                         "Config Variable source type."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SshPublicKey": {
+            "description": "Parameters to support Ssh public key Authentication.",
+            "id": "SshPublicKey",
+            "properties": {
+                "certType": {
+                    "description": "Format of SSH Client cert.",
+                    "type": "string"
+                },
+                "password": {
+                    "$ref": "Secret",
+                    "description": "This is an optional field used in case client has enabled multi-factor authentication"
+                },
+                "sshClientCert": {
+                    "$ref": "Secret",
+                    "description": "SSH Client Cert. It should contain both public and private key."
+                },
+                "sshClientCertPass": {
+                    "$ref": "Secret",
+                    "description": "Password (passphrase) for ssh client certificate if it has one."
+                },
+                "username": {
+                    "description": "The user account used to authenticate.",
                     "type": "string"
                 }
             },

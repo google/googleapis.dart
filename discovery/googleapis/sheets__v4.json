@@ -868,7 +868,7 @@
             }
         }
     },
-    "revision": "20220531",
+    "revision": "20220728",
     "rootUrl": "https://sheets.googleapis.com/",
     "schemas": {
         "AddBandingRequest": {
@@ -1230,7 +1230,7 @@
             "properties": {
                 "firstBandColor": {
                     "$ref": "Color",
-                    "description": "The first color that is alternating. (Required)"
+                    "description": "The first color that is alternating. (Required) Deprecated: Use first_band_color_style."
                 },
                 "firstBandColorStyle": {
                     "$ref": "ColorStyle",
@@ -1238,7 +1238,7 @@
                 },
                 "footerColor": {
                     "$ref": "Color",
-                    "description": "The color of the last row or column. If this field is not set, the last row or column is filled with either first_band_color or second_band_color, depending on the color of the previous row or column."
+                    "description": "The color of the last row or column. If this field is not set, the last row or column is filled with either first_band_color or second_band_color, depending on the color of the previous row or column. Deprecated: Use footer_color_style."
                 },
                 "footerColorStyle": {
                     "$ref": "ColorStyle",
@@ -1246,7 +1246,7 @@
                 },
                 "headerColor": {
                     "$ref": "Color",
-                    "description": "The color of the first row or column. If this field is set, the first row or column is filled with this color and the colors alternate between first_band_color and second_band_color starting from the second row or column. Otherwise, the first row or column is filled with first_band_color and the colors proceed to alternate as they normally would."
+                    "description": "The color of the first row or column. If this field is set, the first row or column is filled with this color and the colors alternate between first_band_color and second_band_color starting from the second row or column. Otherwise, the first row or column is filled with first_band_color and the colors proceed to alternate as they normally would. Deprecated: Use header_color_style."
                 },
                 "headerColorStyle": {
                     "$ref": "ColorStyle",
@@ -1254,7 +1254,7 @@
                 },
                 "secondBandColor": {
                     "$ref": "Color",
-                    "description": "The second color that is alternating. (Required)"
+                    "description": "The second color that is alternating. (Required) Deprecated: Use second_band_color_style."
                 },
                 "secondBandColorStyle": {
                     "$ref": "ColorStyle",
@@ -1287,7 +1287,7 @@
                 },
                 "negativeColor": {
                     "$ref": "Color",
-                    "description": "Color to be used, in case baseline value represents a negative change for key value. This field is optional."
+                    "description": "Color to be used, in case baseline value represents a negative change for key value. This field is optional. Deprecated: Use negative_color_style."
                 },
                 "negativeColorStyle": {
                     "$ref": "ColorStyle",
@@ -1299,7 +1299,7 @@
                 },
                 "positiveColor": {
                     "$ref": "Color",
-                    "description": "Color to be used, in case baseline value represents a positive change for key value. This field is optional."
+                    "description": "Color to be used, in case baseline value represents a positive change for key value. This field is optional. Deprecated: Use positive_color_style."
                 },
                 "positiveColorStyle": {
                     "$ref": "ColorStyle",
@@ -1372,7 +1372,7 @@
             "properties": {
                 "color": {
                     "$ref": "Color",
-                    "description": "The color for elements (such as bars, lines, and points) associated with this series. If empty, a default color is used."
+                    "description": "The color for elements (such as bars, lines, and points) associated with this series. If empty, a default color is used. Deprecated: Use color_style."
                 },
                 "colorStyle": {
                     "$ref": "ColorStyle",
@@ -1605,7 +1605,7 @@
             "properties": {
                 "color": {
                     "$ref": "Color",
-                    "description": "Color of the series data point. If empty, the series default is used."
+                    "description": "Color of the series data point. If empty, the series default is used. Deprecated: Use color_style."
                 },
                 "colorStyle": {
                     "$ref": "ColorStyle",
@@ -2176,7 +2176,7 @@
             "properties": {
                 "color": {
                     "$ref": "Color",
-                    "description": "The color of the border."
+                    "description": "The color of the border. Deprecated: Use color_style."
                 },
                 "colorStyle": {
                     "$ref": "ColorStyle",
@@ -2243,7 +2243,7 @@
             "properties": {
                 "bubbleBorderColor": {
                     "$ref": "Color",
-                    "description": "The bubble border color."
+                    "description": "The bubble border color. Deprecated: Use bubble_border_color_style."
                 },
                 "bubbleBorderColorStyle": {
                     "$ref": "ColorStyle",
@@ -2445,7 +2445,7 @@
             "properties": {
                 "backgroundColor": {
                     "$ref": "Color",
-                    "description": "The background color of the cell."
+                    "description": "The background color of the cell. Deprecated: Use background_color_style."
                 },
                 "backgroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -2472,7 +2472,7 @@
                     "type": "string"
                 },
                 "hyperlinkDisplayType": {
-                    "description": "How a hyperlink, if it exists, should be displayed in the cell.",
+                    "description": "If one exists, how a hyperlink should be displayed in the cell.",
                     "enum": [
                         "HYPERLINK_DISPLAY_TYPE_UNSPECIFIED",
                         "LINKED",
@@ -2509,11 +2509,11 @@
                 },
                 "textFormat": {
                     "$ref": "TextFormat",
-                    "description": "The format of the text in the cell (unless overridden by a format run). Setting a cell-level link here will clear the cell's existing links. Setting the link field in a TextFormatRun will take precedence over the cell-level link."
+                    "description": "The format of the text in the cell (unless overridden by a format run). Setting a cell-level link here clears the cell's existing links. Setting the link field in a TextFormatRun takes precedence over the cell-level link."
                 },
                 "textRotation": {
                     "$ref": "TextRotation",
-                    "description": "The rotation applied to text in a cell"
+                    "description": "The rotation applied to text in the cell."
                 },
                 "verticalAlignment": {
                     "description": "The vertical alignment of the value in the cell.",
@@ -2749,7 +2749,7 @@
                 },
                 "backgroundColor": {
                     "$ref": "Color",
-                    "description": "The background color of the entire chart. Not applicable to Org charts."
+                    "description": "The background color of the entire chart. Not applicable to Org charts. Deprecated: Use background_color_style."
                 },
                 "backgroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -2928,7 +2928,7 @@
             "properties": {
                 "rgbColor": {
                     "$ref": "Color",
-                    "description": "RGB color."
+                    "description": "RGB color. The [`alpha`](/sheets/api/reference/rest/v4/spreadsheets/other#Color.FIELDS.alpha) value in the [`Color`](/sheets/api/reference/rest/v4/spreadsheets/other#color) object isn't generally supported."
                 },
                 "themeColor": {
                     "description": "Theme color.",
@@ -4340,7 +4340,7 @@
             "properties": {
                 "color": {
                     "$ref": "Color",
-                    "description": "The color of the border."
+                    "description": "The color of the border. Deprecated: Use color_style."
                 },
                 "colorStyle": {
                     "$ref": "ColorStyle",
@@ -4453,7 +4453,7 @@
                 },
                 "visibleBackgroundColor": {
                     "$ref": "Color",
-                    "description": "The background fill color to filter by; only cells with this fill color are shown. Mutually exclusive with visible_foreground_color."
+                    "description": "The background fill color to filter by; only cells with this fill color are shown. Mutually exclusive with visible_foreground_color. Deprecated: Use visible_background_color_style."
                 },
                 "visibleBackgroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -4461,7 +4461,7 @@
                 },
                 "visibleForegroundColor": {
                     "$ref": "Color",
-                    "description": "The foreground color to filter by; only cells with this foreground color are shown. Mutually exclusive with visible_background_color."
+                    "description": "The foreground color to filter by; only cells with this foreground color are shown. Mutually exclusive with visible_background_color. Deprecated: Use visible_foreground_color_style."
                 },
                 "visibleForegroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -4857,7 +4857,7 @@
             "properties": {
                 "barColor": {
                     "$ref": "Color",
-                    "description": "The color of the column representing this series in each bucket. This field is optional."
+                    "description": "The color of the column representing this series in each bucket. This field is optional. Deprecated: Use bar_color_style."
                 },
                 "barColorStyle": {
                     "$ref": "ColorStyle",
@@ -4916,7 +4916,7 @@
             "properties": {
                 "color": {
                     "$ref": "Color",
-                    "description": "The color this interpolation point should use."
+                    "description": "The color this interpolation point should use. Deprecated: Use color_style."
                 },
                 "colorStyle": {
                     "$ref": "ColorStyle",
@@ -5222,7 +5222,7 @@
                 },
                 "nodeColor": {
                     "$ref": "Color",
-                    "description": "The color of the org chart nodes."
+                    "description": "The color of the org chart nodes. Deprecated: Use node_color_style."
                 },
                 "nodeColorStyle": {
                     "$ref": "ColorStyle",
@@ -5250,7 +5250,7 @@
                 },
                 "selectedNodeColor": {
                     "$ref": "Color",
-                    "description": "The color of the selected org chart nodes."
+                    "description": "The color of the selected org chart nodes. Deprecated: Use selected_node_color_style."
                 },
                 "selectedNodeColorStyle": {
                     "$ref": "ColorStyle",
@@ -6537,7 +6537,7 @@
                 },
                 "tabColor": {
                     "$ref": "Color",
-                    "description": "The color of the tab in the UI."
+                    "description": "The color of the tab in the UI. Deprecated: Use tab_color_style."
                 },
                 "tabColorStyle": {
                     "$ref": "ColorStyle",
@@ -6580,7 +6580,7 @@
                 },
                 "backgroundColor": {
                     "$ref": "Color",
-                    "description": "The background color of the slicer."
+                    "description": "The background color of the slicer. Deprecated: Use background_color_style."
                 },
                 "backgroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -6650,7 +6650,7 @@
             "properties": {
                 "backgroundColor": {
                     "$ref": "Color",
-                    "description": "The background fill color to sort by; cells with this fill color are sorted to the top. Mutually exclusive with foreground_color."
+                    "description": "The background fill color to sort by; cells with this fill color are sorted to the top. Mutually exclusive with foreground_color. Deprecated: Use background_color_style."
                 },
                 "backgroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -6667,7 +6667,7 @@
                 },
                 "foregroundColor": {
                     "$ref": "Color",
-                    "description": "The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually exclusive with background_color."
+                    "description": "The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually exclusive with background_color. Deprecated: Use foreground_color_style."
                 },
                 "foregroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -6859,7 +6859,7 @@
                 },
                 "foregroundColor": {
                     "$ref": "Color",
-                    "description": "The foreground color of the text."
+                    "description": "The foreground color of the text. Deprecated: Use foreground_color_style."
                 },
                 "foregroundColorStyle": {
                     "$ref": "ColorStyle",
@@ -7048,7 +7048,7 @@
             "properties": {
                 "maxValueColor": {
                     "$ref": "Color",
-                    "description": "The background color for cells with a color value greater than or equal to maxValue. Defaults to #109618 if not specified."
+                    "description": "The background color for cells with a color value greater than or equal to maxValue. Defaults to #109618 if not specified. Deprecated: Use max_value_color_style."
                 },
                 "maxValueColorStyle": {
                     "$ref": "ColorStyle",
@@ -7056,7 +7056,7 @@
                 },
                 "midValueColor": {
                     "$ref": "Color",
-                    "description": "The background color for cells with a color value at the midpoint between minValue and maxValue. Defaults to #efe6dc if not specified."
+                    "description": "The background color for cells with a color value at the midpoint between minValue and maxValue. Defaults to #efe6dc if not specified. Deprecated: Use mid_value_color_style."
                 },
                 "midValueColorStyle": {
                     "$ref": "ColorStyle",
@@ -7064,7 +7064,7 @@
                 },
                 "minValueColor": {
                     "$ref": "Color",
-                    "description": "The background color for cells with a color value less than or equal to minValue. Defaults to #dc3912 if not specified."
+                    "description": "The background color for cells with a color value less than or equal to minValue. Defaults to #dc3912 if not specified. Deprecated: Use min_value_color_style."
                 },
                 "minValueColorStyle": {
                     "$ref": "ColorStyle",
@@ -7072,7 +7072,7 @@
                 },
                 "noDataColor": {
                     "$ref": "Color",
-                    "description": "The background color for cells that have no color data associated with them. Defaults to #000000 if not specified."
+                    "description": "The background color for cells that have no color data associated with them. Defaults to #000000 if not specified. Deprecated: Use no_data_color_style."
                 },
                 "noDataColorStyle": {
                     "$ref": "ColorStyle",
@@ -7095,7 +7095,7 @@
                 },
                 "headerColor": {
                     "$ref": "Color",
-                    "description": "The background color for header cells."
+                    "description": "The background color for header cells. Deprecated: Use header_color_style."
                 },
                 "headerColorStyle": {
                     "$ref": "ColorStyle",
@@ -7694,7 +7694,7 @@
             "properties": {
                 "color": {
                     "$ref": "Color",
-                    "description": "The color of the column."
+                    "description": "The color of the column. Deprecated: Use color_style."
                 },
                 "colorStyle": {
                     "$ref": "ColorStyle",

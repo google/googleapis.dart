@@ -903,7 +903,7 @@
             }
         }
     },
-    "revision": "20220530",
+    "revision": "20220719",
     "rootUrl": "https://gkehub.googleapis.com/",
     "schemas": {
         "AnthosVMMembershipSpec": {
@@ -1716,6 +1716,10 @@
                 "monitoring": {
                     "$ref": "ConfigManagementPolicyControllerMonitoring",
                     "description": "Monitoring specifies the configuration of monitoring."
+                },
+                "mutationEnabled": {
+                    "description": "Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster.",
+                    "type": "boolean"
                 },
                 "referentialRulesEnabled": {
                     "description": "Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.",
@@ -2645,7 +2649,7 @@
                     "type": "boolean"
                 },
                 "resourceLink": {
-                    "description": "Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster",
+                    "description": "Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster",
                     "type": "string"
                 }
             },
@@ -2674,6 +2678,24 @@
                     "description": "Output only. If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.",
                     "readOnly": true,
                     "type": "boolean"
+                },
+                "clusterType": {
+                    "description": "Immutable. The on prem cluster's type.",
+                    "enum": [
+                        "CLUSTERTYPE_UNSPECIFIED",
+                        "BOOTSTRAP",
+                        "HYBRID",
+                        "STANDALONE",
+                        "USER"
+                    ],
+                    "enumDescriptions": [
+                        "The ClusterType is not set.",
+                        "The ClusterType is bootstrap cluster.",
+                        "The ClusterType is baremetal hybrid cluster.",
+                        "The ClusterType is baremetal standalone cluster.",
+                        "The ClusterType is user cluster."
+                    ],
+                    "type": "string"
                 },
                 "resourceLink": {
                     "description": "Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster",

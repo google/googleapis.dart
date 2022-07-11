@@ -39,6 +39,7 @@ packages:
     - authorizedbuyersmarketplace:v1
     - baremetalsolution:v1
     - baremetalsolution:v2
+    - beyondcorp:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -94,6 +95,7 @@ packages:
     - datastream:v1
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
     - dfareporting:v3.5
+    - dfareporting:v4
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - dialogflow:v3 # https://cloud.google.com/dialogflow-enterprise/
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
@@ -111,6 +113,7 @@ packages:
     - drive:v2 # https://developers.google.com/drive/v2/reference/
     - drive:v3 # https://developers.google.com/drive/v3/reference/
     - driveactivity:v2 # https://developers.google.com/drive/activity/
+    - drivelabels:v2
     - essentialcontacts:v1
     - eventarc:v1
     - fcm:v1
@@ -305,6 +308,7 @@ skipped_apis:
 - appengine:v1beta
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
+- baremetalsolution:v1alpha1
 - beyondcorp:v1alpha
 - bigqueryreservation:v1beta1 # v1 included
 - billingbudgets:v1beta1 # v1 included
@@ -312,7 +316,6 @@ skipped_apis:
 - blogger:v2 # v3 included
 - cloudasset:v1beta1
 - cloudasset:v1p1beta1 # v1 included
-- cloudasset:v1p4beta1 # v1 included
 - cloudasset:v1p5beta1 # v1 included
 - cloudasset:v1p7beta1 # v1 included
 - cloudbuild:v1alpha1 # v1 included
@@ -343,6 +346,7 @@ skipped_apis:
 - dns:v1beta2 # v1 included
 - documentai:v1beta2 # v1beta3 included
 - domains:v1alpha2 # v1beta1 included
+- drivelabels:v2beta
 - eventarc:v1beta1 # v1 included
 - file:v1beta1
 - firebasehosting:v1beta1 # v1 included
@@ -385,7 +389,6 @@ skipped_apis:
 - redis:v1beta1 # v1 included
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
-- run:v1alpha1 #v1 included
 - runtimeconfig:v1beta1 # v1 included
 - secretmanager:v1beta1 # v1 included
 - securitycenter:v1beta1 # v1 included

@@ -1194,7 +1194,7 @@
             }
         }
     },
-    "revision": "20220516",
+    "revision": "20220711",
     "rootUrl": "https://datastream.googleapis.com/",
     "schemas": {
         "AvroFileFormat": {
@@ -2670,7 +2670,7 @@
             "id": "VpcPeeringConfig",
             "properties": {
                 "subnet": {
-                    "description": "Required. A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.",
+                    "description": "Required. A free subnet for peering. (CIDR of /29)",
                     "type": "string"
                 },
                 "vpcName": {

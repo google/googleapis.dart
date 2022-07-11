@@ -3410,7 +3410,7 @@
             }
         }
     },
-    "revision": "20220604",
+    "revision": "20220715",
     "rootUrl": "https://dlp.googleapis.com/",
     "schemas": {
         "GooglePrivacyDlpV2Action": {
@@ -3809,7 +3809,7 @@
                     "type": "string"
                 },
                 "numberToMask": {
-                    "description": "Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.",
+                    "description": "Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -5250,7 +5250,7 @@
                 },
                 "proximity": {
                     "$ref": "GooglePrivacyDlpV2Proximity",
-                    "description": "Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex \"\\(\\d{3}\\) \\d{3}-\\d{4}\" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex \"\\(xxx\\)\", where \"xxx\" is the area code in question."
+                    "description": "Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex \"\\(\\d{3}\\) \\d{3}-\\d{4}\" if the area code is known to be the area code of a company's office. In this case, use the hotword regex \"\\(xxx\\)\", where \"xxx\" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values)."
                 }
             },
             "type": "object"
@@ -5429,10 +5429,154 @@
             },
             "type": "object"
         },
+        "GooglePrivacyDlpV2InfoTypeCategory": {
+            "description": "Classification of infoTypes to organize them according to geographic location, industry, and data type.",
+            "id": "GooglePrivacyDlpV2InfoTypeCategory",
+            "properties": {
+                "industryCategory": {
+                    "description": "The group of relevant businesses where this infoType is commonly used",
+                    "enum": [
+                        "INDUSTRY_UNSPECIFIED",
+                        "FINANCE",
+                        "HEALTH",
+                        "TELECOMMUNICATIONS"
+                    ],
+                    "enumDescriptions": [
+                        "Unused industry",
+                        "The infoType is typically used in the finance industry.",
+                        "The infoType is typically used in the health industry.",
+                        "The infoType is typically used in the telecommunications industry."
+                    ],
+                    "type": "string"
+                },
+                "locationCategory": {
+                    "description": "The region or country that issued the ID or document represented by the infoType.",
+                    "enum": [
+                        "LOCATION_UNSPECIFIED",
+                        "GLOBAL",
+                        "ARGENTINA",
+                        "AUSTRALIA",
+                        "BELGIUM",
+                        "BRAZIL",
+                        "CANADA",
+                        "CHILE",
+                        "CHINA",
+                        "COLOMBIA",
+                        "DENMARK",
+                        "FRANCE",
+                        "FINLAND",
+                        "GERMANY",
+                        "HONG_KONG",
+                        "INDIA",
+                        "INDONESIA",
+                        "IRELAND",
+                        "ISRAEL",
+                        "ITALY",
+                        "JAPAN",
+                        "KOREA",
+                        "MEXICO",
+                        "THE_NETHERLANDS",
+                        "NORWAY",
+                        "PARAGUAY",
+                        "PERU",
+                        "POLAND",
+                        "PORTUGAL",
+                        "SINGAPORE",
+                        "SOUTH_AFRICA",
+                        "SPAIN",
+                        "SWEDEN",
+                        "TAIWAN",
+                        "THAILAND",
+                        "TURKEY",
+                        "UNITED_KINGDOM",
+                        "UNITED_STATES",
+                        "URUGUAY",
+                        "VENEZUELA",
+                        "INTERNAL"
+                    ],
+                    "enumDescriptions": [
+                        "Unused location",
+                        "The infoType is not issued by or tied to a specific region, but is used almost everywhere.",
+                        "The infoType is typically used in Argentina.",
+                        "The infoType is typically used in Australia.",
+                        "The infoType is typically used in Belgium.",
+                        "The infoType is typically used in Brazil.",
+                        "The infoType is typically used in Canada.",
+                        "The infoType is typically used in Chile.",
+                        "The infoType is typically used in China.",
+                        "The infoType is typically used in Colombia.",
+                        "The infoType is typically used in Denmark.",
+                        "The infoType is typically used in France.",
+                        "The infoType is typically used in Finland.",
+                        "The infoType is typically used in Germany.",
+                        "The infoType is typically used in Hong Kong.",
+                        "The infoType is typically used in India.",
+                        "The infoType is typically used in Indonesia.",
+                        "The infoType is typically used in Ireland.",
+                        "The infoType is typically used in Israel.",
+                        "The infoType is typically used in Italy.",
+                        "The infoType is typically used in Japan.",
+                        "The infoType is typically used in Korea.",
+                        "The infoType is typically used in Mexico.",
+                        "The infoType is typically used in the Netherlands.",
+                        "The infoType is typically used in Norway.",
+                        "The infoType is typically used in Paraguay.",
+                        "The infoType is typically used in Peru.",
+                        "The infoType is typically used in Poland.",
+                        "The infoType is typically used in Portugal.",
+                        "The infoType is typically used in Singapore.",
+                        "The infoType is typically used in South Africa.",
+                        "The infoType is typically used in Spain.",
+                        "The infoType is typically used in Sweden.",
+                        "The infoType is typically used in Taiwan.",
+                        "The infoType is typically used in Thailand.",
+                        "The infoType is typically used in Turkey.",
+                        "The infoType is typically used in the United Kingdom.",
+                        "The infoType is typically used in the United States.",
+                        "The infoType is typically used in Uruguay.",
+                        "The infoType is typically used in Venezuela.",
+                        "The infoType is typically used in Google internally."
+                    ],
+                    "type": "string"
+                },
+                "typeCategory": {
+                    "description": "The class of identifiers where this infoType belongs",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "PII",
+                        "SPII",
+                        "DEMOGRAPHIC",
+                        "CREDENTIAL",
+                        "GOVERNMENT_ID",
+                        "DOCUMENT",
+                        "CONTEXTUAL_INFORMATION"
+                    ],
+                    "enumDescriptions": [
+                        "Unused type",
+                        "Personally identifiable information, for example, a name or phone number",
+                        "Personally identifiable information that is especially sensitive, for example, a passport number.",
+                        "Attributes that can partially identify someone, especially in combination with other attributes, like age, height, and gender.",
+                        "Confidential or secret information, for example, a password.",
+                        "An identification document issued by a government.",
+                        "A document, for example, a resume or source code.",
+                        "Information that is not sensitive on its own, but provides details about the circumstances surrounding an entity or an event."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GooglePrivacyDlpV2InfoTypeDescription": {
             "description": "InfoType description.",
             "id": "GooglePrivacyDlpV2InfoTypeDescription",
             "properties": {
+                "categories": {
+                    "description": "The category of the infoType.",
+                    "items": {
+                        "$ref": "GooglePrivacyDlpV2InfoTypeCategory"
+                    },
+                    "type": "array"
+                },
                 "description": {
                     "description": "Description of the infotype. Translated when language is provided in the request.",
                     "type": "string"
@@ -6638,7 +6782,7 @@
                     "type": "integer"
                 },
                 "windowBefore": {
-                    "description": "Number of characters before the finding to consider.",
+                    "description": "Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).",
                     "format": "int32",
                     "type": "integer"
                 }

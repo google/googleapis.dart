@@ -2610,6 +2610,11 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "filter": {
+                                    "description": "Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't been, and isn't currently, supported. For more information about filtering, see [API Filtering](https://aip.dev/160).",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "pageSize": {
                                     "description": "Optional. The maximum number of records to return in a single page. The server may return fewer records than this. If unspecified, we use 10. The maximum is 100.",
                                     "format": "int32",
@@ -6301,6 +6306,11 @@
                                         "parent"
                                     ],
                                     "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't been, and isn't currently, supported. For more information about filtering, see [API Filtering](https://aip.dev/160).",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "pageSize": {
                                             "description": "Optional. The maximum number of records to return in a single page. The server may return fewer records than this. If unspecified, we use 10. The maximum is 100.",
                                             "format": "int32",
@@ -8065,7 +8075,7 @@
             }
         }
     },
-    "revision": "20220601",
+    "revision": "20220720",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "schemas": {
         "GoogleCloudDialogflowCxV3AudioInput": {
@@ -9646,7 +9656,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3WebhookRequest": {
-            "description": "The request message for a webhook call. The request is sent as a JSON object and the field names will be presented in camel cases.",
+            "description": "The request message for a webhook call. The request is sent as a JSON object and the field names will be presented in camel cases. You may see undocumented fields in an actual request. These fields are used internally by Dialogflow and should be ignored.",
             "id": "GoogleCloudDialogflowCxV3WebhookRequest",
             "properties": {
                 "detectIntentResponseId": {
@@ -11437,7 +11447,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowCxV3beta1WebhookRequest": {
-            "description": "The request message for a webhook call. The request is sent as a JSON object and the field names will be presented in camel cases.",
+            "description": "The request message for a webhook call. The request is sent as a JSON object and the field names will be presented in camel cases. You may see undocumented fields in an actual request. These fields are used internally by Dialogflow and should be ignored.",
             "id": "GoogleCloudDialogflowCxV3beta1WebhookRequest",
             "properties": {
                 "detectIntentResponseId": {
@@ -15510,7 +15520,7 @@
                 },
                 "text": {
                     "$ref": "GoogleCloudDialogflowV2TextInput",
-                    "description": "The natural language text to be processed."
+                    "description": "The natural language text to be processed. Text length must not exceed 256 character for virtual agent interactions."
                 }
             },
             "type": "object"
@@ -15580,7 +15590,7 @@
                     "type": "boolean"
                 },
                 "cancelsSlotFilling": {
-                    "description": "Indicates whether the conversational query triggers a cancellation for slot filling.",
+                    "description": "Indicates whether the conversational query triggers a cancellation for slot filling. For more information, see the [cancel slot filling documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).",
                     "type": "boolean"
                 },
                 "diagnosticInfo": {
@@ -16191,7 +16201,7 @@
             "type": "object"
         },
         "GoogleCloudDialogflowV2TextInput": {
-            "description": "Represents the natural language text to be processed.",
+            "description": "============================================================================ Auxiliary proto messages. Represents the natural language text to be processed.",
             "id": "GoogleCloudDialogflowV2TextInput",
             "properties": {
                 "languageCode": {
@@ -16199,7 +16209,7 @@
                     "type": "string"
                 },
                 "text": {
-                    "description": "Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.",
+                    "description": "Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters for virtual agent interactions.",
                     "type": "string"
                 }
             },
@@ -18272,7 +18282,7 @@
                     "type": "boolean"
                 },
                 "cancelsSlotFilling": {
-                    "description": "Indicates whether the conversational query triggers a cancellation for slot filling.",
+                    "description": "Indicates whether the conversational query triggers a cancellation for slot filling. For more information, see the [cancel slot filling documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).",
                     "type": "boolean"
                 },
                 "diagnosticInfo": {

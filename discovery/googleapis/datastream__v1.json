@@ -1215,7 +1215,7 @@
             }
         }
     },
-    "revision": "20220516",
+    "revision": "20220711",
     "rootUrl": "https://datastream.googleapis.com/",
     "schemas": {
         "AvroFileFormat": {
@@ -1927,6 +1927,11 @@
                 "includeObjects": {
                     "$ref": "MysqlRdbms",
                     "description": "MySQL objects to retrieve from the source."
+                },
+                "maxConcurrentCdcTasks": {
+                    "description": "Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -2211,6 +2216,15 @@
                 "includeObjects": {
                     "$ref": "OracleRdbms",
                     "description": "Oracle objects to include in the stream."
+                },
+                "maxConcurrentCdcTasks": {
+                    "description": "Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "streamLargeObjects": {
+                    "$ref": "StreamLargeObjects",
+                    "description": "Stream large object values."
                 }
             },
             "type": "object"
@@ -2543,6 +2557,12 @@
             },
             "type": "object"
         },
+        "StreamLargeObjects": {
+            "description": "Configuration to stream large object values.",
+            "id": "StreamLargeObjects",
+            "properties": {},
+            "type": "object"
+        },
         "StreamObject": {
             "description": "A specific stream object (e.g a specific DB table).",
             "id": "StreamObject",
@@ -2680,7 +2700,7 @@
             "id": "VpcPeeringConfig",
             "properties": {
                 "subnet": {
-                    "description": "Required. A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.",
+                    "description": "Required. A free subnet for peering. (CIDR of /29)",
                     "type": "string"
                 },
                 "vpc": {
