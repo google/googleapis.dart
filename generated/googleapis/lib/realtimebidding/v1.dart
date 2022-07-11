@@ -2662,7 +2662,7 @@ class Creative {
   /// creative.
   core.List<core.String>? restrictedCategories;
 
-  /// The version of this creative.
+  /// The version of the creative.
   ///
   /// Version for a new creative is 1 and it increments during subsequent
   /// creative updates.

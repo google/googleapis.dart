@@ -1190,8 +1190,8 @@ class GoogleChromePolicyV1ResolveRequest {
   /// chrome.users.ShowLogoutButton Wildcards are supported, but only in the
   /// leaf portion of the schema name. Wildcards cannot be used in namespace
   /// directly. Please read
-  /// https://developers.google.com/chrome/chrome-management/guides/policyapi
-  /// for details on schema namepsaces. For example: Valid: "chrome.users.*",
+  /// https://developers.google.com/chrome/policy/guides/policy-schemas for
+  /// details on schema namepsaces. For example: Valid: "chrome.users.*",
   /// "chrome.users.apps.*", "chrome.printers.*" Invalid: "*", "*.users",
   /// "chrome.*", "chrome.*.apps.*"
   core.String? policySchemaFilter;
@@ -1671,7 +1671,8 @@ class Proto2FileDescriptorProto {
 
   /// The syntax of the proto file.
   ///
-  /// The supported values are "proto2" and "proto3".
+  /// The supported values are "proto2", "proto3", and "editions". If `edition`
+  /// is present, this value must be "editions".
   core.String? syntax;
 
   Proto2FileDescriptorProto({

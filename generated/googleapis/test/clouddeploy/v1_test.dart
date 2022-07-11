@@ -26,6 +26,36 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAbandonReleaseRequest = 0;
+api.AbandonReleaseRequest buildAbandonReleaseRequest() {
+  final o = api.AbandonReleaseRequest();
+  buildCounterAbandonReleaseRequest++;
+  if (buildCounterAbandonReleaseRequest < 3) {}
+  buildCounterAbandonReleaseRequest--;
+  return o;
+}
+
+void checkAbandonReleaseRequest(api.AbandonReleaseRequest o) {
+  buildCounterAbandonReleaseRequest++;
+  if (buildCounterAbandonReleaseRequest < 3) {}
+  buildCounterAbandonReleaseRequest--;
+}
+
+core.int buildCounterAbandonReleaseResponse = 0;
+api.AbandonReleaseResponse buildAbandonReleaseResponse() {
+  final o = api.AbandonReleaseResponse();
+  buildCounterAbandonReleaseResponse++;
+  if (buildCounterAbandonReleaseResponse < 3) {}
+  buildCounterAbandonReleaseResponse--;
+  return o;
+}
+
+void checkAbandonReleaseResponse(api.AbandonReleaseResponse o) {
+  buildCounterAbandonReleaseResponse++;
+  if (buildCounterAbandonReleaseResponse < 3) {}
+  buildCounterAbandonReleaseResponse--;
+}
+
 core.int buildCounterAnthosCluster = 0;
 api.AnthosCluster buildAnthosCluster() {
   final o = api.AnthosCluster();
@@ -389,6 +419,7 @@ api.DeliveryPipeline buildDeliveryPipeline() {
     o.labels = buildUnnamed5();
     o.name = 'foo';
     o.serialPipeline = buildSerialPipeline();
+    o.suspended = true;
     o.uid = 'foo';
     o.updateTime = 'foo';
   }
@@ -419,6 +450,7 @@ void checkDeliveryPipeline(api.DeliveryPipeline o) {
       unittest.equals('foo'),
     );
     checkSerialPipeline(o.serialPipeline!);
+    unittest.expect(o.suspended!, unittest.isTrue);
     unittest.expect(
       o.uid!,
       unittest.equals('foo'),
@@ -1284,6 +1316,7 @@ api.Release buildRelease() {
   final o = api.Release();
   buildCounterRelease++;
   if (buildCounterRelease < 3) {
+    o.abandoned = true;
     o.annotations = buildUnnamed23();
     o.buildArtifacts = buildUnnamed24();
     o.createTime = 'foo';
@@ -1310,6 +1343,7 @@ api.Release buildRelease() {
 void checkRelease(api.Release o) {
   buildCounterRelease++;
   if (buildCounterRelease < 3) {
+    unittest.expect(o.abandoned!, unittest.isTrue);
     checkUnnamed23(o.annotations!);
     checkUnnamed24(o.buildArtifacts!);
     unittest.expect(
@@ -1988,6 +2022,26 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AbandonReleaseRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAbandonReleaseRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AbandonReleaseRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAbandonReleaseRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-AbandonReleaseResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAbandonReleaseResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AbandonReleaseResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAbandonReleaseResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-AnthosCluster', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAnthosCluster();
@@ -3126,6 +3180,68 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsDeliveryPipelinesReleasesResource',
       () {
+    unittest.test('method--abandon', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudDeployApi(mock)
+          .projects
+          .locations
+          .deliveryPipelines
+          .releases;
+      final arg_request = buildAbandonReleaseRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AbandonReleaseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAbandonReleaseRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildAbandonReleaseResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.abandon(arg_request, arg_name, $fields: arg_$fields);
+      checkAbandonReleaseResponse(response as api.AbandonReleaseResponse);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.CloudDeployApi(mock)

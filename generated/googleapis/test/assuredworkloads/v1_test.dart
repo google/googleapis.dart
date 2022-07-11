@@ -63,6 +63,55 @@ void checkGoogleCloudAssuredworkloadsV1ListWorkloadsResponse(
   buildCounterGoogleCloudAssuredworkloadsV1ListWorkloadsResponse--;
 }
 
+core.int
+    buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest =
+    0;
+api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
+    buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest() {
+  final o = api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest();
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest <
+      3) {
+    o.restrictionType = 'foo';
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest--;
+  return o;
+}
+
+void checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest(
+    api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest o) {
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest <
+      3) {
+    unittest.expect(
+      o.restrictionType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest--;
+}
+
+core.int
+    buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse =
+    0;
+api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+    buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse() {
+  final o = api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse();
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse <
+      3) {}
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse--;
+  return o;
+}
+
+void checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse(
+    api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse o) {
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse <
+      3) {}
+  buildCounterGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse--;
+}
+
 core.Map<core.String, core.String> buildUnnamed1() => {
       'x': 'foo',
       'y': 'foo',
@@ -584,6 +633,34 @@ void main() {
           api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1ListWorkloadsResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse(od);
     });
   });
 
@@ -1132,6 +1209,70 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudAssuredworkloadsV1Workload(
           response as api.GoogleCloudAssuredworkloadsV1Workload);
+    });
+
+    unittest.test('method--restrictAllowedResources', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final arg_request =
+          buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.restrictAllowedResources(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse(
+          response as api
+              .GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse);
     });
   });
 }

@@ -1867,9 +1867,11 @@ class ProjectsMetricDescriptorsResource {
 
   /// Creates a new metric descriptor.
   ///
-  /// The creation is executed asynchronously and callers may check the returned
-  /// operation to track its progress. User-created metric descriptors define
-  /// custom metrics (https://cloud.google.com/monitoring/custom-metrics).
+  /// The creation is executed asynchronously. User-created metric descriptors
+  /// define custom metrics
+  /// (https://cloud.google.com/monitoring/custom-metrics). The metric
+  /// descriptor is updated if it already exists, except that metric labels are
+  /// never removed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6210,6 +6212,13 @@ class Group {
 
 /// Information involved in an HTTP/HTTPS Uptime check request.
 class HttpCheck {
+  /// If present, the check will only pass if the HTTP response status code is
+  /// in this set of status codes.
+  ///
+  /// If empty, the HTTP status code will only pass if the HTTP status code is
+  /// 200-299.
+  core.List<ResponseStatusCode>? acceptedResponseStatusCodes;
+
   /// The authentication information.
   ///
   /// Optional when creating an HTTP check; defaults to empty.
@@ -6301,6 +6310,7 @@ class HttpCheck {
   core.bool? validateSsl;
 
   HttpCheck({
+    this.acceptedResponseStatusCodes,
     this.authInfo,
     this.body,
     this.contentType,
@@ -6315,6 +6325,13 @@ class HttpCheck {
 
   HttpCheck.fromJson(core.Map _json)
       : this(
+          acceptedResponseStatusCodes:
+              _json.containsKey('acceptedResponseStatusCodes')
+                  ? (_json['acceptedResponseStatusCodes'] as core.List)
+                      .map((value) => ResponseStatusCode.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           authInfo: _json.containsKey('authInfo')
               ? BasicAuthentication.fromJson(
                   _json['authInfo'] as core.Map<core.String, core.dynamic>)
@@ -6347,6 +6364,8 @@ class HttpCheck {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acceptedResponseStatusCodes != null)
+          'acceptedResponseStatusCodes': acceptedResponseStatusCodes!,
         if (authInfo != null) 'authInfo': authInfo!,
         if (body != null) 'body': body!,
         if (contentType != null) 'contentType': contentType!,
@@ -7742,8 +7761,7 @@ class MetricThreshold {
   /// - "EVALUATION_MISSING_DATA_INACTIVE" : If there is no data to evaluate the
   /// condition, then evaluate the condition as false.
   /// - "EVALUATION_MISSING_DATA_ACTIVE" : If there is no data to evaluate the
-  /// condition, then evaluate the condition as true. The default for conditions
-  /// with a duration value.
+  /// condition, then evaluate the condition as true.
   /// - "EVALUATION_MISSING_DATA_NO_OP" : Do not evaluate the condition to any
   /// value if there is no data.
   core.String? evaluationMissingData;
@@ -8061,8 +8079,7 @@ class MonitoringQueryLanguageCondition {
   /// - "EVALUATION_MISSING_DATA_INACTIVE" : If there is no data to evaluate the
   /// condition, then evaluate the condition as false.
   /// - "EVALUATION_MISSING_DATA_ACTIVE" : If there is no data to evaluate the
-  /// condition, then evaluate the condition as true. The default for conditions
-  /// with a duration value.
+  /// condition, then evaluate the condition as true.
   /// - "EVALUATION_MISSING_DATA_NO_OP" : Do not evaluate the condition to any
   /// value if there is no data.
   core.String? evaluationMissingData;
@@ -8779,6 +8796,45 @@ class ResourceGroup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (groupId != null) 'groupId': groupId!,
         if (resourceType != null) 'resourceType': resourceType!,
+      };
+}
+
+/// A status to accept.
+///
+/// Either a status code class like "2xx", or an integer status code like "200".
+class ResponseStatusCode {
+  /// A class of status codes to accept.
+  /// Possible string values are:
+  /// - "STATUS_CLASS_UNSPECIFIED" : Default value that matches no status codes.
+  /// - "STATUS_CLASS_1XX" : The class of status codes between 100 and 199.
+  /// - "STATUS_CLASS_2XX" : The class of status codes between 200 and 299.
+  /// - "STATUS_CLASS_3XX" : The class of status codes between 300 and 399.
+  /// - "STATUS_CLASS_4XX" : The class of status codes between 400 and 499.
+  /// - "STATUS_CLASS_5XX" : The class of status codes between 500 and 599.
+  /// - "STATUS_CLASS_ANY" : The class of all status codes.
+  core.String? statusClass;
+
+  /// A status code to accept.
+  core.int? statusValue;
+
+  ResponseStatusCode({
+    this.statusClass,
+    this.statusValue,
+  });
+
+  ResponseStatusCode.fromJson(core.Map _json)
+      : this(
+          statusClass: _json.containsKey('statusClass')
+              ? _json['statusClass'] as core.String
+              : null,
+          statusValue: _json.containsKey('statusValue')
+              ? _json['statusValue'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (statusClass != null) 'statusClass': statusClass!,
+        if (statusValue != null) 'statusValue': statusValue!,
       };
 }
 
@@ -9679,6 +9735,14 @@ class UptimeCheckConfig {
   /// Required.
   core.String? timeout;
 
+  /// User-supplied key/value data to be used for organizing and identifying the
+  /// UptimeCheckConfig objects.The field can contain up to 64 entries.
+  ///
+  /// Each key and value is limited to 63 Unicode characters or 128 bytes,
+  /// whichever is smaller. Labels and values can contain only lowercase
+  /// letters, numerals, underscores, and dashes. Keys must begin with a letter.
+  core.Map<core.String, core.String>? userLabels;
+
   UptimeCheckConfig({
     this.checkerType,
     this.contentMatchers,
@@ -9693,6 +9757,7 @@ class UptimeCheckConfig {
     this.selectedRegions,
     this.tcpCheck,
     this.timeout,
+    this.userLabels,
   });
 
   UptimeCheckConfig.fromJson(core.Map _json)
@@ -9746,6 +9811,15 @@ class UptimeCheckConfig {
           timeout: _json.containsKey('timeout')
               ? _json['timeout'] as core.String
               : null,
+          userLabels: _json.containsKey('userLabels')
+              ? (_json['userLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9762,6 +9836,7 @@ class UptimeCheckConfig {
         if (selectedRegions != null) 'selectedRegions': selectedRegions!,
         if (tcpCheck != null) 'tcpCheck': tcpCheck!,
         if (timeout != null) 'timeout': timeout!,
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 

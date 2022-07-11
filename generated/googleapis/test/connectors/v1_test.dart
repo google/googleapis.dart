@@ -122,6 +122,7 @@ api.AuthConfig buildAuthConfig() {
     o.authType = 'foo';
     o.oauth2ClientCredentials = buildOauth2ClientCredentials();
     o.oauth2JwtBearer = buildOauth2JwtBearer();
+    o.sshPublicKey = buildSshPublicKey();
     o.userPassword = buildUserPassword();
   }
   buildCounterAuthConfig--;
@@ -138,6 +139,7 @@ void checkAuthConfig(api.AuthConfig o) {
     );
     checkOauth2ClientCredentials(o.oauth2ClientCredentials!);
     checkOauth2JwtBearer(o.oauth2JwtBearer!);
+    checkSshPublicKey(o.sshPublicKey!);
     checkUserPassword(o.userPassword!);
   }
   buildCounterAuthConfig--;
@@ -195,13 +197,54 @@ void checkUnnamed4(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterAuthorizationCodeLink = 0;
+api.AuthorizationCodeLink buildAuthorizationCodeLink() {
+  final o = api.AuthorizationCodeLink();
+  buildCounterAuthorizationCodeLink++;
+  if (buildCounterAuthorizationCodeLink < 3) {
+    o.scopes = buildUnnamed4();
+    o.uri = 'foo';
+  }
+  buildCounterAuthorizationCodeLink--;
+  return o;
+}
+
+void checkAuthorizationCodeLink(api.AuthorizationCodeLink o) {
+  buildCounterAuthorizationCodeLink++;
+  if (buildCounterAuthorizationCodeLink < 3) {
+    checkUnnamed4(o.scopes!);
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAuthorizationCodeLink--;
+}
+
+core.List<core.String> buildUnnamed5() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed5(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterBinding = 0;
 api.Binding buildBinding() {
   final o = api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed4();
+    o.members = buildUnnamed5();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -212,7 +255,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition!);
-    checkUnnamed4(o.members!);
+    checkUnnamed5(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -272,12 +315,12 @@ void checkConfigVariable(api.ConfigVariable o) {
   buildCounterConfigVariable--;
 }
 
-core.List<api.EnumOption> buildUnnamed5() => [
+core.List<api.EnumOption> buildUnnamed6() => [
       buildEnumOption(),
       buildEnumOption(),
     ];
 
-void checkUnnamed5(core.List<api.EnumOption> o) {
+void checkUnnamed6(core.List<api.EnumOption> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnumOption(o[0]);
   checkEnumOption(o[1]);
@@ -288,12 +331,14 @@ api.ConfigVariableTemplate buildConfigVariableTemplate() {
   final o = api.ConfigVariableTemplate();
   buildCounterConfigVariableTemplate++;
   if (buildCounterConfigVariableTemplate < 3) {
+    o.authorizationCodeLink = buildAuthorizationCodeLink();
     o.description = 'foo';
     o.displayName = 'foo';
-    o.enumOptions = buildUnnamed5();
+    o.enumOptions = buildUnnamed6();
     o.key = 'foo';
     o.required = true;
     o.roleGrant = buildRoleGrant();
+    o.state = 'foo';
     o.validationRegex = 'foo';
     o.valueType = 'foo';
   }
@@ -304,6 +349,7 @@ api.ConfigVariableTemplate buildConfigVariableTemplate() {
 void checkConfigVariableTemplate(api.ConfigVariableTemplate o) {
   buildCounterConfigVariableTemplate++;
   if (buildCounterConfigVariableTemplate < 3) {
+    checkAuthorizationCodeLink(o.authorizationCodeLink!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -312,13 +358,17 @@ void checkConfigVariableTemplate(api.ConfigVariableTemplate o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.enumOptions!);
+    checkUnnamed6(o.enumOptions!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
     );
     unittest.expect(o.required!, unittest.isTrue);
     checkRoleGrant(o.roleGrant!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.validationRegex!,
       unittest.equals('foo'),
@@ -331,32 +381,15 @@ void checkConfigVariableTemplate(api.ConfigVariableTemplate o) {
   buildCounterConfigVariableTemplate--;
 }
 
-core.List<api.ConfigVariable> buildUnnamed6() => [
+core.List<api.ConfigVariable> buildUnnamed7() => [
       buildConfigVariable(),
       buildConfigVariable(),
     ];
 
-void checkUnnamed6(core.List<api.ConfigVariable> o) {
+void checkUnnamed7(core.List<api.ConfigVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConfigVariable(o[0]);
   checkConfigVariable(o[1]);
-}
-
-core.List<core.String> buildUnnamed7() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed7(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.Map<core.String, core.String> buildUnnamed8() => {
@@ -382,11 +415,10 @@ api.Connection buildConnection() {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
     o.authConfig = buildAuthConfig();
-    o.configVariables = buildUnnamed6();
+    o.configVariables = buildUnnamed7();
     o.connectorVersion = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
-    o.egressBackends = buildUnnamed7();
     o.envoyImageLocation = 'foo';
     o.imageLocation = 'foo';
     o.labels = buildUnnamed8();
@@ -406,7 +438,7 @@ void checkConnection(api.Connection o) {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
     checkAuthConfig(o.authConfig!);
-    checkUnnamed6(o.configVariables!);
+    checkUnnamed7(o.configVariables!);
     unittest.expect(
       o.connectorVersion!,
       unittest.equals('foo'),
@@ -419,7 +451,6 @@ void checkConnection(api.Connection o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.egressBackends!);
     unittest.expect(
       o.envoyImageLocation!,
       unittest.equals('foo'),
@@ -2021,6 +2052,7 @@ api.RuntimeConfig buildRuntimeConfig() {
     o.controlPlaneSubscription = 'foo';
     o.controlPlaneTopic = 'foo';
     o.locationId = 'foo';
+    o.name = 'foo';
     o.runtimeEndpoint = 'foo';
     o.schemaGcsBucket = 'foo';
     o.serviceDirectory = 'foo';
@@ -2051,6 +2083,10 @@ void checkRuntimeConfig(api.RuntimeConfig o) {
     );
     unittest.expect(
       o.locationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2179,6 +2215,39 @@ void checkSource(api.Source o) {
     );
   }
   buildCounterSource--;
+}
+
+core.int buildCounterSshPublicKey = 0;
+api.SshPublicKey buildSshPublicKey() {
+  final o = api.SshPublicKey();
+  buildCounterSshPublicKey++;
+  if (buildCounterSshPublicKey < 3) {
+    o.certType = 'foo';
+    o.password = buildSecret();
+    o.sshClientCert = buildSecret();
+    o.sshClientCertPass = buildSecret();
+    o.username = 'foo';
+  }
+  buildCounterSshPublicKey--;
+  return o;
+}
+
+void checkSshPublicKey(api.SshPublicKey o) {
+  buildCounterSshPublicKey++;
+  if (buildCounterSshPublicKey < 3) {
+    unittest.expect(
+      o.certType!,
+      unittest.equals('foo'),
+    );
+    checkSecret(o.password!);
+    checkSecret(o.sshClientCert!);
+    checkSecret(o.sshClientCertPass!);
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSshPublicKey--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed41() => {
@@ -2423,6 +2492,16 @@ void main() {
       final od = api.AuthConfigTemplate.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAuthConfigTemplate(od);
+    });
+  });
+
+  unittest.group('obj-schema-AuthorizationCodeLink', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAuthorizationCodeLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AuthorizationCodeLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAuthorizationCodeLink(od);
     });
   });
 
@@ -2843,6 +2922,16 @@ void main() {
       final od =
           api.Source.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSource(od);
+    });
+  });
+
+  unittest.group('obj-schema-SshPublicKey', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSshPublicKey();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SshPublicKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSshPublicKey(od);
     });
   });
 

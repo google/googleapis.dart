@@ -1883,10 +1883,11 @@ class GroupsResource {
   ///
   /// [customer] - The unique ID for the customer's Google Workspace account. In
   /// case of a multi-domain account, to fetch all groups for a customer, fill
-  /// this field instead of domain. As an account administrator, you can also
-  /// use the `my_customer` alias to represent your account's `customerId`. The
-  /// `customerId` is also returned as part of the
-  /// \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// in this field instead of `domain`. You can also use the `my_customer`
+  /// alias to represent your account's `customerId`. The `customerId` is also
+  /// returned as part of the \[Users\](/admin-sdk/directory/v1/reference/users)
+  /// resource. Either the `customer` or the `domain` parameter must be
+  /// provided.
   ///
   /// [domain] - The domain name. Use this field to get groups from only one
   /// domain. To return all domains for a customer account, use the `customer`
@@ -6877,7 +6878,7 @@ class ChromeOsDeviceActiveTimeRanges {
         if (activeTime != null) 'activeTime': activeTime!,
         if (date != null)
           'date':
-              "${(date!).year.toString().padLeft(4, '0')}-${(date!).month.toString().padLeft(2, '0')}-${(date!).day.toString().padLeft(2, '0')}",
+              "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
       };
 }
 
@@ -7456,6 +7457,9 @@ class ChromeOsDevice {
   /// The Chrome device's firmware version.
   core.String? firmwareVersion;
 
+  /// Date and time for the first time the device was enrolled.
+  core.String? firstEnrollmentTime;
+
   /// The type of resource.
   ///
   /// For the Chromeosdevices resource, the value is
@@ -7534,6 +7538,9 @@ class ChromeOsDevice {
   /// [administration help center](https://support.google.com/a/answer/182433).
   core.String? orgUnitPath;
 
+  /// The status of the OS updates for the device.
+  OsUpdateStatus? osUpdateStatus;
+
   /// The Chrome device's operating system version.
   core.String? osVersion;
 
@@ -7592,6 +7599,7 @@ class ChromeOsDevice {
     this.ethernetMacAddress,
     this.ethernetMacAddress0,
     this.firmwareVersion,
+    this.firstEnrollmentTime,
     this.kind,
     this.lastEnrollmentTime,
     this.lastKnownNetwork,
@@ -7604,6 +7612,7 @@ class ChromeOsDevice {
     this.orderNumber,
     this.orgUnitId,
     this.orgUnitPath,
+    this.osUpdateStatus,
     this.osVersion,
     this.platformVersion,
     this.recentUsers,
@@ -7680,6 +7689,9 @@ class ChromeOsDevice {
           firmwareVersion: _json.containsKey('firmwareVersion')
               ? _json['firmwareVersion'] as core.String
               : null,
+          firstEnrollmentTime: _json.containsKey('firstEnrollmentTime')
+              ? _json['firstEnrollmentTime'] as core.String
+              : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           lastEnrollmentTime: _json.containsKey('lastEnrollmentTime')
               ? core.DateTime.parse(_json['lastEnrollmentTime'] as core.String)
@@ -7712,6 +7724,10 @@ class ChromeOsDevice {
               : null,
           orgUnitPath: _json.containsKey('orgUnitPath')
               ? _json['orgUnitPath'] as core.String
+              : null,
+          osUpdateStatus: _json.containsKey('osUpdateStatus')
+              ? OsUpdateStatus.fromJson(_json['osUpdateStatus']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           osVersion: _json.containsKey('osVersion')
               ? _json['osVersion'] as core.String
@@ -7778,6 +7794,8 @@ class ChromeOsDevice {
         if (ethernetMacAddress0 != null)
           'ethernetMacAddress0': ethernetMacAddress0!,
         if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+        if (firstEnrollmentTime != null)
+          'firstEnrollmentTime': firstEnrollmentTime!,
         if (kind != null) 'kind': kind!,
         if (lastEnrollmentTime != null)
           'lastEnrollmentTime': lastEnrollmentTime!.toUtc().toIso8601String(),
@@ -7791,6 +7809,7 @@ class ChromeOsDevice {
         if (orderNumber != null) 'orderNumber': orderNumber!,
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+        if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
         if (osVersion != null) 'osVersion': osVersion!,
         if (platformVersion != null) 'platformVersion': platformVersion!,
         if (recentUsers != null) 'recentUsers': recentUsers!,
@@ -8806,7 +8825,9 @@ class Group {
 
   /// Read-only.
   ///
-  /// A list of a group's alias email addresses.
+  /// A list of a group's alias email addresses. To add, update, or remove a
+  /// group's aliases, use the `groups.aliases` methods. If edited in a group's
+  /// POST or PUT request, the edit is ignored.
   core.List<core.String>? aliases;
 
   /// An extended description to help users determine the purpose of a group.
@@ -8855,7 +8876,7 @@ class Group {
   /// of the account's primary domain or subdomains. These are functioning email
   /// addresses used by the group. This is a read-only property returned in the
   /// API's response for a group. If edited in a group's POST or PUT request,
-  /// the edit is ignored by the API service.
+  /// the edit is ignored.
   core.List<core.String>? nonEditableAliases;
 
   Group({
@@ -9857,6 +9878,80 @@ class OrgUnits {
       };
 }
 
+/// Contains information regarding the current OS update status.
+class OsUpdateStatus {
+  /// Date and time of the last reboot.
+  core.String? rebootTime;
+
+  /// The update state of an OS update.
+  /// Possible string values are:
+  /// - "updateStateUnspecified" : The update state is unspecified.
+  /// - "updateStateNotStarted" : There is an update pending but it hasn't
+  /// started.
+  /// - "updateStateDownloadInProgress" : The pending update is being
+  /// downloaded.
+  /// - "updateStateNeedReboot" : The device is ready to install the update, but
+  /// it just needs to reboot.
+  core.String? state;
+
+  /// New required platform version from the pending updated kiosk app.
+  core.String? targetKioskAppVersion;
+
+  /// New platform version of the OS image being downloaded and applied.
+  ///
+  /// It is only set when update status is UPDATE_STATUS_DOWNLOAD_IN_PROGRESS or
+  /// UPDATE_STATUS_NEED_REBOOT. Note this could be a dummy "0.0.0.0" for
+  /// UPDATE_STATUS_NEED_REBOOT for some edge cases, e.g. update engine is
+  /// restarted without a reboot.
+  core.String? targetOsVersion;
+
+  /// Date and time of the last update check.
+  core.String? updateCheckTime;
+
+  /// Date and time of the last successful OS update.
+  core.String? updateTime;
+
+  OsUpdateStatus({
+    this.rebootTime,
+    this.state,
+    this.targetKioskAppVersion,
+    this.targetOsVersion,
+    this.updateCheckTime,
+    this.updateTime,
+  });
+
+  OsUpdateStatus.fromJson(core.Map _json)
+      : this(
+          rebootTime: _json.containsKey('rebootTime')
+              ? _json['rebootTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          targetKioskAppVersion: _json.containsKey('targetKioskAppVersion')
+              ? _json['targetKioskAppVersion'] as core.String
+              : null,
+          targetOsVersion: _json.containsKey('targetOsVersion')
+              ? _json['targetOsVersion'] as core.String
+              : null,
+          updateCheckTime: _json.containsKey('updateCheckTime')
+              ? _json['updateCheckTime'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rebootTime != null) 'rebootTime': rebootTime!,
+        if (state != null) 'state': state!,
+        if (targetKioskAppVersion != null)
+          'targetKioskAppVersion': targetKioskAppVersion!,
+        if (targetOsVersion != null) 'targetOsVersion': targetOsVersion!,
+        if (updateCheckTime != null) 'updateCheckTime': updateCheckTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Printer configuration.
 class Printer {
   /// Auxiliary messages about issues with the printer configuration if any.
@@ -10234,7 +10329,10 @@ class Role {
 
 /// Defines an assignment of a role.
 class RoleAssignment {
-  /// The unique ID of the user this role is assigned to.
+  /// The unique ID of the entity this role is assigned to—either the `user_id`
+  /// of a user or the `uniqueId` of a service account, as defined in \[Identity
+  /// and Access Management
+  /// (IAM)\](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
   core.String? assignedTo;
 
   /// ETag of the resource.
@@ -10845,13 +10943,15 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? gender;
 
-  /// Stores the hash format of the password property.
+  /// Stores the hash format of the `password` property.
   ///
-  /// We recommend sending the `password` property value as a base 16 bit
-  /// hexadecimal-encoded hash value. The following `hashFunction` values are
-  /// allowed: * `DES` * `MD5` - hash prefix is `$1$` * `SHA2-256` - hash prefix
-  /// is `$5$` * `SHA2-512` - hash prefix is `$6$` If rounds are specified as
-  /// part of the prefix, they must be 10,000 or fewer.
+  /// The following `hashFunction` values are allowed: * `MD5` - Accepts simple
+  /// hex-encoded values. * `SHA1` - Accepts simple hex-encoded values. *
+  /// `crypt` - Compliant with the
+  /// [C crypt library](https://en.wikipedia.org/wiki/Crypt_%28C%29). Supports
+  /// the DES, MD5 (hash prefix `$1$`), SHA-256 (hash prefix `$5$`), and SHA-512
+  /// (hash prefix `$6$`) hash algorithms. If rounds are specified as part of
+  /// the prefix, they must be 10,000 or fewer.
   core.String? hashFunction;
 
   /// The unique ID for the user.

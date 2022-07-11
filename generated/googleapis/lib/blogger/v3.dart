@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Blogger API v3 - v3
+/// Blogger API - v3
 ///
 /// The Blogger API provides access to posts, comments and pages of a Blogger
 /// blog.
@@ -2592,6 +2592,9 @@ class Page {
   /// This is the name displayed in the Admin user interface.
   core.String? title;
 
+  /// RFC 3339 date-time when this Page was trashed.
+  core.String? trashed;
+
   /// RFC 3339 date-time when this Page was last updated.
   core.String? updated;
 
@@ -2609,6 +2612,7 @@ class Page {
     this.selfLink,
     this.status,
     this.title,
+    this.trashed,
     this.updated,
     this.url,
   });
@@ -2640,6 +2644,9 @@ class Page {
               : null,
           title:
               _json.containsKey('title') ? _json['title'] as core.String : null,
+          trashed: _json.containsKey('trashed')
+              ? _json['trashed'] as core.String
+              : null,
           updated: _json.containsKey('updated')
               ? _json['updated'] as core.String
               : null,
@@ -2657,6 +2664,7 @@ class Page {
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
         if (title != null) 'title': title!,
+        if (trashed != null) 'trashed': trashed!,
         if (updated != null) 'updated': updated!,
         if (url != null) 'url': url!,
       };
@@ -3024,6 +3032,9 @@ class Post {
   /// The title link URL, similar to atom's related link.
   core.String? titleLink;
 
+  /// RFC 3339 date-time when this Post was last trashed.
+  core.String? trashed;
+
   /// RFC 3339 date-time when this Post was last updated.
   core.String? updated;
 
@@ -3048,6 +3059,7 @@ class Post {
     this.status,
     this.title,
     this.titleLink,
+    this.trashed,
     this.updated,
     this.url,
   });
@@ -3107,6 +3119,9 @@ class Post {
           titleLink: _json.containsKey('titleLink')
               ? _json['titleLink'] as core.String
               : null,
+          trashed: _json.containsKey('trashed')
+              ? _json['trashed'] as core.String
+              : null,
           updated: _json.containsKey('updated')
               ? _json['updated'] as core.String
               : null,
@@ -3131,6 +3146,7 @@ class Post {
         if (status != null) 'status': status!,
         if (title != null) 'title': title!,
         if (titleLink != null) 'titleLink': titleLink!,
+        if (trashed != null) 'trashed': trashed!,
         if (updated != null) 'updated': updated!,
         if (url != null) 'url': url!,
       };

@@ -1324,7 +1324,46 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
       };
 }
 
-/// LINT.IfChange A Subscription resource managed by 3P Partners.
+/// A description of what time period or moment in time the product or service
+/// is being delivered over.
+class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod {
+  /// The end time of the service period.
+  ///
+  /// Time is exclusive.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// The start time of the service period.
+  ///
+  /// Time is inclusive.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod({
+    this.endTime,
+    this.startTime,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod.fromJson(
+      core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// A Subscription resource managed by 3P Partners.
 class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Describes the details of a cancelled subscription.
   ///
@@ -1638,7 +1677,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
 
 /// Individual line item definition of a subscription.
 ///
-/// Next id: 6
+/// Next id: 8
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// Description of this line item.
   ///
@@ -1665,11 +1704,29 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>?
       lineItemPromotionSpecs;
 
+  /// Details only set for a ONE_TIME recurrence line item.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails?
+      oneTimeRecurrenceDetails;
+
   /// Product resource name that identifies one the line item The format is
   /// 'partners/{partner_id}/products/{product_id}'.
   ///
   /// Required.
   core.String? product;
+
+  /// The recurrence type of the line item.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED" : The line item recurrence type
+  /// is unspecified.
+  /// - "LINE_ITEM_RECURRENCE_TYPE_PERIODIC" : The line item recurs
+  /// periodically.
+  /// - "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME" : The line item does not recur in
+  /// the future.
+  core.String? recurrenceType;
 
   /// The state of the line item.
   ///
@@ -1691,7 +1748,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
     this.description,
     this.lineItemFreeTrialEndTime,
     this.lineItemPromotionSpecs,
+    this.oneTimeRecurrenceDetails,
     this.product,
+    this.recurrenceType,
     this.state,
   });
 
@@ -1713,8 +1772,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          oneTimeRecurrenceDetails: _json
+                  .containsKey('oneTimeRecurrenceDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
+                  .fromJson(_json['oneTimeRecurrenceDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           product: _json.containsKey('product')
               ? _json['product'] as core.String
+              : null,
+          recurrenceType: _json.containsKey('recurrenceType')
+              ? _json['recurrenceType'] as core.String
               : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
@@ -1726,8 +1794,34 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
           'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,
         if (lineItemPromotionSpecs != null)
           'lineItemPromotionSpecs': lineItemPromotionSpecs!,
+        if (oneTimeRecurrenceDetails != null)
+          'oneTimeRecurrenceDetails': oneTimeRecurrenceDetails!,
         if (product != null) 'product': product!,
+        if (recurrenceType != null) 'recurrenceType': recurrenceType!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Details for a ONE_TIME recurrence line item.
+class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails {
+  /// The service period of the ONE_TIME line item.
+  GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod? servicePeriod;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails({
+    this.servicePeriod,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails.fromJson(
+      core.Map _json)
+      : this(
+          servicePeriod: _json.containsKey('servicePeriod')
+              ? GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod.fromJson(
+                  _json['servicePeriod'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (servicePeriod != null) 'servicePeriod': servicePeriod!,
       };
 }
 

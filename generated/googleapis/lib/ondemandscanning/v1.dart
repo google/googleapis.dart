@@ -430,6 +430,11 @@ class ProjectsLocationsScansVulnerabilitiesResource {
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
+/// Indicates which analysis completed successfully.
+///
+/// Multiple types of analysis can be performed on a single resource.
+typedef AnalysisCompleted = $AnalysisCompleted;
+
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
 class AnalyzePackagesRequestV1 {
@@ -885,15 +890,23 @@ typedef DeploymentOccurrence = $DeploymentOccurrence;
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {
+  AnalysisCompleted? analysisCompleted;
+
+  /// Indicates any errors encountered during analysis of a resource.
+  ///
+  /// There could be 0 or more of these errors.
+  core.List<Status>? analysisError;
+
   /// The status of discovery for the resource.
   /// Possible string values are:
   /// - "ANALYSIS_STATUS_UNSPECIFIED" : Unknown.
   /// - "PENDING" : Resource is known but no action has been taken yet.
   /// - "SCANNING" : Resource is being analyzed.
+  /// - "COMPLETE" : Analysis has completed
   /// - "FINISHED_SUCCESS" : Analysis has finished successfully.
   /// - "FINISHED_FAILED" : Analysis has finished unsuccessfully, the analysis
   /// itself is in a bad state.
-  /// - "FINISHED_UNSUPPORTED" : The resource is known not to be supported
+  /// - "FINISHED_UNSUPPORTED" : The resource is known not to be supported.
   core.String? analysisStatus;
 
   /// When an error is encountered this will contain a LocalizedMessage under
@@ -921,6 +934,8 @@ class DiscoveryOccurrence {
   core.String? lastScanTime;
 
   DiscoveryOccurrence({
+    this.analysisCompleted,
+    this.analysisError,
     this.analysisStatus,
     this.analysisStatusError,
     this.archiveTime,
@@ -931,6 +946,16 @@ class DiscoveryOccurrence {
 
   DiscoveryOccurrence.fromJson(core.Map _json)
       : this(
+          analysisCompleted: _json.containsKey('analysisCompleted')
+              ? AnalysisCompleted.fromJson(_json['analysisCompleted']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          analysisError: _json.containsKey('analysisError')
+              ? (_json['analysisError'] as core.List)
+                  .map((value) => Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           analysisStatus: _json.containsKey('analysisStatus')
               ? _json['analysisStatus'] as core.String
               : null,
@@ -951,6 +976,8 @@ class DiscoveryOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (analysisCompleted != null) 'analysisCompleted': analysisCompleted!,
+        if (analysisError != null) 'analysisError': analysisError!,
         if (analysisStatus != null) 'analysisStatus': analysisStatus!,
         if (analysisStatusError != null)
           'analysisStatusError': analysisStatusError!,
@@ -1398,6 +1425,33 @@ class InTotoStatement {
 }
 
 typedef Jwt = $Jwt;
+
+/// Indicates a language package available between this package and the
+/// customer's resource artifact.
+class LanguagePackageDependency {
+  core.String? package;
+  core.String? version;
+
+  LanguagePackageDependency({
+    this.package,
+    this.version,
+  });
+
+  LanguagePackageDependency.fromJson(core.Map _json)
+      : this(
+          package: _json.containsKey('package')
+              ? _json['package'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (package != null) 'package': package!,
+        if (version != null) 'version': version!,
+      };
+}
 
 /// Layer holds metadata specific to a layer of a Docker image.
 typedef Layer = $Layer;
@@ -1865,6 +1919,13 @@ class PackageData {
   /// Examples include distro or storage location for vulnerable jar.
   core.String? cpeUri;
 
+  /// The dependency chain between this package and the user's artifact.
+  ///
+  /// List in order from the customer's package under review first, to the
+  /// current package last. Inclusive of the original package and the current
+  /// package.
+  core.List<LanguagePackageDependency>? dependencyChain;
+
   /// The path to the jar file / go binary file.
   core.List<FileLocation>? fileLocation;
 
@@ -1904,6 +1965,7 @@ class PackageData {
 
   PackageData({
     this.cpeUri,
+    this.dependencyChain,
     this.fileLocation,
     this.hashDigest,
     this.os,
@@ -1919,6 +1981,12 @@ class PackageData {
       : this(
           cpeUri: _json.containsKey('cpeUri')
               ? _json['cpeUri'] as core.String
+              : null,
+          dependencyChain: _json.containsKey('dependencyChain')
+              ? (_json['dependencyChain'] as core.List)
+                  .map((value) => LanguagePackageDependency.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           fileLocation: _json.containsKey('fileLocation')
               ? (_json['fileLocation'] as core.List)
@@ -1954,6 +2022,7 @@ class PackageData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,
         if (hashDigest != null) 'hashDigest': hashDigest!,
         if (os != null) 'os': os!,

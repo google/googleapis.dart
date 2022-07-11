@@ -1084,6 +1084,105 @@ class OrganizationsLocationsInsightTypesResource {
 
   OrganizationsLocationsInsightTypesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets the requested InsightTypeConfig.
+  ///
+  /// There is only one instance of the config for each InsightType.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the InsightTypeConfig to get. Acceptable
+  /// formats: *
+  /// `projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `projects/[PROJECT_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `organizations/[ORGANIZATION_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1InsightTypeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1InsightTypeConfig> getConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an InsightTypeConfig change.
+  ///
+  /// This will create a new revision of the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of insight type config. Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [validateOnly] - If true, validate the request and preview the change, but
+  /// do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1InsightTypeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1InsightTypeConfig> updateConfig(
+    GoogleCloudRecommenderV1InsightTypeConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class OrganizationsLocationsInsightTypesInsightsResource {
@@ -1268,6 +1367,105 @@ class OrganizationsLocationsRecommendersResource {
 
   OrganizationsLocationsRecommendersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets the requested Recommender Config.
+  ///
+  /// There is only one instance of the config for each Recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Recommendation Config to get. Acceptable
+  /// formats: *
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1RecommenderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1RecommenderConfig> getConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Recommender Config.
+  ///
+  /// This will create a new revision of the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of recommender config. Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [validateOnly] - If true, validate the request and preview the change, but
+  /// do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1RecommenderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1RecommenderConfig> updateConfig(
+    GoogleCloudRecommenderV1RecommenderConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class OrganizationsLocationsRecommendersRecommendationsResource {
@@ -1572,6 +1770,105 @@ class ProjectsLocationsInsightTypesResource {
 
   ProjectsLocationsInsightTypesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets the requested InsightTypeConfig.
+  ///
+  /// There is only one instance of the config for each InsightType.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the InsightTypeConfig to get. Acceptable
+  /// formats: *
+  /// `projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `projects/[PROJECT_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// *
+  /// `organizations/[ORGANIZATION_ID]/locations/global/recommenders/[INSIGHT_TYPE_ID]/config`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1InsightTypeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1InsightTypeConfig> getConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an InsightTypeConfig change.
+  ///
+  /// This will create a new revision of the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of insight type config. Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/config$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [validateOnly] - If true, validate the request and preview the change, but
+  /// do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1InsightTypeConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1InsightTypeConfig> updateConfig(
+    GoogleCloudRecommenderV1InsightTypeConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsInsightTypesInsightsResource {
@@ -1754,6 +2051,105 @@ class ProjectsLocationsRecommendersResource {
 
   ProjectsLocationsRecommendersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets the requested Recommender Config.
+  ///
+  /// There is only one instance of the config for each Recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Recommendation Config to get. Acceptable
+  /// formats: *
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// *
+  /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1RecommenderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1RecommenderConfig> getConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Recommender Config.
+  ///
+  /// This will create a new revision of the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of recommender config. Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/config$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [validateOnly] - If true, validate the request and preview the change, but
+  /// do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1RecommenderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1RecommenderConfig> updateConfig(
+    GoogleCloudRecommenderV1RecommenderConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsRecommendersRecommendationsResource {
@@ -2328,6 +2724,129 @@ class GoogleCloudRecommenderV1InsightStateInfo {
       };
 }
 
+/// Configuration for an InsightType.
+class GoogleCloudRecommenderV1InsightTypeConfig {
+  /// Allows clients to store small amounts of arbitrary data.
+  ///
+  /// Annotations must follow the Kubernetes syntax. The total size of all keys
+  /// and values combined is limited to 256k. Key can have 2 segments: prefix
+  /// (optional) and name (required), separated by a slash (/). Prefix must be a
+  /// DNS subdomain. Name must be 63 characters or less, begin and end with
+  /// alphanumerics, with dashes (-), underscores (_), dots (.), and
+  /// alphanumerics between.
+  core.Map<core.String, core.String>? annotations;
+
+  /// A user-settable field to provide a human-readable name to be used in user
+  /// interfaces.
+  core.String? displayName;
+
+  /// Fingerprint of the InsightTypeConfig.
+  ///
+  /// Provides optimistic locking when updating.
+  core.String? etag;
+
+  /// InsightTypeGenerationConfig which configures the generation of insights
+  /// for this insight type.
+  GoogleCloudRecommenderV1InsightTypeGenerationConfig?
+      insightTypeGenerationConfig;
+
+  /// Name of insight type config.
+  ///
+  /// Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/config
+  core.String? name;
+
+  /// The revision ID of the config.
+  ///
+  /// A new revision is committed whenever the config is changed in any way. The
+  /// format is an 8-character hexadecimal string.
+  ///
+  /// Output only. Immutable.
+  core.String? revisionId;
+
+  /// Last time when the config was updated.
+  core.String? updateTime;
+
+  GoogleCloudRecommenderV1InsightTypeConfig({
+    this.annotations,
+    this.displayName,
+    this.etag,
+    this.insightTypeGenerationConfig,
+    this.name,
+    this.revisionId,
+    this.updateTime,
+  });
+
+  GoogleCloudRecommenderV1InsightTypeConfig.fromJson(core.Map _json)
+      : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          insightTypeGenerationConfig: _json
+                  .containsKey('insightTypeGenerationConfig')
+              ? GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(
+                  _json['insightTypeGenerationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (insightTypeGenerationConfig != null)
+          'insightTypeGenerationConfig': insightTypeGenerationConfig!,
+        if (name != null) 'name': name!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A configuration to customize the generation of insights.
+///
+/// Eg, customizing the lookback period considered when generating a insight.
+class GoogleCloudRecommenderV1InsightTypeGenerationConfig {
+  /// Parameters for this InsightTypeGenerationConfig.
+  ///
+  /// These configs can be used by or are applied to all subtypes.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? params;
+
+  GoogleCloudRecommenderV1InsightTypeGenerationConfig({
+    this.params,
+  });
+
+  GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(core.Map _json)
+      : this(
+          params: _json.containsKey('params')
+              ? _json['params'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (params != null) 'params': params!,
+      };
+}
+
 /// Response to the `ListInsights` method.
 class GoogleCloudRecommenderV1ListInsightsResponse {
   /// The set of insights for the `parent` resource.
@@ -2889,6 +3408,130 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
         if (stateMetadata != null) 'stateMetadata': stateMetadata!,
+      };
+}
+
+/// Configuration for a Recommender.
+class GoogleCloudRecommenderV1RecommenderConfig {
+  /// Allows clients to store small amounts of arbitrary data.
+  ///
+  /// Annotations must follow the Kubernetes syntax. The total size of all keys
+  /// and values combined is limited to 256k. Key can have 2 segments: prefix
+  /// (optional) and name (required), separated by a slash (/). Prefix must be a
+  /// DNS subdomain. Name must be 63 characters or less, begin and end with
+  /// alphanumerics, with dashes (-), underscores (_), dots (.), and
+  /// alphanumerics between.
+  core.Map<core.String, core.String>? annotations;
+
+  /// A user-settable field to provide a human-readable name to be used in user
+  /// interfaces.
+  core.String? displayName;
+
+  /// Fingerprint of the RecommenderConfig.
+  ///
+  /// Provides optimistic locking when updating.
+  core.String? etag;
+
+  /// Name of recommender config.
+  ///
+  /// Eg,
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/config
+  core.String? name;
+
+  /// RecommenderGenerationConfig which configures the Generation of
+  /// recommendations for this recommender.
+  GoogleCloudRecommenderV1RecommenderGenerationConfig?
+      recommenderGenerationConfig;
+
+  /// The revision ID of the config.
+  ///
+  /// A new revision is committed whenever the config is changed in any way. The
+  /// format is an 8-character hexadecimal string.
+  ///
+  /// Output only. Immutable.
+  core.String? revisionId;
+
+  /// Last time when the config was updated.
+  core.String? updateTime;
+
+  GoogleCloudRecommenderV1RecommenderConfig({
+    this.annotations,
+    this.displayName,
+    this.etag,
+    this.name,
+    this.recommenderGenerationConfig,
+    this.revisionId,
+    this.updateTime,
+  });
+
+  GoogleCloudRecommenderV1RecommenderConfig.fromJson(core.Map _json)
+      : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          recommenderGenerationConfig: _json
+                  .containsKey('recommenderGenerationConfig')
+              ? GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(
+                  _json['recommenderGenerationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (recommenderGenerationConfig != null)
+          'recommenderGenerationConfig': recommenderGenerationConfig!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A Configuration to customize the generation of recommendations.
+///
+/// Eg, customizing the lookback period considered when generating a
+/// recommendation.
+class GoogleCloudRecommenderV1RecommenderGenerationConfig {
+  /// Parameters for this RecommenderGenerationConfig.
+  ///
+  /// These configs can be used by or are applied to all subtypes.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? params;
+
+  GoogleCloudRecommenderV1RecommenderGenerationConfig({
+    this.params,
+  });
+
+  GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(core.Map _json)
+      : this(
+          params: _json.containsKey('params')
+              ? _json['params'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (params != null) 'params': params!,
       };
 }
 

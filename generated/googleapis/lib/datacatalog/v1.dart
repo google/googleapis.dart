@@ -3501,6 +3501,9 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   /// Optional.
   core.String? description;
 
+  /// Looker specific column info of this column.
+  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec? lookerColumnSpec;
+
   /// A column's mode indicates whether values in this column are required,
   /// nullable, or repeated.
   ///
@@ -3527,6 +3530,7 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   GoogleCloudDatacatalogV1ColumnSchema({
     this.column,
     this.description,
+    this.lookerColumnSpec,
     this.mode,
     this.subcolumns,
     this.type,
@@ -3539,6 +3543,11 @@ class GoogleCloudDatacatalogV1ColumnSchema {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
+              : null,
+          lookerColumnSpec: _json.containsKey('lookerColumnSpec')
+              ? GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(
+                  _json['lookerColumnSpec']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
           subcolumns: _json.containsKey('subcolumns')
@@ -3553,8 +3562,35 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
         if (description != null) 'description': description!,
+        if (lookerColumnSpec != null) 'lookerColumnSpec': lookerColumnSpec!,
         if (mode != null) 'mode': mode!,
         if (subcolumns != null) 'subcolumns': subcolumns!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Column info specific to Looker System.
+class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
+  /// Looker specific column type of this column.
+  /// Possible string values are:
+  /// - "LOOKER_COLUMN_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "DIMENSION" : Dimension.
+  /// - "DIMENSION_GROUP" : Dimension group - parent for Dimension.
+  /// - "FILTER" : Filter.
+  /// - "MEASURE" : Measure.
+  /// - "PAREMETER" : Parameter.
+  core.String? type;
+
+  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({
+    this.type,
+  });
+
+  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -3724,6 +3760,8 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpec {
 class GoogleCloudDatacatalogV1DatabaseTableSpec {
   /// Fields specific to a Dataplex table and present only in the Dataplex table
   /// entries.
+  ///
+  /// Output only.
   GoogleCloudDatacatalogV1DataplexTableSpec? dataplexTable;
 
   /// Type of this table.
@@ -3943,11 +3981,15 @@ class GoogleCloudDatacatalogV1Entry {
   ///
   /// For more information, see
   /// [Introduction to partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
+  ///
+  /// Output only.
   GoogleCloudDatacatalogV1BigQueryDateShardedSpec? bigqueryDateShardedSpec;
 
   /// Specification that applies to a BigQuery table.
   ///
   /// Valid only for entries with the `TABLE` type.
+  ///
+  /// Output only.
   GoogleCloudDatacatalogV1BigQueryTableSpec? bigqueryTableSpec;
 
   /// Business Context of the entry.
@@ -4082,8 +4124,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// in Data Catalog must use the `user_specified_type`.
   /// Possible string values are:
   /// - "ENTRY_TYPE_UNSPECIFIED" : Default unknown type.
-  /// - "TABLE" : Output only. The entry type that has a GoogleSQL schema,
-  /// including logical views.
+  /// - "TABLE" : The entry type that has a GoogleSQL schema, including logical
+  /// views.
   /// - "MODEL" : Output only. The type of models. For more information, see
   /// [Supported models in BigQuery ML](https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in).
   /// - "DATA_STREAM" : An entry type for streaming entries. For example, a

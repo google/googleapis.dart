@@ -2904,9 +2904,16 @@ class MysqlSourceConfig {
   /// MySQL objects to retrieve from the source.
   MysqlRdbms? includeObjects;
 
+  /// Maximum number of concurrent CDC tasks.
+  ///
+  /// The number should be non negative. If not set (or set to 0), the system's
+  /// default value will be used.
+  core.int? maxConcurrentCdcTasks;
+
   MysqlSourceConfig({
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentCdcTasks,
   });
 
   MysqlSourceConfig.fromJson(core.Map _json)
@@ -2919,11 +2926,16 @@ class MysqlSourceConfig {
               ? MysqlRdbms.fromJson(_json['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentCdcTasks: _json.containsKey('maxConcurrentCdcTasks')
+              ? _json['maxConcurrentCdcTasks'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentCdcTasks != null)
+          'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
       };
 }
 
@@ -3372,10 +3384,21 @@ class OracleSourceConfig {
   /// Oracle objects to include in the stream.
   OracleRdbms? includeObjects;
 
+  /// Maximum number of concurrent CDC tasks.
+  ///
+  /// The number should be non negative. If not set (or set to 0), the system's
+  /// default value will be used.
+  core.int? maxConcurrentCdcTasks;
+
+  /// Stream large object values.
+  StreamLargeObjects? streamLargeObjects;
+
   OracleSourceConfig({
     this.dropLargeObjects,
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentCdcTasks,
+    this.streamLargeObjects,
   });
 
   OracleSourceConfig.fromJson(core.Map _json)
@@ -3392,12 +3415,23 @@ class OracleSourceConfig {
               ? OracleRdbms.fromJson(_json['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentCdcTasks: _json.containsKey('maxConcurrentCdcTasks')
+              ? _json['maxConcurrentCdcTasks'] as core.int
+              : null,
+          streamLargeObjects: _json.containsKey('streamLargeObjects')
+              ? StreamLargeObjects.fromJson(_json['streamLargeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentCdcTasks != null)
+          'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
+        if (streamLargeObjects != null)
+          'streamLargeObjects': streamLargeObjects!,
       };
 }
 
@@ -3947,6 +3981,9 @@ class Stream {
       };
 }
 
+/// Configuration to stream large object values.
+typedef StreamLargeObjects = $Empty;
+
 /// A specific stream object (e.g a specific DB table).
 class StreamObject {
   /// The latest backfill job that was initiated for the stream object.
@@ -4034,7 +4071,7 @@ class StreamObject {
 class VpcPeeringConfig {
   /// A free subnet for peering.
   ///
-  /// (CIDR of /29) TODO(b/172995841) add validators.
+  /// (CIDR of /29)
   ///
   /// Required.
   core.String? subnet;

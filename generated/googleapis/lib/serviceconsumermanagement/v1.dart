@@ -1324,8 +1324,6 @@ class TenantProjectConfig {
   core.List<core.String>? services;
 
   /// Describes ownership and policies for the new tenant project.
-  ///
-  /// Required.
   TenantProjectPolicy? tenantProjectPolicy;
 
   TenantProjectConfig({
@@ -1381,14 +1379,12 @@ class TenantProjectConfig {
       };
 }
 
-/// Describes policy settings that need to be applied to a newly created tenant
+/// Describes policy settings that can be applied to a newly created tenant
 /// project.
 class TenantProjectPolicy {
   /// Policy bindings to be applied to the tenant project, in addition to the
   /// 'roles/owner' role granted to the Service Consumer Management service
   /// account.
-  ///
-  /// At least one binding must have the role `roles/owner`.
   core.List<PolicyBinding>? policyBindings;
 
   TenantProjectPolicy({

@@ -1149,8 +1149,9 @@ class InstancesResource {
   /// expression. However, you can include AND and OR expressions explicitly.
   ///
   /// [maxResults] - The maximum number of instances to return. The service may
-  /// return fewer than this value. The maximum value is 1000; values above 1000
-  /// are coerced to 1000.
+  /// return fewer than this value. If unspecified, at most 500 instances are
+  /// returned. The maximum value is 1000; values above 1000 are coerced to
+  /// 1000.
   ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
@@ -2280,6 +2281,52 @@ class UsersResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves a resource containing information about a user.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Database instance ID. This does not include the project ID.
+  ///
+  /// [name] - User of the instance. If the database user has a host, this is
+  /// specified as {username}@{host} else as {username}.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> get(
+    core.String project,
+    core.String instance,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/users/' +
+        commons.escapeVariable('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new user in a Cloud SQL instance.
   ///
   /// [request] - The metadata request object.
@@ -2742,7 +2789,7 @@ class BackupRun {
   /// - "DELETED" : The backup has been deleted.
   core.String? status;
 
-  /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+  /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL".
   ///
   /// This field defaults to "ON_DEMAND" and is ignored, when specified for
   /// insert requests.
@@ -3455,7 +3502,8 @@ class DatabaseInstance {
 
   /// Initial root password.
   ///
-  /// Use only on creation.
+  /// Use only on creation. You must set root passwords before you can connect
+  /// to PostgreSQL instances.
   core.String? rootPassword;
 
   /// The status indicating if instance satisfiesPzs.
@@ -5648,6 +5696,8 @@ class Operation {
   /// - "START_EXTERNAL_SYNC" : Starts external sync of a Cloud SQL EM replica
   /// to an external primary instance.
   /// - "LOG_CLEANUP" : Recovers logs from an instance's old data disk.
+  /// - "AUTO_RESTART" : Performs auto-restart of an HA-enabled Cloud SQL
+  /// database for auto recovery.
   core.String? operationType;
 
   /// The URI of this resource.
@@ -6213,6 +6263,9 @@ class Settings {
   /// restarts the instance.
   core.bool? databaseReplicationEnabled;
 
+  /// Configuration to protect against accidental instance deletion.
+  core.bool? deletionProtectionEnabled;
+
   /// Deny maintenance periods
   core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
 
@@ -6313,6 +6366,7 @@ class Settings {
     this.dataDiskType,
     this.databaseFlags,
     this.databaseReplicationEnabled,
+    this.deletionProtectionEnabled,
     this.denyMaintenancePeriods,
     this.insightsConfig,
     this.ipConfiguration,
@@ -6374,6 +6428,10 @@ class Settings {
           databaseReplicationEnabled:
               _json.containsKey('databaseReplicationEnabled')
                   ? _json['databaseReplicationEnabled'] as core.bool
+                  : null,
+          deletionProtectionEnabled:
+              _json.containsKey('deletionProtectionEnabled')
+                  ? _json['deletionProtectionEnabled'] as core.bool
                   : null,
           denyMaintenancePeriods: _json.containsKey('denyMaintenancePeriods')
               ? (_json['denyMaintenancePeriods'] as core.List)
@@ -6452,6 +6510,8 @@ class Settings {
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
         if (databaseReplicationEnabled != null)
           'databaseReplicationEnabled': databaseReplicationEnabled!,
+        if (deletionProtectionEnabled != null)
+          'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (denyMaintenancePeriods != null)
           'denyMaintenancePeriods': denyMaintenancePeriods!,
         if (insightsConfig != null) 'insightsConfig': insightsConfig!,
@@ -7335,6 +7395,16 @@ class TruncateLogContext {
 
 /// A Cloud SQL user resource.
 class User {
+  /// Dual password status for the user.
+  /// Possible string values are:
+  /// - "DUAL_PASSWORD_TYPE_UNSPECIFIED" : The default value.
+  /// - "NO_MODIFY_DUAL_PASSWORD" : Do not update the user's dual password
+  /// status.
+  /// - "NO_DUAL_PASSWORD" : No dual password usable for connecting using this
+  /// user.
+  /// - "DUAL_PASSWORD" : Dual password usable for connecting using this user.
+  core.String? dualPasswordType;
+
   /// This field is deprecated and will be removed from a future version of the
   /// API.
   core.String? etag;
@@ -7387,6 +7457,7 @@ class User {
   core.String? type;
 
   User({
+    this.dualPasswordType,
     this.etag,
     this.host,
     this.instance,
@@ -7401,6 +7472,9 @@ class User {
 
   User.fromJson(core.Map _json)
       : this(
+          dualPasswordType: _json.containsKey('dualPasswordType')
+              ? _json['dualPasswordType'] as core.String
+              : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           host: _json.containsKey('host') ? _json['host'] as core.String : null,
           instance: _json.containsKey('instance')
@@ -7426,6 +7500,7 @@ class User {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dualPasswordType != null) 'dualPasswordType': dualPasswordType!,
         if (etag != null) 'etag': etag!,
         if (host != null) 'host': host!,
         if (instance != null) 'instance': instance!,
@@ -7448,6 +7523,12 @@ class UserPasswordValidationPolicy {
   /// If true, failed login attempts check will be enabled.
   core.bool? enableFailedAttemptsCheck;
 
+  /// If true, the user must specify the current password before changing the
+  /// password.
+  ///
+  /// This flag is supported only for MySQL.
+  core.bool? enablePasswordVerification;
+
   /// Expiration duration after password is updated.
   core.String? passwordExpirationDuration;
 
@@ -7459,6 +7540,7 @@ class UserPasswordValidationPolicy {
   UserPasswordValidationPolicy({
     this.allowedFailedAttempts,
     this.enableFailedAttemptsCheck,
+    this.enablePasswordVerification,
     this.passwordExpirationDuration,
     this.status,
   });
@@ -7471,6 +7553,10 @@ class UserPasswordValidationPolicy {
           enableFailedAttemptsCheck:
               _json.containsKey('enableFailedAttemptsCheck')
                   ? _json['enableFailedAttemptsCheck'] as core.bool
+                  : null,
+          enablePasswordVerification:
+              _json.containsKey('enablePasswordVerification')
+                  ? _json['enablePasswordVerification'] as core.bool
                   : null,
           passwordExpirationDuration:
               _json.containsKey('passwordExpirationDuration')
@@ -7487,6 +7573,8 @@ class UserPasswordValidationPolicy {
           'allowedFailedAttempts': allowedFailedAttempts!,
         if (enableFailedAttemptsCheck != null)
           'enableFailedAttemptsCheck': enableFailedAttemptsCheck!,
+        if (enablePasswordVerification != null)
+          'enablePasswordVerification': enablePasswordVerification!,
         if (passwordExpirationDuration != null)
           'passwordExpirationDuration': passwordExpirationDuration!,
         if (status != null) 'status': status!,

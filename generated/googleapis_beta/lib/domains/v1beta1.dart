@@ -607,6 +607,53 @@ class ProjectsLocationsRegistrationsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Imports a domain name from [Google Domains](https://domains.google/) for
+  /// use in Cloud Domains.
+  ///
+  /// To transfer a domain from another registrar, use the `TransferDomain`
+  /// method instead. Since individual users can own domains in Google Domains,
+  /// the calling user must have ownership permission on the domain.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the Registration. Must be in
+  /// the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+    ImportDomainRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/registrations:import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the `Registration` resources in a project.
   ///
   /// Request parameters:
@@ -868,6 +915,60 @@ class ProjectsLocationsRegistrationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists domain names from [Google Domains](https://domains.google/) that can
+  /// be imported to Cloud Domains using the `ImportDomain` method.
+  ///
+  /// Since individual users can own domains in Google Domains, the list of
+  /// domains returned depends on the individual user making the call. Domains
+  /// supported by Google Domains, but not supported by Cloud Domains, are not
+  /// returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location. Must be in the format `projects / *
+  /// /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of results to return.
+  ///
+  /// [pageToken] - When set to the `next_page_token` from a prior response,
+  /// provides the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrieveImportableDomainsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrieveImportableDomainsResponse> retrieveImportableDomains(
+    core.String location, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta1/' +
+        core.Uri.encodeFull('$location') +
+        '/registrations:retrieveImportableDomains';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return RetrieveImportableDomainsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets parameters needed to register a new domain name, including price and
   /// up-to-date availability.
   ///
@@ -918,8 +1019,9 @@ class ProjectsLocationsRegistrationsResource {
   /// Gets parameters needed to transfer a domain name from another registrar to
   /// Cloud Domains.
   ///
-  /// For domains managed by Google Domains, transferring to Cloud Domains is
-  /// not supported. Use the returned values to call `TransferDomain`.
+  /// For domains already managed by [Google Domains](https://domains.google/),
+  /// use `ImportDomain` instead. Use the returned values to call
+  /// `TransferDomain`.
   ///
   /// Request parameters:
   ///
@@ -1111,21 +1213,21 @@ class ProjectsLocationsRegistrationsResource {
 
   /// Transfers a domain name from another registrar to Cloud Domains.
   ///
-  /// For domains managed by Google Domains, transferring to Cloud Domains is
-  /// not supported. Before calling this method, go to the domain's current
-  /// registrar to unlock the domain for transfer and retrieve the domain's
-  /// transfer authorization code. Then call `RetrieveTransferParameters` to
-  /// confirm that the domain is unlocked and to get values needed to build a
-  /// call to this method. A successful call creates a `Registration` resource
-  /// in state `TRANSFER_PENDING`. It can take several days to complete the
-  /// transfer process. The registrant can often speed up this process by
-  /// approving the transfer through the current registrar, either by clicking a
-  /// link in an email from the registrar or by visiting the registrar's
-  /// website. A few minutes after transfer approval, the resource transitions
-  /// to state `ACTIVE`, indicating that the transfer was successful. If the
-  /// transfer is rejected or the request expires without being approved, the
-  /// resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can
-  /// safely delete the resource and retry the transfer.
+  /// For domains already managed by [Google Domains](https://domains.google/),
+  /// use `ImportDomain` instead. Before calling this method, go to the domain's
+  /// current registrar to unlock the domain for transfer and retrieve the
+  /// domain's transfer authorization code. Then call
+  /// `RetrieveTransferParameters` to confirm that the domain is unlocked and to
+  /// get values needed to build a call to this method. A successful call
+  /// creates a `Registration` resource in state `TRANSFER_PENDING`. It can take
+  /// several days to complete the transfer process. The registrant can often
+  /// speed up this process by approving the transfer through the current
+  /// registrar, either by clicking a link in an email from the registrar or by
+  /// visiting the registrar's website. A few minutes after transfer approval,
+  /// the resource transitions to state `ACTIVE`, indicating that the transfer
+  /// was successful. If the transfer is rejected or the request expires without
+  /// being approved, the resource can end up in state `TRANSFER_FAILED`. If
+  /// transfer fails, you can safely delete the resource and retry the transfer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1690,6 +1792,63 @@ class DnsSettings {
       };
 }
 
+/// A domain that the calling user manages in Google Domains.
+class Domain {
+  /// The domain name.
+  ///
+  /// Unicode domain names are expressed in Punycode format.
+  core.String? domainName;
+
+  /// The state of this domain as a `Registration` resource.
+  /// Possible string values are:
+  /// - "RESOURCE_STATE_UNSPECIFIED" : The assessment is undefined.
+  /// - "IMPORTABLE" : A `Registration` resource can be created for this domain
+  /// by calling `ImportDomain`.
+  /// - "UNSUPPORTED" : A `Registration` resource cannot be created for this
+  /// domain because it is not supported by Cloud Domains; for example, the
+  /// top-level domain is not supported or the registry charges non-standard
+  /// pricing for yearly renewals.
+  /// - "SUSPENDED" : A `Registration` resource cannot be created for this
+  /// domain because it is suspended and needs to be resolved with Google
+  /// Domains.
+  /// - "EXPIRED" : A `Registration` resource cannot be created for this domain
+  /// because it is expired and needs to be renewed with Google Domains.
+  /// - "DELETED" : A `Registration` resource cannot be created for this domain
+  /// because it is deleted, but can be restored with Google Domains.
+  core.String? resourceState;
+
+  /// Price to renew the domain for one year.
+  ///
+  /// Only set when `resource_state` is `IMPORTABLE`.
+  Money? yearlyPrice;
+
+  Domain({
+    this.domainName,
+    this.resourceState,
+    this.yearlyPrice,
+  });
+
+  Domain.fromJson(core.Map _json)
+      : this(
+          domainName: _json.containsKey('domainName')
+              ? _json['domainName'] as core.String
+              : null,
+          resourceState: _json.containsKey('resourceState')
+              ? _json['resourceState'] as core.String
+              : null,
+          yearlyPrice: _json.containsKey('yearlyPrice')
+              ? Money.fromJson(
+                  _json['yearlyPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domainName != null) 'domainName': domainName!,
+        if (resourceState != null) 'resourceState': resourceState!,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
+      };
+}
+
 /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC
 /// for a domain.
 ///
@@ -1913,6 +2072,44 @@ class GoogleDomainsDns {
         if (dsRecords != null) 'dsRecords': dsRecords!,
         if (dsState != null) 'dsState': dsState!,
         if (nameServers != null) 'nameServers': nameServers!,
+      };
+}
+
+/// Request for the `ImportDomain` method.
+class ImportDomainRequest {
+  /// The domain name.
+  ///
+  /// Unicode domain names must be expressed in Punycode format.
+  ///
+  /// Required.
+  core.String? domainName;
+
+  /// Set of labels associated with the `Registration`.
+  core.Map<core.String, core.String>? labels;
+
+  ImportDomainRequest({
+    this.domainName,
+    this.labels,
+  });
+
+  ImportDomainRequest.fromJson(core.Map _json)
+      : this(
+          domainName: _json.containsKey('domainName')
+              ? _json['domainName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domainName != null) 'domainName': domainName!,
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -2271,11 +2468,12 @@ class Policy {
 /// P.O. Box or similar. It is not intended to model geographical locations
 /// (roads, towns, mountains). In typical usage an address would be created via
 /// user input or from importing existing data, depending on the type of
-/// process. Advice on address input / editing: - Use an i18n-ready address
-/// widget such as https://github.com/google/libaddressinput) - Users should not
-/// be presented with UI elements for input or editing of fields outside
-/// countries where that field is used. For more guidance on how to use this
-/// schema, please see: https://support.google.com/business/answer/6397478
+/// process. Advice on address input / editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput) - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, please see:
+/// https://support.google.com/business/answer/6397478
 typedef PostalAddress = $PostalAddress;
 
 /// Request for the `RegisterDomain` method.
@@ -2440,7 +2638,12 @@ class RegisterParameters {
 /// registrar to unlock the domain for transfer and retrieve the domain's
 /// transfer authorization code. Then call `RetrieveTransferParameters` to
 /// confirm that the domain is unlocked and to get values needed to build a call
-/// to `TransferDomain`.
+/// to `TransferDomain`. Finally, you can create a new `Registration` by
+/// importing an existing domain managed with
+/// [Google Domains](https://domains.google/). First, call
+/// `RetrieveImportableDomains` to list domains to which the calling user has
+/// sufficient access. Then call `ImportDomain` on any domain names you want to
+/// use with Cloud Domains.
 class Registration {
   /// Settings for contact information linked to the `Registration`.
   ///
@@ -2506,6 +2709,19 @@ class Registration {
   /// Output only.
   ContactSettings? pendingContactSettings;
 
+  /// The reason the domain registration failed.
+  ///
+  /// Only set for domains in REGISTRATION_FAILED state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REGISTER_FAILURE_REASON_UNSPECIFIED" : Register failure unspecified.
+  /// - "REGISTER_FAILURE_REASON_UNKNOWN" : Registration failed for an unknown
+  /// reason.
+  /// - "DOMAIN_NOT_AVAILABLE" : The domain is not available for registration.
+  /// - "INVALID_CONTACTS" : The provided contact information was rejected.
+  core.String? registerFailureReason;
+
   /// The state of the `Registration`
   ///
   /// Output only.
@@ -2519,6 +2735,8 @@ class Registration {
   /// - "TRANSFER_FAILED" : The attempt to transfer the domain from another
   /// registrar to Cloud Domains failed. You can delete resources in this state
   /// and retry the transfer.
+  /// - "IMPORT_PENDING" : The domain is being imported from Google Domains to
+  /// Cloud Domains.
   /// - "ACTIVE" : The domain is registered and operational. The domain renews
   /// automatically as long as it remains in this state.
   /// - "SUSPENDED" : The domain is suspended and inoperative. For more details,
@@ -2536,6 +2754,36 @@ class Registration {
   /// Output only.
   core.List<core.String>? supportedPrivacy;
 
+  /// The reason the domain transfer failed.
+  ///
+  /// Only set for domains in TRANSFER_FAILED state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRANSFER_FAILURE_REASON_UNSPECIFIED" : Transfer failure unspecified.
+  /// - "TRANSFER_FAILURE_REASON_UNKNOWN" : Transfer failed for an unknown
+  /// reason.
+  /// - "EMAIL_CONFIRMATION_FAILURE" : An email confirmation sent to the user
+  /// was rejected or expired.
+  /// - "DOMAIN_NOT_REGISTERED" : The domain is available for registration.
+  /// - "DOMAIN_HAS_TRANSFER_LOCK" : The domain has a transfer lock with its
+  /// current registrar which must be removed prior to transfer.
+  /// - "INVALID_AUTHORIZATION_CODE" : The authorization code entered is not
+  /// valid.
+  /// - "TRANSFER_CANCELLED" : The transfer was cancelled by the domain owner,
+  /// current registrar, or TLD registry.
+  /// - "TRANSFER_REJECTED" : The transfer was rejected by the current
+  /// registrar. Contact the current registrar for more information.
+  /// - "INVALID_REGISTRANT_EMAIL_ADDRESS" : The registrant email address cannot
+  /// be parsed from the domain's current public contact data.
+  /// - "DOMAIN_NOT_ELIGIBLE_FOR_TRANSFER" : The domain is not eligible for
+  /// transfer due requirements imposed by the current registrar or TLD
+  /// registry.
+  /// - "TRANSFER_ALREADY_PENDING" : Another transfer is already pending for
+  /// this domain. The existing transfer attempt must expire or be cancelled in
+  /// order to proceed.
+  core.String? transferFailureReason;
+
   Registration({
     this.contactSettings,
     this.createTime,
@@ -2547,8 +2795,10 @@ class Registration {
     this.managementSettings,
     this.name,
     this.pendingContactSettings,
+    this.registerFailureReason,
     this.state,
     this.supportedPrivacy,
+    this.transferFailureReason,
   });
 
   Registration.fromJson(core.Map _json)
@@ -2592,12 +2842,18 @@ class Registration {
               ? ContactSettings.fromJson(_json['pendingContactSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          registerFailureReason: _json.containsKey('registerFailureReason')
+              ? _json['registerFailureReason'] as core.String
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
           supportedPrivacy: _json.containsKey('supportedPrivacy')
               ? (_json['supportedPrivacy'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          transferFailureReason: _json.containsKey('transferFailureReason')
+              ? _json['transferFailureReason'] as core.String
               : null,
         );
 
@@ -2614,13 +2870,52 @@ class Registration {
         if (name != null) 'name': name!,
         if (pendingContactSettings != null)
           'pendingContactSettings': pendingContactSettings!,
+        if (registerFailureReason != null)
+          'registerFailureReason': registerFailureReason!,
         if (state != null) 'state': state!,
         if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
+        if (transferFailureReason != null)
+          'transferFailureReason': transferFailureReason!,
       };
 }
 
 /// Request for the `ResetAuthorizationCode` method.
 typedef ResetAuthorizationCodeRequest = $Empty;
+
+/// Response for the `RetrieveImportableDomains` method.
+class RetrieveImportableDomainsResponse {
+  /// A list of domains that the calling user manages in Google Domains.
+  core.List<Domain>? domains;
+
+  /// When present, there are more results to retrieve.
+  ///
+  /// Set `page_token` to this value on a subsequent call to get the next page
+  /// of results.
+  core.String? nextPageToken;
+
+  RetrieveImportableDomainsResponse({
+    this.domains,
+    this.nextPageToken,
+  });
+
+  RetrieveImportableDomainsResponse.fromJson(core.Map _json)
+      : this(
+          domains: _json.containsKey('domains')
+              ? (_json['domains'] as core.List)
+                  .map((value) => Domain.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domains != null) 'domains': domains!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
 
 /// Response for the `RetrieveRegisterParameters` method.
 class RetrieveRegisterParametersResponse {
@@ -2826,6 +3121,9 @@ class TransferParameters {
   /// The registrar that currently manages the domain.
   core.String? currentRegistrar;
 
+  /// The URL of registrar that currently manages the domain.
+  core.String? currentRegistrarUri;
+
   /// The domain name.
   ///
   /// Unicode domain names are expressed in Punycode format.
@@ -2854,6 +3152,7 @@ class TransferParameters {
 
   TransferParameters({
     this.currentRegistrar,
+    this.currentRegistrarUri,
     this.domainName,
     this.nameServers,
     this.supportedPrivacy,
@@ -2865,6 +3164,9 @@ class TransferParameters {
       : this(
           currentRegistrar: _json.containsKey('currentRegistrar')
               ? _json['currentRegistrar'] as core.String
+              : null,
+          currentRegistrarUri: _json.containsKey('currentRegistrarUri')
+              ? _json['currentRegistrarUri'] as core.String
               : null,
           domainName: _json.containsKey('domainName')
               ? _json['domainName'] as core.String
@@ -2890,6 +3192,8 @@ class TransferParameters {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentRegistrar != null) 'currentRegistrar': currentRegistrar!,
+        if (currentRegistrarUri != null)
+          'currentRegistrarUri': currentRegistrarUri!,
         if (domainName != null) 'domainName': domainName!,
         if (nameServers != null) 'nameServers': nameServers!,
         if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,

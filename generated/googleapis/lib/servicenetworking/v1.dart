@@ -1679,6 +1679,43 @@ class AddSubnetworkRequest {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// Cloud SQL configuration.
+class CloudSQLConfig {
+  /// Peering service used for peering with the Cloud SQL project.
+  core.String? service;
+
+  /// The name of the umbrella network in the Cloud SQL umbrella project.
+  core.String? umbrellaNetwork;
+
+  /// The project number of the Cloud SQL umbrella project.
+  core.String? umbrellaProject;
+
+  CloudSQLConfig({
+    this.service,
+    this.umbrellaNetwork,
+    this.umbrellaProject,
+  });
+
+  CloudSQLConfig.fromJson(core.Map _json)
+      : this(
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+          umbrellaNetwork: _json.containsKey('umbrellaNetwork')
+              ? _json['umbrellaNetwork'] as core.String
+              : null,
+          umbrellaProject: _json.containsKey('umbrellaProject')
+              ? _json['umbrellaProject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (service != null) 'service': service!,
+        if (umbrellaNetwork != null) 'umbrellaNetwork': umbrellaNetwork!,
+        if (umbrellaProject != null) 'umbrellaProject': umbrellaProject!,
+      };
+}
+
 /// Represents a private connection resource.
 ///
 /// A private connection is implemented as a VPC Network Peering connection
@@ -1753,6 +1790,9 @@ class Connection {
 
 /// Configuration information for a private service access connection.
 class ConsumerConfig {
+  /// Represents one or multiple Cloud SQL configurations.
+  core.List<CloudSQLConfig>? cloudsqlConfigs;
+
   /// Export custom routes flag value for peering from consumer to producer.
   core.bool? consumerExportCustomRoutes;
 
@@ -1809,6 +1849,7 @@ class ConsumerConfig {
   core.bool? vpcScReferenceArchitectureEnabled;
 
   ConsumerConfig({
+    this.cloudsqlConfigs,
     this.consumerExportCustomRoutes,
     this.consumerExportSubnetRoutesWithPublicIp,
     this.consumerImportCustomRoutes,
@@ -1825,6 +1866,12 @@ class ConsumerConfig {
 
   ConsumerConfig.fromJson(core.Map _json)
       : this(
+          cloudsqlConfigs: _json.containsKey('cloudsqlConfigs')
+              ? (_json['cloudsqlConfigs'] as core.List)
+                  .map((value) => CloudSQLConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           consumerExportCustomRoutes:
               _json.containsKey('consumerExportCustomRoutes')
                   ? _json['consumerExportCustomRoutes'] as core.bool
@@ -1880,6 +1927,7 @@ class ConsumerConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudsqlConfigs != null) 'cloudsqlConfigs': cloudsqlConfigs!,
         if (consumerExportCustomRoutes != null)
           'consumerExportCustomRoutes': consumerExportCustomRoutes!,
         if (consumerExportSubnetRoutesWithPublicIp != null)

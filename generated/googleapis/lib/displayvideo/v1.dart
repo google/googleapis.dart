@@ -2074,44 +2074,43 @@ class AdvertisersCreativesResource {
   ///
   /// [filter] - Allows filtering by creative properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restriction
-  /// for the same field must be combined by \`OR\`. * Restriction for different
-  /// fields must be combined by \`AND\`. * Between \`(\` and \`)\` there can
-  /// only be restrictions combined by \`OR\` for the same field. * A
-  /// restriction has the form of \`{field} {operator} {value}\`. * The operator
-  /// must be \`EQUALS (=)\` for the following fields: - \`entityStatus\` -
-  /// \`creativeType\`. - \`dimensions\` - \`minDuration\` - \`maxDuration\` -
-  /// \`approvalStatus\` - \`exchangeReviewStatus\` - \`dynamic\` -
-  /// \`creativeId\` * The operator must be \`HAS (:)\` for the following
-  /// fields: - \`lineItemIds\` * The operator must be \`GREATER THAN OR EQUAL
-  /// TO (\>=)\` or \`LESS THAN OR EQUAL TO (\<=)\` for the following fields: -
-  /// \`updateTime\` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * For
-  /// \`entityStatus\`, \`minDuration\`, \`maxDuration\`, \`updateTime\`, \`and
-  /// \`dynamic\`, there may be at most one restriction. * For \`dimensions\`,
-  /// the value is in the form of \`"{width}x{height}"\`. * For
-  /// \`exchangeReviewStatus\`, the value is in the form of
-  /// \`{exchange}-{reviewStatus}\`. * For \`minDuration\` and \`maxDuration\`,
-  /// the value is in the form of \`"{duration}s"\`. Only seconds are supported
-  /// with millisecond granularity. * For \`updateTime\`, a creative resource's
-  /// field value reflects the last time that a creative has been updated, which
+  /// for the same field must be combined by `OR`. * Restriction for different
+  /// fields must be combined by `AND`. * Between `(` and `)` there can only be
+  /// restrictions combined by `OR` for the same field. * A restriction has the
+  /// form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`
+  /// for the following fields: - `entityStatus` - `creativeType`. -
+  /// `dimensions` - `minDuration` - `maxDuration` - `approvalStatus` -
+  /// `exchangeReviewStatus` - `dynamic` - `creativeId` * The operator must be
+  /// `HAS (:)` for the following fields: - `lineItemIds` * The operator must be
+  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` for the
+  /// following fields: - `updateTime` (input in ISO 8601 format, or
+  /// YYYY-MM-DDTHH:MM:SSZ) * For `entityStatus`, `minDuration`, `maxDuration`,
+  /// `updateTime`, and `dynamic`, there may be at most one restriction. * For
+  /// `dimensions`, the value is in the form of `"{width}x{height}"`. * For
+  /// `exchangeReviewStatus`, the value is in the form of
+  /// `{exchange}-{reviewStatus}`. * For `minDuration` and `maxDuration`, the
+  /// value is in the form of `"{duration}s"`. Only seconds are supported with
+  /// millisecond granularity. * For `updateTime`, a creative resource's field
+  /// value reflects the last time that a creative has been updated, which
   /// includes updates made by the system (e.g. creative review updates). *
-  /// There may be multiple \`lineItemIds\` restrictions in order to search
+  /// There may be multiple `lineItemIds` restrictions in order to search
   /// against multiple possible line item IDs. * There may be multiple
-  /// \`creativeId\` restrictions in order to search against multiple possible
+  /// `creativeId` restrictions in order to search against multiple possible
   /// creative IDs. Examples: * All native creatives:
-  /// \`creativeType="CREATIVE_TYPE_NATIVE"\` * All active creatives with
-  /// 300x400 or 50x100 dimensions: \`entityStatus="ENTITY_STATUS_ACTIVE" AND
-  /// (dimensions="300x400" OR dimensions="50x100")\` * All dynamic creatives
+  /// `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400
+  /// or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND
+  /// (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives
   /// that are approved by AdX or AppNexus, with a minimum duration of 5 seconds
-  /// and 200ms. \`dynamic="true" AND minDuration="5.2s" AND
+  /// and 200ms. `dynamic="true" AND minDuration="5.2s" AND
   /// (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED"
-  /// OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")\` *
-  /// All video creatives that are associated with line item ID 1 or 2:
-  /// \`creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR
-  /// lineItemIds:2)\` * Find creatives by multiple creative IDs: \`creativeId=1
-  /// OR creativeId=2\` * All creatives with an update time greater than or
-  /// equal to \`2020-11-04T18:54:47Z (format of ISO 8601)\`:
-  /// \`updateTime\>="2020-11-04T18:54:47Z"\` The length of this field should be
-  /// no more than 500 characters.
+  /// OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All
+  /// video creatives that are associated with line item ID 1 or 2:
+  /// `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)`
+  /// * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2`
+  /// * All creatives with an update time greater than or equal to
+  /// `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
+  /// more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions`
@@ -6459,19 +6458,15 @@ class CustomBiddingAlgorithmsResource {
   /// {value}`. * The operator must be `CONTAINS (:)` or `EQUALS (=)`. * The
   /// operator must be `CONTAINS (:)` for the following field: - `displayName` *
   /// The operator must be `EQUALS (=)` for the following field: -
-  /// `customBiddingAlgorithmType` - `customBiddingAlgorithmState` * For
-  /// `displayName`, the value is a string. We return all custom bidding
-  /// algorithms whose display_name contains such string. * For
-  /// `customBiddingAlgorithmType`, the value is a string. We return all
-  /// algorithms whose custom_bidding_algorithm_type is equal to the given type.
-  /// * For `customBiddingAlgorithmState`, the value is a string. We return all
-  /// algorithms whose custom_bidding_algorithm_state is equal to the given
-  /// type. Examples: * All custom bidding algorithms for which the display name
-  /// contains "politics": `displayName:politics`. * All custom bidding
-  /// algorithms for which the type is "SCRIPT_BASED":
-  /// `customBiddingAlgorithmType=SCRIPT_BASED` * All custom bidding algorithms
-  /// for which the state is "ENABLED": `customBiddingAlgorithmState=ENABLED`
-  /// The length of this field should be no more than 500 characters.
+  /// `customBiddingAlgorithmType` * For `displayName`, the value is a string.
+  /// We return all custom bidding algorithms whose display_name contains such
+  /// string. * For `customBiddingAlgorithmType`, the value is a string. We
+  /// return all algorithms whose custom_bidding_algorithm_type is equal to the
+  /// given type. Examples: * All custom bidding algorithms for which the
+  /// display name contains "politics": `displayName:politics`. * All custom
+  /// bidding algorithms for which the type is "SCRIPT_BASED":
+  /// `customBiddingAlgorithmType=SCRIPT_BASED` The length of this field should
+  /// be no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) The default sorting order is ascending. To specify
@@ -11465,7 +11460,7 @@ class AgeRangeAssignedTargetingOptionDetails {
   /// age range represented in this field can be 1) targeted solely, or, 2) part
   /// of a larger continuous age range. The reach of a continuous age range
   /// targeting can be expanded by also targeting an audience of an unknown age.
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
   /// in this version. This enum is a placeholder for default value and does not
@@ -12965,7 +12960,7 @@ class AudienceGroupAssignedTargetingOptionDetails {
 class AudioContentTypeAssignedTargetingOptionDetails {
   /// The audio content type.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
   /// in this version. This enum is a place holder for a default value and does
@@ -15612,7 +15607,7 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
 
   /// The content instream position for video or audio ads.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -15725,7 +15720,7 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
 
   /// The content outstream position.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -17896,7 +17891,7 @@ class DeviceMakeModelTargetingOptionDetails {
 class DeviceTypeAssignedTargetingOptionDetails {
   /// The display name of the device type.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
   /// specified in this version. This enum is a placeholder for default value
@@ -18702,7 +18697,7 @@ typedef Empty = $Empty;
 class EnvironmentAssignedTargetingOptionDetails {
   /// The serving environment.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
   /// specified in this version. This enum is a placeholder for default value
@@ -19753,7 +19748,8 @@ class FrequencyCap {
   /// The maximum number of times a user may be shown the same ad during this
   /// period.
   ///
-  /// Must be greater than 0. Required when unlimited is `false`.
+  /// Must be greater than 0. Required when unlimited is `false` and max_views
+  /// is not set.
   core.int? maxImpressions;
 
   /// The time unit in which the frequency cap will be applied.
@@ -19830,7 +19826,7 @@ class FrequencyCap {
 class GenderAssignedTargetingOptionDetails {
   /// The gender of the audience.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
   /// this version. This enum is a place holder for default value and does not
@@ -19919,7 +19915,8 @@ class GenerateDefaultLineItemRequest {
   /// Required.
   /// Possible string values are:
   /// - "LINE_ITEM_TYPE_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
+  /// in this version. Line items of this type and their targeting cannot be
+  /// created or updated using the API.
   /// - "LINE_ITEM_TYPE_DISPLAY_DEFAULT" : Image, HTML5, native, or rich media
   /// ads.
   /// - "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL" : Display ads that drive
@@ -19929,9 +19926,11 @@ class GenerateDefaultLineItemRequest {
   /// - "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL" : Video ads that drive
   /// installs of an app.
   /// - "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INVENTORY" : Display ads served on
-  /// mobile app inventory.
+  /// mobile app inventory. Line items of this type and their targeting cannot
+  /// be created or updated using the API.
   /// - "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY" : Video ads served on mobile
-  /// app inventory.
+  /// app inventory. Line items of this type and their targeting cannot be
+  /// created or updated using the API.
   /// - "LINE_ITEM_TYPE_AUDIO_DEFAULT" : RTB Audio ads sold for a variety of
   /// environments.
   /// - "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP" : Over-the-top ads present in OTT
@@ -22590,7 +22589,8 @@ class LineItem {
   /// Required. Immutable.
   /// Possible string values are:
   /// - "LINE_ITEM_TYPE_UNSPECIFIED" : Type value is not specified or is unknown
-  /// in this version.
+  /// in this version. Line items of this type and their targeting cannot be
+  /// created or updated using the API.
   /// - "LINE_ITEM_TYPE_DISPLAY_DEFAULT" : Image, HTML5, native, or rich media
   /// ads.
   /// - "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL" : Display ads that drive
@@ -22600,9 +22600,11 @@ class LineItem {
   /// - "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL" : Video ads that drive
   /// installs of an app.
   /// - "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INVENTORY" : Display ads served on
-  /// mobile app inventory.
+  /// mobile app inventory. Line items of this type and their targeting cannot
+  /// be created or updated using the API.
   /// - "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY" : Video ads served on mobile
-  /// app inventory.
+  /// app inventory. Line items of this type and their targeting cannot be
+  /// created or updated using the API.
   /// - "LINE_ITEM_TYPE_AUDIO_DEFAULT" : RTB Audio ads sold for a variety of
   /// environments.
   /// - "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP" : Over-the-top ads present in OTT
@@ -24561,7 +24563,7 @@ typedef Money = $Money;
 class NativeContentPositionAssignedTargetingOptionDetails {
   /// The content position.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
   /// specified in this version. This enum is a place holder for a default value
@@ -24897,7 +24899,7 @@ class ObaIcon {
 class OmidAssignedTargetingOptionDetails {
   /// The type of Open Measurement enabled inventory.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
   /// in this version.
@@ -28317,7 +28319,7 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
 
   /// The video player size.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
   /// this version. This enum is a place holder for a default value and does not
@@ -28407,7 +28409,7 @@ class ViewabilityAssignedTargetingOptionDetails {
 
   /// The predicted viewability percentage.
   ///
-  /// Output only in v1.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
   /// specified in this version. This enum is a placeholder for default value

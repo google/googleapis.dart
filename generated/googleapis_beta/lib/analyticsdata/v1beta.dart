@@ -31,6 +31,8 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+// ignore: deprecated_member_use_from_same_package
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1299,44 +1301,7 @@ class DimensionMetadata {
 }
 
 /// Sorts by dimension values.
-class DimensionOrderBy {
-  /// A dimension name in the request to order by.
-  core.String? dimensionName;
-
-  /// Controls the rule for dimension value ordering.
-  /// Possible string values are:
-  /// - "ORDER_TYPE_UNSPECIFIED" : Unspecified.
-  /// - "ALPHANUMERIC" : Alphanumeric sort by Unicode code point. For example,
-  /// "2" \< "A" \< "X" \< "b" \< "z".
-  /// - "CASE_INSENSITIVE_ALPHANUMERIC" : Case insensitive alphanumeric sort by
-  /// lower case Unicode code point. For example, "2" \< "A" \< "b" \< "X" \<
-  /// "z".
-  /// - "NUMERIC" : Dimension values are converted to numbers before sorting.
-  /// For example in NUMERIC sort, "25" \< "100", and in `ALPHANUMERIC` sort,
-  /// "100" \< "25". Non-numeric dimension values all have equal ordering value
-  /// below all numeric values.
-  core.String? orderType;
-
-  DimensionOrderBy({
-    this.dimensionName,
-    this.orderType,
-  });
-
-  DimensionOrderBy.fromJson(core.Map _json)
-      : this(
-          dimensionName: _json.containsKey('dimensionName')
-              ? _json['dimensionName'] as core.String
-              : null,
-          orderType: _json.containsKey('orderType')
-              ? _json['orderType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (orderType != null) 'orderType': orderType!,
-      };
-}
+typedef DimensionOrderBy = $DimensionOrderBy;
 
 /// The value of a dimension.
 class DimensionValue {
@@ -1365,7 +1330,10 @@ class Filter {
 
   /// The dimension name or metric name.
   ///
-  /// Must be a name defined in dimensions or metrics.
+  /// In most methods, dimensions & metrics can be used for the first time in
+  /// this field. However in a RunPivotReportRequest, this field must be
+  /// additionally specified by name in the RunPivotReportRequest's dimensions
+  /// or metrics.
   core.String? fieldName;
 
   /// A filter for in list values.
@@ -1497,37 +1465,7 @@ class FilterExpressionList {
 }
 
 /// The result needs to be in a list of string values.
-class InListFilter {
-  /// If true, the string value is case sensitive.
-  core.bool? caseSensitive;
-
-  /// The list of string values.
-  ///
-  /// Must be non-empty.
-  core.List<core.String>? values;
-
-  InListFilter({
-    this.caseSensitive,
-    this.values,
-  });
-
-  InListFilter.fromJson(core.Map _json)
-      : this(
-          caseSensitive: _json.containsKey('caseSensitive')
-              ? _json['caseSensitive'] as core.bool
-              : null,
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (values != null) 'values': values!,
-      };
-}
+typedef InListFilter = $InListFilter;
 
 /// The dimensions and metrics currently accepted in reporting methods.
 class Metadata {
@@ -1841,25 +1779,7 @@ class MetricMetadata {
 }
 
 /// Sorts by metric values.
-class MetricOrderBy {
-  /// A metric name in the request to order by.
-  core.String? metricName;
-
-  MetricOrderBy({
-    this.metricName,
-  });
-
-  MetricOrderBy.fromJson(core.Map _json)
-      : this(
-          metricName: _json.containsKey('metricName')
-              ? _json['metricName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-      };
-}
+typedef MetricOrderBy = $MetricOrderBy;
 
 /// The value of a metric.
 class MetricValue {
@@ -1979,33 +1899,7 @@ class NumericFilter {
 }
 
 /// To represent a number.
-class NumericValue {
-  /// Double value
-  core.double? doubleValue;
-
-  /// Integer value
-  core.String? int64Value;
-
-  NumericValue({
-    this.doubleValue,
-    this.int64Value,
-  });
-
-  NumericValue.fromJson(core.Map _json)
-      : this(
-          doubleValue: _json.containsKey('doubleValue')
-              ? (_json['doubleValue'] as core.num).toDouble()
-              : null,
-          int64Value: _json.containsKey('int64Value')
-              ? _json['int64Value'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (int64Value != null) 'int64Value': int64Value!,
-      };
-}
+typedef NumericValue = $NumericValue;
 
 /// Order bys define how rows will be sorted in the response.
 ///
@@ -2358,33 +2252,7 @@ class PropertyQuota {
 }
 
 /// Current state for a particular quota group.
-class QuotaStatus {
-  /// Quota consumed by this request.
-  core.int? consumed;
-
-  /// Quota remaining after this request.
-  core.int? remaining;
-
-  QuotaStatus({
-    this.consumed,
-    this.remaining,
-  });
-
-  QuotaStatus.fromJson(core.Map _json)
-      : this(
-          consumed: _json.containsKey('consumed')
-              ? _json['consumed'] as core.int
-              : null,
-          remaining: _json.containsKey('remaining')
-              ? _json['remaining'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (consumed != null) 'consumed': consumed!,
-        if (remaining != null) 'remaining': remaining!,
-      };
-}
+typedef QuotaStatus = $QuotaStatus;
 
 /// Response's metadata carrying additional information about the report
 /// content.
@@ -2803,8 +2671,7 @@ class RunPivotReportResponse {
 class RunRealtimeReportRequest {
   /// The filter clause of dimensions.
   ///
-  /// Dimensions must be requested to be used in this filter. Metrics cannot be
-  /// used in this filter.
+  /// Metrics cannot be used in this filter.
   FilterExpression? dimensionFilter;
 
   /// The dimensions requested and displayed.
@@ -2829,9 +2696,8 @@ class RunRealtimeReportRequest {
 
   /// The filter clause of metrics.
   ///
-  /// Applied at post aggregation phase, similar to SQL having-clause. Metrics
-  /// must be requested to be used in this filter. Dimensions cannot be used in
-  /// this filter.
+  /// Applied at post aggregation phase, similar to SQL having-clause.
+  /// Dimensions cannot be used in this filter.
   FilterExpression? metricFilter;
 
   /// The metrics requested and displayed.
@@ -3398,47 +3264,4 @@ class SchemaRestrictionResponse {
 }
 
 /// The filter for string
-class StringFilter {
-  /// If true, the string value is case sensitive.
-  core.bool? caseSensitive;
-
-  /// The match type for this filter.
-  /// Possible string values are:
-  /// - "MATCH_TYPE_UNSPECIFIED" : Unspecified
-  /// - "EXACT" : Exact match of the string value.
-  /// - "BEGINS_WITH" : Begins with the string value.
-  /// - "ENDS_WITH" : Ends with the string value.
-  /// - "CONTAINS" : Contains the string value.
-  /// - "FULL_REGEXP" : Full match for the regular expression with the string
-  /// value.
-  /// - "PARTIAL_REGEXP" : Partial match for the regular expression with the
-  /// string value.
-  core.String? matchType;
-
-  /// The string value used for the matching.
-  core.String? value;
-
-  StringFilter({
-    this.caseSensitive,
-    this.matchType,
-    this.value,
-  });
-
-  StringFilter.fromJson(core.Map _json)
-      : this(
-          caseSensitive: _json.containsKey('caseSensitive')
-              ? _json['caseSensitive'] as core.bool
-              : null,
-          matchType: _json.containsKey('matchType')
-              ? _json['matchType'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (matchType != null) 'matchType': matchType!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef StringFilter = $StringFilter;

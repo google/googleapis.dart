@@ -1591,6 +1591,7 @@ api.FhirStore buildFhirStore() {
   final o = api.FhirStore();
   buildCounterFhirStore++;
   if (buildCounterFhirStore < 3) {
+    o.complexDataTypeReferenceParsing = 'foo';
     o.defaultSearchHandlingStrict = true;
     o.disableReferentialIntegrity = true;
     o.disableResourceVersioning = true;
@@ -1609,6 +1610,10 @@ api.FhirStore buildFhirStore() {
 void checkFhirStore(api.FhirStore o) {
   buildCounterFhirStore++;
   if (buildCounterFhirStore < 3) {
+    unittest.expect(
+      o.complexDataTypeReferenceParsing!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.defaultSearchHandlingStrict!, unittest.isTrue);
     unittest.expect(o.disableReferentialIntegrity!, unittest.isTrue);
     unittest.expect(o.disableResourceVersioning!, unittest.isTrue);

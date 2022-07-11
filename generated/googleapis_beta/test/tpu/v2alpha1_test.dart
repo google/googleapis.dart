@@ -1104,6 +1104,43 @@ void checkServiceIdentity(api.ServiceIdentity o) {
   buildCounterServiceIdentity--;
 }
 
+core.List<core.String> buildUnnamed22() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed22(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterSimulateMaintenanceEventRequest = 0;
+api.SimulateMaintenanceEventRequest buildSimulateMaintenanceEventRequest() {
+  final o = api.SimulateMaintenanceEventRequest();
+  buildCounterSimulateMaintenanceEventRequest++;
+  if (buildCounterSimulateMaintenanceEventRequest < 3) {
+    o.workerIds = buildUnnamed22();
+  }
+  buildCounterSimulateMaintenanceEventRequest--;
+  return o;
+}
+
+void checkSimulateMaintenanceEventRequest(
+    api.SimulateMaintenanceEventRequest o) {
+  buildCounterSimulateMaintenanceEventRequest++;
+  if (buildCounterSimulateMaintenanceEventRequest < 3) {
+    checkUnnamed22(o.workerIds!);
+  }
+  buildCounterSimulateMaintenanceEventRequest--;
+}
+
 core.int buildCounterStartNodeRequest = 0;
 api.StartNodeRequest buildStartNodeRequest() {
   final o = api.StartNodeRequest();
@@ -1119,7 +1156,7 @@ void checkStartNodeRequest(api.StartNodeRequest o) {
   buildCounterStartNodeRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed22() => {
+core.Map<core.String, core.Object?> buildUnnamed23() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1132,7 +1169,7 @@ core.Map<core.String, core.Object?> buildUnnamed22() => {
       },
     };
 
-void checkUnnamed22(core.Map<core.String, core.Object?> o) {
+void checkUnnamed23(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1164,15 +1201,15 @@ void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed23() => [
-      buildUnnamed22(),
-      buildUnnamed22(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed24() => [
+      buildUnnamed23(),
+      buildUnnamed23(),
     ];
 
-void checkUnnamed23(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed24(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed22(o[0]);
-  checkUnnamed22(o[1]);
+  checkUnnamed23(o[0]);
+  checkUnnamed23(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1181,7 +1218,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed23();
+    o.details = buildUnnamed24();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1195,7 +1232,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed23(o.details!);
+    checkUnnamed24(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1504,6 +1541,16 @@ void main() {
       final od = api.ServiceIdentity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkServiceIdentity(od);
+    });
+  });
+
+  unittest.group('obj-schema-SimulateMaintenanceEventRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSimulateMaintenanceEventRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SimulateMaintenanceEventRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSimulateMaintenanceEventRequest(od);
     });
   });
 
@@ -2228,6 +2275,64 @@ void main() {
       }), true);
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--simulateMaintenanceEvent', () async {
+      final mock = HttpServerMock();
+      final res = api.TPUApi(mock).projects.locations.nodes;
+      final arg_request = buildSimulateMaintenanceEventRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SimulateMaintenanceEventRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSimulateMaintenanceEventRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('v2alpha1/'),
+        );
+        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.simulateMaintenanceEvent(arg_request, arg_name,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

@@ -926,6 +926,68 @@ class AwsAccessKey {
       };
 }
 
+/// An AwsS3CompatibleData resource.
+class AwsS3CompatibleData {
+  /// Specifies the name of the bucket.
+  ///
+  /// Required.
+  core.String? bucketName;
+
+  /// Specifies the endpoint of the storage service.
+  ///
+  /// Required.
+  core.String? endpoint;
+
+  /// Specifies the root path to transfer objects.
+  ///
+  /// Must be an empty string or full path name that ends with a '/'. This field
+  /// is treated as an object prefix. As such, it should generally not begin
+  /// with a '/'.
+  core.String? path;
+
+  /// Specifies the region to sign requests with.
+  ///
+  /// This can be left blank if requests should be signed with an empty region.
+  core.String? region;
+
+  /// A S3 compatible metadata.
+  S3CompatibleMetadata? s3Metadata;
+
+  AwsS3CompatibleData({
+    this.bucketName,
+    this.endpoint,
+    this.path,
+    this.region,
+    this.s3Metadata,
+  });
+
+  AwsS3CompatibleData.fromJson(core.Map _json)
+      : this(
+          bucketName: _json.containsKey('bucketName')
+              ? _json['bucketName'] as core.String
+              : null,
+          endpoint: _json.containsKey('endpoint')
+              ? _json['endpoint'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+          s3Metadata: _json.containsKey('s3Metadata')
+              ? S3CompatibleMetadata.fromJson(
+                  _json['s3Metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (path != null) 'path': path!,
+        if (region != null) 'region': region!,
+        if (s3Metadata != null) 's3Metadata': s3Metadata!,
+      };
+}
+
 /// An AwsS3Data resource can be a data source, but not a data sink.
 ///
 /// In an AwsS3Data resource, an object's name is the S3 object's key name.
@@ -1897,6 +1959,86 @@ class RunTransferJobRequest {
       };
 }
 
+/// S3CompatibleMetadata contains the metadata fields that apply to the basic
+/// types of S3-compatible data providers.
+class S3CompatibleMetadata {
+  /// Specifies the authentication and authorization method used by the storage
+  /// service.
+  ///
+  /// When not specified, Transfer Service will attempt to determine right auth
+  /// method to use.
+  /// Possible string values are:
+  /// - "AUTH_METHOD_UNSPECIFIED" : AuthMethod is not specified.
+  /// - "AUTH_METHOD_AWS_SIGNATURE_V4" : Auth requests with AWS SigV4.
+  /// - "AUTH_METHOD_AWS_SIGNATURE_V2" : Auth requests with AWS SigV2.
+  core.String? authMethod;
+
+  /// The Listing API to use for discovering objects.
+  ///
+  /// When not specified, Transfer Service will attempt to determine the right
+  /// API to use.
+  /// Possible string values are:
+  /// - "LIST_API_UNSPECIFIED" : ListApi is not specified.
+  /// - "LIST_OBJECTS_V2" : Perform listing using ListObjectsV2 API.
+  /// - "LIST_OBJECTS" : Legacy ListObjects API.
+  core.String? listApi;
+
+  /// Specifies the network protocol of the agent.
+  ///
+  /// When not specified, the default value of NetworkProtocol
+  /// NETWORK_PROTOCOL_HTTPS is used.
+  /// Possible string values are:
+  /// - "NETWORK_PROTOCOL_UNSPECIFIED" : NetworkProtocol is not specified.
+  /// - "NETWORK_PROTOCOL_HTTPS" : Perform requests using HTTPS.
+  /// - "NETWORK_PROTOCOL_HTTP" : Not recommended: This sends data in
+  /// clear-text. This is only appropriate within a closed network or for
+  /// publicly available data. Perform requests using HTTP.
+  core.String? protocol;
+
+  /// Specifies the API request model used to call the storage service.
+  ///
+  /// When not specified, the default value of RequestModel
+  /// REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+  /// Possible string values are:
+  /// - "REQUEST_MODEL_UNSPECIFIED" : RequestModel is not specified.
+  /// - "REQUEST_MODEL_VIRTUAL_HOSTED_STYLE" : Perform requests using Virtual
+  /// Hosted Style. Example:
+  /// https://bucket-name.s3.region.amazonaws.com/key-name
+  /// - "REQUEST_MODEL_PATH_STYLE" : Perform requests using Path Style. Example:
+  /// https://s3.region.amazonaws.com/bucket-name/key-name
+  core.String? requestModel;
+
+  S3CompatibleMetadata({
+    this.authMethod,
+    this.listApi,
+    this.protocol,
+    this.requestModel,
+  });
+
+  S3CompatibleMetadata.fromJson(core.Map _json)
+      : this(
+          authMethod: _json.containsKey('authMethod')
+              ? _json['authMethod'] as core.String
+              : null,
+          listApi: _json.containsKey('listApi')
+              ? _json['listApi'] as core.String
+              : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
+          requestModel: _json.containsKey('requestModel')
+              ? _json['requestModel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authMethod != null) 'authMethod': authMethod!,
+        if (listApi != null) 'listApi': listApi!,
+        if (protocol != null) 'protocol': protocol!,
+        if (requestModel != null) 'requestModel': requestModel!,
+      };
+}
+
 /// Transfers can be scheduled to recur or to run just once.
 class Schedule {
   /// The time in UTC that no further transfer operations are scheduled.
@@ -2211,8 +2353,6 @@ class TransferOptions {
   core.bool? deleteObjectsUniqueInSink;
 
   /// Represents the selected metadata options for a transfer job.
-  ///
-  /// This feature is in Preview.
   MetadataOptions? metadataOptions;
 
   /// When to overwrite objects that already exist in the sink.
@@ -2284,6 +2424,9 @@ class TransferOptions {
 
 /// Configuration for running a transfer.
 class TransferSpec {
+  /// An AWS S3 compatible data source.
+  AwsS3CompatibleData? awsS3CompatibleDataSource;
+
   /// An AWS S3 data source.
   AwsS3Data? awsS3DataSource;
 
@@ -2338,6 +2481,7 @@ class TransferSpec {
   TransferOptions? transferOptions;
 
   TransferSpec({
+    this.awsS3CompatibleDataSource,
     this.awsS3DataSource,
     this.azureBlobStorageDataSource,
     this.gcsDataSink,
@@ -2355,6 +2499,11 @@ class TransferSpec {
 
   TransferSpec.fromJson(core.Map _json)
       : this(
+          awsS3CompatibleDataSource: _json
+                  .containsKey('awsS3CompatibleDataSource')
+              ? AwsS3CompatibleData.fromJson(_json['awsS3CompatibleDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           awsS3DataSource: _json.containsKey('awsS3DataSource')
               ? AwsS3Data.fromJson(_json['awsS3DataSource']
                   as core.Map<core.String, core.dynamic>)
@@ -2411,6 +2560,8 @@ class TransferSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (awsS3CompatibleDataSource != null)
+          'awsS3CompatibleDataSource': awsS3CompatibleDataSource!,
         if (awsS3DataSource != null) 'awsS3DataSource': awsS3DataSource!,
         if (azureBlobStorageDataSource != null)
           'azureBlobStorageDataSource': azureBlobStorageDataSource!,

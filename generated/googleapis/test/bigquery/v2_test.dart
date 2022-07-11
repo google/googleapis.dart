@@ -1222,6 +1222,7 @@ api.CsvOptions buildCsvOptions() {
     o.encoding = 'foo';
     o.fieldDelimiter = 'foo';
     o.nullMarker = 'foo';
+    o.preserveAsciiControlCharacters = true;
     o.quote = 'foo';
     o.skipLeadingRows = 'foo';
   }
@@ -1246,6 +1247,7 @@ void checkCsvOptions(api.CsvOptions o) {
       o.nullMarker!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.preserveAsciiControlCharacters!, unittest.isTrue);
     unittest.expect(
       o.quote!,
       unittest.equals('foo'),
@@ -2315,6 +2317,7 @@ api.ExternalDataConfiguration buildExternalDataConfiguration() {
     o.ignoreUnknownValues = true;
     o.maxBadRecords = 42;
     o.parquetOptions = buildParquetOptions();
+    o.referenceFileSchemaUri = 'foo';
     o.schema = buildTableSchema();
     o.sourceFormat = 'foo';
     o.sourceUris = buildUnnamed33();
@@ -2347,6 +2350,10 @@ void checkExternalDataConfiguration(api.ExternalDataConfiguration o) {
       unittest.equals(42),
     );
     checkParquetOptions(o.parquetOptions!);
+    unittest.expect(
+      o.referenceFileSchemaUri!,
+      unittest.equals('foo'),
+    );
     checkTableSchema(o.schema!);
     unittest.expect(
       o.sourceFormat!,
@@ -3259,6 +3266,7 @@ api.JobConfigurationLoad buildJobConfigurationLoad() {
     o.projectionFields = buildUnnamed43();
     o.quote = 'foo';
     o.rangePartitioning = buildRangePartitioning();
+    o.referenceFileSchemaUri = 'foo';
     o.schema = buildTableSchema();
     o.schemaInline = 'foo';
     o.schemaInlineFormat = 'foo';
@@ -3319,6 +3327,10 @@ void checkJobConfigurationLoad(api.JobConfigurationLoad o) {
       unittest.equals('foo'),
     );
     checkRangePartitioning(o.rangePartitioning!);
+    unittest.expect(
+      o.referenceFileSchemaUri!,
+      unittest.equals('foo'),
+    );
     checkTableSchema(o.schema!);
     unittest.expect(
       o.schemaInline!,
@@ -5243,6 +5255,7 @@ api.QueryTimelineSample buildQueryTimelineSample() {
     o.activeUnits = 'foo';
     o.completedUnits = 'foo';
     o.elapsedMs = 'foo';
+    o.estimatedRunnableUnits = 'foo';
     o.pendingUnits = 'foo';
     o.totalSlotMs = 'foo';
   }
@@ -5263,6 +5276,10 @@ void checkQueryTimelineSample(api.QueryTimelineSample o) {
     );
     unittest.expect(
       o.elapsedMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.estimatedRunnableUnits!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -6127,6 +6144,7 @@ api.Table buildTable() {
     o.lastModifiedTime = 'foo';
     o.location = 'foo';
     o.materializedView = buildMaterializedViewDefinition();
+    o.maxStaleness = 'foo';
     o.model = buildModelDefinition();
     o.numBytes = 'foo';
     o.numLongTermBytes = 'foo';
@@ -6204,6 +6222,10 @@ void checkTable(api.Table o) {
       unittest.equals('foo'),
     );
     checkMaterializedViewDefinition(o.materializedView!);
+    unittest.expect(
+      o.maxStaleness!,
+      unittest.equals('foo'),
+    );
     checkModelDefinition(o.model!);
     unittest.expect(
       o.numBytes!,
@@ -7123,9 +7145,11 @@ api.TrainingOptions buildTrainingOptions() {
     o.lossType = 'foo';
     o.maxIterations = 'foo';
     o.maxParallelTrials = 'foo';
+    o.maxTimeSeriesLength = 'foo';
     o.maxTreeDepth = 'foo';
     o.minRelativeProgress = 42.0;
     o.minSplitLoss = 42.0;
+    o.minTimeSeriesLength = 'foo';
     o.minTreeChildWeight = 'foo';
     o.modelUri = 'foo';
     o.nonSeasonalOrder = buildArimaOrder();
@@ -7140,8 +7164,10 @@ api.TrainingOptions buildTrainingOptions() {
     o.timeSeriesDataColumn = 'foo';
     o.timeSeriesIdColumn = 'foo';
     o.timeSeriesIdColumns = buildUnnamed114();
+    o.timeSeriesLengthFraction = 42.0;
     o.timeSeriesTimestampColumn = 'foo';
     o.treeMethod = 'foo';
+    o.trendSmoothingWindowSize = 'foo';
     o.userColumn = 'foo';
     o.walsAlpha = 42.0;
     o.warmStart = true;
@@ -7278,6 +7304,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.maxTimeSeriesLength!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.maxTreeDepth!,
       unittest.equals('foo'),
     );
@@ -7288,6 +7318,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
     unittest.expect(
       o.minSplitLoss!,
       unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.minTimeSeriesLength!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.minTreeChildWeight!,
@@ -7337,11 +7371,19 @@ void checkTrainingOptions(api.TrainingOptions o) {
     );
     checkUnnamed114(o.timeSeriesIdColumns!);
     unittest.expect(
+      o.timeSeriesLengthFraction!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
       o.timeSeriesTimestampColumn!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.treeMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trendSmoothingWindowSize!,
       unittest.equals('foo'),
     );
     unittest.expect(

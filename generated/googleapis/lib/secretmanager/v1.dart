@@ -1731,6 +1731,19 @@ class Secret {
   /// The TTL for the Secret.
   core.String? ttl;
 
+  /// Mapping from version alias to version name.
+  ///
+  /// A version alias is a string with a maximum length of 63 characters and can
+  /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`)
+  /// and underscore ('_') characters. An alias string must start with a letter
+  /// and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be
+  /// assigned to a given secret. Version-Alias pairs will be viewable via
+  /// GetSecret and modifiable via UpdateSecret. At launch Access by Allias will
+  /// only be supported on GetSecretVersion and AccessSecretVersion.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? versionAliases;
+
   Secret({
     this.createTime,
     this.etag,
@@ -1741,6 +1754,7 @@ class Secret {
     this.rotation,
     this.topics,
     this.ttl,
+    this.versionAliases,
   });
 
   Secret.fromJson(core.Map _json)
@@ -1776,6 +1790,15 @@ class Secret {
                   .toList()
               : null,
           ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+          versionAliases: _json.containsKey('versionAliases')
+              ? (_json['versionAliases'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1788,6 +1811,7 @@ class Secret {
         if (rotation != null) 'rotation': rotation!,
         if (topics != null) 'topics': topics!,
         if (ttl != null) 'ttl': ttl!,
+        if (versionAliases != null) 'versionAliases': versionAliases!,
       };
 }
 

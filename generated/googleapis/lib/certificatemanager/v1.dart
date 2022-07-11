@@ -1860,12 +1860,12 @@ class GclbTarget {
   /// serving.
   core.List<IpConfig>? ipConfigs;
 
-  /// A name must be in the format `projects / * /locations / *
-  /// /targetHttpsProxies / * `.
+  /// This field returns the resource name in the following format:
+  /// `//compute.googleapis.com/projects / * /global/targetHttpsProxies / * `.
   core.String? targetHttpsProxy;
 
-  /// A name must be in the format `projects / * /locations / *
-  /// /targetSslProxies / * `.
+  /// This field returns the resource name in the following format:
+  /// `//compute.googleapis.com/projects / * /global/targetSslProxies / * `.
   core.String? targetSslProxy;
 
   GclbTarget({

@@ -1603,6 +1603,8 @@ class Account {
   /// Resource name of the account.
   ///
   /// Format: accounts/pub-\[0-9\]+
+  ///
+  /// Output only.
   core.String? name;
 
   /// Outstanding tasks that need to be completed as part of the sign-up process
@@ -1689,6 +1691,8 @@ class AdClient {
   /// Resource name of the ad client.
   ///
   /// Format: accounts/{account}/adclients/{adclient}
+  ///
+  /// Output only.
   core.String? name;
 
   /// Reporting product code of the ad client.
@@ -1813,6 +1817,8 @@ class AdUnit {
   /// Resource name of the ad unit.
   ///
   /// Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+  ///
+  /// Output only.
   core.String? name;
 
   /// Unique ID of the ad unit as used in the `AD_UNIT_ID` reporting dimension.
@@ -1900,6 +1906,8 @@ class Alert {
   /// Resource name of the alert.
   ///
   /// Format: accounts/{account}/alerts/{alert}
+  ///
+  /// Output only.
   core.String? name;
 
   /// Severity of this alert.
@@ -2020,6 +2028,8 @@ class CustomChannel {
   ///
   /// Format:
   /// accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+  ///
+  /// Output only.
   core.String? name;
 
   /// Unique ID of the custom channel as used in the `CUSTOM_CHANNEL_ID`
@@ -2562,6 +2572,8 @@ class Payment {
   /// (current) YouTube earnings. - accounts/{account}/payments/yyyy-MM-dd for
   /// paid AdSense earnings. - accounts/{account}/payments/youtube-yyyy-MM-dd
   /// for paid YouTube earnings.
+  ///
+  /// Output only.
   core.String? name;
 
   Payment({
@@ -2723,6 +2735,8 @@ class SavedReport {
   /// Resource name of the report.
   ///
   /// Format: accounts/{account}/reports/{report}
+  ///
+  /// Output only.
   core.String? name;
 
   /// Report title as specified by publisher.
@@ -2760,6 +2774,8 @@ class Site {
   /// Resource name of a site.
   ///
   /// Format: accounts/{account}/sites/{site}
+  ///
+  /// Output only.
   core.String? name;
 
   /// Unique ID of the site as used in the `OWNED_SITE_ID` reporting dimension.
@@ -2827,6 +2843,8 @@ class UrlChannel {
   /// Resource name of the URL channel.
   ///
   /// Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
+  ///
+  /// Output only.
   core.String? name;
 
   /// Unique ID of the custom channel as used in the `URL_CHANNEL_ID` reporting

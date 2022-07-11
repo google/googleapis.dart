@@ -25,12 +25,14 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsCatalogsResource]
+///       - [ProjectsLocationsCatalogsAttributesConfigResource]
 ///       - [ProjectsLocationsCatalogsBranchesResource]
 ///         - [ProjectsLocationsCatalogsBranchesOperationsResource]
 ///         - [ProjectsLocationsCatalogsBranchesProductsResource]
 ///       - [ProjectsLocationsCatalogsCompletionDataResource]
 ///       - [ProjectsLocationsCatalogsOperationsResource]
 ///       - [ProjectsLocationsCatalogsPlacementsResource]
+///       - [ProjectsLocationsCatalogsServingConfigsResource]
 ///       - [ProjectsLocationsCatalogsUserEventsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///   - [ProjectsOperationsResource]
@@ -95,6 +97,8 @@ class ProjectsLocationsResource {
 class ProjectsLocationsCatalogsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsCatalogsAttributesConfigResource get attributesConfig =>
+      ProjectsLocationsCatalogsAttributesConfigResource(_requester);
   ProjectsLocationsCatalogsBranchesResource get branches =>
       ProjectsLocationsCatalogsBranchesResource(_requester);
   ProjectsLocationsCatalogsCompletionDataResource get completionData =>
@@ -103,6 +107,8 @@ class ProjectsLocationsCatalogsResource {
       ProjectsLocationsCatalogsOperationsResource(_requester);
   ProjectsLocationsCatalogsPlacementsResource get placements =>
       ProjectsLocationsCatalogsPlacementsResource(_requester);
+  ProjectsLocationsCatalogsServingConfigsResource get servingConfigs =>
+      ProjectsLocationsCatalogsServingConfigsResource(_requester);
   ProjectsLocationsCatalogsUserEventsResource get userEvents =>
       ProjectsLocationsCatalogsUserEventsResource(_requester);
 
@@ -137,11 +143,12 @@ class ProjectsLocationsCatalogsResource {
   /// types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` *
   /// A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
   ///
-  /// [languageCodes] - The language filters applied to the output suggestions.
-  /// If set, it should contain the language of the query. If not set,
-  /// suggestions are returned without considering language restrictions. This
-  /// is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-  /// information, see
+  /// [languageCodes] - Note that this field applies for `user-data` dataset
+  /// only. For requests with `cloud-retail` dataset, setting this field has no
+  /// effect. The language filters applied to the output suggestions. If set, it
+  /// should contain the language of the query. If not set, suggestions are
+  /// returned without considering language restrictions. This is the BCP-47
+  /// language code, such as "en-US" or "sr-Latn". For more information, see
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The
   /// maximum number of language codes is 3.
   ///
@@ -198,6 +205,82 @@ class ProjectsLocationsCatalogsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudRetailV2CompleteQueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an AttributesConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Full AttributesConfig resource name. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/attributesConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2AttributesConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2AttributesConfig> getAttributesConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2AttributesConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a CompletionConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Full CompletionConfig resource name. Format:
+  /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/completionConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2CompletionConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2CompletionConfig> getCompletionConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2CompletionConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -405,6 +488,220 @@ class ProjectsLocationsCatalogsResource {
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the AttributesConfig.
+  ///
+  /// The catalog attributes in the request will be updated in the catalog, or
+  /// inserted if they do not exist. Existing catalog attributes not included in
+  /// the request will remain unchanged. Attributes that are assigned to
+  /// products, but do not exist at the catalog level, are always included in
+  /// the response. The product attribute is assigned default values for missing
+  /// catalog attribute fields, e.g., searchable and dynamic facetable options.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Immutable. The fully qualified resource name of the
+  /// attribute config. Format: `projects / * /locations / * /catalogs / *
+  /// /attributesConfig`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/attributesConfig$`.
+  ///
+  /// [updateMask] - Indicates which fields in the provided AttributesConfig to
+  /// update. The following is the only supported field: *
+  /// AttributesConfig.catalog_attributes If not set, all supported fields are
+  /// updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2AttributesConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2AttributesConfig> updateAttributesConfig(
+    GoogleCloudRetailV2AttributesConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2AttributesConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the CompletionConfigs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Immutable. Fully qualified name `projects / *
+  /// /locations / * /catalogs / * /completionConfig`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/completionConfig$`.
+  ///
+  /// [updateMask] - Indicates which fields in the provided CompletionConfig to
+  /// update. The following are the only supported fields: *
+  /// CompletionConfig.matching_order * CompletionConfig.max_suggestions *
+  /// CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not
+  /// set, all supported fields are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2CompletionConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2CompletionConfig> updateCompletionConfig(
+    GoogleCloudRetailV2CompletionConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2CompletionConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCatalogsAttributesConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCatalogsAttributesConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Adds the specified CatalogAttribute to the AttributesConfig.
+  ///
+  /// If the CatalogAttribute to add already exists, an ALREADY_EXISTS error is
+  /// returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [attributesConfig] - Required. Full AttributesConfig resource name.
+  /// Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/attributesConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2AttributesConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2AttributesConfig> addCatalogAttribute(
+    GoogleCloudRetailV2AddCatalogAttributeRequest request,
+    core.String attributesConfig, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' +
+        core.Uri.encodeFull('$attributesConfig') +
+        ':addCatalogAttribute';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2AttributesConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes the specified CatalogAttribute from the AttributesConfig.
+  ///
+  /// If the CatalogAttribute to remove does not exist, a NOT_FOUND error is
+  /// returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [attributesConfig] - Required. Full AttributesConfig resource name.
+  /// Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/attributesConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2AttributesConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2AttributesConfig> removeCatalogAttribute(
+    GoogleCloudRetailV2RemoveCatalogAttributeRequest request,
+    core.String attributesConfig, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' +
+        core.Uri.encodeFull('$attributesConfig') +
+        ':removeCatalogAttribute';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2AttributesConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsCatalogsBranchesResource {
@@ -479,9 +776,10 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// before updating fulfillment information. If the request is valid, the
   /// update will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, the added place IDs are not immediately manifested
-  /// in the Product queried by GetProduct or ListProducts. This feature is only
-  /// available for users who have Retail Search enabled. Please enable Retail
-  /// Search on Cloud Console before using this feature.
+  /// in the Product queried by ProductService.GetProduct or
+  /// ProductService.ListProducts. This feature is only available for users who
+  /// have Retail Search enabled. Please enable Retail Search on Cloud Console
+  /// before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -534,11 +832,12 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// before updating inventory information. If the request is valid, the update
   /// will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, updates are not immediately manifested in the
-  /// Product queried by GetProduct or ListProducts. Local inventory information
-  /// can only be modified using this method. CreateProduct and UpdateProduct
-  /// has no effect on local inventories. This feature is only available for
-  /// users who have Retail Search enabled. Please enable Retail Search on Cloud
-  /// Console before using this feature.
+  /// Product queried by ProductService.GetProduct or
+  /// ProductService.ListProducts. Local inventory information can only be
+  /// modified using this method. ProductService.CreateProduct and
+  /// ProductService.UpdateProduct has no effect on local inventories. This
+  /// feature is only available for users who have Retail Search enabled. Please
+  /// enable Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -918,9 +1217,10 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// before updating fulfillment information. If the request is valid, the
   /// update will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, the removed place IDs are not immediately manifested
-  /// in the Product queried by GetProduct or ListProducts. This feature is only
-  /// available for users who have Retail Search enabled. Please enable Retail
-  /// Search on Cloud Console before using this feature.
+  /// in the Product queried by ProductService.GetProduct or
+  /// ProductService.ListProducts. This feature is only available for users who
+  /// have Retail Search enabled. Please enable Retail Search on Cloud Console
+  /// before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -972,11 +1272,12 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// This process is asynchronous. If the request is valid, the removal will be
   /// enqueued and processed downstream. As a consequence, when a response is
   /// returned, removals are not immediately manifested in the Product queried
-  /// by GetProduct or ListProducts. Local inventory information can only be
-  /// removed using this method. CreateProduct and UpdateProduct has no effect
-  /// on local inventories. This feature is only available for users who have
-  /// Retail Search enabled. Please enable Retail Search on Cloud Console before
-  /// using this feature.
+  /// by ProductService.GetProduct or ProductService.ListProducts. Local
+  /// inventory information can only be removed using this method.
+  /// ProductService.CreateProduct and ProductService.UpdateProduct has no
+  /// effect on local inventories. This feature is only available for users who
+  /// have Retail Search enabled. Please enable Retail Search on Cloud Console
+  /// before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1029,20 +1330,22 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// before updating fulfillment information. If the request is valid, the
   /// update will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, updates are not immediately manifested in the
-  /// Product queried by GetProduct or ListProducts. When inventory is updated
-  /// with CreateProduct and UpdateProduct, the specified inventory field
-  /// value(s) will overwrite any existing value(s) while ignoring the last
-  /// update time for this field. Furthermore, the last update time for the
-  /// specified inventory fields will be overwritten to the time of the
-  /// CreateProduct or UpdateProduct request. If no inventory fields are set in
-  /// CreateProductRequest.product, then any pre-existing inventory information
-  /// for this product will be used. If no inventory fields are set in
-  /// SetInventoryRequest.set_mask, then any existing inventory information will
-  /// be preserved. Pre-existing inventory information can only be updated with
-  /// SetInventory, ProductService.AddFulfillmentPlaces, and
-  /// RemoveFulfillmentPlaces. This feature is only available for users who have
-  /// Retail Search enabled. Please enable Retail Search on Cloud Console before
-  /// using this feature.
+  /// Product queried by ProductService.GetProduct or
+  /// ProductService.ListProducts. When inventory is updated with
+  /// ProductService.CreateProduct and ProductService.UpdateProduct, the
+  /// specified inventory field value(s) will overwrite any existing value(s)
+  /// while ignoring the last update time for this field. Furthermore, the last
+  /// update time for the specified inventory fields will be overwritten to the
+  /// time of the ProductService.CreateProduct or ProductService.UpdateProduct
+  /// request. If no inventory fields are set in CreateProductRequest.product,
+  /// then any pre-existing inventory information for this product will be used.
+  /// If no inventory fields are set in SetInventoryRequest.set_mask, then any
+  /// existing inventory information will be preserved. Pre-existing inventory
+  /// information can only be updated with ProductService.SetInventory,
+  /// ProductService.AddFulfillmentPlaces, and
+  /// ProductService.RemoveFulfillmentPlaces. This feature is only available for
+  /// users who have Retail Search enabled. Please enable Retail Search on Cloud
+  /// Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1261,14 +1564,18 @@ class ProjectsLocationsCatalogsPlacementsResource {
   ///
   /// Request parameters:
   ///
-  /// [placement] - Required. Full resource name of the format: `{name=projects
-  /// / * /locations/global/catalogs/default_catalog/placements / * }` The ID of
-  /// the Recommendations AI placement. Before you can request predictions from
-  /// your model, you must create at least one placement for it. For more
-  /// information, see
-  /// [Managing placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements).
-  /// The full list of available placements can be seen at
-  /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+  /// [placement] - Required. Full resource name of the format:
+  /// `{placement=projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs / * }` or
+  /// `{placement=projects / *
+  /// /locations/global/catalogs/default_catalog/placements / * }`. We recommend
+  /// using the `servingConfigs` resource. `placements` is a legacy resource.
+  /// The ID of the Recommendations AI serving config or placement. Before you
+  /// can request predictions from your model, you must create at least one
+  /// serving config or placement for it. For more information, see
+  /// [Managing serving configurations](https://cloud.google.com/retail/docs/manage-configs).
+  /// The full list of available serving configs can be seen at
+  /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
   ///
@@ -1313,13 +1620,126 @@ class ProjectsLocationsCatalogsPlacementsResource {
   ///
   /// Request parameters:
   ///
-  /// [placement] - Required. The resource name of the search engine placement,
-  /// such as `projects / *
+  /// [placement] - Required. The resource name of the Retail Search serving
+  /// config, such as `projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+  /// or the name of the legacy placement resource, such as `projects / *
   /// /locations/global/catalogs/default_catalog/placements/default_search`.
   /// This field is used to identify the serving configuration name and the set
   /// of models that will be used to make the search.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2SearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2SearchResponse> search(
+    GoogleCloudRetailV2SearchRequest request,
+    core.String placement, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$placement') + ':search';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2SearchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCatalogsServingConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCatalogsServingConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Makes a recommendation prediction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [placement] - Required. Full resource name of the format:
+  /// `{placement=projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs / * }` or
+  /// `{placement=projects / *
+  /// /locations/global/catalogs/default_catalog/placements / * }`. We recommend
+  /// using the `servingConfigs` resource. `placements` is a legacy resource.
+  /// The ID of the Recommendations AI serving config or placement. Before you
+  /// can request predictions from your model, you must create at least one
+  /// serving config or placement for it. For more information, see
+  /// [Managing serving configurations](https://cloud.google.com/retail/docs/manage-configs).
+  /// The full list of available serving configs can be seen at
+  /// https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2PredictResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2PredictResponse> predict(
+    GoogleCloudRetailV2PredictRequest request,
+    core.String placement, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$placement') + ':predict';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2PredictResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Performs a search.
+  ///
+  /// This feature is only available for users who have Retail Search enabled.
+  /// Please enable Retail Search on Cloud Console before using this feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [placement] - Required. The resource name of the Retail Search serving
+  /// config, such as `projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+  /// or the name of the legacy placement resource, such as `projects / *
+  /// /locations/global/catalogs/default_catalog/placements/default_search`.
+  /// This field is used to identify the serving configuration name and the set
+  /// of models that will be used to make the search.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1838,6 +2258,31 @@ class ProjectsOperationsResource {
 /// work unchanged.
 typedef GoogleApiHttpBody = $HttpBody;
 
+/// Request for CatalogService.AddCatalogAttribute method.
+class GoogleCloudRetailV2AddCatalogAttributeRequest {
+  /// The CatalogAttribute to add.
+  ///
+  /// Required.
+  GoogleCloudRetailV2CatalogAttribute? catalogAttribute;
+
+  GoogleCloudRetailV2AddCatalogAttributeRequest({
+    this.catalogAttribute,
+  });
+
+  GoogleCloudRetailV2AddCatalogAttributeRequest.fromJson(core.Map _json)
+      : this(
+          catalogAttribute: _json.containsKey('catalogAttribute')
+              ? GoogleCloudRetailV2CatalogAttribute.fromJson(
+                  _json['catalogAttribute']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (catalogAttribute != null) 'catalogAttribute': catalogAttribute!,
+      };
+}
+
 /// Request message for ProductService.AddFulfillmentPlaces method.
 class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
   /// The time when the fulfillment updates are issued, used to prevent
@@ -1981,6 +2426,68 @@ class GoogleCloudRetailV2AddLocalInventoriesRequest {
       };
 }
 
+/// Catalog level attribute config.
+class GoogleCloudRetailV2AttributesConfig {
+  /// The AttributeConfigLevel used for this catalog.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED" : Value used when unset. Defaults
+  /// to CATALOG_LEVEL_ATTRIBUTE_CONFIG.
+  /// - "PRODUCT_LEVEL_ATTRIBUTE_CONFIG" : At this level, we honor the attribute
+  /// configurations set in Product.attributes.
+  /// - "CATALOG_LEVEL_ATTRIBUTE_CONFIG" : At this level, we honor the attribute
+  /// configurations set in CatalogConfig.attribute_configs.
+  core.String? attributeConfigLevel;
+
+  /// Enable attribute(s) config at catalog level.
+  ///
+  /// For example, indexable, dynamic_facetable, or searchable for each
+  /// attribute. The key is catalog attribute's name. For example: `color`,
+  /// `brands`, `attributes.custom_attribute`, such as `attributes.xyz`. The
+  /// maximum number of catalog attributes allowed in a request is 1000.
+  core.Map<core.String, GoogleCloudRetailV2CatalogAttribute>? catalogAttributes;
+
+  /// The fully qualified resource name of the attribute config.
+  ///
+  /// Format: `projects / * /locations / * /catalogs / * /attributesConfig`
+  ///
+  /// Required. Immutable.
+  core.String? name;
+
+  GoogleCloudRetailV2AttributesConfig({
+    this.attributeConfigLevel,
+    this.catalogAttributes,
+    this.name,
+  });
+
+  GoogleCloudRetailV2AttributesConfig.fromJson(core.Map _json)
+      : this(
+          attributeConfigLevel: _json.containsKey('attributeConfigLevel')
+              ? _json['attributeConfigLevel'] as core.String
+              : null,
+          catalogAttributes: _json.containsKey('catalogAttributes')
+              ? (_json['catalogAttributes']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudRetailV2CatalogAttribute.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeConfigLevel != null)
+          'attributeConfigLevel': attributeConfigLevel!,
+        if (catalogAttributes != null) 'catalogAttributes': catalogAttributes!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// An intended audience of the Product for whom it's sold.
 class GoogleCloudRetailV2Audience {
   /// The age groups of the audience.
@@ -2044,12 +2551,11 @@ class GoogleCloudRetailV2BigQuerySource {
   /// Supported values for user events imports: * `user_event` (default): One
   /// JSON UserEvent per line. * `user_event_ga360`: The schema is available
   /// here: https://support.google.com/analytics/answer/3437719. *
-  /// `user_event_ga4`: This feature is in private preview. Please contact the
-  /// support team for importing Google Analytics 4 events. The schema is
-  /// available here: https://support.google.com/analytics/answer/7029846.
-  /// Supported values for auto-completion imports: * `suggestions` (default):
-  /// One JSON completion suggestion per line. * `denylist`: One JSON deny
-  /// suggestion per line. * `allowlist`: One JSON allow suggestion per line.
+  /// `user_event_ga4`: The schema is available here:
+  /// https://support.google.com/analytics/answer/7029846. Supported values for
+  /// auto-completion imports: * `suggestions` (default): One JSON completion
+  /// suggestion per line. * `denylist`: One JSON deny suggestion per line. *
+  /// `allowlist`: One JSON allow suggestion per line.
   core.String? dataSchema;
 
   /// The BigQuery data set to copy the data from with a length limit of 1,024
@@ -2067,8 +2573,7 @@ class GoogleCloudRetailV2BigQuerySource {
 
   /// BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format.
   ///
-  /// Only supported when ImportProductsRequest.reconciliation_mode is set to
-  /// `FULL`.
+  /// Only supported in ImportProductsRequest.
   GoogleTypeDate? partitionDate;
 
   /// The project ID (can be project # or ID) that the BigQuery source is in
@@ -2169,6 +2674,128 @@ class GoogleCloudRetailV2Catalog {
         if (name != null) 'name': name!,
         if (productLevelConfig != null)
           'productLevelConfig': productLevelConfig!,
+      };
+}
+
+/// Catalog level attribute config for an attribute.
+///
+/// For example, if customers want to enable/disable facet for a specific
+/// attribute.
+class GoogleCloudRetailV2CatalogAttribute {
+  /// If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic
+  /// facet.
+  ///
+  /// Could only be DYNAMIC_FACETABLE_DISABLED if
+  /// CatalogAttribute.indexable_option is INDEXABLE_DISABLED. Otherwise, an
+  /// INVALID_ARGUMENT error is returned.
+  /// Possible string values are:
+  /// - "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults
+  /// to DYNAMIC_FACETABLE_ENABLED.
+  /// - "DYNAMIC_FACETABLE_ENABLED" : Dynamic facetable option enabled for an
+  /// attribute.
+  /// - "DYNAMIC_FACETABLE_DISABLED" : Dynamic facetable option disabled for an
+  /// attribute.
+  core.String? dynamicFacetableOption;
+
+  /// Indicates whether this attribute has been used by any products.
+  ///
+  /// `True` if at least one Product is using this attribute in
+  /// Product.attributes. Otherwise, this field is `False`. CatalogAttribute can
+  /// be pre-loaded by using CatalogService.AddCatalogAttribute,
+  /// CatalogService.ImportCatalogAttributes, or
+  /// CatalogService.UpdateAttributesConfig APIs. This field is `False` for
+  /// pre-loaded CatalogAttributes. Only pre-loaded CatalogAttributes that are
+  /// neither in use by products nor predefined can be deleted.
+  /// CatalogAttributes that are either in use by products or are predefined
+  /// cannot be deleted; however, their configuration properties will reset to
+  /// default values upon removal request. After catalog changes, it takes about
+  /// 10 minutes for this field to update.
+  ///
+  /// Output only.
+  core.bool? inUse;
+
+  /// When AttributesConfig.attribute_config_level is
+  /// CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED attribute values are
+  /// indexed so that it can be filtered, faceted, or boosted in
+  /// SearchService.Search.
+  /// Possible string values are:
+  /// - "INDEXABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults to
+  /// INDEXABLE_ENABLED.
+  /// - "INDEXABLE_ENABLED" : Indexable option enabled for an attribute.
+  /// - "INDEXABLE_DISABLED" : Indexable option disabled for an attribute.
+  core.String? indexableOption;
+
+  /// Attribute name.
+  ///
+  /// For example: `color`, `brands`, `attributes.custom_attribute`, such as
+  /// `attributes.xyz`. To be indexable, the attribute name can contain only
+  /// alpha-numeric characters and underscores. For example, an attribute named
+  /// `attributes.abc_xyz` can be indexed, but an attribute named
+  /// `attributes.abc-xyz` cannot be indexed.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// When AttributesConfig.attribute_config_level is
+  /// CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED, attribute values
+  /// are searchable by text queries in SearchService.Search.
+  ///
+  /// If SEARCHABLE_ENABLED but attribute type is numerical, attribute values
+  /// will not be searchable by text queries in SearchService.Search, as there
+  /// are no text values associated to numerical attributes.
+  /// Possible string values are:
+  /// - "SEARCHABLE_OPTION_UNSPECIFIED" : Value used when unset. Defaults to
+  /// SEARCHABLE_DISABLED.
+  /// - "SEARCHABLE_ENABLED" : Searchable option enabled for an attribute.
+  /// - "SEARCHABLE_DISABLED" : Searchable option disabled for an attribute.
+  core.String? searchableOption;
+
+  /// The type of this attribute.
+  ///
+  /// This is derived from the attribute in Product.attributes.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNKNOWN" : The type of the attribute is unknown. Used when type cannot
+  /// be derived from attribute that is not in_use.
+  /// - "TEXTUAL" : Textual attribute.
+  /// - "NUMERICAL" : Numerical attribute.
+  core.String? type;
+
+  GoogleCloudRetailV2CatalogAttribute({
+    this.dynamicFacetableOption,
+    this.inUse,
+    this.indexableOption,
+    this.key,
+    this.searchableOption,
+    this.type,
+  });
+
+  GoogleCloudRetailV2CatalogAttribute.fromJson(core.Map _json)
+      : this(
+          dynamicFacetableOption: _json.containsKey('dynamicFacetableOption')
+              ? _json['dynamicFacetableOption'] as core.String
+              : null,
+          inUse:
+              _json.containsKey('inUse') ? _json['inUse'] as core.bool : null,
+          indexableOption: _json.containsKey('indexableOption')
+              ? _json['indexableOption'] as core.String
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          searchableOption: _json.containsKey('searchableOption')
+              ? _json['searchableOption'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicFacetableOption != null)
+          'dynamicFacetableOption': dynamicFacetableOption!,
+        if (inUse != null) 'inUse': inUse!,
+        if (indexableOption != null) 'indexableOption': indexableOption!,
+        if (key != null) 'key': key!,
+        if (searchableOption != null) 'searchableOption': searchableOption!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2296,9 +2923,8 @@ class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
   ///
   /// * For "user-data", the attributes are additional custom attributes
   /// ingested through BigQuery. * For "cloud-retail", the attributes are
-  /// product attributes generated by Cloud Retail. This is an experimental
-  /// feature. Contact Retail Search support team if you are interested in
-  /// enabling it.
+  /// product attributes generated by Cloud Retail. It requires
+  /// UserEvent.product_details is imported properly.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// The suggestion for the query.
@@ -2352,6 +2978,165 @@ class GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recentSearch != null) 'recentSearch': recentSearch!,
+      };
+}
+
+/// Catalog level autocomplete config for customers to customize autocomplete
+/// feature's settings.
+class GoogleCloudRetailV2CompletionConfig {
+  /// The source data for the latest import of the autocomplete allowlist
+  /// phrases.
+  ///
+  /// Output only.
+  GoogleCloudRetailV2CompletionDataInputConfig? allowlistInputConfig;
+
+  /// If set to true, the auto learning function is enabled.
+  ///
+  /// Auto learning uses user data to generate suggestions using ML techniques.
+  /// Default value is false. Only after enabling auto learning can users use
+  /// `cloud-retail` data in CompleteQueryRequest.
+  core.bool? autoLearning;
+
+  /// The source data for the latest import of the autocomplete denylist
+  /// phrases.
+  ///
+  /// Output only.
+  GoogleCloudRetailV2CompletionDataInputConfig? denylistInputConfig;
+
+  /// Name of the LRO corresponding to the latest allowlist import.
+  ///
+  /// Can use GetOperation API to retrieve the latest state of the Long Running
+  /// Operation.
+  ///
+  /// Output only.
+  core.String? lastAllowlistImportOperation;
+
+  /// Name of the LRO corresponding to the latest denylist import.
+  ///
+  /// Can use GetOperation API to retrieve the latest state of the Long Running
+  /// Operation.
+  ///
+  /// Output only.
+  core.String? lastDenylistImportOperation;
+
+  /// Name of the LRO corresponding to the latest suggestion terms list import.
+  ///
+  /// Can use GetOperation API to retrieve the latest state of the Long Running
+  /// Operation.
+  ///
+  /// Output only.
+  core.String? lastSuggestionsImportOperation;
+
+  /// Specifies the matching order for autocomplete suggestions, e.g., a query
+  /// consisting of 'sh' with 'out-of-order' specified would suggest "women's
+  /// shoes", whereas a query of 'red s' with 'exact-prefix' specified would
+  /// suggest "red shoes".
+  ///
+  /// Currently supported values: * 'out-of-order' * 'exact-prefix' Default
+  /// value: 'exact-prefix'.
+  core.String? matchingOrder;
+
+  /// The maximum number of autocomplete suggestions returned per term.
+  ///
+  /// Default value is 20. If left unset or set to 0, then will fallback to
+  /// default value. Value range is 1 to 20.
+  core.int? maxSuggestions;
+
+  /// The minimum number of characters needed to be typed in order to get
+  /// suggestions.
+  ///
+  /// Default value is 2. If left unset or set to 0, then will fallback to
+  /// default value. Value range is 1 to 20.
+  core.int? minPrefixLength;
+
+  /// Fully qualified name `projects / * /locations / * /catalogs / *
+  /// /completionConfig`
+  ///
+  /// Required. Immutable.
+  core.String? name;
+
+  /// The source data for the latest import of the autocomplete suggestion
+  /// phrases.
+  ///
+  /// Output only.
+  GoogleCloudRetailV2CompletionDataInputConfig? suggestionsInputConfig;
+
+  GoogleCloudRetailV2CompletionConfig({
+    this.allowlistInputConfig,
+    this.autoLearning,
+    this.denylistInputConfig,
+    this.lastAllowlistImportOperation,
+    this.lastDenylistImportOperation,
+    this.lastSuggestionsImportOperation,
+    this.matchingOrder,
+    this.maxSuggestions,
+    this.minPrefixLength,
+    this.name,
+    this.suggestionsInputConfig,
+  });
+
+  GoogleCloudRetailV2CompletionConfig.fromJson(core.Map _json)
+      : this(
+          allowlistInputConfig: _json.containsKey('allowlistInputConfig')
+              ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
+                  _json['allowlistInputConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          autoLearning: _json.containsKey('autoLearning')
+              ? _json['autoLearning'] as core.bool
+              : null,
+          denylistInputConfig: _json.containsKey('denylistInputConfig')
+              ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
+                  _json['denylistInputConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          lastAllowlistImportOperation:
+              _json.containsKey('lastAllowlistImportOperation')
+                  ? _json['lastAllowlistImportOperation'] as core.String
+                  : null,
+          lastDenylistImportOperation:
+              _json.containsKey('lastDenylistImportOperation')
+                  ? _json['lastDenylistImportOperation'] as core.String
+                  : null,
+          lastSuggestionsImportOperation:
+              _json.containsKey('lastSuggestionsImportOperation')
+                  ? _json['lastSuggestionsImportOperation'] as core.String
+                  : null,
+          matchingOrder: _json.containsKey('matchingOrder')
+              ? _json['matchingOrder'] as core.String
+              : null,
+          maxSuggestions: _json.containsKey('maxSuggestions')
+              ? _json['maxSuggestions'] as core.int
+              : null,
+          minPrefixLength: _json.containsKey('minPrefixLength')
+              ? _json['minPrefixLength'] as core.int
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          suggestionsInputConfig: _json.containsKey('suggestionsInputConfig')
+              ? GoogleCloudRetailV2CompletionDataInputConfig.fromJson(
+                  _json['suggestionsInputConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowlistInputConfig != null)
+          'allowlistInputConfig': allowlistInputConfig!,
+        if (autoLearning != null) 'autoLearning': autoLearning!,
+        if (denylistInputConfig != null)
+          'denylistInputConfig': denylistInputConfig!,
+        if (lastAllowlistImportOperation != null)
+          'lastAllowlistImportOperation': lastAllowlistImportOperation!,
+        if (lastDenylistImportOperation != null)
+          'lastDenylistImportOperation': lastDenylistImportOperation!,
+        if (lastSuggestionsImportOperation != null)
+          'lastSuggestionsImportOperation': lastSuggestionsImportOperation!,
+        if (matchingOrder != null) 'matchingOrder': matchingOrder!,
+        if (maxSuggestions != null) 'maxSuggestions': maxSuggestions!,
+        if (minPrefixLength != null) 'minPrefixLength': minPrefixLength!,
+        if (name != null) 'name': name!,
+        if (suggestionsInputConfig != null)
+          'suggestionsInputConfig': suggestionsInputConfig!,
       };
 }
 
@@ -2764,11 +3549,9 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// sent to specified Pub/Sub topic. The message data will be JSON string of a
   /// Operation. Format of the Pub/Sub topic is
   /// `projects/{project}/topics/{topic}`. It has to be within the same project
-  /// as ImportProductsRequest.parent. Make sure that both
-  /// `cloud-retail-customer-data-access@system.gserviceaccount.com` and
-  /// `service-@gcp-sa-retail.iam.gserviceaccount.com` have the
-  /// `pubsub.topics.publish` IAM permission on the topic. Only supported when
-  /// ImportProductsRequest.reconciliation_mode is set to `FULL`.
+  /// as ImportProductsRequest.parent. Make sure that
+  /// `service-@gcp-sa-retail.iam.gserviceaccount.com` has the
+  /// `pubsub.topics.publish` IAM permission on the topic.
   core.String? notificationPubsubTopic;
 
   /// The mode of reconciliation between existing products and the products to
@@ -2780,12 +3563,7 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// - "INCREMENTAL" : Inserts new products or updates existing products.
   /// - "FULL" : Calculates diff and replaces the entire product dataset.
   /// Existing products may be deleted if they are not present in the source
-  /// location. Can only be set while using BigQuerySource. And the BigQuery
-  /// dataset must be created in the data location "us (multiple regions in
-  /// United States)", otherwise a PERMISSION_DENIED error is thrown. Add the
-  /// IAM permission "BigQuery Data Viewer" for
-  /// cloud-retail-customer-data-access@system.gserviceaccount.com before using
-  /// this feature otherwise an error is thrown.
+  /// location.
   core.String? reconciliationMode;
 
   /// This field has no effect.
@@ -3095,7 +3873,11 @@ class GoogleCloudRetailV2PredictRequest {
   /// results strictly matching the filters, set `strictFiltering` to True in
   /// `PredictRequest.params` to receive empty results instead. Note that the
   /// API will never return items with storageStatus of "EXPIRED" or "DELETED"
-  /// regardless of filter choices.
+  /// regardless of filter choices. If `filterSyntaxV2` is set to true under the
+  /// `params` field, then attribute-based expressions are expected instead of
+  /// the above described tag-based syntax. Examples: * (colors: ANY("Red",
+  /// "Blue")) AND NOT (categories: ANY("Phones")) * (availability:
+  /// ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories: ANY("Phones"))
   core.String? filter;
 
   /// The labels applied to a resource must meet the following requirements: *
@@ -3120,7 +3902,7 @@ class GoogleCloudRetailV2PredictRequest {
   /// 100. Values above 100 will be coerced to 100.
   core.int? pageSize;
 
-  /// The previous PredictResponse.next_page_token.
+  /// This field is not used for now, leave it unset.
   core.String? pageToken;
 
   /// Additional domain specific parameters for the predictions.
@@ -3142,7 +3924,9 @@ class GoogleCloudRetailV2PredictRequest {
   /// then it needs to be one of {'no-diversity', 'low-diversity',
   /// 'medium-diversity', 'high-diversity', 'auto-diversity'}. This gives
   /// request-level control and adjusts prediction results based on product
-  /// category.
+  /// category. * `filterSyntaxV2`: Boolean. False by default. If set to true,
+  /// the `filter` field is interpreteted according to the new, attribute-based
+  /// syntax.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3542,8 +4326,8 @@ class GoogleCloudRetailV2Product {
   /// The id of the collection members when type is Type.COLLECTION.
   ///
   /// Non-existent product ids are allowed. The type of the members must be
-  /// either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error
-  /// is thrown. Should not set it for other types. A maximum of 1000 values are
+  /// either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is
+  /// thrown. Should not set it for other types. A maximum of 1000 values are
   /// allowed. Otherwise, an INVALID_ARGUMENT error is return.
   core.List<core.String>? collectionMemberIds;
 
@@ -4406,7 +5190,28 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
       };
 }
 
-/// Request message for RemoveFulfillmentPlaces method.
+/// Request for CatalogService.RemoveCatalogAttribute method.
+class GoogleCloudRetailV2RemoveCatalogAttributeRequest {
+  /// The attribute name key of the CatalogAttribute to remove.
+  ///
+  /// Required.
+  core.String? key;
+
+  GoogleCloudRetailV2RemoveCatalogAttributeRequest({
+    this.key,
+  });
+
+  GoogleCloudRetailV2RemoveCatalogAttributeRequest.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+      };
+}
+
+/// Request message for ProductService.RemoveFulfillmentPlaces method.
 class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
   /// If set to true, and the Product is not found, the fulfillment information
   /// will still be processed and retained for at most 1 day and processed once
@@ -4477,7 +5282,7 @@ class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
       };
 }
 
-/// Request message for RemoveLocalInventories method.
+/// Request message for ProductService.RemoveLocalInventories method.
 class GoogleCloudRetailV2RemoveLocalInventoriesRequest {
   /// If set to true, and the Product is not found, the local inventory removal
   /// request will still be processed and retained for at most 1 day and
@@ -5073,6 +5878,10 @@ class GoogleCloudRetailV2SearchRequestFacetSpec {
 
 /// Specifies how a facet is computed.
 class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
+  /// True to make facet keys case insensitive when getting faceting values with
+  /// prefixes or contains; false otherwise.
+  core.bool? caseInsensitive;
+
   /// Only get facet values that contains the given strings.
   ///
   /// For example, suppose "categories" has three values "Women \> Shoe", "Women
@@ -5105,12 +5914,12 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// Required.
   core.String? key;
 
-  /// The order in which Facet.values are returned.
+  /// The order in which SearchResponse.Facet.values are returned.
   ///
   /// Allowed values are: * "count desc", which means order by
-  /// Facet.FacetValue.count descending. * "value desc", which means order by
-  /// Facet.FacetValue.value descending. Only applies to textual facets. If not
-  /// set, textual values are sorted in
+  /// SearchResponse.Facet.values.count descending. * "value desc", which means
+  /// order by SearchResponse.Facet.values.value descending. Only applies to
+  /// textual facets. If not set, textual values are sorted in
   /// [natural order](https://en.wikipedia.org/wiki/Natural_sort_order);
   /// numerical intervals are sorted in the order given by
   /// FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the
@@ -5131,12 +5940,13 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// The query syntax is the same as a filter expression. See
   /// SearchRequest.filter for detail syntax and limitations. Notice that there
   /// is no limitation on FacetKey.key when query is specified. In the response,
-  /// FacetValue.value will be always "1" and FacetValue.count will be the
-  /// number of results that matches the query. For example, you can set a
-  /// customized facet for "shipToStore", where FacetKey.key is
-  /// "customizedShipToStore", and FacetKey.query is "availability:
-  /// ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will
-  /// count the products that are both in stock and ship to store "123".
+  /// SearchResponse.Facet.values.value will be always "1" and
+  /// SearchResponse.Facet.values.count will be the number of results that match
+  /// the query. For example, you can set a customized facet for "shipToStore",
+  /// where FacetKey.key is "customizedShipToStore", and FacetKey.query is
+  /// "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the
+  /// facet will count the products that are both in stock and ship to store
+  /// "123".
   core.String? query;
 
   /// Only get facet for the given restricted values.
@@ -5150,7 +5960,13 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// customFulfillment3 * customFulfillment4 * customFulfillment5
   core.List<core.String>? restrictedValues;
 
+  /// Returns the min and max value for each numerical facet intervals.
+  ///
+  /// Ignored for textual facets.
+  core.bool? returnMinMax;
+
   GoogleCloudRetailV2SearchRequestFacetSpecFacetKey({
+    this.caseInsensitive,
     this.contains,
     this.intervals,
     this.key,
@@ -5158,10 +5974,14 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
     this.prefixes,
     this.query,
     this.restrictedValues,
+    this.returnMinMax,
   });
 
   GoogleCloudRetailV2SearchRequestFacetSpecFacetKey.fromJson(core.Map _json)
       : this(
+          caseInsensitive: _json.containsKey('caseInsensitive')
+              ? _json['caseInsensitive'] as core.bool
+              : null,
           contains: _json.containsKey('contains')
               ? (_json['contains'] as core.List)
                   .map((value) => value as core.String)
@@ -5189,9 +6009,13 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          returnMinMax: _json.containsKey('returnMinMax')
+              ? _json['returnMinMax'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (caseInsensitive != null) 'caseInsensitive': caseInsensitive!,
         if (contains != null) 'contains': contains!,
         if (intervals != null) 'intervals': intervals!,
         if (key != null) 'key': key!,
@@ -5199,6 +6023,7 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
         if (prefixes != null) 'prefixes': prefixes!,
         if (query != null) 'query': query!,
         if (restrictedValues != null) 'restrictedValues': restrictedValues!,
+        if (returnMinMax != null) 'returnMinMax': returnMinMax!,
       };
 }
 
@@ -5207,7 +6032,8 @@ class GoogleCloudRetailV2SearchRequestPersonalizationSpec {
   /// Defaults to Mode.AUTO.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED" : Default value. Defaults to Mode.AUTO.
-  /// - "AUTO" : Let CRS decide whether to use personalization.
+  /// - "AUTO" : Let CRS decide whether to use personalization based on quality
+  /// of user event data.
   /// - "DISABLED" : Disable personalization.
   core.String? mode;
 
@@ -5312,8 +6138,7 @@ class GoogleCloudRetailV2SearchResponse {
   /// Contains the spell corrected query, if found.
   ///
   /// If the spell correction type is AUTOMATIC, then the search results are
-  /// based on corrected_query. Otherwise the original query will be used for
-  /// search.
+  /// based on corrected_query. Otherwise the original query is used for search.
   core.String? correctedQuery;
 
   /// Results of facets requested by user.
@@ -5480,12 +6305,26 @@ class GoogleCloudRetailV2SearchResponseFacetFacetValue {
   /// Interval value for a facet, such as \[10, 20) for facet "price".
   GoogleCloudRetailV2Interval? interval;
 
+  /// The maximum value in the FacetValue.interval.
+  ///
+  /// Only supported on numerical facets and returned if
+  /// SearchRequest.FacetSpec.FacetKey.return_min_max is true.
+  core.double? maxValue;
+
+  /// The minimum value in the FacetValue.interval.
+  ///
+  /// Only supported on numerical facets and returned if
+  /// SearchRequest.FacetSpec.FacetKey.return_min_max is true.
+  core.double? minValue;
+
   /// Text value of a facet, such as "Black" for facet "colorFamilies".
   core.String? value;
 
   GoogleCloudRetailV2SearchResponseFacetFacetValue({
     this.count,
     this.interval,
+    this.maxValue,
+    this.minValue,
     this.value,
   });
 
@@ -5497,6 +6336,12 @@ class GoogleCloudRetailV2SearchResponseFacetFacetValue {
               ? GoogleCloudRetailV2Interval.fromJson(
                   _json['interval'] as core.Map<core.String, core.dynamic>)
               : null,
+          maxValue: _json.containsKey('maxValue')
+              ? (_json['maxValue'] as core.num).toDouble()
+              : null,
+          minValue: _json.containsKey('minValue')
+              ? (_json['minValue'] as core.num).toDouble()
+              : null,
           value:
               _json.containsKey('value') ? _json['value'] as core.String : null,
         );
@@ -5504,6 +6349,8 @@ class GoogleCloudRetailV2SearchResponseFacetFacetValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (interval != null) 'interval': interval!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
         if (value != null) 'value': value!,
       };
 }
@@ -5558,6 +6405,14 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
   /// indicates there is a match between "sku1" ColorInfo and the query.
   core.Map<core.String, core.String>? matchingVariantFields;
 
+  /// Specifies previous events related to this product for this user based on
+  /// UserEvent with same SearchRequest.visitor_id or UserInfo.user_id.
+  ///
+  /// This is set only when SearchRequest.PersonalizationSpec.mode is
+  /// SearchRequest.PersonalizationSpec.Mode.AUTO. Possible values: *
+  /// `purchased`: Indicates that this product has been purchased before.
+  core.List<core.String>? personalLabels;
+
   /// The product data snippet in the search response.
   ///
   /// Only Product.name is guaranteed to be populated. Product.variants contains
@@ -5594,6 +6449,7 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
     this.id,
     this.matchingVariantCount,
     this.matchingVariantFields,
+    this.personalLabels,
     this.product,
     this.variantRollupValues,
   });
@@ -5614,6 +6470,11 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
                   ),
                 )
               : null,
+          personalLabels: _json.containsKey('personalLabels')
+              ? (_json['personalLabels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           product: _json.containsKey('product')
               ? GoogleCloudRetailV2Product.fromJson(
                   _json['product'] as core.Map<core.String, core.dynamic>)
@@ -5630,6 +6491,7 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
           'matchingVariantCount': matchingVariantCount!,
         if (matchingVariantFields != null)
           'matchingVariantFields': matchingVariantFields!,
+        if (personalLabels != null) 'personalLabels': personalLabels!,
         if (product != null) 'product': product!,
         if (variantRollupValues != null)
           'variantRollupValues': variantRollupValues!,
@@ -5681,7 +6543,7 @@ class GoogleCloudRetailV2SetDefaultBranchRequest {
       };
 }
 
-/// Request message for SetInventory method.
+/// Request message for ProductService.SetInventory method.
 class GoogleCloudRetailV2SetInventoryRequest {
   /// If set to true, and the Product with name Product.name is not found, the
   /// inventory update will still be processed and retained for at most 1 day
@@ -5719,8 +6581,8 @@ class GoogleCloudRetailV2SetInventoryRequest {
   /// time is recorded for the following inventory fields: * Product.price_info
   /// * Product.availability * Product.available_quantity *
   /// Product.fulfillment_info If a full overwrite of inventory information
-  /// while ignoring timestamps is needed, UpdateProduct should be invoked
-  /// instead.
+  /// while ignoring timestamps is needed, ProductService.UpdateProduct should
+  /// be invoked instead.
   ///
   /// Required.
   GoogleCloudRetailV2Product? inventory;

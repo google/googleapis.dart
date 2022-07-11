@@ -242,59 +242,6 @@ class ProjectsNamespacesResource {
     return FetchRemoteConfigResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-
-  /// Streaming endpoint which allows a client to subscribe to a stream of Fetch
-  /// invalidation events.
-  ///
-  /// These events tell the client that a previous Fetch response is no longer
-  /// valid (ex: a new Template was published) and that they should perform a
-  /// new Fetch request to get the latest data.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [project] - Required. The Firebase project ID or project number. (NOTE:
-  /// These identifiers can be retrieved from the Firebase console.)
-  ///
-  /// [namespace] - Required. The string "firebase".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [StreamFetchInvalidationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<StreamFetchInvalidationsResponse> streamFetchInvalidations(
-    StreamFetchInvalidationsRequest request,
-    core.String project,
-    core.String namespace, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/projects/' +
-        commons.escapeVariable('$project') +
-        '/namespaces/' +
-        commons.escapeVariable('$namespace') +
-        ':streamFetchInvalidations';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return StreamFetchInvalidationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsRemoteConfigResource {
@@ -926,7 +873,8 @@ class PersonalizationMetadata {
 class PersonalizationValue {
   /// Identifier that represents a personalization definition.
   ///
-  /// This definition is used to resolve the value at config fetch time.
+  /// This definition is used to resolve the value at config fetch time. This
+  /// system-generated value should not be modified.
   core.String? personalizationId;
 
   PersonalizationValue({
@@ -1143,7 +1091,7 @@ class RemoteConfigParameter {
   /// - "PARAMETER_VALUE_TYPE_UNSPECIFIED" : Catch-all for unrecognized enum
   /// values.
   /// - "STRING" : Represents String values.
-  /// - "BOOLEAN" : Represents Boolean values (“true” or “false”).
+  /// - "BOOLEAN" : Represents Boolean values ("true" or "false").
   /// - "NUMBER" : Represents both positive and negative integer and float
   /// values.
   /// - "JSON" : Represents JSON values.
@@ -1342,53 +1290,6 @@ class RollbackRemoteConfigRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (versionNumber != null) 'versionNumber': versionNumber!,
-      };
-}
-
-/// Open a stream of Fetch response invalidation signals.
-class StreamFetchInvalidationsRequest {
-  /// If this client has previously performed a Fetch, this indicates which
-  /// Template version was used to process it (returned in the Fetch response).
-  core.String? lastKnownVersionNumber;
-
-  StreamFetchInvalidationsRequest({
-    this.lastKnownVersionNumber,
-  });
-
-  StreamFetchInvalidationsRequest.fromJson(core.Map _json)
-      : this(
-          lastKnownVersionNumber: _json.containsKey('lastKnownVersionNumber')
-              ? _json['lastKnownVersionNumber'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lastKnownVersionNumber != null)
-          'lastKnownVersionNumber': lastKnownVersionNumber!,
-      };
-}
-
-/// Response indicating that the previous Fetch response is now invalid.
-class StreamFetchInvalidationsResponse {
-  /// Indicates the new Template version number which triggered this
-  /// invalidation event.
-  core.String? latestTemplateVersionNumber;
-
-  StreamFetchInvalidationsResponse({
-    this.latestTemplateVersionNumber,
-  });
-
-  StreamFetchInvalidationsResponse.fromJson(core.Map _json)
-      : this(
-          latestTemplateVersionNumber:
-              _json.containsKey('latestTemplateVersionNumber')
-                  ? _json['latestTemplateVersionNumber'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (latestTemplateVersionNumber != null)
-          'latestTemplateVersionNumber': latestTemplateVersionNumber!,
       };
 }
 

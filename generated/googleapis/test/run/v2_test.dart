@@ -226,6 +226,7 @@ api.GoogleCloudRunV2Container buildGoogleCloudRunV2Container() {
     o.ports = buildUnnamed4();
     o.resources = buildGoogleCloudRunV2ResourceRequirements();
     o.volumeMounts = buildUnnamed5();
+    o.workingDir = 'foo';
   }
   buildCounterGoogleCloudRunV2Container--;
   return o;
@@ -248,6 +249,10 @@ void checkGoogleCloudRunV2Container(api.GoogleCloudRunV2Container o) {
     checkUnnamed4(o.ports!);
     checkGoogleCloudRunV2ResourceRequirements(o.resources!);
     checkUnnamed5(o.volumeMounts!);
+    unittest.expect(
+      o.workingDir!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRunV2Container--;
 }
@@ -495,6 +500,7 @@ api.GoogleCloudRunV2ExecutionReference
   final o = api.GoogleCloudRunV2ExecutionReference();
   buildCounterGoogleCloudRunV2ExecutionReference++;
   if (buildCounterGoogleCloudRunV2ExecutionReference < 3) {
+    o.completionTime = 'foo';
     o.createTime = 'foo';
     o.name = 'foo';
   }
@@ -506,6 +512,10 @@ void checkGoogleCloudRunV2ExecutionReference(
     api.GoogleCloudRunV2ExecutionReference o) {
   buildCounterGoogleCloudRunV2ExecutionReference++;
   if (buildCounterGoogleCloudRunV2ExecutionReference < 3) {
+    unittest.expect(
+      o.completionTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

@@ -2717,9 +2717,11 @@ class TransferConfig {
   /// the value to 0 to use the default value.
   core.int? dataRefreshWindowDays;
 
-  /// Data source id.
+  /// Data source ID.
   ///
-  /// Cannot be changed once data transfer is created.
+  /// This cannot be changed once data transfer is created. The full list of
+  /// available data source IDs can be returned through an API call:
+  /// https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list
   core.String? dataSourceId;
 
   /// Region in which BigQuery dataset is located.

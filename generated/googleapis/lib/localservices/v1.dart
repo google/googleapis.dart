@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class LocalservicesApi {
-  /// Manage your AdWords campaigns
+  /// See, edit, create, and delete your Google Ads accounts and data.
   static const adwordsScope = 'https://www.googleapis.com/auth/adwords';
 
   final commons.ApiRequester _requester;

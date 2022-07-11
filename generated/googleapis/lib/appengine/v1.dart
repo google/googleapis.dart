@@ -4191,6 +4191,16 @@ class Network {
   /// Only applicable in the App Engine flexible environment.
   core.List<core.String>? forwardedPorts;
 
+  /// The IP mode for instances.
+  ///
+  /// Only applicable in the App Engine flexible environment.
+  /// Possible string values are:
+  /// - "INSTANCE_IP_MODE_UNSPECIFIED" : Unspecified is treated as EXTERNAL.
+  /// - "EXTERNAL" : Instances are created with both internal and external IP
+  /// addresses.
+  /// - "INTERNAL" : Instances are created with internal IP addresses only.
+  core.String? instanceIpMode;
+
   /// Tag to apply to the instance during creation.
   ///
   /// Only applicable in the App Engine flexible environment.
@@ -4224,6 +4234,7 @@ class Network {
 
   Network({
     this.forwardedPorts,
+    this.instanceIpMode,
     this.instanceTag,
     this.name,
     this.sessionAffinity,
@@ -4236,6 +4247,9 @@ class Network {
               ? (_json['forwardedPorts'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          instanceIpMode: _json.containsKey('instanceIpMode')
+              ? _json['instanceIpMode'] as core.String
               : null,
           instanceTag: _json.containsKey('instanceTag')
               ? _json['instanceTag'] as core.String
@@ -4251,6 +4265,7 @@ class Network {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (forwardedPorts != null) 'forwardedPorts': forwardedPorts!,
+        if (instanceIpMode != null) 'instanceIpMode': instanceIpMode!,
         if (instanceTag != null) 'instanceTag': instanceTag!,
         if (name != null) 'name': name!,
         if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,

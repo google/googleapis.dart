@@ -14,7 +14,7 @@
 
 /// Network Connectivity API - v1
 ///
-/// The Network Connectivity API provides access to Network Connectivity Center.
+/// This API enables connectivity with and between Google Cloud resources.
 ///
 /// For more information, see
 /// <https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest>
@@ -44,7 +44,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Network Connectivity API provides access to Network Connectivity Center.
+/// This API enables connectivity with and between Google Cloud resources.
 class NetworkconnectivityApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -189,7 +189,7 @@ class ProjectsLocationsGlobalHubsResource {
   ProjectsLocationsGlobalHubsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new hub in the specified project.
+  /// Creates a new Network Connectivity Center hub in the specified project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -249,7 +249,7 @@ class ProjectsLocationsGlobalHubsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes the specified hub.
+  /// Deletes a Network Connectivity Center hub.
   ///
   /// Request parameters:
   ///
@@ -301,7 +301,7 @@ class ProjectsLocationsGlobalHubsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details about the specified hub.
+  /// Gets details about a Network Connectivity Center hub.
   ///
   /// Request parameters:
   ///
@@ -394,7 +394,8 @@ class ProjectsLocationsGlobalHubsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists hubs in a given project.
+  /// Lists the Network Connectivity Center hubs associated with a given
+  /// project.
   ///
   /// Request parameters:
   ///
@@ -447,7 +448,8 @@ class ProjectsLocationsGlobalHubsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the description and/or labels of the specified hub.
+  /// Updates the description and/or labels of a Network Connectivity Center
+  /// hub.
   ///
   /// [request] - The metadata request object.
   ///
@@ -975,7 +977,7 @@ class ProjectsLocationsSpokesResource {
   ProjectsLocationsSpokesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a spoke in the specified project and location.
+  /// Creates a Network Connectivity Center spoke.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1035,7 +1037,7 @@ class ProjectsLocationsSpokesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes the specified spoke.
+  /// Deletes a Network Connectivity Center spoke.
   ///
   /// Request parameters:
   ///
@@ -1087,7 +1089,7 @@ class ProjectsLocationsSpokesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details about the specified spoke.
+  /// Gets details about a Network Connectivity Center spoke.
   ///
   /// Request parameters:
   ///
@@ -1180,7 +1182,8 @@ class ProjectsLocationsSpokesResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the spokes in the specified project and location.
+  /// Lists the Network Connectivity Center spokes in a specified project and
+  /// location.
   ///
   /// Request parameters:
   ///
@@ -1233,7 +1236,7 @@ class ProjectsLocationsSpokesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the parameters of the specified spoke.
+  /// Updates the parameters of a Network Connectivity Center spoke.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1683,7 +1686,7 @@ class GoogleLongrunningOperation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
 
-/// A hub is a collection of spokes.
+/// A Network Connectivity Center hub is a collection of spokes.
 ///
 /// A single hub can contain spokes from multiple regions. However, if any of a
 /// hub's spokes use the data transfer feature, the resources associated with
@@ -1726,6 +1729,7 @@ class Hub {
   /// - "CREATING" : The resource's create operation is in progress
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's Delete operation is in progress
+  /// - "UPDATING" : The resource's Update operation is in progress
   core.String? state;
 
   /// The Google-generated UUID for the hub.
@@ -2199,8 +2203,8 @@ class RouterApplianceInstance {
       };
 }
 
-/// RoutingVPC contains information about the VPC networks that are associated
-/// with a hub's spokes.
+/// RoutingVPC contains information about the VPC networks associated with the
+/// spokes of a Network Connectivity Center hub.
 class RoutingVPC {
   /// If true, indicates that this VPC network is currently associated with
   /// spokes that use the data transfer feature (spokes where the
@@ -2275,8 +2279,8 @@ class SetIamPolicyRequest {
       };
 }
 
-/// A spoke represents a connection between your Google Cloud network resources
-/// and a non-Google-Cloud network.
+/// A Network Connectivity Center spoke represents a connection between your
+/// Google Cloud network resources and a non-Google-Cloud network.
 ///
 /// When you create a spoke, you associate it with a hub. You must also identify
 /// a value for exactly one of the following fields: * linked_vpn_tunnels *
@@ -2326,6 +2330,7 @@ class Spoke {
   /// - "CREATING" : The resource's create operation is in progress
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's Delete operation is in progress
+  /// - "UPDATING" : The resource's Update operation is in progress
   core.String? state;
 
   /// The Google-generated UUID for the spoke.

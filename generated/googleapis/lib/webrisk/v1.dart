@@ -471,6 +471,8 @@ class ThreatListsResource {
   /// - "MALWARE" : Malware targeting any platform.
   /// - "SOCIAL_ENGINEERING" : Social engineering targeting any platform.
   /// - "UNWANTED_SOFTWARE" : Unwanted software targeting any platform.
+  /// - "SOCIAL_ENGINEERING_EXTENDED_COVERAGE" : Extended Coverage Social
+  /// Engineering list targeting any platform.
   ///
   /// [versionToken] - The current version token of the client for the requested
   /// list (the client version that was received from the last successful diff).

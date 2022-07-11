@@ -100,11 +100,11 @@ class QueriesResource {
     return Query.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a stored query as well as the associated stored reports.
+  /// Deletes a query as well as the associated reports.
   ///
   /// Request parameters:
   ///
-  /// [queryId] - Required. Query ID to delete.
+  /// [queryId] - Required. ID of query to delete.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -132,11 +132,11 @@ class QueriesResource {
     );
   }
 
-  /// Retrieves a stored query.
+  /// Retrieves a query.
   ///
   /// Request parameters:
   ///
-  /// [queryId] - Required. Query ID to retrieve.
+  /// [queryId] - Required. ID of query to retrieve.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -166,14 +166,14 @@ class QueriesResource {
     return Query.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves stored queries.
+  /// Lists queries created by the current user.
   ///
   /// Request parameters:
   ///
   /// [orderBy] - Name of a field used to order results. The default sorting
   /// order is ascending. To specify descending order for a field, append a "
   /// desc" suffix. For example "metadata.title desc". Sorting is only supported
-  /// for the following fields: * queryId * metadata.title
+  /// for the following fields: * `queryId` * `metadata.title`
   ///
   /// [pageSize] - Maximum number of results per page. Must be between `1` and
   /// `100`. Defaults to `100` if unspecified.
@@ -221,7 +221,7 @@ class QueriesResource {
   ///
   /// Request parameters:
   ///
-  /// [queryId] - Required. Query ID to run.
+  /// [queryId] - Required. ID of query to run.
   ///
   /// [synchronous] - Whether the query should be run synchronously. When true,
   /// this method will not return until the query has finished running. When
@@ -266,7 +266,7 @@ class QueriesReportsResource {
 
   QueriesReportsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves a stored report.
+  /// Retrieves a report.
   ///
   /// Request parameters:
   ///
@@ -306,16 +306,17 @@ class QueriesReportsResource {
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists reports.
+  /// Lists reports associated with a query.
   ///
   /// Request parameters:
   ///
-  /// [queryId] - Required. Query ID with which the reports are associated.
+  /// [queryId] - Required. ID of the query with which the reports are
+  /// associated.
   ///
   /// [orderBy] - Name of a field used to order results. The default sorting
   /// order is ascending. To specify descending order for a field, append a "
   /// desc" suffix. For example "key.reportId desc". Sorting is only supported
-  /// for the following fields: * key.reportId
+  /// for the following fields: * `key.reportId`
   ///
   /// [pageSize] - Maximum number of results per page. Must be between `1` and
   /// `100`. Defaults to `100` if unspecified.
@@ -417,25 +418,32 @@ class DataRange {
 
   /// Report data range used to generate the report.
   /// Possible string values are:
-  /// - "RANGE_UNSPECIFIED"
-  /// - "CUSTOM_DATES"
-  /// - "CURRENT_DAY"
-  /// - "PREVIOUS_DAY"
-  /// - "WEEK_TO_DATE"
-  /// - "MONTH_TO_DATE"
-  /// - "QUARTER_TO_DATE"
-  /// - "YEAR_TO_DATE"
-  /// - "PREVIOUS_WEEK"
-  /// - "PREVIOUS_MONTH"
-  /// - "PREVIOUS_QUARTER"
-  /// - "PREVIOUS_YEAR"
-  /// - "LAST_7_DAYS"
-  /// - "LAST_30_DAYS"
-  /// - "LAST_90_DAYS"
-  /// - "LAST_365_DAYS"
-  /// - "ALL_TIME"
-  /// - "LAST_14_DAYS"
-  /// - "LAST_60_DAYS"
+  /// - "RANGE_UNSPECIFIED" : Default value when range is not specified or is
+  /// unknown in this version.
+  /// - "CUSTOM_DATES" : Custom range specified by custom_start_date and
+  /// custom_end_date fields.
+  /// - "CURRENT_DAY" : Current day.
+  /// - "PREVIOUS_DAY" : Previous day.
+  /// - "WEEK_TO_DATE" : All days, including the current day, since the most
+  /// recent Sunday.
+  /// - "MONTH_TO_DATE" : All days, including the current day, since the start
+  /// of the current month.
+  /// - "QUARTER_TO_DATE" : All days, including the current day, since the start
+  /// of the current quarter.
+  /// - "YEAR_TO_DATE" : All days, including the current day, since the start of
+  /// the current calendar year.
+  /// - "PREVIOUS_WEEK" : The previous completed week, beginning from Sunday.
+  /// - "PREVIOUS_MONTH" : The previous completed calendar month.
+  /// - "PREVIOUS_QUARTER" : The previous completed quarter.
+  /// - "PREVIOUS_YEAR" : The previous completed calendar year.
+  /// - "LAST_7_DAYS" : The previous 7 days, excluding the current day.
+  /// - "LAST_30_DAYS" : The previous 30 days, excluding the current day.
+  /// - "LAST_90_DAYS" : The previous 90 days, excluding the current day.
+  /// - "LAST_365_DAYS" : The previous 365 days, excluding the current day.
+  /// - "ALL_TIME" : All time for which data is available, excluding the current
+  /// day.
+  /// - "LAST_14_DAYS" : The previous 14 days, excluding the current day.
+  /// - "LAST_60_DAYS" : The previous 60 days, excluding the current day.
   core.String? range;
 
   DataRange({
@@ -553,15 +561,14 @@ class FilterPair {
       };
 }
 
-/// Represents a list of queries.
 class ListQueriesResponse {
-  /// A token, which can be sent as `page_token` to retrieve the next page of
+  /// A token, which can be sent as page_token to retrieve the next page of
   /// queries.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  /// Retrieved queries.
+  /// The list of queries.
   core.List<Query>? queries;
 
   ListQueriesResponse({
@@ -588,9 +595,8 @@ class ListQueriesResponse {
       };
 }
 
-/// Represents a list of reports.
 class ListReportsResponse {
-  /// A token, which can be sent as `page_token` to retrieve the next page of
+  /// A token, which can be sent as page_token to retrieve the next page of
   /// reports.
   ///
   /// If this field is omitted, there are no subsequent pages.
@@ -671,20 +677,25 @@ class Parameters {
   /// Additional query options.
   Options? options;
 
-  /// Report type.
+  /// The type of the report.
+  ///
+  /// The type of the report will dictate what dimesions, filters, and metrics
+  /// can be used.
   /// Possible string values are:
-  /// - "REPORT_TYPE_UNSPECIFIED"
-  /// - "STANDARD"
-  /// - "INVENTORY_AVAILABILITY"
-  /// - "AUDIENCE_COMPOSITION"
-  /// - "FLOODLIGHT"
-  /// - "YOUTUBE"
-  /// - "GRP"
-  /// - "YOUTUBE_PROGRAMMATIC_GUARANTEED"
-  /// - "REACH"
-  /// - "UNIQUE_REACH_AUDIENCE"
-  /// - "FULL_PATH"
-  /// - "PATH_ATTRIBUTION"
+  /// - "REPORT_TYPE_UNSPECIFIED" : Default value when report type is not
+  /// specified or is unknown in this version.
+  /// - "STANDARD" : Standard report.
+  /// - "INVENTORY_AVAILABILITY" : Inventory Availability report.
+  /// - "AUDIENCE_COMPOSITION" : Audience Composition report.
+  /// - "FLOODLIGHT" : Floodlight report.
+  /// - "YOUTUBE" : YouTube report.
+  /// - "GRP" : GRP report.
+  /// - "YOUTUBE_PROGRAMMATIC_GUARANTEED" : YouTube Programmatic Guaranteed
+  /// report.
+  /// - "REACH" : Reach report.
+  /// - "UNIQUE_REACH_AUDIENCE" : Unique Reach Audience report.
+  /// - "FULL_PATH" : Full Path report.
+  /// - "PATH_ATTRIBUTION" : Path Attribution report.
   core.String? type;
 
   Parameters({
@@ -739,13 +750,14 @@ class PathFilter {
   /// Filter on an event to be applied to some part of the path.
   core.List<EventFilter>? eventFilters;
 
-  /// Indicates the position of the path the filter should match to (first,
-  /// last, or any event in path).
+  /// The position of the path the filter should match to (first, last, or any
+  /// event in path).
   /// Possible string values are:
-  /// - "PATH_MATCH_POSITION_UNSPECIFIED"
-  /// - "ANY"
-  /// - "FIRST"
-  /// - "LAST"
+  /// - "PATH_MATCH_POSITION_UNSPECIFIED" : Default value when path match
+  /// position is not specified or is unknown in this version.
+  /// - "ANY" : Any position in the path.
+  /// - "FIRST" : The first position in the path.
+  /// - "LAST" : The last position in the path.
   core.String? pathMatchPosition;
 
   PathFilter({
@@ -807,21 +819,23 @@ class PathQueryOptions {
       };
 }
 
-/// Dimension Filter on path events.
+/// Dimension filter on path events.
 class PathQueryOptionsFilter {
   /// Dimension the filter is applied to.
   core.String? filter;
 
-  /// Indicates how the filter should be matched to the value.
+  /// Match logic of the filter.
   /// Possible string values are:
-  /// - "UNKNOWN"
-  /// - "EXACT"
-  /// - "PARTIAL"
-  /// - "BEGINS_WITH"
-  /// - "WILDCARD_EXPRESSION"
+  /// - "UNKNOWN" : Default value when match is not specified or is unknown in
+  /// this version.
+  /// - "EXACT" : Matches a value exactly.
+  /// - "PARTIAL" : Matches a value partially.
+  /// - "BEGINS_WITH" : Begins with a value.
+  /// - "WILDCARD_EXPRESSION" : Matches a value, utilizing wildcard character
+  /// logic in the value.
   core.String? match;
 
-  /// Value to filter on.
+  /// Values to filter on.
   core.List<core.String>? values;
 
   PathQueryOptionsFilter({
@@ -865,6 +879,9 @@ class Query {
   core.String? queryId;
 
   /// Information on how often and when to run a query.
+  ///
+  /// If `ONE_TIME` is set to the frequency field, the query will only be run at
+  /// the time of creation.
   QuerySchedule? schedule;
 
   Query({
@@ -904,6 +921,8 @@ class Query {
 /// Query metadata.
 class QueryMetadata {
   /// Range of report data.
+  ///
+  /// All reports will be based on the same time zone as used by the advertiser.
   DataRange? dataRange;
 
   /// Format of the generated report.
@@ -922,7 +941,7 @@ class QueryMetadata {
   /// List of email addresses which are sent email notifications when the report
   /// is finished.
   ///
-  /// Separate from `sendNotification`.
+  /// Separate from send_notification.
   core.List<core.String>? shareEmailAddress;
 
   /// Query title.
@@ -968,7 +987,7 @@ class QueryMetadata {
       };
 }
 
-/// Information on how frequently and when to run a query.
+/// Information on when and how frequently to run a query.
 class QuerySchedule {
   /// Date to periodically run the query until.
   ///
@@ -977,14 +996,15 @@ class QuerySchedule {
 
   /// How often the query is run.
   /// Possible string values are:
-  /// - "FREQUENCY_UNSPECIFIED"
-  /// - "ONE_TIME"
-  /// - "DAILY"
-  /// - "WEEKLY"
-  /// - "SEMI_MONTHLY"
-  /// - "MONTHLY"
-  /// - "QUARTERLY"
-  /// - "YEARLY"
+  /// - "FREQUENCY_UNSPECIFIED" : Default value when frequency is not specified
+  /// or is unknown in this version.
+  /// - "ONE_TIME" : Only once.
+  /// - "DAILY" : Once a day.
+  /// - "WEEKLY" : Once a week.
+  /// - "SEMI_MONTHLY" : Twice a month.
+  /// - "MONTHLY" : Once a month.
+  /// - "QUARTERLY" : Once a quarter
+  /// - "YEARLY" : Once a year.
   core.String? frequency;
 
   /// Canonical timezone code for report generation time.
@@ -1176,11 +1196,12 @@ class ReportStatus {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
-  /// - "QUEUED"
-  /// - "RUNNING"
-  /// - "DONE"
-  /// - "FAILED"
+  /// - "STATE_UNSPECIFIED" : Default value when state is not specified or is
+  /// unknown in this version.
+  /// - "QUEUED" : The report is queued to run.
+  /// - "RUNNING" : The report is currently running.
+  /// - "DONE" : The report has finished running successfully.
+  /// - "FAILED" : The report has finished running in failure.
   core.String? state;
 
   ReportStatus({

@@ -249,6 +249,9 @@ class ProjectsLocationsApisResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
+  /// [force] - If set to true, any child resources will also be deleted.
+  /// (Otherwise, the request will only work if there are no child resources.)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -261,9 +264,11 @@ class ProjectsLocationsApisResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1925,6 +1930,9 @@ class ProjectsLocationsApisVersionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+$`.
   ///
+  /// [force] - If set to true, any child resources will also be deleted.
+  /// (Otherwise, the request will only work if there are no child resources.)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1937,9 +1945,11 @@ class ProjectsLocationsApisVersionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 

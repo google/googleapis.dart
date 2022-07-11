@@ -224,6 +224,9 @@ class ChangesResource {
   /// [includeItemsFromAllDrives] - Whether both My Drive and shared drive items
   /// should be included in results.
   ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
+  ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
   ///
@@ -267,6 +270,7 @@ class ChangesResource {
     core.String? driveId,
     core.bool? includeCorpusRemovals,
     core.bool? includeItemsFromAllDrives,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? includeRemoved,
     core.bool? includeTeamDriveItems,
@@ -285,6 +289,7 @@ class ChangesResource {
         'includeCorpusRemovals': ['${includeCorpusRemovals}'],
       if (includeItemsFromAllDrives != null)
         'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (includeRemoved != null) 'includeRemoved': ['${includeRemoved}'],
@@ -335,6 +340,9 @@ class ChangesResource {
   /// [includeItemsFromAllDrives] - Whether both My Drive and shared drive items
   /// should be included in results.
   ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
+  ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
   ///
@@ -379,6 +387,7 @@ class ChangesResource {
     core.String? driveId,
     core.bool? includeCorpusRemovals,
     core.bool? includeItemsFromAllDrives,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? includeRemoved,
     core.bool? includeTeamDriveItems,
@@ -398,6 +407,7 @@ class ChangesResource {
         'includeCorpusRemovals': ['${includeCorpusRemovals}'],
       if (includeItemsFromAllDrives != null)
         'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (includeRemoved != null) 'includeRemoved': ['${includeRemoved}'],
@@ -1025,6 +1035,9 @@ class FilesResource {
   /// parameter bypasses that behavior for the request. Permissions are still
   /// inherited from parent folders.
   ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
+  ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
   ///
@@ -1056,6 +1069,7 @@ class FilesResource {
     core.String fileId, {
     core.bool? enforceSingleParent,
     core.bool? ignoreDefaultVisibility,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? keepRevisionForever,
     core.String? ocrLanguage,
@@ -1069,6 +1083,7 @@ class FilesResource {
         'enforceSingleParent': ['${enforceSingleParent}'],
       if (ignoreDefaultVisibility != null)
         'ignoreDefaultVisibility': ['${ignoreDefaultVisibility}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (keepRevisionForever != null)
@@ -1106,6 +1121,9 @@ class FilesResource {
   /// to make all uploaded files visible to the domain by default; this
   /// parameter bypasses that behavior for the request. Permissions are still
   /// inherited from parent folders.
+  ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
@@ -1146,6 +1164,7 @@ class FilesResource {
     File request, {
     core.bool? enforceSingleParent,
     core.bool? ignoreDefaultVisibility,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? keepRevisionForever,
     core.String? ocrLanguage,
@@ -1162,6 +1181,7 @@ class FilesResource {
         'enforceSingleParent': ['${enforceSingleParent}'],
       if (ignoreDefaultVisibility != null)
         'ignoreDefaultVisibility': ['${ignoreDefaultVisibility}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (keepRevisionForever != null)
@@ -1395,6 +1415,9 @@ class FilesResource {
   /// downloading known malware or other abusive files. This is only applicable
   /// when alt=media.
   ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
+  ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
   ///
@@ -1424,6 +1447,7 @@ class FilesResource {
   async.Future<core.Object> get(
     core.String fileId, {
     core.bool? acknowledgeAbuse,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? supportsAllDrives,
     core.bool? supportsTeamDrives,
@@ -1432,6 +1456,7 @@ class FilesResource {
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (supportsAllDrives != null)
@@ -1479,6 +1504,9 @@ class FilesResource {
   ///
   /// [includeItemsFromAllDrives] - Whether both My Drive and shared drive items
   /// should be included in results.
+  ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
@@ -1532,6 +1560,7 @@ class FilesResource {
     core.String? corpus,
     core.String? driveId,
     core.bool? includeItemsFromAllDrives,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? includeTeamDriveItems,
     core.String? orderBy,
@@ -1550,6 +1579,7 @@ class FilesResource {
       if (driveId != null) 'driveId': [driveId],
       if (includeItemsFromAllDrives != null)
         'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (includeTeamDriveItems != null)
@@ -1577,6 +1607,92 @@ class FilesResource {
     return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists the labels on a file.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [maxResults] - The maximum number of labels to return per page. When not
+  /// set, this defaults to 100.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LabelList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LabelList> listLabels(
+    core.String fileId, {
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/listLabels';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return LabelList.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Modifies the set of labels on a file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file for which the labels are modified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ModifyLabelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ModifyLabelsResponse> modifyLabels(
+    ModifyLabelsRequest request,
+    core.String fileId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'files/' + commons.escapeVariable('$fileId') + '/modifyLabels';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ModifyLabelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates a file's metadata and/or content.
   ///
   /// When calling this method, only populate fields in the request that you
@@ -1593,6 +1709,9 @@ class FilesResource {
   ///
   /// [enforceSingleParent] - Deprecated. Adding files to multiple folders is no
   /// longer supported. Use shortcuts instead.
+  ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
@@ -1636,6 +1755,7 @@ class FilesResource {
     core.String fileId, {
     core.String? addParents,
     core.bool? enforceSingleParent,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? keepRevisionForever,
     core.String? ocrLanguage,
@@ -1652,6 +1772,7 @@ class FilesResource {
       if (addParents != null) 'addParents': [addParents],
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (keepRevisionForever != null)
@@ -1703,6 +1824,9 @@ class FilesResource {
   /// downloading known malware or other abusive files. This is only applicable
   /// when alt=media.
   ///
+  /// [includeLabels] - A comma-separated list of IDs of labels to include in
+  /// the labelInfo part of the response.
+  ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
   ///
@@ -1733,6 +1857,7 @@ class FilesResource {
     Channel request,
     core.String fileId, {
     core.bool? acknowledgeAbuse,
+    core.String? includeLabels,
     core.String? includePermissionsForView,
     core.bool? supportsAllDrives,
     core.bool? supportsTeamDrives,
@@ -1742,6 +1867,7 @@ class FilesResource {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
+      if (includeLabels != null) 'includeLabels': [includeLabels],
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
       if (supportsAllDrives != null)
@@ -4102,6 +4228,9 @@ class FileCapabilities {
   /// Whether the current user can modify restrictions on content of this file.
   core.bool? canModifyContentRestriction;
 
+  /// Whether the current user can modify the labels on this file.
+  core.bool? canModifyLabels;
+
   /// Whether the current user can move children of this folder outside of the
   /// shared drive.
   ///
@@ -4154,6 +4283,9 @@ class FileCapabilities {
   ///
   /// Only populated for items in shared drives.
   core.bool? canReadDrive;
+
+  /// Whether the current user can read the labels on this file.
+  core.bool? canReadLabels;
 
   /// Whether the current user can read the revisions resource of this file.
   ///
@@ -4211,6 +4343,7 @@ class FileCapabilities {
     this.canListChildren,
     this.canModifyContent,
     this.canModifyContentRestriction,
+    this.canModifyLabels,
     this.canMoveChildrenOutOfDrive,
     this.canMoveChildrenOutOfTeamDrive,
     this.canMoveChildrenWithinDrive,
@@ -4222,6 +4355,7 @@ class FileCapabilities {
     this.canMoveItemWithinTeamDrive,
     this.canMoveTeamDriveItem,
     this.canReadDrive,
+    this.canReadLabels,
     this.canReadRevisions,
     this.canReadTeamDrive,
     this.canRemoveChildren,
@@ -4288,6 +4422,9 @@ class FileCapabilities {
               _json.containsKey('canModifyContentRestriction')
                   ? _json['canModifyContentRestriction'] as core.bool
                   : null,
+          canModifyLabels: _json.containsKey('canModifyLabels')
+              ? _json['canModifyLabels'] as core.bool
+              : null,
           canMoveChildrenOutOfDrive:
               _json.containsKey('canMoveChildrenOutOfDrive')
                   ? _json['canMoveChildrenOutOfDrive'] as core.bool
@@ -4327,6 +4464,9 @@ class FileCapabilities {
               : null,
           canReadDrive: _json.containsKey('canReadDrive')
               ? _json['canReadDrive'] as core.bool
+              : null,
+          canReadLabels: _json.containsKey('canReadLabels')
+              ? _json['canReadLabels'] as core.bool
               : null,
           canReadRevisions: _json.containsKey('canReadRevisions')
               ? _json['canReadRevisions'] as core.bool
@@ -4382,6 +4522,7 @@ class FileCapabilities {
         if (canModifyContent != null) 'canModifyContent': canModifyContent!,
         if (canModifyContentRestriction != null)
           'canModifyContentRestriction': canModifyContentRestriction!,
+        if (canModifyLabels != null) 'canModifyLabels': canModifyLabels!,
         if (canMoveChildrenOutOfDrive != null)
           'canMoveChildrenOutOfDrive': canMoveChildrenOutOfDrive!,
         if (canMoveChildrenOutOfTeamDrive != null)
@@ -4403,6 +4544,7 @@ class FileCapabilities {
         if (canMoveTeamDriveItem != null)
           'canMoveTeamDriveItem': canMoveTeamDriveItem!,
         if (canReadDrive != null) 'canReadDrive': canReadDrive!,
+        if (canReadLabels != null) 'canReadLabels': canReadLabels!,
         if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
         if (canReadTeamDrive != null) 'canReadTeamDrive': canReadTeamDrive!,
         if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren!,
@@ -4703,6 +4845,33 @@ class FileImageMediaMetadata {
       };
 }
 
+/// An overview of the labels on the file.
+class FileLabelInfo {
+  /// The set of labels on the file as requested by the label IDs in the
+  /// includeLabels parameter.
+  ///
+  /// By default, no labels are returned.
+  core.List<Label>? labels;
+
+  FileLabelInfo({
+    this.labels,
+  });
+
+  FileLabelInfo.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map((value) => Label.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
+      };
+}
+
 /// Contains details about the link URLs that clients are using to refer to this
 /// item.
 class FileLinkShareMetadata {
@@ -4918,6 +5087,9 @@ class File {
   /// Value: the fixed string "drive#file".
   core.String? kind;
 
+  /// An overview of the labels on the file.
+  FileLabelInfo? labelInfo;
+
   /// The last user to modify the file.
   User? lastModifyingUser;
 
@@ -5128,6 +5300,7 @@ class File {
     this.imageMediaMetadata,
     this.isAppAuthorized,
     this.kind,
+    this.labelInfo,
     this.lastModifyingUser,
     this.linkShareMetadata,
     this.md5Checksum,
@@ -5248,6 +5421,10 @@ class File {
               ? _json['isAppAuthorized'] as core.bool
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          labelInfo: _json.containsKey('labelInfo')
+              ? FileLabelInfo.fromJson(
+                  _json['labelInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           lastModifyingUser: _json.containsKey('lastModifyingUser')
               ? User.fromJson(_json['lastModifyingUser']
                   as core.Map<core.String, core.dynamic>)
@@ -5410,6 +5587,7 @@ class File {
           'imageMediaMetadata': imageMediaMetadata!,
         if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized!,
         if (kind != null) 'kind': kind!,
+        if (labelInfo != null) 'labelInfo': labelInfo!,
         if (lastModifyingUser != null) 'lastModifyingUser': lastModifyingUser!,
         if (linkShareMetadata != null) 'linkShareMetadata': linkShareMetadata!,
         if (md5Checksum != null) 'md5Checksum': md5Checksum!,
@@ -5554,6 +5732,403 @@ class GeneratedIds {
         if (ids != null) 'ids': ids!,
         if (kind != null) 'kind': kind!,
         if (space != null) 'space': space!,
+      };
+}
+
+/// Representation of a label and its fields.
+class Label {
+  /// A map of the label's fields keyed by the field ID.
+  core.Map<core.String, LabelField>? fields;
+
+  /// The ID of the label.
+  core.String? id;
+
+  /// This is always drive#label
+  core.String? kind;
+
+  /// The revision ID of the label.
+  core.String? revisionId;
+
+  Label({
+    this.fields,
+    this.id,
+    this.kind,
+    this.revisionId,
+  });
+
+  Label.fromJson(core.Map _json)
+      : this(
+          fields: _json.containsKey('fields')
+              ? (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    LabelField.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (revisionId != null) 'revisionId': revisionId!,
+      };
+}
+
+/// Representation of a label field.
+class LabelField {
+  /// Only present if valueType is dateString.
+  ///
+  /// RFC 3339 formatted date: YYYY-MM-DD.
+  core.List<core.DateTime>? dateString;
+
+  /// The identifier of this field.
+  core.String? id;
+
+  /// Only present if valueType is integer.
+  core.List<core.String>? integer;
+
+  /// This is always drive#labelField.
+  core.String? kind;
+
+  /// Only present if valueType is selection.
+  core.List<core.String>? selection;
+
+  /// Only present if valueType is text.
+  core.List<core.String>? text;
+
+  /// Only present if valueType is user.
+  core.List<User>? user;
+
+  /// The field type.
+  ///
+  /// While new values may be supported in the future, the following are
+  /// currently allowed:
+  /// - dateString
+  /// - integer
+  /// - selection
+  /// - text
+  /// - user
+  core.String? valueType;
+
+  LabelField({
+    this.dateString,
+    this.id,
+    this.integer,
+    this.kind,
+    this.selection,
+    this.text,
+    this.user,
+    this.valueType,
+  });
+
+  LabelField.fromJson(core.Map _json)
+      : this(
+          dateString: _json.containsKey('dateString')
+              ? (_json['dateString'] as core.List)
+                  .map((value) => core.DateTime.parse(value as core.String))
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          integer: _json.containsKey('integer')
+              ? (_json['integer'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          selection: _json.containsKey('selection')
+              ? (_json['selection'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          text: _json.containsKey('text')
+              ? (_json['text'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          user: _json.containsKey('user')
+              ? (_json['user'] as core.List)
+                  .map((value) => User.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          valueType: _json.containsKey('valueType')
+              ? _json['valueType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateString != null)
+          'dateString': dateString!
+              .map((value) =>
+                  "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}")
+              .toList(),
+        if (id != null) 'id': id!,
+        if (integer != null) 'integer': integer!,
+        if (kind != null) 'kind': kind!,
+        if (selection != null) 'selection': selection!,
+        if (text != null) 'text': text!,
+        if (user != null) 'user': user!,
+        if (valueType != null) 'valueType': valueType!,
+      };
+}
+
+/// A modification to a label's field.
+class LabelFieldModification {
+  /// The ID of the Field to be modified.
+  core.String? fieldId;
+
+  /// This is always drive#labelFieldModification.
+  core.String? kind;
+
+  /// Replaces a dateString field with these new values.
+  ///
+  /// The values must be strings in the RFC 3339 full-date format: YYYY-MM-DD.
+  core.List<core.DateTime>? setDateValues;
+
+  /// Replaces an integer field with these new values.
+  core.List<core.String>? setIntegerValues;
+
+  /// Replaces a selection field with these new values.
+  core.List<core.String>? setSelectionValues;
+
+  /// Replaces a text field with these new values.
+  core.List<core.String>? setTextValues;
+
+  /// Replaces a user field with these new values.
+  ///
+  /// The values must be valid email addresses.
+  core.List<core.String>? setUserValues;
+
+  /// Unsets the values for this field.
+  core.bool? unsetValues;
+
+  LabelFieldModification({
+    this.fieldId,
+    this.kind,
+    this.setDateValues,
+    this.setIntegerValues,
+    this.setSelectionValues,
+    this.setTextValues,
+    this.setUserValues,
+    this.unsetValues,
+  });
+
+  LabelFieldModification.fromJson(core.Map _json)
+      : this(
+          fieldId: _json.containsKey('fieldId')
+              ? _json['fieldId'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          setDateValues: _json.containsKey('setDateValues')
+              ? (_json['setDateValues'] as core.List)
+                  .map((value) => core.DateTime.parse(value as core.String))
+                  .toList()
+              : null,
+          setIntegerValues: _json.containsKey('setIntegerValues')
+              ? (_json['setIntegerValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          setSelectionValues: _json.containsKey('setSelectionValues')
+              ? (_json['setSelectionValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          setTextValues: _json.containsKey('setTextValues')
+              ? (_json['setTextValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          setUserValues: _json.containsKey('setUserValues')
+              ? (_json['setUserValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          unsetValues: _json.containsKey('unsetValues')
+              ? _json['unsetValues'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (kind != null) 'kind': kind!,
+        if (setDateValues != null)
+          'setDateValues': setDateValues!
+              .map((value) =>
+                  "${value.year.toString().padLeft(4, '0')}-${value.month.toString().padLeft(2, '0')}-${value.day.toString().padLeft(2, '0')}")
+              .toList(),
+        if (setIntegerValues != null) 'setIntegerValues': setIntegerValues!,
+        if (setSelectionValues != null)
+          'setSelectionValues': setSelectionValues!,
+        if (setTextValues != null) 'setTextValues': setTextValues!,
+        if (setUserValues != null) 'setUserValues': setUserValues!,
+        if (unsetValues != null) 'unsetValues': unsetValues!,
+      };
+}
+
+/// A list of labels.
+class LabelList {
+  /// This is always drive#labelList
+  core.String? kind;
+
+  /// The list of labels.
+  core.List<Label>? labels;
+
+  /// The page token for the next page of labels.
+  ///
+  /// This field will be absent if the end of the list has been reached. If the
+  /// token is rejected for any reason, it should be discarded, and pagination
+  /// should be restarted from the first page of results.
+  core.String? nextPageToken;
+
+  LabelList({
+    this.kind,
+    this.labels,
+    this.nextPageToken,
+  });
+
+  LabelList.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map((value) => Label.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A modification to a label on a file.
+///
+/// A LabelModification can be used to apply a label to a file, update an
+/// existing label on a file, or remove a label from a file.
+class LabelModification {
+  /// The list of modifications to this label's fields.
+  core.List<LabelFieldModification>? fieldModifications;
+
+  /// This is always drive#labelModification.
+  core.String? kind;
+
+  /// The ID of the label to modify.
+  core.String? labelId;
+
+  /// If true, the label will be removed from the file.
+  core.bool? removeLabel;
+
+  LabelModification({
+    this.fieldModifications,
+    this.kind,
+    this.labelId,
+    this.removeLabel,
+  });
+
+  LabelModification.fromJson(core.Map _json)
+      : this(
+          fieldModifications: _json.containsKey('fieldModifications')
+              ? (_json['fieldModifications'] as core.List)
+                  .map((value) => LabelFieldModification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          labelId: _json.containsKey('labelId')
+              ? _json['labelId'] as core.String
+              : null,
+          removeLabel: _json.containsKey('removeLabel')
+              ? _json['removeLabel'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldModifications != null)
+          'fieldModifications': fieldModifications!,
+        if (kind != null) 'kind': kind!,
+        if (labelId != null) 'labelId': labelId!,
+        if (removeLabel != null) 'removeLabel': removeLabel!,
+      };
+}
+
+/// A request to modify the set of labels on a file.
+///
+/// This request may contain many modifications that will either all succeed or
+/// all fail transactionally.
+class ModifyLabelsRequest {
+  /// This is always drive#modifyLabelsRequest
+  core.String? kind;
+
+  /// The list of modifications to apply to the labels on the file.
+  core.List<LabelModification>? labelModifications;
+
+  ModifyLabelsRequest({
+    this.kind,
+    this.labelModifications,
+  });
+
+  ModifyLabelsRequest.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          labelModifications: _json.containsKey('labelModifications')
+              ? (_json['labelModifications'] as core.List)
+                  .map((value) => LabelModification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (labelModifications != null)
+          'labelModifications': labelModifications!,
+      };
+}
+
+/// Response to a ModifyLabels request.
+///
+/// This contains only those labels which were added or updated by the request.
+class ModifyLabelsResponse {
+  /// This is always drive#modifyLabelsResponse
+  core.String? kind;
+
+  /// The list of labels which were added or updated by the request.
+  core.List<Label>? modifiedLabels;
+
+  ModifyLabelsResponse({
+    this.kind,
+    this.modifiedLabels,
+  });
+
+  ModifyLabelsResponse.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          modifiedLabels: _json.containsKey('modifiedLabels')
+              ? (_json['modifiedLabels'] as core.List)
+                  .map((value) => Label.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (modifiedLabels != null) 'modifiedLabels': modifiedLabels!,
       };
 }
 

@@ -3087,7 +3087,8 @@ class MonetizationSubscriptionsResource {
   /// on the Subscription resource.
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource.
+  /// available regions being used for the specified resource. The current
+  /// version is 2022/01.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3285,7 +3286,8 @@ class MonetizationSubscriptionsResource {
   /// characters in length.
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource.
+  /// available regions being used for the specified resource. The current
+  /// version is 2022/01.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -3658,7 +3660,8 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// SubscriptionOffer resource.
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource.
+  /// available regions being used for the specified resource. The current
+  /// version is 2022/01.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3956,7 +3959,8 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// Must be unique within the base plan.
   ///
   /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource.
+  /// available regions being used for the specified resource. The current
+  /// version is 2022/01.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -5442,11 +5446,11 @@ class AutoRenewingBasePlanType {
   /// used based on the recurring period duration.
   core.String? gracePeriodDuration;
 
-  /// Whether the renewing base plan is compatible with legacy version of the
-  /// Play Billing Library (prior to version 3) or not.
+  /// Whether the renewing base plan is backward compatible.
   ///
-  /// Only one renewing base plan can be marked as legacy compatible for a given
-  /// subscription.
+  /// The backward compatible base plan is returned by the Google Play Billing
+  /// Library deprecated method querySkuDetailsAsync(). Only one renewing base
+  /// plan can be marked as legacy compatible for a given subscription.
   core.bool? legacyCompatible;
 
   /// The proration mode for the base plan determines what happens when a user
@@ -8656,6 +8660,8 @@ class RegionalTaxRateInfo {
 class RegionsVersion {
   /// A string representing version of the available regions being used for the
   /// specified resource.
+  ///
+  /// The current version is 2022/01.
   ///
   /// Required.
   core.String? version;

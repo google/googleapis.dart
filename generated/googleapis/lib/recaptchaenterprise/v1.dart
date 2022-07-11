@@ -466,6 +466,49 @@ class ProjectsKeysResource {
     return GoogleCloudRecaptchaenterpriseV1Key.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Returns the secret key related to the specified public key.
+  ///
+  /// You must use the legacy secret key only in a 3rd party integration with
+  /// legacy reCAPTCHA.
+  ///
+  /// Request parameters:
+  ///
+  /// [key] - Required. The public key name linked to the requested secret key
+  /// in the format "projects/{project}/keys/{key}".
+  /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse>
+      retrieveLegacySecretKey(
+    core.String key, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$key') + ':retrieveLegacySecretKey';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsRelatedaccountgroupmembershipsResource {
@@ -481,7 +524,8 @@ class ProjectsRelatedaccountgroupmembershipsResource {
   /// Request parameters:
   ///
   /// [project] - Required. The name of the project to search related account
-  /// group memberships from, in the format "projects/{project}".
+  /// group memberships from. Specify the project name in the following format:
+  /// "projects/{project}".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -541,9 +585,9 @@ class ProjectsRelatedaccountgroupsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of groups to return. The service
-  /// may return fewer than this value. If unspecified, at most 50 groups will
-  /// be returned. The maximum value is 1000; values above 1000 will be coerced
-  /// to 1000.
+  /// might return fewer than this value. If unspecified, at most 50 groups are
+  /// returned. The maximum value is 1000; values above 1000 are coerced to
+  /// 1000.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
   /// `ListRelatedAccountGroups` call. Provide this to retrieve the subsequent
@@ -594,7 +638,7 @@ class ProjectsRelatedaccountgroupsMembershipsResource {
   ProjectsRelatedaccountgroupsMembershipsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get the memberships in a group of related accounts.
+  /// Get memberships in a group of related accounts.
   ///
   /// Request parameters:
   ///
@@ -604,9 +648,9 @@ class ProjectsRelatedaccountgroupsMembershipsResource {
   /// Value must have pattern `^projects/\[^/\]+/relatedaccountgroups/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of accounts to return. The
-  /// service may return fewer than this value. If unspecified, at most 50
-  /// accounts will be returned. The maximum value is 1000; values above 1000
-  /// will be coerced to 1000.
+  /// service might return fewer than this value. If unspecified, at most 50
+  /// accounts are returned. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
   /// `ListRelatedAccountGroupMemberships` call. When paginating, all other
@@ -650,7 +694,7 @@ class ProjectsRelatedaccountgroupsMembershipsResource {
   }
 }
 
-/// Account Defender risk assessment.
+/// Account defender risk assessment.
 class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /// Labels for this request.
   core.List<core.String>? labels;
@@ -732,7 +776,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// instead.
   core.String? annotation;
 
-  /// Optional unique stable hashed user identifier to apply to the assessment.
+  /// Unique stable hashed user identifier to apply to the assessment.
   ///
   /// This is an alternative to setting the hashed_account_id in
   /// CreateAssessment, for example when the account identifier is not yet known
@@ -788,7 +832,7 @@ typedef GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse = $Empty;
 
 /// A recaptcha assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
-  /// Assessment returned by Account Defender when a hashed_account_id is
+  /// Assessment returned by account defender when a hashed_account_id is
   /// provided.
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment?
       accountDefenderAssessment;
@@ -802,8 +846,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Output only.
   core.String? name;
 
-  /// The private password leak verification field contains the parameters used
-  /// to check for leaks privately without sharing user credentials.
+  /// The private password leak verification field contains the parameters that
+  /// are used to to check for leaks privately without sharing user credentials.
   GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification?
       privatePasswordLeakVerification;
 
@@ -928,9 +972,9 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? expectedAction;
 
-  /// Optional unique stable hashed user identifier for the request.
+  /// Unique stable hashed user identifier for the request.
   ///
-  /// The identifier should ideally be hashed using sha256 with stable secret.
+  /// The identifier must be hashed using hmac-sha256 with stable secret.
   ///
   /// Optional.
   core.String? hashedAccountId;
@@ -1320,7 +1364,7 @@ class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
   /// List of prefixes of the encrypted potential password leaks that matched
   /// the given parameters.
   ///
-  /// They should be compared with the client-side decryption prefix of
+  /// They must be compared with the client-side decryption prefix of
   /// `reencrypted_user_credentials_hash`
   ///
   /// Output only.
@@ -1358,7 +1402,7 @@ class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
   /// Corresponds to the re-encryption of the `encrypted_user_credentials_hash`
   /// field.
   ///
-  /// Used to match potential password leaks within
+  /// It is used to match potential password leaks within
   /// `encrypted_leak_match_prefixes`.
   ///
   /// Output only.
@@ -1438,7 +1482,7 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
   /// The unique stable hashed user identifier of the member.
   ///
   /// The identifier corresponds to a `hashed_account_id` provided in a previous
-  /// CreateAssessment or AnnotateAssessment call.
+  /// `CreateAssessment` or `AnnotateAssessment` call.
   core.String? hashedAccountId;
   core.List<core.int> get hashedAccountIdAsBytes =>
       convert.base64.decode(hashedAccountId!);
@@ -1471,6 +1515,34 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Secret key is used only in legacy reCAPTCHA.
+///
+/// It must be used in a 3rd party integration with legacy reCAPTCHA.
+class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
+  /// The secret key (also known as shared secret) authorizes communication
+  /// between your application backend and the reCAPTCHA Enterprise server to
+  /// create an assessment.
+  ///
+  /// The secret key needs to be kept safe for security purposes.
+  core.String? legacySecretKey;
+
+  GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse({
+    this.legacySecretKey,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse.fromJson(
+      core.Map _json)
+      : this(
+          legacySecretKey: _json.containsKey('legacySecretKey')
+              ? _json['legacySecretKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (legacySecretKey != null) 'legacySecretKey': legacySecretKey!,
       };
 }
 
@@ -1585,7 +1657,7 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsReques
   /// The unique stable hashed user identifier we should search connections to.
   ///
   /// The identifier should correspond to a `hashed_account_id` provided in a
-  /// previous CreateAssessment or AnnotateAssessment call.
+  /// previous `CreateAssessment` or `AnnotateAssessment` call.
   ///
   /// Optional.
   core.String? hashedAccountId;
@@ -1599,9 +1671,9 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsReques
 
   /// The maximum number of groups to return.
   ///
-  /// The service may return fewer than this value. If unspecified, at most 50
-  /// groups will be returned. The maximum value is 1000; values above 1000 will
-  /// be coerced to 1000.
+  /// The service might return fewer than this value. If unspecified, at most 50
+  /// groups are returned. The maximum value is 1000; values above 1000 are
+  /// coerced to 1000.
   ///
   /// Optional.
   core.int? pageSize;

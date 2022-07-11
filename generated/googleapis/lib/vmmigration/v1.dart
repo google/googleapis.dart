@@ -14,10 +14,11 @@
 
 /// VM Migration API - v1
 ///
-/// Use the Migrate for Compute Engine API to programmatically migrate
+/// Use the Migrate to Virtual Machines API to programmatically migrate
 /// workloads.
 ///
-/// For more information, see <https://cloud.google.com/migrate/compute-engine>
+/// For more information, see
+/// <https://cloud.google.com/migrate/virtual-machines>
 ///
 /// Create an instance of [VMMigrationServiceApi] to access these resources:
 ///
@@ -48,7 +49,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Use the Migrate for Compute Engine API to programmatically migrate
+/// Use the Migrate to Virtual Machines API to programmatically migrate
 /// workloads.
 class VMMigrationServiceApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
@@ -2876,31 +2877,6 @@ class AvailableUpdates {
       };
 }
 
-/// Represent the source AWS VM details.
-class AwsSourceVmDetails {
-  /// The firmware type of the source VM.
-  /// Possible string values are:
-  /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
-  /// - "EFI" : The firmware is EFI.
-  /// - "BIOS" : The firmware is BIOS.
-  core.String? firmware;
-
-  AwsSourceVmDetails({
-    this.firmware,
-  });
-
-  AwsSourceVmDetails.fromJson(core.Map _json)
-      : this(
-          firmware: _json.containsKey('firmware')
-              ? _json['firmware'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (firmware != null) 'firmware': firmware!,
-      };
-}
-
 /// Request message for 'CancelCloneJob' request.
 typedef CancelCloneJobRequest = $Empty;
 
@@ -4375,11 +4351,6 @@ typedef Location = $Location00;
 /// MigratingVm describes the VM that will be migrated from a Source environment
 /// and its replication state.
 class MigratingVm {
-  /// Details of the VM from an AWS source.
-  ///
-  /// Output only.
-  AwsSourceVmDetails? awsSourceVmDetails;
-
   /// Details of the target VM in Compute Engine.
   ComputeEngineTargetDefaults? computeEngineTargetDefaults;
 
@@ -4494,7 +4465,6 @@ class MigratingVm {
   core.String? updateTime;
 
   MigratingVm({
-    this.awsSourceVmDetails,
     this.computeEngineTargetDefaults,
     this.createTime,
     this.currentSyncInfo,
@@ -4516,10 +4486,6 @@ class MigratingVm {
 
   MigratingVm.fromJson(core.Map _json)
       : this(
-          awsSourceVmDetails: _json.containsKey('awsSourceVmDetails')
-              ? AwsSourceVmDetails.fromJson(_json['awsSourceVmDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           computeEngineTargetDefaults:
               _json.containsKey('computeEngineTargetDefaults')
                   ? ComputeEngineTargetDefaults.fromJson(
@@ -4588,8 +4554,6 @@ class MigratingVm {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (awsSourceVmDetails != null)
-          'awsSourceVmDetails': awsSourceVmDetails!,
         if (computeEngineTargetDefaults != null)
           'computeEngineTargetDefaults': computeEngineTargetDefaults!,
         if (createTime != null) 'createTime': createTime!,

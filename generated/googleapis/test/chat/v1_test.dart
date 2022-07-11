@@ -350,6 +350,30 @@ void checkCardHeader(api.CardHeader o) {
   buildCounterCardHeader--;
 }
 
+core.int buildCounterCardWithId = 0;
+api.CardWithId buildCardWithId() {
+  final o = api.CardWithId();
+  buildCounterCardWithId++;
+  if (buildCounterCardWithId < 3) {
+    o.card = buildGoogleAppsCardV1Card();
+    o.cardId = 'foo';
+  }
+  buildCounterCardWithId--;
+  return o;
+}
+
+void checkCardWithId(api.CardWithId o) {
+  buildCounterCardWithId++;
+  if (buildCounterCardWithId < 3) {
+    checkGoogleAppsCardV1Card(o.card!);
+    unittest.expect(
+      o.cardId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCardWithId--;
+}
+
 core.int buildCounterColor = 0;
 api.Color buildColor() {
   final o = api.Color();
@@ -1733,6 +1757,7 @@ api.Membership buildMembership() {
     o.createTime = 'foo';
     o.member = buildUser();
     o.name = 'foo';
+    o.role = 'foo';
     o.state = 'foo';
   }
   buildCounterMembership--;
@@ -1749,6 +1774,10 @@ void checkMembership(api.Membership o) {
     checkUser(o.member!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.role!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1792,6 +1821,17 @@ void checkUnnamed15(core.List<api.Card> o) {
   checkCard(o[1]);
 }
 
+core.List<api.CardWithId> buildUnnamed16() => [
+      buildCardWithId(),
+      buildCardWithId(),
+    ];
+
+void checkUnnamed16(core.List<api.CardWithId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCardWithId(o[0]);
+  checkCardWithId(o[1]);
+}
+
 core.int buildCounterMessage = 0;
 api.Message buildMessage() {
   final o = api.Message();
@@ -1802,6 +1842,7 @@ api.Message buildMessage() {
     o.argumentText = 'foo';
     o.attachment = buildUnnamed14();
     o.cards = buildUnnamed15();
+    o.cardsV2 = buildUnnamed16();
     o.createTime = 'foo';
     o.fallbackText = 'foo';
     o.lastUpdateTime = 'foo';
@@ -1828,6 +1869,7 @@ void checkMessage(api.Message o) {
     );
     checkUnnamed14(o.attachment!);
     checkUnnamed15(o.cards!);
+    checkUnnamed16(o.cardsV2!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1900,12 +1942,12 @@ void checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink--;
 }
 
-core.List<api.WidgetMarkup> buildUnnamed16() => [
+core.List<api.WidgetMarkup> buildUnnamed17() => [
       buildWidgetMarkup(),
       buildWidgetMarkup(),
     ];
 
-void checkUnnamed16(core.List<api.WidgetMarkup> o) {
+void checkUnnamed17(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
@@ -1917,7 +1959,7 @@ api.Section buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
-    o.widgets = buildUnnamed16();
+    o.widgets = buildUnnamed17();
   }
   buildCounterSection--;
   return o;
@@ -1930,7 +1972,7 @@ void checkSection(api.Section o) {
       o.header!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.widgets!);
+    checkUnnamed17(o.widgets!);
   }
   buildCounterSection--;
 }
@@ -2001,6 +2043,7 @@ api.Space buildSpace() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.singleUserBotDm = true;
+    o.spaceDetails = buildSpaceDetails();
     o.threaded = true;
     o.type = 'foo';
   }
@@ -2020,6 +2063,7 @@ void checkSpace(api.Space o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.singleUserBotDm!, unittest.isTrue);
+    checkSpaceDetails(o.spaceDetails!);
     unittest.expect(o.threaded!, unittest.isTrue);
     unittest.expect(
       o.type!,
@@ -2027,6 +2071,33 @@ void checkSpace(api.Space o) {
     );
   }
   buildCounterSpace--;
+}
+
+core.int buildCounterSpaceDetails = 0;
+api.SpaceDetails buildSpaceDetails() {
+  final o = api.SpaceDetails();
+  buildCounterSpaceDetails++;
+  if (buildCounterSpaceDetails < 3) {
+    o.description = 'foo';
+    o.guidelines = 'foo';
+  }
+  buildCounterSpaceDetails--;
+  return o;
+}
+
+void checkSpaceDetails(api.SpaceDetails o) {
+  buildCounterSpaceDetails++;
+  if (buildCounterSpaceDetails < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.guidelines!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSpaceDetails--;
 }
 
 core.int buildCounterTextButton = 0;
@@ -2160,12 +2231,12 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed17() => [
+core.List<api.Button> buildUnnamed18() => [
       buildButton(),
       buildButton(),
     ];
 
-void checkUnnamed17(core.List<api.Button> o) {
+void checkUnnamed18(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -2176,7 +2247,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   final o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed17();
+    o.buttons = buildUnnamed18();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -2188,7 +2259,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed17(o.buttons!);
+    checkUnnamed18(o.buttons!);
     checkImage(o.image!);
     checkKeyValue(o.keyValue!);
     checkTextParagraph(o.textParagraph!);
@@ -2294,6 +2365,16 @@ void main() {
       final od =
           api.CardHeader.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCardHeader(od);
+    });
+  });
+
+  unittest.group('obj-schema-CardWithId', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCardWithId();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.CardWithId.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCardWithId(od);
     });
   });
 
@@ -2794,6 +2875,16 @@ void main() {
       final od =
           api.Space.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSpace(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpaceDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpaceDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpaceDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpaceDetails(od);
     });
   });
 

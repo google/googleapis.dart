@@ -949,9 +949,14 @@ class AccessDeniedPageSettings {
   /// application.
   core.bool? generateTroubleshootingUri;
 
+  /// Whether to generate remediation token on access denied events to this
+  /// application.
+  core.bool? remediationTokenGenerationEnabled;
+
   AccessDeniedPageSettings({
     this.accessDeniedPageUri,
     this.generateTroubleshootingUri,
+    this.remediationTokenGenerationEnabled,
   });
 
   AccessDeniedPageSettings.fromJson(core.Map _json)
@@ -963,6 +968,10 @@ class AccessDeniedPageSettings {
               _json.containsKey('generateTroubleshootingUri')
                   ? _json['generateTroubleshootingUri'] as core.bool
                   : null,
+          remediationTokenGenerationEnabled:
+              _json.containsKey('remediationTokenGenerationEnabled')
+                  ? _json['remediationTokenGenerationEnabled'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -970,11 +979,17 @@ class AccessDeniedPageSettings {
           'accessDeniedPageUri': accessDeniedPageUri!,
         if (generateTroubleshootingUri != null)
           'generateTroubleshootingUri': generateTroubleshootingUri!,
+        if (remediationTokenGenerationEnabled != null)
+          'remediationTokenGenerationEnabled':
+              remediationTokenGenerationEnabled!,
       };
 }
 
 /// Access related settings for IAP protected apps.
 class AccessSettings {
+  /// Settings to configure and enable allowed domains.
+  AllowedDomainsSettings? allowedDomainsSettings;
+
   /// Configuration to allow cross-origin requests via IAP.
   CorsSettings? corsSettings;
 
@@ -994,6 +1009,7 @@ class AccessSettings {
   ReauthSettings? reauthSettings;
 
   AccessSettings({
+    this.allowedDomainsSettings,
     this.corsSettings,
     this.gcipSettings,
     this.oauthSettings,
@@ -1003,6 +1019,10 @@ class AccessSettings {
 
   AccessSettings.fromJson(core.Map _json)
       : this(
+          allowedDomainsSettings: _json.containsKey('allowedDomainsSettings')
+              ? AllowedDomainsSettings.fromJson(_json['allowedDomainsSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           corsSettings: _json.containsKey('corsSettings')
               ? CorsSettings.fromJson(
                   _json['corsSettings'] as core.Map<core.String, core.dynamic>)
@@ -1028,12 +1048,47 @@ class AccessSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedDomainsSettings != null)
+          'allowedDomainsSettings': allowedDomainsSettings!,
         if (corsSettings != null) 'corsSettings': corsSettings!,
         if (gcipSettings != null) 'gcipSettings': gcipSettings!,
         if (oauthSettings != null) 'oauthSettings': oauthSettings!,
         if (policyDelegationSettings != null)
           'policyDelegationSettings': policyDelegationSettings!,
         if (reauthSettings != null) 'reauthSettings': reauthSettings!,
+      };
+}
+
+/// Configuration for IAP allowed domains.
+///
+/// Lets you to restrict access to an app and allow access to only the domains
+/// that you list.
+class AllowedDomainsSettings {
+  /// List of trusted domains.
+  core.List<core.String>? domains;
+
+  /// Configuration for customers to opt in for the feature.
+  core.bool? enable;
+
+  AllowedDomainsSettings({
+    this.domains,
+    this.enable,
+  });
+
+  AllowedDomainsSettings.fromJson(core.Map _json)
+      : this(
+          domains: _json.containsKey('domains')
+              ? (_json['domains'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          enable:
+              _json.containsKey('enable') ? _json['enable'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domains != null) 'domains': domains!,
+        if (enable != null) 'enable': enable!,
       };
 }
 
@@ -1236,12 +1291,12 @@ class CorsSettings {
       };
 }
 
-/// Configuration for RCTokens generated for service mesh workloads protected by
+/// Configuration for RCToken generated for service mesh workloads protected by
 /// IAP.
 ///
-/// RCTokens are IAP generated JWTs that can be verified at the application. The
+/// RCToken are IAP generated JWTs that can be verified at the application. The
 /// RCToken is primarily used for service mesh deployments, and can be scoped to
-/// a single mesh by configuring the audience field accordingly
+/// a single mesh by configuring the audience field accordingly.
 class CsmSettings {
   /// Audience claim set in the generated RCToken.
   ///
@@ -1781,12 +1836,7 @@ class ReauthSettings {
   /// Reauth method requested.
   /// Possible string values are:
   /// - "METHOD_UNSPECIFIED" : Reauthentication disabled.
-  /// - "LOGIN" : Mimics the behavior as if the user had logged out and tried to
-  /// log in again. Users with 2SV (2-step verification) enabled see their 2SV
-  /// challenges if they did not opt to have their second factor responses
-  /// saved. Apps Core (GSuites) admins can configure settings to disable 2SV
-  /// cookies and require 2SV for all Apps Core users in their domains.
-  /// - "PASSWORD" : User must type their password.
+  /// - "LOGIN" : Prompts the user to log in again.
   /// - "SECURE_KEY" : User must use their secure key 2nd factor device.
   core.String? method;
 

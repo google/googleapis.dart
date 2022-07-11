@@ -1070,7 +1070,7 @@ class Release {
 
   /// Name of the `Ruleset` referred to by this `Release`.
   ///
-  /// The `Ruleset` must exist the `Release` to be created.
+  /// The `Ruleset` must exist for the `Release` to be created.
   ///
   /// Required.
   core.String? rulesetName;

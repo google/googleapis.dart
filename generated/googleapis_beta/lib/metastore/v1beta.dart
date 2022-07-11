@@ -180,6 +180,157 @@ class ProjectsLocationsFederationsResource {
   ProjectsLocationsFederationsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a metastore federation in a project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the location in which
+  /// to create a federation service, in the following
+  /// form:projects/{project_number}/locations/{location_id}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [federationId] - Required. The ID of the metastore federation, which is
+  /// used as the final component of the metastore federation's name.This value
+  /// must be between 2 and 63 characters long inclusive, begin with a letter,
+  /// end with a letter or number, and consist of alpha-numeric ASCII characters
+  /// or hyphens.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Federation request,
+    core.String parent, {
+    core.String? federationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (federationId != null) 'federationId': [federationId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/federations';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single federation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the metastore federation
+  /// to delete, in the following
+  /// form:projects/{project_number}/locations/{location_id}/federations/{federation_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/federations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a single federation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the metastore federation
+  /// to retrieve, in the following
+  /// form:projects/{project_number}/locations/{location_id}/federations/{federation_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/federations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Federation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Federation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Federation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -235,6 +386,132 @@ class ProjectsLocationsFederationsResource {
       queryParams: _queryParams,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists federations in a project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the location of
+  /// metastore federations to list, in the following form:
+  /// projects/{project_number}/locations/{location_id}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter to apply to list results.
+  ///
+  /// [orderBy] - Optional. Specify the ordering of results as described in
+  /// Sorting Order
+  /// (https://cloud.google.com/apis/design/design_patterns#sorting_order). If
+  /// not specified, the results will be sorted in the default order.
+  ///
+  /// [pageSize] - Optional. The maximum number of federations to return. The
+  /// response may contain less than the maximum number. If unspecified, no more
+  /// than 500 services are returned. The maximum value is 1000; values above
+  /// 1000 are changed to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// ListFederationServices call. Provide this token to retrieve the subsequent
+  /// page.To retrieve the first page, supply an empty page token.When
+  /// paginating, other parameters provided to ListFederationServices must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFederationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFederationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/federations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListFederationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the fields of a federation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The relative resource name of the federation, of the
+  /// form:
+  /// projects/{project_number}/locations/{location_id}/federations/{federation_id}\`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/federations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [updateMask] - Required. A field mask used to specify the fields to be
+  /// overwritten in the metastore federation resource by the update. Fields
+  /// specified in the update_mask are relative to the resource (not to the full
+  /// request). A field is overwritten if it is in the mask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Federation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2120,6 +2397,42 @@ class AuxiliaryVersionConfig {
       };
 }
 
+/// Represents a backend metastore for the federation.
+class BackendMetastore {
+  /// The type of the backend metastore.
+  /// Possible string values are:
+  /// - "METASTORE_TYPE_UNSPECIFIED" : The metastore type is not set.
+  /// - "DATAPROC_METASTORE" : The backend metastore is Dataproc Metastore.
+  core.String? metastoreType;
+
+  /// The relative resource name of the metastore that is being federated.
+  ///
+  /// The formats of the relative resource names for the currently supported
+  /// metastores are listed below: Dataplex:
+  /// projects/{project_id}/locations/{location}/lakes/{lake_id} BigQuery:
+  /// projects/{project_id} Dataproc Metastore:
+  /// projects/{project_id}/locations/{location}/services/{service_id}
+  core.String? name;
+
+  BackendMetastore({
+    this.metastoreType,
+    this.name,
+  });
+
+  BackendMetastore.fromJson(core.Map _json)
+      : this(
+          metastoreType: _json.containsKey('metastoreType')
+              ? _json['metastoreType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metastoreType != null) 'metastoreType': metastoreType!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// The details of a backup resource.
 class Backup {
   /// The time when the backup was started.
@@ -2550,6 +2863,147 @@ class ExportMetadataRequest {
 /// information.
 typedef Expr = $Expr;
 
+/// Represents a federation of multiple backend metastores.
+class Federation {
+  /// A map from BackendMetastore rank to BackendMetastores from which the
+  /// federation service serves metadata at query time.
+  ///
+  /// The map key represents the order in which BackendMetastores should be
+  /// evaluated to resolve database names at query time and should be greater
+  /// than or equal to zero. A BackendMetastore with a lower number will be
+  /// evaluated before a BackendMetastore with a higher number.
+  core.Map<core.String, BackendMetastore>? backendMetastores;
+
+  /// The time when the metastore federation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The federation endpoint.
+  ///
+  /// Output only.
+  core.String? endpointUri;
+
+  /// User-defined labels for the metastore federation.
+  core.Map<core.String, core.String>? labels;
+
+  /// The relative resource name of the federation, of the form:
+  /// projects/{project_number}/locations/{location_id}/federations/{federation_id}\`.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The current state of the federation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the metastore federation is unknown.
+  /// - "CREATING" : The metastore federation is in the process of being
+  /// created.
+  /// - "ACTIVE" : The metastore federation is running and ready to serve
+  /// queries.
+  /// - "UPDATING" : The metastore federation is being updated. It remains
+  /// usable but cannot accept additional update requests or be deleted at this
+  /// time.
+  /// - "DELETING" : The metastore federation is undergoing deletion. It cannot
+  /// be used.
+  /// - "ERROR" : The metastore federation has encountered an error and cannot
+  /// be used. The metastore federation should be deleted.
+  core.String? state;
+
+  /// Additional information about the current state of the metastore
+  /// federation, if available.
+  ///
+  /// Output only.
+  core.String? stateMessage;
+
+  /// The globally unique resource identifier of the metastore federation.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time when the metastore federation was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The Apache Hive metastore version of the federation.
+  ///
+  /// All backend metastore versions must be compatible with the federation
+  /// version.
+  ///
+  /// Immutable.
+  core.String? version;
+
+  Federation({
+    this.backendMetastores,
+    this.createTime,
+    this.endpointUri,
+    this.labels,
+    this.name,
+    this.state,
+    this.stateMessage,
+    this.uid,
+    this.updateTime,
+    this.version,
+  });
+
+  Federation.fromJson(core.Map _json)
+      : this(
+          backendMetastores: _json.containsKey('backendMetastores')
+              ? (_json['backendMetastores']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    BackendMetastore.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endpointUri: _json.containsKey('endpointUri')
+              ? _json['endpointUri'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backendMetastores != null) 'backendMetastores': backendMetastores!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endpointUri != null) 'endpointUri': endpointUri!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Specifies configuration information specific to running Hive metastore
 /// software as the metastore service.
 class HiveMetastoreConfig {
@@ -2755,6 +3209,50 @@ class ListBackupsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backups != null) 'backups': backups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for ListFederations
+class ListFederationsResponse {
+  /// The services in the specified location.
+  core.List<Federation>? federations;
+
+  /// A token that can be sent as page_token to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListFederationsResponse({
+    this.federations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListFederationsResponse.fromJson(core.Map _json)
+      : this(
+          federations: _json.containsKey('federations')
+              ? (_json['federations'] as core.List)
+                  .map((value) => Federation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (federations != null) 'federations': federations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };

@@ -180,6 +180,7 @@ api.CloudSqlProperties buildCloudSqlProperties() {
     o.credential = buildCloudSqlCredential();
     o.database = 'foo';
     o.instanceId = 'foo';
+    o.serviceAccountId = 'foo';
     o.type = 'foo';
   }
   buildCounterCloudSqlProperties--;
@@ -196,6 +197,10 @@ void checkCloudSqlProperties(api.CloudSqlProperties o) {
     );
     unittest.expect(
       o.instanceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAccountId!,
       unittest.equals('foo'),
     );
     unittest.expect(

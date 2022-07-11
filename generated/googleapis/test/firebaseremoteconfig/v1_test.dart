@@ -672,52 +672,6 @@ void checkRollbackRemoteConfigRequest(api.RollbackRemoteConfigRequest o) {
   buildCounterRollbackRemoteConfigRequest--;
 }
 
-core.int buildCounterStreamFetchInvalidationsRequest = 0;
-api.StreamFetchInvalidationsRequest buildStreamFetchInvalidationsRequest() {
-  final o = api.StreamFetchInvalidationsRequest();
-  buildCounterStreamFetchInvalidationsRequest++;
-  if (buildCounterStreamFetchInvalidationsRequest < 3) {
-    o.lastKnownVersionNumber = 'foo';
-  }
-  buildCounterStreamFetchInvalidationsRequest--;
-  return o;
-}
-
-void checkStreamFetchInvalidationsRequest(
-    api.StreamFetchInvalidationsRequest o) {
-  buildCounterStreamFetchInvalidationsRequest++;
-  if (buildCounterStreamFetchInvalidationsRequest < 3) {
-    unittest.expect(
-      o.lastKnownVersionNumber!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterStreamFetchInvalidationsRequest--;
-}
-
-core.int buildCounterStreamFetchInvalidationsResponse = 0;
-api.StreamFetchInvalidationsResponse buildStreamFetchInvalidationsResponse() {
-  final o = api.StreamFetchInvalidationsResponse();
-  buildCounterStreamFetchInvalidationsResponse++;
-  if (buildCounterStreamFetchInvalidationsResponse < 3) {
-    o.latestTemplateVersionNumber = 'foo';
-  }
-  buildCounterStreamFetchInvalidationsResponse--;
-  return o;
-}
-
-void checkStreamFetchInvalidationsResponse(
-    api.StreamFetchInvalidationsResponse o) {
-  buildCounterStreamFetchInvalidationsResponse++;
-  if (buildCounterStreamFetchInvalidationsResponse < 3) {
-    unittest.expect(
-      o.latestTemplateVersionNumber!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterStreamFetchInvalidationsResponse--;
-}
-
 core.int buildCounterVersion = 0;
 api.Version buildVersion() {
   final o = api.Version();
@@ -907,26 +861,6 @@ void main() {
       final od = api.RollbackRemoteConfigRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRollbackRemoteConfigRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-StreamFetchInvalidationsRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStreamFetchInvalidationsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.StreamFetchInvalidationsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkStreamFetchInvalidationsRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-StreamFetchInvalidationsResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStreamFetchInvalidationsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.StreamFetchInvalidationsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkStreamFetchInvalidationsResponse(od);
     });
   });
 
@@ -1148,95 +1082,6 @@ void main() {
       final response = await res.fetch(arg_request, arg_project, arg_namespace,
           $fields: arg_$fields);
       checkFetchRemoteConfigResponse(response as api.FetchRemoteConfigResponse);
-    });
-
-    unittest.test('method--streamFetchInvalidations', () async {
-      final mock = HttpServerMock();
-      final res = api.FirebaseRemoteConfigApi(mock).projects.namespaces;
-      final arg_request = buildStreamFetchInvalidationsRequest();
-      final arg_project = 'foo';
-      final arg_namespace = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.StreamFetchInvalidationsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkStreamFetchInvalidationsRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('v1/projects/'),
-        );
-        pathOffset += 12;
-        index = path.indexOf('/namespaces/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_project'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/namespaces/'),
-        );
-        pathOffset += 12;
-        index = path.indexOf(':streamFetchInvalidations', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_namespace'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals(':streamFetchInvalidations'),
-        );
-        pathOffset += 25;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildStreamFetchInvalidationsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.streamFetchInvalidations(
-          arg_request, arg_project, arg_namespace,
-          $fields: arg_$fields);
-      checkStreamFetchInvalidationsResponse(
-          response as api.StreamFetchInvalidationsResponse);
     });
   });
 

@@ -532,11 +532,11 @@ class ProjectsLocationsConnectionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
-  /// [updateMask] - Field mask is used to specify the fields to be overwritten
-  /// in the Connection resource by the update. The fields specified in the
-  /// update_mask are relative to the resource, not the full request. A field
-  /// will be overwritten if it is in the mask. If the user does not provide a
-  /// mask then all fields will be overwritten.
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Connection resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1527,6 +1527,7 @@ class AuthConfig {
   /// Authorization Grant based authentication
   /// - "OAUTH2_CLIENT_CREDENTIALS" : Oauth 2.0 Client Credentials Grant
   /// Authentication
+  /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
   core.String? authType;
 
   /// Oauth2ClientCredentials.
@@ -1534,6 +1535,9 @@ class AuthConfig {
 
   /// Oauth2JwtBearer.
   Oauth2JwtBearer? oauth2JwtBearer;
+
+  /// SSH Public Key.
+  SshPublicKey? sshPublicKey;
 
   /// UserPassword.
   UserPassword? userPassword;
@@ -1543,6 +1547,7 @@ class AuthConfig {
     this.authType,
     this.oauth2ClientCredentials,
     this.oauth2JwtBearer,
+    this.sshPublicKey,
     this.userPassword,
   });
 
@@ -1566,6 +1571,10 @@ class AuthConfig {
               ? Oauth2JwtBearer.fromJson(_json['oauth2JwtBearer']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sshPublicKey: _json.containsKey('sshPublicKey')
+              ? SshPublicKey.fromJson(
+                  _json['sshPublicKey'] as core.Map<core.String, core.dynamic>)
+              : null,
           userPassword: _json.containsKey('userPassword')
               ? UserPassword.fromJson(
                   _json['userPassword'] as core.Map<core.String, core.dynamic>)
@@ -1579,6 +1588,7 @@ class AuthConfig {
         if (oauth2ClientCredentials != null)
           'oauth2ClientCredentials': oauth2ClientCredentials!,
         if (oauth2JwtBearer != null) 'oauth2JwtBearer': oauth2JwtBearer!,
+        if (sshPublicKey != null) 'sshPublicKey': sshPublicKey!,
         if (userPassword != null) 'userPassword': userPassword!,
       };
 }
@@ -1593,6 +1603,7 @@ class AuthConfigTemplate {
   /// Authorization Grant based authentication
   /// - "OAUTH2_CLIENT_CREDENTIALS" : Oauth 2.0 Client Credentials Grant
   /// Authentication
+  /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
   core.String? authType;
 
   /// Config variables to describe an `AuthConfig` for a `Connection`.
@@ -1620,6 +1631,38 @@ class AuthConfigTemplate {
         if (authType != null) 'authType': authType!,
         if (configVariableTemplates != null)
           'configVariableTemplates': configVariableTemplates!,
+      };
+}
+
+/// This configuration captures the details required to render an authorization
+/// link for the OAuth Authorization Code Flow.
+class AuthorizationCodeLink {
+  /// The scopes for which the user will authorize GCP Connectors on the
+  /// connector data source.
+  core.List<core.String>? scopes;
+
+  /// The base URI the user must click to trigger the authorization code login
+  /// flow.
+  core.String? uri;
+
+  AuthorizationCodeLink({
+    this.scopes,
+    this.uri,
+  });
+
+  AuthorizationCodeLink.fromJson(core.Map _json)
+      : this(
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scopes != null) 'scopes': scopes!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -1760,6 +1803,11 @@ class ConfigVariable {
 /// ConfigVariableTemplate provides metadata about a `ConfigVariable` that is
 /// used in a Connection.
 class ConfigVariableTemplate {
+  /// Authorization code link options.
+  ///
+  /// To be populated if `ValueType` is `AUTHORIZATION_CODE`
+  AuthorizationCodeLink? authorizationCodeLink;
+
   /// Description.
   core.String? description;
 
@@ -1781,6 +1829,13 @@ class ConfigVariableTemplate {
   /// Role grant configuration for the config variable.
   RoleGrant? roleGrant;
 
+  /// State of the config variable.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Status is unspecified.
+  /// - "ACTIVE" : Config variable is active
+  /// - "DEPRECATED" : Config variable is deprecated.
+  core.String? state;
+
   /// Regular expression in RE2 syntax used for validating the `value` of a
   /// `ConfigVariable`.
   core.String? validationRegex;
@@ -1795,21 +1850,28 @@ class ConfigVariableTemplate {
   /// - "BOOL" : Value type is boolean.
   /// - "SECRET" : Value type is secret.
   /// - "ENUM" : Value type is enum.
+  /// - "AUTHORIZATION_CODE" : Value type is authorization code.
   core.String? valueType;
 
   ConfigVariableTemplate({
+    this.authorizationCodeLink,
     this.description,
     this.displayName,
     this.enumOptions,
     this.key,
     this.required,
     this.roleGrant,
+    this.state,
     this.validationRegex,
     this.valueType,
   });
 
   ConfigVariableTemplate.fromJson(core.Map _json)
       : this(
+          authorizationCodeLink: _json.containsKey('authorizationCodeLink')
+              ? AuthorizationCodeLink.fromJson(_json['authorizationCodeLink']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
@@ -1830,6 +1892,8 @@ class ConfigVariableTemplate {
               ? RoleGrant.fromJson(
                   _json['roleGrant'] as core.Map<core.String, core.dynamic>)
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
           validationRegex: _json.containsKey('validationRegex')
               ? _json['validationRegex'] as core.String
               : null,
@@ -1839,12 +1903,15 @@ class ConfigVariableTemplate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizationCodeLink != null)
+          'authorizationCodeLink': authorizationCodeLink!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (enumOptions != null) 'enumOptions': enumOptions!,
         if (key != null) 'key': key!,
         if (required != null) 'required': required!,
         if (roleGrant != null) 'roleGrant': roleGrant!,
+        if (state != null) 'state': state!,
         if (validationRegex != null) 'validationRegex': validationRegex!,
         if (valueType != null) 'valueType': valueType!,
       };
@@ -1880,11 +1947,6 @@ class Connection {
   ///
   /// Optional.
   core.String? description;
-
-  /// Outbound domains/hosts needs to be allowlisted.
-  ///
-  /// Output only.
-  core.List<core.String>? egressBackends;
 
   /// GCR location where the envoy image is stored.
   ///
@@ -1954,7 +2016,6 @@ class Connection {
     this.connectorVersion,
     this.createTime,
     this.description,
-    this.egressBackends,
     this.envoyImageLocation,
     this.imageLocation,
     this.labels,
@@ -1987,11 +2048,6 @@ class Connection {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
-              : null,
-          egressBackends: _json.containsKey('egressBackends')
-              ? (_json['egressBackends'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
               : null,
           envoyImageLocation: _json.containsKey('envoyImageLocation')
               ? _json['envoyImageLocation'] as core.String
@@ -2036,7 +2092,6 @@ class Connection {
         if (connectorVersion != null) 'connectorVersion': connectorVersion!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
-        if (egressBackends != null) 'egressBackends': egressBackends!,
         if (envoyImageLocation != null)
           'envoyImageLocation': envoyImageLocation!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
@@ -3857,6 +3912,13 @@ class RuntimeConfig {
   /// Output only.
   core.String? locationId;
 
+  /// Name of the runtimeConfig resource.
+  ///
+  /// Format: projects/{project}/locations/{location}/runtimeConfig
+  ///
+  /// Output only.
+  core.String? name;
+
   /// The endpoint of the connectors runtime ingress.
   ///
   /// Output only.
@@ -3891,6 +3953,7 @@ class RuntimeConfig {
     this.controlPlaneSubscription,
     this.controlPlaneTopic,
     this.locationId,
+    this.name,
     this.runtimeEndpoint,
     this.schemaGcsBucket,
     this.serviceDirectory,
@@ -3915,6 +3978,7 @@ class RuntimeConfig {
           locationId: _json.containsKey('locationId')
               ? _json['locationId'] as core.String
               : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
           runtimeEndpoint: _json.containsKey('runtimeEndpoint')
               ? _json['runtimeEndpoint'] as core.String
               : null,
@@ -3935,6 +3999,7 @@ class RuntimeConfig {
           'controlPlaneSubscription': controlPlaneSubscription!,
         if (controlPlaneTopic != null) 'controlPlaneTopic': controlPlaneTopic!,
         if (locationId != null) 'locationId': locationId!,
+        if (name != null) 'name': name!,
         if (runtimeEndpoint != null) 'runtimeEndpoint': runtimeEndpoint!,
         if (schemaGcsBucket != null) 'schemaGcsBucket': schemaGcsBucket!,
         if (serviceDirectory != null) 'serviceDirectory': serviceDirectory!,
@@ -4068,6 +4133,65 @@ class Source {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldId != null) 'fieldId': fieldId!,
         if (sourceType != null) 'sourceType': sourceType!,
+      };
+}
+
+/// Parameters to support Ssh public key Authentication.
+class SshPublicKey {
+  /// Format of SSH Client cert.
+  core.String? certType;
+
+  /// This is an optional field used in case client has enabled multi-factor
+  /// authentication
+  Secret? password;
+
+  /// SSH Client Cert.
+  ///
+  /// It should contain both public and private key.
+  Secret? sshClientCert;
+
+  /// Password (passphrase) for ssh client certificate if it has one.
+  Secret? sshClientCertPass;
+
+  /// The user account used to authenticate.
+  core.String? username;
+
+  SshPublicKey({
+    this.certType,
+    this.password,
+    this.sshClientCert,
+    this.sshClientCertPass,
+    this.username,
+  });
+
+  SshPublicKey.fromJson(core.Map _json)
+      : this(
+          certType: _json.containsKey('certType')
+              ? _json['certType'] as core.String
+              : null,
+          password: _json.containsKey('password')
+              ? Secret.fromJson(
+                  _json['password'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sshClientCert: _json.containsKey('sshClientCert')
+              ? Secret.fromJson(
+                  _json['sshClientCert'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sshClientCertPass: _json.containsKey('sshClientCertPass')
+              ? Secret.fromJson(_json['sshClientCertPass']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certType != null) 'certType': certType!,
+        if (password != null) 'password': password!,
+        if (sshClientCert != null) 'sshClientCert': sshClientCert!,
+        if (sshClientCertPass != null) 'sshClientCertPass': sshClientCertPass!,
+        if (username != null) 'username': username!,
       };
 }
 

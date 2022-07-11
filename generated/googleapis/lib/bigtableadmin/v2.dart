@@ -2336,6 +2336,48 @@ class ProjectsInstancesTablesResource {
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Restores a specified table which was accidentally deleted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name of the table to be restored. Values are
+  /// of the form `projects/{project}/instances/{instance}/tables/{table}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteTableRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsResource {
@@ -3702,6 +3744,11 @@ class Instance {
   /// Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The current state of the instance.
   ///
   /// Output only.
@@ -3733,6 +3780,7 @@ class Instance {
     this.displayName,
     this.labels,
     this.name,
+    this.satisfiesPzs,
     this.state,
     this.type,
   });
@@ -3754,6 +3802,9 @@ class Instance {
                 )
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          satisfiesPzs: _json.containsKey('satisfiesPzs')
+              ? _json['satisfiesPzs'] as core.bool
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -3764,6 +3815,7 @@ class Instance {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
       };
@@ -4699,6 +4751,10 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Request message for
+/// google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable
+typedef UndeleteTableRequest = $Empty;
 
 /// A GcRule which deletes cells matching any of the given rules.
 class Union {

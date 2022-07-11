@@ -4837,8 +4837,8 @@ class ParagraphStyle {
   ///
   /// If unset, the value is inherited from the parent. Attempting to update
   /// page_break_before for paragraphs in unsupported regions, including Table,
-  /// Header, Footer and Footnote can result in an invalid document state in
-  /// which case a 400 bad request error is returned.
+  /// Header, Footer and Footnote, can result in an invalid document state which
+  /// returns a 400 bad request error.
   core.bool? pageBreakBefore;
 
   /// The shading of the paragraph.
@@ -7209,8 +7209,8 @@ class SuggestedNamedStyles {
 class SuggestedParagraphStyle {
   /// A ParagraphStyle that only includes the changes made in this suggestion.
   ///
-  /// This can be used along with the paragraph_suggestion_state to see which
-  /// fields have changed and their new values.
+  /// This can be used along with the paragraph_style_suggestion_state to see
+  /// which fields have changed and their new values.
   ParagraphStyle? paragraphStyle;
 
   /// A mask that indicates which of the fields on the base ParagraphStyle have
@@ -8720,7 +8720,8 @@ class UpdateParagraphStyleRequest {
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `paragraph_style` is
-  /// implied and should not be specified. For example, to update the paragraph
+  /// implied and should not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field. For example, to update the paragraph
   /// style's alignment property, set `fields` to `"alignment"`. To reset a
   /// property to its default value, include its field name in the field mask
   /// but leave the field itself unset.

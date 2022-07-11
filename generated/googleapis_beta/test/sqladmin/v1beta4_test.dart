@@ -2616,6 +2616,7 @@ api.Settings buildSettings() {
     o.dataDiskType = 'foo';
     o.databaseFlags = buildUnnamed22();
     o.databaseReplicationEnabled = true;
+    o.deletionProtectionEnabled = true;
     o.denyMaintenancePeriods = buildUnnamed23();
     o.insightsConfig = buildInsightsConfig();
     o.ipConfiguration = buildIpConfiguration();
@@ -2665,6 +2666,7 @@ void checkSettings(api.Settings o) {
     );
     checkUnnamed22(o.databaseFlags!);
     unittest.expect(o.databaseReplicationEnabled!, unittest.isTrue);
+    unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
     checkUnnamed23(o.denyMaintenancePeriods!);
     checkInsightsConfig(o.insightsConfig!);
     checkIpConfiguration(o.ipConfiguration!);
@@ -3398,6 +3400,7 @@ api.User buildUser() {
   final o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
+    o.dualPasswordType = 'foo';
     o.etag = 'foo';
     o.host = 'foo';
     o.instance = 'foo';
@@ -3416,6 +3419,10 @@ api.User buildUser() {
 void checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
+    unittest.expect(
+      o.dualPasswordType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -3461,6 +3468,7 @@ api.UserPasswordValidationPolicy buildUserPasswordValidationPolicy() {
   if (buildCounterUserPasswordValidationPolicy < 3) {
     o.allowedFailedAttempts = 42;
     o.enableFailedAttemptsCheck = true;
+    o.enablePasswordVerification = true;
     o.passwordExpirationDuration = 'foo';
     o.status = buildPasswordStatus();
   }
@@ -3476,6 +3484,7 @@ void checkUserPasswordValidationPolicy(api.UserPasswordValidationPolicy o) {
       unittest.equals(42),
     );
     unittest.expect(o.enableFailedAttemptsCheck!, unittest.isTrue);
+    unittest.expect(o.enablePasswordVerification!, unittest.isTrue);
     unittest.expect(
       o.passwordExpirationDuration!,
       unittest.equals('foo'),
@@ -8269,6 +8278,94 @@ void main() {
       final response = await res.delete(arg_project, arg_instance,
           host: arg_host, name: arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).users;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/users/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/users/'),
+        );
+        pathOffset += 7;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_name'),
+        );
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUser());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_project, arg_instance, arg_name,
+          $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
     unittest.test('method--insert', () async {

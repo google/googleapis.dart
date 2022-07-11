@@ -4158,18 +4158,12 @@ class ImportCryptoKeyVersionRequest {
   /// Required.
   core.String? importJob;
 
-  /// Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or
-  /// RSA_OAEP_4096_SHA1_AES_256.
+  /// This field has the same meaning as wrapped_key.
   ///
-  /// This field contains the concatenation of two wrapped keys: 1. An ephemeral
-  /// AES-256 wrapping key wrapped with the public_key using RSAES-OAEP with
-  /// SHA-1/SHA-256, MGF1 with SHA-1/SHA-256, and an empty label. 2. The key to
-  /// be imported, wrapped with the ephemeral AES-256 key using AES-KWP (RFC
-  /// 5649). If importing symmetric key material, it is expected that the
-  /// unwrapped key contains plain bytes. If importing asymmetric key material,
-  /// it is expected that the unwrapped key is in PKCS#8-encoded DER format (the
-  /// PrivateKeyInfo structure from RFC 5208). This format is the same as the
-  /// format produced by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP.
+  /// Prefer to use that field in new work. Either that field or this field (but
+  /// not both) must be specified.
+  ///
+  /// Optional.
   core.String? rsaAesWrappedKey;
   core.List<core.int> get rsaAesWrappedKeyAsBytes =>
       convert.base64.decode(rsaAesWrappedKey!);
@@ -4179,11 +4173,41 @@ class ImportCryptoKeyVersionRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// The wrapped key material to import.
+  ///
+  /// Before wrapping, key material must be formatted. If importing symmetric
+  /// key material, the expected key material format is plain bytes. If
+  /// importing asymmetric key material, the expected key material format is
+  /// PKCS#8-encoded DER (the PrivateKeyInfo structure from RFC 5208). When
+  /// wrapping with import methods (RSA_OAEP_3072_SHA1_AES_256 or
+  /// RSA_OAEP_4096_SHA1_AES_256 or RSA_OAEP_3072_SHA256_AES_256 or
+  /// RSA_OAEP_4096_SHA256_AES_256), this field must contain the concatenation
+  /// of: 1. An ephemeral AES-256 wrapping key wrapped with the public_key using
+  /// RSAES-OAEP with SHA-1/SHA-256, MGF1 with SHA-1/SHA-256, and an empty
+  /// label. 2. The formatted key to be imported, wrapped with the ephemeral
+  /// AES-256 key using AES-KWP (RFC 5649). This format is the same as the
+  /// format produced by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP. When wrapping
+  /// with import methods (RSA_OAEP_3072_SHA256 or RSA_OAEP_4096_SHA256), this
+  /// field must contain the formatted key to be imported, wrapped with the
+  /// public_key using RSAES-OAEP with SHA-256, MGF1 with SHA-256, and an empty
+  /// label.
+  ///
+  /// Optional.
+  core.String? wrappedKey;
+  core.List<core.int> get wrappedKeyAsBytes =>
+      convert.base64.decode(wrappedKey!);
+
+  set wrappedKeyAsBytes(core.List<core.int> _bytes) {
+    wrappedKey =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   ImportCryptoKeyVersionRequest({
     this.algorithm,
     this.cryptoKeyVersion,
     this.importJob,
     this.rsaAesWrappedKey,
+    this.wrappedKey,
   });
 
   ImportCryptoKeyVersionRequest.fromJson(core.Map _json)
@@ -4200,6 +4224,9 @@ class ImportCryptoKeyVersionRequest {
           rsaAesWrappedKey: _json.containsKey('rsaAesWrappedKey')
               ? _json['rsaAesWrappedKey'] as core.String
               : null,
+          wrappedKey: _json.containsKey('wrappedKey')
+              ? _json['wrappedKey'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4207,6 +4234,7 @@ class ImportCryptoKeyVersionRequest {
         if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
         if (importJob != null) 'importJob': importJob!,
         if (rsaAesWrappedKey != null) 'rsaAesWrappedKey': rsaAesWrappedKey!,
+        if (wrappedKey != null) 'wrappedKey': wrappedKey!,
       };
 }
 
@@ -4280,6 +4308,26 @@ class ImportJob {
   /// and wrapping the ephemeral AES key with a 4096 bit RSA key. For more
   /// details, see
   /// [RSA AES key wrap mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908).
+  /// - "RSA_OAEP_3072_SHA256_AES_256" : This ImportMethod represents the
+  /// CKM_RSA_AES_KEY_WRAP key wrapping scheme defined in the PKCS #11 standard.
+  /// In summary, this involves wrapping the raw key with an ephemeral AES key,
+  /// and wrapping the ephemeral AES key with a 3072 bit RSA key. For more
+  /// details, see
+  /// [RSA AES key wrap mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908).
+  /// - "RSA_OAEP_4096_SHA256_AES_256" : This ImportMethod represents the
+  /// CKM_RSA_AES_KEY_WRAP key wrapping scheme defined in the PKCS #11 standard.
+  /// In summary, this involves wrapping the raw key with an ephemeral AES key,
+  /// and wrapping the ephemeral AES key with a 4096 bit RSA key. For more
+  /// details, see
+  /// [RSA AES key wrap mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908).
+  /// - "RSA_OAEP_3072_SHA256" : This ImportMethod represents RSAES-OAEP with a
+  /// 3072 bit RSA key. The key material to be imported is wrapped directly with
+  /// the RSA key. Due to technical limitations of RSA wrapping, this method
+  /// cannot be used to wrap RSA keys for import.
+  /// - "RSA_OAEP_4096_SHA256" : This ImportMethod represents RSAES-OAEP with a
+  /// 4096 bit RSA key. The key material to be imported is wrapped directly with
+  /// the RSA key. Due to technical limitations of RSA wrapping, this method
+  /// cannot be used to wrap RSA keys for import.
   core.String? importMethod;
 
   /// The resource name for this ImportJob in the format `projects / *
@@ -4564,7 +4612,7 @@ class ListCryptoKeysResponse {
       };
 }
 
-/// Response message for KeyManagementService.ListEkmConnections.
+/// Response message for EkmService.ListEkmConnections.
 class ListEkmConnectionsResponse {
   /// The list of EkmConnections.
   core.List<EkmConnection>? ekmConnections;

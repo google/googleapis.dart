@@ -672,6 +672,15 @@ class CloudSqlProperties {
   /// Cloud SQL instance ID in the form `project:location:instance`.
   core.String? instanceId;
 
+  /// The account ID of the service used for the purpose of this connection.
+  ///
+  /// When the connection is used in the context of an operation in BigQuery,
+  /// this service account will serve as identity being used for connecting to
+  /// the CloudSQL instance specified in this connection.
+  ///
+  /// Output only.
+  core.String? serviceAccountId;
+
   /// Type of the Cloud SQL database.
   /// Possible string values are:
   /// - "DATABASE_TYPE_UNSPECIFIED" : Unspecified database type.
@@ -683,6 +692,7 @@ class CloudSqlProperties {
     this.credential,
     this.database,
     this.instanceId,
+    this.serviceAccountId,
     this.type,
   });
 
@@ -698,6 +708,9 @@ class CloudSqlProperties {
           instanceId: _json.containsKey('instanceId')
               ? _json['instanceId'] as core.String
               : null,
+          serviceAccountId: _json.containsKey('serviceAccountId')
+              ? _json['serviceAccountId'] as core.String
+              : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
@@ -705,6 +718,7 @@ class CloudSqlProperties {
         if (credential != null) 'credential': credential!,
         if (database != null) 'database': database!,
         if (instanceId != null) 'instanceId': instanceId!,
+        if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
         if (type != null) 'type': type!,
       };
 }

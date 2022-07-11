@@ -641,6 +641,7 @@ api.Page buildPage() {
     o.selfLink = 'foo';
     o.status = 'foo';
     o.title = 'foo';
+    o.trashed = 'foo';
     o.updated = 'foo';
     o.url = 'foo';
   }
@@ -683,6 +684,10 @@ void checkPage(api.Page o) {
     );
     unittest.expect(
       o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trashed!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1036,6 +1041,7 @@ api.Post buildPost() {
     o.status = 'foo';
     o.title = 'foo';
     o.titleLink = 'foo';
+    o.trashed = 'foo';
     o.updated = 'foo';
     o.url = 'foo';
   }
@@ -1094,6 +1100,10 @@ void checkPost(api.Post o) {
     );
     unittest.expect(
       o.titleLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trashed!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -3667,6 +3667,29 @@ class BucketCors {
       };
 }
 
+/// The bucket's custom placement configuration for Custom Dual Regions.
+class BucketCustomPlacementConfig {
+  /// The list of regional locations in which data is placed.
+  core.List<core.String>? dataLocations;
+
+  BucketCustomPlacementConfig({
+    this.dataLocations,
+  });
+
+  BucketCustomPlacementConfig.fromJson(core.Map _json)
+      : this(
+          dataLocations: _json.containsKey('dataLocations')
+              ? (_json['dataLocations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataLocations != null) 'dataLocations': dataLocations!,
+      };
+}
+
 /// Encryption configuration for a bucket.
 class BucketEncryption {
   /// A Cloud KMS key that will be used to encrypt objects inserted into this
@@ -3995,10 +4018,10 @@ class BucketLifecycleRuleCondition {
         if (age != null) 'age': age!,
         if (createdBefore != null)
           'createdBefore':
-              "${(createdBefore!).year.toString().padLeft(4, '0')}-${(createdBefore!).month.toString().padLeft(2, '0')}-${(createdBefore!).day.toString().padLeft(2, '0')}",
+              "${createdBefore!.year.toString().padLeft(4, '0')}-${createdBefore!.month.toString().padLeft(2, '0')}-${createdBefore!.day.toString().padLeft(2, '0')}",
         if (customTimeBefore != null)
           'customTimeBefore':
-              "${(customTimeBefore!).year.toString().padLeft(4, '0')}-${(customTimeBefore!).month.toString().padLeft(2, '0')}-${(customTimeBefore!).day.toString().padLeft(2, '0')}",
+              "${customTimeBefore!.year.toString().padLeft(4, '0')}-${customTimeBefore!.month.toString().padLeft(2, '0')}-${customTimeBefore!.day.toString().padLeft(2, '0')}",
         if (daysSinceCustomTime != null)
           'daysSinceCustomTime': daysSinceCustomTime!,
         if (daysSinceNoncurrentTime != null)
@@ -4011,7 +4034,7 @@ class BucketLifecycleRuleCondition {
         if (matchesSuffix != null) 'matchesSuffix': matchesSuffix!,
         if (noncurrentTimeBefore != null)
           'noncurrentTimeBefore':
-              "${(noncurrentTimeBefore!).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore!).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore!).day.toString().padLeft(2, '0')}",
+              "${noncurrentTimeBefore!.year.toString().padLeft(4, '0')}-${noncurrentTimeBefore!.month.toString().padLeft(2, '0')}-${noncurrentTimeBefore!.day.toString().padLeft(2, '0')}",
         if (numNewerVersions != null) 'numNewerVersions': numNewerVersions!,
       };
 }
@@ -4262,6 +4285,9 @@ class Bucket {
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
   core.List<BucketCors>? cors;
 
+  /// The bucket's custom placement configuration for Custom Dual Regions.
+  BucketCustomPlacementConfig? customPlacementConfig;
+
   /// The default value for event-based hold on newly created objects in this
   /// bucket.
   ///
@@ -4390,6 +4416,7 @@ class Bucket {
     this.autoclass,
     this.billing,
     this.cors,
+    this.customPlacementConfig,
     this.defaultEventBasedHold,
     this.defaultObjectAcl,
     this.encryption,
@@ -4438,6 +4465,11 @@ class Bucket {
                   .map((value) => BucketCors.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          customPlacementConfig: _json.containsKey('customPlacementConfig')
+              ? BucketCustomPlacementConfig.fromJson(
+                  _json['customPlacementConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           defaultEventBasedHold: _json.containsKey('defaultEventBasedHold')
               ? _json['defaultEventBasedHold'] as core.bool
@@ -4527,6 +4559,8 @@ class Bucket {
         if (autoclass != null) 'autoclass': autoclass!,
         if (billing != null) 'billing': billing!,
         if (cors != null) 'cors': cors!,
+        if (customPlacementConfig != null)
+          'customPlacementConfig': customPlacementConfig!,
         if (defaultEventBasedHold != null)
           'defaultEventBasedHold': defaultEventBasedHold!,
         if (defaultObjectAcl != null) 'defaultObjectAcl': defaultObjectAcl!,
@@ -5558,6 +5592,12 @@ class Object {
   core.DateTime? timeStorageClassUpdated;
 
   /// The modification time of the object metadata in RFC 3339 format.
+  ///
+  /// Set initially to object creation time and then updated whenever any
+  /// metadata of the object changes. This includes changes made by a requester,
+  /// such as modifying custom metadata, as well as changes made by Cloud
+  /// Storage on behalf of a requester, such as changing the storage class based
+  /// on an Object Lifecycle Configuration.
   core.DateTime? updated;
 
   Object({

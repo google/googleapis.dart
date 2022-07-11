@@ -1231,7 +1231,10 @@ class EventsResource {
     );
   }
 
-  /// Returns an event.
+  /// Returns an event based on its Google Calendar ID.
+  ///
+  /// To retrieve an event using its iCalendar ID, call the events.list method
+  /// using the iCalUID parameter.
   ///
   /// Request parameters:
   ///
@@ -1549,8 +1552,9 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
-  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
-  /// the response. Optional.
+  /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
+  /// in the response. Optional. Use this if you want to search for an event by
+  /// its iCalendar ID.
   ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
@@ -2054,8 +2058,9 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
-  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
-  /// the response. Optional.
+  /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
+  /// in the response. Optional. Use this if you want to search for an event by
+  /// its iCalendar ID.
   ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
@@ -4013,10 +4018,12 @@ class Event {
   ///
   /// It is used to uniquely identify events accross calendaring systems and
   /// must be supplied when importing events via the import method.
-  /// Note that the icalUID and the id are not identical and only one of them
+  /// Note that the iCalUID and the id are not identical and only one of them
   /// should be supplied at event creation time. One difference in their
   /// semantics is that in recurring events, all occurrences of one event have
-  /// different ids while they all share the same icalUIDs.
+  /// different ids while they all share the same iCalUIDs. To retrieve an event
+  /// using its iCalUID, call the events.list method using the iCalUID
+  /// parameter. To retrieve an event using its id, call the events.get method.
   core.String? iCalUID;
 
   /// Opaque identifier of the event.
@@ -4609,7 +4616,7 @@ class EventDateTime {
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null)
           'date':
-              "${(date!).year.toString().padLeft(4, '0')}-${(date!).month.toString().padLeft(2, '0')}-${(date!).day.toString().padLeft(2, '0')}",
+              "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
         if (dateTime != null) 'dateTime': dateTime!.toUtc().toIso8601String(),
         if (timeZone != null) 'timeZone': timeZone!,
       };

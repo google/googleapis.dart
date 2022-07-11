@@ -28,9 +28,12 @@
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
+///       - [ProjectsLocationsRepositoriesMavenArtifactsResource]
+///       - [ProjectsLocationsRepositoriesNpmPackagesResource]
 ///       - [ProjectsLocationsRepositoriesPackagesResource]
 ///         - [ProjectsLocationsRepositoriesPackagesTagsResource]
 ///         - [ProjectsLocationsRepositoriesPackagesVersionsResource]
+///       - [ProjectsLocationsRepositoriesPythonPackagesResource]
 ///       - [ProjectsLocationsRepositoriesYumArtifactsResource]
 library artifactregistry.v1;
 
@@ -325,8 +328,14 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
+  ProjectsLocationsRepositoriesMavenArtifactsResource get mavenArtifacts =>
+      ProjectsLocationsRepositoriesMavenArtifactsResource(_requester);
+  ProjectsLocationsRepositoriesNpmPackagesResource get npmPackages =>
+      ProjectsLocationsRepositoriesNpmPackagesResource(_requester);
   ProjectsLocationsRepositoriesPackagesResource get packages =>
       ProjectsLocationsRepositoriesPackagesResource(_requester);
+  ProjectsLocationsRepositoriesPythonPackagesResource get pythonPackages =>
+      ProjectsLocationsRepositoriesPythonPackagesResource(_requester);
   ProjectsLocationsRepositoriesYumArtifactsResource get yumArtifacts =>
       ProjectsLocationsRepositoriesYumArtifactsResource(_requester);
 
@@ -1010,6 +1019,189 @@ class ProjectsLocationsRepositoriesFilesResource {
   }
 }
 
+class ProjectsLocationsRepositoriesMavenArtifactsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesMavenArtifactsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a maven artifact.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the maven artifact.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/mavenArtifacts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MavenArtifact].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MavenArtifact> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return MavenArtifact.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists maven artifacts.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose maven artifacts
+  /// will be listed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of artifacts to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMavenArtifactsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMavenArtifactsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/mavenArtifacts';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListMavenArtifactsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesNpmPackagesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesNpmPackagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a npm package.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the npm package.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/npmPackages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NpmPackage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NpmPackage> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return NpmPackage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists npm packages.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose npm packages
+  /// will be listed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of artifacts to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNpmPackagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNpmPackagesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/npmPackages';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListNpmPackagesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsRepositoriesPackagesResource {
   final commons.ApiRequester _requester;
 
@@ -1528,6 +1720,98 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
       queryParams: _queryParams,
     );
     return ListVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesPythonPackagesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesPythonPackagesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a python package.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the python package.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/pythonPackages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PythonPackage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PythonPackage> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PythonPackage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists python packages.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose python packages
+  /// will be listed.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of artifacts to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPythonPackagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPythonPackagesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/pythonPackages';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListPythonPackagesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2099,6 +2383,72 @@ class ListLocationsResponse {
       };
 }
 
+/// The response from listing maven artifacts.
+class ListMavenArtifactsResponse {
+  /// The maven artifacts returned.
+  core.List<MavenArtifact>? mavenArtifacts;
+
+  /// The token to retrieve the next page of artifacts, or empty if there are no
+  /// more artifacts to return.
+  core.String? nextPageToken;
+
+  ListMavenArtifactsResponse({
+    this.mavenArtifacts,
+    this.nextPageToken,
+  });
+
+  ListMavenArtifactsResponse.fromJson(core.Map _json)
+      : this(
+          mavenArtifacts: _json.containsKey('mavenArtifacts')
+              ? (_json['mavenArtifacts'] as core.List)
+                  .map((value) => MavenArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response from listing npm packages.
+class ListNpmPackagesResponse {
+  /// The token to retrieve the next page of artifacts, or empty if there are no
+  /// more artifacts to return.
+  core.String? nextPageToken;
+
+  /// The npm packages returned.
+  core.List<NpmPackage>? npmPackages;
+
+  ListNpmPackagesResponse({
+    this.nextPageToken,
+    this.npmPackages,
+  });
+
+  ListNpmPackagesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          npmPackages: _json.containsKey('npmPackages')
+              ? (_json['npmPackages'] as core.List)
+                  .map((value) => NpmPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (npmPackages != null) 'npmPackages': npmPackages!,
+      };
+}
+
 /// The response from listing packages.
 class ListPackagesResponse {
   /// The token to retrieve the next page of packages, or empty if there are no
@@ -2129,6 +2479,39 @@ class ListPackagesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (packages != null) 'packages': packages!,
+      };
+}
+
+/// The response from listing python packages.
+class ListPythonPackagesResponse {
+  /// The token to retrieve the next page of artifacts, or empty if there are no
+  /// more artifacts to return.
+  core.String? nextPageToken;
+
+  /// The python packages returned.
+  core.List<PythonPackage>? pythonPackages;
+
+  ListPythonPackagesResponse({
+    this.nextPageToken,
+    this.pythonPackages,
+  });
+
+  ListPythonPackagesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pythonPackages: _json.containsKey('pythonPackages')
+              ? (_json['pythonPackages'] as core.List)
+                  .map((value) => PythonPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
       };
 }
 
@@ -2234,6 +2617,92 @@ class ListVersionsResponse {
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
+/// MavenArtifact represents a maven artifact.
+class MavenArtifact {
+  /// Artifact ID for the artifact.
+  core.String? artifactId;
+
+  /// Time the artifact was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Group ID for the artifact.
+  ///
+  /// Example: com.google.guava
+  core.String? groupId;
+
+  /// registry_location, project_id, repository_name and maven_artifact forms a
+  /// unique artifact For example,
+  /// "projects/test-project/locations/us-west4/repositories/test-repo/mavenArtifacts/
+  /// com.google.guava:guava:31.0-jre", where "us-west4" is the
+  /// registry_location, "test-project" is the project_id, "test-repo" is the
+  /// repository_name and "com.google.guava:guava:31.0-jre" is the maven
+  /// artifact.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// URL to access the pom file of the artifact.
+  ///
+  /// Example:
+  /// us-west4-maven.pkg.dev/test-project/test-repo/com/google/guava/guava/31.0/guava-31.0.pom
+  ///
+  /// Required.
+  core.String? pomUri;
+
+  /// Time the artifact was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Version of this artifact.
+  core.String? version;
+
+  MavenArtifact({
+    this.artifactId,
+    this.createTime,
+    this.groupId,
+    this.name,
+    this.pomUri,
+    this.updateTime,
+    this.version,
+  });
+
+  MavenArtifact.fromJson(core.Map _json)
+      : this(
+          artifactId: _json.containsKey('artifactId')
+              ? _json['artifactId'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          groupId: _json.containsKey('groupId')
+              ? _json['groupId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pomUri: _json.containsKey('pomUri')
+              ? _json['pomUri'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifactId != null) 'artifactId': artifactId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (groupId != null) 'groupId': groupId!,
+        if (name != null) 'name': name!,
+        if (pomUri != null) 'pomUri': pomUri!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// MavenRepositoryConfig is maven related repository details.
 ///
 /// Provides additional configuration details for repositories of the maven
@@ -2271,6 +2740,78 @@ class MavenRepositoryConfig {
         if (allowSnapshotOverwrites != null)
           'allowSnapshotOverwrites': allowSnapshotOverwrites!,
         if (versionPolicy != null) 'versionPolicy': versionPolicy!,
+      };
+}
+
+/// NpmPackage represents an npm artifact.
+class NpmPackage {
+  /// Time the package was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// registry_location, project_id, repository_name and npm_package forms a
+  /// unique package For example,
+  /// "projects/test-project/locations/us-west4/repositories/test-repo/npmPackages/
+  /// npm_test:1.0.0", where "us-west4" is the registry_location, "test-project"
+  /// is the project_id, "test-repo" is the repository_name and npm_test:1.0.0"
+  /// is the npm package.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Package for the artifact.
+  core.String? packageName;
+
+  /// Tags attached to this package.
+  core.List<core.String>? tags;
+
+  /// Time the package was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Version of this package.
+  core.String? version;
+
+  NpmPackage({
+    this.createTime,
+    this.name,
+    this.packageName,
+    this.tags,
+    this.updateTime,
+    this.version,
+  });
+
+  NpmPackage.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (tags != null) 'tags': tags!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2545,6 +3086,81 @@ class ProjectSettings {
       };
 }
 
+/// PythonPackage represents a python artifact.
+class PythonPackage {
+  /// Time the package was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// registry_location, project_id, repository_name and python_package forms a
+  /// unique package name:`projects//locations//repository//pythonPackages/`.
+  ///
+  /// For example,
+  /// "projects/test-project/locations/us-west4/repositories/test-repo/pythonPackages/
+  /// python_package:1.0.0", where "us-west4" is the registry_location,
+  /// "test-project" is the project_id, "test-repo" is the repository_name and
+  /// python_package:1.0.0" is the python package.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Package for the artifact.
+  core.String? packageName;
+
+  /// Time the package was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// URL to access the package.
+  ///
+  /// Example:
+  /// us-west4-python.pkg.dev/test-project/test-repo/python_package/file-name-1.0.0.tar.gz
+  ///
+  /// Required.
+  core.String? uri;
+
+  /// Version of this package.
+  core.String? version;
+
+  PythonPackage({
+    this.createTime,
+    this.name,
+    this.packageName,
+    this.updateTime,
+    this.uri,
+    this.version,
+  });
+
+  PythonPackage.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (uri != null) 'uri': uri!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// A Repository for storing artifacts with a specific format.
 class Repository {
   /// The time when the repository was created.
@@ -2562,6 +3178,7 @@ class Repository {
   /// - "APT" : APT package format.
   /// - "YUM" : YUM package format.
   /// - "PYTHON" : Python package format.
+  /// - "KFP" : Kubeflow Pipelines package format.
   core.String? format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that's

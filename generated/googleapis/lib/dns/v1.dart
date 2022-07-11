@@ -4408,11 +4408,13 @@ class Quota {
 class RRSetRoutingPolicy {
   RRSetRoutingPolicyGeoPolicy? geo;
   core.String? kind;
+  RRSetRoutingPolicyPrimaryBackupPolicy? primaryBackup;
   RRSetRoutingPolicyWrrPolicy? wrr;
 
   RRSetRoutingPolicy({
     this.geo,
     this.kind,
+    this.primaryBackup,
     this.wrr,
   });
 
@@ -4423,6 +4425,10 @@ class RRSetRoutingPolicy {
                   _json['geo'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          primaryBackup: _json.containsKey('primaryBackup')
+              ? RRSetRoutingPolicyPrimaryBackupPolicy.fromJson(
+                  _json['primaryBackup'] as core.Map<core.String, core.dynamic>)
+              : null,
           wrr: _json.containsKey('wrr')
               ? RRSetRoutingPolicyWrrPolicy.fromJson(
                   _json['wrr'] as core.Map<core.String, core.dynamic>)
@@ -4432,6 +4438,7 @@ class RRSetRoutingPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (geo != null) 'geo': geo!,
         if (kind != null) 'kind': kind!,
+        if (primaryBackup != null) 'primaryBackup': primaryBackup!,
         if (wrr != null) 'wrr': wrr!,
       };
 }
@@ -4439,6 +4446,16 @@ class RRSetRoutingPolicy {
 /// Configures a RRSetRoutingPolicy that routes based on the geo location of the
 /// querying user.
 class RRSetRoutingPolicyGeoPolicy {
+  /// Without fencing, if health check fails for all configured items in the
+  /// current geo bucket, we'll failover to the next nearest geo bucket.
+  ///
+  /// With fencing, if health check is enabled, as long as some targets in the
+  /// current geo bucket are healthy, we'll return only the healthy targets.
+  /// However, if they're all unhealthy, we won't failover to the next nearest
+  /// bucket, we'll simply return all the items in the current bucket even
+  /// though they're unhealthy.
+  core.bool? enableFencing;
+
   /// The primary geo routing configuration.
   ///
   /// If there are multiple items with the same location, an error is returned
@@ -4447,12 +4464,16 @@ class RRSetRoutingPolicyGeoPolicy {
   core.String? kind;
 
   RRSetRoutingPolicyGeoPolicy({
+    this.enableFencing,
     this.items,
     this.kind,
   });
 
   RRSetRoutingPolicyGeoPolicy.fromJson(core.Map _json)
       : this(
+          enableFencing: _json.containsKey('enableFencing')
+              ? _json['enableFencing'] as core.bool
+              : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
                   .map((value) =>
@@ -4464,6 +4485,7 @@ class RRSetRoutingPolicyGeoPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (enableFencing != null) 'enableFencing': enableFencing!,
         if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
@@ -4471,6 +4493,11 @@ class RRSetRoutingPolicyGeoPolicy {
 
 /// ResourceRecordSet data for one geo location.
 class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
+  /// For A and AAAA types only.
+  ///
+  /// Endpoints to return in the query result only if they are healthy. These
+  /// can be specified along with rrdata within this item.
+  RRSetRoutingPolicyHealthCheckTargets? healthCheckedTargets;
   core.String? kind;
 
   /// The geo-location granularity is a GCP region.
@@ -4487,6 +4514,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   core.List<core.String>? signatureRrdatas;
 
   RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
+    this.healthCheckedTargets,
     this.kind,
     this.location,
     this.rrdatas,
@@ -4495,6 +4523,11 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 
   RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json)
       : this(
+          healthCheckedTargets: _json.containsKey('healthCheckedTargets')
+              ? RRSetRoutingPolicyHealthCheckTargets.fromJson(
+                  _json['healthCheckedTargets']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           location: _json.containsKey('location')
               ? _json['location'] as core.String
@@ -4512,10 +4545,173 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (healthCheckedTargets != null)
+          'healthCheckedTargets': healthCheckedTargets!,
         if (kind != null) 'kind': kind!,
         if (location != null) 'location': location!,
         if (rrdatas != null) 'rrdatas': rrdatas!,
         if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+      };
+}
+
+/// HealthCheckTargets describes endpoints to health-check when responding to
+/// Routing Policy queries.
+///
+/// Only the healthy endpoints will be included in the response.
+class RRSetRoutingPolicyHealthCheckTargets {
+  core.List<RRSetRoutingPolicyLoadBalancerTarget>? internalLoadBalancers;
+
+  RRSetRoutingPolicyHealthCheckTargets({
+    this.internalLoadBalancers,
+  });
+
+  RRSetRoutingPolicyHealthCheckTargets.fromJson(core.Map _json)
+      : this(
+          internalLoadBalancers: _json.containsKey('internalLoadBalancers')
+              ? (_json['internalLoadBalancers'] as core.List)
+                  .map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (internalLoadBalancers != null)
+          'internalLoadBalancers': internalLoadBalancers!,
+      };
+}
+
+class RRSetRoutingPolicyLoadBalancerTarget {
+  /// The frontend IP address of the
+  core.String? ipAddress;
+
+  ///
+  /// Possible string values are:
+  /// - "undefined"
+  /// - "tcp"
+  /// - "udp"
+  core.String? ipProtocol;
+  core.String? kind;
+
+  ///
+  /// Possible string values are:
+  /// - "none"
+  /// - "regionalL4ilb"
+  core.String? loadBalancerType;
+
+  /// The fully qualified url of the network on which the ILB is
+  core.String? networkUrl;
+
+  /// Load Balancer to health check.
+  ///
+  /// The configured port of the Load Balancer.
+  core.String? port;
+
+  /// present.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  /// The project ID in which the ILB exists.
+  core.String? project;
+
+  /// The region for regional ILBs.
+  core.String? region;
+
+  RRSetRoutingPolicyLoadBalancerTarget({
+    this.ipAddress,
+    this.ipProtocol,
+    this.kind,
+    this.loadBalancerType,
+    this.networkUrl,
+    this.port,
+    this.project,
+    this.region,
+  });
+
+  RRSetRoutingPolicyLoadBalancerTarget.fromJson(core.Map _json)
+      : this(
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+          ipProtocol: _json.containsKey('ipProtocol')
+              ? _json['ipProtocol'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          loadBalancerType: _json.containsKey('loadBalancerType')
+              ? _json['loadBalancerType'] as core.String
+              : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+          port: _json.containsKey('port') ? _json['port'] as core.String : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (ipProtocol != null) 'ipProtocol': ipProtocol!,
+        if (kind != null) 'kind': kind!,
+        if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+        if (port != null) 'port': port!,
+        if (project != null) 'project': project!,
+        if (region != null) 'region': region!,
+      };
+}
+
+/// Configures a RRSetRoutingPolicy such that all queries are responded with the
+/// primary_targets if they are healthy.
+///
+/// And if all of them are unhealthy, then we fallback to a geo localized
+/// policy.
+class RRSetRoutingPolicyPrimaryBackupPolicy {
+  /// Backup targets provide a regional failover policy for the otherwise global
+  /// primary targets.
+  ///
+  /// If serving state is set to BACKUP, this policy essentially becomes a geo
+  /// routing policy.
+  RRSetRoutingPolicyGeoPolicy? backupGeoTargets;
+  core.String? kind;
+  RRSetRoutingPolicyHealthCheckTargets? primaryTargets;
+
+  /// When serving state is PRIMARY, this field provides the option of sending a
+  /// small percentage of the traffic to the backup targets.
+  core.double? trickleTraffic;
+
+  RRSetRoutingPolicyPrimaryBackupPolicy({
+    this.backupGeoTargets,
+    this.kind,
+    this.primaryTargets,
+    this.trickleTraffic,
+  });
+
+  RRSetRoutingPolicyPrimaryBackupPolicy.fromJson(core.Map _json)
+      : this(
+          backupGeoTargets: _json.containsKey('backupGeoTargets')
+              ? RRSetRoutingPolicyGeoPolicy.fromJson(_json['backupGeoTargets']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          primaryTargets: _json.containsKey('primaryTargets')
+              ? RRSetRoutingPolicyHealthCheckTargets.fromJson(
+                  _json['primaryTargets']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          trickleTraffic: _json.containsKey('trickleTraffic')
+              ? (_json['trickleTraffic'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupGeoTargets != null) 'backupGeoTargets': backupGeoTargets!,
+        if (kind != null) 'kind': kind!,
+        if (primaryTargets != null) 'primaryTargets': primaryTargets!,
+        if (trickleTraffic != null) 'trickleTraffic': trickleTraffic!,
       };
 }
 
@@ -4550,6 +4746,14 @@ class RRSetRoutingPolicyWrrPolicy {
 
 /// A routing block which contains the routing information for one WRR item.
 class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
+  /// endpoints that need to be health checked before making the routing
+  /// decision.
+  ///
+  /// The unhealthy endpoints will be omitted from the result. If all endpoints
+  /// within a buckete are unhealthy, we'll choose a different bucket (sampled
+  /// w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this
+  /// zone, only one of rrdata or health_checked_targets can be set.
+  RRSetRoutingPolicyHealthCheckTargets? healthCheckedTargets;
   core.String? kind;
   core.List<core.String>? rrdatas;
 
@@ -4568,6 +4772,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   core.double? weight;
 
   RRSetRoutingPolicyWrrPolicyWrrPolicyItem({
+    this.healthCheckedTargets,
     this.kind,
     this.rrdatas,
     this.signatureRrdatas,
@@ -4576,6 +4781,11 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
 
   RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json)
       : this(
+          healthCheckedTargets: _json.containsKey('healthCheckedTargets')
+              ? RRSetRoutingPolicyHealthCheckTargets.fromJson(
+                  _json['healthCheckedTargets']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           rrdatas: _json.containsKey('rrdatas')
               ? (_json['rrdatas'] as core.List)
@@ -4593,6 +4803,8 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (healthCheckedTargets != null)
+          'healthCheckedTargets': healthCheckedTargets!,
         if (kind != null) 'kind': kind!,
         if (rrdatas != null) 'rrdatas': rrdatas!,
         if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
@@ -4944,11 +5156,18 @@ class ResponsePolicyRule {
   /// Possible string values are:
   /// - "behaviorUnspecified"
   /// - "bypassResponsePolicy" : Skip a less-specific ResponsePolicyRule and
-  /// continue normal query logic. This can be used in conjunction with a
-  /// wildcard to exempt a subset of the wildcard ResponsePolicyRule from the
-  /// ResponsePolicy behavior and e.g., query the public internet instead. For
-  /// instance, if these rules exist: *.example.com -\> 1.2.3.4 foo.example.com
-  /// -\> PASSTHRU Then a query for 'foo.example.com' skips the wildcard.
+  /// continue normal query logic. This can be used with a less-specific
+  /// wildcard selector to exempt a subset of the wildcard ResponsePolicyRule
+  /// from the ResponsePolicy behavior and query the public Internet instead.
+  /// For instance, if these rules exist: *.example.com -\> LocalData 1.2.3.4
+  /// foo.example.com -\> Behavior 'bypassResponsePolicy' Then a query for
+  /// 'foo.example.com' skips the wildcard. This additionally functions to
+  /// facilitate the allowlist feature. RPZs can be applied to multiple levels
+  /// in the (eventually org, folder, project, network) hierarchy. If a rule is
+  /// applied at a higher level of the hierarchy, adding a passthru rule at a
+  /// lower level will supersede that, and a query from an affected vm to that
+  /// domain will be exempt from the RPZ and proceed to normal resolution
+  /// behavior.
   core.String? behavior;
 
   /// The DNS name (wildcard or exact) to apply this rule to.

@@ -3006,7 +3006,6 @@ void main() {
       final arg_request = buildGoogleFirestoreAdminV1Database();
       final arg_parent = 'foo';
       final arg_databaseId = 'foo';
-      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleFirestoreAdminV1Database.fromJson(
@@ -3049,10 +3048,6 @@ void main() {
           unittest.equals(arg_databaseId),
         );
         unittest.expect(
-          queryMap['validateOnly']!.first,
-          unittest.equals('$arg_validateOnly'),
-        );
-        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -3064,9 +3059,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          databaseId: arg_databaseId,
-          validateOnly: arg_validateOnly,
-          $fields: arg_$fields);
+          databaseId: arg_databaseId, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
           response as api.GoogleLongrunningOperation);
     });

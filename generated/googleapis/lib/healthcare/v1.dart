@@ -6147,7 +6147,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Request parameters:
   ///
   /// [name] - Resource name of the HL7v2 store, of the form
-  /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -6611,7 +6611,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   /// Request parameters:
   ///
   /// [name] - Resource name of the Message, of the form
-  /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
   /// Assigned by the server.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
@@ -7845,8 +7845,9 @@ class CryptoHashConfig {
   /// An AES 128/192/256 bit key.
   ///
   /// Causes the hash to be computed based on this key. A default key is
-  /// generated for each Deidentify operation and is used wherever crypto_key is
-  /// not specified.
+  /// generated for each Deidentify operation and is used when neither
+  /// `crypto_key` nor `kms_wrapped` is specified. Must not be set if
+  /// `kms_wrapped` is set.
   core.String? cryptoKey;
   core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey!);
 
@@ -7913,8 +7914,9 @@ class DateShiftConfig {
   /// An AES 128/192/256 bit key.
   ///
   /// Causes the shift to be computed based on this key and the patient ID. A
-  /// default key is generated for each Deidentify operation and is used
-  /// wherever crypto_key is not specified.
+  /// default key is generated for each de-identification operation and is used
+  /// when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set
+  /// if `kms_wrapped` is set.
   core.String? cryptoKey;
   core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey!);
 
@@ -8984,6 +8986,23 @@ class FhirFilter {
 
 /// Represents a FHIR store.
 class FhirStore {
+  /// Enable parsing of references within complex FHIR data types such as
+  /// Extensions.
+  ///
+  /// If this value is set to ENABLED, then features like referential integrity
+  /// and Bundle reference rewriting apply to all references. If this flag has
+  /// not been specified the behavior of the FHIR store will not change,
+  /// references in complex data types will not be parsed. New stores will have
+  /// this value set to ENABLED after a notification period. Warning: turning on
+  /// this flag causes processing existing resources to fail if they contain
+  /// references to non-existent resources.
+  /// Possible string values are:
+  /// - "COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED" : No parsing behavior
+  /// specified. This is the same as DISABLED for backwards compatibility.
+  /// - "DISABLED" : References in complex data types are ignored.
+  /// - "ENABLED" : References in complex data types are parsed.
+  core.String? complexDataTypeReferenceParsing;
+
   /// If true, overrides the default search behavior for this FHIR store to
   /// `handling=strict` which returns an error for unrecognized search
   /// parameters.
@@ -9094,6 +9113,7 @@ class FhirStore {
   core.String? version;
 
   FhirStore({
+    this.complexDataTypeReferenceParsing,
     this.defaultSearchHandlingStrict,
     this.disableReferentialIntegrity,
     this.disableResourceVersioning,
@@ -9108,6 +9128,10 @@ class FhirStore {
 
   FhirStore.fromJson(core.Map _json)
       : this(
+          complexDataTypeReferenceParsing:
+              _json.containsKey('complexDataTypeReferenceParsing')
+                  ? _json['complexDataTypeReferenceParsing'] as core.String
+                  : null,
           defaultSearchHandlingStrict:
               _json.containsKey('defaultSearchHandlingStrict')
                   ? _json['defaultSearchHandlingStrict'] as core.bool
@@ -9152,6 +9176,8 @@ class FhirStore {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (complexDataTypeReferenceParsing != null)
+          'complexDataTypeReferenceParsing': complexDataTypeReferenceParsing!,
         if (defaultSearchHandlingStrict != null)
           'defaultSearchHandlingStrict': defaultSearchHandlingStrict!,
         if (disableReferentialIntegrity != null)
@@ -9851,7 +9877,7 @@ class Hl7V2Store {
   core.Map<core.String, core.String>? labels;
 
   /// Resource name of the HL7v2 store, of the form
-  /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   core.String? name;
 
   /// A list of notification configs.
@@ -9997,7 +10023,8 @@ class ImageConfig {
   /// - "TEXT_REDACTION_MODE_UNSPECIFIED" : No text redaction specified. Same as
   /// REDACT_NO_TEXT.
   /// - "REDACT_ALL_TEXT" : Redact all text.
-  /// - "REDACT_SENSITIVE_TEXT" : Redact sensitive text.
+  /// - "REDACT_SENSITIVE_TEXT" : Redact sensitive text. Uses the set of
+  /// [Default DICOM InfoTypes](https://cloud.google.com/healthcare-api/docs/how-tos/dicom-deidentify#default_dicom_infotypes).
   /// - "REDACT_NO_TEXT" : Do not redact text.
   core.String? textRedactionMode;
 
@@ -10774,7 +10801,7 @@ class Message {
   core.String? messageType;
 
   /// Resource name of the Message, of the form
-  /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
   ///
   /// Assigned by the server.
   core.String? name;
@@ -11468,6 +11495,9 @@ class SchemaConfig {
   /// can hold any resource type. The affected fields are
   /// `Parameters.parameter.resource`, `Bundle.entry.resource`, and
   /// `Bundle.entry.response.outcome`.
+  /// - "ANALYTICS_V2" : Analytics V2, similar to schema defined by the FHIR
+  /// community, with added support for extensions with one or more occurrences
+  /// and contained resources in stringified JSON.
   core.String? schemaType;
 
   SchemaConfig({

@@ -1057,6 +1057,50 @@ class ProjectsLocationsClustersNodePoolsResource {
   ProjectsLocationsClustersNodePoolsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// CompleteNodePoolUpgrade will signal an on-going node pool upgrade to
+  /// complete.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster, node pool id) of the node
+  /// pool to complete upgrade. Specified in the format 'projects / * /locations
+  /// / * /clusters / * /nodePools / * '.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> completeUpgrade(
+    CompleteNodePoolUpgradeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':completeUpgrade';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a node pool for a cluster.
   ///
   /// [request] - The metadata request object.
@@ -3946,11 +3990,11 @@ class BinaryAuthorization {
   /// Currently the only options are equivalent to enable/disable. If
   /// unspecified, defaults to DISABLED.
   /// Possible string values are:
-  /// - "EVALUATION_MODE_UNSPECIFIED" : Default value, equivalent to DISABLED.
+  /// - "EVALUATION_MODE_UNSPECIFIED" : Default value
   /// - "DISABLED" : Disable BinaryAuthorization
-  /// - "PROJECT_SINGLETON_POLICY_ENFORCE" : If enabled, enforce Kubernetes
-  /// admission requests with BinAuthz using the project's singleton policy.
-  /// Equivalent to bool enabled=true.
+  /// - "PROJECT_SINGLETON_POLICY_ENFORCE" : Enforce Kubernetes admission
+  /// requests with BinaryAuthorization using the project's singleton policy.
+  /// This is equivalent to setting the enabled boolean to true.
   core.String? evaluationMode;
 
   BinaryAuthorization({
@@ -3971,6 +4015,115 @@ class BinaryAuthorization {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (evaluationMode != null) 'evaluationMode': evaluationMode!,
+      };
+}
+
+/// Information relevant to blue-green upgrade.
+class BlueGreenInfo {
+  /// The resource URLs of the \[managed instance groups\]
+  /// (/compute/docs/instance-groups/creating-groups-of-managed-instances)
+  /// associated with blue pool.
+  core.List<core.String>? blueInstanceGroupUrls;
+
+  /// Time to start deleting blue pool to complete blue-green upgrade, in
+  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+  core.String? bluePoolDeletionStartTime;
+
+  /// The resource URLs of the \[managed instance groups\]
+  /// (/compute/docs/instance-groups/creating-groups-of-managed-instances)
+  /// associated with green pool.
+  core.List<core.String>? greenInstanceGroupUrls;
+
+  /// Version of green pool.
+  core.String? greenPoolVersion;
+
+  /// Current blue-green upgrade phase.
+  /// Possible string values are:
+  /// - "PHASE_UNSPECIFIED" : Unspecified phase.
+  /// - "UPDATE_STARTED" : blue-green upgrade has been initiated.
+  /// - "CREATING_GREEN_POOL" : Start creating green pool nodes.
+  /// - "CORDONING_BLUE_POOL" : Start cordoning blue pool nodes.
+  /// - "DRAINING_BLUE_POOL" : Start draining blue pool nodes.
+  /// - "NODE_POOL_SOAKING" : Start soaking time after draining entire blue
+  /// pool.
+  /// - "DELETING_BLUE_POOL" : Start deleting blue nodes.
+  /// - "ROLLBACK_STARTED" : Rollback has been initiated.
+  core.String? phase;
+
+  BlueGreenInfo({
+    this.blueInstanceGroupUrls,
+    this.bluePoolDeletionStartTime,
+    this.greenInstanceGroupUrls,
+    this.greenPoolVersion,
+    this.phase,
+  });
+
+  BlueGreenInfo.fromJson(core.Map _json)
+      : this(
+          blueInstanceGroupUrls: _json.containsKey('blueInstanceGroupUrls')
+              ? (_json['blueInstanceGroupUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          bluePoolDeletionStartTime:
+              _json.containsKey('bluePoolDeletionStartTime')
+                  ? _json['bluePoolDeletionStartTime'] as core.String
+                  : null,
+          greenInstanceGroupUrls: _json.containsKey('greenInstanceGroupUrls')
+              ? (_json['greenInstanceGroupUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          greenPoolVersion: _json.containsKey('greenPoolVersion')
+              ? _json['greenPoolVersion'] as core.String
+              : null,
+          phase:
+              _json.containsKey('phase') ? _json['phase'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blueInstanceGroupUrls != null)
+          'blueInstanceGroupUrls': blueInstanceGroupUrls!,
+        if (bluePoolDeletionStartTime != null)
+          'bluePoolDeletionStartTime': bluePoolDeletionStartTime!,
+        if (greenInstanceGroupUrls != null)
+          'greenInstanceGroupUrls': greenInstanceGroupUrls!,
+        if (greenPoolVersion != null) 'greenPoolVersion': greenPoolVersion!,
+        if (phase != null) 'phase': phase!,
+      };
+}
+
+/// Settings for blue-green upgrade.
+class BlueGreenSettings {
+  /// Time needed after draining entire blue pool.
+  ///
+  /// After this period, blue pool will be cleaned up.
+  core.String? nodePoolSoakDuration;
+
+  /// Standard policy for the blue-green upgrade.
+  StandardRolloutPolicy? standardRolloutPolicy;
+
+  BlueGreenSettings({
+    this.nodePoolSoakDuration,
+    this.standardRolloutPolicy,
+  });
+
+  BlueGreenSettings.fromJson(core.Map _json)
+      : this(
+          nodePoolSoakDuration: _json.containsKey('nodePoolSoakDuration')
+              ? _json['nodePoolSoakDuration'] as core.String
+              : null,
+          standardRolloutPolicy: _json.containsKey('standardRolloutPolicy')
+              ? StandardRolloutPolicy.fromJson(_json['standardRolloutPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodePoolSoakDuration != null)
+          'nodePoolSoakDuration': nodePoolSoakDuration!,
+        if (standardRolloutPolicy != null)
+          'standardRolloutPolicy': standardRolloutPolicy!,
       };
 }
 
@@ -5436,6 +5589,10 @@ class CompleteIPRotationRequest {
         if (zone != null) 'zone': zone!,
       };
 }
+
+/// CompleteNodePoolUpgradeRequest sets the name of target node pool to complete
+/// upgrade.
+typedef CompleteNodePoolUpgradeRequest = $Empty;
 
 /// ConfidentialNodes is configuration for the confidential nodes feature, which
 /// makes nodes run on confidential VMs.
@@ -7743,7 +7900,7 @@ class NodeConfig {
 
 /// Subset of NodeConfig message that has defaults.
 class NodeConfigDefaults {
-  /// GCFS (Google Container File System, a.k.a Riptide) options.
+  /// GCFS (Google Container File System, a.k.a. Riptide) options.
   GcfsConfig? gcfsConfig;
 
   NodeConfigDefaults({
@@ -8007,6 +8164,9 @@ class NodePool {
   /// [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
   /// associated with this node pool.
   ///
+  /// During the node pool blue-green upgrade operation, the URLs contain both
+  /// blue and green resources.
+  ///
   /// Output only.
   core.List<core.String>? instanceGroupUrls;
 
@@ -8075,6 +8235,11 @@ class NodePool {
   /// Output only. Deprecated.
   core.String? statusMessage;
 
+  /// Update info contains relevant information during a node pool update.
+  ///
+  /// Output only.
+  UpdateInfo? updateInfo;
+
   /// Upgrade settings control disruption and speed of the upgrade.
   UpgradeSettings? upgradeSettings;
 
@@ -8096,6 +8261,7 @@ class NodePool {
     this.selfLink,
     this.status,
     this.statusMessage,
+    this.updateInfo,
     this.upgradeSettings,
     this.version,
   });
@@ -8154,6 +8320,10 @@ class NodePool {
           statusMessage: _json.containsKey('statusMessage')
               ? _json['statusMessage'] as core.String
               : null,
+          updateInfo: _json.containsKey('updateInfo')
+              ? UpdateInfo.fromJson(
+                  _json['updateInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           upgradeSettings: _json.containsKey('upgradeSettings')
               ? UpgradeSettings.fromJson(_json['upgradeSettings']
                   as core.Map<core.String, core.dynamic>)
@@ -8178,6 +8348,7 @@ class NodePool {
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (updateInfo != null) 'updateInfo': updateInfo!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
         if (version != null) 'version': version!,
       };
@@ -8219,6 +8390,14 @@ class NodePoolAutoscaling {
   /// Is autoscaling enabled for this node pool.
   core.bool? enabled;
 
+  /// Location policy used when scaling up a nodepool.
+  /// Possible string values are:
+  /// - "LOCATION_POLICY_UNSPECIFIED" : Not set.
+  /// - "BALANCED" : BALANCED is a best effort policy that aims to balance the
+  /// sizes of different zones.
+  /// - "ANY" : ANY policy picks zones that have the highest capacity available.
+  core.String? locationPolicy;
+
   /// Maximum number of nodes for one location in the NodePool.
   ///
   /// Must be \>= min_node_count. There has to be enough quota to scale up the
@@ -8230,11 +8409,28 @@ class NodePoolAutoscaling {
   /// Must be \>= 1 and \<= max_node_count.
   core.int? minNodeCount;
 
+  /// Maximum number of nodes in the node pool.
+  ///
+  /// Must be greater than total_min_node_count. There has to be enough quota to
+  /// scale up the cluster. The total_*_node_count fields are mutually exclusive
+  /// with the *_node_count fields.
+  core.int? totalMaxNodeCount;
+
+  /// Minimum number of nodes in the node pool.
+  ///
+  /// Must be greater than 1 less than total_max_node_count. The
+  /// total_*_node_count fields are mutually exclusive with the *_node_count
+  /// fields.
+  core.int? totalMinNodeCount;
+
   NodePoolAutoscaling({
     this.autoprovisioned,
     this.enabled,
+    this.locationPolicy,
     this.maxNodeCount,
     this.minNodeCount,
+    this.totalMaxNodeCount,
+    this.totalMinNodeCount,
   });
 
   NodePoolAutoscaling.fromJson(core.Map _json)
@@ -8245,19 +8441,31 @@ class NodePoolAutoscaling {
           enabled: _json.containsKey('enabled')
               ? _json['enabled'] as core.bool
               : null,
+          locationPolicy: _json.containsKey('locationPolicy')
+              ? _json['locationPolicy'] as core.String
+              : null,
           maxNodeCount: _json.containsKey('maxNodeCount')
               ? _json['maxNodeCount'] as core.int
               : null,
           minNodeCount: _json.containsKey('minNodeCount')
               ? _json['minNodeCount'] as core.int
               : null,
+          totalMaxNodeCount: _json.containsKey('totalMaxNodeCount')
+              ? _json['totalMaxNodeCount'] as core.int
+              : null,
+          totalMinNodeCount: _json.containsKey('totalMinNodeCount')
+              ? _json['totalMinNodeCount'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoprovisioned != null) 'autoprovisioned': autoprovisioned!,
         if (enabled != null) 'enabled': enabled!,
+        if (locationPolicy != null) 'locationPolicy': locationPolicy!,
         if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
         if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+        if (totalMaxNodeCount != null) 'totalMaxNodeCount': totalMaxNodeCount!,
+        if (totalMinNodeCount != null) 'totalMinNodeCount': totalMinNodeCount!,
       };
 }
 
@@ -9084,6 +9292,11 @@ class RollbackNodePoolUpgradeRequest {
   /// Deprecated.
   core.String? projectId;
 
+  /// Option for rollback to ignore the PodDisruptionBudget.
+  ///
+  /// Default value is false.
+  core.bool? respectPdb;
+
   /// The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
   /// cluster resides.
@@ -9098,6 +9311,7 @@ class RollbackNodePoolUpgradeRequest {
     this.name,
     this.nodePoolId,
     this.projectId,
+    this.respectPdb,
     this.zone,
   });
 
@@ -9113,6 +9327,9 @@ class RollbackNodePoolUpgradeRequest {
           projectId: _json.containsKey('projectId')
               ? _json['projectId'] as core.String
               : null,
+          respectPdb: _json.containsKey('respectPdb')
+              ? _json['respectPdb'] as core.bool
+              : null,
           zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
         );
 
@@ -9121,6 +9338,7 @@ class RollbackNodePoolUpgradeRequest {
         if (name != null) 'name': name!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
         if (projectId != null) 'projectId': projectId!,
+        if (respectPdb != null) 'respectPdb': respectPdb!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -10234,6 +10452,47 @@ class ShieldedNodes {
       };
 }
 
+/// Standard rollout policy is the default policy for blue-green.
+class StandardRolloutPolicy {
+  /// Number of blue nodes to drain in a batch.
+  core.int? batchNodeCount;
+
+  /// Percentage of the bool pool nodes to drain in a batch.
+  ///
+  /// The range of this field should be (0.0, 1.0\].
+  core.double? batchPercentage;
+
+  /// Soak time after each batch gets drained.
+  ///
+  /// Default to zero.
+  core.String? batchSoakDuration;
+
+  StandardRolloutPolicy({
+    this.batchNodeCount,
+    this.batchPercentage,
+    this.batchSoakDuration,
+  });
+
+  StandardRolloutPolicy.fromJson(core.Map _json)
+      : this(
+          batchNodeCount: _json.containsKey('batchNodeCount')
+              ? _json['batchNodeCount'] as core.int
+              : null,
+          batchPercentage: _json.containsKey('batchPercentage')
+              ? (_json['batchPercentage'] as core.num).toDouble()
+              : null,
+          batchSoakDuration: _json.containsKey('batchSoakDuration')
+              ? _json['batchSoakDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batchNodeCount != null) 'batchNodeCount': batchNodeCount!,
+        if (batchPercentage != null) 'batchPercentage': batchPercentage!,
+        if (batchSoakDuration != null) 'batchSoakDuration': batchSoakDuration!,
+      };
+}
+
 /// StartIPRotationRequest creates a new IP for the cluster and then performs a
 /// node upgrade on each node pool to point to the new IP.
 class StartIPRotationRequest {
@@ -10554,6 +10813,29 @@ class UpdateClusterRequest {
       };
 }
 
+/// UpdateInfo contains resource (instance groups, etc), status and other
+/// intermediate information relevant to a node pool upgrade.
+class UpdateInfo {
+  /// Information of a blue-green upgrade.
+  BlueGreenInfo? blueGreenInfo;
+
+  UpdateInfo({
+    this.blueGreenInfo,
+  });
+
+  UpdateInfo.fromJson(core.Map _json)
+      : this(
+          blueGreenInfo: _json.containsKey('blueGreenInfo')
+              ? BlueGreenInfo.fromJson(
+                  _json['blueGreenInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blueGreenInfo != null) 'blueGreenInfo': blueGreenInfo!,
+      };
+}
+
 /// UpdateMasterRequest updates the master of the cluster.
 class UpdateMasterRequest {
   /// The name of the cluster to upgrade.
@@ -10682,6 +10964,9 @@ class UpdateNodePoolRequest {
   /// /nodePools / * `.
   core.String? name;
 
+  /// Node network config.
+  NodeNetworkConfig? nodeNetworkConfig;
+
   /// The name of the node pool to upgrade.
   ///
   /// This field has been deprecated and replaced by the name field.
@@ -10747,6 +11032,7 @@ class UpdateNodePoolRequest {
     this.linuxNodeConfig,
     this.locations,
     this.name,
+    this.nodeNetworkConfig,
     this.nodePoolId,
     this.nodeVersion,
     this.projectId,
@@ -10795,6 +11081,10 @@ class UpdateNodePoolRequest {
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodeNetworkConfig: _json.containsKey('nodeNetworkConfig')
+              ? NodeNetworkConfig.fromJson(_json['nodeNetworkConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           nodePoolId: _json.containsKey('nodePoolId')
               ? _json['nodePoolId'] as core.String
               : null,
@@ -10834,6 +11124,7 @@ class UpdateNodePoolRequest {
         if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
         if (locations != null) 'locations': locations!,
         if (name != null) 'name': name!,
+        if (nodeNetworkConfig != null) 'nodeNetworkConfig': nodeNetworkConfig!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
         if (nodeVersion != null) 'nodeVersion': nodeVersion!,
         if (projectId != null) 'projectId': projectId!,
@@ -10861,8 +11152,28 @@ class UpdateNodePoolRequest {
 /// maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3
 /// nodes simultaneously. It creates 2 additional (upgraded) nodes, then it
 /// brings down 3 old (not yet upgraded) nodes at the same time. This ensures
-/// that there are always at least 4 nodes available.
+/// that there are always at least 4 nodes available. These upgrade settings
+/// configure the upgrade strategy for the node pool. Use strategy to switch
+/// between the strategies applied to the node pool. If the strategy is ROLLING,
+/// use max_surge and max_unavailable to control the level of parallelism and
+/// the level of disruption caused by upgrade. 1. maxSurge controls the number
+/// of additional nodes that can be added to the node pool temporarily for the
+/// time of the upgrade to increase the number of available nodes. 2.
+/// maxUnavailable controls the number of nodes that can be simultaneously
+/// unavailable. 3. (maxUnavailable + maxSurge) determines the level of
+/// parallelism (how many nodes are being upgraded at the same time). If the
+/// strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green
+/// upgrade related settings. 1. standard_rollout_policy is the default policy.
+/// The policy is used to control the way blue pool gets drained. The draining
+/// is executed in the batch mode. The batch size could be specified as either
+/// percentage of the node pool size or the number of nodes. batch_soak_duration
+/// is the soak time after each batch gets drained. 2. node_pool_soak_duration
+/// is the soak time after all blue nodes are drained. After this period, the
+/// blue pool nodes will be deleted.
 class UpgradeSettings {
+  /// Settings for blue-green upgrade strategy.
+  BlueGreenSettings? blueGreenSettings;
+
   /// The maximum number of nodes that can be created beyond the current size of
   /// the node pool during the upgrade process.
   core.int? maxSurge;
@@ -10873,24 +11184,43 @@ class UpgradeSettings {
   /// A node is considered available if its status is Ready.
   core.int? maxUnavailable;
 
+  /// Update strategy of the node pool.
+  /// Possible string values are:
+  /// - "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED" : Default value.
+  /// - "BLUE_GREEN" : blue-green upgrade.
+  /// - "SURGE" : SURGE is the traditional way of upgrade a node pool. max_surge
+  /// and max_unavailable determines the level of upgrade parallelism.
+  core.String? strategy;
+
   UpgradeSettings({
+    this.blueGreenSettings,
     this.maxSurge,
     this.maxUnavailable,
+    this.strategy,
   });
 
   UpgradeSettings.fromJson(core.Map _json)
       : this(
+          blueGreenSettings: _json.containsKey('blueGreenSettings')
+              ? BlueGreenSettings.fromJson(_json['blueGreenSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           maxSurge: _json.containsKey('maxSurge')
               ? _json['maxSurge'] as core.int
               : null,
           maxUnavailable: _json.containsKey('maxUnavailable')
               ? _json['maxUnavailable'] as core.int
               : null,
+          strategy: _json.containsKey('strategy')
+              ? _json['strategy'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (blueGreenSettings != null) 'blueGreenSettings': blueGreenSettings!,
         if (maxSurge != null) 'maxSurge': maxSurge!,
         if (maxUnavailable != null) 'maxUnavailable': maxUnavailable!,
+        if (strategy != null) 'strategy': strategy!,
       };
 }
 

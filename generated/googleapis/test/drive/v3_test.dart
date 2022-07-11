@@ -908,6 +908,7 @@ api.FileCapabilities buildFileCapabilities() {
     o.canListChildren = true;
     o.canModifyContent = true;
     o.canModifyContentRestriction = true;
+    o.canModifyLabels = true;
     o.canMoveChildrenOutOfDrive = true;
     o.canMoveChildrenOutOfTeamDrive = true;
     o.canMoveChildrenWithinDrive = true;
@@ -919,6 +920,7 @@ api.FileCapabilities buildFileCapabilities() {
     o.canMoveItemWithinTeamDrive = true;
     o.canMoveTeamDriveItem = true;
     o.canReadDrive = true;
+    o.canReadLabels = true;
     o.canReadRevisions = true;
     o.canReadTeamDrive = true;
     o.canRemoveChildren = true;
@@ -952,6 +954,7 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canListChildren!, unittest.isTrue);
     unittest.expect(o.canModifyContent!, unittest.isTrue);
     unittest.expect(o.canModifyContentRestriction!, unittest.isTrue);
+    unittest.expect(o.canModifyLabels!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenOutOfDrive!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenOutOfTeamDrive!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenWithinDrive!, unittest.isTrue);
@@ -963,6 +966,7 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canMoveItemWithinTeamDrive!, unittest.isTrue);
     unittest.expect(o.canMoveTeamDriveItem!, unittest.isTrue);
     unittest.expect(o.canReadDrive!, unittest.isTrue);
+    unittest.expect(o.canReadLabels!, unittest.isTrue);
     unittest.expect(o.canReadRevisions!, unittest.isTrue);
     unittest.expect(o.canReadTeamDrive!, unittest.isTrue);
     unittest.expect(o.canRemoveChildren!, unittest.isTrue);
@@ -1203,6 +1207,36 @@ void checkFileImageMediaMetadata(api.FileImageMediaMetadata o) {
   buildCounterFileImageMediaMetadata--;
 }
 
+core.List<api.Label> buildUnnamed16() => [
+      buildLabel(),
+      buildLabel(),
+    ];
+
+void checkUnnamed16(core.List<api.Label> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLabel(o[0]);
+  checkLabel(o[1]);
+}
+
+core.int buildCounterFileLabelInfo = 0;
+api.FileLabelInfo buildFileLabelInfo() {
+  final o = api.FileLabelInfo();
+  buildCounterFileLabelInfo++;
+  if (buildCounterFileLabelInfo < 3) {
+    o.labels = buildUnnamed16();
+  }
+  buildCounterFileLabelInfo--;
+  return o;
+}
+
+void checkFileLabelInfo(api.FileLabelInfo o) {
+  buildCounterFileLabelInfo++;
+  if (buildCounterFileLabelInfo < 3) {
+    checkUnnamed16(o.labels!);
+  }
+  buildCounterFileLabelInfo--;
+}
+
 core.int buildCounterFileLinkShareMetadata = 0;
 api.FileLinkShareMetadata buildFileLinkShareMetadata() {
   final o = api.FileLinkShareMetadata();
@@ -1224,32 +1258,15 @@ void checkFileLinkShareMetadata(api.FileLinkShareMetadata o) {
   buildCounterFileLinkShareMetadata--;
 }
 
-core.List<api.User> buildUnnamed16() => [
+core.List<api.User> buildUnnamed17() => [
       buildUser(),
       buildUser(),
     ];
 
-void checkUnnamed16(core.List<api.User> o) {
+void checkUnnamed17(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
-}
-
-core.List<core.String> buildUnnamed17() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed17(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed18() => [
@@ -1269,23 +1286,40 @@ void checkUnnamed18(core.List<core.String> o) {
   );
 }
 
-core.List<api.Permission> buildUnnamed19() => [
+core.List<core.String> buildUnnamed19() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed19(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.Permission> buildUnnamed20() => [
       buildPermission(),
       buildPermission(),
     ];
 
-void checkUnnamed19(core.List<api.Permission> o) {
+void checkUnnamed20(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
 }
 
-core.Map<core.String, core.String?> buildUnnamed20() => {
+core.Map<core.String, core.String?> buildUnnamed21() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed20(core.Map<core.String, core.String?> o) {
+void checkUnnamed21(core.Map<core.String, core.String?> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1329,12 +1363,12 @@ void checkFileShortcutDetails(api.FileShortcutDetails o) {
   buildCounterFileShortcutDetails--;
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1404,6 +1438,7 @@ api.File buildFile() {
     o.imageMediaMetadata = buildFileImageMediaMetadata();
     o.isAppAuthorized = true;
     o.kind = 'foo';
+    o.labelInfo = buildFileLabelInfo();
     o.lastModifyingUser = buildUser();
     o.linkShareMetadata = buildFileLinkShareMetadata();
     o.md5Checksum = 'foo';
@@ -1414,11 +1449,11 @@ api.File buildFile() {
     o.name = 'foo';
     o.originalFilename = 'foo';
     o.ownedByMe = true;
-    o.owners = buildUnnamed16();
-    o.parents = buildUnnamed17();
-    o.permissionIds = buildUnnamed18();
-    o.permissions = buildUnnamed19();
-    o.properties = buildUnnamed20();
+    o.owners = buildUnnamed17();
+    o.parents = buildUnnamed18();
+    o.permissionIds = buildUnnamed19();
+    o.permissions = buildUnnamed20();
+    o.properties = buildUnnamed21();
     o.quotaBytesUsed = 'foo';
     o.resourceKey = 'foo';
     o.shared = true;
@@ -1426,7 +1461,7 @@ api.File buildFile() {
     o.sharingUser = buildUser();
     o.shortcutDetails = buildFileShortcutDetails();
     o.size = 'foo';
-    o.spaces = buildUnnamed21();
+    o.spaces = buildUnnamed22();
     o.starred = true;
     o.teamDriveId = 'foo';
     o.thumbnailLink = 'foo';
@@ -1501,6 +1536,7 @@ void checkFile(api.File o) {
       o.kind!,
       unittest.equals('foo'),
     );
+    checkFileLabelInfo(o.labelInfo!);
     checkUser(o.lastModifyingUser!);
     checkFileLinkShareMetadata(o.linkShareMetadata!);
     unittest.expect(
@@ -1529,11 +1565,11 @@ void checkFile(api.File o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.ownedByMe!, unittest.isTrue);
-    checkUnnamed16(o.owners!);
-    checkUnnamed17(o.parents!);
-    checkUnnamed18(o.permissionIds!);
-    checkUnnamed19(o.permissions!);
-    checkUnnamed20(o.properties!);
+    checkUnnamed17(o.owners!);
+    checkUnnamed18(o.parents!);
+    checkUnnamed19(o.permissionIds!);
+    checkUnnamed20(o.permissions!);
+    checkUnnamed21(o.properties!);
     unittest.expect(
       o.quotaBytesUsed!,
       unittest.equals('foo'),
@@ -1553,7 +1589,7 @@ void checkFile(api.File o) {
       o.size!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.spaces!);
+    checkUnnamed22(o.spaces!);
     unittest.expect(o.starred!, unittest.isTrue);
     unittest.expect(
       o.teamDriveId!,
@@ -1597,12 +1633,12 @@ void checkFile(api.File o) {
   buildCounterFile--;
 }
 
-core.List<api.File> buildUnnamed22() => [
+core.List<api.File> buildUnnamed23() => [
       buildFile(),
       buildFile(),
     ];
 
-void checkUnnamed22(core.List<api.File> o) {
+void checkUnnamed23(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -1613,7 +1649,7 @@ api.FileList buildFileList() {
   final o = api.FileList();
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
-    o.files = buildUnnamed22();
+    o.files = buildUnnamed23();
     o.incompleteSearch = true;
     o.kind = 'foo';
     o.nextPageToken = 'foo';
@@ -1625,7 +1661,7 @@ api.FileList buildFileList() {
 void checkFileList(api.FileList o) {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
-    checkUnnamed22(o.files!);
+    checkUnnamed23(o.files!);
     unittest.expect(o.incompleteSearch!, unittest.isTrue);
     unittest.expect(
       o.kind!,
@@ -1639,12 +1675,12 @@ void checkFileList(api.FileList o) {
   buildCounterFileList--;
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed24() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1661,7 +1697,7 @@ api.GeneratedIds buildGeneratedIds() {
   final o = api.GeneratedIds();
   buildCounterGeneratedIds++;
   if (buildCounterGeneratedIds < 3) {
-    o.ids = buildUnnamed23();
+    o.ids = buildUnnamed24();
     o.kind = 'foo';
     o.space = 'foo';
   }
@@ -1672,7 +1708,7 @@ api.GeneratedIds buildGeneratedIds() {
 void checkGeneratedIds(api.GeneratedIds o) {
   buildCounterGeneratedIds++;
   if (buildCounterGeneratedIds < 3) {
-    checkUnnamed23(o.ids!);
+    checkUnnamed24(o.ids!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1683,6 +1719,448 @@ void checkGeneratedIds(api.GeneratedIds o) {
     );
   }
   buildCounterGeneratedIds--;
+}
+
+core.Map<core.String, api.LabelField> buildUnnamed25() => {
+      'x': buildLabelField(),
+      'y': buildLabelField(),
+    };
+
+void checkUnnamed25(core.Map<core.String, api.LabelField> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLabelField(o['x']!);
+  checkLabelField(o['y']!);
+}
+
+core.int buildCounterLabel = 0;
+api.Label buildLabel() {
+  final o = api.Label();
+  buildCounterLabel++;
+  if (buildCounterLabel < 3) {
+    o.fields = buildUnnamed25();
+    o.id = 'foo';
+    o.kind = 'foo';
+    o.revisionId = 'foo';
+  }
+  buildCounterLabel--;
+  return o;
+}
+
+void checkLabel(api.Label o) {
+  buildCounterLabel++;
+  if (buildCounterLabel < 3) {
+    checkUnnamed25(o.fields!);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revisionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLabel--;
+}
+
+core.List<core.DateTime> buildUnnamed26() => [
+      core.DateTime.parse('2002-02-27T14:01:02Z'),
+      core.DateTime.parse('2002-02-27T14:01:02Z'),
+    ];
+
+void checkUnnamed26(core.List<core.DateTime> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
+  );
+}
+
+core.List<core.String> buildUnnamed27() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed27(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed28() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed28(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.User> buildUnnamed30() => [
+      buildUser(),
+      buildUser(),
+    ];
+
+void checkUnnamed30(core.List<api.User> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUser(o[0]);
+  checkUser(o[1]);
+}
+
+core.int buildCounterLabelField = 0;
+api.LabelField buildLabelField() {
+  final o = api.LabelField();
+  buildCounterLabelField++;
+  if (buildCounterLabelField < 3) {
+    o.dateString = buildUnnamed26();
+    o.id = 'foo';
+    o.integer = buildUnnamed27();
+    o.kind = 'foo';
+    o.selection = buildUnnamed28();
+    o.text = buildUnnamed29();
+    o.user = buildUnnamed30();
+    o.valueType = 'foo';
+  }
+  buildCounterLabelField--;
+  return o;
+}
+
+void checkLabelField(api.LabelField o) {
+  buildCounterLabelField++;
+  if (buildCounterLabelField < 3) {
+    checkUnnamed26(o.dateString!);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed27(o.integer!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed28(o.selection!);
+    checkUnnamed29(o.text!);
+    checkUnnamed30(o.user!);
+    unittest.expect(
+      o.valueType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLabelField--;
+}
+
+core.List<core.DateTime> buildUnnamed31() => [
+      core.DateTime.parse('2002-02-27T14:01:02Z'),
+      core.DateTime.parse('2002-02-27T14:01:02Z'),
+    ];
+
+void checkUnnamed31(core.List<core.DateTime> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
+  );
+}
+
+core.List<core.String> buildUnnamed32() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed32(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed33() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed33(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed34() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed34(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed35() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed35(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterLabelFieldModification = 0;
+api.LabelFieldModification buildLabelFieldModification() {
+  final o = api.LabelFieldModification();
+  buildCounterLabelFieldModification++;
+  if (buildCounterLabelFieldModification < 3) {
+    o.fieldId = 'foo';
+    o.kind = 'foo';
+    o.setDateValues = buildUnnamed31();
+    o.setIntegerValues = buildUnnamed32();
+    o.setSelectionValues = buildUnnamed33();
+    o.setTextValues = buildUnnamed34();
+    o.setUserValues = buildUnnamed35();
+    o.unsetValues = true;
+  }
+  buildCounterLabelFieldModification--;
+  return o;
+}
+
+void checkLabelFieldModification(api.LabelFieldModification o) {
+  buildCounterLabelFieldModification++;
+  if (buildCounterLabelFieldModification < 3) {
+    unittest.expect(
+      o.fieldId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed31(o.setDateValues!);
+    checkUnnamed32(o.setIntegerValues!);
+    checkUnnamed33(o.setSelectionValues!);
+    checkUnnamed34(o.setTextValues!);
+    checkUnnamed35(o.setUserValues!);
+    unittest.expect(o.unsetValues!, unittest.isTrue);
+  }
+  buildCounterLabelFieldModification--;
+}
+
+core.List<api.Label> buildUnnamed36() => [
+      buildLabel(),
+      buildLabel(),
+    ];
+
+void checkUnnamed36(core.List<api.Label> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLabel(o[0]);
+  checkLabel(o[1]);
+}
+
+core.int buildCounterLabelList = 0;
+api.LabelList buildLabelList() {
+  final o = api.LabelList();
+  buildCounterLabelList++;
+  if (buildCounterLabelList < 3) {
+    o.kind = 'foo';
+    o.labels = buildUnnamed36();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterLabelList--;
+  return o;
+}
+
+void checkLabelList(api.LabelList o) {
+  buildCounterLabelList++;
+  if (buildCounterLabelList < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed36(o.labels!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLabelList--;
+}
+
+core.List<api.LabelFieldModification> buildUnnamed37() => [
+      buildLabelFieldModification(),
+      buildLabelFieldModification(),
+    ];
+
+void checkUnnamed37(core.List<api.LabelFieldModification> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLabelFieldModification(o[0]);
+  checkLabelFieldModification(o[1]);
+}
+
+core.int buildCounterLabelModification = 0;
+api.LabelModification buildLabelModification() {
+  final o = api.LabelModification();
+  buildCounterLabelModification++;
+  if (buildCounterLabelModification < 3) {
+    o.fieldModifications = buildUnnamed37();
+    o.kind = 'foo';
+    o.labelId = 'foo';
+    o.removeLabel = true;
+  }
+  buildCounterLabelModification--;
+  return o;
+}
+
+void checkLabelModification(api.LabelModification o) {
+  buildCounterLabelModification++;
+  if (buildCounterLabelModification < 3) {
+    checkUnnamed37(o.fieldModifications!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.labelId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.removeLabel!, unittest.isTrue);
+  }
+  buildCounterLabelModification--;
+}
+
+core.List<api.LabelModification> buildUnnamed38() => [
+      buildLabelModification(),
+      buildLabelModification(),
+    ];
+
+void checkUnnamed38(core.List<api.LabelModification> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLabelModification(o[0]);
+  checkLabelModification(o[1]);
+}
+
+core.int buildCounterModifyLabelsRequest = 0;
+api.ModifyLabelsRequest buildModifyLabelsRequest() {
+  final o = api.ModifyLabelsRequest();
+  buildCounterModifyLabelsRequest++;
+  if (buildCounterModifyLabelsRequest < 3) {
+    o.kind = 'foo';
+    o.labelModifications = buildUnnamed38();
+  }
+  buildCounterModifyLabelsRequest--;
+  return o;
+}
+
+void checkModifyLabelsRequest(api.ModifyLabelsRequest o) {
+  buildCounterModifyLabelsRequest++;
+  if (buildCounterModifyLabelsRequest < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed38(o.labelModifications!);
+  }
+  buildCounterModifyLabelsRequest--;
+}
+
+core.List<api.Label> buildUnnamed39() => [
+      buildLabel(),
+      buildLabel(),
+    ];
+
+void checkUnnamed39(core.List<api.Label> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLabel(o[0]);
+  checkLabel(o[1]);
+}
+
+core.int buildCounterModifyLabelsResponse = 0;
+api.ModifyLabelsResponse buildModifyLabelsResponse() {
+  final o = api.ModifyLabelsResponse();
+  buildCounterModifyLabelsResponse++;
+  if (buildCounterModifyLabelsResponse < 3) {
+    o.kind = 'foo';
+    o.modifiedLabels = buildUnnamed39();
+  }
+  buildCounterModifyLabelsResponse--;
+  return o;
+}
+
+void checkModifyLabelsResponse(api.ModifyLabelsResponse o) {
+  buildCounterModifyLabelsResponse++;
+  if (buildCounterModifyLabelsResponse < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed39(o.modifiedLabels!);
+  }
+  buildCounterModifyLabelsResponse--;
 }
 
 core.int buildCounterPermissionPermissionDetails = 0;
@@ -1719,12 +2197,12 @@ void checkPermissionPermissionDetails(api.PermissionPermissionDetails o) {
   buildCounterPermissionPermissionDetails--;
 }
 
-core.List<api.PermissionPermissionDetails> buildUnnamed24() => [
+core.List<api.PermissionPermissionDetails> buildUnnamed40() => [
       buildPermissionPermissionDetails(),
       buildPermissionPermissionDetails(),
     ];
 
-void checkUnnamed24(core.List<api.PermissionPermissionDetails> o) {
+void checkUnnamed40(core.List<api.PermissionPermissionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermissionPermissionDetails(o[0]);
   checkPermissionPermissionDetails(o[1]);
@@ -1766,12 +2244,12 @@ void checkPermissionTeamDrivePermissionDetails(
   buildCounterPermissionTeamDrivePermissionDetails--;
 }
 
-core.List<api.PermissionTeamDrivePermissionDetails> buildUnnamed25() => [
+core.List<api.PermissionTeamDrivePermissionDetails> buildUnnamed41() => [
       buildPermissionTeamDrivePermissionDetails(),
       buildPermissionTeamDrivePermissionDetails(),
     ];
 
-void checkUnnamed25(core.List<api.PermissionTeamDrivePermissionDetails> o) {
+void checkUnnamed41(core.List<api.PermissionTeamDrivePermissionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermissionTeamDrivePermissionDetails(o[0]);
   checkPermissionTeamDrivePermissionDetails(o[1]);
@@ -1791,10 +2269,10 @@ api.Permission buildPermission() {
     o.id = 'foo';
     o.kind = 'foo';
     o.pendingOwner = true;
-    o.permissionDetails = buildUnnamed24();
+    o.permissionDetails = buildUnnamed40();
     o.photoLink = 'foo';
     o.role = 'foo';
-    o.teamDrivePermissionDetails = buildUnnamed25();
+    o.teamDrivePermissionDetails = buildUnnamed41();
     o.type = 'foo';
     o.view = 'foo';
   }
@@ -1832,7 +2310,7 @@ void checkPermission(api.Permission o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.pendingOwner!, unittest.isTrue);
-    checkUnnamed24(o.permissionDetails!);
+    checkUnnamed40(o.permissionDetails!);
     unittest.expect(
       o.photoLink!,
       unittest.equals('foo'),
@@ -1841,7 +2319,7 @@ void checkPermission(api.Permission o) {
       o.role!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.teamDrivePermissionDetails!);
+    checkUnnamed41(o.teamDrivePermissionDetails!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1854,12 +2332,12 @@ void checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-core.List<api.Permission> buildUnnamed26() => [
+core.List<api.Permission> buildUnnamed42() => [
       buildPermission(),
       buildPermission(),
     ];
 
-void checkUnnamed26(core.List<api.Permission> o) {
+void checkUnnamed42(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1872,7 +2350,7 @@ api.PermissionList buildPermissionList() {
   if (buildCounterPermissionList < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.permissions = buildUnnamed26();
+    o.permissions = buildUnnamed42();
   }
   buildCounterPermissionList--;
   return o;
@@ -1889,7 +2367,7 @@ void checkPermissionList(api.PermissionList o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.permissions!);
+    checkUnnamed42(o.permissions!);
   }
   buildCounterPermissionList--;
 }
@@ -1950,12 +2428,12 @@ void checkReply(api.Reply o) {
   buildCounterReply--;
 }
 
-core.List<api.Reply> buildUnnamed27() => [
+core.List<api.Reply> buildUnnamed43() => [
       buildReply(),
       buildReply(),
     ];
 
-void checkUnnamed27(core.List<api.Reply> o) {
+void checkUnnamed43(core.List<api.Reply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReply(o[0]);
   checkReply(o[1]);
@@ -1968,7 +2446,7 @@ api.ReplyList buildReplyList() {
   if (buildCounterReplyList < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.replies = buildUnnamed27();
+    o.replies = buildUnnamed43();
   }
   buildCounterReplyList--;
   return o;
@@ -1985,17 +2463,17 @@ void checkReplyList(api.ReplyList o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.replies!);
+    checkUnnamed43(o.replies!);
   }
   buildCounterReplyList--;
 }
 
-core.Map<core.String, core.String> buildUnnamed28() => {
+core.Map<core.String, core.String> buildUnnamed44() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed28(core.Map<core.String, core.String> o) {
+void checkUnnamed44(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2012,7 +2490,7 @@ api.Revision buildRevision() {
   final o = api.Revision();
   buildCounterRevision++;
   if (buildCounterRevision < 3) {
-    o.exportLinks = buildUnnamed28();
+    o.exportLinks = buildUnnamed44();
     o.id = 'foo';
     o.keepForever = true;
     o.kind = 'foo';
@@ -2034,7 +2512,7 @@ api.Revision buildRevision() {
 void checkRevision(api.Revision o) {
   buildCounterRevision++;
   if (buildCounterRevision < 3) {
-    checkUnnamed28(o.exportLinks!);
+    checkUnnamed44(o.exportLinks!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -2076,12 +2554,12 @@ void checkRevision(api.Revision o) {
   buildCounterRevision--;
 }
 
-core.List<api.Revision> buildUnnamed29() => [
+core.List<api.Revision> buildUnnamed45() => [
       buildRevision(),
       buildRevision(),
     ];
 
-void checkUnnamed29(core.List<api.Revision> o) {
+void checkUnnamed45(core.List<api.Revision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRevision(o[0]);
   checkRevision(o[1]);
@@ -2094,7 +2572,7 @@ api.RevisionList buildRevisionList() {
   if (buildCounterRevisionList < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.revisions = buildUnnamed29();
+    o.revisions = buildUnnamed45();
   }
   buildCounterRevisionList--;
   return o;
@@ -2111,7 +2589,7 @@ void checkRevisionList(api.RevisionList o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed29(o.revisions!);
+    checkUnnamed45(o.revisions!);
   }
   buildCounterRevisionList--;
 }
@@ -2326,12 +2804,12 @@ void checkTeamDrive(api.TeamDrive o) {
   buildCounterTeamDrive--;
 }
 
-core.List<api.TeamDrive> buildUnnamed30() => [
+core.List<api.TeamDrive> buildUnnamed46() => [
       buildTeamDrive(),
       buildTeamDrive(),
     ];
 
-void checkUnnamed30(core.List<api.TeamDrive> o) {
+void checkUnnamed46(core.List<api.TeamDrive> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeamDrive(o[0]);
   checkTeamDrive(o[1]);
@@ -2344,7 +2822,7 @@ api.TeamDriveList buildTeamDriveList() {
   if (buildCounterTeamDriveList < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.teamDrives = buildUnnamed30();
+    o.teamDrives = buildUnnamed46();
   }
   buildCounterTeamDriveList--;
   return o;
@@ -2361,7 +2839,7 @@ void checkTeamDriveList(api.TeamDriveList o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.teamDrives!);
+    checkUnnamed46(o.teamDrives!);
   }
   buildCounterTeamDriveList--;
 }
@@ -2621,6 +3099,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-FileLabelInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFileLabelInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FileLabelInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFileLabelInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-FileLinkShareMetadata', () {
     unittest.test('to-json--from-json', () async {
       final o = buildFileLinkShareMetadata();
@@ -2678,6 +3166,76 @@ void main() {
       final od = api.GeneratedIds.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGeneratedIds(od);
+    });
+  });
+
+  unittest.group('obj-schema-Label', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Label.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLabel(od);
+    });
+  });
+
+  unittest.group('obj-schema-LabelField', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabelField();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.LabelField.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLabelField(od);
+    });
+  });
+
+  unittest.group('obj-schema-LabelFieldModification', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabelFieldModification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LabelFieldModification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLabelFieldModification(od);
+    });
+  });
+
+  unittest.group('obj-schema-LabelList', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabelList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.LabelList.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLabelList(od);
+    });
+  });
+
+  unittest.group('obj-schema-LabelModification', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabelModification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LabelModification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLabelModification(od);
+    });
+  });
+
+  unittest.group('obj-schema-ModifyLabelsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildModifyLabelsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ModifyLabelsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkModifyLabelsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ModifyLabelsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildModifyLabelsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ModifyLabelsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkModifyLabelsResponse(od);
     });
   });
 
@@ -2976,6 +3534,7 @@ void main() {
       final arg_driveId = 'foo';
       final arg_includeCorpusRemovals = true;
       final arg_includeItemsFromAllDrives = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_includeRemoved = true;
       final arg_includeTeamDriveItems = true;
@@ -3039,6 +3598,10 @@ void main() {
           unittest.equals('$arg_includeItemsFromAllDrives'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -3089,6 +3652,7 @@ void main() {
           driveId: arg_driveId,
           includeCorpusRemovals: arg_includeCorpusRemovals,
           includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           includeRemoved: arg_includeRemoved,
           includeTeamDriveItems: arg_includeTeamDriveItems,
@@ -3110,6 +3674,7 @@ void main() {
       final arg_driveId = 'foo';
       final arg_includeCorpusRemovals = true;
       final arg_includeItemsFromAllDrives = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_includeRemoved = true;
       final arg_includeTeamDriveItems = true;
@@ -3177,6 +3742,10 @@ void main() {
           unittest.equals('$arg_includeItemsFromAllDrives'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -3227,6 +3796,7 @@ void main() {
           driveId: arg_driveId,
           includeCorpusRemovals: arg_includeCorpusRemovals,
           includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           includeRemoved: arg_includeRemoved,
           includeTeamDriveItems: arg_includeTeamDriveItems,
@@ -4228,6 +4798,7 @@ void main() {
       final arg_fileId = 'foo';
       final arg_enforceSingleParent = true;
       final arg_ignoreDefaultVisibility = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_keepRevisionForever = true;
       final arg_ocrLanguage = 'foo';
@@ -4297,6 +4868,10 @@ void main() {
           unittest.equals('$arg_ignoreDefaultVisibility'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -4330,6 +4905,7 @@ void main() {
       final response = await res.copy(arg_request, arg_fileId,
           enforceSingleParent: arg_enforceSingleParent,
           ignoreDefaultVisibility: arg_ignoreDefaultVisibility,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           keepRevisionForever: arg_keepRevisionForever,
           ocrLanguage: arg_ocrLanguage,
@@ -4348,6 +4924,7 @@ void main() {
       final arg_request = buildFile();
       final arg_enforceSingleParent = true;
       final arg_ignoreDefaultVisibility = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_keepRevisionForever = true;
       final arg_ocrLanguage = 'foo';
@@ -4404,6 +4981,10 @@ void main() {
           unittest.equals('$arg_ignoreDefaultVisibility'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -4441,6 +5022,7 @@ void main() {
       final response = await res.create(arg_request,
           enforceSingleParent: arg_enforceSingleParent,
           ignoreDefaultVisibility: arg_ignoreDefaultVisibility,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           keepRevisionForever: arg_keepRevisionForever,
           ocrLanguage: arg_ocrLanguage,
@@ -4750,6 +5332,7 @@ void main() {
       final res = api.DriveApi(mock).files;
       final arg_fileId = 'foo';
       final arg_acknowledgeAbuse = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_supportsAllDrives = true;
       final arg_supportsTeamDrives = true;
@@ -4801,6 +5384,10 @@ void main() {
           unittest.equals('$arg_acknowledgeAbuse'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -4825,6 +5412,7 @@ void main() {
       }), true);
       final response = await res.get(arg_fileId,
           acknowledgeAbuse: arg_acknowledgeAbuse,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           supportsAllDrives: arg_supportsAllDrives,
           supportsTeamDrives: arg_supportsTeamDrives,
@@ -4839,6 +5427,7 @@ void main() {
       final arg_corpus = 'foo';
       final arg_driveId = 'foo';
       final arg_includeItemsFromAllDrives = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_includeTeamDriveItems = true;
       final arg_orderBy = 'foo';
@@ -4903,6 +5492,10 @@ void main() {
           unittest.equals('$arg_includeItemsFromAllDrives'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -4958,6 +5551,7 @@ void main() {
           corpus: arg_corpus,
           driveId: arg_driveId,
           includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           includeTeamDriveItems: arg_includeTeamDriveItems,
           orderBy: arg_orderBy,
@@ -4972,6 +5566,165 @@ void main() {
       checkFileList(response as api.FileList);
     });
 
+    unittest.test('method--listLabels', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).files;
+      final arg_fileId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('drive/v3/'),
+        );
+        pathOffset += 9;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals('files/'),
+        );
+        pathOffset += 6;
+        index = path.indexOf('/listLabels', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_fileId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/listLabels'),
+        );
+        pathOffset += 11;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['maxResults']!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLabelList());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.listLabels(arg_fileId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkLabelList(response as api.LabelList);
+    });
+
+    unittest.test('method--modifyLabels', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).files;
+      final arg_request = buildModifyLabelsRequest();
+      final arg_fileId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ModifyLabelsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyLabelsRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('drive/v3/'),
+        );
+        pathOffset += 9;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals('files/'),
+        );
+        pathOffset += 6;
+        index = path.indexOf('/modifyLabels', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_fileId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('/modifyLabels'),
+        );
+        pathOffset += 13;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildModifyLabelsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.modifyLabels(arg_request, arg_fileId, $fields: arg_$fields);
+      checkModifyLabelsResponse(response as api.ModifyLabelsResponse);
+    });
+
     unittest.test('method--update', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -4982,6 +5735,7 @@ void main() {
       final arg_fileId = 'foo';
       final arg_addParents = 'foo';
       final arg_enforceSingleParent = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_keepRevisionForever = true;
       final arg_ocrLanguage = 'foo';
@@ -5045,6 +5799,10 @@ void main() {
           unittest.equals('$arg_enforceSingleParent'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -5086,6 +5844,7 @@ void main() {
       final response = await res.update(arg_request, arg_fileId,
           addParents: arg_addParents,
           enforceSingleParent: arg_enforceSingleParent,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           keepRevisionForever: arg_keepRevisionForever,
           ocrLanguage: arg_ocrLanguage,
@@ -5106,6 +5865,7 @@ void main() {
       final arg_request = buildChannel();
       final arg_fileId = 'foo';
       final arg_acknowledgeAbuse = true;
+      final arg_includeLabels = 'foo';
       final arg_includePermissionsForView = 'foo';
       final arg_supportsAllDrives = true;
       final arg_supportsTeamDrives = true;
@@ -5169,6 +5929,10 @@ void main() {
           unittest.equals('$arg_acknowledgeAbuse'),
         );
         unittest.expect(
+          queryMap['includeLabels']!.first,
+          unittest.equals(arg_includeLabels),
+        );
+        unittest.expect(
           queryMap['includePermissionsForView']!.first,
           unittest.equals(arg_includePermissionsForView),
         );
@@ -5193,6 +5957,7 @@ void main() {
       }), true);
       final response = await res.watch(arg_request, arg_fileId,
           acknowledgeAbuse: arg_acknowledgeAbuse,
+          includeLabels: arg_includeLabels,
           includePermissionsForView: arg_includePermissionsForView,
           supportsAllDrives: arg_supportsAllDrives,
           supportsTeamDrives: arg_supportsTeamDrives,

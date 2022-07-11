@@ -27,6 +27,7 @@
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsNetworksResource]
 ///     - [ProjectsLocationsNfsSharesResource]
+///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProvisioningConfigsResource]
 ///     - [ProjectsLocationsProvisioningQuotasResource]
 ///     - [ProjectsLocationsVolumesResource]
@@ -87,6 +88,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsNetworksResource(_requester);
   ProjectsLocationsNfsSharesResource get nfsShares =>
       ProjectsLocationsNfsSharesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsProvisioningConfigsResource get provisioningConfigs =>
       ProjectsLocationsProvisioningConfigsResource(_requester);
   ProjectsLocationsProvisioningQuotasResource get provisioningQuotas =>
@@ -239,6 +242,46 @@ class ProjectsLocationsInstancesResource {
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create an Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project and location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Instance request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/instances';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Detach LUN from Instance.
   ///
   /// [request] - The metadata request object.
@@ -371,7 +414,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of this `Instance`. Resource names
+  /// [name] - Immutable. The resource name of this `Instance`. Resource names
   /// are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. Format:
   /// `projects/{project}/locations/{location}/instances/{instance}`
@@ -851,6 +894,52 @@ class ProjectsLocationsNfsSharesResource {
       _url,
       'PATCH',
       body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get details about an operation.
+  ///
+  /// This method used only to work around CCFE lack of passthrough LRO support
+  /// (b/221498758).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -1396,6 +1485,14 @@ class AllowedClient {
   /// The network the access point sits on.
   core.String? network;
 
+  /// The path to access NFS, in format shareIP:/InstanceID InstanceID is the
+  /// generated ID instead of customer provided name.
+  ///
+  /// example like "10.0.0.0:/g123456789-nfs001"
+  ///
+  /// Output only.
+  core.String? nfsPath;
+
   /// Disable root squashing, which is a feature of NFS.
   ///
   /// Root squash is a special mapping of the remote superuser (root) identity
@@ -1411,6 +1508,7 @@ class AllowedClient {
     this.allowedClientsCidr,
     this.mountPermissions,
     this.network,
+    this.nfsPath,
     this.noRootSquash,
     this.shareIp,
   });
@@ -1432,6 +1530,9 @@ class AllowedClient {
           network: _json.containsKey('network')
               ? _json['network'] as core.String
               : null,
+          nfsPath: _json.containsKey('nfsPath')
+              ? _json['nfsPath'] as core.String
+              : null,
           noRootSquash: _json.containsKey('noRootSquash')
               ? _json['noRootSquash'] as core.bool
               : null,
@@ -1447,6 +1548,7 @@ class AllowedClient {
           'allowedClientsCidr': allowedClientsCidr!,
         if (mountPermissions != null) 'mountPermissions': mountPermissions!,
         if (network != null) 'network': network!,
+        if (nfsPath != null) 'nfsPath': nfsPath!,
         if (noRootSquash != null) 'noRootSquash': noRootSquash!,
         if (shareIp != null) 'shareIp': shareIp!,
       };
@@ -1459,17 +1561,25 @@ class DetachLunRequest {
   /// Required.
   core.String? lun;
 
+  /// If true, performs lun unmapping without instance reboot.
+  core.bool? skipReboot;
+
   DetachLunRequest({
     this.lun,
+    this.skipReboot,
   });
 
   DetachLunRequest.fromJson(core.Map _json)
       : this(
           lun: _json.containsKey('lun') ? _json['lun'] as core.String : null,
+          skipReboot: _json.containsKey('skipReboot')
+              ? _json['skipReboot'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lun != null) 'lun': lun!,
+        if (skipReboot != null) 'skipReboot': skipReboot!,
       };
 }
 
@@ -1602,12 +1712,16 @@ class Instance {
   core.bool? hyperthreadingEnabled;
 
   /// An identifier for the `Instance`, generated by the backend.
+  ///
+  /// Output only.
   core.String? id;
 
   /// True if the interactive serial console feature is enabled for the
   /// instance, false otherwise.
   ///
   /// The default value is false.
+  ///
+  /// Output only.
   core.bool? interactiveSerialConsoleEnabled;
 
   /// Labels as key value pairs.
@@ -1624,12 +1738,21 @@ class Instance {
   /// filled.
   core.List<GoogleCloudBaremetalsolutionV2LogicalInterface>? logicalInterfaces;
 
+  /// Text field about info for logging in.
+  ///
+  /// Output only.
+  core.String? loginInfo;
+
   /// List of LUNs associated with this server.
+  ///
+  /// Immutable.
   core.List<Lun>? luns;
 
   /// The server type.
   ///
   /// [Available server types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+  ///
+  /// Immutable.
   core.String? machineType;
 
   /// The resource name of this `Instance`.
@@ -1638,7 +1761,7 @@ class Instance {
   /// https://cloud.google.com/apis/design/resource_names. Format:
   /// `projects/{project}/locations/{location}/instances/{instance}`
   ///
-  /// Output only.
+  /// Immutable.
   core.String? name;
 
   /// Instance network template name.
@@ -1648,6 +1771,8 @@ class Instance {
   core.String? networkTemplate;
 
   /// List of networks associated with this server.
+  ///
+  /// Output only.
   core.List<Network>? networks;
 
   /// The OS image currently installed on the server.
@@ -1662,6 +1787,8 @@ class Instance {
   core.String? pod;
 
   /// The state of the server.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The server is in an unknown state.
   /// - "PROVISIONING" : The server is being provisioned.
@@ -1674,6 +1801,12 @@ class Instance {
   /// Output only.
   core.String? updateTime;
 
+  /// Input only.
+  ///
+  /// List of Volumes to attach to this Instance on creation. This field won't
+  /// be populated in Get/List responses.
+  core.List<Volume>? volumes;
+
   Instance({
     this.createTime,
     this.hyperthreadingEnabled,
@@ -1681,6 +1814,7 @@ class Instance {
     this.interactiveSerialConsoleEnabled,
     this.labels,
     this.logicalInterfaces,
+    this.loginInfo,
     this.luns,
     this.machineType,
     this.name,
@@ -1690,6 +1824,7 @@ class Instance {
     this.pod,
     this.state,
     this.updateTime,
+    this.volumes,
   });
 
   Instance.fromJson(core.Map _json)
@@ -1720,6 +1855,9 @@ class Instance {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          loginInfo: _json.containsKey('loginInfo')
+              ? _json['loginInfo'] as core.String
+              : null,
           luns: _json.containsKey('luns')
               ? (_json['luns'] as core.List)
                   .map((value) => Lun.fromJson(
@@ -1748,6 +1886,12 @@ class Instance {
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
+          volumes: _json.containsKey('volumes')
+              ? (_json['volumes'] as core.List)
+                  .map((value) => Volume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1759,6 +1903,7 @@ class Instance {
           'interactiveSerialConsoleEnabled': interactiveSerialConsoleEnabled!,
         if (labels != null) 'labels': labels!,
         if (logicalInterfaces != null) 'logicalInterfaces': logicalInterfaces!,
+        if (loginInfo != null) 'loginInfo': loginInfo!,
         if (luns != null) 'luns': luns!,
         if (machineType != null) 'machineType': machineType!,
         if (name != null) 'name': name!,
@@ -1768,6 +1913,7 @@ class Instance {
         if (pod != null) 'pod': pod!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (volumes != null) 'volumes': volumes!,
       };
 }
 
@@ -1914,7 +2060,12 @@ class InstanceQuota {
   /// instance_type.
   core.int? availableMachineCount;
 
+  /// The gcp service of the provisioning quota.
+  core.String? gcpService;
+
   /// Instance type.
+  ///
+  /// Deprecated: use gcp_service.
   core.String? instanceType;
 
   /// Location where the quota applies.
@@ -1927,6 +2078,7 @@ class InstanceQuota {
 
   InstanceQuota({
     this.availableMachineCount,
+    this.gcpService,
     this.instanceType,
     this.location,
     this.name,
@@ -1936,6 +2088,9 @@ class InstanceQuota {
       : this(
           availableMachineCount: _json.containsKey('availableMachineCount')
               ? _json['availableMachineCount'] as core.int
+              : null,
+          gcpService: _json.containsKey('gcpService')
+              ? _json['gcpService'] as core.String
               : null,
           instanceType: _json.containsKey('instanceType')
               ? _json['instanceType'] as core.String
@@ -1949,6 +2104,7 @@ class InstanceQuota {
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableMachineCount != null)
           'availableMachineCount': availableMachineCount!,
+        if (gcpService != null) 'gcpService': gcpService!,
         if (instanceType != null) 'instanceType': instanceType!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
@@ -2513,6 +2669,7 @@ class Network {
   /// - "STATE_UNSPECIFIED" : The Network is in an unknown state.
   /// - "PROVISIONING" : The Network is provisioning.
   /// - "PROVISIONED" : The Network has been provisioned.
+  /// - "DEPROVISIONING" : The Network is being deprovisioned.
   core.String? state;
 
   /// The type of this network.
@@ -2917,6 +3074,13 @@ class NfsShare {
   /// List of allowed access points.
   core.List<AllowedClient>? allowedClients;
 
+  /// An identifier for the NFS share, generated by the backend.
+  ///
+  /// This is the same value as nfs_share_id and will replace it in the future.
+  ///
+  /// Output only.
+  core.String? id;
+
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
 
@@ -2926,6 +3090,8 @@ class NfsShare {
   core.String? name;
 
   /// An identifier for the NFS share, generated by the backend.
+  ///
+  /// This field will be deprecated in the future, use `id` instead.
   ///
   /// Output only.
   core.String? nfsShareId;
@@ -2937,6 +3103,9 @@ class NfsShare {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The share is in an unknown state.
   /// - "PROVISIONED" : The share has been provisioned.
+  /// - "CREATING" : The NFS Share is being created.
+  /// - "UPDATING" : The NFS Share is being updated.
+  /// - "DELETING" : The NFS Share has been requested to be deleted.
   core.String? state;
 
   /// The volume containing the share.
@@ -2944,6 +3113,7 @@ class NfsShare {
 
   NfsShare({
     this.allowedClients,
+    this.id,
     this.labels,
     this.name,
     this.nfsShareId,
@@ -2960,6 +3130,7 @@ class NfsShare {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -2984,6 +3155,7 @@ class NfsShare {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedClients != null) 'allowedClients': allowedClients!,
+        if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nfsShareId != null) 'nfsShareId': nfsShareId!,
@@ -3180,7 +3352,11 @@ class ProvisioningConfig {
   /// - "VALIDATED" : ProvisioningConfig was validated. A validation tool will
   /// be run to set this state.
   /// - "CANCELLED" : ProvisioningConfig was canceled.
+  /// - "FAILED" : The request is submitted for provisioning, with error return.
   core.String? state;
+
+  /// Optional status messages associated with the FAILED state.
+  core.String? statusMessage;
 
   /// A generated ticket id to track provisioning request.
   core.String? ticketId;
@@ -3205,6 +3381,7 @@ class ProvisioningConfig {
     this.name,
     this.networks,
     this.state,
+    this.statusMessage,
     this.ticketId,
     this.updateTime,
     this.volumes,
@@ -3239,6 +3416,9 @@ class ProvisioningConfig {
               : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
           ticketId: _json.containsKey('ticketId')
               ? _json['ticketId'] as core.String
               : null,
@@ -3266,6 +3446,7 @@ class ProvisioningConfig {
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
         if (state != null) 'state': state!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
         if (ticketId != null) 'ticketId': ticketId!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (volumes != null) 'volumes': volumes!,
@@ -3725,6 +3906,16 @@ class Volume {
   /// Immutable.
   core.String? pod;
 
+  /// Storage protocol for the Volume.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROTOCOL_UNSPECIFIED" : Value is not specified.
+  /// - "FIBRE_CHANNEL" : Fibre Channel protocol.
+  /// - "NFS" : NFS protocol means Volume is a NFS Share volume. Such volumes
+  /// cannot be manipulated via Volumes API.
+  core.String? protocol;
+
   /// The space remaining in the storage volume for new LUNs, in GiB, excluding
   /// space reserved for snapshots.
   core.String? remainingSpaceGib;
@@ -3776,6 +3967,7 @@ class Volume {
     this.name,
     this.originallyRequestedSizeGib,
     this.pod,
+    this.protocol,
     this.remainingSpaceGib,
     this.requestedSizeGib,
     this.snapshotAutoDeleteBehavior,
@@ -3815,6 +4007,9 @@ class Volume {
                   ? _json['originallyRequestedSizeGib'] as core.String
                   : null,
           pod: _json.containsKey('pod') ? _json['pod'] as core.String : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
           remainingSpaceGib: _json.containsKey('remainingSpaceGib')
               ? _json['remainingSpaceGib'] as core.String
               : null,
@@ -3855,6 +4050,7 @@ class Volume {
         if (originallyRequestedSizeGib != null)
           'originallyRequestedSizeGib': originallyRequestedSizeGib!,
         if (pod != null) 'pod': pod!,
+        if (protocol != null) 'protocol': protocol!,
         if (remainingSpaceGib != null) 'remainingSpaceGib': remainingSpaceGib!,
         if (requestedSizeGib != null) 'requestedSizeGib': requestedSizeGib!,
         if (snapshotAutoDeleteBehavior != null)

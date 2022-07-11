@@ -4292,6 +4292,11 @@ class Execution {
 /// Use /Executions.GetExecution with the given name to get full execution
 /// including the latest status.
 class ExecutionReference {
+  /// Completion timestamp of the execution.
+  ///
+  /// Optional.
+  core.String? completionTimestamp;
+
   /// Creation timestamp of the execution.
   ///
   /// Optional.
@@ -4303,12 +4308,16 @@ class ExecutionReference {
   core.String? name;
 
   ExecutionReference({
+    this.completionTimestamp,
     this.creationTimestamp,
     this.name,
   });
 
   ExecutionReference.fromJson(core.Map _json)
       : this(
+          completionTimestamp: _json.containsKey('completionTimestamp')
+              ? _json['completionTimestamp'] as core.String
+              : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
               ? _json['creationTimestamp'] as core.String
               : null,
@@ -4316,6 +4325,8 @@ class ExecutionReference {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (completionTimestamp != null)
+          'completionTimestamp': completionTimestamp!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (name != null) 'name': name!,
       };
@@ -6047,7 +6058,8 @@ class Policy {
 /// against a container to determine whether it is alive or ready to receive
 /// traffic.
 class Probe {
-  /// (Optional) One and only one of the following should be specified.
+  /// (Optional) Not supported by Cloud Run One and only one of the following
+  /// should be specified.
   ///
   /// Exec specifies the action to take. A field inlined from the Handler
   /// message.
@@ -6069,25 +6081,25 @@ class Probe {
   /// A field inlined from the Handler message.
   HTTPGetAction? httpGet;
 
-  /// (Optional) Number of seconds after the container has started before
-  /// liveness probes are initiated.
+  /// (Optional) Number of seconds after the container has started before the
+  /// probe is initiated.
   ///
-  /// Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is
-  /// 3600. Max value for startup probe is 240. More info:
+  /// Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness
+  /// probe is 3600. Maximum value for startup probe is 240. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   core.int? initialDelaySeconds;
 
   /// (Optional) How often (in seconds) to perform the probe.
   ///
-  /// Default to 10 seconds. Minimum value is 1. Max value for liveness probe is
-  /// 3600. Max value for startup probe is 240. Must be greater or equal than
-  /// timeout_seconds.
+  /// Default to 10 seconds. Minimum value is 1. Maximum value for liveness
+  /// probe is 3600. Maximum value for startup probe is 240. Must be greater or
+  /// equal than timeout_seconds.
   core.int? periodSeconds;
 
   /// (Optional) Minimum consecutive successes for the probe to be considered
   /// successful after having failed.
   ///
-  /// Defaults to 1. Must be 1 for liveness and startup Probes.
+  /// Must be 1 if set.
   core.int? successThreshold;
 
   /// (Optional) TCPSocket specifies an action involving a TCP port.
@@ -6840,7 +6852,7 @@ class SecretVolumeSource {
   /// Integer representation of mode bits to use on created files by default.
   ///
   /// Must be a value between 01 and 0777 (octal). If 0 or not set, it will
-  /// default to 0644. Directories within the path are not affected by this
+  /// default to 0444. Directories within the path are not affected by this
   /// setting. Notes * Internally, a umask of 0222 will be applied to any
   /// non-zero value. * This is an integer representation of the mode bits. So,
   /// the octal integer value should look exactly as the chmod numeric notation

@@ -216,6 +216,138 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterGpsDataGapFailureDetails = 0;
+api.GpsDataGapFailureDetails buildGpsDataGapFailureDetails() {
+  final o = api.GpsDataGapFailureDetails();
+  buildCounterGpsDataGapFailureDetails++;
+  if (buildCounterGpsDataGapFailureDetails < 3) {
+    o.gapDuration = 'foo';
+    o.gapStartTime = 'foo';
+  }
+  buildCounterGpsDataGapFailureDetails--;
+  return o;
+}
+
+void checkGpsDataGapFailureDetails(api.GpsDataGapFailureDetails o) {
+  buildCounterGpsDataGapFailureDetails++;
+  if (buildCounterGpsDataGapFailureDetails < 3) {
+    unittest.expect(
+      o.gapDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gapStartTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGpsDataGapFailureDetails--;
+}
+
+core.List<api.Measurement3d> buildUnnamed5() => [
+      buildMeasurement3d(),
+      buildMeasurement3d(),
+    ];
+
+void checkUnnamed5(core.List<api.Measurement3d> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMeasurement3d(o[0]);
+  checkMeasurement3d(o[1]);
+}
+
+core.List<api.Measurement3d> buildUnnamed6() => [
+      buildMeasurement3d(),
+      buildMeasurement3d(),
+    ];
+
+void checkUnnamed6(core.List<api.Measurement3d> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMeasurement3d(o[0]);
+  checkMeasurement3d(o[1]);
+}
+
+core.List<api.Measurement3d> buildUnnamed7() => [
+      buildMeasurement3d(),
+      buildMeasurement3d(),
+    ];
+
+void checkUnnamed7(core.List<api.Measurement3d> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMeasurement3d(o[0]);
+  checkMeasurement3d(o[1]);
+}
+
+core.int buildCounterImu = 0;
+api.Imu buildImu() {
+  final o = api.Imu();
+  buildCounterImu++;
+  if (buildCounterImu < 3) {
+    o.accelMpsps = buildUnnamed5();
+    o.gyroRps = buildUnnamed6();
+    o.magUt = buildUnnamed7();
+  }
+  buildCounterImu--;
+  return o;
+}
+
+void checkImu(api.Imu o) {
+  buildCounterImu++;
+  if (buildCounterImu < 3) {
+    checkUnnamed5(o.accelMpsps!);
+    checkUnnamed6(o.gyroRps!);
+    checkUnnamed7(o.magUt!);
+  }
+  buildCounterImu--;
+}
+
+core.int buildCounterImuDataGapFailureDetails = 0;
+api.ImuDataGapFailureDetails buildImuDataGapFailureDetails() {
+  final o = api.ImuDataGapFailureDetails();
+  buildCounterImuDataGapFailureDetails++;
+  if (buildCounterImuDataGapFailureDetails < 3) {
+    o.gapDuration = 'foo';
+    o.gapStartTime = 'foo';
+  }
+  buildCounterImuDataGapFailureDetails--;
+  return o;
+}
+
+void checkImuDataGapFailureDetails(api.ImuDataGapFailureDetails o) {
+  buildCounterImuDataGapFailureDetails++;
+  if (buildCounterImuDataGapFailureDetails < 3) {
+    unittest.expect(
+      o.gapDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gapStartTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterImuDataGapFailureDetails--;
+}
+
+core.int buildCounterInsufficientGpsFailureDetails = 0;
+api.InsufficientGpsFailureDetails buildInsufficientGpsFailureDetails() {
+  final o = api.InsufficientGpsFailureDetails();
+  buildCounterInsufficientGpsFailureDetails++;
+  if (buildCounterInsufficientGpsFailureDetails < 3) {
+    o.gpsPointsFound = 42;
+  }
+  buildCounterInsufficientGpsFailureDetails--;
+  return o;
+}
+
+void checkInsufficientGpsFailureDetails(api.InsufficientGpsFailureDetails o) {
+  buildCounterInsufficientGpsFailureDetails++;
+  if (buildCounterInsufficientGpsFailureDetails < 3) {
+    unittest.expect(
+      o.gpsPointsFound!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterInsufficientGpsFailureDetails--;
+}
+
 core.int buildCounterLatLng = 0;
 api.LatLng buildLatLng() {
   final o = api.LatLng();
@@ -241,6 +373,27 @@ void checkLatLng(api.LatLng o) {
     );
   }
   buildCounterLatLng--;
+}
+
+core.int buildCounterLatLngBounds = 0;
+api.LatLngBounds buildLatLngBounds() {
+  final o = api.LatLngBounds();
+  buildCounterLatLngBounds++;
+  if (buildCounterLatLngBounds < 3) {
+    o.northeast = buildLatLng();
+    o.southwest = buildLatLng();
+  }
+  buildCounterLatLngBounds--;
+  return o;
+}
+
+void checkLatLngBounds(api.LatLngBounds o) {
+  buildCounterLatLngBounds++;
+  if (buildCounterLatLngBounds < 3) {
+    checkLatLng(o.northeast!);
+    checkLatLng(o.southwest!);
+  }
+  buildCounterLatLngBounds--;
 }
 
 core.int buildCounterLevel = 0;
@@ -270,12 +423,47 @@ void checkLevel(api.Level o) {
   buildCounterLevel--;
 }
 
-core.List<api.Photo> buildUnnamed5() => [
+core.List<api.Operation> buildUnnamed8() => [
+      buildOperation(),
+      buildOperation(),
+    ];
+
+void checkUnnamed8(core.List<api.Operation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkOperation(o[0]);
+  checkOperation(o[1]);
+}
+
+core.int buildCounterListPhotoSequencesResponse = 0;
+api.ListPhotoSequencesResponse buildListPhotoSequencesResponse() {
+  final o = api.ListPhotoSequencesResponse();
+  buildCounterListPhotoSequencesResponse++;
+  if (buildCounterListPhotoSequencesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.photoSequences = buildUnnamed8();
+  }
+  buildCounterListPhotoSequencesResponse--;
+  return o;
+}
+
+void checkListPhotoSequencesResponse(api.ListPhotoSequencesResponse o) {
+  buildCounterListPhotoSequencesResponse++;
+  if (buildCounterListPhotoSequencesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed8(o.photoSequences!);
+  }
+  buildCounterListPhotoSequencesResponse--;
+}
+
+core.List<api.Photo> buildUnnamed9() => [
       buildPhoto(),
       buildPhoto(),
     ];
 
-void checkUnnamed5(core.List<api.Photo> o) {
+void checkUnnamed9(core.List<api.Photo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhoto(o[0]);
   checkPhoto(o[1]);
@@ -287,7 +475,7 @@ api.ListPhotosResponse buildListPhotosResponse() {
   buildCounterListPhotosResponse++;
   if (buildCounterListPhotosResponse < 3) {
     o.nextPageToken = 'foo';
-    o.photos = buildUnnamed5();
+    o.photos = buildUnnamed9();
   }
   buildCounterListPhotosResponse--;
   return o;
@@ -300,28 +488,207 @@ void checkListPhotosResponse(api.ListPhotosResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.photos!);
+    checkUnnamed9(o.photos!);
   }
   buildCounterListPhotosResponse--;
 }
 
-core.List<api.Connection> buildUnnamed6() => [
+core.int buildCounterMeasurement3d = 0;
+api.Measurement3d buildMeasurement3d() {
+  final o = api.Measurement3d();
+  buildCounterMeasurement3d++;
+  if (buildCounterMeasurement3d < 3) {
+    o.captureTime = 'foo';
+    o.x = 42.0;
+    o.y = 42.0;
+    o.z = 42.0;
+  }
+  buildCounterMeasurement3d--;
+  return o;
+}
+
+void checkMeasurement3d(api.Measurement3d o) {
+  buildCounterMeasurement3d++;
+  if (buildCounterMeasurement3d < 3) {
+    unittest.expect(
+      o.captureTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.x!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.y!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.z!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterMeasurement3d--;
+}
+
+core.int buildCounterNotOutdoorsFailureDetails = 0;
+api.NotOutdoorsFailureDetails buildNotOutdoorsFailureDetails() {
+  final o = api.NotOutdoorsFailureDetails();
+  buildCounterNotOutdoorsFailureDetails++;
+  if (buildCounterNotOutdoorsFailureDetails < 3) {
+    o.startTime = 'foo';
+  }
+  buildCounterNotOutdoorsFailureDetails--;
+  return o;
+}
+
+void checkNotOutdoorsFailureDetails(api.NotOutdoorsFailureDetails o) {
+  buildCounterNotOutdoorsFailureDetails++;
+  if (buildCounterNotOutdoorsFailureDetails < 3) {
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNotOutdoorsFailureDetails--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed10() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.Object?> buildUnnamed11() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed11(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted3 = (o['x']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterOperation = 0;
+api.Operation buildOperation() {
+  final o = api.Operation();
+  buildCounterOperation++;
+  if (buildCounterOperation < 3) {
+    o.done = true;
+    o.error = buildStatus();
+    o.metadata = buildUnnamed10();
+    o.name = 'foo';
+    o.response = buildUnnamed11();
+  }
+  buildCounterOperation--;
+  return o;
+}
+
+void checkOperation(api.Operation o) {
+  buildCounterOperation++;
+  if (buildCounterOperation < 3) {
+    unittest.expect(o.done!, unittest.isTrue);
+    checkStatus(o.error!);
+    checkUnnamed10(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed11(o.response!);
+  }
+  buildCounterOperation--;
+}
+
+core.List<api.Connection> buildUnnamed12() => [
       buildConnection(),
       buildConnection(),
     ];
 
-void checkUnnamed6(core.List<api.Connection> o) {
+void checkUnnamed12(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnection(o[0]);
   checkConnection(o[1]);
 }
 
-core.List<api.Place> buildUnnamed7() => [
+core.List<api.Place> buildUnnamed13() => [
       buildPlace(),
       buildPlace(),
     ];
 
-void checkUnnamed7(core.List<api.Place> o) {
+void checkUnnamed13(core.List<api.Place> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlace(o[0]);
   checkPlace(o[1]);
@@ -333,11 +700,11 @@ api.Photo buildPhoto() {
   buildCounterPhoto++;
   if (buildCounterPhoto < 3) {
     o.captureTime = 'foo';
-    o.connections = buildUnnamed6();
+    o.connections = buildUnnamed12();
     o.downloadUrl = 'foo';
     o.mapsPublishStatus = 'foo';
     o.photoId = buildPhotoId();
-    o.places = buildUnnamed7();
+    o.places = buildUnnamed13();
     o.pose = buildPose();
     o.shareLink = 'foo';
     o.thumbnailUrl = 'foo';
@@ -357,7 +724,7 @@ void checkPhoto(api.Photo o) {
       o.captureTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.connections!);
+    checkUnnamed12(o.connections!);
     unittest.expect(
       o.downloadUrl!,
       unittest.equals('foo'),
@@ -367,7 +734,7 @@ void checkPhoto(api.Photo o) {
       unittest.equals('foo'),
     );
     checkPhotoId(o.photoId!);
-    checkUnnamed7(o.places!);
+    checkUnnamed13(o.places!);
     checkPose(o.pose!);
     unittest.expect(
       o.shareLink!,
@@ -437,6 +804,102 @@ void checkPhotoResponse(api.PhotoResponse o) {
   buildCounterPhotoResponse--;
 }
 
+core.List<api.Photo> buildUnnamed14() => [
+      buildPhoto(),
+      buildPhoto(),
+    ];
+
+void checkUnnamed14(core.List<api.Photo> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPhoto(o[0]);
+  checkPhoto(o[1]);
+}
+
+core.List<api.Pose> buildUnnamed15() => [
+      buildPose(),
+      buildPose(),
+    ];
+
+void checkUnnamed15(core.List<api.Pose> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPose(o[0]);
+  checkPose(o[1]);
+}
+
+core.int buildCounterPhotoSequence = 0;
+api.PhotoSequence buildPhotoSequence() {
+  final o = api.PhotoSequence();
+  buildCounterPhotoSequence++;
+  if (buildCounterPhotoSequence < 3) {
+    o.captureTimeOverride = 'foo';
+    o.distanceMeters = 42.0;
+    o.failureDetails = buildProcessingFailureDetails();
+    o.failureReason = 'foo';
+    o.filename = 'foo';
+    o.gpsSource = 'foo';
+    o.id = 'foo';
+    o.imu = buildImu();
+    o.photos = buildUnnamed14();
+    o.processingState = 'foo';
+    o.rawGpsTimeline = buildUnnamed15();
+    o.sequenceBounds = buildLatLngBounds();
+    o.uploadReference = buildUploadRef();
+    o.uploadTime = 'foo';
+    o.viewCount = 'foo';
+  }
+  buildCounterPhotoSequence--;
+  return o;
+}
+
+void checkPhotoSequence(api.PhotoSequence o) {
+  buildCounterPhotoSequence++;
+  if (buildCounterPhotoSequence < 3) {
+    unittest.expect(
+      o.captureTimeOverride!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.distanceMeters!,
+      unittest.equals(42.0),
+    );
+    checkProcessingFailureDetails(o.failureDetails!);
+    unittest.expect(
+      o.failureReason!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filename!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gpsSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkImu(o.imu!);
+    checkUnnamed14(o.photos!);
+    unittest.expect(
+      o.processingState!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed15(o.rawGpsTimeline!);
+    checkLatLngBounds(o.sequenceBounds!);
+    checkUploadRef(o.uploadReference!);
+    unittest.expect(
+      o.uploadTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.viewCount!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPhotoSequence--;
+}
+
 core.int buildCounterPlace = 0;
 api.Place buildPlace() {
   final o = api.Place();
@@ -476,6 +939,7 @@ api.Pose buildPose() {
   if (buildCounterPose < 3) {
     o.accuracyMeters = 42.0;
     o.altitude = 42.0;
+    o.gpsRecordTimestampUnixEpoch = 'foo';
     o.heading = 42.0;
     o.latLngPair = buildLatLng();
     o.level = buildLevel();
@@ -498,6 +962,10 @@ void checkPose(api.Pose o) {
       unittest.equals(42.0),
     );
     unittest.expect(
+      o.gpsRecordTimestampUnixEpoch!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.heading!,
       unittest.equals(42.0),
     );
@@ -515,7 +983,32 @@ void checkPose(api.Pose o) {
   buildCounterPose--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.int buildCounterProcessingFailureDetails = 0;
+api.ProcessingFailureDetails buildProcessingFailureDetails() {
+  final o = api.ProcessingFailureDetails();
+  buildCounterProcessingFailureDetails++;
+  if (buildCounterProcessingFailureDetails < 3) {
+    o.gpsDataGapDetails = buildGpsDataGapFailureDetails();
+    o.imuDataGapDetails = buildImuDataGapFailureDetails();
+    o.insufficientGpsDetails = buildInsufficientGpsFailureDetails();
+    o.notOutdoorsDetails = buildNotOutdoorsFailureDetails();
+  }
+  buildCounterProcessingFailureDetails--;
+  return o;
+}
+
+void checkProcessingFailureDetails(api.ProcessingFailureDetails o) {
+  buildCounterProcessingFailureDetails++;
+  if (buildCounterProcessingFailureDetails < 3) {
+    checkGpsDataGapFailureDetails(o.gpsDataGapDetails!);
+    checkImuDataGapFailureDetails(o.imuDataGapDetails!);
+    checkInsufficientGpsFailureDetails(o.insufficientGpsDetails!);
+    checkNotOutdoorsFailureDetails(o.notOutdoorsDetails!);
+  }
+  buildCounterProcessingFailureDetails--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed16() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -528,47 +1021,47 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed16(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
+  var casted5 = (o['x']!) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
   unittest.expect(
-    casted1['list'],
+    casted5['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted1['bool'],
+    casted5['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted1['string'],
+    casted5['string'],
     unittest.equals('foo'),
   );
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
+  var casted6 = (o['y']!) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
   unittest.expect(
-    casted2['list'],
+    casted6['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted2['bool'],
+    casted6['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted2['string'],
+    casted6['string'],
     unittest.equals('foo'),
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed9() => [
-      buildUnnamed8(),
-      buildUnnamed8(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed17() => [
+      buildUnnamed16(),
+      buildUnnamed16(),
     ];
 
-void checkUnnamed9(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed17(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed8(o[0]);
-  checkUnnamed8(o[1]);
+  checkUnnamed16(o[0]);
+  checkUnnamed16(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -577,7 +1070,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed9();
+    o.details = buildUnnamed17();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -591,7 +1084,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed9(o.details!);
+    checkUnnamed17(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -646,12 +1139,12 @@ void checkUploadRef(api.UploadRef o) {
   buildCounterUploadRef--;
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed18() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -734,6 +1227,45 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GpsDataGapFailureDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGpsDataGapFailureDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GpsDataGapFailureDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGpsDataGapFailureDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-Imu', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImu();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Imu.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkImu(od);
+    });
+  });
+
+  unittest.group('obj-schema-ImuDataGapFailureDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildImuDataGapFailureDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImuDataGapFailureDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkImuDataGapFailureDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-InsufficientGpsFailureDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInsufficientGpsFailureDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsufficientGpsFailureDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInsufficientGpsFailureDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-LatLng', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLatLng();
@@ -741,6 +1273,16 @@ void main() {
       final od =
           api.LatLng.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLatLng(od);
+    });
+  });
+
+  unittest.group('obj-schema-LatLngBounds', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLatLngBounds();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LatLngBounds.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLatLngBounds(od);
     });
   });
 
@@ -754,6 +1296,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListPhotoSequencesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListPhotoSequencesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListPhotoSequencesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListPhotoSequencesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListPhotosResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListPhotosResponse();
@@ -761,6 +1313,36 @@ void main() {
       final od = api.ListPhotosResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListPhotosResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Measurement3d', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMeasurement3d();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Measurement3d.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMeasurement3d(od);
+    });
+  });
+
+  unittest.group('obj-schema-NotOutdoorsFailureDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNotOutdoorsFailureDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NotOutdoorsFailureDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNotOutdoorsFailureDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-Operation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkOperation(od);
     });
   });
 
@@ -794,6 +1376,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PhotoSequence', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPhotoSequence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PhotoSequence.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPhotoSequence(od);
+    });
+  });
+
   unittest.group('obj-schema-Place', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPlace();
@@ -811,6 +1403,16 @@ void main() {
       final od =
           api.Pose.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPose(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProcessingFailureDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProcessingFailureDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProcessingFailureDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkProcessingFailureDetails(od);
     });
   });
 
@@ -1149,6 +1751,321 @@ void main() {
     });
   });
 
+  unittest.group('resource-PhotoSequenceResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.StreetViewPublishApi(mock).photoSequence;
+      final arg_request = buildPhotoSequence();
+      final arg_inputType = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.PhotoSequence.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPhotoSequence(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('v1/photoSequence'),
+        );
+        pathOffset += 16;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['inputType']!.first,
+          unittest.equals(arg_inputType),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request,
+          inputType: arg_inputType, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.StreetViewPublishApi(mock).photoSequence;
+      final arg_sequenceId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('v1/photoSequence/'),
+        );
+        pathOffset += 17;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sequenceId'),
+        );
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_sequenceId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.StreetViewPublishApi(mock).photoSequence;
+      final arg_sequenceId = 'foo';
+      final arg_filter = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('v1/photoSequence/'),
+        );
+        pathOffset += 17;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sequenceId'),
+        );
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_sequenceId,
+          filter: arg_filter, view: arg_view, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--startUpload', () async {
+      final mock = HttpServerMock();
+      final res = api.StreetViewPublishApi(mock).photoSequence;
+      final arg_request = buildEmpty();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Empty.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEmpty(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 28),
+          unittest.equals('v1/photoSequence:startUpload'),
+        );
+        pathOffset += 28;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUploadRef());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.startUpload(arg_request, $fields: arg_$fields);
+      checkUploadRef(response as api.UploadRef);
+    });
+  });
+
+  unittest.group('resource-PhotoSequencesResource', () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.StreetViewPublishApi(mock).photoSequences;
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('v1/photoSequences'),
+        );
+        pathOffset += 17;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListPhotoSequencesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPhotoSequencesResponse(
+          response as api.ListPhotoSequencesResponse);
+    });
+  });
+
   unittest.group('resource-PhotosResource', () {
     unittest.test('method--batchDelete', () async {
       final mock = HttpServerMock();
@@ -1209,7 +2126,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StreetViewPublishApi(mock).photos;
       final arg_languageCode = 'foo';
-      final arg_photoIds = buildUnnamed10();
+      final arg_photoIds = buildUnnamed18();
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

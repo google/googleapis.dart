@@ -1749,6 +1749,11 @@ class Job {
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? inputUri;
 
+  /// The labels associated with this job.
+  ///
+  /// You can use these to organize and group your jobs.
+  core.Map<core.String, core.String>? labels;
+
   /// The resource name of the job.
   ///
   /// Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -1800,6 +1805,7 @@ class Job {
     this.endTime,
     this.error,
     this.inputUri,
+    this.labels,
     this.name,
     this.outputUri,
     this.startTime,
@@ -1827,6 +1833,14 @@ class Job {
           inputUri: _json.containsKey('inputUri')
               ? _json['inputUri'] as core.String
               : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           outputUri: _json.containsKey('outputUri')
               ? _json['outputUri'] as core.String
@@ -1850,6 +1864,7 @@ class Job {
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
         if (inputUri != null) 'inputUri': inputUri!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (outputUri != null) 'outputUri': outputUri!,
         if (startTime != null) 'startTime': startTime!,
@@ -1894,6 +1909,8 @@ class JobConfig {
   PubsubDestination? pubsubDestination;
 
   /// List of output sprite sheets.
+  ///
+  /// Spritesheets require at least one VideoStream in the Jobconfig.
   core.List<SpriteSheet>? spriteSheets;
 
   JobConfig({
@@ -1988,6 +2005,11 @@ class JobTemplate {
   /// The configuration for this template.
   JobConfig? config;
 
+  /// The labels associated with this job template.
+  ///
+  /// You can use these to organize and group your job templates.
+  core.Map<core.String, core.String>? labels;
+
   /// The resource name of the job template.
   ///
   /// Format:
@@ -1996,6 +2018,7 @@ class JobTemplate {
 
   JobTemplate({
     this.config,
+    this.labels,
     this.name,
   });
 
@@ -2005,11 +2028,20 @@ class JobTemplate {
               ? JobConfig.fromJson(
                   _json['config'] as core.Map<core.String, core.dynamic>)
               : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
       };
 }

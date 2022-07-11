@@ -4920,6 +4920,7 @@ class ClusterStatus {
   /// - "STOPPING" : The cluster is being stopped. It cannot be used.
   /// - "STOPPED" : The cluster is currently stopped. It is not ready for use.
   /// - "STARTING" : The cluster is being started. It is not ready for use.
+  /// - "REPAIRING" : The cluster is being repaired. It is not ready for use.
   core.String? state;
 
   /// Time when this state was entered (see JSON representation of Timestamp
@@ -4998,7 +4999,7 @@ class ConfidentialInstanceConfig {
 
 /// Dataproc metric config.
 class DataprocMetricConfig {
-  /// Metrics to enable.
+  /// Metrics sources to enable.
   ///
   /// Required.
   core.List<Metric>? metrics;
@@ -5051,12 +5052,14 @@ class DiskConfig {
   /// Optional.
   core.String? localSsdInterface;
 
-  /// Number of attached SSDs, from 0 to 4 (default is 0).
+  /// Number of attached SSDs, from 0 to 8 (default is 0).
   ///
   /// If SSDs are not attached, the boot disk is used to store runtime logs and
   /// HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
   /// one or more SSDs are attached, this runtime bulk data is spread across
-  /// them, and the boot disk contains only basic config and installed binaries.
+  /// them, and the boot disk contains only basic config and installed
+  /// binaries.Note: Local SSD options may vary by machine type and number of
+  /// vCPUs selected.
   ///
   /// Optional.
   core.int? numLocalSsds;
@@ -5637,11 +5640,12 @@ class GkeNodeConfig {
   core.List<GkeNodePoolAcceleratorConfig>? accelerators;
 
   /// The Customer Managed Encryption Key (CMEK)
-  /// (https://cloud.google.com/compute/docs/disks/customer-managed-encryption)
-  /// used to encrypt the boot disk attached to each node in the node pool.
+  /// (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used
+  /// to encrypt the boot disk attached to each node in the node pool.
   ///
-  /// Specify the key using the following format: projects/KEY_PROJECT_ID
-  /// /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+  /// Specify the key using the following format:
+  /// projects/KEY_PROJECT_ID/locations/LOCATION
+  /// /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
   ///
   /// Optional.
   core.String? bootDiskKmsKey;
@@ -7780,23 +7784,42 @@ class MetastoreConfig {
       };
 }
 
-/// The metric source to enable, with any optional metrics, to override Dataproc
-/// default metrics.
+/// A Dataproc OSS metric.
 class Metric {
-  /// Optional Metrics to override the Dataproc default metrics configured for
-  /// the metric source.
+  /// Specify one or more available OSS metrics
+  /// (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics)
+  /// to collect for the metric course (for the SPARK metric source, any Spark
+  /// metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can
+  /// be specified).Provide metrics in the following format: METRIC_SOURCE:
+  /// INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples:
+  /// yarn:ResourceManager:QueueMetrics:AppsCompleted
+  /// spark:driver:DAGScheduler:job.allJobs
+  /// sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed
+  /// hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified
+  /// overridden metrics will be collected for the metric source.
+  ///
+  /// For example, if one or more spark:executive metrics are listed as metric
+  /// overrides, other SPARK metrics will not be collected. The collection of
+  /// the default metrics for other OSS metric sources is unaffected. For
+  /// example, if both SPARK andd YARN metric sources are enabled, and overrides
+  /// are provided for Spark metrics only, all default YARN metrics will be
+  /// collected.
   ///
   /// Optional.
   core.List<core.String>? metricOverrides;
 
-  /// MetricSource to enable.
+  /// Default metrics are collected unless metricOverrides are specified for the
+  /// metric source (see Available OSS metrics
+  /// (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics)
+  /// for more information).
   ///
   /// Required.
   /// Possible string values are:
   /// - "METRIC_SOURCE_UNSPECIFIED" : Required unspecified metric source.
-  /// - "MONITORING_AGENT_DEFAULTS" : Default monitoring agent metrics, which
-  /// are published with an agent.googleapis.com prefix when Dataproc enables
-  /// the monitoring agent in Compute Engine.
+  /// - "MONITORING_AGENT_DEFAULTS" : Default monitoring agent metrics. If this
+  /// source is enabled, Dataproc enables the monitoring agent in Compute
+  /// Engine, and collects default monitoring agent metrics, which are published
+  /// with an agent.googleapis.com prefix.
   /// - "HDFS" : HDFS metric source.
   /// - "SPARK" : Spark metric source.
   /// - "YARN" : YARN metric source.
@@ -8908,6 +8931,19 @@ class RepairClusterRequest {
   /// Optional.
   core.String? clusterUuid;
 
+  /// Timeout for graceful YARN decomissioning.
+  ///
+  /// Graceful decommissioning facilitates the removal of cluster nodes without
+  /// interrupting jobs in progress. The timeout specifies the amount of time to
+  /// wait for jobs finish before forcefully removing nodes. The default timeout
+  /// is 0 for forceful decommissioning, and the maximum timeout period is 1
+  /// day. (see JSON Mapping—Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).graceful_decommission_timeout
+  /// is supported in Dataproc image versions 1.2+.
+  ///
+  /// Optional.
+  core.String? gracefulDecommissionTimeout;
+
   /// Node pools and corresponding repair action to be taken.
   ///
   /// All node pools should be unique in this request. i.e. Multiple entries for
@@ -8915,6 +8951,11 @@ class RepairClusterRequest {
   ///
   /// Optional.
   core.List<NodePool>? nodePools;
+
+  /// operation id of the parent operation sending the repair request
+  ///
+  /// Optional.
+  core.String? parentOperationId;
 
   /// A unique ID used to identify the request.
   ///
@@ -8931,7 +8972,9 @@ class RepairClusterRequest {
 
   RepairClusterRequest({
     this.clusterUuid,
+    this.gracefulDecommissionTimeout,
     this.nodePools,
+    this.parentOperationId,
     this.requestId,
   });
 
@@ -8940,11 +8983,18 @@ class RepairClusterRequest {
           clusterUuid: _json.containsKey('clusterUuid')
               ? _json['clusterUuid'] as core.String
               : null,
+          gracefulDecommissionTimeout:
+              _json.containsKey('gracefulDecommissionTimeout')
+                  ? _json['gracefulDecommissionTimeout'] as core.String
+                  : null,
           nodePools: _json.containsKey('nodePools')
               ? (_json['nodePools'] as core.List)
                   .map((value) => NodePool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          parentOperationId: _json.containsKey('parentOperationId')
+              ? _json['parentOperationId'] as core.String
               : null,
           requestId: _json.containsKey('requestId')
               ? _json['requestId'] as core.String
@@ -8953,7 +9003,10 @@ class RepairClusterRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (gracefulDecommissionTimeout != null)
+          'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
         if (nodePools != null) 'nodePools': nodePools!,
+        if (parentOperationId != null) 'parentOperationId': parentOperationId!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
