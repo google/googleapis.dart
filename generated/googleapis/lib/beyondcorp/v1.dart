@@ -118,19 +118,19 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudLocationLocation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -167,22 +167,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudLocationListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -239,24 +239,24 @@ class ProjectsLocationsAppConnectionsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (appConnectionId != null) 'appConnectionId': [appConnectionId],
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnections';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnections';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single AppConnection.
@@ -299,21 +299,21 @@ class ProjectsLocationsAppConnectionsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single AppConnection.
@@ -339,19 +339,19 @@ class ProjectsLocationsAppConnectionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -395,21 +395,21 @@ class ProjectsLocationsAppConnectionsResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists AppConnections in a given project and location.
@@ -455,7 +455,7 @@ class ProjectsLocationsAppConnectionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -463,15 +463,15 @@ class ProjectsLocationsAppConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnections';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnections';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single AppConnection.
@@ -527,8 +527,8 @@ class ProjectsLocationsAppConnectionsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -536,16 +536,16 @@ class ProjectsLocationsAppConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resolves AppConnections details for a given AppConnector.
@@ -592,23 +592,23 @@ class ProjectsLocationsAppConnectionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (appConnectorId != null) 'appConnectorId': [appConnectorId],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/appConnections:resolve';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -642,21 +642,21 @@ class ProjectsLocationsAppConnectionsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -692,22 +692,22 @@ class ProjectsLocationsAppConnectionsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -764,24 +764,24 @@ class ProjectsLocationsAppConnectorsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (appConnectorId != null) 'appConnectorId': [appConnectorId],
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnectors';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnectors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single AppConnector.
@@ -824,21 +824,21 @@ class ProjectsLocationsAppConnectorsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single AppConnector.
@@ -864,19 +864,19 @@ class ProjectsLocationsAppConnectorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -920,21 +920,21 @@ class ProjectsLocationsAppConnectorsResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists AppConnectors in a given project and location.
@@ -980,7 +980,7 @@ class ProjectsLocationsAppConnectorsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -988,15 +988,15 @@ class ProjectsLocationsAppConnectorsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnectors';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnectors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single AppConnector.
@@ -1048,24 +1048,24 @@ class ProjectsLocationsAppConnectorsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Report status for a given connector.
@@ -1094,21 +1094,21 @@ class ProjectsLocationsAppConnectorsResource {
     core.String appConnector, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$appConnector') + ':reportStatus';
+    final url_ = 'v1/' + core.Uri.encodeFull('$appConnector') + ':reportStatus';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get instance config for a given AppConnector.
@@ -1139,20 +1139,20 @@ class ProjectsLocationsAppConnectorsResource {
     core.String appConnector, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$appConnector') + ':resolveInstanceConfig';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1186,21 +1186,21 @@ class ProjectsLocationsAppConnectorsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1236,22 +1236,22 @@ class ProjectsLocationsAppConnectorsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1308,24 +1308,24 @@ class ProjectsLocationsAppGatewaysResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (appGatewayId != null) 'appGatewayId': [appGatewayId],
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/appGateways';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appGateways';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single AppGateway.
@@ -1368,21 +1368,21 @@ class ProjectsLocationsAppGatewaysResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single AppGateway.
@@ -1408,19 +1408,19 @@ class ProjectsLocationsAppGatewaysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AppGateway.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1464,21 +1464,21 @@ class ProjectsLocationsAppGatewaysResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists AppGateways in a given project and location.
@@ -1522,7 +1522,7 @@ class ProjectsLocationsAppGatewaysResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1530,15 +1530,15 @@ class ProjectsLocationsAppGatewaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/appGateways';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appGateways';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAppGatewaysResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1572,21 +1572,21 @@ class ProjectsLocationsAppGatewaysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1622,22 +1622,22 @@ class ProjectsLocationsAppGatewaysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1695,8 +1695,8 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (clientConnectorServiceId != null)
         'clientConnectorServiceId': [clientConnectorServiceId],
       if (requestId != null) 'requestId': [requestId],
@@ -1704,17 +1704,17 @@ class ProjectsLocationsClientConnectorServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/clientConnectorServices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single ClientConnectorService.
@@ -1756,21 +1756,21 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single ClientConnectorService.
@@ -1795,19 +1795,19 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ClientConnectorService.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1851,21 +1851,21 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ClientConnectorServices in a given project and location.
@@ -1903,7 +1903,7 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1911,16 +1911,16 @@ class ProjectsLocationsClientConnectorServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/clientConnectorServices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListClientConnectorServicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single ClientConnectorService.
@@ -1977,8 +1977,8 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1986,16 +1986,16 @@ class ProjectsLocationsClientConnectorServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2029,21 +2029,21 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2079,22 +2079,22 @@ class ProjectsLocationsClientConnectorServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2150,24 +2150,24 @@ class ProjectsLocationsClientGatewaysResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (clientGatewayId != null) 'clientGatewayId': [clientGatewayId],
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/clientGateways';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clientGateways';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single ClientGateway.
@@ -2209,21 +2209,21 @@ class ProjectsLocationsClientGatewaysResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single ClientGateway.
@@ -2248,19 +2248,19 @@ class ProjectsLocationsClientGatewaysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ClientGateway.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2304,21 +2304,21 @@ class ProjectsLocationsClientGatewaysResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ClientGateways in a given project and location.
@@ -2356,7 +2356,7 @@ class ProjectsLocationsClientGatewaysResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2364,15 +2364,15 @@ class ProjectsLocationsClientGatewaysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/clientGateways';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clientGateways';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListClientGatewaysResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2406,21 +2406,21 @@ class ProjectsLocationsClientGatewaysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2456,22 +2456,22 @@ class ProjectsLocationsClientGatewaysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2515,20 +2515,20 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -2557,18 +2557,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -2596,19 +2596,19 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2650,22 +2650,22 @@ class ProjectsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2686,13 +2686,13 @@ class AllocatedConnection {
     this.pscUri,
   });
 
-  AllocatedConnection.fromJson(core.Map _json)
+  AllocatedConnection.fromJson(core.Map json_)
       : this(
-          ingressPort: _json.containsKey('ingressPort')
-              ? _json['ingressPort'] as core.int
+          ingressPort: json_.containsKey('ingressPort')
+              ? json_['ingressPort'] as core.int
               : null,
-          pscUri: _json.containsKey('pscUri')
-              ? _json['pscUri'] as core.String
+          pscUri: json_.containsKey('pscUri')
+              ? json_['pscUri'] as core.String
               : null,
         );
 
@@ -2798,40 +2798,40 @@ class AppGateway {
     this.uri,
   });
 
-  AppGateway.fromJson(core.Map _json)
+  AppGateway.fromJson(core.Map json_)
       : this(
-          allocatedConnections: _json.containsKey('allocatedConnections')
-              ? (_json['allocatedConnections'] as core.List)
+          allocatedConnections: json_.containsKey('allocatedConnections')
+              ? (json_['allocatedConnections'] as core.List)
                   .map((value) => AllocatedConnection.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          hostType: _json.containsKey('hostType')
-              ? _json['hostType'] as core.String
+          hostType: json_.containsKey('hostType')
+              ? json_['hostType'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2913,27 +2913,27 @@ class ClientConnectorService {
     this.updateTime,
   });
 
-  ClientConnectorService.fromJson(core.Map _json)
+  ClientConnectorService.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          egress: _json.containsKey('egress')
+          egress: json_.containsKey('egress')
               ? Egress.fromJson(
-                  _json['egress'] as core.Map<core.String, core.dynamic>)
+                  json_['egress'] as core.Map<core.String, core.dynamic>)
               : null,
-          ingress: _json.containsKey('ingress')
+          ingress: json_.containsKey('ingress')
               ? Ingress.fromJson(
-                  _json['ingress'] as core.Map<core.String, core.dynamic>)
+                  json_['ingress'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -3005,20 +3005,20 @@ class ClientGateway {
     this.updateTime,
   });
 
-  ClientGateway.fromJson(core.Map _json)
+  ClientGateway.fromJson(core.Map json_)
       : this(
-          clientConnectorService: _json.containsKey('clientConnectorService')
-              ? _json['clientConnectorService'] as core.String
+          clientConnectorService: json_.containsKey('clientConnectorService')
+              ? json_['clientConnectorService'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -3053,16 +3053,16 @@ class Config {
     this.transportProtocol,
   });
 
-  Config.fromJson(core.Map _json)
+  Config.fromJson(core.Map json_)
       : this(
-          destinationRoutes: _json.containsKey('destinationRoutes')
-              ? (_json['destinationRoutes'] as core.List)
+          destinationRoutes: json_.containsKey('destinationRoutes')
+              ? (json_['destinationRoutes'] as core.List)
                   .map((value) => DestinationRoute.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          transportProtocol: _json.containsKey('transportProtocol')
-              ? _json['transportProtocol'] as core.String
+          transportProtocol: json_.containsKey('transportProtocol')
+              ? json_['transportProtocol'] as core.String
               : null,
         );
 
@@ -3094,13 +3094,13 @@ class DestinationRoute {
     this.netmask,
   });
 
-  DestinationRoute.fromJson(core.Map _json)
+  DestinationRoute.fromJson(core.Map json_)
       : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
               : null,
-          netmask: _json.containsKey('netmask')
-              ? _json['netmask'] as core.String
+          netmask: json_.containsKey('netmask')
+              ? json_['netmask'] as core.String
               : null,
         );
 
@@ -3121,11 +3121,11 @@ class Egress {
     this.peeredVpc,
   });
 
-  Egress.fromJson(core.Map _json)
+  Egress.fromJson(core.Map json_)
       : this(
-          peeredVpc: _json.containsKey('peeredVpc')
+          peeredVpc: json_.containsKey('peeredVpc')
               ? PeeredVpc.fromJson(
-                  _json['peeredVpc'] as core.Map<core.String, core.dynamic>)
+                  json_['peeredVpc'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3237,44 +3237,44 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
     this.updateTime,
   });
 
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(core.Map _json)
+  GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(core.Map json_)
       : this(
-          applicationEndpoint: _json.containsKey('applicationEndpoint')
+          applicationEndpoint: json_.containsKey('applicationEndpoint')
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint
-                  .fromJson(_json['applicationEndpoint']
+                  .fromJson(json_['applicationEndpoint']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          connectors: _json.containsKey('connectors')
-              ? (_json['connectors'] as core.List)
+          connectors: json_.containsKey('connectors')
+              ? (json_['connectors'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          gateway: _json.containsKey('gateway')
+          gateway: json_.containsKey('gateway')
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway
                   .fromJson(
-                      _json['gateway'] as core.Map<core.String, core.dynamic>)
+                      json_['gateway'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -3312,10 +3312,10 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          host: _json.containsKey('host') ? _json['host'] as core.String : null,
-          port: _json.containsKey('port') ? _json['port'] as core.int : null,
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3361,16 +3361,16 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          appGateway: _json.containsKey('appGateway')
-              ? _json['appGateway'] as core.String
+          appGateway: json_.containsKey('appGateway')
+              ? json_['appGateway'] as core.String
               : null,
-          ingressPort: _json.containsKey('ingressPort')
-              ? _json['ingressPort'] as core.int
+          ingressPort: json_.containsKey('ingressPort')
+              ? json_['ingressPort'] as core.int
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3400,21 +3400,21 @@ class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          appConnections: _json.containsKey('appConnections')
-              ? (_json['appConnections'] as core.List)
+          appConnections: json_.containsKey('appConnections')
+              ? (json_['appConnections'] as core.List)
                   .map((value) =>
                       GoogleCloudBeyondcorpAppconnectionsV1AppConnection
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3448,21 +3448,21 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          appConnectionDetails: _json.containsKey('appConnectionDetails')
-              ? (_json['appConnectionDetails'] as core.List)
+          appConnectionDetails: json_.containsKey('appConnectionDetails')
+              ? (json_['appConnectionDetails'] as core.List)
                   .map((value) =>
                       GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3491,14 +3491,14 @@ class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConne
   });
 
   GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          appConnection: _json.containsKey('appConnection')
+          appConnection: json_.containsKey('appConnection')
               ? GoogleCloudBeyondcorpAppconnectionsV1AppConnection.fromJson(
-                  _json['appConnection'] as core.Map<core.String, core.dynamic>)
+                  json_['appConnection'] as core.Map<core.String, core.dynamic>)
               : null,
-          recentMigVms: _json.containsKey('recentMigVms')
-              ? (_json['recentMigVms'] as core.List)
+          recentMigVms: json_.containsKey('recentMigVms')
+              ? (json_['recentMigVms'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3587,37 +3587,37 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
     this.updateTime,
   });
 
-  GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(core.Map _json)
+  GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          principalInfo: _json.containsKey('principalInfo')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          principalInfo: json_.containsKey('principalInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo
-                  .fromJson(_json['principalInfo']
+                  .fromJson(json_['principalInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          resourceInfo: _json.containsKey('resourceInfo')
+          resourceInfo: json_.containsKey('resourceInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                  _json['resourceInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -3667,22 +3667,22 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          imageConfig: _json.containsKey('imageConfig')
+          imageConfig: json_.containsKey('imageConfig')
               ? GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(
-                  _json['imageConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['imageConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          instanceConfig: _json.containsKey('instanceConfig')
-              ? _json['instanceConfig'] as core.Map<core.String, core.dynamic>
+          instanceConfig: json_.containsKey('instanceConfig')
+              ? json_['instanceConfig'] as core.Map<core.String, core.dynamic>
               : null,
-          notificationConfig: _json.containsKey('notificationConfig')
+          notificationConfig: json_.containsKey('notificationConfig')
               ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
-                  _json['notificationConfig']
+                  json_['notificationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          sequenceNumber: _json.containsKey('sequenceNumber')
-              ? _json['sequenceNumber'] as core.String
+          sequenceNumber: json_.containsKey('sequenceNumber')
+              ? json_['sequenceNumber'] as core.String
               : null,
         );
 
@@ -3706,11 +3706,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          serviceAccount: _json.containsKey('serviceAccount')
+          serviceAccount: json_.containsKey('serviceAccount')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount
-                  .fromJson(_json['serviceAccount']
+                  .fromJson(json_['serviceAccount']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3730,10 +3730,10 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccoun
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3760,13 +3760,13 @@ class GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
     this.targetImage,
   });
 
-  GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(core.Map _json)
+  GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(core.Map json_)
       : this(
-          stableImage: _json.containsKey('stableImage')
-              ? _json['stableImage'] as core.String
+          stableImage: json_.containsKey('stableImage')
+              ? json_['stableImage'] as core.String
               : null,
-          targetImage: _json.containsKey('targetImage')
-              ? _json['targetImage'] as core.String
+          targetImage: json_.containsKey('targetImage')
+              ? json_['targetImage'] as core.String
               : null,
         );
 
@@ -3795,20 +3795,20 @@ class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          appConnectors: _json.containsKey('appConnectors')
-              ? (_json['appConnectors'] as core.List)
+          appConnectors: json_.containsKey('appConnectors')
+              ? (json_['appConnectors'] as core.List)
                   .map((value) =>
                       GoogleCloudBeyondcorpAppconnectorsV1AppConnector.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3832,11 +3832,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          pubsubNotification: _json.containsKey('pubsubNotification')
+          pubsubNotification: json_.containsKey('pubsubNotification')
               ? GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig
-                  .fromJson(_json['pubsubNotification']
+                  .fromJson(json_['pubsubNotification']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3857,10 +3857,10 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificat
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          pubsubSubscription: _json.containsKey('pubsubSubscription')
-              ? _json['pubsubSubscription'] as core.String
+          pubsubSubscription: json_.containsKey('pubsubSubscription')
+              ? json_['pubsubSubscription'] as core.String
               : null,
         );
 
@@ -3906,17 +3906,17 @@ class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
               : null,
-          resourceInfo: _json.containsKey('resourceInfo')
+          resourceInfo: json_.containsKey('resourceInfo')
               ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                  _json['resourceInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
               : null,
         );
 
@@ -3938,11 +3938,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse {
   });
 
   GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          instanceConfig: _json.containsKey('instanceConfig')
+          instanceConfig: json_.containsKey('instanceConfig')
               ? GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig
-                  .fromJson(_json['instanceConfig']
+                  .fromJson(json_['instanceConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3998,23 +3998,23 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
     this.time,
   });
 
-  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(core.Map _json)
+  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.Map<core.String, core.dynamic>
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.Map<core.String, core.dynamic>
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          sub: _json.containsKey('sub')
-              ? (_json['sub'] as core.List)
+          sub: json_.containsKey('sub')
+              ? (json_['sub'] as core.List)
                   .map((value) =>
                       GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          time: _json.containsKey('time') ? _json['time'] as core.String : null,
+          time: json_.containsKey('time') ? json_['time'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4039,16 +4039,16 @@ class GoogleCloudLocationListLocationsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudLocationListLocationsResponse.fromJson(core.Map _json)
+  GoogleCloudLocationListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => GoogleCloudLocationLocation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4093,16 +4093,16 @@ class GoogleIamV1AuditConfig {
     this.service,
   });
 
-  GoogleIamV1AuditConfig.fromJson(core.Map _json)
+  GoogleIamV1AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: _json.containsKey('auditLogConfigs')
-              ? (_json['auditLogConfigs'] as core.List)
+          auditLogConfigs: json_.containsKey('auditLogConfigs')
+              ? (json_['auditLogConfigs'] as core.List)
                   .map((value) => GoogleIamV1AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
         );
 
@@ -4176,18 +4176,18 @@ class GoogleIamV1Binding {
     this.role,
   });
 
-  GoogleIamV1Binding.fromJson(core.Map _json)
+  GoogleIamV1Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? GoogleTypeExpr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4259,9 +4259,9 @@ class GoogleIamV1Policy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -4290,23 +4290,23 @@ class GoogleIamV1Policy {
     this.version,
   });
 
-  GoogleIamV1Policy.fromJson(core.Map _json)
+  GoogleIamV1Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: _json.containsKey('auditConfigs')
-              ? (_json['auditConfigs'] as core.List)
+          auditConfigs: json_.containsKey('auditConfigs')
+              ? (json_['auditConfigs'] as core.List)
                   .map((value) => GoogleIamV1AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => GoogleIamV1Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -4338,14 +4338,14 @@ class GoogleIamV1SetIamPolicyRequest {
     this.updateMask,
   });
 
-  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json)
+  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? GoogleIamV1Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: _json.containsKey('updateMask')
-              ? _json['updateMask'] as core.String
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
               : null,
         );
 
@@ -4377,13 +4377,13 @@ class GoogleLongrunningListOperationsResponse {
     this.operations,
   });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4447,19 +4447,19 @@ class GoogleLongrunningOperation {
     this.response,
   });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json)
+  GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -4512,11 +4512,11 @@ class Ingress {
     this.config,
   });
 
-  Ingress.fromJson(core.Map _json)
+  Ingress.fromJson(core.Map json_)
       : this(
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? Config.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4543,19 +4543,19 @@ class ListAppGatewaysResponse {
     this.unreachable,
   });
 
-  ListAppGatewaysResponse.fromJson(core.Map _json)
+  ListAppGatewaysResponse.fromJson(core.Map json_)
       : this(
-          appGateways: _json.containsKey('appGateways')
-              ? (_json['appGateways'] as core.List)
+          appGateways: json_.containsKey('appGateways')
+              ? (json_['appGateways'] as core.List)
                   .map((value) => AppGateway.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4585,19 +4585,19 @@ class ListClientConnectorServicesResponse {
     this.unreachable,
   });
 
-  ListClientConnectorServicesResponse.fromJson(core.Map _json)
+  ListClientConnectorServicesResponse.fromJson(core.Map json_)
       : this(
-          clientConnectorServices: _json.containsKey('clientConnectorServices')
-              ? (_json['clientConnectorServices'] as core.List)
+          clientConnectorServices: json_.containsKey('clientConnectorServices')
+              ? (json_['clientConnectorServices'] as core.List)
                   .map((value) => ClientConnectorService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4628,19 +4628,19 @@ class ListClientGatewaysResponse {
     this.unreachable,
   });
 
-  ListClientGatewaysResponse.fromJson(core.Map _json)
+  ListClientGatewaysResponse.fromJson(core.Map json_)
       : this(
-          clientGateways: _json.containsKey('clientGateways')
-              ? (_json['clientGateways'] as core.List)
+          clientGateways: json_.containsKey('clientGateways')
+              ? (json_['clientGateways'] as core.List)
                   .map((value) => ClientGateway.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4664,10 +4664,10 @@ class PeeredVpc {
     this.networkVpc,
   });
 
-  PeeredVpc.fromJson(core.Map _json)
+  PeeredVpc.fromJson(core.Map json_)
       : this(
-          networkVpc: _json.containsKey('networkVpc')
-              ? _json['networkVpc'] as core.String
+          networkVpc: json_.containsKey('networkVpc')
+              ? json_['networkVpc'] as core.String
               : null,
         );
 

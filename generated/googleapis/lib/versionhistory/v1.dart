@@ -94,21 +94,21 @@ class PlatformsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/platforms';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/platforms';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListPlatformsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -151,21 +151,21 @@ class PlatformsChannelsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/channels';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/channels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListChannelsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -234,7 +234,7 @@ class PlatformsChannelsVersionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -242,15 +242,15 @@ class PlatformsChannelsVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVersionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -323,7 +323,7 @@ class PlatformsChannelsVersionsReleasesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -331,15 +331,15 @@ class PlatformsChannelsVersionsReleasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/releases';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/releases';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListReleasesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -370,12 +370,12 @@ class Channel {
     this.name,
   });
 
-  Channel.fromJson(core.Map _json)
+  Channel.fromJson(core.Map json_)
       : this(
-          channelType: _json.containsKey('channelType')
-              ? _json['channelType'] as core.String
+          channelType: json_.containsKey('channelType')
+              ? json_['channelType'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -407,16 +407,16 @@ class ListChannelsResponse {
     this.nextPageToken,
   });
 
-  ListChannelsResponse.fromJson(core.Map _json)
+  ListChannelsResponse.fromJson(core.Map json_)
       : this(
-          channels: _json.containsKey('channels')
-              ? (_json['channels'] as core.List)
+          channels: json_.containsKey('channels')
+              ? (json_['channels'] as core.List)
                   .map((value) => Channel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -441,13 +441,13 @@ class ListPlatformsResponse {
     this.platforms,
   });
 
-  ListPlatformsResponse.fromJson(core.Map _json)
+  ListPlatformsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          platforms: _json.containsKey('platforms')
-              ? (_json['platforms'] as core.List)
+          platforms: json_.containsKey('platforms')
+              ? (json_['platforms'] as core.List)
                   .map((value) => Platform.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -475,13 +475,13 @@ class ListReleasesResponse {
     this.releases,
   });
 
-  ListReleasesResponse.fromJson(core.Map _json)
+  ListReleasesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          releases: _json.containsKey('releases')
-              ? (_json['releases'] as core.List)
+          releases: json_.containsKey('releases')
+              ? (json_['releases'] as core.List)
                   .map((value) => Release.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -509,13 +509,13 @@ class ListVersionsResponse {
     this.versions,
   });
 
-  ListVersionsResponse.fromJson(core.Map _json)
+  ListVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          versions: _json.containsKey('versions')
-              ? (_json['versions'] as core.List)
+          versions: json_.containsKey('versions')
+              ? (json_['versions'] as core.List)
                   .map((value) => Version.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -560,11 +560,11 @@ class Platform {
     this.platformType,
   });
 
-  Platform.fromJson(core.Map _json)
+  Platform.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          platformType: _json.containsKey('platformType')
-              ? _json['platformType'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          platformType: json_.containsKey('platformType')
+              ? json_['platformType'] as core.String
               : null,
         );
 
@@ -618,21 +618,21 @@ class Release {
     this.version,
   });
 
-  Release.fromJson(core.Map _json)
+  Release.fromJson(core.Map json_)
       : this(
-          fraction: _json.containsKey('fraction')
-              ? (_json['fraction'] as core.num).toDouble()
+          fraction: json_.containsKey('fraction')
+              ? (json_['fraction'] as core.num).toDouble()
               : null,
-          fractionGroup: _json.containsKey('fractionGroup')
-              ? _json['fractionGroup'] as core.String
+          fractionGroup: json_.containsKey('fractionGroup')
+              ? json_['fractionGroup'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          serving: _json.containsKey('serving')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serving: json_.containsKey('serving')
               ? Interval.fromJson(
-                  _json['serving'] as core.Map<core.String, core.dynamic>)
+                  json_['serving'] as core.Map<core.String, core.dynamic>)
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -667,11 +667,11 @@ class Version {
     this.version,
   });
 
-  Version.fromJson(core.Map _json)
+  Version.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 

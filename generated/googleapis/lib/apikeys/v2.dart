@@ -96,20 +96,20 @@ class KeysResource {
     core.String? keyString,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (keyString != null) 'keyString': [keyString],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/keys:lookupKey';
+    const url_ = 'v2/keys:lookupKey';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return V2LookupKeyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -142,18 +142,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -216,21 +216,21 @@ class ProjectsLocationsKeysResource {
     core.String? keyId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (keyId != null) 'keyId': [keyId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/keys';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/keys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an API key.
@@ -263,19 +263,19 @@ class ProjectsLocationsKeysResource {
     core.String? etag,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the metadata for an API key.
@@ -304,18 +304,18 @@ class ProjectsLocationsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return V2Key.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return V2Key.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the key string for an API key.
@@ -343,19 +343,19 @@ class ProjectsLocationsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/keyString';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/keyString';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return V2GetKeyStringResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the API keys owned by a project.
@@ -394,22 +394,22 @@ class ProjectsLocationsKeysResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/keys';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/keys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return V2ListKeysResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches the modifiable fields of an API key.
@@ -454,21 +454,21 @@ class ProjectsLocationsKeysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes an API key which was deleted within 30 days.
@@ -499,20 +499,20 @@ class ProjectsLocationsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -567,19 +567,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -618,13 +618,13 @@ class V2AndroidApplication {
     this.sha1Fingerprint,
   });
 
-  V2AndroidApplication.fromJson(core.Map _json)
+  V2AndroidApplication.fromJson(core.Map json_)
       : this(
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
-          sha1Fingerprint: _json.containsKey('sha1Fingerprint')
-              ? _json['sha1Fingerprint'] as core.String
+          sha1Fingerprint: json_.containsKey('sha1Fingerprint')
+              ? json_['sha1Fingerprint'] as core.String
               : null,
         );
 
@@ -644,10 +644,10 @@ class V2AndroidKeyRestrictions {
     this.allowedApplications,
   });
 
-  V2AndroidKeyRestrictions.fromJson(core.Map _json)
+  V2AndroidKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedApplications: _json.containsKey('allowedApplications')
-              ? (_json['allowedApplications'] as core.List)
+          allowedApplications: json_.containsKey('allowedApplications')
+              ? (json_['allowedApplications'] as core.List)
                   .map((value) => V2AndroidApplication.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -688,15 +688,15 @@ class V2ApiTarget {
     this.service,
   });
 
-  V2ApiTarget.fromJson(core.Map _json)
+  V2ApiTarget.fromJson(core.Map json_)
       : this(
-          methods: _json.containsKey('methods')
-              ? (_json['methods'] as core.List)
+          methods: json_.containsKey('methods')
+              ? (json_['methods'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
         );
 
@@ -716,10 +716,10 @@ class V2BrowserKeyRestrictions {
     this.allowedReferrers,
   });
 
-  V2BrowserKeyRestrictions.fromJson(core.Map _json)
+  V2BrowserKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedReferrers: _json.containsKey('allowedReferrers')
-              ? (_json['allowedReferrers'] as core.List)
+          allowedReferrers: json_.containsKey('allowedReferrers')
+              ? (json_['allowedReferrers'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -739,10 +739,10 @@ class V2GetKeyStringResponse {
     this.keyString,
   });
 
-  V2GetKeyStringResponse.fromJson(core.Map _json)
+  V2GetKeyStringResponse.fromJson(core.Map json_)
       : this(
-          keyString: _json.containsKey('keyString')
-              ? _json['keyString'] as core.String
+          keyString: json_.containsKey('keyString')
+              ? json_['keyString'] as core.String
               : null,
         );
 
@@ -760,10 +760,10 @@ class V2IosKeyRestrictions {
     this.allowedBundleIds,
   });
 
-  V2IosKeyRestrictions.fromJson(core.Map _json)
+  V2IosKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedBundleIds: _json.containsKey('allowedBundleIds')
-              ? (_json['allowedBundleIds'] as core.List)
+          allowedBundleIds: json_.containsKey('allowedBundleIds')
+              ? (json_['allowedBundleIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -851,10 +851,10 @@ class V2Key {
     this.updateTime,
   });
 
-  V2Key.fromJson(core.Map _json)
+  V2Key.fromJson(core.Map json_)
       : this(
-          annotations: _json.containsKey('annotations')
-              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -862,27 +862,27 @@ class V2Key {
                   ),
                 )
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          deleteTime: _json.containsKey('deleteTime')
-              ? _json['deleteTime'] as core.String
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          keyString: _json.containsKey('keyString')
-              ? _json['keyString'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          keyString: json_.containsKey('keyString')
+              ? json_['keyString'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          restrictions: _json.containsKey('restrictions')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          restrictions: json_.containsKey('restrictions')
               ? V2Restrictions.fromJson(
-                  _json['restrictions'] as core.Map<core.String, core.dynamic>)
+                  json_['restrictions'] as core.Map<core.String, core.dynamic>)
               : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -913,16 +913,16 @@ class V2ListKeysResponse {
     this.nextPageToken,
   });
 
-  V2ListKeysResponse.fromJson(core.Map _json)
+  V2ListKeysResponse.fromJson(core.Map json_)
       : this(
-          keys: _json.containsKey('keys')
-              ? (_json['keys'] as core.List)
+          keys: json_.containsKey('keys')
+              ? (json_['keys'] as core.List)
                   .map((value) => V2Key.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -947,11 +947,11 @@ class V2LookupKeyResponse {
     this.parent,
   });
 
-  V2LookupKeyResponse.fromJson(core.Map _json)
+  V2LookupKeyResponse.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
         );
 
@@ -990,30 +990,30 @@ class V2Restrictions {
     this.serverKeyRestrictions,
   });
 
-  V2Restrictions.fromJson(core.Map _json)
+  V2Restrictions.fromJson(core.Map json_)
       : this(
-          androidKeyRestrictions: _json.containsKey('androidKeyRestrictions')
+          androidKeyRestrictions: json_.containsKey('androidKeyRestrictions')
               ? V2AndroidKeyRestrictions.fromJson(
-                  _json['androidKeyRestrictions']
+                  json_['androidKeyRestrictions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          apiTargets: _json.containsKey('apiTargets')
-              ? (_json['apiTargets'] as core.List)
+          apiTargets: json_.containsKey('apiTargets')
+              ? (json_['apiTargets'] as core.List)
                   .map((value) => V2ApiTarget.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          browserKeyRestrictions: _json.containsKey('browserKeyRestrictions')
+          browserKeyRestrictions: json_.containsKey('browserKeyRestrictions')
               ? V2BrowserKeyRestrictions.fromJson(
-                  _json['browserKeyRestrictions']
+                  json_['browserKeyRestrictions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          iosKeyRestrictions: _json.containsKey('iosKeyRestrictions')
-              ? V2IosKeyRestrictions.fromJson(_json['iosKeyRestrictions']
+          iosKeyRestrictions: json_.containsKey('iosKeyRestrictions')
+              ? V2IosKeyRestrictions.fromJson(json_['iosKeyRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          serverKeyRestrictions: _json.containsKey('serverKeyRestrictions')
-              ? V2ServerKeyRestrictions.fromJson(_json['serverKeyRestrictions']
+          serverKeyRestrictions: json_.containsKey('serverKeyRestrictions')
+              ? V2ServerKeyRestrictions.fromJson(json_['serverKeyRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1041,10 +1041,10 @@ class V2ServerKeyRestrictions {
     this.allowedIps,
   });
 
-  V2ServerKeyRestrictions.fromJson(core.Map _json)
+  V2ServerKeyRestrictions.fromJson(core.Map json_)
       : this(
-          allowedIps: _json.containsKey('allowedIps')
-              ? (_json['allowedIps'] as core.List)
+          allowedIps: json_.containsKey('allowedIps')
+              ? (json_['allowedIps'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,

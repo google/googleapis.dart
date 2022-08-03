@@ -80,17 +80,17 @@ class TasklistsResource {
     core.String tasklist, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -115,19 +115,19 @@ class TasklistsResource {
     core.String tasklist, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return TaskList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new task list and adds it to the authenticated user's task
@@ -151,20 +151,20 @@ class TasklistsResource {
     TaskList request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'tasks/v1/users/@me/lists';
+    const url_ = 'tasks/v1/users/@me/lists';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return TaskList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all the authenticated user's task lists.
@@ -191,20 +191,20 @@ class TasklistsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'tasks/v1/users/@me/lists';
+    const url_ = 'tasks/v1/users/@me/lists';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return TaskLists.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return TaskLists.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the authenticated user's specified task list.
@@ -232,21 +232,21 @@ class TasklistsResource {
     core.String tasklist, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return TaskList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the authenticated user's specified task list.
@@ -272,21 +272,21 @@ class TasklistsResource {
     core.String tasklist, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tasks/v1/users/@me/lists/' + commons.escapeVariable('$tasklist');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return TaskList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -316,17 +316,17 @@ class TasksResource {
     core.String tasklist, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tasks/v1/lists/' + commons.escapeVariable('$tasklist') + '/clear';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -352,19 +352,19 @@ class TasksResource {
     core.String task, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
+    final url_ = 'tasks/v1/lists/' +
         commons.escapeVariable('$tasklist') +
         '/tasks/' +
         commons.escapeVariable('$task');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -392,21 +392,21 @@ class TasksResource {
     core.String task, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
+    final url_ = 'tasks/v1/lists/' +
         commons.escapeVariable('$tasklist') +
         '/tasks/' +
         commons.escapeVariable('$task');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new task on the specified task list.
@@ -441,23 +441,23 @@ class TasksResource {
     core.String? previous,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if (previous != null) 'previous': [previous],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tasks/v1/lists/' + commons.escapeVariable('$tasklist') + '/tasks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all tasks in the specified task list.
@@ -524,7 +524,7 @@ class TasksResource {
     core.String? updatedMin,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (completedMax != null) 'completedMax': [completedMax],
       if (completedMin != null) 'completedMin': [completedMin],
       if (dueMax != null) 'dueMax': [dueMax],
@@ -538,15 +538,15 @@ class TasksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tasks/v1/lists/' + commons.escapeVariable('$tasklist') + '/tasks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Tasks.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Tasks.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves the specified task to another position in the task list.
@@ -584,24 +584,24 @@ class TasksResource {
     core.String? previous,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if (previous != null) 'previous': [previous],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
+    final url_ = 'tasks/v1/lists/' +
         commons.escapeVariable('$tasklist') +
         '/tasks/' +
         commons.escapeVariable('$task') +
         '/move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified task.
@@ -632,23 +632,23 @@ class TasksResource {
     core.String task, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
+    final url_ = 'tasks/v1/lists/' +
         commons.escapeVariable('$tasklist') +
         '/tasks/' +
         commons.escapeVariable('$task');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified task.
@@ -677,23 +677,23 @@ class TasksResource {
     core.String task, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tasks/v1/lists/' +
+    final url_ = 'tasks/v1/lists/' +
         commons.escapeVariable('$tasklist') +
         '/tasks/' +
         commons.escapeVariable('$task');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -715,13 +715,13 @@ class TaskLinks {
     this.type,
   });
 
-  TaskLinks.fromJson(core.Map _json)
+  TaskLinks.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          link: _json.containsKey('link') ? _json['link'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          link: json_.containsKey('link') ? json_['link'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -827,44 +827,44 @@ class Task {
     this.updated,
   });
 
-  Task.fromJson(core.Map _json)
+  Task.fromJson(core.Map json_)
       : this(
-          completed: _json.containsKey('completed')
-              ? _json['completed'] as core.String
+          completed: json_.containsKey('completed')
+              ? json_['completed'] as core.String
               : null,
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
-          due: _json.containsKey('due') ? _json['due'] as core.String : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          due: json_.containsKey('due') ? json_['due'] as core.String : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           hidden:
-              _json.containsKey('hidden') ? _json['hidden'] as core.bool : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          links: _json.containsKey('links')
-              ? (_json['links'] as core.List)
+              json_.containsKey('hidden') ? json_['hidden'] as core.bool : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          links: json_.containsKey('links')
+              ? (json_['links'] as core.List)
                   .map((value) => TaskLinks.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
-          position: _json.containsKey('position')
-              ? _json['position'] as core.String
+          position: json_.containsKey('position')
+              ? json_['position'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
         );
 
@@ -919,18 +919,18 @@ class TaskList {
     this.updated,
   });
 
-  TaskList.fromJson(core.Map _json)
+  TaskList.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
         );
 
@@ -966,18 +966,18 @@ class TaskLists {
     this.nextPageToken,
   });
 
-  TaskLists.fromJson(core.Map _json)
+  TaskLists.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => TaskList.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1011,18 +1011,18 @@ class Tasks {
     this.nextPageToken,
   });
 
-  Tasks.fromJson(core.Map _json)
+  Tasks.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Task.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 

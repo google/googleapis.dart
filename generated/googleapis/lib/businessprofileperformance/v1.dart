@@ -178,7 +178,7 @@ class LocationsResource {
     core.int? dailySubEntityType_timeOfDay_seconds,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (dailyMetric != null) 'dailyMetric': [dailyMetric],
       if (dailyRange_endDate_day != null)
         'dailyRange.endDate.day': ['${dailyRange_endDate_day}'],
@@ -213,16 +213,16 @@ class LocationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$name') + ':getDailyMetricsTimeSeries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GetDailyMetricsTimeSeriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -313,7 +313,7 @@ class LocationsSearchkeywordsImpressionsMonthlyResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (monthlyRange_endMonth_day != null)
         'monthlyRange.endMonth.day': ['${monthlyRange_endMonth_day}'],
       if (monthlyRange_endMonth_month != null)
@@ -331,17 +331,17 @@ class LocationsSearchkeywordsImpressionsMonthlyResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/searchkeywords/impressions/monthly';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSearchKeywordImpressionsMonthlyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -373,14 +373,14 @@ class DatedValue {
     this.value,
   });
 
-  DatedValue.fromJson(core.Map _json)
+  DatedValue.fromJson(core.Map json_)
       : this(
-          date: _json.containsKey('date')
+          date: json_.containsKey('date')
               ? Date.fromJson(
-                  _json['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -398,11 +398,11 @@ class GetDailyMetricsTimeSeriesResponse {
     this.timeSeries,
   });
 
-  GetDailyMetricsTimeSeriesResponse.fromJson(core.Map _json)
+  GetDailyMetricsTimeSeriesResponse.fromJson(core.Map json_)
       : this(
-          timeSeries: _json.containsKey('timeSeries')
+          timeSeries: json_.containsKey('timeSeries')
               ? TimeSeries.fromJson(
-                  _json['timeSeries'] as core.Map<core.String, core.dynamic>)
+                  json_['timeSeries'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -424,13 +424,13 @@ class InsightsValue {
     this.value,
   });
 
-  InsightsValue.fromJson(core.Map _json)
+  InsightsValue.fromJson(core.Map json_)
       : this(
-          threshold: _json.containsKey('threshold')
-              ? _json['threshold'] as core.String
+          threshold: json_.containsKey('threshold')
+              ? json_['threshold'] as core.String
               : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -450,9 +450,9 @@ class ListSearchKeywordImpressionsMonthlyResponse {
   core.List<core.int> get nextPageTokenAsBytes =>
       convert.base64.decode(nextPageToken!);
 
-  set nextPageTokenAsBytes(core.List<core.int> _bytes) {
+  set nextPageTokenAsBytes(core.List<core.int> bytes_) {
     nextPageToken =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Search terms which have been used to find a business.
@@ -463,13 +463,13 @@ class ListSearchKeywordImpressionsMonthlyResponse {
     this.searchKeywordsCounts,
   });
 
-  ListSearchKeywordImpressionsMonthlyResponse.fromJson(core.Map _json)
+  ListSearchKeywordImpressionsMonthlyResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          searchKeywordsCounts: _json.containsKey('searchKeywordsCounts')
-              ? (_json['searchKeywordsCounts'] as core.List)
+          searchKeywordsCounts: json_.containsKey('searchKeywordsCounts')
+              ? (json_['searchKeywordsCounts'] as core.List)
                   .map((value) => SearchKeywordCount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -500,14 +500,14 @@ class SearchKeywordCount {
     this.searchKeyword,
   });
 
-  SearchKeywordCount.fromJson(core.Map _json)
+  SearchKeywordCount.fromJson(core.Map json_)
       : this(
-          insightsValue: _json.containsKey('insightsValue')
+          insightsValue: json_.containsKey('insightsValue')
               ? InsightsValue.fromJson(
-                  _json['insightsValue'] as core.Map<core.String, core.dynamic>)
+                  json_['insightsValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          searchKeyword: _json.containsKey('searchKeyword')
-              ? _json['searchKeyword'] as core.String
+          searchKeyword: json_.containsKey('searchKeyword')
+              ? json_['searchKeyword'] as core.String
               : null,
         );
 
@@ -527,10 +527,10 @@ class TimeSeries {
     this.datedValues,
   });
 
-  TimeSeries.fromJson(core.Map _json)
+  TimeSeries.fromJson(core.Map json_)
       : this(
-          datedValues: _json.containsKey('datedValues')
-              ? (_json['datedValues'] as core.List)
+          datedValues: json_.containsKey('datedValues')
+              ? (json_['datedValues'] as core.List)
                   .map((value) => DatedValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()

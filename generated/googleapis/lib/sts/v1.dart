@@ -78,21 +78,21 @@ class V1Resource {
     GoogleIdentityStsV1IntrospectTokenRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/introspect';
+    const url_ = 'v1/introspect';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIdentityStsV1IntrospectTokenResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Exchanges a credential for a Google OAuth 2.0 access token.
@@ -121,21 +121,21 @@ class V1Resource {
     GoogleIdentityStsV1ExchangeTokenRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/token';
+    const url_ = 'v1/token';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -282,27 +282,27 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
     this.subjectTokenType,
   });
 
-  GoogleIdentityStsV1ExchangeTokenRequest.fromJson(core.Map _json)
+  GoogleIdentityStsV1ExchangeTokenRequest.fromJson(core.Map json_)
       : this(
-          audience: _json.containsKey('audience')
-              ? _json['audience'] as core.String
+          audience: json_.containsKey('audience')
+              ? json_['audience'] as core.String
               : null,
-          grantType: _json.containsKey('grantType')
-              ? _json['grantType'] as core.String
+          grantType: json_.containsKey('grantType')
+              ? json_['grantType'] as core.String
               : null,
-          options: _json.containsKey('options')
-              ? _json['options'] as core.String
+          options: json_.containsKey('options')
+              ? json_['options'] as core.String
               : null,
-          requestedTokenType: _json.containsKey('requestedTokenType')
-              ? _json['requestedTokenType'] as core.String
+          requestedTokenType: json_.containsKey('requestedTokenType')
+              ? json_['requestedTokenType'] as core.String
               : null,
           scope:
-              _json.containsKey('scope') ? _json['scope'] as core.String : null,
-          subjectToken: _json.containsKey('subjectToken')
-              ? _json['subjectToken'] as core.String
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          subjectToken: json_.containsKey('subjectToken')
+              ? json_['subjectToken'] as core.String
               : null,
-          subjectTokenType: _json.containsKey('subjectTokenType')
-              ? _json['subjectTokenType'] as core.String
+          subjectTokenType: json_.containsKey('subjectTokenType')
+              ? json_['subjectTokenType'] as core.String
               : null,
         );
 
@@ -353,19 +353,19 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
     this.tokenType,
   });
 
-  GoogleIdentityStsV1ExchangeTokenResponse.fromJson(core.Map _json)
+  GoogleIdentityStsV1ExchangeTokenResponse.fromJson(core.Map json_)
       : this(
-          accessToken: _json.containsKey('access_token')
-              ? _json['access_token'] as core.String
+          accessToken: json_.containsKey('access_token')
+              ? json_['access_token'] as core.String
               : null,
-          expiresIn: _json.containsKey('expires_in')
-              ? _json['expires_in'] as core.int
+          expiresIn: json_.containsKey('expires_in')
+              ? json_['expires_in'] as core.int
               : null,
-          issuedTokenType: _json.containsKey('issued_token_type')
-              ? _json['issued_token_type'] as core.String
+          issuedTokenType: json_.containsKey('issued_token_type')
+              ? json_['issued_token_type'] as core.String
               : null,
-          tokenType: _json.containsKey('token_type')
-              ? _json['token_type'] as core.String
+          tokenType: json_.containsKey('token_type')
+              ? json_['token_type'] as core.String
               : null,
         );
 
@@ -397,12 +397,12 @@ class GoogleIdentityStsV1IntrospectTokenRequest {
     this.tokenTypeHint,
   });
 
-  GoogleIdentityStsV1IntrospectTokenRequest.fromJson(core.Map _json)
+  GoogleIdentityStsV1IntrospectTokenRequest.fromJson(core.Map json_)
       : this(
           token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
-          tokenTypeHint: _json.containsKey('tokenTypeHint')
-              ? _json['tokenTypeHint'] as core.String
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+          tokenTypeHint: json_.containsKey('tokenTypeHint')
+              ? json_['tokenTypeHint'] as core.String
               : null,
         );
 
@@ -461,21 +461,21 @@ class GoogleIdentityStsV1IntrospectTokenResponse {
     this.username,
   });
 
-  GoogleIdentityStsV1IntrospectTokenResponse.fromJson(core.Map _json)
+  GoogleIdentityStsV1IntrospectTokenResponse.fromJson(core.Map json_)
       : this(
           active:
-              _json.containsKey('active') ? _json['active'] as core.bool : null,
-          clientId: _json.containsKey('client_id')
-              ? _json['client_id'] as core.String
+              json_.containsKey('active') ? json_['active'] as core.bool : null,
+          clientId: json_.containsKey('client_id')
+              ? json_['client_id'] as core.String
               : null,
-          exp: _json.containsKey('exp') ? _json['exp'] as core.String : null,
-          iat: _json.containsKey('iat') ? _json['iat'] as core.String : null,
-          iss: _json.containsKey('iss') ? _json['iss'] as core.String : null,
+          exp: json_.containsKey('exp') ? json_['exp'] as core.String : null,
+          iat: json_.containsKey('iat') ? json_['iat'] as core.String : null,
+          iss: json_.containsKey('iss') ? json_['iss'] as core.String : null,
           scope:
-              _json.containsKey('scope') ? _json['scope'] as core.String : null,
-          sub: _json.containsKey('sub') ? _json['sub'] as core.String : null,
-          username: _json.containsKey('username')
-              ? _json['username'] as core.String
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          sub: json_.containsKey('sub') ? json_['sub'] as core.String : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
               : null,
         );
 

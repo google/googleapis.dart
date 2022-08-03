@@ -89,19 +89,19 @@ class AutnumResource {
     core.String autnumId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/autnum/' + commons.escapeVariable('$autnumId');
+    final url_ = 'v1/autnum/' + commons.escapeVariable('$autnumId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RdapResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -131,18 +131,18 @@ class DomainResource {
     core.String domainName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/domain/' + core.Uri.encodeFull('$domainName');
+    final url_ = 'v1/domain/' + core.Uri.encodeFull('$domainName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -174,19 +174,19 @@ class EntityResource {
     core.String entityId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/entity/' + commons.escapeVariable('$entityId');
+    final url_ = 'v1/entity/' + commons.escapeVariable('$entityId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RdapResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -221,22 +221,22 @@ class IpResource {
     core.String ipId1, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/ip/' +
+    final url_ = 'v1/ip/' +
         commons.escapeVariable('$ipId') +
         '/' +
         commons.escapeVariable('$ipId1');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RdapResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -268,19 +268,19 @@ class NameserverResource {
     core.String nameserverId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/nameserver/' + commons.escapeVariable('$nameserverId');
+    final url_ = 'v1/nameserver/' + commons.escapeVariable('$nameserverId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RdapResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -309,19 +309,19 @@ class V1Resource {
   async.Future<RdapResponse> getDomains({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/domains';
+    const url_ = 'v1/domains';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RdapResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -344,19 +344,19 @@ class V1Resource {
   async.Future<RdapResponse> getEntities({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/entities';
+    const url_ = 'v1/entities';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RdapResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get help information for the RDAP API, including links to documentation.
@@ -376,18 +376,18 @@ class V1Resource {
   async.Future<HttpBody> getHelp({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/help';
+    const url_ = 'v1/help';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -410,18 +410,18 @@ class V1Resource {
   async.Future<HttpBody> getIp({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/ip';
+    const url_ = 'v1/ip';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -444,19 +444,19 @@ class V1Resource {
   async.Future<RdapResponse> getNameservers({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/nameservers';
+    const url_ = 'v1/nameservers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RdapResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -528,20 +528,20 @@ class Link {
     this.value,
   });
 
-  Link.fromJson(core.Map _json)
+  Link.fromJson(core.Map json_)
       : this(
-          href: _json.containsKey('href') ? _json['href'] as core.String : null,
-          hreflang: _json.containsKey('hreflang')
-              ? _json['hreflang'] as core.String
+          href: json_.containsKey('href') ? json_['href'] as core.String : null,
+          hreflang: json_.containsKey('hreflang')
+              ? json_['hreflang'] as core.String
               : null,
           media:
-              _json.containsKey('media') ? _json['media'] as core.String : null,
-          rel: _json.containsKey('rel') ? _json['rel'] as core.String : null,
+              json_.containsKey('media') ? json_['media'] as core.String : null,
+          rel: json_.containsKey('rel') ? json_['rel'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -583,22 +583,22 @@ class Notice {
     this.type,
   });
 
-  Notice.fromJson(core.Map _json)
+  Notice.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? (_json['description'] as core.List)
+          description: json_.containsKey('description')
+              ? (json_['description'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          links: _json.containsKey('links')
-              ? (_json['links'] as core.List)
+          links: json_.containsKey('links')
+              ? (json_['links'] as core.List)
                   .map((value) => Link.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -647,34 +647,34 @@ class RdapResponse {
     this.title,
   });
 
-  RdapResponse.fromJson(core.Map _json)
+  RdapResponse.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? (_json['description'] as core.List)
+          description: json_.containsKey('description')
+              ? (json_['description'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          errorCode: _json.containsKey('errorCode')
-              ? _json['errorCode'] as core.int
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.int
               : null,
-          jsonResponse: _json.containsKey('jsonResponse')
+          jsonResponse: json_.containsKey('jsonResponse')
               ? HttpBody.fromJson(
-                  _json['jsonResponse'] as core.Map<core.String, core.dynamic>)
+                  json_['jsonResponse'] as core.Map<core.String, core.dynamic>)
               : null,
-          lang: _json.containsKey('lang') ? _json['lang'] as core.String : null,
-          notices: _json.containsKey('notices')
-              ? (_json['notices'] as core.List)
+          lang: json_.containsKey('lang') ? json_['lang'] as core.String : null,
+          notices: json_.containsKey('notices')
+              ? (json_['notices'] as core.List)
                   .map((value) => Notice.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          rdapConformance: _json.containsKey('rdapConformance')
-              ? (_json['rdapConformance'] as core.List)
+          rdapConformance: json_.containsKey('rdapConformance')
+              ? (json_['rdapConformance'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

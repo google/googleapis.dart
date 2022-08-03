@@ -30,10 +30,10 @@ class $Response {
     this.result,
   });
 
-  $Response.fromJson(core.Map _json)
+  $Response.fromJson(core.Map json_)
       : this(
-          result: _json.containsKey('result')
-              ? _json['result'] as core.String
+          result: json_.containsKey('result')
+              ? json_['result'] as core.String
               : null,
         );
 

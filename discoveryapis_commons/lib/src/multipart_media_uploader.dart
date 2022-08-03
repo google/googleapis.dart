@@ -69,7 +69,7 @@ class MultipartMediaUploader {
 
     final headers = {
       ..._requestHeaders,
-      'content-type': 'multipart/related; boundary=\"$_boundary\"',
+      'content-type': 'multipart/related; boundary="$_boundary"',
       'content-length': '$totalLength'
     };
     final bodyStream = bodyController.stream;

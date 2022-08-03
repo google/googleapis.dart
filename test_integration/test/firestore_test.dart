@@ -15,7 +15,7 @@ void main() {
     await withClientFromDefaultCredentials([FirestoreApi.datastoreScope],
         (client) async {
       final firestore = FirestoreApi(client);
-      final _documents = firestore.projects.databases.documents;
+      final documents = firestore.projects.databases.documents;
 
       final input = Document(
         fields: {
@@ -24,7 +24,7 @@ void main() {
       );
 
       print(prettyJsonEncode(input));
-      final document = await _documents.patch(
+      final document = await documents.patch(
         input,
         '$_documentsPath/googleapis_integration_test/test_document_id',
       );

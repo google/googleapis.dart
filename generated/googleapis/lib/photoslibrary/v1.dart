@@ -109,22 +109,22 @@ class AlbumsResource {
     core.String albumId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/albums/' + core.Uri.encodeFull('$albumId') + ':addEnrichment';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AddEnrichmentToAlbumResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds one or more media items in a user's Google Photos library to an
@@ -162,22 +162,22 @@ class AlbumsResource {
     core.String albumId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/albums/' + core.Uri.encodeFull('$albumId') + ':batchAddMediaItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchAddMediaItemsToAlbumResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes one or more media items from a specified album.
@@ -212,23 +212,23 @@ class AlbumsResource {
     core.String albumId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/albums/' +
+    final url_ = 'v1/albums/' +
         core.Uri.encodeFull('$albumId') +
         ':batchRemoveMediaItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchRemoveMediaItemsFromAlbumResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an album in a user's Google Photos library.
@@ -251,20 +251,20 @@ class AlbumsResource {
     CreateAlbumRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/albums';
+    const url_ = 'v1/albums';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Album.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Album.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the album based on the specified `albumId`.
@@ -291,18 +291,18 @@ class AlbumsResource {
     core.String albumId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/albums/' + core.Uri.encodeFull('$albumId');
+    final url_ = 'v1/albums/' + core.Uri.encodeFull('$albumId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Album.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Album.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all albums shown to a user in the Albums tab of the Google Photos
@@ -340,7 +340,7 @@ class AlbumsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (excludeNonAppCreatedData != null)
         'excludeNonAppCreatedData': ['${excludeNonAppCreatedData}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -348,15 +348,15 @@ class AlbumsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/albums';
+    const url_ = 'v1/albums';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAlbumsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the album with the specified `id`.
@@ -392,21 +392,21 @@ class AlbumsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/albums/' + core.Uri.encodeFull('$id');
+    final url_ = 'v1/albums/' + core.Uri.encodeFull('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Album.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Album.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks an album as shared and accessible to other users.
@@ -437,21 +437,21 @@ class AlbumsResource {
     core.String albumId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/albums/' + core.Uri.encodeFull('$albumId') + ':share';
+    final url_ = 'v1/albums/' + core.Uri.encodeFull('$albumId') + ':share';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ShareAlbumResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks a previously shared album as private.
@@ -485,21 +485,21 @@ class AlbumsResource {
     core.String albumId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/albums/' + core.Uri.encodeFull('$albumId') + ':unshare';
+    final url_ = 'v1/albums/' + core.Uri.encodeFull('$albumId') + ':unshare';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return UnshareAlbumResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -540,21 +540,21 @@ class MediaItemsResource {
     BatchCreateMediaItemsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/mediaItems:batchCreate';
+    const url_ = 'v1/mediaItems:batchCreate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchCreateMediaItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of media items for the specified media item identifiers.
@@ -581,20 +581,20 @@ class MediaItemsResource {
     core.List<core.String>? mediaItemIds,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (mediaItemIds != null) 'mediaItemIds': mediaItemIds,
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/mediaItems:batchGet';
+    const url_ = 'v1/mediaItems:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BatchGetMediaItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the media item for the specified media item identifier.
@@ -618,18 +618,18 @@ class MediaItemsResource {
     core.String mediaItemId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/mediaItems/' + core.Uri.encodeFull('$mediaItemId');
+    final url_ = 'v1/mediaItems/' + core.Uri.encodeFull('$mediaItemId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return MediaItem.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return MediaItem.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all media items from a user's Google Photos library.
@@ -660,21 +660,21 @@ class MediaItemsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/mediaItems';
+    const url_ = 'v1/mediaItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListMediaItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the media item with the specified `id`.
@@ -710,21 +710,21 @@ class MediaItemsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/mediaItems/' + core.Uri.encodeFull('$id');
+    final url_ = 'v1/mediaItems/' + core.Uri.encodeFull('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return MediaItem.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return MediaItem.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches for media items in a user's Google Photos library.
@@ -753,21 +753,21 @@ class MediaItemsResource {
     SearchMediaItemsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/mediaItems:search';
+    const url_ = 'v1/mediaItems:search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SearchMediaItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -797,18 +797,18 @@ class SharedAlbumsResource {
     core.String shareToken, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/sharedAlbums/' + core.Uri.encodeFull('$shareToken');
+    final url_ = 'v1/sharedAlbums/' + core.Uri.encodeFull('$shareToken');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Album.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Album.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Joins a shared album on behalf of the Google Photos user.
@@ -831,21 +831,21 @@ class SharedAlbumsResource {
     JoinSharedAlbumRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/sharedAlbums:join';
+    const url_ = 'v1/sharedAlbums:join';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return JoinSharedAlbumResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Leaves a previously-joined shared album on behalf of the Google Photos
@@ -871,21 +871,21 @@ class SharedAlbumsResource {
     LeaveSharedAlbumRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/sharedAlbums:leave';
+    const url_ = 'v1/sharedAlbums:leave';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LeaveSharedAlbumResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all shared albums available in the Sharing tab of the user's Google
@@ -923,7 +923,7 @@ class SharedAlbumsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (excludeNonAppCreatedData != null)
         'excludeNonAppCreatedData': ['${excludeNonAppCreatedData}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -931,15 +931,15 @@ class SharedAlbumsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/sharedAlbums';
+    const url_ = 'v1/sharedAlbums';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSharedAlbumsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -960,14 +960,14 @@ class AddEnrichmentToAlbumRequest {
     this.newEnrichmentItem,
   });
 
-  AddEnrichmentToAlbumRequest.fromJson(core.Map _json)
+  AddEnrichmentToAlbumRequest.fromJson(core.Map json_)
       : this(
-          albumPosition: _json.containsKey('albumPosition')
+          albumPosition: json_.containsKey('albumPosition')
               ? AlbumPosition.fromJson(
-                  _json['albumPosition'] as core.Map<core.String, core.dynamic>)
+                  json_['albumPosition'] as core.Map<core.String, core.dynamic>)
               : null,
-          newEnrichmentItem: _json.containsKey('newEnrichmentItem')
-              ? NewEnrichmentItem.fromJson(_json['newEnrichmentItem']
+          newEnrichmentItem: json_.containsKey('newEnrichmentItem')
+              ? NewEnrichmentItem.fromJson(json_['newEnrichmentItem']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -989,10 +989,10 @@ class AddEnrichmentToAlbumResponse {
     this.enrichmentItem,
   });
 
-  AddEnrichmentToAlbumResponse.fromJson(core.Map _json)
+  AddEnrichmentToAlbumResponse.fromJson(core.Map json_)
       : this(
-          enrichmentItem: _json.containsKey('enrichmentItem')
-              ? EnrichmentItem.fromJson(_json['enrichmentItem']
+          enrichmentItem: json_.containsKey('enrichmentItem')
+              ? EnrichmentItem.fromJson(json_['enrichmentItem']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1075,30 +1075,30 @@ class Album {
     this.title,
   });
 
-  Album.fromJson(core.Map _json)
+  Album.fromJson(core.Map json_)
       : this(
-          coverPhotoBaseUrl: _json.containsKey('coverPhotoBaseUrl')
-              ? _json['coverPhotoBaseUrl'] as core.String
+          coverPhotoBaseUrl: json_.containsKey('coverPhotoBaseUrl')
+              ? json_['coverPhotoBaseUrl'] as core.String
               : null,
-          coverPhotoMediaItemId: _json.containsKey('coverPhotoMediaItemId')
-              ? _json['coverPhotoMediaItemId'] as core.String
+          coverPhotoMediaItemId: json_.containsKey('coverPhotoMediaItemId')
+              ? json_['coverPhotoMediaItemId'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          isWriteable: _json.containsKey('isWriteable')
-              ? _json['isWriteable'] as core.bool
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          isWriteable: json_.containsKey('isWriteable')
+              ? json_['isWriteable'] as core.bool
               : null,
-          mediaItemsCount: _json.containsKey('mediaItemsCount')
-              ? _json['mediaItemsCount'] as core.String
+          mediaItemsCount: json_.containsKey('mediaItemsCount')
+              ? json_['mediaItemsCount'] as core.String
               : null,
-          productUrl: _json.containsKey('productUrl')
-              ? _json['productUrl'] as core.String
+          productUrl: json_.containsKey('productUrl')
+              ? json_['productUrl'] as core.String
               : null,
-          shareInfo: _json.containsKey('shareInfo')
+          shareInfo: json_.containsKey('shareInfo')
               ? ShareInfo.fromJson(
-                  _json['shareInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['shareInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1141,17 +1141,17 @@ class AlbumPosition {
     this.relativeMediaItemId,
   });
 
-  AlbumPosition.fromJson(core.Map _json)
+  AlbumPosition.fromJson(core.Map json_)
       : this(
-          position: _json.containsKey('position')
-              ? _json['position'] as core.String
+          position: json_.containsKey('position')
+              ? json_['position'] as core.String
               : null,
           relativeEnrichmentItemId:
-              _json.containsKey('relativeEnrichmentItemId')
-                  ? _json['relativeEnrichmentItemId'] as core.String
+              json_.containsKey('relativeEnrichmentItemId')
+                  ? json_['relativeEnrichmentItemId'] as core.String
                   : null,
-          relativeMediaItemId: _json.containsKey('relativeMediaItemId')
-              ? _json['relativeMediaItemId'] as core.String
+          relativeMediaItemId: json_.containsKey('relativeMediaItemId')
+              ? json_['relativeMediaItemId'] as core.String
               : null,
         );
 
@@ -1177,10 +1177,10 @@ class BatchAddMediaItemsToAlbumRequest {
     this.mediaItemIds,
   });
 
-  BatchAddMediaItemsToAlbumRequest.fromJson(core.Map _json)
+  BatchAddMediaItemsToAlbumRequest.fromJson(core.Map json_)
       : this(
-          mediaItemIds: _json.containsKey('mediaItemIds')
-              ? (_json['mediaItemIds'] as core.List)
+          mediaItemIds: json_.containsKey('mediaItemIds')
+              ? (json_['mediaItemIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1227,17 +1227,17 @@ class BatchCreateMediaItemsRequest {
     this.newMediaItems,
   });
 
-  BatchCreateMediaItemsRequest.fromJson(core.Map _json)
+  BatchCreateMediaItemsRequest.fromJson(core.Map json_)
       : this(
-          albumId: _json.containsKey('albumId')
-              ? _json['albumId'] as core.String
+          albumId: json_.containsKey('albumId')
+              ? json_['albumId'] as core.String
               : null,
-          albumPosition: _json.containsKey('albumPosition')
+          albumPosition: json_.containsKey('albumPosition')
               ? AlbumPosition.fromJson(
-                  _json['albumPosition'] as core.Map<core.String, core.dynamic>)
+                  json_['albumPosition'] as core.Map<core.String, core.dynamic>)
               : null,
-          newMediaItems: _json.containsKey('newMediaItems')
-              ? (_json['newMediaItems'] as core.List)
+          newMediaItems: json_.containsKey('newMediaItems')
+              ? (json_['newMediaItems'] as core.List)
                   .map((value) => NewMediaItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1262,10 +1262,10 @@ class BatchCreateMediaItemsResponse {
     this.newMediaItemResults,
   });
 
-  BatchCreateMediaItemsResponse.fromJson(core.Map _json)
+  BatchCreateMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          newMediaItemResults: _json.containsKey('newMediaItemResults')
-              ? (_json['newMediaItemResults'] as core.List)
+          newMediaItemResults: json_.containsKey('newMediaItemResults')
+              ? (json_['newMediaItemResults'] as core.List)
                   .map((value) => NewMediaItemResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1293,10 +1293,10 @@ class BatchGetMediaItemsResponse {
     this.mediaItemResults,
   });
 
-  BatchGetMediaItemsResponse.fromJson(core.Map _json)
+  BatchGetMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          mediaItemResults: _json.containsKey('mediaItemResults')
-              ? (_json['mediaItemResults'] as core.List)
+          mediaItemResults: json_.containsKey('mediaItemResults')
+              ? (json_['mediaItemResults'] as core.List)
                   .map((value) => MediaItemResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1322,10 +1322,10 @@ class BatchRemoveMediaItemsFromAlbumRequest {
     this.mediaItemIds,
   });
 
-  BatchRemoveMediaItemsFromAlbumRequest.fromJson(core.Map _json)
+  BatchRemoveMediaItemsFromAlbumRequest.fromJson(core.Map json_)
       : this(
-          mediaItemIds: _json.containsKey('mediaItemIds')
-              ? (_json['mediaItemIds'] as core.List)
+          mediaItemIds: json_.containsKey('mediaItemIds')
+              ? (json_['mediaItemIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1371,17 +1371,17 @@ class ContentFilter {
     this.includedContentCategories,
   });
 
-  ContentFilter.fromJson(core.Map _json)
+  ContentFilter.fromJson(core.Map json_)
       : this(
           excludedContentCategories:
-              _json.containsKey('excludedContentCategories')
-                  ? (_json['excludedContentCategories'] as core.List)
+              json_.containsKey('excludedContentCategories')
+                  ? (json_['excludedContentCategories'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
           includedContentCategories:
-              _json.containsKey('includedContentCategories')
-                  ? (_json['includedContentCategories'] as core.List)
+              json_.containsKey('includedContentCategories')
+                  ? (json_['includedContentCategories'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
@@ -1411,13 +1411,13 @@ class ContributorInfo {
     this.profilePictureBaseUrl,
   });
 
-  ContributorInfo.fromJson(core.Map _json)
+  ContributorInfo.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          profilePictureBaseUrl: _json.containsKey('profilePictureBaseUrl')
-              ? _json['profilePictureBaseUrl'] as core.String
+          profilePictureBaseUrl: json_.containsKey('profilePictureBaseUrl')
+              ? json_['profilePictureBaseUrl'] as core.String
               : null,
         );
 
@@ -1439,11 +1439,11 @@ class CreateAlbumRequest {
     this.album,
   });
 
-  CreateAlbumRequest.fromJson(core.Map _json)
+  CreateAlbumRequest.fromJson(core.Map json_)
       : this(
-          album: _json.containsKey('album')
+          album: json_.containsKey('album')
               ? Album.fromJson(
-                  _json['album'] as core.Map<core.String, core.dynamic>)
+                  json_['album'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1483,11 +1483,11 @@ class Date {
     this.year,
   });
 
-  Date.fromJson(core.Map _json)
+  Date.fromJson(core.Map json_)
       : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+          day: json_.containsKey('day') ? json_['day'] as core.int : null,
+          month: json_.containsKey('month') ? json_['month'] as core.int : null,
+          year: json_.containsKey('year') ? json_['year'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1516,16 +1516,16 @@ class DateFilter {
     this.ranges,
   });
 
-  DateFilter.fromJson(core.Map _json)
+  DateFilter.fromJson(core.Map json_)
       : this(
-          dates: _json.containsKey('dates')
-              ? (_json['dates'] as core.List)
+          dates: json_.containsKey('dates')
+              ? (json_['dates'] as core.List)
                   .map((value) => Date.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          ranges: _json.containsKey('ranges')
-              ? (_json['ranges'] as core.List)
+          ranges: json_.containsKey('ranges')
+              ? (json_['ranges'] as core.List)
                   .map((value) => DateRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1556,15 +1556,15 @@ class DateRange {
     this.startDate,
   });
 
-  DateRange.fromJson(core.Map _json)
+  DateRange.fromJson(core.Map json_)
       : this(
-          endDate: _json.containsKey('endDate')
+          endDate: json_.containsKey('endDate')
               ? Date.fromJson(
-                  _json['endDate'] as core.Map<core.String, core.dynamic>)
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          startDate: _json.containsKey('startDate')
+          startDate: json_.containsKey('startDate')
               ? Date.fromJson(
-                  _json['startDate'] as core.Map<core.String, core.dynamic>)
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1583,9 +1583,9 @@ class EnrichmentItem {
     this.id,
   });
 
-  EnrichmentItem.fromJson(core.Map _json)
+  EnrichmentItem.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1604,10 +1604,10 @@ class FeatureFilter {
     this.includedFeatures,
   });
 
-  FeatureFilter.fromJson(core.Map _json)
+  FeatureFilter.fromJson(core.Map json_)
       : this(
-          includedFeatures: _json.containsKey('includedFeatures')
-              ? (_json['includedFeatures'] as core.List)
+          includedFeatures: json_.containsKey('includedFeatures')
+              ? (json_['includedFeatures'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1655,29 +1655,29 @@ class Filters {
     this.mediaTypeFilter,
   });
 
-  Filters.fromJson(core.Map _json)
+  Filters.fromJson(core.Map json_)
       : this(
-          contentFilter: _json.containsKey('contentFilter')
+          contentFilter: json_.containsKey('contentFilter')
               ? ContentFilter.fromJson(
-                  _json['contentFilter'] as core.Map<core.String, core.dynamic>)
+                  json_['contentFilter'] as core.Map<core.String, core.dynamic>)
               : null,
-          dateFilter: _json.containsKey('dateFilter')
+          dateFilter: json_.containsKey('dateFilter')
               ? DateFilter.fromJson(
-                  _json['dateFilter'] as core.Map<core.String, core.dynamic>)
+                  json_['dateFilter'] as core.Map<core.String, core.dynamic>)
               : null,
           excludeNonAppCreatedData:
-              _json.containsKey('excludeNonAppCreatedData')
-                  ? _json['excludeNonAppCreatedData'] as core.bool
+              json_.containsKey('excludeNonAppCreatedData')
+                  ? json_['excludeNonAppCreatedData'] as core.bool
                   : null,
-          featureFilter: _json.containsKey('featureFilter')
+          featureFilter: json_.containsKey('featureFilter')
               ? FeatureFilter.fromJson(
-                  _json['featureFilter'] as core.Map<core.String, core.dynamic>)
+                  json_['featureFilter'] as core.Map<core.String, core.dynamic>)
               : null,
-          includeArchivedMedia: _json.containsKey('includeArchivedMedia')
-              ? _json['includeArchivedMedia'] as core.bool
+          includeArchivedMedia: json_.containsKey('includeArchivedMedia')
+              ? json_['includeArchivedMedia'] as core.bool
               : null,
-          mediaTypeFilter: _json.containsKey('mediaTypeFilter')
-              ? MediaTypeFilter.fromJson(_json['mediaTypeFilter']
+          mediaTypeFilter: json_.containsKey('mediaTypeFilter')
+              ? MediaTypeFilter.fromJson(json_['mediaTypeFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1708,10 +1708,10 @@ class JoinSharedAlbumRequest {
     this.shareToken,
   });
 
-  JoinSharedAlbumRequest.fromJson(core.Map _json)
+  JoinSharedAlbumRequest.fromJson(core.Map json_)
       : this(
-          shareToken: _json.containsKey('shareToken')
-              ? _json['shareToken'] as core.String
+          shareToken: json_.containsKey('shareToken')
+              ? json_['shareToken'] as core.String
               : null,
         );
 
@@ -1729,11 +1729,11 @@ class JoinSharedAlbumResponse {
     this.album,
   });
 
-  JoinSharedAlbumResponse.fromJson(core.Map _json)
+  JoinSharedAlbumResponse.fromJson(core.Map json_)
       : this(
-          album: _json.containsKey('album')
+          album: json_.containsKey('album')
               ? Album.fromJson(
-                  _json['album'] as core.Map<core.String, core.dynamic>)
+                  json_['album'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1763,10 +1763,10 @@ class LeaveSharedAlbumRequest {
     this.shareToken,
   });
 
-  LeaveSharedAlbumRequest.fromJson(core.Map _json)
+  LeaveSharedAlbumRequest.fromJson(core.Map json_)
       : this(
-          shareToken: _json.containsKey('shareToken')
-              ? _json['shareToken'] as core.String
+          shareToken: json_.containsKey('shareToken')
+              ? json_['shareToken'] as core.String
               : null,
         );
 
@@ -1797,16 +1797,16 @@ class ListAlbumsResponse {
     this.nextPageToken,
   });
 
-  ListAlbumsResponse.fromJson(core.Map _json)
+  ListAlbumsResponse.fromJson(core.Map json_)
       : this(
-          albums: _json.containsKey('albums')
-              ? (_json['albums'] as core.List)
+          albums: json_.containsKey('albums')
+              ? (json_['albums'] as core.List)
                   .map((value) => Album.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1836,16 +1836,16 @@ class ListMediaItemsResponse {
     this.nextPageToken,
   });
 
-  ListMediaItemsResponse.fromJson(core.Map _json)
+  ListMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          mediaItems: _json.containsKey('mediaItems')
-              ? (_json['mediaItems'] as core.List)
+          mediaItems: json_.containsKey('mediaItems')
+              ? (json_['mediaItems'] as core.List)
                   .map((value) => MediaItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1874,13 +1874,13 @@ class ListSharedAlbumsResponse {
     this.sharedAlbums,
   });
 
-  ListSharedAlbumsResponse.fromJson(core.Map _json)
+  ListSharedAlbumsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          sharedAlbums: _json.containsKey('sharedAlbums')
-              ? (_json['sharedAlbums'] as core.List)
+          sharedAlbums: json_.containsKey('sharedAlbums')
+              ? (json_['sharedAlbums'] as core.List)
                   .map((value) => Album.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1906,14 +1906,14 @@ class Location {
     this.locationName,
   });
 
-  Location.fromJson(core.Map _json)
+  Location.fromJson(core.Map json_)
       : this(
-          latlng: _json.containsKey('latlng')
+          latlng: json_.containsKey('latlng')
               ? LatLng.fromJson(
-                  _json['latlng'] as core.Map<core.String, core.dynamic>)
+                  json_['latlng'] as core.Map<core.String, core.dynamic>)
               : null,
-          locationName: _json.containsKey('locationName')
-              ? _json['locationName'] as core.String
+          locationName: json_.containsKey('locationName')
+              ? json_['locationName'] as core.String
               : null,
         );
 
@@ -1932,11 +1932,11 @@ class LocationEnrichment {
     this.location,
   });
 
-  LocationEnrichment.fromJson(core.Map _json)
+  LocationEnrichment.fromJson(core.Map json_)
       : this(
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? Location.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1958,15 +1958,15 @@ class MapEnrichment {
     this.origin,
   });
 
-  MapEnrichment.fromJson(core.Map _json)
+  MapEnrichment.fromJson(core.Map json_)
       : this(
-          destination: _json.containsKey('destination')
+          destination: json_.containsKey('destination')
               ? Location.fromJson(
-                  _json['destination'] as core.Map<core.String, core.dynamic>)
+                  json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
-          origin: _json.containsKey('origin')
+          origin: json_.containsKey('origin')
               ? Location.fromJson(
-                  _json['origin'] as core.Map<core.String, core.dynamic>)
+                  json_['origin'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2043,31 +2043,31 @@ class MediaItem {
     this.productUrl,
   });
 
-  MediaItem.fromJson(core.Map _json)
+  MediaItem.fromJson(core.Map json_)
       : this(
-          baseUrl: _json.containsKey('baseUrl')
-              ? _json['baseUrl'] as core.String
+          baseUrl: json_.containsKey('baseUrl')
+              ? json_['baseUrl'] as core.String
               : null,
-          contributorInfo: _json.containsKey('contributorInfo')
-              ? ContributorInfo.fromJson(_json['contributorInfo']
+          contributorInfo: json_.containsKey('contributorInfo')
+              ? ContributorInfo.fromJson(json_['contributorInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          filename: _json.containsKey('filename')
-              ? _json['filename'] as core.String
+          filename: json_.containsKey('filename')
+              ? json_['filename'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          mediaMetadata: _json.containsKey('mediaMetadata')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          mediaMetadata: json_.containsKey('mediaMetadata')
               ? MediaMetadata.fromJson(
-                  _json['mediaMetadata'] as core.Map<core.String, core.dynamic>)
+                  json_['mediaMetadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
-          productUrl: _json.containsKey('productUrl')
-              ? _json['productUrl'] as core.String
+          productUrl: json_.containsKey('productUrl')
+              ? json_['productUrl'] as core.String
               : null,
         );
 
@@ -2102,15 +2102,15 @@ class MediaItemResult {
     this.status,
   });
 
-  MediaItemResult.fromJson(core.Map _json)
+  MediaItemResult.fromJson(core.Map json_)
       : this(
-          mediaItem: _json.containsKey('mediaItem')
+          mediaItem: json_.containsKey('mediaItem')
               ? MediaItem.fromJson(
-                  _json['mediaItem'] as core.Map<core.String, core.dynamic>)
+                  json_['mediaItem'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: _json.containsKey('status')
+          status: json_.containsKey('status')
               ? Status.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2146,24 +2146,24 @@ class MediaMetadata {
     this.width,
   });
 
-  MediaMetadata.fromJson(core.Map _json)
+  MediaMetadata.fromJson(core.Map json_)
       : this(
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          height: _json.containsKey('height')
-              ? _json['height'] as core.String
+          height: json_.containsKey('height')
+              ? json_['height'] as core.String
               : null,
-          photo: _json.containsKey('photo')
+          photo: json_.containsKey('photo')
               ? Photo.fromJson(
-                  _json['photo'] as core.Map<core.String, core.dynamic>)
+                  json_['photo'] as core.Map<core.String, core.dynamic>)
               : null,
-          video: _json.containsKey('video')
+          video: json_.containsKey('video')
               ? Video.fromJson(
-                  _json['video'] as core.Map<core.String, core.dynamic>)
+                  json_['video'] as core.Map<core.String, core.dynamic>)
               : null,
           width:
-              _json.containsKey('width') ? _json['width'] as core.String : null,
+              json_.containsKey('width') ? json_['width'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2190,10 +2190,10 @@ class MediaTypeFilter {
     this.mediaTypes,
   });
 
-  MediaTypeFilter.fromJson(core.Map _json)
+  MediaTypeFilter.fromJson(core.Map json_)
       : this(
-          mediaTypes: _json.containsKey('mediaTypes')
-              ? (_json['mediaTypes'] as core.List)
+          mediaTypes: json_.containsKey('mediaTypes')
+              ? (json_['mediaTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2222,18 +2222,18 @@ class NewEnrichmentItem {
     this.textEnrichment,
   });
 
-  NewEnrichmentItem.fromJson(core.Map _json)
+  NewEnrichmentItem.fromJson(core.Map json_)
       : this(
-          locationEnrichment: _json.containsKey('locationEnrichment')
-              ? LocationEnrichment.fromJson(_json['locationEnrichment']
+          locationEnrichment: json_.containsKey('locationEnrichment')
+              ? LocationEnrichment.fromJson(json_['locationEnrichment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mapEnrichment: _json.containsKey('mapEnrichment')
+          mapEnrichment: json_.containsKey('mapEnrichment')
               ? MapEnrichment.fromJson(
-                  _json['mapEnrichment'] as core.Map<core.String, core.dynamic>)
+                  json_['mapEnrichment'] as core.Map<core.String, core.dynamic>)
               : null,
-          textEnrichment: _json.containsKey('textEnrichment')
-              ? TextEnrichment.fromJson(_json['textEnrichment']
+          textEnrichment: json_.containsKey('textEnrichment')
+              ? TextEnrichment.fromJson(json_['textEnrichment']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2265,13 +2265,13 @@ class NewMediaItem {
     this.simpleMediaItem,
   });
 
-  NewMediaItem.fromJson(core.Map _json)
+  NewMediaItem.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          simpleMediaItem: _json.containsKey('simpleMediaItem')
-              ? SimpleMediaItem.fromJson(_json['simpleMediaItem']
+          simpleMediaItem: json_.containsKey('simpleMediaItem')
+              ? SimpleMediaItem.fromJson(json_['simpleMediaItem']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2305,18 +2305,18 @@ class NewMediaItemResult {
     this.uploadToken,
   });
 
-  NewMediaItemResult.fromJson(core.Map _json)
+  NewMediaItemResult.fromJson(core.Map json_)
       : this(
-          mediaItem: _json.containsKey('mediaItem')
+          mediaItem: json_.containsKey('mediaItem')
               ? MediaItem.fromJson(
-                  _json['mediaItem'] as core.Map<core.String, core.dynamic>)
+                  json_['mediaItem'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: _json.containsKey('status')
+          status: json_.containsKey('status')
               ? Status.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          uploadToken: _json.containsKey('uploadToken')
-              ? _json['uploadToken'] as core.String
+          uploadToken: json_.containsKey('uploadToken')
+              ? json_['uploadToken'] as core.String
               : null,
         );
 
@@ -2359,25 +2359,25 @@ class Photo {
     this.isoEquivalent,
   });
 
-  Photo.fromJson(core.Map _json)
+  Photo.fromJson(core.Map json_)
       : this(
-          apertureFNumber: _json.containsKey('apertureFNumber')
-              ? (_json['apertureFNumber'] as core.num).toDouble()
+          apertureFNumber: json_.containsKey('apertureFNumber')
+              ? (json_['apertureFNumber'] as core.num).toDouble()
               : null,
-          cameraMake: _json.containsKey('cameraMake')
-              ? _json['cameraMake'] as core.String
+          cameraMake: json_.containsKey('cameraMake')
+              ? json_['cameraMake'] as core.String
               : null,
-          cameraModel: _json.containsKey('cameraModel')
-              ? _json['cameraModel'] as core.String
+          cameraModel: json_.containsKey('cameraModel')
+              ? json_['cameraModel'] as core.String
               : null,
-          exposureTime: _json.containsKey('exposureTime')
-              ? _json['exposureTime'] as core.String
+          exposureTime: json_.containsKey('exposureTime')
+              ? json_['exposureTime'] as core.String
               : null,
-          focalLength: _json.containsKey('focalLength')
-              ? (_json['focalLength'] as core.num).toDouble()
+          focalLength: json_.containsKey('focalLength')
+              ? (json_['focalLength'] as core.num).toDouble()
               : null,
-          isoEquivalent: _json.containsKey('isoEquivalent')
-              ? _json['isoEquivalent'] as core.int
+          isoEquivalent: json_.containsKey('isoEquivalent')
+              ? json_['isoEquivalent'] as core.int
               : null,
         );
 
@@ -2444,23 +2444,23 @@ class SearchMediaItemsRequest {
     this.pageToken,
   });
 
-  SearchMediaItemsRequest.fromJson(core.Map _json)
+  SearchMediaItemsRequest.fromJson(core.Map json_)
       : this(
-          albumId: _json.containsKey('albumId')
-              ? _json['albumId'] as core.String
+          albumId: json_.containsKey('albumId')
+              ? json_['albumId'] as core.String
               : null,
-          filters: _json.containsKey('filters')
+          filters: json_.containsKey('filters')
               ? Filters.fromJson(
-                  _json['filters'] as core.Map<core.String, core.dynamic>)
+                  json_['filters'] as core.Map<core.String, core.dynamic>)
               : null,
-          orderBy: _json.containsKey('orderBy')
-              ? _json['orderBy'] as core.String
+          orderBy: json_.containsKey('orderBy')
+              ? json_['orderBy'] as core.String
               : null,
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
         );
 
@@ -2493,16 +2493,16 @@ class SearchMediaItemsResponse {
     this.nextPageToken,
   });
 
-  SearchMediaItemsResponse.fromJson(core.Map _json)
+  SearchMediaItemsResponse.fromJson(core.Map json_)
       : this(
-          mediaItems: _json.containsKey('mediaItems')
-              ? (_json['mediaItems'] as core.List)
+          mediaItems: json_.containsKey('mediaItems')
+              ? (json_['mediaItems'] as core.List)
                   .map((value) => MediaItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2521,10 +2521,10 @@ class ShareAlbumRequest {
     this.sharedAlbumOptions,
   });
 
-  ShareAlbumRequest.fromJson(core.Map _json)
+  ShareAlbumRequest.fromJson(core.Map json_)
       : this(
-          sharedAlbumOptions: _json.containsKey('sharedAlbumOptions')
-              ? SharedAlbumOptions.fromJson(_json['sharedAlbumOptions']
+          sharedAlbumOptions: json_.containsKey('sharedAlbumOptions')
+              ? SharedAlbumOptions.fromJson(json_['sharedAlbumOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2546,11 +2546,11 @@ class ShareAlbumResponse {
     this.shareInfo,
   });
 
-  ShareAlbumResponse.fromJson(core.Map _json)
+  ShareAlbumResponse.fromJson(core.Map json_)
       : this(
-          shareInfo: _json.containsKey('shareInfo')
+          shareInfo: json_.containsKey('shareInfo')
               ? ShareInfo.fromJson(
-                  _json['shareInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['shareInfo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2606,25 +2606,25 @@ class ShareInfo {
     this.sharedAlbumOptions,
   });
 
-  ShareInfo.fromJson(core.Map _json)
+  ShareInfo.fromJson(core.Map json_)
       : this(
-          isJoinable: _json.containsKey('isJoinable')
-              ? _json['isJoinable'] as core.bool
+          isJoinable: json_.containsKey('isJoinable')
+              ? json_['isJoinable'] as core.bool
               : null,
-          isJoined: _json.containsKey('isJoined')
-              ? _json['isJoined'] as core.bool
+          isJoined: json_.containsKey('isJoined')
+              ? json_['isJoined'] as core.bool
               : null,
-          isOwned: _json.containsKey('isOwned')
-              ? _json['isOwned'] as core.bool
+          isOwned: json_.containsKey('isOwned')
+              ? json_['isOwned'] as core.bool
               : null,
-          shareToken: _json.containsKey('shareToken')
-              ? _json['shareToken'] as core.String
+          shareToken: json_.containsKey('shareToken')
+              ? json_['shareToken'] as core.String
               : null,
-          shareableUrl: _json.containsKey('shareableUrl')
-              ? _json['shareableUrl'] as core.String
+          shareableUrl: json_.containsKey('shareableUrl')
+              ? json_['shareableUrl'] as core.String
               : null,
-          sharedAlbumOptions: _json.containsKey('sharedAlbumOptions')
-              ? SharedAlbumOptions.fromJson(_json['sharedAlbumOptions']
+          sharedAlbumOptions: json_.containsKey('sharedAlbumOptions')
+              ? SharedAlbumOptions.fromJson(json_['sharedAlbumOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2659,13 +2659,13 @@ class SharedAlbumOptions {
     this.isCommentable,
   });
 
-  SharedAlbumOptions.fromJson(core.Map _json)
+  SharedAlbumOptions.fromJson(core.Map json_)
       : this(
-          isCollaborative: _json.containsKey('isCollaborative')
-              ? _json['isCollaborative'] as core.bool
+          isCollaborative: json_.containsKey('isCollaborative')
+              ? json_['isCollaborative'] as core.bool
               : null,
-          isCommentable: _json.containsKey('isCommentable')
-              ? _json['isCommentable'] as core.bool
+          isCommentable: json_.containsKey('isCommentable')
+              ? json_['isCommentable'] as core.bool
               : null,
         );
 
@@ -2693,13 +2693,13 @@ class SimpleMediaItem {
     this.uploadToken,
   });
 
-  SimpleMediaItem.fromJson(core.Map _json)
+  SimpleMediaItem.fromJson(core.Map json_)
       : this(
-          fileName: _json.containsKey('fileName')
-              ? _json['fileName'] as core.String
+          fileName: json_.containsKey('fileName')
+              ? json_['fileName'] as core.String
               : null,
-          uploadToken: _json.containsKey('uploadToken')
-              ? _json['uploadToken'] as core.String
+          uploadToken: json_.containsKey('uploadToken')
+              ? json_['uploadToken'] as core.String
               : null,
         );
 
@@ -2727,9 +2727,9 @@ class TextEnrichment {
     this.text,
   });
 
-  TextEnrichment.fromJson(core.Map _json)
+  TextEnrichment.fromJson(core.Map json_)
       : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2774,19 +2774,19 @@ class Video {
     this.status,
   });
 
-  Video.fromJson(core.Map _json)
+  Video.fromJson(core.Map json_)
       : this(
-          cameraMake: _json.containsKey('cameraMake')
-              ? _json['cameraMake'] as core.String
+          cameraMake: json_.containsKey('cameraMake')
+              ? json_['cameraMake'] as core.String
               : null,
-          cameraModel: _json.containsKey('cameraModel')
-              ? _json['cameraModel'] as core.String
+          cameraModel: json_.containsKey('cameraModel')
+              ? json_['cameraModel'] as core.String
               : null,
-          fps: _json.containsKey('fps')
-              ? (_json['fps'] as core.num).toDouble()
+          fps: json_.containsKey('fps')
+              ? (json_['fps'] as core.num).toDouble()
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 

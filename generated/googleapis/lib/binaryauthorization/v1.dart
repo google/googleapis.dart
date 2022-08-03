@@ -101,18 +101,18 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates or updates a project's policy, and returns a copy of the new
@@ -146,20 +146,20 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -198,21 +198,21 @@ class ProjectsAttestorsResource {
     core.String? attestorId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (attestorId != null) 'attestorId': [attestorId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/attestors';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attestors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Attestor.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Attestor.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an attestor.
@@ -239,18 +239,18 @@ class ProjectsAttestorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an attestor.
@@ -277,18 +277,18 @@ class ProjectsAttestorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Attestor.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Attestor.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -331,20 +331,20 @@ class ProjectsAttestorsResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return IamPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists attestors.
@@ -381,21 +381,21 @@ class ProjectsAttestorsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/attestors';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attestors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAttestorsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -428,20 +428,20 @@ class ProjectsAttestorsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return IamPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -476,22 +476,22 @@ class ProjectsAttestorsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an attestor.
@@ -521,20 +521,20 @@ class ProjectsAttestorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Attestor.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Attestor.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns whether the given Attestation for the given image URI was signed
@@ -564,23 +564,23 @@ class ProjectsAttestorsResource {
     core.String attestor, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$attestor') +
         ':validateAttestationOccurrence';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ValidateAttestationOccurrenceResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -629,20 +629,20 @@ class ProjectsPolicyResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return IamPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -675,20 +675,20 @@ class ProjectsPolicyResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return IamPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -723,22 +723,22 @@ class ProjectsPolicyResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -769,18 +769,18 @@ class SystempolicyResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -833,16 +833,16 @@ class AdmissionRule {
     this.requireAttestationsBy,
   });
 
-  AdmissionRule.fromJson(core.Map _json)
+  AdmissionRule.fromJson(core.Map json_)
       : this(
-          enforcementMode: _json.containsKey('enforcementMode')
-              ? _json['enforcementMode'] as core.String
+          enforcementMode: json_.containsKey('enforcementMode')
+              ? json_['enforcementMode'] as core.String
               : null,
-          evaluationMode: _json.containsKey('evaluationMode')
-              ? _json['evaluationMode'] as core.String
+          evaluationMode: json_.containsKey('evaluationMode')
+              ? json_['evaluationMode'] as core.String
               : null,
-          requireAttestationsBy: _json.containsKey('requireAttestationsBy')
-              ? (_json['requireAttestationsBy'] as core.List)
+          requireAttestationsBy: json_.containsKey('requireAttestationsBy')
+              ? (json_['requireAttestationsBy'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -870,10 +870,10 @@ class AdmissionWhitelistPattern {
     this.namePattern,
   });
 
-  AdmissionWhitelistPattern.fromJson(core.Map _json)
+  AdmissionWhitelistPattern.fromJson(core.Map json_)
       : this(
-          namePattern: _json.containsKey('namePattern')
-              ? _json['namePattern'] as core.String
+          namePattern: json_.containsKey('namePattern')
+              ? json_['namePattern'] as core.String
               : null,
         );
 
@@ -910,9 +910,9 @@ class AttestationOccurrence {
   core.List<core.int> get serializedPayloadAsBytes =>
       convert.base64.decode(serializedPayload!);
 
-  set serializedPayloadAsBytes(core.List<core.int> _bytes) {
+  set serializedPayloadAsBytes(core.List<core.int> bytes_) {
     serializedPayload =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// One or more signatures over `serialized_payload`.
@@ -928,19 +928,19 @@ class AttestationOccurrence {
     this.signatures,
   });
 
-  AttestationOccurrence.fromJson(core.Map _json)
+  AttestationOccurrence.fromJson(core.Map json_)
       : this(
-          jwts: _json.containsKey('jwts')
-              ? (_json['jwts'] as core.List)
+          jwts: json_.containsKey('jwts')
+              ? (json_['jwts'] as core.List)
                   .map((value) => Jwt.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          serializedPayload: _json.containsKey('serializedPayload')
-              ? _json['serializedPayload'] as core.String
+          serializedPayload: json_.containsKey('serializedPayload')
+              ? json_['serializedPayload'] as core.String
               : null,
-          signatures: _json.containsKey('signatures')
-              ? (_json['signatures'] as core.List)
+          signatures: json_.containsKey('signatures')
+              ? (json_['signatures'] as core.List)
                   .map((value) => Signature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -998,18 +998,18 @@ class Attestor {
     this.userOwnedGrafeasNote,
   });
 
-  Attestor.fromJson(core.Map _json)
+  Attestor.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          userOwnedGrafeasNote: _json.containsKey('userOwnedGrafeasNote')
-              ? UserOwnedGrafeasNote.fromJson(_json['userOwnedGrafeasNote']
+          userOwnedGrafeasNote: json_.containsKey('userOwnedGrafeasNote')
+              ? UserOwnedGrafeasNote.fromJson(json_['userOwnedGrafeasNote']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1069,19 +1069,19 @@ class AttestorPublicKey {
     this.pkixPublicKey,
   });
 
-  AttestorPublicKey.fromJson(core.Map _json)
+  AttestorPublicKey.fromJson(core.Map json_)
       : this(
           asciiArmoredPgpPublicKey:
-              _json.containsKey('asciiArmoredPgpPublicKey')
-                  ? _json['asciiArmoredPgpPublicKey'] as core.String
+              json_.containsKey('asciiArmoredPgpPublicKey')
+                  ? json_['asciiArmoredPgpPublicKey'] as core.String
                   : null,
-          comment: _json.containsKey('comment')
-              ? _json['comment'] as core.String
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          pkixPublicKey: _json.containsKey('pkixPublicKey')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          pkixPublicKey: json_.containsKey('pkixPublicKey')
               ? PkixPublicKey.fromJson(
-                  _json['pkixPublicKey'] as core.Map<core.String, core.dynamic>)
+                  json_['pkixPublicKey'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1150,18 +1150,18 @@ class Binding {
     this.role,
   });
 
-  Binding.fromJson(core.Map _json)
+  Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1258,9 +1258,9 @@ class IamPolicy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -1288,17 +1288,17 @@ class IamPolicy {
     this.version,
   });
 
-  IamPolicy.fromJson(core.Map _json)
+  IamPolicy.fromJson(core.Map json_)
       : this(
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -1328,16 +1328,16 @@ class ListAttestorsResponse {
     this.nextPageToken,
   });
 
-  ListAttestorsResponse.fromJson(core.Map _json)
+  ListAttestorsResponse.fromJson(core.Map json_)
       : this(
-          attestors: _json.containsKey('attestors')
-              ? (_json['attestors'] as core.List)
+          attestors: json_.containsKey('attestors')
+              ? (json_['attestors'] as core.List)
                   .map((value) => Attestor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1404,13 +1404,13 @@ class PkixPublicKey {
     this.signatureAlgorithm,
   });
 
-  PkixPublicKey.fromJson(core.Map _json)
+  PkixPublicKey.fromJson(core.Map json_)
       : this(
-          publicKeyPem: _json.containsKey('publicKeyPem')
-              ? _json['publicKeyPem'] as core.String
+          publicKeyPem: json_.containsKey('publicKeyPem')
+              ? json_['publicKeyPem'] as core.String
               : null,
-          signatureAlgorithm: _json.containsKey('signatureAlgorithm')
-              ? _json['signatureAlgorithm'] as core.String
+          signatureAlgorithm: json_.containsKey('signatureAlgorithm')
+              ? json_['signatureAlgorithm'] as core.String
               : null,
         );
 
@@ -1526,17 +1526,17 @@ class Policy {
     this.updateTime,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
           admissionWhitelistPatterns:
-              _json.containsKey('admissionWhitelistPatterns')
-                  ? (_json['admissionWhitelistPatterns'] as core.List)
+              json_.containsKey('admissionWhitelistPatterns')
+                  ? (json_['admissionWhitelistPatterns'] as core.List)
                       .map((value) => AdmissionWhitelistPattern.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          clusterAdmissionRules: _json.containsKey('clusterAdmissionRules')
-              ? (_json['clusterAdmissionRules']
+          clusterAdmissionRules: json_.containsKey('clusterAdmissionRules')
+              ? (json_['clusterAdmissionRules']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -1546,21 +1546,21 @@ class Policy {
                   ),
                 )
               : null,
-          defaultAdmissionRule: _json.containsKey('defaultAdmissionRule')
-              ? AdmissionRule.fromJson(_json['defaultAdmissionRule']
+          defaultAdmissionRule: json_.containsKey('defaultAdmissionRule')
+              ? AdmissionRule.fromJson(json_['defaultAdmissionRule']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           globalPolicyEvaluationMode:
-              _json.containsKey('globalPolicyEvaluationMode')
-                  ? _json['globalPolicyEvaluationMode'] as core.String
+              json_.containsKey('globalPolicyEvaluationMode')
+                  ? json_['globalPolicyEvaluationMode'] as core.String
                   : null,
           istioServiceIdentityAdmissionRules:
-              _json.containsKey('istioServiceIdentityAdmissionRules')
-                  ? (_json['istioServiceIdentityAdmissionRules']
+              json_.containsKey('istioServiceIdentityAdmissionRules')
+                  ? (json_['istioServiceIdentityAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
                       (key, item) => core.MapEntry(
@@ -1571,8 +1571,8 @@ class Policy {
                     )
                   : null,
           kubernetesNamespaceAdmissionRules:
-              _json.containsKey('kubernetesNamespaceAdmissionRules')
-                  ? (_json['kubernetesNamespaceAdmissionRules']
+              json_.containsKey('kubernetesNamespaceAdmissionRules')
+                  ? (json_['kubernetesNamespaceAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
                       (key, item) => core.MapEntry(
@@ -1583,8 +1583,8 @@ class Policy {
                     )
                   : null,
           kubernetesServiceAccountAdmissionRules:
-              _json.containsKey('kubernetesServiceAccountAdmissionRules')
-                  ? (_json['kubernetesServiceAccountAdmissionRules']
+              json_.containsKey('kubernetesServiceAccountAdmissionRules')
+                  ? (json_['kubernetesServiceAccountAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
                       (key, item) => core.MapEntry(
@@ -1594,9 +1594,9 @@ class Policy {
                       ),
                     )
                   : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1638,11 +1638,11 @@ class SetIamPolicyRequest {
     this.policy,
   });
 
-  SetIamPolicyRequest.fromJson(core.Map _json)
+  SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? IamPolicy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1720,17 +1720,17 @@ class UserOwnedGrafeasNote {
     this.publicKeys,
   });
 
-  UserOwnedGrafeasNote.fromJson(core.Map _json)
+  UserOwnedGrafeasNote.fromJson(core.Map json_)
       : this(
           delegationServiceAccountEmail:
-              _json.containsKey('delegationServiceAccountEmail')
-                  ? _json['delegationServiceAccountEmail'] as core.String
+              json_.containsKey('delegationServiceAccountEmail')
+                  ? json_['delegationServiceAccountEmail'] as core.String
                   : null,
-          noteReference: _json.containsKey('noteReference')
-              ? _json['noteReference'] as core.String
+          noteReference: json_.containsKey('noteReference')
+              ? json_['noteReference'] as core.String
               : null,
-          publicKeys: _json.containsKey('publicKeys')
-              ? (_json['publicKeys'] as core.List)
+          publicKeys: json_.containsKey('publicKeys')
+              ? (json_['publicKeys'] as core.List)
                   .map((value) => AttestorPublicKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1774,17 +1774,17 @@ class ValidateAttestationOccurrenceRequest {
     this.occurrenceResourceUri,
   });
 
-  ValidateAttestationOccurrenceRequest.fromJson(core.Map _json)
+  ValidateAttestationOccurrenceRequest.fromJson(core.Map json_)
       : this(
-          attestation: _json.containsKey('attestation')
+          attestation: json_.containsKey('attestation')
               ? AttestationOccurrence.fromJson(
-                  _json['attestation'] as core.Map<core.String, core.dynamic>)
+                  json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
-          occurrenceNote: _json.containsKey('occurrenceNote')
-              ? _json['occurrenceNote'] as core.String
+          occurrenceNote: json_.containsKey('occurrenceNote')
+              ? json_['occurrenceNote'] as core.String
               : null,
-          occurrenceResourceUri: _json.containsKey('occurrenceResourceUri')
-              ? _json['occurrenceResourceUri'] as core.String
+          occurrenceResourceUri: json_.containsKey('occurrenceResourceUri')
+              ? json_['occurrenceResourceUri'] as core.String
               : null,
         );
 
@@ -1814,13 +1814,13 @@ class ValidateAttestationOccurrenceResponse {
     this.result,
   });
 
-  ValidateAttestationOccurrenceResponse.fromJson(core.Map _json)
+  ValidateAttestationOccurrenceResponse.fromJson(core.Map json_)
       : this(
-          denialReason: _json.containsKey('denialReason')
-              ? _json['denialReason'] as core.String
+          denialReason: json_.containsKey('denialReason')
+              ? json_['denialReason'] as core.String
               : null,
-          result: _json.containsKey('result')
-              ? _json['result'] as core.String
+          result: json_.containsKey('result')
+              ? json_['result'] as core.String
               : null,
         );
 

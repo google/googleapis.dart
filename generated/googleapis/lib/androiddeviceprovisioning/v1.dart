@@ -100,21 +100,21 @@ class CustomersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/customers';
+    const url_ = 'v1/customers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomerListCustomersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -152,21 +152,21 @@ class CustomersConfigurationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/configurations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/configurations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Configuration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an unused configuration.
@@ -195,18 +195,18 @@ class CustomersConfigurationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a configuration.
@@ -231,19 +231,19 @@ class CustomersConfigurationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Configuration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a customer's configurations.
@@ -268,19 +268,19 @@ class CustomersConfigurationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/configurations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/configurations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomerListConfigurationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a configuration's field values.
@@ -316,22 +316,22 @@ class CustomersConfigurationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Configuration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -369,21 +369,21 @@ class CustomersDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/devices:applyConfiguration';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a device.
@@ -408,18 +408,18 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a customer's devices.
@@ -451,21 +451,21 @@ class CustomersDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': [pageSize],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomerListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a configuration from device.
@@ -493,21 +493,21 @@ class CustomersDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/devices:removeConfiguration';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
@@ -539,20 +539,20 @@ class CustomersDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices:unclaim';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/devices:unclaim';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -584,19 +584,19 @@ class CustomersDpcsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dpcs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dpcs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomerListDpcsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -629,18 +629,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -690,20 +690,20 @@ class PartnersCustomersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Company.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Company.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the customers that are enrolled to the reseller identified by the
@@ -739,22 +739,22 @@ class PartnersCustomersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/customers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCustomersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -790,22 +790,22 @@ class PartnersDevicesResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/devices:claim';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ClaimDeviceResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Claims a batch of devices for a customer asynchronously.
@@ -836,22 +836,22 @@ class PartnersDevicesResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
+    final url_ = 'v1/partners/' +
         core.Uri.encodeFull('$partnerId') +
         '/devices:claimAsync';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds devices by hardware identifiers, such as IMEI.
@@ -878,23 +878,23 @@ class PartnersDevicesResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
+    final url_ = 'v1/partners/' +
         core.Uri.encodeFull('$partnerId') +
         '/devices:findByIdentifier';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return FindDevicesByDeviceIdentifierResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds devices claimed for customers.
@@ -925,23 +925,23 @@ class PartnersDevicesResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
+    final url_ = 'v1/partners/' +
         core.Uri.encodeFull('$partnerId') +
         '/devices:findByOwner';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return FindDevicesByOwnerResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a device.
@@ -966,18 +966,18 @@ class PartnersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates reseller metadata associated with the device.
@@ -1009,25 +1009,25 @@ class PartnersDevicesResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
+    final url_ = 'v1/partners/' +
         core.Uri.encodeFull('$metadataOwnerId') +
         '/devices/' +
         core.Uri.encodeFull('$deviceId') +
         '/metadata';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DeviceMetadata.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
@@ -1055,21 +1055,21 @@ class PartnersDevicesResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/partners/' + core.Uri.encodeFull('$partnerId') + '/devices:unclaim';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Unclaims a batch of devices for a customer asynchronously.
@@ -1100,22 +1100,22 @@ class PartnersDevicesResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
+    final url_ = 'v1/partners/' +
         core.Uri.encodeFull('$partnerId') +
         '/devices:unclaimAsync';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the reseller metadata attached to a batch of devices.
@@ -1146,22 +1146,22 @@ class PartnersDevicesResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/partners/' +
+    final url_ = 'v1/partners/' +
         core.Uri.encodeFull('$partnerId') +
         '/devices:updateMetadataAsync';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1202,21 +1202,21 @@ class PartnersVendorsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/vendors';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vendors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVendorsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1255,21 +1255,21 @@ class PartnersVendorsCustomersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVendorCustomersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1306,21 +1306,21 @@ class ClaimDeviceRequest {
     this.sectionType,
   });
 
-  ClaimDeviceRequest.fromJson(core.Map _json)
+  ClaimDeviceRequest.fromJson(core.Map json_)
       : this(
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deviceMetadata: _json.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(_json['deviceMetadata']
+          deviceMetadata: json_.containsKey('deviceMetadata')
+              ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sectionType: _json.containsKey('sectionType')
-              ? _json['sectionType'] as core.String
+          sectionType: json_.containsKey('sectionType')
+              ? json_['sectionType'] as core.String
               : null,
         );
 
@@ -1346,13 +1346,13 @@ class ClaimDeviceResponse {
     this.deviceName,
   });
 
-  ClaimDeviceResponse.fromJson(core.Map _json)
+  ClaimDeviceResponse.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          deviceName: _json.containsKey('deviceName')
-              ? _json['deviceName'] as core.String
+          deviceName: json_.containsKey('deviceName')
+              ? json_['deviceName'] as core.String
               : null,
         );
 
@@ -1376,10 +1376,10 @@ class ClaimDevicesRequest {
     this.claims,
   });
 
-  ClaimDevicesRequest.fromJson(core.Map _json)
+  ClaimDevicesRequest.fromJson(core.Map json_)
       : this(
-          claims: _json.containsKey('claims')
-              ? (_json['claims'] as core.List)
+          claims: json_.containsKey('claims')
+              ? (json_['claims'] as core.List)
                   .map((value) => PartnerClaim.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1488,33 +1488,33 @@ class Company {
     this.termsStatus,
   });
 
-  Company.fromJson(core.Map _json)
+  Company.fromJson(core.Map json_)
       : this(
-          adminEmails: _json.containsKey('adminEmails')
-              ? (_json['adminEmails'] as core.List)
+          adminEmails: json_.containsKey('adminEmails')
+              ? (json_['adminEmails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          companyId: _json.containsKey('companyId')
-              ? _json['companyId'] as core.String
+          companyId: json_.containsKey('companyId')
+              ? json_['companyId'] as core.String
               : null,
-          companyName: _json.containsKey('companyName')
-              ? _json['companyName'] as core.String
+          companyName: json_.containsKey('companyName')
+              ? json_['companyName'] as core.String
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          ownerEmails: _json.containsKey('ownerEmails')
-              ? (_json['ownerEmails'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ownerEmails: json_.containsKey('ownerEmails')
+              ? (json_['ownerEmails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          skipWelcomeEmail: _json.containsKey('skipWelcomeEmail')
-              ? _json['skipWelcomeEmail'] as core.bool
+          skipWelcomeEmail: json_.containsKey('skipWelcomeEmail')
+              ? json_['skipWelcomeEmail'] as core.bool
               : null,
-          termsStatus: _json.containsKey('termsStatus')
-              ? _json['termsStatus'] as core.String
+          termsStatus: json_.containsKey('termsStatus')
+              ? json_['termsStatus'] as core.String
               : null,
         );
 
@@ -1628,36 +1628,36 @@ class Configuration {
     this.name,
   });
 
-  Configuration.fromJson(core.Map _json)
+  Configuration.fromJson(core.Map json_)
       : this(
-          companyName: _json.containsKey('companyName')
-              ? _json['companyName'] as core.String
+          companyName: json_.containsKey('companyName')
+              ? json_['companyName'] as core.String
               : null,
-          configurationId: _json.containsKey('configurationId')
-              ? _json['configurationId'] as core.String
+          configurationId: json_.containsKey('configurationId')
+              ? json_['configurationId'] as core.String
               : null,
-          configurationName: _json.containsKey('configurationName')
-              ? _json['configurationName'] as core.String
+          configurationName: json_.containsKey('configurationName')
+              ? json_['configurationName'] as core.String
               : null,
-          contactEmail: _json.containsKey('contactEmail')
-              ? _json['contactEmail'] as core.String
+          contactEmail: json_.containsKey('contactEmail')
+              ? json_['contactEmail'] as core.String
               : null,
-          contactPhone: _json.containsKey('contactPhone')
-              ? _json['contactPhone'] as core.String
+          contactPhone: json_.containsKey('contactPhone')
+              ? json_['contactPhone'] as core.String
               : null,
-          customMessage: _json.containsKey('customMessage')
-              ? _json['customMessage'] as core.String
+          customMessage: json_.containsKey('customMessage')
+              ? json_['customMessage'] as core.String
               : null,
-          dpcExtras: _json.containsKey('dpcExtras')
-              ? _json['dpcExtras'] as core.String
+          dpcExtras: json_.containsKey('dpcExtras')
+              ? json_['dpcExtras'] as core.String
               : null,
-          dpcResourcePath: _json.containsKey('dpcResourcePath')
-              ? _json['dpcResourcePath'] as core.String
+          dpcResourcePath: json_.containsKey('dpcResourcePath')
+              ? json_['dpcResourcePath'] as core.String
               : null,
-          isDefault: _json.containsKey('isDefault')
-              ? _json['isDefault'] as core.bool
+          isDefault: json_.containsKey('isDefault')
+              ? json_['isDefault'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1689,11 +1689,11 @@ class CreateCustomerRequest {
     this.customer,
   });
 
-  CreateCustomerRequest.fromJson(core.Map _json)
+  CreateCustomerRequest.fromJson(core.Map json_)
       : this(
-          customer: _json.containsKey('customer')
+          customer: json_.containsKey('customer')
               ? Company.fromJson(
-                  _json['customer'] as core.Map<core.String, core.dynamic>)
+                  json_['customer'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1722,14 +1722,14 @@ class CustomerApplyConfigurationRequest {
     this.device,
   });
 
-  CustomerApplyConfigurationRequest.fromJson(core.Map _json)
+  CustomerApplyConfigurationRequest.fromJson(core.Map json_)
       : this(
-          configuration: _json.containsKey('configuration')
-              ? _json['configuration'] as core.String
+          configuration: json_.containsKey('configuration')
+              ? json_['configuration'] as core.String
               : null,
-          device: _json.containsKey('device')
+          device: json_.containsKey('device')
               ? DeviceReference.fromJson(
-                  _json['device'] as core.Map<core.String, core.dynamic>)
+                  json_['device'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1748,10 +1748,10 @@ class CustomerListConfigurationsResponse {
     this.configurations,
   });
 
-  CustomerListConfigurationsResponse.fromJson(core.Map _json)
+  CustomerListConfigurationsResponse.fromJson(core.Map json_)
       : this(
-          configurations: _json.containsKey('configurations')
-              ? (_json['configurations'] as core.List)
+          configurations: json_.containsKey('configurations')
+              ? (json_['configurations'] as core.List)
                   .map((value) => Configuration.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1778,16 +1778,16 @@ class CustomerListCustomersResponse {
     this.nextPageToken,
   });
 
-  CustomerListCustomersResponse.fromJson(core.Map _json)
+  CustomerListCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: _json.containsKey('customers')
-              ? (_json['customers'] as core.List)
+          customers: json_.containsKey('customers')
+              ? (json_['customers'] as core.List)
                   .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1812,16 +1812,16 @@ class CustomerListDevicesResponse {
     this.nextPageToken,
   });
 
-  CustomerListDevicesResponse.fromJson(core.Map _json)
+  CustomerListDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: _json.containsKey('devices')
-              ? (_json['devices'] as core.List)
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
                   .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1841,10 +1841,10 @@ class CustomerListDpcsResponse {
     this.dpcs,
   });
 
-  CustomerListDpcsResponse.fromJson(core.Map _json)
+  CustomerListDpcsResponse.fromJson(core.Map json_)
       : this(
-          dpcs: _json.containsKey('dpcs')
-              ? (_json['dpcs'] as core.List)
+          dpcs: json_.containsKey('dpcs')
+              ? (json_['dpcs'] as core.List)
                   .map((value) => Dpc.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1869,11 +1869,11 @@ class CustomerRemoveConfigurationRequest {
     this.device,
   });
 
-  CustomerRemoveConfigurationRequest.fromJson(core.Map _json)
+  CustomerRemoveConfigurationRequest.fromJson(core.Map json_)
       : this(
-          device: _json.containsKey('device')
+          device: json_.containsKey('device')
               ? DeviceReference.fromJson(
-                  _json['device'] as core.Map<core.String, core.dynamic>)
+                  json_['device'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1895,11 +1895,11 @@ class CustomerUnclaimDeviceRequest {
     this.device,
   });
 
-  CustomerUnclaimDeviceRequest.fromJson(core.Map _json)
+  CustomerUnclaimDeviceRequest.fromJson(core.Map json_)
       : this(
-          device: _json.containsKey('device')
+          device: json_.containsKey('device')
               ? DeviceReference.fromJson(
-                  _json['device'] as core.Map<core.String, core.dynamic>)
+                  json_['device'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1959,29 +1959,29 @@ class Device {
     this.name,
   });
 
-  Device.fromJson(core.Map _json)
+  Device.fromJson(core.Map json_)
       : this(
-          claims: _json.containsKey('claims')
-              ? (_json['claims'] as core.List)
+          claims: json_.containsKey('claims')
+              ? (json_['claims'] as core.List)
                   .map((value) => DeviceClaim.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          configuration: _json.containsKey('configuration')
-              ? _json['configuration'] as core.String
+          configuration: json_.containsKey('configuration')
+              ? json_['configuration'] as core.String
               : null,
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deviceMetadata: _json.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(_json['deviceMetadata']
+          deviceMetadata: json_.containsKey('deviceMetadata')
+              ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2042,25 +2042,25 @@ class DeviceClaim {
     this.vacationModeStartTime,
   });
 
-  DeviceClaim.fromJson(core.Map _json)
+  DeviceClaim.fromJson(core.Map json_)
       : this(
-          additionalService: _json.containsKey('additionalService')
-              ? _json['additionalService'] as core.String
+          additionalService: json_.containsKey('additionalService')
+              ? json_['additionalService'] as core.String
               : null,
-          ownerCompanyId: _json.containsKey('ownerCompanyId')
-              ? _json['ownerCompanyId'] as core.String
+          ownerCompanyId: json_.containsKey('ownerCompanyId')
+              ? json_['ownerCompanyId'] as core.String
               : null,
-          resellerId: _json.containsKey('resellerId')
-              ? _json['resellerId'] as core.String
+          resellerId: json_.containsKey('resellerId')
+              ? json_['resellerId'] as core.String
               : null,
-          sectionType: _json.containsKey('sectionType')
-              ? _json['sectionType'] as core.String
+          sectionType: json_.containsKey('sectionType')
+              ? json_['sectionType'] as core.String
               : null,
-          vacationModeExpireTime: _json.containsKey('vacationModeExpireTime')
-              ? _json['vacationModeExpireTime'] as core.String
+          vacationModeExpireTime: json_.containsKey('vacationModeExpireTime')
+              ? json_['vacationModeExpireTime'] as core.String
               : null,
-          vacationModeStartTime: _json.containsKey('vacationModeStartTime')
-              ? _json['vacationModeStartTime'] as core.String
+          vacationModeStartTime: json_.containsKey('vacationModeStartTime')
+              ? json_['vacationModeStartTime'] as core.String
               : null,
         );
 
@@ -2116,17 +2116,17 @@ class DeviceIdentifier {
     this.serialNumber,
   });
 
-  DeviceIdentifier.fromJson(core.Map _json)
+  DeviceIdentifier.fromJson(core.Map json_)
       : this(
-          imei: _json.containsKey('imei') ? _json['imei'] as core.String : null,
-          manufacturer: _json.containsKey('manufacturer')
-              ? _json['manufacturer'] as core.String
+          imei: json_.containsKey('imei') ? json_['imei'] as core.String : null,
+          manufacturer: json_.containsKey('manufacturer')
+              ? json_['manufacturer'] as core.String
               : null,
-          meid: _json.containsKey('meid') ? _json['meid'] as core.String : null,
+          meid: json_.containsKey('meid') ? json_['meid'] as core.String : null,
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
-          serialNumber: _json.containsKey('serialNumber')
-              ? _json['serialNumber'] as core.String
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          serialNumber: json_.containsKey('serialNumber')
+              ? json_['serialNumber'] as core.String
               : null,
         );
 
@@ -2151,10 +2151,10 @@ class DeviceMetadata {
     this.entries,
   });
 
-  DeviceMetadata.fromJson(core.Map _json)
+  DeviceMetadata.fromJson(core.Map json_)
       : this(
-          entries: _json.containsKey('entries')
-              ? (_json['entries'] as core.Map<core.String, core.dynamic>).map(
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
@@ -2189,13 +2189,13 @@ class DeviceReference {
     this.deviceIdentifier,
   });
 
-  DeviceReference.fromJson(core.Map _json)
+  DeviceReference.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2244,14 +2244,14 @@ class Dpc {
     this.packageName,
   });
 
-  Dpc.fromJson(core.Map _json)
+  Dpc.fromJson(core.Map json_)
       : this(
-          dpcName: _json.containsKey('dpcName')
-              ? _json['dpcName'] as core.String
+          dpcName: json_.containsKey('dpcName')
+              ? json_['dpcName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
         );
 
@@ -2293,16 +2293,16 @@ class FindDevicesByDeviceIdentifierRequest {
     this.pageToken,
   });
 
-  FindDevicesByDeviceIdentifierRequest.fromJson(core.Map _json)
+  FindDevicesByDeviceIdentifierRequest.fromJson(core.Map json_)
       : this(
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
           limit:
-              _json.containsKey('limit') ? _json['limit'] as core.String : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
         );
 
@@ -2332,19 +2332,19 @@ class FindDevicesByDeviceIdentifierResponse {
     this.totalSize,
   });
 
-  FindDevicesByDeviceIdentifierResponse.fromJson(core.Map _json)
+  FindDevicesByDeviceIdentifierResponse.fromJson(core.Map json_)
       : this(
-          devices: _json.containsKey('devices')
-              ? (_json['devices'] as core.List)
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
                   .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -2388,20 +2388,20 @@ class FindDevicesByOwnerRequest {
     this.sectionType,
   });
 
-  FindDevicesByOwnerRequest.fromJson(core.Map _json)
+  FindDevicesByOwnerRequest.fromJson(core.Map json_)
       : this(
-          customerId: _json.containsKey('customerId')
-              ? (_json['customerId'] as core.List)
+          customerId: json_.containsKey('customerId')
+              ? (json_['customerId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           limit:
-              _json.containsKey('limit') ? _json['limit'] as core.String : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
-          sectionType: _json.containsKey('sectionType')
-              ? _json['sectionType'] as core.String
+          sectionType: json_.containsKey('sectionType')
+              ? json_['sectionType'] as core.String
               : null,
         );
 
@@ -2432,19 +2432,19 @@ class FindDevicesByOwnerResponse {
     this.totalSize,
   });
 
-  FindDevicesByOwnerResponse.fromJson(core.Map _json)
+  FindDevicesByOwnerResponse.fromJson(core.Map json_)
       : this(
-          devices: _json.containsKey('devices')
-              ? (_json['devices'] as core.List)
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
                   .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -2474,19 +2474,19 @@ class ListCustomersResponse {
     this.totalSize,
   });
 
-  ListCustomersResponse.fromJson(core.Map _json)
+  ListCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: _json.containsKey('customers')
-              ? (_json['customers'] as core.List)
+          customers: json_.containsKey('customers')
+              ? (json_['customers'] as core.List)
                   .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -2516,19 +2516,19 @@ class ListVendorCustomersResponse {
     this.totalSize,
   });
 
-  ListVendorCustomersResponse.fromJson(core.Map _json)
+  ListVendorCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: _json.containsKey('customers')
-              ? (_json['customers'] as core.List)
+          customers: json_.containsKey('customers')
+              ? (json_['customers'] as core.List)
                   .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -2561,16 +2561,16 @@ class ListVendorsResponse {
     this.vendors,
   });
 
-  ListVendorsResponse.fromJson(core.Map _json)
+  ListVendorsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
-          vendors: _json.containsKey('vendors')
-              ? (_json['vendors'] as core.List)
+          vendors: json_.containsKey('vendors')
+              ? (json_['vendors'] as core.List)
                   .map((value) => Company.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2631,19 +2631,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2689,21 +2689,21 @@ class PartnerClaim {
     this.sectionType,
   });
 
-  PartnerClaim.fromJson(core.Map _json)
+  PartnerClaim.fromJson(core.Map json_)
       : this(
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deviceMetadata: _json.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(_json['deviceMetadata']
+          deviceMetadata: json_.containsKey('deviceMetadata')
+              ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sectionType: _json.containsKey('sectionType')
-              ? _json['sectionType'] as core.String
+          sectionType: json_.containsKey('sectionType')
+              ? json_['sectionType'] as core.String
               : null,
         );
 
@@ -2757,23 +2757,23 @@ class PartnerUnclaim {
     this.vacationModeExpireTime,
   });
 
-  PartnerUnclaim.fromJson(core.Map _json)
+  PartnerUnclaim.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sectionType: _json.containsKey('sectionType')
-              ? _json['sectionType'] as core.String
+          sectionType: json_.containsKey('sectionType')
+              ? json_['sectionType'] as core.String
               : null,
-          vacationModeDays: _json.containsKey('vacationModeDays')
-              ? _json['vacationModeDays'] as core.int
+          vacationModeDays: json_.containsKey('vacationModeDays')
+              ? json_['vacationModeDays'] as core.int
               : null,
-          vacationModeExpireTime: _json.containsKey('vacationModeExpireTime')
-              ? _json['vacationModeExpireTime'] as core.String
+          vacationModeExpireTime: json_.containsKey('vacationModeExpireTime')
+              ? json_['vacationModeExpireTime'] as core.String
               : null,
         );
 
@@ -2834,23 +2834,23 @@ class UnclaimDeviceRequest {
     this.vacationModeExpireTime,
   });
 
-  UnclaimDeviceRequest.fromJson(core.Map _json)
+  UnclaimDeviceRequest.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sectionType: _json.containsKey('sectionType')
-              ? _json['sectionType'] as core.String
+          sectionType: json_.containsKey('sectionType')
+              ? json_['sectionType'] as core.String
               : null,
-          vacationModeDays: _json.containsKey('vacationModeDays')
-              ? _json['vacationModeDays'] as core.int
+          vacationModeDays: json_.containsKey('vacationModeDays')
+              ? json_['vacationModeDays'] as core.int
               : null,
-          vacationModeExpireTime: _json.containsKey('vacationModeExpireTime')
-              ? _json['vacationModeExpireTime'] as core.String
+          vacationModeExpireTime: json_.containsKey('vacationModeExpireTime')
+              ? json_['vacationModeExpireTime'] as core.String
               : null,
         );
 
@@ -2875,10 +2875,10 @@ class UnclaimDevicesRequest {
     this.unclaims,
   });
 
-  UnclaimDevicesRequest.fromJson(core.Map _json)
+  UnclaimDevicesRequest.fromJson(core.Map json_)
       : this(
-          unclaims: _json.containsKey('unclaims')
-              ? (_json['unclaims'] as core.List)
+          unclaims: json_.containsKey('unclaims')
+              ? (json_['unclaims'] as core.List)
                   .map((value) => PartnerUnclaim.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2901,10 +2901,10 @@ class UpdateDeviceMetadataInBatchRequest {
     this.updates,
   });
 
-  UpdateDeviceMetadataInBatchRequest.fromJson(core.Map _json)
+  UpdateDeviceMetadataInBatchRequest.fromJson(core.Map json_)
       : this(
-          updates: _json.containsKey('updates')
-              ? (_json['updates'] as core.List)
+          updates: json_.containsKey('updates')
+              ? (json_['updates'] as core.List)
                   .map((value) => UpdateMetadataArguments.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2927,10 +2927,10 @@ class UpdateDeviceMetadataRequest {
     this.deviceMetadata,
   });
 
-  UpdateDeviceMetadataRequest.fromJson(core.Map _json)
+  UpdateDeviceMetadataRequest.fromJson(core.Map json_)
       : this(
-          deviceMetadata: _json.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(_json['deviceMetadata']
+          deviceMetadata: json_.containsKey('deviceMetadata')
+              ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2963,17 +2963,17 @@ class UpdateMetadataArguments {
     this.deviceMetadata,
   });
 
-  UpdateMetadataArguments.fromJson(core.Map _json)
+  UpdateMetadataArguments.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          deviceIdentifier: _json.containsKey('deviceIdentifier')
-              ? DeviceIdentifier.fromJson(_json['deviceIdentifier']
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deviceMetadata: _json.containsKey('deviceMetadata')
-              ? DeviceMetadata.fromJson(_json['deviceMetadata']
+          deviceMetadata: json_.containsKey('deviceMetadata')
+              ? DeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );

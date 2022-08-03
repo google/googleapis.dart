@@ -108,21 +108,21 @@ class CatalogResource {
     GoogleCloudDatacatalogV1beta1SearchCatalogRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/catalog:search';
+    const url_ = 'v1beta1/catalog:search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -169,21 +169,21 @@ class EntriesResource {
     core.String? sqlResource,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (linkedResource != null) 'linkedResource': [linkedResource],
       if (sqlResource != null) 'sqlResource': [sqlResource],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/entries:lookup';
+    const url_ = 'v1beta1/entries:lookup';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -258,22 +258,22 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? entryGroupId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (entryGroupId != null) 'entryGroupId': [entryGroupId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entryGroups';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entryGroups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an EntryGroup.
@@ -308,19 +308,19 @@ class ProjectsLocationsEntryGroupsResource {
     core.bool? force,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an EntryGroup.
@@ -350,20 +350,20 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? readMask,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (readMask != null) 'readMask': [readMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -404,21 +404,21 @@ class ProjectsLocationsEntryGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists entry groups.
@@ -452,21 +452,21 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entryGroups';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entryGroups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an EntryGroup.
@@ -508,22 +508,22 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for a resource.
@@ -563,21 +563,21 @@ class ProjectsLocationsEntryGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the caller's permissions on a resource.
@@ -615,22 +615,22 @@ class ProjectsLocationsEntryGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -682,22 +682,22 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String? entryId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (entryId != null) 'entryId': [entryId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entries';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing entry.
@@ -729,18 +729,18 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an entry.
@@ -766,19 +766,19 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -819,21 +819,21 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists entries.
@@ -874,22 +874,22 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String? readMask,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (readMask != null) 'readMask': [readMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entries';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/entries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing entry.
@@ -937,22 +937,22 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the caller's permissions on a resource.
@@ -990,22 +990,22 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1050,21 +1050,21 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a tag.
@@ -1090,18 +1090,18 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists tags assigned to an Entry.
@@ -1139,21 +1139,21 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing tag.
@@ -1192,22 +1192,22 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1252,21 +1252,21 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a tag.
@@ -1292,18 +1292,18 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists tags assigned to an Entry.
@@ -1341,21 +1341,21 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing tag.
@@ -1394,22 +1394,22 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1456,22 +1456,22 @@ class ProjectsLocationsTagTemplatesResource {
     core.String? tagTemplateId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (tagTemplateId != null) 'tagTemplateId': [tagTemplateId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tagTemplates';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/tagTemplates';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a tag template and all tags using the template.
@@ -1507,19 +1507,19 @@ class ProjectsLocationsTagTemplatesResource {
     core.bool? force,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a tag template.
@@ -1545,19 +1545,19 @@ class ProjectsLocationsTagTemplatesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1598,21 +1598,21 @@ class ProjectsLocationsTagTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a tag template.
@@ -1658,22 +1658,22 @@ class ProjectsLocationsTagTemplatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for a resource.
@@ -1713,21 +1713,21 @@ class ProjectsLocationsTagTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the caller's permissions on a resource.
@@ -1765,22 +1765,22 @@ class ProjectsLocationsTagTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1833,23 +1833,23 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String? tagTemplateFieldId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (tagTemplateFieldId != null)
         'tagTemplateFieldId': [tagTemplateFieldId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/fields';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/fields';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a field in a tag template and all uses of that field.
@@ -1886,19 +1886,19 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.bool? force,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a field in a tag template.
@@ -1944,22 +1944,22 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Renames a field in a tag template.
@@ -1993,21 +1993,21 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':rename';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':rename';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2048,21 +2048,21 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':rename';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':rename';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2100,21 +2100,21 @@ class ProjectsLocationsTaxonomiesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/taxonomies';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/taxonomies';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a taxonomy.
@@ -2143,18 +2143,18 @@ class ProjectsLocationsTaxonomiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports all taxonomies and their policy tags in a project.
@@ -2188,23 +2188,23 @@ class ProjectsLocationsTaxonomiesResource {
     core.List<core.String>? taxonomies,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (serializedTaxonomies != null)
         'serializedTaxonomies': ['${serializedTaxonomies}'],
       if (taxonomies != null) 'taxonomies': taxonomies,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/taxonomies:export';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a taxonomy.
@@ -2229,19 +2229,19 @@ class ProjectsLocationsTaxonomiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -2272,21 +2272,21 @@ class ProjectsLocationsTaxonomiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports all taxonomies and their policy tags to a project as new
@@ -2318,22 +2318,22 @@ class ProjectsLocationsTaxonomiesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/taxonomies:import';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all taxonomies in a project in a particular location that the caller
@@ -2367,21 +2367,21 @@ class ProjectsLocationsTaxonomiesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/taxonomies';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/taxonomies';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a taxonomy.
@@ -2416,22 +2416,22 @@ class ProjectsLocationsTaxonomiesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -2462,21 +2462,21 @@ class ProjectsLocationsTaxonomiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -2508,22 +2508,22 @@ class ProjectsLocationsTaxonomiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2559,21 +2559,21 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/policyTags';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/policyTags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a policy tag.
@@ -2601,18 +2601,18 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a policy tag.
@@ -2637,19 +2637,19 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -2680,21 +2680,21 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all policy tags in a taxonomy.
@@ -2728,21 +2728,21 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/policyTags';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/policyTags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a policy tag.
@@ -2780,22 +2780,22 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -2826,21 +2826,21 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -2872,22 +2872,22 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2947,18 +2947,18 @@ class Binding {
     this.role,
   });
 
-  Binding.fromJson(core.Map _json)
+  Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3006,11 +3006,11 @@ class GetIamPolicyRequest {
     this.options,
   });
 
-  GetIamPolicyRequest.fromJson(core.Map _json)
+  GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          options: _json.containsKey('options')
+          options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  _json['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3053,16 +3053,16 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
     this.tablePrefix,
   });
 
-  GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(core.Map json_)
       : this(
-          dataset: _json.containsKey('dataset')
-              ? _json['dataset'] as core.String
+          dataset: json_.containsKey('dataset')
+              ? json_['dataset'] as core.String
               : null,
-          shardCount: _json.containsKey('shardCount')
-              ? _json['shardCount'] as core.String
+          shardCount: json_.containsKey('shardCount')
+              ? json_['shardCount'] as core.String
               : null,
-          tablePrefix: _json.containsKey('tablePrefix')
-              ? _json['tablePrefix'] as core.String
+          tablePrefix: json_.containsKey('tablePrefix')
+              ? json_['tablePrefix'] as core.String
               : null,
         );
 
@@ -3103,18 +3103,18 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
     this.viewSpec,
   });
 
-  GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(core.Map json_)
       : this(
-          tableSourceType: _json.containsKey('tableSourceType')
-              ? _json['tableSourceType'] as core.String
+          tableSourceType: json_.containsKey('tableSourceType')
+              ? json_['tableSourceType'] as core.String
               : null,
-          tableSpec: _json.containsKey('tableSpec')
+          tableSpec: json_.containsKey('tableSpec')
               ? GoogleCloudDatacatalogV1beta1TableSpec.fromJson(
-                  _json['tableSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['tableSpec'] as core.Map<core.String, core.dynamic>)
               : null,
-          viewSpec: _json.containsKey('viewSpec')
+          viewSpec: json_.containsKey('viewSpec')
               ? GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(
-                  _json['viewSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['viewSpec'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3170,23 +3170,23 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
     this.type,
   });
 
-  GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(core.Map json_)
       : this(
-          column: _json.containsKey('column')
-              ? _json['column'] as core.String
+          column: json_.containsKey('column')
+              ? json_['column'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
-          subcolumns: _json.containsKey('subcolumns')
-              ? (_json['subcolumns'] as core.List)
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          subcolumns: json_.containsKey('subcolumns')
+              ? (json_['subcolumns'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3341,55 +3341,55 @@ class GoogleCloudDatacatalogV1beta1Entry {
     this.userSpecifiedType,
   });
 
-  GoogleCloudDatacatalogV1beta1Entry.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1Entry.fromJson(core.Map json_)
       : this(
-          bigqueryDateShardedSpec: _json.containsKey('bigqueryDateShardedSpec')
+          bigqueryDateShardedSpec: json_.containsKey('bigqueryDateShardedSpec')
               ? GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
-                  _json['bigqueryDateShardedSpec']
+                  json_['bigqueryDateShardedSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          bigqueryTableSpec: _json.containsKey('bigqueryTableSpec')
+          bigqueryTableSpec: json_.containsKey('bigqueryTableSpec')
               ? GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
-                  _json['bigqueryTableSpec']
+                  json_['bigqueryTableSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          gcsFilesetSpec: _json.containsKey('gcsFilesetSpec')
+          gcsFilesetSpec: json_.containsKey('gcsFilesetSpec')
               ? GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
-                  _json['gcsFilesetSpec']
+                  json_['gcsFilesetSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          integratedSystem: _json.containsKey('integratedSystem')
-              ? _json['integratedSystem'] as core.String
+          integratedSystem: json_.containsKey('integratedSystem')
+              ? json_['integratedSystem'] as core.String
               : null,
-          linkedResource: _json.containsKey('linkedResource')
-              ? _json['linkedResource'] as core.String
+          linkedResource: json_.containsKey('linkedResource')
+              ? json_['linkedResource'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          schema: _json.containsKey('schema')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          schema: json_.containsKey('schema')
               ? GoogleCloudDatacatalogV1beta1Schema.fromJson(
-                  _json['schema'] as core.Map<core.String, core.dynamic>)
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceSystemTimestamps: _json.containsKey('sourceSystemTimestamps')
+          sourceSystemTimestamps: json_.containsKey('sourceSystemTimestamps')
               ? GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-                  _json['sourceSystemTimestamps']
+                  json_['sourceSystemTimestamps']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          usageSignal: _json.containsKey('usageSignal')
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          usageSignal: json_.containsKey('usageSignal')
               ? GoogleCloudDatacatalogV1beta1UsageSignal.fromJson(
-                  _json['usageSignal'] as core.Map<core.String, core.dynamic>)
+                  json_['usageSignal'] as core.Map<core.String, core.dynamic>)
               : null,
-          userSpecifiedSystem: _json.containsKey('userSpecifiedSystem')
-              ? _json['userSpecifiedSystem'] as core.String
+          userSpecifiedSystem: json_.containsKey('userSpecifiedSystem')
+              ? json_['userSpecifiedSystem'] as core.String
               : null,
-          userSpecifiedType: _json.containsKey('userSpecifiedType')
-              ? _json['userSpecifiedType'] as core.String
+          userSpecifiedType: json_.containsKey('userSpecifiedType')
+              ? json_['userSpecifiedType'] as core.String
               : null,
         );
 
@@ -3453,20 +3453,20 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
     this.name,
   });
 
-  GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(core.Map json_)
       : this(
-          dataCatalogTimestamps: _json.containsKey('dataCatalogTimestamps')
+          dataCatalogTimestamps: json_.containsKey('dataCatalogTimestamps')
               ? GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-                  _json['dataCatalogTimestamps']
+                  json_['dataCatalogTimestamps']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3487,10 +3487,10 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
     this.taxonomies,
   });
 
-  GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(core.Map json_)
       : this(
-          taxonomies: _json.containsKey('taxonomies')
-              ? (_json['taxonomies'] as core.List)
+          taxonomies: json_.containsKey('taxonomies')
+              ? (json_['taxonomies'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3522,14 +3522,14 @@ class GoogleCloudDatacatalogV1beta1FieldType {
     this.primitiveType,
   });
 
-  GoogleCloudDatacatalogV1beta1FieldType.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1FieldType.fromJson(core.Map json_)
       : this(
-          enumType: _json.containsKey('enumType')
+          enumType: json_.containsKey('enumType')
               ? GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
-                  _json['enumType'] as core.Map<core.String, core.dynamic>)
+                  json_['enumType'] as core.Map<core.String, core.dynamic>)
               : null,
-          primitiveType: _json.containsKey('primitiveType')
-              ? _json['primitiveType'] as core.String
+          primitiveType: json_.containsKey('primitiveType')
+              ? json_['primitiveType'] as core.String
               : null,
         );
 
@@ -3547,10 +3547,10 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
     this.allowedValues,
   });
 
-  GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(core.Map json_)
       : this(
-          allowedValues: _json.containsKey('allowedValues')
-              ? (_json['allowedValues'] as core.List)
+          allowedValues: json_.containsKey('allowedValues')
+              ? (json_['allowedValues'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue
                           .fromJson(
@@ -3577,10 +3577,10 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   });
 
   GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
         );
 
@@ -3614,17 +3614,17 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
     this.sizeBytes,
   });
 
-  GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(core.Map json_)
       : this(
-          filePath: _json.containsKey('filePath')
-              ? _json['filePath'] as core.String
+          filePath: json_.containsKey('filePath')
+              ? json_['filePath'] as core.String
               : null,
-          gcsTimestamps: _json.containsKey('gcsTimestamps')
+          gcsTimestamps: json_.containsKey('gcsTimestamps')
               ? GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-                  _json['gcsTimestamps'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsTimestamps'] as core.Map<core.String, core.dynamic>)
               : null,
-          sizeBytes: _json.containsKey('sizeBytes')
-              ? _json['sizeBytes'] as core.String
+          sizeBytes: json_.containsKey('sizeBytes')
+              ? json_['sizeBytes'] as core.String
               : null,
         );
 
@@ -3671,15 +3671,15 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
     this.sampleGcsFileSpecs,
   });
 
-  GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(core.Map json_)
       : this(
-          filePatterns: _json.containsKey('filePatterns')
-              ? (_json['filePatterns'] as core.List)
+          filePatterns: json_.containsKey('filePatterns')
+              ? (json_['filePatterns'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sampleGcsFileSpecs: _json.containsKey('sampleGcsFileSpecs')
-              ? (_json['sampleGcsFileSpecs'] as core.List)
+          sampleGcsFileSpecs: json_.containsKey('sampleGcsFileSpecs')
+              ? (json_['sampleGcsFileSpecs'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3703,11 +3703,11 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
     this.inlineSource,
   });
 
-  GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(core.Map json_)
       : this(
-          inlineSource: _json.containsKey('inlineSource')
+          inlineSource: json_.containsKey('inlineSource')
               ? GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
-                  _json['inlineSource'] as core.Map<core.String, core.dynamic>)
+                  json_['inlineSource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3725,10 +3725,10 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
     this.taxonomies,
   });
 
-  GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(core.Map json_)
       : this(
-          taxonomies: _json.containsKey('taxonomies')
-              ? (_json['taxonomies'] as core.List)
+          taxonomies: json_.containsKey('taxonomies')
+              ? (json_['taxonomies'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3752,10 +3752,10 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
     this.taxonomies,
   });
 
-  GoogleCloudDatacatalogV1beta1InlineSource.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1InlineSource.fromJson(core.Map json_)
       : this(
-          taxonomies: _json.containsKey('taxonomies')
-              ? (_json['taxonomies'] as core.List)
+          taxonomies: json_.containsKey('taxonomies')
+              ? (json_['taxonomies'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3783,16 +3783,16 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(core.Map json_)
       : this(
-          entries: _json.containsKey('entries')
-              ? (_json['entries'] as core.List)
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.List)
                   .map((value) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3817,17 +3817,17 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(core.Map json_)
       : this(
-          entryGroups: _json.containsKey('entryGroups')
-              ? (_json['entryGroups'] as core.List)
+          entryGroups: json_.containsKey('entryGroups')
+              ? (json_['entryGroups'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3851,13 +3851,13 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
     this.policyTags,
   });
 
-  GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          policyTags: _json.containsKey('policyTags')
-              ? (_json['policyTags'] as core.List)
+          policyTags: json_.containsKey('policyTags')
+              ? (json_['policyTags'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3886,13 +3886,13 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
     this.tags,
   });
 
-  GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          tags: _json.containsKey('tags')
-              ? (_json['tags'] as core.List)
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
                   .map((value) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3919,13 +3919,13 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
     this.taxonomies,
   });
 
-  GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          taxonomies: _json.containsKey('taxonomies')
-              ? (_json['taxonomies'] as core.List)
+          taxonomies: json_.containsKey('taxonomies')
+              ? (json_['taxonomies'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3991,22 +3991,22 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
     this.parentPolicyTag,
   });
 
-  GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(core.Map json_)
       : this(
-          childPolicyTags: _json.containsKey('childPolicyTags')
-              ? (_json['childPolicyTags'] as core.List)
+          childPolicyTags: json_.containsKey('childPolicyTags')
+              ? (json_['childPolicyTags'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parentPolicyTag: _json.containsKey('parentPolicyTag')
-              ? _json['parentPolicyTag'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parentPolicyTag: json_.containsKey('parentPolicyTag')
+              ? json_['parentPolicyTag'] as core.String
               : null,
         );
 
@@ -4033,10 +4033,10 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
   });
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          newEnumValueDisplayName: _json.containsKey('newEnumValueDisplayName')
-              ? _json['newEnumValueDisplayName'] as core.String
+          newEnumValueDisplayName: json_.containsKey('newEnumValueDisplayName')
+              ? json_['newEnumValueDisplayName'] as core.String
               : null,
         );
 
@@ -4060,10 +4060,10 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
   });
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          newTagTemplateFieldId: _json.containsKey('newTagTemplateFieldId')
-              ? _json['newTagTemplateFieldId'] as core.String
+          newTagTemplateFieldId: json_.containsKey('newTagTemplateFieldId')
+              ? json_['newTagTemplateFieldId'] as core.String
               : null,
         );
 
@@ -4086,10 +4086,10 @@ class GoogleCloudDatacatalogV1beta1Schema {
     this.columns,
   });
 
-  GoogleCloudDatacatalogV1beta1Schema.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1Schema.fromJson(core.Map json_)
       : this(
-          columns: _json.containsKey('columns')
-              ? (_json['columns'] as core.List)
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -4157,22 +4157,22 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
     this.scope,
   });
 
-  GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(core.Map json_)
       : this(
-          orderBy: _json.containsKey('orderBy')
-              ? _json['orderBy'] as core.String
+          orderBy: json_.containsKey('orderBy')
+              ? json_['orderBy'] as core.String
               : null,
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
           query:
-              _json.containsKey('query') ? _json['query'] as core.String : null,
-          scope: _json.containsKey('scope')
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+          scope: json_.containsKey('scope')
               ? GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
-                  _json['scope'] as core.Map<core.String, core.dynamic>)
+                  json_['scope'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4233,24 +4233,24 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   });
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
           includeGcpPublicDatasets:
-              _json.containsKey('includeGcpPublicDatasets')
-                  ? _json['includeGcpPublicDatasets'] as core.bool
+              json_.containsKey('includeGcpPublicDatasets')
+                  ? json_['includeGcpPublicDatasets'] as core.bool
                   : null,
-          includeOrgIds: _json.containsKey('includeOrgIds')
-              ? (_json['includeOrgIds'] as core.List)
+          includeOrgIds: json_.containsKey('includeOrgIds')
+              ? (json_['includeOrgIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          includeProjectIds: _json.containsKey('includeProjectIds')
-              ? (_json['includeProjectIds'] as core.List)
+          includeProjectIds: json_.containsKey('includeProjectIds')
+              ? (json_['includeProjectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          restrictedLocations: _json.containsKey('restrictedLocations')
-              ? (_json['restrictedLocations'] as core.List)
+          restrictedLocations: json_.containsKey('restrictedLocations')
+              ? (json_['restrictedLocations'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4288,20 +4288,20 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
     this.unreachable,
   });
 
-  GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          results: _json.containsKey('results')
-              ? (_json['results'] as core.List)
+          results: json_.containsKey('results')
+              ? (json_['results'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          unreachable: _json.containsKey('unreachable')
-              ? (_json['unreachable'] as core.List)
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4362,22 +4362,22 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
     this.searchResultType,
   });
 
-  GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(core.Map json_)
       : this(
-          linkedResource: _json.containsKey('linkedResource')
-              ? _json['linkedResource'] as core.String
+          linkedResource: json_.containsKey('linkedResource')
+              ? json_['linkedResource'] as core.String
               : null,
-          modifyTime: _json.containsKey('modifyTime')
-              ? _json['modifyTime'] as core.String
+          modifyTime: json_.containsKey('modifyTime')
+              ? json_['modifyTime'] as core.String
               : null,
-          relativeResourceName: _json.containsKey('relativeResourceName')
-              ? _json['relativeResourceName'] as core.String
+          relativeResourceName: json_.containsKey('relativeResourceName')
+              ? json_['relativeResourceName'] as core.String
               : null,
-          searchResultSubtype: _json.containsKey('searchResultSubtype')
-              ? _json['searchResultSubtype'] as core.String
+          searchResultSubtype: json_.containsKey('searchResultSubtype')
+              ? json_['searchResultSubtype'] as core.String
               : null,
-          searchResultType: _json.containsKey('searchResultType')
-              ? _json['searchResultType'] as core.String
+          searchResultType: json_.containsKey('searchResultType')
+              ? json_['searchResultType'] as core.String
               : null,
         );
 
@@ -4422,23 +4422,23 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
     this.policyTag,
   });
 
-  GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(core.Map json_)
       : this(
-          childPolicyTags: _json.containsKey('childPolicyTags')
-              ? (_json['childPolicyTags'] as core.List)
+          childPolicyTags: json_.containsKey('childPolicyTags')
+              ? (json_['childPolicyTags'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          policyTag: _json.containsKey('policyTag')
-              ? _json['policyTag'] as core.String
+          policyTag: json_.containsKey('policyTag')
+              ? json_['policyTag'] as core.String
               : null,
         );
 
@@ -4480,21 +4480,21 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
     this.policyTags,
   });
 
-  GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(core.Map json_)
       : this(
-          activatedPolicyTypes: _json.containsKey('activatedPolicyTypes')
-              ? (_json['activatedPolicyTypes'] as core.List)
+          activatedPolicyTypes: json_.containsKey('activatedPolicyTypes')
+              ? (json_['activatedPolicyTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          policyTags: _json.containsKey('policyTags')
-              ? (_json['policyTags'] as core.List)
+          policyTags: json_.containsKey('policyTags')
+              ? (json_['policyTags'] as core.List)
                   .map((value) =>
                       GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -4532,16 +4532,16 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
     this.updateTime,
   });
 
-  GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -4568,10 +4568,10 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
     this.groupedEntry,
   });
 
-  GoogleCloudDatacatalogV1beta1TableSpec.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1TableSpec.fromJson(core.Map json_)
       : this(
-          groupedEntry: _json.containsKey('groupedEntry')
-              ? _json['groupedEntry'] as core.String
+          groupedEntry: json_.containsKey('groupedEntry')
+              ? json_['groupedEntry'] as core.String
               : null,
         );
 
@@ -4632,13 +4632,13 @@ class GoogleCloudDatacatalogV1beta1Tag {
     this.templateDisplayName,
   });
 
-  GoogleCloudDatacatalogV1beta1Tag.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1Tag.fromJson(core.Map json_)
       : this(
-          column: _json.containsKey('column')
-              ? _json['column'] as core.String
+          column: json_.containsKey('column')
+              ? json_['column'] as core.String
               : null,
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     GoogleCloudDatacatalogV1beta1TagField.fromJson(
@@ -4646,12 +4646,12 @@ class GoogleCloudDatacatalogV1beta1Tag {
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          template: _json.containsKey('template')
-              ? _json['template'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          template: json_.containsKey('template')
+              ? json_['template'] as core.String
               : null,
-          templateDisplayName: _json.containsKey('templateDisplayName')
-              ? _json['templateDisplayName'] as core.String
+          templateDisplayName: json_.containsKey('templateDisplayName')
+              ? json_['templateDisplayName'] as core.String
               : null,
         );
 
@@ -4709,27 +4709,27 @@ class GoogleCloudDatacatalogV1beta1TagField {
     this.timestampValue,
   });
 
-  GoogleCloudDatacatalogV1beta1TagField.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1TagField.fromJson(core.Map json_)
       : this(
-          boolValue: _json.containsKey('boolValue')
-              ? _json['boolValue'] as core.bool
+          boolValue: json_.containsKey('boolValue')
+              ? json_['boolValue'] as core.bool
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          doubleValue: _json.containsKey('doubleValue')
-              ? (_json['doubleValue'] as core.num).toDouble()
+          doubleValue: json_.containsKey('doubleValue')
+              ? (json_['doubleValue'] as core.num).toDouble()
               : null,
-          enumValue: _json.containsKey('enumValue')
+          enumValue: json_.containsKey('enumValue')
               ? GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
-                  _json['enumValue'] as core.Map<core.String, core.dynamic>)
+                  json_['enumValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          order: _json.containsKey('order') ? _json['order'] as core.int : null,
-          stringValue: _json.containsKey('stringValue')
-              ? _json['stringValue'] as core.String
+          order: json_.containsKey('order') ? json_['order'] as core.int : null,
+          stringValue: json_.containsKey('stringValue')
+              ? json_['stringValue'] as core.String
               : null,
-          timestampValue: _json.containsKey('timestampValue')
-              ? _json['timestampValue'] as core.String
+          timestampValue: json_.containsKey('timestampValue')
+              ? json_['timestampValue'] as core.String
               : null,
         );
 
@@ -4753,10 +4753,10 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
     this.displayName,
   });
 
-  GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
         );
 
@@ -4805,13 +4805,13 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
     this.name,
   });
 
-  GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
@@ -4819,7 +4819,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4877,22 +4877,22 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
     this.type,
   });
 
-  GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          isRequired: _json.containsKey('isRequired')
-              ? _json['isRequired'] as core.bool
+          isRequired: json_.containsKey('isRequired')
+              ? json_['isRequired'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          order: _json.containsKey('order') ? _json['order'] as core.int : null,
-          type: _json.containsKey('type')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          order: json_.containsKey('order') ? json_['order'] as core.int : null,
+          type: json_.containsKey('type')
               ? GoogleCloudDatacatalogV1beta1FieldType.fromJson(
-                  _json['type'] as core.Map<core.String, core.dynamic>)
+                  json_['type'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4967,26 +4967,26 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
     this.taxonomyTimestamps,
   });
 
-  GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(core.Map json_)
       : this(
-          activatedPolicyTypes: _json.containsKey('activatedPolicyTypes')
-              ? (_json['activatedPolicyTypes'] as core.List)
+          activatedPolicyTypes: json_.containsKey('activatedPolicyTypes')
+              ? (json_['activatedPolicyTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          policyTagCount: _json.containsKey('policyTagCount')
-              ? _json['policyTagCount'] as core.int
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          policyTagCount: json_.containsKey('policyTagCount')
+              ? json_['policyTagCount'] as core.int
               : null,
-          taxonomyTimestamps: _json.containsKey('taxonomyTimestamps')
+          taxonomyTimestamps: json_.containsKey('taxonomyTimestamps')
               ? GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-                  _json['taxonomyTimestamps']
+                  json_['taxonomyTimestamps']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5018,13 +5018,13 @@ class GoogleCloudDatacatalogV1beta1UsageSignal {
     this.usageWithinTimeRange,
   });
 
-  GoogleCloudDatacatalogV1beta1UsageSignal.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1UsageSignal.fromJson(core.Map json_)
       : this(
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          usageWithinTimeRange: _json.containsKey('usageWithinTimeRange')
-              ? (_json['usageWithinTimeRange']
+          usageWithinTimeRange: json_.containsKey('usageWithinTimeRange')
+              ? (json_['usageWithinTimeRange']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -5072,21 +5072,21 @@ class GoogleCloudDatacatalogV1beta1UsageStats {
     this.totalFailures,
   });
 
-  GoogleCloudDatacatalogV1beta1UsageStats.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1UsageStats.fromJson(core.Map json_)
       : this(
-          totalCancellations: _json.containsKey('totalCancellations')
-              ? (_json['totalCancellations'] as core.num).toDouble()
+          totalCancellations: json_.containsKey('totalCancellations')
+              ? (json_['totalCancellations'] as core.num).toDouble()
               : null,
-          totalCompletions: _json.containsKey('totalCompletions')
-              ? (_json['totalCompletions'] as core.num).toDouble()
+          totalCompletions: json_.containsKey('totalCompletions')
+              ? (json_['totalCompletions'] as core.num).toDouble()
               : null,
-          totalExecutionTimeForCompletionsMillis: _json
+          totalExecutionTimeForCompletionsMillis: json_
                   .containsKey('totalExecutionTimeForCompletionsMillis')
-              ? (_json['totalExecutionTimeForCompletionsMillis'] as core.num)
+              ? (json_['totalExecutionTimeForCompletionsMillis'] as core.num)
                   .toDouble()
               : null,
-          totalFailures: _json.containsKey('totalFailures')
-              ? (_json['totalFailures'] as core.num).toDouble()
+          totalFailures: json_.containsKey('totalFailures')
+              ? (json_['totalFailures'] as core.num).toDouble()
               : null,
         );
 
@@ -5112,10 +5112,10 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
     this.viewQuery,
   });
 
-  GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(core.Map _json)
+  GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(core.Map json_)
       : this(
-          viewQuery: _json.containsKey('viewQuery')
-              ? _json['viewQuery'] as core.String
+          viewQuery: json_.containsKey('viewQuery')
+              ? json_['viewQuery'] as core.String
               : null,
         );
 
@@ -5183,9 +5183,9 @@ class Policy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -5213,17 +5213,17 @@ class Policy {
     this.version,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -5247,11 +5247,11 @@ class SetIamPolicyRequest {
     this.policy,
   });
 
-  SetIamPolicyRequest.fromJson(core.Map _json)
+  SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

@@ -78,19 +78,19 @@ class AccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return NotificationSetting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the pubsub notification setting for the account informing Google
@@ -128,22 +128,22 @@ class AccountsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return NotificationSetting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -182,16 +182,16 @@ class NotificationSetting {
     this.pubsubTopic,
   });
 
-  NotificationSetting.fromJson(core.Map _json)
+  NotificationSetting.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          notificationTypes: _json.containsKey('notificationTypes')
-              ? (_json['notificationTypes'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notificationTypes: json_.containsKey('notificationTypes')
+              ? (json_['notificationTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pubsubTopic: _json.containsKey('pubsubTopic')
-              ? _json['pubsubTopic'] as core.String
+          pubsubTopic: json_.containsKey('pubsubTopic')
+              ? json_['pubsubTopic'] as core.String
               : null,
         );
 

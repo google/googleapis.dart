@@ -123,22 +123,22 @@ class ProjectsDatabasesResource {
     core.String? databaseId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (databaseId != null) 'databaseId': [databaseId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports a copy of all or a subset of documents from Google Cloud Firestore
@@ -176,21 +176,21 @@ class ProjectsDatabasesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':exportDocuments';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':exportDocuments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a database.
@@ -215,19 +215,19 @@ class ProjectsDatabasesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirestoreAdminV1Database.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports documents into Google Cloud Firestore.
@@ -261,21 +261,21 @@ class ProjectsDatabasesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':importDocuments';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':importDocuments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all the databases in the project.
@@ -299,19 +299,19 @@ class ProjectsDatabasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirestoreAdminV1ListDatabasesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a database.
@@ -342,22 +342,22 @@ class ProjectsDatabasesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -402,19 +402,19 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirestoreAdminV1Field.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the field configuration and metadata for this database.
@@ -459,22 +459,22 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/fields';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/fields';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirestoreAdminV1ListFieldsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a field configuration.
@@ -534,22 +534,22 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -589,21 +589,21 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/indexes';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/indexes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a composite index.
@@ -629,18 +629,18 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a composite index.
@@ -666,19 +666,19 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirestoreAdminV1Index.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists composite indexes.
@@ -715,22 +715,22 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/indexes';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/indexes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirestoreAdminV1ListIndexesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -768,22 +768,22 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$database') + '/documents:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchGetDocumentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Applies a batch of write operations.
@@ -817,22 +817,22 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$database') + '/documents:batchWrite';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchWriteResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts a new transaction.
@@ -860,23 +860,23 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$database') +
         '/documents:beginTransaction';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BeginTransactionResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Commits a transaction, while optionally updating documents.
@@ -904,21 +904,21 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$database') + '/documents:commit';
+    final url_ = 'v1/' + core.Uri.encodeFull('$database') + '/documents:commit';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CommitResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new document.
@@ -960,25 +960,25 @@ class ProjectsDatabasesDocumentsResource {
     core.List<core.String>? mask_fieldPaths,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (documentId != null) 'documentId': [documentId],
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/' +
         commons.escapeVariable('$collectionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Document.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Document.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a document.
@@ -1014,7 +1014,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String? currentDocument_updateTime,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (currentDocument_exists != null)
         'currentDocument.exists': ['${currentDocument_exists}'],
       if (currentDocument_updateTime != null)
@@ -1022,14 +1022,14 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a single document.
@@ -1067,21 +1067,21 @@ class ProjectsDatabasesDocumentsResource {
     core.String? transaction,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
       if (readTime != null) 'readTime': [readTime],
       if (transaction != null) 'transaction': [transaction],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Document.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Document.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists documents.
@@ -1143,7 +1143,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String? transaction,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1154,18 +1154,18 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/' +
         commons.escapeVariable('$collectionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDocumentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the collection IDs underneath a document.
@@ -1196,21 +1196,21 @@ class ProjectsDatabasesDocumentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':listCollectionIds';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':listCollectionIds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ListCollectionIdsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists documents.
@@ -1271,7 +1271,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String? transaction,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1282,18 +1282,18 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/' +
         commons.escapeVariable('$collectionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDocumentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Partitions a query by returning partition cursors that can be used to run
@@ -1328,21 +1328,21 @@ class ProjectsDatabasesDocumentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':partitionQuery';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':partitionQuery';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return PartitionQueryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates or inserts a document.
@@ -1388,8 +1388,8 @@ class ProjectsDatabasesDocumentsResource {
     core.List<core.String>? updateMask_fieldPaths,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (currentDocument_exists != null)
         'currentDocument.exists': ['${currentDocument_exists}'],
       if (currentDocument_updateTime != null)
@@ -1400,15 +1400,15 @@ class ProjectsDatabasesDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Document.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Document.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Rolls back a transaction.
@@ -1436,21 +1436,21 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$database') + '/documents:rollback';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs a query.
@@ -1482,20 +1482,20 @@ class ProjectsDatabasesDocumentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':runQuery';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':runQuery';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return RunQueryResponse.fromJson(_response as core.List);
+    return RunQueryResponse.fromJson(response_ as core.List);
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -1524,21 +1524,21 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$database') + '/documents:write';
+    final url_ = 'v1/' + core.Uri.encodeFull('$database') + '/documents:write';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return WriteResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1582,20 +1582,20 @@ class ProjectsDatabasesOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -1624,18 +1624,18 @@ class ProjectsDatabasesOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1663,19 +1663,19 @@ class ProjectsDatabasesOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1717,22 +1717,22 @@ class ProjectsDatabasesOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1762,18 +1762,18 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -1810,22 +1810,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1838,10 +1838,10 @@ class ArrayValue {
     this.values,
   });
 
-  ArrayValue.fromJson(core.Map _json)
+  ArrayValue.fromJson(core.Map json_)
       : this(
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
                   .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1885,9 +1885,9 @@ class BatchGetDocumentsRequest {
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
 
-  set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> bytes_) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   BatchGetDocumentsRequest({
@@ -1898,26 +1898,26 @@ class BatchGetDocumentsRequest {
     this.transaction,
   });
 
-  BatchGetDocumentsRequest.fromJson(core.Map _json)
+  BatchGetDocumentsRequest.fromJson(core.Map json_)
       : this(
-          documents: _json.containsKey('documents')
-              ? (_json['documents'] as core.List)
+          documents: json_.containsKey('documents')
+              ? (json_['documents'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          mask: _json.containsKey('mask')
+          mask: json_.containsKey('mask')
               ? DocumentMask.fromJson(
-                  _json['mask'] as core.Map<core.String, core.dynamic>)
+                  json_['mask'] as core.Map<core.String, core.dynamic>)
               : null,
-          newTransaction: _json.containsKey('newTransaction')
-              ? TransactionOptions.fromJson(_json['newTransaction']
+          newTransaction: json_.containsKey('newTransaction')
+              ? TransactionOptions.fromJson(json_['newTransaction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
               : null,
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
               : null,
         );
 
@@ -1956,9 +1956,9 @@ class BatchGetDocumentsResponse {
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
 
-  set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> bytes_) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   BatchGetDocumentsResponse({
@@ -1968,20 +1968,20 @@ class BatchGetDocumentsResponse {
     this.transaction,
   });
 
-  BatchGetDocumentsResponse.fromJson(core.Map _json)
+  BatchGetDocumentsResponse.fromJson(core.Map json_)
       : this(
-          found: _json.containsKey('found')
+          found: json_.containsKey('found')
               ? Document.fromJson(
-                  _json['found'] as core.Map<core.String, core.dynamic>)
+                  json_['found'] as core.Map<core.String, core.dynamic>)
               : null,
-          missing: _json.containsKey('missing')
-              ? _json['missing'] as core.String
+          missing: json_.containsKey('missing')
+              ? json_['missing'] as core.String
               : null,
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
               : null,
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
               : null,
         );
 
@@ -2010,18 +2010,18 @@ class BatchWriteRequest {
     this.writes,
   });
 
-  BatchWriteRequest.fromJson(core.Map _json)
+  BatchWriteRequest.fromJson(core.Map json_)
       : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          writes: _json.containsKey('writes')
-              ? (_json['writes'] as core.List)
+          writes: json_.containsKey('writes')
+              ? (json_['writes'] as core.List)
                   .map((value) => Write.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2051,16 +2051,16 @@ class BatchWriteResponse {
     this.writeResults,
   });
 
-  BatchWriteResponse.fromJson(core.Map _json)
+  BatchWriteResponse.fromJson(core.Map json_)
       : this(
-          status: _json.containsKey('status')
-              ? (_json['status'] as core.List)
+          status: json_.containsKey('status')
+              ? (json_['status'] as core.List)
                   .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          writeResults: _json.containsKey('writeResults')
-              ? (_json['writeResults'] as core.List)
+          writeResults: json_.containsKey('writeResults')
+              ? (json_['writeResults'] as core.List)
                   .map((value) => WriteResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2084,11 +2084,11 @@ class BeginTransactionRequest {
     this.options,
   });
 
-  BeginTransactionRequest.fromJson(core.Map _json)
+  BeginTransactionRequest.fromJson(core.Map json_)
       : this(
-          options: _json.containsKey('options')
+          options: json_.containsKey('options')
               ? TransactionOptions.fromJson(
-                  _json['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2104,19 +2104,19 @@ class BeginTransactionResponse {
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
 
-  set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> bytes_) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   BeginTransactionResponse({
     this.transaction,
   });
 
-  BeginTransactionResponse.fromJson(core.Map _json)
+  BeginTransactionResponse.fromJson(core.Map json_)
       : this(
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
               : null,
         );
 
@@ -2143,13 +2143,13 @@ class CollectionSelector {
     this.collectionId,
   });
 
-  CollectionSelector.fromJson(core.Map _json)
+  CollectionSelector.fromJson(core.Map json_)
       : this(
-          allDescendants: _json.containsKey('allDescendants')
-              ? _json['allDescendants'] as core.bool
+          allDescendants: json_.containsKey('allDescendants')
+              ? json_['allDescendants'] as core.bool
               : null,
-          collectionId: _json.containsKey('collectionId')
-              ? _json['collectionId'] as core.String
+          collectionId: json_.containsKey('collectionId')
+              ? json_['collectionId'] as core.String
               : null,
         );
 
@@ -2166,9 +2166,9 @@ class CommitRequest {
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
 
-  set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> bytes_) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The writes to apply.
@@ -2181,13 +2181,13 @@ class CommitRequest {
     this.writes,
   });
 
-  CommitRequest.fromJson(core.Map _json)
+  CommitRequest.fromJson(core.Map json_)
       : this(
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
               : null,
-          writes: _json.containsKey('writes')
-              ? (_json['writes'] as core.List)
+          writes: json_.containsKey('writes')
+              ? (json_['writes'] as core.List)
                   .map((value) => Write.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2218,13 +2218,13 @@ class CommitResponse {
     this.writeResults,
   });
 
-  CommitResponse.fromJson(core.Map _json)
+  CommitResponse.fromJson(core.Map json_)
       : this(
-          commitTime: _json.containsKey('commitTime')
-              ? _json['commitTime'] as core.String
+          commitTime: json_.containsKey('commitTime')
+              ? json_['commitTime'] as core.String
               : null,
-          writeResults: _json.containsKey('writeResults')
-              ? (_json['writeResults'] as core.List)
+          writeResults: json_.containsKey('writeResults')
+              ? (json_['writeResults'] as core.List)
                   .map((value) => WriteResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2255,15 +2255,15 @@ class CompositeFilter {
     this.op,
   });
 
-  CompositeFilter.fromJson(core.Map _json)
+  CompositeFilter.fromJson(core.Map json_)
       : this(
-          filters: _json.containsKey('filters')
-              ? (_json['filters'] as core.List)
+          filters: json_.containsKey('filters')
+              ? (json_['filters'] as core.List)
                   .map((value) => Filter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          op: _json.containsKey('op') ? _json['op'] as core.String : null,
+          op: json_.containsKey('op') ? json_['op'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2289,12 +2289,12 @@ class Cursor {
     this.values,
   });
 
-  Cursor.fromJson(core.Map _json)
+  Cursor.fromJson(core.Map json_)
       : this(
           before:
-              _json.containsKey('before') ? _json['before'] as core.bool : null,
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
+              json_.containsKey('before') ? json_['before'] as core.bool : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
                   .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2359,22 +2359,22 @@ class Document {
     this.updateTime,
   });
 
-  Document.fromJson(core.Map _json)
+  Document.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     Value.fromJson(item as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -2401,10 +2401,10 @@ class DocumentMask {
     this.fieldPaths,
   });
 
-  DocumentMask.fromJson(core.Map _json)
+  DocumentMask.fromJson(core.Map json_)
       : this(
-          fieldPaths: _json.containsKey('fieldPaths')
-              ? (_json['fieldPaths'] as core.List)
+          fieldPaths: json_.containsKey('fieldPaths')
+              ? (json_['fieldPaths'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2431,13 +2431,13 @@ class DocumentTransform {
     this.fieldTransforms,
   });
 
-  DocumentTransform.fromJson(core.Map _json)
+  DocumentTransform.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
-              ? _json['document'] as core.String
+          document: json_.containsKey('document')
+              ? json_['document'] as core.String
               : null,
-          fieldTransforms: _json.containsKey('fieldTransforms')
-              ? (_json['fieldTransforms'] as core.List)
+          fieldTransforms: json_.containsKey('fieldTransforms')
+              ? (json_['fieldTransforms'] as core.List)
                   .map((value) => FieldTransform.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2502,16 +2502,16 @@ class FieldFilter {
     this.value,
   });
 
-  FieldFilter.fromJson(core.Map _json)
+  FieldFilter.fromJson(core.Map json_)
       : this(
-          field: _json.containsKey('field')
+          field: json_.containsKey('field')
               ? FieldReference.fromJson(
-                  _json['field'] as core.Map<core.String, core.dynamic>)
+                  json_['field'] as core.Map<core.String, core.dynamic>)
               : null,
-          op: _json.containsKey('op') ? _json['op'] as core.String : null,
-          value: _json.containsKey('value')
+          op: json_.containsKey('op') ? json_['op'] as core.String : null,
+          value: json_.containsKey('value')
               ? Value.fromJson(
-                  _json['value'] as core.Map<core.String, core.dynamic>)
+                  json_['value'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2530,10 +2530,10 @@ class FieldReference {
     this.fieldPath,
   });
 
-  FieldReference.fromJson(core.Map _json)
+  FieldReference.fromJson(core.Map json_)
       : this(
-          fieldPath: _json.containsKey('fieldPath')
-              ? _json['fieldPath'] as core.String
+          fieldPath: json_.containsKey('fieldPath')
+              ? json_['fieldPath'] as core.String
               : null,
         );
 
@@ -2626,33 +2626,33 @@ class FieldTransform {
     this.setToServerValue,
   });
 
-  FieldTransform.fromJson(core.Map _json)
+  FieldTransform.fromJson(core.Map json_)
       : this(
-          appendMissingElements: _json.containsKey('appendMissingElements')
-              ? ArrayValue.fromJson(_json['appendMissingElements']
+          appendMissingElements: json_.containsKey('appendMissingElements')
+              ? ArrayValue.fromJson(json_['appendMissingElements']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          fieldPath: _json.containsKey('fieldPath')
-              ? _json['fieldPath'] as core.String
+          fieldPath: json_.containsKey('fieldPath')
+              ? json_['fieldPath'] as core.String
               : null,
-          increment: _json.containsKey('increment')
+          increment: json_.containsKey('increment')
               ? Value.fromJson(
-                  _json['increment'] as core.Map<core.String, core.dynamic>)
+                  json_['increment'] as core.Map<core.String, core.dynamic>)
               : null,
-          maximum: _json.containsKey('maximum')
+          maximum: json_.containsKey('maximum')
               ? Value.fromJson(
-                  _json['maximum'] as core.Map<core.String, core.dynamic>)
+                  json_['maximum'] as core.Map<core.String, core.dynamic>)
               : null,
-          minimum: _json.containsKey('minimum')
+          minimum: json_.containsKey('minimum')
               ? Value.fromJson(
-                  _json['minimum'] as core.Map<core.String, core.dynamic>)
+                  json_['minimum'] as core.Map<core.String, core.dynamic>)
               : null,
-          removeAllFromArray: _json.containsKey('removeAllFromArray')
-              ? ArrayValue.fromJson(_json['removeAllFromArray']
+          removeAllFromArray: json_.containsKey('removeAllFromArray')
+              ? ArrayValue.fromJson(json_['removeAllFromArray']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          setToServerValue: _json.containsKey('setToServerValue')
-              ? _json['setToServerValue'] as core.String
+          setToServerValue: json_.containsKey('setToServerValue')
+              ? json_['setToServerValue'] as core.String
               : null,
         );
 
@@ -2686,19 +2686,19 @@ class Filter {
     this.unaryFilter,
   });
 
-  Filter.fromJson(core.Map _json)
+  Filter.fromJson(core.Map json_)
       : this(
-          compositeFilter: _json.containsKey('compositeFilter')
-              ? CompositeFilter.fromJson(_json['compositeFilter']
+          compositeFilter: json_.containsKey('compositeFilter')
+              ? CompositeFilter.fromJson(json_['compositeFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          fieldFilter: _json.containsKey('fieldFilter')
+          fieldFilter: json_.containsKey('fieldFilter')
               ? FieldFilter.fromJson(
-                  _json['fieldFilter'] as core.Map<core.String, core.dynamic>)
+                  json_['fieldFilter'] as core.Map<core.String, core.dynamic>)
               : null,
-          unaryFilter: _json.containsKey('unaryFilter')
+          unaryFilter: json_.containsKey('unaryFilter')
               ? UnaryFilter.fromJson(
-                  _json['unaryFilter'] as core.Map<core.String, core.dynamic>)
+                  json_['unaryFilter'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2787,24 +2787,24 @@ class GoogleFirestoreAdminV1Database {
     this.type,
   });
 
-  GoogleFirestoreAdminV1Database.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1Database.fromJson(core.Map json_)
       : this(
           appEngineIntegrationMode:
-              _json.containsKey('appEngineIntegrationMode')
-                  ? _json['appEngineIntegrationMode'] as core.String
+              json_.containsKey('appEngineIntegrationMode')
+                  ? json_['appEngineIntegrationMode'] as core.String
                   : null,
-          concurrencyMode: _json.containsKey('concurrencyMode')
-              ? _json['concurrencyMode'] as core.String
+          concurrencyMode: json_.containsKey('concurrencyMode')
+              ? json_['concurrencyMode'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          keyPrefix: _json.containsKey('keyPrefix')
-              ? _json['keyPrefix'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          keyPrefix: json_.containsKey('keyPrefix')
+              ? json_['keyPrefix'] as core.String
               : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2843,15 +2843,15 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
     this.outputUriPrefix,
   });
 
-  GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(core.Map json_)
       : this(
-          collectionIds: _json.containsKey('collectionIds')
-              ? (_json['collectionIds'] as core.List)
+          collectionIds: json_.containsKey('collectionIds')
+              ? (json_['collectionIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          outputUriPrefix: _json.containsKey('outputUriPrefix')
-              ? _json['outputUriPrefix'] as core.String
+          outputUriPrefix: json_.containsKey('outputUriPrefix')
+              ? json_['outputUriPrefix'] as core.String
               : null,
         );
 
@@ -2908,16 +2908,16 @@ class GoogleFirestoreAdminV1Field {
     this.ttlConfig,
   });
 
-  GoogleFirestoreAdminV1Field.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1Field.fromJson(core.Map json_)
       : this(
-          indexConfig: _json.containsKey('indexConfig')
+          indexConfig: json_.containsKey('indexConfig')
               ? GoogleFirestoreAdminV1IndexConfig.fromJson(
-                  _json['indexConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['indexConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          ttlConfig: _json.containsKey('ttlConfig')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ttlConfig: json_.containsKey('ttlConfig')
               ? GoogleFirestoreAdminV1TtlConfig.fromJson(
-                  _json['ttlConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['ttlConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2947,15 +2947,15 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
     this.inputUriPrefix,
   });
 
-  GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(core.Map json_)
       : this(
-          collectionIds: _json.containsKey('collectionIds')
-              ? (_json['collectionIds'] as core.List)
+          collectionIds: json_.containsKey('collectionIds')
+              ? (json_['collectionIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          inputUriPrefix: _json.containsKey('inputUriPrefix')
-              ? _json['inputUriPrefix'] as core.String
+          inputUriPrefix: json_.containsKey('inputUriPrefix')
+              ? json_['inputUriPrefix'] as core.String
               : null,
         );
 
@@ -3034,20 +3034,20 @@ class GoogleFirestoreAdminV1Index {
     this.state,
   });
 
-  GoogleFirestoreAdminV1Index.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1Index.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1IndexField.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          queryScope: _json.containsKey('queryScope')
-              ? _json['queryScope'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          queryScope: json_.containsKey('queryScope')
+              ? json_['queryScope'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3094,22 +3094,22 @@ class GoogleFirestoreAdminV1IndexConfig {
     this.usesAncestorConfig,
   });
 
-  GoogleFirestoreAdminV1IndexConfig.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1IndexConfig.fromJson(core.Map json_)
       : this(
-          ancestorField: _json.containsKey('ancestorField')
-              ? _json['ancestorField'] as core.String
+          ancestorField: json_.containsKey('ancestorField')
+              ? json_['ancestorField'] as core.String
               : null,
-          indexes: _json.containsKey('indexes')
-              ? (_json['indexes'] as core.List)
+          indexes: json_.containsKey('indexes')
+              ? (json_['indexes'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1Index.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          reverting: _json.containsKey('reverting')
-              ? _json['reverting'] as core.bool
+          reverting: json_.containsKey('reverting')
+              ? json_['reverting'] as core.bool
               : null,
-          usesAncestorConfig: _json.containsKey('usesAncestorConfig')
-              ? _json['usesAncestorConfig'] as core.bool
+          usesAncestorConfig: json_.containsKey('usesAncestorConfig')
+              ? json_['usesAncestorConfig'] as core.bool
               : null,
         );
 
@@ -3154,16 +3154,16 @@ class GoogleFirestoreAdminV1IndexField {
     this.order,
   });
 
-  GoogleFirestoreAdminV1IndexField.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1IndexField.fromJson(core.Map json_)
       : this(
-          arrayConfig: _json.containsKey('arrayConfig')
-              ? _json['arrayConfig'] as core.String
+          arrayConfig: json_.containsKey('arrayConfig')
+              ? json_['arrayConfig'] as core.String
               : null,
-          fieldPath: _json.containsKey('fieldPath')
-              ? _json['fieldPath'] as core.String
+          fieldPath: json_.containsKey('fieldPath')
+              ? json_['fieldPath'] as core.String
               : null,
           order:
-              _json.containsKey('order') ? _json['order'] as core.String : null,
+              json_.containsKey('order') ? json_['order'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3182,10 +3182,10 @@ class GoogleFirestoreAdminV1ListDatabasesResponse {
     this.databases,
   });
 
-  GoogleFirestoreAdminV1ListDatabasesResponse.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1ListDatabasesResponse.fromJson(core.Map json_)
       : this(
-          databases: _json.containsKey('databases')
-              ? (_json['databases'] as core.List)
+          databases: json_.containsKey('databases')
+              ? (json_['databases'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1Database.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3212,16 +3212,16 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
     this.nextPageToken,
   });
 
-  GoogleFirestoreAdminV1ListFieldsResponse.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1ListFieldsResponse.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1Field.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3246,16 +3246,16 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
     this.nextPageToken,
   });
 
-  GoogleFirestoreAdminV1ListIndexesResponse.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1ListIndexesResponse.fromJson(core.Map json_)
       : this(
-          indexes: _json.containsKey('indexes')
-              ? (_json['indexes'] as core.List)
+          indexes: json_.containsKey('indexes')
+              ? (json_['indexes'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1Index.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3293,10 +3293,10 @@ class GoogleFirestoreAdminV1TtlConfig {
     this.state,
   });
 
-  GoogleFirestoreAdminV1TtlConfig.fromJson(core.Map _json)
+  GoogleFirestoreAdminV1TtlConfig.fromJson(core.Map json_)
       : this(
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3320,13 +3320,13 @@ class GoogleLongrunningListOperationsResponse {
     this.operations,
   });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3390,19 +3390,19 @@ class GoogleLongrunningOperation {
     this.response,
   });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json)
+  GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3443,16 +3443,16 @@ class ListCollectionIdsRequest {
     this.readTime,
   });
 
-  ListCollectionIdsRequest.fromJson(core.Map _json)
+  ListCollectionIdsRequest.fromJson(core.Map json_)
       : this(
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
               : null,
         );
 
@@ -3476,15 +3476,15 @@ class ListCollectionIdsResponse {
     this.nextPageToken,
   });
 
-  ListCollectionIdsResponse.fromJson(core.Map _json)
+  ListCollectionIdsResponse.fromJson(core.Map json_)
       : this(
-          collectionIds: _json.containsKey('collectionIds')
-              ? (_json['collectionIds'] as core.List)
+          collectionIds: json_.containsKey('collectionIds')
+              ? (json_['collectionIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3507,16 +3507,16 @@ class ListDocumentsResponse {
     this.nextPageToken,
   });
 
-  ListDocumentsResponse.fromJson(core.Map _json)
+  ListDocumentsResponse.fromJson(core.Map json_)
       : this(
-          documents: _json.containsKey('documents')
-              ? (_json['documents'] as core.List)
+          documents: json_.containsKey('documents')
+              ? (json_['documents'] as core.List)
                   .map((value) => Document.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3539,16 +3539,16 @@ class ListLocationsResponse {
     this.nextPageToken,
   });
 
-  ListLocationsResponse.fromJson(core.Map _json)
+  ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3575,10 +3575,10 @@ class MapValue {
     this.fields,
   });
 
-  MapValue.fromJson(core.Map _json)
+  MapValue.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     Value.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -3611,14 +3611,14 @@ class Order {
     this.field,
   });
 
-  Order.fromJson(core.Map _json)
+  Order.fromJson(core.Map json_)
       : this(
-          direction: _json.containsKey('direction')
-              ? _json['direction'] as core.String
+          direction: json_.containsKey('direction')
+              ? json_['direction'] as core.String
               : null,
-          field: _json.containsKey('field')
+          field: json_.containsKey('field')
               ? FieldReference.fromJson(
-                  _json['field'] as core.Map<core.String, core.dynamic>)
+                  json_['field'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3680,22 +3680,22 @@ class PartitionQueryRequest {
     this.structuredQuery,
   });
 
-  PartitionQueryRequest.fromJson(core.Map _json)
+  PartitionQueryRequest.fromJson(core.Map json_)
       : this(
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
-          partitionCount: _json.containsKey('partitionCount')
-              ? _json['partitionCount'] as core.String
+          partitionCount: json_.containsKey('partitionCount')
+              ? json_['partitionCount'] as core.String
               : null,
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
               : null,
-          structuredQuery: _json.containsKey('structuredQuery')
-              ? StructuredQuery.fromJson(_json['structuredQuery']
+          structuredQuery: json_.containsKey('structuredQuery')
+              ? StructuredQuery.fromJson(json_['structuredQuery']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3736,13 +3736,13 @@ class PartitionQueryResponse {
     this.partitions,
   });
 
-  PartitionQueryResponse.fromJson(core.Map _json)
+  PartitionQueryResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          partitions: _json.containsKey('partitions')
-              ? (_json['partitions'] as core.List)
+          partitions: json_.containsKey('partitions')
+              ? (json_['partitions'] as core.List)
                   .map((value) => Cursor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3773,12 +3773,12 @@ class Precondition {
     this.updateTime,
   });
 
-  Precondition.fromJson(core.Map _json)
+  Precondition.fromJson(core.Map json_)
       : this(
           exists:
-              _json.containsKey('exists') ? _json['exists'] as core.bool : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('exists') ? json_['exists'] as core.bool : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -3800,10 +3800,10 @@ class Projection {
     this.fields,
   });
 
-  Projection.fromJson(core.Map _json)
+  Projection.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
                   .map((value) => FieldReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3826,10 +3826,10 @@ class ReadOnly {
     this.readTime,
   });
 
-  ReadOnly.fromJson(core.Map _json)
+  ReadOnly.fromJson(core.Map json_)
       : this(
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
               : null,
         );
 
@@ -3845,19 +3845,19 @@ class ReadWrite {
   core.List<core.int> get retryTransactionAsBytes =>
       convert.base64.decode(retryTransaction!);
 
-  set retryTransactionAsBytes(core.List<core.int> _bytes) {
+  set retryTransactionAsBytes(core.List<core.int> bytes_) {
     retryTransaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   ReadWrite({
     this.retryTransaction,
   });
 
-  ReadWrite.fromJson(core.Map _json)
+  ReadWrite.fromJson(core.Map json_)
       : this(
-          retryTransaction: _json.containsKey('retryTransaction')
-              ? _json['retryTransaction'] as core.String
+          retryTransaction: json_.containsKey('retryTransaction')
+              ? json_['retryTransaction'] as core.String
               : null,
         );
 
@@ -3875,19 +3875,19 @@ class RollbackRequest {
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
 
-  set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> bytes_) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   RollbackRequest({
     this.transaction,
   });
 
-  RollbackRequest.fromJson(core.Map _json)
+  RollbackRequest.fromJson(core.Map json_)
       : this(
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
               : null,
         );
 
@@ -3919,9 +3919,9 @@ class RunQueryRequest {
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
 
-  set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> bytes_) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   RunQueryRequest({
@@ -3931,21 +3931,21 @@ class RunQueryRequest {
     this.transaction,
   });
 
-  RunQueryRequest.fromJson(core.Map _json)
+  RunQueryRequest.fromJson(core.Map json_)
       : this(
-          newTransaction: _json.containsKey('newTransaction')
-              ? TransactionOptions.fromJson(_json['newTransaction']
+          newTransaction: json_.containsKey('newTransaction')
+              ? TransactionOptions.fromJson(json_['newTransaction']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
               : null,
-          structuredQuery: _json.containsKey('structuredQuery')
-              ? StructuredQuery.fromJson(_json['structuredQuery']
+          structuredQuery: json_.containsKey('structuredQuery')
+              ? StructuredQuery.fromJson(json_['structuredQuery']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
               : null,
         );
 
@@ -3987,9 +3987,9 @@ class RunQueryResponseElement {
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
 
-  set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> bytes_) {
     transaction =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   RunQueryResponseElement({
@@ -4000,21 +4000,21 @@ class RunQueryResponseElement {
     this.transaction,
   });
 
-  RunQueryResponseElement.fromJson(core.Map _json)
+  RunQueryResponseElement.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
+          document: json_.containsKey('document')
               ? Document.fromJson(
-                  _json['document'] as core.Map<core.String, core.dynamic>)
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          readTime: _json.containsKey('readTime')
-              ? _json['readTime'] as core.String
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
               : null,
-          skippedResults: _json.containsKey('skippedResults')
-              ? _json['skippedResults'] as core.int
+          skippedResults: json_.containsKey('skippedResults')
+              ? json_['skippedResults'] as core.int
               : null,
-          transaction: _json.containsKey('transaction')
-              ? _json['transaction'] as core.String
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
               : null,
         );
 
@@ -4123,38 +4123,38 @@ class StructuredQuery {
     this.where,
   });
 
-  StructuredQuery.fromJson(core.Map _json)
+  StructuredQuery.fromJson(core.Map json_)
       : this(
-          endAt: _json.containsKey('endAt')
+          endAt: json_.containsKey('endAt')
               ? Cursor.fromJson(
-                  _json['endAt'] as core.Map<core.String, core.dynamic>)
+                  json_['endAt'] as core.Map<core.String, core.dynamic>)
               : null,
-          from: _json.containsKey('from')
-              ? (_json['from'] as core.List)
+          from: json_.containsKey('from')
+              ? (json_['from'] as core.List)
                   .map((value) => CollectionSelector.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          limit: _json.containsKey('limit') ? _json['limit'] as core.int : null,
+          limit: json_.containsKey('limit') ? json_['limit'] as core.int : null,
           offset:
-              _json.containsKey('offset') ? _json['offset'] as core.int : null,
-          orderBy: _json.containsKey('orderBy')
-              ? (_json['orderBy'] as core.List)
+              json_.containsKey('offset') ? json_['offset'] as core.int : null,
+          orderBy: json_.containsKey('orderBy')
+              ? (json_['orderBy'] as core.List)
                   .map((value) => Order.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          select: _json.containsKey('select')
+          select: json_.containsKey('select')
               ? Projection.fromJson(
-                  _json['select'] as core.Map<core.String, core.dynamic>)
+                  json_['select'] as core.Map<core.String, core.dynamic>)
               : null,
-          startAt: _json.containsKey('startAt')
+          startAt: json_.containsKey('startAt')
               ? Cursor.fromJson(
-                  _json['startAt'] as core.Map<core.String, core.dynamic>)
+                  json_['startAt'] as core.Map<core.String, core.dynamic>)
               : null,
-          where: _json.containsKey('where')
+          where: json_.containsKey('where')
               ? Filter.fromJson(
-                  _json['where'] as core.Map<core.String, core.dynamic>)
+                  json_['where'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4183,15 +4183,15 @@ class TransactionOptions {
     this.readWrite,
   });
 
-  TransactionOptions.fromJson(core.Map _json)
+  TransactionOptions.fromJson(core.Map json_)
       : this(
-          readOnly: _json.containsKey('readOnly')
+          readOnly: json_.containsKey('readOnly')
               ? ReadOnly.fromJson(
-                  _json['readOnly'] as core.Map<core.String, core.dynamic>)
+                  json_['readOnly'] as core.Map<core.String, core.dynamic>)
               : null,
-          readWrite: _json.containsKey('readWrite')
+          readWrite: json_.containsKey('readWrite')
               ? ReadWrite.fromJson(
-                  _json['readWrite'] as core.Map<core.String, core.dynamic>)
+                  json_['readWrite'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4224,13 +4224,13 @@ class UnaryFilter {
     this.op,
   });
 
-  UnaryFilter.fromJson(core.Map _json)
+  UnaryFilter.fromJson(core.Map json_)
       : this(
-          field: _json.containsKey('field')
+          field: json_.containsKey('field')
               ? FieldReference.fromJson(
-                  _json['field'] as core.Map<core.String, core.dynamic>)
+                  json_['field'] as core.Map<core.String, core.dynamic>)
               : null,
-          op: _json.containsKey('op') ? _json['op'] as core.String : null,
+          op: json_.containsKey('op') ? json_['op'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4258,9 +4258,9 @@ class Value {
   core.List<core.int> get bytesValueAsBytes =>
       convert.base64.decode(bytesValue!);
 
-  set bytesValueAsBytes(core.List<core.int> _bytes) {
+  set bytesValueAsBytes(core.List<core.int> bytes_) {
     bytesValue =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A double value.
@@ -4313,41 +4313,41 @@ class Value {
     this.timestampValue,
   });
 
-  Value.fromJson(core.Map _json)
+  Value.fromJson(core.Map json_)
       : this(
-          arrayValue: _json.containsKey('arrayValue')
+          arrayValue: json_.containsKey('arrayValue')
               ? ArrayValue.fromJson(
-                  _json['arrayValue'] as core.Map<core.String, core.dynamic>)
+                  json_['arrayValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          booleanValue: _json.containsKey('booleanValue')
-              ? _json['booleanValue'] as core.bool
+          booleanValue: json_.containsKey('booleanValue')
+              ? json_['booleanValue'] as core.bool
               : null,
-          bytesValue: _json.containsKey('bytesValue')
-              ? _json['bytesValue'] as core.String
+          bytesValue: json_.containsKey('bytesValue')
+              ? json_['bytesValue'] as core.String
               : null,
-          doubleValue: _json.containsKey('doubleValue')
-              ? (_json['doubleValue'] as core.num).toDouble()
+          doubleValue: json_.containsKey('doubleValue')
+              ? (json_['doubleValue'] as core.num).toDouble()
               : null,
-          geoPointValue: _json.containsKey('geoPointValue')
+          geoPointValue: json_.containsKey('geoPointValue')
               ? LatLng.fromJson(
-                  _json['geoPointValue'] as core.Map<core.String, core.dynamic>)
+                  json_['geoPointValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          integerValue: _json.containsKey('integerValue')
-              ? _json['integerValue'] as core.String
+          integerValue: json_.containsKey('integerValue')
+              ? json_['integerValue'] as core.String
               : null,
-          mapValue: _json.containsKey('mapValue')
+          mapValue: json_.containsKey('mapValue')
               ? MapValue.fromJson(
-                  _json['mapValue'] as core.Map<core.String, core.dynamic>)
+                  json_['mapValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          nullValue: _json.containsKey('nullValue') ? 'NULL_VALUE' : null,
-          referenceValue: _json.containsKey('referenceValue')
-              ? _json['referenceValue'] as core.String
+          nullValue: json_.containsKey('nullValue') ? 'NULL_VALUE' : null,
+          referenceValue: json_.containsKey('referenceValue')
+              ? json_['referenceValue'] as core.String
               : null,
-          stringValue: _json.containsKey('stringValue')
-              ? _json['stringValue'] as core.String
+          stringValue: json_.containsKey('stringValue')
+              ? json_['stringValue'] as core.String
               : null,
-          timestampValue: _json.containsKey('timestampValue')
-              ? _json['timestampValue'] as core.String
+          timestampValue: json_.containsKey('timestampValue')
+              ? json_['timestampValue'] as core.String
               : null,
         );
 
@@ -4412,29 +4412,29 @@ class Write {
     this.updateTransforms,
   });
 
-  Write.fromJson(core.Map _json)
+  Write.fromJson(core.Map json_)
       : this(
-          currentDocument: _json.containsKey('currentDocument')
-              ? Precondition.fromJson(_json['currentDocument']
+          currentDocument: json_.containsKey('currentDocument')
+              ? Precondition.fromJson(json_['currentDocument']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          delete: _json.containsKey('delete')
-              ? _json['delete'] as core.String
+          delete: json_.containsKey('delete')
+              ? json_['delete'] as core.String
               : null,
-          transform: _json.containsKey('transform')
+          transform: json_.containsKey('transform')
               ? DocumentTransform.fromJson(
-                  _json['transform'] as core.Map<core.String, core.dynamic>)
+                  json_['transform'] as core.Map<core.String, core.dynamic>)
               : null,
-          update: _json.containsKey('update')
+          update: json_.containsKey('update')
               ? Document.fromJson(
-                  _json['update'] as core.Map<core.String, core.dynamic>)
+                  json_['update'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: _json.containsKey('updateMask')
+          updateMask: json_.containsKey('updateMask')
               ? DocumentMask.fromJson(
-                  _json['updateMask'] as core.Map<core.String, core.dynamic>)
+                  json_['updateMask'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTransforms: _json.containsKey('updateTransforms')
-              ? (_json['updateTransforms'] as core.List)
+          updateTransforms: json_.containsKey('updateTransforms')
+              ? (json_['updateTransforms'] as core.List)
                   .map((value) => FieldTransform.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4482,9 +4482,9 @@ class WriteRequest {
   core.List<core.int> get streamTokenAsBytes =>
       convert.base64.decode(streamToken!);
 
-  set streamTokenAsBytes(core.List<core.int> _bytes) {
+  set streamTokenAsBytes(core.List<core.int> bytes_) {
     streamToken =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The writes to apply.
@@ -4501,24 +4501,24 @@ class WriteRequest {
     this.writes,
   });
 
-  WriteRequest.fromJson(core.Map _json)
+  WriteRequest.fromJson(core.Map json_)
       : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          streamId: _json.containsKey('streamId')
-              ? _json['streamId'] as core.String
+          streamId: json_.containsKey('streamId')
+              ? json_['streamId'] as core.String
               : null,
-          streamToken: _json.containsKey('streamToken')
-              ? _json['streamToken'] as core.String
+          streamToken: json_.containsKey('streamToken')
+              ? json_['streamToken'] as core.String
               : null,
-          writes: _json.containsKey('writes')
-              ? (_json['writes'] as core.List)
+          writes: json_.containsKey('writes')
+              ? (json_['writes'] as core.List)
                   .map((value) => Write.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4554,9 +4554,9 @@ class WriteResponse {
   core.List<core.int> get streamTokenAsBytes =>
       convert.base64.decode(streamToken!);
 
-  set streamTokenAsBytes(core.List<core.int> _bytes) {
+  set streamTokenAsBytes(core.List<core.int> bytes_) {
     streamToken =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The result of applying the writes.
@@ -4571,19 +4571,19 @@ class WriteResponse {
     this.writeResults,
   });
 
-  WriteResponse.fromJson(core.Map _json)
+  WriteResponse.fromJson(core.Map json_)
       : this(
-          commitTime: _json.containsKey('commitTime')
-              ? _json['commitTime'] as core.String
+          commitTime: json_.containsKey('commitTime')
+              ? json_['commitTime'] as core.String
               : null,
-          streamId: _json.containsKey('streamId')
-              ? _json['streamId'] as core.String
+          streamId: json_.containsKey('streamId')
+              ? json_['streamId'] as core.String
               : null,
-          streamToken: _json.containsKey('streamToken')
-              ? _json['streamToken'] as core.String
+          streamToken: json_.containsKey('streamToken')
+              ? json_['streamToken'] as core.String
               : null,
-          writeResults: _json.containsKey('writeResults')
-              ? (_json['writeResults'] as core.List)
+          writeResults: json_.containsKey('writeResults')
+              ? (json_['writeResults'] as core.List)
                   .map((value) => WriteResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4615,16 +4615,16 @@ class WriteResult {
     this.updateTime,
   });
 
-  WriteResult.fromJson(core.Map _json)
+  WriteResult.fromJson(core.Map json_)
       : this(
-          transformResults: _json.containsKey('transformResults')
-              ? (_json['transformResults'] as core.List)
+          transformResults: json_.containsKey('transformResults')
+              ? (json_['transformResults'] as core.List)
                   .map((value) => Value.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 

@@ -95,18 +95,18 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -143,22 +143,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -193,20 +193,20 @@ class ProjectsLocationsJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a job.
@@ -232,18 +232,18 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a job.
@@ -269,18 +269,18 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists jobs.
@@ -319,21 +319,21 @@ class ProjectsLocationsJobsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListJobsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a job.
@@ -381,21 +381,21 @@ class ProjectsLocationsJobsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Pauses a job.
@@ -429,20 +429,20 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':pause';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':pause';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resume a job.
@@ -475,20 +475,20 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':resume';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resume';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Forces a job to run now.
@@ -520,20 +520,20 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -559,9 +559,9 @@ class AppEngineHttpTarget {
   core.String? body;
   core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
-  set bodyAsBytes(core.List<core.int> _bytes) {
+  set bodyAsBytes(core.List<core.int> bytes_) {
     body =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// HTTP request headers.
@@ -619,26 +619,26 @@ class AppEngineHttpTarget {
     this.relativeUri,
   });
 
-  AppEngineHttpTarget.fromJson(core.Map _json)
+  AppEngineHttpTarget.fromJson(core.Map json_)
       : this(
-          appEngineRouting: _json.containsKey('appEngineRouting')
-              ? AppEngineRouting.fromJson(_json['appEngineRouting']
+          appEngineRouting: json_.containsKey('appEngineRouting')
+              ? AppEngineRouting.fromJson(json_['appEngineRouting']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          body: _json.containsKey('body') ? _json['body'] as core.String : null,
-          headers: _json.containsKey('headers')
-              ? (_json['headers'] as core.Map<core.String, core.dynamic>).map(
+          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          httpMethod: _json.containsKey('httpMethod')
-              ? _json['httpMethod'] as core.String
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
               : null,
-          relativeUri: _json.containsKey('relativeUri')
-              ? _json['relativeUri'] as core.String
+          relativeUri: json_.containsKey('relativeUri')
+              ? json_['relativeUri'] as core.String
               : null,
         );
 
@@ -719,17 +719,17 @@ class AppEngineRouting {
     this.version,
   });
 
-  AppEngineRouting.fromJson(core.Map _json)
+  AppEngineRouting.fromJson(core.Map json_)
       : this(
-          host: _json.containsKey('host') ? _json['host'] as core.String : null,
-          instance: _json.containsKey('instance')
-              ? _json['instance'] as core.String
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          instance: json_.containsKey('instance')
+              ? json_['instance'] as core.String
               : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -764,9 +764,9 @@ class HttpTarget {
   core.String? body;
   core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
-  set bodyAsBytes(core.List<core.int> _bytes) {
+  set bodyAsBytes(core.List<core.int> bytes_) {
     body =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The user can specify HTTP request headers to send with the job's HTTP
@@ -840,29 +840,29 @@ class HttpTarget {
     this.uri,
   });
 
-  HttpTarget.fromJson(core.Map _json)
+  HttpTarget.fromJson(core.Map json_)
       : this(
-          body: _json.containsKey('body') ? _json['body'] as core.String : null,
-          headers: _json.containsKey('headers')
-              ? (_json['headers'] as core.Map<core.String, core.dynamic>).map(
+          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          httpMethod: _json.containsKey('httpMethod')
-              ? _json['httpMethod'] as core.String
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
               : null,
-          oauthToken: _json.containsKey('oauthToken')
+          oauthToken: json_.containsKey('oauthToken')
               ? OAuthToken.fromJson(
-                  _json['oauthToken'] as core.Map<core.String, core.dynamic>)
+                  json_['oauthToken'] as core.Map<core.String, core.dynamic>)
               : null,
-          oidcToken: _json.containsKey('oidcToken')
+          oidcToken: json_.containsKey('oidcToken')
               ? OidcToken.fromJson(
-                  _json['oidcToken'] as core.Map<core.String, core.dynamic>)
+                  json_['oidcToken'] as core.Map<core.String, core.dynamic>)
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1010,51 +1010,51 @@ class Job {
     this.userUpdateTime,
   });
 
-  Job.fromJson(core.Map _json)
+  Job.fromJson(core.Map json_)
       : this(
-          appEngineHttpTarget: _json.containsKey('appEngineHttpTarget')
-              ? AppEngineHttpTarget.fromJson(_json['appEngineHttpTarget']
+          appEngineHttpTarget: json_.containsKey('appEngineHttpTarget')
+              ? AppEngineHttpTarget.fromJson(json_['appEngineHttpTarget']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          attemptDeadline: _json.containsKey('attemptDeadline')
-              ? _json['attemptDeadline'] as core.String
+          attemptDeadline: json_.containsKey('attemptDeadline')
+              ? json_['attemptDeadline'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          httpTarget: _json.containsKey('httpTarget')
+          httpTarget: json_.containsKey('httpTarget')
               ? HttpTarget.fromJson(
-                  _json['httpTarget'] as core.Map<core.String, core.dynamic>)
+                  json_['httpTarget'] as core.Map<core.String, core.dynamic>)
               : null,
-          lastAttemptTime: _json.containsKey('lastAttemptTime')
-              ? _json['lastAttemptTime'] as core.String
+          lastAttemptTime: json_.containsKey('lastAttemptTime')
+              ? json_['lastAttemptTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pubsubTarget: _json.containsKey('pubsubTarget')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pubsubTarget: json_.containsKey('pubsubTarget')
               ? PubsubTarget.fromJson(
-                  _json['pubsubTarget'] as core.Map<core.String, core.dynamic>)
+                  json_['pubsubTarget'] as core.Map<core.String, core.dynamic>)
               : null,
-          retryConfig: _json.containsKey('retryConfig')
+          retryConfig: json_.containsKey('retryConfig')
               ? RetryConfig.fromJson(
-                  _json['retryConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['retryConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          schedule: _json.containsKey('schedule')
-              ? _json['schedule'] as core.String
+          schedule: json_.containsKey('schedule')
+              ? json_['schedule'] as core.String
               : null,
-          scheduleTime: _json.containsKey('scheduleTime')
-              ? _json['scheduleTime'] as core.String
+          scheduleTime: json_.containsKey('scheduleTime')
+              ? json_['scheduleTime'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          status: _json.containsKey('status')
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          status: json_.containsKey('status')
               ? Status.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          timeZone: _json.containsKey('timeZone')
-              ? _json['timeZone'] as core.String
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
               : null,
-          userUpdateTime: _json.containsKey('userUpdateTime')
-              ? _json['userUpdateTime'] as core.String
+          userUpdateTime: json_.containsKey('userUpdateTime')
+              ? json_['userUpdateTime'] as core.String
               : null,
         );
 
@@ -1095,16 +1095,16 @@ class ListJobsResponse {
     this.nextPageToken,
   });
 
-  ListJobsResponse.fromJson(core.Map _json)
+  ListJobsResponse.fromJson(core.Map json_)
       : this(
-          jobs: _json.containsKey('jobs')
-              ? (_json['jobs'] as core.List)
+          jobs: json_.containsKey('jobs')
+              ? (json_['jobs'] as core.List)
                   .map((value) => Job.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1127,16 +1127,16 @@ class ListLocationsResponse {
     this.nextPageToken,
   });
 
-  ListLocationsResponse.fromJson(core.Map _json)
+  ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1173,12 +1173,12 @@ class OAuthToken {
     this.serviceAccountEmail,
   });
 
-  OAuthToken.fromJson(core.Map _json)
+  OAuthToken.fromJson(core.Map json_)
       : this(
           scope:
-              _json.containsKey('scope') ? _json['scope'] as core.String : null,
-          serviceAccountEmail: _json.containsKey('serviceAccountEmail')
-              ? _json['serviceAccountEmail'] as core.String
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
               : null,
         );
 
@@ -1212,13 +1212,13 @@ class OidcToken {
     this.serviceAccountEmail,
   });
 
-  OidcToken.fromJson(core.Map _json)
+  OidcToken.fromJson(core.Map json_)
       : this(
-          audience: _json.containsKey('audience')
-              ? _json['audience'] as core.String
+          audience: json_.containsKey('audience')
+              ? json_['audience'] as core.String
               : null,
-          serviceAccountEmail: _json.containsKey('serviceAccountEmail')
-              ? _json['serviceAccountEmail'] as core.String
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
               : null,
         );
 
@@ -1250,9 +1250,9 @@ class PubsubTarget {
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
-  set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> bytes_) {
     data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The name of the Cloud Pub/Sub topic to which messages will be published
@@ -1272,10 +1272,10 @@ class PubsubTarget {
     this.topicName,
   });
 
-  PubsubTarget.fromJson(core.Map _json)
+  PubsubTarget.fromJson(core.Map json_)
       : this(
-          attributes: _json.containsKey('attributes')
-              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -1283,9 +1283,9 @@ class PubsubTarget {
                   ),
                 )
               : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          topicName: _json.containsKey('topicName')
-              ? _json['topicName'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          topicName: json_.containsKey('topicName')
+              ? json_['topicName'] as core.String
               : null,
         );
 
@@ -1357,22 +1357,22 @@ class RetryConfig {
     this.retryCount,
   });
 
-  RetryConfig.fromJson(core.Map _json)
+  RetryConfig.fromJson(core.Map json_)
       : this(
-          maxBackoffDuration: _json.containsKey('maxBackoffDuration')
-              ? _json['maxBackoffDuration'] as core.String
+          maxBackoffDuration: json_.containsKey('maxBackoffDuration')
+              ? json_['maxBackoffDuration'] as core.String
               : null,
-          maxDoublings: _json.containsKey('maxDoublings')
-              ? _json['maxDoublings'] as core.int
+          maxDoublings: json_.containsKey('maxDoublings')
+              ? json_['maxDoublings'] as core.int
               : null,
-          maxRetryDuration: _json.containsKey('maxRetryDuration')
-              ? _json['maxRetryDuration'] as core.String
+          maxRetryDuration: json_.containsKey('maxRetryDuration')
+              ? json_['maxRetryDuration'] as core.String
               : null,
-          minBackoffDuration: _json.containsKey('minBackoffDuration')
-              ? _json['minBackoffDuration'] as core.String
+          minBackoffDuration: json_.containsKey('minBackoffDuration')
+              ? json_['minBackoffDuration'] as core.String
               : null,
-          retryCount: _json.containsKey('retryCount')
-              ? _json['retryCount'] as core.int
+          retryCount: json_.containsKey('retryCount')
+              ? json_['retryCount'] as core.int
               : null,
         );
 

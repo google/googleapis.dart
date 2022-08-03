@@ -120,21 +120,21 @@ class ProjectsAndroidAppsDeliveryDataResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/deliveryData';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/deliveryData';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -163,20 +163,20 @@ class GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
     this.date,
   });
 
-  GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(core.Map _json)
+  GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(core.Map json_)
       : this(
-          analyticsLabel: _json.containsKey('analyticsLabel')
-              ? _json['analyticsLabel'] as core.String
+          analyticsLabel: json_.containsKey('analyticsLabel')
+              ? json_['analyticsLabel'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          data: _json.containsKey('data')
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          data: json_.containsKey('data')
               ? GoogleFirebaseFcmDataV1beta1Data.fromJson(
-                  _json['data'] as core.Map<core.String, core.dynamic>)
+                  json_['data'] as core.Map<core.String, core.dynamic>)
               : null,
-          date: _json.containsKey('date')
+          date: json_.containsKey('date')
               ? GoogleTypeDate.fromJson(
-                  _json['date'] as core.Map<core.String, core.dynamic>)
+                  json_['date'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -214,25 +214,25 @@ class GoogleFirebaseFcmDataV1beta1Data {
     this.messageOutcomePercents,
   });
 
-  GoogleFirebaseFcmDataV1beta1Data.fromJson(core.Map _json)
+  GoogleFirebaseFcmDataV1beta1Data.fromJson(core.Map json_)
       : this(
-          countMessagesAccepted: _json.containsKey('countMessagesAccepted')
-              ? _json['countMessagesAccepted'] as core.String
+          countMessagesAccepted: json_.containsKey('countMessagesAccepted')
+              ? json_['countMessagesAccepted'] as core.String
               : null,
           deliveryPerformancePercents:
-              _json.containsKey('deliveryPerformancePercents')
+              json_.containsKey('deliveryPerformancePercents')
                   ? GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents
-                      .fromJson(_json['deliveryPerformancePercents']
+                      .fromJson(json_['deliveryPerformancePercents']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          messageInsightPercents: _json.containsKey('messageInsightPercents')
+          messageInsightPercents: json_.containsKey('messageInsightPercents')
               ? GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(
-                  _json['messageInsightPercents']
+                  json_['messageInsightPercents']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          messageOutcomePercents: _json.containsKey('messageOutcomePercents')
+          messageOutcomePercents: json_.containsKey('messageOutcomePercents')
               ? GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(
-                  _json['messageOutcomePercents']
+                  json_['messageOutcomePercents']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -299,22 +299,22 @@ class GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   });
 
   GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          delayedDeviceDoze: _json.containsKey('delayedDeviceDoze')
-              ? (_json['delayedDeviceDoze'] as core.num).toDouble()
+          delayedDeviceDoze: json_.containsKey('delayedDeviceDoze')
+              ? (json_['delayedDeviceDoze'] as core.num).toDouble()
               : null,
-          delayedDeviceOffline: _json.containsKey('delayedDeviceOffline')
-              ? (_json['delayedDeviceOffline'] as core.num).toDouble()
+          delayedDeviceOffline: json_.containsKey('delayedDeviceOffline')
+              ? (json_['delayedDeviceOffline'] as core.num).toDouble()
               : null,
-          delayedMessageThrottled: _json.containsKey('delayedMessageThrottled')
-              ? (_json['delayedMessageThrottled'] as core.num).toDouble()
+          delayedMessageThrottled: json_.containsKey('delayedMessageThrottled')
+              ? (json_['delayedMessageThrottled'] as core.num).toDouble()
               : null,
-          delayedUserStopped: _json.containsKey('delayedUserStopped')
-              ? (_json['delayedUserStopped'] as core.num).toDouble()
+          delayedUserStopped: json_.containsKey('delayedUserStopped')
+              ? (json_['delayedUserStopped'] as core.num).toDouble()
               : null,
-          deliveredNoDelay: _json.containsKey('deliveredNoDelay')
-              ? (_json['deliveredNoDelay'] as core.num).toDouble()
+          deliveredNoDelay: json_.containsKey('deliveredNoDelay')
+              ? (json_['deliveredNoDelay'] as core.num).toDouble()
               : null,
         );
 
@@ -349,17 +349,17 @@ class GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   });
 
   GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          androidDeliveryData: _json.containsKey('androidDeliveryData')
-              ? (_json['androidDeliveryData'] as core.List)
+          androidDeliveryData: json_.containsKey('androidDeliveryData')
+              ? (json_['androidDeliveryData'] as core.List)
                   .map((value) =>
                       GoogleFirebaseFcmDataV1beta1AndroidDeliveryData.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -386,10 +386,10 @@ class GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
     this.priorityLowered,
   });
 
-  GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(core.Map _json)
+  GoogleFirebaseFcmDataV1beta1MessageInsightPercents.fromJson(core.Map json_)
       : this(
-          priorityLowered: _json.containsKey('priorityLowered')
-              ? (_json['priorityLowered'] as core.num).toDouble()
+          priorityLowered: json_.containsKey('priorityLowered')
+              ? (json_['priorityLowered'] as core.num).toDouble()
               : null,
         );
 
@@ -451,23 +451,23 @@ class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
     this.pending,
   });
 
-  GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(core.Map _json)
+  GoogleFirebaseFcmDataV1beta1MessageOutcomePercents.fromJson(core.Map json_)
       : this(
-          delivered: _json.containsKey('delivered')
-              ? (_json['delivered'] as core.num).toDouble()
+          delivered: json_.containsKey('delivered')
+              ? (json_['delivered'] as core.num).toDouble()
               : null,
-          droppedAppForceStopped: _json.containsKey('droppedAppForceStopped')
-              ? (_json['droppedAppForceStopped'] as core.num).toDouble()
+          droppedAppForceStopped: json_.containsKey('droppedAppForceStopped')
+              ? (json_['droppedAppForceStopped'] as core.num).toDouble()
               : null,
-          droppedDeviceInactive: _json.containsKey('droppedDeviceInactive')
-              ? (_json['droppedDeviceInactive'] as core.num).toDouble()
+          droppedDeviceInactive: json_.containsKey('droppedDeviceInactive')
+              ? (json_['droppedDeviceInactive'] as core.num).toDouble()
               : null,
-          droppedTooManyPendingMessages: _json
+          droppedTooManyPendingMessages: json_
                   .containsKey('droppedTooManyPendingMessages')
-              ? (_json['droppedTooManyPendingMessages'] as core.num).toDouble()
+              ? (json_['droppedTooManyPendingMessages'] as core.num).toDouble()
               : null,
-          pending: _json.containsKey('pending')
-              ? (_json['pending'] as core.num).toDouble()
+          pending: json_.containsKey('pending')
+              ? (json_['pending'] as core.num).toDouble()
               : null,
         );
 

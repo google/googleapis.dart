@@ -113,21 +113,21 @@ class PlatformsPropertiesIdeaActivitiesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/ideaActivities';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/ideaActivities';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleSearchIdeahubV1betaIdeaActivity.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -166,22 +166,22 @@ class PlatformsPropertiesIdeaStatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleSearchIdeahubV1betaIdeaState.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -237,7 +237,7 @@ class PlatformsPropertiesIdeasResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -245,15 +245,15 @@ class PlatformsPropertiesIdeasResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/ideas';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/ideas';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleSearchIdeahubV1betaListIdeasResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -297,21 +297,21 @@ class PlatformsPropertiesLocalesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/locales';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/locales';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleSearchIdeahubV1betaListAvailableLocalesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -350,22 +350,22 @@ class PlatformsPropertiesTopicStatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleSearchIdeahubV1betaTopicState.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -385,12 +385,12 @@ class GoogleSearchIdeahubV1betaAvailableLocale {
     this.name,
   });
 
-  GoogleSearchIdeahubV1betaAvailableLocale.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaAvailableLocale.fromJson(core.Map json_)
       : this(
-          locale: _json.containsKey('locale')
-              ? _json['locale'] as core.String
+          locale: json_.containsKey('locale')
+              ? json_['locale'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -418,12 +418,12 @@ class GoogleSearchIdeahubV1betaIdea {
     this.topics,
   });
 
-  GoogleSearchIdeahubV1betaIdea.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaIdea.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-          topics: _json.containsKey('topics')
-              ? (_json['topics'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          topics: json_.containsKey('topics')
+              ? (json_['topics'] as core.List)
                   .map((value) => GoogleSearchIdeahubV1betaTopic.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -479,21 +479,21 @@ class GoogleSearchIdeahubV1betaIdeaActivity {
     this.uri,
   });
 
-  GoogleSearchIdeahubV1betaIdeaActivity.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaIdeaActivity.fromJson(core.Map json_)
       : this(
-          ideas: _json.containsKey('ideas')
-              ? (_json['ideas'] as core.List)
+          ideas: json_.containsKey('ideas')
+              ? (json_['ideas'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          topics: _json.containsKey('topics')
-              ? (_json['topics'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          topics: json_.containsKey('topics')
+              ? (json_['topics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -524,14 +524,14 @@ class GoogleSearchIdeahubV1betaIdeaState {
     this.saved,
   });
 
-  GoogleSearchIdeahubV1betaIdeaState.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaIdeaState.fromJson(core.Map json_)
       : this(
-          dismissed: _json.containsKey('dismissed')
-              ? _json['dismissed'] as core.bool
+          dismissed: json_.containsKey('dismissed')
+              ? json_['dismissed'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           saved:
-              _json.containsKey('saved') ? _json['saved'] as core.bool : null,
+              json_.containsKey('saved') ? json_['saved'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -557,17 +557,17 @@ class GoogleSearchIdeahubV1betaListAvailableLocalesResponse {
     this.nextPageToken,
   });
 
-  GoogleSearchIdeahubV1betaListAvailableLocalesResponse.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaListAvailableLocalesResponse.fromJson(core.Map json_)
       : this(
-          availableLocales: _json.containsKey('availableLocales')
-              ? (_json['availableLocales'] as core.List)
+          availableLocales: json_.containsKey('availableLocales')
+              ? (json_['availableLocales'] as core.List)
                   .map((value) =>
                       GoogleSearchIdeahubV1betaAvailableLocale.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -589,16 +589,16 @@ class GoogleSearchIdeahubV1betaListIdeasResponse {
     this.nextPageToken,
   });
 
-  GoogleSearchIdeahubV1betaListIdeasResponse.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaListIdeasResponse.fromJson(core.Map json_)
       : this(
-          ideas: _json.containsKey('ideas')
-              ? (_json['ideas'] as core.List)
+          ideas: json_.containsKey('ideas')
+              ? (json_['ideas'] as core.List)
                   .map((value) => GoogleSearchIdeahubV1betaIdea.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -628,13 +628,13 @@ class GoogleSearchIdeahubV1betaTopic {
     this.name,
   });
 
-  GoogleSearchIdeahubV1betaTopic.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaTopic.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          mid: json_.containsKey('mid') ? json_['mid'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -664,14 +664,14 @@ class GoogleSearchIdeahubV1betaTopicState {
     this.saved,
   });
 
-  GoogleSearchIdeahubV1betaTopicState.fromJson(core.Map _json)
+  GoogleSearchIdeahubV1betaTopicState.fromJson(core.Map json_)
       : this(
-          dismissed: _json.containsKey('dismissed')
-              ? _json['dismissed'] as core.bool
+          dismissed: json_.containsKey('dismissed')
+              ? json_['dismissed'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           saved:
-              _json.containsKey('saved') ? _json['saved'] as core.bool : null,
+              json_.containsKey('saved') ? json_['saved'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

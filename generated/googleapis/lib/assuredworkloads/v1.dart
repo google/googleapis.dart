@@ -107,19 +107,19 @@ class OrganizationsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -161,22 +161,22 @@ class OrganizationsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -217,22 +217,22 @@ class OrganizationsLocationsWorkloadsResource {
     core.String? externalId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (externalId != null) 'externalId': [externalId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workloads';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workloads';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the workload.
@@ -266,20 +266,20 @@ class OrganizationsLocationsWorkloadsResource {
     core.String? etag,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets Assured Workload associated with a CRM Node
@@ -308,19 +308,19 @@ class OrganizationsLocationsWorkloadsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Assured Workloads under a CRM Node.
@@ -357,22 +357,22 @@ class OrganizationsLocationsWorkloadsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workloads';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workloads';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing workload.
@@ -409,22 +409,22 @@ class OrganizationsLocationsWorkloadsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restrict the list of resources allowed in the Workload environment.
@@ -464,22 +464,22 @@ class OrganizationsLocationsWorkloadsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$name') + ':restrictAllowedResources';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -498,13 +498,13 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
     this.workloads,
   });
 
-  GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(core.Map _json)
+  GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          workloads: _json.containsKey('workloads')
-              ? (_json['workloads'] as core.List)
+          workloads: json_.containsKey('workloads')
+              ? (json_['workloads'] as core.List)
                   .map((value) =>
                       GoogleCloudAssuredworkloadsV1Workload.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -540,10 +540,10 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
   });
 
   GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          restrictionType: _json.containsKey('restrictionType')
-              ? _json['restrictionType'] as core.String
+          restrictionType: json_.containsKey('restrictionType')
+              ? json_['restrictionType'] as core.String
               : null,
         );
 
@@ -702,63 +702,63 @@ class GoogleCloudAssuredworkloadsV1Workload {
     this.saaEnrollmentResponse,
   });
 
-  GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map _json)
+  GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map json_)
       : this(
-          billingAccount: _json.containsKey('billingAccount')
-              ? _json['billingAccount'] as core.String
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
               : null,
-          complianceRegime: _json.containsKey('complianceRegime')
-              ? _json['complianceRegime'] as core.String
+          complianceRegime: json_.containsKey('complianceRegime')
+              ? json_['complianceRegime'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          enableSovereignControls: _json.containsKey('enableSovereignControls')
-              ? _json['enableSovereignControls'] as core.bool
+          enableSovereignControls: json_.containsKey('enableSovereignControls')
+              ? json_['enableSovereignControls'] as core.bool
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          kajEnrollmentState: _json.containsKey('kajEnrollmentState')
-              ? _json['kajEnrollmentState'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          kajEnrollmentState: json_.containsKey('kajEnrollmentState')
+              ? json_['kajEnrollmentState'] as core.String
               : null,
-          kmsSettings: _json.containsKey('kmsSettings')
+          kmsSettings: json_.containsKey('kmsSettings')
               ? GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
-                  _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['kmsSettings'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           provisionedResourcesParent:
-              _json.containsKey('provisionedResourcesParent')
-                  ? _json['provisionedResourcesParent'] as core.String
+              json_.containsKey('provisionedResourcesParent')
+                  ? json_['provisionedResourcesParent'] as core.String
                   : null,
-          resourceSettings: _json.containsKey('resourceSettings')
-              ? (_json['resourceSettings'] as core.List)
+          resourceSettings: json_.containsKey('resourceSettings')
+              ? (json_['resourceSettings'] as core.List)
                   .map((value) =>
                       GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          resources: _json.containsKey('resources')
-              ? (_json['resources'] as core.List)
+          resources: json_.containsKey('resources')
+              ? (json_['resources'] as core.List)
                   .map((value) =>
                       GoogleCloudAssuredworkloadsV1WorkloadResourceInfo
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          saaEnrollmentResponse: _json.containsKey('saaEnrollmentResponse')
+          saaEnrollmentResponse: json_.containsKey('saaEnrollmentResponse')
               ? GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
-                  .fromJson(_json['saaEnrollmentResponse']
+                  .fromJson(json_['saaEnrollmentResponse']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -809,13 +809,13 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
     this.rotationPeriod,
   });
 
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map _json)
+  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map json_)
       : this(
-          nextRotationTime: _json.containsKey('nextRotationTime')
-              ? _json['nextRotationTime'] as core.String
+          nextRotationTime: json_.containsKey('nextRotationTime')
+              ? json_['nextRotationTime'] as core.String
               : null,
-          rotationPeriod: _json.containsKey('rotationPeriod')
-              ? _json['rotationPeriod'] as core.String
+          rotationPeriod: json_.containsKey('rotationPeriod')
+              ? json_['rotationPeriod'] as core.String
               : null,
         );
 
@@ -849,13 +849,13 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
     this.resourceType,
   });
 
-  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(core.Map _json)
+  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(core.Map json_)
       : this(
-          resourceId: _json.containsKey('resourceId')
-              ? _json['resourceId'] as core.String
+          resourceId: json_.containsKey('resourceId')
+              ? json_['resourceId'] as core.String
               : null,
-          resourceType: _json.containsKey('resourceType')
-              ? _json['resourceType'] as core.String
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
               : null,
         );
 
@@ -901,16 +901,16 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
     this.resourceType,
   });
 
-  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(core.Map _json)
+  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          resourceId: _json.containsKey('resourceId')
-              ? _json['resourceId'] as core.String
+          resourceId: json_.containsKey('resourceId')
+              ? json_['resourceId'] as core.String
               : null,
-          resourceType: _json.containsKey('resourceType')
-              ? _json['resourceType'] as core.String
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
               : null,
         );
 
@@ -939,15 +939,15 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          setupErrors: _json.containsKey('setupErrors')
-              ? (_json['setupErrors'] as core.List)
+          setupErrors: json_.containsKey('setupErrors')
+              ? (json_['setupErrors'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          setupStatus: _json.containsKey('setupStatus')
-              ? _json['setupStatus'] as core.String
+          setupStatus: json_.containsKey('setupStatus')
+              ? json_['setupStatus'] as core.String
               : null,
         );
 
@@ -970,13 +970,13 @@ class GoogleLongrunningListOperationsResponse {
     this.operations,
   });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1040,19 +1040,19 @@ class GoogleLongrunningOperation {
     this.response,
   });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json)
+  GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

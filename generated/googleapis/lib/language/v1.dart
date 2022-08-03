@@ -88,21 +88,21 @@ class DocumentsResource {
     AnalyzeEntitiesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/documents:analyzeEntities';
+    const url_ = 'v1/documents:analyzeEntities';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AnalyzeEntitiesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds entities, similar to AnalyzeEntities in the text and analyzes
@@ -126,21 +126,21 @@ class DocumentsResource {
     AnalyzeEntitySentimentRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/documents:analyzeEntitySentiment';
+    const url_ = 'v1/documents:analyzeEntitySentiment';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AnalyzeEntitySentimentResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes the sentiment of the provided text.
@@ -163,21 +163,21 @@ class DocumentsResource {
     AnalyzeSentimentRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/documents:analyzeSentiment';
+    const url_ = 'v1/documents:analyzeSentiment';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AnalyzeSentimentResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes the syntax of the text and provides sentence boundaries and
@@ -202,21 +202,21 @@ class DocumentsResource {
     AnalyzeSyntaxRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/documents:analyzeSyntax';
+    const url_ = 'v1/documents:analyzeSyntax';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AnalyzeSyntaxResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// A convenience method that provides all the features that analyzeSentiment,
@@ -240,21 +240,21 @@ class DocumentsResource {
     AnnotateTextRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/documents:annotateText';
+    const url_ = 'v1/documents:annotateText';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AnnotateTextResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Classifies a document into categories.
@@ -277,21 +277,21 @@ class DocumentsResource {
     ClassifyTextRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/documents:classifyText';
+    const url_ = 'v1/documents:classifyText';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ClassifyTextResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -322,14 +322,14 @@ class AnalyzeEntitiesRequest {
     this.encodingType,
   });
 
-  AnalyzeEntitiesRequest.fromJson(core.Map _json)
+  AnalyzeEntitiesRequest.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
+          document: json_.containsKey('document')
               ? Document.fromJson(
-                  _json['document'] as core.Map<core.String, core.dynamic>)
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: _json.containsKey('encodingType')
-              ? _json['encodingType'] as core.String
+          encodingType: json_.containsKey('encodingType')
+              ? json_['encodingType'] as core.String
               : null,
         );
 
@@ -355,16 +355,16 @@ class AnalyzeEntitiesResponse {
     this.language,
   });
 
-  AnalyzeEntitiesResponse.fromJson(core.Map _json)
+  AnalyzeEntitiesResponse.fromJson(core.Map json_)
       : this(
-          entities: _json.containsKey('entities')
-              ? (_json['entities'] as core.List)
+          entities: json_.containsKey('entities')
+              ? (json_['entities'] as core.List)
                   .map((value) => Entity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
         );
 
@@ -401,14 +401,14 @@ class AnalyzeEntitySentimentRequest {
     this.encodingType,
   });
 
-  AnalyzeEntitySentimentRequest.fromJson(core.Map _json)
+  AnalyzeEntitySentimentRequest.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
+          document: json_.containsKey('document')
               ? Document.fromJson(
-                  _json['document'] as core.Map<core.String, core.dynamic>)
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: _json.containsKey('encodingType')
-              ? _json['encodingType'] as core.String
+          encodingType: json_.containsKey('encodingType')
+              ? json_['encodingType'] as core.String
               : null,
         );
 
@@ -434,16 +434,16 @@ class AnalyzeEntitySentimentResponse {
     this.language,
   });
 
-  AnalyzeEntitySentimentResponse.fromJson(core.Map _json)
+  AnalyzeEntitySentimentResponse.fromJson(core.Map json_)
       : this(
-          entities: _json.containsKey('entities')
-              ? (_json['entities'] as core.List)
+          entities: json_.containsKey('entities')
+              ? (json_['entities'] as core.List)
                   .map((value) => Entity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
         );
 
@@ -480,14 +480,14 @@ class AnalyzeSentimentRequest {
     this.encodingType,
   });
 
-  AnalyzeSentimentRequest.fromJson(core.Map _json)
+  AnalyzeSentimentRequest.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
+          document: json_.containsKey('document')
               ? Document.fromJson(
-                  _json['document'] as core.Map<core.String, core.dynamic>)
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: _json.containsKey('encodingType')
-              ? _json['encodingType'] as core.String
+          encodingType: json_.containsKey('encodingType')
+              ? json_['encodingType'] as core.String
               : null,
         );
 
@@ -517,17 +517,17 @@ class AnalyzeSentimentResponse {
     this.sentences,
   });
 
-  AnalyzeSentimentResponse.fromJson(core.Map _json)
+  AnalyzeSentimentResponse.fromJson(core.Map json_)
       : this(
-          documentSentiment: _json.containsKey('documentSentiment')
-              ? Sentiment.fromJson(_json['documentSentiment']
+          documentSentiment: json_.containsKey('documentSentiment')
+              ? Sentiment.fromJson(json_['documentSentiment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          sentences: _json.containsKey('sentences')
-              ? (_json['sentences'] as core.List)
+          sentences: json_.containsKey('sentences')
+              ? (json_['sentences'] as core.List)
                   .map((value) => Sentence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -568,14 +568,14 @@ class AnalyzeSyntaxRequest {
     this.encodingType,
   });
 
-  AnalyzeSyntaxRequest.fromJson(core.Map _json)
+  AnalyzeSyntaxRequest.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
+          document: json_.containsKey('document')
               ? Document.fromJson(
-                  _json['document'] as core.Map<core.String, core.dynamic>)
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: _json.containsKey('encodingType')
-              ? _json['encodingType'] as core.String
+          encodingType: json_.containsKey('encodingType')
+              ? json_['encodingType'] as core.String
               : null,
         );
 
@@ -605,19 +605,19 @@ class AnalyzeSyntaxResponse {
     this.tokens,
   });
 
-  AnalyzeSyntaxResponse.fromJson(core.Map _json)
+  AnalyzeSyntaxResponse.fromJson(core.Map json_)
       : this(
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          sentences: _json.containsKey('sentences')
-              ? (_json['sentences'] as core.List)
+          sentences: json_.containsKey('sentences')
+              ? (json_['sentences'] as core.List)
                   .map((value) => Sentence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tokens: _json.containsKey('tokens')
-              ? (_json['tokens'] as core.List)
+          tokens: json_.containsKey('tokens')
+              ? (json_['tokens'] as core.List)
                   .map((value) => Token.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -665,18 +665,18 @@ class AnnotateTextRequest {
     this.features,
   });
 
-  AnnotateTextRequest.fromJson(core.Map _json)
+  AnnotateTextRequest.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
+          document: json_.containsKey('document')
               ? Document.fromJson(
-                  _json['document'] as core.Map<core.String, core.dynamic>)
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodingType: _json.containsKey('encodingType')
-              ? _json['encodingType'] as core.String
+          encodingType: json_.containsKey('encodingType')
+              ? json_['encodingType'] as core.String
               : null,
-          features: _json.containsKey('features')
+          features: json_.containsKey('features')
               ? Features.fromJson(
-                  _json['features'] as core.Map<core.String, core.dynamic>)
+                  json_['features'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -729,35 +729,35 @@ class AnnotateTextResponse {
     this.tokens,
   });
 
-  AnnotateTextResponse.fromJson(core.Map _json)
+  AnnotateTextResponse.fromJson(core.Map json_)
       : this(
-          categories: _json.containsKey('categories')
-              ? (_json['categories'] as core.List)
+          categories: json_.containsKey('categories')
+              ? (json_['categories'] as core.List)
                   .map((value) => ClassificationCategory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          documentSentiment: _json.containsKey('documentSentiment')
-              ? Sentiment.fromJson(_json['documentSentiment']
+          documentSentiment: json_.containsKey('documentSentiment')
+              ? Sentiment.fromJson(json_['documentSentiment']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          entities: _json.containsKey('entities')
-              ? (_json['entities'] as core.List)
+          entities: json_.containsKey('entities')
+              ? (json_['entities'] as core.List)
                   .map((value) => Entity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          sentences: _json.containsKey('sentences')
-              ? (_json['sentences'] as core.List)
+          sentences: json_.containsKey('sentences')
+              ? (json_['sentences'] as core.List)
                   .map((value) => Sentence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tokens: _json.containsKey('tokens')
-              ? (_json['tokens'] as core.List)
+          tokens: json_.containsKey('tokens')
+              ? (json_['tokens'] as core.List)
                   .map((value) => Token.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -791,12 +791,12 @@ class ClassificationCategory {
     this.name,
   });
 
-  ClassificationCategory.fromJson(core.Map _json)
+  ClassificationCategory.fromJson(core.Map json_)
       : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
+          confidence: json_.containsKey('confidence')
+              ? (json_['confidence'] as core.num).toDouble()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -816,11 +816,11 @@ class ClassifyTextRequest {
     this.document,
   });
 
-  ClassifyTextRequest.fromJson(core.Map _json)
+  ClassifyTextRequest.fromJson(core.Map json_)
       : this(
-          document: _json.containsKey('document')
+          document: json_.containsKey('document')
               ? Document.fromJson(
-                  _json['document'] as core.Map<core.String, core.dynamic>)
+                  json_['document'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -838,10 +838,10 @@ class ClassifyTextResponse {
     this.categories,
   });
 
-  ClassifyTextResponse.fromJson(core.Map _json)
+  ClassifyTextResponse.fromJson(core.Map json_)
       : this(
-          categories: _json.containsKey('categories')
-              ? (_json['categories'] as core.List)
+          categories: json_.containsKey('categories')
+              ? (json_['categories'] as core.List)
                   .map((value) => ClassificationCategory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -959,13 +959,13 @@ class DependencyEdge {
     this.label,
   });
 
-  DependencyEdge.fromJson(core.Map _json)
+  DependencyEdge.fromJson(core.Map json_)
       : this(
-          headTokenIndex: _json.containsKey('headTokenIndex')
-              ? _json['headTokenIndex'] as core.int
+          headTokenIndex: json_.containsKey('headTokenIndex')
+              ? json_['headTokenIndex'] as core.int
               : null,
           label:
-              _json.containsKey('label') ? _json['label'] as core.String : null,
+              json_.containsKey('label') ? json_['label'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1017,18 +1017,18 @@ class Document {
     this.type,
   });
 
-  Document.fromJson(core.Map _json)
+  Document.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          gcsContentUri: _json.containsKey('gcsContentUri')
-              ? _json['gcsContentUri'] as core.String
+          gcsContentUri: json_.containsKey('gcsContentUri')
+              ? json_['gcsContentUri'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1113,31 +1113,31 @@ class Entity {
     this.type,
   });
 
-  Entity.fromJson(core.Map _json)
+  Entity.fromJson(core.Map json_)
       : this(
-          mentions: _json.containsKey('mentions')
-              ? (_json['mentions'] as core.List)
+          mentions: json_.containsKey('mentions')
+              ? (json_['mentions'] as core.List)
                   .map((value) => EntityMention.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          salience: _json.containsKey('salience')
-              ? (_json['salience'] as core.num).toDouble()
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          salience: json_.containsKey('salience')
+              ? (json_['salience'] as core.num).toDouble()
               : null,
-          sentiment: _json.containsKey('sentiment')
+          sentiment: json_.containsKey('sentiment')
               ? Sentiment.fromJson(
-                  _json['sentiment'] as core.Map<core.String, core.dynamic>)
+                  json_['sentiment'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1176,17 +1176,17 @@ class EntityMention {
     this.type,
   });
 
-  EntityMention.fromJson(core.Map _json)
+  EntityMention.fromJson(core.Map json_)
       : this(
-          sentiment: _json.containsKey('sentiment')
+          sentiment: json_.containsKey('sentiment')
               ? Sentiment.fromJson(
-                  _json['sentiment'] as core.Map<core.String, core.dynamic>)
+                  json_['sentiment'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text')
+          text: json_.containsKey('text')
               ? TextSpan.fromJson(
-                  _json['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1223,23 +1223,23 @@ class Features {
     this.extractSyntax,
   });
 
-  Features.fromJson(core.Map _json)
+  Features.fromJson(core.Map json_)
       : this(
-          classifyText: _json.containsKey('classifyText')
-              ? _json['classifyText'] as core.bool
+          classifyText: json_.containsKey('classifyText')
+              ? json_['classifyText'] as core.bool
               : null,
           extractDocumentSentiment:
-              _json.containsKey('extractDocumentSentiment')
-                  ? _json['extractDocumentSentiment'] as core.bool
+              json_.containsKey('extractDocumentSentiment')
+                  ? json_['extractDocumentSentiment'] as core.bool
                   : null,
-          extractEntities: _json.containsKey('extractEntities')
-              ? _json['extractEntities'] as core.bool
+          extractEntities: json_.containsKey('extractEntities')
+              ? json_['extractEntities'] as core.bool
               : null,
-          extractEntitySentiment: _json.containsKey('extractEntitySentiment')
-              ? _json['extractEntitySentiment'] as core.bool
+          extractEntitySentiment: json_.containsKey('extractEntitySentiment')
+              ? json_['extractEntitySentiment'] as core.bool
               : null,
-          extractSyntax: _json.containsKey('extractSyntax')
-              ? _json['extractSyntax'] as core.bool
+          extractSyntax: json_.containsKey('extractSyntax')
+              ? json_['extractSyntax'] as core.bool
               : null,
         );
 
@@ -1415,35 +1415,35 @@ class PartOfSpeech {
     this.voice,
   });
 
-  PartOfSpeech.fromJson(core.Map _json)
+  PartOfSpeech.fromJson(core.Map json_)
       : this(
-          aspect: _json.containsKey('aspect')
-              ? _json['aspect'] as core.String
+          aspect: json_.containsKey('aspect')
+              ? json_['aspect'] as core.String
               : null,
           case_:
-              _json.containsKey('case') ? _json['case'] as core.String : null,
-          form: _json.containsKey('form') ? _json['form'] as core.String : null,
-          gender: _json.containsKey('gender')
-              ? _json['gender'] as core.String
+              json_.containsKey('case') ? json_['case'] as core.String : null,
+          form: json_.containsKey('form') ? json_['form'] as core.String : null,
+          gender: json_.containsKey('gender')
+              ? json_['gender'] as core.String
               : null,
-          mood: _json.containsKey('mood') ? _json['mood'] as core.String : null,
-          number: _json.containsKey('number')
-              ? _json['number'] as core.String
+          mood: json_.containsKey('mood') ? json_['mood'] as core.String : null,
+          number: json_.containsKey('number')
+              ? json_['number'] as core.String
               : null,
-          person: _json.containsKey('person')
-              ? _json['person'] as core.String
+          person: json_.containsKey('person')
+              ? json_['person'] as core.String
               : null,
-          proper: _json.containsKey('proper')
-              ? _json['proper'] as core.String
+          proper: json_.containsKey('proper')
+              ? json_['proper'] as core.String
               : null,
-          reciprocity: _json.containsKey('reciprocity')
-              ? _json['reciprocity'] as core.String
+          reciprocity: json_.containsKey('reciprocity')
+              ? json_['reciprocity'] as core.String
               : null,
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
           tense:
-              _json.containsKey('tense') ? _json['tense'] as core.String : null,
+              json_.containsKey('tense') ? json_['tense'] as core.String : null,
           voice:
-              _json.containsKey('voice') ? _json['voice'] as core.String : null,
+              json_.containsKey('voice') ? json_['voice'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1477,15 +1477,15 @@ class Sentence {
     this.text,
   });
 
-  Sentence.fromJson(core.Map _json)
+  Sentence.fromJson(core.Map json_)
       : this(
-          sentiment: _json.containsKey('sentiment')
+          sentiment: json_.containsKey('sentiment')
               ? Sentiment.fromJson(
-                  _json['sentiment'] as core.Map<core.String, core.dynamic>)
+                  json_['sentiment'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text')
+          text: json_.containsKey('text')
               ? TextSpan.fromJson(
-                  _json['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1512,13 +1512,13 @@ class Sentiment {
     this.score,
   });
 
-  Sentiment.fromJson(core.Map _json)
+  Sentiment.fromJson(core.Map json_)
       : this(
-          magnitude: _json.containsKey('magnitude')
-              ? (_json['magnitude'] as core.num).toDouble()
+          magnitude: json_.containsKey('magnitude')
+              ? (json_['magnitude'] as core.num).toDouble()
               : null,
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
               : null,
         );
 
@@ -1542,13 +1542,13 @@ class TextSpan {
     this.content,
   });
 
-  TextSpan.fromJson(core.Map _json)
+  TextSpan.fromJson(core.Map json_)
       : this(
-          beginOffset: _json.containsKey('beginOffset')
-              ? _json['beginOffset'] as core.int
+          beginOffset: json_.containsKey('beginOffset')
+              ? json_['beginOffset'] as core.int
               : null,
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
         );
 
@@ -1580,21 +1580,21 @@ class Token {
     this.text,
   });
 
-  Token.fromJson(core.Map _json)
+  Token.fromJson(core.Map json_)
       : this(
-          dependencyEdge: _json.containsKey('dependencyEdge')
-              ? DependencyEdge.fromJson(_json['dependencyEdge']
+          dependencyEdge: json_.containsKey('dependencyEdge')
+              ? DependencyEdge.fromJson(json_['dependencyEdge']
                   as core.Map<core.String, core.dynamic>)
               : null,
           lemma:
-              _json.containsKey('lemma') ? _json['lemma'] as core.String : null,
-          partOfSpeech: _json.containsKey('partOfSpeech')
+              json_.containsKey('lemma') ? json_['lemma'] as core.String : null,
+          partOfSpeech: json_.containsKey('partOfSpeech')
               ? PartOfSpeech.fromJson(
-                  _json['partOfSpeech'] as core.Map<core.String, core.dynamic>)
+                  json_['partOfSpeech'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text')
+          text: json_.containsKey('text')
               ? TextSpan.fromJson(
-                  _json['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

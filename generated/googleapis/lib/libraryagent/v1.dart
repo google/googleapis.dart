@@ -83,19 +83,19 @@ class ShelvesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Shelf.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists shelves.
@@ -128,21 +128,21 @@ class ShelvesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/shelves';
+    const url_ = 'v1/shelves';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -176,19 +176,19 @@ class ShelvesBooksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':borrow';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':borrow';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a book.
@@ -214,19 +214,19 @@ class ShelvesBooksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists books in a shelf.
@@ -263,21 +263,21 @@ class ShelvesBooksResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/books';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/books';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Return a book to the library.
@@ -305,19 +305,19 @@ class ShelvesBooksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':return';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':return';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -345,15 +345,15 @@ class GoogleExampleLibraryagentV1Book {
     this.title,
   });
 
-  GoogleExampleLibraryagentV1Book.fromJson(core.Map _json)
+  GoogleExampleLibraryagentV1Book.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
-              ? _json['author'] as core.String
+          author: json_.containsKey('author')
+              ? json_['author'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          read: _json.containsKey('read') ? _json['read'] as core.bool : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          read: json_.containsKey('read') ? json_['read'] as core.bool : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -380,16 +380,16 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
     this.nextPageToken,
   });
 
-  GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map _json)
+  GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map json_)
       : this(
-          books: _json.containsKey('books')
-              ? (_json['books'] as core.List)
+          books: json_.containsKey('books')
+              ? (json_['books'] as core.List)
                   .map((value) => GoogleExampleLibraryagentV1Book.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -416,13 +416,13 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
     this.shelves,
   });
 
-  GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map _json)
+  GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          shelves: _json.containsKey('shelves')
-              ? (_json['shelves'] as core.List)
+          shelves: json_.containsKey('shelves')
+              ? (json_['shelves'] as core.List)
                   .map((value) => GoogleExampleLibraryagentV1Shelf.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -453,11 +453,11 @@ class GoogleExampleLibraryagentV1Shelf {
     this.theme,
   });
 
-  GoogleExampleLibraryagentV1Shelf.fromJson(core.Map _json)
+  GoogleExampleLibraryagentV1Shelf.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           theme:
-              _json.containsKey('theme') ? _json['theme'] as core.String : null,
+              json_.containsKey('theme') ? json_['theme'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

@@ -83,21 +83,21 @@ class TextResource {
     SynthesizeSpeechRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/text:synthesize';
+    const url_ = 'v1/text:synthesize';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SynthesizeSpeechResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -132,20 +132,20 @@ class VoicesResource {
     core.String? languageCode,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/voices';
+    const url_ = 'v1/voices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVoicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -235,27 +235,27 @@ class AudioConfig {
     this.volumeGainDb,
   });
 
-  AudioConfig.fromJson(core.Map _json)
+  AudioConfig.fromJson(core.Map json_)
       : this(
-          audioEncoding: _json.containsKey('audioEncoding')
-              ? _json['audioEncoding'] as core.String
+          audioEncoding: json_.containsKey('audioEncoding')
+              ? json_['audioEncoding'] as core.String
               : null,
-          effectsProfileId: _json.containsKey('effectsProfileId')
-              ? (_json['effectsProfileId'] as core.List)
+          effectsProfileId: json_.containsKey('effectsProfileId')
+              ? (json_['effectsProfileId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          pitch: _json.containsKey('pitch')
-              ? (_json['pitch'] as core.num).toDouble()
+          pitch: json_.containsKey('pitch')
+              ? (json_['pitch'] as core.num).toDouble()
               : null,
-          sampleRateHertz: _json.containsKey('sampleRateHertz')
-              ? _json['sampleRateHertz'] as core.int
+          sampleRateHertz: json_.containsKey('sampleRateHertz')
+              ? json_['sampleRateHertz'] as core.int
               : null,
-          speakingRate: _json.containsKey('speakingRate')
-              ? (_json['speakingRate'] as core.num).toDouble()
+          speakingRate: json_.containsKey('speakingRate')
+              ? (json_['speakingRate'] as core.num).toDouble()
               : null,
-          volumeGainDb: _json.containsKey('volumeGainDb')
-              ? (_json['volumeGainDb'] as core.num).toDouble()
+          volumeGainDb: json_.containsKey('volumeGainDb')
+              ? (json_['volumeGainDb'] as core.num).toDouble()
               : null,
         );
 
@@ -295,12 +295,12 @@ class CustomVoiceParams {
     this.reportedUsage,
   });
 
-  CustomVoiceParams.fromJson(core.Map _json)
+  CustomVoiceParams.fromJson(core.Map json_)
       : this(
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
-          reportedUsage: _json.containsKey('reportedUsage')
-              ? _json['reportedUsage'] as core.String
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          reportedUsage: json_.containsKey('reportedUsage')
+              ? json_['reportedUsage'] as core.String
               : null,
         );
 
@@ -319,10 +319,10 @@ class ListVoicesResponse {
     this.voices,
   });
 
-  ListVoicesResponse.fromJson(core.Map _json)
+  ListVoicesResponse.fromJson(core.Map json_)
       : this(
-          voices: _json.containsKey('voices')
-              ? (_json['voices'] as core.List)
+          voices: json_.containsKey('voices')
+              ? (json_['voices'] as core.List)
                   .map((value) => Voice.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -355,10 +355,10 @@ class SynthesisInput {
     this.text,
   });
 
-  SynthesisInput.fromJson(core.Map _json)
+  SynthesisInput.fromJson(core.Map json_)
       : this(
-          ssml: _json.containsKey('ssml') ? _json['ssml'] as core.String : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          ssml: json_.containsKey('ssml') ? json_['ssml'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -390,19 +390,19 @@ class SynthesizeSpeechRequest {
     this.voice,
   });
 
-  SynthesizeSpeechRequest.fromJson(core.Map _json)
+  SynthesizeSpeechRequest.fromJson(core.Map json_)
       : this(
-          audioConfig: _json.containsKey('audioConfig')
+          audioConfig: json_.containsKey('audioConfig')
               ? AudioConfig.fromJson(
-                  _json['audioConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['audioConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          input: _json.containsKey('input')
+          input: json_.containsKey('input')
               ? SynthesisInput.fromJson(
-                  _json['input'] as core.Map<core.String, core.dynamic>)
+                  json_['input'] as core.Map<core.String, core.dynamic>)
               : null,
-          voice: _json.containsKey('voice')
+          voice: json_.containsKey('voice')
               ? VoiceSelectionParams.fromJson(
-                  _json['voice'] as core.Map<core.String, core.dynamic>)
+                  json_['voice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -425,19 +425,19 @@ class SynthesizeSpeechResponse {
   core.List<core.int> get audioContentAsBytes =>
       convert.base64.decode(audioContent!);
 
-  set audioContentAsBytes(core.List<core.int> _bytes) {
+  set audioContentAsBytes(core.List<core.int> bytes_) {
     audioContent =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SynthesizeSpeechResponse({
     this.audioContent,
   });
 
-  SynthesizeSpeechResponse.fromJson(core.Map _json)
+  SynthesizeSpeechResponse.fromJson(core.Map json_)
       : this(
-          audioContent: _json.containsKey('audioContent')
-              ? _json['audioContent'] as core.String
+          audioContent: json_.containsKey('audioContent')
+              ? json_['audioContent'] as core.String
               : null,
         );
 
@@ -480,19 +480,19 @@ class Voice {
     this.ssmlGender,
   });
 
-  Voice.fromJson(core.Map _json)
+  Voice.fromJson(core.Map json_)
       : this(
-          languageCodes: _json.containsKey('languageCodes')
-              ? (_json['languageCodes'] as core.List)
+          languageCodes: json_.containsKey('languageCodes')
+              ? (json_['languageCodes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          naturalSampleRateHertz: _json.containsKey('naturalSampleRateHertz')
-              ? _json['naturalSampleRateHertz'] as core.int
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          naturalSampleRateHertz: json_.containsKey('naturalSampleRateHertz')
+              ? json_['naturalSampleRateHertz'] as core.int
               : null,
-          ssmlGender: _json.containsKey('ssmlGender')
-              ? _json['ssmlGender'] as core.String
+          ssmlGender: json_.containsKey('ssmlGender')
+              ? json_['ssmlGender'] as core.String
               : null,
         );
 
@@ -560,18 +560,18 @@ class VoiceSelectionParams {
     this.ssmlGender,
   });
 
-  VoiceSelectionParams.fromJson(core.Map _json)
+  VoiceSelectionParams.fromJson(core.Map json_)
       : this(
-          customVoice: _json.containsKey('customVoice')
+          customVoice: json_.containsKey('customVoice')
               ? CustomVoiceParams.fromJson(
-                  _json['customVoice'] as core.Map<core.String, core.dynamic>)
+                  json_['customVoice'] as core.Map<core.String, core.dynamic>)
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          ssmlGender: _json.containsKey('ssmlGender')
-              ? _json['ssmlGender'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ssmlGender: json_.containsKey('ssmlGender')
+              ? json_['ssmlGender'] as core.String
               : null,
         );
 

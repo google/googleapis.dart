@@ -122,22 +122,22 @@ class ProjectsLocationsRegistriesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + ':bindDeviceToGateway';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BindDeviceToGatewayResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a device registry that contains devices.
@@ -166,21 +166,21 @@ class ProjectsLocationsRegistriesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/registries';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/registries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DeviceRegistry.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device registry configuration.
@@ -206,18 +206,18 @@ class ProjectsLocationsRegistriesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a device registry configuration.
@@ -243,19 +243,19 @@ class ProjectsLocationsRegistriesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DeviceRegistry.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -289,20 +289,20 @@ class ProjectsLocationsRegistriesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists device registries.
@@ -339,21 +339,21 @@ class ProjectsLocationsRegistriesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/registries';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/registries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDeviceRegistriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device registry configuration.
@@ -389,22 +389,22 @@ class ProjectsLocationsRegistriesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DeviceRegistry.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -437,20 +437,20 @@ class ProjectsLocationsRegistriesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -484,22 +484,22 @@ class ProjectsLocationsRegistriesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the association between the device and the gateway.
@@ -528,22 +528,22 @@ class ProjectsLocationsRegistriesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + ':unbindDeviceFromGateway';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return UnbindDeviceFromGatewayResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -585,20 +585,20 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device.
@@ -626,18 +626,18 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -671,19 +671,19 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String? fieldMask,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fieldMask != null) 'fieldMask': [fieldMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List devices in a device registry.
@@ -759,7 +759,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (deviceIds != null) 'deviceIds': deviceIds,
       if (deviceNumIds != null) 'deviceNumIds': deviceNumIds,
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -778,15 +778,15 @@ class ProjectsLocationsRegistriesDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the configuration for the device, which is eventually sent from
@@ -820,22 +820,22 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$name') + ':modifyCloudToDeviceConfig';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DeviceConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -873,21 +873,21 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends a command to the specified device.
@@ -931,21 +931,21 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':sendCommandToDevice';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':sendCommandToDevice';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SendCommandToDeviceResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -988,20 +988,20 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
     core.int? numVersions,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (numVersions != null) 'numVersions': ['${numVersions}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/configVersions';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/configVersions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDeviceConfigVersionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1042,20 +1042,20 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
     core.int? numStates,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (numStates != null) 'numStates': ['${numStates}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/states';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/states';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDeviceStatesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1099,20 +1099,20 @@ class ProjectsLocationsRegistriesGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1145,20 +1145,20 @@ class ProjectsLocationsRegistriesGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1192,22 +1192,22 @@ class ProjectsLocationsRegistriesGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1290,7 +1290,7 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (deviceIds != null) 'deviceIds': deviceIds,
       if (deviceNumIds != null) 'deviceNumIds': deviceNumIds,
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -1309,15 +1309,15 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1342,13 +1342,13 @@ class BindDeviceToGatewayRequest {
     this.gatewayId,
   });
 
-  BindDeviceToGatewayRequest.fromJson(core.Map _json)
+  BindDeviceToGatewayRequest.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          gatewayId: _json.containsKey('gatewayId')
-              ? _json['gatewayId'] as core.String
+          gatewayId: json_.containsKey('gatewayId')
+              ? json_['gatewayId'] as core.String
               : null,
         );
 
@@ -1417,18 +1417,18 @@ class Binding {
     this.role,
   });
 
-  Binding.fromJson(core.Map _json)
+  Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1595,65 +1595,65 @@ class Device {
     this.state,
   });
 
-  Device.fromJson(core.Map _json)
+  Device.fromJson(core.Map json_)
       : this(
-          blocked: _json.containsKey('blocked')
-              ? _json['blocked'] as core.bool
+          blocked: json_.containsKey('blocked')
+              ? json_['blocked'] as core.bool
               : null,
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? DeviceConfig.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          credentials: _json.containsKey('credentials')
-              ? (_json['credentials'] as core.List)
+          credentials: json_.containsKey('credentials')
+              ? (json_['credentials'] as core.List)
                   .map((value) => DeviceCredential.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          gatewayConfig: _json.containsKey('gatewayConfig')
+          gatewayConfig: json_.containsKey('gatewayConfig')
               ? GatewayConfig.fromJson(
-                  _json['gatewayConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['gatewayConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          lastConfigAckTime: _json.containsKey('lastConfigAckTime')
-              ? _json['lastConfigAckTime'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          lastConfigAckTime: json_.containsKey('lastConfigAckTime')
+              ? json_['lastConfigAckTime'] as core.String
               : null,
-          lastConfigSendTime: _json.containsKey('lastConfigSendTime')
-              ? _json['lastConfigSendTime'] as core.String
+          lastConfigSendTime: json_.containsKey('lastConfigSendTime')
+              ? json_['lastConfigSendTime'] as core.String
               : null,
-          lastErrorStatus: _json.containsKey('lastErrorStatus')
-              ? Status.fromJson(_json['lastErrorStatus']
+          lastErrorStatus: json_.containsKey('lastErrorStatus')
+              ? Status.fromJson(json_['lastErrorStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          lastErrorTime: _json.containsKey('lastErrorTime')
-              ? _json['lastErrorTime'] as core.String
+          lastErrorTime: json_.containsKey('lastErrorTime')
+              ? json_['lastErrorTime'] as core.String
               : null,
-          lastEventTime: _json.containsKey('lastEventTime')
-              ? _json['lastEventTime'] as core.String
+          lastEventTime: json_.containsKey('lastEventTime')
+              ? json_['lastEventTime'] as core.String
               : null,
-          lastHeartbeatTime: _json.containsKey('lastHeartbeatTime')
-              ? _json['lastHeartbeatTime'] as core.String
+          lastHeartbeatTime: json_.containsKey('lastHeartbeatTime')
+              ? json_['lastHeartbeatTime'] as core.String
               : null,
-          lastStateTime: _json.containsKey('lastStateTime')
-              ? _json['lastStateTime'] as core.String
+          lastStateTime: json_.containsKey('lastStateTime')
+              ? json_['lastStateTime'] as core.String
               : null,
-          logLevel: _json.containsKey('logLevel')
-              ? _json['logLevel'] as core.String
+          logLevel: json_.containsKey('logLevel')
+              ? json_['logLevel'] as core.String
               : null,
-          metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           numId:
-              _json.containsKey('numId') ? _json['numId'] as core.String : null,
-          state: _json.containsKey('state')
+              json_.containsKey('numId') ? json_['numId'] as core.String : null,
+          state: json_.containsKey('state')
               ? DeviceState.fromJson(
-                  _json['state'] as core.Map<core.String, core.dynamic>)
+                  json_['state'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1688,9 +1688,9 @@ class DeviceConfig {
   core.List<core.int> get binaryDataAsBytes =>
       convert.base64.decode(binaryData!);
 
-  set binaryDataAsBytes(core.List<core.int> _bytes) {
+  set binaryDataAsBytes(core.List<core.int> bytes_) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The time at which this configuration version was updated in Cloud IoT
@@ -1732,19 +1732,19 @@ class DeviceConfig {
     this.version,
   });
 
-  DeviceConfig.fromJson(core.Map _json)
+  DeviceConfig.fromJson(core.Map json_)
       : this(
-          binaryData: _json.containsKey('binaryData')
-              ? _json['binaryData'] as core.String
+          binaryData: json_.containsKey('binaryData')
+              ? json_['binaryData'] as core.String
               : null,
-          cloudUpdateTime: _json.containsKey('cloudUpdateTime')
-              ? _json['cloudUpdateTime'] as core.String
+          cloudUpdateTime: json_.containsKey('cloudUpdateTime')
+              ? json_['cloudUpdateTime'] as core.String
               : null,
-          deviceAckTime: _json.containsKey('deviceAckTime')
-              ? _json['deviceAckTime'] as core.String
+          deviceAckTime: json_.containsKey('deviceAckTime')
+              ? json_['deviceAckTime'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -1784,14 +1784,14 @@ class DeviceCredential {
     this.publicKey,
   });
 
-  DeviceCredential.fromJson(core.Map _json)
+  DeviceCredential.fromJson(core.Map json_)
       : this(
-          expirationTime: _json.containsKey('expirationTime')
-              ? _json['expirationTime'] as core.String
+          expirationTime: json_.containsKey('expirationTime')
+              ? json_['expirationTime'] as core.String
               : null,
-          publicKey: _json.containsKey('publicKey')
+          publicKey: json_.containsKey('publicKey')
               ? PublicKeyCredential.fromJson(
-                  _json['publicKey'] as core.Map<core.String, core.dynamic>)
+                  json_['publicKey'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1880,37 +1880,37 @@ class DeviceRegistry {
     this.stateNotificationConfig,
   });
 
-  DeviceRegistry.fromJson(core.Map _json)
+  DeviceRegistry.fromJson(core.Map json_)
       : this(
-          credentials: _json.containsKey('credentials')
-              ? (_json['credentials'] as core.List)
+          credentials: json_.containsKey('credentials')
+              ? (json_['credentials'] as core.List)
                   .map((value) => RegistryCredential.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           eventNotificationConfigs:
-              _json.containsKey('eventNotificationConfigs')
-                  ? (_json['eventNotificationConfigs'] as core.List)
+              json_.containsKey('eventNotificationConfigs')
+                  ? (json_['eventNotificationConfigs'] as core.List)
                       .map((value) => EventNotificationConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          httpConfig: _json.containsKey('httpConfig')
+          httpConfig: json_.containsKey('httpConfig')
               ? HttpConfig.fromJson(
-                  _json['httpConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['httpConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          logLevel: _json.containsKey('logLevel')
-              ? _json['logLevel'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          logLevel: json_.containsKey('logLevel')
+              ? json_['logLevel'] as core.String
               : null,
-          mqttConfig: _json.containsKey('mqttConfig')
+          mqttConfig: json_.containsKey('mqttConfig')
               ? MqttConfig.fromJson(
-                  _json['mqttConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['mqttConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          stateNotificationConfig: _json.containsKey('stateNotificationConfig')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          stateNotificationConfig: json_.containsKey('stateNotificationConfig')
               ? StateNotificationConfig.fromJson(
-                  _json['stateNotificationConfig']
+                  json_['stateNotificationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1936,9 +1936,9 @@ class DeviceState {
   core.List<core.int> get binaryDataAsBytes =>
       convert.base64.decode(binaryData!);
 
-  set binaryDataAsBytes(core.List<core.int> _bytes) {
+  set binaryDataAsBytes(core.List<core.int> bytes_) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The time at which this state version was updated in Cloud IoT Core.
@@ -1951,13 +1951,13 @@ class DeviceState {
     this.updateTime,
   });
 
-  DeviceState.fromJson(core.Map _json)
+  DeviceState.fromJson(core.Map json_)
       : this(
-          binaryData: _json.containsKey('binaryData')
-              ? _json['binaryData'] as core.String
+          binaryData: json_.containsKey('binaryData')
+              ? json_['binaryData'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1995,13 +1995,13 @@ class EventNotificationConfig {
     this.subfolderMatches,
   });
 
-  EventNotificationConfig.fromJson(core.Map _json)
+  EventNotificationConfig.fromJson(core.Map json_)
       : this(
-          pubsubTopicName: _json.containsKey('pubsubTopicName')
-              ? _json['pubsubTopicName'] as core.String
+          pubsubTopicName: json_.containsKey('pubsubTopicName')
+              ? json_['pubsubTopicName'] as core.String
               : null,
-          subfolderMatches: _json.containsKey('subfolderMatches')
-              ? _json['subfolderMatches'] as core.String
+          subfolderMatches: json_.containsKey('subfolderMatches')
+              ? json_['subfolderMatches'] as core.String
               : null,
         );
 
@@ -2073,19 +2073,19 @@ class GatewayConfig {
     this.lastAccessedGatewayTime,
   });
 
-  GatewayConfig.fromJson(core.Map _json)
+  GatewayConfig.fromJson(core.Map json_)
       : this(
-          gatewayAuthMethod: _json.containsKey('gatewayAuthMethod')
-              ? _json['gatewayAuthMethod'] as core.String
+          gatewayAuthMethod: json_.containsKey('gatewayAuthMethod')
+              ? json_['gatewayAuthMethod'] as core.String
               : null,
-          gatewayType: _json.containsKey('gatewayType')
-              ? _json['gatewayType'] as core.String
+          gatewayType: json_.containsKey('gatewayType')
+              ? json_['gatewayType'] as core.String
               : null,
-          lastAccessedGatewayId: _json.containsKey('lastAccessedGatewayId')
-              ? _json['lastAccessedGatewayId'] as core.String
+          lastAccessedGatewayId: json_.containsKey('lastAccessedGatewayId')
+              ? json_['lastAccessedGatewayId'] as core.String
               : null,
-          lastAccessedGatewayTime: _json.containsKey('lastAccessedGatewayTime')
-              ? _json['lastAccessedGatewayTime'] as core.String
+          lastAccessedGatewayTime: json_.containsKey('lastAccessedGatewayTime')
+              ? json_['lastAccessedGatewayTime'] as core.String
               : null,
         );
 
@@ -2109,11 +2109,11 @@ class GetIamPolicyRequest {
     this.options,
   });
 
-  GetIamPolicyRequest.fromJson(core.Map _json)
+  GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          options: _json.containsKey('options')
+          options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  _json['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2142,10 +2142,10 @@ class HttpConfig {
     this.httpEnabledState,
   });
 
-  HttpConfig.fromJson(core.Map _json)
+  HttpConfig.fromJson(core.Map json_)
       : this(
-          httpEnabledState: _json.containsKey('httpEnabledState')
-              ? _json['httpEnabledState'] as core.String
+          httpEnabledState: json_.containsKey('httpEnabledState')
+              ? json_['httpEnabledState'] as core.String
               : null,
         );
 
@@ -2166,10 +2166,10 @@ class ListDeviceConfigVersionsResponse {
     this.deviceConfigs,
   });
 
-  ListDeviceConfigVersionsResponse.fromJson(core.Map _json)
+  ListDeviceConfigVersionsResponse.fromJson(core.Map json_)
       : this(
-          deviceConfigs: _json.containsKey('deviceConfigs')
-              ? (_json['deviceConfigs'] as core.List)
+          deviceConfigs: json_.containsKey('deviceConfigs')
+              ? (json_['deviceConfigs'] as core.List)
                   .map((value) => DeviceConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2196,16 +2196,16 @@ class ListDeviceRegistriesResponse {
     this.nextPageToken,
   });
 
-  ListDeviceRegistriesResponse.fromJson(core.Map _json)
+  ListDeviceRegistriesResponse.fromJson(core.Map json_)
       : this(
-          deviceRegistries: _json.containsKey('deviceRegistries')
-              ? (_json['deviceRegistries'] as core.List)
+          deviceRegistries: json_.containsKey('deviceRegistries')
+              ? (json_['deviceRegistries'] as core.List)
                   .map((value) => DeviceRegistry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2227,10 +2227,10 @@ class ListDeviceStatesResponse {
     this.deviceStates,
   });
 
-  ListDeviceStatesResponse.fromJson(core.Map _json)
+  ListDeviceStatesResponse.fromJson(core.Map json_)
       : this(
-          deviceStates: _json.containsKey('deviceStates')
-              ? (_json['deviceStates'] as core.List)
+          deviceStates: json_.containsKey('deviceStates')
+              ? (json_['deviceStates'] as core.List)
                   .map((value) => DeviceState.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2256,16 +2256,16 @@ class ListDevicesResponse {
     this.nextPageToken,
   });
 
-  ListDevicesResponse.fromJson(core.Map _json)
+  ListDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: _json.containsKey('devices')
-              ? (_json['devices'] as core.List)
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
                   .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2284,9 +2284,9 @@ class ModifyCloudToDeviceConfigRequest {
   core.List<core.int> get binaryDataAsBytes =>
       convert.base64.decode(binaryData!);
 
-  set binaryDataAsBytes(core.List<core.int> _bytes) {
+  set binaryDataAsBytes(core.List<core.int> bytes_) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The version number to update.
@@ -2303,13 +2303,13 @@ class ModifyCloudToDeviceConfigRequest {
     this.versionToUpdate,
   });
 
-  ModifyCloudToDeviceConfigRequest.fromJson(core.Map _json)
+  ModifyCloudToDeviceConfigRequest.fromJson(core.Map json_)
       : this(
-          binaryData: _json.containsKey('binaryData')
-              ? _json['binaryData'] as core.String
+          binaryData: json_.containsKey('binaryData')
+              ? json_['binaryData'] as core.String
               : null,
-          versionToUpdate: _json.containsKey('versionToUpdate')
-              ? _json['versionToUpdate'] as core.String
+          versionToUpdate: json_.containsKey('versionToUpdate')
+              ? json_['versionToUpdate'] as core.String
               : null,
         );
 
@@ -2335,10 +2335,10 @@ class MqttConfig {
     this.mqttEnabledState,
   });
 
-  MqttConfig.fromJson(core.Map _json)
+  MqttConfig.fromJson(core.Map json_)
       : this(
-          mqttEnabledState: _json.containsKey('mqttEnabledState')
-              ? _json['mqttEnabledState'] as core.String
+          mqttEnabledState: json_.containsKey('mqttEnabledState')
+              ? json_['mqttEnabledState'] as core.String
               : null,
         );
 
@@ -2406,9 +2406,9 @@ class Policy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -2436,17 +2436,17 @@ class Policy {
     this.version,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -2484,17 +2484,17 @@ class PublicKeyCertificate {
     this.x509Details,
   });
 
-  PublicKeyCertificate.fromJson(core.Map _json)
+  PublicKeyCertificate.fromJson(core.Map json_)
       : this(
-          certificate: _json.containsKey('certificate')
-              ? _json['certificate'] as core.String
+          certificate: json_.containsKey('certificate')
+              ? json_['certificate'] as core.String
               : null,
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
-          x509Details: _json.containsKey('x509Details')
+          x509Details: json_.containsKey('x509Details')
               ? X509CertificateDetails.fromJson(
-                  _json['x509Details'] as core.Map<core.String, core.dynamic>)
+                  json_['x509Details'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2539,12 +2539,12 @@ class PublicKeyCredential {
     this.key,
   });
 
-  PublicKeyCredential.fromJson(core.Map _json)
+  PublicKeyCredential.fromJson(core.Map json_)
       : this(
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2562,10 +2562,10 @@ class RegistryCredential {
     this.publicKeyCertificate,
   });
 
-  RegistryCredential.fromJson(core.Map _json)
+  RegistryCredential.fromJson(core.Map json_)
       : this(
-          publicKeyCertificate: _json.containsKey('publicKeyCertificate')
-              ? PublicKeyCertificate.fromJson(_json['publicKeyCertificate']
+          publicKeyCertificate: json_.containsKey('publicKeyCertificate')
+              ? PublicKeyCertificate.fromJson(json_['publicKeyCertificate']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2585,9 +2585,9 @@ class SendCommandToDeviceRequest {
   core.List<core.int> get binaryDataAsBytes =>
       convert.base64.decode(binaryData!);
 
-  set binaryDataAsBytes(core.List<core.int> _bytes) {
+  set binaryDataAsBytes(core.List<core.int> bytes_) {
     binaryData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Optional subfolder for the command.
@@ -2604,13 +2604,13 @@ class SendCommandToDeviceRequest {
     this.subfolder,
   });
 
-  SendCommandToDeviceRequest.fromJson(core.Map _json)
+  SendCommandToDeviceRequest.fromJson(core.Map json_)
       : this(
-          binaryData: _json.containsKey('binaryData')
-              ? _json['binaryData'] as core.String
+          binaryData: json_.containsKey('binaryData')
+              ? json_['binaryData'] as core.String
               : null,
-          subfolder: _json.containsKey('subfolder')
-              ? _json['subfolder'] as core.String
+          subfolder: json_.containsKey('subfolder')
+              ? json_['subfolder'] as core.String
               : null,
         );
 
@@ -2636,11 +2636,11 @@ class SetIamPolicyRequest {
     this.policy,
   });
 
-  SetIamPolicyRequest.fromJson(core.Map _json)
+  SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2660,10 +2660,10 @@ class StateNotificationConfig {
     this.pubsubTopicName,
   });
 
-  StateNotificationConfig.fromJson(core.Map _json)
+  StateNotificationConfig.fromJson(core.Map json_)
       : this(
-          pubsubTopicName: _json.containsKey('pubsubTopicName')
-              ? _json['pubsubTopicName'] as core.String
+          pubsubTopicName: json_.containsKey('pubsubTopicName')
+              ? json_['pubsubTopicName'] as core.String
               : null,
         );
 
@@ -2708,13 +2708,13 @@ class UnbindDeviceFromGatewayRequest {
     this.gatewayId,
   });
 
-  UnbindDeviceFromGatewayRequest.fromJson(core.Map _json)
+  UnbindDeviceFromGatewayRequest.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          gatewayId: _json.containsKey('gatewayId')
-              ? _json['gatewayId'] as core.String
+          gatewayId: json_.containsKey('gatewayId')
+              ? json_['gatewayId'] as core.String
               : null,
         );
 
@@ -2758,25 +2758,25 @@ class X509CertificateDetails {
     this.subject,
   });
 
-  X509CertificateDetails.fromJson(core.Map _json)
+  X509CertificateDetails.fromJson(core.Map json_)
       : this(
-          expiryTime: _json.containsKey('expiryTime')
-              ? _json['expiryTime'] as core.String
+          expiryTime: json_.containsKey('expiryTime')
+              ? json_['expiryTime'] as core.String
               : null,
-          issuer: _json.containsKey('issuer')
-              ? _json['issuer'] as core.String
+          issuer: json_.containsKey('issuer')
+              ? json_['issuer'] as core.String
               : null,
-          publicKeyType: _json.containsKey('publicKeyType')
-              ? _json['publicKeyType'] as core.String
+          publicKeyType: json_.containsKey('publicKeyType')
+              ? json_['publicKeyType'] as core.String
               : null,
-          signatureAlgorithm: _json.containsKey('signatureAlgorithm')
-              ? _json['signatureAlgorithm'] as core.String
+          signatureAlgorithm: json_.containsKey('signatureAlgorithm')
+              ? json_['signatureAlgorithm'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          subject: _json.containsKey('subject')
-              ? _json['subject'] as core.String
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
               : null,
         );
 

@@ -81,19 +81,19 @@ class SitesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SiteSummaryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -119,19 +119,19 @@ class ViolatingSitesResource {
   async.Future<ViolatingSitesResponse> list({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/violatingSites';
+    const url_ = 'v1/violatingSites';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ViolatingSitesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -187,28 +187,28 @@ class SiteSummaryResponse {
     this.underReview,
   });
 
-  SiteSummaryResponse.fromJson(core.Map _json)
+  SiteSummaryResponse.fromJson(core.Map json_)
       : this(
-          abusiveStatus: _json.containsKey('abusiveStatus')
-              ? _json['abusiveStatus'] as core.String
+          abusiveStatus: json_.containsKey('abusiveStatus')
+              ? json_['abusiveStatus'] as core.String
               : null,
-          enforcementTime: _json.containsKey('enforcementTime')
-              ? _json['enforcementTime'] as core.String
+          enforcementTime: json_.containsKey('enforcementTime')
+              ? json_['enforcementTime'] as core.String
               : null,
-          filterStatus: _json.containsKey('filterStatus')
-              ? _json['filterStatus'] as core.String
+          filterStatus: json_.containsKey('filterStatus')
+              ? json_['filterStatus'] as core.String
               : null,
-          lastChangeTime: _json.containsKey('lastChangeTime')
-              ? _json['lastChangeTime'] as core.String
+          lastChangeTime: json_.containsKey('lastChangeTime')
+              ? json_['lastChangeTime'] as core.String
               : null,
-          reportUrl: _json.containsKey('reportUrl')
-              ? _json['reportUrl'] as core.String
+          reportUrl: json_.containsKey('reportUrl')
+              ? json_['reportUrl'] as core.String
               : null,
-          reviewedSite: _json.containsKey('reviewedSite')
-              ? _json['reviewedSite'] as core.String
+          reviewedSite: json_.containsKey('reviewedSite')
+              ? json_['reviewedSite'] as core.String
               : null,
-          underReview: _json.containsKey('underReview')
-              ? _json['underReview'] as core.bool
+          underReview: json_.containsKey('underReview')
+              ? json_['underReview'] as core.bool
               : null,
         );
 
@@ -232,10 +232,10 @@ class ViolatingSitesResponse {
     this.violatingSites,
   });
 
-  ViolatingSitesResponse.fromJson(core.Map _json)
+  ViolatingSitesResponse.fromJson(core.Map json_)
       : this(
-          violatingSites: _json.containsKey('violatingSites')
-              ? (_json['violatingSites'] as core.List)
+          violatingSites: json_.containsKey('violatingSites')
+              ? (json_['violatingSites'] as core.List)
                   .map((value) => SiteSummaryResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()

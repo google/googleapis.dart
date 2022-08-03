@@ -29,7 +29,7 @@ class ClientObjectType extends ObjectType {
 
     final fromJsonString = StringBuffer();
     fromJsonString.writeln(
-      'static $className fromJson(${imports.core.ref()}Map _json) {',
+      'static $className fromJson(${imports.core.ref()}Map json_) {',
     );
     fromJsonString.writeln('    final message = $className();');
     for (var property in properties) {
@@ -37,9 +37,9 @@ class ClientObjectType extends ObjectType {
       // and the variant discriminator is final.
       if (!isVariantDiscriminator(property)) {
         final decodeString = property.type
-            .jsonDecode("_json['${escapeString(property.jsonName)}']");
+            .jsonDecode("json_['${escapeString(property.jsonName)}']");
         fromJsonString.writeln(
-          "    if (_json.containsKey('${escapeString(property.jsonName)}')) {",
+          "    if (json_.containsKey('${escapeString(property.jsonName)}')) {",
         );
         fromJsonString
             .writeln('      message.${property.name} = $decodeString;');
@@ -53,17 +53,17 @@ class ClientObjectType extends ObjectType {
     toJsonString.writeln(
       'static $_coreMapJsonType toJson($className message) {',
     );
-    toJsonString.writeln('    final _json = $_coreMapJsonTypeArguments{};');
+    toJsonString.writeln('    final json_ = $_coreMapJsonTypeArguments{};');
 
     for (var property in properties) {
       toJsonString.writeln('    if (message.${property.name} != null) {');
       toJsonString.writeln(
-        "      _json['${escapeString(property.jsonName)}'] = "
+        "      json_['${escapeString(property.jsonName)}'] = "
         '${property.type.jsonEncode('message.${property.name}!')};',
       );
       toJsonString.writeln('    }');
     }
-    toJsonString.writeln('    return _json;');
+    toJsonString.writeln('    return json_;');
     toJsonString.write('  }');
 
     return '''

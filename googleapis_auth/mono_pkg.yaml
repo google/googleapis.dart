@@ -1,6 +1,6 @@
 # See https://pub.dev/packages/mono_repo
 sdk:
-- 2.16.0
+- 2.17.0
 - dev
 
 stages:

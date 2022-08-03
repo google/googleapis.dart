@@ -83,20 +83,20 @@ class WebfontsResource {
     core.String? sort,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (sort != null) 'sort': [sort],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/webfonts';
+    const url_ = 'v1/webfonts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return WebfontList.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -138,38 +138,38 @@ class Webfont {
     this.version,
   });
 
-  Webfont.fromJson(core.Map _json)
+  Webfont.fromJson(core.Map json_)
       : this(
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
               : null,
-          family: _json.containsKey('family')
-              ? _json['family'] as core.String
+          family: json_.containsKey('family')
+              ? json_['family'] as core.String
               : null,
-          files: _json.containsKey('files')
-              ? (_json['files'] as core.Map<core.String, core.dynamic>).map(
+          files: json_.containsKey('files')
+              ? (json_['files'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          lastModified: _json.containsKey('lastModified')
-              ? _json['lastModified'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          lastModified: json_.containsKey('lastModified')
+              ? json_['lastModified'] as core.String
               : null,
-          subsets: _json.containsKey('subsets')
-              ? (_json['subsets'] as core.List)
+          subsets: json_.containsKey('subsets')
+              ? (json_['subsets'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          variants: _json.containsKey('variants')
-              ? (_json['variants'] as core.List)
+          variants: json_.containsKey('variants')
+              ? (json_['variants'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -199,15 +199,15 @@ class WebfontList {
     this.kind,
   });
 
-  WebfontList.fromJson(core.Map _json)
+  WebfontList.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Webfont.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

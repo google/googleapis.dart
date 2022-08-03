@@ -96,19 +96,19 @@ class ProjectsResource {
     core.String projectName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DeleteEventsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -179,7 +179,7 @@ class ProjectsEventsResource {
     core.String? timeRange_period,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (groupId != null) 'groupId': [groupId],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -193,15 +193,15 @@ class ProjectsEventsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListEventsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Report an individual error event and record the event to a log.
@@ -242,22 +242,22 @@ class ProjectsEventsResource {
     core.String projectName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$projectName') + '/events:report';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ReportErrorEventResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -368,7 +368,7 @@ class ProjectsGroupStatsResource {
     core.String? timedCountDuration,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (alignment != null) 'alignment': [alignment],
       if (alignmentTime != null) 'alignmentTime': [alignmentTime],
       if (groupId != null) 'groupId': groupId,
@@ -387,16 +387,16 @@ class ProjectsGroupStatsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$projectName') + '/groupStats';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGroupStatsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -429,19 +429,19 @@ class ProjectsGroupsResource {
     core.String groupName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$groupName');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$groupName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ErrorGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Replace the data for the specified group.
@@ -471,21 +471,21 @@ class ProjectsGroupsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ErrorGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -529,23 +529,23 @@ class ErrorContext {
     this.user,
   });
 
-  ErrorContext.fromJson(core.Map _json)
+  ErrorContext.fromJson(core.Map json_)
       : this(
-          httpRequest: _json.containsKey('httpRequest')
+          httpRequest: json_.containsKey('httpRequest')
               ? HttpRequestContext.fromJson(
-                  _json['httpRequest'] as core.Map<core.String, core.dynamic>)
+                  json_['httpRequest'] as core.Map<core.String, core.dynamic>)
               : null,
-          reportLocation: _json.containsKey('reportLocation')
-              ? SourceLocation.fromJson(_json['reportLocation']
+          reportLocation: json_.containsKey('reportLocation')
+              ? SourceLocation.fromJson(json_['reportLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sourceReferences: _json.containsKey('sourceReferences')
-              ? (_json['sourceReferences'] as core.List)
+          sourceReferences: json_.containsKey('sourceReferences')
+              ? (json_['sourceReferences'] as core.List)
                   .map((value) => SourceReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          user: _json.containsKey('user') ? _json['user'] as core.String : null,
+          user: json_.containsKey('user') ? json_['user'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -580,20 +580,20 @@ class ErrorEvent {
     this.serviceContext,
   });
 
-  ErrorEvent.fromJson(core.Map _json)
+  ErrorEvent.fromJson(core.Map json_)
       : this(
-          context: _json.containsKey('context')
+          context: json_.containsKey('context')
               ? ErrorContext.fromJson(
-                  _json['context'] as core.Map<core.String, core.dynamic>)
+                  json_['context'] as core.Map<core.String, core.dynamic>)
               : null,
-          eventTime: _json.containsKey('eventTime')
-              ? _json['eventTime'] as core.String
+          eventTime: json_.containsKey('eventTime')
+              ? json_['eventTime'] as core.String
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
-          serviceContext: _json.containsKey('serviceContext')
-              ? ServiceContext.fromJson(_json['serviceContext']
+          serviceContext: json_.containsKey('serviceContext')
+              ? ServiceContext.fromJson(json_['serviceContext']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -645,17 +645,17 @@ class ErrorGroup {
     this.trackingIssues,
   });
 
-  ErrorGroup.fromJson(core.Map _json)
+  ErrorGroup.fromJson(core.Map json_)
       : this(
-          groupId: _json.containsKey('groupId')
-              ? _json['groupId'] as core.String
+          groupId: json_.containsKey('groupId')
+              ? json_['groupId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          resolutionStatus: _json.containsKey('resolutionStatus')
-              ? _json['resolutionStatus'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resolutionStatus: json_.containsKey('resolutionStatus')
+              ? json_['resolutionStatus'] as core.String
               : null,
-          trackingIssues: _json.containsKey('trackingIssues')
-              ? (_json['trackingIssues'] as core.List)
+          trackingIssues: json_.containsKey('trackingIssues')
+              ? (json_['trackingIssues'] as core.List)
                   .map((value) => TrackingIssue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -741,38 +741,38 @@ class ErrorGroupStats {
     this.timedCounts,
   });
 
-  ErrorGroupStats.fromJson(core.Map _json)
+  ErrorGroupStats.fromJson(core.Map json_)
       : this(
-          affectedServices: _json.containsKey('affectedServices')
-              ? (_json['affectedServices'] as core.List)
+          affectedServices: json_.containsKey('affectedServices')
+              ? (json_['affectedServices'] as core.List)
                   .map((value) => ServiceContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          affectedUsersCount: _json.containsKey('affectedUsersCount')
-              ? _json['affectedUsersCount'] as core.String
+          affectedUsersCount: json_.containsKey('affectedUsersCount')
+              ? json_['affectedUsersCount'] as core.String
               : null,
           count:
-              _json.containsKey('count') ? _json['count'] as core.String : null,
-          firstSeenTime: _json.containsKey('firstSeenTime')
-              ? _json['firstSeenTime'] as core.String
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          firstSeenTime: json_.containsKey('firstSeenTime')
+              ? json_['firstSeenTime'] as core.String
               : null,
-          group: _json.containsKey('group')
+          group: json_.containsKey('group')
               ? ErrorGroup.fromJson(
-                  _json['group'] as core.Map<core.String, core.dynamic>)
+                  json_['group'] as core.Map<core.String, core.dynamic>)
               : null,
-          lastSeenTime: _json.containsKey('lastSeenTime')
-              ? _json['lastSeenTime'] as core.String
+          lastSeenTime: json_.containsKey('lastSeenTime')
+              ? json_['lastSeenTime'] as core.String
               : null,
-          numAffectedServices: _json.containsKey('numAffectedServices')
-              ? _json['numAffectedServices'] as core.int
+          numAffectedServices: json_.containsKey('numAffectedServices')
+              ? json_['numAffectedServices'] as core.int
               : null,
-          representative: _json.containsKey('representative')
-              ? ErrorEvent.fromJson(_json['representative']
+          representative: json_.containsKey('representative')
+              ? ErrorEvent.fromJson(json_['representative']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          timedCounts: _json.containsKey('timedCounts')
-              ? (_json['timedCounts'] as core.List)
+          timedCounts: json_.containsKey('timedCounts')
+              ? (json_['timedCounts'] as core.List)
                   .map((value) => TimedCount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -830,23 +830,23 @@ class HttpRequestContext {
     this.userAgent,
   });
 
-  HttpRequestContext.fromJson(core.Map _json)
+  HttpRequestContext.fromJson(core.Map json_)
       : this(
-          method: _json.containsKey('method')
-              ? _json['method'] as core.String
+          method: json_.containsKey('method')
+              ? json_['method'] as core.String
               : null,
-          referrer: _json.containsKey('referrer')
-              ? _json['referrer'] as core.String
+          referrer: json_.containsKey('referrer')
+              ? json_['referrer'] as core.String
               : null,
-          remoteIp: _json.containsKey('remoteIp')
-              ? _json['remoteIp'] as core.String
+          remoteIp: json_.containsKey('remoteIp')
+              ? json_['remoteIp'] as core.String
               : null,
-          responseStatusCode: _json.containsKey('responseStatusCode')
-              ? _json['responseStatusCode'] as core.int
+          responseStatusCode: json_.containsKey('responseStatusCode')
+              ? json_['responseStatusCode'] as core.int
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-          userAgent: _json.containsKey('userAgent')
-              ? _json['userAgent'] as core.String
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          userAgent: json_.containsKey('userAgent')
+              ? json_['userAgent'] as core.String
               : null,
         );
 
@@ -882,19 +882,19 @@ class ListEventsResponse {
     this.timeRangeBegin,
   });
 
-  ListEventsResponse.fromJson(core.Map _json)
+  ListEventsResponse.fromJson(core.Map json_)
       : this(
-          errorEvents: _json.containsKey('errorEvents')
-              ? (_json['errorEvents'] as core.List)
+          errorEvents: json_.containsKey('errorEvents')
+              ? (json_['errorEvents'] as core.List)
                   .map((value) => ErrorEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          timeRangeBegin: _json.containsKey('timeRangeBegin')
-              ? _json['timeRangeBegin'] as core.String
+          timeRangeBegin: json_.containsKey('timeRangeBegin')
+              ? json_['timeRangeBegin'] as core.String
               : null,
         );
 
@@ -930,19 +930,19 @@ class ListGroupStatsResponse {
     this.timeRangeBegin,
   });
 
-  ListGroupStatsResponse.fromJson(core.Map _json)
+  ListGroupStatsResponse.fromJson(core.Map json_)
       : this(
-          errorGroupStats: _json.containsKey('errorGroupStats')
-              ? (_json['errorGroupStats'] as core.List)
+          errorGroupStats: json_.containsKey('errorGroupStats')
+              ? (json_['errorGroupStats'] as core.List)
                   .map((value) => ErrorGroupStats.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          timeRangeBegin: _json.containsKey('timeRangeBegin')
-              ? _json['timeRangeBegin'] as core.String
+          timeRangeBegin: json_.containsKey('timeRangeBegin')
+              ? json_['timeRangeBegin'] as core.String
               : null,
         );
 
@@ -1014,20 +1014,20 @@ class ReportedErrorEvent {
     this.serviceContext,
   });
 
-  ReportedErrorEvent.fromJson(core.Map _json)
+  ReportedErrorEvent.fromJson(core.Map json_)
       : this(
-          context: _json.containsKey('context')
+          context: json_.containsKey('context')
               ? ErrorContext.fromJson(
-                  _json['context'] as core.Map<core.String, core.dynamic>)
+                  json_['context'] as core.Map<core.String, core.dynamic>)
               : null,
-          eventTime: _json.containsKey('eventTime')
-              ? _json['eventTime'] as core.String
+          eventTime: json_.containsKey('eventTime')
+              ? json_['eventTime'] as core.String
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
-          serviceContext: _json.containsKey('serviceContext')
-              ? ServiceContext.fromJson(_json['serviceContext']
+          serviceContext: json_.containsKey('serviceContext')
+              ? ServiceContext.fromJson(json_['serviceContext']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1074,16 +1074,16 @@ class ServiceContext {
     this.version,
   });
 
-  ServiceContext.fromJson(core.Map _json)
+  ServiceContext.fromJson(core.Map json_)
       : this(
-          resourceType: _json.containsKey('resourceType')
-              ? _json['resourceType'] as core.String
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
               : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -1122,16 +1122,16 @@ class SourceLocation {
     this.lineNumber,
   });
 
-  SourceLocation.fromJson(core.Map _json)
+  SourceLocation.fromJson(core.Map json_)
       : this(
-          filePath: _json.containsKey('filePath')
-              ? _json['filePath'] as core.String
+          filePath: json_.containsKey('filePath')
+              ? json_['filePath'] as core.String
               : null,
-          functionName: _json.containsKey('functionName')
-              ? _json['functionName'] as core.String
+          functionName: json_.containsKey('functionName')
+              ? json_['functionName'] as core.String
               : null,
-          lineNumber: _json.containsKey('lineNumber')
-              ? _json['lineNumber'] as core.int
+          lineNumber: json_.containsKey('lineNumber')
+              ? json_['lineNumber'] as core.int
               : null,
         );
 
@@ -1162,13 +1162,13 @@ class SourceReference {
     this.revisionId,
   });
 
-  SourceReference.fromJson(core.Map _json)
+  SourceReference.fromJson(core.Map json_)
       : this(
-          repository: _json.containsKey('repository')
-              ? _json['repository'] as core.String
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
         );
 
@@ -1198,15 +1198,15 @@ class TimedCount {
     this.startTime,
   });
 
-  TimedCount.fromJson(core.Map _json)
+  TimedCount.fromJson(core.Map json_)
       : this(
           count:
-              _json.containsKey('count') ? _json['count'] as core.String : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -1228,9 +1228,9 @@ class TrackingIssue {
     this.url,
   });
 
-  TrackingIssue.fromJson(core.Map _json)
+  TrackingIssue.fromJson(core.Map json_)
       : this(
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

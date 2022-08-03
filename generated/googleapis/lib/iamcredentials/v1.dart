@@ -100,21 +100,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':generateAccessToken';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':generateAccessToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GenerateAccessTokenResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates an OpenID Connect ID token for a service account.
@@ -144,21 +144,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':generateIdToken';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':generateIdToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GenerateIdTokenResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a blob using a service account's system-managed private key.
@@ -188,21 +188,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signBlob';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':signBlob';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SignBlobResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a JWT using a service account's system-managed private key.
@@ -232,21 +232,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signJwt';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':signJwt';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SignJwtResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -292,18 +292,18 @@ class GenerateAccessTokenRequest {
     this.scope,
   });
 
-  GenerateAccessTokenRequest.fromJson(core.Map _json)
+  GenerateAccessTokenRequest.fromJson(core.Map json_)
       : this(
-          delegates: _json.containsKey('delegates')
-              ? (_json['delegates'] as core.List)
+          delegates: json_.containsKey('delegates')
+              ? (json_['delegates'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          lifetime: _json.containsKey('lifetime')
-              ? _json['lifetime'] as core.String
+          lifetime: json_.containsKey('lifetime')
+              ? json_['lifetime'] as core.String
               : null,
-          scope: _json.containsKey('scope')
-              ? (_json['scope'] as core.List)
+          scope: json_.containsKey('scope')
+              ? (json_['scope'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -330,13 +330,13 @@ class GenerateAccessTokenResponse {
     this.expireTime,
   });
 
-  GenerateAccessTokenResponse.fromJson(core.Map _json)
+  GenerateAccessTokenResponse.fromJson(core.Map json_)
       : this(
-          accessToken: _json.containsKey('accessToken')
-              ? _json['accessToken'] as core.String
+          accessToken: json_.containsKey('accessToken')
+              ? json_['accessToken'] as core.String
               : null,
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
         );
 
@@ -377,18 +377,18 @@ class GenerateIdTokenRequest {
     this.includeEmail,
   });
 
-  GenerateIdTokenRequest.fromJson(core.Map _json)
+  GenerateIdTokenRequest.fromJson(core.Map json_)
       : this(
-          audience: _json.containsKey('audience')
-              ? _json['audience'] as core.String
+          audience: json_.containsKey('audience')
+              ? json_['audience'] as core.String
               : null,
-          delegates: _json.containsKey('delegates')
-              ? (_json['delegates'] as core.List)
+          delegates: json_.containsKey('delegates')
+              ? (json_['delegates'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          includeEmail: _json.containsKey('includeEmail')
-              ? _json['includeEmail'] as core.bool
+          includeEmail: json_.containsKey('includeEmail')
+              ? json_['includeEmail'] as core.bool
               : null,
         );
 
@@ -407,10 +407,10 @@ class GenerateIdTokenResponse {
     this.token,
   });
 
-  GenerateIdTokenResponse.fromJson(core.Map _json)
+  GenerateIdTokenResponse.fromJson(core.Map json_)
       : this(
           token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
+              json_.containsKey('token') ? json_['token'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -437,9 +437,9 @@ class SignBlobRequest {
   core.String? payload;
   core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
 
-  set payloadAsBytes(core.List<core.int> _bytes) {
+  set payloadAsBytes(core.List<core.int> bytes_) {
     payload =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignBlobRequest({
@@ -447,15 +447,15 @@ class SignBlobRequest {
     this.payload,
   });
 
-  SignBlobRequest.fromJson(core.Map _json)
+  SignBlobRequest.fromJson(core.Map json_)
       : this(
-          delegates: _json.containsKey('delegates')
-              ? (_json['delegates'] as core.List)
+          delegates: json_.containsKey('delegates')
+              ? (json_['delegates'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          payload: _json.containsKey('payload')
-              ? _json['payload'] as core.String
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.String
               : null,
         );
 
@@ -489,9 +489,9 @@ class SignBlobResponse {
   core.List<core.int> get signedBlobAsBytes =>
       convert.base64.decode(signedBlob!);
 
-  set signedBlobAsBytes(core.List<core.int> _bytes) {
+  set signedBlobAsBytes(core.List<core.int> bytes_) {
     signedBlob =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignBlobResponse({
@@ -499,12 +499,12 @@ class SignBlobResponse {
     this.signedBlob,
   });
 
-  SignBlobResponse.fromJson(core.Map _json)
+  SignBlobResponse.fromJson(core.Map json_)
       : this(
           keyId:
-              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
-          signedBlob: _json.containsKey('signedBlob')
-              ? _json['signedBlob'] as core.String
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          signedBlob: json_.containsKey('signedBlob')
+              ? json_['signedBlob'] as core.String
               : null,
         );
 
@@ -542,15 +542,15 @@ class SignJwtRequest {
     this.payload,
   });
 
-  SignJwtRequest.fromJson(core.Map _json)
+  SignJwtRequest.fromJson(core.Map json_)
       : this(
-          delegates: _json.containsKey('delegates')
-              ? (_json['delegates'] as core.List)
+          delegates: json_.containsKey('delegates')
+              ? (json_['delegates'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          payload: _json.containsKey('payload')
-              ? _json['payload'] as core.String
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.String
               : null,
         );
 
@@ -589,12 +589,12 @@ class SignJwtResponse {
     this.signedJwt,
   });
 
-  SignJwtResponse.fromJson(core.Map _json)
+  SignJwtResponse.fromJson(core.Map json_)
       : this(
           keyId:
-              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
-          signedJwt: _json.containsKey('signedJwt')
-              ? _json['signedJwt'] as core.String
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          signedJwt: json_.containsKey('signedJwt')
+              ? json_['signedJwt'] as core.String
               : null,
         );
 

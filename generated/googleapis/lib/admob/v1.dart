@@ -99,19 +99,19 @@ class AccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PublisherAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the AdMob publisher account that was most recently signed in to from
@@ -144,21 +144,21 @@ class AccountsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/accounts';
+    const url_ = 'v1/accounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListPublisherAccountsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -199,21 +199,21 @@ class AccountsAdUnitsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/adUnits';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/adUnits';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAdUnitsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -254,21 +254,21 @@ class AccountsAppsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/apps';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAppsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -307,21 +307,21 @@ class AccountsMediationReportResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/mediationReport:generate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return GenerateMediationReportResponse.fromJson(_response as core.List);
+    return GenerateMediationReportResponse.fromJson(response_ as core.List);
   }
 }
 
@@ -360,21 +360,21 @@ class AccountsNetworkReportResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/networkReport:generate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return GenerateNetworkReportResponse.fromJson(_response as core.List);
+    return GenerateNetworkReportResponse.fromJson(response_ as core.List);
   }
 }
 
@@ -431,25 +431,25 @@ class AdUnit {
     this.name,
   });
 
-  AdUnit.fromJson(core.Map _json)
+  AdUnit.fromJson(core.Map json_)
       : this(
-          adFormat: _json.containsKey('adFormat')
-              ? _json['adFormat'] as core.String
+          adFormat: json_.containsKey('adFormat')
+              ? json_['adFormat'] as core.String
               : null,
-          adTypes: _json.containsKey('adTypes')
-              ? (_json['adTypes'] as core.List)
+          adTypes: json_.containsKey('adTypes')
+              ? (json_['adTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          adUnitId: _json.containsKey('adUnitId')
-              ? _json['adUnitId'] as core.String
+          adUnitId: json_.containsKey('adUnitId')
+              ? json_['adUnitId'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -504,21 +504,21 @@ class App {
     this.platform,
   });
 
-  App.fromJson(core.Map _json)
+  App.fromJson(core.Map json_)
       : this(
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          linkedAppInfo: _json.containsKey('linkedAppInfo')
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          linkedAppInfo: json_.containsKey('linkedAppInfo')
               ? AppLinkedAppInfo.fromJson(
-                  _json['linkedAppInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['linkedAppInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          manualAppInfo: _json.containsKey('manualAppInfo')
+          manualAppInfo: json_.containsKey('manualAppInfo')
               ? AppManualAppInfo.fromJson(
-                  _json['manualAppInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['manualAppInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          platform: json_.containsKey('platform')
+              ? json_['platform'] as core.String
               : null,
         );
 
@@ -557,13 +557,13 @@ class AppLinkedAppInfo {
     this.displayName,
   });
 
-  AppLinkedAppInfo.fromJson(core.Map _json)
+  AppLinkedAppInfo.fromJson(core.Map json_)
       : this(
-          appStoreId: _json.containsKey('appStoreId')
-              ? _json['appStoreId'] as core.String
+          appStoreId: json_.containsKey('appStoreId')
+              ? json_['appStoreId'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
         );
 
@@ -586,10 +586,10 @@ class AppManualAppInfo {
     this.displayName,
   });
 
-  AppManualAppInfo.fromJson(core.Map _json)
+  AppManualAppInfo.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
         );
 
@@ -629,15 +629,15 @@ class DateRange {
     this.startDate,
   });
 
-  DateRange.fromJson(core.Map _json)
+  DateRange.fromJson(core.Map json_)
       : this(
-          endDate: _json.containsKey('endDate')
+          endDate: json_.containsKey('endDate')
               ? Date.fromJson(
-                  _json['endDate'] as core.Map<core.String, core.dynamic>)
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          startDate: _json.containsKey('startDate')
+          startDate: json_.containsKey('startDate')
               ? Date.fromJson(
-                  _json['startDate'] as core.Map<core.String, core.dynamic>)
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -656,11 +656,11 @@ class GenerateMediationReportRequest {
     this.reportSpec,
   });
 
-  GenerateMediationReportRequest.fromJson(core.Map _json)
+  GenerateMediationReportRequest.fromJson(core.Map json_)
       : this(
-          reportSpec: _json.containsKey('reportSpec')
+          reportSpec: json_.containsKey('reportSpec')
               ? MediationReportSpec.fromJson(
-                  _json['reportSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['reportSpec'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -687,19 +687,19 @@ class GenerateMediationReportResponseElement {
     this.row,
   });
 
-  GenerateMediationReportResponseElement.fromJson(core.Map _json)
+  GenerateMediationReportResponseElement.fromJson(core.Map json_)
       : this(
-          footer: _json.containsKey('footer')
+          footer: json_.containsKey('footer')
               ? ReportFooter.fromJson(
-                  _json['footer'] as core.Map<core.String, core.dynamic>)
+                  json_['footer'] as core.Map<core.String, core.dynamic>)
               : null,
-          header: _json.containsKey('header')
+          header: json_.containsKey('header')
               ? ReportHeader.fromJson(
-                  _json['header'] as core.Map<core.String, core.dynamic>)
+                  json_['header'] as core.Map<core.String, core.dynamic>)
               : null,
-          row: _json.containsKey('row')
+          row: json_.containsKey('row')
               ? ReportRow.fromJson(
-                  _json['row'] as core.Map<core.String, core.dynamic>)
+                  json_['row'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -767,11 +767,11 @@ class GenerateNetworkReportRequest {
     this.reportSpec,
   });
 
-  GenerateNetworkReportRequest.fromJson(core.Map _json)
+  GenerateNetworkReportRequest.fromJson(core.Map json_)
       : this(
-          reportSpec: _json.containsKey('reportSpec')
+          reportSpec: json_.containsKey('reportSpec')
               ? NetworkReportSpec.fromJson(
-                  _json['reportSpec'] as core.Map<core.String, core.dynamic>)
+                  json_['reportSpec'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -798,19 +798,19 @@ class GenerateNetworkReportResponseElement {
     this.row,
   });
 
-  GenerateNetworkReportResponseElement.fromJson(core.Map _json)
+  GenerateNetworkReportResponseElement.fromJson(core.Map json_)
       : this(
-          footer: _json.containsKey('footer')
+          footer: json_.containsKey('footer')
               ? ReportFooter.fromJson(
-                  _json['footer'] as core.Map<core.String, core.dynamic>)
+                  json_['footer'] as core.Map<core.String, core.dynamic>)
               : null,
-          header: _json.containsKey('header')
+          header: json_.containsKey('header')
               ? ReportHeader.fromJson(
-                  _json['header'] as core.Map<core.String, core.dynamic>)
+                  json_['header'] as core.Map<core.String, core.dynamic>)
               : null,
-          row: _json.containsKey('row')
+          row: json_.containsKey('row')
               ? ReportRow.fromJson(
-                  _json['row'] as core.Map<core.String, core.dynamic>)
+                  json_['row'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -880,16 +880,16 @@ class ListAdUnitsResponse {
     this.nextPageToken,
   });
 
-  ListAdUnitsResponse.fromJson(core.Map _json)
+  ListAdUnitsResponse.fromJson(core.Map json_)
       : this(
-          adUnits: _json.containsKey('adUnits')
-              ? (_json['adUnits'] as core.List)
+          adUnits: json_.containsKey('adUnits')
+              ? (json_['adUnits'] as core.List)
                   .map((value) => AdUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -913,16 +913,16 @@ class ListAppsResponse {
     this.nextPageToken,
   });
 
-  ListAppsResponse.fromJson(core.Map _json)
+  ListAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: _json.containsKey('apps')
-              ? (_json['apps'] as core.List)
+          apps: json_.containsKey('apps')
+              ? (json_['apps'] as core.List)
                   .map((value) => App.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -946,16 +946,16 @@ class ListPublisherAccountsResponse {
     this.nextPageToken,
   });
 
-  ListPublisherAccountsResponse.fromJson(core.Map _json)
+  ListPublisherAccountsResponse.fromJson(core.Map json_)
       : this(
-          account: _json.containsKey('account')
-              ? (_json['account'] as core.List)
+          account: json_.containsKey('account')
+              ? (json_['account'] as core.List)
                   .map((value) => PublisherAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -988,13 +988,13 @@ class LocalizationSettings {
     this.languageCode,
   });
 
-  LocalizationSettings.fromJson(core.Map _json)
+  LocalizationSettings.fromJson(core.Map json_)
       : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
         );
 
@@ -1074,43 +1074,43 @@ class MediationReportSpec {
     this.timeZone,
   });
 
-  MediationReportSpec.fromJson(core.Map _json)
+  MediationReportSpec.fromJson(core.Map json_)
       : this(
-          dateRange: _json.containsKey('dateRange')
+          dateRange: json_.containsKey('dateRange')
               ? DateRange.fromJson(
-                  _json['dateRange'] as core.Map<core.String, core.dynamic>)
+                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          dimensionFilters: _json.containsKey('dimensionFilters')
-              ? (_json['dimensionFilters'] as core.List)
+          dimensionFilters: json_.containsKey('dimensionFilters')
+              ? (json_['dimensionFilters'] as core.List)
                   .map((value) => MediationReportSpecDimensionFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          dimensions: _json.containsKey('dimensions')
-              ? (_json['dimensions'] as core.List)
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          localizationSettings: _json.containsKey('localizationSettings')
-              ? LocalizationSettings.fromJson(_json['localizationSettings']
+          localizationSettings: json_.containsKey('localizationSettings')
+              ? LocalizationSettings.fromJson(json_['localizationSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          maxReportRows: _json.containsKey('maxReportRows')
-              ? _json['maxReportRows'] as core.int
+          maxReportRows: json_.containsKey('maxReportRows')
+              ? json_['maxReportRows'] as core.int
               : null,
-          metrics: _json.containsKey('metrics')
-              ? (_json['metrics'] as core.List)
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sortConditions: _json.containsKey('sortConditions')
-              ? (_json['sortConditions'] as core.List)
+          sortConditions: json_.containsKey('sortConditions')
+              ? (json_['sortConditions'] as core.List)
                   .map((value) => MediationReportSpecSortCondition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeZone: _json.containsKey('timeZone')
-              ? _json['timeZone'] as core.String
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
               : null,
         );
 
@@ -1183,14 +1183,14 @@ class MediationReportSpecDimensionFilter {
     this.matchesAny,
   });
 
-  MediationReportSpecDimensionFilter.fromJson(core.Map _json)
+  MediationReportSpecDimensionFilter.fromJson(core.Map json_)
       : this(
-          dimension: _json.containsKey('dimension')
-              ? _json['dimension'] as core.String
+          dimension: json_.containsKey('dimension')
+              ? json_['dimension'] as core.String
               : null,
-          matchesAny: _json.containsKey('matchesAny')
+          matchesAny: json_.containsKey('matchesAny')
               ? StringList.fromJson(
-                  _json['matchesAny'] as core.Map<core.String, core.dynamic>)
+                  json_['matchesAny'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1290,16 +1290,16 @@ class MediationReportSpecSortCondition {
     this.order,
   });
 
-  MediationReportSpecSortCondition.fromJson(core.Map _json)
+  MediationReportSpecSortCondition.fromJson(core.Map json_)
       : this(
-          dimension: _json.containsKey('dimension')
-              ? _json['dimension'] as core.String
+          dimension: json_.containsKey('dimension')
+              ? json_['dimension'] as core.String
               : null,
-          metric: _json.containsKey('metric')
-              ? _json['metric'] as core.String
+          metric: json_.containsKey('metric')
+              ? json_['metric'] as core.String
               : null,
           order:
-              _json.containsKey('order') ? _json['order'] as core.String : null,
+              json_.containsKey('order') ? json_['order'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1380,43 +1380,43 @@ class NetworkReportSpec {
     this.timeZone,
   });
 
-  NetworkReportSpec.fromJson(core.Map _json)
+  NetworkReportSpec.fromJson(core.Map json_)
       : this(
-          dateRange: _json.containsKey('dateRange')
+          dateRange: json_.containsKey('dateRange')
               ? DateRange.fromJson(
-                  _json['dateRange'] as core.Map<core.String, core.dynamic>)
+                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          dimensionFilters: _json.containsKey('dimensionFilters')
-              ? (_json['dimensionFilters'] as core.List)
+          dimensionFilters: json_.containsKey('dimensionFilters')
+              ? (json_['dimensionFilters'] as core.List)
                   .map((value) => NetworkReportSpecDimensionFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          dimensions: _json.containsKey('dimensions')
-              ? (_json['dimensions'] as core.List)
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          localizationSettings: _json.containsKey('localizationSettings')
-              ? LocalizationSettings.fromJson(_json['localizationSettings']
+          localizationSettings: json_.containsKey('localizationSettings')
+              ? LocalizationSettings.fromJson(json_['localizationSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          maxReportRows: _json.containsKey('maxReportRows')
-              ? _json['maxReportRows'] as core.int
+          maxReportRows: json_.containsKey('maxReportRows')
+              ? json_['maxReportRows'] as core.int
               : null,
-          metrics: _json.containsKey('metrics')
-              ? (_json['metrics'] as core.List)
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sortConditions: _json.containsKey('sortConditions')
-              ? (_json['sortConditions'] as core.List)
+          sortConditions: json_.containsKey('sortConditions')
+              ? (json_['sortConditions'] as core.List)
                   .map((value) => NetworkReportSpecSortCondition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeZone: _json.containsKey('timeZone')
-              ? _json['timeZone'] as core.String
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
               : null,
         );
 
@@ -1479,14 +1479,14 @@ class NetworkReportSpecDimensionFilter {
     this.matchesAny,
   });
 
-  NetworkReportSpecDimensionFilter.fromJson(core.Map _json)
+  NetworkReportSpecDimensionFilter.fromJson(core.Map json_)
       : this(
-          dimension: _json.containsKey('dimension')
-              ? _json['dimension'] as core.String
+          dimension: json_.containsKey('dimension')
+              ? json_['dimension'] as core.String
               : null,
-          matchesAny: _json.containsKey('matchesAny')
+          matchesAny: json_.containsKey('matchesAny')
               ? StringList.fromJson(
-                  _json['matchesAny'] as core.Map<core.String, core.dynamic>)
+                  json_['matchesAny'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1577,16 +1577,16 @@ class NetworkReportSpecSortCondition {
     this.order,
   });
 
-  NetworkReportSpecSortCondition.fromJson(core.Map _json)
+  NetworkReportSpecSortCondition.fromJson(core.Map json_)
       : this(
-          dimension: _json.containsKey('dimension')
-              ? _json['dimension'] as core.String
+          dimension: json_.containsKey('dimension')
+              ? json_['dimension'] as core.String
               : null,
-          metric: _json.containsKey('metric')
-              ? _json['metric'] as core.String
+          metric: json_.containsKey('metric')
+              ? json_['metric'] as core.String
               : null,
           order:
-              _json.containsKey('order') ? _json['order'] as core.String : null,
+              json_.containsKey('order') ? json_['order'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1627,17 +1627,17 @@ class PublisherAccount {
     this.reportingTimeZone,
   });
 
-  PublisherAccount.fromJson(core.Map _json)
+  PublisherAccount.fromJson(core.Map json_)
       : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          publisherId: _json.containsKey('publisherId')
-              ? _json['publisherId'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          publisherId: json_.containsKey('publisherId')
+              ? json_['publisherId'] as core.String
               : null,
-          reportingTimeZone: _json.containsKey('reportingTimeZone')
-              ? _json['reportingTimeZone'] as core.String
+          reportingTimeZone: json_.containsKey('reportingTimeZone')
+              ? json_['reportingTimeZone'] as core.String
               : null,
         );
 
@@ -1668,13 +1668,13 @@ class ReportFooter {
     this.warnings,
   });
 
-  ReportFooter.fromJson(core.Map _json)
+  ReportFooter.fromJson(core.Map json_)
       : this(
-          matchingRowCount: _json.containsKey('matchingRowCount')
-              ? _json['matchingRowCount'] as core.String
+          matchingRowCount: json_.containsKey('matchingRowCount')
+              ? json_['matchingRowCount'] as core.String
               : null,
-          warnings: _json.containsKey('warnings')
-              ? (_json['warnings'] as core.List)
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
                   .map((value) => ReportWarning.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1713,18 +1713,18 @@ class ReportHeader {
     this.reportingTimeZone,
   });
 
-  ReportHeader.fromJson(core.Map _json)
+  ReportHeader.fromJson(core.Map json_)
       : this(
-          dateRange: _json.containsKey('dateRange')
+          dateRange: json_.containsKey('dateRange')
               ? DateRange.fromJson(
-                  _json['dateRange'] as core.Map<core.String, core.dynamic>)
+                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          localizationSettings: _json.containsKey('localizationSettings')
-              ? LocalizationSettings.fromJson(_json['localizationSettings']
+          localizationSettings: json_.containsKey('localizationSettings')
+              ? LocalizationSettings.fromJson(json_['localizationSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          reportingTimeZone: _json.containsKey('reportingTimeZone')
-              ? _json['reportingTimeZone'] as core.String
+          reportingTimeZone: json_.containsKey('reportingTimeZone')
+              ? json_['reportingTimeZone'] as core.String
               : null,
         );
 
@@ -1753,10 +1753,10 @@ class ReportRow {
     this.metricValues,
   });
 
-  ReportRow.fromJson(core.Map _json)
+  ReportRow.fromJson(core.Map json_)
       : this(
-          dimensionValues: _json.containsKey('dimensionValues')
-              ? (_json['dimensionValues']
+          dimensionValues: json_.containsKey('dimensionValues')
+              ? (json_['dimensionValues']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -1766,8 +1766,8 @@ class ReportRow {
                   ),
                 )
               : null,
-          metricValues: _json.containsKey('metricValues')
-              ? (_json['metricValues'] as core.Map<core.String, core.dynamic>)
+          metricValues: json_.containsKey('metricValues')
+              ? (json_['metricValues'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -1800,13 +1800,13 @@ class ReportRowDimensionValue {
     this.value,
   });
 
-  ReportRowDimensionValue.fromJson(core.Map _json)
+  ReportRowDimensionValue.fromJson(core.Map json_)
       : this(
-          displayLabel: _json.containsKey('displayLabel')
-              ? _json['displayLabel'] as core.String
+          displayLabel: json_.containsKey('displayLabel')
+              ? json_['displayLabel'] as core.String
               : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1838,16 +1838,16 @@ class ReportRowMetricValue {
     this.microsValue,
   });
 
-  ReportRowMetricValue.fromJson(core.Map _json)
+  ReportRowMetricValue.fromJson(core.Map json_)
       : this(
-          doubleValue: _json.containsKey('doubleValue')
-              ? (_json['doubleValue'] as core.num).toDouble()
+          doubleValue: json_.containsKey('doubleValue')
+              ? (json_['doubleValue'] as core.num).toDouble()
               : null,
-          integerValue: _json.containsKey('integerValue')
-              ? _json['integerValue'] as core.String
+          integerValue: json_.containsKey('integerValue')
+              ? json_['integerValue'] as core.String
               : null,
-          microsValue: _json.containsKey('microsValue')
-              ? _json['microsValue'] as core.String
+          microsValue: json_.containsKey('microsValue')
+              ? json_['microsValue'] as core.String
               : null,
         );
 
@@ -1888,12 +1888,12 @@ class ReportWarning {
     this.type,
   });
 
-  ReportWarning.fromJson(core.Map _json)
+  ReportWarning.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1911,10 +1911,10 @@ class StringList {
     this.values,
   });
 
-  StringList.fromJson(core.Map _json)
+  StringList.fromJson(core.Map json_)
       : this(
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,

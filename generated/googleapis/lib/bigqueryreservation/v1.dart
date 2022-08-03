@@ -105,19 +105,19 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BiReservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up assignments for a specified resource for a particular region.
@@ -166,23 +166,23 @@ class ProjectsLocationsResource {
     core.String? query,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + ':searchAllAssignments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SearchAllAssignmentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deprecated: Looks up assignments for a specified resource for a particular
@@ -233,22 +233,22 @@ class ProjectsLocationsResource {
     core.String? query,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':searchAssignments';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':searchAssignments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SearchAssignmentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a BI reservation.
@@ -286,22 +286,22 @@ class ProjectsLocationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BiReservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -348,8 +348,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.bool? enforceSingleAdminProjectPerOrg,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (capacityCommitmentId != null)
         'capacityCommitmentId': [capacityCommitmentId],
       if (enforceSingleAdminProjectPerOrg != null)
@@ -359,17 +359,17 @@ class ProjectsLocationsCapacityCommitmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/capacityCommitments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a capacity commitment.
@@ -403,19 +403,19 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.bool? force,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the capacity commitment.
@@ -441,19 +441,19 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the capacity commitments for the admin project.
@@ -485,22 +485,22 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/capacityCommitments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCapacityCommitmentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Merges capacity commitments of the same plan into a single commitment.
@@ -533,22 +533,22 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/capacityCommitments:merge';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing capacity commitment.
@@ -588,22 +588,22 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CapacityCommitment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Splits capacity commitment to two commitments of the same plan and
@@ -638,21 +638,21 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':split';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':split';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SplitCapacityCommitmentResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -695,22 +695,22 @@ class ProjectsLocationsReservationsResource {
     core.String? reservationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (reservationId != null) 'reservationId': [reservationId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/reservations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reservations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a reservation.
@@ -739,18 +739,18 @@ class ProjectsLocationsReservationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the reservation.
@@ -776,19 +776,19 @@ class ProjectsLocationsReservationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the reservations for the project in the specified location.
@@ -820,21 +820,21 @@ class ProjectsLocationsReservationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/reservations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reservations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListReservationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing reservation resource.
@@ -868,22 +868,22 @@ class ProjectsLocationsReservationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -946,22 +946,22 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.String? assignmentId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (assignmentId != null) 'assignmentId': [assignmentId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assignments';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assignments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Assignment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a assignment.
@@ -995,18 +995,18 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists assignments.
@@ -1051,21 +1051,21 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/assignments';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assignments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAssignmentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves an assignment under a new reservation.
@@ -1098,21 +1098,21 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Assignment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing assignment.
@@ -1148,22 +1148,22 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Assignment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1214,17 +1214,17 @@ class Assignment {
     this.state,
   });
 
-  Assignment.fromJson(core.Map _json)
+  Assignment.fromJson(core.Map json_)
       : this(
-          assignee: _json.containsKey('assignee')
-              ? _json['assignee'] as core.String
+          assignee: json_.containsKey('assignee')
+              ? json_['assignee'] as core.String
               : null,
-          jobType: _json.containsKey('jobType')
-              ? _json['jobType'] as core.String
+          jobType: json_.containsKey('jobType')
+              ? json_['jobType'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1261,18 +1261,18 @@ class BiReservation {
     this.updateTime,
   });
 
-  BiReservation.fromJson(core.Map _json)
+  BiReservation.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          preferredTables: _json.containsKey('preferredTables')
-              ? (_json['preferredTables'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          preferredTables: json_.containsKey('preferredTables')
+              ? (json_['preferredTables'] as core.List)
                   .map((value) => TableReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          size: _json.containsKey('size') ? _json['size'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1399,31 +1399,31 @@ class CapacityCommitment {
     this.state,
   });
 
-  CapacityCommitment.fromJson(core.Map _json)
+  CapacityCommitment.fromJson(core.Map json_)
       : this(
-          commitmentEndTime: _json.containsKey('commitmentEndTime')
-              ? _json['commitmentEndTime'] as core.String
+          commitmentEndTime: json_.containsKey('commitmentEndTime')
+              ? json_['commitmentEndTime'] as core.String
               : null,
-          commitmentStartTime: _json.containsKey('commitmentStartTime')
-              ? _json['commitmentStartTime'] as core.String
+          commitmentStartTime: json_.containsKey('commitmentStartTime')
+              ? json_['commitmentStartTime'] as core.String
               : null,
-          failureStatus: _json.containsKey('failureStatus')
+          failureStatus: json_.containsKey('failureStatus')
               ? Status.fromJson(
-                  _json['failureStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['failureStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          multiRegionAuxiliary: _json.containsKey('multiRegionAuxiliary')
-              ? _json['multiRegionAuxiliary'] as core.bool
+          multiRegionAuxiliary: json_.containsKey('multiRegionAuxiliary')
+              ? json_['multiRegionAuxiliary'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          plan: _json.containsKey('plan') ? _json['plan'] as core.String : null,
-          renewalPlan: _json.containsKey('renewalPlan')
-              ? _json['renewalPlan'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          plan: json_.containsKey('plan') ? json_['plan'] as core.String : null,
+          renewalPlan: json_.containsKey('renewalPlan')
+              ? json_['renewalPlan'] as core.String
               : null,
-          slotCount: _json.containsKey('slotCount')
-              ? _json['slotCount'] as core.String
+          slotCount: json_.containsKey('slotCount')
+              ? json_['slotCount'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1463,16 +1463,16 @@ class ListAssignmentsResponse {
     this.nextPageToken,
   });
 
-  ListAssignmentsResponse.fromJson(core.Map _json)
+  ListAssignmentsResponse.fromJson(core.Map json_)
       : this(
-          assignments: _json.containsKey('assignments')
-              ? (_json['assignments'] as core.List)
+          assignments: json_.containsKey('assignments')
+              ? (json_['assignments'] as core.List)
                   .map((value) => Assignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1496,16 +1496,16 @@ class ListCapacityCommitmentsResponse {
     this.nextPageToken,
   });
 
-  ListCapacityCommitmentsResponse.fromJson(core.Map _json)
+  ListCapacityCommitmentsResponse.fromJson(core.Map json_)
       : this(
-          capacityCommitments: _json.containsKey('capacityCommitments')
-              ? (_json['capacityCommitments'] as core.List)
+          capacityCommitments: json_.containsKey('capacityCommitments')
+              ? (json_['capacityCommitments'] as core.List)
                   .map((value) => CapacityCommitment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1530,13 +1530,13 @@ class ListReservationsResponse {
     this.reservations,
   });
 
-  ListReservationsResponse.fromJson(core.Map _json)
+  ListReservationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          reservations: _json.containsKey('reservations')
-              ? (_json['reservations'] as core.List)
+          reservations: json_.containsKey('reservations')
+              ? (json_['reservations'] as core.List)
                   .map((value) => Reservation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1563,10 +1563,10 @@ class MergeCapacityCommitmentsRequest {
     this.capacityCommitmentIds,
   });
 
-  MergeCapacityCommitmentsRequest.fromJson(core.Map _json)
+  MergeCapacityCommitmentsRequest.fromJson(core.Map json_)
       : this(
-          capacityCommitmentIds: _json.containsKey('capacityCommitmentIds')
-              ? (_json['capacityCommitmentIds'] as core.List)
+          capacityCommitmentIds: json_.containsKey('capacityCommitmentIds')
+              ? (json_['capacityCommitmentIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1593,10 +1593,10 @@ class MoveAssignmentRequest {
     this.destinationId,
   });
 
-  MoveAssignmentRequest.fromJson(core.Map _json)
+  MoveAssignmentRequest.fromJson(core.Map json_)
       : this(
-          destinationId: _json.containsKey('destinationId')
-              ? _json['destinationId'] as core.String
+          destinationId: json_.containsKey('destinationId')
+              ? json_['destinationId'] as core.String
               : null,
         );
 
@@ -1671,26 +1671,26 @@ class Reservation {
     this.updateTime,
   });
 
-  Reservation.fromJson(core.Map _json)
+  Reservation.fromJson(core.Map json_)
       : this(
-          concurrency: _json.containsKey('concurrency')
-              ? _json['concurrency'] as core.String
+          concurrency: json_.containsKey('concurrency')
+              ? json_['concurrency'] as core.String
               : null,
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          ignoreIdleSlots: _json.containsKey('ignoreIdleSlots')
-              ? _json['ignoreIdleSlots'] as core.bool
+          ignoreIdleSlots: json_.containsKey('ignoreIdleSlots')
+              ? json_['ignoreIdleSlots'] as core.bool
               : null,
-          multiRegionAuxiliary: _json.containsKey('multiRegionAuxiliary')
-              ? _json['multiRegionAuxiliary'] as core.bool
+          multiRegionAuxiliary: json_.containsKey('multiRegionAuxiliary')
+              ? json_['multiRegionAuxiliary'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          slotCapacity: _json.containsKey('slotCapacity')
-              ? _json['slotCapacity'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          slotCapacity: json_.containsKey('slotCapacity')
+              ? json_['slotCapacity'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1720,16 +1720,16 @@ class SearchAllAssignmentsResponse {
     this.nextPageToken,
   });
 
-  SearchAllAssignmentsResponse.fromJson(core.Map _json)
+  SearchAllAssignmentsResponse.fromJson(core.Map json_)
       : this(
-          assignments: _json.containsKey('assignments')
-              ? (_json['assignments'] as core.List)
+          assignments: json_.containsKey('assignments')
+              ? (json_['assignments'] as core.List)
                   .map((value) => Assignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1753,16 +1753,16 @@ class SearchAssignmentsResponse {
     this.nextPageToken,
   });
 
-  SearchAssignmentsResponse.fromJson(core.Map _json)
+  SearchAssignmentsResponse.fromJson(core.Map json_)
       : this(
-          assignments: _json.containsKey('assignments')
-              ? (_json['assignments'] as core.List)
+          assignments: json_.containsKey('assignments')
+              ? (json_['assignments'] as core.List)
                   .map((value) => Assignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1781,10 +1781,10 @@ class SplitCapacityCommitmentRequest {
     this.slotCount,
   });
 
-  SplitCapacityCommitmentRequest.fromJson(core.Map _json)
+  SplitCapacityCommitmentRequest.fromJson(core.Map json_)
       : this(
-          slotCount: _json.containsKey('slotCount')
-              ? _json['slotCount'] as core.String
+          slotCount: json_.containsKey('slotCount')
+              ? json_['slotCount'] as core.String
               : null,
         );
 
@@ -1806,15 +1806,15 @@ class SplitCapacityCommitmentResponse {
     this.second,
   });
 
-  SplitCapacityCommitmentResponse.fromJson(core.Map _json)
+  SplitCapacityCommitmentResponse.fromJson(core.Map json_)
       : this(
-          first: _json.containsKey('first')
+          first: json_.containsKey('first')
               ? CapacityCommitment.fromJson(
-                  _json['first'] as core.Map<core.String, core.dynamic>)
+                  json_['first'] as core.Map<core.String, core.dynamic>)
               : null,
-          second: _json.containsKey('second')
+          second: json_.containsKey('second')
               ? CapacityCommitment.fromJson(
-                  _json['second'] as core.Map<core.String, core.dynamic>)
+                  json_['second'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1852,16 +1852,16 @@ class TableReference {
     this.tableId,
   });
 
-  TableReference.fromJson(core.Map _json)
+  TableReference.fromJson(core.Map json_)
       : this(
-          datasetId: _json.containsKey('datasetId')
-              ? _json['datasetId'] as core.String
+          datasetId: json_.containsKey('datasetId')
+              ? json_['datasetId'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          tableId: _json.containsKey('tableId')
-              ? _json['tableId'] as core.String
+          tableId: json_.containsKey('tableId')
+              ? json_['tableId'] as core.String
               : null,
         );
 

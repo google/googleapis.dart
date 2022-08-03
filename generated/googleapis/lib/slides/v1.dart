@@ -123,23 +123,23 @@ class PresentationsResource {
     core.String presentationId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/presentations/' +
+    final url_ = 'v1/presentations/' +
         commons.escapeVariable('$presentationId') +
         ':batchUpdate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchUpdatePresentationResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a blank presentation using the title given in the request.
@@ -167,21 +167,21 @@ class PresentationsResource {
     Presentation request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/presentations';
+    const url_ = 'v1/presentations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Presentation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest version of the specified presentation.
@@ -205,19 +205,19 @@ class PresentationsResource {
     core.String presentationId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/presentations/' + core.Uri.encodeFull('$presentationId');
+    final url_ = 'v1/presentations/' + core.Uri.encodeFull('$presentationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Presentation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -249,21 +249,21 @@ class PresentationsPagesResource {
     core.String pageObjectId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/presentations/' +
+    final url_ = 'v1/presentations/' +
         commons.escapeVariable('$presentationId') +
         '/pages/' +
         commons.escapeVariable('$pageObjectId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a thumbnail of the latest version of the specified page in the
@@ -311,7 +311,7 @@ class PresentationsPagesResource {
     core.String? thumbnailProperties_thumbnailSize,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (thumbnailProperties_mimeType != null)
         'thumbnailProperties.mimeType': [thumbnailProperties_mimeType],
       if (thumbnailProperties_thumbnailSize != null)
@@ -321,18 +321,18 @@ class PresentationsPagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/presentations/' +
+    final url_ = 'v1/presentations/' +
         commons.escapeVariable('$presentationId') +
         '/pages/' +
         commons.escapeVariable('$pageObjectId') +
         '/thumbnail';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Thumbnail.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Thumbnail.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -380,27 +380,27 @@ class AffineTransform {
     this.unit,
   });
 
-  AffineTransform.fromJson(core.Map _json)
+  AffineTransform.fromJson(core.Map json_)
       : this(
-          scaleX: _json.containsKey('scaleX')
-              ? (_json['scaleX'] as core.num).toDouble()
+          scaleX: json_.containsKey('scaleX')
+              ? (json_['scaleX'] as core.num).toDouble()
               : null,
-          scaleY: _json.containsKey('scaleY')
-              ? (_json['scaleY'] as core.num).toDouble()
+          scaleY: json_.containsKey('scaleY')
+              ? (json_['scaleY'] as core.num).toDouble()
               : null,
-          shearX: _json.containsKey('shearX')
-              ? (_json['shearX'] as core.num).toDouble()
+          shearX: json_.containsKey('shearX')
+              ? (json_['shearX'] as core.num).toDouble()
               : null,
-          shearY: _json.containsKey('shearY')
-              ? (_json['shearY'] as core.num).toDouble()
+          shearY: json_.containsKey('shearY')
+              ? (json_['shearY'] as core.num).toDouble()
               : null,
-          translateX: _json.containsKey('translateX')
-              ? (_json['translateX'] as core.num).toDouble()
+          translateX: json_.containsKey('translateX')
+              ? (json_['translateX'] as core.num).toDouble()
               : null,
-          translateY: _json.containsKey('translateY')
-              ? (_json['translateY'] as core.num).toDouble()
+          translateY: json_.containsKey('translateY')
+              ? (json_['translateY'] as core.num).toDouble()
               : null,
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -435,16 +435,16 @@ class AutoText {
     this.type,
   });
 
-  AutoText.fromJson(core.Map _json)
+  AutoText.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          style: _json.containsKey('style')
+          style: json_.containsKey('style')
               ? TextStyle.fromJson(
-                  _json['style'] as core.Map<core.String, core.dynamic>)
+                  json_['style'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -493,16 +493,16 @@ class Autofit {
     this.lineSpacingReduction,
   });
 
-  Autofit.fromJson(core.Map _json)
+  Autofit.fromJson(core.Map json_)
       : this(
-          autofitType: _json.containsKey('autofitType')
-              ? _json['autofitType'] as core.String
+          autofitType: json_.containsKey('autofitType')
+              ? json_['autofitType'] as core.String
               : null,
-          fontScale: _json.containsKey('fontScale')
-              ? (_json['fontScale'] as core.num).toDouble()
+          fontScale: json_.containsKey('fontScale')
+              ? (json_['fontScale'] as core.num).toDouble()
               : null,
-          lineSpacingReduction: _json.containsKey('lineSpacingReduction')
-              ? (_json['lineSpacingReduction'] as core.num).toDouble()
+          lineSpacingReduction: json_.containsKey('lineSpacingReduction')
+              ? (json_['lineSpacingReduction'] as core.num).toDouble()
               : null,
         );
 
@@ -527,17 +527,17 @@ class BatchUpdatePresentationRequest {
     this.writeControl,
   });
 
-  BatchUpdatePresentationRequest.fromJson(core.Map _json)
+  BatchUpdatePresentationRequest.fromJson(core.Map json_)
       : this(
-          requests: _json.containsKey('requests')
-              ? (_json['requests'] as core.List)
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
                   .map((value) => Request.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          writeControl: _json.containsKey('writeControl')
+          writeControl: json_.containsKey('writeControl')
               ? WriteControl.fromJson(
-                  _json['writeControl'] as core.Map<core.String, core.dynamic>)
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -567,20 +567,20 @@ class BatchUpdatePresentationResponse {
     this.writeControl,
   });
 
-  BatchUpdatePresentationResponse.fromJson(core.Map _json)
+  BatchUpdatePresentationResponse.fromJson(core.Map json_)
       : this(
-          presentationId: _json.containsKey('presentationId')
-              ? _json['presentationId'] as core.String
+          presentationId: json_.containsKey('presentationId')
+              ? json_['presentationId'] as core.String
               : null,
-          replies: _json.containsKey('replies')
-              ? (_json['replies'] as core.List)
+          replies: json_.containsKey('replies')
+              ? (json_['replies'] as core.List)
                   .map((value) => Response.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          writeControl: _json.containsKey('writeControl')
+          writeControl: json_.containsKey('writeControl')
               ? WriteControl.fromJson(
-                  _json['writeControl'] as core.Map<core.String, core.dynamic>)
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -612,19 +612,19 @@ class Bullet {
     this.nestingLevel,
   });
 
-  Bullet.fromJson(core.Map _json)
+  Bullet.fromJson(core.Map json_)
       : this(
-          bulletStyle: _json.containsKey('bulletStyle')
+          bulletStyle: json_.containsKey('bulletStyle')
               ? TextStyle.fromJson(
-                  _json['bulletStyle'] as core.Map<core.String, core.dynamic>)
+                  json_['bulletStyle'] as core.Map<core.String, core.dynamic>)
               : null,
           glyph:
-              _json.containsKey('glyph') ? _json['glyph'] as core.String : null,
-          listId: _json.containsKey('listId')
-              ? _json['listId'] as core.String
+              json_.containsKey('glyph') ? json_['glyph'] as core.String : null,
+          listId: json_.containsKey('listId')
+              ? json_['listId'] as core.String
               : null,
-          nestingLevel: _json.containsKey('nestingLevel')
-              ? _json['nestingLevel'] as core.int
+          nestingLevel: json_.containsKey('nestingLevel')
+              ? json_['nestingLevel'] as core.int
               : null,
         );
 
@@ -645,10 +645,10 @@ class ColorScheme {
     this.colors,
   });
 
-  ColorScheme.fromJson(core.Map _json)
+  ColorScheme.fromJson(core.Map json_)
       : this(
-          colors: _json.containsKey('colors')
-              ? (_json['colors'] as core.List)
+          colors: json_.containsKey('colors')
+              ? (json_['colors'] as core.List)
                   .map((value) => ThemeColorPair.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -682,17 +682,17 @@ class ColorStop {
     this.position,
   });
 
-  ColorStop.fromJson(core.Map _json)
+  ColorStop.fromJson(core.Map json_)
       : this(
-          alpha: _json.containsKey('alpha')
-              ? (_json['alpha'] as core.num).toDouble()
+          alpha: json_.containsKey('alpha')
+              ? (json_['alpha'] as core.num).toDouble()
               : null,
-          color: _json.containsKey('color')
+          color: json_.containsKey('color')
               ? OpaqueColor.fromJson(
-                  _json['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          position: _json.containsKey('position')
-              ? (_json['position'] as core.num).toDouble()
+          position: json_.containsKey('position')
+              ? (json_['position'] as core.num).toDouble()
               : null,
         );
 
@@ -741,16 +741,16 @@ class CreateImageRequest {
     this.url,
   });
 
-  CreateImageRequest.fromJson(core.Map _json)
+  CreateImageRequest.fromJson(core.Map json_)
       : this(
-          elementProperties: _json.containsKey('elementProperties')
-              ? PageElementProperties.fromJson(_json['elementProperties']
+          elementProperties: json_.containsKey('elementProperties')
+              ? PageElementProperties.fromJson(json_['elementProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -769,10 +769,10 @@ class CreateImageResponse {
     this.objectId,
   });
 
-  CreateImageResponse.fromJson(core.Map _json)
+  CreateImageResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -831,20 +831,20 @@ class CreateLineRequest {
     this.objectId,
   });
 
-  CreateLineRequest.fromJson(core.Map _json)
+  CreateLineRequest.fromJson(core.Map json_)
       : this(
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
               : null,
-          elementProperties: _json.containsKey('elementProperties')
-              ? PageElementProperties.fromJson(_json['elementProperties']
+          elementProperties: json_.containsKey('elementProperties')
+              ? PageElementProperties.fromJson(json_['elementProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          lineCategory: _json.containsKey('lineCategory')
-              ? _json['lineCategory'] as core.String
+          lineCategory: json_.containsKey('lineCategory')
+              ? json_['lineCategory'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -865,10 +865,10 @@ class CreateLineResponse {
     this.objectId,
   });
 
-  CreateLineResponse.fromJson(core.Map _json)
+  CreateLineResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -951,21 +951,21 @@ class CreateParagraphBulletsRequest {
     this.textRange,
   });
 
-  CreateParagraphBulletsRequest.fromJson(core.Map _json)
+  CreateParagraphBulletsRequest.fromJson(core.Map json_)
       : this(
-          bulletPreset: _json.containsKey('bulletPreset')
-              ? _json['bulletPreset'] as core.String
+          bulletPreset: json_.containsKey('bulletPreset')
+              ? json_['bulletPreset'] as core.String
               : null,
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          textRange: _json.containsKey('textRange')
+          textRange: json_.containsKey('textRange')
               ? Range.fromJson(
-                  _json['textRange'] as core.Map<core.String, core.dynamic>)
+                  json_['textRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1263,17 +1263,17 @@ class CreateShapeRequest {
     this.shapeType,
   });
 
-  CreateShapeRequest.fromJson(core.Map _json)
+  CreateShapeRequest.fromJson(core.Map json_)
       : this(
-          elementProperties: _json.containsKey('elementProperties')
-              ? PageElementProperties.fromJson(_json['elementProperties']
+          elementProperties: json_.containsKey('elementProperties')
+              ? PageElementProperties.fromJson(json_['elementProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          shapeType: _json.containsKey('shapeType')
-              ? _json['shapeType'] as core.String
+          shapeType: json_.containsKey('shapeType')
+              ? json_['shapeType'] as core.String
               : null,
         );
 
@@ -1293,10 +1293,10 @@ class CreateShapeResponse {
     this.objectId,
   });
 
-  CreateShapeResponse.fromJson(core.Map _json)
+  CreateShapeResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -1356,23 +1356,23 @@ class CreateSheetsChartRequest {
     this.spreadsheetId,
   });
 
-  CreateSheetsChartRequest.fromJson(core.Map _json)
+  CreateSheetsChartRequest.fromJson(core.Map json_)
       : this(
-          chartId: _json.containsKey('chartId')
-              ? _json['chartId'] as core.int
+          chartId: json_.containsKey('chartId')
+              ? json_['chartId'] as core.int
               : null,
-          elementProperties: _json.containsKey('elementProperties')
-              ? PageElementProperties.fromJson(_json['elementProperties']
+          elementProperties: json_.containsKey('elementProperties')
+              ? PageElementProperties.fromJson(json_['elementProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          linkingMode: _json.containsKey('linkingMode')
-              ? _json['linkingMode'] as core.String
+          linkingMode: json_.containsKey('linkingMode')
+              ? json_['linkingMode'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
+          spreadsheetId: json_.containsKey('spreadsheetId')
+              ? json_['spreadsheetId'] as core.String
               : null,
         );
 
@@ -1394,10 +1394,10 @@ class CreateSheetsChartResponse {
     this.objectId,
   });
 
-  CreateSheetsChartResponse.fromJson(core.Map _json)
+  CreateSheetsChartResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -1448,22 +1448,22 @@ class CreateSlideRequest {
     this.slideLayoutReference,
   });
 
-  CreateSlideRequest.fromJson(core.Map _json)
+  CreateSlideRequest.fromJson(core.Map json_)
       : this(
-          insertionIndex: _json.containsKey('insertionIndex')
-              ? _json['insertionIndex'] as core.int
+          insertionIndex: json_.containsKey('insertionIndex')
+              ? json_['insertionIndex'] as core.int
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          placeholderIdMappings: _json.containsKey('placeholderIdMappings')
-              ? (_json['placeholderIdMappings'] as core.List)
+          placeholderIdMappings: json_.containsKey('placeholderIdMappings')
+              ? (json_['placeholderIdMappings'] as core.List)
                   .map((value) => LayoutPlaceholderIdMapping.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          slideLayoutReference: _json.containsKey('slideLayoutReference')
-              ? LayoutReference.fromJson(_json['slideLayoutReference']
+          slideLayoutReference: json_.containsKey('slideLayoutReference')
+              ? LayoutReference.fromJson(json_['slideLayoutReference']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1487,10 +1487,10 @@ class CreateSlideResponse {
     this.objectId,
   });
 
-  CreateSlideResponse.fromJson(core.Map _json)
+  CreateSlideResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -1532,19 +1532,19 @@ class CreateTableRequest {
     this.rows,
   });
 
-  CreateTableRequest.fromJson(core.Map _json)
+  CreateTableRequest.fromJson(core.Map json_)
       : this(
-          columns: _json.containsKey('columns')
-              ? _json['columns'] as core.int
+          columns: json_.containsKey('columns')
+              ? json_['columns'] as core.int
               : null,
-          elementProperties: _json.containsKey('elementProperties')
-              ? PageElementProperties.fromJson(_json['elementProperties']
+          elementProperties: json_.containsKey('elementProperties')
+              ? PageElementProperties.fromJson(json_['elementProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          rows: _json.containsKey('rows') ? _json['rows'] as core.int : null,
+          rows: json_.containsKey('rows') ? json_['rows'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1564,10 +1564,10 @@ class CreateTableResponse {
     this.objectId,
   });
 
-  CreateTableResponse.fromJson(core.Map _json)
+  CreateTableResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -1625,18 +1625,18 @@ class CreateVideoRequest {
     this.source,
   });
 
-  CreateVideoRequest.fromJson(core.Map _json)
+  CreateVideoRequest.fromJson(core.Map json_)
       : this(
-          elementProperties: _json.containsKey('elementProperties')
-              ? PageElementProperties.fromJson(_json['elementProperties']
+          elementProperties: json_.containsKey('elementProperties')
+              ? PageElementProperties.fromJson(json_['elementProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
               : null,
         );
 
@@ -1657,10 +1657,10 @@ class CreateVideoResponse {
     this.objectId,
   });
 
-  CreateVideoResponse.fromJson(core.Map _json)
+  CreateVideoResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -1719,22 +1719,22 @@ class CropProperties {
     this.topOffset,
   });
 
-  CropProperties.fromJson(core.Map _json)
+  CropProperties.fromJson(core.Map json_)
       : this(
-          angle: _json.containsKey('angle')
-              ? (_json['angle'] as core.num).toDouble()
+          angle: json_.containsKey('angle')
+              ? (json_['angle'] as core.num).toDouble()
               : null,
-          bottomOffset: _json.containsKey('bottomOffset')
-              ? (_json['bottomOffset'] as core.num).toDouble()
+          bottomOffset: json_.containsKey('bottomOffset')
+              ? (json_['bottomOffset'] as core.num).toDouble()
               : null,
-          leftOffset: _json.containsKey('leftOffset')
-              ? (_json['leftOffset'] as core.num).toDouble()
+          leftOffset: json_.containsKey('leftOffset')
+              ? (json_['leftOffset'] as core.num).toDouble()
               : null,
-          rightOffset: _json.containsKey('rightOffset')
-              ? (_json['rightOffset'] as core.num).toDouble()
+          rightOffset: json_.containsKey('rightOffset')
+              ? (json_['rightOffset'] as core.num).toDouble()
               : null,
-          topOffset: _json.containsKey('topOffset')
-              ? (_json['topOffset'] as core.num).toDouble()
+          topOffset: json_.containsKey('topOffset')
+              ? (json_['topOffset'] as core.num).toDouble()
               : null,
         );
 
@@ -1760,10 +1760,10 @@ class DeleteObjectRequest {
     this.objectId,
   });
 
-  DeleteObjectRequest.fromJson(core.Map _json)
+  DeleteObjectRequest.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -1797,18 +1797,18 @@ class DeleteParagraphBulletsRequest {
     this.textRange,
   });
 
-  DeleteParagraphBulletsRequest.fromJson(core.Map _json)
+  DeleteParagraphBulletsRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          textRange: _json.containsKey('textRange')
+          textRange: json_.containsKey('textRange')
               ? Range.fromJson(
-                  _json['textRange'] as core.Map<core.String, core.dynamic>)
+                  json_['textRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1836,14 +1836,14 @@ class DeleteTableColumnRequest {
     this.tableObjectId,
   });
 
-  DeleteTableColumnRequest.fromJson(core.Map _json)
+  DeleteTableColumnRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          tableObjectId: _json.containsKey('tableObjectId')
-              ? _json['tableObjectId'] as core.String
+          tableObjectId: json_.containsKey('tableObjectId')
+              ? json_['tableObjectId'] as core.String
               : null,
         );
 
@@ -1870,14 +1870,14 @@ class DeleteTableRowRequest {
     this.tableObjectId,
   });
 
-  DeleteTableRowRequest.fromJson(core.Map _json)
+  DeleteTableRowRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          tableObjectId: _json.containsKey('tableObjectId')
-              ? _json['tableObjectId'] as core.String
+          tableObjectId: json_.containsKey('tableObjectId')
+              ? json_['tableObjectId'] as core.String
               : null,
         );
 
@@ -1918,18 +1918,18 @@ class DeleteTextRequest {
     this.textRange,
   });
 
-  DeleteTextRequest.fromJson(core.Map _json)
+  DeleteTextRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          textRange: _json.containsKey('textRange')
+          textRange: json_.containsKey('textRange')
               ? Range.fromJson(
-                  _json['textRange'] as core.Map<core.String, core.dynamic>)
+                  json_['textRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1959,12 +1959,12 @@ class Dimension {
     this.unit,
   });
 
-  Dimension.fromJson(core.Map _json)
+  Dimension.fromJson(core.Map json_)
       : this(
-          magnitude: _json.containsKey('magnitude')
-              ? (_json['magnitude'] as core.num).toDouble()
+          magnitude: json_.containsKey('magnitude')
+              ? (json_['magnitude'] as core.num).toDouble()
               : null,
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2006,13 +2006,13 @@ class DuplicateObjectRequest {
     this.objectIds,
   });
 
-  DuplicateObjectRequest.fromJson(core.Map _json)
+  DuplicateObjectRequest.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          objectIds: _json.containsKey('objectIds')
-              ? (_json['objectIds'] as core.Map<core.String, core.dynamic>).map(
+          objectIds: json_.containsKey('objectIds')
+              ? (json_['objectIds'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
@@ -2036,10 +2036,10 @@ class DuplicateObjectResponse {
     this.objectId,
   });
 
-  DuplicateObjectResponse.fromJson(core.Map _json)
+  DuplicateObjectResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -2059,10 +2059,10 @@ class Group {
     this.children,
   });
 
-  Group.fromJson(core.Map _json)
+  Group.fromJson(core.Map json_)
       : this(
-          children: _json.containsKey('children')
-              ? (_json['children'] as core.List)
+          children: json_.containsKey('children')
+              ? (json_['children'] as core.List)
                   .map((value) => PageElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2101,15 +2101,15 @@ class GroupObjectsRequest {
     this.groupObjectId,
   });
 
-  GroupObjectsRequest.fromJson(core.Map _json)
+  GroupObjectsRequest.fromJson(core.Map json_)
       : this(
-          childrenObjectIds: _json.containsKey('childrenObjectIds')
-              ? (_json['childrenObjectIds'] as core.List)
+          childrenObjectIds: json_.containsKey('childrenObjectIds')
+              ? (json_['childrenObjectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          groupObjectId: _json.containsKey('groupObjectId')
-              ? _json['groupObjectId'] as core.String
+          groupObjectId: json_.containsKey('groupObjectId')
+              ? json_['groupObjectId'] as core.String
               : null,
         );
 
@@ -2128,10 +2128,10 @@ class GroupObjectsResponse {
     this.objectId,
   });
 
-  GroupObjectsResponse.fromJson(core.Map _json)
+  GroupObjectsResponse.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -2172,21 +2172,21 @@ class Image {
     this.sourceUrl,
   });
 
-  Image.fromJson(core.Map _json)
+  Image.fromJson(core.Map json_)
       : this(
-          contentUrl: _json.containsKey('contentUrl')
-              ? _json['contentUrl'] as core.String
+          contentUrl: json_.containsKey('contentUrl')
+              ? json_['contentUrl'] as core.String
               : null,
-          imageProperties: _json.containsKey('imageProperties')
-              ? ImageProperties.fromJson(_json['imageProperties']
+          imageProperties: json_.containsKey('imageProperties')
+              ? ImageProperties.fromJson(json_['imageProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          placeholder: _json.containsKey('placeholder')
+          placeholder: json_.containsKey('placeholder')
               ? Placeholder.fromJson(
-                  _json['placeholder'] as core.Map<core.String, core.dynamic>)
+                  json_['placeholder'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceUrl: _json.containsKey('sourceUrl')
-              ? _json['sourceUrl'] as core.String
+          sourceUrl: json_.containsKey('sourceUrl')
+              ? json_['sourceUrl'] as core.String
               : null,
         );
 
@@ -2254,36 +2254,36 @@ class ImageProperties {
     this.transparency,
   });
 
-  ImageProperties.fromJson(core.Map _json)
+  ImageProperties.fromJson(core.Map json_)
       : this(
-          brightness: _json.containsKey('brightness')
-              ? (_json['brightness'] as core.num).toDouble()
+          brightness: json_.containsKey('brightness')
+              ? (json_['brightness'] as core.num).toDouble()
               : null,
-          contrast: _json.containsKey('contrast')
-              ? (_json['contrast'] as core.num).toDouble()
+          contrast: json_.containsKey('contrast')
+              ? (json_['contrast'] as core.num).toDouble()
               : null,
-          cropProperties: _json.containsKey('cropProperties')
-              ? CropProperties.fromJson(_json['cropProperties']
+          cropProperties: json_.containsKey('cropProperties')
+              ? CropProperties.fromJson(json_['cropProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          link: _json.containsKey('link')
+          link: json_.containsKey('link')
               ? Link.fromJson(
-                  _json['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          outline: _json.containsKey('outline')
+          outline: json_.containsKey('outline')
               ? Outline.fromJson(
-                  _json['outline'] as core.Map<core.String, core.dynamic>)
+                  json_['outline'] as core.Map<core.String, core.dynamic>)
               : null,
-          recolor: _json.containsKey('recolor')
+          recolor: json_.containsKey('recolor')
               ? Recolor.fromJson(
-                  _json['recolor'] as core.Map<core.String, core.dynamic>)
+                  json_['recolor'] as core.Map<core.String, core.dynamic>)
               : null,
-          shadow: _json.containsKey('shadow')
+          shadow: json_.containsKey('shadow')
               ? Shadow.fromJson(
-                  _json['shadow'] as core.Map<core.String, core.dynamic>)
+                  json_['shadow'] as core.Map<core.String, core.dynamic>)
               : null,
-          transparency: _json.containsKey('transparency')
-              ? (_json['transparency'] as core.num).toDouble()
+          transparency: json_.containsKey('transparency')
+              ? (json_['transparency'] as core.num).toDouble()
               : null,
         );
 
@@ -2330,19 +2330,19 @@ class InsertTableColumnsRequest {
     this.tableObjectId,
   });
 
-  InsertTableColumnsRequest.fromJson(core.Map _json)
+  InsertTableColumnsRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          insertRight: _json.containsKey('insertRight')
-              ? _json['insertRight'] as core.bool
+          insertRight: json_.containsKey('insertRight')
+              ? json_['insertRight'] as core.bool
               : null,
           number:
-              _json.containsKey('number') ? _json['number'] as core.int : null,
-          tableObjectId: _json.containsKey('tableObjectId')
-              ? _json['tableObjectId'] as core.String
+              json_.containsKey('number') ? json_['number'] as core.int : null,
+          tableObjectId: json_.containsKey('tableObjectId')
+              ? json_['tableObjectId'] as core.String
               : null,
         );
 
@@ -2383,19 +2383,19 @@ class InsertTableRowsRequest {
     this.tableObjectId,
   });
 
-  InsertTableRowsRequest.fromJson(core.Map _json)
+  InsertTableRowsRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          insertBelow: _json.containsKey('insertBelow')
-              ? _json['insertBelow'] as core.bool
+          insertBelow: json_.containsKey('insertBelow')
+              ? json_['insertBelow'] as core.bool
               : null,
           number:
-              _json.containsKey('number') ? _json['number'] as core.int : null,
-          tableObjectId: _json.containsKey('tableObjectId')
-              ? _json['tableObjectId'] as core.String
+              json_.containsKey('number') ? json_['number'] as core.int : null,
+          tableObjectId: json_.containsKey('tableObjectId')
+              ? json_['tableObjectId'] as core.String
               : null,
         );
 
@@ -2447,19 +2447,19 @@ class InsertTextRequest {
     this.text,
   });
 
-  InsertTextRequest.fromJson(core.Map _json)
+  InsertTextRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          insertionIndex: _json.containsKey('insertionIndex')
-              ? _json['insertionIndex'] as core.int
+          insertionIndex: json_.containsKey('insertionIndex')
+              ? json_['insertionIndex'] as core.int
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2501,18 +2501,18 @@ class LayoutPlaceholderIdMapping {
     this.objectId,
   });
 
-  LayoutPlaceholderIdMapping.fromJson(core.Map _json)
+  LayoutPlaceholderIdMapping.fromJson(core.Map json_)
       : this(
-          layoutPlaceholder: _json.containsKey('layoutPlaceholder')
-              ? Placeholder.fromJson(_json['layoutPlaceholder']
+          layoutPlaceholder: json_.containsKey('layoutPlaceholder')
+              ? Placeholder.fromJson(json_['layoutPlaceholder']
                   as core.Map<core.String, core.dynamic>)
               : null,
           layoutPlaceholderObjectId:
-              _json.containsKey('layoutPlaceholderObjectId')
-                  ? _json['layoutPlaceholderObjectId'] as core.String
+              json_.containsKey('layoutPlaceholderObjectId')
+                  ? json_['layoutPlaceholderObjectId'] as core.String
                   : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -2541,15 +2541,15 @@ class LayoutProperties {
     this.name,
   });
 
-  LayoutProperties.fromJson(core.Map _json)
+  LayoutProperties.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          masterObjectId: _json.containsKey('masterObjectId')
-              ? _json['masterObjectId'] as core.String
+          masterObjectId: json_.containsKey('masterObjectId')
+              ? json_['masterObjectId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2590,13 +2590,13 @@ class LayoutReference {
     this.predefinedLayout,
   });
 
-  LayoutReference.fromJson(core.Map _json)
+  LayoutReference.fromJson(core.Map json_)
       : this(
-          layoutId: _json.containsKey('layoutId')
-              ? _json['layoutId'] as core.String
+          layoutId: json_.containsKey('layoutId')
+              ? json_['layoutId'] as core.String
               : null,
-          predefinedLayout: _json.containsKey('predefinedLayout')
-              ? _json['predefinedLayout'] as core.String
+          predefinedLayout: json_.containsKey('predefinedLayout')
+              ? json_['predefinedLayout'] as core.String
               : null,
         );
 
@@ -2654,17 +2654,17 @@ class Line {
     this.lineType,
   });
 
-  Line.fromJson(core.Map _json)
+  Line.fromJson(core.Map json_)
       : this(
-          lineCategory: _json.containsKey('lineCategory')
-              ? _json['lineCategory'] as core.String
+          lineCategory: json_.containsKey('lineCategory')
+              ? json_['lineCategory'] as core.String
               : null,
-          lineProperties: _json.containsKey('lineProperties')
-              ? LineProperties.fromJson(_json['lineProperties']
+          lineProperties: json_.containsKey('lineProperties')
+              ? LineProperties.fromJson(json_['lineProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          lineType: _json.containsKey('lineType')
-              ? _json['lineType'] as core.String
+          lineType: json_.containsKey('lineType')
+              ? json_['lineType'] as core.String
               : null,
         );
 
@@ -2701,13 +2701,13 @@ class LineConnection {
     this.connectionSiteIndex,
   });
 
-  LineConnection.fromJson(core.Map _json)
+  LineConnection.fromJson(core.Map json_)
       : this(
-          connectedObjectId: _json.containsKey('connectedObjectId')
-              ? _json['connectedObjectId'] as core.String
+          connectedObjectId: json_.containsKey('connectedObjectId')
+              ? json_['connectedObjectId'] as core.String
               : null,
-          connectionSiteIndex: _json.containsKey('connectionSiteIndex')
-              ? _json['connectionSiteIndex'] as core.int
+          connectionSiteIndex: json_.containsKey('connectionSiteIndex')
+              ? json_['connectionSiteIndex'] as core.int
               : null,
         );
 
@@ -2727,11 +2727,11 @@ class LineFill {
     this.solidFill,
   });
 
-  LineFill.fromJson(core.Map _json)
+  LineFill.fromJson(core.Map json_)
       : this(
-          solidFill: _json.containsKey('solidFill')
+          solidFill: json_.containsKey('solidFill')
               ? SolidFill.fromJson(
-                  _json['solidFill'] as core.Map<core.String, core.dynamic>)
+                  json_['solidFill'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2837,36 +2837,36 @@ class LineProperties {
     this.weight,
   });
 
-  LineProperties.fromJson(core.Map _json)
+  LineProperties.fromJson(core.Map json_)
       : this(
-          dashStyle: _json.containsKey('dashStyle')
-              ? _json['dashStyle'] as core.String
+          dashStyle: json_.containsKey('dashStyle')
+              ? json_['dashStyle'] as core.String
               : null,
-          endArrow: _json.containsKey('endArrow')
-              ? _json['endArrow'] as core.String
+          endArrow: json_.containsKey('endArrow')
+              ? json_['endArrow'] as core.String
               : null,
-          endConnection: _json.containsKey('endConnection')
+          endConnection: json_.containsKey('endConnection')
               ? LineConnection.fromJson(
-                  _json['endConnection'] as core.Map<core.String, core.dynamic>)
+                  json_['endConnection'] as core.Map<core.String, core.dynamic>)
               : null,
-          lineFill: _json.containsKey('lineFill')
+          lineFill: json_.containsKey('lineFill')
               ? LineFill.fromJson(
-                  _json['lineFill'] as core.Map<core.String, core.dynamic>)
+                  json_['lineFill'] as core.Map<core.String, core.dynamic>)
               : null,
-          link: _json.containsKey('link')
+          link: json_.containsKey('link')
               ? Link.fromJson(
-                  _json['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          startArrow: _json.containsKey('startArrow')
-              ? _json['startArrow'] as core.String
+          startArrow: json_.containsKey('startArrow')
+              ? json_['startArrow'] as core.String
               : null,
-          startConnection: _json.containsKey('startConnection')
-              ? LineConnection.fromJson(_json['startConnection']
+          startConnection: json_.containsKey('startConnection')
+              ? LineConnection.fromJson(json_['startConnection']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          weight: _json.containsKey('weight')
+          weight: json_.containsKey('weight')
               ? Dimension.fromJson(
-                  _json['weight'] as core.Map<core.String, core.dynamic>)
+                  json_['weight'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2916,18 +2916,18 @@ class Link {
     this.url,
   });
 
-  Link.fromJson(core.Map _json)
+  Link.fromJson(core.Map json_)
       : this(
-          pageObjectId: _json.containsKey('pageObjectId')
-              ? _json['pageObjectId'] as core.String
+          pageObjectId: json_.containsKey('pageObjectId')
+              ? json_['pageObjectId'] as core.String
               : null,
-          relativeLink: _json.containsKey('relativeLink')
-              ? _json['relativeLink'] as core.String
+          relativeLink: json_.containsKey('relativeLink')
+              ? json_['relativeLink'] as core.String
               : null,
-          slideIndex: _json.containsKey('slideIndex')
-              ? _json['slideIndex'] as core.int
+          slideIndex: json_.containsKey('slideIndex')
+              ? json_['slideIndex'] as core.int
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2959,13 +2959,13 @@ class List {
     this.nestingLevel,
   });
 
-  List.fromJson(core.Map _json)
+  List.fromJson(core.Map json_)
       : this(
-          listId: _json.containsKey('listId')
-              ? _json['listId'] as core.String
+          listId: json_.containsKey('listId')
+              ? json_['listId'] as core.String
               : null,
-          nestingLevel: _json.containsKey('nestingLevel')
-              ? (_json['nestingLevel'] as core.Map<core.String, core.dynamic>)
+          nestingLevel: json_.containsKey('nestingLevel')
+              ? (json_['nestingLevel'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -2992,10 +2992,10 @@ class MasterProperties {
     this.displayName,
   });
 
-  MasterProperties.fromJson(core.Map _json)
+  MasterProperties.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
         );
 
@@ -3022,14 +3022,14 @@ class MergeTableCellsRequest {
     this.tableRange,
   });
 
-  MergeTableCellsRequest.fromJson(core.Map _json)
+  MergeTableCellsRequest.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          tableRange: _json.containsKey('tableRange')
+          tableRange: json_.containsKey('tableRange')
               ? TableRange.fromJson(
-                  _json['tableRange'] as core.Map<core.String, core.dynamic>)
+                  json_['tableRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3049,11 +3049,11 @@ class NestingLevel {
     this.bulletStyle,
   });
 
-  NestingLevel.fromJson(core.Map _json)
+  NestingLevel.fromJson(core.Map json_)
       : this(
-          bulletStyle: _json.containsKey('bulletStyle')
+          bulletStyle: json_.containsKey('bulletStyle')
               ? TextStyle.fromJson(
-                  _json['bulletStyle'] as core.Map<core.String, core.dynamic>)
+                  json_['bulletStyle'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3078,10 +3078,10 @@ class NotesProperties {
     this.speakerNotesObjectId,
   });
 
-  NotesProperties.fromJson(core.Map _json)
+  NotesProperties.fromJson(core.Map json_)
       : this(
-          speakerNotesObjectId: _json.containsKey('speakerNotesObjectId')
-              ? _json['speakerNotesObjectId'] as core.String
+          speakerNotesObjectId: json_.containsKey('speakerNotesObjectId')
+              ? json_['speakerNotesObjectId'] as core.String
               : null,
         );
 
@@ -3124,14 +3124,14 @@ class OpaqueColor {
     this.themeColor,
   });
 
-  OpaqueColor.fromJson(core.Map _json)
+  OpaqueColor.fromJson(core.Map json_)
       : this(
-          rgbColor: _json.containsKey('rgbColor')
+          rgbColor: json_.containsKey('rgbColor')
               ? RgbColor.fromJson(
-                  _json['rgbColor'] as core.Map<core.String, core.dynamic>)
+                  json_['rgbColor'] as core.Map<core.String, core.dynamic>)
               : null,
-          themeColor: _json.containsKey('themeColor')
-              ? _json['themeColor'] as core.String
+          themeColor: json_.containsKey('themeColor')
+              ? json_['themeColor'] as core.String
               : null,
         );
 
@@ -3152,11 +3152,11 @@ class OptionalColor {
     this.opaqueColor,
   });
 
-  OptionalColor.fromJson(core.Map _json)
+  OptionalColor.fromJson(core.Map json_)
       : this(
-          opaqueColor: _json.containsKey('opaqueColor')
+          opaqueColor: json_.containsKey('opaqueColor')
               ? OpaqueColor.fromJson(
-                  _json['opaqueColor'] as core.Map<core.String, core.dynamic>)
+                  json_['opaqueColor'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3228,21 +3228,21 @@ class Outline {
     this.weight,
   });
 
-  Outline.fromJson(core.Map _json)
+  Outline.fromJson(core.Map json_)
       : this(
-          dashStyle: _json.containsKey('dashStyle')
-              ? _json['dashStyle'] as core.String
+          dashStyle: json_.containsKey('dashStyle')
+              ? json_['dashStyle'] as core.String
               : null,
-          outlineFill: _json.containsKey('outlineFill')
+          outlineFill: json_.containsKey('outlineFill')
               ? OutlineFill.fromJson(
-                  _json['outlineFill'] as core.Map<core.String, core.dynamic>)
+                  json_['outlineFill'] as core.Map<core.String, core.dynamic>)
               : null,
-          propertyState: _json.containsKey('propertyState')
-              ? _json['propertyState'] as core.String
+          propertyState: json_.containsKey('propertyState')
+              ? json_['propertyState'] as core.String
               : null,
-          weight: _json.containsKey('weight')
+          weight: json_.containsKey('weight')
               ? Dimension.fromJson(
-                  _json['weight'] as core.Map<core.String, core.dynamic>)
+                  json_['weight'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3263,11 +3263,11 @@ class OutlineFill {
     this.solidFill,
   });
 
-  OutlineFill.fromJson(core.Map _json)
+  OutlineFill.fromJson(core.Map json_)
       : this(
-          solidFill: _json.containsKey('solidFill')
+          solidFill: json_.containsKey('solidFill')
               ? SolidFill.fromJson(
-                  _json['solidFill'] as core.Map<core.String, core.dynamic>)
+                  json_['solidFill'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3346,41 +3346,41 @@ class Page {
     this.slideProperties,
   });
 
-  Page.fromJson(core.Map _json)
+  Page.fromJson(core.Map json_)
       : this(
-          layoutProperties: _json.containsKey('layoutProperties')
-              ? LayoutProperties.fromJson(_json['layoutProperties']
+          layoutProperties: json_.containsKey('layoutProperties')
+              ? LayoutProperties.fromJson(json_['layoutProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          masterProperties: _json.containsKey('masterProperties')
-              ? MasterProperties.fromJson(_json['masterProperties']
+          masterProperties: json_.containsKey('masterProperties')
+              ? MasterProperties.fromJson(json_['masterProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          notesProperties: _json.containsKey('notesProperties')
-              ? NotesProperties.fromJson(_json['notesProperties']
+          notesProperties: json_.containsKey('notesProperties')
+              ? NotesProperties.fromJson(json_['notesProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          pageElements: _json.containsKey('pageElements')
-              ? (_json['pageElements'] as core.List)
+          pageElements: json_.containsKey('pageElements')
+              ? (json_['pageElements'] as core.List)
                   .map((value) => PageElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          pageProperties: _json.containsKey('pageProperties')
-              ? PageProperties.fromJson(_json['pageProperties']
+          pageProperties: json_.containsKey('pageProperties')
+              ? PageProperties.fromJson(json_['pageProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          pageType: _json.containsKey('pageType')
-              ? _json['pageType'] as core.String
+          pageType: json_.containsKey('pageType')
+              ? json_['pageType'] as core.String
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
-          slideProperties: _json.containsKey('slideProperties')
-              ? SlideProperties.fromJson(_json['slideProperties']
+          slideProperties: json_.containsKey('slideProperties')
+              ? SlideProperties.fromJson(json_['slideProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3437,17 +3437,17 @@ class PageBackgroundFill {
     this.stretchedPictureFill,
   });
 
-  PageBackgroundFill.fromJson(core.Map _json)
+  PageBackgroundFill.fromJson(core.Map json_)
       : this(
-          propertyState: _json.containsKey('propertyState')
-              ? _json['propertyState'] as core.String
+          propertyState: json_.containsKey('propertyState')
+              ? json_['propertyState'] as core.String
               : null,
-          solidFill: _json.containsKey('solidFill')
+          solidFill: json_.containsKey('solidFill')
               ? SolidFill.fromJson(
-                  _json['solidFill'] as core.Map<core.String, core.dynamic>)
+                  json_['solidFill'] as core.Map<core.String, core.dynamic>)
               : null,
-          stretchedPictureFill: _json.containsKey('stretchedPictureFill')
-              ? StretchedPictureFill.fromJson(_json['stretchedPictureFill']
+          stretchedPictureFill: json_.containsKey('stretchedPictureFill')
+              ? StretchedPictureFill.fromJson(json_['stretchedPictureFill']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3535,55 +3535,55 @@ class PageElement {
     this.wordArt,
   });
 
-  PageElement.fromJson(core.Map _json)
+  PageElement.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          elementGroup: _json.containsKey('elementGroup')
+          elementGroup: json_.containsKey('elementGroup')
               ? Group.fromJson(
-                  _json['elementGroup'] as core.Map<core.String, core.dynamic>)
+                  json_['elementGroup'] as core.Map<core.String, core.dynamic>)
               : null,
-          image: _json.containsKey('image')
+          image: json_.containsKey('image')
               ? Image.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          line: _json.containsKey('line')
+          line: json_.containsKey('line')
               ? Line.fromJson(
-                  _json['line'] as core.Map<core.String, core.dynamic>)
+                  json_['line'] as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          shape: _json.containsKey('shape')
+          shape: json_.containsKey('shape')
               ? Shape.fromJson(
-                  _json['shape'] as core.Map<core.String, core.dynamic>)
+                  json_['shape'] as core.Map<core.String, core.dynamic>)
               : null,
-          sheetsChart: _json.containsKey('sheetsChart')
+          sheetsChart: json_.containsKey('sheetsChart')
               ? SheetsChart.fromJson(
-                  _json['sheetsChart'] as core.Map<core.String, core.dynamic>)
+                  json_['sheetsChart'] as core.Map<core.String, core.dynamic>)
               : null,
-          size: _json.containsKey('size')
+          size: json_.containsKey('size')
               ? Size.fromJson(
-                  _json['size'] as core.Map<core.String, core.dynamic>)
+                  json_['size'] as core.Map<core.String, core.dynamic>)
               : null,
-          table: _json.containsKey('table')
+          table: json_.containsKey('table')
               ? Table.fromJson(
-                  _json['table'] as core.Map<core.String, core.dynamic>)
+                  json_['table'] as core.Map<core.String, core.dynamic>)
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          transform: _json.containsKey('transform')
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          transform: json_.containsKey('transform')
               ? AffineTransform.fromJson(
-                  _json['transform'] as core.Map<core.String, core.dynamic>)
+                  json_['transform'] as core.Map<core.String, core.dynamic>)
               : null,
-          video: _json.containsKey('video')
+          video: json_.containsKey('video')
               ? Video.fromJson(
-                  _json['video'] as core.Map<core.String, core.dynamic>)
+                  json_['video'] as core.Map<core.String, core.dynamic>)
               : null,
-          wordArt: _json.containsKey('wordArt')
+          wordArt: json_.containsKey('wordArt')
               ? WordArt.fromJson(
-                  _json['wordArt'] as core.Map<core.String, core.dynamic>)
+                  json_['wordArt'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3624,18 +3624,18 @@ class PageElementProperties {
     this.transform,
   });
 
-  PageElementProperties.fromJson(core.Map _json)
+  PageElementProperties.fromJson(core.Map json_)
       : this(
-          pageObjectId: _json.containsKey('pageObjectId')
-              ? _json['pageObjectId'] as core.String
+          pageObjectId: json_.containsKey('pageObjectId')
+              ? json_['pageObjectId'] as core.String
               : null,
-          size: _json.containsKey('size')
+          size: json_.containsKey('size')
               ? Size.fromJson(
-                  _json['size'] as core.Map<core.String, core.dynamic>)
+                  json_['size'] as core.Map<core.String, core.dynamic>)
               : null,
-          transform: _json.containsKey('transform')
+          transform: json_.containsKey('transform')
               ? AffineTransform.fromJson(
-                  _json['transform'] as core.Map<core.String, core.dynamic>)
+                  json_['transform'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3675,14 +3675,14 @@ class PageProperties {
     this.pageBackgroundFill,
   });
 
-  PageProperties.fromJson(core.Map _json)
+  PageProperties.fromJson(core.Map json_)
       : this(
-          colorScheme: _json.containsKey('colorScheme')
+          colorScheme: json_.containsKey('colorScheme')
               ? ColorScheme.fromJson(
-                  _json['colorScheme'] as core.Map<core.String, core.dynamic>)
+                  json_['colorScheme'] as core.Map<core.String, core.dynamic>)
               : null,
-          pageBackgroundFill: _json.containsKey('pageBackgroundFill')
-              ? PageBackgroundFill.fromJson(_json['pageBackgroundFill']
+          pageBackgroundFill: json_.containsKey('pageBackgroundFill')
+              ? PageBackgroundFill.fromJson(json_['pageBackgroundFill']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3709,15 +3709,15 @@ class ParagraphMarker {
     this.style,
   });
 
-  ParagraphMarker.fromJson(core.Map _json)
+  ParagraphMarker.fromJson(core.Map json_)
       : this(
-          bullet: _json.containsKey('bullet')
+          bullet: json_.containsKey('bullet')
               ? Bullet.fromJson(
-                  _json['bullet'] as core.Map<core.String, core.dynamic>)
+                  json_['bullet'] as core.Map<core.String, core.dynamic>)
               : null,
-          style: _json.containsKey('style')
+          style: json_.containsKey('style')
               ? ParagraphStyle.fromJson(
-                  _json['style'] as core.Map<core.String, core.dynamic>)
+                  json_['style'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3815,39 +3815,39 @@ class ParagraphStyle {
     this.spacingMode,
   });
 
-  ParagraphStyle.fromJson(core.Map _json)
+  ParagraphStyle.fromJson(core.Map json_)
       : this(
-          alignment: _json.containsKey('alignment')
-              ? _json['alignment'] as core.String
+          alignment: json_.containsKey('alignment')
+              ? json_['alignment'] as core.String
               : null,
-          direction: _json.containsKey('direction')
-              ? _json['direction'] as core.String
+          direction: json_.containsKey('direction')
+              ? json_['direction'] as core.String
               : null,
-          indentEnd: _json.containsKey('indentEnd')
+          indentEnd: json_.containsKey('indentEnd')
               ? Dimension.fromJson(
-                  _json['indentEnd'] as core.Map<core.String, core.dynamic>)
+                  json_['indentEnd'] as core.Map<core.String, core.dynamic>)
               : null,
-          indentFirstLine: _json.containsKey('indentFirstLine')
-              ? Dimension.fromJson(_json['indentFirstLine']
+          indentFirstLine: json_.containsKey('indentFirstLine')
+              ? Dimension.fromJson(json_['indentFirstLine']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          indentStart: _json.containsKey('indentStart')
+          indentStart: json_.containsKey('indentStart')
               ? Dimension.fromJson(
-                  _json['indentStart'] as core.Map<core.String, core.dynamic>)
+                  json_['indentStart'] as core.Map<core.String, core.dynamic>)
               : null,
-          lineSpacing: _json.containsKey('lineSpacing')
-              ? (_json['lineSpacing'] as core.num).toDouble()
+          lineSpacing: json_.containsKey('lineSpacing')
+              ? (json_['lineSpacing'] as core.num).toDouble()
               : null,
-          spaceAbove: _json.containsKey('spaceAbove')
+          spaceAbove: json_.containsKey('spaceAbove')
               ? Dimension.fromJson(
-                  _json['spaceAbove'] as core.Map<core.String, core.dynamic>)
+                  json_['spaceAbove'] as core.Map<core.String, core.dynamic>)
               : null,
-          spaceBelow: _json.containsKey('spaceBelow')
+          spaceBelow: json_.containsKey('spaceBelow')
               ? Dimension.fromJson(
-                  _json['spaceBelow'] as core.Map<core.String, core.dynamic>)
+                  json_['spaceBelow'] as core.Map<core.String, core.dynamic>)
               : null,
-          spacingMode: _json.containsKey('spacingMode')
-              ? _json['spacingMode'] as core.String
+          spacingMode: json_.containsKey('spacingMode')
+              ? json_['spacingMode'] as core.String
               : null,
         );
 
@@ -3905,13 +3905,13 @@ class Placeholder {
     this.type,
   });
 
-  Placeholder.fromJson(core.Map _json)
+  Placeholder.fromJson(core.Map json_)
       : this(
-          index: _json.containsKey('index') ? _json['index'] as core.int : null,
-          parentObjectId: _json.containsKey('parentObjectId')
-              ? _json['parentObjectId'] as core.String
+          index: json_.containsKey('index') ? json_['index'] as core.int : null,
+          parentObjectId: json_.containsKey('parentObjectId')
+              ? json_['parentObjectId'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3997,45 +3997,45 @@ class Presentation {
     this.title,
   });
 
-  Presentation.fromJson(core.Map _json)
+  Presentation.fromJson(core.Map json_)
       : this(
-          layouts: _json.containsKey('layouts')
-              ? (_json['layouts'] as core.List)
+          layouts: json_.containsKey('layouts')
+              ? (json_['layouts'] as core.List)
                   .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          locale: _json.containsKey('locale')
-              ? _json['locale'] as core.String
+          locale: json_.containsKey('locale')
+              ? json_['locale'] as core.String
               : null,
-          masters: _json.containsKey('masters')
-              ? (_json['masters'] as core.List)
+          masters: json_.containsKey('masters')
+              ? (json_['masters'] as core.List)
                   .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          notesMaster: _json.containsKey('notesMaster')
+          notesMaster: json_.containsKey('notesMaster')
               ? Page.fromJson(
-                  _json['notesMaster'] as core.Map<core.String, core.dynamic>)
+                  json_['notesMaster'] as core.Map<core.String, core.dynamic>)
               : null,
-          pageSize: _json.containsKey('pageSize')
+          pageSize: json_.containsKey('pageSize')
               ? Size.fromJson(
-                  _json['pageSize'] as core.Map<core.String, core.dynamic>)
+                  json_['pageSize'] as core.Map<core.String, core.dynamic>)
               : null,
-          presentationId: _json.containsKey('presentationId')
-              ? _json['presentationId'] as core.String
+          presentationId: json_.containsKey('presentationId')
+              ? json_['presentationId'] as core.String
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
-          slides: _json.containsKey('slides')
-              ? (_json['slides'] as core.List)
+          slides: json_.containsKey('slides')
+              ? (json_['slides'] as core.List)
                   .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4082,15 +4082,15 @@ class Range {
     this.type,
   });
 
-  Range.fromJson(core.Map _json)
+  Range.fromJson(core.Map json_)
       : this(
-          endIndex: _json.containsKey('endIndex')
-              ? _json['endIndex'] as core.int
+          endIndex: json_.containsKey('endIndex')
+              ? json_['endIndex'] as core.int
               : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.int
+          startIndex: json_.containsKey('startIndex')
+              ? json_['startIndex'] as core.int
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4171,11 +4171,11 @@ class Recolor {
     this.recolorStops,
   });
 
-  Recolor.fromJson(core.Map _json)
+  Recolor.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          recolorStops: _json.containsKey('recolorStops')
-              ? (_json['recolorStops'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          recolorStops: json_.containsKey('recolorStops')
+              ? (json_['recolorStops'] as core.List)
                   .map((value) => ColorStop.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4201,10 +4201,10 @@ class RefreshSheetsChartRequest {
     this.objectId,
   });
 
-  RefreshSheetsChartRequest.fromJson(core.Map _json)
+  RefreshSheetsChartRequest.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -4280,25 +4280,25 @@ class ReplaceAllShapesWithImageRequest {
     this.replaceMethod,
   });
 
-  ReplaceAllShapesWithImageRequest.fromJson(core.Map _json)
+  ReplaceAllShapesWithImageRequest.fromJson(core.Map json_)
       : this(
-          containsText: _json.containsKey('containsText')
+          containsText: json_.containsKey('containsText')
               ? SubstringMatchCriteria.fromJson(
-                  _json['containsText'] as core.Map<core.String, core.dynamic>)
+                  json_['containsText'] as core.Map<core.String, core.dynamic>)
               : null,
-          imageReplaceMethod: _json.containsKey('imageReplaceMethod')
-              ? _json['imageReplaceMethod'] as core.String
+          imageReplaceMethod: json_.containsKey('imageReplaceMethod')
+              ? json_['imageReplaceMethod'] as core.String
               : null,
-          imageUrl: _json.containsKey('imageUrl')
-              ? _json['imageUrl'] as core.String
+          imageUrl: json_.containsKey('imageUrl')
+              ? json_['imageUrl'] as core.String
               : null,
-          pageObjectIds: _json.containsKey('pageObjectIds')
-              ? (_json['pageObjectIds'] as core.List)
+          pageObjectIds: json_.containsKey('pageObjectIds')
+              ? (json_['pageObjectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          replaceMethod: _json.containsKey('replaceMethod')
-              ? _json['replaceMethod'] as core.String
+          replaceMethod: json_.containsKey('replaceMethod')
+              ? json_['replaceMethod'] as core.String
               : null,
         );
 
@@ -4321,10 +4321,10 @@ class ReplaceAllShapesWithImageResponse {
     this.occurrencesChanged,
   });
 
-  ReplaceAllShapesWithImageResponse.fromJson(core.Map _json)
+  ReplaceAllShapesWithImageResponse.fromJson(core.Map json_)
       : this(
-          occurrencesChanged: _json.containsKey('occurrencesChanged')
-              ? _json['occurrencesChanged'] as core.int
+          occurrencesChanged: json_.containsKey('occurrencesChanged')
+              ? json_['occurrencesChanged'] as core.int
               : null,
         );
 
@@ -4379,25 +4379,25 @@ class ReplaceAllShapesWithSheetsChartRequest {
     this.spreadsheetId,
   });
 
-  ReplaceAllShapesWithSheetsChartRequest.fromJson(core.Map _json)
+  ReplaceAllShapesWithSheetsChartRequest.fromJson(core.Map json_)
       : this(
-          chartId: _json.containsKey('chartId')
-              ? _json['chartId'] as core.int
+          chartId: json_.containsKey('chartId')
+              ? json_['chartId'] as core.int
               : null,
-          containsText: _json.containsKey('containsText')
+          containsText: json_.containsKey('containsText')
               ? SubstringMatchCriteria.fromJson(
-                  _json['containsText'] as core.Map<core.String, core.dynamic>)
+                  json_['containsText'] as core.Map<core.String, core.dynamic>)
               : null,
-          linkingMode: _json.containsKey('linkingMode')
-              ? _json['linkingMode'] as core.String
+          linkingMode: json_.containsKey('linkingMode')
+              ? json_['linkingMode'] as core.String
               : null,
-          pageObjectIds: _json.containsKey('pageObjectIds')
-              ? (_json['pageObjectIds'] as core.List)
+          pageObjectIds: json_.containsKey('pageObjectIds')
+              ? (json_['pageObjectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
+          spreadsheetId: json_.containsKey('spreadsheetId')
+              ? json_['spreadsheetId'] as core.String
               : null,
         );
 
@@ -4419,10 +4419,10 @@ class ReplaceAllShapesWithSheetsChartResponse {
     this.occurrencesChanged,
   });
 
-  ReplaceAllShapesWithSheetsChartResponse.fromJson(core.Map _json)
+  ReplaceAllShapesWithSheetsChartResponse.fromJson(core.Map json_)
       : this(
-          occurrencesChanged: _json.containsKey('occurrencesChanged')
-              ? _json['occurrencesChanged'] as core.int
+          occurrencesChanged: json_.containsKey('occurrencesChanged')
+              ? json_['occurrencesChanged'] as core.int
               : null,
         );
 
@@ -4453,19 +4453,19 @@ class ReplaceAllTextRequest {
     this.replaceText,
   });
 
-  ReplaceAllTextRequest.fromJson(core.Map _json)
+  ReplaceAllTextRequest.fromJson(core.Map json_)
       : this(
-          containsText: _json.containsKey('containsText')
+          containsText: json_.containsKey('containsText')
               ? SubstringMatchCriteria.fromJson(
-                  _json['containsText'] as core.Map<core.String, core.dynamic>)
+                  json_['containsText'] as core.Map<core.String, core.dynamic>)
               : null,
-          pageObjectIds: _json.containsKey('pageObjectIds')
-              ? (_json['pageObjectIds'] as core.List)
+          pageObjectIds: json_.containsKey('pageObjectIds')
+              ? (json_['pageObjectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          replaceText: _json.containsKey('replaceText')
-              ? _json['replaceText'] as core.String
+          replaceText: json_.containsKey('replaceText')
+              ? json_['replaceText'] as core.String
               : null,
         );
 
@@ -4516,15 +4516,15 @@ class ReplaceImageRequest {
     this.url,
   });
 
-  ReplaceImageRequest.fromJson(core.Map _json)
+  ReplaceImageRequest.fromJson(core.Map json_)
       : this(
-          imageObjectId: _json.containsKey('imageObjectId')
-              ? _json['imageObjectId'] as core.String
+          imageObjectId: json_.containsKey('imageObjectId')
+              ? json_['imageObjectId'] as core.String
               : null,
-          imageReplaceMethod: _json.containsKey('imageReplaceMethod')
-              ? _json['imageReplaceMethod'] as core.String
+          imageReplaceMethod: json_.containsKey('imageReplaceMethod')
+              ? json_['imageReplaceMethod'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4717,210 +4717,210 @@ class Request {
     this.updateVideoProperties,
   });
 
-  Request.fromJson(core.Map _json)
+  Request.fromJson(core.Map json_)
       : this(
-          createImage: _json.containsKey('createImage')
+          createImage: json_.containsKey('createImage')
               ? CreateImageRequest.fromJson(
-                  _json['createImage'] as core.Map<core.String, core.dynamic>)
+                  json_['createImage'] as core.Map<core.String, core.dynamic>)
               : null,
-          createLine: _json.containsKey('createLine')
+          createLine: json_.containsKey('createLine')
               ? CreateLineRequest.fromJson(
-                  _json['createLine'] as core.Map<core.String, core.dynamic>)
+                  json_['createLine'] as core.Map<core.String, core.dynamic>)
               : null,
-          createParagraphBullets: _json.containsKey('createParagraphBullets')
+          createParagraphBullets: json_.containsKey('createParagraphBullets')
               ? CreateParagraphBulletsRequest.fromJson(
-                  _json['createParagraphBullets']
+                  json_['createParagraphBullets']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createShape: _json.containsKey('createShape')
+          createShape: json_.containsKey('createShape')
               ? CreateShapeRequest.fromJson(
-                  _json['createShape'] as core.Map<core.String, core.dynamic>)
+                  json_['createShape'] as core.Map<core.String, core.dynamic>)
               : null,
-          createSheetsChart: _json.containsKey('createSheetsChart')
-              ? CreateSheetsChartRequest.fromJson(_json['createSheetsChart']
+          createSheetsChart: json_.containsKey('createSheetsChart')
+              ? CreateSheetsChartRequest.fromJson(json_['createSheetsChart']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createSlide: _json.containsKey('createSlide')
+          createSlide: json_.containsKey('createSlide')
               ? CreateSlideRequest.fromJson(
-                  _json['createSlide'] as core.Map<core.String, core.dynamic>)
+                  json_['createSlide'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTable: _json.containsKey('createTable')
+          createTable: json_.containsKey('createTable')
               ? CreateTableRequest.fromJson(
-                  _json['createTable'] as core.Map<core.String, core.dynamic>)
+                  json_['createTable'] as core.Map<core.String, core.dynamic>)
               : null,
-          createVideo: _json.containsKey('createVideo')
+          createVideo: json_.containsKey('createVideo')
               ? CreateVideoRequest.fromJson(
-                  _json['createVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['createVideo'] as core.Map<core.String, core.dynamic>)
               : null,
-          deleteObject: _json.containsKey('deleteObject')
+          deleteObject: json_.containsKey('deleteObject')
               ? DeleteObjectRequest.fromJson(
-                  _json['deleteObject'] as core.Map<core.String, core.dynamic>)
+                  json_['deleteObject'] as core.Map<core.String, core.dynamic>)
               : null,
-          deleteParagraphBullets: _json.containsKey('deleteParagraphBullets')
+          deleteParagraphBullets: json_.containsKey('deleteParagraphBullets')
               ? DeleteParagraphBulletsRequest.fromJson(
-                  _json['deleteParagraphBullets']
+                  json_['deleteParagraphBullets']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          deleteTableColumn: _json.containsKey('deleteTableColumn')
-              ? DeleteTableColumnRequest.fromJson(_json['deleteTableColumn']
+          deleteTableColumn: json_.containsKey('deleteTableColumn')
+              ? DeleteTableColumnRequest.fromJson(json_['deleteTableColumn']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deleteTableRow: _json.containsKey('deleteTableRow')
-              ? DeleteTableRowRequest.fromJson(_json['deleteTableRow']
+          deleteTableRow: json_.containsKey('deleteTableRow')
+              ? DeleteTableRowRequest.fromJson(json_['deleteTableRow']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deleteText: _json.containsKey('deleteText')
+          deleteText: json_.containsKey('deleteText')
               ? DeleteTextRequest.fromJson(
-                  _json['deleteText'] as core.Map<core.String, core.dynamic>)
+                  json_['deleteText'] as core.Map<core.String, core.dynamic>)
               : null,
-          duplicateObject: _json.containsKey('duplicateObject')
-              ? DuplicateObjectRequest.fromJson(_json['duplicateObject']
+          duplicateObject: json_.containsKey('duplicateObject')
+              ? DuplicateObjectRequest.fromJson(json_['duplicateObject']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          groupObjects: _json.containsKey('groupObjects')
+          groupObjects: json_.containsKey('groupObjects')
               ? GroupObjectsRequest.fromJson(
-                  _json['groupObjects'] as core.Map<core.String, core.dynamic>)
+                  json_['groupObjects'] as core.Map<core.String, core.dynamic>)
               : null,
-          insertTableColumns: _json.containsKey('insertTableColumns')
-              ? InsertTableColumnsRequest.fromJson(_json['insertTableColumns']
+          insertTableColumns: json_.containsKey('insertTableColumns')
+              ? InsertTableColumnsRequest.fromJson(json_['insertTableColumns']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          insertTableRows: _json.containsKey('insertTableRows')
-              ? InsertTableRowsRequest.fromJson(_json['insertTableRows']
+          insertTableRows: json_.containsKey('insertTableRows')
+              ? InsertTableRowsRequest.fromJson(json_['insertTableRows']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          insertText: _json.containsKey('insertText')
+          insertText: json_.containsKey('insertText')
               ? InsertTextRequest.fromJson(
-                  _json['insertText'] as core.Map<core.String, core.dynamic>)
+                  json_['insertText'] as core.Map<core.String, core.dynamic>)
               : null,
-          mergeTableCells: _json.containsKey('mergeTableCells')
-              ? MergeTableCellsRequest.fromJson(_json['mergeTableCells']
+          mergeTableCells: json_.containsKey('mergeTableCells')
+              ? MergeTableCellsRequest.fromJson(json_['mergeTableCells']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          refreshSheetsChart: _json.containsKey('refreshSheetsChart')
-              ? RefreshSheetsChartRequest.fromJson(_json['refreshSheetsChart']
+          refreshSheetsChart: json_.containsKey('refreshSheetsChart')
+              ? RefreshSheetsChartRequest.fromJson(json_['refreshSheetsChart']
                   as core.Map<core.String, core.dynamic>)
               : null,
           replaceAllShapesWithImage:
-              _json.containsKey('replaceAllShapesWithImage')
+              json_.containsKey('replaceAllShapesWithImage')
                   ? ReplaceAllShapesWithImageRequest.fromJson(
-                      _json['replaceAllShapesWithImage']
+                      json_['replaceAllShapesWithImage']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           replaceAllShapesWithSheetsChart:
-              _json.containsKey('replaceAllShapesWithSheetsChart')
+              json_.containsKey('replaceAllShapesWithSheetsChart')
                   ? ReplaceAllShapesWithSheetsChartRequest.fromJson(
-                      _json['replaceAllShapesWithSheetsChart']
+                      json_['replaceAllShapesWithSheetsChart']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          replaceAllText: _json.containsKey('replaceAllText')
-              ? ReplaceAllTextRequest.fromJson(_json['replaceAllText']
+          replaceAllText: json_.containsKey('replaceAllText')
+              ? ReplaceAllTextRequest.fromJson(json_['replaceAllText']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          replaceImage: _json.containsKey('replaceImage')
+          replaceImage: json_.containsKey('replaceImage')
               ? ReplaceImageRequest.fromJson(
-                  _json['replaceImage'] as core.Map<core.String, core.dynamic>)
+                  json_['replaceImage'] as core.Map<core.String, core.dynamic>)
               : null,
-          rerouteLine: _json.containsKey('rerouteLine')
+          rerouteLine: json_.containsKey('rerouteLine')
               ? RerouteLineRequest.fromJson(
-                  _json['rerouteLine'] as core.Map<core.String, core.dynamic>)
+                  json_['rerouteLine'] as core.Map<core.String, core.dynamic>)
               : null,
-          ungroupObjects: _json.containsKey('ungroupObjects')
-              ? UngroupObjectsRequest.fromJson(_json['ungroupObjects']
+          ungroupObjects: json_.containsKey('ungroupObjects')
+              ? UngroupObjectsRequest.fromJson(json_['ungroupObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          unmergeTableCells: _json.containsKey('unmergeTableCells')
-              ? UnmergeTableCellsRequest.fromJson(_json['unmergeTableCells']
+          unmergeTableCells: json_.containsKey('unmergeTableCells')
+              ? UnmergeTableCellsRequest.fromJson(json_['unmergeTableCells']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          updateImageProperties: _json.containsKey('updateImageProperties')
+          updateImageProperties: json_.containsKey('updateImageProperties')
               ? UpdateImagePropertiesRequest.fromJson(
-                  _json['updateImageProperties']
+                  json_['updateImageProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateLineCategory: _json.containsKey('updateLineCategory')
-              ? UpdateLineCategoryRequest.fromJson(_json['updateLineCategory']
+          updateLineCategory: json_.containsKey('updateLineCategory')
+              ? UpdateLineCategoryRequest.fromJson(json_['updateLineCategory']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          updateLineProperties: _json.containsKey('updateLineProperties')
+          updateLineProperties: json_.containsKey('updateLineProperties')
               ? UpdateLinePropertiesRequest.fromJson(
-                  _json['updateLineProperties']
+                  json_['updateLineProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
           updatePageElementAltText:
-              _json.containsKey('updatePageElementAltText')
+              json_.containsKey('updatePageElementAltText')
                   ? UpdatePageElementAltTextRequest.fromJson(
-                      _json['updatePageElementAltText']
+                      json_['updatePageElementAltText']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           updatePageElementTransform:
-              _json.containsKey('updatePageElementTransform')
+              json_.containsKey('updatePageElementTransform')
                   ? UpdatePageElementTransformRequest.fromJson(
-                      _json['updatePageElementTransform']
+                      json_['updatePageElementTransform']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           updatePageElementsZOrder:
-              _json.containsKey('updatePageElementsZOrder')
+              json_.containsKey('updatePageElementsZOrder')
                   ? UpdatePageElementsZOrderRequest.fromJson(
-                      _json['updatePageElementsZOrder']
+                      json_['updatePageElementsZOrder']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          updatePageProperties: _json.containsKey('updatePageProperties')
+          updatePageProperties: json_.containsKey('updatePageProperties')
               ? UpdatePagePropertiesRequest.fromJson(
-                  _json['updatePageProperties']
+                  json_['updatePageProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateParagraphStyle: _json.containsKey('updateParagraphStyle')
+          updateParagraphStyle: json_.containsKey('updateParagraphStyle')
               ? UpdateParagraphStyleRequest.fromJson(
-                  _json['updateParagraphStyle']
+                  json_['updateParagraphStyle']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateShapeProperties: _json.containsKey('updateShapeProperties')
+          updateShapeProperties: json_.containsKey('updateShapeProperties')
               ? UpdateShapePropertiesRequest.fromJson(
-                  _json['updateShapeProperties']
+                  json_['updateShapeProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateSlideProperties: _json.containsKey('updateSlideProperties')
+          updateSlideProperties: json_.containsKey('updateSlideProperties')
               ? UpdateSlidePropertiesRequest.fromJson(
-                  _json['updateSlideProperties']
+                  json_['updateSlideProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateSlidesPosition: _json.containsKey('updateSlidesPosition')
+          updateSlidesPosition: json_.containsKey('updateSlidesPosition')
               ? UpdateSlidesPositionRequest.fromJson(
-                  _json['updateSlidesPosition']
+                  json_['updateSlidesPosition']
                       as core.Map<core.String, core.dynamic>)
               : null,
           updateTableBorderProperties:
-              _json.containsKey('updateTableBorderProperties')
+              json_.containsKey('updateTableBorderProperties')
                   ? UpdateTableBorderPropertiesRequest.fromJson(
-                      _json['updateTableBorderProperties']
+                      json_['updateTableBorderProperties']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           updateTableCellProperties:
-              _json.containsKey('updateTableCellProperties')
+              json_.containsKey('updateTableCellProperties')
                   ? UpdateTableCellPropertiesRequest.fromJson(
-                      _json['updateTableCellProperties']
+                      json_['updateTableCellProperties']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           updateTableColumnProperties:
-              _json.containsKey('updateTableColumnProperties')
+              json_.containsKey('updateTableColumnProperties')
                   ? UpdateTableColumnPropertiesRequest.fromJson(
-                      _json['updateTableColumnProperties']
+                      json_['updateTableColumnProperties']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           updateTableRowProperties:
-              _json.containsKey('updateTableRowProperties')
+              json_.containsKey('updateTableRowProperties')
                   ? UpdateTableRowPropertiesRequest.fromJson(
-                      _json['updateTableRowProperties']
+                      json_['updateTableRowProperties']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          updateTextStyle: _json.containsKey('updateTextStyle')
-              ? UpdateTextStyleRequest.fromJson(_json['updateTextStyle']
+          updateTextStyle: json_.containsKey('updateTextStyle')
+              ? UpdateTextStyleRequest.fromJson(json_['updateTextStyle']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          updateVideoProperties: _json.containsKey('updateVideoProperties')
+          updateVideoProperties: json_.containsKey('updateVideoProperties')
               ? UpdateVideoPropertiesRequest.fromJson(
-                  _json['updateVideoProperties']
+                  json_['updateVideoProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5009,10 +5009,10 @@ class RerouteLineRequest {
     this.objectId,
   });
 
-  RerouteLineRequest.fromJson(core.Map _json)
+  RerouteLineRequest.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -5075,58 +5075,58 @@ class Response {
     this.replaceAllText,
   });
 
-  Response.fromJson(core.Map _json)
+  Response.fromJson(core.Map json_)
       : this(
-          createImage: _json.containsKey('createImage')
+          createImage: json_.containsKey('createImage')
               ? CreateImageResponse.fromJson(
-                  _json['createImage'] as core.Map<core.String, core.dynamic>)
+                  json_['createImage'] as core.Map<core.String, core.dynamic>)
               : null,
-          createLine: _json.containsKey('createLine')
+          createLine: json_.containsKey('createLine')
               ? CreateLineResponse.fromJson(
-                  _json['createLine'] as core.Map<core.String, core.dynamic>)
+                  json_['createLine'] as core.Map<core.String, core.dynamic>)
               : null,
-          createShape: _json.containsKey('createShape')
+          createShape: json_.containsKey('createShape')
               ? CreateShapeResponse.fromJson(
-                  _json['createShape'] as core.Map<core.String, core.dynamic>)
+                  json_['createShape'] as core.Map<core.String, core.dynamic>)
               : null,
-          createSheetsChart: _json.containsKey('createSheetsChart')
-              ? CreateSheetsChartResponse.fromJson(_json['createSheetsChart']
+          createSheetsChart: json_.containsKey('createSheetsChart')
+              ? CreateSheetsChartResponse.fromJson(json_['createSheetsChart']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createSlide: _json.containsKey('createSlide')
+          createSlide: json_.containsKey('createSlide')
               ? CreateSlideResponse.fromJson(
-                  _json['createSlide'] as core.Map<core.String, core.dynamic>)
+                  json_['createSlide'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTable: _json.containsKey('createTable')
+          createTable: json_.containsKey('createTable')
               ? CreateTableResponse.fromJson(
-                  _json['createTable'] as core.Map<core.String, core.dynamic>)
+                  json_['createTable'] as core.Map<core.String, core.dynamic>)
               : null,
-          createVideo: _json.containsKey('createVideo')
+          createVideo: json_.containsKey('createVideo')
               ? CreateVideoResponse.fromJson(
-                  _json['createVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['createVideo'] as core.Map<core.String, core.dynamic>)
               : null,
-          duplicateObject: _json.containsKey('duplicateObject')
-              ? DuplicateObjectResponse.fromJson(_json['duplicateObject']
+          duplicateObject: json_.containsKey('duplicateObject')
+              ? DuplicateObjectResponse.fromJson(json_['duplicateObject']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          groupObjects: _json.containsKey('groupObjects')
+          groupObjects: json_.containsKey('groupObjects')
               ? GroupObjectsResponse.fromJson(
-                  _json['groupObjects'] as core.Map<core.String, core.dynamic>)
+                  json_['groupObjects'] as core.Map<core.String, core.dynamic>)
               : null,
           replaceAllShapesWithImage:
-              _json.containsKey('replaceAllShapesWithImage')
+              json_.containsKey('replaceAllShapesWithImage')
                   ? ReplaceAllShapesWithImageResponse.fromJson(
-                      _json['replaceAllShapesWithImage']
+                      json_['replaceAllShapesWithImage']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           replaceAllShapesWithSheetsChart:
-              _json.containsKey('replaceAllShapesWithSheetsChart')
+              json_.containsKey('replaceAllShapesWithSheetsChart')
                   ? ReplaceAllShapesWithSheetsChartResponse.fromJson(
-                      _json['replaceAllShapesWithSheetsChart']
+                      json_['replaceAllShapesWithSheetsChart']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          replaceAllText: _json.containsKey('replaceAllText')
-              ? ReplaceAllTextResponse.fromJson(_json['replaceAllText']
+          replaceAllText: json_.containsKey('replaceAllText')
+              ? ReplaceAllTextResponse.fromJson(json_['replaceAllText']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5240,33 +5240,33 @@ class Shadow {
     this.type,
   });
 
-  Shadow.fromJson(core.Map _json)
+  Shadow.fromJson(core.Map json_)
       : this(
-          alignment: _json.containsKey('alignment')
-              ? _json['alignment'] as core.String
+          alignment: json_.containsKey('alignment')
+              ? json_['alignment'] as core.String
               : null,
-          alpha: _json.containsKey('alpha')
-              ? (_json['alpha'] as core.num).toDouble()
+          alpha: json_.containsKey('alpha')
+              ? (json_['alpha'] as core.num).toDouble()
               : null,
-          blurRadius: _json.containsKey('blurRadius')
+          blurRadius: json_.containsKey('blurRadius')
               ? Dimension.fromJson(
-                  _json['blurRadius'] as core.Map<core.String, core.dynamic>)
+                  json_['blurRadius'] as core.Map<core.String, core.dynamic>)
               : null,
-          color: _json.containsKey('color')
+          color: json_.containsKey('color')
               ? OpaqueColor.fromJson(
-                  _json['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          propertyState: _json.containsKey('propertyState')
-              ? _json['propertyState'] as core.String
+          propertyState: json_.containsKey('propertyState')
+              ? json_['propertyState'] as core.String
               : null,
-          rotateWithShape: _json.containsKey('rotateWithShape')
-              ? _json['rotateWithShape'] as core.bool
+          rotateWithShape: json_.containsKey('rotateWithShape')
+              ? json_['rotateWithShape'] as core.bool
               : null,
-          transform: _json.containsKey('transform')
+          transform: json_.containsKey('transform')
               ? AffineTransform.fromJson(
-                  _json['transform'] as core.Map<core.String, core.dynamic>)
+                  json_['transform'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5570,22 +5570,22 @@ class Shape {
     this.text,
   });
 
-  Shape.fromJson(core.Map _json)
+  Shape.fromJson(core.Map json_)
       : this(
-          placeholder: _json.containsKey('placeholder')
+          placeholder: json_.containsKey('placeholder')
               ? Placeholder.fromJson(
-                  _json['placeholder'] as core.Map<core.String, core.dynamic>)
+                  json_['placeholder'] as core.Map<core.String, core.dynamic>)
               : null,
-          shapeProperties: _json.containsKey('shapeProperties')
-              ? ShapeProperties.fromJson(_json['shapeProperties']
+          shapeProperties: json_.containsKey('shapeProperties')
+              ? ShapeProperties.fromJson(json_['shapeProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          shapeType: _json.containsKey('shapeType')
-              ? _json['shapeType'] as core.String
+          shapeType: json_.containsKey('shapeType')
+              ? json_['shapeType'] as core.String
               : null,
-          text: _json.containsKey('text')
+          text: json_.containsKey('text')
               ? TextContent.fromJson(
-                  _json['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5632,14 +5632,14 @@ class ShapeBackgroundFill {
     this.solidFill,
   });
 
-  ShapeBackgroundFill.fromJson(core.Map _json)
+  ShapeBackgroundFill.fromJson(core.Map json_)
       : this(
-          propertyState: _json.containsKey('propertyState')
-              ? _json['propertyState'] as core.String
+          propertyState: json_.containsKey('propertyState')
+              ? json_['propertyState'] as core.String
               : null,
-          solidFill: _json.containsKey('solidFill')
+          solidFill: json_.containsKey('solidFill')
               ? SolidFill.fromJson(
-                  _json['solidFill'] as core.Map<core.String, core.dynamic>)
+                  json_['solidFill'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5717,29 +5717,29 @@ class ShapeProperties {
     this.shapeBackgroundFill,
   });
 
-  ShapeProperties.fromJson(core.Map _json)
+  ShapeProperties.fromJson(core.Map json_)
       : this(
-          autofit: _json.containsKey('autofit')
+          autofit: json_.containsKey('autofit')
               ? Autofit.fromJson(
-                  _json['autofit'] as core.Map<core.String, core.dynamic>)
+                  json_['autofit'] as core.Map<core.String, core.dynamic>)
               : null,
-          contentAlignment: _json.containsKey('contentAlignment')
-              ? _json['contentAlignment'] as core.String
+          contentAlignment: json_.containsKey('contentAlignment')
+              ? json_['contentAlignment'] as core.String
               : null,
-          link: _json.containsKey('link')
+          link: json_.containsKey('link')
               ? Link.fromJson(
-                  _json['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          outline: _json.containsKey('outline')
+          outline: json_.containsKey('outline')
               ? Outline.fromJson(
-                  _json['outline'] as core.Map<core.String, core.dynamic>)
+                  json_['outline'] as core.Map<core.String, core.dynamic>)
               : null,
-          shadow: _json.containsKey('shadow')
+          shadow: json_.containsKey('shadow')
               ? Shadow.fromJson(
-                  _json['shadow'] as core.Map<core.String, core.dynamic>)
+                  json_['shadow'] as core.Map<core.String, core.dynamic>)
               : null,
-          shapeBackgroundFill: _json.containsKey('shapeBackgroundFill')
-              ? ShapeBackgroundFill.fromJson(_json['shapeBackgroundFill']
+          shapeBackgroundFill: json_.containsKey('shapeBackgroundFill')
+              ? ShapeBackgroundFill.fromJson(json_['shapeBackgroundFill']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5782,20 +5782,20 @@ class SheetsChart {
     this.spreadsheetId,
   });
 
-  SheetsChart.fromJson(core.Map _json)
+  SheetsChart.fromJson(core.Map json_)
       : this(
-          chartId: _json.containsKey('chartId')
-              ? _json['chartId'] as core.int
+          chartId: json_.containsKey('chartId')
+              ? json_['chartId'] as core.int
               : null,
-          contentUrl: _json.containsKey('contentUrl')
-              ? _json['contentUrl'] as core.String
+          contentUrl: json_.containsKey('contentUrl')
+              ? json_['contentUrl'] as core.String
               : null,
-          sheetsChartProperties: _json.containsKey('sheetsChartProperties')
-              ? SheetsChartProperties.fromJson(_json['sheetsChartProperties']
+          sheetsChartProperties: json_.containsKey('sheetsChartProperties')
+              ? SheetsChartProperties.fromJson(json_['sheetsChartProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
+          spreadsheetId: json_.containsKey('spreadsheetId')
+              ? json_['spreadsheetId'] as core.String
               : null,
         );
 
@@ -5817,10 +5817,10 @@ class SheetsChartProperties {
     this.chartImageProperties,
   });
 
-  SheetsChartProperties.fromJson(core.Map _json)
+  SheetsChartProperties.fromJson(core.Map json_)
       : this(
-          chartImageProperties: _json.containsKey('chartImageProperties')
-              ? ImageProperties.fromJson(_json['chartImageProperties']
+          chartImageProperties: json_.containsKey('chartImageProperties')
+              ? ImageProperties.fromJson(json_['chartImageProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5844,15 +5844,15 @@ class Size {
     this.width,
   });
 
-  Size.fromJson(core.Map _json)
+  Size.fromJson(core.Map json_)
       : this(
-          height: _json.containsKey('height')
+          height: json_.containsKey('height')
               ? Dimension.fromJson(
-                  _json['height'] as core.Map<core.String, core.dynamic>)
+                  json_['height'] as core.Map<core.String, core.dynamic>)
               : null,
-          width: _json.containsKey('width')
+          width: json_.containsKey('width')
               ? Dimension.fromJson(
-                  _json['width'] as core.Map<core.String, core.dynamic>)
+                  json_['width'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5898,20 +5898,20 @@ class SlideProperties {
     this.notesPage,
   });
 
-  SlideProperties.fromJson(core.Map _json)
+  SlideProperties.fromJson(core.Map json_)
       : this(
-          isSkipped: _json.containsKey('isSkipped')
-              ? _json['isSkipped'] as core.bool
+          isSkipped: json_.containsKey('isSkipped')
+              ? json_['isSkipped'] as core.bool
               : null,
-          layoutObjectId: _json.containsKey('layoutObjectId')
-              ? _json['layoutObjectId'] as core.String
+          layoutObjectId: json_.containsKey('layoutObjectId')
+              ? json_['layoutObjectId'] as core.String
               : null,
-          masterObjectId: _json.containsKey('masterObjectId')
-              ? _json['masterObjectId'] as core.String
+          masterObjectId: json_.containsKey('masterObjectId')
+              ? json_['masterObjectId'] as core.String
               : null,
-          notesPage: _json.containsKey('notesPage')
+          notesPage: json_.containsKey('notesPage')
               ? Page.fromJson(
-                  _json['notesPage'] as core.Map<core.String, core.dynamic>)
+                  json_['notesPage'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5945,14 +5945,14 @@ class SolidFill {
     this.color,
   });
 
-  SolidFill.fromJson(core.Map _json)
+  SolidFill.fromJson(core.Map json_)
       : this(
-          alpha: _json.containsKey('alpha')
-              ? (_json['alpha'] as core.num).toDouble()
+          alpha: json_.containsKey('alpha')
+              ? (json_['alpha'] as core.num).toDouble()
               : null,
-          color: _json.containsKey('color')
+          color: json_.containsKey('color')
               ? OpaqueColor.fromJson(
-                  _json['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5989,14 +5989,14 @@ class StretchedPictureFill {
     this.size,
   });
 
-  StretchedPictureFill.fromJson(core.Map _json)
+  StretchedPictureFill.fromJson(core.Map json_)
       : this(
-          contentUrl: _json.containsKey('contentUrl')
-              ? _json['contentUrl'] as core.String
+          contentUrl: json_.containsKey('contentUrl')
+              ? json_['contentUrl'] as core.String
               : null,
-          size: _json.containsKey('size')
+          size: json_.containsKey('size')
               ? Size.fromJson(
-                  _json['size'] as core.Map<core.String, core.dynamic>)
+                  json_['size'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6022,12 +6022,12 @@ class SubstringMatchCriteria {
     this.text,
   });
 
-  SubstringMatchCriteria.fromJson(core.Map _json)
+  SubstringMatchCriteria.fromJson(core.Map json_)
       : this(
-          matchCase: _json.containsKey('matchCase')
-              ? _json['matchCase'] as core.bool
+          matchCase: json_.containsKey('matchCase')
+              ? json_['matchCase'] as core.bool
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6078,32 +6078,32 @@ class Table {
     this.verticalBorderRows,
   });
 
-  Table.fromJson(core.Map _json)
+  Table.fromJson(core.Map json_)
       : this(
-          columns: _json.containsKey('columns')
-              ? _json['columns'] as core.int
+          columns: json_.containsKey('columns')
+              ? json_['columns'] as core.int
               : null,
-          horizontalBorderRows: _json.containsKey('horizontalBorderRows')
-              ? (_json['horizontalBorderRows'] as core.List)
+          horizontalBorderRows: json_.containsKey('horizontalBorderRows')
+              ? (json_['horizontalBorderRows'] as core.List)
                   .map((value) => TableBorderRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          rows: _json.containsKey('rows') ? _json['rows'] as core.int : null,
-          tableColumns: _json.containsKey('tableColumns')
-              ? (_json['tableColumns'] as core.List)
+          rows: json_.containsKey('rows') ? json_['rows'] as core.int : null,
+          tableColumns: json_.containsKey('tableColumns')
+              ? (json_['tableColumns'] as core.List)
                   .map((value) => TableColumnProperties.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tableRows: _json.containsKey('tableRows')
-              ? (_json['tableRows'] as core.List)
+          tableRows: json_.containsKey('tableRows')
+              ? (json_['tableRows'] as core.List)
                   .map((value) => TableRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          verticalBorderRows: _json.containsKey('verticalBorderRows')
-              ? (_json['verticalBorderRows'] as core.List)
+          verticalBorderRows: json_.containsKey('verticalBorderRows')
+              ? (json_['verticalBorderRows'] as core.List)
                   .map((value) => TableBorderRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6135,14 +6135,14 @@ class TableBorderCell {
     this.tableBorderProperties,
   });
 
-  TableBorderCell.fromJson(core.Map _json)
+  TableBorderCell.fromJson(core.Map json_)
       : this(
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? TableCellLocation.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          tableBorderProperties: _json.containsKey('tableBorderProperties')
-              ? TableBorderProperties.fromJson(_json['tableBorderProperties']
+          tableBorderProperties: json_.containsKey('tableBorderProperties')
+              ? TableBorderProperties.fromJson(json_['tableBorderProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6163,11 +6163,11 @@ class TableBorderFill {
     this.solidFill,
   });
 
-  TableBorderFill.fromJson(core.Map _json)
+  TableBorderFill.fromJson(core.Map json_)
       : this(
-          solidFill: _json.containsKey('solidFill')
+          solidFill: json_.containsKey('solidFill')
               ? SolidFill.fromJson(
-                  _json['solidFill'] as core.Map<core.String, core.dynamic>)
+                  json_['solidFill'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6207,18 +6207,18 @@ class TableBorderProperties {
     this.weight,
   });
 
-  TableBorderProperties.fromJson(core.Map _json)
+  TableBorderProperties.fromJson(core.Map json_)
       : this(
-          dashStyle: _json.containsKey('dashStyle')
-              ? _json['dashStyle'] as core.String
+          dashStyle: json_.containsKey('dashStyle')
+              ? json_['dashStyle'] as core.String
               : null,
-          tableBorderFill: _json.containsKey('tableBorderFill')
-              ? TableBorderFill.fromJson(_json['tableBorderFill']
+          tableBorderFill: json_.containsKey('tableBorderFill')
+              ? TableBorderFill.fromJson(json_['tableBorderFill']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          weight: _json.containsKey('weight')
+          weight: json_.containsKey('weight')
               ? Dimension.fromJson(
-                  _json['weight'] as core.Map<core.String, core.dynamic>)
+                  json_['weight'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6241,10 +6241,10 @@ class TableBorderRow {
     this.tableBorderCells,
   });
 
-  TableBorderRow.fromJson(core.Map _json)
+  TableBorderRow.fromJson(core.Map json_)
       : this(
-          tableBorderCells: _json.containsKey('tableBorderCells')
-              ? (_json['tableBorderCells'] as core.List)
+          tableBorderCells: json_.containsKey('tableBorderCells')
+              ? (json_['tableBorderCells'] as core.List)
                   .map((value) => TableBorderCell.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6281,25 +6281,25 @@ class TableCell {
     this.text,
   });
 
-  TableCell.fromJson(core.Map _json)
+  TableCell.fromJson(core.Map json_)
       : this(
-          columnSpan: _json.containsKey('columnSpan')
-              ? _json['columnSpan'] as core.int
+          columnSpan: json_.containsKey('columnSpan')
+              ? json_['columnSpan'] as core.int
               : null,
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? TableCellLocation.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          rowSpan: _json.containsKey('rowSpan')
-              ? _json['rowSpan'] as core.int
+          rowSpan: json_.containsKey('rowSpan')
+              ? json_['rowSpan'] as core.int
               : null,
-          tableCellProperties: _json.containsKey('tableCellProperties')
-              ? TableCellProperties.fromJson(_json['tableCellProperties']
+          tableCellProperties: json_.containsKey('tableCellProperties')
+              ? TableCellProperties.fromJson(json_['tableCellProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text')
+          text: json_.containsKey('text')
               ? TextContent.fromJson(
-                  _json['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6348,14 +6348,14 @@ class TableCellBackgroundFill {
     this.solidFill,
   });
 
-  TableCellBackgroundFill.fromJson(core.Map _json)
+  TableCellBackgroundFill.fromJson(core.Map json_)
       : this(
-          propertyState: _json.containsKey('propertyState')
-              ? _json['propertyState'] as core.String
+          propertyState: json_.containsKey('propertyState')
+              ? json_['propertyState'] as core.String
               : null,
-          solidFill: _json.containsKey('solidFill')
+          solidFill: json_.containsKey('solidFill')
               ? SolidFill.fromJson(
-                  _json['solidFill'] as core.Map<core.String, core.dynamic>)
+                  json_['solidFill'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6378,13 +6378,13 @@ class TableCellLocation {
     this.rowIndex,
   });
 
-  TableCellLocation.fromJson(core.Map _json)
+  TableCellLocation.fromJson(core.Map json_)
       : this(
-          columnIndex: _json.containsKey('columnIndex')
-              ? _json['columnIndex'] as core.int
+          columnIndex: json_.containsKey('columnIndex')
+              ? json_['columnIndex'] as core.int
               : null,
-          rowIndex: _json.containsKey('rowIndex')
-              ? _json['rowIndex'] as core.int
+          rowIndex: json_.containsKey('rowIndex')
+              ? json_['rowIndex'] as core.int
               : null,
         );
 
@@ -6423,14 +6423,14 @@ class TableCellProperties {
     this.tableCellBackgroundFill,
   });
 
-  TableCellProperties.fromJson(core.Map _json)
+  TableCellProperties.fromJson(core.Map json_)
       : this(
-          contentAlignment: _json.containsKey('contentAlignment')
-              ? _json['contentAlignment'] as core.String
+          contentAlignment: json_.containsKey('contentAlignment')
+              ? json_['contentAlignment'] as core.String
               : null,
-          tableCellBackgroundFill: _json.containsKey('tableCellBackgroundFill')
+          tableCellBackgroundFill: json_.containsKey('tableCellBackgroundFill')
               ? TableCellBackgroundFill.fromJson(
-                  _json['tableCellBackgroundFill']
+                  json_['tableCellBackgroundFill']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6451,11 +6451,11 @@ class TableColumnProperties {
     this.columnWidth,
   });
 
-  TableColumnProperties.fromJson(core.Map _json)
+  TableColumnProperties.fromJson(core.Map json_)
       : this(
-          columnWidth: _json.containsKey('columnWidth')
+          columnWidth: json_.containsKey('columnWidth')
               ? Dimension.fromJson(
-                  _json['columnWidth'] as core.Map<core.String, core.dynamic>)
+                  json_['columnWidth'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6487,17 +6487,17 @@ class TableRange {
     this.rowSpan,
   });
 
-  TableRange.fromJson(core.Map _json)
+  TableRange.fromJson(core.Map json_)
       : this(
-          columnSpan: _json.containsKey('columnSpan')
-              ? _json['columnSpan'] as core.int
+          columnSpan: json_.containsKey('columnSpan')
+              ? json_['columnSpan'] as core.int
               : null,
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? TableCellLocation.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          rowSpan: _json.containsKey('rowSpan')
-              ? _json['rowSpan'] as core.int
+          rowSpan: json_.containsKey('rowSpan')
+              ? json_['rowSpan'] as core.int
               : null,
         );
 
@@ -6529,20 +6529,20 @@ class TableRow {
     this.tableRowProperties,
   });
 
-  TableRow.fromJson(core.Map _json)
+  TableRow.fromJson(core.Map json_)
       : this(
-          rowHeight: _json.containsKey('rowHeight')
+          rowHeight: json_.containsKey('rowHeight')
               ? Dimension.fromJson(
-                  _json['rowHeight'] as core.Map<core.String, core.dynamic>)
+                  json_['rowHeight'] as core.Map<core.String, core.dynamic>)
               : null,
-          tableCells: _json.containsKey('tableCells')
-              ? (_json['tableCells'] as core.List)
+          tableCells: json_.containsKey('tableCells')
+              ? (json_['tableCells'] as core.List)
                   .map((value) => TableCell.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tableRowProperties: _json.containsKey('tableRowProperties')
-              ? TableRowProperties.fromJson(_json['tableRowProperties']
+          tableRowProperties: json_.containsKey('tableRowProperties')
+              ? TableRowProperties.fromJson(json_['tableRowProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6568,11 +6568,11 @@ class TableRowProperties {
     this.minRowHeight,
   });
 
-  TableRowProperties.fromJson(core.Map _json)
+  TableRowProperties.fromJson(core.Map json_)
       : this(
-          minRowHeight: _json.containsKey('minRowHeight')
+          minRowHeight: json_.containsKey('minRowHeight')
               ? Dimension.fromJson(
-                  _json['minRowHeight'] as core.Map<core.String, core.dynamic>)
+                  json_['minRowHeight'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6600,18 +6600,18 @@ class TextContent {
     this.textElements,
   });
 
-  TextContent.fromJson(core.Map _json)
+  TextContent.fromJson(core.Map json_)
       : this(
-          lists: _json.containsKey('lists')
-              ? (_json['lists'] as core.Map<core.String, core.dynamic>).map(
+          lists: json_.containsKey('lists')
+              ? (json_['lists'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     List.fromJson(item as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
-          textElements: _json.containsKey('textElements')
-              ? (_json['textElements'] as core.List)
+          textElements: json_.containsKey('textElements')
+              ? (json_['textElements'] as core.List)
                   .map((value) => TextElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6662,25 +6662,25 @@ class TextElement {
     this.textRun,
   });
 
-  TextElement.fromJson(core.Map _json)
+  TextElement.fromJson(core.Map json_)
       : this(
-          autoText: _json.containsKey('autoText')
+          autoText: json_.containsKey('autoText')
               ? AutoText.fromJson(
-                  _json['autoText'] as core.Map<core.String, core.dynamic>)
+                  json_['autoText'] as core.Map<core.String, core.dynamic>)
               : null,
-          endIndex: _json.containsKey('endIndex')
-              ? _json['endIndex'] as core.int
+          endIndex: json_.containsKey('endIndex')
+              ? json_['endIndex'] as core.int
               : null,
-          paragraphMarker: _json.containsKey('paragraphMarker')
-              ? ParagraphMarker.fromJson(_json['paragraphMarker']
+          paragraphMarker: json_.containsKey('paragraphMarker')
+              ? ParagraphMarker.fromJson(json_['paragraphMarker']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.int
+          startIndex: json_.containsKey('startIndex')
+              ? json_['startIndex'] as core.int
               : null,
-          textRun: _json.containsKey('textRun')
+          textRun: json_.containsKey('textRun')
               ? TextRun.fromJson(
-                  _json['textRun'] as core.Map<core.String, core.dynamic>)
+                  json_['textRun'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6707,14 +6707,14 @@ class TextRun {
     this.style,
   });
 
-  TextRun.fromJson(core.Map _json)
+  TextRun.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          style: _json.containsKey('style')
+          style: json_.containsKey('style')
               ? TextStyle.fromJson(
-                  _json['style'] as core.Map<core.String, core.dynamic>)
+                  json_['style'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6853,44 +6853,44 @@ class TextStyle {
     this.weightedFontFamily,
   });
 
-  TextStyle.fromJson(core.Map _json)
+  TextStyle.fromJson(core.Map json_)
       : this(
-          backgroundColor: _json.containsKey('backgroundColor')
-              ? OptionalColor.fromJson(_json['backgroundColor']
+          backgroundColor: json_.containsKey('backgroundColor')
+              ? OptionalColor.fromJson(json_['backgroundColor']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          baselineOffset: _json.containsKey('baselineOffset')
-              ? _json['baselineOffset'] as core.String
+          baselineOffset: json_.containsKey('baselineOffset')
+              ? json_['baselineOffset'] as core.String
               : null,
-          bold: _json.containsKey('bold') ? _json['bold'] as core.bool : null,
-          fontFamily: _json.containsKey('fontFamily')
-              ? _json['fontFamily'] as core.String
+          bold: json_.containsKey('bold') ? json_['bold'] as core.bool : null,
+          fontFamily: json_.containsKey('fontFamily')
+              ? json_['fontFamily'] as core.String
               : null,
-          fontSize: _json.containsKey('fontSize')
+          fontSize: json_.containsKey('fontSize')
               ? Dimension.fromJson(
-                  _json['fontSize'] as core.Map<core.String, core.dynamic>)
+                  json_['fontSize'] as core.Map<core.String, core.dynamic>)
               : null,
-          foregroundColor: _json.containsKey('foregroundColor')
-              ? OptionalColor.fromJson(_json['foregroundColor']
+          foregroundColor: json_.containsKey('foregroundColor')
+              ? OptionalColor.fromJson(json_['foregroundColor']
                   as core.Map<core.String, core.dynamic>)
               : null,
           italic:
-              _json.containsKey('italic') ? _json['italic'] as core.bool : null,
-          link: _json.containsKey('link')
+              json_.containsKey('italic') ? json_['italic'] as core.bool : null,
+          link: json_.containsKey('link')
               ? Link.fromJson(
-                  _json['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          smallCaps: _json.containsKey('smallCaps')
-              ? _json['smallCaps'] as core.bool
+          smallCaps: json_.containsKey('smallCaps')
+              ? json_['smallCaps'] as core.bool
               : null,
-          strikethrough: _json.containsKey('strikethrough')
-              ? _json['strikethrough'] as core.bool
+          strikethrough: json_.containsKey('strikethrough')
+              ? json_['strikethrough'] as core.bool
               : null,
-          underline: _json.containsKey('underline')
-              ? _json['underline'] as core.bool
+          underline: json_.containsKey('underline')
+              ? json_['underline'] as core.bool
               : null,
-          weightedFontFamily: _json.containsKey('weightedFontFamily')
-              ? WeightedFontFamily.fromJson(_json['weightedFontFamily']
+          weightedFontFamily: json_.containsKey('weightedFontFamily')
+              ? WeightedFontFamily.fromJson(json_['weightedFontFamily']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6945,13 +6945,13 @@ class ThemeColorPair {
     this.type,
   });
 
-  ThemeColorPair.fromJson(core.Map _json)
+  ThemeColorPair.fromJson(core.Map json_)
       : this(
-          color: _json.containsKey('color')
+          color: json_.containsKey('color')
               ? RgbColor.fromJson(
-                  _json['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6983,14 +6983,14 @@ class Thumbnail {
     this.width,
   });
 
-  Thumbnail.fromJson(core.Map _json)
+  Thumbnail.fromJson(core.Map json_)
       : this(
-          contentUrl: _json.containsKey('contentUrl')
-              ? _json['contentUrl'] as core.String
+          contentUrl: json_.containsKey('contentUrl')
+              ? json_['contentUrl'] as core.String
               : null,
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7013,10 +7013,10 @@ class UngroupObjectsRequest {
     this.objectIds,
   });
 
-  UngroupObjectsRequest.fromJson(core.Map _json)
+  UngroupObjectsRequest.fromJson(core.Map json_)
       : this(
-          objectIds: _json.containsKey('objectIds')
-              ? (_json['objectIds'] as core.List)
+          objectIds: json_.containsKey('objectIds')
+              ? (json_['objectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -7046,14 +7046,14 @@ class UnmergeTableCellsRequest {
     this.tableRange,
   });
 
-  UnmergeTableCellsRequest.fromJson(core.Map _json)
+  UnmergeTableCellsRequest.fromJson(core.Map json_)
       : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          tableRange: _json.containsKey('tableRange')
+          tableRange: json_.containsKey('tableRange')
               ? TableRange.fromJson(
-                  _json['tableRange'] as core.Map<core.String, core.dynamic>)
+                  json_['tableRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7087,17 +7087,17 @@ class UpdateImagePropertiesRequest {
     this.objectId,
   });
 
-  UpdateImagePropertiesRequest.fromJson(core.Map _json)
+  UpdateImagePropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          imageProperties: _json.containsKey('imageProperties')
-              ? ImageProperties.fromJson(_json['imageProperties']
+          imageProperties: json_.containsKey('imageProperties')
+              ? ImageProperties.fromJson(json_['imageProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -7132,13 +7132,13 @@ class UpdateLineCategoryRequest {
     this.objectId,
   });
 
-  UpdateLineCategoryRequest.fromJson(core.Map _json)
+  UpdateLineCategoryRequest.fromJson(core.Map json_)
       : this(
-          lineCategory: _json.containsKey('lineCategory')
-              ? _json['lineCategory'] as core.String
+          lineCategory: json_.containsKey('lineCategory')
+              ? json_['lineCategory'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -7172,17 +7172,17 @@ class UpdateLinePropertiesRequest {
     this.objectId,
   });
 
-  UpdateLinePropertiesRequest.fromJson(core.Map _json)
+  UpdateLinePropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          lineProperties: _json.containsKey('lineProperties')
-              ? LineProperties.fromJson(_json['lineProperties']
+          lineProperties: json_.containsKey('lineProperties')
+              ? LineProperties.fromJson(json_['lineProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
         );
 
@@ -7218,16 +7218,16 @@ class UpdatePageElementAltTextRequest {
     this.title,
   });
 
-  UpdatePageElementAltTextRequest.fromJson(core.Map _json)
+  UpdatePageElementAltTextRequest.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7264,17 +7264,17 @@ class UpdatePageElementTransformRequest {
     this.transform,
   });
 
-  UpdatePageElementTransformRequest.fromJson(core.Map _json)
+  UpdatePageElementTransformRequest.fromJson(core.Map json_)
       : this(
-          applyMode: _json.containsKey('applyMode')
-              ? _json['applyMode'] as core.String
+          applyMode: json_.containsKey('applyMode')
+              ? json_['applyMode'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          transform: _json.containsKey('transform')
+          transform: json_.containsKey('transform')
               ? AffineTransform.fromJson(
-                  _json['transform'] as core.Map<core.String, core.dynamic>)
+                  json_['transform'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7315,13 +7315,13 @@ class UpdatePageElementsZOrderRequest {
     this.pageElementObjectIds,
   });
 
-  UpdatePageElementsZOrderRequest.fromJson(core.Map _json)
+  UpdatePageElementsZOrderRequest.fromJson(core.Map json_)
       : this(
-          operation: _json.containsKey('operation')
-              ? _json['operation'] as core.String
+          operation: json_.containsKey('operation')
+              ? json_['operation'] as core.String
               : null,
-          pageElementObjectIds: _json.containsKey('pageElementObjectIds')
-              ? (_json['pageElementObjectIds'] as core.List)
+          pageElementObjectIds: json_.containsKey('pageElementObjectIds')
+              ? (json_['pageElementObjectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -7358,16 +7358,16 @@ class UpdatePagePropertiesRequest {
     this.pageProperties,
   });
 
-  UpdatePagePropertiesRequest.fromJson(core.Map _json)
+  UpdatePagePropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          pageProperties: _json.containsKey('pageProperties')
-              ? PageProperties.fromJson(_json['pageProperties']
+          pageProperties: json_.containsKey('pageProperties')
+              ? PageProperties.fromJson(json_['pageProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7415,25 +7415,25 @@ class UpdateParagraphStyleRequest {
     this.textRange,
   });
 
-  UpdateParagraphStyleRequest.fromJson(core.Map _json)
+  UpdateParagraphStyleRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          style: _json.containsKey('style')
+          style: json_.containsKey('style')
               ? ParagraphStyle.fromJson(
-                  _json['style'] as core.Map<core.String, core.dynamic>)
+                  json_['style'] as core.Map<core.String, core.dynamic>)
               : null,
-          textRange: _json.containsKey('textRange')
+          textRange: json_.containsKey('textRange')
               ? Range.fromJson(
-                  _json['textRange'] as core.Map<core.String, core.dynamic>)
+                  json_['textRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7471,16 +7471,16 @@ class UpdateShapePropertiesRequest {
     this.shapeProperties,
   });
 
-  UpdateShapePropertiesRequest.fromJson(core.Map _json)
+  UpdateShapePropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          shapeProperties: _json.containsKey('shapeProperties')
-              ? ShapeProperties.fromJson(_json['shapeProperties']
+          shapeProperties: json_.containsKey('shapeProperties')
+              ? ShapeProperties.fromJson(json_['shapeProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7516,16 +7516,16 @@ class UpdateSlidePropertiesRequest {
     this.slideProperties,
   });
 
-  UpdateSlidePropertiesRequest.fromJson(core.Map _json)
+  UpdateSlidePropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          slideProperties: _json.containsKey('slideProperties')
-              ? SlideProperties.fromJson(_json['slideProperties']
+          slideProperties: json_.containsKey('slideProperties')
+              ? SlideProperties.fromJson(json_['slideProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7557,13 +7557,13 @@ class UpdateSlidesPositionRequest {
     this.slideObjectIds,
   });
 
-  UpdateSlidesPositionRequest.fromJson(core.Map _json)
+  UpdateSlidesPositionRequest.fromJson(core.Map json_)
       : this(
-          insertionIndex: _json.containsKey('insertionIndex')
-              ? _json['insertionIndex'] as core.int
+          insertionIndex: json_.containsKey('insertionIndex')
+              ? json_['insertionIndex'] as core.int
               : null,
-          slideObjectIds: _json.containsKey('slideObjectIds')
-              ? (_json['slideObjectIds'] as core.List)
+          slideObjectIds: json_.containsKey('slideObjectIds')
+              ? (json_['slideObjectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -7624,24 +7624,24 @@ class UpdateTableBorderPropertiesRequest {
     this.tableRange,
   });
 
-  UpdateTableBorderPropertiesRequest.fromJson(core.Map _json)
+  UpdateTableBorderPropertiesRequest.fromJson(core.Map json_)
       : this(
-          borderPosition: _json.containsKey('borderPosition')
-              ? _json['borderPosition'] as core.String
+          borderPosition: json_.containsKey('borderPosition')
+              ? json_['borderPosition'] as core.String
               : null,
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          tableBorderProperties: _json.containsKey('tableBorderProperties')
-              ? TableBorderProperties.fromJson(_json['tableBorderProperties']
+          tableBorderProperties: json_.containsKey('tableBorderProperties')
+              ? TableBorderProperties.fromJson(json_['tableBorderProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tableRange: _json.containsKey('tableRange')
+          tableRange: json_.containsKey('tableRange')
               ? TableRange.fromJson(
-                  _json['tableRange'] as core.Map<core.String, core.dynamic>)
+                  json_['tableRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7688,21 +7688,21 @@ class UpdateTableCellPropertiesRequest {
     this.tableRange,
   });
 
-  UpdateTableCellPropertiesRequest.fromJson(core.Map _json)
+  UpdateTableCellPropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          tableCellProperties: _json.containsKey('tableCellProperties')
-              ? TableCellProperties.fromJson(_json['tableCellProperties']
+          tableCellProperties: json_.containsKey('tableCellProperties')
+              ? TableCellProperties.fromJson(json_['tableCellProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          tableRange: _json.containsKey('tableRange')
+          tableRange: json_.containsKey('tableRange')
               ? TableRange.fromJson(
-                  _json['tableRange'] as core.Map<core.String, core.dynamic>)
+                  json_['tableRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7748,21 +7748,21 @@ class UpdateTableColumnPropertiesRequest {
     this.tableColumnProperties,
   });
 
-  UpdateTableColumnPropertiesRequest.fromJson(core.Map _json)
+  UpdateTableColumnPropertiesRequest.fromJson(core.Map json_)
       : this(
-          columnIndices: _json.containsKey('columnIndices')
-              ? (_json['columnIndices'] as core.List)
+          columnIndices: json_.containsKey('columnIndices')
+              ? (json_['columnIndices'] as core.List)
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          tableColumnProperties: _json.containsKey('tableColumnProperties')
-              ? TableColumnProperties.fromJson(_json['tableColumnProperties']
+          tableColumnProperties: json_.containsKey('tableColumnProperties')
+              ? TableColumnProperties.fromJson(json_['tableColumnProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7806,21 +7806,21 @@ class UpdateTableRowPropertiesRequest {
     this.tableRowProperties,
   });
 
-  UpdateTableRowPropertiesRequest.fromJson(core.Map _json)
+  UpdateTableRowPropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          rowIndices: _json.containsKey('rowIndices')
-              ? (_json['rowIndices'] as core.List)
+          rowIndices: json_.containsKey('rowIndices')
+              ? (json_['rowIndices'] as core.List)
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          tableRowProperties: _json.containsKey('tableRowProperties')
-              ? TableRowProperties.fromJson(_json['tableRowProperties']
+          tableRowProperties: json_.containsKey('tableRowProperties')
+              ? TableRowProperties.fromJson(json_['tableRowProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7877,25 +7877,25 @@ class UpdateTextStyleRequest {
     this.textRange,
   });
 
-  UpdateTextStyleRequest.fromJson(core.Map _json)
+  UpdateTextStyleRequest.fromJson(core.Map json_)
       : this(
-          cellLocation: _json.containsKey('cellLocation')
+          cellLocation: json_.containsKey('cellLocation')
               ? TableCellLocation.fromJson(
-                  _json['cellLocation'] as core.Map<core.String, core.dynamic>)
+                  json_['cellLocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          style: _json.containsKey('style')
+          style: json_.containsKey('style')
               ? TextStyle.fromJson(
-                  _json['style'] as core.Map<core.String, core.dynamic>)
+                  json_['style'] as core.Map<core.String, core.dynamic>)
               : null,
-          textRange: _json.containsKey('textRange')
+          textRange: json_.containsKey('textRange')
               ? Range.fromJson(
-                  _json['textRange'] as core.Map<core.String, core.dynamic>)
+                  json_['textRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7932,16 +7932,16 @@ class UpdateVideoPropertiesRequest {
     this.videoProperties,
   });
 
-  UpdateVideoPropertiesRequest.fromJson(core.Map _json)
+  UpdateVideoPropertiesRequest.fromJson(core.Map json_)
       : this(
-          fields: _json.containsKey('fields')
-              ? _json['fields'] as core.String
+          fields: json_.containsKey('fields')
+              ? json_['fields'] as core.String
               : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
               : null,
-          videoProperties: _json.containsKey('videoProperties')
-              ? VideoProperties.fromJson(_json['videoProperties']
+          videoProperties: json_.containsKey('videoProperties')
+              ? VideoProperties.fromJson(json_['videoProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7981,15 +7981,15 @@ class Video {
     this.videoProperties,
   });
 
-  Video.fromJson(core.Map _json)
+  Video.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-          videoProperties: _json.containsKey('videoProperties')
-              ? VideoProperties.fromJson(_json['videoProperties']
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          videoProperties: json_.containsKey('videoProperties')
+              ? VideoProperties.fromJson(json_['videoProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -8046,18 +8046,18 @@ class VideoProperties {
     this.start,
   });
 
-  VideoProperties.fromJson(core.Map _json)
+  VideoProperties.fromJson(core.Map json_)
       : this(
-          autoPlay: _json.containsKey('autoPlay')
-              ? _json['autoPlay'] as core.bool
+          autoPlay: json_.containsKey('autoPlay')
+              ? json_['autoPlay'] as core.bool
               : null,
-          end: _json.containsKey('end') ? _json['end'] as core.int : null,
-          mute: _json.containsKey('mute') ? _json['mute'] as core.bool : null,
-          outline: _json.containsKey('outline')
+          end: json_.containsKey('end') ? json_['end'] as core.int : null,
+          mute: json_.containsKey('mute') ? json_['mute'] as core.bool : null,
+          outline: json_.containsKey('outline')
               ? Outline.fromJson(
-                  _json['outline'] as core.Map<core.String, core.dynamic>)
+                  json_['outline'] as core.Map<core.String, core.dynamic>)
               : null,
-          start: _json.containsKey('start') ? _json['start'] as core.int : null,
+          start: json_.containsKey('start') ? json_['start'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8094,13 +8094,13 @@ class WeightedFontFamily {
     this.weight,
   });
 
-  WeightedFontFamily.fromJson(core.Map _json)
+  WeightedFontFamily.fromJson(core.Map json_)
       : this(
-          fontFamily: _json.containsKey('fontFamily')
-              ? _json['fontFamily'] as core.String
+          fontFamily: json_.containsKey('fontFamily')
+              ? json_['fontFamily'] as core.String
               : null,
           weight:
-              _json.containsKey('weight') ? _json['weight'] as core.int : null,
+              json_.containsKey('weight') ? json_['weight'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8118,10 +8118,10 @@ class WordArt {
     this.renderedText,
   });
 
-  WordArt.fromJson(core.Map _json)
+  WordArt.fromJson(core.Map json_)
       : this(
-          renderedText: _json.containsKey('renderedText')
-              ? _json['renderedText'] as core.String
+          renderedText: json_.containsKey('renderedText')
+              ? json_['renderedText'] as core.String
               : null,
         );
 
@@ -8144,10 +8144,10 @@ class WriteControl {
     this.requiredRevisionId,
   });
 
-  WriteControl.fromJson(core.Map _json)
+  WriteControl.fromJson(core.Map json_)
       : this(
-          requiredRevisionId: _json.containsKey('requiredRevisionId')
-              ? _json['requiredRevisionId'] as core.String
+          requiredRevisionId: json_.containsKey('requiredRevisionId')
+              ? json_['requiredRevisionId'] as core.String
               : null,
         );
 

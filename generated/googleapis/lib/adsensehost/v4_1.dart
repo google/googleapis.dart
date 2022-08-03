@@ -98,18 +98,18 @@ class AccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' + commons.escapeVariable('$accountId');
+    final url_ = 'accounts/' + commons.escapeVariable('$accountId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List hosted accounts associated with this AdSense account by ad client id.
@@ -135,19 +135,19 @@ class AccountsResource {
     if (filterAdClientId.isEmpty) {
       throw core.ArgumentError('Parameter filterAdClientId cannot be empty.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'filterAdClientId': filterAdClientId,
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'accounts';
+    const url_ = 'accounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Accounts.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Accounts.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -180,21 +180,21 @@ class AccountsAdclientsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdClient.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdClient.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all hosted ad clients in the specified hosted account.
@@ -227,21 +227,21 @@ class AccountsAdclientsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'accounts/' + commons.escapeVariable('$accountId') + '/adclients';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdClients.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -276,23 +276,23 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId') +
         '/adunits/' +
         commons.escapeVariable('$adUnitId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdUnit.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the specified host ad unit in this AdSense account.
@@ -321,23 +321,23 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId') +
         '/adunits/' +
         commons.escapeVariable('$adUnitId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdUnit.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get ad code for the specified ad unit, attaching the specified host custom
@@ -370,13 +370,13 @@ class AccountsAdunitsResource {
     core.List<core.String>? hostCustomChannelId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (hostCustomChannelId != null)
         'hostCustomChannelId': hostCustomChannelId,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId') +
@@ -384,12 +384,12 @@ class AccountsAdunitsResource {
         commons.escapeVariable('$adUnitId') +
         '/adcode';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdCode.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdCode.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Insert the supplied ad unit into the specified publisher AdSense account.
@@ -418,24 +418,24 @@ class AccountsAdunitsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdUnit.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all ad units in the specified publisher's AdSense account.
@@ -474,25 +474,25 @@ class AccountsAdunitsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (includeInactive != null) 'includeInactive': ['${includeInactive}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdUnits.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdUnits.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -526,25 +526,25 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       'adUnitId': [adUnitId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdUnit.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -573,24 +573,24 @@ class AccountsAdunitsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'accounts/' +
+    final url_ = 'accounts/' +
         commons.escapeVariable('$accountId') +
         '/adclients/' +
         commons.escapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdUnit.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -666,7 +666,7 @@ class AccountsReportsResource {
     core.int? startIndex,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'startDate': [startDate],
       'endDate': [endDate],
       if (dimension != null) 'dimension': dimension,
@@ -679,15 +679,15 @@ class AccountsReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'accounts/' + commons.escapeVariable('$accountId') + '/reports';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Report.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -716,18 +716,18 @@ class AdclientsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' + commons.escapeVariable('$adClientId');
+    final url_ = 'adclients/' + commons.escapeVariable('$adClientId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdClient.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdClient.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all host ad clients in this AdSense account.
@@ -757,20 +757,20 @@ class AdclientsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'adclients';
+    const url_ = 'adclients';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return AdClients.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -818,7 +818,7 @@ class AssociationsessionsResource {
     if (productCode.isEmpty) {
       throw core.ArgumentError('Parameter productCode cannot be empty.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'productCode': productCode,
       'websiteUrl': [websiteUrl],
       if (callbackUrl != null) 'callbackUrl': [callbackUrl],
@@ -827,15 +827,15 @@ class AssociationsessionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'associationsessions/start';
+    const url_ = 'associationsessions/start';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AssociationSession.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verify an association session after the association callback returns from
@@ -859,20 +859,20 @@ class AssociationsessionsResource {
     core.String token, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'token': [token],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'associationsessions/verify';
+    const url_ = 'associationsessions/verify';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AssociationSession.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -904,22 +904,22 @@ class CustomchannelsResource {
     core.String customChannelId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
+    final url_ = 'adclients/' +
         commons.escapeVariable('$adClientId') +
         '/customchannels/' +
         commons.escapeVariable('$customChannelId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a specific custom channel from the host AdSense account.
@@ -945,22 +945,22 @@ class CustomchannelsResource {
     core.String customChannelId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
+    final url_ = 'adclients/' +
         commons.escapeVariable('$adClientId') +
         '/customchannels/' +
         commons.escapeVariable('$customChannelId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Add a new custom channel to the host AdSense account.
@@ -986,23 +986,23 @@ class CustomchannelsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
+    final url_ = 'adclients/' +
         commons.escapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all host custom channels in this AdSense account.
@@ -1035,23 +1035,23 @@ class CustomchannelsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
+    final url_ = 'adclients/' +
         commons.escapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomChannels.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a custom channel in the host AdSense account.
@@ -1082,24 +1082,24 @@ class CustomchannelsResource {
     core.String customChannelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       'customChannelId': [customChannelId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
+    final url_ = 'adclients/' +
         commons.escapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a custom channel in the host AdSense account.
@@ -1125,23 +1125,23 @@ class CustomchannelsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
+    final url_ = 'adclients/' +
         commons.escapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CustomChannel.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1214,7 +1214,7 @@ class ReportsResource {
     core.int? startIndex,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'startDate': [startDate],
       'endDate': [endDate],
       if (dimension != null) 'dimension': dimension,
@@ -1227,14 +1227,14 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'reports';
+    const url_ = 'reports';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Report.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1266,22 +1266,22 @@ class UrlchannelsResource {
     core.String urlChannelId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'adclients/' +
+    final url_ = 'adclients/' +
         commons.escapeVariable('$adClientId') +
         '/urlchannels/' +
         commons.escapeVariable('$urlChannelId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return UrlChannel.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Add a new URL channel to the host AdSense account.
@@ -1307,22 +1307,22 @@ class UrlchannelsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'adclients/' + commons.escapeVariable('$adClientId') + '/urlchannels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return UrlChannel.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all host URL channels in the host AdSense account.
@@ -1355,22 +1355,22 @@ class UrlchannelsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'adclients/' + commons.escapeVariable('$adClientId') + '/urlchannels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return UrlChannels.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1396,13 +1396,13 @@ class Account {
     this.status,
   });
 
-  Account.fromJson(core.Map _json)
+  Account.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 
@@ -1430,16 +1430,16 @@ class Accounts {
     this.kind,
   });
 
-  Accounts.fromJson(core.Map _json)
+  Accounts.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1474,18 +1474,18 @@ class AdClient {
     this.supportsReporting,
   });
 
-  AdClient.fromJson(core.Map _json)
+  AdClient.fromJson(core.Map json_)
       : this(
-          arcOptIn: _json.containsKey('arcOptIn')
-              ? _json['arcOptIn'] as core.bool
+          arcOptIn: json_.containsKey('arcOptIn')
+              ? json_['arcOptIn'] as core.bool
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          productCode: _json.containsKey('productCode')
-              ? _json['productCode'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          productCode: json_.containsKey('productCode')
+              ? json_['productCode'] as core.String
               : null,
-          supportsReporting: _json.containsKey('supportsReporting')
-              ? _json['supportsReporting'] as core.bool
+          supportsReporting: json_.containsKey('supportsReporting')
+              ? json_['supportsReporting'] as core.bool
               : null,
         );
 
@@ -1521,18 +1521,18 @@ class AdClients {
     this.nextPageToken,
   });
 
-  AdClients.fromJson(core.Map _json)
+  AdClients.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => AdClient.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1556,12 +1556,12 @@ class AdCode {
     this.kind,
   });
 
-  AdCode.fromJson(core.Map _json)
+  AdCode.fromJson(core.Map json_)
       : this(
-          adCode: _json.containsKey('adCode')
-              ? _json['adCode'] as core.String
+          adCode: json_.containsKey('adCode')
+              ? json_['adCode'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1598,18 +1598,18 @@ class AdStyleColors {
     this.url,
   });
 
-  AdStyleColors.fromJson(core.Map _json)
+  AdStyleColors.fromJson(core.Map json_)
       : this(
-          background: _json.containsKey('background')
-              ? _json['background'] as core.String
+          background: json_.containsKey('background')
+              ? json_['background'] as core.String
               : null,
-          border: _json.containsKey('border')
-              ? _json['border'] as core.String
+          border: json_.containsKey('border')
+              ? json_['border'] as core.String
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1640,12 +1640,12 @@ class AdStyleFont {
     this.size,
   });
 
-  AdStyleFont.fromJson(core.Map _json)
+  AdStyleFont.fromJson(core.Map json_)
       : this(
-          family: _json.containsKey('family')
-              ? _json['family'] as core.String
+          family: json_.containsKey('family')
+              ? json_['family'] as core.String
               : null,
-          size: _json.containsKey('size') ? _json['size'] as core.String : null,
+          size: json_.containsKey('size') ? json_['size'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1677,20 +1677,20 @@ class AdStyle {
     this.kind,
   });
 
-  AdStyle.fromJson(core.Map _json)
+  AdStyle.fromJson(core.Map json_)
       : this(
-          colors: _json.containsKey('colors')
+          colors: json_.containsKey('colors')
               ? AdStyleColors.fromJson(
-                  _json['colors'] as core.Map<core.String, core.dynamic>)
+                  json_['colors'] as core.Map<core.String, core.dynamic>)
               : null,
-          corners: _json.containsKey('corners')
-              ? _json['corners'] as core.String
+          corners: json_.containsKey('corners')
+              ? json_['corners'] as core.String
               : null,
-          font: _json.containsKey('font')
+          font: json_.containsKey('font')
               ? AdStyleFont.fromJson(
-                  _json['font'] as core.Map<core.String, core.dynamic>)
+                  json_['font'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1723,12 +1723,12 @@ class AdUnitContentAdsSettingsBackupOption {
     this.url,
   });
 
-  AdUnitContentAdsSettingsBackupOption.fromJson(core.Map _json)
+  AdUnitContentAdsSettingsBackupOption.fromJson(core.Map json_)
       : this(
           color:
-              _json.containsKey('color') ? _json['color'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+              json_.containsKey('color') ? json_['color'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1760,14 +1760,14 @@ class AdUnitContentAdsSettings {
     this.type,
   });
 
-  AdUnitContentAdsSettings.fromJson(core.Map _json)
+  AdUnitContentAdsSettings.fromJson(core.Map json_)
       : this(
-          backupOption: _json.containsKey('backupOption')
+          backupOption: json_.containsKey('backupOption')
               ? AdUnitContentAdsSettingsBackupOption.fromJson(
-                  _json['backupOption'] as core.Map<core.String, core.dynamic>)
+                  json_['backupOption'] as core.Map<core.String, core.dynamic>)
               : null,
-          size: _json.containsKey('size') ? _json['size'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1798,16 +1798,16 @@ class AdUnitMobileContentAdsSettings {
     this.type,
   });
 
-  AdUnitMobileContentAdsSettings.fromJson(core.Map _json)
+  AdUnitMobileContentAdsSettings.fromJson(core.Map json_)
       : this(
-          markupLanguage: _json.containsKey('markupLanguage')
-              ? _json['markupLanguage'] as core.String
+          markupLanguage: json_.containsKey('markupLanguage')
+              ? json_['markupLanguage'] as core.String
               : null,
-          scriptingLanguage: _json.containsKey('scriptingLanguage')
-              ? _json['scriptingLanguage'] as core.String
+          scriptingLanguage: json_.containsKey('scriptingLanguage')
+              ? json_['scriptingLanguage'] as core.String
               : null,
-          size: _json.containsKey('size') ? _json['size'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1868,28 +1868,28 @@ class AdUnit {
     this.status,
   });
 
-  AdUnit.fromJson(core.Map _json)
+  AdUnit.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          contentAdsSettings: _json.containsKey('contentAdsSettings')
-              ? AdUnitContentAdsSettings.fromJson(_json['contentAdsSettings']
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          contentAdsSettings: json_.containsKey('contentAdsSettings')
+              ? AdUnitContentAdsSettings.fromJson(json_['contentAdsSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          customStyle: _json.containsKey('customStyle')
+          customStyle: json_.containsKey('customStyle')
               ? AdStyle.fromJson(
-                  _json['customStyle'] as core.Map<core.String, core.dynamic>)
+                  json_['customStyle'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           mobileContentAdsSettings:
-              _json.containsKey('mobileContentAdsSettings')
+              json_.containsKey('mobileContentAdsSettings')
                   ? AdUnitMobileContentAdsSettings.fromJson(
-                      _json['mobileContentAdsSettings']
+                      json_['mobileContentAdsSettings']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 
@@ -1930,18 +1930,18 @@ class AdUnits {
     this.nextPageToken,
   });
 
-  AdUnits.fromJson(core.Map _json)
+  AdUnits.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => AdUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2003,32 +2003,32 @@ class AssociationSession {
     this.websiteUrl,
   });
 
-  AssociationSession.fromJson(core.Map _json)
+  AssociationSession.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          productCodes: _json.containsKey('productCodes')
-              ? (_json['productCodes'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          productCodes: json_.containsKey('productCodes')
+              ? (json_['productCodes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          redirectUrl: _json.containsKey('redirectUrl')
-              ? _json['redirectUrl'] as core.String
+          redirectUrl: json_.containsKey('redirectUrl')
+              ? json_['redirectUrl'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          userLocale: _json.containsKey('userLocale')
-              ? _json['userLocale'] as core.String
+          userLocale: json_.containsKey('userLocale')
+              ? json_['userLocale'] as core.String
               : null,
-          websiteLocale: _json.containsKey('websiteLocale')
-              ? _json['websiteLocale'] as core.String
+          websiteLocale: json_.containsKey('websiteLocale')
+              ? json_['websiteLocale'] as core.String
               : null,
-          websiteUrl: _json.containsKey('websiteUrl')
-              ? _json['websiteUrl'] as core.String
+          websiteUrl: json_.containsKey('websiteUrl')
+              ? json_['websiteUrl'] as core.String
               : null,
         );
 
@@ -2068,12 +2068,12 @@ class CustomChannel {
     this.name,
   });
 
-  CustomChannel.fromJson(core.Map _json)
+  CustomChannel.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2107,18 +2107,18 @@ class CustomChannels {
     this.nextPageToken,
   });
 
-  CustomChannels.fromJson(core.Map _json)
+  CustomChannels.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => CustomChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2149,13 +2149,13 @@ class ReportHeaders {
     this.type,
   });
 
-  ReportHeaders.fromJson(core.Map _json)
+  ReportHeaders.fromJson(core.Map json_)
       : this(
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
+          currency: json_.containsKey('currency')
+              ? json_['currency'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2213,37 +2213,37 @@ class Report {
     this.warnings,
   });
 
-  Report.fromJson(core.Map _json)
+  Report.fromJson(core.Map json_)
       : this(
-          averages: _json.containsKey('averages')
-              ? (_json['averages'] as core.List)
+          averages: json_.containsKey('averages')
+              ? (json_['averages'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          headers: _json.containsKey('headers')
-              ? (_json['headers'] as core.List)
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.List)
                   .map((value) => ReportHeaders.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          rows: _json.containsKey('rows')
-              ? (_json['rows'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
                   .map((value) => (value as core.List)
                       .map((value) => value as core.String)
                       .toList())
                   .toList()
               : null,
-          totalMatchedRows: _json.containsKey('totalMatchedRows')
-              ? _json['totalMatchedRows'] as core.String
+          totalMatchedRows: json_.containsKey('totalMatchedRows')
+              ? json_['totalMatchedRows'] as core.String
               : null,
-          totals: _json.containsKey('totals')
-              ? (_json['totals'] as core.List)
+          totals: json_.containsKey('totals')
+              ? (json_['totals'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          warnings: _json.containsKey('warnings')
-              ? (_json['warnings'] as core.List)
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2281,12 +2281,12 @@ class UrlChannel {
     this.urlPattern,
   });
 
-  UrlChannel.fromJson(core.Map _json)
+  UrlChannel.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          urlPattern: _json.containsKey('urlPattern')
-              ? _json['urlPattern'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          urlPattern: json_.containsKey('urlPattern')
+              ? json_['urlPattern'] as core.String
               : null,
         );
 
@@ -2320,18 +2320,18 @@ class UrlChannels {
     this.nextPageToken,
   });
 
-  UrlChannels.fromJson(core.Map _json)
+  UrlChannels.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => UrlChannel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 

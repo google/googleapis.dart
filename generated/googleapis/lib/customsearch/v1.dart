@@ -310,7 +310,7 @@ class CseResource {
     core.int? start,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (c2coff != null) 'c2coff': [c2coff],
       if (cr != null) 'cr': [cr],
       if (cx != null) 'cx': [cx],
@@ -345,14 +345,14 @@ class CseResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'customsearch/v1';
+    const url_ = 'customsearch/v1';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Search.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Search.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -616,7 +616,7 @@ class CseSiterestrictResource {
     core.int? start,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (c2coff != null) 'c2coff': [c2coff],
       if (cr != null) 'cr': [cr],
       if (cx != null) 'cx': [cx],
@@ -651,14 +651,14 @@ class CseSiterestrictResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'customsearch/v1/siterestrict';
+    const url_ = 'customsearch/v1/siterestrict';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Search.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Search.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -683,15 +683,15 @@ class PromotionBodyLines {
     this.url,
   });
 
-  PromotionBodyLines.fromJson(core.Map _json)
+  PromotionBodyLines.fromJson(core.Map json_)
       : this(
-          htmlTitle: _json.containsKey('htmlTitle')
-              ? _json['htmlTitle'] as core.String
+          htmlTitle: json_.containsKey('htmlTitle')
+              ? json_['htmlTitle'] as core.String
               : null,
-          link: _json.containsKey('link') ? _json['link'] as core.String : null,
+          link: json_.containsKey('link') ? json_['link'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -719,14 +719,14 @@ class PromotionImage {
     this.width,
   });
 
-  PromotionImage.fromJson(core.Map _json)
+  PromotionImage.fromJson(core.Map json_)
       : this(
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
               : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -765,27 +765,27 @@ class Promotion {
     this.title,
   });
 
-  Promotion.fromJson(core.Map _json)
+  Promotion.fromJson(core.Map json_)
       : this(
-          bodyLines: _json.containsKey('bodyLines')
-              ? (_json['bodyLines'] as core.List)
+          bodyLines: json_.containsKey('bodyLines')
+              ? (json_['bodyLines'] as core.List)
                   .map((value) => PromotionBodyLines.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          displayLink: _json.containsKey('displayLink')
-              ? _json['displayLink'] as core.String
+          displayLink: json_.containsKey('displayLink')
+              ? json_['displayLink'] as core.String
               : null,
-          htmlTitle: _json.containsKey('htmlTitle')
-              ? _json['htmlTitle'] as core.String
+          htmlTitle: json_.containsKey('htmlTitle')
+              ? json_['htmlTitle'] as core.String
               : null,
-          image: _json.containsKey('image')
+          image: json_.containsKey('image')
               ? PromotionImage.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          link: _json.containsKey('link') ? _json['link'] as core.String : null,
+          link: json_.containsKey('link') ? json_['link'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -831,26 +831,26 @@ class ResultImage {
     this.width,
   });
 
-  ResultImage.fromJson(core.Map _json)
+  ResultImage.fromJson(core.Map json_)
       : this(
-          byteSize: _json.containsKey('byteSize')
-              ? _json['byteSize'] as core.int
+          byteSize: json_.containsKey('byteSize')
+              ? json_['byteSize'] as core.int
               : null,
-          contextLink: _json.containsKey('contextLink')
-              ? _json['contextLink'] as core.String
+          contextLink: json_.containsKey('contextLink')
+              ? json_['contextLink'] as core.String
               : null,
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          thumbnailHeight: _json.containsKey('thumbnailHeight')
-              ? _json['thumbnailHeight'] as core.int
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          thumbnailHeight: json_.containsKey('thumbnailHeight')
+              ? json_['thumbnailHeight'] as core.int
               : null,
-          thumbnailLink: _json.containsKey('thumbnailLink')
-              ? _json['thumbnailLink'] as core.String
+          thumbnailLink: json_.containsKey('thumbnailLink')
+              ? json_['thumbnailLink'] as core.String
               : null,
-          thumbnailWidth: _json.containsKey('thumbnailWidth')
-              ? _json['thumbnailWidth'] as core.int
+          thumbnailWidth: json_.containsKey('thumbnailWidth')
+              ? json_['thumbnailWidth'] as core.int
               : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -885,15 +885,15 @@ class ResultLabels {
     this.name,
   });
 
-  ResultLabels.fromJson(core.Map _json)
+  ResultLabels.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          labelWithOp: _json.containsKey('label_with_op')
-              ? _json['label_with_op'] as core.String
+          labelWithOp: json_.containsKey('label_with_op')
+              ? json_['label_with_op'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -976,50 +976,50 @@ class Result {
     this.title,
   });
 
-  Result.fromJson(core.Map _json)
+  Result.fromJson(core.Map json_)
       : this(
-          cacheId: _json.containsKey('cacheId')
-              ? _json['cacheId'] as core.String
+          cacheId: json_.containsKey('cacheId')
+              ? json_['cacheId'] as core.String
               : null,
-          displayLink: _json.containsKey('displayLink')
-              ? _json['displayLink'] as core.String
+          displayLink: json_.containsKey('displayLink')
+              ? json_['displayLink'] as core.String
               : null,
-          fileFormat: _json.containsKey('fileFormat')
-              ? _json['fileFormat'] as core.String
+          fileFormat: json_.containsKey('fileFormat')
+              ? json_['fileFormat'] as core.String
               : null,
-          formattedUrl: _json.containsKey('formattedUrl')
-              ? _json['formattedUrl'] as core.String
+          formattedUrl: json_.containsKey('formattedUrl')
+              ? json_['formattedUrl'] as core.String
               : null,
-          htmlFormattedUrl: _json.containsKey('htmlFormattedUrl')
-              ? _json['htmlFormattedUrl'] as core.String
+          htmlFormattedUrl: json_.containsKey('htmlFormattedUrl')
+              ? json_['htmlFormattedUrl'] as core.String
               : null,
-          htmlSnippet: _json.containsKey('htmlSnippet')
-              ? _json['htmlSnippet'] as core.String
+          htmlSnippet: json_.containsKey('htmlSnippet')
+              ? json_['htmlSnippet'] as core.String
               : null,
-          htmlTitle: _json.containsKey('htmlTitle')
-              ? _json['htmlTitle'] as core.String
+          htmlTitle: json_.containsKey('htmlTitle')
+              ? json_['htmlTitle'] as core.String
               : null,
-          image: _json.containsKey('image')
+          image: json_.containsKey('image')
               ? ResultImage.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => ResultLabels.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          link: _json.containsKey('link') ? _json['link'] as core.String : null,
-          mime: _json.containsKey('mime') ? _json['mime'] as core.String : null,
-          pagemap: _json.containsKey('pagemap')
-              ? _json['pagemap'] as core.Map<core.String, core.dynamic>
+          link: json_.containsKey('link') ? json_['link'] as core.String : null,
+          mime: json_.containsKey('mime') ? json_['mime'] as core.String : null,
+          pagemap: json_.containsKey('pagemap')
+              ? json_['pagemap'] as core.Map<core.String, core.dynamic>
               : null,
-          snippet: _json.containsKey('snippet')
-              ? _json['snippet'] as core.String
+          snippet: json_.containsKey('snippet')
+              ? json_['snippet'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1298,98 +1298,98 @@ class SearchQueriesNextPage {
     this.totalResults,
   });
 
-  SearchQueriesNextPage.fromJson(core.Map _json)
+  SearchQueriesNextPage.fromJson(core.Map json_)
       : this(
-          count: _json.containsKey('count') ? _json['count'] as core.int : null,
-          cr: _json.containsKey('cr') ? _json['cr'] as core.String : null,
-          cx: _json.containsKey('cx') ? _json['cx'] as core.String : null,
-          dateRestrict: _json.containsKey('dateRestrict')
-              ? _json['dateRestrict'] as core.String
+          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          cr: json_.containsKey('cr') ? json_['cr'] as core.String : null,
+          cx: json_.containsKey('cx') ? json_['cx'] as core.String : null,
+          dateRestrict: json_.containsKey('dateRestrict')
+              ? json_['dateRestrict'] as core.String
               : null,
-          disableCnTwTranslation: _json.containsKey('disableCnTwTranslation')
-              ? _json['disableCnTwTranslation'] as core.String
+          disableCnTwTranslation: json_.containsKey('disableCnTwTranslation')
+              ? json_['disableCnTwTranslation'] as core.String
               : null,
-          exactTerms: _json.containsKey('exactTerms')
-              ? _json['exactTerms'] as core.String
+          exactTerms: json_.containsKey('exactTerms')
+              ? json_['exactTerms'] as core.String
               : null,
-          excludeTerms: _json.containsKey('excludeTerms')
-              ? _json['excludeTerms'] as core.String
+          excludeTerms: json_.containsKey('excludeTerms')
+              ? json_['excludeTerms'] as core.String
               : null,
-          fileType: _json.containsKey('fileType')
-              ? _json['fileType'] as core.String
+          fileType: json_.containsKey('fileType')
+              ? json_['fileType'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          gl: _json.containsKey('gl') ? _json['gl'] as core.String : null,
-          googleHost: _json.containsKey('googleHost')
-              ? _json['googleHost'] as core.String
+          gl: json_.containsKey('gl') ? json_['gl'] as core.String : null,
+          googleHost: json_.containsKey('googleHost')
+              ? json_['googleHost'] as core.String
               : null,
-          highRange: _json.containsKey('highRange')
-              ? _json['highRange'] as core.String
+          highRange: json_.containsKey('highRange')
+              ? json_['highRange'] as core.String
               : null,
-          hl: _json.containsKey('hl') ? _json['hl'] as core.String : null,
-          hq: _json.containsKey('hq') ? _json['hq'] as core.String : null,
-          imgColorType: _json.containsKey('imgColorType')
-              ? _json['imgColorType'] as core.String
+          hl: json_.containsKey('hl') ? json_['hl'] as core.String : null,
+          hq: json_.containsKey('hq') ? json_['hq'] as core.String : null,
+          imgColorType: json_.containsKey('imgColorType')
+              ? json_['imgColorType'] as core.String
               : null,
-          imgDominantColor: _json.containsKey('imgDominantColor')
-              ? _json['imgDominantColor'] as core.String
+          imgDominantColor: json_.containsKey('imgDominantColor')
+              ? json_['imgDominantColor'] as core.String
               : null,
-          imgSize: _json.containsKey('imgSize')
-              ? _json['imgSize'] as core.String
+          imgSize: json_.containsKey('imgSize')
+              ? json_['imgSize'] as core.String
               : null,
-          imgType: _json.containsKey('imgType')
-              ? _json['imgType'] as core.String
+          imgType: json_.containsKey('imgType')
+              ? json_['imgType'] as core.String
               : null,
-          inputEncoding: _json.containsKey('inputEncoding')
-              ? _json['inputEncoding'] as core.String
+          inputEncoding: json_.containsKey('inputEncoding')
+              ? json_['inputEncoding'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          linkSite: _json.containsKey('linkSite')
-              ? _json['linkSite'] as core.String
+          linkSite: json_.containsKey('linkSite')
+              ? json_['linkSite'] as core.String
               : null,
-          lowRange: _json.containsKey('lowRange')
-              ? _json['lowRange'] as core.String
+          lowRange: json_.containsKey('lowRange')
+              ? json_['lowRange'] as core.String
               : null,
-          orTerms: _json.containsKey('orTerms')
-              ? _json['orTerms'] as core.String
+          orTerms: json_.containsKey('orTerms')
+              ? json_['orTerms'] as core.String
               : null,
-          outputEncoding: _json.containsKey('outputEncoding')
-              ? _json['outputEncoding'] as core.String
+          outputEncoding: json_.containsKey('outputEncoding')
+              ? json_['outputEncoding'] as core.String
               : null,
-          relatedSite: _json.containsKey('relatedSite')
-              ? _json['relatedSite'] as core.String
+          relatedSite: json_.containsKey('relatedSite')
+              ? json_['relatedSite'] as core.String
               : null,
-          rights: _json.containsKey('rights')
-              ? _json['rights'] as core.String
+          rights: json_.containsKey('rights')
+              ? json_['rights'] as core.String
               : null,
-          safe: _json.containsKey('safe') ? _json['safe'] as core.String : null,
-          searchTerms: _json.containsKey('searchTerms')
-              ? _json['searchTerms'] as core.String
+          safe: json_.containsKey('safe') ? json_['safe'] as core.String : null,
+          searchTerms: json_.containsKey('searchTerms')
+              ? json_['searchTerms'] as core.String
               : null,
-          searchType: _json.containsKey('searchType')
-              ? _json['searchType'] as core.String
+          searchType: json_.containsKey('searchType')
+              ? json_['searchType'] as core.String
               : null,
-          siteSearch: _json.containsKey('siteSearch')
-              ? _json['siteSearch'] as core.String
+          siteSearch: json_.containsKey('siteSearch')
+              ? json_['siteSearch'] as core.String
               : null,
-          siteSearchFilter: _json.containsKey('siteSearchFilter')
-              ? _json['siteSearchFilter'] as core.String
+          siteSearchFilter: json_.containsKey('siteSearchFilter')
+              ? json_['siteSearchFilter'] as core.String
               : null,
-          sort: _json.containsKey('sort') ? _json['sort'] as core.String : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.int
+          sort: json_.containsKey('sort') ? json_['sort'] as core.String : null,
+          startIndex: json_.containsKey('startIndex')
+              ? json_['startIndex'] as core.int
               : null,
-          startPage: _json.containsKey('startPage')
-              ? _json['startPage'] as core.int
+          startPage: json_.containsKey('startPage')
+              ? json_['startPage'] as core.int
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          totalResults: _json.containsKey('totalResults')
-              ? _json['totalResults'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          totalResults: json_.containsKey('totalResults')
+              ? json_['totalResults'] as core.String
               : null,
         );
 
@@ -1691,98 +1691,98 @@ class SearchQueriesPreviousPage {
     this.totalResults,
   });
 
-  SearchQueriesPreviousPage.fromJson(core.Map _json)
+  SearchQueriesPreviousPage.fromJson(core.Map json_)
       : this(
-          count: _json.containsKey('count') ? _json['count'] as core.int : null,
-          cr: _json.containsKey('cr') ? _json['cr'] as core.String : null,
-          cx: _json.containsKey('cx') ? _json['cx'] as core.String : null,
-          dateRestrict: _json.containsKey('dateRestrict')
-              ? _json['dateRestrict'] as core.String
+          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          cr: json_.containsKey('cr') ? json_['cr'] as core.String : null,
+          cx: json_.containsKey('cx') ? json_['cx'] as core.String : null,
+          dateRestrict: json_.containsKey('dateRestrict')
+              ? json_['dateRestrict'] as core.String
               : null,
-          disableCnTwTranslation: _json.containsKey('disableCnTwTranslation')
-              ? _json['disableCnTwTranslation'] as core.String
+          disableCnTwTranslation: json_.containsKey('disableCnTwTranslation')
+              ? json_['disableCnTwTranslation'] as core.String
               : null,
-          exactTerms: _json.containsKey('exactTerms')
-              ? _json['exactTerms'] as core.String
+          exactTerms: json_.containsKey('exactTerms')
+              ? json_['exactTerms'] as core.String
               : null,
-          excludeTerms: _json.containsKey('excludeTerms')
-              ? _json['excludeTerms'] as core.String
+          excludeTerms: json_.containsKey('excludeTerms')
+              ? json_['excludeTerms'] as core.String
               : null,
-          fileType: _json.containsKey('fileType')
-              ? _json['fileType'] as core.String
+          fileType: json_.containsKey('fileType')
+              ? json_['fileType'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          gl: _json.containsKey('gl') ? _json['gl'] as core.String : null,
-          googleHost: _json.containsKey('googleHost')
-              ? _json['googleHost'] as core.String
+          gl: json_.containsKey('gl') ? json_['gl'] as core.String : null,
+          googleHost: json_.containsKey('googleHost')
+              ? json_['googleHost'] as core.String
               : null,
-          highRange: _json.containsKey('highRange')
-              ? _json['highRange'] as core.String
+          highRange: json_.containsKey('highRange')
+              ? json_['highRange'] as core.String
               : null,
-          hl: _json.containsKey('hl') ? _json['hl'] as core.String : null,
-          hq: _json.containsKey('hq') ? _json['hq'] as core.String : null,
-          imgColorType: _json.containsKey('imgColorType')
-              ? _json['imgColorType'] as core.String
+          hl: json_.containsKey('hl') ? json_['hl'] as core.String : null,
+          hq: json_.containsKey('hq') ? json_['hq'] as core.String : null,
+          imgColorType: json_.containsKey('imgColorType')
+              ? json_['imgColorType'] as core.String
               : null,
-          imgDominantColor: _json.containsKey('imgDominantColor')
-              ? _json['imgDominantColor'] as core.String
+          imgDominantColor: json_.containsKey('imgDominantColor')
+              ? json_['imgDominantColor'] as core.String
               : null,
-          imgSize: _json.containsKey('imgSize')
-              ? _json['imgSize'] as core.String
+          imgSize: json_.containsKey('imgSize')
+              ? json_['imgSize'] as core.String
               : null,
-          imgType: _json.containsKey('imgType')
-              ? _json['imgType'] as core.String
+          imgType: json_.containsKey('imgType')
+              ? json_['imgType'] as core.String
               : null,
-          inputEncoding: _json.containsKey('inputEncoding')
-              ? _json['inputEncoding'] as core.String
+          inputEncoding: json_.containsKey('inputEncoding')
+              ? json_['inputEncoding'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          linkSite: _json.containsKey('linkSite')
-              ? _json['linkSite'] as core.String
+          linkSite: json_.containsKey('linkSite')
+              ? json_['linkSite'] as core.String
               : null,
-          lowRange: _json.containsKey('lowRange')
-              ? _json['lowRange'] as core.String
+          lowRange: json_.containsKey('lowRange')
+              ? json_['lowRange'] as core.String
               : null,
-          orTerms: _json.containsKey('orTerms')
-              ? _json['orTerms'] as core.String
+          orTerms: json_.containsKey('orTerms')
+              ? json_['orTerms'] as core.String
               : null,
-          outputEncoding: _json.containsKey('outputEncoding')
-              ? _json['outputEncoding'] as core.String
+          outputEncoding: json_.containsKey('outputEncoding')
+              ? json_['outputEncoding'] as core.String
               : null,
-          relatedSite: _json.containsKey('relatedSite')
-              ? _json['relatedSite'] as core.String
+          relatedSite: json_.containsKey('relatedSite')
+              ? json_['relatedSite'] as core.String
               : null,
-          rights: _json.containsKey('rights')
-              ? _json['rights'] as core.String
+          rights: json_.containsKey('rights')
+              ? json_['rights'] as core.String
               : null,
-          safe: _json.containsKey('safe') ? _json['safe'] as core.String : null,
-          searchTerms: _json.containsKey('searchTerms')
-              ? _json['searchTerms'] as core.String
+          safe: json_.containsKey('safe') ? json_['safe'] as core.String : null,
+          searchTerms: json_.containsKey('searchTerms')
+              ? json_['searchTerms'] as core.String
               : null,
-          searchType: _json.containsKey('searchType')
-              ? _json['searchType'] as core.String
+          searchType: json_.containsKey('searchType')
+              ? json_['searchType'] as core.String
               : null,
-          siteSearch: _json.containsKey('siteSearch')
-              ? _json['siteSearch'] as core.String
+          siteSearch: json_.containsKey('siteSearch')
+              ? json_['siteSearch'] as core.String
               : null,
-          siteSearchFilter: _json.containsKey('siteSearchFilter')
-              ? _json['siteSearchFilter'] as core.String
+          siteSearchFilter: json_.containsKey('siteSearchFilter')
+              ? json_['siteSearchFilter'] as core.String
               : null,
-          sort: _json.containsKey('sort') ? _json['sort'] as core.String : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.int
+          sort: json_.containsKey('sort') ? json_['sort'] as core.String : null,
+          startIndex: json_.containsKey('startIndex')
+              ? json_['startIndex'] as core.int
               : null,
-          startPage: _json.containsKey('startPage')
-              ? _json['startPage'] as core.int
+          startPage: json_.containsKey('startPage')
+              ? json_['startPage'] as core.int
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          totalResults: _json.containsKey('totalResults')
-              ? _json['totalResults'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          totalResults: json_.containsKey('totalResults')
+              ? json_['totalResults'] as core.String
               : null,
         );
 
@@ -2084,98 +2084,98 @@ class SearchQueriesRequest {
     this.totalResults,
   });
 
-  SearchQueriesRequest.fromJson(core.Map _json)
+  SearchQueriesRequest.fromJson(core.Map json_)
       : this(
-          count: _json.containsKey('count') ? _json['count'] as core.int : null,
-          cr: _json.containsKey('cr') ? _json['cr'] as core.String : null,
-          cx: _json.containsKey('cx') ? _json['cx'] as core.String : null,
-          dateRestrict: _json.containsKey('dateRestrict')
-              ? _json['dateRestrict'] as core.String
+          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          cr: json_.containsKey('cr') ? json_['cr'] as core.String : null,
+          cx: json_.containsKey('cx') ? json_['cx'] as core.String : null,
+          dateRestrict: json_.containsKey('dateRestrict')
+              ? json_['dateRestrict'] as core.String
               : null,
-          disableCnTwTranslation: _json.containsKey('disableCnTwTranslation')
-              ? _json['disableCnTwTranslation'] as core.String
+          disableCnTwTranslation: json_.containsKey('disableCnTwTranslation')
+              ? json_['disableCnTwTranslation'] as core.String
               : null,
-          exactTerms: _json.containsKey('exactTerms')
-              ? _json['exactTerms'] as core.String
+          exactTerms: json_.containsKey('exactTerms')
+              ? json_['exactTerms'] as core.String
               : null,
-          excludeTerms: _json.containsKey('excludeTerms')
-              ? _json['excludeTerms'] as core.String
+          excludeTerms: json_.containsKey('excludeTerms')
+              ? json_['excludeTerms'] as core.String
               : null,
-          fileType: _json.containsKey('fileType')
-              ? _json['fileType'] as core.String
+          fileType: json_.containsKey('fileType')
+              ? json_['fileType'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          gl: _json.containsKey('gl') ? _json['gl'] as core.String : null,
-          googleHost: _json.containsKey('googleHost')
-              ? _json['googleHost'] as core.String
+          gl: json_.containsKey('gl') ? json_['gl'] as core.String : null,
+          googleHost: json_.containsKey('googleHost')
+              ? json_['googleHost'] as core.String
               : null,
-          highRange: _json.containsKey('highRange')
-              ? _json['highRange'] as core.String
+          highRange: json_.containsKey('highRange')
+              ? json_['highRange'] as core.String
               : null,
-          hl: _json.containsKey('hl') ? _json['hl'] as core.String : null,
-          hq: _json.containsKey('hq') ? _json['hq'] as core.String : null,
-          imgColorType: _json.containsKey('imgColorType')
-              ? _json['imgColorType'] as core.String
+          hl: json_.containsKey('hl') ? json_['hl'] as core.String : null,
+          hq: json_.containsKey('hq') ? json_['hq'] as core.String : null,
+          imgColorType: json_.containsKey('imgColorType')
+              ? json_['imgColorType'] as core.String
               : null,
-          imgDominantColor: _json.containsKey('imgDominantColor')
-              ? _json['imgDominantColor'] as core.String
+          imgDominantColor: json_.containsKey('imgDominantColor')
+              ? json_['imgDominantColor'] as core.String
               : null,
-          imgSize: _json.containsKey('imgSize')
-              ? _json['imgSize'] as core.String
+          imgSize: json_.containsKey('imgSize')
+              ? json_['imgSize'] as core.String
               : null,
-          imgType: _json.containsKey('imgType')
-              ? _json['imgType'] as core.String
+          imgType: json_.containsKey('imgType')
+              ? json_['imgType'] as core.String
               : null,
-          inputEncoding: _json.containsKey('inputEncoding')
-              ? _json['inputEncoding'] as core.String
+          inputEncoding: json_.containsKey('inputEncoding')
+              ? json_['inputEncoding'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          linkSite: _json.containsKey('linkSite')
-              ? _json['linkSite'] as core.String
+          linkSite: json_.containsKey('linkSite')
+              ? json_['linkSite'] as core.String
               : null,
-          lowRange: _json.containsKey('lowRange')
-              ? _json['lowRange'] as core.String
+          lowRange: json_.containsKey('lowRange')
+              ? json_['lowRange'] as core.String
               : null,
-          orTerms: _json.containsKey('orTerms')
-              ? _json['orTerms'] as core.String
+          orTerms: json_.containsKey('orTerms')
+              ? json_['orTerms'] as core.String
               : null,
-          outputEncoding: _json.containsKey('outputEncoding')
-              ? _json['outputEncoding'] as core.String
+          outputEncoding: json_.containsKey('outputEncoding')
+              ? json_['outputEncoding'] as core.String
               : null,
-          relatedSite: _json.containsKey('relatedSite')
-              ? _json['relatedSite'] as core.String
+          relatedSite: json_.containsKey('relatedSite')
+              ? json_['relatedSite'] as core.String
               : null,
-          rights: _json.containsKey('rights')
-              ? _json['rights'] as core.String
+          rights: json_.containsKey('rights')
+              ? json_['rights'] as core.String
               : null,
-          safe: _json.containsKey('safe') ? _json['safe'] as core.String : null,
-          searchTerms: _json.containsKey('searchTerms')
-              ? _json['searchTerms'] as core.String
+          safe: json_.containsKey('safe') ? json_['safe'] as core.String : null,
+          searchTerms: json_.containsKey('searchTerms')
+              ? json_['searchTerms'] as core.String
               : null,
-          searchType: _json.containsKey('searchType')
-              ? _json['searchType'] as core.String
+          searchType: json_.containsKey('searchType')
+              ? json_['searchType'] as core.String
               : null,
-          siteSearch: _json.containsKey('siteSearch')
-              ? _json['siteSearch'] as core.String
+          siteSearch: json_.containsKey('siteSearch')
+              ? json_['siteSearch'] as core.String
               : null,
-          siteSearchFilter: _json.containsKey('siteSearchFilter')
-              ? _json['siteSearchFilter'] as core.String
+          siteSearchFilter: json_.containsKey('siteSearchFilter')
+              ? json_['siteSearchFilter'] as core.String
               : null,
-          sort: _json.containsKey('sort') ? _json['sort'] as core.String : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.int
+          sort: json_.containsKey('sort') ? json_['sort'] as core.String : null,
+          startIndex: json_.containsKey('startIndex')
+              ? json_['startIndex'] as core.int
               : null,
-          startPage: _json.containsKey('startPage')
-              ? _json['startPage'] as core.int
+          startPage: json_.containsKey('startPage')
+              ? json_['startPage'] as core.int
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          totalResults: _json.containsKey('totalResults')
-              ? _json['totalResults'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          totalResults: json_.containsKey('totalResults')
+              ? json_['totalResults'] as core.String
               : null,
         );
 
@@ -2237,22 +2237,22 @@ class SearchQueries {
     this.request,
   });
 
-  SearchQueries.fromJson(core.Map _json)
+  SearchQueries.fromJson(core.Map json_)
       : this(
-          nextPage: _json.containsKey('nextPage')
-              ? (_json['nextPage'] as core.List)
+          nextPage: json_.containsKey('nextPage')
+              ? (json_['nextPage'] as core.List)
                   .map((value) => SearchQueriesNextPage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          previousPage: _json.containsKey('previousPage')
-              ? (_json['previousPage'] as core.List)
+          previousPage: json_.containsKey('previousPage')
+              ? (json_['previousPage'] as core.List)
                   .map((value) => SearchQueriesPreviousPage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          request: _json.containsKey('request')
-              ? (_json['request'] as core.List)
+          request: json_.containsKey('request')
+              ? (json_['request'] as core.List)
                   .map((value) => SearchQueriesRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2288,19 +2288,19 @@ class SearchSearchInformation {
     this.totalResults,
   });
 
-  SearchSearchInformation.fromJson(core.Map _json)
+  SearchSearchInformation.fromJson(core.Map json_)
       : this(
-          formattedSearchTime: _json.containsKey('formattedSearchTime')
-              ? _json['formattedSearchTime'] as core.String
+          formattedSearchTime: json_.containsKey('formattedSearchTime')
+              ? json_['formattedSearchTime'] as core.String
               : null,
-          formattedTotalResults: _json.containsKey('formattedTotalResults')
-              ? _json['formattedTotalResults'] as core.String
+          formattedTotalResults: json_.containsKey('formattedTotalResults')
+              ? json_['formattedTotalResults'] as core.String
               : null,
-          searchTime: _json.containsKey('searchTime')
-              ? (_json['searchTime'] as core.num).toDouble()
+          searchTime: json_.containsKey('searchTime')
+              ? (json_['searchTime'] as core.num).toDouble()
               : null,
-          totalResults: _json.containsKey('totalResults')
-              ? _json['totalResults'] as core.String
+          totalResults: json_.containsKey('totalResults')
+              ? json_['totalResults'] as core.String
               : null,
         );
 
@@ -2327,13 +2327,13 @@ class SearchSpelling {
     this.htmlCorrectedQuery,
   });
 
-  SearchSpelling.fromJson(core.Map _json)
+  SearchSpelling.fromJson(core.Map json_)
       : this(
-          correctedQuery: _json.containsKey('correctedQuery')
-              ? _json['correctedQuery'] as core.String
+          correctedQuery: json_.containsKey('correctedQuery')
+              ? json_['correctedQuery'] as core.String
               : null,
-          htmlCorrectedQuery: _json.containsKey('htmlCorrectedQuery')
-              ? _json['htmlCorrectedQuery'] as core.String
+          htmlCorrectedQuery: json_.containsKey('htmlCorrectedQuery')
+              ? json_['htmlCorrectedQuery'] as core.String
               : null,
         );
 
@@ -2360,12 +2360,12 @@ class SearchUrl {
     this.type,
   });
 
-  SearchUrl.fromJson(core.Map _json)
+  SearchUrl.fromJson(core.Map json_)
       : this(
-          template: _json.containsKey('template')
-              ? _json['template'] as core.String
+          template: json_.containsKey('template')
+              ? json_['template'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2425,39 +2425,39 @@ class Search {
     this.url,
   });
 
-  Search.fromJson(core.Map _json)
+  Search.fromJson(core.Map json_)
       : this(
-          context: _json.containsKey('context')
-              ? _json['context'] as core.Map<core.String, core.dynamic>
+          context: json_.containsKey('context')
+              ? json_['context'] as core.Map<core.String, core.dynamic>
               : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Result.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          promotions: _json.containsKey('promotions')
-              ? (_json['promotions'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          promotions: json_.containsKey('promotions')
+              ? (json_['promotions'] as core.List)
                   .map((value) => Promotion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          queries: _json.containsKey('queries')
+          queries: json_.containsKey('queries')
               ? SearchQueries.fromJson(
-                  _json['queries'] as core.Map<core.String, core.dynamic>)
+                  json_['queries'] as core.Map<core.String, core.dynamic>)
               : null,
-          searchInformation: _json.containsKey('searchInformation')
-              ? SearchSearchInformation.fromJson(_json['searchInformation']
+          searchInformation: json_.containsKey('searchInformation')
+              ? SearchSearchInformation.fromJson(json_['searchInformation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          spelling: _json.containsKey('spelling')
+          spelling: json_.containsKey('spelling')
               ? SearchSpelling.fromJson(
-                  _json['spelling'] as core.Map<core.String, core.dynamic>)
+                  json_['spelling'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: _json.containsKey('url')
+          url: json_.containsKey('url')
               ? SearchUrl.fromJson(
-                  _json['url'] as core.Map<core.String, core.dynamic>)
+                  json_['url'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

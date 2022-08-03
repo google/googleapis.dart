@@ -82,20 +82,20 @@ class ChallengeResource {
     Empty request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/challenge:generate';
+    const url_ = 'v2/challenge:generate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Challenge.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Challenge.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies the challenge response.
@@ -118,21 +118,21 @@ class ChallengeResource {
     VerifyChallengeResponseRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/challenge:verify';
+    const url_ = 'v2/challenge:verify';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return VerifyChallengeResponseResult.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -144,18 +144,18 @@ class Challenge {
   core.List<core.int> get alternativeChallengeAsBytes =>
       convert.base64.decode(alternativeChallenge!);
 
-  set alternativeChallengeAsBytes(core.List<core.int> _bytes) {
+  set alternativeChallengeAsBytes(core.List<core.int> bytes_) {
     alternativeChallenge =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Generated challenge, the bytes representation of SignedData.
   core.String? challenge;
   core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
 
-  set challengeAsBytes(core.List<core.int> _bytes) {
+  set challengeAsBytes(core.List<core.int> bytes_) {
     challenge =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   Challenge({
@@ -163,13 +163,13 @@ class Challenge {
     this.challenge,
   });
 
-  Challenge.fromJson(core.Map _json)
+  Challenge.fromJson(core.Map json_)
       : this(
-          alternativeChallenge: _json.containsKey('alternativeChallenge')
-              ? _json['alternativeChallenge'] as core.String
+          alternativeChallenge: json_.containsKey('alternativeChallenge')
+              ? json_['alternativeChallenge'] as core.String
               : null,
-          challenge: _json.containsKey('challenge')
-              ? _json['challenge'] as core.String
+          challenge: json_.containsKey('challenge')
+              ? json_['challenge'] as core.String
               : null,
         );
 
@@ -198,9 +198,9 @@ class VerifyChallengeResponseRequest {
   core.List<core.int> get challengeResponseAsBytes =>
       convert.base64.decode(challengeResponse!);
 
-  set challengeResponseAsBytes(core.List<core.int> _bytes) {
+  set challengeResponseAsBytes(core.List<core.int> bytes_) {
     challengeResponse =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Service can optionally provide identity information about the device or
@@ -218,13 +218,13 @@ class VerifyChallengeResponseRequest {
     this.expectedIdentity,
   });
 
-  VerifyChallengeResponseRequest.fromJson(core.Map _json)
+  VerifyChallengeResponseRequest.fromJson(core.Map json_)
       : this(
-          challengeResponse: _json.containsKey('challengeResponse')
-              ? _json['challengeResponse'] as core.String
+          challengeResponse: json_.containsKey('challengeResponse')
+              ? json_['challengeResponse'] as core.String
               : null,
-          expectedIdentity: _json.containsKey('expectedIdentity')
-              ? _json['expectedIdentity'] as core.String
+          expectedIdentity: json_.containsKey('expectedIdentity')
+              ? json_['expectedIdentity'] as core.String
               : null,
         );
 
@@ -268,20 +268,20 @@ class VerifyChallengeResponseResult {
     this.signedPublicKeyAndChallenge,
   });
 
-  VerifyChallengeResponseResult.fromJson(core.Map _json)
+  VerifyChallengeResponseResult.fromJson(core.Map json_)
       : this(
-          devicePermanentId: _json.containsKey('devicePermanentId')
-              ? _json['devicePermanentId'] as core.String
+          devicePermanentId: json_.containsKey('devicePermanentId')
+              ? json_['devicePermanentId'] as core.String
               : null,
-          deviceSignal: _json.containsKey('deviceSignal')
-              ? _json['deviceSignal'] as core.String
+          deviceSignal: json_.containsKey('deviceSignal')
+              ? json_['deviceSignal'] as core.String
               : null,
-          keyTrustLevel: _json.containsKey('keyTrustLevel')
-              ? _json['keyTrustLevel'] as core.String
+          keyTrustLevel: json_.containsKey('keyTrustLevel')
+              ? json_['keyTrustLevel'] as core.String
               : null,
           signedPublicKeyAndChallenge:
-              _json.containsKey('signedPublicKeyAndChallenge')
-                  ? _json['signedPublicKeyAndChallenge'] as core.String
+              json_.containsKey('signedPublicKeyAndChallenge')
+                  ? json_['signedPublicKeyAndChallenge'] as core.String
                   : null,
         );
 

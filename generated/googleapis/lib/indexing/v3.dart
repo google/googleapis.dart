@@ -82,20 +82,20 @@ class UrlNotificationsResource {
     core.String? url,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (url != null) 'url': [url],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v3/urlNotifications/metadata';
+    const url_ = 'v3/urlNotifications/metadata';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return UrlNotificationMetadata.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Notifies that a URL has been updated or deleted.
@@ -118,21 +118,21 @@ class UrlNotificationsResource {
     UrlNotification request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v3/urlNotifications:publish';
+    const url_ = 'v3/urlNotifications:publish';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return PublishUrlNotificationResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -145,11 +145,11 @@ class PublishUrlNotificationResponse {
     this.urlNotificationMetadata,
   });
 
-  PublishUrlNotificationResponse.fromJson(core.Map _json)
+  PublishUrlNotificationResponse.fromJson(core.Map json_)
       : this(
-          urlNotificationMetadata: _json.containsKey('urlNotificationMetadata')
+          urlNotificationMetadata: json_.containsKey('urlNotificationMetadata')
               ? UrlNotificationMetadata.fromJson(
-                  _json['urlNotificationMetadata']
+                  json_['urlNotificationMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -188,13 +188,13 @@ class UrlNotification {
     this.url,
   });
 
-  UrlNotification.fromJson(core.Map _json)
+  UrlNotification.fromJson(core.Map json_)
       : this(
-          notifyTime: _json.containsKey('notifyTime')
-              ? _json['notifyTime'] as core.String
+          notifyTime: json_.containsKey('notifyTime')
+              ? json_['notifyTime'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -222,17 +222,17 @@ class UrlNotificationMetadata {
     this.url,
   });
 
-  UrlNotificationMetadata.fromJson(core.Map _json)
+  UrlNotificationMetadata.fromJson(core.Map json_)
       : this(
-          latestRemove: _json.containsKey('latestRemove')
+          latestRemove: json_.containsKey('latestRemove')
               ? UrlNotification.fromJson(
-                  _json['latestRemove'] as core.Map<core.String, core.dynamic>)
+                  json_['latestRemove'] as core.Map<core.String, core.dynamic>)
               : null,
-          latestUpdate: _json.containsKey('latestUpdate')
+          latestUpdate: json_.containsKey('latestUpdate')
               ? UrlNotification.fromJson(
-                  _json['latestUpdate'] as core.Map<core.String, core.dynamic>)
+                  json_['latestUpdate'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

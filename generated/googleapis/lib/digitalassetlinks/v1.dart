@@ -83,21 +83,21 @@ class AssetlinksResource {
     BulkCheckRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/assetlinks:bulkCheck';
+    const url_ = 'v1/assetlinks:bulkCheck';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BulkCheckResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Determines whether the specified (directional) relationship exists between
@@ -224,7 +224,7 @@ class AssetlinksResource {
     core.String? target_web_site,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (relation != null) 'relation': [relation],
       if (source_androidApp_certificate_sha256Fingerprint != null)
         'source.androidApp.certificate.sha256Fingerprint': [
@@ -243,15 +243,15 @@ class AssetlinksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/assetlinks:check';
+    const url_ = 'v1/assetlinks:check';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CheckResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -340,7 +340,7 @@ class StatementsResource {
     core.String? source_web_site,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (relation != null) 'relation': [relation],
       if (source_androidApp_certificate_sha256Fingerprint != null)
         'source.androidApp.certificate.sha256Fingerprint': [
@@ -352,15 +352,15 @@ class StatementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/statements:list';
+    const url_ = 'v1/statements:list';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -391,14 +391,14 @@ class AndroidAppAsset {
     this.packageName,
   });
 
-  AndroidAppAsset.fromJson(core.Map _json)
+  AndroidAppAsset.fromJson(core.Map json_)
       : this(
-          certificate: _json.containsKey('certificate')
+          certificate: json_.containsKey('certificate')
               ? CertificateInfo.fromJson(
-                  _json['certificate'] as core.Map<core.String, core.dynamic>)
+                  json_['certificate'] as core.Map<core.String, core.dynamic>)
               : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
         );
 
@@ -425,15 +425,15 @@ class Asset {
     this.web,
   });
 
-  Asset.fromJson(core.Map _json)
+  Asset.fromJson(core.Map json_)
       : this(
-          androidApp: _json.containsKey('androidApp')
+          androidApp: json_.containsKey('androidApp')
               ? AndroidAppAsset.fromJson(
-                  _json['androidApp'] as core.Map<core.String, core.dynamic>)
+                  json_['androidApp'] as core.Map<core.String, core.dynamic>)
               : null,
-          web: _json.containsKey('web')
+          web: json_.containsKey('web')
               ? WebAsset.fromJson(
-                  _json['web'] as core.Map<core.String, core.dynamic>)
+                  json_['web'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -482,28 +482,28 @@ class BulkCheckRequest {
     this.statements,
   });
 
-  BulkCheckRequest.fromJson(core.Map _json)
+  BulkCheckRequest.fromJson(core.Map json_)
       : this(
           allowGoogleInternalDataSources:
-              _json.containsKey('allowGoogleInternalDataSources')
-                  ? _json['allowGoogleInternalDataSources'] as core.bool
+              json_.containsKey('allowGoogleInternalDataSources')
+                  ? json_['allowGoogleInternalDataSources'] as core.bool
                   : null,
-          defaultRelation: _json.containsKey('defaultRelation')
-              ? _json['defaultRelation'] as core.String
+          defaultRelation: json_.containsKey('defaultRelation')
+              ? json_['defaultRelation'] as core.String
               : null,
-          defaultSource: _json.containsKey('defaultSource')
+          defaultSource: json_.containsKey('defaultSource')
               ? Asset.fromJson(
-                  _json['defaultSource'] as core.Map<core.String, core.dynamic>)
+                  json_['defaultSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          defaultTarget: _json.containsKey('defaultTarget')
+          defaultTarget: json_.containsKey('defaultTarget')
               ? Asset.fromJson(
-                  _json['defaultTarget'] as core.Map<core.String, core.dynamic>)
+                  json_['defaultTarget'] as core.Map<core.String, core.dynamic>)
               : null,
-          skipCacheLookup: _json.containsKey('skipCacheLookup')
-              ? _json['skipCacheLookup'] as core.bool
+          skipCacheLookup: json_.containsKey('skipCacheLookup')
+              ? json_['skipCacheLookup'] as core.bool
               : null,
-          statements: _json.containsKey('statements')
-              ? (_json['statements'] as core.List)
+          statements: json_.containsKey('statements')
+              ? (json_['statements'] as core.List)
                   .map((value) => StatementTemplate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -559,13 +559,13 @@ class BulkCheckResponse {
     this.checkResults,
   });
 
-  BulkCheckResponse.fromJson(core.Map _json)
+  BulkCheckResponse.fromJson(core.Map json_)
       : this(
-          bulkErrorCode: _json.containsKey('bulkErrorCode')
-              ? _json['bulkErrorCode'] as core.String
+          bulkErrorCode: json_.containsKey('bulkErrorCode')
+              ? json_['bulkErrorCode'] as core.String
               : null,
-          checkResults: _json.containsKey('checkResults')
-              ? (_json['checkResults'] as core.List)
+          checkResults: json_.containsKey('checkResults')
+              ? (json_['checkResults'] as core.List)
                   .map((value) => CheckResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -601,10 +601,10 @@ class CertificateInfo {
     this.sha256Fingerprint,
   });
 
-  CertificateInfo.fromJson(core.Map _json)
+  CertificateInfo.fromJson(core.Map json_)
       : this(
-          sha256Fingerprint: _json.containsKey('sha256Fingerprint')
-              ? _json['sha256Fingerprint'] as core.String
+          sha256Fingerprint: json_.containsKey('sha256Fingerprint')
+              ? json_['sha256Fingerprint'] as core.String
               : null,
         );
 
@@ -645,20 +645,20 @@ class CheckResponse {
     this.maxAge,
   });
 
-  CheckResponse.fromJson(core.Map _json)
+  CheckResponse.fromJson(core.Map json_)
       : this(
-          debugString: _json.containsKey('debugString')
-              ? _json['debugString'] as core.String
+          debugString: json_.containsKey('debugString')
+              ? json_['debugString'] as core.String
               : null,
-          errorCode: _json.containsKey('errorCode')
-              ? (_json['errorCode'] as core.List)
+          errorCode: json_.containsKey('errorCode')
+              ? (json_['errorCode'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           linked:
-              _json.containsKey('linked') ? _json['linked'] as core.bool : null,
-          maxAge: _json.containsKey('maxAge')
-              ? _json['maxAge'] as core.String
+              json_.containsKey('linked') ? json_['linked'] as core.bool : null,
+          maxAge: json_.containsKey('maxAge')
+              ? json_['maxAge'] as core.String
               : null,
         );
 
@@ -701,21 +701,21 @@ class ListResponse {
     this.statements,
   });
 
-  ListResponse.fromJson(core.Map _json)
+  ListResponse.fromJson(core.Map json_)
       : this(
-          debugString: _json.containsKey('debugString')
-              ? _json['debugString'] as core.String
+          debugString: json_.containsKey('debugString')
+              ? json_['debugString'] as core.String
               : null,
-          errorCode: _json.containsKey('errorCode')
-              ? (_json['errorCode'] as core.List)
+          errorCode: json_.containsKey('errorCode')
+              ? (json_['errorCode'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          maxAge: _json.containsKey('maxAge')
-              ? _json['maxAge'] as core.String
+          maxAge: json_.containsKey('maxAge')
+              ? json_['maxAge'] as core.String
               : null,
-          statements: _json.containsKey('statements')
-              ? (_json['statements'] as core.List)
+          statements: json_.containsKey('statements')
+              ? (json_['statements'] as core.List)
                   .map((value) => Statement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -766,18 +766,18 @@ class Statement {
     this.target,
   });
 
-  Statement.fromJson(core.Map _json)
+  Statement.fromJson(core.Map json_)
       : this(
-          relation: _json.containsKey('relation')
-              ? _json['relation'] as core.String
+          relation: json_.containsKey('relation')
+              ? json_['relation'] as core.String
               : null,
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? Asset.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          target: _json.containsKey('target')
+          target: json_.containsKey('target')
               ? Asset.fromJson(
-                  _json['target'] as core.Map<core.String, core.dynamic>)
+                  json_['target'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -816,18 +816,18 @@ class StatementTemplate {
     this.target,
   });
 
-  StatementTemplate.fromJson(core.Map _json)
+  StatementTemplate.fromJson(core.Map json_)
       : this(
-          relation: _json.containsKey('relation')
-              ? _json['relation'] as core.String
+          relation: json_.containsKey('relation')
+              ? json_['relation'] as core.String
               : null,
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? Asset.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          target: _json.containsKey('target')
+          target: json_.containsKey('target')
               ? Asset.fromJson(
-                  _json['target'] as core.Map<core.String, core.dynamic>)
+                  json_['target'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -863,9 +863,9 @@ class WebAsset {
     this.site,
   });
 
-  WebAsset.fromJson(core.Map _json)
+  WebAsset.fromJson(core.Map json_)
       : this(
-          site: _json.containsKey('site') ? _json['site'] as core.String : null,
+          site: json_.containsKey('site') ? json_['site'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

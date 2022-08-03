@@ -114,24 +114,24 @@ class MediaResource {
     core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (mimeType != null) 'mimeType': [mimeType],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
       return Attachment.fromJson(
-          _response as core.Map<core.String, core.dynamic>);
+          response_ as core.Map<core.String, core.dynamic>);
     } else {
-      return _response as commons.Media;
+      return response_ as commons.Media;
     }
   }
 }
@@ -164,20 +164,20 @@ class NotesResource {
     Note request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/notes';
+    const url_ = 'v1/notes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Note.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Note.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a note.
@@ -205,18 +205,18 @@ class NotesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a note.
@@ -240,18 +240,18 @@ class NotesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Note.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Note.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists notes.
@@ -293,22 +293,22 @@ class NotesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/notes';
+    const url_ = 'v1/notes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListNotesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -346,22 +346,22 @@ class NotesPermissionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/permissions:batchCreate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchCreatePermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes one or more permissions on the note.
@@ -396,21 +396,21 @@ class NotesPermissionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/permissions:batchDelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -427,14 +427,14 @@ class Attachment {
     this.name,
   });
 
-  Attachment.fromJson(core.Map _json)
+  Attachment.fromJson(core.Map json_)
       : this(
-          mimeType: _json.containsKey('mimeType')
-              ? (_json['mimeType'] as core.List)
+          mimeType: json_.containsKey('mimeType')
+              ? (json_['mimeType'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -455,10 +455,10 @@ class BatchCreatePermissionsRequest {
     this.requests,
   });
 
-  BatchCreatePermissionsRequest.fromJson(core.Map _json)
+  BatchCreatePermissionsRequest.fromJson(core.Map json_)
       : this(
-          requests: _json.containsKey('requests')
-              ? (_json['requests'] as core.List)
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
                   .map((value) => CreatePermissionRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -479,10 +479,10 @@ class BatchCreatePermissionsResponse {
     this.permissions,
   });
 
-  BatchCreatePermissionsResponse.fromJson(core.Map _json)
+  BatchCreatePermissionsResponse.fromJson(core.Map json_)
       : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
                   .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -512,10 +512,10 @@ class BatchDeletePermissionsRequest {
     this.names,
   });
 
-  BatchDeletePermissionsRequest.fromJson(core.Map _json)
+  BatchDeletePermissionsRequest.fromJson(core.Map json_)
       : this(
-          names: _json.containsKey('names')
-              ? (_json['names'] as core.List)
+          names: json_.containsKey('names')
+              ? (json_['names'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -547,14 +547,14 @@ class CreatePermissionRequest {
     this.permission,
   });
 
-  CreatePermissionRequest.fromJson(core.Map _json)
+  CreatePermissionRequest.fromJson(core.Map json_)
       : this(
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
-          permission: _json.containsKey('permission')
+          permission: json_.containsKey('permission')
               ? Permission.fromJson(
-                  _json['permission'] as core.Map<core.String, core.dynamic>)
+                  json_['permission'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -584,10 +584,10 @@ class Group {
     this.email,
   });
 
-  Group.fromJson(core.Map _json)
+  Group.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -606,10 +606,10 @@ class ListContent {
     this.listItems,
   });
 
-  ListContent.fromJson(core.Map _json)
+  ListContent.fromJson(core.Map json_)
       : this(
-          listItems: _json.containsKey('listItems')
-              ? (_json['listItems'] as core.List)
+          listItems: json_.containsKey('listItems')
+              ? (json_['listItems'] as core.List)
                   .map((value) => ListItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -642,20 +642,20 @@ class ListItem {
     this.text,
   });
 
-  ListItem.fromJson(core.Map _json)
+  ListItem.fromJson(core.Map json_)
       : this(
-          checked: _json.containsKey('checked')
-              ? _json['checked'] as core.bool
+          checked: json_.containsKey('checked')
+              ? json_['checked'] as core.bool
               : null,
-          childListItems: _json.containsKey('childListItems')
-              ? (_json['childListItems'] as core.List)
+          childListItems: json_.containsKey('childListItems')
+              ? (json_['childListItems'] as core.List)
                   .map((value) => ListItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          text: _json.containsKey('text')
+          text: json_.containsKey('text')
               ? TextContent.fromJson(
-                  _json['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -679,13 +679,13 @@ class ListNotesResponse {
     this.notes,
   });
 
-  ListNotesResponse.fromJson(core.Map _json)
+  ListNotesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          notes: _json.containsKey('notes')
-              ? (_json['notes'] as core.List)
+          notes: json_.containsKey('notes')
+              ? (json_['notes'] as core.List)
                   .map((value) => Note.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -764,38 +764,38 @@ class Note {
     this.updateTime,
   });
 
-  Note.fromJson(core.Map _json)
+  Note.fromJson(core.Map json_)
       : this(
-          attachments: _json.containsKey('attachments')
-              ? (_json['attachments'] as core.List)
+          attachments: json_.containsKey('attachments')
+              ? (json_['attachments'] as core.List)
                   .map((value) => Attachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          body: _json.containsKey('body')
+          body: json_.containsKey('body')
               ? Section.fromJson(
-                  _json['body'] as core.Map<core.String, core.dynamic>)
+                  json_['body'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
                   .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          trashTime: _json.containsKey('trashTime')
-              ? _json['trashTime'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          trashTime: json_.containsKey('trashTime')
+              ? json_['trashTime'] as core.String
               : null,
-          trashed: _json.containsKey('trashed')
-              ? _json['trashed'] as core.bool
+          trashed: json_.containsKey('trashed')
+              ? json_['trashed'] as core.bool
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -872,26 +872,26 @@ class Permission {
     this.user,
   });
 
-  Permission.fromJson(core.Map _json)
+  Permission.fromJson(core.Map json_)
       : this(
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          family: _json.containsKey('family')
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          family: json_.containsKey('family')
               ? Family.fromJson(
-                  _json['family'] as core.Map<core.String, core.dynamic>)
+                  json_['family'] as core.Map<core.String, core.dynamic>)
               : null,
-          group: _json.containsKey('group')
+          group: json_.containsKey('group')
               ? Group.fromJson(
-                  _json['group'] as core.Map<core.String, core.dynamic>)
+                  json_['group'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-          user: _json.containsKey('user')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          user: json_.containsKey('user')
               ? User.fromJson(
-                  _json['user'] as core.Map<core.String, core.dynamic>)
+                  json_['user'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -921,15 +921,15 @@ class Section {
     this.text,
   });
 
-  Section.fromJson(core.Map _json)
+  Section.fromJson(core.Map json_)
       : this(
-          list: _json.containsKey('list')
+          list: json_.containsKey('list')
               ? ListContent.fromJson(
-                  _json['list'] as core.Map<core.String, core.dynamic>)
+                  json_['list'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text')
+          text: json_.containsKey('text')
               ? TextContent.fromJson(
-                  _json['text'] as core.Map<core.String, core.dynamic>)
+                  json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -950,9 +950,9 @@ class TextContent {
     this.text,
   });
 
-  TextContent.fromJson(core.Map _json)
+  TextContent.fromJson(core.Map json_)
       : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -969,10 +969,10 @@ class User {
     this.email,
   });
 
-  User.fromJson(core.Map _json)
+  User.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

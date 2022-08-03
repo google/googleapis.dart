@@ -109,19 +109,19 @@ class CustomersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalCustomer.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of requested customers.
@@ -148,21 +148,21 @@ class CustomersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/customers';
+    const url_ = 'v1alpha1/customers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListCustomersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing customer.
@@ -192,22 +192,22 @@ class CustomersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalCustomer.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -245,21 +245,21 @@ class CustomersDeploymentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a deployment.
@@ -283,19 +283,19 @@ class CustomersDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested deployment.
@@ -319,19 +319,19 @@ class CustomersDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -368,22 +368,22 @@ class CustomersDeploymentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a deployment under another node or customer.
@@ -410,21 +410,21 @@ class CustomersDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing deployment.
@@ -454,22 +454,22 @@ class CustomersDeploymentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -503,21 +503,21 @@ class CustomersDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -544,22 +544,22 @@ class CustomersDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -597,22 +597,22 @@ class CustomersDeploymentsDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -645,21 +645,21 @@ class CustomersDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -686,22 +686,22 @@ class CustomersDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device.
@@ -725,19 +725,19 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -761,19 +761,19 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -811,22 +811,22 @@ class CustomersDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a device under another node or customer.
@@ -853,21 +853,21 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -897,22 +897,22 @@ class CustomersDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a device.
@@ -939,21 +939,21 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a signed device.
@@ -980,21 +980,21 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1035,21 +1035,21 @@ class CustomersNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a node.
@@ -1073,19 +1073,19 @@ class CustomersNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested node.
@@ -1109,19 +1109,19 @@ class CustomersNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -1157,22 +1157,22 @@ class CustomersNodesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a node under another node or customer.
@@ -1199,21 +1199,21 @@ class CustomersNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing node.
@@ -1243,22 +1243,22 @@ class CustomersNodesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1293,21 +1293,21 @@ class CustomersNodesDeploymentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -1344,22 +1344,22 @@ class CustomersNodesDeploymentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1393,21 +1393,21 @@ class CustomersNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -1434,22 +1434,22 @@ class CustomersNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -1487,22 +1487,22 @@ class CustomersNodesDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1537,21 +1537,21 @@ class CustomersNodesNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -1587,22 +1587,22 @@ class CustomersNodesNodesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1635,19 +1635,19 @@ class DeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1677,19 +1677,19 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -1713,19 +1713,19 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a device under another node or customer.
@@ -1752,21 +1752,21 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -1796,22 +1796,22 @@ class DeploymentsDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a device.
@@ -1838,21 +1838,21 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a signed device.
@@ -1879,21 +1879,21 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1922,21 +1922,21 @@ class InstallerResource {
     SasPortalGenerateSecretRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/installer:generateSecret';
+    const url_ = 'v1alpha1/installer:generateSecret';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalGenerateSecretResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates the identity of a Certified Professional Installer (CPI).
@@ -1959,21 +1959,21 @@ class InstallerResource {
     SasPortalValidateInstallerRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/installer:validate';
+    const url_ = 'v1alpha1/installer:validate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalValidateInstallerResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2008,19 +2008,19 @@ class NodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2053,19 +2053,19 @@ class NodesDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested deployment.
@@ -2089,19 +2089,19 @@ class NodesDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -2138,22 +2138,22 @@ class NodesDeploymentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a deployment under another node or customer.
@@ -2180,21 +2180,21 @@ class NodesDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing deployment.
@@ -2224,22 +2224,22 @@ class NodesDeploymentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2273,21 +2273,21 @@ class NodesDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -2314,22 +2314,22 @@ class NodesDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -2367,22 +2367,22 @@ class NodesDeploymentsDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2415,21 +2415,21 @@ class NodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -2456,22 +2456,22 @@ class NodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device.
@@ -2495,19 +2495,19 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -2531,19 +2531,19 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -2581,22 +2581,22 @@ class NodesDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a device under another node or customer.
@@ -2623,21 +2623,21 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -2667,22 +2667,22 @@ class NodesDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a device.
@@ -2709,21 +2709,21 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':signDevice';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a signed device.
@@ -2750,21 +2750,21 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':updateSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2804,21 +2804,21 @@ class NodesNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a node.
@@ -2842,19 +2842,19 @@ class NodesNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested node.
@@ -2878,19 +2878,19 @@ class NodesNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -2926,22 +2926,22 @@ class NodesNodesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a node under another node or customer.
@@ -2968,21 +2968,21 @@ class NodesNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name') + ':move';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing node.
@@ -3012,22 +3012,22 @@ class NodesNodesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3062,21 +3062,21 @@ class NodesNodesDeploymentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -3113,22 +3113,22 @@ class NodesNodesDeploymentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3161,21 +3161,21 @@ class NodesNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -3202,22 +3202,22 @@ class NodesNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices:createSigned';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -3255,22 +3255,22 @@ class NodesNodesDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3304,21 +3304,21 @@ class NodesNodesNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -3354,22 +3354,22 @@ class NodesNodesNodesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/nodes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3401,21 +3401,21 @@ class PoliciesResource {
     SasPortalGetPolicyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/policies:get';
+    const url_ = 'v1alpha1/policies:get';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalPolicy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3440,21 +3440,21 @@ class PoliciesResource {
     SasPortalSetPolicyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/policies:set';
+    const url_ = 'v1alpha1/policies:set';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalPolicy.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3477,21 +3477,21 @@ class PoliciesResource {
     SasPortalTestPermissionsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/policies:test';
+    const url_ = 'v1alpha1/policies:test';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SasPortalTestPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3511,14 +3511,14 @@ class SasPortalChannelWithScore {
     this.score,
   });
 
-  SasPortalChannelWithScore.fromJson(core.Map _json)
+  SasPortalChannelWithScore.fromJson(core.Map json_)
       : this(
-          frequencyRange: _json.containsKey('frequencyRange')
-              ? SasPortalFrequencyRange.fromJson(_json['frequencyRange']
+          frequencyRange: json_.containsKey('frequencyRange')
+              ? SasPortalFrequencyRange.fromJson(json_['frequencyRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
               : null,
         );
 
@@ -3603,49 +3603,49 @@ class SasPortalDevice {
     this.state,
   });
 
-  SasPortalDevice.fromJson(core.Map _json)
+  SasPortalDevice.fromJson(core.Map json_)
       : this(
-          activeConfig: _json.containsKey('activeConfig')
+          activeConfig: json_.containsKey('activeConfig')
               ? SasPortalDeviceConfig.fromJson(
-                  _json['activeConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['activeConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          currentChannels: _json.containsKey('currentChannels')
-              ? (_json['currentChannels'] as core.List)
+          currentChannels: json_.containsKey('currentChannels')
+              ? (json_['currentChannels'] as core.List)
                   .map((value) => SasPortalChannelWithScore.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          deviceMetadata: _json.containsKey('deviceMetadata')
-              ? SasPortalDeviceMetadata.fromJson(_json['deviceMetadata']
+          deviceMetadata: json_.containsKey('deviceMetadata')
+              ? SasPortalDeviceMetadata.fromJson(json_['deviceMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
           fccId:
-              _json.containsKey('fccId') ? _json['fccId'] as core.String : null,
-          grantRangeAllowlists: _json.containsKey('grantRangeAllowlists')
-              ? (_json['grantRangeAllowlists'] as core.List)
+              json_.containsKey('fccId') ? json_['fccId'] as core.String : null,
+          grantRangeAllowlists: json_.containsKey('grantRangeAllowlists')
+              ? (json_['grantRangeAllowlists'] as core.List)
                   .map((value) => SasPortalFrequencyRange.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          grants: _json.containsKey('grants')
-              ? (_json['grants'] as core.List)
+          grants: json_.containsKey('grants')
+              ? (json_['grants'] as core.List)
                   .map((value) => SasPortalDeviceGrant.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          preloadedConfig: _json.containsKey('preloadedConfig')
-              ? SasPortalDeviceConfig.fromJson(_json['preloadedConfig']
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          preloadedConfig: json_.containsKey('preloadedConfig')
+              ? SasPortalDeviceConfig.fromJson(json_['preloadedConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          serialNumber: _json.containsKey('serialNumber')
-              ? _json['serialNumber'] as core.String
+          serialNumber: json_.containsKey('serialNumber')
+              ? json_['serialNumber'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3724,41 +3724,41 @@ class SasPortalDeviceConfig {
     this.userId,
   });
 
-  SasPortalDeviceConfig.fromJson(core.Map _json)
+  SasPortalDeviceConfig.fromJson(core.Map json_)
       : this(
-          airInterface: _json.containsKey('airInterface')
+          airInterface: json_.containsKey('airInterface')
               ? SasPortalDeviceAirInterface.fromJson(
-                  _json['airInterface'] as core.Map<core.String, core.dynamic>)
+                  json_['airInterface'] as core.Map<core.String, core.dynamic>)
               : null,
-          callSign: _json.containsKey('callSign')
-              ? _json['callSign'] as core.String
+          callSign: json_.containsKey('callSign')
+              ? json_['callSign'] as core.String
               : null,
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
               : null,
-          installationParams: _json.containsKey('installationParams')
-              ? SasPortalInstallationParams.fromJson(_json['installationParams']
+          installationParams: json_.containsKey('installationParams')
+              ? SasPortalInstallationParams.fromJson(json_['installationParams']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          isSigned: _json.containsKey('isSigned')
-              ? _json['isSigned'] as core.bool
+          isSigned: json_.containsKey('isSigned')
+              ? json_['isSigned'] as core.bool
               : null,
-          measurementCapabilities: _json.containsKey('measurementCapabilities')
-              ? (_json['measurementCapabilities'] as core.List)
+          measurementCapabilities: json_.containsKey('measurementCapabilities')
+              ? (json_['measurementCapabilities'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          model: _json.containsKey('model')
+          model: json_.containsKey('model')
               ? SasPortalDeviceModel.fromJson(
-                  _json['model'] as core.Map<core.String, core.dynamic>)
+                  json_['model'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -3840,38 +3840,38 @@ class SasPortalDeviceGrant {
     this.suspensionReason,
   });
 
-  SasPortalDeviceGrant.fromJson(core.Map _json)
+  SasPortalDeviceGrant.fromJson(core.Map json_)
       : this(
-          channelType: _json.containsKey('channelType')
-              ? _json['channelType'] as core.String
+          channelType: json_.containsKey('channelType')
+              ? json_['channelType'] as core.String
               : null,
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
-          frequencyRange: _json.containsKey('frequencyRange')
-              ? SasPortalFrequencyRange.fromJson(_json['frequencyRange']
+          frequencyRange: json_.containsKey('frequencyRange')
+              ? SasPortalFrequencyRange.fromJson(json_['frequencyRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          grantId: _json.containsKey('grantId')
-              ? _json['grantId'] as core.String
+          grantId: json_.containsKey('grantId')
+              ? json_['grantId'] as core.String
               : null,
           lastHeartbeatTransmitExpireTime:
-              _json.containsKey('lastHeartbeatTransmitExpireTime')
-                  ? _json['lastHeartbeatTransmitExpireTime'] as core.String
+              json_.containsKey('lastHeartbeatTransmitExpireTime')
+                  ? json_['lastHeartbeatTransmitExpireTime'] as core.String
                   : null,
-          maxEirp: _json.containsKey('maxEirp')
-              ? (_json['maxEirp'] as core.num).toDouble()
+          maxEirp: json_.containsKey('maxEirp')
+              ? (json_['maxEirp'] as core.num).toDouble()
               : null,
-          moveList: _json.containsKey('moveList')
-              ? (_json['moveList'] as core.List)
+          moveList: json_.containsKey('moveList')
+              ? (json_['moveList'] as core.List)
                   .map((value) => SasPortalDpaMoveList.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          suspensionReason: _json.containsKey('suspensionReason')
-              ? (_json['suspensionReason'] as core.List)
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          suspensionReason: json_.containsKey('suspensionReason')
+              ? (json_['suspensionReason'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3929,23 +3929,23 @@ class SasPortalDeviceMetadata {
     this.nrqzValidation,
   });
 
-  SasPortalDeviceMetadata.fromJson(core.Map _json)
+  SasPortalDeviceMetadata.fromJson(core.Map json_)
       : this(
-          antennaModel: _json.containsKey('antennaModel')
-              ? _json['antennaModel'] as core.String
+          antennaModel: json_.containsKey('antennaModel')
+              ? json_['antennaModel'] as core.String
               : null,
-          commonChannelGroup: _json.containsKey('commonChannelGroup')
-              ? _json['commonChannelGroup'] as core.String
+          commonChannelGroup: json_.containsKey('commonChannelGroup')
+              ? json_['commonChannelGroup'] as core.String
               : null,
           interferenceCoordinationGroup:
-              _json.containsKey('interferenceCoordinationGroup')
-                  ? _json['interferenceCoordinationGroup'] as core.String
+              json_.containsKey('interferenceCoordinationGroup')
+                  ? json_['interferenceCoordinationGroup'] as core.String
                   : null,
-          nrqzValidated: _json.containsKey('nrqzValidated')
-              ? _json['nrqzValidated'] as core.bool
+          nrqzValidated: json_.containsKey('nrqzValidated')
+              ? json_['nrqzValidated'] as core.bool
               : null,
-          nrqzValidation: _json.containsKey('nrqzValidation')
-              ? SasPortalNrqzValidation.fromJson(_json['nrqzValidation']
+          nrqzValidation: json_.containsKey('nrqzValidation')
+              ? SasPortalNrqzValidation.fromJson(json_['nrqzValidation']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3977,12 +3977,12 @@ class SasPortalDpaMoveList {
     this.frequencyRange,
   });
 
-  SasPortalDpaMoveList.fromJson(core.Map _json)
+  SasPortalDpaMoveList.fromJson(core.Map json_)
       : this(
           dpaId:
-              _json.containsKey('dpaId') ? _json['dpaId'] as core.String : null,
-          frequencyRange: _json.containsKey('frequencyRange')
-              ? SasPortalFrequencyRange.fromJson(_json['frequencyRange']
+              json_.containsKey('dpaId') ? json_['dpaId'] as core.String : null,
+          frequencyRange: json_.containsKey('frequencyRange')
+              ? SasPortalFrequencyRange.fromJson(json_['frequencyRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -4032,16 +4032,16 @@ class SasPortalListCustomersResponse {
     this.nextPageToken,
   });
 
-  SasPortalListCustomersResponse.fromJson(core.Map _json)
+  SasPortalListCustomersResponse.fromJson(core.Map json_)
       : this(
-          customers: _json.containsKey('customers')
-              ? (_json['customers'] as core.List)
+          customers: json_.containsKey('customers')
+              ? (json_['customers'] as core.List)
                   .map((value) => SasPortalCustomer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4067,16 +4067,16 @@ class SasPortalListDeploymentsResponse {
     this.nextPageToken,
   });
 
-  SasPortalListDeploymentsResponse.fromJson(core.Map _json)
+  SasPortalListDeploymentsResponse.fromJson(core.Map json_)
       : this(
-          deployments: _json.containsKey('deployments')
-              ? (_json['deployments'] as core.List)
+          deployments: json_.containsKey('deployments')
+              ? (json_['deployments'] as core.List)
                   .map((value) => SasPortalDeployment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4102,16 +4102,16 @@ class SasPortalListDevicesResponse {
     this.nextPageToken,
   });
 
-  SasPortalListDevicesResponse.fromJson(core.Map _json)
+  SasPortalListDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: _json.containsKey('devices')
-              ? (_json['devices'] as core.List)
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
                   .map((value) => SasPortalDevice.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4137,13 +4137,13 @@ class SasPortalListNodesResponse {
     this.nodes,
   });
 
-  SasPortalListNodesResponse.fromJson(core.Map _json)
+  SasPortalListNodesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          nodes: _json.containsKey('nodes')
-              ? (_json['nodes'] as core.List)
+          nodes: json_.containsKey('nodes')
+              ? (json_['nodes'] as core.List)
                   .map((value) => SasPortalNode.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4222,19 +4222,19 @@ class SasPortalOperation {
     this.response,
   });
 
-  SasPortalOperation.fromJson(core.Map _json)
+  SasPortalOperation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? SasPortalStatus.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -4265,9 +4265,9 @@ class SasPortalPolicy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SasPortalPolicy({
@@ -4275,15 +4275,15 @@ class SasPortalPolicy {
     this.etag,
   });
 
-  SasPortalPolicy.fromJson(core.Map _json)
+  SasPortalPolicy.fromJson(core.Map json_)
       : this(
-          assignments: _json.containsKey('assignments')
-              ? (_json['assignments'] as core.List)
+          assignments: json_.containsKey('assignments')
+              ? (json_['assignments'] as core.List)
                   .map((value) => SasPortalAssignment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4318,17 +4318,17 @@ class SasPortalSetPolicyRequest {
     this.resource,
   });
 
-  SasPortalSetPolicyRequest.fromJson(core.Map _json)
+  SasPortalSetPolicyRequest.fromJson(core.Map json_)
       : this(
-          disableNotification: _json.containsKey('disableNotification')
-              ? _json['disableNotification'] as core.bool
+          disableNotification: json_.containsKey('disableNotification')
+              ? json_['disableNotification'] as core.bool
               : null,
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? SasPortalPolicy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.String
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
               : null,
         );
 
@@ -4354,11 +4354,11 @@ class SasPortalSignDeviceRequest {
     this.device,
   });
 
-  SasPortalSignDeviceRequest.fromJson(core.Map _json)
+  SasPortalSignDeviceRequest.fromJson(core.Map json_)
       : this(
-          device: _json.containsKey('device')
+          device: json_.containsKey('device')
               ? SasPortalDevice.fromJson(
-                  _json['device'] as core.Map<core.String, core.dynamic>)
+                  json_['device'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

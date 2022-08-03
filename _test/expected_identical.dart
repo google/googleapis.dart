@@ -72,16 +72,16 @@ class ToyApi {
   async.Future<void> failing({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'failing';
+    const url_ = 'failing';
 
     await _requester.request(
-      _url,
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -101,19 +101,19 @@ class ToyApi {
   async.Future<ToyResponse> hello({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'hello';
+    const url_ = 'hello';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -134,21 +134,21 @@ class ToyApi {
     core.List<ToyRequest> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(
+    final body_ = convert.json.encode(
         request.map((value) => ToyRequestFactory.toJson(value)).toList());
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloListOfClass';
+    const url_ = 'helloListOfClass';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.Map<core.String, core.dynamic>).map(
+    return (response_ as core.Map<core.String, core.dynamic>).map(
       (key, item) => core.MapEntry(
         key,
         ToyResponseFactory.fromJson(
@@ -175,23 +175,23 @@ class ToyApi {
     core.List<core.List<ToyRequest>> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request
+    final body_ = convert.json.encode(request
         .map((value) =>
             value.map((value) => ToyRequestFactory.toJson(value)).toList())
         .toList());
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloListOfListOfClass';
+    const url_ = 'helloListOfListOfClass';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.Map<core.String, core.dynamic>).map(
+    return (response_ as core.Map<core.String, core.dynamic>).map(
       (key, item) => core.MapEntry(
         key,
         ToyResponseFactory.fromJson(
@@ -218,20 +218,20 @@ class ToyApi {
     core.Map<core.String, core.int> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloMap';
+    const url_ = 'helloMap';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.Map<core.String, core.dynamic>).map(
+    return (response_ as core.Map<core.String, core.dynamic>).map(
       (key, item) => core.MapEntry(
         key,
         item as core.int,
@@ -260,22 +260,22 @@ class ToyApi {
     core.int age, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'hello/' +
+    final url_ = 'hello/' +
         commons.escapeVariable('$name') +
         '/age/' +
         commons.escapeVariable('$age');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -299,21 +299,21 @@ class ToyApi {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(ToyAgeRequestFactory.toJson(request));
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(ToyAgeRequestFactory.toJson(request));
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'helloPost/' + commons.escapeVariable('$name');
+    final url_ = 'helloPost/' + commons.escapeVariable('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -340,21 +340,21 @@ class ToyApi {
     core.int? age,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'foo': [foo],
       if (age != null) 'age': ['${age}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'helloQuery/' + commons.escapeVariable('$name');
+    final url_ = 'helloQuery/' + commons.escapeVariable('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -375,20 +375,20 @@ class ToyApi {
     core.List<core.List<core.int>> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloNestedListList';
+    const url_ = 'helloNestedListList';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.List)
+    return (response_ as core.List)
         .map((value) =>
             (value as core.List).map((value) => value as core.String).toList())
         .toList();
@@ -414,20 +414,20 @@ class ToyApi {
     core.List<core.Map<core.String, core.List<core.int>>> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloNestedListMapList';
+    const url_ = 'helloNestedListMapList';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.List)
+    return (response_ as core.List)
         .map((value) => (value as core.Map<core.String, core.dynamic>).map(
               (key, item) => core.MapEntry(
                 key,
@@ -454,19 +454,19 @@ class ToyApi {
   async.Future<ToyMapResponse> helloNestedMap({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloNestedMap';
+    const url_ = 'helloNestedMap';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyMapResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -490,20 +490,20 @@ class ToyApi {
     core.Map<core.String, core.List<core.Map<core.String, core.int>>> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloNestedMapListMap';
+    const url_ = 'helloNestedMapListMap';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.Map<core.String, core.dynamic>).map(
+    return (response_ as core.Map<core.String, core.dynamic>).map(
       (key, item) => core.MapEntry(
         key,
         (item as core.List)
@@ -538,20 +538,20 @@ class ToyApi {
     core.Map<core.String, core.Map<core.String, core.int>> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloNestedMapMap';
+    const url_ = 'helloNestedMapMap';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.Map<core.String, core.dynamic>).map(
+    return (response_ as core.Map<core.String, core.dynamic>).map(
       (key, item) => core.MapEntry(
         key,
         (item as core.Map<core.String, core.dynamic>).map(
@@ -582,21 +582,21 @@ class ToyApi {
     ToyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(ToyRequestFactory.toJson(request));
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(ToyRequestFactory.toJson(request));
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloPost';
+    const url_ = 'helloPost';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -614,19 +614,19 @@ class ToyApi {
   async.Future<ToyResponse> helloReturnNull({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloReturnNull';
+    const url_ = 'helloReturnNull';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -644,19 +644,19 @@ class ToyApi {
   async.Future<ToyResponse> helloVoid({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'helloVoid';
+    const url_ = 'helloVoid';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -672,16 +672,16 @@ class ToyApi {
   async.Future<void> noop({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'noop';
+    const url_ = 'noop';
 
     await _requester.request(
-      _url,
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -704,20 +704,20 @@ class ToyApi {
     core.List<core.String> request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'reverseList';
+    const url_ = 'reverseList';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return (_response as core.List)
+    return (response_ as core.List)
         .map((value) => value as core.String)
         .toList();
   }
@@ -761,23 +761,23 @@ class ComputeResource {
     core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/media/' + core.Uri.encodeFull('$resourceName');
+    final url_ = 'v1/media/' + core.Uri.encodeFull('$resourceName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
       return ToyResourceResponseFactory.fromJson(
-          _response as core.Map<core.String, core.dynamic>);
+          response_ as core.Map<core.String, core.dynamic>);
     } else {
-      return _response as commons.Media;
+      return response_ as commons.Media;
     }
   }
 
@@ -810,23 +810,23 @@ class ComputeResource {
     core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'mimeType': [mimeType],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'files/' + commons.escapeVariable('$fileId') + '/export';
+    final url_ = 'files/' + commons.escapeVariable('$fileId') + '/export';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
-      return _response as commons.Media;
+      return response_ as commons.Media;
     }
   }
 
@@ -852,22 +852,22 @@ class ComputeResource {
     core.String compute, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'toyresource/' +
+    final url_ = 'toyresource/' +
         commons.escapeVariable('$resource') +
         '/compute/' +
         commons.escapeVariable('$compute');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyResourceResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -899,67 +899,67 @@ class StorageResource {
     core.String storage, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'toyresource/' +
+    final url_ = 'toyresource/' +
         commons.escapeVariable('$resource') +
         '/storage/' +
         commons.escapeVariable('$storage');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ToyResourceResponseFactory.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
 class NestedResponseFactory {
-  static NestedResponse fromJson(core.Map _json) {
+  static NestedResponse fromJson(core.Map json_) {
     final message = NestedResponse();
-    if (_json.containsKey('nestedResult')) {
-      message.nestedResult = _json['nestedResult'] as core.String;
+    if (json_.containsKey('nestedResult')) {
+      message.nestedResult = json_['nestedResult'] as core.String;
     }
     return message;
   }
 
   static core.Map<core.String, core.dynamic> toJson(NestedResponse message) {
-    final _json = <core.String, core.dynamic>{};
+    final json_ = <core.String, core.dynamic>{};
     if (message.nestedResult != null) {
-      _json['nestedResult'] = message.nestedResult!;
+      json_['nestedResult'] = message.nestedResult!;
     }
-    return _json;
+    return json_;
   }
 }
 
 class ToyAgeRequestFactory {
-  static ToyAgeRequest fromJson(core.Map _json) {
+  static ToyAgeRequest fromJson(core.Map json_) {
     final message = ToyAgeRequest();
-    if (_json.containsKey('age')) {
-      message.age = _json['age'] as core.int;
+    if (json_.containsKey('age')) {
+      message.age = json_['age'] as core.int;
     }
     return message;
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyAgeRequest message) {
-    final _json = <core.String, core.dynamic>{};
+    final json_ = <core.String, core.dynamic>{};
     if (message.age != null) {
-      _json['age'] = message.age!;
+      json_['age'] = message.age!;
     }
-    return _json;
+    return json_;
   }
 }
 
 class ToyMapResponseFactory {
-  static ToyMapResponse fromJson(core.Map _json) {
+  static ToyMapResponse fromJson(core.Map json_) {
     final message = ToyMapResponse();
-    if (_json.containsKey('mapResult')) {
+    if (json_.containsKey('mapResult')) {
       message.mapResult =
-          (_json['mapResult'] as core.Map<core.String, core.dynamic>).map(
+          (json_['mapResult'] as core.Map<core.String, core.dynamic>).map(
         (key, item) => core.MapEntry(
           key,
           NestedResponseFactory.fromJson(
@@ -967,114 +967,114 @@ class ToyMapResponseFactory {
         ),
       );
     }
-    if (_json.containsKey('msgValue')) {
-      message.msgValue = (_json['msgValue'] as core.List)
+    if (json_.containsKey('msgValue')) {
+      message.msgValue = (json_['msgValue'] as core.List)
           .map((value) => value as core.Map<core.String, core.dynamic>)
           .toList();
     }
-    if (_json.containsKey('nullValue')) {
-      message.nullValue = _json['nullValue'] as core.String;
+    if (json_.containsKey('nullValue')) {
+      message.nullValue = json_['nullValue'] as core.String;
     }
-    if (_json.containsKey('properties')) {
+    if (json_.containsKey('properties')) {
       message.properties =
-          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+          (json_['properties'] as core.Map<core.String, core.dynamic>).map(
         (key, item) => core.MapEntry(
           key,
           item as core.String,
         ),
       );
     }
-    if (_json.containsKey('result')) {
-      message.result = _json['result'] as core.String;
+    if (json_.containsKey('result')) {
+      message.result = json_['result'] as core.String;
     }
-    if (_json.containsKey('v')) {
-      message.v = _json['v'];
+    if (json_.containsKey('v')) {
+      message.v = json_['v'];
     }
     return message;
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyMapResponse message) {
-    final _json = <core.String, core.dynamic>{};
+    final json_ = <core.String, core.dynamic>{};
     if (message.mapResult != null) {
-      _json['mapResult'] = message.mapResult!.map((key, item) =>
+      json_['mapResult'] = message.mapResult!.map((key, item) =>
           core.MapEntry(key, NestedResponseFactory.toJson(item)));
     }
     if (message.msgValue != null) {
-      _json['msgValue'] = message.msgValue!;
+      json_['msgValue'] = message.msgValue!;
     }
     if (message.nullValue != null) {
-      _json['nullValue'] = message.nullValue!;
+      json_['nullValue'] = message.nullValue!;
     }
     if (message.properties != null) {
-      _json['properties'] = message.properties!;
+      json_['properties'] = message.properties!;
     }
     if (message.result != null) {
-      _json['result'] = message.result!;
+      json_['result'] = message.result!;
     }
     if (message.v != null) {
-      _json['v'] = message.v!;
+      json_['v'] = message.v!;
     }
-    return _json;
+    return json_;
   }
 }
 
 class ToyRequestFactory {
-  static ToyRequest fromJson(core.Map _json) {
+  static ToyRequest fromJson(core.Map json_) {
     final message = ToyRequest();
-    if (_json.containsKey('age')) {
-      message.age = _json['age'] as core.int;
+    if (json_.containsKey('age')) {
+      message.age = json_['age'] as core.int;
     }
-    if (_json.containsKey('name')) {
-      message.name = _json['name'] as core.String;
+    if (json_.containsKey('name')) {
+      message.name = json_['name'] as core.String;
     }
     return message;
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyRequest message) {
-    final _json = <core.String, core.dynamic>{};
+    final json_ = <core.String, core.dynamic>{};
     if (message.age != null) {
-      _json['age'] = message.age!;
+      json_['age'] = message.age!;
     }
     if (message.name != null) {
-      _json['name'] = message.name!;
+      json_['name'] = message.name!;
     }
-    return _json;
+    return json_;
   }
 }
 
 class ToyResourceResponseFactory {
-  static ToyResourceResponse fromJson(core.Map _json) {
+  static ToyResourceResponse fromJson(core.Map json_) {
     final message = ToyResourceResponse();
-    if (_json.containsKey('result')) {
-      message.result = _json['result'] as core.String;
+    if (json_.containsKey('result')) {
+      message.result = json_['result'] as core.String;
     }
     return message;
   }
 
   static core.Map<core.String, core.dynamic> toJson(
       ToyResourceResponse message) {
-    final _json = <core.String, core.dynamic>{};
+    final json_ = <core.String, core.dynamic>{};
     if (message.result != null) {
-      _json['result'] = message.result!;
+      json_['result'] = message.result!;
     }
-    return _json;
+    return json_;
   }
 }
 
 class ToyResponseFactory {
-  static ToyResponse fromJson(core.Map _json) {
+  static ToyResponse fromJson(core.Map json_) {
     final message = ToyResponse();
-    if (_json.containsKey('result')) {
-      message.result = _json['result'] as core.String;
+    if (json_.containsKey('result')) {
+      message.result = json_['result'] as core.String;
     }
     return message;
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyResponse message) {
-    final _json = <core.String, core.dynamic>{};
+    final json_ = <core.String, core.dynamic>{};
     if (message.result != null) {
-      _json['result'] = message.result!;
+      json_['result'] = message.result!;
     }
-    return _json;
+    return json_;
   }
 }

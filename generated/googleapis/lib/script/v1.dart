@@ -195,7 +195,7 @@ class ProcessesResource {
     core.List<core.String>? userProcessFilter_userAccessLevels,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (userProcessFilter_deploymentId != null)
@@ -220,15 +220,15 @@ class ProcessesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/processes';
+    const url_ = 'v1/processes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListUserProcessesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List information about a script's executed processes, such as process type
@@ -292,7 +292,7 @@ class ProcessesResource {
     core.List<core.String>? scriptProcessFilter_userAccessLevels,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (scriptId != null) 'scriptId': [scriptId],
@@ -314,15 +314,15 @@ class ProcessesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/processes:listScriptProcesses';
+    const url_ = 'v1/processes:listScriptProcesses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListScriptProcessesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -356,20 +356,20 @@ class ProjectsResource {
     CreateProjectRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/projects';
+    const url_ = 'v1/projects';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Project.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a script project's metadata.
@@ -392,18 +392,18 @@ class ProjectsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' + commons.escapeVariable('$scriptId');
+    final url_ = 'v1/projects/' + commons.escapeVariable('$scriptId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Project.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the content of the script project, including the code source and
@@ -431,20 +431,20 @@ class ProjectsResource {
     core.int? versionNumber,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (versionNumber != null) 'versionNumber': ['${versionNumber}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$scriptId') + '/content';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Content.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Content.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get metrics data for scripts, such as number of executions and active
@@ -481,7 +481,7 @@ class ProjectsResource {
     core.String? metricsGranularity,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (metricsFilter_deploymentId != null)
         'metricsFilter.deploymentId': [metricsFilter_deploymentId],
       if (metricsGranularity != null)
@@ -489,15 +489,15 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$scriptId') + '/metrics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Metrics.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Metrics.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the content of the specified script project.
@@ -528,21 +528,21 @@ class ProjectsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$scriptId') + '/content';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Content.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Content.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -575,22 +575,22 @@ class ProjectsDeploymentsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$scriptId') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a deployment of an Apps Script project.
@@ -616,21 +616,21 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$scriptId') +
         '/deployments/' +
         commons.escapeVariable('$deploymentId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a deployment of an Apps Script project.
@@ -656,22 +656,22 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$scriptId') +
         '/deployments/' +
         commons.escapeVariable('$deploymentId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the deployments of an Apps Script project.
@@ -703,22 +703,22 @@ class ProjectsDeploymentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$scriptId') + '/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDeploymentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a deployment of an Apps Script project.
@@ -747,24 +747,24 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$scriptId') +
         '/deployments/' +
         commons.escapeVariable('$deploymentId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -797,21 +797,21 @@ class ProjectsVersionsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$scriptId') + '/versions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Version.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a version of a script project.
@@ -837,21 +837,21 @@ class ProjectsVersionsResource {
     core.int versionNumber, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$scriptId') +
         '/versions/' +
         commons.escapeVariable('$versionNumber');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Version.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List the versions of a script project.
@@ -883,22 +883,22 @@ class ProjectsVersionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$scriptId') + '/versions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVersionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -943,20 +943,20 @@ class ScriptsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/scripts/' + commons.escapeVariable('$scriptId') + ':run';
+    final url_ = 'v1/scripts/' + commons.escapeVariable('$scriptId') + ':run';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -977,16 +977,16 @@ class Content {
     this.scriptId,
   });
 
-  Content.fromJson(core.Map _json)
+  Content.fromJson(core.Map json_)
       : this(
-          files: _json.containsKey('files')
-              ? (_json['files'] as core.List)
+          files: json_.containsKey('files')
+              ? (json_['files'] as core.List)
                   .map((value) => File.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          scriptId: _json.containsKey('scriptId')
-              ? _json['scriptId'] as core.String
+          scriptId: json_.containsKey('scriptId')
+              ? json_['scriptId'] as core.String
               : null,
         );
 
@@ -1014,13 +1014,13 @@ class CreateProjectRequest {
     this.title,
   });
 
-  CreateProjectRequest.fromJson(core.Map _json)
+  CreateProjectRequest.fromJson(core.Map json_)
       : this(
-          parentId: _json.containsKey('parentId')
-              ? _json['parentId'] as core.String
+          parentId: json_.containsKey('parentId')
+              ? json_['parentId'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1050,23 +1050,23 @@ class Deployment {
     this.updateTime,
   });
 
-  Deployment.fromJson(core.Map _json)
+  Deployment.fromJson(core.Map json_)
       : this(
-          deploymentConfig: _json.containsKey('deploymentConfig')
-              ? DeploymentConfig.fromJson(_json['deploymentConfig']
+          deploymentConfig: json_.containsKey('deploymentConfig')
+              ? DeploymentConfig.fromJson(json_['deploymentConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deploymentId: _json.containsKey('deploymentId')
-              ? _json['deploymentId'] as core.String
+          deploymentId: json_.containsKey('deploymentId')
+              ? json_['deploymentId'] as core.String
               : null,
-          entryPoints: _json.containsKey('entryPoints')
-              ? (_json['entryPoints'] as core.List)
+          entryPoints: json_.containsKey('entryPoints')
+              ? (json_['entryPoints'] as core.List)
                   .map((value) => EntryPoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1099,19 +1099,19 @@ class DeploymentConfig {
     this.versionNumber,
   });
 
-  DeploymentConfig.fromJson(core.Map _json)
+  DeploymentConfig.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          manifestFileName: _json.containsKey('manifestFileName')
-              ? _json['manifestFileName'] as core.String
+          manifestFileName: json_.containsKey('manifestFileName')
+              ? json_['manifestFileName'] as core.String
               : null,
-          scriptId: _json.containsKey('scriptId')
-              ? _json['scriptId'] as core.String
+          scriptId: json_.containsKey('scriptId')
+              ? json_['scriptId'] as core.String
               : null,
-          versionNumber: _json.containsKey('versionNumber')
-              ? _json['versionNumber'] as core.int
+          versionNumber: json_.containsKey('versionNumber')
+              ? json_['versionNumber'] as core.int
               : null,
         );
 
@@ -1157,22 +1157,22 @@ class EntryPoint {
     this.webApp,
   });
 
-  EntryPoint.fromJson(core.Map _json)
+  EntryPoint.fromJson(core.Map json_)
       : this(
-          addOn: _json.containsKey('addOn')
+          addOn: json_.containsKey('addOn')
               ? GoogleAppsScriptTypeAddOnEntryPoint.fromJson(
-                  _json['addOn'] as core.Map<core.String, core.dynamic>)
+                  json_['addOn'] as core.Map<core.String, core.dynamic>)
               : null,
-          entryPointType: _json.containsKey('entryPointType')
-              ? _json['entryPointType'] as core.String
+          entryPointType: json_.containsKey('entryPointType')
+              ? json_['entryPointType'] as core.String
               : null,
-          executionApi: _json.containsKey('executionApi')
+          executionApi: json_.containsKey('executionApi')
               ? GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
-                  _json['executionApi'] as core.Map<core.String, core.dynamic>)
+                  json_['executionApi'] as core.Map<core.String, core.dynamic>)
               : null,
-          webApp: _json.containsKey('webApp')
+          webApp: json_.containsKey('webApp')
               ? GoogleAppsScriptTypeWebAppEntryPoint.fromJson(
-                  _json['webApp'] as core.Map<core.String, core.dynamic>)
+                  json_['webApp'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1236,19 +1236,19 @@ class ExecutionRequest {
     this.sessionState,
   });
 
-  ExecutionRequest.fromJson(core.Map _json)
+  ExecutionRequest.fromJson(core.Map json_)
       : this(
-          devMode: _json.containsKey('devMode')
-              ? _json['devMode'] as core.bool
+          devMode: json_.containsKey('devMode')
+              ? json_['devMode'] as core.bool
               : null,
-          function: _json.containsKey('function')
-              ? _json['function'] as core.String
+          function: json_.containsKey('function')
+              ? json_['function'] as core.String
               : null,
-          parameters: _json.containsKey('parameters')
-              ? _json['parameters'] as core.List
+          parameters: json_.containsKey('parameters')
+              ? json_['parameters'] as core.List
               : null,
-          sessionState: _json.containsKey('sessionState')
-              ? _json['sessionState'] as core.String
+          sessionState: json_.containsKey('sessionState')
+              ? json_['sessionState'] as core.String
               : null,
         );
 
@@ -1316,26 +1316,26 @@ class File {
     this.updateTime,
   });
 
-  File.fromJson(core.Map _json)
+  File.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          functionSet: _json.containsKey('functionSet')
+          functionSet: json_.containsKey('functionSet')
               ? GoogleAppsScriptTypeFunctionSet.fromJson(
-                  _json['functionSet'] as core.Map<core.String, core.dynamic>)
+                  json_['functionSet'] as core.Map<core.String, core.dynamic>)
               : null,
-          lastModifyUser: _json.containsKey('lastModifyUser')
-              ? GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']
+          lastModifyUser: json_.containsKey('lastModifyUser')
+              ? GoogleAppsScriptTypeUser.fromJson(json_['lastModifyUser']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1383,25 +1383,25 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
     this.title,
   });
 
-  GoogleAppsScriptTypeAddOnEntryPoint.fromJson(core.Map _json)
+  GoogleAppsScriptTypeAddOnEntryPoint.fromJson(core.Map json_)
       : this(
-          addOnType: _json.containsKey('addOnType')
-              ? _json['addOnType'] as core.String
+          addOnType: json_.containsKey('addOnType')
+              ? json_['addOnType'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          helpUrl: _json.containsKey('helpUrl')
-              ? _json['helpUrl'] as core.String
+          helpUrl: json_.containsKey('helpUrl')
+              ? json_['helpUrl'] as core.String
               : null,
-          postInstallTipUrl: _json.containsKey('postInstallTipUrl')
-              ? _json['postInstallTipUrl'] as core.String
+          postInstallTipUrl: json_.containsKey('postInstallTipUrl')
+              ? json_['postInstallTipUrl'] as core.String
               : null,
-          reportIssueUrl: _json.containsKey('reportIssueUrl')
-              ? _json['reportIssueUrl'] as core.String
+          reportIssueUrl: json_.containsKey('reportIssueUrl')
+              ? json_['reportIssueUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1433,10 +1433,10 @@ class GoogleAppsScriptTypeExecutionApiConfig {
     this.access,
   });
 
-  GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map _json)
+  GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map json_)
       : this(
-          access: _json.containsKey('access')
-              ? _json['access'] as core.String
+          access: json_.containsKey('access')
+              ? json_['access'] as core.String
               : null,
         );
 
@@ -1454,11 +1454,11 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
     this.entryPointConfig,
   });
 
-  GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map _json)
+  GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map json_)
       : this(
-          entryPointConfig: _json.containsKey('entryPointConfig')
+          entryPointConfig: json_.containsKey('entryPointConfig')
               ? GoogleAppsScriptTypeExecutionApiConfig.fromJson(
-                  _json['entryPointConfig']
+                  json_['entryPointConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1481,11 +1481,11 @@ class GoogleAppsScriptTypeFunction {
     this.parameters,
   });
 
-  GoogleAppsScriptTypeFunction.fromJson(core.Map _json)
+  GoogleAppsScriptTypeFunction.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1508,10 +1508,10 @@ class GoogleAppsScriptTypeFunctionSet {
     this.values,
   });
 
-  GoogleAppsScriptTypeFunctionSet.fromJson(core.Map _json)
+  GoogleAppsScriptTypeFunctionSet.fromJson(core.Map json_)
       : this(
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
                   .map((value) => GoogleAppsScriptTypeFunction.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1588,28 +1588,28 @@ class GoogleAppsScriptTypeProcess {
     this.userAccessLevel,
   });
 
-  GoogleAppsScriptTypeProcess.fromJson(core.Map _json)
+  GoogleAppsScriptTypeProcess.fromJson(core.Map json_)
       : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
               : null,
-          functionName: _json.containsKey('functionName')
-              ? _json['functionName'] as core.String
+          functionName: json_.containsKey('functionName')
+              ? json_['functionName'] as core.String
               : null,
-          processStatus: _json.containsKey('processStatus')
-              ? _json['processStatus'] as core.String
+          processStatus: json_.containsKey('processStatus')
+              ? json_['processStatus'] as core.String
               : null,
-          processType: _json.containsKey('processType')
-              ? _json['processType'] as core.String
+          processType: json_.containsKey('processType')
+              ? json_['processType'] as core.String
               : null,
-          projectName: _json.containsKey('projectName')
-              ? _json['projectName'] as core.String
+          projectName: json_.containsKey('projectName')
+              ? json_['projectName'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          userAccessLevel: _json.containsKey('userAccessLevel')
-              ? _json['userAccessLevel'] as core.String
+          userAccessLevel: json_.containsKey('userAccessLevel')
+              ? json_['userAccessLevel'] as core.String
               : null,
         );
 
@@ -1645,16 +1645,16 @@ class GoogleAppsScriptTypeUser {
     this.photoUrl,
   });
 
-  GoogleAppsScriptTypeUser.fromJson(core.Map _json)
+  GoogleAppsScriptTypeUser.fromJson(core.Map json_)
       : this(
-          domain: _json.containsKey('domain')
-              ? _json['domain'] as core.String
+          domain: json_.containsKey('domain')
+              ? json_['domain'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          photoUrl: _json.containsKey('photoUrl')
-              ? _json['photoUrl'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          photoUrl: json_.containsKey('photoUrl')
+              ? json_['photoUrl'] as core.String
               : null,
         );
 
@@ -1694,13 +1694,13 @@ class GoogleAppsScriptTypeWebAppConfig {
     this.executeAs,
   });
 
-  GoogleAppsScriptTypeWebAppConfig.fromJson(core.Map _json)
+  GoogleAppsScriptTypeWebAppConfig.fromJson(core.Map json_)
       : this(
-          access: _json.containsKey('access')
-              ? _json['access'] as core.String
+          access: json_.containsKey('access')
+              ? json_['access'] as core.String
               : null,
-          executeAs: _json.containsKey('executeAs')
-              ? _json['executeAs'] as core.String
+          executeAs: json_.containsKey('executeAs')
+              ? json_['executeAs'] as core.String
               : null,
         );
 
@@ -1723,14 +1723,14 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
     this.url,
   });
 
-  GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map _json)
+  GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map json_)
       : this(
-          entryPointConfig: _json.containsKey('entryPointConfig')
+          entryPointConfig: json_.containsKey('entryPointConfig')
               ? GoogleAppsScriptTypeWebAppConfig.fromJson(
-                  _json['entryPointConfig']
+                  json_['entryPointConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1753,16 +1753,16 @@ class ListDeploymentsResponse {
     this.nextPageToken,
   });
 
-  ListDeploymentsResponse.fromJson(core.Map _json)
+  ListDeploymentsResponse.fromJson(core.Map json_)
       : this(
-          deployments: _json.containsKey('deployments')
-              ? (_json['deployments'] as core.List)
+          deployments: json_.containsKey('deployments')
+              ? (json_['deployments'] as core.List)
                   .map((value) => Deployment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1787,13 +1787,13 @@ class ListScriptProcessesResponse {
     this.processes,
   });
 
-  ListScriptProcessesResponse.fromJson(core.Map _json)
+  ListScriptProcessesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          processes: _json.containsKey('processes')
-              ? (_json['processes'] as core.List)
+          processes: json_.containsKey('processes')
+              ? (json_['processes'] as core.List)
                   .map((value) => GoogleAppsScriptTypeProcess.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1821,13 +1821,13 @@ class ListUserProcessesResponse {
     this.processes,
   });
 
-  ListUserProcessesResponse.fromJson(core.Map _json)
+  ListUserProcessesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          processes: _json.containsKey('processes')
-              ? (_json['processes'] as core.List)
+          processes: json_.containsKey('processes')
+              ? (json_['processes'] as core.List)
                   .map((value) => GoogleAppsScriptTypeProcess.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1855,13 +1855,13 @@ class ListVersionsResponse {
     this.versions,
   });
 
-  ListVersionsResponse.fromJson(core.Map _json)
+  ListVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          versions: _json.containsKey('versions')
-              ? (_json['versions'] as core.List)
+          versions: json_.containsKey('versions')
+              ? (json_['versions'] as core.List)
                   .map((value) => Version.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1892,22 +1892,22 @@ class Metrics {
     this.totalExecutions,
   });
 
-  Metrics.fromJson(core.Map _json)
+  Metrics.fromJson(core.Map json_)
       : this(
-          activeUsers: _json.containsKey('activeUsers')
-              ? (_json['activeUsers'] as core.List)
+          activeUsers: json_.containsKey('activeUsers')
+              ? (json_['activeUsers'] as core.List)
                   .map((value) => MetricsValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          failedExecutions: _json.containsKey('failedExecutions')
-              ? (_json['failedExecutions'] as core.List)
+          failedExecutions: json_.containsKey('failedExecutions')
+              ? (json_['failedExecutions'] as core.List)
                   .map((value) => MetricsValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalExecutions: _json.containsKey('totalExecutions')
-              ? (_json['totalExecutions'] as core.List)
+          totalExecutions: json_.containsKey('totalExecutions')
+              ? (json_['totalExecutions'] as core.List)
                   .map((value) => MetricsValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1938,16 +1938,16 @@ class MetricsValue {
     this.value,
   });
 
-  MetricsValue.fromJson(core.Map _json)
+  MetricsValue.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2004,15 +2004,15 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2059,29 +2059,29 @@ class Project {
     this.updateTime,
   });
 
-  Project.fromJson(core.Map _json)
+  Project.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          creator: _json.containsKey('creator')
+          creator: json_.containsKey('creator')
               ? GoogleAppsScriptTypeUser.fromJson(
-                  _json['creator'] as core.Map<core.String, core.dynamic>)
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
               : null,
-          lastModifyUser: _json.containsKey('lastModifyUser')
-              ? GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']
+          lastModifyUser: json_.containsKey('lastModifyUser')
+              ? GoogleAppsScriptTypeUser.fromJson(json_['lastModifyUser']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          parentId: _json.containsKey('parentId')
-              ? _json['parentId'] as core.String
+          parentId: json_.containsKey('parentId')
+              ? json_['parentId'] as core.String
               : null,
-          scriptId: _json.containsKey('scriptId')
-              ? _json['scriptId'] as core.String
+          scriptId: json_.containsKey('scriptId')
+              ? json_['scriptId'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -2126,16 +2126,16 @@ class Status {
     this.message,
   });
 
-  Status.fromJson(core.Map _json)
+  Status.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
+          code: json_.containsKey('code') ? json_['code'] as core.int : null,
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
         );
 
@@ -2155,10 +2155,10 @@ class UpdateDeploymentRequest {
     this.deploymentConfig,
   });
 
-  UpdateDeploymentRequest.fromJson(core.Map _json)
+  UpdateDeploymentRequest.fromJson(core.Map json_)
       : this(
-          deploymentConfig: _json.containsKey('deploymentConfig')
-              ? DeploymentConfig.fromJson(_json['deploymentConfig']
+          deploymentConfig: json_.containsKey('deploymentConfig')
+              ? DeploymentConfig.fromJson(json_['deploymentConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2196,19 +2196,19 @@ class Version {
     this.versionNumber,
   });
 
-  Version.fromJson(core.Map _json)
+  Version.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          scriptId: _json.containsKey('scriptId')
-              ? _json['scriptId'] as core.String
+          scriptId: json_.containsKey('scriptId')
+              ? json_['scriptId'] as core.String
               : null,
-          versionNumber: _json.containsKey('versionNumber')
-              ? _json['versionNumber'] as core.int
+          versionNumber: json_.containsKey('versionNumber')
+              ? json_['versionNumber'] as core.int
               : null,
         );
 

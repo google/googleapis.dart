@@ -116,24 +116,24 @@ class DeploymentsResource {
     core.String deployment, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment') +
         '/cancelPreview';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a deployment and all of the resources in the deployment.
@@ -167,22 +167,22 @@ class DeploymentsResource {
     core.String? deletePolicy,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a specific deployment.
@@ -211,22 +211,22 @@ class DeploymentsResource {
     core.String deployment, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -261,24 +261,24 @@ class DeploymentsResource {
     core.int? optionsRequestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (optionsRequestedPolicyVersion != null)
         'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$resource') +
         '/getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a deployment and all of the resources described by the deployment
@@ -323,24 +323,24 @@ class DeploymentsResource {
     core.bool? preview,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (preview != null) 'preview': ['${preview}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all deployments for a given project.
@@ -421,7 +421,7 @@ class DeploymentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -429,17 +429,17 @@ class DeploymentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DeploymentsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a deployment and all of the resources described by the deployment
@@ -496,26 +496,26 @@ class DeploymentsResource {
     core.bool? preview,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
       if (preview != null) 'preview': ['${preview}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -550,24 +550,24 @@ class DeploymentsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$resource') +
         '/setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops an ongoing operation.
@@ -602,24 +602,24 @@ class DeploymentsResource {
     core.String deployment, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment') +
         '/stop';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -652,25 +652,25 @@ class DeploymentsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$resource') +
         '/testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a deployment and all of the resources described by the deployment
@@ -727,26 +727,26 @@ class DeploymentsResource {
     core.bool? preview,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
       if (preview != null) 'preview': ['${preview}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -785,23 +785,23 @@ class ManifestsResource {
     core.String manifest, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment') +
         '/manifests/' +
         commons.escapeVariable('$manifest');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Manifest.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Manifest.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all manifests for a given deployment.
@@ -886,7 +886,7 @@ class ManifestsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -894,19 +894,19 @@ class ManifestsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment') +
         '/manifests';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ManifestsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -940,21 +940,21 @@ class OperationsResource {
     core.String operation, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/operations/' +
         commons.escapeVariable('$operation');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all operations for a project.
@@ -1035,7 +1035,7 @@ class OperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1043,17 +1043,17 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return OperationsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1091,23 +1091,23 @@ class ResourcesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment') +
         '/resources/' +
         commons.escapeVariable('$resource');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Resource.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Resource.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all resources in a given deployment.
@@ -1192,7 +1192,7 @@ class ResourcesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1200,19 +1200,19 @@ class ResourcesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/deployments/' +
         commons.escapeVariable('$deployment') +
         '/resources';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ResourcesListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1299,7 +1299,7 @@ class TypesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1307,17 +1307,17 @@ class TypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'deploymentmanager/v2/projects/' +
+    final url_ = 'deploymentmanager/v2/projects/' +
         commons.escapeVariable('$project') +
         '/global/types';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TypesListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1353,16 +1353,16 @@ class AuditConfig {
     this.service,
   });
 
-  AuditConfig.fromJson(core.Map _json)
+  AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: _json.containsKey('auditLogConfigs')
-              ? (_json['auditLogConfigs'] as core.List)
+          auditLogConfigs: json_.containsKey('auditLogConfigs')
+              ? (json_['auditLogConfigs'] as core.List)
                   .map((value) => AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
         );
 
@@ -1436,18 +1436,18 @@ class Binding {
     this.role,
   });
 
-  Binding.fromJson(core.Map _json)
+  Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1465,10 +1465,10 @@ class ConfigFile {
     this.content,
   });
 
-  ConfigFile.fromJson(core.Map _json)
+  ConfigFile.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
         );
 
@@ -1494,9 +1494,9 @@ class Deployment {
   core.List<core.int> get fingerprintAsBytes =>
       convert.base64.decode(fingerprint!);
 
-  set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> bytes_) {
     fingerprint =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   core.String? id;
@@ -1574,45 +1574,45 @@ class Deployment {
     this.updateTime,
   });
 
-  Deployment.fromJson(core.Map _json)
+  Deployment.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          insertTime: _json.containsKey('insertTime')
-              ? _json['insertTime'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          insertTime: json_.containsKey('insertTime')
+              ? json_['insertTime'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => DeploymentLabelEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          manifest: _json.containsKey('manifest')
-              ? _json['manifest'] as core.String
+          manifest: json_.containsKey('manifest')
+              ? json_['manifest'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          operation: _json.containsKey('operation')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          operation: json_.containsKey('operation')
               ? Operation.fromJson(
-                  _json['operation'] as core.Map<core.String, core.dynamic>)
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          target: _json.containsKey('target')
+          target: json_.containsKey('target')
               ? TargetConfiguration.fromJson(
-                  _json['target'] as core.Map<core.String, core.dynamic>)
+                  json_['target'] as core.Map<core.String, core.dynamic>)
               : null,
-          update: _json.containsKey('update')
+          update: json_.containsKey('update')
               ? DeploymentUpdate.fromJson(
-                  _json['update'] as core.Map<core.String, core.dynamic>)
+                  json_['update'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1663,19 +1663,19 @@ class DeploymentUpdate {
     this.manifest,
   });
 
-  DeploymentUpdate.fromJson(core.Map _json)
+  DeploymentUpdate.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => DeploymentUpdateLabelEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          manifest: _json.containsKey('manifest')
-              ? _json['manifest'] as core.String
+          manifest: json_.containsKey('manifest')
+              ? json_['manifest'] as core.String
               : null,
         );
 
@@ -1704,19 +1704,19 @@ class DeploymentsCancelPreviewRequest {
   core.List<core.int> get fingerprintAsBytes =>
       convert.base64.decode(fingerprint!);
 
-  set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> bytes_) {
     fingerprint =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   DeploymentsCancelPreviewRequest({
     this.fingerprint,
   });
 
-  DeploymentsCancelPreviewRequest.fromJson(core.Map _json)
+  DeploymentsCancelPreviewRequest.fromJson(core.Map json_)
       : this(
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
         );
 
@@ -1743,16 +1743,16 @@ class DeploymentsListResponse {
     this.nextPageToken,
   });
 
-  DeploymentsListResponse.fromJson(core.Map _json)
+  DeploymentsListResponse.fromJson(core.Map json_)
       : this(
-          deployments: _json.containsKey('deployments')
-              ? (_json['deployments'] as core.List)
+          deployments: json_.containsKey('deployments')
+              ? (json_['deployments'] as core.List)
                   .map((value) => Deployment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1777,19 +1777,19 @@ class DeploymentsStopRequest {
   core.List<core.int> get fingerprintAsBytes =>
       convert.base64.decode(fingerprint!);
 
-  set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> bytes_) {
     fingerprint =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   DeploymentsStopRequest({
     this.fingerprint,
   });
 
-  DeploymentsStopRequest.fromJson(core.Map _json)
+  DeploymentsStopRequest.fromJson(core.Map json_)
       : this(
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
         );
 
@@ -1830,9 +1830,9 @@ class GlobalSetPolicyRequest {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// REQUIRED: The complete policy to be applied to the 'resource'.
@@ -1848,18 +1848,18 @@ class GlobalSetPolicyRequest {
     this.policy,
   });
 
-  GlobalSetPolicyRequest.fromJson(core.Map _json)
+  GlobalSetPolicyRequest.fromJson(core.Map json_)
       : this(
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          policy: _json.containsKey('policy')
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1882,12 +1882,12 @@ class ImportFile {
     this.name,
   });
 
-  ImportFile.fromJson(core.Map _json)
+  ImportFile.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1957,37 +1957,37 @@ class Manifest {
     this.selfLink,
   });
 
-  Manifest.fromJson(core.Map _json)
+  Manifest.fromJson(core.Map json_)
       : this(
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? ConfigFile.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          expandedConfig: _json.containsKey('expandedConfig')
-              ? _json['expandedConfig'] as core.String
+          expandedConfig: json_.containsKey('expandedConfig')
+              ? json_['expandedConfig'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          imports: _json.containsKey('imports')
-              ? (_json['imports'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          imports: json_.containsKey('imports')
+              ? (json_['imports'] as core.List)
                   .map((value) => ImportFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          insertTime: _json.containsKey('insertTime')
-              ? _json['insertTime'] as core.String
+          insertTime: json_.containsKey('insertTime')
+              ? json_['insertTime'] as core.String
               : null,
-          layout: _json.containsKey('layout')
-              ? _json['layout'] as core.String
+          layout: json_.containsKey('layout')
+              ? json_['layout'] as core.String
               : null,
-          manifestSizeBytes: _json.containsKey('manifestSizeBytes')
-              ? _json['manifestSizeBytes'] as core.String
+          manifestSizeBytes: json_.containsKey('manifestSizeBytes')
+              ? json_['manifestSizeBytes'] as core.String
               : null,
-          manifestSizeLimitBytes: _json.containsKey('manifestSizeLimitBytes')
-              ? _json['manifestSizeLimitBytes'] as core.String
+          manifestSizeLimitBytes: json_.containsKey('manifestSizeLimitBytes')
+              ? json_['manifestSizeLimitBytes'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
         );
 
@@ -2024,16 +2024,16 @@ class ManifestsListResponse {
     this.nextPageToken,
   });
 
-  ManifestsListResponse.fromJson(core.Map _json)
+  ManifestsListResponse.fromJson(core.Map json_)
       : this(
-          manifests: _json.containsKey('manifests')
-              ? (_json['manifests'] as core.List)
+          manifests: json_.containsKey('manifests')
+              ? (json_['manifests'] as core.List)
                   .map((value) => Manifest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2067,14 +2067,14 @@ class OperationErrorErrors {
     this.message,
   });
 
-  OperationErrorErrors.fromJson(core.Map _json)
+  OperationErrorErrors.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
         );
 
@@ -2099,10 +2099,10 @@ class OperationError {
     this.errors,
   });
 
-  OperationError.fromJson(core.Map _json)
+  OperationError.fromJson(core.Map json_)
       : this(
-          errors: _json.containsKey('errors')
-              ? (_json['errors'] as core.List)
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
                   .map((value) => OperationErrorErrors.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2137,11 +2137,11 @@ class OperationWarningsData {
     this.value,
   });
 
-  OperationWarningsData.fromJson(core.Map _json)
+  OperationWarningsData.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2231,17 +2231,17 @@ class OperationWarnings {
     this.message,
   });
 
-  OperationWarnings.fromJson(core.Map _json)
+  OperationWarnings.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          data: _json.containsKey('data')
-              ? (_json['data'] as core.List)
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          data: json_.containsKey('data')
+              ? (json_['data'] as core.List)
                   .map((value) => OperationWarningsData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
         );
 
@@ -2450,74 +2450,74 @@ class Operation {
     this.zone,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          clientOperationId: _json.containsKey('clientOperationId')
-              ? _json['clientOperationId'] as core.String
+          clientOperationId: json_.containsKey('clientOperationId')
+              ? json_['clientOperationId'] as core.String
               : null,
-          creationTimestamp: _json.containsKey('creationTimestamp')
-              ? _json['creationTimestamp'] as core.String
+          creationTimestamp: json_.containsKey('creationTimestamp')
+              ? json_['creationTimestamp'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          error: _json.containsKey('error')
+          error: json_.containsKey('error')
               ? OperationError.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          httpErrorMessage: _json.containsKey('httpErrorMessage')
-              ? _json['httpErrorMessage'] as core.String
+          httpErrorMessage: json_.containsKey('httpErrorMessage')
+              ? json_['httpErrorMessage'] as core.String
               : null,
-          httpErrorStatusCode: _json.containsKey('httpErrorStatusCode')
-              ? _json['httpErrorStatusCode'] as core.int
+          httpErrorStatusCode: json_.containsKey('httpErrorStatusCode')
+              ? json_['httpErrorStatusCode'] as core.int
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          insertTime: _json.containsKey('insertTime')
-              ? _json['insertTime'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          insertTime: json_.containsKey('insertTime')
+              ? json_['insertTime'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          operationGroupId: _json.containsKey('operationGroupId')
-              ? _json['operationGroupId'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          operationGroupId: json_.containsKey('operationGroupId')
+              ? json_['operationGroupId'] as core.String
               : null,
-          operationType: _json.containsKey('operationType')
-              ? _json['operationType'] as core.String
+          operationType: json_.containsKey('operationType')
+              ? json_['operationType'] as core.String
               : null,
-          progress: _json.containsKey('progress')
-              ? _json['progress'] as core.int
+          progress: json_.containsKey('progress')
+              ? json_['progress'] as core.int
               : null,
-          region: _json.containsKey('region')
-              ? _json['region'] as core.String
+          region: json_.containsKey('region')
+              ? json_['region'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          statusMessage: _json.containsKey('statusMessage')
-              ? _json['statusMessage'] as core.String
+          statusMessage: json_.containsKey('statusMessage')
+              ? json_['statusMessage'] as core.String
               : null,
-          targetId: _json.containsKey('targetId')
-              ? _json['targetId'] as core.String
+          targetId: json_.containsKey('targetId')
+              ? json_['targetId'] as core.String
               : null,
-          targetLink: _json.containsKey('targetLink')
-              ? _json['targetLink'] as core.String
+          targetLink: json_.containsKey('targetLink')
+              ? json_['targetLink'] as core.String
               : null,
-          user: _json.containsKey('user') ? _json['user'] as core.String : null,
-          warnings: _json.containsKey('warnings')
-              ? (_json['warnings'] as core.List)
+          user: json_.containsKey('user') ? json_['user'] as core.String : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
                   .map((value) => OperationWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2567,13 +2567,13 @@ class OperationsListResponse {
     this.operations,
   });
 
-  OperationsListResponse.fromJson(core.Map _json)
+  OperationsListResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2648,9 +2648,9 @@ class Policy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -2679,23 +2679,23 @@ class Policy {
     this.version,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: _json.containsKey('auditConfigs')
-              ? (_json['auditConfigs'] as core.List)
+          auditConfigs: json_.containsKey('auditConfigs')
+              ? (json_['auditConfigs'] as core.List)
                   .map((value) => AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -2730,11 +2730,11 @@ class ResourceWarningsData {
     this.value,
   });
 
-  ResourceWarningsData.fromJson(core.Map _json)
+  ResourceWarningsData.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2824,17 +2824,17 @@ class ResourceWarnings {
     this.message,
   });
 
-  ResourceWarnings.fromJson(core.Map _json)
+  ResourceWarnings.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          data: _json.containsKey('data')
-              ? (_json['data'] as core.List)
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          data: json_.containsKey('data')
+              ? (json_['data'] as core.List)
                   .map((value) => ResourceWarningsData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
         );
 
@@ -2924,37 +2924,37 @@ class Resource {
     this.warnings,
   });
 
-  Resource.fromJson(core.Map _json)
+  Resource.fromJson(core.Map json_)
       : this(
-          accessControl: _json.containsKey('accessControl')
+          accessControl: json_.containsKey('accessControl')
               ? ResourceAccessControl.fromJson(
-                  _json['accessControl'] as core.Map<core.String, core.dynamic>)
+                  json_['accessControl'] as core.Map<core.String, core.dynamic>)
               : null,
-          finalProperties: _json.containsKey('finalProperties')
-              ? _json['finalProperties'] as core.String
+          finalProperties: json_.containsKey('finalProperties')
+              ? json_['finalProperties'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          insertTime: _json.containsKey('insertTime')
-              ? _json['insertTime'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          insertTime: json_.containsKey('insertTime')
+              ? json_['insertTime'] as core.String
               : null,
-          manifest: _json.containsKey('manifest')
-              ? _json['manifest'] as core.String
+          manifest: json_.containsKey('manifest')
+              ? json_['manifest'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          properties: _json.containsKey('properties')
-              ? _json['properties'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          properties: json_.containsKey('properties')
+              ? json_['properties'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          update: _json.containsKey('update')
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          update: json_.containsKey('update')
               ? ResourceUpdate.fromJson(
-                  _json['update'] as core.Map<core.String, core.dynamic>)
+                  json_['update'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-          warnings: _json.containsKey('warnings')
-              ? (_json['warnings'] as core.List)
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
                   .map((value) => ResourceWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2986,10 +2986,10 @@ class ResourceAccessControl {
     this.gcpIamPolicy,
   });
 
-  ResourceAccessControl.fromJson(core.Map _json)
+  ResourceAccessControl.fromJson(core.Map json_)
       : this(
-          gcpIamPolicy: _json.containsKey('gcpIamPolicy')
-              ? _json['gcpIamPolicy'] as core.String
+          gcpIamPolicy: json_.containsKey('gcpIamPolicy')
+              ? json_['gcpIamPolicy'] as core.String
               : null,
         );
 
@@ -3022,14 +3022,14 @@ class ResourceUpdateErrorErrors {
     this.message,
   });
 
-  ResourceUpdateErrorErrors.fromJson(core.Map _json)
+  ResourceUpdateErrorErrors.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
         );
 
@@ -3054,10 +3054,10 @@ class ResourceUpdateError {
     this.errors,
   });
 
-  ResourceUpdateError.fromJson(core.Map _json)
+  ResourceUpdateError.fromJson(core.Map json_)
       : this(
-          errors: _json.containsKey('errors')
-              ? (_json['errors'] as core.List)
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
                   .map((value) => ResourceUpdateErrorErrors.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3092,11 +3092,11 @@ class ResourceUpdateWarningsData {
     this.value,
   });
 
-  ResourceUpdateWarningsData.fromJson(core.Map _json)
+  ResourceUpdateWarningsData.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3186,17 +3186,17 @@ class ResourceUpdateWarnings {
     this.message,
   });
 
-  ResourceUpdateWarnings.fromJson(core.Map _json)
+  ResourceUpdateWarnings.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          data: _json.containsKey('data')
-              ? (_json['data'] as core.List)
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          data: json_.containsKey('data')
+              ? (json_['data'] as core.List)
                   .map((value) => ResourceUpdateWarningsData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
         );
 
@@ -3281,32 +3281,32 @@ class ResourceUpdate {
     this.warnings,
   });
 
-  ResourceUpdate.fromJson(core.Map _json)
+  ResourceUpdate.fromJson(core.Map json_)
       : this(
-          accessControl: _json.containsKey('accessControl')
+          accessControl: json_.containsKey('accessControl')
               ? ResourceAccessControl.fromJson(
-                  _json['accessControl'] as core.Map<core.String, core.dynamic>)
+                  json_['accessControl'] as core.Map<core.String, core.dynamic>)
               : null,
-          error: _json.containsKey('error')
+          error: json_.containsKey('error')
               ? ResourceUpdateError.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          finalProperties: _json.containsKey('finalProperties')
-              ? _json['finalProperties'] as core.String
+          finalProperties: json_.containsKey('finalProperties')
+              ? json_['finalProperties'] as core.String
               : null,
-          intent: _json.containsKey('intent')
-              ? _json['intent'] as core.String
+          intent: json_.containsKey('intent')
+              ? json_['intent'] as core.String
               : null,
-          manifest: _json.containsKey('manifest')
-              ? _json['manifest'] as core.String
+          manifest: json_.containsKey('manifest')
+              ? json_['manifest'] as core.String
               : null,
-          properties: _json.containsKey('properties')
-              ? _json['properties'] as core.String
+          properties: json_.containsKey('properties')
+              ? json_['properties'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          warnings: _json.containsKey('warnings')
-              ? (_json['warnings'] as core.List)
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
                   .map((value) => ResourceUpdateWarnings.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3339,13 +3339,13 @@ class ResourcesListResponse {
     this.resources,
   });
 
-  ResourcesListResponse.fromJson(core.Map _json)
+  ResourcesListResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          resources: _json.containsKey('resources')
-              ? (_json['resources'] as core.List)
+          resources: json_.containsKey('resources')
+              ? (json_['resources'] as core.List)
                   .map((value) => Resource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3373,14 +3373,14 @@ class TargetConfiguration {
     this.imports,
   });
 
-  TargetConfiguration.fromJson(core.Map _json)
+  TargetConfiguration.fromJson(core.Map json_)
       : this(
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? ConfigFile.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          imports: _json.containsKey('imports')
-              ? (_json['imports'] as core.List)
+          imports: json_.containsKey('imports')
+              ? (json_['imports'] as core.List)
                   .map((value) => ImportFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3427,19 +3427,19 @@ class Type {
     this.selfLink,
   });
 
-  Type.fromJson(core.Map _json)
+  Type.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          insertTime: _json.containsKey('insertTime')
-              ? _json['insertTime'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          insertTime: json_.containsKey('insertTime')
+              ? json_['insertTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          operation: _json.containsKey('operation')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          operation: json_.containsKey('operation')
               ? Operation.fromJson(
-                  _json['operation'] as core.Map<core.String, core.dynamic>)
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
         );
 
@@ -3467,13 +3467,13 @@ class TypesListResponse {
     this.types,
   });
 
-  TypesListResponse.fromJson(core.Map _json)
+  TypesListResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          types: _json.containsKey('types')
-              ? (_json['types'] as core.List)
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
                   .map((value) => Type.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()

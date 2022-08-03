@@ -110,22 +110,22 @@ class GroupItemsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/groupItems';
+    const url_ = 'v2/groupItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return EmptyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a group item.
@@ -160,22 +160,22 @@ class GroupItemsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/groupItems';
+    const url_ = 'v2/groupItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return GroupItem.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return GroupItem.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a collection of group items that match the API request parameters.
@@ -211,22 +211,22 @@ class GroupItemsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (groupId != null) 'groupId': [groupId],
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/groupItems';
+    const url_ = 'v2/groupItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGroupItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -268,22 +268,22 @@ class GroupsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/groups';
+    const url_ = 'v2/groups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return EmptyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a group.
@@ -318,22 +318,22 @@ class GroupsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/groups';
+    const url_ = 'v2/groups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Group.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a collection of groups that match the API request parameters.
@@ -386,7 +386,7 @@ class GroupsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
       if (mine != null) 'mine': ['${mine}'],
       if (onBehalfOfContentOwner != null)
@@ -395,15 +395,15 @@ class GroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/groups';
+    const url_ = 'v2/groups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGroupsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a group.
@@ -440,22 +440,22 @@ class GroupsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/groups';
+    const url_ = 'v2/groups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Group.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -554,7 +554,7 @@ class ReportsResource {
     core.int? startIndex,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (currency != null) 'currency': [currency],
       if (dimensions != null) 'dimensions': [dimensions],
       if (endDate != null) 'endDate': [endDate],
@@ -570,15 +570,15 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/reports';
+    const url_ = 'v2/reports';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return QueryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -591,11 +591,11 @@ class EmptyResponse {
     this.errors,
   });
 
-  EmptyResponse.fromJson(core.Map _json)
+  EmptyResponse.fromJson(core.Map json_)
       : this(
-          errors: _json.containsKey('errors')
+          errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  _json['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -664,28 +664,28 @@ class ErrorProto {
     this.locationType,
   });
 
-  ErrorProto.fromJson(core.Map _json)
+  ErrorProto.fromJson(core.Map json_)
       : this(
-          argument: _json.containsKey('argument')
-              ? (_json['argument'] as core.List)
+          argument: json_.containsKey('argument')
+              ? (json_['argument'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          debugInfo: _json.containsKey('debugInfo')
-              ? _json['debugInfo'] as core.String
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          debugInfo: json_.containsKey('debugInfo')
+              ? json_['debugInfo'] as core.String
               : null,
-          domain: _json.containsKey('domain')
-              ? _json['domain'] as core.String
+          domain: json_.containsKey('domain')
+              ? json_['domain'] as core.String
               : null,
-          externalErrorMessage: _json.containsKey('externalErrorMessage')
-              ? _json['externalErrorMessage'] as core.String
+          externalErrorMessage: json_.containsKey('externalErrorMessage')
+              ? json_['externalErrorMessage'] as core.String
               : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
               : null,
-          locationType: _json.containsKey('locationType')
-              ? _json['locationType'] as core.String
+          locationType: json_.containsKey('locationType')
+              ? json_['locationType'] as core.String
               : null,
         );
 
@@ -733,17 +733,17 @@ class Errors {
     this.requestId,
   });
 
-  Errors.fromJson(core.Map _json)
+  Errors.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          error: _json.containsKey('error')
-              ? (_json['error'] as core.List)
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          error: json_.containsKey('error')
+              ? (json_['error'] as core.List)
                   .map((value) => ErrorProto.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
               : null,
         );
 
@@ -787,22 +787,22 @@ class Group {
     this.snippet,
   });
 
-  Group.fromJson(core.Map _json)
+  Group.fromJson(core.Map json_)
       : this(
-          contentDetails: _json.containsKey('contentDetails')
-              ? GroupContentDetails.fromJson(_json['contentDetails']
+          contentDetails: json_.containsKey('contentDetails')
+              ? GroupContentDetails.fromJson(json_['contentDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          errors: _json.containsKey('errors')
+          errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  _json['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          snippet: _json.containsKey('snippet')
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          snippet: json_.containsKey('snippet')
               ? GroupSnippet.fromJson(
-                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+                  json_['snippet'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -832,13 +832,13 @@ class GroupContentDetails {
     this.itemType,
   });
 
-  GroupContentDetails.fromJson(core.Map _json)
+  GroupContentDetails.fromJson(core.Map json_)
       : this(
-          itemCount: _json.containsKey('itemCount')
-              ? _json['itemCount'] as core.String
+          itemCount: json_.containsKey('itemCount')
+              ? json_['itemCount'] as core.String
               : null,
-          itemType: _json.containsKey('itemType')
-              ? _json['itemType'] as core.String
+          itemType: json_.containsKey('itemType')
+              ? json_['itemType'] as core.String
               : null,
         );
 
@@ -888,21 +888,21 @@ class GroupItem {
     this.resource,
   });
 
-  GroupItem.fromJson(core.Map _json)
+  GroupItem.fromJson(core.Map json_)
       : this(
-          errors: _json.containsKey('errors')
+          errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  _json['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          groupId: _json.containsKey('groupId')
-              ? _json['groupId'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          groupId: json_.containsKey('groupId')
+              ? json_['groupId'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          resource: _json.containsKey('resource')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          resource: json_.containsKey('resource')
               ? GroupItemResource.fromJson(
-                  _json['resource'] as core.Map<core.String, core.dynamic>)
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -932,10 +932,10 @@ class GroupItemResource {
     this.kind,
   });
 
-  GroupItemResource.fromJson(core.Map _json)
+  GroupItemResource.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -961,13 +961,13 @@ class GroupSnippet {
     this.title,
   });
 
-  GroupSnippet.fromJson(core.Map _json)
+  GroupSnippet.fromJson(core.Map json_)
       : this(
-          publishedAt: _json.containsKey('publishedAt')
-              ? _json['publishedAt'] as core.String
+          publishedAt: json_.containsKey('publishedAt')
+              ? json_['publishedAt'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1001,20 +1001,20 @@ class ListGroupItemsResponse {
     this.kind,
   });
 
-  ListGroupItemsResponse.fromJson(core.Map _json)
+  ListGroupItemsResponse.fromJson(core.Map json_)
       : this(
-          errors: _json.containsKey('errors')
+          errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  _json['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => GroupItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1055,22 +1055,22 @@ class ListGroupsResponse {
     this.nextPageToken,
   });
 
-  ListGroupsResponse.fromJson(core.Map _json)
+  ListGroupsResponse.fromJson(core.Map json_)
       : this(
-          errors: _json.containsKey('errors')
+          errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  _json['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Group.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1128,21 +1128,21 @@ class QueryResponse {
     this.rows,
   });
 
-  QueryResponse.fromJson(core.Map _json)
+  QueryResponse.fromJson(core.Map json_)
       : this(
-          columnHeaders: _json.containsKey('columnHeaders')
-              ? (_json['columnHeaders'] as core.List)
+          columnHeaders: json_.containsKey('columnHeaders')
+              ? (json_['columnHeaders'] as core.List)
                   .map((value) => ResultTableColumnHeader.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          errors: _json.containsKey('errors')
+          errors: json_.containsKey('errors')
               ? Errors.fromJson(
-                  _json['errors'] as core.Map<core.String, core.dynamic>)
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          rows: _json.containsKey('rows')
-              ? (_json['rows'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
                   .map((value) => value as core.List)
                   .toList()
               : null,
@@ -1173,15 +1173,15 @@ class ResultTableColumnHeader {
     this.name,
   });
 
-  ResultTableColumnHeader.fromJson(core.Map _json)
+  ResultTableColumnHeader.fromJson(core.Map json_)
       : this(
-          columnType: _json.containsKey('columnType')
-              ? _json['columnType'] as core.String
+          columnType: json_.containsKey('columnType')
+              ? json_['columnType'] as core.String
               : null,
-          dataType: _json.containsKey('dataType')
-              ? _json['dataType'] as core.String
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

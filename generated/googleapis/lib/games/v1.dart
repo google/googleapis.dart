@@ -114,22 +114,22 @@ class AchievementDefinitionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/achievements';
+    const url_ = 'games/v1/achievements';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AchievementDefinitionsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -167,23 +167,23 @@ class AchievementsResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'stepsToIncrement': ['${stepsToIncrement}'],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/achievements/' +
+    final url_ = 'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/increment';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AchievementIncrementResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the progress for all your application's achievements for the
@@ -230,7 +230,7 @@ class AchievementsResource {
     core.String? state,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -238,17 +238,17 @@ class AchievementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/players/' +
+    final url_ = 'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/achievements';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlayerAchievementListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the state of the achievement with the given ID to `REVEALED` for the
@@ -272,21 +272,21 @@ class AchievementsResource {
     core.String achievementId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/achievements/' +
+    final url_ = 'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/reveal';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AchievementRevealResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the steps for the currently authenticated player towards unlocking an
@@ -317,22 +317,22 @@ class AchievementsResource {
     core.int steps, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'steps': ['${steps}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/achievements/' +
+    final url_ = 'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/setStepsAtLeast';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AchievementSetStepsAtLeastResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Unlocks this achievement for the currently authenticated player.
@@ -355,21 +355,21 @@ class AchievementsResource {
     core.String achievementId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/achievements/' +
+    final url_ = 'games/v1/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/unlock';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AchievementUnlockResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates multiple achievements for the currently authenticated player.
@@ -392,21 +392,21 @@ class AchievementsResource {
     AchievementUpdateMultipleRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/achievements/updateMultiple';
+    const url_ = 'games/v1/achievements/updateMultiple';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AchievementUpdateMultipleResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -452,22 +452,22 @@ class ApplicationsResource {
     core.String? platformType,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (platformType != null) 'platformType': [platformType],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'games/v1/applications/' + commons.escapeVariable('$applicationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Application.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a URL for the requested end point type.
@@ -498,20 +498,20 @@ class ApplicationsResource {
     core.String? endPointType,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (applicationId != null) 'applicationId': [applicationId],
       if (endPointType != null) 'endPointType': [endPointType],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/applications/getEndPoint';
+    const url_ = 'games/v1/applications/getEndPoint';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return EndPoint.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return EndPoint.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Indicate that the currently authenticated user is playing your
@@ -530,16 +530,16 @@ class ApplicationsResource {
   async.Future<void> played({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/applications/played';
+    const url_ = 'games/v1/applications/played';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -567,21 +567,21 @@ class ApplicationsResource {
     core.String applicationId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/applications/' +
+    final url_ = 'games/v1/applications/' +
         commons.escapeVariable('$applicationId') +
         '/verify';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ApplicationVerifyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -620,22 +620,22 @@ class EventsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/events';
+    const url_ = 'games/v1/events';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlayerEventListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of the event definitions in this application.
@@ -667,22 +667,22 @@ class EventsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/eventDefinitions';
+    const url_ = 'games/v1/eventDefinitions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return EventDefinitionListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Records a batch of changes to the number of times events have occurred for
@@ -710,22 +710,22 @@ class EventsResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/events';
+    const url_ = 'games/v1/events';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return EventUpdateResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -758,21 +758,21 @@ class LeaderboardsResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'games/v1/leaderboards/' + commons.escapeVariable('$leaderboardId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Leaderboard.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the leaderboard metadata for your application.
@@ -804,22 +804,22 @@ class LeaderboardsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/leaderboards';
+    const url_ = 'games/v1/leaderboards';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LeaderboardListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -845,19 +845,19 @@ class MetagameResource {
   async.Future<MetagameConfig> getMetagameConfig({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/metagameConfig';
+    const url_ = 'games/v1/metagameConfig';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return MetagameConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List play data aggregated per category for the player corresponding to
@@ -901,25 +901,25 @@ class MetagameResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/players/' +
+    final url_ = 'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/categories/' +
         commons.escapeVariable('$collection');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CategoryListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -961,21 +961,21 @@ class PlayersResource {
     core.String? playerIdConsistencyToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (playerIdConsistencyToken != null)
         'playerIdConsistencyToken': [playerIdConsistencyToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/players/' + commons.escapeVariable('$playerId');
+    final url_ = 'games/v1/players/' + commons.escapeVariable('$playerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Player.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Player.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves scoped player identifiers for currently authenticated user.
@@ -995,19 +995,19 @@ class PlayersResource {
   async.Future<ScopedPlayerIds> getScopedPlayerIds({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/players/me/scopedIds';
+    const url_ = 'games/v1/players/me/scopedIds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ScopedPlayerIds.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the collection of players for the currently authenticated user.
@@ -1049,23 +1049,23 @@ class PlayersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'games/v1/players/me/players/' + commons.escapeVariable('$collection');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlayerListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1098,20 +1098,20 @@ class RevisionsResource {
     core.String clientRevision, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'clientRevision': [clientRevision],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/revisions/check';
+    const url_ = 'games/v1/revisions/check';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RevisionCheckResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1185,7 +1185,7 @@ class ScoresResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (includeRankType != null) 'includeRankType': [includeRankType],
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1193,20 +1193,20 @@ class ScoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/players/' +
+    final url_ = 'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/scores/' +
         commons.escapeVariable('$timeSpan');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlayerLeaderboardScoreListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the scores in a leaderboard, starting from the top.
@@ -1257,7 +1257,7 @@ class ScoresResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'timeSpan': [timeSpan],
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1265,18 +1265,18 @@ class ScoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/leaderboards/' +
+    final url_ = 'games/v1/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/scores/' +
         commons.escapeVariable('$collection');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LeaderboardScores.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the scores in a leaderboard around (and including) a player's score.
@@ -1337,7 +1337,7 @@ class ScoresResource {
     core.bool? returnTopIfAbsent,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'timeSpan': [timeSpan],
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1348,18 +1348,18 @@ class ScoresResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/leaderboards/' +
+    final url_ = 'games/v1/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/window/' +
         commons.escapeVariable('$collection');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LeaderboardScores.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Submits a score to the specified leaderboard.
@@ -1400,24 +1400,24 @@ class ScoresResource {
     core.String? scoreTag,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'score': [score],
       if (language != null) 'language': [language],
       if (scoreTag != null) 'scoreTag': [scoreTag],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/leaderboards/' +
+    final url_ = 'games/v1/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/scores';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlayerScoreResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Submits multiple scores to leaderboards.
@@ -1444,22 +1444,22 @@ class ScoresResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/leaderboards/scores';
+    const url_ = 'games/v1/leaderboards/scores';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return PlayerScoreListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1492,19 +1492,19 @@ class SnapshotsResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/snapshots/' + commons.escapeVariable('$snapshotId');
+    final url_ = 'games/v1/snapshots/' + commons.escapeVariable('$snapshotId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Snapshot.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of snapshots created by your application for the player
@@ -1541,24 +1541,24 @@ class SnapshotsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1/players/' +
+    final url_ = 'games/v1/players/' +
         commons.escapeVariable('$playerId') +
         '/snapshots';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SnapshotListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1585,19 +1585,19 @@ class StatsResource {
   async.Future<StatsResponse> get({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1/stats';
+    const url_ = 'games/v1/stats';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return StatsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1671,42 +1671,42 @@ class AchievementDefinition {
     this.unlockedIconUrl,
   });
 
-  AchievementDefinition.fromJson(core.Map _json)
+  AchievementDefinition.fromJson(core.Map json_)
       : this(
-          achievementType: _json.containsKey('achievementType')
-              ? _json['achievementType'] as core.String
+          achievementType: json_.containsKey('achievementType')
+              ? json_['achievementType'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          experiencePoints: _json.containsKey('experiencePoints')
-              ? _json['experiencePoints'] as core.String
+          experiencePoints: json_.containsKey('experiencePoints')
+              ? json_['experiencePoints'] as core.String
               : null,
-          formattedTotalSteps: _json.containsKey('formattedTotalSteps')
-              ? _json['formattedTotalSteps'] as core.String
+          formattedTotalSteps: json_.containsKey('formattedTotalSteps')
+              ? json_['formattedTotalSteps'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          initialState: _json.containsKey('initialState')
-              ? _json['initialState'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          initialState: json_.containsKey('initialState')
+              ? json_['initialState'] as core.String
               : null,
           isRevealedIconUrlDefault:
-              _json.containsKey('isRevealedIconUrlDefault')
-                  ? _json['isRevealedIconUrlDefault'] as core.bool
+              json_.containsKey('isRevealedIconUrlDefault')
+                  ? json_['isRevealedIconUrlDefault'] as core.bool
                   : null,
           isUnlockedIconUrlDefault:
-              _json.containsKey('isUnlockedIconUrlDefault')
-                  ? _json['isUnlockedIconUrlDefault'] as core.bool
+              json_.containsKey('isUnlockedIconUrlDefault')
+                  ? json_['isUnlockedIconUrlDefault'] as core.bool
                   : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          revealedIconUrl: _json.containsKey('revealedIconUrl')
-              ? _json['revealedIconUrl'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          revealedIconUrl: json_.containsKey('revealedIconUrl')
+              ? json_['revealedIconUrl'] as core.String
               : null,
-          totalSteps: _json.containsKey('totalSteps')
-              ? _json['totalSteps'] as core.int
+          totalSteps: json_.containsKey('totalSteps')
+              ? json_['totalSteps'] as core.int
               : null,
-          unlockedIconUrl: _json.containsKey('unlockedIconUrl')
-              ? _json['unlockedIconUrl'] as core.String
+          unlockedIconUrl: json_.containsKey('unlockedIconUrl')
+              ? json_['unlockedIconUrl'] as core.String
               : null,
         );
 
@@ -1750,17 +1750,17 @@ class AchievementDefinitionsListResponse {
     this.nextPageToken,
   });
 
-  AchievementDefinitionsListResponse.fromJson(core.Map _json)
+  AchievementDefinitionsListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => AchievementDefinition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1791,14 +1791,14 @@ class AchievementIncrementResponse {
     this.newlyUnlocked,
   });
 
-  AchievementIncrementResponse.fromJson(core.Map _json)
+  AchievementIncrementResponse.fromJson(core.Map json_)
       : this(
-          currentSteps: _json.containsKey('currentSteps')
-              ? _json['currentSteps'] as core.int
+          currentSteps: json_.containsKey('currentSteps')
+              ? json_['currentSteps'] as core.int
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          newlyUnlocked: _json.containsKey('newlyUnlocked')
-              ? _json['newlyUnlocked'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          newlyUnlocked: json_.containsKey('newlyUnlocked')
+              ? json_['newlyUnlocked'] as core.bool
               : null,
         );
 
@@ -1830,12 +1830,12 @@ class AchievementRevealResponse {
     this.kind,
   });
 
-  AchievementRevealResponse.fromJson(core.Map _json)
+  AchievementRevealResponse.fromJson(core.Map json_)
       : this(
-          currentState: _json.containsKey('currentState')
-              ? _json['currentState'] as core.String
+          currentState: json_.containsKey('currentState')
+              ? json_['currentState'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1865,14 +1865,14 @@ class AchievementSetStepsAtLeastResponse {
     this.newlyUnlocked,
   });
 
-  AchievementSetStepsAtLeastResponse.fromJson(core.Map _json)
+  AchievementSetStepsAtLeastResponse.fromJson(core.Map json_)
       : this(
-          currentSteps: _json.containsKey('currentSteps')
-              ? _json['currentSteps'] as core.int
+          currentSteps: json_.containsKey('currentSteps')
+              ? json_['currentSteps'] as core.int
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          newlyUnlocked: _json.containsKey('newlyUnlocked')
-              ? _json['newlyUnlocked'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          newlyUnlocked: json_.containsKey('newlyUnlocked')
+              ? json_['newlyUnlocked'] as core.bool
               : null,
         );
 
@@ -1899,11 +1899,11 @@ class AchievementUnlockResponse {
     this.newlyUnlocked,
   });
 
-  AchievementUnlockResponse.fromJson(core.Map _json)
+  AchievementUnlockResponse.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          newlyUnlocked: _json.containsKey('newlyUnlocked')
-              ? _json['newlyUnlocked'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          newlyUnlocked: json_.containsKey('newlyUnlocked')
+              ? json_['newlyUnlocked'] as core.bool
               : null,
         );
 
@@ -1928,11 +1928,11 @@ class AchievementUpdateMultipleRequest {
     this.updates,
   });
 
-  AchievementUpdateMultipleRequest.fromJson(core.Map _json)
+  AchievementUpdateMultipleRequest.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          updates: _json.containsKey('updates')
-              ? (_json['updates'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          updates: json_.containsKey('updates')
+              ? (json_['updates'] as core.List)
                   .map((value) => AchievementUpdateRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1961,11 +1961,11 @@ class AchievementUpdateMultipleResponse {
     this.updatedAchievements,
   });
 
-  AchievementUpdateMultipleResponse.fromJson(core.Map _json)
+  AchievementUpdateMultipleResponse.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          updatedAchievements: _json.containsKey('updatedAchievements')
-              ? (_json['updatedAchievements'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          updatedAchievements: json_.containsKey('updatedAchievements')
+              ? (json_['updatedAchievements'] as core.List)
                   .map((value) => AchievementUpdateResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2015,23 +2015,23 @@ class AchievementUpdateRequest {
     this.updateType,
   });
 
-  AchievementUpdateRequest.fromJson(core.Map _json)
+  AchievementUpdateRequest.fromJson(core.Map json_)
       : this(
-          achievementId: _json.containsKey('achievementId')
-              ? _json['achievementId'] as core.String
+          achievementId: json_.containsKey('achievementId')
+              ? json_['achievementId'] as core.String
               : null,
-          incrementPayload: _json.containsKey('incrementPayload')
-              ? GamesAchievementIncrement.fromJson(_json['incrementPayload']
+          incrementPayload: json_.containsKey('incrementPayload')
+              ? GamesAchievementIncrement.fromJson(json_['incrementPayload']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          setStepsAtLeastPayload: _json.containsKey('setStepsAtLeastPayload')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          setStepsAtLeastPayload: json_.containsKey('setStepsAtLeastPayload')
               ? GamesAchievementSetStepsAtLeast.fromJson(
-                  _json['setStepsAtLeastPayload']
+                  json_['setStepsAtLeastPayload']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateType: _json.containsKey('updateType')
-              ? _json['updateType'] as core.String
+          updateType: json_.containsKey('updateType')
+              ? json_['updateType'] as core.String
               : null,
         );
 
@@ -2082,23 +2082,23 @@ class AchievementUpdateResponse {
     this.updateOccurred,
   });
 
-  AchievementUpdateResponse.fromJson(core.Map _json)
+  AchievementUpdateResponse.fromJson(core.Map json_)
       : this(
-          achievementId: _json.containsKey('achievementId')
-              ? _json['achievementId'] as core.String
+          achievementId: json_.containsKey('achievementId')
+              ? json_['achievementId'] as core.String
               : null,
-          currentState: _json.containsKey('currentState')
-              ? _json['currentState'] as core.String
+          currentState: json_.containsKey('currentState')
+              ? json_['currentState'] as core.String
               : null,
-          currentSteps: _json.containsKey('currentSteps')
-              ? _json['currentSteps'] as core.int
+          currentSteps: json_.containsKey('currentSteps')
+              ? json_['currentSteps'] as core.int
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          newlyUnlocked: _json.containsKey('newlyUnlocked')
-              ? _json['newlyUnlocked'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          newlyUnlocked: json_.containsKey('newlyUnlocked')
+              ? json_['newlyUnlocked'] as core.bool
               : null,
-          updateOccurred: _json.containsKey('updateOccurred')
-              ? _json['updateOccurred'] as core.bool
+          updateOccurred: json_.containsKey('updateOccurred')
+              ? json_['updateOccurred'] as core.bool
               : null,
         );
 
@@ -2173,49 +2173,49 @@ class Application {
     this.themeColor,
   });
 
-  Application.fromJson(core.Map _json)
+  Application.fromJson(core.Map json_)
       : this(
-          achievementCount: _json.containsKey('achievement_count')
-              ? _json['achievement_count'] as core.int
+          achievementCount: json_.containsKey('achievement_count')
+              ? json_['achievement_count'] as core.int
               : null,
-          assets: _json.containsKey('assets')
-              ? (_json['assets'] as core.List)
+          assets: json_.containsKey('assets')
+              ? (json_['assets'] as core.List)
                   .map((value) => ImageAsset.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          author: _json.containsKey('author')
-              ? _json['author'] as core.String
+          author: json_.containsKey('author')
+              ? json_['author'] as core.String
               : null,
-          category: _json.containsKey('category')
+          category: json_.containsKey('category')
               ? ApplicationCategory.fromJson(
-                  _json['category'] as core.Map<core.String, core.dynamic>)
+                  json_['category'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          enabledFeatures: _json.containsKey('enabledFeatures')
-              ? (_json['enabledFeatures'] as core.List)
+          enabledFeatures: json_.containsKey('enabledFeatures')
+              ? (json_['enabledFeatures'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          instances: json_.containsKey('instances')
+              ? (json_['instances'] as core.List)
                   .map((value) => Instance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          lastUpdatedTimestamp: _json.containsKey('lastUpdatedTimestamp')
-              ? _json['lastUpdatedTimestamp'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          lastUpdatedTimestamp: json_.containsKey('lastUpdatedTimestamp')
+              ? json_['lastUpdatedTimestamp'] as core.String
               : null,
-          leaderboardCount: _json.containsKey('leaderboard_count')
-              ? _json['leaderboard_count'] as core.int
+          leaderboardCount: json_.containsKey('leaderboard_count')
+              ? json_['leaderboard_count'] as core.int
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          themeColor: _json.containsKey('themeColor')
-              ? _json['themeColor'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          themeColor: json_.containsKey('themeColor')
+              ? json_['themeColor'] as core.String
               : null,
         );
 
@@ -2256,14 +2256,14 @@ class ApplicationCategory {
     this.secondary,
   });
 
-  ApplicationCategory.fromJson(core.Map _json)
+  ApplicationCategory.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          primary: _json.containsKey('primary')
-              ? _json['primary'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          primary: json_.containsKey('primary')
+              ? json_['primary'] as core.String
               : null,
-          secondary: _json.containsKey('secondary')
-              ? _json['secondary'] as core.String
+          secondary: json_.containsKey('secondary')
+              ? json_['secondary'] as core.String
               : null,
         );
 
@@ -2296,14 +2296,14 @@ class ApplicationVerifyResponse {
     this.playerId,
   });
 
-  ApplicationVerifyResponse.fromJson(core.Map _json)
+  ApplicationVerifyResponse.fromJson(core.Map json_)
       : this(
-          alternatePlayerId: _json.containsKey('alternate_player_id')
-              ? _json['alternate_player_id'] as core.String
+          alternatePlayerId: json_.containsKey('alternate_player_id')
+              ? json_['alternate_player_id'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          playerId: _json.containsKey('player_id')
-              ? _json['player_id'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          playerId: json_.containsKey('player_id')
+              ? json_['player_id'] as core.String
               : null,
         );
 
@@ -2334,15 +2334,15 @@ class Category {
     this.kind,
   });
 
-  Category.fromJson(core.Map _json)
+  Category.fromJson(core.Map json_)
       : this(
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
               : null,
-          experiencePoints: _json.containsKey('experiencePoints')
-              ? _json['experiencePoints'] as core.String
+          experiencePoints: json_.containsKey('experiencePoints')
+              ? json_['experiencePoints'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2371,17 +2371,17 @@ class CategoryListResponse {
     this.nextPageToken,
   });
 
-  CategoryListResponse.fromJson(core.Map _json)
+  CategoryListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Category.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2401,9 +2401,9 @@ class EndPoint {
     this.url,
   });
 
-  EndPoint.fromJson(core.Map _json)
+  EndPoint.fromJson(core.Map json_)
       : this(
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2444,15 +2444,15 @@ class EventBatchRecordFailure {
     this.range,
   });
 
-  EventBatchRecordFailure.fromJson(core.Map _json)
+  EventBatchRecordFailure.fromJson(core.Map json_)
       : this(
-          failureCause: _json.containsKey('failureCause')
-              ? _json['failureCause'] as core.String
+          failureCause: json_.containsKey('failureCause')
+              ? json_['failureCause'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          range: _json.containsKey('range')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          range: json_.containsKey('range')
               ? EventPeriodRange.fromJson(
-                  _json['range'] as core.Map<core.String, core.dynamic>)
+                  json_['range'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2478,12 +2478,12 @@ class EventChild {
     this.kind,
   });
 
-  EventChild.fromJson(core.Map _json)
+  EventChild.fromJson(core.Map json_)
       : this(
-          childId: _json.containsKey('childId')
-              ? _json['childId'] as core.String
+          childId: json_.containsKey('childId')
+              ? json_['childId'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2537,30 +2537,30 @@ class EventDefinition {
     this.visibility,
   });
 
-  EventDefinition.fromJson(core.Map _json)
+  EventDefinition.fromJson(core.Map json_)
       : this(
-          childEvents: _json.containsKey('childEvents')
-              ? (_json['childEvents'] as core.List)
+          childEvents: json_.containsKey('childEvents')
+              ? (json_['childEvents'] as core.List)
                   .map((value) => EventChild.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          imageUrl: _json.containsKey('imageUrl')
-              ? _json['imageUrl'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          imageUrl: json_.containsKey('imageUrl')
+              ? json_['imageUrl'] as core.String
               : null,
-          isDefaultImageUrl: _json.containsKey('isDefaultImageUrl')
-              ? _json['isDefaultImageUrl'] as core.bool
+          isDefaultImageUrl: json_.containsKey('isDefaultImageUrl')
+              ? json_['isDefaultImageUrl'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          visibility: _json.containsKey('visibility')
-              ? _json['visibility'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          visibility: json_.containsKey('visibility')
+              ? json_['visibility'] as core.String
               : null,
         );
 
@@ -2595,17 +2595,17 @@ class EventDefinitionListResponse {
     this.nextPageToken,
   });
 
-  EventDefinitionListResponse.fromJson(core.Map _json)
+  EventDefinitionListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => EventDefinition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2637,14 +2637,14 @@ class EventPeriodRange {
     this.periodStartMillis,
   });
 
-  EventPeriodRange.fromJson(core.Map _json)
+  EventPeriodRange.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          periodEndMillis: _json.containsKey('periodEndMillis')
-              ? _json['periodEndMillis'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          periodEndMillis: json_.containsKey('periodEndMillis')
+              ? json_['periodEndMillis'] as core.String
               : null,
-          periodStartMillis: _json.containsKey('periodStartMillis')
-              ? _json['periodStartMillis'] as core.String
+          periodStartMillis: json_.containsKey('periodStartMillis')
+              ? json_['periodStartMillis'] as core.String
               : null,
         );
 
@@ -2674,15 +2674,15 @@ class EventPeriodUpdate {
     this.updates,
   });
 
-  EventPeriodUpdate.fromJson(core.Map _json)
+  EventPeriodUpdate.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          timePeriod: _json.containsKey('timePeriod')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          timePeriod: json_.containsKey('timePeriod')
               ? EventPeriodRange.fromJson(
-                  _json['timePeriod'] as core.Map<core.String, core.dynamic>)
+                  json_['timePeriod'] as core.Map<core.String, core.dynamic>)
               : null,
-          updates: _json.containsKey('updates')
-              ? (_json['updates'] as core.List)
+          updates: json_.containsKey('updates')
+              ? (json_['updates'] as core.List)
                   .map((value) => EventUpdateRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2721,15 +2721,15 @@ class EventRecordFailure {
     this.kind,
   });
 
-  EventRecordFailure.fromJson(core.Map _json)
+  EventRecordFailure.fromJson(core.Map json_)
       : this(
-          eventId: _json.containsKey('eventId')
-              ? _json['eventId'] as core.String
+          eventId: json_.containsKey('eventId')
+              ? json_['eventId'] as core.String
               : null,
-          failureCause: _json.containsKey('failureCause')
-              ? _json['failureCause'] as core.String
+          failureCause: json_.containsKey('failureCause')
+              ? json_['failureCause'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2763,17 +2763,17 @@ class EventRecordRequest {
     this.timePeriods,
   });
 
-  EventRecordRequest.fromJson(core.Map _json)
+  EventRecordRequest.fromJson(core.Map json_)
       : this(
-          currentTimeMillis: _json.containsKey('currentTimeMillis')
-              ? _json['currentTimeMillis'] as core.String
+          currentTimeMillis: json_.containsKey('currentTimeMillis')
+              ? json_['currentTimeMillis'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
               : null,
-          timePeriods: _json.containsKey('timePeriods')
-              ? (_json['timePeriods'] as core.List)
+          timePeriods: json_.containsKey('timePeriods')
+              ? (json_['timePeriods'] as core.List)
                   .map((value) => EventPeriodUpdate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2807,14 +2807,14 @@ class EventUpdateRequest {
     this.updateCount,
   });
 
-  EventUpdateRequest.fromJson(core.Map _json)
+  EventUpdateRequest.fromJson(core.Map json_)
       : this(
-          definitionId: _json.containsKey('definitionId')
-              ? _json['definitionId'] as core.String
+          definitionId: json_.containsKey('definitionId')
+              ? json_['definitionId'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          updateCount: _json.containsKey('updateCount')
-              ? _json['updateCount'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          updateCount: json_.containsKey('updateCount')
+              ? json_['updateCount'] as core.String
               : null,
         );
 
@@ -2848,23 +2848,23 @@ class EventUpdateResponse {
     this.playerEvents,
   });
 
-  EventUpdateResponse.fromJson(core.Map _json)
+  EventUpdateResponse.fromJson(core.Map json_)
       : this(
-          batchFailures: _json.containsKey('batchFailures')
-              ? (_json['batchFailures'] as core.List)
+          batchFailures: json_.containsKey('batchFailures')
+              ? (json_['batchFailures'] as core.List)
                   .map((value) => EventBatchRecordFailure.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          eventFailures: _json.containsKey('eventFailures')
-              ? (_json['eventFailures'] as core.List)
+          eventFailures: json_.containsKey('eventFailures')
+              ? (json_['eventFailures'] as core.List)
                   .map((value) => EventRecordFailure.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          playerEvents: _json.containsKey('playerEvents')
-              ? (_json['playerEvents'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          playerEvents: json_.containsKey('playerEvents')
+              ? (json_['playerEvents'] as core.List)
                   .map((value) => PlayerEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2898,13 +2898,13 @@ class GamesAchievementIncrement {
     this.steps,
   });
 
-  GamesAchievementIncrement.fromJson(core.Map _json)
+  GamesAchievementIncrement.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
               : null,
-          steps: _json.containsKey('steps') ? _json['steps'] as core.int : null,
+          steps: json_.containsKey('steps') ? json_['steps'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2929,10 +2929,10 @@ class GamesAchievementSetStepsAtLeast {
     this.steps,
   });
 
-  GamesAchievementSetStepsAtLeast.fromJson(core.Map _json)
+  GamesAchievementSetStepsAtLeast.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          steps: _json.containsKey('steps') ? _json['steps'] as core.int : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          steps: json_.containsKey('steps') ? json_['steps'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2968,14 +2968,14 @@ class ImageAsset {
     this.width,
   });
 
-  ImageAsset.fromJson(core.Map _json)
+  ImageAsset.fromJson(core.Map json_)
       : this(
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3035,33 +3035,33 @@ class Instance {
     this.webInstance,
   });
 
-  Instance.fromJson(core.Map _json)
+  Instance.fromJson(core.Map json_)
       : this(
-          acquisitionUri: _json.containsKey('acquisitionUri')
-              ? _json['acquisitionUri'] as core.String
+          acquisitionUri: json_.containsKey('acquisitionUri')
+              ? json_['acquisitionUri'] as core.String
               : null,
-          androidInstance: _json.containsKey('androidInstance')
-              ? InstanceAndroidDetails.fromJson(_json['androidInstance']
+          androidInstance: json_.containsKey('androidInstance')
+              ? InstanceAndroidDetails.fromJson(json_['androidInstance']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          iosInstance: _json.containsKey('iosInstance')
+          iosInstance: json_.containsKey('iosInstance')
               ? InstanceIosDetails.fromJson(
-                  _json['iosInstance'] as core.Map<core.String, core.dynamic>)
+                  json_['iosInstance'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          platformType: _json.containsKey('platformType')
-              ? _json['platformType'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          platformType: json_.containsKey('platformType')
+              ? json_['platformType'] as core.String
               : null,
-          realtimePlay: _json.containsKey('realtimePlay')
-              ? _json['realtimePlay'] as core.bool
+          realtimePlay: json_.containsKey('realtimePlay')
+              ? json_['realtimePlay'] as core.bool
               : null,
-          turnBasedPlay: _json.containsKey('turnBasedPlay')
-              ? _json['turnBasedPlay'] as core.bool
+          turnBasedPlay: json_.containsKey('turnBasedPlay')
+              ? json_['turnBasedPlay'] as core.bool
               : null,
-          webInstance: _json.containsKey('webInstance')
+          webInstance: json_.containsKey('webInstance')
               ? InstanceWebDetails.fromJson(
-                  _json['webInstance'] as core.Map<core.String, core.dynamic>)
+                  json_['webInstance'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3101,17 +3101,17 @@ class InstanceAndroidDetails {
     this.preferred,
   });
 
-  InstanceAndroidDetails.fromJson(core.Map _json)
+  InstanceAndroidDetails.fromJson(core.Map json_)
       : this(
-          enablePiracyCheck: _json.containsKey('enablePiracyCheck')
-              ? _json['enablePiracyCheck'] as core.bool
+          enablePiracyCheck: json_.containsKey('enablePiracyCheck')
+              ? json_['enablePiracyCheck'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
-          preferred: _json.containsKey('preferred')
-              ? _json['preferred'] as core.bool
+          preferred: json_.containsKey('preferred')
+              ? json_['preferred'] as core.bool
               : null,
         );
 
@@ -3160,26 +3160,26 @@ class InstanceIosDetails {
     this.supportIphone,
   });
 
-  InstanceIosDetails.fromJson(core.Map _json)
+  InstanceIosDetails.fromJson(core.Map json_)
       : this(
-          bundleIdentifier: _json.containsKey('bundleIdentifier')
-              ? _json['bundleIdentifier'] as core.String
+          bundleIdentifier: json_.containsKey('bundleIdentifier')
+              ? json_['bundleIdentifier'] as core.String
               : null,
-          itunesAppId: _json.containsKey('itunesAppId')
-              ? _json['itunesAppId'] as core.String
+          itunesAppId: json_.containsKey('itunesAppId')
+              ? json_['itunesAppId'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          preferredForIpad: _json.containsKey('preferredForIpad')
-              ? _json['preferredForIpad'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          preferredForIpad: json_.containsKey('preferredForIpad')
+              ? json_['preferredForIpad'] as core.bool
               : null,
-          preferredForIphone: _json.containsKey('preferredForIphone')
-              ? _json['preferredForIphone'] as core.bool
+          preferredForIphone: json_.containsKey('preferredForIphone')
+              ? json_['preferredForIphone'] as core.bool
               : null,
-          supportIpad: _json.containsKey('supportIpad')
-              ? _json['supportIpad'] as core.bool
+          supportIpad: json_.containsKey('supportIpad')
+              ? json_['supportIpad'] as core.bool
               : null,
-          supportIphone: _json.containsKey('supportIphone')
-              ? _json['supportIphone'] as core.bool
+          supportIphone: json_.containsKey('supportIphone')
+              ? json_['supportIphone'] as core.bool
               : null,
         );
 
@@ -3214,14 +3214,14 @@ class InstanceWebDetails {
     this.preferred,
   });
 
-  InstanceWebDetails.fromJson(core.Map _json)
+  InstanceWebDetails.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          launchUrl: _json.containsKey('launchUrl')
-              ? _json['launchUrl'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          launchUrl: json_.containsKey('launchUrl')
+              ? json_['launchUrl'] as core.String
               : null,
-          preferred: _json.containsKey('preferred')
-              ? _json['preferred'] as core.bool
+          preferred: json_.containsKey('preferred')
+              ? json_['preferred'] as core.bool
               : null,
         );
 
@@ -3270,19 +3270,19 @@ class Leaderboard {
     this.order,
   });
 
-  Leaderboard.fromJson(core.Map _json)
+  Leaderboard.fromJson(core.Map json_)
       : this(
-          iconUrl: _json.containsKey('iconUrl')
-              ? _json['iconUrl'] as core.String
+          iconUrl: json_.containsKey('iconUrl')
+              ? json_['iconUrl'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          isIconUrlDefault: _json.containsKey('isIconUrlDefault')
-              ? _json['isIconUrlDefault'] as core.bool
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          isIconUrlDefault: json_.containsKey('isIconUrlDefault')
+              ? json_['isIconUrlDefault'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           order:
-              _json.containsKey('order') ? _json['order'] as core.String : null,
+              json_.containsKey('order') ? json_['order'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3347,33 +3347,33 @@ class LeaderboardEntry {
     this.writeTimestampMillis,
   });
 
-  LeaderboardEntry.fromJson(core.Map _json)
+  LeaderboardEntry.fromJson(core.Map json_)
       : this(
-          formattedScore: _json.containsKey('formattedScore')
-              ? _json['formattedScore'] as core.String
+          formattedScore: json_.containsKey('formattedScore')
+              ? json_['formattedScore'] as core.String
               : null,
-          formattedScoreRank: _json.containsKey('formattedScoreRank')
-              ? _json['formattedScoreRank'] as core.String
+          formattedScoreRank: json_.containsKey('formattedScoreRank')
+              ? json_['formattedScoreRank'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          player: _json.containsKey('player')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          player: json_.containsKey('player')
               ? Player.fromJson(
-                  _json['player'] as core.Map<core.String, core.dynamic>)
+                  json_['player'] as core.Map<core.String, core.dynamic>)
               : null,
-          scoreRank: _json.containsKey('scoreRank')
-              ? _json['scoreRank'] as core.String
+          scoreRank: json_.containsKey('scoreRank')
+              ? json_['scoreRank'] as core.String
               : null,
-          scoreTag: _json.containsKey('scoreTag')
-              ? _json['scoreTag'] as core.String
+          scoreTag: json_.containsKey('scoreTag')
+              ? json_['scoreTag'] as core.String
               : null,
-          scoreValue: _json.containsKey('scoreValue')
-              ? _json['scoreValue'] as core.String
+          scoreValue: json_.containsKey('scoreValue')
+              ? json_['scoreValue'] as core.String
               : null,
-          timeSpan: _json.containsKey('timeSpan')
-              ? _json['timeSpan'] as core.String
+          timeSpan: json_.containsKey('timeSpan')
+              ? json_['timeSpan'] as core.String
               : null,
-          writeTimestampMillis: _json.containsKey('writeTimestampMillis')
-              ? _json['writeTimestampMillis'] as core.String
+          writeTimestampMillis: json_.containsKey('writeTimestampMillis')
+              ? json_['writeTimestampMillis'] as core.String
               : null,
         );
 
@@ -3411,17 +3411,17 @@ class LeaderboardListResponse {
     this.nextPageToken,
   });
 
-  LeaderboardListResponse.fromJson(core.Map _json)
+  LeaderboardListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Leaderboard.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3459,19 +3459,19 @@ class LeaderboardScoreRank {
     this.rank,
   });
 
-  LeaderboardScoreRank.fromJson(core.Map _json)
+  LeaderboardScoreRank.fromJson(core.Map json_)
       : this(
-          formattedNumScores: _json.containsKey('formattedNumScores')
-              ? _json['formattedNumScores'] as core.String
+          formattedNumScores: json_.containsKey('formattedNumScores')
+              ? json_['formattedNumScores'] as core.String
               : null,
-          formattedRank: _json.containsKey('formattedRank')
-              ? _json['formattedRank'] as core.String
+          formattedRank: json_.containsKey('formattedRank')
+              ? json_['formattedRank'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          numScores: _json.containsKey('numScores')
-              ? _json['numScores'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          numScores: json_.containsKey('numScores')
+              ? json_['numScores'] as core.String
               : null,
-          rank: _json.containsKey('rank') ? _json['rank'] as core.String : null,
+          rank: json_.containsKey('rank') ? json_['rank'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3520,27 +3520,27 @@ class LeaderboardScores {
     this.prevPageToken,
   });
 
-  LeaderboardScores.fromJson(core.Map _json)
+  LeaderboardScores.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => LeaderboardEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          numScores: _json.containsKey('numScores')
-              ? _json['numScores'] as core.String
+          numScores: json_.containsKey('numScores')
+              ? json_['numScores'] as core.String
               : null,
-          playerScore: _json.containsKey('playerScore')
+          playerScore: json_.containsKey('playerScore')
               ? LeaderboardEntry.fromJson(
-                  _json['playerScore'] as core.Map<core.String, core.dynamic>)
+                  json_['playerScore'] as core.Map<core.String, core.dynamic>)
               : null,
-          prevPageToken: _json.containsKey('prevPageToken')
-              ? _json['prevPageToken'] as core.String
+          prevPageToken: json_.containsKey('prevPageToken')
+              ? json_['prevPageToken'] as core.String
               : null,
         );
 
@@ -3575,14 +3575,14 @@ class MetagameConfig {
     this.playerLevels,
   });
 
-  MetagameConfig.fromJson(core.Map _json)
+  MetagameConfig.fromJson(core.Map json_)
       : this(
-          currentVersion: _json.containsKey('currentVersion')
-              ? _json['currentVersion'] as core.int
+          currentVersion: json_.containsKey('currentVersion')
+              ? json_['currentVersion'] as core.int
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          playerLevels: _json.containsKey('playerLevels')
-              ? (_json['playerLevels'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          playerLevels: json_.containsKey('playerLevels')
+              ? (json_['playerLevels'] as core.List)
                   .map((value) => PlayerLevel.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3613,13 +3613,13 @@ class PlayerName {
     this.givenName,
   });
 
-  PlayerName.fromJson(core.Map _json)
+  PlayerName.fromJson(core.Map json_)
       : this(
-          familyName: _json.containsKey('familyName')
-              ? _json['familyName'] as core.String
+          familyName: json_.containsKey('familyName')
+              ? json_['familyName'] as core.String
               : null,
-          givenName: _json.containsKey('givenName')
-              ? _json['givenName'] as core.String
+          givenName: json_.containsKey('givenName')
+              ? json_['givenName'] as core.String
               : null,
         );
 
@@ -3702,47 +3702,47 @@ class Player {
     this.title,
   });
 
-  Player.fromJson(core.Map _json)
+  Player.fromJson(core.Map json_)
       : this(
-          avatarImageUrl: _json.containsKey('avatarImageUrl')
-              ? _json['avatarImageUrl'] as core.String
+          avatarImageUrl: json_.containsKey('avatarImageUrl')
+              ? json_['avatarImageUrl'] as core.String
               : null,
-          bannerUrlLandscape: _json.containsKey('bannerUrlLandscape')
-              ? _json['bannerUrlLandscape'] as core.String
+          bannerUrlLandscape: json_.containsKey('bannerUrlLandscape')
+              ? json_['bannerUrlLandscape'] as core.String
               : null,
-          bannerUrlPortrait: _json.containsKey('bannerUrlPortrait')
-              ? _json['bannerUrlPortrait'] as core.String
+          bannerUrlPortrait: json_.containsKey('bannerUrlPortrait')
+              ? json_['bannerUrlPortrait'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          experienceInfo: _json.containsKey('experienceInfo')
-              ? PlayerExperienceInfo.fromJson(_json['experienceInfo']
+          experienceInfo: json_.containsKey('experienceInfo')
+              ? PlayerExperienceInfo.fromJson(json_['experienceInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          friendStatus: _json.containsKey('friendStatus')
-              ? _json['friendStatus'] as core.String
+          friendStatus: json_.containsKey('friendStatus')
+              ? json_['friendStatus'] as core.String
               : null,
-          gamePlayerId: _json.containsKey('gamePlayerId')
-              ? _json['gamePlayerId'] as core.String
+          gamePlayerId: json_.containsKey('gamePlayerId')
+              ? json_['gamePlayerId'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name')
               ? PlayerName.fromJson(
-                  _json['name'] as core.Map<core.String, core.dynamic>)
+                  json_['name'] as core.Map<core.String, core.dynamic>)
               : null,
-          originalPlayerId: _json.containsKey('originalPlayerId')
-              ? _json['originalPlayerId'] as core.String
+          originalPlayerId: json_.containsKey('originalPlayerId')
+              ? json_['originalPlayerId'] as core.String
               : null,
-          playerId: _json.containsKey('playerId')
-              ? _json['playerId'] as core.String
+          playerId: json_.containsKey('playerId')
+              ? json_['playerId'] as core.String
               : null,
-          profileSettings: _json.containsKey('profileSettings')
-              ? ProfileSettings.fromJson(_json['profileSettings']
+          profileSettings: json_.containsKey('profileSettings')
+              ? ProfileSettings.fromJson(json_['profileSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3807,25 +3807,25 @@ class PlayerAchievement {
     this.lastUpdatedTimestamp,
   });
 
-  PlayerAchievement.fromJson(core.Map _json)
+  PlayerAchievement.fromJson(core.Map json_)
       : this(
-          achievementState: _json.containsKey('achievementState')
-              ? _json['achievementState'] as core.String
+          achievementState: json_.containsKey('achievementState')
+              ? json_['achievementState'] as core.String
               : null,
-          currentSteps: _json.containsKey('currentSteps')
-              ? _json['currentSteps'] as core.int
+          currentSteps: json_.containsKey('currentSteps')
+              ? json_['currentSteps'] as core.int
               : null,
-          experiencePoints: _json.containsKey('experiencePoints')
-              ? _json['experiencePoints'] as core.String
+          experiencePoints: json_.containsKey('experiencePoints')
+              ? json_['experiencePoints'] as core.String
               : null,
           formattedCurrentStepsString:
-              _json.containsKey('formattedCurrentStepsString')
-                  ? _json['formattedCurrentStepsString'] as core.String
+              json_.containsKey('formattedCurrentStepsString')
+                  ? json_['formattedCurrentStepsString'] as core.String
                   : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          lastUpdatedTimestamp: _json.containsKey('lastUpdatedTimestamp')
-              ? _json['lastUpdatedTimestamp'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          lastUpdatedTimestamp: json_.containsKey('lastUpdatedTimestamp')
+              ? json_['lastUpdatedTimestamp'] as core.String
               : null,
         );
 
@@ -3861,17 +3861,17 @@ class PlayerAchievementListResponse {
     this.nextPageToken,
   });
 
-  PlayerAchievementListResponse.fromJson(core.Map _json)
+  PlayerAchievementListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => PlayerAchievement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3912,20 +3912,20 @@ class PlayerEvent {
     this.playerId,
   });
 
-  PlayerEvent.fromJson(core.Map _json)
+  PlayerEvent.fromJson(core.Map json_)
       : this(
-          definitionId: _json.containsKey('definitionId')
-              ? _json['definitionId'] as core.String
+          definitionId: json_.containsKey('definitionId')
+              ? json_['definitionId'] as core.String
               : null,
-          formattedNumEvents: _json.containsKey('formattedNumEvents')
-              ? _json['formattedNumEvents'] as core.String
+          formattedNumEvents: json_.containsKey('formattedNumEvents')
+              ? json_['formattedNumEvents'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          numEvents: _json.containsKey('numEvents')
-              ? _json['numEvents'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          numEvents: json_.containsKey('numEvents')
+              ? json_['numEvents'] as core.String
               : null,
-          playerId: _json.containsKey('playerId')
-              ? _json['playerId'] as core.String
+          playerId: json_.containsKey('playerId')
+              ? json_['playerId'] as core.String
               : null,
         );
 
@@ -3958,17 +3958,17 @@ class PlayerEventListResponse {
     this.nextPageToken,
   });
 
-  PlayerEventListResponse.fromJson(core.Map _json)
+  PlayerEventListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => PlayerEvent.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4010,23 +4010,23 @@ class PlayerExperienceInfo {
     this.nextLevel,
   });
 
-  PlayerExperienceInfo.fromJson(core.Map _json)
+  PlayerExperienceInfo.fromJson(core.Map json_)
       : this(
-          currentExperiencePoints: _json.containsKey('currentExperiencePoints')
-              ? _json['currentExperiencePoints'] as core.String
+          currentExperiencePoints: json_.containsKey('currentExperiencePoints')
+              ? json_['currentExperiencePoints'] as core.String
               : null,
-          currentLevel: _json.containsKey('currentLevel')
+          currentLevel: json_.containsKey('currentLevel')
               ? PlayerLevel.fromJson(
-                  _json['currentLevel'] as core.Map<core.String, core.dynamic>)
+                  json_['currentLevel'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           lastLevelUpTimestampMillis:
-              _json.containsKey('lastLevelUpTimestampMillis')
-                  ? _json['lastLevelUpTimestampMillis'] as core.String
+              json_.containsKey('lastLevelUpTimestampMillis')
+                  ? json_['lastLevelUpTimestampMillis'] as core.String
                   : null,
-          nextLevel: _json.containsKey('nextLevel')
+          nextLevel: json_.containsKey('nextLevel')
               ? PlayerLevel.fromJson(
-                  _json['nextLevel'] as core.Map<core.String, core.dynamic>)
+                  json_['nextLevel'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4100,38 +4100,38 @@ class PlayerLeaderboardScore {
     this.writeTimestamp,
   });
 
-  PlayerLeaderboardScore.fromJson(core.Map _json)
+  PlayerLeaderboardScore.fromJson(core.Map json_)
       : this(
-          friendsRank: _json.containsKey('friendsRank')
+          friendsRank: json_.containsKey('friendsRank')
               ? LeaderboardScoreRank.fromJson(
-                  _json['friendsRank'] as core.Map<core.String, core.dynamic>)
+                  json_['friendsRank'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          leaderboardId: _json.containsKey('leaderboard_id')
-              ? _json['leaderboard_id'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          leaderboardId: json_.containsKey('leaderboard_id')
+              ? json_['leaderboard_id'] as core.String
               : null,
-          publicRank: _json.containsKey('publicRank')
+          publicRank: json_.containsKey('publicRank')
               ? LeaderboardScoreRank.fromJson(
-                  _json['publicRank'] as core.Map<core.String, core.dynamic>)
+                  json_['publicRank'] as core.Map<core.String, core.dynamic>)
               : null,
-          scoreString: _json.containsKey('scoreString')
-              ? _json['scoreString'] as core.String
+          scoreString: json_.containsKey('scoreString')
+              ? json_['scoreString'] as core.String
               : null,
-          scoreTag: _json.containsKey('scoreTag')
-              ? _json['scoreTag'] as core.String
+          scoreTag: json_.containsKey('scoreTag')
+              ? json_['scoreTag'] as core.String
               : null,
-          scoreValue: _json.containsKey('scoreValue')
-              ? _json['scoreValue'] as core.String
+          scoreValue: json_.containsKey('scoreValue')
+              ? json_['scoreValue'] as core.String
               : null,
-          socialRank: _json.containsKey('socialRank')
+          socialRank: json_.containsKey('socialRank')
               ? LeaderboardScoreRank.fromJson(
-                  _json['socialRank'] as core.Map<core.String, core.dynamic>)
+                  json_['socialRank'] as core.Map<core.String, core.dynamic>)
               : null,
-          timeSpan: _json.containsKey('timeSpan')
-              ? _json['timeSpan'] as core.String
+          timeSpan: json_.containsKey('timeSpan')
+              ? json_['timeSpan'] as core.String
               : null,
-          writeTimestamp: _json.containsKey('writeTimestamp')
-              ? _json['writeTimestamp'] as core.String
+          writeTimestamp: json_.containsKey('writeTimestamp')
+              ? json_['writeTimestamp'] as core.String
               : null,
         );
 
@@ -4173,21 +4173,21 @@ class PlayerLeaderboardScoreListResponse {
     this.player,
   });
 
-  PlayerLeaderboardScoreListResponse.fromJson(core.Map _json)
+  PlayerLeaderboardScoreListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => PlayerLeaderboardScore.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          player: _json.containsKey('player')
+          player: json_.containsKey('player')
               ? Player.fromJson(
-                  _json['player'] as core.Map<core.String, core.dynamic>)
+                  json_['player'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4222,15 +4222,15 @@ class PlayerLevel {
     this.minExperiencePoints,
   });
 
-  PlayerLevel.fromJson(core.Map _json)
+  PlayerLevel.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          level: _json.containsKey('level') ? _json['level'] as core.int : null,
-          maxExperiencePoints: _json.containsKey('maxExperiencePoints')
-              ? _json['maxExperiencePoints'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          level: json_.containsKey('level') ? json_['level'] as core.int : null,
+          maxExperiencePoints: json_.containsKey('maxExperiencePoints')
+              ? json_['maxExperiencePoints'] as core.String
               : null,
-          minExperiencePoints: _json.containsKey('minExperiencePoints')
-              ? _json['minExperiencePoints'] as core.String
+          minExperiencePoints: json_.containsKey('minExperiencePoints')
+              ? json_['minExperiencePoints'] as core.String
               : null,
         );
 
@@ -4263,17 +4263,17 @@ class PlayerListResponse {
     this.nextPageToken,
   });
 
-  PlayerListResponse.fromJson(core.Map _json)
+  PlayerListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Player.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4319,19 +4319,19 @@ class PlayerScore {
     this.timeSpan,
   });
 
-  PlayerScore.fromJson(core.Map _json)
+  PlayerScore.fromJson(core.Map json_)
       : this(
-          formattedScore: _json.containsKey('formattedScore')
-              ? _json['formattedScore'] as core.String
+          formattedScore: json_.containsKey('formattedScore')
+              ? json_['formattedScore'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           score:
-              _json.containsKey('score') ? _json['score'] as core.String : null,
-          scoreTag: _json.containsKey('scoreTag')
-              ? _json['scoreTag'] as core.String
+              json_.containsKey('score') ? json_['score'] as core.String : null,
+          scoreTag: json_.containsKey('scoreTag')
+              ? json_['scoreTag'] as core.String
               : null,
-          timeSpan: _json.containsKey('timeSpan')
-              ? _json['timeSpan'] as core.String
+          timeSpan: json_.containsKey('timeSpan')
+              ? json_['timeSpan'] as core.String
               : null,
         );
 
@@ -4359,11 +4359,11 @@ class PlayerScoreListResponse {
     this.submittedScores,
   });
 
-  PlayerScoreListResponse.fromJson(core.Map _json)
+  PlayerScoreListResponse.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          submittedScores: _json.containsKey('submittedScores')
-              ? (_json['submittedScores'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          submittedScores: json_.containsKey('submittedScores')
+              ? (json_['submittedScores'] as core.List)
                   .map((value) => PlayerScoreResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4415,25 +4415,25 @@ class PlayerScoreResponse {
     this.unbeatenScores,
   });
 
-  PlayerScoreResponse.fromJson(core.Map _json)
+  PlayerScoreResponse.fromJson(core.Map json_)
       : this(
-          beatenScoreTimeSpans: _json.containsKey('beatenScoreTimeSpans')
-              ? (_json['beatenScoreTimeSpans'] as core.List)
+          beatenScoreTimeSpans: json_.containsKey('beatenScoreTimeSpans')
+              ? (json_['beatenScoreTimeSpans'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          formattedScore: _json.containsKey('formattedScore')
-              ? _json['formattedScore'] as core.String
+          formattedScore: json_.containsKey('formattedScore')
+              ? json_['formattedScore'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          leaderboardId: _json.containsKey('leaderboardId')
-              ? _json['leaderboardId'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          leaderboardId: json_.containsKey('leaderboardId')
+              ? json_['leaderboardId'] as core.String
               : null,
-          scoreTag: _json.containsKey('scoreTag')
-              ? _json['scoreTag'] as core.String
+          scoreTag: json_.containsKey('scoreTag')
+              ? json_['scoreTag'] as core.String
               : null,
-          unbeatenScores: _json.containsKey('unbeatenScores')
-              ? (_json['unbeatenScores'] as core.List)
+          unbeatenScores: json_.containsKey('unbeatenScores')
+              ? (json_['unbeatenScores'] as core.List)
                   .map((value) => PlayerScore.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4466,11 +4466,11 @@ class PlayerScoreSubmissionList {
     this.scores,
   });
 
-  PlayerScoreSubmissionList.fromJson(core.Map _json)
+  PlayerScoreSubmissionList.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          scores: _json.containsKey('scores')
-              ? (_json['scores'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          scores: json_.containsKey('scores')
+              ? (json_['scores'] as core.List)
                   .map((value) => ScoreSubmission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4512,14 +4512,14 @@ class ProfileSettings {
     this.profileVisible,
   });
 
-  ProfileSettings.fromJson(core.Map _json)
+  ProfileSettings.fromJson(core.Map json_)
       : this(
-          friendsListVisibility: _json.containsKey('friendsListVisibility')
-              ? _json['friendsListVisibility'] as core.String
+          friendsListVisibility: json_.containsKey('friendsListVisibility')
+              ? json_['friendsListVisibility'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          profileVisible: _json.containsKey('profileVisible')
-              ? _json['profileVisible'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          profileVisible: json_.containsKey('profileVisible')
+              ? json_['profileVisible'] as core.bool
               : null,
         );
 
@@ -4558,14 +4558,14 @@ class RevisionCheckResponse {
     this.revisionStatus,
   });
 
-  RevisionCheckResponse.fromJson(core.Map _json)
+  RevisionCheckResponse.fromJson(core.Map json_)
       : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
+          apiVersion: json_.containsKey('apiVersion')
+              ? json_['apiVersion'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          revisionStatus: _json.containsKey('revisionStatus')
-              ? _json['revisionStatus'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          revisionStatus: json_.containsKey('revisionStatus')
+              ? json_['revisionStatus'] as core.String
               : null,
         );
 
@@ -4596,13 +4596,13 @@ class ScopedPlayerIds {
     this.gamePlayerId,
   });
 
-  ScopedPlayerIds.fromJson(core.Map _json)
+  ScopedPlayerIds.fromJson(core.Map json_)
       : this(
-          developerPlayerKey: _json.containsKey('developerPlayerKey')
-              ? _json['developerPlayerKey'] as core.String
+          developerPlayerKey: json_.containsKey('developerPlayerKey')
+              ? json_['developerPlayerKey'] as core.String
               : null,
-          gamePlayerId: _json.containsKey('gamePlayerId')
-              ? _json['gamePlayerId'] as core.String
+          gamePlayerId: json_.containsKey('gamePlayerId')
+              ? json_['gamePlayerId'] as core.String
               : null,
         );
 
@@ -4644,19 +4644,19 @@ class ScoreSubmission {
     this.signature,
   });
 
-  ScoreSubmission.fromJson(core.Map _json)
+  ScoreSubmission.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          leaderboardId: _json.containsKey('leaderboardId')
-              ? _json['leaderboardId'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          leaderboardId: json_.containsKey('leaderboardId')
+              ? json_['leaderboardId'] as core.String
               : null,
           score:
-              _json.containsKey('score') ? _json['score'] as core.String : null,
-          scoreTag: _json.containsKey('scoreTag')
-              ? _json['scoreTag'] as core.String
+              json_.containsKey('score') ? json_['score'] as core.String : null,
+          scoreTag: json_.containsKey('scoreTag')
+              ? json_['scoreTag'] as core.String
               : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
         );
 
@@ -4730,34 +4730,34 @@ class Snapshot {
     this.uniqueName,
   });
 
-  Snapshot.fromJson(core.Map _json)
+  Snapshot.fromJson(core.Map json_)
       : this(
-          coverImage: _json.containsKey('coverImage')
+          coverImage: json_.containsKey('coverImage')
               ? SnapshotImage.fromJson(
-                  _json['coverImage'] as core.Map<core.String, core.dynamic>)
+                  json_['coverImage'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          driveId: _json.containsKey('driveId')
-              ? _json['driveId'] as core.String
+          driveId: json_.containsKey('driveId')
+              ? json_['driveId'] as core.String
               : null,
-          durationMillis: _json.containsKey('durationMillis')
-              ? _json['durationMillis'] as core.String
+          durationMillis: json_.containsKey('durationMillis')
+              ? json_['durationMillis'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          lastModifiedMillis: _json.containsKey('lastModifiedMillis')
-              ? _json['lastModifiedMillis'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          lastModifiedMillis: json_.containsKey('lastModifiedMillis')
+              ? json_['lastModifiedMillis'] as core.String
               : null,
-          progressValue: _json.containsKey('progressValue')
-              ? _json['progressValue'] as core.String
+          progressValue: json_.containsKey('progressValue')
+              ? json_['progressValue'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          uniqueName: _json.containsKey('uniqueName')
-              ? _json['uniqueName'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uniqueName: json_.containsKey('uniqueName')
+              ? json_['uniqueName'] as core.String
               : null,
         );
 
@@ -4806,16 +4806,16 @@ class SnapshotImage {
     this.width,
   });
 
-  SnapshotImage.fromJson(core.Map _json)
+  SnapshotImage.fromJson(core.Map json_)
       : this(
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          mimeType: _json.containsKey('mime_type')
-              ? _json['mime_type'] as core.String
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          mimeType: json_.containsKey('mime_type')
+              ? json_['mime_type'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4848,17 +4848,17 @@ class SnapshotListResponse {
     this.nextPageToken,
   });
 
-  SnapshotListResponse.fromJson(core.Map _json)
+  SnapshotListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Snapshot.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4953,39 +4953,39 @@ class StatsResponse {
     this.totalSpendNext28Days,
   });
 
-  StatsResponse.fromJson(core.Map _json)
+  StatsResponse.fromJson(core.Map json_)
       : this(
           avgSessionLengthMinutes:
-              _json.containsKey('avg_session_length_minutes')
-                  ? (_json['avg_session_length_minutes'] as core.num).toDouble()
+              json_.containsKey('avg_session_length_minutes')
+                  ? (json_['avg_session_length_minutes'] as core.num).toDouble()
                   : null,
-          churnProbability: _json.containsKey('churn_probability')
-              ? (_json['churn_probability'] as core.num).toDouble()
+          churnProbability: json_.containsKey('churn_probability')
+              ? (json_['churn_probability'] as core.num).toDouble()
               : null,
-          daysSinceLastPlayed: _json.containsKey('days_since_last_played')
-              ? _json['days_since_last_played'] as core.int
+          daysSinceLastPlayed: json_.containsKey('days_since_last_played')
+              ? json_['days_since_last_played'] as core.int
               : null,
-          highSpenderProbability: _json.containsKey('high_spender_probability')
-              ? (_json['high_spender_probability'] as core.num).toDouble()
+          highSpenderProbability: json_.containsKey('high_spender_probability')
+              ? (json_['high_spender_probability'] as core.num).toDouble()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          numPurchases: _json.containsKey('num_purchases')
-              ? _json['num_purchases'] as core.int
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          numPurchases: json_.containsKey('num_purchases')
+              ? json_['num_purchases'] as core.int
               : null,
-          numSessions: _json.containsKey('num_sessions')
-              ? _json['num_sessions'] as core.int
+          numSessions: json_.containsKey('num_sessions')
+              ? json_['num_sessions'] as core.int
               : null,
-          numSessionsPercentile: _json.containsKey('num_sessions_percentile')
-              ? (_json['num_sessions_percentile'] as core.num).toDouble()
+          numSessionsPercentile: json_.containsKey('num_sessions_percentile')
+              ? (json_['num_sessions_percentile'] as core.num).toDouble()
               : null,
-          spendPercentile: _json.containsKey('spend_percentile')
-              ? (_json['spend_percentile'] as core.num).toDouble()
+          spendPercentile: json_.containsKey('spend_percentile')
+              ? (json_['spend_percentile'] as core.num).toDouble()
               : null,
-          spendProbability: _json.containsKey('spend_probability')
-              ? (_json['spend_probability'] as core.num).toDouble()
+          spendProbability: json_.containsKey('spend_probability')
+              ? (json_['spend_probability'] as core.num).toDouble()
               : null,
-          totalSpendNext28Days: _json.containsKey('total_spend_next_28_days')
-              ? (_json['total_spend_next_28_days'] as core.num).toDouble()
+          totalSpendNext28Days: json_.containsKey('total_spend_next_28_days')
+              ? (json_['total_spend_next_28_days'] as core.num).toDouble()
               : null,
         );
 

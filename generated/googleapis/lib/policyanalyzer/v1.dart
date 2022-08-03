@@ -135,22 +135,22 @@ class ProjectsLocationsActivityTypesActivitiesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/activities:query';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/activities:query';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -180,20 +180,20 @@ class GoogleCloudPolicyanalyzerV1Activity {
     this.observationPeriod,
   });
 
-  GoogleCloudPolicyanalyzerV1Activity.fromJson(core.Map _json)
+  GoogleCloudPolicyanalyzerV1Activity.fromJson(core.Map json_)
       : this(
-          activity: _json.containsKey('activity')
-              ? _json['activity'] as core.Map<core.String, core.dynamic>
+          activity: json_.containsKey('activity')
+              ? json_['activity'] as core.Map<core.String, core.dynamic>
               : null,
-          activityType: _json.containsKey('activityType')
-              ? _json['activityType'] as core.String
+          activityType: json_.containsKey('activityType')
+              ? json_['activityType'] as core.String
               : null,
-          fullResourceName: _json.containsKey('fullResourceName')
-              ? _json['fullResourceName'] as core.String
+          fullResourceName: json_.containsKey('fullResourceName')
+              ? json_['fullResourceName'] as core.String
               : null,
-          observationPeriod: _json.containsKey('observationPeriod')
+          observationPeriod: json_.containsKey('observationPeriod')
               ? GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(
-                  _json['observationPeriod']
+                  json_['observationPeriod']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -223,13 +223,13 @@ class GoogleCloudPolicyanalyzerV1ObservationPeriod {
     this.startTime,
   });
 
-  GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(core.Map _json)
+  GoogleCloudPolicyanalyzerV1ObservationPeriod.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -256,16 +256,16 @@ class GoogleCloudPolicyanalyzerV1QueryActivityResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(core.Map _json)
+  GoogleCloudPolicyanalyzerV1QueryActivityResponse.fromJson(core.Map json_)
       : this(
-          activities: _json.containsKey('activities')
-              ? (_json['activities'] as core.List)
+          activities: json_.containsKey('activities')
+              ? (json_['activities'] as core.List)
                   .map((value) => GoogleCloudPolicyanalyzerV1Activity.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 

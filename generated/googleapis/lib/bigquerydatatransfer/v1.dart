@@ -120,20 +120,20 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enrollDataSources';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enrollDataSources';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -170,21 +170,21 @@ class ProjectsDataSourcesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':checkValidCreds';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':checkValidCreds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CheckValidCredsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a supported data source and returns its settings.
@@ -210,19 +210,19 @@ class ProjectsDataSourcesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DataSource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists supported data sources and returns their settings.
@@ -258,21 +258,21 @@ class ProjectsDataSourcesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dataSources';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataSources';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDataSourcesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -319,20 +319,20 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enrollDataSources';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enrollDataSources';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a location.
@@ -356,18 +356,18 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -404,22 +404,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -457,21 +457,21 @@ class ProjectsLocationsDataSourcesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':checkValidCreds';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':checkValidCreds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CheckValidCredsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a supported data source and returns its settings.
@@ -498,19 +498,19 @@ class ProjectsLocationsDataSourcesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DataSource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists supported data sources and returns their settings.
@@ -546,21 +546,21 @@ class ProjectsLocationsDataSourcesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/dataSources';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataSources';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDataSourcesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -637,8 +637,8 @@ class ProjectsLocationsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
         'serviceAccountName': [serviceAccountName],
@@ -646,16 +646,16 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -683,18 +683,18 @@ class ProjectsLocationsTransferConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a data transfer config.
@@ -721,19 +721,19 @@ class ProjectsLocationsTransferConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about all transfer configs owned by a project in the
@@ -774,22 +774,22 @@ class ProjectsLocationsTransferConfigsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (dataSourceIds != null) 'dataSourceIds': dataSourceIds,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTransferConfigsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a data transfer configuration.
@@ -863,8 +863,8 @@ class ProjectsLocationsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
         'serviceAccountName': [serviceAccountName],
@@ -873,16 +873,16 @@ class ProjectsLocationsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates transfer runs for a time range \[start_time, end_time\].
@@ -916,21 +916,21 @@ class ProjectsLocationsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':scheduleRuns';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':scheduleRuns';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ScheduleTransferRunsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Start manual transfer runs to be executed now with schedule_time equal to
@@ -965,21 +965,21 @@ class ProjectsLocationsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':startManualRuns';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':startManualRuns';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return StartManualTransferRunsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1017,18 +1017,18 @@ class ProjectsLocationsTransferConfigsRunsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the particular transfer run.
@@ -1056,19 +1056,19 @@ class ProjectsLocationsTransferConfigsRunsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TransferRun.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about running and completed transfer runs.
@@ -1116,7 +1116,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
     core.List<core.String>? states,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (runAttempt != null) 'runAttempt': [runAttempt],
@@ -1124,15 +1124,15 @@ class ProjectsLocationsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/runs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/runs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTransferRunsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1181,22 +1181,22 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (messageTypes != null) 'messageTypes': messageTypes,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferLogs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferLogs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTransferLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1273,8 +1273,8 @@ class ProjectsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
         'serviceAccountName': [serviceAccountName],
@@ -1282,16 +1282,16 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -1318,18 +1318,18 @@ class ProjectsTransferConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a data transfer config.
@@ -1355,19 +1355,19 @@ class ProjectsTransferConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about all transfer configs owned by a project in the
@@ -1408,22 +1408,22 @@ class ProjectsTransferConfigsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (dataSourceIds != null) 'dataSourceIds': dataSourceIds,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTransferConfigsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a data transfer configuration.
@@ -1496,8 +1496,8 @@ class ProjectsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
         'serviceAccountName': [serviceAccountName],
@@ -1506,16 +1506,16 @@ class ProjectsTransferConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TransferConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates transfer runs for a time range \[start_time, end_time\].
@@ -1548,21 +1548,21 @@ class ProjectsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':scheduleRuns';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':scheduleRuns';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ScheduleTransferRunsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Start manual transfer runs to be executed now with schedule_time equal to
@@ -1596,21 +1596,21 @@ class ProjectsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':startManualRuns';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':startManualRuns';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return StartManualTransferRunsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1648,18 +1648,18 @@ class ProjectsTransferConfigsRunsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the particular transfer run.
@@ -1687,19 +1687,19 @@ class ProjectsTransferConfigsRunsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TransferRun.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about running and completed transfer runs.
@@ -1746,7 +1746,7 @@ class ProjectsTransferConfigsRunsResource {
     core.List<core.String>? states,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (runAttempt != null) 'runAttempt': [runAttempt],
@@ -1754,15 +1754,15 @@ class ProjectsTransferConfigsRunsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/runs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/runs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTransferRunsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1810,22 +1810,22 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (messageTypes != null) 'messageTypes': messageTypes,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/transferLogs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transferLogs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTransferLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1847,10 +1847,10 @@ class CheckValidCredsResponse {
     this.hasValidCreds,
   });
 
-  CheckValidCredsResponse.fromJson(core.Map _json)
+  CheckValidCredsResponse.fromJson(core.Map json_)
       : this(
-          hasValidCreds: _json.containsKey('hasValidCreds')
-              ? _json['hasValidCreds'] as core.bool
+          hasValidCreds: json_.containsKey('hasValidCreds')
+              ? json_['hasValidCreds'] as core.bool
               : null,
         );
 
@@ -1981,66 +1981,66 @@ class DataSource {
     this.updateDeadlineSeconds,
   });
 
-  DataSource.fromJson(core.Map _json)
+  DataSource.fromJson(core.Map json_)
       : this(
-          authorizationType: _json.containsKey('authorizationType')
-              ? _json['authorizationType'] as core.String
+          authorizationType: json_.containsKey('authorizationType')
+              ? json_['authorizationType'] as core.String
               : null,
-          clientId: _json.containsKey('clientId')
-              ? _json['clientId'] as core.String
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
               : null,
-          dataRefreshType: _json.containsKey('dataRefreshType')
-              ? _json['dataRefreshType'] as core.String
+          dataRefreshType: json_.containsKey('dataRefreshType')
+              ? json_['dataRefreshType'] as core.String
               : null,
-          dataSourceId: _json.containsKey('dataSourceId')
-              ? _json['dataSourceId'] as core.String
+          dataSourceId: json_.containsKey('dataSourceId')
+              ? json_['dataSourceId'] as core.String
               : null,
           defaultDataRefreshWindowDays:
-              _json.containsKey('defaultDataRefreshWindowDays')
-                  ? _json['defaultDataRefreshWindowDays'] as core.int
+              json_.containsKey('defaultDataRefreshWindowDays')
+                  ? json_['defaultDataRefreshWindowDays'] as core.int
                   : null,
-          defaultSchedule: _json.containsKey('defaultSchedule')
-              ? _json['defaultSchedule'] as core.String
+          defaultSchedule: json_.containsKey('defaultSchedule')
+              ? json_['defaultSchedule'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          helpUrl: _json.containsKey('helpUrl')
-              ? _json['helpUrl'] as core.String
+          helpUrl: json_.containsKey('helpUrl')
+              ? json_['helpUrl'] as core.String
               : null,
-          manualRunsDisabled: _json.containsKey('manualRunsDisabled')
-              ? _json['manualRunsDisabled'] as core.bool
+          manualRunsDisabled: json_.containsKey('manualRunsDisabled')
+              ? json_['manualRunsDisabled'] as core.bool
               : null,
-          minimumScheduleInterval: _json.containsKey('minimumScheduleInterval')
-              ? _json['minimumScheduleInterval'] as core.String
+          minimumScheduleInterval: json_.containsKey('minimumScheduleInterval')
+              ? json_['minimumScheduleInterval'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.List)
                   .map((value) => DataSourceParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          scopes: _json.containsKey('scopes')
-              ? (_json['scopes'] as core.List)
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          supportsCustomSchedule: _json.containsKey('supportsCustomSchedule')
-              ? _json['supportsCustomSchedule'] as core.bool
+          supportsCustomSchedule: json_.containsKey('supportsCustomSchedule')
+              ? json_['supportsCustomSchedule'] as core.bool
               : null,
           supportsMultipleTransfers:
-              _json.containsKey('supportsMultipleTransfers')
-                  ? _json['supportsMultipleTransfers'] as core.bool
+              json_.containsKey('supportsMultipleTransfers')
+                  ? json_['supportsMultipleTransfers'] as core.bool
                   : null,
-          transferType: _json.containsKey('transferType')
-              ? _json['transferType'] as core.String
+          transferType: json_.containsKey('transferType')
+              ? json_['transferType'] as core.String
               : null,
-          updateDeadlineSeconds: _json.containsKey('updateDeadlineSeconds')
-              ? _json['updateDeadlineSeconds'] as core.int
+          updateDeadlineSeconds: json_.containsKey('updateDeadlineSeconds')
+              ? json_['updateDeadlineSeconds'] as core.int
               : null,
         );
 
@@ -2158,58 +2158,58 @@ class DataSourceParameter {
     this.validationRegex,
   });
 
-  DataSourceParameter.fromJson(core.Map _json)
+  DataSourceParameter.fromJson(core.Map json_)
       : this(
-          allowedValues: _json.containsKey('allowedValues')
-              ? (_json['allowedValues'] as core.List)
+          allowedValues: json_.containsKey('allowedValues')
+              ? (json_['allowedValues'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          deprecated: _json.containsKey('deprecated')
-              ? _json['deprecated'] as core.bool
+          deprecated: json_.containsKey('deprecated')
+              ? json_['deprecated'] as core.bool
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
                   .map((value) => DataSourceParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          immutable: _json.containsKey('immutable')
-              ? _json['immutable'] as core.bool
+          immutable: json_.containsKey('immutable')
+              ? json_['immutable'] as core.bool
               : null,
-          maxValue: _json.containsKey('maxValue')
-              ? (_json['maxValue'] as core.num).toDouble()
+          maxValue: json_.containsKey('maxValue')
+              ? (json_['maxValue'] as core.num).toDouble()
               : null,
-          minValue: _json.containsKey('minValue')
-              ? (_json['minValue'] as core.num).toDouble()
+          minValue: json_.containsKey('minValue')
+              ? (json_['minValue'] as core.num).toDouble()
               : null,
-          paramId: _json.containsKey('paramId')
-              ? _json['paramId'] as core.String
+          paramId: json_.containsKey('paramId')
+              ? json_['paramId'] as core.String
               : null,
-          recurse: _json.containsKey('recurse')
-              ? _json['recurse'] as core.bool
+          recurse: json_.containsKey('recurse')
+              ? json_['recurse'] as core.bool
               : null,
-          repeated: _json.containsKey('repeated')
-              ? _json['repeated'] as core.bool
+          repeated: json_.containsKey('repeated')
+              ? json_['repeated'] as core.bool
               : null,
-          required: _json.containsKey('required')
-              ? _json['required'] as core.bool
+          required: json_.containsKey('required')
+              ? json_['required'] as core.bool
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          validationDescription: _json.containsKey('validationDescription')
-              ? _json['validationDescription'] as core.String
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          validationDescription: json_.containsKey('validationDescription')
+              ? json_['validationDescription'] as core.String
               : null,
-          validationHelpUrl: _json.containsKey('validationHelpUrl')
-              ? _json['validationHelpUrl'] as core.String
+          validationHelpUrl: json_.containsKey('validationHelpUrl')
+              ? json_['validationHelpUrl'] as core.String
               : null,
-          validationRegex: _json.containsKey('validationRegex')
-              ? _json['validationRegex'] as core.String
+          validationRegex: json_.containsKey('validationRegex')
+              ? json_['validationRegex'] as core.String
               : null,
         );
 
@@ -2244,10 +2244,10 @@ class EmailPreferences {
     this.enableFailureEmail,
   });
 
-  EmailPreferences.fromJson(core.Map _json)
+  EmailPreferences.fromJson(core.Map json_)
       : this(
-          enableFailureEmail: _json.containsKey('enableFailureEmail')
-              ? _json['enableFailureEmail'] as core.bool
+          enableFailureEmail: json_.containsKey('enableFailureEmail')
+              ? json_['enableFailureEmail'] as core.bool
               : null,
         );
 
@@ -2277,10 +2277,10 @@ class EnrollDataSourcesRequest {
     this.dataSourceIds,
   });
 
-  EnrollDataSourcesRequest.fromJson(core.Map _json)
+  EnrollDataSourcesRequest.fromJson(core.Map json_)
       : this(
-          dataSourceIds: _json.containsKey('dataSourceIds')
-              ? (_json['dataSourceIds'] as core.List)
+          dataSourceIds: json_.containsKey('dataSourceIds')
+              ? (json_['dataSourceIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2310,16 +2310,16 @@ class ListDataSourcesResponse {
     this.nextPageToken,
   });
 
-  ListDataSourcesResponse.fromJson(core.Map _json)
+  ListDataSourcesResponse.fromJson(core.Map json_)
       : this(
-          dataSources: _json.containsKey('dataSources')
-              ? (_json['dataSources'] as core.List)
+          dataSources: json_.containsKey('dataSources')
+              ? (json_['dataSources'] as core.List)
                   .map((value) => DataSource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2342,16 +2342,16 @@ class ListLocationsResponse {
     this.nextPageToken,
   });
 
-  ListLocationsResponse.fromJson(core.Map _json)
+  ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2382,13 +2382,13 @@ class ListTransferConfigsResponse {
     this.transferConfigs,
   });
 
-  ListTransferConfigsResponse.fromJson(core.Map _json)
+  ListTransferConfigsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          transferConfigs: _json.containsKey('transferConfigs')
-              ? (_json['transferConfigs'] as core.List)
+          transferConfigs: json_.containsKey('transferConfigs')
+              ? (json_['transferConfigs'] as core.List)
                   .map((value) => TransferConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2422,13 +2422,13 @@ class ListTransferLogsResponse {
     this.transferMessages,
   });
 
-  ListTransferLogsResponse.fromJson(core.Map _json)
+  ListTransferLogsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          transferMessages: _json.containsKey('transferMessages')
-              ? (_json['transferMessages'] as core.List)
+          transferMessages: json_.containsKey('transferMessages')
+              ? (json_['transferMessages'] as core.List)
                   .map((value) => TransferMessage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2462,13 +2462,13 @@ class ListTransferRunsResponse {
     this.transferRuns,
   });
 
-  ListTransferRunsResponse.fromJson(core.Map _json)
+  ListTransferRunsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          transferRuns: _json.containsKey('transferRuns')
-              ? (_json['transferRuns'] as core.List)
+          transferRuns: json_.containsKey('transferRuns')
+              ? (json_['transferRuns'] as core.List)
                   .map((value) => TransferRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2515,16 +2515,16 @@ class ScheduleOptions {
     this.startTime,
   });
 
-  ScheduleOptions.fromJson(core.Map _json)
+  ScheduleOptions.fromJson(core.Map json_)
       : this(
-          disableAutoScheduling: _json.containsKey('disableAutoScheduling')
-              ? _json['disableAutoScheduling'] as core.bool
+          disableAutoScheduling: json_.containsKey('disableAutoScheduling')
+              ? json_['disableAutoScheduling'] as core.bool
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -2557,13 +2557,13 @@ class ScheduleTransferRunsRequest {
     this.startTime,
   });
 
-  ScheduleTransferRunsRequest.fromJson(core.Map _json)
+  ScheduleTransferRunsRequest.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -2582,10 +2582,10 @@ class ScheduleTransferRunsResponse {
     this.runs,
   });
 
-  ScheduleTransferRunsResponse.fromJson(core.Map _json)
+  ScheduleTransferRunsResponse.fromJson(core.Map json_)
       : this(
-          runs: _json.containsKey('runs')
-              ? (_json['runs'] as core.List)
+          runs: json_.containsKey('runs')
+              ? (json_['runs'] as core.List)
                   .map((value) => TransferRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2612,13 +2612,13 @@ class StartManualTransferRunsRequest {
     this.requestedTimeRange,
   });
 
-  StartManualTransferRunsRequest.fromJson(core.Map _json)
+  StartManualTransferRunsRequest.fromJson(core.Map json_)
       : this(
-          requestedRunTime: _json.containsKey('requestedRunTime')
-              ? _json['requestedRunTime'] as core.String
+          requestedRunTime: json_.containsKey('requestedRunTime')
+              ? json_['requestedRunTime'] as core.String
               : null,
-          requestedTimeRange: _json.containsKey('requestedTimeRange')
-              ? TimeRange.fromJson(_json['requestedTimeRange']
+          requestedTimeRange: json_.containsKey('requestedTimeRange')
+              ? TimeRange.fromJson(json_['requestedTimeRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2639,10 +2639,10 @@ class StartManualTransferRunsResponse {
     this.runs,
   });
 
-  StartManualTransferRunsResponse.fromJson(core.Map _json)
+  StartManualTransferRunsResponse.fromJson(core.Map json_)
       : this(
-          runs: _json.containsKey('runs')
-              ? (_json['runs'] as core.List)
+          runs: json_.containsKey('runs')
+              ? (json_['runs'] as core.List)
                   .map((value) => TransferRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2685,13 +2685,13 @@ class TimeRange {
     this.startTime,
   });
 
-  TimeRange.fromJson(core.Map _json)
+  TimeRange.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -2843,58 +2843,58 @@ class TransferConfig {
     this.userId,
   });
 
-  TransferConfig.fromJson(core.Map _json)
+  TransferConfig.fromJson(core.Map json_)
       : this(
-          dataRefreshWindowDays: _json.containsKey('dataRefreshWindowDays')
-              ? _json['dataRefreshWindowDays'] as core.int
+          dataRefreshWindowDays: json_.containsKey('dataRefreshWindowDays')
+              ? json_['dataRefreshWindowDays'] as core.int
               : null,
-          dataSourceId: _json.containsKey('dataSourceId')
-              ? _json['dataSourceId'] as core.String
+          dataSourceId: json_.containsKey('dataSourceId')
+              ? json_['dataSourceId'] as core.String
               : null,
-          datasetRegion: _json.containsKey('datasetRegion')
-              ? _json['datasetRegion'] as core.String
+          datasetRegion: json_.containsKey('datasetRegion')
+              ? json_['datasetRegion'] as core.String
               : null,
-          destinationDatasetId: _json.containsKey('destinationDatasetId')
-              ? _json['destinationDatasetId'] as core.String
+          destinationDatasetId: json_.containsKey('destinationDatasetId')
+              ? json_['destinationDatasetId'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          emailPreferences: _json.containsKey('emailPreferences')
-              ? EmailPreferences.fromJson(_json['emailPreferences']
+          emailPreferences: json_.containsKey('emailPreferences')
+              ? EmailPreferences.fromJson(json_['emailPreferences']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          nextRunTime: _json.containsKey('nextRunTime')
-              ? _json['nextRunTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nextRunTime: json_.containsKey('nextRunTime')
+              ? json_['nextRunTime'] as core.String
               : null,
-          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
-              ? _json['notificationPubsubTopic'] as core.String
+          notificationPubsubTopic: json_.containsKey('notificationPubsubTopic')
+              ? json_['notificationPubsubTopic'] as core.String
               : null,
-          ownerInfo: _json.containsKey('ownerInfo')
+          ownerInfo: json_.containsKey('ownerInfo')
               ? UserInfo.fromJson(
-                  _json['ownerInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['ownerInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          params: _json.containsKey('params')
-              ? _json['params'] as core.Map<core.String, core.dynamic>
+          params: json_.containsKey('params')
+              ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
-          schedule: _json.containsKey('schedule')
-              ? _json['schedule'] as core.String
+          schedule: json_.containsKey('schedule')
+              ? json_['schedule'] as core.String
               : null,
-          scheduleOptions: _json.containsKey('scheduleOptions')
-              ? ScheduleOptions.fromJson(_json['scheduleOptions']
+          scheduleOptions: json_.containsKey('scheduleOptions')
+              ? ScheduleOptions.fromJson(json_['scheduleOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -2944,16 +2944,16 @@ class TransferMessage {
     this.severity,
   });
 
-  TransferMessage.fromJson(core.Map _json)
+  TransferMessage.fromJson(core.Map json_)
       : this(
-          messageText: _json.containsKey('messageText')
-              ? _json['messageText'] as core.String
+          messageText: json_.containsKey('messageText')
+              ? json_['messageText'] as core.String
               : null,
-          messageTime: _json.containsKey('messageTime')
-              ? _json['messageTime'] as core.String
+          messageTime: json_.containsKey('messageTime')
+              ? json_['messageTime'] as core.String
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
         );
 
@@ -3087,51 +3087,51 @@ class TransferRun {
     this.userId,
   });
 
-  TransferRun.fromJson(core.Map _json)
+  TransferRun.fromJson(core.Map json_)
       : this(
-          dataSourceId: _json.containsKey('dataSourceId')
-              ? _json['dataSourceId'] as core.String
+          dataSourceId: json_.containsKey('dataSourceId')
+              ? json_['dataSourceId'] as core.String
               : null,
-          destinationDatasetId: _json.containsKey('destinationDatasetId')
-              ? _json['destinationDatasetId'] as core.String
+          destinationDatasetId: json_.containsKey('destinationDatasetId')
+              ? json_['destinationDatasetId'] as core.String
               : null,
-          emailPreferences: _json.containsKey('emailPreferences')
-              ? EmailPreferences.fromJson(_json['emailPreferences']
+          emailPreferences: json_.containsKey('emailPreferences')
+              ? EmailPreferences.fromJson(json_['emailPreferences']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          errorStatus: _json.containsKey('errorStatus')
+          errorStatus: json_.containsKey('errorStatus')
               ? Status.fromJson(
-                  _json['errorStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['errorStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
-              ? _json['notificationPubsubTopic'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notificationPubsubTopic: json_.containsKey('notificationPubsubTopic')
+              ? json_['notificationPubsubTopic'] as core.String
               : null,
-          params: _json.containsKey('params')
-              ? _json['params'] as core.Map<core.String, core.dynamic>
+          params: json_.containsKey('params')
+              ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
-          runTime: _json.containsKey('runTime')
-              ? _json['runTime'] as core.String
+          runTime: json_.containsKey('runTime')
+              ? json_['runTime'] as core.String
               : null,
-          schedule: _json.containsKey('schedule')
-              ? _json['schedule'] as core.String
+          schedule: json_.containsKey('schedule')
+              ? json_['schedule'] as core.String
               : null,
-          scheduleTime: _json.containsKey('scheduleTime')
-              ? _json['scheduleTime'] as core.String
+          scheduleTime: json_.containsKey('scheduleTime')
+              ? json_['scheduleTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -3165,10 +3165,10 @@ class UserInfo {
     this.email,
   });
 
-  UserInfo.fromJson(core.Map _json)
+  UserInfo.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

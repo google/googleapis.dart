@@ -88,20 +88,20 @@ class ApplicationsResource {
     core.String applicationId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'admin/datatransfer/v1/applications/' +
+    final url_ = 'admin/datatransfer/v1/applications/' +
         commons.escapeVariable('$applicationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Application.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the applications available for data transfer for a customer.
@@ -131,22 +131,22 @@ class ApplicationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'admin/datatransfer/v1/applications';
+    const url_ = 'admin/datatransfer/v1/applications';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ApplicationsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -176,20 +176,20 @@ class TransfersResource {
     core.String dataTransferId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'admin/datatransfer/v1/transfers/' +
+    final url_ = 'admin/datatransfer/v1/transfers/' +
         commons.escapeVariable('$dataTransferId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DataTransfer.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a data transfer request.
@@ -212,21 +212,21 @@ class TransfersResource {
     DataTransfer request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'admin/datatransfer/v1/transfers';
+    const url_ = 'admin/datatransfer/v1/transfers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DataTransfer.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the transfers for a customer by source user, destination user, or
@@ -266,7 +266,7 @@ class TransfersResource {
     core.String? status,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (newOwnerUserId != null) 'newOwnerUserId': [newOwnerUserId],
@@ -276,15 +276,15 @@ class TransfersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'admin/datatransfer/v1/transfers';
+    const url_ = 'admin/datatransfer/v1/transfers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DataTransfersListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -317,14 +317,14 @@ class Application {
     this.transferParams,
   });
 
-  Application.fromJson(core.Map _json)
+  Application.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          transferParams: _json.containsKey('transferParams')
-              ? (_json['transferParams'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          transferParams: json_.containsKey('transferParams')
+              ? (json_['transferParams'] as core.List)
                   .map((value) => ApplicationTransferParam.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -362,21 +362,21 @@ class ApplicationDataTransfer {
     this.applicationTransferStatus,
   });
 
-  ApplicationDataTransfer.fromJson(core.Map _json)
+  ApplicationDataTransfer.fromJson(core.Map json_)
       : this(
-          applicationId: _json.containsKey('applicationId')
-              ? _json['applicationId'] as core.String
+          applicationId: json_.containsKey('applicationId')
+              ? json_['applicationId'] as core.String
               : null,
           applicationTransferParams:
-              _json.containsKey('applicationTransferParams')
-                  ? (_json['applicationTransferParams'] as core.List)
+              json_.containsKey('applicationTransferParams')
+                  ? (json_['applicationTransferParams'] as core.List)
                       .map((value) => ApplicationTransferParam.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
           applicationTransferStatus:
-              _json.containsKey('applicationTransferStatus')
-                  ? _json['applicationTransferStatus'] as core.String
+              json_.containsKey('applicationTransferStatus')
+                  ? json_['applicationTransferStatus'] as core.String
                   : null,
         );
 
@@ -406,11 +406,11 @@ class ApplicationTransferParam {
     this.value,
   });
 
-  ApplicationTransferParam.fromJson(core.Map _json)
+  ApplicationTransferParam.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value: _json.containsKey('value')
-              ? (_json['value'] as core.List)
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -444,18 +444,18 @@ class ApplicationsListResponse {
     this.nextPageToken,
   });
 
-  ApplicationsListResponse.fromJson(core.Map _json)
+  ApplicationsListResponse.fromJson(core.Map json_)
       : this(
-          applications: _json.containsKey('applications')
-              ? (_json['applications'] as core.List)
+          applications: json_.containsKey('applications')
+              ? (json_['applications'] as core.List)
                   .map((value) => Application.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -510,30 +510,30 @@ class DataTransfer {
     this.requestTime,
   });
 
-  DataTransfer.fromJson(core.Map _json)
+  DataTransfer.fromJson(core.Map json_)
       : this(
           applicationDataTransfers:
-              _json.containsKey('applicationDataTransfers')
-                  ? (_json['applicationDataTransfers'] as core.List)
+              json_.containsKey('applicationDataTransfers')
+                  ? (json_['applicationDataTransfers'] as core.List)
                       .map((value) => ApplicationDataTransfer.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          newOwnerUserId: _json.containsKey('newOwnerUserId')
-              ? _json['newOwnerUserId'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          newOwnerUserId: json_.containsKey('newOwnerUserId')
+              ? json_['newOwnerUserId'] as core.String
               : null,
-          oldOwnerUserId: _json.containsKey('oldOwnerUserId')
-              ? _json['oldOwnerUserId'] as core.String
+          oldOwnerUserId: json_.containsKey('oldOwnerUserId')
+              ? json_['oldOwnerUserId'] as core.String
               : null,
           overallTransferStatusCode:
-              _json.containsKey('overallTransferStatusCode')
-                  ? _json['overallTransferStatusCode'] as core.String
+              json_.containsKey('overallTransferStatusCode')
+                  ? json_['overallTransferStatusCode'] as core.String
                   : null,
-          requestTime: _json.containsKey('requestTime')
-              ? core.DateTime.parse(_json['requestTime'] as core.String)
+          requestTime: json_.containsKey('requestTime')
+              ? core.DateTime.parse(json_['requestTime'] as core.String)
               : null,
         );
 
@@ -573,18 +573,18 @@ class DataTransfersListResponse {
     this.nextPageToken,
   });
 
-  DataTransfersListResponse.fromJson(core.Map _json)
+  DataTransfersListResponse.fromJson(core.Map json_)
       : this(
-          dataTransfers: _json.containsKey('dataTransfers')
-              ? (_json['dataTransfers'] as core.List)
+          dataTransfers: json_.containsKey('dataTransfers')
+              ? (json_['dataTransfers'] as core.List)
                   .map((value) => DataTransfer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 

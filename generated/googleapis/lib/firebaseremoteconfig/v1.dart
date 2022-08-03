@@ -104,20 +104,20 @@ class ProjectsResource {
     core.String? versionNumber,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (versionNumber != null) 'versionNumber': [versionNumber],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$project') + '/remoteConfig';
+    final url_ = 'v1/' + core.Uri.encodeFull('$project') + '/remoteConfig';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RemoteConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Publish a project's Remote Config template.
@@ -162,22 +162,22 @@ class ProjectsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$project') + '/remoteConfig';
+    final url_ = 'v1/' + core.Uri.encodeFull('$project') + '/remoteConfig';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return RemoteConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -222,25 +222,25 @@ class ProjectsNamespacesResource {
     core.String namespace, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$project') +
         '/namespaces/' +
         commons.escapeVariable('$namespace') +
         ':fetch';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return FetchRemoteConfigResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -281,21 +281,21 @@ class ProjectsRemoteConfigResource {
     core.String? format,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$project') +
         '/remoteConfig:downloadDefaults';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a list of Remote Config template versions that have been published,
@@ -345,7 +345,7 @@ class ProjectsRemoteConfigResource {
     core.String? startTime,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (endTime != null) 'endTime': [endTime],
       if (endVersionNumber != null) 'endVersionNumber': [endVersionNumber],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -354,16 +354,16 @@ class ProjectsRemoteConfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$project') + '/remoteConfig:listVersions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVersionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Roll back a project's published Remote Config template to the one
@@ -400,22 +400,22 @@ class ProjectsRemoteConfigResource {
     core.String project, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$project') + '/remoteConfig:rollback';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return RemoteConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -454,25 +454,25 @@ class ExperimentDescription {
     this.variantId,
   });
 
-  ExperimentDescription.fromJson(core.Map _json)
+  ExperimentDescription.fromJson(core.Map json_)
       : this(
-          experimentId: _json.containsKey('experimentId')
-              ? _json['experimentId'] as core.String
+          experimentId: json_.containsKey('experimentId')
+              ? json_['experimentId'] as core.String
               : null,
-          experimentStartTime: _json.containsKey('experimentStartTime')
-              ? _json['experimentStartTime'] as core.String
+          experimentStartTime: json_.containsKey('experimentStartTime')
+              ? json_['experimentStartTime'] as core.String
               : null,
-          timeToLiveMillis: _json.containsKey('timeToLiveMillis')
-              ? _json['timeToLiveMillis'] as core.String
+          timeToLiveMillis: json_.containsKey('timeToLiveMillis')
+              ? json_['timeToLiveMillis'] as core.String
               : null,
-          triggerEvent: _json.containsKey('triggerEvent')
-              ? _json['triggerEvent'] as core.String
+          triggerEvent: json_.containsKey('triggerEvent')
+              ? json_['triggerEvent'] as core.String
               : null,
-          triggerTimeoutMillis: _json.containsKey('triggerTimeoutMillis')
-              ? _json['triggerTimeoutMillis'] as core.String
+          triggerTimeoutMillis: json_.containsKey('triggerTimeoutMillis')
+              ? json_['triggerTimeoutMillis'] as core.String
               : null,
-          variantId: _json.containsKey('variantId')
-              ? _json['variantId'] as core.String
+          variantId: json_.containsKey('variantId')
+              ? json_['variantId'] as core.String
               : null,
         );
 
@@ -601,10 +601,10 @@ class FetchRemoteConfigRequest {
     this.timeZone,
   });
 
-  FetchRemoteConfigRequest.fromJson(core.Map _json)
+  FetchRemoteConfigRequest.fromJson(core.Map json_)
       : this(
-          analyticsUserProperties: _json.containsKey('analyticsUserProperties')
-              ? (_json['analyticsUserProperties']
+          analyticsUserProperties: json_.containsKey('analyticsUserProperties')
+              ? (json_['analyticsUserProperties']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -613,40 +613,40 @@ class FetchRemoteConfigRequest {
                   ),
                 )
               : null,
-          appBuild: _json.containsKey('appBuild')
-              ? _json['appBuild'] as core.String
+          appBuild: json_.containsKey('appBuild')
+              ? json_['appBuild'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          appInstanceId: _json.containsKey('appInstanceId')
-              ? _json['appInstanceId'] as core.String
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appInstanceId: json_.containsKey('appInstanceId')
+              ? json_['appInstanceId'] as core.String
               : null,
-          appInstanceIdToken: _json.containsKey('appInstanceIdToken')
-              ? _json['appInstanceIdToken'] as core.String
+          appInstanceIdToken: json_.containsKey('appInstanceIdToken')
+              ? json_['appInstanceIdToken'] as core.String
               : null,
-          appVersion: _json.containsKey('appVersion')
-              ? _json['appVersion'] as core.String
+          appVersion: json_.containsKey('appVersion')
+              ? json_['appVersion'] as core.String
               : null,
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
               : null,
-          firstOpenTime: _json.containsKey('firstOpenTime')
-              ? _json['firstOpenTime'] as core.String
+          firstOpenTime: json_.containsKey('firstOpenTime')
+              ? json_['firstOpenTime'] as core.String
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
-          platformVersion: _json.containsKey('platformVersion')
-              ? _json['platformVersion'] as core.String
+          platformVersion: json_.containsKey('platformVersion')
+              ? json_['platformVersion'] as core.String
               : null,
-          sdkVersion: _json.containsKey('sdkVersion')
-              ? _json['sdkVersion'] as core.String
+          sdkVersion: json_.containsKey('sdkVersion')
+              ? json_['sdkVersion'] as core.String
               : null,
-          timeZone: _json.containsKey('timeZone')
-              ? _json['timeZone'] as core.String
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
               : null,
         );
 
@@ -712,27 +712,27 @@ class FetchRemoteConfigResponse {
     this.templateVersion,
   });
 
-  FetchRemoteConfigResponse.fromJson(core.Map _json)
+  FetchRemoteConfigResponse.fromJson(core.Map json_)
       : this(
-          appName: _json.containsKey('appName')
-              ? _json['appName'] as core.String
+          appName: json_.containsKey('appName')
+              ? json_['appName'] as core.String
               : null,
-          entries: _json.containsKey('entries')
-              ? (_json['entries'] as core.Map<core.String, core.dynamic>).map(
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          experimentDescriptions: _json.containsKey('experimentDescriptions')
-              ? (_json['experimentDescriptions'] as core.List)
+          experimentDescriptions: json_.containsKey('experimentDescriptions')
+              ? (json_['experimentDescriptions'] as core.List)
                   .map((value) => ExperimentDescription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          personalizationMetadata: _json.containsKey('personalizationMetadata')
-              ? (_json['personalizationMetadata']
+          personalizationMetadata: json_.containsKey('personalizationMetadata')
+              ? (json_['personalizationMetadata']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -743,9 +743,9 @@ class FetchRemoteConfigResponse {
                 )
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          templateVersion: _json.containsKey('templateVersion')
-              ? _json['templateVersion'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          templateVersion: json_.containsKey('templateVersion')
+              ? json_['templateVersion'] as core.String
               : null,
         );
 
@@ -795,13 +795,13 @@ class ListVersionsResponse {
     this.versions,
   });
 
-  ListVersionsResponse.fromJson(core.Map _json)
+  ListVersionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          versions: _json.containsKey('versions')
-              ? (_json['versions'] as core.List)
+          versions: json_.containsKey('versions')
+              ? (json_['versions'] as core.List)
                   .map((value) => Version.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -846,18 +846,18 @@ class PersonalizationMetadata {
     this.personalizationId,
   });
 
-  PersonalizationMetadata.fromJson(core.Map _json)
+  PersonalizationMetadata.fromJson(core.Map json_)
       : this(
-          armIndex: _json.containsKey('armIndex')
-              ? _json['armIndex'] as core.int
+          armIndex: json_.containsKey('armIndex')
+              ? json_['armIndex'] as core.int
               : null,
-          choiceId: _json.containsKey('choiceId')
-              ? _json['choiceId'] as core.String
+          choiceId: json_.containsKey('choiceId')
+              ? json_['choiceId'] as core.String
               : null,
           group:
-              _json.containsKey('group') ? _json['group'] as core.String : null,
-          personalizationId: _json.containsKey('personalizationId')
-              ? _json['personalizationId'] as core.String
+              json_.containsKey('group') ? json_['group'] as core.String : null,
+          personalizationId: json_.containsKey('personalizationId')
+              ? json_['personalizationId'] as core.String
               : null,
         );
 
@@ -881,10 +881,10 @@ class PersonalizationValue {
     this.personalizationId,
   });
 
-  PersonalizationValue.fromJson(core.Map _json)
+  PersonalizationValue.fromJson(core.Map json_)
       : this(
-          personalizationId: _json.containsKey('personalizationId')
-              ? _json['personalizationId'] as core.String
+          personalizationId: json_.containsKey('personalizationId')
+              ? json_['personalizationId'] as core.String
               : null,
         );
 
@@ -951,16 +951,16 @@ class RemoteConfig {
     this.version,
   });
 
-  RemoteConfig.fromJson(core.Map _json)
+  RemoteConfig.fromJson(core.Map json_)
       : this(
-          conditions: _json.containsKey('conditions')
-              ? (_json['conditions'] as core.List)
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
                   .map((value) => RemoteConfigCondition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parameterGroups: _json.containsKey('parameterGroups')
-              ? (_json['parameterGroups']
+          parameterGroups: json_.containsKey('parameterGroups')
+              ? (json_['parameterGroups']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -970,8 +970,8 @@ class RemoteConfig {
                   ),
                 )
               : null,
-          parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -980,9 +980,9 @@ class RemoteConfig {
                   ),
                 )
               : null,
-          version: _json.containsKey('version')
+          version: json_.containsKey('version')
               ? Version.fromJson(
-                  _json['version'] as core.Map<core.String, core.dynamic>)
+                  json_['version'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1041,14 +1041,14 @@ class RemoteConfigCondition {
     this.tagColor,
   });
 
-  RemoteConfigCondition.fromJson(core.Map _json)
+  RemoteConfigCondition.fromJson(core.Map json_)
       : this(
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
+          expression: json_.containsKey('expression')
+              ? json_['expression'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          tagColor: _json.containsKey('tagColor')
-              ? _json['tagColor'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tagColor: json_.containsKey('tagColor')
+              ? json_['tagColor'] as core.String
               : null,
         );
 
@@ -1104,10 +1104,10 @@ class RemoteConfigParameter {
     this.valueType,
   });
 
-  RemoteConfigParameter.fromJson(core.Map _json)
+  RemoteConfigParameter.fromJson(core.Map json_)
       : this(
-          conditionalValues: _json.containsKey('conditionalValues')
-              ? (_json['conditionalValues']
+          conditionalValues: json_.containsKey('conditionalValues')
+              ? (json_['conditionalValues']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -1117,15 +1117,15 @@ class RemoteConfigParameter {
                   ),
                 )
               : null,
-          defaultValue: _json.containsKey('defaultValue')
+          defaultValue: json_.containsKey('defaultValue')
               ? RemoteConfigParameterValue.fromJson(
-                  _json['defaultValue'] as core.Map<core.String, core.dynamic>)
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          valueType: _json.containsKey('valueType')
-              ? _json['valueType'] as core.String
+          valueType: json_.containsKey('valueType')
+              ? json_['valueType'] as core.String
               : null,
         );
 
@@ -1163,13 +1163,13 @@ class RemoteConfigParameterGroup {
     this.parameters,
   });
 
-  RemoteConfigParameterGroup.fromJson(core.Map _json)
+  RemoteConfigParameterGroup.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -1205,17 +1205,17 @@ class RemoteConfigParameterValue {
     this.value,
   });
 
-  RemoteConfigParameterValue.fromJson(core.Map _json)
+  RemoteConfigParameterValue.fromJson(core.Map json_)
       : this(
-          personalizationValue: _json.containsKey('personalizationValue')
-              ? PersonalizationValue.fromJson(_json['personalizationValue']
+          personalizationValue: json_.containsKey('personalizationValue')
+              ? PersonalizationValue.fromJson(json_['personalizationValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          useInAppDefault: _json.containsKey('useInAppDefault')
-              ? _json['useInAppDefault'] as core.bool
+          useInAppDefault: json_.containsKey('useInAppDefault')
+              ? json_['useInAppDefault'] as core.bool
               : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1250,14 +1250,14 @@ class RemoteConfigUser {
     this.name,
   });
 
-  RemoteConfigUser.fromJson(core.Map _json)
+  RemoteConfigUser.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          imageUrl: _json.containsKey('imageUrl')
-              ? _json['imageUrl'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          imageUrl: json_.containsKey('imageUrl')
+              ? json_['imageUrl'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1281,10 +1281,10 @@ class RollbackRemoteConfigRequest {
     this.versionNumber,
   });
 
-  RollbackRemoteConfigRequest.fromJson(core.Map _json)
+  RollbackRemoteConfigRequest.fromJson(core.Map json_)
       : this(
-          versionNumber: _json.containsKey('versionNumber')
-              ? _json['versionNumber'] as core.String
+          versionNumber: json_.containsKey('versionNumber')
+              ? json_['versionNumber'] as core.String
               : null,
         );
 
@@ -1368,32 +1368,32 @@ class Version {
     this.versionNumber,
   });
 
-  Version.fromJson(core.Map _json)
+  Version.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          isLegacy: _json.containsKey('isLegacy')
-              ? _json['isLegacy'] as core.bool
+          isLegacy: json_.containsKey('isLegacy')
+              ? json_['isLegacy'] as core.bool
               : null,
-          rollbackSource: _json.containsKey('rollbackSource')
-              ? _json['rollbackSource'] as core.String
+          rollbackSource: json_.containsKey('rollbackSource')
+              ? json_['rollbackSource'] as core.String
               : null,
-          updateOrigin: _json.containsKey('updateOrigin')
-              ? _json['updateOrigin'] as core.String
+          updateOrigin: json_.containsKey('updateOrigin')
+              ? json_['updateOrigin'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          updateType: _json.containsKey('updateType')
-              ? _json['updateType'] as core.String
+          updateType: json_.containsKey('updateType')
+              ? json_['updateType'] as core.String
               : null,
-          updateUser: _json.containsKey('updateUser')
+          updateUser: json_.containsKey('updateUser')
               ? RemoteConfigUser.fromJson(
-                  _json['updateUser'] as core.Map<core.String, core.dynamic>)
+                  json_['updateUser'] as core.Map<core.String, core.dynamic>)
               : null,
-          versionNumber: _json.containsKey('versionNumber')
-              ? _json['versionNumber'] as core.String
+          versionNumber: json_.containsKey('versionNumber')
+              ? json_['versionNumber'] as core.String
               : null,
         );
 

@@ -98,18 +98,18 @@ class FoldersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -134,19 +134,19 @@ class FoldersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the service account that is used by Access Approval to access
@@ -171,19 +171,19 @@ class FoldersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AccessApprovalServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -225,22 +225,22 @@ class FoldersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -277,21 +277,21 @@ class FoldersApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Dismisses a request.
@@ -324,21 +324,21 @@ class FoldersApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an approval request.
@@ -365,19 +365,19 @@ class FoldersApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Invalidates an existing ApprovalRequest.
@@ -409,21 +409,21 @@ class FoldersApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -468,22 +468,22 @@ class FoldersApprovalRequestsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListApprovalRequestsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -522,18 +522,18 @@ class OrganizationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -558,19 +558,19 @@ class OrganizationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the service account that is used by Access Approval to access
@@ -595,19 +595,19 @@ class OrganizationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AccessApprovalServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -649,22 +649,22 @@ class OrganizationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -702,21 +702,21 @@ class OrganizationsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Dismisses a request.
@@ -750,21 +750,21 @@ class OrganizationsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an approval request.
@@ -792,19 +792,19 @@ class OrganizationsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Invalidates an existing ApprovalRequest.
@@ -837,21 +837,21 @@ class OrganizationsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -896,22 +896,22 @@ class OrganizationsApprovalRequestsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListApprovalRequestsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -950,18 +950,18 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -986,19 +986,19 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the service account that is used by Access Approval to access
@@ -1023,19 +1023,19 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AccessApprovalServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -1077,22 +1077,22 @@ class ProjectsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AccessApprovalSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1129,21 +1129,21 @@ class ProjectsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Dismisses a request.
@@ -1176,21 +1176,21 @@ class ProjectsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':dismiss';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an approval request.
@@ -1217,19 +1217,19 @@ class ProjectsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Invalidates an existing ApprovalRequest.
@@ -1261,21 +1261,21 @@ class ProjectsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':invalidate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ApprovalRequest.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -1320,22 +1320,22 @@ class ProjectsApprovalRequestsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/approvalRequests';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListApprovalRequestsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1356,12 +1356,12 @@ class AccessApprovalServiceAccount {
     this.name,
   });
 
-  AccessApprovalServiceAccount.fromJson(core.Map _json)
+  AccessApprovalServiceAccount.fromJson(core.Map json_)
       : this(
-          accountEmail: _json.containsKey('accountEmail')
-              ? _json['accountEmail'] as core.String
+          accountEmail: json_.containsKey('accountEmail')
+              ? json_['accountEmail'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1451,30 +1451,30 @@ class AccessApprovalSettings {
     this.notificationEmails,
   });
 
-  AccessApprovalSettings.fromJson(core.Map _json)
+  AccessApprovalSettings.fromJson(core.Map json_)
       : this(
-          activeKeyVersion: _json.containsKey('activeKeyVersion')
-              ? _json['activeKeyVersion'] as core.String
+          activeKeyVersion: json_.containsKey('activeKeyVersion')
+              ? json_['activeKeyVersion'] as core.String
               : null,
           ancestorHasActiveKeyVersion:
-              _json.containsKey('ancestorHasActiveKeyVersion')
-                  ? _json['ancestorHasActiveKeyVersion'] as core.bool
+              json_.containsKey('ancestorHasActiveKeyVersion')
+                  ? json_['ancestorHasActiveKeyVersion'] as core.bool
                   : null,
-          enrolledAncestor: _json.containsKey('enrolledAncestor')
-              ? _json['enrolledAncestor'] as core.bool
+          enrolledAncestor: json_.containsKey('enrolledAncestor')
+              ? json_['enrolledAncestor'] as core.bool
               : null,
-          enrolledServices: _json.containsKey('enrolledServices')
-              ? (_json['enrolledServices'] as core.List)
+          enrolledServices: json_.containsKey('enrolledServices')
+              ? (json_['enrolledServices'] as core.List)
                   .map((value) => EnrolledService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          invalidKeyVersion: _json.containsKey('invalidKeyVersion')
-              ? _json['invalidKeyVersion'] as core.bool
+          invalidKeyVersion: json_.containsKey('invalidKeyVersion')
+              ? json_['invalidKeyVersion'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          notificationEmails: _json.containsKey('notificationEmails')
-              ? (_json['notificationEmails'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notificationEmails: json_.containsKey('notificationEmails')
+              ? (json_['notificationEmails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1518,14 +1518,14 @@ class AccessLocations {
     this.principalPhysicalLocationCountry,
   });
 
-  AccessLocations.fromJson(core.Map _json)
+  AccessLocations.fromJson(core.Map json_)
       : this(
-          principalOfficeCountry: _json.containsKey('principalOfficeCountry')
-              ? _json['principalOfficeCountry'] as core.String
+          principalOfficeCountry: json_.containsKey('principalOfficeCountry')
+              ? json_['principalOfficeCountry'] as core.String
               : null,
           principalPhysicalLocationCountry:
-              _json.containsKey('principalPhysicalLocationCountry')
-                  ? _json['principalPhysicalLocationCountry'] as core.String
+              json_.containsKey('principalPhysicalLocationCountry')
+                  ? json_['principalPhysicalLocationCountry'] as core.String
                   : null,
         );
 
@@ -1570,12 +1570,12 @@ class AccessReason {
     this.type,
   });
 
-  AccessReason.fromJson(core.Map _json)
+  AccessReason.fromJson(core.Map json_)
       : this(
-          detail: _json.containsKey('detail')
-              ? _json['detail'] as core.String
+          detail: json_.containsKey('detail')
+              ? json_['detail'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1638,37 +1638,37 @@ class ApprovalRequest {
     this.requestedResourceProperties,
   });
 
-  ApprovalRequest.fromJson(core.Map _json)
+  ApprovalRequest.fromJson(core.Map json_)
       : this(
-          approve: _json.containsKey('approve')
+          approve: json_.containsKey('approve')
               ? ApproveDecision.fromJson(
-                  _json['approve'] as core.Map<core.String, core.dynamic>)
+                  json_['approve'] as core.Map<core.String, core.dynamic>)
               : null,
-          dismiss: _json.containsKey('dismiss')
+          dismiss: json_.containsKey('dismiss')
               ? DismissDecision.fromJson(
-                  _json['dismiss'] as core.Map<core.String, core.dynamic>)
+                  json_['dismiss'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          requestTime: _json.containsKey('requestTime')
-              ? _json['requestTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          requestTime: json_.containsKey('requestTime')
+              ? json_['requestTime'] as core.String
               : null,
-          requestedExpiration: _json.containsKey('requestedExpiration')
-              ? _json['requestedExpiration'] as core.String
+          requestedExpiration: json_.containsKey('requestedExpiration')
+              ? json_['requestedExpiration'] as core.String
               : null,
-          requestedLocations: _json.containsKey('requestedLocations')
-              ? AccessLocations.fromJson(_json['requestedLocations']
+          requestedLocations: json_.containsKey('requestedLocations')
+              ? AccessLocations.fromJson(json_['requestedLocations']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          requestedReason: _json.containsKey('requestedReason')
-              ? AccessReason.fromJson(_json['requestedReason']
+          requestedReason: json_.containsKey('requestedReason')
+              ? AccessReason.fromJson(json_['requestedReason']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          requestedResourceName: _json.containsKey('requestedResourceName')
-              ? _json['requestedResourceName'] as core.String
+          requestedResourceName: json_.containsKey('requestedResourceName')
+              ? json_['requestedResourceName'] as core.String
               : null,
-          requestedResourceProperties: _json
+          requestedResourceProperties: json_
                   .containsKey('requestedResourceProperties')
-              ? ResourceProperties.fromJson(_json['requestedResourceProperties']
+              ? ResourceProperties.fromJson(json_['requestedResourceProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1699,10 +1699,10 @@ class ApproveApprovalRequestMessage {
     this.expireTime,
   });
 
-  ApproveApprovalRequestMessage.fromJson(core.Map _json)
+  ApproveApprovalRequestMessage.fromJson(core.Map json_)
       : this(
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
         );
 
@@ -1736,23 +1736,23 @@ class ApproveDecision {
     this.signatureInfo,
   });
 
-  ApproveDecision.fromJson(core.Map _json)
+  ApproveDecision.fromJson(core.Map json_)
       : this(
-          approveTime: _json.containsKey('approveTime')
-              ? _json['approveTime'] as core.String
+          approveTime: json_.containsKey('approveTime')
+              ? json_['approveTime'] as core.String
               : null,
-          autoApproved: _json.containsKey('autoApproved')
-              ? _json['autoApproved'] as core.bool
+          autoApproved: json_.containsKey('autoApproved')
+              ? json_['autoApproved'] as core.bool
               : null,
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
-          invalidateTime: _json.containsKey('invalidateTime')
-              ? _json['invalidateTime'] as core.String
+          invalidateTime: json_.containsKey('invalidateTime')
+              ? json_['invalidateTime'] as core.String
               : null,
-          signatureInfo: _json.containsKey('signatureInfo')
+          signatureInfo: json_.containsKey('signatureInfo')
               ? SignatureInfo.fromJson(
-                  _json['signatureInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['signatureInfo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1783,13 +1783,13 @@ class DismissDecision {
     this.implicit,
   });
 
-  DismissDecision.fromJson(core.Map _json)
+  DismissDecision.fromJson(core.Map json_)
       : this(
-          dismissTime: _json.containsKey('dismissTime')
-              ? _json['dismissTime'] as core.String
+          dismissTime: json_.containsKey('dismissTime')
+              ? json_['dismissTime'] as core.String
               : null,
-          implicit: _json.containsKey('implicit')
-              ? _json['implicit'] as core.bool
+          implicit: json_.containsKey('implicit')
+              ? json_['implicit'] as core.bool
               : null,
         );
 
@@ -1846,13 +1846,13 @@ class EnrolledService {
     this.enrollmentLevel,
   });
 
-  EnrolledService.fromJson(core.Map _json)
+  EnrolledService.fromJson(core.Map json_)
       : this(
-          cloudProduct: _json.containsKey('cloudProduct')
-              ? _json['cloudProduct'] as core.String
+          cloudProduct: json_.containsKey('cloudProduct')
+              ? json_['cloudProduct'] as core.String
               : null,
-          enrollmentLevel: _json.containsKey('enrollmentLevel')
-              ? _json['enrollmentLevel'] as core.String
+          enrollmentLevel: json_.containsKey('enrollmentLevel')
+              ? json_['enrollmentLevel'] as core.String
               : null,
         );
 
@@ -1878,16 +1878,16 @@ class ListApprovalRequestsResponse {
     this.nextPageToken,
   });
 
-  ListApprovalRequestsResponse.fromJson(core.Map _json)
+  ListApprovalRequestsResponse.fromJson(core.Map json_)
       : this(
-          approvalRequests: _json.containsKey('approvalRequests')
-              ? (_json['approvalRequests'] as core.List)
+          approvalRequests: json_.containsKey('approvalRequests')
+              ? (json_['approvalRequests'] as core.List)
                   .map((value) => ApprovalRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1907,10 +1907,10 @@ class ResourceProperties {
     this.excludesDescendants,
   });
 
-  ResourceProperties.fromJson(core.Map _json)
+  ResourceProperties.fromJson(core.Map json_)
       : this(
-          excludesDescendants: _json.containsKey('excludesDescendants')
-              ? _json['excludesDescendants'] as core.bool
+          excludesDescendants: json_.containsKey('excludesDescendants')
+              ? json_['excludesDescendants'] as core.bool
               : null,
         );
 
@@ -1935,9 +1935,9 @@ class SignatureInfo {
   core.String? signature;
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
-  set signatureAsBytes(core.List<core.int> _bytes) {
+  set signatureAsBytes(core.List<core.int> bytes_) {
     signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignatureInfo({
@@ -1946,16 +1946,16 @@ class SignatureInfo {
     this.signature,
   });
 
-  SignatureInfo.fromJson(core.Map _json)
+  SignatureInfo.fromJson(core.Map json_)
       : this(
-          customerKmsKeyVersion: _json.containsKey('customerKmsKeyVersion')
-              ? _json['customerKmsKeyVersion'] as core.String
+          customerKmsKeyVersion: json_.containsKey('customerKmsKeyVersion')
+              ? json_['customerKmsKeyVersion'] as core.String
               : null,
-          googlePublicKeyPem: _json.containsKey('googlePublicKeyPem')
-              ? _json['googlePublicKeyPem'] as core.String
+          googlePublicKeyPem: json_.containsKey('googlePublicKeyPem')
+              ? json_['googlePublicKeyPem'] as core.String
               : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
         );
 

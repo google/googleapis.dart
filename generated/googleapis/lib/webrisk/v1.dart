@@ -98,21 +98,21 @@ class HashesResource {
     core.List<core.String>? threatTypes,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (hashPrefix != null) 'hashPrefix': [hashPrefix],
       if (threatTypes != null) 'threatTypes': threatTypes,
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/hashes:search';
+    const url_ = 'v1/hashes:search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1SearchHashesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -166,21 +166,21 @@ class ProjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -208,19 +208,19 @@ class ProjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -247,19 +247,19 @@ class ProjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -301,22 +301,22 @@ class ProjectsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -359,21 +359,21 @@ class ProjectsSubmissionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/submissions';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/submissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1Submission.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -417,21 +417,21 @@ class ProjectsUrisResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/uris:submit';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/uris:submit';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -498,7 +498,7 @@ class ThreatListsResource {
     core.String? versionToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (constraints_maxDatabaseEntries != null)
         'constraints.maxDatabaseEntries': ['${constraints_maxDatabaseEntries}'],
       if (constraints_maxDiffEntries != null)
@@ -510,15 +510,15 @@ class ThreatListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/threatLists:computeDiff';
+    const url_ = 'v1/threatLists:computeDiff';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -556,21 +556,21 @@ class UrisResource {
     core.String? uri,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (threatTypes != null) 'threatTypes': threatTypes,
       if (uri != null) 'uri': [uri],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/uris:search';
+    const url_ = 'v1/uris:search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudWebriskV1SearchUrisResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -594,9 +594,9 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   core.List<core.int> get newVersionTokenAsBytes =>
       convert.base64.decode(newVersionToken!);
 
-  set newVersionTokenAsBytes(core.List<core.int> _bytes) {
+  set newVersionTokenAsBytes(core.List<core.int> bytes_) {
     newVersionToken =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The soonest the client should wait before issuing any diff request.
@@ -633,29 +633,29 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
     this.responseType,
   });
 
-  GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(core.Map _json)
+  GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(core.Map json_)
       : this(
-          additions: _json.containsKey('additions')
+          additions: json_.containsKey('additions')
               ? GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(
-                  _json['additions'] as core.Map<core.String, core.dynamic>)
+                  json_['additions'] as core.Map<core.String, core.dynamic>)
               : null,
-          checksum: _json.containsKey('checksum')
+          checksum: json_.containsKey('checksum')
               ? GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
                   .fromJson(
-                      _json['checksum'] as core.Map<core.String, core.dynamic>)
+                      json_['checksum'] as core.Map<core.String, core.dynamic>)
               : null,
-          newVersionToken: _json.containsKey('newVersionToken')
-              ? _json['newVersionToken'] as core.String
+          newVersionToken: json_.containsKey('newVersionToken')
+              ? json_['newVersionToken'] as core.String
               : null,
-          recommendedNextDiff: _json.containsKey('recommendedNextDiff')
-              ? _json['recommendedNextDiff'] as core.String
+          recommendedNextDiff: json_.containsKey('recommendedNextDiff')
+              ? json_['recommendedNextDiff'] as core.String
               : null,
-          removals: _json.containsKey('removals')
+          removals: json_.containsKey('removals')
               ? GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(
-                  _json['removals'] as core.Map<core.String, core.dynamic>)
+                  json_['removals'] as core.Map<core.String, core.dynamic>)
               : null,
-          responseType: _json.containsKey('responseType')
-              ? _json['responseType'] as core.String
+          responseType: json_.containsKey('responseType')
+              ? json_['responseType'] as core.String
               : null,
         );
 
@@ -695,9 +695,9 @@ class GoogleCloudWebriskV1RawHashes {
   core.String? rawHashes;
   core.List<core.int> get rawHashesAsBytes => convert.base64.decode(rawHashes!);
 
-  set rawHashesAsBytes(core.List<core.int> _bytes) {
+  set rawHashesAsBytes(core.List<core.int> bytes_) {
     rawHashes =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GoogleCloudWebriskV1RawHashes({
@@ -705,13 +705,13 @@ class GoogleCloudWebriskV1RawHashes {
     this.rawHashes,
   });
 
-  GoogleCloudWebriskV1RawHashes.fromJson(core.Map _json)
+  GoogleCloudWebriskV1RawHashes.fromJson(core.Map json_)
       : this(
-          prefixSize: _json.containsKey('prefixSize')
-              ? _json['prefixSize'] as core.int
+          prefixSize: json_.containsKey('prefixSize')
+              ? json_['prefixSize'] as core.int
               : null,
-          rawHashes: _json.containsKey('rawHashes')
-              ? _json['rawHashes'] as core.String
+          rawHashes: json_.containsKey('rawHashes')
+              ? json_['rawHashes'] as core.String
               : null,
         );
 
@@ -733,9 +733,9 @@ class GoogleCloudWebriskV1RiceDeltaEncoding {
   core.List<core.int> get encodedDataAsBytes =>
       convert.base64.decode(encodedData!);
 
-  set encodedDataAsBytes(core.List<core.int> _bytes) {
+  set encodedDataAsBytes(core.List<core.int> bytes_) {
     encodedData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The number of entries that are delta encoded in the encoded data.
@@ -762,19 +762,19 @@ class GoogleCloudWebriskV1RiceDeltaEncoding {
     this.riceParameter,
   });
 
-  GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(core.Map _json)
+  GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(core.Map json_)
       : this(
-          encodedData: _json.containsKey('encodedData')
-              ? _json['encodedData'] as core.String
+          encodedData: json_.containsKey('encodedData')
+              ? json_['encodedData'] as core.String
               : null,
-          entryCount: _json.containsKey('entryCount')
-              ? _json['entryCount'] as core.int
+          entryCount: json_.containsKey('entryCount')
+              ? json_['entryCount'] as core.int
               : null,
-          firstValue: _json.containsKey('firstValue')
-              ? _json['firstValue'] as core.String
+          firstValue: json_.containsKey('firstValue')
+              ? json_['firstValue'] as core.String
               : null,
-          riceParameter: _json.containsKey('riceParameter')
-              ? _json['riceParameter'] as core.int
+          riceParameter: json_.containsKey('riceParameter')
+              ? json_['riceParameter'] as core.int
               : null,
         );
 
@@ -801,13 +801,13 @@ class GoogleCloudWebriskV1SearchHashesResponse {
     this.threats,
   });
 
-  GoogleCloudWebriskV1SearchHashesResponse.fromJson(core.Map _json)
+  GoogleCloudWebriskV1SearchHashesResponse.fromJson(core.Map json_)
       : this(
-          negativeExpireTime: _json.containsKey('negativeExpireTime')
-              ? _json['negativeExpireTime'] as core.String
+          negativeExpireTime: json_.containsKey('negativeExpireTime')
+              ? json_['negativeExpireTime'] as core.String
               : null,
-          threats: _json.containsKey('threats')
-              ? (_json['threats'] as core.List)
+          threats: json_.containsKey('threats')
+              ? (json_['threats'] as core.List)
                   .map((value) =>
                       GoogleCloudWebriskV1SearchHashesResponseThreatHash
                           .fromJson(
@@ -838,9 +838,9 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   core.String? hash;
   core.List<core.int> get hashAsBytes => convert.base64.decode(hash!);
 
-  set hashAsBytes(core.List<core.int> _bytes) {
+  set hashAsBytes(core.List<core.int> bytes_) {
     hash =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The ThreatList this threat belongs to.
@@ -854,14 +854,14 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
     this.threatTypes,
   });
 
-  GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(core.Map _json)
+  GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(core.Map json_)
       : this(
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
-          hash: _json.containsKey('hash') ? _json['hash'] as core.String : null,
-          threatTypes: _json.containsKey('threatTypes')
-              ? (_json['threatTypes'] as core.List)
+          hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
+          threatTypes: json_.containsKey('threatTypes')
+              ? (json_['threatTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -884,11 +884,11 @@ class GoogleCloudWebriskV1SearchUrisResponse {
     this.threat,
   });
 
-  GoogleCloudWebriskV1SearchUrisResponse.fromJson(core.Map _json)
+  GoogleCloudWebriskV1SearchUrisResponse.fromJson(core.Map json_)
       : this(
-          threat: _json.containsKey('threat')
+          threat: json_.containsKey('threat')
               ? GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(
-                  _json['threat'] as core.Map<core.String, core.dynamic>)
+                  json_['threat'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -913,13 +913,13 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
     this.threatTypes,
   });
 
-  GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(core.Map _json)
+  GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(core.Map json_)
       : this(
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
-          threatTypes: _json.containsKey('threatTypes')
-              ? (_json['threatTypes'] as core.List)
+          threatTypes: json_.containsKey('threatTypes')
+              ? (json_['threatTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -949,14 +949,14 @@ class GoogleCloudWebriskV1Submission {
     this.uri,
   });
 
-  GoogleCloudWebriskV1Submission.fromJson(core.Map _json)
+  GoogleCloudWebriskV1Submission.fromJson(core.Map json_)
       : this(
-          threatTypes: _json.containsKey('threatTypes')
-              ? (_json['threatTypes'] as core.List)
+          threatTypes: json_.containsKey('threatTypes')
+              ? (json_['threatTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -976,11 +976,11 @@ class GoogleCloudWebriskV1SubmitUriRequest {
     this.submission,
   });
 
-  GoogleCloudWebriskV1SubmitUriRequest.fromJson(core.Map _json)
+  GoogleCloudWebriskV1SubmitUriRequest.fromJson(core.Map json_)
       : this(
-          submission: _json.containsKey('submission')
+          submission: json_.containsKey('submission')
               ? GoogleCloudWebriskV1Submission.fromJson(
-                  _json['submission'] as core.Map<core.String, core.dynamic>)
+                  json_['submission'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1010,17 +1010,17 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
     this.riceHashes,
   });
 
-  GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(core.Map _json)
+  GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(core.Map json_)
       : this(
-          rawHashes: _json.containsKey('rawHashes')
-              ? (_json['rawHashes'] as core.List)
+          rawHashes: json_.containsKey('rawHashes')
+              ? (json_['rawHashes'] as core.List)
                   .map((value) => GoogleCloudWebriskV1RawHashes.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          riceHashes: _json.containsKey('riceHashes')
+          riceHashes: json_.containsKey('riceHashes')
               ? GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
-                  _json['riceHashes'] as core.Map<core.String, core.dynamic>)
+                  json_['riceHashes'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1048,15 +1048,15 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
     this.riceIndices,
   });
 
-  GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(core.Map _json)
+  GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(core.Map json_)
       : this(
-          rawIndices: _json.containsKey('rawIndices')
+          rawIndices: json_.containsKey('rawIndices')
               ? GoogleCloudWebriskV1RawIndices.fromJson(
-                  _json['rawIndices'] as core.Map<core.String, core.dynamic>)
+                  json_['rawIndices'] as core.Map<core.String, core.dynamic>)
               : null,
-          riceIndices: _json.containsKey('riceIndices')
+          riceIndices: json_.containsKey('riceIndices')
               ? GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
-                  _json['riceIndices'] as core.Map<core.String, core.dynamic>)
+                  json_['riceIndices'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1082,13 +1082,13 @@ class GoogleLongrunningListOperationsResponse {
     this.operations,
   });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1152,19 +1152,19 @@ class GoogleLongrunningOperation {
     this.response,
   });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json)
+  GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

@@ -109,20 +109,20 @@ class ProjectsProfilesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/profiles';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/profiles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Profile.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// CreateOfflineProfile creates a new profile resource in the offline mode.
@@ -152,21 +152,21 @@ class ProjectsProfilesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2/' + core.Uri.encodeFull('$parent') + '/profiles:createOffline';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Profile.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// UpdateProfile updates the profile bytes and labels on the profile resource
@@ -204,21 +204,21 @@ class ProjectsProfilesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Profile.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -243,14 +243,14 @@ class CreateProfileRequest {
     this.profileType,
   });
 
-  CreateProfileRequest.fromJson(core.Map _json)
+  CreateProfileRequest.fromJson(core.Map json_)
       : this(
-          deployment: _json.containsKey('deployment')
+          deployment: json_.containsKey('deployment')
               ? Deployment.fromJson(
-                  _json['deployment'] as core.Map<core.String, core.dynamic>)
+                  json_['deployment'] as core.Map<core.String, core.dynamic>)
               : null,
-          profileType: _json.containsKey('profileType')
-              ? (_json['profileType'] as core.List)
+          profileType: json_.containsKey('profileType')
+              ? (json_['profileType'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -296,21 +296,21 @@ class Deployment {
     this.target,
   });
 
-  Deployment.fromJson(core.Map _json)
+  Deployment.fromJson(core.Map json_)
       : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
+          target: json_.containsKey('target')
+              ? json_['target'] as core.String
               : null,
         );
 
@@ -355,9 +355,9 @@ class Profile {
   core.List<core.int> get profileBytesAsBytes =>
       convert.base64.decode(profileBytes!);
 
-  set profileBytesAsBytes(core.List<core.int> _bytes) {
+  set profileBytesAsBytes(core.List<core.int> bytes_) {
     profileBytes =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Type of profile.
@@ -390,29 +390,29 @@ class Profile {
     this.profileType,
   });
 
-  Profile.fromJson(core.Map _json)
+  Profile.fromJson(core.Map json_)
       : this(
-          deployment: _json.containsKey('deployment')
+          deployment: json_.containsKey('deployment')
               ? Deployment.fromJson(
-                  _json['deployment'] as core.Map<core.String, core.dynamic>)
+                  json_['deployment'] as core.Map<core.String, core.dynamic>)
               : null,
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          profileBytes: _json.containsKey('profileBytes')
-              ? _json['profileBytes'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          profileBytes: json_.containsKey('profileBytes')
+              ? json_['profileBytes'] as core.String
               : null,
-          profileType: _json.containsKey('profileType')
-              ? _json['profileType'] as core.String
+          profileType: json_.containsKey('profileType')
+              ? json_['profileType'] as core.String
               : null,
         );
 

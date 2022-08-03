@@ -144,20 +144,20 @@ class AdminProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -186,18 +186,18 @@ class AdminProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -225,18 +225,18 @@ class AdminProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -278,22 +278,22 @@ class AdminProjectsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -337,22 +337,22 @@ class AdminProjectsLocationsReservationsResource {
     core.String? reservationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (reservationId != null) 'reservationId': [reservationId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/reservations';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/reservations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified reservation.
@@ -378,18 +378,18 @@ class AdminProjectsLocationsReservationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the reservation configuration.
@@ -416,19 +416,19 @@ class AdminProjectsLocationsReservationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of reservations for the given project.
@@ -464,21 +464,21 @@ class AdminProjectsLocationsReservationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/reservations';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/reservations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListReservationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates properties of the specified reservation.
@@ -511,22 +511,22 @@ class AdminProjectsLocationsReservationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Reservation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -571,21 +571,21 @@ class AdminProjectsLocationsReservationsTopicsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + '/topics';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name') + '/topics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListReservationTopicsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -632,24 +632,24 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String? subscriptionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (skipBacklog != null) 'skipBacklog': ['${skipBacklog}'],
       if (subscriptionId != null) 'subscriptionId': [subscriptionId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/admin/' + core.Uri.encodeFull('$parent') + '/subscriptions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified subscription.
@@ -674,18 +674,18 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the subscription configuration.
@@ -711,19 +711,19 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of subscriptions for the given project.
@@ -759,22 +759,22 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/admin/' + core.Uri.encodeFull('$parent') + '/subscriptions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSubscriptionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates properties of the specified subscription.
@@ -807,22 +807,22 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs an out-of-band seek for a subscription to a specified target,
@@ -866,20 +866,20 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + ':seek';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name') + ':seek';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -922,21 +922,21 @@ class AdminProjectsLocationsTopicsResource {
     core.String? topicId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (topicId != null) 'topicId': [topicId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/topics';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/topics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Topic.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified topic.
@@ -961,18 +961,18 @@ class AdminProjectsLocationsTopicsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the topic configuration.
@@ -997,18 +997,18 @@ class AdminProjectsLocationsTopicsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Topic.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the partition information for the requested topic.
@@ -1033,19 +1033,19 @@ class AdminProjectsLocationsTopicsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + '/partitions';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name') + '/partitions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TopicPartitions.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of topics for the given project.
@@ -1081,21 +1081,21 @@ class AdminProjectsLocationsTopicsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/topics';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$parent') + '/topics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTopicsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates properties of the specified topic.
@@ -1127,21 +1127,21 @@ class AdminProjectsLocationsTopicsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Topic.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1184,21 +1184,21 @@ class AdminProjectsLocationsTopicsSubscriptionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/admin/' + core.Uri.encodeFull('$name') + '/subscriptions';
+    final url_ = 'v1/admin/' + core.Uri.encodeFull('$name') + '/subscriptions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTopicSubscriptionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1263,22 +1263,22 @@ class CursorProjectsLocationsSubscriptionsResource {
     core.String subscription, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/cursor/' + core.Uri.encodeFull('$subscription') + ':commitCursor';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CommitCursorResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1324,21 +1324,21 @@ class CursorProjectsLocationsSubscriptionsCursorsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/cursor/' + core.Uri.encodeFull('$parent') + '/cursors';
+    final url_ = 'v1/cursor/' + core.Uri.encodeFull('$parent') + '/cursors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListPartitionCursorsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1407,22 +1407,22 @@ class TopicStatsProjectsLocationsTopicsResource {
     core.String topic, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/topicStats/' + core.Uri.encodeFull('$topic') + ':computeHeadCursor';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ComputeHeadCursorResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Compute statistics about a range of messages in a given topic and
@@ -1451,23 +1451,23 @@ class TopicStatsProjectsLocationsTopicsResource {
     core.String topic, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/topicStats/' +
+    final url_ = 'v1/topicStats/' +
         core.Uri.encodeFull('$topic') +
         ':computeMessageStats';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ComputeMessageStatsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Compute the corresponding cursor for a publish or event time in a topic
@@ -1496,22 +1496,22 @@ class TopicStatsProjectsLocationsTopicsResource {
     core.String topic, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/topicStats/' + core.Uri.encodeFull('$topic') + ':computeTimeCursor';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ComputeTimeCursorResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1535,13 +1535,13 @@ class Capacity {
     this.subscribeMibPerSec,
   });
 
-  Capacity.fromJson(core.Map _json)
+  Capacity.fromJson(core.Map json_)
       : this(
-          publishMibPerSec: _json.containsKey('publishMibPerSec')
-              ? _json['publishMibPerSec'] as core.int
+          publishMibPerSec: json_.containsKey('publishMibPerSec')
+              ? json_['publishMibPerSec'] as core.int
               : null,
-          subscribeMibPerSec: _json.containsKey('subscribeMibPerSec')
-              ? _json['subscribeMibPerSec'] as core.int
+          subscribeMibPerSec: json_.containsKey('subscribeMibPerSec')
+              ? json_['subscribeMibPerSec'] as core.int
               : null,
         );
 
@@ -1568,14 +1568,14 @@ class CommitCursorRequest {
     this.partition,
   });
 
-  CommitCursorRequest.fromJson(core.Map _json)
+  CommitCursorRequest.fromJson(core.Map json_)
       : this(
-          cursor: _json.containsKey('cursor')
+          cursor: json_.containsKey('cursor')
               ? Cursor.fromJson(
-                  _json['cursor'] as core.Map<core.String, core.dynamic>)
+                  json_['cursor'] as core.Map<core.String, core.dynamic>)
               : null,
-          partition: _json.containsKey('partition')
-              ? _json['partition'] as core.String
+          partition: json_.containsKey('partition')
+              ? json_['partition'] as core.String
               : null,
         );
 
@@ -1599,10 +1599,10 @@ class ComputeHeadCursorRequest {
     this.partition,
   });
 
-  ComputeHeadCursorRequest.fromJson(core.Map _json)
+  ComputeHeadCursorRequest.fromJson(core.Map json_)
       : this(
-          partition: _json.containsKey('partition')
-              ? _json['partition'] as core.String
+          partition: json_.containsKey('partition')
+              ? json_['partition'] as core.String
               : null,
         );
 
@@ -1620,11 +1620,11 @@ class ComputeHeadCursorResponse {
     this.headCursor,
   });
 
-  ComputeHeadCursorResponse.fromJson(core.Map _json)
+  ComputeHeadCursorResponse.fromJson(core.Map json_)
       : this(
-          headCursor: _json.containsKey('headCursor')
+          headCursor: json_.containsKey('headCursor')
               ? Cursor.fromJson(
-                  _json['headCursor'] as core.Map<core.String, core.dynamic>)
+                  json_['headCursor'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1656,18 +1656,18 @@ class ComputeMessageStatsRequest {
     this.startCursor,
   });
 
-  ComputeMessageStatsRequest.fromJson(core.Map _json)
+  ComputeMessageStatsRequest.fromJson(core.Map json_)
       : this(
-          endCursor: _json.containsKey('endCursor')
+          endCursor: json_.containsKey('endCursor')
               ? Cursor.fromJson(
-                  _json['endCursor'] as core.Map<core.String, core.dynamic>)
+                  json_['endCursor'] as core.Map<core.String, core.dynamic>)
               : null,
-          partition: _json.containsKey('partition')
-              ? _json['partition'] as core.String
+          partition: json_.containsKey('partition')
+              ? json_['partition'] as core.String
               : null,
-          startCursor: _json.containsKey('startCursor')
+          startCursor: json_.containsKey('startCursor')
               ? Cursor.fromJson(
-                  _json['startCursor'] as core.Map<core.String, core.dynamic>)
+                  json_['startCursor'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1706,19 +1706,19 @@ class ComputeMessageStatsResponse {
     this.minimumPublishTime,
   });
 
-  ComputeMessageStatsResponse.fromJson(core.Map _json)
+  ComputeMessageStatsResponse.fromJson(core.Map json_)
       : this(
-          messageBytes: _json.containsKey('messageBytes')
-              ? _json['messageBytes'] as core.String
+          messageBytes: json_.containsKey('messageBytes')
+              ? json_['messageBytes'] as core.String
               : null,
-          messageCount: _json.containsKey('messageCount')
-              ? _json['messageCount'] as core.String
+          messageCount: json_.containsKey('messageCount')
+              ? json_['messageCount'] as core.String
               : null,
-          minimumEventTime: _json.containsKey('minimumEventTime')
-              ? _json['minimumEventTime'] as core.String
+          minimumEventTime: json_.containsKey('minimumEventTime')
+              ? json_['minimumEventTime'] as core.String
               : null,
-          minimumPublishTime: _json.containsKey('minimumPublishTime')
-              ? _json['minimumPublishTime'] as core.String
+          minimumPublishTime: json_.containsKey('minimumPublishTime')
+              ? json_['minimumPublishTime'] as core.String
               : null,
         );
 
@@ -1751,14 +1751,14 @@ class ComputeTimeCursorRequest {
     this.target,
   });
 
-  ComputeTimeCursorRequest.fromJson(core.Map _json)
+  ComputeTimeCursorRequest.fromJson(core.Map json_)
       : this(
-          partition: _json.containsKey('partition')
-              ? _json['partition'] as core.String
+          partition: json_.containsKey('partition')
+              ? json_['partition'] as core.String
               : null,
-          target: _json.containsKey('target')
+          target: json_.containsKey('target')
               ? TimeTarget.fromJson(
-                  _json['target'] as core.Map<core.String, core.dynamic>)
+                  json_['target'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1782,11 +1782,11 @@ class ComputeTimeCursorResponse {
     this.cursor,
   });
 
-  ComputeTimeCursorResponse.fromJson(core.Map _json)
+  ComputeTimeCursorResponse.fromJson(core.Map json_)
       : this(
-          cursor: _json.containsKey('cursor')
+          cursor: json_.containsKey('cursor')
               ? Cursor.fromJson(
-                  _json['cursor'] as core.Map<core.String, core.dynamic>)
+                  json_['cursor'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1806,10 +1806,10 @@ class Cursor {
     this.offset,
   });
 
-  Cursor.fromJson(core.Map _json)
+  Cursor.fromJson(core.Map json_)
       : this(
-          offset: _json.containsKey('offset')
-              ? _json['offset'] as core.String
+          offset: json_.containsKey('offset')
+              ? json_['offset'] as core.String
               : null,
         );
 
@@ -1835,10 +1835,10 @@ class DeliveryConfig {
     this.deliveryRequirement,
   });
 
-  DeliveryConfig.fromJson(core.Map _json)
+  DeliveryConfig.fromJson(core.Map json_)
       : this(
-          deliveryRequirement: _json.containsKey('deliveryRequirement')
-              ? _json['deliveryRequirement'] as core.String
+          deliveryRequirement: json_.containsKey('deliveryRequirement')
+              ? json_['deliveryRequirement'] as core.String
               : null,
         );
 
@@ -1869,13 +1869,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1903,13 +1903,13 @@ class ListPartitionCursorsResponse {
     this.partitionCursors,
   });
 
-  ListPartitionCursorsResponse.fromJson(core.Map _json)
+  ListPartitionCursorsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          partitionCursors: _json.containsKey('partitionCursors')
-              ? (_json['partitionCursors'] as core.List)
+          partitionCursors: json_.containsKey('partitionCursors')
+              ? (json_['partitionCursors'] as core.List)
                   .map((value) => PartitionCursor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1940,13 +1940,13 @@ class ListReservationTopicsResponse {
     this.topics,
   });
 
-  ListReservationTopicsResponse.fromJson(core.Map _json)
+  ListReservationTopicsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          topics: _json.containsKey('topics')
-              ? (_json['topics'] as core.List)
+          topics: json_.containsKey('topics')
+              ? (json_['topics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1976,13 +1976,13 @@ class ListReservationsResponse {
     this.reservations,
   });
 
-  ListReservationsResponse.fromJson(core.Map _json)
+  ListReservationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          reservations: _json.containsKey('reservations')
-              ? (_json['reservations'] as core.List)
+          reservations: json_.containsKey('reservations')
+              ? (json_['reservations'] as core.List)
                   .map((value) => Reservation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2013,13 +2013,13 @@ class ListSubscriptionsResponse {
     this.subscriptions,
   });
 
-  ListSubscriptionsResponse.fromJson(core.Map _json)
+  ListSubscriptionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          subscriptions: _json.containsKey('subscriptions')
-              ? (_json['subscriptions'] as core.List)
+          subscriptions: json_.containsKey('subscriptions')
+              ? (json_['subscriptions'] as core.List)
                   .map((value) => Subscription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2050,13 +2050,13 @@ class ListTopicSubscriptionsResponse {
     this.subscriptions,
   });
 
-  ListTopicSubscriptionsResponse.fromJson(core.Map _json)
+  ListTopicSubscriptionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          subscriptions: _json.containsKey('subscriptions')
-              ? (_json['subscriptions'] as core.List)
+          subscriptions: json_.containsKey('subscriptions')
+              ? (json_['subscriptions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2086,13 +2086,13 @@ class ListTopicsResponse {
     this.topics,
   });
 
-  ListTopicsResponse.fromJson(core.Map _json)
+  ListTopicsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          topics: _json.containsKey('topics')
-              ? (_json['topics'] as core.List)
+          topics: json_.containsKey('topics')
+              ? (json_['topics'] as core.List)
                   .map((value) => Topic.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2156,19 +2156,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2209,15 +2209,15 @@ class PartitionConfig {
     this.scale,
   });
 
-  PartitionConfig.fromJson(core.Map _json)
+  PartitionConfig.fromJson(core.Map json_)
       : this(
-          capacity: _json.containsKey('capacity')
+          capacity: json_.containsKey('capacity')
               ? Capacity.fromJson(
-                  _json['capacity'] as core.Map<core.String, core.dynamic>)
+                  json_['capacity'] as core.Map<core.String, core.dynamic>)
               : null,
           count:
-              _json.containsKey('count') ? _json['count'] as core.String : null,
-          scale: _json.containsKey('scale') ? _json['scale'] as core.int : null,
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2240,14 +2240,14 @@ class PartitionCursor {
     this.partition,
   });
 
-  PartitionCursor.fromJson(core.Map _json)
+  PartitionCursor.fromJson(core.Map json_)
       : this(
-          cursor: _json.containsKey('cursor')
+          cursor: json_.containsKey('cursor')
               ? Cursor.fromJson(
-                  _json['cursor'] as core.Map<core.String, core.dynamic>)
+                  json_['cursor'] as core.Map<core.String, core.dynamic>)
               : null,
-          partition: _json.containsKey('partition')
-              ? _json['partition'] as core.String
+          partition: json_.containsKey('partition')
+              ? json_['partition'] as core.String
               : null,
         );
 
@@ -2278,11 +2278,11 @@ class Reservation {
     this.throughputCapacity,
   });
 
-  Reservation.fromJson(core.Map _json)
+  Reservation.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          throughputCapacity: _json.containsKey('throughputCapacity')
-              ? _json['throughputCapacity'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          throughputCapacity: json_.containsKey('throughputCapacity')
+              ? json_['throughputCapacity'] as core.String
               : null,
         );
 
@@ -2305,10 +2305,10 @@ class ReservationConfig {
     this.throughputReservation,
   });
 
-  ReservationConfig.fromJson(core.Map _json)
+  ReservationConfig.fromJson(core.Map json_)
       : this(
-          throughputReservation: _json.containsKey('throughputReservation')
-              ? _json['throughputReservation'] as core.String
+          throughputReservation: json_.containsKey('throughputReservation')
+              ? json_['throughputReservation'] as core.String
               : null,
         );
 
@@ -2338,13 +2338,13 @@ class RetentionConfig {
     this.period,
   });
 
-  RetentionConfig.fromJson(core.Map _json)
+  RetentionConfig.fromJson(core.Map json_)
       : this(
-          perPartitionBytes: _json.containsKey('perPartitionBytes')
-              ? _json['perPartitionBytes'] as core.String
+          perPartitionBytes: json_.containsKey('perPartitionBytes')
+              ? json_['perPartitionBytes'] as core.String
               : null,
-          period: _json.containsKey('period')
-              ? _json['period'] as core.String
+          period: json_.containsKey('period')
+              ? json_['period'] as core.String
               : null,
         );
 
@@ -2376,14 +2376,14 @@ class SeekSubscriptionRequest {
     this.timeTarget,
   });
 
-  SeekSubscriptionRequest.fromJson(core.Map _json)
+  SeekSubscriptionRequest.fromJson(core.Map json_)
       : this(
-          namedTarget: _json.containsKey('namedTarget')
-              ? _json['namedTarget'] as core.String
+          namedTarget: json_.containsKey('namedTarget')
+              ? json_['namedTarget'] as core.String
               : null,
-          timeTarget: _json.containsKey('timeTarget')
+          timeTarget: json_.containsKey('timeTarget')
               ? TimeTarget.fromJson(
-                  _json['timeTarget'] as core.Map<core.String, core.dynamic>)
+                  json_['timeTarget'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2425,15 +2425,15 @@ class Subscription {
     this.topic,
   });
 
-  Subscription.fromJson(core.Map _json)
+  Subscription.fromJson(core.Map json_)
       : this(
-          deliveryConfig: _json.containsKey('deliveryConfig')
-              ? DeliveryConfig.fromJson(_json['deliveryConfig']
+          deliveryConfig: json_.containsKey('deliveryConfig')
+              ? DeliveryConfig.fromJson(json_['deliveryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           topic:
-              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2468,13 +2468,13 @@ class TimeTarget {
     this.publishTime,
   });
 
-  TimeTarget.fromJson(core.Map _json)
+  TimeTarget.fromJson(core.Map json_)
       : this(
-          eventTime: _json.containsKey('eventTime')
-              ? _json['eventTime'] as core.String
+          eventTime: json_.containsKey('eventTime')
+              ? json_['eventTime'] as core.String
               : null,
-          publishTime: _json.containsKey('publishTime')
-              ? _json['publishTime'] as core.String
+          publishTime: json_.containsKey('publishTime')
+              ? json_['publishTime'] as core.String
               : null,
         );
 
@@ -2508,19 +2508,19 @@ class Topic {
     this.retentionConfig,
   });
 
-  Topic.fromJson(core.Map _json)
+  Topic.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          partitionConfig: _json.containsKey('partitionConfig')
-              ? PartitionConfig.fromJson(_json['partitionConfig']
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          partitionConfig: json_.containsKey('partitionConfig')
+              ? PartitionConfig.fromJson(json_['partitionConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          reservationConfig: _json.containsKey('reservationConfig')
-              ? ReservationConfig.fromJson(_json['reservationConfig']
+          reservationConfig: json_.containsKey('reservationConfig')
+              ? ReservationConfig.fromJson(json_['reservationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          retentionConfig: _json.containsKey('retentionConfig')
-              ? RetentionConfig.fromJson(_json['retentionConfig']
+          retentionConfig: json_.containsKey('retentionConfig')
+              ? RetentionConfig.fromJson(json_['retentionConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2542,10 +2542,10 @@ class TopicPartitions {
     this.partitionCount,
   });
 
-  TopicPartitions.fromJson(core.Map _json)
+  TopicPartitions.fromJson(core.Map json_)
       : this(
-          partitionCount: _json.containsKey('partitionCount')
-              ? _json['partitionCount'] as core.String
+          partitionCount: json_.containsKey('partitionCount')
+              ? json_['partitionCount'] as core.String
               : null,
         );
 

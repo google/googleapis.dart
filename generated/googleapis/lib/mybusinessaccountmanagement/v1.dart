@@ -95,20 +95,20 @@ class AccountsResource {
     Account request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/accounts';
+    const url_ = 'v1/accounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified account.
@@ -135,18 +135,18 @@ class AccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all of the accounts for the authenticated user.
@@ -192,7 +192,7 @@ class AccountsResource {
     core.String? parentAccount,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -200,15 +200,15 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/accounts';
+    const url_ = 'v1/accounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAccountsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified business account.
@@ -246,22 +246,22 @@ class AccountsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -300,20 +300,20 @@ class AccountsAdminsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Admin.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Admin.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified admin from the specified account.
@@ -338,18 +338,18 @@ class AccountsAdminsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the admins for the specified account.
@@ -374,19 +374,19 @@ class AccountsAdminsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAccountAdminsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Admin for the specified Account Admin.
@@ -420,21 +420,21 @@ class AccountsAdminsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Admin.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Admin.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -469,20 +469,20 @@ class AccountsInvitationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':accept';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accept';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Declines the specified invitation.
@@ -510,20 +510,20 @@ class AccountsInvitationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':decline';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':decline';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists pending invitations for the specified account.
@@ -552,20 +552,20 @@ class AccountsInvitationsResource {
     core.String? filter,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/invitations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/invitations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListInvitationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -606,20 +606,20 @@ class LocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':transfer';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':transfer';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -658,20 +658,20 @@ class LocationsAdminsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Admin.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Admin.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified admin as a manager of the specified location.
@@ -696,18 +696,18 @@ class LocationsAdminsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all of the admins for the specified location.
@@ -732,19 +732,19 @@ class LocationsAdminsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/admins';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationAdminsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Admin for the specified location.
@@ -780,21 +780,21 @@ class LocationsAdminsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Admin.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Admin.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -924,32 +924,32 @@ class Account {
     this.vettedState,
   });
 
-  Account.fromJson(core.Map _json)
+  Account.fromJson(core.Map json_)
       : this(
-          accountName: _json.containsKey('accountName')
-              ? _json['accountName'] as core.String
+          accountName: json_.containsKey('accountName')
+              ? json_['accountName'] as core.String
               : null,
-          accountNumber: _json.containsKey('accountNumber')
-              ? _json['accountNumber'] as core.String
+          accountNumber: json_.containsKey('accountNumber')
+              ? json_['accountNumber'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          organizationInfo: _json.containsKey('organizationInfo')
-              ? OrganizationInfo.fromJson(_json['organizationInfo']
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          organizationInfo: json_.containsKey('organizationInfo')
+              ? OrganizationInfo.fromJson(json_['organizationInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          permissionLevel: _json.containsKey('permissionLevel')
-              ? _json['permissionLevel'] as core.String
+          permissionLevel: json_.containsKey('permissionLevel')
+              ? json_['permissionLevel'] as core.String
               : null,
-          primaryOwner: _json.containsKey('primaryOwner')
-              ? _json['primaryOwner'] as core.String
+          primaryOwner: json_.containsKey('primaryOwner')
+              ? json_['primaryOwner'] as core.String
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          verificationState: _json.containsKey('verificationState')
-              ? _json['verificationState'] as core.String
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          verificationState: json_.containsKey('verificationState')
+              ? json_['verificationState'] as core.String
               : null,
-          vettedState: _json.containsKey('vettedState')
-              ? _json['vettedState'] as core.String
+          vettedState: json_.containsKey('vettedState')
+              ? json_['vettedState'] as core.String
               : null,
         );
 
@@ -1028,18 +1028,18 @@ class Admin {
     this.role,
   });
 
-  Admin.fromJson(core.Map _json)
+  Admin.fromJson(core.Map json_)
       : this(
-          account: _json.containsKey('account')
-              ? _json['account'] as core.String
+          account: json_.containsKey('account')
+              ? json_['account'] as core.String
               : null,
           admin:
-              _json.containsKey('admin') ? _json['admin'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pendingInvitation: _json.containsKey('pendingInvitation')
-              ? _json['pendingInvitation'] as core.bool
+              json_.containsKey('admin') ? json_['admin'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pendingInvitation: json_.containsKey('pendingInvitation')
+              ? json_['pendingInvitation'] as core.bool
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1108,20 +1108,20 @@ class Invitation {
     this.targetType,
   });
 
-  Invitation.fromJson(core.Map _json)
+  Invitation.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-          targetAccount: _json.containsKey('targetAccount')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          targetAccount: json_.containsKey('targetAccount')
               ? Account.fromJson(
-                  _json['targetAccount'] as core.Map<core.String, core.dynamic>)
+                  json_['targetAccount'] as core.Map<core.String, core.dynamic>)
               : null,
-          targetLocation: _json.containsKey('targetLocation')
-              ? TargetLocation.fromJson(_json['targetLocation']
+          targetLocation: json_.containsKey('targetLocation')
+              ? TargetLocation.fromJson(json_['targetLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          targetType: _json.containsKey('targetType')
-              ? _json['targetType'] as core.String
+          targetType: json_.containsKey('targetType')
+              ? json_['targetType'] as core.String
               : null,
         );
 
@@ -1143,10 +1143,10 @@ class ListAccountAdminsResponse {
     this.accountAdmins,
   });
 
-  ListAccountAdminsResponse.fromJson(core.Map _json)
+  ListAccountAdminsResponse.fromJson(core.Map json_)
       : this(
-          accountAdmins: _json.containsKey('accountAdmins')
-              ? (_json['accountAdmins'] as core.List)
+          accountAdmins: json_.containsKey('accountAdmins')
+              ? (json_['accountAdmins'] as core.List)
                   .map((value) => Admin.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1178,16 +1178,16 @@ class ListAccountsResponse {
     this.nextPageToken,
   });
 
-  ListAccountsResponse.fromJson(core.Map _json)
+  ListAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: _json.containsKey('accounts')
-              ? (_json['accounts'] as core.List)
+          accounts: json_.containsKey('accounts')
+              ? (json_['accounts'] as core.List)
                   .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1208,10 +1208,10 @@ class ListInvitationsResponse {
     this.invitations,
   });
 
-  ListInvitationsResponse.fromJson(core.Map _json)
+  ListInvitationsResponse.fromJson(core.Map json_)
       : this(
-          invitations: _json.containsKey('invitations')
-              ? (_json['invitations'] as core.List)
+          invitations: json_.containsKey('invitations')
+              ? (json_['invitations'] as core.List)
                   .map((value) => Invitation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1232,10 +1232,10 @@ class ListLocationAdminsResponse {
     this.admins,
   });
 
-  ListLocationAdminsResponse.fromJson(core.Map _json)
+  ListLocationAdminsResponse.fromJson(core.Map json_)
       : this(
-          admins: _json.containsKey('admins')
-              ? (_json['admins'] as core.List)
+          admins: json_.containsKey('admins')
+              ? (json_['admins'] as core.List)
                   .map((value) => Admin.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1270,17 +1270,17 @@ class OrganizationInfo {
     this.registeredDomain,
   });
 
-  OrganizationInfo.fromJson(core.Map _json)
+  OrganizationInfo.fromJson(core.Map json_)
       : this(
-          address: _json.containsKey('address')
+          address: json_.containsKey('address')
               ? PostalAddress.fromJson(
-                  _json['address'] as core.Map<core.String, core.dynamic>)
+                  json_['address'] as core.Map<core.String, core.dynamic>)
               : null,
-          phoneNumber: _json.containsKey('phoneNumber')
-              ? _json['phoneNumber'] as core.String
+          phoneNumber: json_.containsKey('phoneNumber')
+              ? json_['phoneNumber'] as core.String
               : null,
-          registeredDomain: _json.containsKey('registeredDomain')
-              ? _json['registeredDomain'] as core.String
+          registeredDomain: json_.containsKey('registeredDomain')
+              ? json_['registeredDomain'] as core.String
               : null,
         );
 
@@ -1318,13 +1318,13 @@ class TargetLocation {
     this.locationName,
   });
 
-  TargetLocation.fromJson(core.Map _json)
+  TargetLocation.fromJson(core.Map json_)
       : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
               : null,
-          locationName: _json.containsKey('locationName')
-              ? _json['locationName'] as core.String
+          locationName: json_.containsKey('locationName')
+              ? json_['locationName'] as core.String
               : null,
         );
 
@@ -1346,10 +1346,10 @@ class TransferLocationRequest {
     this.destinationAccount,
   });
 
-  TransferLocationRequest.fromJson(core.Map _json)
+  TransferLocationRequest.fromJson(core.Map json_)
       : this(
-          destinationAccount: _json.containsKey('destinationAccount')
-              ? _json['destinationAccount'] as core.String
+          destinationAccount: json_.containsKey('destinationAccount')
+              ? json_['destinationAccount'] as core.String
               : null,
         );
 
