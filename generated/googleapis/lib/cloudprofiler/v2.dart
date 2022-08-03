@@ -287,7 +287,7 @@ class Deployment {
   ///
   /// * Cluster and container name for GKE. * User-specified string for direct
   /// Compute Engine profiling (e.g. Java). * Job name for Dataflow. Validation
-  /// regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
+  /// regex: `^[a-z0-9]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
   core.String? target;
 
   Deployment({

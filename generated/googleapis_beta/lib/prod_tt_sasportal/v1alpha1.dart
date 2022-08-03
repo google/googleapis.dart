@@ -56,6 +56,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class SASPortalTestingApi {
+  /// Read, create, update, and delete your SAS Portal data.
+  static const sasportalScope = 'https://www.googleapis.com/auth/sasportal';
+
   /// See your primary Google Account email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';

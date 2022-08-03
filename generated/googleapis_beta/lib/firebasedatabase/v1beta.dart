@@ -157,10 +157,10 @@ class ProjectsLocationsInstancesResource {
 
   /// Marks a DatabaseInstance to be deleted.
   ///
-  /// The DatabaseInstance will be purged within 30 days. The default database
-  /// cannot be deleted. IDs for deleted database instances may never be
-  /// recovered or re-used. The Database may only be deleted if it is already in
-  /// a DISABLED state.
+  /// The DatabaseInstance will be set to the DELETED state for 20 days, and
+  /// will be purged within 30 days. The default database cannot be deleted. IDs
+  /// for deleted database instances may never be recovered or re-used. The
+  /// Database may only be deleted if it is already in a DISABLED state.
   ///
   /// Request parameters:
   ///
@@ -404,8 +404,11 @@ class ProjectsLocationsInstancesResource {
 
   /// Restores a DatabaseInstance that was previously marked to be deleted.
   ///
-  /// This may only be used on a DatabaseInstance in the DELETED state. Purged
-  /// DatabaseInstance's may not be recovered.
+  /// After the delete method is used, DatabaseInstances are set to the DELETED
+  /// state for 20 days, and will be purged within 30 days. Databases in the
+  /// DELETED state can be undeleted without losing any data. This method may
+  /// only be used on a DatabaseInstance in the DELETED state. Purged
+  /// DatabaseInstances may not be recovered.
   ///
   /// [request] - The metadata request object.
   ///

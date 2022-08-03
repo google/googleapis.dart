@@ -87,6 +87,45 @@ void checkAwsAccessKey(api.AwsAccessKey o) {
   buildCounterAwsAccessKey--;
 }
 
+core.int buildCounterAwsS3CompatibleData = 0;
+api.AwsS3CompatibleData buildAwsS3CompatibleData() {
+  final o = api.AwsS3CompatibleData();
+  buildCounterAwsS3CompatibleData++;
+  if (buildCounterAwsS3CompatibleData < 3) {
+    o.bucketName = 'foo';
+    o.endpoint = 'foo';
+    o.path = 'foo';
+    o.region = 'foo';
+    o.s3Metadata = buildS3CompatibleMetadata();
+  }
+  buildCounterAwsS3CompatibleData--;
+  return o;
+}
+
+void checkAwsS3CompatibleData(api.AwsS3CompatibleData o) {
+  buildCounterAwsS3CompatibleData++;
+  if (buildCounterAwsS3CompatibleData < 3) {
+    unittest.expect(
+      o.bucketName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endpoint!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
+    checkS3CompatibleMetadata(o.s3Metadata!);
+  }
+  buildCounterAwsS3CompatibleData--;
+}
+
 core.int buildCounterAwsS3Data = 0;
 api.AwsS3Data buildAwsS3Data() {
   final o = api.AwsS3Data();
@@ -876,6 +915,43 @@ void checkRunTransferJobRequest(api.RunTransferJobRequest o) {
   buildCounterRunTransferJobRequest--;
 }
 
+core.int buildCounterS3CompatibleMetadata = 0;
+api.S3CompatibleMetadata buildS3CompatibleMetadata() {
+  final o = api.S3CompatibleMetadata();
+  buildCounterS3CompatibleMetadata++;
+  if (buildCounterS3CompatibleMetadata < 3) {
+    o.authMethod = 'foo';
+    o.listApi = 'foo';
+    o.protocol = 'foo';
+    o.requestModel = 'foo';
+  }
+  buildCounterS3CompatibleMetadata--;
+  return o;
+}
+
+void checkS3CompatibleMetadata(api.S3CompatibleMetadata o) {
+  buildCounterS3CompatibleMetadata++;
+  if (buildCounterS3CompatibleMetadata < 3) {
+    unittest.expect(
+      o.authMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.listApi!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protocol!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestModel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterS3CompatibleMetadata--;
+}
+
 core.int buildCounterSchedule = 0;
 api.Schedule buildSchedule() {
   final o = api.Schedule();
@@ -1150,6 +1226,7 @@ api.TransferSpec buildTransferSpec() {
   final o = api.TransferSpec();
   buildCounterTransferSpec++;
   if (buildCounterTransferSpec < 3) {
+    o.awsS3CompatibleDataSource = buildAwsS3CompatibleData();
     o.awsS3DataSource = buildAwsS3Data();
     o.azureBlobStorageDataSource = buildAzureBlobStorageData();
     o.gcsDataSink = buildGcsData();
@@ -1171,6 +1248,7 @@ api.TransferSpec buildTransferSpec() {
 void checkTransferSpec(api.TransferSpec o) {
   buildCounterTransferSpec++;
   if (buildCounterTransferSpec < 3) {
+    checkAwsS3CompatibleData(o.awsS3CompatibleDataSource!);
     checkAwsS3Data(o.awsS3DataSource!);
     checkAzureBlobStorageData(o.azureBlobStorageDataSource!);
     checkGcsData(o.gcsDataSink!);
@@ -1241,6 +1319,16 @@ void main() {
       final od = api.AwsAccessKey.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAwsAccessKey(od);
+    });
+  });
+
+  unittest.group('obj-schema-AwsS3CompatibleData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAwsS3CompatibleData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AwsS3CompatibleData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAwsS3CompatibleData(od);
     });
   });
 
@@ -1461,6 +1549,16 @@ void main() {
       final od = api.RunTransferJobRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRunTransferJobRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-S3CompatibleMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildS3CompatibleMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.S3CompatibleMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkS3CompatibleMetadata(od);
     });
   });
 

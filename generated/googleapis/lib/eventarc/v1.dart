@@ -121,6 +121,43 @@ class ProjectsLocationsResource {
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get a GoogleChannelConfig
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the config to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/googleChannelConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChannelConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChannelConfig> getGoogleChannelConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChannelConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -172,6 +209,55 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Update a single GoogleChannelConfig
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the config. Must be in the format
+  /// of, `projects/{project}/locations/{location}/googleChannelConfig`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/googleChannelConfig$`.
+  ///
+  /// [updateMask] - The fields to be updated; only fields explicitly provided
+  /// are updated. If no field mask is provided, all provided fields in the
+  /// request are updated. To update all fields, provide a field mask of "*".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChannelConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChannelConfig> updateGoogleChannelConfig(
+    GoogleChannelConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleChannelConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsChannelConnectionsResource {
@@ -179,6 +265,128 @@ class ProjectsLocationsChannelConnectionsResource {
 
   ProjectsLocationsChannelConnectionsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Create a new ChannelConnection in a particular project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which to add this channel
+  /// connection.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [channelConnectionId] - Required. The user-provided ID to be assigned to
+  /// the channel connection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    ChannelConnection request,
+    core.String parent, {
+    core.String? channelConnectionId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (channelConnectionId != null)
+        'channelConnectionId': [channelConnectionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/channelConnections';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a single ChannelConnection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the channel connection to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a single ChannelConnection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the channel connection to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ChannelConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ChannelConnection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ChannelConnection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets the access control policy for a resource.
   ///
@@ -188,8 +396,9 @@ class ProjectsLocationsChannelConnectionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
   ///
@@ -236,6 +445,55 @@ class ProjectsLocationsChannelConnectionsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// List channel connections.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection from which to list channel
+  /// connections.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of channel connections to return on each
+  /// page. Note: The service may send fewer responses.
+  ///
+  /// [pageToken] - The page token; provide the value from the `next_page_token`
+  /// field in a previous `ListChannelConnections` call to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListChannelConnetions` match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListChannelConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListChannelConnectionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/channelConnections';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListChannelConnectionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -246,8 +504,9 @@ class ProjectsLocationsChannelConnectionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
   ///
@@ -294,8 +553,9 @@ class ProjectsLocationsChannelConnectionsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
   ///
@@ -476,8 +736,9 @@ class ProjectsLocationsChannelsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
   ///
@@ -644,8 +905,9 @@ class ProjectsLocationsChannelsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
   ///
@@ -692,8 +954,9 @@ class ProjectsLocationsChannelsResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
   ///
@@ -1179,8 +1442,9 @@ class ProjectsLocationsTriggersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
   ///
@@ -1359,8 +1623,9 @@ class ProjectsLocationsTriggersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
   ///
@@ -1407,8 +1672,9 @@ class ProjectsLocationsTriggersResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
   ///
@@ -1601,6 +1867,15 @@ class Channel {
   /// Output only.
   core.String? createTime;
 
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt their event data.
+  ///
+  /// It must match the pattern `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `.
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
+
   /// The resource name of the channel.
   ///
   /// Must be unique within the location on the project and must be in
@@ -1637,12 +1912,12 @@ class Channel {
   /// - "ACTIVE" : The ACTIVE state indicates that a Channel has been
   /// successfully connected with the event provider. An ACTIVE Channel is ready
   /// to receive and route events from the event provider.
-  /// - "INACTIVE" : The INACTIVE state means that the Channel cannot receive
-  /// events permanently. There are two possible cases this state can happen: 1.
-  /// The SaaS provider disconnected from this Channel. 2. The Channel
-  /// activation token has expired but the SaaS provider wasn't connected. To
-  /// re-establish a Connection with a provider, the subscriber should create a
-  /// new Channel and give it to the provider.
+  /// - "INACTIVE" : The INACTIVE state indicates that the Channel cannot
+  /// receive events permanently. There are two possible cases this state can
+  /// happen: 1. The SaaS provider disconnected from this Channel. 2. The
+  /// Channel activation token has expired but the SaaS provider wasn't
+  /// connected. To re-establish a Connection with a provider, the subscriber
+  /// should create a new Channel and give it to the provider.
   core.String? state;
 
   /// Server assigned unique identifier for the channel.
@@ -1661,6 +1936,7 @@ class Channel {
   Channel({
     this.activationToken,
     this.createTime,
+    this.cryptoKeyName,
     this.name,
     this.provider,
     this.pubsubTopic,
@@ -1676,6 +1952,9 @@ class Channel {
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          cryptoKeyName: _json.containsKey('cryptoKeyName')
+              ? _json['cryptoKeyName'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           provider: _json.containsKey('provider')
@@ -1695,10 +1974,92 @@ class Channel {
   core.Map<core.String, core.dynamic> toJson() => {
         if (activationToken != null) 'activationToken': activationToken!,
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
         if (name != null) 'name': name!,
         if (provider != null) 'provider': provider!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
         if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A representation of the ChannelConnection resource.
+///
+/// A ChannelConnection is a resource which event providers create during the
+/// activation process to establish a connection between the provider and the
+/// subscriber channel.
+class ChannelConnection {
+  /// Input only.
+  ///
+  /// Activation token for the channel. The token will be used during the
+  /// creation of ChannelConnection to bind the channel with the provider
+  /// project. This field will not be stored in the provider resource.
+  core.String? activationToken;
+
+  /// The name of the connected subscriber Channel.
+  ///
+  /// This is a weak reference to avoid cross project and cross accounts
+  /// references. This must be in
+  /// `projects/{project}/location/{location}/channels/{channel_id}` format.
+  ///
+  /// Required.
+  core.String? channel;
+
+  /// The creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The name of the connection.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Server assigned ID of the resource.
+  ///
+  /// The server guarantees uniqueness and immutability until deleted.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ChannelConnection({
+    this.activationToken,
+    this.channel,
+    this.createTime,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  ChannelConnection.fromJson(core.Map _json)
+      : this(
+          activationToken: _json.containsKey('activationToken')
+              ? _json['activationToken'] as core.String
+              : null,
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activationToken != null) 'activationToken': activationToken!,
+        if (channel != null) 'channel': channel!,
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -2083,6 +2444,59 @@ class GKE {
       };
 }
 
+/// A GoogleChannelConfig is a resource that stores the custom settings
+/// respected by Eventarc first-party triggers in the matching region.
+///
+/// Once configured, first-party event data will be protected using the
+/// specified custom managed encryption key instead of Google-managed encryption
+/// keys.
+class GoogleChannelConfig {
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt their event data.
+  ///
+  /// It must match the pattern `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `.
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
+
+  /// The resource name of the config.
+  ///
+  /// Must be in the format of,
+  /// `projects/{project}/locations/{location}/googleChannelConfig`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The last-modified time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleChannelConfig({
+    this.cryptoKeyName,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleChannelConfig.fromJson(core.Map _json)
+      : this(
+          cryptoKeyName: _json.containsKey('cryptoKeyName')
+              ? _json['cryptoKeyName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
@@ -2203,12 +2617,59 @@ class GoogleLongrunningOperation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
 
+/// The response message for the `ListChannelConnections` method.
+class ListChannelConnectionsResponse {
+  /// The requested channel connections, up to the number specified in
+  /// `page_size`.
+  core.List<ChannelConnection>? channelConnections;
+
+  /// A page token that can be sent to `ListChannelConnections` to request the
+  /// next page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListChannelConnectionsResponse({
+    this.channelConnections,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListChannelConnectionsResponse.fromJson(core.Map _json)
+      : this(
+          channelConnections: _json.containsKey('channelConnections')
+              ? (_json['channelConnections'] as core.List)
+                  .map((value) => ChannelConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (channelConnections != null)
+          'channelConnections': channelConnections!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for the `ListChannels` method.
 class ListChannelsResponse {
   /// The requested channels, up to the number specified in `page_size`.
   core.List<Channel>? channels;
 
-  /// A page token that can be sent to ListChannels to request the next page.
+  /// A page token that can be sent to `ListChannels` to request the next page.
   ///
   /// If this is empty, then there are no more pages.
   core.String? nextPageToken;
@@ -2281,7 +2742,7 @@ class ListLocationsResponse {
 
 /// The response message for the `ListProviders` method.
 class ListProvidersResponse {
-  /// A page token that can be sent to ListProviders to request the next page.
+  /// A page token that can be sent to `ListProviders` to request the next page.
   ///
   /// If this is empty, then there are no more pages.
   core.String? nextPageToken;
@@ -2325,7 +2786,7 @@ class ListProvidersResponse {
 
 /// The response message for the `ListTriggers` method.
 class ListTriggersResponse {
-  /// A page token that can be sent to ListTriggers to request the next page.
+  /// A page token that can be sent to `ListTriggers` to request the next page.
   ///
   /// If this is empty, then there are no more pages.
   core.String? nextPageToken;
@@ -2616,6 +3077,113 @@ class SetIamPolicyRequest {
       };
 }
 
+/// A condition that is part of the trigger state computation.
+class StateCondition {
+  /// The canonical code of the condition.
+  /// Possible string values are:
+  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
+  /// Mapping: 499 Client Closed Request
+  /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
+  /// a `Status` value received from another address space belongs to an error
+  /// space that is not known in this address space. Also errors raised by APIs
+  /// that do not return enough error information may be converted to this
+  /// error. HTTP Mapping: 500 Internal Server Error
+  /// - "INVALID_ARGUMENT" : The client specified an invalid argument. Note that
+  /// this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates
+  /// arguments that are problematic regardless of the state of the system
+  /// (e.g., a malformed file name). HTTP Mapping: 400 Bad Request
+  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+  /// complete. For operations that change the state of the system, this error
+  /// may be returned even if the operation has completed successfully. For
+  /// example, a successful response from a server could have been delayed long
+  /// enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout
+  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+  /// found. Note to server developers: if a request is denied for an entire
+  /// class of users, such as gradual feature rollout or undocumented allowlist,
+  /// `NOT_FOUND` may be used. If a request is denied for some users within a
+  /// class of users, such as user-based access control, `PERMISSION_DENIED`
+  /// must be used. HTTP Mapping: 404 Not Found
+  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+  /// file or directory) already exists. HTTP Mapping: 409 Conflict
+  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
+  /// specified operation. `PERMISSION_DENIED` must not be used for rejections
+  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for
+  /// those errors). `PERMISSION_DENIED` must not be used if the caller can not
+  /// be identified (use `UNAUTHENTICATED` instead for those errors). This error
+  /// code does not imply the request is valid or the requested entity exists or
+  /// satisfies other pre-conditions. HTTP Mapping: 403 Forbidden
+  /// - "UNAUTHENTICATED" : The request does not have valid authentication
+  /// credentials for the operation. HTTP Mapping: 401 Unauthorized
+  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+  /// per-user quota, or perhaps the entire file system is out of space. HTTP
+  /// Mapping: 429 Too Many Requests
+  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
+  /// not in a state required for the operation's execution. For example, the
+  /// directory to be deleted is non-empty, an rmdir operation is applied to a
+  /// non-directory, etc. Service implementors can use the following guidelines
+  /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
+  /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
+  /// `ABORTED` if the client should retry at a higher level. For example, when
+  /// a client-specified test-and-set fails, indicating the client should
+  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
+  /// client should not retry until the system state has been explicitly fixed.
+  /// For example, if an "rmdir" fails because the directory is non-empty,
+  /// `FAILED_PRECONDITION` should be returned since the client should not retry
+  /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
+  /// Request
+  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
+  /// issue such as a sequencer check failure or transaction abort. See the
+  /// guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`,
+  /// and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
+  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range. E.g.,
+  /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
+  /// indicates a problem that may be fixed if the system state changes. For
+  /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
+  /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
+  /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
+  /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
+  /// error) when it applies so that callers who are iterating through a space
+  /// can easily look for an `OUT_OF_RANGE` error to detect when they are done.
+  /// HTTP Mapping: 400 Bad Request
+  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
+  /// supported/enabled in this service. HTTP Mapping: 501 Not Implemented
+  /// - "INTERNAL" : Internal errors. This means that some invariants expected
+  /// by the underlying system have been broken. This error code is reserved for
+  /// serious errors. HTTP Mapping: 500 Internal Server Error
+  /// - "UNAVAILABLE" : The service is currently unavailable. This is most
+  /// likely a transient condition, which can be corrected by retrying with a
+  /// backoff. Note that it is not always safe to retry non-idempotent
+  /// operations. See the guidelines above for deciding between
+  /// `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503
+  /// Service Unavailable
+  /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
+  /// Internal Server Error
+  core.String? code;
+
+  /// Human-readable message.
+  core.String? message;
+
+  StateCondition({
+    this.code,
+    this.message,
+  });
+
+  StateCondition.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
@@ -2655,6 +3223,11 @@ class Trigger {
   ///
   /// Optional.
   core.String? channel;
+
+  /// The reason(s) why a trigger is in FAILED state.
+  ///
+  /// Output only.
+  core.Map<core.String, StateCondition>? conditions;
 
   /// The creation time.
   ///
@@ -2734,6 +3307,7 @@ class Trigger {
 
   Trigger({
     this.channel,
+    this.conditions,
     this.createTime,
     this.destination,
     this.etag,
@@ -2750,6 +3324,16 @@ class Trigger {
       : this(
           channel: _json.containsKey('channel')
               ? _json['channel'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    StateCondition.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
@@ -2789,6 +3373,7 @@ class Trigger {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
+        if (conditions != null) 'conditions': conditions!,
         if (createTime != null) 'createTime': createTime!,
         if (destination != null) 'destination': destination!,
         if (etag != null) 'etag': etag!,

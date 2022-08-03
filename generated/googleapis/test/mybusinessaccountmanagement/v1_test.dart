@@ -110,6 +110,7 @@ api.Admin buildAdmin() {
   final o = api.Admin();
   buildCounterAdmin++;
   if (buildCounterAdmin < 3) {
+    o.account = 'foo';
     o.admin = 'foo';
     o.name = 'foo';
     o.pendingInvitation = true;
@@ -122,6 +123,10 @@ api.Admin buildAdmin() {
 void checkAdmin(api.Admin o) {
   buildCounterAdmin++;
   if (buildCounterAdmin < 3) {
+    unittest.expect(
+      o.account!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.admin!,
       unittest.equals('foo'),

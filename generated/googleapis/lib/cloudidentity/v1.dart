@@ -20,6 +20,8 @@
 ///
 /// Create an instance of [CloudIdentityApi] to access these resources:
 ///
+/// - [CustomersResource]
+///   - [CustomersUserinvitationsResource]
 /// - [DevicesResource]
 ///   - [DevicesDeviceUsersResource]
 ///     - [DevicesDeviceUsersClientStatesResource]
@@ -43,6 +45,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// API for provisioning and managing identity resources.
 class CloudIdentityApi {
+  /// Private Service: https://www.googleapis.com/auth/cloud-identity
+  static const cloudIdentityScope =
+      'https://www.googleapis.com/auth/cloud-identity';
+
   /// Private Service: https://www.googleapis.com/auth/cloud-identity.devices
   static const cloudIdentityDevicesScope =
       'https://www.googleapis.com/auth/cloud-identity.devices';
@@ -66,6 +72,16 @@ class CloudIdentityApi {
   static const cloudIdentityGroupsReadonlyScope =
       'https://www.googleapis.com/auth/cloud-identity.groups.readonly';
 
+  /// See, send, or cancel any Cloud Identity UserInvitations to join your
+  /// organization to users
+  static const cloudIdentityUserinvitationsScope =
+      'https://www.googleapis.com/auth/cloud-identity.userinvitations';
+
+  /// See, send, or cancel any Cloud Identity UserInvitations to join your
+  /// organization to users
+  static const cloudIdentityUserinvitationsReadonlyScope =
+      'https://www.googleapis.com/auth/cloud-identity.userinvitations.readonly';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -73,6 +89,7 @@ class CloudIdentityApi {
 
   final commons.ApiRequester _requester;
 
+  CustomersResource get customers => CustomersResource(_requester);
   DevicesResource get devices => DevicesResource(_requester);
   GroupsResource get groups => GroupsResource(_requester);
 
@@ -81,6 +98,265 @@ class CloudIdentityApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class CustomersResource {
+  final commons.ApiRequester _requester;
+
+  CustomersUserinvitationsResource get userinvitations =>
+      CustomersUserinvitationsResource(_requester);
+
+  CustomersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomersUserinvitationsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersUserinvitationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Cancels a UserInvitation that was already sent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. `UserInvitation` name in the format
+  /// `customers/{customer}/userinvitations/{user_email_address}`
+  /// Value must have pattern `^customers/\[^/\]+/userinvitations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancel(
+    CancelUserInvitationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a UserInvitation resource.
+  ///
+  /// **Note:** New consumer accounts with the customer's verified domain
+  /// created within the previous 48 hours will not appear in the result. This
+  /// delay also applies to newly-verified domains.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. `UserInvitation` name in the format
+  /// `customers/{customer}/userinvitations/{user_email_address}`
+  /// Value must have pattern `^customers/\[^/\]+/userinvitations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UserInvitation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserInvitation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return UserInvitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Verifies whether a user account is eligible to receive a UserInvitation
+  /// (is an unmanaged account).
+  ///
+  /// Eligibility is based on the following criteria: * the email address is a
+  /// consumer account and it's the primary email address of the account, and *
+  /// the domain of the email address matches an existing verified Google
+  /// Workspace or Cloud Identity domain If both conditions are met, the user is
+  /// eligible. **Note:** This method is not supported for Workspace Essentials
+  /// customers.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. `UserInvitation` name in the format
+  /// `customers/{customer}/userinvitations/{user_email_address}`
+  /// Value must have pattern `^customers/\[^/\]+/userinvitations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [IsInvitableUserResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<IsInvitableUserResponse> isInvitableUser(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':isInvitableUser';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return IsInvitableUserResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of UserInvitation resources.
+  ///
+  /// **Note:** New consumer accounts with the customer's verified domain
+  /// created within the previous 48 hours will not appear in the result. This
+  /// delay also applies to newly-verified domains.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The customer ID of the Google Workspace or Cloud
+  /// Identity account the UserInvitation resources are associated with.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A query string for filtering `UserInvitation` results
+  /// by their current state, in the format: `"state=='invited'"`.
+  ///
+  /// [orderBy] - Optional. The sort order of the list results. You can sort the
+  /// results in descending order based on either email or last update timestamp
+  /// but not both, using `order_by="email desc"`. Currently, sorting is
+  /// supported for `update_time asc`, `update_time desc`, `email asc`, and
+  /// `email desc`. If not specified, results will be returned based on `email
+  /// asc` order.
+  ///
+  /// [pageSize] - Optional. The maximum number of UserInvitation resources to
+  /// return. If unspecified, at most 100 resources will be returned. The
+  /// maximum value is 200; values above 200 will be set to 200.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListUserInvitations` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListBooks` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUserInvitationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserInvitationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/userinvitations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListUserInvitationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sends a UserInvitation to email.
+  ///
+  /// If the `UserInvitation` does not exist for this request and it is a valid
+  /// request, the request creates a `UserInvitation`. **Note:** The `get` and
+  /// `list` methods have a 48-hour delay where newly-created consumer accounts
+  /// will not appear in the results. You can still send a `UserInvitation` to
+  /// those accounts if you know the unmanaged email address and
+  /// IsInvitableUser==True.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. `UserInvitation` name in the format
+  /// `customers/{customer}/userinvitations/{user_email_address}`
+  /// Value must have pattern `^customers/\[^/\]+/userinvitations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> send(
+    SendUserInvitationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':send';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class DevicesResource {
@@ -2048,6 +2324,9 @@ class GroupsMembershipsResource {
   }
 }
 
+/// Request to cancel sent invitation for target email in UserInvitation.
+typedef CancelUserInvitationRequest = $Empty;
+
 /// The response message for MembershipsService.CheckTransitiveMembership.
 class CheckTransitiveMembershipResponse {
   /// Response does not include the possible roles of a member since the
@@ -3434,6 +3713,27 @@ class GroupRelation {
       };
 }
 
+/// Response for IsInvitableUser RPC.
+class IsInvitableUserResponse {
+  /// Returns true if the email address is invitable.
+  core.bool? isInvitableUser;
+
+  IsInvitableUserResponse({
+    this.isInvitableUser,
+  });
+
+  IsInvitableUserResponse.fromJson(core.Map _json)
+      : this(
+          isInvitableUser: _json.containsKey('isInvitableUser')
+              ? _json['isInvitableUser'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isInvitableUser != null) 'isInvitableUser': isInvitableUser!,
+      };
+}
+
 /// Response message for ListGroups operation.
 class ListGroupsResponse {
   /// Groups returned in response to list request.
@@ -3499,6 +3799,43 @@ class ListMembershipsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (memberships != null) 'memberships': memberships!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for UserInvitation listing request.
+class ListUserInvitationsResponse {
+  /// The token for the next page.
+  ///
+  /// If not empty, indicates that there may be more `UserInvitation` resources
+  /// that match the listing request; this value can be used in a subsequent
+  /// ListUserInvitationsRequest to get continued results with the current list
+  /// call.
+  core.String? nextPageToken;
+
+  /// The list of UserInvitation resources.
+  core.List<UserInvitation>? userInvitations;
+
+  ListUserInvitationsResponse({
+    this.nextPageToken,
+    this.userInvitations,
+  });
+
+  ListUserInvitationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          userInvitations: _json.containsKey('userInvitations')
+              ? (_json['userInvitations'] as core.List)
+                  .map((value) => UserInvitation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (userInvitations != null) 'userInvitations': userInvitations!,
       };
 }
 
@@ -4156,6 +4493,10 @@ class SecuritySettings {
       };
 }
 
+/// A request to send email for inviting target user corresponding to the
+/// UserInvitation.
+typedef SendUserInvitationRequest = $Empty;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -4218,5 +4559,63 @@ class UpdateMembershipRolesParams {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
         if (membershipRole != null) 'membershipRole': membershipRole!,
+      };
+}
+
+/// The `UserInvitation` resource represents an email that can be sent to an
+/// unmanaged user account inviting them to join the customer's Google Workspace
+/// or Cloud Identity account.
+///
+/// An unmanaged account shares an email address domain with the Google
+/// Workspace or Cloud Identity account but is not managed by it yet. If the
+/// user accepts the `UserInvitation`, the user account will become managed.
+class UserInvitation {
+  /// Number of invitation emails sent to the user.
+  core.String? mailsSentCount;
+
+  /// Shall be of the form
+  /// `customers/{customer}/userinvitations/{user_email_address}`.
+  core.String? name;
+
+  /// State of the `UserInvitation`.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "NOT_YET_SENT" : The `UserInvitation` has been created and is ready for
+  /// sending as an email.
+  /// - "INVITED" : The user has been invited by email.
+  /// - "ACCEPTED" : The user has accepted the invitation and is part of the
+  /// organization.
+  /// - "DECLINED" : The user declined the invitation.
+  core.String? state;
+
+  /// Time when the `UserInvitation` was last updated.
+  core.String? updateTime;
+
+  UserInvitation({
+    this.mailsSentCount,
+    this.name,
+    this.state,
+    this.updateTime,
+  });
+
+  UserInvitation.fromJson(core.Map _json)
+      : this(
+          mailsSentCount: _json.containsKey('mailsSentCount')
+              ? _json['mailsSentCount'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mailsSentCount != null) 'mailsSentCount': mailsSentCount!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }

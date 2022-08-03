@@ -1492,6 +1492,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.ethernetMacAddress = 'foo';
     o.ethernetMacAddress0 = 'foo';
     o.firmwareVersion = 'foo';
+    o.firstEnrollmentTime = 'foo';
     o.kind = 'foo';
     o.lastEnrollmentTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.lastKnownNetwork = buildUnnamed23();
@@ -1504,6 +1505,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.orderNumber = 'foo';
     o.orgUnitId = 'foo';
     o.orgUnitPath = 'foo';
+    o.osUpdateStatus = buildOsUpdateStatus();
     o.osVersion = 'foo';
     o.platformVersion = 'foo';
     o.recentUsers = buildUnnamed24();
@@ -1573,6 +1575,10 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.firstEnrollmentTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
@@ -1617,6 +1623,7 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
       o.orgUnitPath!,
       unittest.equals('foo'),
     );
+    checkOsUpdateStatus(o.osUpdateStatus!);
     unittest.expect(
       o.osVersion!,
       unittest.equals('foo'),
@@ -3166,6 +3173,53 @@ void checkOrgUnits(api.OrgUnits o) {
     checkUnnamed46(o.organizationUnits!);
   }
   buildCounterOrgUnits--;
+}
+
+core.int buildCounterOsUpdateStatus = 0;
+api.OsUpdateStatus buildOsUpdateStatus() {
+  final o = api.OsUpdateStatus();
+  buildCounterOsUpdateStatus++;
+  if (buildCounterOsUpdateStatus < 3) {
+    o.rebootTime = 'foo';
+    o.state = 'foo';
+    o.targetKioskAppVersion = 'foo';
+    o.targetOsVersion = 'foo';
+    o.updateCheckTime = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterOsUpdateStatus--;
+  return o;
+}
+
+void checkOsUpdateStatus(api.OsUpdateStatus o) {
+  buildCounterOsUpdateStatus++;
+  if (buildCounterOsUpdateStatus < 3) {
+    unittest.expect(
+      o.rebootTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetKioskAppVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetOsVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateCheckTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOsUpdateStatus--;
 }
 
 core.List<api.AuxiliaryMessage> buildUnnamed47() => [
@@ -5273,6 +5327,16 @@ void main() {
       final od =
           api.OrgUnits.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOrgUnits(od);
+    });
+  });
+
+  unittest.group('obj-schema-OsUpdateStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOsUpdateStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OsUpdateStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOsUpdateStatus(od);
     });
   });
 

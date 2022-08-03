@@ -564,7 +564,7 @@
             }
         }
     },
-    "revision": "20220606",
+    "revision": "20220802",
     "rootUrl": "https://tasks.googleapis.com/",
     "schemas": {
         "Task": {

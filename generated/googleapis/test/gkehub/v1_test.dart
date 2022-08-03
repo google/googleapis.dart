@@ -1024,6 +1024,7 @@ api.ConfigManagementPolicyController buildConfigManagementPolicyController() {
     o.exemptableNamespaces = buildUnnamed6();
     o.logDeniesEnabled = true;
     o.monitoring = buildConfigManagementPolicyControllerMonitoring();
+    o.mutationEnabled = true;
     o.referentialRulesEnabled = true;
     o.templateLibraryInstalled = true;
   }
@@ -1043,6 +1044,7 @@ void checkConfigManagementPolicyController(
     checkUnnamed6(o.exemptableNamespaces!);
     unittest.expect(o.logDeniesEnabled!, unittest.isTrue);
     checkConfigManagementPolicyControllerMonitoring(o.monitoring!);
+    unittest.expect(o.mutationEnabled!, unittest.isTrue);
     unittest.expect(o.referentialRulesEnabled!, unittest.isTrue);
     unittest.expect(o.templateLibraryInstalled!, unittest.isTrue);
   }
@@ -2439,6 +2441,7 @@ api.OnPremCluster buildOnPremCluster() {
   if (buildCounterOnPremCluster < 3) {
     o.adminCluster = true;
     o.clusterMissing = true;
+    o.clusterType = 'foo';
     o.resourceLink = 'foo';
   }
   buildCounterOnPremCluster--;
@@ -2450,6 +2453,10 @@ void checkOnPremCluster(api.OnPremCluster o) {
   if (buildCounterOnPremCluster < 3) {
     unittest.expect(o.adminCluster!, unittest.isTrue);
     unittest.expect(o.clusterMissing!, unittest.isTrue);
+    unittest.expect(
+      o.clusterType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.resourceLink!,
       unittest.equals('foo'),

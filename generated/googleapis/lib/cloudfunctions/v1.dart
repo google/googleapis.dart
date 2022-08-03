@@ -1578,26 +1578,7 @@ class GenerateDownloadUrlRequest {
 }
 
 /// Response of `GenerateDownloadUrl` method.
-class GenerateDownloadUrlResponse {
-  /// The generated Google Cloud Storage signed URL that should be used for
-  /// function source code download.
-  core.String? downloadUrl;
-
-  GenerateDownloadUrlResponse({
-    this.downloadUrl,
-  });
-
-  GenerateDownloadUrlResponse.fromJson(core.Map _json)
-      : this(
-          downloadUrl: _json.containsKey('downloadUrl')
-              ? _json['downloadUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-      };
-}
+typedef GenerateDownloadUrlResponse = $GenerateDownloadUrlResponse;
 
 /// Request of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlRequest {

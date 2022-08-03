@@ -1923,7 +1923,7 @@ class BandedRange {
 class BandingProperties {
   /// The first color that is alternating.
   ///
-  /// (Required)
+  /// (Required) Deprecated: Use first_band_color_style.
   Color? firstBandColor;
 
   /// The first color that is alternating.
@@ -1935,7 +1935,7 @@ class BandingProperties {
   ///
   /// If this field is not set, the last row or column is filled with either
   /// first_band_color or second_band_color, depending on the color of the
-  /// previous row or column.
+  /// previous row or column. Deprecated: Use footer_color_style.
   Color? footerColor;
 
   /// The color of the last row or column.
@@ -1952,7 +1952,7 @@ class BandingProperties {
   /// and the colors alternate between first_band_color and second_band_color
   /// starting from the second row or column. Otherwise, the first row or column
   /// is filled with first_band_color and the colors proceed to alternate as
-  /// they normally would.
+  /// they normally would. Deprecated: Use header_color_style.
   Color? headerColor;
 
   /// The color of the first row or column.
@@ -1967,7 +1967,7 @@ class BandingProperties {
 
   /// The second color that is alternating.
   ///
-  /// (Required)
+  /// (Required) Deprecated: Use second_band_color_style.
   Color? secondBandColor;
 
   /// The second color that is alternating.
@@ -2055,7 +2055,7 @@ class BaselineValueFormat {
   /// Color to be used, in case baseline value represents a negative change for
   /// key value.
   ///
-  /// This field is optional.
+  /// This field is optional. Deprecated: Use negative_color_style.
   Color? negativeColor;
 
   /// Color to be used, in case baseline value represents a negative change for
@@ -2073,7 +2073,7 @@ class BaselineValueFormat {
   /// Color to be used, in case baseline value represents a positive change for
   /// key value.
   ///
-  /// This field is optional.
+  /// This field is optional. Deprecated: Use positive_color_style.
   Color? positiveColor;
 
   /// Color to be used, in case baseline value represents a positive change for
@@ -2262,7 +2262,7 @@ class BasicChartSeries {
   /// The color for elements (such as bars, lines, and points) associated with
   /// this series.
   ///
-  /// If empty, a default color is used.
+  /// If empty, a default color is used. Deprecated: Use color_style.
   Color? color;
 
   /// The color for elements (such as bars, lines, and points) associated with
@@ -2641,7 +2641,7 @@ class BasicFilter {
 class BasicSeriesDataPointStyleOverride {
   /// Color of the series data point.
   ///
-  /// If empty, the series default is used.
+  /// If empty, the series default is used. Deprecated: Use color_style.
   Color? color;
 
   /// Color of the series data point.
@@ -3721,6 +3721,8 @@ class BooleanRule {
 /// A border along a cell.
 class Border {
   /// The color of the border.
+  ///
+  /// Deprecated: Use color_style.
   Color? color;
 
   /// The color of the border.
@@ -3828,6 +3830,8 @@ class Borders {
 /// A bubble chart.
 class BubbleChartSpec {
   /// The bubble border color.
+  ///
+  /// Deprecated: Use bubble_border_color_style.
   Color? bubbleBorderColor;
 
   /// The bubble border color.
@@ -4296,6 +4300,8 @@ class CellData {
 /// The format of a cell.
 class CellFormat {
   /// The background color of the cell.
+  ///
+  /// Deprecated: Use background_color_style.
   Color? backgroundColor;
 
   /// The background color of the cell.
@@ -4315,7 +4321,7 @@ class CellFormat {
   /// - "RIGHT" : The text is explicitly aligned to the right of the cell.
   core.String? horizontalAlignment;
 
-  /// How a hyperlink, if it exists, should be displayed in the cell.
+  /// If one exists, how a hyperlink should be displayed in the cell.
   /// Possible string values are:
   /// - "HYPERLINK_DISPLAY_TYPE_UNSPECIFIED" : The default value: the hyperlink
   /// is rendered. Do not use this.
@@ -4341,12 +4347,12 @@ class CellFormat {
 
   /// The format of the text in the cell (unless overridden by a format run).
   ///
-  /// Setting a cell-level link here will clear the cell's existing links.
-  /// Setting the link field in a TextFormatRun will take precedence over the
-  /// cell-level link.
+  /// Setting a cell-level link here clears the cell's existing links. Setting
+  /// the link field in a TextFormatRun takes precedence over the cell-level
+  /// link.
   TextFormat? textFormat;
 
-  /// The rotation applied to text in a cell
+  /// The rotation applied to text in the cell.
   TextRotation? textRotation;
 
   /// The vertical alignment of the value in the cell.
@@ -4784,7 +4790,7 @@ class ChartSpec {
 
   /// The background color of the entire chart.
   ///
-  /// Not applicable to Org charts.
+  /// Not applicable to Org charts. Deprecated: Use background_color_style.
   Color? backgroundColor;
 
   /// The background color of the entire chart.
@@ -5156,6 +5162,12 @@ typedef Color = $Color;
 /// A color value.
 class ColorStyle {
   /// RGB color.
+  ///
+  /// The
+  /// \[`alpha`\](/sheets/api/reference/rest/v4/spreadsheets/other#Color.FIELDS.alpha)
+  /// value in the
+  /// \[`Color`\](/sheets/api/reference/rest/v4/spreadsheets/other#color) object
+  /// isn't generally supported.
   Color? rgbColor;
 
   /// Theme color.
@@ -7618,6 +7630,8 @@ class EmbeddedChart {
 /// A border along an embedded object.
 class EmbeddedObjectBorder {
   /// The color of the border.
+  ///
+  /// Deprecated: Use color_style.
   Color? color;
 
   /// The color of the border.
@@ -7807,7 +7821,8 @@ class FilterCriteria {
   /// The background fill color to filter by; only cells with this fill color
   /// are shown.
   ///
-  /// Mutually exclusive with visible_foreground_color.
+  /// Mutually exclusive with visible_foreground_color. Deprecated: Use
+  /// visible_background_color_style.
   Color? visibleBackgroundColor;
 
   /// The background fill color to filter by; only cells with this fill color
@@ -7821,7 +7836,8 @@ class FilterCriteria {
   /// The foreground color to filter by; only cells with this foreground color
   /// are shown.
   ///
-  /// Mutually exclusive with visible_background_color.
+  /// Mutually exclusive with visible_background_color. Deprecated: Use
+  /// visible_foreground_color_style.
   Color? visibleForegroundColor;
 
   /// The foreground color to filter by; only cells with this foreground color
@@ -8647,7 +8663,7 @@ class HistogramRule {
 class HistogramSeries {
   /// The color of the column representing this series in each bucket.
   ///
-  /// This field is optional.
+  /// This field is optional. Deprecated: Use bar_color_style.
   Color? barColor;
 
   /// The color of the column representing this series in each bucket.
@@ -8773,6 +8789,8 @@ class InsertRangeRequest {
 /// chosen.
 class InterpolationPoint {
   /// The color this interpolation point should use.
+  ///
+  /// Deprecated: Use color_style.
   Color? color;
 
   /// The color this interpolation point should use.
@@ -9284,6 +9302,8 @@ class OrgChartSpec {
   ChartData? labels;
 
   /// The color of the org chart nodes.
+  ///
+  /// Deprecated: Use node_color_style.
   Color? nodeColor;
 
   /// The color of the org chart nodes.
@@ -9306,6 +9326,8 @@ class OrgChartSpec {
   ChartData? parentLabels;
 
   /// The color of the selected org chart nodes.
+  ///
+  /// Deprecated: Use selected_node_color_style.
   Color? selectedNodeColor;
 
   /// The color of the selected org chart nodes.
@@ -11909,6 +11931,8 @@ class SheetProperties {
   core.String? sheetType;
 
   /// The color of the tab in the UI.
+  ///
+  /// Deprecated: Use tab_color_style.
   Color? tabColor;
 
   /// The color of the tab in the UI.
@@ -12034,6 +12058,8 @@ class SlicerSpec {
   core.bool? applyToPivotTables;
 
   /// The background color of the slicer.
+  ///
+  /// Deprecated: Use background_color_style.
   Color? backgroundColor;
 
   /// The background color of the slicer.
@@ -12173,7 +12199,8 @@ class SortSpec {
   /// The background fill color to sort by; cells with this fill color are
   /// sorted to the top.
   ///
-  /// Mutually exclusive with foreground_color.
+  /// Mutually exclusive with foreground_color. Deprecated: Use
+  /// background_color_style.
   Color? backgroundColor;
 
   /// The background fill color to sort by; cells with this fill color are
@@ -12192,7 +12219,8 @@ class SortSpec {
   /// The foreground color to sort by; cells with this foreground color are
   /// sorted to the top.
   ///
-  /// Mutually exclusive with background_color.
+  /// Mutually exclusive with background_color. Deprecated: Use
+  /// foreground_color_style.
   Color? foregroundColor;
 
   /// The foreground color to sort by; cells with this foreground color are
@@ -12555,6 +12583,8 @@ class TextFormat {
   core.int? fontSize;
 
   /// The foreground color of the text.
+  ///
+  /// Deprecated: Use foreground_color_style.
   Color? foregroundColor;
 
   /// The foreground color of the text.
@@ -12841,7 +12871,8 @@ class TreemapChartColorScale {
   /// The background color for cells with a color value greater than or equal to
   /// maxValue.
   ///
-  /// Defaults to #109618 if not specified.
+  /// Defaults to #109618 if not specified. Deprecated: Use
+  /// max_value_color_style.
   Color? maxValueColor;
 
   /// The background color for cells with a color value greater than or equal to
@@ -12854,7 +12885,8 @@ class TreemapChartColorScale {
   /// The background color for cells with a color value at the midpoint between
   /// minValue and maxValue.
   ///
-  /// Defaults to #efe6dc if not specified.
+  /// Defaults to #efe6dc if not specified. Deprecated: Use
+  /// mid_value_color_style.
   Color? midValueColor;
 
   /// The background color for cells with a color value at the midpoint between
@@ -12867,7 +12899,8 @@ class TreemapChartColorScale {
   /// The background color for cells with a color value less than or equal to
   /// minValue.
   ///
-  /// Defaults to #dc3912 if not specified.
+  /// Defaults to #dc3912 if not specified. Deprecated: Use
+  /// min_value_color_style.
   Color? minValueColor;
 
   /// The background color for cells with a color value less than or equal to
@@ -12880,7 +12913,7 @@ class TreemapChartColorScale {
   /// The background color for cells that have no color data associated with
   /// them.
   ///
-  /// Defaults to #000000 if not specified.
+  /// Defaults to #000000 if not specified. Deprecated: Use no_data_color_style.
   Color? noDataColor;
 
   /// The background color for cells that have no color data associated with
@@ -12977,6 +13010,8 @@ class TreemapChartSpec {
   TreemapChartColorScale? colorScale;
 
   /// The background color for header cells.
+  ///
+  /// Deprecated: Use header_color_style.
   Color? headerColor;
 
   /// The background color for header cells.
@@ -14269,6 +14304,8 @@ class ValueRange {
 /// Styles for a waterfall chart column.
 class WaterfallChartColumnStyle {
   /// The color of the column.
+  ///
+  /// Deprecated: Use color_style.
   Color? color;
 
   /// The color of the column.

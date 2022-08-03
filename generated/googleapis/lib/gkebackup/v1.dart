@@ -230,7 +230,7 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location within which to create the BackupPlan.
-  /// Format: projects / * /locations / *
+  /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupPlanId] - Required. The client-provided short name for the
@@ -277,8 +277,8 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified BackupPlan name. Format: projects / *
-  /// /locations / * /backupPlans / *
+  /// [name] - Required. Fully qualified BackupPlan name. Format: `projects / *
+  /// /locations / * /backupPlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -320,8 +320,8 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified BackupPlan name. Format: projects / *
-  /// /locations / * /backupPlans / *
+  /// [name] - Required. Fully qualified BackupPlan name. Format: `projects / *
+  /// /locations / * /backupPlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -416,7 +416,7 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location that contains the BackupPlans to list.
-  /// Format: projects / * /locations / *
+  /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Field match expression used to filter the results.
@@ -478,7 +478,7 @@ class ProjectsLocationsBackupPlansResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The full name of the BackupPlan resource. Format:
-  /// projects / * /locations / * /backupPlans / *
+  /// `projects / * /locations / * /backupPlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -641,7 +641,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BackupPlan within which to create the Backup.
-  /// Format: projects / * /locations / * /backupPlans / *
+  /// Format: `projects / * /locations / * /backupPlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -689,8 +689,8 @@ class ProjectsLocationsBackupPlansBackupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the Backup resource. Format: projects / *
-  /// /locations / * /backupPlans / * /backups / *
+  /// [name] - Required. Name of the Backup resource. Format: `projects / *
+  /// /locations / * /backupPlans / * /backups / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -738,8 +738,8 @@ class ProjectsLocationsBackupPlansBackupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full name of the Backup resource. Format: projects / *
-  /// /locations / * /backupPlans / * /backups / *
+  /// [name] - Required. Full name of the Backup resource. Format: `projects / *
+  /// /locations / * /backupPlans / * /backups / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -833,7 +833,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BackupPlan that contains the Backups to list.
-  /// Format: projects / * /locations / * /backupPlans / *
+  /// Format: `projects / * /locations / * /backupPlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -895,8 +895,8 @@ class ProjectsLocationsBackupPlansBackupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The fully qualified name of the Backup. projects / *
-  /// /locations / * /backupPlans / * /backups / *
+  /// [name] - Output only. The fully qualified name of the Backup. `projects /
+  /// * /locations / * /backupPlans / * /backups / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1053,8 +1053,8 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Full name of the VolumeBackup resource. Format:
-  /// projects / * /locations / * /backupPlans / * /backups / * /volumeBackups /
-  /// *
+  /// `projects / * /locations / * /backupPlans / * /backups / * /volumeBackups
+  /// / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+/volumeBackups/\[^/\]+$`.
   ///
@@ -1149,7 +1149,7 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The Backup that contains the VolumeBackups to list.
-  /// Format: projects / * /locations / * /backupPlans / * /backups / *
+  /// Format: `projects / * /locations / * /backupPlans / * /backups / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1475,7 +1475,7 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location within which to create the RestorePlan.
-  /// Format: projects / * /locations / *
+  /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [restorePlanId] - Required. The client-provided short name for the
@@ -1522,8 +1522,8 @@ class ProjectsLocationsRestorePlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified RestorePlan name. Format: projects / *
-  /// /locations / * /restorePlans / *
+  /// [name] - Required. Fully qualified RestorePlan name. Format: `projects / *
+  /// /locations / * /restorePlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1571,8 +1571,8 @@ class ProjectsLocationsRestorePlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Fully qualified RestorePlan name. Format: projects / *
-  /// /locations / * /restorePlans / *
+  /// [name] - Required. Fully qualified RestorePlan name. Format: `projects / *
+  /// /locations / * /restorePlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1667,7 +1667,7 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location that contains the RestorePlans to list.
-  /// Format: projects / * /locations / *
+  /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Field match expression used to filter the results.
@@ -1729,7 +1729,7 @@ class ProjectsLocationsRestorePlansResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The full name of the RestorePlan resource. Format:
-  /// projects / * /locations / * /restorePlans / * .
+  /// `projects / * /locations / * /restorePlans / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1893,7 +1893,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The RestorePlan within which to create the Restore.
-  /// Format: projects / * /locations / * /restorePlans / *
+  /// Format: `projects / * /locations / * /restorePlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -1941,8 +1941,8 @@ class ProjectsLocationsRestorePlansRestoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Full name of the Restore Format: projects / *
-  /// /locations / * /restorePlans / * /restores / *
+  /// [name] - Required. Full name of the Restore Format: `projects / *
+  /// /locations / * /restorePlans / * /restores / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -1990,8 +1990,8 @@ class ProjectsLocationsRestorePlansRestoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the restore resource. Format: projects / *
-  /// /locations / * /restorePlans / * /restores / *
+  /// [name] - Required. Name of the restore resource. Format: `projects / *
+  /// /locations / * /restorePlans / * /restores / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -2085,7 +2085,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The RestorePlan that contains the Restores to list.
-  /// Format: projects / * /locations / * /restorePlans / *
+  /// Format: `projects / * /locations / * /restorePlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -2148,7 +2148,7 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The full name of the Restore resource. Format:
-  /// projects / * /locations / * /restorePlans / * /restores / *
+  /// `projects / * /locations / * /restorePlans / * /restores / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -2305,8 +2305,8 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Request parameters:
   ///
   /// [name] - Required. Full name of the VolumeRestore resource. Format:
-  /// projects / * /locations / * /restorePlans / * /restores / *
-  /// /volumeRestores / *
+  /// `projects / * /locations / * /restorePlans / * /restores / *
+  /// /volumeRestores / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+/volumeRestores/\[^/\]+$`.
   ///
@@ -2401,7 +2401,7 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The Restore that contains the VolumeRestores to list.
-  /// Format: projects / * /locations / * /restorePlans / * /restores / *
+  /// Format: `projects / * /locations / * /restorePlans / * /restores / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -2715,7 +2715,7 @@ class Backup {
 
   /// The fully qualified name of the Backup.
   ///
-  /// projects / * /locations / * /backupPlans / * /backups / *
+  /// `projects / * /locations / * /backupPlans / * /backups / * `
   ///
   /// Output only.
   core.String? name;
@@ -2733,9 +2733,9 @@ class Backup {
   /// The age (in days) after which this Backup will be automatically deleted.
   ///
   /// Must be an integer value \>= 0: - If 0, no automatic deletion will occur
-  /// for this Backup. - If not 0, this must be \>= delete_lock_days. Once a
-  /// Backup is created, this value may only be increased. Defaults to the
-  /// parent BackupPlan's backup_retain_days value.
+  /// for this Backup. - If not 0, this must be \>= delete_lock_days and \<=
+  /// 365. Once a Backup is created, this value may only be increased. Defaults
+  /// to the parent BackupPlan's backup_retain_days value.
   core.int? retainDays;
 
   /// The time at which this Backup will be automatically deleted (calculated
@@ -3038,8 +3038,8 @@ class BackupPlan {
 
   /// The source cluster from which Backups will be created via this BackupPlan.
   ///
-  /// Valid formats: - projects / * /locations / * /clusters / * - projects / *
-  /// /zones / * /clusters / *
+  /// Valid formats: - `projects / * /locations / * /clusters / * ` - `projects
+  /// / * /zones / * /clusters / * `
   ///
   /// Required. Immutable.
   core.String? cluster;
@@ -3078,7 +3078,7 @@ class BackupPlan {
 
   /// The full name of the BackupPlan resource.
   ///
-  /// Format: projects / * /locations / * /backupPlans / *
+  /// Format: `projects / * /locations / * /backupPlans / * `
   ///
   /// Output only.
   core.String? name;
@@ -3269,9 +3269,9 @@ class ClusterMetadata {
 
   /// The source cluster from which this Backup was created.
   ///
-  /// Valid formats: - projects / * /locations / * /clusters / * - projects / *
-  /// /zones / * /clusters / * This is inherited from the parent BackupPlan's
-  /// cluster field.
+  /// Valid formats: - `projects / * /locations / * /clusters / * ` - `projects
+  /// / * /zones / * /clusters / * ` This is inherited from the parent
+  /// BackupPlan's cluster field.
   core.String? cluster;
 
   /// GKE version
@@ -3366,7 +3366,7 @@ typedef Empty = $Empty;
 class EncryptionKey {
   /// Google Cloud KMS encryption key.
   ///
-  /// Format: projects / * /locations / * /keyRings / * /cryptoKeys / *
+  /// Format: `projects / * /locations / * /keyRings / * /cryptoKeys / * `
   core.String? gcpKmsEncryptionKey;
 
   EncryptionKey({
@@ -4046,16 +4046,16 @@ class Restore {
   /// restore.
   ///
   /// Note that this Backup must be a sub-resource of the RestorePlan's
-  /// backup_plan. Format: projects / * /locations / * /backupPlans / * /backups
-  /// / * .
+  /// backup_plan. Format: `projects / * /locations / * /backupPlans / *
+  /// /backups / * `.
   ///
   /// Required. Immutable.
   core.String? backup;
 
   /// The target cluster into which this Restore will restore data.
   ///
-  /// Valid formats: - projects / * /locations / * /clusters / * - projects / *
-  /// /zones / * /clusters / * Inherited from parent RestorePlan's cluster
+  /// Valid formats: - `projects / * /locations / * /clusters / * ` - `projects
+  /// / * /zones / * /clusters / * ` Inherited from parent RestorePlan's cluster
   /// value.
   ///
   /// Output only.
@@ -4092,7 +4092,7 @@ class Restore {
 
   /// The full name of the Restore resource.
   ///
-  /// Format: projects / * /locations / * /restorePlans / * /restores / *
+  /// Format: `projects / * /locations / * /restorePlans / * /restores / * `
   ///
   /// Output only.
   core.String? name;
@@ -4425,7 +4425,7 @@ class RestorePlan {
   /// A reference to the BackupPlan from which Backups may be used as the source
   /// for Restores created via this RestorePlan.
   ///
-  /// Format: projects / * /locations / * /backupPlans / * .
+  /// Format: `projects / * /locations / * /backupPlans / * `.
   ///
   /// Required. Immutable.
   core.String? backupPlan;
@@ -4434,8 +4434,8 @@ class RestorePlan {
   /// restore data.
   ///
   /// NOTE: the cluster's region must be the same as the RestorePlan. Valid
-  /// formats: - projects / * /locations / * /clusters / * - projects / * /zones
-  /// / * /clusters / *
+  /// formats: - `projects / * /locations / * /clusters / * ` - `projects / *
+  /// /zones / * /clusters / * `
   ///
   /// Required. Immutable.
   core.String? cluster;
@@ -4466,7 +4466,7 @@ class RestorePlan {
 
   /// The full name of the RestorePlan resource.
   ///
-  /// Format: projects / * /locations / * /restorePlans / * .
+  /// Format: `projects / * /locations / * /restorePlans / * `.
   ///
   /// Output only.
   core.String? name;
@@ -4563,14 +4563,15 @@ class RetentionPolicy {
 
   /// The default maximum age of a Backup created via this BackupPlan.
   ///
-  /// This field MUST be an integer value \>= 0. If specified, a Backup created
-  /// under this BackupPlan will be automatically deleted after its age reaches
-  /// (create_time + backup_retain_days). If not specified, Backups created
-  /// under this BackupPlan will NOT be subject to automatic deletion. Updating
-  /// this field does NOT affect existing Backups under it. Backups created
-  /// AFTER a successful update will automatically pick up the new value. NOTE:
-  /// backup_retain_days must be \>= backup_delete_lock_days. Default: 0 (no
-  /// automatic deletion)
+  /// This field MUST be an integer value \>= 0 and \<= 365. If specified, a
+  /// Backup created under this BackupPlan will be automatically deleted after
+  /// its age reaches (create_time + backup_retain_days). If not specified,
+  /// Backups created under this BackupPlan will NOT be subject to automatic
+  /// deletion. Updating this field does NOT affect existing Backups under it.
+  /// Backups created AFTER a successful update will automatically pick up the
+  /// new value. NOTE: backup_retain_days must be \>= backup_delete_lock_days.
+  /// If cron_schedule is defined, then this must be \<= 360 * the creation
+  /// interval. Default: 0 (no automatic deletion)
   core.int? backupRetainDays;
 
   /// This flag denotes whether the retention policy of this BackupPlan is
@@ -4612,7 +4613,8 @@ class Schedule {
   /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a
   /// repeating schedule for creating Backups via this BackupPlan.
   ///
-  /// Default (empty): no automatic backup creation will occur.
+  /// If this is defined, then backup_retain_days must also be defined. Default
+  /// (empty): no automatic backup creation will occur.
   core.String? cronSchedule;
 
   /// This flag denotes whether automatic Backup creation is paused for this
@@ -4823,8 +4825,8 @@ class VolumeBackup {
 
   /// The full name of the VolumeBackup resource.
   ///
-  /// Format: projects / * /locations / * /backupPlans / * /backups / *
-  /// /volumeBackups / * .
+  /// Format: `projects / * /locations / * /backupPlans / * /backups / *
+  /// /volumeBackups / * `.
   ///
   /// Output only.
   core.String? name;
@@ -4986,8 +4988,8 @@ class VolumeRestore {
 
   /// Full name of the VolumeRestore resource.
   ///
-  /// Format: projects / * /locations / * /restorePlans / * /restores / *
-  /// /volumeRestores / * .
+  /// Format: `projects / * /locations / * /restorePlans / * /restores / *
+  /// /volumeRestores / * `
   ///
   /// Output only.
   core.String? name;
@@ -5032,8 +5034,8 @@ class VolumeRestore {
 
   /// The full name of the VolumeBackup from which the volume will be restored.
   ///
-  /// Format: projects / * /locations / * /backupPlans / * /backups / *
-  /// /volumeBackups / * .
+  /// Format: `projects / * /locations / * /backupPlans / * /backups / *
+  /// /volumeBackups / * `.
   ///
   /// Output only.
   core.String? volumeBackup;

@@ -839,6 +839,7 @@ api.ExecutionReference buildExecutionReference() {
   final o = api.ExecutionReference();
   buildCounterExecutionReference++;
   if (buildCounterExecutionReference < 3) {
+    o.completionTimestamp = 'foo';
     o.creationTimestamp = 'foo';
     o.name = 'foo';
   }
@@ -849,6 +850,10 @@ api.ExecutionReference buildExecutionReference() {
 void checkExecutionReference(api.ExecutionReference o) {
   buildCounterExecutionReference++;
   if (buildCounterExecutionReference < 3) {
+    unittest.expect(
+      o.completionTimestamp!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.creationTimestamp!,
       unittest.equals('foo'),

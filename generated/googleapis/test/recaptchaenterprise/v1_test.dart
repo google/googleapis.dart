@@ -725,6 +725,35 @@ void checkGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership(
   buildCounterGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership--;
 }
 
+core.int
+    buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
+    buildGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse() {
+  final o =
+      api.GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse();
+  buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse <
+      3) {
+    o.legacySecretKey = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse(
+    api.GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse <
+      3) {
+    unittest.expect(
+      o.legacySecretKey!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse--;
+}
+
 core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
@@ -1297,6 +1326,20 @@ void main() {
           api.GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse(od);
     });
   });
 
@@ -1951,6 +1994,62 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudRecaptchaenterpriseV1Key(
           response as api.GoogleCloudRecaptchaenterpriseV1Key);
+    });
+
+    unittest.test('method--retrieveLegacySecretKey', () async {
+      final mock = HttpServerMock();
+      final res = api.RecaptchaEnterpriseApi(mock).projects.keys;
+      final arg_key = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.retrieveLegacySecretKey(arg_key, $fields: arg_$fields);
+      checkGoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse(
+          response as api
+              .GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse);
     });
   });
 

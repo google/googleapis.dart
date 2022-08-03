@@ -4036,6 +4036,11 @@ class ProjectsAnswerRecordsResource {
   /// chronological order. Format: `projects//locations/`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filters to restrict results to specific answer
+  /// records. Marked deprecated as it hasn't been, and isn't currently,
+  /// supported. For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - Optional. The maximum number of records to return in a single
   /// page. The server may return fewer records than this. If unspecified, we
   /// use 10. The maximum is 100.
@@ -4056,11 +4061,13 @@ class ProjectsAnswerRecordsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListAnswerRecordsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -9787,6 +9794,11 @@ class ProjectsLocationsAnswerRecordsResource {
   /// chronological order. Format: `projects//locations/`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filters to restrict results to specific answer
+  /// records. Marked deprecated as it hasn't been, and isn't currently,
+  /// supported. For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - Optional. The maximum number of records to return in a single
   /// page. The server may return fewer records than this. If unspecified, we
   /// use 10. The maximum is 100.
@@ -9807,11 +9819,13 @@ class ProjectsLocationsAnswerRecordsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListAnswerRecordsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -19944,6 +19958,8 @@ class GoogleCloudDialogflowV2QueryInput {
   GoogleCloudDialogflowV2EventInput? event;
 
   /// The natural language text to be processed.
+  ///
+  /// Text length must not exceed 256 character for virtual agent interactions.
   GoogleCloudDialogflowV2TextInput? text;
 
   GoogleCloudDialogflowV2QueryInput({
@@ -20114,6 +20130,9 @@ class GoogleCloudDialogflowV2QueryResult {
 
   /// Indicates whether the conversational query triggers a cancellation for
   /// slot filling.
+  ///
+  /// For more information, see the
+  /// [cancel slot filling documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
   core.bool? cancelsSlotFilling;
 
   /// Free-form diagnostic information for the associated detect intent request.
@@ -21346,6 +21365,9 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
       };
 }
 
+/// ============================================================================
+/// Auxiliary proto messages.
+///
 /// Represents the natural language text to be processed.
 class GoogleCloudDialogflowV2TextInput {
   /// The language of this conversational query.
@@ -21360,7 +21382,7 @@ class GoogleCloudDialogflowV2TextInput {
 
   /// The UTF-8 encoded natural language text to be processed.
   ///
-  /// Text length must not exceed 256 characters.
+  /// Text length must not exceed 256 characters for virtual agent interactions.
   ///
   /// Required.
   core.String? text;

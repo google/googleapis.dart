@@ -2284,6 +2284,59 @@ class ProjectsInstancesDatabasesDatabaseRolesResource {
     return ListDatabaseRolesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Returns permissions that the caller has on the specified database or
+  /// backup resource.
+  ///
+  /// Attempting this RPC on a non-existent Cloud Spanner database will result
+  /// in a NOT_FOUND error if the user has `spanner.databases.list` permission
+  /// on the containing Cloud Spanner instance. Otherwise returns an empty set
+  /// of permissions. Calling this method on a backup that does not exist will
+  /// result in a NOT_FOUND error if the user has `spanner.backups.list`
+  /// permission on the containing instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The Cloud Spanner resource for which permissions
+  /// are being tested. The format is `projects//instances/` for instance
+  /// resources and `projects//instances//databases/` for database resources.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/databaseRoles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsInstancesDatabasesOperationsResource {
@@ -5146,6 +5199,64 @@ class Field {
       };
 }
 
+/// Free instance specific metadata that is kept even after an instance has been
+/// upgraded for tracking purposes.
+class FreeInstanceMetadata {
+  /// Specifies the expiration behavior of a free instance.
+  ///
+  /// The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be
+  /// modified during or after creation, and before expiration.
+  /// Possible string values are:
+  /// - "EXPIRE_BEHAVIOR_UNSPECIFIED" : Not specified.
+  /// - "FREE_TO_PROVISIONED" : When the free instance expires, upgrade the
+  /// instance to a provisioned instance.
+  /// - "REMOVE_AFTER_GRACE_PERIOD" : When the free instance expires, disable
+  /// the instance, and delete it after the grace period passes if it has not
+  /// been upgraded.
+  core.String? expireBehavior;
+
+  /// Timestamp after which the instance will either be upgraded or scheduled
+  /// for deletion after a grace period.
+  ///
+  /// ExpireBehavior is used to choose between upgrading or scheduling the free
+  /// instance for deletion. This timestamp is set during the creation of a free
+  /// instance.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// If present, the timestamp at which the free instance was upgraded to a
+  /// provisioned instance.
+  ///
+  /// Output only.
+  core.String? upgradeTime;
+
+  FreeInstanceMetadata({
+    this.expireBehavior,
+    this.expireTime,
+    this.upgradeTime,
+  });
+
+  FreeInstanceMetadata.fromJson(core.Map _json)
+      : this(
+          expireBehavior: _json.containsKey('expireBehavior')
+              ? _json['expireBehavior'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          upgradeTime: _json.containsKey('upgradeTime')
+              ? _json['upgradeTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireBehavior != null) 'expireBehavior': expireBehavior!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (upgradeTime != null) 'upgradeTime': upgradeTime!,
+      };
+}
+
 /// The response for GetDatabaseDdl.
 class GetDatabaseDdlResponse {
   /// A list of formatted DDL statements defining the schema of the database
@@ -5285,6 +5396,21 @@ class Instance {
   /// Deprecated.
   core.List<core.String>? endpointUris;
 
+  /// Free instance metadata.
+  ///
+  /// Only populated for free instances.
+  FreeInstanceMetadata? freeInstanceMetadata;
+
+  /// The `InstanceType` of the current instance.
+  /// Possible string values are:
+  /// - "INSTANCE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "PROVISIONED" : Provisioned instances have dedicated resources, standard
+  /// usage limits and support.
+  /// - "FREE_INSTANCE" : Free instances provide no guarantee for dedicated
+  /// resources, \[node_count, processing_units\] should be 0. They come with
+  /// stricter usage limits and limited support.
+  core.String? instanceType;
+
   /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
   /// resources into groups that reflect a customer's organizational needs and
   /// deployment strategies.
@@ -5356,6 +5482,8 @@ class Instance {
     this.createTime,
     this.displayName,
     this.endpointUris,
+    this.freeInstanceMetadata,
+    this.instanceType,
     this.labels,
     this.name,
     this.nodeCount,
@@ -5379,6 +5507,13 @@ class Instance {
               ? (_json['endpointUris'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          freeInstanceMetadata: _json.containsKey('freeInstanceMetadata')
+              ? FreeInstanceMetadata.fromJson(_json['freeInstanceMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          instanceType: _json.containsKey('instanceType')
+              ? _json['instanceType'] as core.String
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -5407,6 +5542,9 @@ class Instance {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (endpointUris != null) 'endpointUris': endpointUris!,
+        if (freeInstanceMetadata != null)
+          'freeInstanceMetadata': freeInstanceMetadata!,
+        if (instanceType != null) 'instanceType': instanceType!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
@@ -5424,6 +5562,23 @@ class InstanceConfig {
   /// The name of this instance configuration as it appears in UIs.
   core.String? displayName;
 
+  /// Describes whether free instances are available to be created in this
+  /// instance config.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FREE_INSTANCE_AVAILABILITY_UNSPECIFIED" : Not specified.
+  /// - "AVAILABLE" : Indicates that free instances are available to be created
+  /// in this instance config.
+  /// - "UNSUPPORTED" : Indicates that free instances are not supported in this
+  /// instance config.
+  /// - "DISABLED" : Indicates that free instances are currently not available
+  /// to be created in this instance config.
+  /// - "QUOTA_EXCEEDED" : Indicates that additional free instances cannot be
+  /// created in this instance config because the project has reached its limit
+  /// of free instances.
+  core.String? freeInstanceAvailability;
+
   /// Allowed values of the "default_leader" schema option for databases in
   /// instances that use this instance configuration.
   core.List<core.String>? leaderOptions;
@@ -5439,6 +5594,7 @@ class InstanceConfig {
 
   InstanceConfig({
     this.displayName,
+    this.freeInstanceAvailability,
     this.leaderOptions,
     this.name,
     this.replicas,
@@ -5449,6 +5605,10 @@ class InstanceConfig {
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
+          freeInstanceAvailability:
+              _json.containsKey('freeInstanceAvailability')
+                  ? _json['freeInstanceAvailability'] as core.String
+                  : null,
           leaderOptions: _json.containsKey('leaderOptions')
               ? (_json['leaderOptions'] as core.List)
                   .map((value) => value as core.String)
@@ -5465,6 +5625,8 @@ class InstanceConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+        if (freeInstanceAvailability != null)
+          'freeInstanceAvailability': freeInstanceAvailability!,
         if (leaderOptions != null) 'leaderOptions': leaderOptions!,
         if (name != null) 'name': name!,
         if (replicas != null) 'replicas': replicas!,
@@ -6581,11 +6743,15 @@ class PartialResultSet {
   /// streaming SQL query is yielding a result set whose rows contain a single
   /// string field. The following `PartialResultSet`s might be yielded: {
   /// "metadata": { ... } "values": \["Hello", "W"\] "chunked_value": true
-  /// "resume_token": "Af65..." } { "values": \["orl"\] "chunked_value": true
-  /// "resume_token": "Bqp2..." } { "values": \["d"\] "resume_token": "Zx1B..."
-  /// } This sequence of `PartialResultSet`s encodes two rows, one containing
-  /// the field value `"Hello"`, and a second containing the field value
-  /// `"World" = "W" + "orl" + "d"`.
+  /// "resume_token": "Af65..." } { "values": \["orl"\] "chunked_value": true }
+  /// { "values": \["d"\] "resume_token": "Zx1B..." } This sequence of
+  /// `PartialResultSet`s encodes two rows, one containing the field value
+  /// `"Hello"`, and a second containing the field value `"World" = "W" + "orl"
+  /// + "d"`. Not all `PartialResultSet`s contain a `resume_token`. Execution
+  /// can only be resumed from a previously yielded `resume_token`. For the
+  /// above sequence of `PartialResultSet`s, resuming the query with
+  /// `"resume_token": "Af65..."` will yield results from the `PartialResultSet`
+  /// with value `["orl"]`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -8328,10 +8494,160 @@ class Transaction {
       };
 }
 
-/// In addition, if TransactionOptions.read_only.return_read_timestamp is set to
+/// Transactions: Each session can have at most one active transaction at a time
+/// (note that standalone reads and queries use a transaction internally and do
+/// count towards the one transaction limit).
+///
+/// After the active transaction is completed, the session can immediately be
+/// re-used for the next transaction. It is not necessary to create a new
+/// session for each transaction. Transaction modes: Cloud Spanner supports
+/// three transaction modes: 1. Locking read-write. This type of transaction is
+/// the only way to write data into Cloud Spanner. These transactions rely on
+/// pessimistic locking and, if necessary, two-phase commit. Locking read-write
+/// transactions may abort, requiring the application to retry. 2. Snapshot
+/// read-only. Snapshot read-only transactions provide guaranteed consistency
+/// across several reads, but do not allow writes. Snapshot read-only
+/// transactions can be configured to read at timestamps in the past, or
+/// configured to perform a strong read (where Spanner will select a timestamp
+/// such that the read is guaranteed to see the effects of all transactions that
+/// have committed before the start of the read). Snapshot read-only
+/// transactions do not need to be committed. Queries on change streams must be
+/// performed with the snapshot read-only transaction mode, specifying a strong
+/// read. Please see TransactionOptions.ReadOnly.strong for more details. 3.
+/// Partitioned DML. This type of transaction is used to execute a single
+/// Partitioned DML statement. Partitioned DML partitions the key space and runs
+/// the DML statement over each partition in parallel using separate, internal
+/// transactions that commit independently. Partitioned DML transactions do not
+/// need to be committed. For transactions that only read, snapshot read-only
+/// transactions provide simpler semantics and are almost always faster. In
+/// particular, read-only transactions do not take locks, so they do not
+/// conflict with read-write transactions. As a consequence of not taking locks,
+/// they also do not abort, so retry loops are not needed. Transactions may only
+/// read-write data in a single database. They may, however, read-write data in
+/// different tables within that database. Locking read-write transactions:
+/// Locking transactions may be used to atomically read-modify-write data
+/// anywhere in a database. This type of transaction is externally consistent.
+/// Clients should attempt to minimize the amount of time a transaction is
+/// active. Faster transactions commit with higher probability and cause less
+/// contention. Cloud Spanner attempts to keep read locks active as long as the
+/// transaction continues to do reads, and the transaction has not been
+/// terminated by Commit or Rollback. Long periods of inactivity at the client
+/// may cause Cloud Spanner to release a transaction's locks and abort it.
+/// Conceptually, a read-write transaction consists of zero or more reads or SQL
+/// statements followed by Commit. At any time before Commit, the client can
+/// send a Rollback request to abort the transaction. Semantics: Cloud Spanner
+/// can commit the transaction if all read locks it acquired are still valid at
+/// commit time, and it is able to acquire write locks for all writes. Cloud
+/// Spanner can abort the transaction for any reason. If a commit attempt
+/// returns `ABORTED`, Cloud Spanner guarantees that the transaction has not
+/// modified any user data in Cloud Spanner. Unless the transaction commits,
+/// Cloud Spanner makes no guarantees about how long the transaction's locks
+/// were held for. It is an error to use Cloud Spanner locks for any sort of
+/// mutual exclusion other than between Cloud Spanner transactions themselves.
+/// Retrying aborted transactions: When a transaction aborts, the application
+/// can choose to retry the whole transaction again. To maximize the chances of
+/// successfully committing the retry, the client should execute the retry in
+/// the same session as the original attempt. The original session's lock
+/// priority increases with each consecutive abort, meaning that each attempt
+/// has a slightly better chance of success than the previous. Under some
+/// circumstances (for example, many transactions attempting to modify the same
+/// row(s)), a transaction can abort many times in a short period before
+/// successfully committing. Thus, it is not a good idea to cap the number of
+/// retries a transaction can attempt; instead, it is better to limit the total
+/// amount of time spent retrying. Idle transactions: A transaction is
+/// considered idle if it has no outstanding reads or SQL queries and has not
+/// started a read or SQL query within the last 10 seconds. Idle transactions
+/// can be aborted by Cloud Spanner so that they don't hold on to locks
+/// indefinitely. If an idle transaction is aborted, the commit will fail with
+/// error `ABORTED`. If this behavior is undesirable, periodically executing a
+/// simple SQL query in the transaction (for example, `SELECT 1`) prevents the
+/// transaction from becoming idle. Snapshot read-only transactions: Snapshot
+/// read-only transactions provides a simpler method than locking read-write
+/// transactions for doing several consistent reads. However, this type of
+/// transaction does not support writes. Snapshot transactions do not take
+/// locks. Instead, they work by choosing a Cloud Spanner timestamp, then
+/// executing all reads at that timestamp. Since they do not acquire locks, they
+/// do not block concurrent read-write transactions. Unlike locking read-write
+/// transactions, snapshot read-only transactions never abort. They can fail if
+/// the chosen read timestamp is garbage collected; however, the default garbage
+/// collection policy is generous enough that most applications do not need to
+/// worry about this in practice. Snapshot read-only transactions do not need to
+/// call Commit or Rollback (and in fact are not permitted to do so). To execute
+/// a snapshot transaction, the client specifies a timestamp bound, which tells
+/// Cloud Spanner how to choose a read timestamp. The types of timestamp bound
+/// are: - Strong (the default). - Bounded staleness. - Exact staleness. If the
+/// Cloud Spanner database to be read is geographically distributed, stale
+/// read-only transactions can execute more quickly than strong or read-write
+/// transactions, because they are able to execute far from the leader replica.
+/// Each type of timestamp bound is discussed in detail below. Strong: Strong
+/// reads are guaranteed to see the effects of all transactions that have
+/// committed before the start of the read. Furthermore, all rows yielded by a
+/// single read are consistent with each other -- if any part of the read
+/// observes a transaction, all parts of the read see the transaction. Strong
+/// reads are not repeatable: two consecutive strong read-only transactions
+/// might return inconsistent results if there are concurrent writes. If
+/// consistency across reads is required, the reads should be executed within a
+/// transaction or at an exact read timestamp. Queries on change streams (see
+/// below for more details) must also specify the strong read timestamp bound.
+/// See TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp
+/// bounds execute reads at a user-specified timestamp. Reads at a timestamp are
+/// guaranteed to see a consistent prefix of the global transaction history:
+/// they observe modifications done by all transactions with a commit timestamp
+/// less than or equal to the read timestamp, and observe none of the
+/// modifications done by transactions with a larger commit timestamp. They will
+/// block until all conflicting transactions that may be assigned commit
+/// timestamps \<= the read timestamp have finished. The timestamp can either be
+/// expressed as an absolute Cloud Spanner commit timestamp or a staleness
+/// relative to the current time. These modes do not require a "negotiation
+/// phase" to pick a timestamp. As a result, they execute slightly faster than
+/// the equivalent boundedly stale concurrency modes. On the other hand,
+/// boundedly stale reads usually return fresher results. See
+/// TransactionOptions.ReadOnly.read_timestamp and
+/// TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
+/// staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
+/// user-provided staleness bound. Cloud Spanner chooses the newest timestamp
+/// within the staleness bound that allows execution of the reads at the closest
+/// available replica without blocking. All rows yielded are consistent with
+/// each other -- if any part of the read observes a transaction, all parts of
+/// the read see the transaction. Boundedly stale reads are not repeatable: two
+/// stale reads, even if they use the same staleness bound, can execute at
+/// different timestamps and thus return inconsistent results. Boundedly stale
+/// reads execute in two phases: the first phase negotiates a timestamp among
+/// all replicas needed to serve the read. In the second phase, reads are
+/// executed at the negotiated timestamp. As a result of the two phase
+/// execution, bounded staleness reads are usually a little slower than
+/// comparable exact staleness reads. However, they are typically able to return
+/// fresher results, and are more likely to execute at the closest replica.
+/// Because the timestamp negotiation requires up-front knowledge of which rows
+/// will be read, it can only be used with single-use read-only transactions.
+/// See TransactionOptions.ReadOnly.max_staleness and
+/// TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
+/// garbage collection: Cloud Spanner continuously garbage collects deleted and
+/// overwritten data in the background to reclaim storage space. This process is
+/// known as "version GC". By default, version GC reclaims versions after they
+/// are one hour old. Because of this, Cloud Spanner cannot perform reads at
+/// read timestamps more than one hour in the past. This restriction also
+/// applies to in-progress reads and/or SQL queries whose timestamp become too
+/// old while executing. Reads and SQL queries with too-old read timestamps fail
+/// with the error `FAILED_PRECONDITION`. You can configure and extend the
+/// `VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
+/// which allows Cloud Spanner to perform reads up to one week in the past.
+/// Querying change Streams: A Change Stream is a schema object that can be
+/// configured to watch data changes on the entire database, a set of tables, or
+/// a set of columns in a database. When a change stream is created, Spanner
+/// automatically defines a corresponding SQL Table-Valued Function (TVF) that
+/// can be used to query the change records in the associated change stream
+/// using the ExecuteStreamingSql API. The name of the TVF for a change stream
+/// is generated from the name of the change stream: READ_. All queries on
+/// change stream TVFs must be executed using the ExecuteStreamingSql API with a
+/// single-use read-only transaction with a strong read-only timestamp_bound.
+/// The change stream TVF allows users to specify the start_timestamp and
+/// end_timestamp for the time range of interest. All change records within the
+/// retention period is accessible using the strong read-only timestamp_bound.
+/// All other TransactionOptions are invalid for change stream queries. In
+/// addition, if TransactionOptions.read_only.return_read_timestamp is set to
 /// true, a special value of 2^63 - 2 will be returned in the Transaction
 /// message that describes the transaction, instead of a valid read timestamp.
-///
 /// This special value should be discarded and not used for any subsequent
 /// queries. Please see https://cloud.google.com/spanner/docs/change-streams for
 /// more details on how to query the change stream TVFs. Partitioned DML

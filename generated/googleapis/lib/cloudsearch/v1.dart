@@ -1775,6 +1775,55 @@ class SettingsDatasourcesResource {
   /// datasources/{source_id}. The name is ignored when creating a datasource.
   /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DataSource request,
+    core.String name, {
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/settings/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a datasource.
+  ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the datasource resource. Format:
+  /// datasources/{source_id}. The name is ignored when creating a datasource.
+  /// Value must have pattern `^datasources/\[^/\]+$`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1987,6 +2036,49 @@ class SettingsSearchapplicationsResource {
     );
     return ListSearchApplicationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a search application.
+  ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the Search Application. Format:
+  /// searchapplications/{application_id}.
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    SearchApplication request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/settings/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets a search application to default settings.
@@ -4257,13 +4349,14 @@ class FreshnessOptions {
 }
 
 class GSuitePrincipal {
-  /// This principal represents all users of the G Suite domain of the customer.
+  /// This principal represents all users of the Google Workspace domain of the
+  /// customer.
   core.bool? gsuiteDomain;
 
-  /// This principal references a G Suite group account
+  /// This principal references a Google Workspace group name.
   core.String? gsuiteGroupEmail;
 
-  /// This principal references a G Suite user account
+  /// This principal references a Google Workspace user account.
   core.String? gsuiteUserEmail;
 
   GSuitePrincipal({
@@ -4634,8 +4727,8 @@ class HtmlValues {
 }
 
 class IndexItemOptions {
-  /// Specifies if the index request should allow gsuite principals that do not
-  /// exist or are deleted in the index request.
+  /// Specifies if the index request should allow Google Workspace principals
+  /// that do not exist or are deleted.
   core.bool? allowUnknownGsuitePrincipals;
 
   IndexItemOptions({
@@ -6098,9 +6191,22 @@ class ObjectOptions {
   /// The freshness options for an object.
   FreshnessOptions? freshnessOptions;
 
+  /// Operators that can be used to filter suggestions.
+  ///
+  /// For Suggest API, only operators mentioned here will be honored in the
+  /// FilterOptions. Only TEXT and ENUM operators are supported. NOTE:
+  /// "objecttype", "type" and "mimetype" are already supported. This property
+  /// is to configure schema specific operators. Even though this is an array,
+  /// only one operator can be specified. This is an array for future
+  /// extensibility. Operators mapping to multiple properties within the same
+  /// object are not supported. If the operator spans across different object
+  /// types, this option has to be set once for each object definition.
+  core.List<core.String>? suggestionFilteringOperators;
+
   ObjectOptions({
     this.displayOptions,
     this.freshnessOptions,
+    this.suggestionFilteringOperators,
   });
 
   ObjectOptions.fromJson(core.Map _json)
@@ -6113,11 +6219,19 @@ class ObjectOptions {
               ? FreshnessOptions.fromJson(_json['freshnessOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          suggestionFilteringOperators:
+              _json.containsKey('suggestionFilteringOperators')
+                  ? (_json['suggestionFilteringOperators'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayOptions != null) 'displayOptions': displayOptions!,
         if (freshnessOptions != null) 'freshnessOptions': freshnessOptions!,
+        if (suggestionFilteringOperators != null)
+          'suggestionFilteringOperators': suggestionFilteringOperators!,
       };
 }
 
@@ -6291,6 +6405,9 @@ class Person {
   /// The person's name
   core.List<Name>? personNames;
 
+  /// The person's phone numbers
+  core.List<PhoneNumber>? phoneNumbers;
+
   /// A person's read-only photo.
   ///
   /// A picture shown next to the person's name to help others recognize the
@@ -6302,6 +6419,7 @@ class Person {
     this.name,
     this.obfuscatedId,
     this.personNames,
+    this.phoneNumbers,
     this.photos,
   });
 
@@ -6323,6 +6441,12 @@ class Person {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          phoneNumbers: _json.containsKey('phoneNumbers')
+              ? (_json['phoneNumbers'] as core.List)
+                  .map((value) => PhoneNumber.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           photos: _json.containsKey('photos')
               ? (_json['photos'] as core.List)
                   .map((value) => Photo.fromJson(
@@ -6336,7 +6460,39 @@ class Person {
         if (name != null) 'name': name!,
         if (obfuscatedId != null) 'obfuscatedId': obfuscatedId!,
         if (personNames != null) 'personNames': personNames!,
+        if (phoneNumbers != null) 'phoneNumbers': phoneNumbers!,
         if (photos != null) 'photos': photos!,
+      };
+}
+
+/// A person's Phone Number
+class PhoneNumber {
+  /// The phone number of the person.
+  core.String? phoneNumber;
+
+  ///
+  /// Possible string values are:
+  /// - "OTHER"
+  /// - "MOBILE"
+  /// - "OFFICE"
+  core.String? type;
+
+  PhoneNumber({
+    this.phoneNumber,
+    this.type,
+  });
+
+  PhoneNumber.fromJson(core.Map _json)
+      : this(
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6452,7 +6608,7 @@ class Principal {
   /// identitysources/{source_id}/groups/{ID}
   core.String? groupResourceName;
 
-  /// This principal is a GSuite user, group or domain.
+  /// This principal is a Google Workspace user, group or domain.
   GSuitePrincipal? gsuitePrincipal;
 
   /// This principal is a user identified using an external identity.

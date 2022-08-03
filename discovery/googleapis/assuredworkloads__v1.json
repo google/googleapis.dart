@@ -341,6 +341,34 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "restrictAllowedResources": {
+                                    "description": "Restrict the list of resources allowed in the Workload environment. The current list of allowed products can be found at https://cloud.google.com/assured-workloads/docs/supported-products In addition to assuredworkloads.workload.update permission, the user should also have orgpolicy.policy.set permission on the folder resource to use this functionality.",
+                                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:restrictAllowedResources",
+                                    "httpMethod": "POST",
+                                    "id": "assuredworkloads.organizations.locations.workloads.restrictAllowedResources",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The resource name of the Workload. This is the workloads's relative path in the API, formatted as \"organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}\". For example, \"organizations/123/locations/us-east1/workloads/assured-workload-1\".",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:restrictAllowedResources",
+                                    "request": {
+                                        "$ref": "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             }
                         }
@@ -349,7 +377,7 @@
             }
         }
     },
-    "revision": "20220526",
+    "revision": "20220729",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "schemas": {
         "GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata": {
@@ -368,7 +396,9 @@
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "CA_REGIONS_AND_SUPPORT"
+                        "CA_REGIONS_AND_SUPPORT",
+                        "ITAR",
+                        "AU_REGIONS_AND_US_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -380,7 +410,9 @@
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls"
+                        "Assured Workloads For Canada Regions and Support controls",
+                        "International Traffic in Arms Regulations",
+                        "Assured Workloads for Australia Regions and Support controls"
                     ],
                     "type": "string"
                 },
@@ -418,6 +450,33 @@
             },
             "type": "object"
         },
+        "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest": {
+            "description": "Request for restricting list of available resources in Workload environment.",
+            "id": "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest",
+            "properties": {
+                "restrictionType": {
+                    "description": "Required. The type of restriction for using gcp products in the Workload environment.",
+                    "enum": [
+                        "RESTRICTION_TYPE_UNSPECIFIED",
+                        "ALLOW_ALL_GCP_RESOURCES",
+                        "ALLOW_COMPLIANT_RESOURCES"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown restriction type.",
+                        "Allow the use all of all gcp products, irrespective of the compliance posture. This effectively removes gcp.restrictServiceUsage OrgPolicy on the AssuredWorkloads Folder.",
+                        "Based on Workload's compliance regime, allowed list changes. See - https://cloud.google.com/assured-workloads/docs/supported-products for the list of supported resources."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse": {
+            "description": "Response for restricting the list of allowed resources.",
+            "id": "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse",
+            "properties": {},
+            "type": "object"
+        },
         "GoogleCloudAssuredworkloadsV1Workload": {
             "description": "An Workload object for managing highly regulated workloads of cloud customers.",
             "id": "GoogleCloudAssuredworkloadsV1Workload",
@@ -438,7 +497,9 @@
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "CA_REGIONS_AND_SUPPORT"
+                        "CA_REGIONS_AND_SUPPORT",
+                        "ITAR",
+                        "AU_REGIONS_AND_US_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -450,7 +511,9 @@
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls"
+                        "Assured Workloads For Canada Regions and Support controls",
+                        "International Traffic in Arms Regulations",
+                        "Assured Workloads for Australia Regions and Support controls"
                     ],
                     "type": "string"
                 },
@@ -667,7 +730,9 @@
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "CA_REGIONS_AND_SUPPORT"
+                        "CA_REGIONS_AND_SUPPORT",
+                        "ITAR",
+                        "AU_REGIONS_AND_US_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -679,7 +744,9 @@
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls"
+                        "Assured Workloads For Canada Regions and Support controls",
+                        "International Traffic in Arms Regulations",
+                        "Assured Workloads for Australia Regions and Support controls"
                     ],
                     "type": "string"
                 },
@@ -730,7 +797,9 @@
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "CA_REGIONS_AND_SUPPORT"
+                        "CA_REGIONS_AND_SUPPORT",
+                        "ITAR",
+                        "AU_REGIONS_AND_US_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -742,7 +811,9 @@
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls"
+                        "Assured Workloads For Canada Regions and Support controls",
+                        "International Traffic in Arms Regulations",
+                        "Assured Workloads for Australia Regions and Support controls"
                     ],
                     "type": "string"
                 },
@@ -1015,7 +1086,9 @@
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "CA_REGIONS_AND_SUPPORT"
+                        "CA_REGIONS_AND_SUPPORT",
+                        "ITAR",
+                        "AU_REGIONS_AND_US_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -1027,7 +1100,9 @@
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls"
+                        "Assured Workloads For Canada Regions and Support controls",
+                        "International Traffic in Arms Regulations",
+                        "Assured Workloads for Australia Regions and Support controls"
                     ],
                     "type": "string"
                 },
@@ -1078,7 +1153,9 @@
                         "HIPAA",
                         "HITRUST",
                         "EU_REGIONS_AND_SUPPORT",
-                        "CA_REGIONS_AND_SUPPORT"
+                        "CA_REGIONS_AND_SUPPORT",
+                        "ITAR",
+                        "AU_REGIONS_AND_US_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -1090,9 +1167,16 @@
                         "Health Insurance Portability and Accountability Act controls",
                         "Health Information Trust Alliance controls",
                         "Assured Workloads For EU Regions and Support controls",
-                        "Assured Workloads For Canada Regions and Support controls"
+                        "Assured Workloads For Canada Regions and Support controls",
+                        "International Traffic in Arms Regulations",
+                        "Assured Workloads for Australia Regions and Support controls"
                     ],
                     "type": "string"
+                },
+                "complianceStatus": {
+                    "$ref": "GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus",
+                    "description": "Output only. Count of active Violations in the Workload.",
+                    "readOnly": true
                 },
                 "createTime": {
                     "description": "Output only. Immutable. The Workload creation timestamp.",
@@ -1188,6 +1272,23 @@
                 "kmsSettings": {
                     "$ref": "GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKMSSettings",
                     "description": "Input only. Immutable. Settings used to create a CMEK crypto key."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus": {
+            "description": "Represents the Compliance Status of this workload",
+            "id": "GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus",
+            "properties": {
+                "acknowledgedViolationCount": {
+                    "description": "Count of active Violations which are acknowledged in the Workload.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "activeViolationCount": {
+                    "description": "Count of active Violations which haven't been acknowledged.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

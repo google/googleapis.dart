@@ -26,6 +26,21 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterCancelUserInvitationRequest = 0;
+api.CancelUserInvitationRequest buildCancelUserInvitationRequest() {
+  final o = api.CancelUserInvitationRequest();
+  buildCounterCancelUserInvitationRequest++;
+  if (buildCounterCancelUserInvitationRequest < 3) {}
+  buildCounterCancelUserInvitationRequest--;
+  return o;
+}
+
+void checkCancelUserInvitationRequest(api.CancelUserInvitationRequest o) {
+  buildCounterCancelUserInvitationRequest++;
+  if (buildCounterCancelUserInvitationRequest < 3) {}
+  buildCounterCancelUserInvitationRequest--;
+}
+
 core.int buildCounterCheckTransitiveMembershipResponse = 0;
 api.CheckTransitiveMembershipResponse buildCheckTransitiveMembershipResponse() {
   final o = api.CheckTransitiveMembershipResponse();
@@ -1059,6 +1074,25 @@ void checkGroupRelation(api.GroupRelation o) {
   buildCounterGroupRelation--;
 }
 
+core.int buildCounterIsInvitableUserResponse = 0;
+api.IsInvitableUserResponse buildIsInvitableUserResponse() {
+  final o = api.IsInvitableUserResponse();
+  buildCounterIsInvitableUserResponse++;
+  if (buildCounterIsInvitableUserResponse < 3) {
+    o.isInvitableUser = true;
+  }
+  buildCounterIsInvitableUserResponse--;
+  return o;
+}
+
+void checkIsInvitableUserResponse(api.IsInvitableUserResponse o) {
+  buildCounterIsInvitableUserResponse++;
+  if (buildCounterIsInvitableUserResponse < 3) {
+    unittest.expect(o.isInvitableUser!, unittest.isTrue);
+  }
+  buildCounterIsInvitableUserResponse--;
+}
+
 core.List<api.Group> buildUnnamed12() => [
       buildGroup(),
       buildGroup(),
@@ -1129,6 +1163,41 @@ void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse--;
 }
 
+core.List<api.UserInvitation> buildUnnamed14() => [
+      buildUserInvitation(),
+      buildUserInvitation(),
+    ];
+
+void checkUnnamed14(core.List<api.UserInvitation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserInvitation(o[0]);
+  checkUserInvitation(o[1]);
+}
+
+core.int buildCounterListUserInvitationsResponse = 0;
+api.ListUserInvitationsResponse buildListUserInvitationsResponse() {
+  final o = api.ListUserInvitationsResponse();
+  buildCounterListUserInvitationsResponse++;
+  if (buildCounterListUserInvitationsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.userInvitations = buildUnnamed14();
+  }
+  buildCounterListUserInvitationsResponse--;
+  return o;
+}
+
+void checkListUserInvitationsResponse(api.ListUserInvitationsResponse o) {
+  buildCounterListUserInvitationsResponse++;
+  if (buildCounterListUserInvitationsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed14(o.userInvitations!);
+  }
+  buildCounterListUserInvitationsResponse--;
+}
+
 core.int buildCounterLookupGroupNameResponse = 0;
 api.LookupGroupNameResponse buildLookupGroupNameResponse() {
   final o = api.LookupGroupNameResponse();
@@ -1173,23 +1242,23 @@ void checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse--;
 }
 
-core.List<api.EntityKey> buildUnnamed14() => [
+core.List<api.EntityKey> buildUnnamed15() => [
       buildEntityKey(),
       buildEntityKey(),
     ];
 
-void checkUnnamed14(core.List<api.EntityKey> o) {
+void checkUnnamed15(core.List<api.EntityKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityKey(o[0]);
   checkEntityKey(o[1]);
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed15() => [
+core.List<api.TransitiveMembershipRole> buildUnnamed16() => [
       buildTransitiveMembershipRole(),
       buildTransitiveMembershipRole(),
     ];
 
-void checkUnnamed15(core.List<api.TransitiveMembershipRole> o) {
+void checkUnnamed16(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitiveMembershipRole(o[0]);
   checkTransitiveMembershipRole(o[1]);
@@ -1201,9 +1270,9 @@ api.MemberRelation buildMemberRelation() {
   buildCounterMemberRelation++;
   if (buildCounterMemberRelation < 3) {
     o.member = 'foo';
-    o.preferredMemberKey = buildUnnamed14();
+    o.preferredMemberKey = buildUnnamed15();
     o.relationType = 'foo';
-    o.roles = buildUnnamed15();
+    o.roles = buildUnnamed16();
   }
   buildCounterMemberRelation--;
   return o;
@@ -1216,12 +1285,12 @@ void checkMemberRelation(api.MemberRelation o) {
       o.member!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.preferredMemberKey!);
+    checkUnnamed15(o.preferredMemberKey!);
     unittest.expect(
       o.relationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.roles!);
+    checkUnnamed16(o.roles!);
   }
   buildCounterMemberRelation--;
 }
@@ -1250,12 +1319,12 @@ void checkMemberRestriction(api.MemberRestriction o) {
   buildCounterMemberRestriction--;
 }
 
-core.List<api.MembershipRole> buildUnnamed16() => [
+core.List<api.MembershipRole> buildUnnamed17() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed16(core.List<api.MembershipRole> o) {
+void checkUnnamed17(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
@@ -1269,7 +1338,7 @@ api.Membership buildMembership() {
     o.createTime = 'foo';
     o.name = 'foo';
     o.preferredMemberKey = buildEntityKey();
-    o.roles = buildUnnamed16();
+    o.roles = buildUnnamed17();
     o.type = 'foo';
     o.updateTime = 'foo';
   }
@@ -1289,7 +1358,7 @@ void checkMembership(api.Membership o) {
       unittest.equals('foo'),
     );
     checkEntityKey(o.preferredMemberKey!);
-    checkUnnamed16(o.roles!);
+    checkUnnamed17(o.roles!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1352,23 +1421,23 @@ void checkMembershipRoleRestrictionEvaluation(
   buildCounterMembershipRoleRestrictionEvaluation--;
 }
 
-core.List<api.MembershipRole> buildUnnamed17() => [
+core.List<api.MembershipRole> buildUnnamed18() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed17(core.List<api.MembershipRole> o) {
+void checkUnnamed18(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
 }
 
-core.List<core.String> buildUnnamed18() => [
+core.List<core.String> buildUnnamed19() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed19(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1380,12 +1449,12 @@ void checkUnnamed18(core.List<core.String> o) {
   );
 }
 
-core.List<api.UpdateMembershipRolesParams> buildUnnamed19() => [
+core.List<api.UpdateMembershipRolesParams> buildUnnamed20() => [
       buildUpdateMembershipRolesParams(),
       buildUpdateMembershipRolesParams(),
     ];
 
-void checkUnnamed19(core.List<api.UpdateMembershipRolesParams> o) {
+void checkUnnamed20(core.List<api.UpdateMembershipRolesParams> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdateMembershipRolesParams(o[0]);
   checkUpdateMembershipRolesParams(o[1]);
@@ -1396,9 +1465,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
   final o = api.ModifyMembershipRolesRequest();
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    o.addRoles = buildUnnamed17();
-    o.removeRoles = buildUnnamed18();
-    o.updateRolesParams = buildUnnamed19();
+    o.addRoles = buildUnnamed18();
+    o.removeRoles = buildUnnamed19();
+    o.updateRolesParams = buildUnnamed20();
   }
   buildCounterModifyMembershipRolesRequest--;
   return o;
@@ -1407,9 +1476,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
 void checkModifyMembershipRolesRequest(api.ModifyMembershipRolesRequest o) {
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    checkUnnamed17(o.addRoles!);
-    checkUnnamed18(o.removeRoles!);
-    checkUnnamed19(o.updateRolesParams!);
+    checkUnnamed18(o.addRoles!);
+    checkUnnamed19(o.removeRoles!);
+    checkUnnamed20(o.updateRolesParams!);
   }
   buildCounterModifyMembershipRolesRequest--;
 }
@@ -1433,7 +1502,7 @@ void checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed20() => {
+core.Map<core.String, core.Object?> buildUnnamed21() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1446,7 +1515,7 @@ core.Map<core.String, core.Object?> buildUnnamed20() => {
       },
     };
 
-void checkUnnamed20(core.Map<core.String, core.Object?> o) {
+void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1478,7 +1547,7 @@ void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed21() => {
+core.Map<core.String, core.Object?> buildUnnamed22() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1491,7 +1560,7 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       },
     };
 
-void checkUnnamed21(core.Map<core.String, core.Object?> o) {
+void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1530,9 +1599,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed20();
+    o.metadata = buildUnnamed21();
     o.name = 'foo';
-    o.response = buildUnnamed21();
+    o.response = buildUnnamed22();
   }
   buildCounterOperation--;
   return o;
@@ -1543,12 +1612,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed20(o.metadata!);
+    checkUnnamed21(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.response!);
+    checkUnnamed22(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1594,12 +1663,12 @@ void checkRestrictionEvaluations(api.RestrictionEvaluations o) {
   buildCounterRestrictionEvaluations--;
 }
 
-core.List<api.Group> buildUnnamed22() => [
+core.List<api.Group> buildUnnamed23() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed22(core.List<api.Group> o) {
+void checkUnnamed23(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -1610,7 +1679,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
   final o = api.SearchGroupsResponse();
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    o.groups = buildUnnamed22();
+    o.groups = buildUnnamed23();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchGroupsResponse--;
@@ -1620,7 +1689,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
 void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    checkUnnamed22(o.groups!);
+    checkUnnamed23(o.groups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1629,12 +1698,12 @@ void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse--;
 }
 
-core.List<api.GroupRelation> buildUnnamed23() => [
+core.List<api.GroupRelation> buildUnnamed24() => [
       buildGroupRelation(),
       buildGroupRelation(),
     ];
 
-void checkUnnamed23(core.List<api.GroupRelation> o) {
+void checkUnnamed24(core.List<api.GroupRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupRelation(o[0]);
   checkGroupRelation(o[1]);
@@ -1645,7 +1714,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
   final o = api.SearchTransitiveGroupsResponse();
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    o.memberships = buildUnnamed23();
+    o.memberships = buildUnnamed24();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveGroupsResponse--;
@@ -1655,7 +1724,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
 void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    checkUnnamed23(o.memberships!);
+    checkUnnamed24(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1664,12 +1733,12 @@ void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse--;
 }
 
-core.List<api.MemberRelation> buildUnnamed24() => [
+core.List<api.MemberRelation> buildUnnamed25() => [
       buildMemberRelation(),
       buildMemberRelation(),
     ];
 
-void checkUnnamed24(core.List<api.MemberRelation> o) {
+void checkUnnamed25(core.List<api.MemberRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMemberRelation(o[0]);
   checkMemberRelation(o[1]);
@@ -1681,7 +1750,7 @@ api.SearchTransitiveMembershipsResponse
   final o = api.SearchTransitiveMembershipsResponse();
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    o.memberships = buildUnnamed24();
+    o.memberships = buildUnnamed25();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveMembershipsResponse--;
@@ -1692,7 +1761,7 @@ void checkSearchTransitiveMembershipsResponse(
     api.SearchTransitiveMembershipsResponse o) {
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    checkUnnamed24(o.memberships!);
+    checkUnnamed25(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1725,7 +1794,22 @@ void checkSecuritySettings(api.SecuritySettings o) {
   buildCounterSecuritySettings--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed25() => {
+core.int buildCounterSendUserInvitationRequest = 0;
+api.SendUserInvitationRequest buildSendUserInvitationRequest() {
+  final o = api.SendUserInvitationRequest();
+  buildCounterSendUserInvitationRequest++;
+  if (buildCounterSendUserInvitationRequest < 3) {}
+  buildCounterSendUserInvitationRequest--;
+  return o;
+}
+
+void checkSendUserInvitationRequest(api.SendUserInvitationRequest o) {
+  buildCounterSendUserInvitationRequest++;
+  if (buildCounterSendUserInvitationRequest < 3) {}
+  buildCounterSendUserInvitationRequest--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed26() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1738,7 +1822,7 @@ core.Map<core.String, core.Object?> buildUnnamed25() => {
       },
     };
 
-void checkUnnamed25(core.Map<core.String, core.Object?> o) {
+void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1770,15 +1854,15 @@ void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed26() => [
-      buildUnnamed25(),
-      buildUnnamed25(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed27() => [
+      buildUnnamed26(),
+      buildUnnamed26(),
     ];
 
-void checkUnnamed26(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed27(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed25(o[0]);
-  checkUnnamed25(o[1]);
+  checkUnnamed26(o[0]);
+  checkUnnamed26(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1787,7 +1871,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed26();
+    o.details = buildUnnamed27();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1801,7 +1885,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed26(o.details!);
+    checkUnnamed27(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1856,7 +1940,54 @@ void checkUpdateMembershipRolesParams(api.UpdateMembershipRolesParams o) {
   buildCounterUpdateMembershipRolesParams--;
 }
 
+core.int buildCounterUserInvitation = 0;
+api.UserInvitation buildUserInvitation() {
+  final o = api.UserInvitation();
+  buildCounterUserInvitation++;
+  if (buildCounterUserInvitation < 3) {
+    o.mailsSentCount = 'foo';
+    o.name = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterUserInvitation--;
+  return o;
+}
+
+void checkUserInvitation(api.UserInvitation o) {
+  buildCounterUserInvitation++;
+  if (buildCounterUserInvitation < 3) {
+    unittest.expect(
+      o.mailsSentCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUserInvitation--;
+}
+
 void main() {
+  unittest.group('obj-schema-CancelUserInvitationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelUserInvitationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelUserInvitationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCancelUserInvitationRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-CheckTransitiveMembershipResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCheckTransitiveMembershipResponse();
@@ -2114,6 +2245,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-IsInvitableUserResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIsInvitableUserResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IsInvitableUserResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIsInvitableUserResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListGroupsResponse();
@@ -2131,6 +2272,16 @@ void main() {
       final od = api.ListMembershipsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListMembershipsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListUserInvitationsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListUserInvitationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListUserInvitationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListUserInvitationsResponse(od);
     });
   });
 
@@ -2294,6 +2445,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SendUserInvitationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSendUserInvitationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SendUserInvitationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSendUserInvitationRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -2321,6 +2482,317 @@ void main() {
       final od = api.UpdateMembershipRolesParams.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpdateMembershipRolesParams(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserInvitation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserInvitation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserInvitation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUserInvitation(od);
+    });
+  });
+
+  unittest.group('resource-CustomersUserinvitationsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).customers.userinvitations;
+      final arg_request = buildCancelUserInvitationRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CancelUserInvitationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelUserInvitationRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).customers.userinvitations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUserInvitation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkUserInvitation(response as api.UserInvitation);
+    });
+
+    unittest.test('method--isInvitableUser', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).customers.userinvitations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildIsInvitableUserResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.isInvitableUser(arg_name, $fields: arg_$fields);
+      checkIsInvitableUserResponse(response as api.IsInvitableUserResponse);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).customers.userinvitations;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListUserInvitationsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUserInvitationsResponse(
+          response as api.ListUserInvitationsResponse);
+    });
+
+    unittest.test('method--send', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).customers.userinvitations;
+      final arg_request = buildSendUserInvitationRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SendUserInvitationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSendUserInvitationRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.send(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 

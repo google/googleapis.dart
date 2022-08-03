@@ -693,6 +693,50 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
       commons.ApiRequester client)
       : _requester = client;
 
+  /// Abandons a Release in the Delivery Pipeline.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Release. Format is
+  /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
+  /// releases/{release}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AbandonReleaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AbandonReleaseResponse> abandon(
+    AbandonReleaseRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':abandon';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return AbandonReleaseResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new Release in a given project and location.
   ///
   /// [request] - The metadata request object.
@@ -1738,6 +1782,12 @@ class ProjectsLocationsTargetsResource {
   }
 }
 
+/// The request object used by `AbandonRelease`.
+typedef AbandonReleaseRequest = $Empty;
+
+/// The response object for `AbandonRelease`.
+typedef AbandonReleaseResponse = $Empty;
+
 /// Information specifying an Anthos Cluster.
 class AnthosCluster {
   /// Membership of the GKE Hub-registered cluster to which to apply the
@@ -2109,6 +2159,10 @@ class DeliveryPipeline {
   /// `DeliveryPipeline`.
   SerialPipeline? serialPipeline;
 
+  /// When suspended, no new releases or rollouts can be created, but
+  /// in-progress ones will complete.
+  core.bool? suspended;
+
   /// Unique identifier of the `DeliveryPipeline`.
   ///
   /// Output only.
@@ -2128,6 +2182,7 @@ class DeliveryPipeline {
     this.labels,
     this.name,
     this.serialPipeline,
+    this.suspended,
     this.uid,
     this.updateTime,
   });
@@ -2167,6 +2222,9 @@ class DeliveryPipeline {
               ? SerialPipeline.fromJson(_json['serialPipeline']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          suspended: _json.containsKey('suspended')
+              ? _json['suspended'] as core.bool
+              : null,
           uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
@@ -2182,6 +2240,7 @@ class DeliveryPipeline {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serialPipeline != null) 'serialPipeline': serialPipeline!,
+        if (suspended != null) 'suspended': suspended!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -2922,6 +2981,11 @@ class PrivatePool {
 /// A `Release` defines a specific Skaffold configuration instance that can be
 /// deployed.
 class Release {
+  /// Indicates whether this is an abandoned release.
+  ///
+  /// Output only.
+  core.bool? abandoned;
+
   /// User annotations.
   ///
   /// These attributes can only be set and used by the user, and not by Google
@@ -3029,6 +3093,7 @@ class Release {
   core.String? uid;
 
   Release({
+    this.abandoned,
     this.annotations,
     this.buildArtifacts,
     this.createTime,
@@ -3051,6 +3116,9 @@ class Release {
 
   Release.fromJson(core.Map _json)
       : this(
+          abandoned: _json.containsKey('abandoned')
+              ? _json['abandoned'] as core.bool
+              : null,
           annotations: _json.containsKey('annotations')
               ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -3136,6 +3204,7 @@ class Release {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (abandoned != null) 'abandoned': abandoned!,
         if (annotations != null) 'annotations': annotations!,
         if (buildArtifacts != null) 'buildArtifacts': buildArtifacts!,
         if (createTime != null) 'createTime': createTime!,
@@ -3213,6 +3282,7 @@ class Rollout {
   /// - "DEADLINE_EXCEEDED" : Deployment did not complete within the alloted
   /// time.
   /// - "RELEASE_FAILED" : Release is in a failed state.
+  /// - "RELEASE_ABANDONED" : Release is abandoned.
   core.String? deployFailureCause;
 
   /// Time at which the `Rollout` started deploying.

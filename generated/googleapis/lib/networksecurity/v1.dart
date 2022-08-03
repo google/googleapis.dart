@@ -123,7 +123,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -309,8 +309,9 @@ class ProjectsLocationsAuthorizationPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authorizationPolicies/\[^/\]+$`.
   ///
@@ -468,8 +469,9 @@ class ProjectsLocationsAuthorizationPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authorizationPolicies/\[^/\]+$`.
   ///
@@ -517,8 +519,9 @@ class ProjectsLocationsAuthorizationPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authorizationPolicies/\[^/\]+$`.
   ///
@@ -693,8 +696,9 @@ class ProjectsLocationsClientTlsPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clientTlsPolicies/\[^/\]+$`.
   ///
@@ -852,8 +856,9 @@ class ProjectsLocationsClientTlsPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clientTlsPolicies/\[^/\]+$`.
   ///
@@ -901,8 +906,9 @@ class ProjectsLocationsClientTlsPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clientTlsPolicies/\[^/\]+$`.
   ///
@@ -1270,8 +1276,9 @@ class ProjectsLocationsServerTlsPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serverTlsPolicies/\[^/\]+$`.
   ///
@@ -1429,8 +1436,9 @@ class ProjectsLocationsServerTlsPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See the operation documentation for the appropriate value for
-  /// this field.
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serverTlsPolicies/\[^/\]+$`.
   ///
@@ -1478,8 +1486,9 @@ class ProjectsLocationsServerTlsPoliciesResource {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serverTlsPolicies/\[^/\]+$`.
   ///
@@ -1782,8 +1791,8 @@ class Destination {
   ///
   /// Matched against the ":authority" header in http requests. At least one
   /// host should match. Each host can be an exact match, or a prefix match
-  /// (example "mydomain.*") or a suffix match (example // *.myorg.com") or a
-  /// presence(any) match "*".
+  /// (example "mydomain.*") or a suffix match (example "*.myorg.com") or a
+  /// presence (any) match "*".
   ///
   /// Required.
   core.List<core.String>? hosts;
@@ -1855,8 +1864,7 @@ class Destination {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1922,7 +1930,7 @@ class GoogleCloudNetworksecurityV1CertificateProvider {
 class GoogleCloudNetworksecurityV1GrpcEndpoint {
   /// The target URI of the gRPC endpoint.
   ///
-  /// Only UDS path is supported, and should start with “unix:”.
+  /// Only UDS path is supported, and should start with "unix:".
   ///
   /// Required.
   core.String? targetUri;
@@ -1958,8 +1966,8 @@ class GoogleCloudNetworksecurityV1GrpcEndpoint {
 /// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
 /// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts jose@example.com from DATA_READ logging, and
-/// aliya@example.com from DATA_WRITE logging.
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
@@ -2015,7 +2023,7 @@ class GoogleIamV1Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -2205,7 +2213,7 @@ class GoogleIamV1SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
   ///
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// valid policy but certain Google Cloud services (such as Projects) might
   /// reject them.
   GoogleIamV1Policy? policy;
 
@@ -2238,36 +2246,12 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-class GoogleIamV1TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
 
-/// Specification of HTTP header match atrributes.
+/// Specification of HTTP header match attributes.
 class HttpHeaderMatch {
   /// The name of the HTTP header to match.
   ///
@@ -2649,7 +2633,9 @@ class ServerTlsPolicy {
   /// set to false. This setting is not exclusive of other encryption modes. For
   /// example, if `allow_open` and `mtls_policy` are set, server allows both
   /// plain text and mTLS connections. See documentation of other encryption
-  /// modes to confirm compatibility.
+  /// modes to confirm compatibility. Consider using it if you wish to upgrade
+  /// in place your deployment to TLS while having mixed TLS and non-TLS traffic
+  /// reaching port :80.
   core.bool? allowOpen;
 
   /// The timestamp when the resource was created.
@@ -2763,8 +2749,8 @@ class Source {
   /// List of peer identities to match for authorization.
   ///
   /// At least one principal should match. Each peer can be an exact match, or a
-  /// prefix match (example, "namespace / * ") or a suffix match (example, // *
-  /// / service-account") or a presence match "*". Authorization based on the
+  /// prefix match (example, "namespace / * ") or a suffix match (example, " * /
+  /// service-account") or a presence match "*". Authorization based on the
   /// principal name without certificate validation (configured by
   /// ServerTlsPolicy resource) is considered insecure.
   ///

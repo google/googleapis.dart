@@ -693,6 +693,35 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingD
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec--;
 }
 
+core.int buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod = 0;
+api.GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod
+    buildGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod() {
+  final o = api.GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod < 3) {
+    o.endTime = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod(
+    api.GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod < 3) {
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod--;
+}
+
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>
     buildUnnamed9() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(),
@@ -905,7 +934,10 @@ api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
     o.description = 'foo';
     o.lineItemFreeTrialEndTime = 'foo';
     o.lineItemPromotionSpecs = buildUnnamed13();
+    o.oneTimeRecurrenceDetails =
+        buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails();
     o.product = 'foo';
+    o.recurrenceType = 'foo';
     o.state = 'foo';
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem--;
@@ -926,8 +958,14 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(
       unittest.equals('foo'),
     );
     checkUnnamed13(o.lineItemPromotionSpecs!);
+    checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails(
+        o.oneTimeRecurrenceDetails!);
     unittest.expect(
       o.product!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.recurrenceType!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -936,6 +974,35 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(
     );
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem--;
+}
+
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
+    buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails() {
+  final o = api
+      .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails <
+      3) {
+    o.servicePeriod =
+        buildGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod();
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails(
+    api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
+        o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails <
+      3) {
+    checkGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod(
+        o.servicePeriod!);
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails--;
 }
 
 core.int
@@ -1330,6 +1397,18 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod(od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1Subscription', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudPaymentsResellerSubscriptionV1Subscription();
@@ -1367,6 +1446,21 @@ void main() {
           api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails(
+          od);
     });
   });
 

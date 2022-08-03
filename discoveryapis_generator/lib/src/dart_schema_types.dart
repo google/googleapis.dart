@@ -476,9 +476,9 @@ class DateType extends StringType {
 
   @override
   String primitiveEncoding(String? value) =>
-      '"\${($value).year.toString().padLeft(4, \'0\')}-'
-      '\${($value).month.toString().padLeft(2, \'0\')}-'
-      '\${($value).day.toString().padLeft(2, \'0\')}"';
+      '"\${$value.year.toString().padLeft(4, \'0\')}-'
+      '\${$value.month.toString().padLeft(2, \'0\')}-'
+      '\${$value.day.toString().padLeft(2, \'0\')}"';
 
   @override
   String jsonEncode(String value) => primitiveEncoding(value);

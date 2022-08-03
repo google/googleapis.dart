@@ -2394,7 +2394,7 @@
                                     "type": "string"
                                 },
                                 "regionsVersion.version": {
-                                    "description": "Required. A string representing version of the available regions being used for the specified resource.",
+                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/01.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -2532,7 +2532,7 @@
                                     "type": "string"
                                 },
                                 "regionsVersion.version": {
-                                    "description": "Required. A string representing version of the available regions being used for the specified resource.",
+                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/01.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2803,7 +2803,7 @@
                                                     "type": "string"
                                                 },
                                                 "regionsVersion.version": {
-                                                    "description": "Required. A string representing version of the available regions being used for the specified resource.",
+                                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/01.",
                                                     "location": "query",
                                                     "type": "string"
                                                 }
@@ -3040,7 +3040,7 @@
                                                     "type": "string"
                                                 },
                                                 "regionsVersion.version": {
-                                                    "description": "Required. A string representing version of the available regions being used for the specified resource.",
+                                                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/01.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -3914,7 +3914,7 @@
             }
         }
     },
-    "revision": "20220608",
+    "revision": "20220803",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
         "AcquisitionTargetingRule": {
@@ -4070,7 +4070,7 @@
                     "type": "string"
                 },
                 "legacyCompatible": {
-                    "description": "Whether the renewing base plan is compatible with legacy version of the Play Billing Library (prior to version 3) or not. Only one renewing base plan can be marked as legacy compatible for a given subscription.",
+                    "description": "Whether the renewing base plan is backward compatible. The backward compatible base plan is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one renewing base plan can be marked as legacy compatible for a given subscription.",
                     "type": "boolean"
                 },
                 "prorationMode": {
@@ -5749,7 +5749,7 @@
             "id": "RegionsVersion",
             "properties": {
                 "version": {
-                    "description": "Required. A string representing version of the available regions being used for the specified resource.",
+                    "description": "Required. A string representing version of the available regions being used for the specified resource. The current version is 2022/01.",
                     "type": "string"
                 }
             },

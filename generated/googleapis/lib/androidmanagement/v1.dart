@@ -3739,9 +3739,15 @@ class EnrollmentToken {
   core.String? allowPersonalUsage;
 
   /// The length of time the enrollment token is valid, ranging from 1 minute to
-  /// 90 days.
+  /// Durations.MAX_VALUE
+  /// (https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
+  /// approximately 10,000 years.
   ///
-  /// If not specified, the default duration is 1 hour.
+  /// If not specified, the default duration is 1 hour. Please note that if
+  /// requested duration causes the resulting expiration_timestamp to exceed
+  /// Timestamps.MAX_VALUE
+  /// (https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Timestamps.html#MAX_VALUE),
+  /// then expiration_timestamp is coerced to Timestamps.MAX_VALUE.
   core.String? duration;
 
   /// The expiration time of the token.
@@ -5186,6 +5192,10 @@ class NonComplianceDetail {
   /// - "ONC_WIFI_INVALID_VALUE" : There is an incorrect value in ONC Wi-Fi
   /// configuration. fieldPath specifies which field value is incorrect.
   /// oncWifiContext is set. nonComplianceReason is set to INVALID_VALUE.
+  /// - "ONC_WIFI_API_LEVEL" : The ONC Wi-Fi setting is not supported in the API
+  /// level of the Android version running on the device. fieldPath specifies
+  /// which field value is not supported. oncWifiContext is set.
+  /// nonComplianceReason is set to API_LEVEL.
   core.String? specificNonComplianceReason;
 
   NonComplianceDetail({
@@ -7611,7 +7621,7 @@ class SoftwareInfo {
 class SpecificNonComplianceContext {
   /// Additional context for non-compliance related to Wi-Fi configuration.
   ///
-  /// See ONC_WIFI_INVALID_VALUE.
+  /// See ONC_WIFI_INVALID_VALUE and ONC_WIFI_API_LEVEL
   OncWifiContext? oncWifiContext;
 
   /// Additional context for non-compliance related to password policies.

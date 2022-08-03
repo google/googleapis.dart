@@ -6116,6 +6116,9 @@ class Policy {
 /// page) is intended to allow a basic representation of the product within an
 /// EMM user interface.
 class Product {
+  /// The app restriction schema
+  AppRestrictionsSchema? appRestrictionsSchema;
+
   /// The tracks visible to the enterprise.
   core.List<TrackInfo>? appTracks;
 
@@ -6225,6 +6228,7 @@ class Product {
   core.String? workDetailsUrl;
 
   Product({
+    this.appRestrictionsSchema,
     this.appTracks,
     this.appVersion,
     this.authorName,
@@ -6253,6 +6257,10 @@ class Product {
 
   Product.fromJson(core.Map _json)
       : this(
+          appRestrictionsSchema: _json.containsKey('appRestrictionsSchema')
+              ? AppRestrictionsSchema.fromJson(_json['appRestrictionsSchema']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           appTracks: _json.containsKey('appTracks')
               ? (_json['appTracks'] as core.List)
                   .map((value) => TrackInfo.fromJson(
@@ -6346,6 +6354,8 @@ class Product {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appRestrictionsSchema != null)
+          'appRestrictionsSchema': appRestrictionsSchema!,
         if (appTracks != null) 'appTracks': appTracks!,
         if (appVersion != null) 'appVersion': appVersion!,
         if (authorName != null) 'authorName': authorName!,

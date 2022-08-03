@@ -2738,6 +2738,12 @@ class ConfigManagementPolicyController {
   /// Monitoring specifies the configuration of monitoring.
   ConfigManagementPolicyControllerMonitoring? monitoring;
 
+  /// Enable or disable mutation in policy controller.
+  ///
+  /// If true, mutation CRDs, webhook and controller deployment will be deployed
+  /// to the cluster.
+  core.bool? mutationEnabled;
+
   /// Enables the ability to use Constraint Templates that reference to objects
   /// other than the object currently being evaluated.
   core.bool? referentialRulesEnabled;
@@ -2751,6 +2757,7 @@ class ConfigManagementPolicyController {
     this.exemptableNamespaces,
     this.logDeniesEnabled,
     this.monitoring,
+    this.mutationEnabled,
     this.referentialRulesEnabled,
     this.templateLibraryInstalled,
   });
@@ -2775,6 +2782,9 @@ class ConfigManagementPolicyController {
               ? ConfigManagementPolicyControllerMonitoring.fromJson(
                   _json['monitoring'] as core.Map<core.String, core.dynamic>)
               : null,
+          mutationEnabled: _json.containsKey('mutationEnabled')
+              ? _json['mutationEnabled'] as core.bool
+              : null,
           referentialRulesEnabled: _json.containsKey('referentialRulesEnabled')
               ? _json['referentialRulesEnabled'] as core.bool
               : null,
@@ -2792,6 +2802,7 @@ class ConfigManagementPolicyController {
           'exemptableNamespaces': exemptableNamespaces!,
         if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
         if (monitoring != null) 'monitoring': monitoring!,
+        if (mutationEnabled != null) 'mutationEnabled': mutationEnabled!,
         if (referentialRulesEnabled != null)
           'referentialRulesEnabled': referentialRulesEnabled!,
         if (templateLibraryInstalled != null)
@@ -4450,6 +4461,7 @@ class MultiCloudCluster {
   /// For example:
   /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
   /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+  /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
   ///
   /// Immutable.
   core.String? resourceLink;
@@ -4513,6 +4525,17 @@ class OnPremCluster {
   /// Output only.
   core.bool? clusterMissing;
 
+  /// The on prem cluster's type.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "CLUSTERTYPE_UNSPECIFIED" : The ClusterType is not set.
+  /// - "BOOTSTRAP" : The ClusterType is bootstrap cluster.
+  /// - "HYBRID" : The ClusterType is baremetal hybrid cluster.
+  /// - "STANDALONE" : The ClusterType is baremetal standalone cluster.
+  /// - "USER" : The ClusterType is user cluster.
+  core.String? clusterType;
+
   /// Self-link of the GCP resource for the GKE On-Prem cluster.
   ///
   /// For example:
@@ -4525,6 +4548,7 @@ class OnPremCluster {
   OnPremCluster({
     this.adminCluster,
     this.clusterMissing,
+    this.clusterType,
     this.resourceLink,
   });
 
@@ -4536,6 +4560,9 @@ class OnPremCluster {
           clusterMissing: _json.containsKey('clusterMissing')
               ? _json['clusterMissing'] as core.bool
               : null,
+          clusterType: _json.containsKey('clusterType')
+              ? _json['clusterType'] as core.String
+              : null,
           resourceLink: _json.containsKey('resourceLink')
               ? _json['resourceLink'] as core.String
               : null,
@@ -4544,6 +4571,7 @@ class OnPremCluster {
   core.Map<core.String, core.dynamic> toJson() => {
         if (adminCluster != null) 'adminCluster': adminCluster!,
         if (clusterMissing != null) 'clusterMissing': clusterMissing!,
+        if (clusterType != null) 'clusterType': clusterType!,
         if (resourceLink != null) 'resourceLink': resourceLink!,
       };
 }

@@ -3535,7 +3535,9 @@ api.RepairClusterRequest buildRepairClusterRequest() {
   buildCounterRepairClusterRequest++;
   if (buildCounterRepairClusterRequest < 3) {
     o.clusterUuid = 'foo';
+    o.gracefulDecommissionTimeout = 'foo';
     o.nodePools = buildUnnamed72();
+    o.parentOperationId = 'foo';
     o.requestId = 'foo';
   }
   buildCounterRepairClusterRequest--;
@@ -3549,7 +3551,15 @@ void checkRepairClusterRequest(api.RepairClusterRequest o) {
       o.clusterUuid!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.gracefulDecommissionTimeout!,
+      unittest.equals('foo'),
+    );
     checkUnnamed72(o.nodePools!);
+    unittest.expect(
+      o.parentOperationId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),

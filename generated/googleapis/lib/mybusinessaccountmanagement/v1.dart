@@ -163,8 +163,8 @@ class AccountsResource {
   /// filter `type=USER_GROUP` will only return user groups. The `type` field is
   /// the only supported filter.
   ///
-  /// [pageSize] - Optional. How many accounts to fetch per page. The minimum
-  /// supported page_size is 2. The default and maximum is 20.
+  /// [pageSize] - Optional. How many accounts to fetch per page. The default
+  /// and maximum is 20.
   ///
   /// [pageToken] - Optional. If specified, the next page of accounts is
   /// retrieved. The `pageToken` is returned when a call to `accounts.list`
@@ -969,6 +969,16 @@ class Account {
 
 /// An administrator of an Account or a location.
 class Admin {
+  /// The name of the Account resource that this Admin refers to.
+  ///
+  /// Used when calling locations.admins.create to invite a LocationGroup as an
+  /// admin. If both this field and `admin` are set on `CREATE` requests, this
+  /// field takes precedence and the email address in `admin` will be ignored.
+  /// Format: `accounts/{account}`.
+  ///
+  /// Immutable.
+  core.String? account;
+
   /// The name of the admin.
   ///
   /// When making the initial invitation, this is the invitee's email address.
@@ -1011,6 +1021,7 @@ class Admin {
   core.String? role;
 
   Admin({
+    this.account,
     this.admin,
     this.name,
     this.pendingInvitation,
@@ -1019,6 +1030,9 @@ class Admin {
 
   Admin.fromJson(core.Map _json)
       : this(
+          account: _json.containsKey('account')
+              ? _json['account'] as core.String
+              : null,
           admin:
               _json.containsKey('admin') ? _json['admin'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
@@ -1029,6 +1043,7 @@ class Admin {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (account != null) 'account': account!,
         if (admin != null) 'admin': admin!,
         if (name != null) 'name': name!,
         if (pendingInvitation != null) 'pendingInvitation': pendingInvitation!,
@@ -1282,11 +1297,12 @@ class OrganizationInfo {
 /// P.O. Box or similar. It is not intended to model geographical locations
 /// (roads, towns, mountains). In typical usage an address would be created via
 /// user input or from importing existing data, depending on the type of
-/// process. Advice on address input / editing: - Use an i18n-ready address
-/// widget such as https://github.com/google/libaddressinput) - Users should not
-/// be presented with UI elements for input or editing of fields outside
-/// countries where that field is used. For more guidance on how to use this
-/// schema, please see: https://support.google.com/business/answer/6397478
+/// process. Advice on address input / editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput) - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, please see:
+/// https://support.google.com/business/answer/6397478
 typedef PostalAddress = $PostalAddress;
 
 /// Represents a target location for a pending invitation.

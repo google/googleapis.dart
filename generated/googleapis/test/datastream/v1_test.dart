@@ -1173,6 +1173,7 @@ api.MysqlSourceConfig buildMysqlSourceConfig() {
   if (buildCounterMysqlSourceConfig < 3) {
     o.excludeObjects = buildMysqlRdbms();
     o.includeObjects = buildMysqlRdbms();
+    o.maxConcurrentCdcTasks = 42;
   }
   buildCounterMysqlSourceConfig--;
   return o;
@@ -1183,6 +1184,10 @@ void checkMysqlSourceConfig(api.MysqlSourceConfig o) {
   if (buildCounterMysqlSourceConfig < 3) {
     checkMysqlRdbms(o.excludeObjects!);
     checkMysqlRdbms(o.includeObjects!);
+    unittest.expect(
+      o.maxConcurrentCdcTasks!,
+      unittest.equals(42),
+    );
   }
   buildCounterMysqlSourceConfig--;
 }
@@ -1597,6 +1602,8 @@ api.OracleSourceConfig buildOracleSourceConfig() {
     o.dropLargeObjects = buildDropLargeObjects();
     o.excludeObjects = buildOracleRdbms();
     o.includeObjects = buildOracleRdbms();
+    o.maxConcurrentCdcTasks = 42;
+    o.streamLargeObjects = buildStreamLargeObjects();
   }
   buildCounterOracleSourceConfig--;
   return o;
@@ -1608,6 +1615,11 @@ void checkOracleSourceConfig(api.OracleSourceConfig o) {
     checkDropLargeObjects(o.dropLargeObjects!);
     checkOracleRdbms(o.excludeObjects!);
     checkOracleRdbms(o.includeObjects!);
+    unittest.expect(
+      o.maxConcurrentCdcTasks!,
+      unittest.equals(42),
+    );
+    checkStreamLargeObjects(o.streamLargeObjects!);
   }
   buildCounterOracleSourceConfig--;
 }
@@ -2100,6 +2112,21 @@ void checkStream(api.Stream o) {
     );
   }
   buildCounterStream--;
+}
+
+core.int buildCounterStreamLargeObjects = 0;
+api.StreamLargeObjects buildStreamLargeObjects() {
+  final o = api.StreamLargeObjects();
+  buildCounterStreamLargeObjects++;
+  if (buildCounterStreamLargeObjects < 3) {}
+  buildCounterStreamLargeObjects--;
+  return o;
+}
+
+void checkStreamLargeObjects(api.StreamLargeObjects o) {
+  buildCounterStreamLargeObjects++;
+  if (buildCounterStreamLargeObjects < 3) {}
+  buildCounterStreamLargeObjects--;
 }
 
 core.List<api.Error> buildUnnamed32() => [
@@ -2721,6 +2748,16 @@ void main() {
       final od =
           api.Stream.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStream(od);
+    });
+  });
+
+  unittest.group('obj-schema-StreamLargeObjects', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStreamLargeObjects();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StreamLargeObjects.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStreamLargeObjects(od);
     });
   });
 

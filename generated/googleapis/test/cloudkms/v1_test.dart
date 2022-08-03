@@ -979,6 +979,7 @@ api.ImportCryptoKeyVersionRequest buildImportCryptoKeyVersionRequest() {
     o.cryptoKeyVersion = 'foo';
     o.importJob = 'foo';
     o.rsaAesWrappedKey = 'foo';
+    o.wrappedKey = 'foo';
   }
   buildCounterImportCryptoKeyVersionRequest--;
   return o;
@@ -1001,6 +1002,10 @@ void checkImportCryptoKeyVersionRequest(api.ImportCryptoKeyVersionRequest o) {
     );
     unittest.expect(
       o.rsaAesWrappedKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.wrappedKey!,
       unittest.equals('foo'),
     );
   }

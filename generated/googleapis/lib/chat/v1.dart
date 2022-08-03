@@ -556,12 +556,12 @@ class SpacesResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. The value is capped at 1000. Server may
-  /// return fewer results than requested. If unspecified, server will default
-  /// to 100.
+  /// [pageSize] - Optional. Requested page size. The value is capped at 1000.
+  /// Server may return fewer results than requested. If unspecified, server
+  /// will default to 100.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -909,9 +909,10 @@ class SpacesMessagesResource {
   /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The field paths to be updated, comma separated if
-  /// there are multiple. Currently supported field paths: * text * cards *
-  /// attachment
+  /// [updateMask] - Required. The field paths to update. Separate multiple
+  /// values with commas. Currently supported field paths: - text - cards
+  /// (Requires \[service account
+  /// authentication\](/chat/api/guides/auth/service-accounts).)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1521,6 +1522,39 @@ class CardHeader {
       };
 }
 
+/// Widgets for Chat apps to specify.
+class CardWithId {
+  /// Card proto that allows Chat apps to specify UI elements and editable
+  /// widgets.
+  GoogleAppsCardV1Card? card;
+
+  /// Required for `cardsV2` messages.
+  ///
+  /// Chat app-specified identifier for this widget. Scoped within a message.
+  core.String? cardId;
+
+  CardWithId({
+    this.card,
+    this.cardId,
+  });
+
+  CardWithId.fromJson(core.Map _json)
+      : this(
+          card: _json.containsKey('card')
+              ? GoogleAppsCardV1Card.fromJson(
+                  _json['card'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cardId: _json.containsKey('cardId')
+              ? _json['cardId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (card != null) 'card': card!,
+        if (cardId != null) 'cardId': cardId!,
+      };
+}
+
 /// Represents a color in the RGBA color space.
 ///
 /// This representation is designed for simplicity of conversion to/from color
@@ -1735,7 +1769,8 @@ class GoogleAppsCardV1Action {
   /// set to `false`, it is strongly recommended that the card use
   /// \[LoadIndicator.SPINNER\](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
   /// for all actions, as this locks the UI to ensure no changes are made by the
-  /// user while the action is being processed.
+  /// user while the action is being processed. Not supported by Google Chat
+  /// apps.
   core.bool? persistValues;
 
   GoogleAppsCardV1Action({
@@ -1943,15 +1978,17 @@ class GoogleAppsCardV1Card {
   /// ```
   core.List<GoogleAppsCardV1CardAction>? cardActions;
 
-  /// The display style for `peekCardHeader`.
+  /// The `peekCardHeader` display style for.
+  ///
+  /// Not supported by Google Chat apps.
   /// Possible string values are:
-  /// - "DISPLAY_STYLE_UNSPECIFIED" : Default value. Do not use.
+  /// - "DISPLAY_STYLE_UNSPECIFIED" : Do not use.
   /// - "PEEK" : The header of the card appears at the bottom of the sidebar,
   /// partially covering the current top card of the stack. Clicking the header
   /// pops the card into the card stack. If the card has no header, a generated
   /// header is used instead.
-  /// - "REPLACE" : The card is shown by replacing the view of the top card in
-  /// the card stack.
+  /// - "REPLACE" : Default value. The card is shown by replacing the view of
+  /// the top card in the card stack.
   core.String? displayStyle;
 
   /// The fixed footer shown at the bottom of this card.
@@ -1970,6 +2007,8 @@ class GoogleAppsCardV1Card {
   /// When displaying contextual content, the peek card header acts as a
   /// placeholder so that the user can navigate forward between the homepage
   /// cards and the contextual cards.
+  ///
+  /// Not supported by Google Chat apps.
   GoogleAppsCardV1CardHeader? peekCardHeader;
 
   /// Sections are separated by a line divider.
@@ -3105,7 +3144,7 @@ class GoogleAppsCardV1TextInput {
 
 /// A paragraph of text that supports formatting.
 ///
-/// See \[Text formatting\](workspace/add-ons/concepts/widgets#text_formatting")
+/// See \[Text formatting\](workspace/add-ons/concepts/widgets#text_formatting)
 /// for details.
 class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
@@ -3641,6 +3680,21 @@ class Membership {
   /// Format: spaces/{space}/members/{member}
   core.String? name;
 
+  /// User's role within a Chat space, which determines their permitted actions
+  /// in the space.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MEMBERSHIP_ROLE_UNSPECIFIED" : Default value. The user isn't a member
+  /// of the space, but might be invited.
+  /// - "ROLE_MEMBER" : A member of the space. The user has basic permissions,
+  /// like sending messages to the space. In 1:1 and unnamed group
+  /// conversations, everyone has this role.
+  /// - "ROLE_MANAGER" : A space manager. The user has all basic permissions
+  /// plus administrative permissions that allow them to manage the space, like
+  /// adding or removing members. Only supports SpaceType.SPACE.
+  core.String? role;
+
   /// State of the membership.
   ///
   /// Output only.
@@ -3657,6 +3711,7 @@ class Membership {
     this.createTime,
     this.member,
     this.name,
+    this.role,
     this.state,
   });
 
@@ -3670,6 +3725,7 @@ class Membership {
                   _json['member'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
         );
@@ -3678,6 +3734,7 @@ class Membership {
         if (createTime != null) 'createTime': createTime!,
         if (member != null) 'member': member!,
         if (name != null) 'name': name!,
+        if (role != null) 'role': role!,
         if (state != null) 'state': state!,
       };
 }
@@ -3707,6 +3764,18 @@ class Message {
   /// Cards are normally displayed below the plain-text body of the message.
   core.List<Card>? cards;
 
+  /// Richly formatted and interactive cards that display UI elements and
+  /// editable widgets, such as: - Formatted text - Buttons - Clickable images -
+  /// Checkboxes - Radio buttons - Input widgets.
+  ///
+  /// Cards are usually displayed below the text-body of a Chat message, but can
+  /// situationally appear other places, such as
+  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). The
+  /// `cardId` is a unique identifier among cards in the same message and for
+  /// identifying user input values. Currently supported widgets include: -
+  /// `TextParagraph` - `DecoratedText` - `Image` - `ButtonList`
+  core.List<CardWithId>? cardsV2;
+
   /// The time at which the message was created in Google Chat server.
   ///
   /// Output only.
@@ -3716,9 +3785,9 @@ class Message {
   /// cards cannot be displayed (e.g. mobile notifications).
   core.String? fallbackText;
 
-  /// The time at which the message was last updated.
+  /// The time at which the message was last edited by a user.
   ///
-  /// If the message was never updated, this field matches `create_time`.
+  /// If the message has never been edited, this field is empty.
   ///
   /// Output only.
   core.String? lastUpdateTime;
@@ -3764,6 +3833,7 @@ class Message {
     this.argumentText,
     this.attachment,
     this.cards,
+    this.cardsV2,
     this.createTime,
     this.fallbackText,
     this.lastUpdateTime,
@@ -3800,6 +3870,12 @@ class Message {
           cards: _json.containsKey('cards')
               ? (_json['cards'] as core.List)
                   .map((value) => Card.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cardsV2: _json.containsKey('cardsV2')
+              ? (_json['cardsV2'] as core.List)
+                  .map((value) => CardWithId.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3842,6 +3918,7 @@ class Message {
         if (argumentText != null) 'argumentText': argumentText!,
         if (attachment != null) 'attachment': attachment!,
         if (cards != null) 'cards': cards!,
+        if (cardsV2 != null) 'cardsV2': cardsV2!,
         if (createTime != null) 'createTime': createTime!,
         if (fallbackText != null) 'fallbackText': fallbackText!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
@@ -4039,12 +4116,15 @@ class Space {
   /// Output only.
   core.bool? singleUserBotDm;
 
+  /// Details about the space including description and rules.
+  SpaceDetails? spaceDetails;
+
   /// Whether messages are threaded in this space.
   ///
   /// Output only.
   core.bool? threaded;
 
-  /// Deprecated: Use `single_user_bot_dm` or `space_type` (developer preview)
+  /// Deprecated: Use `singleUserBotDm` or `spaceType` (developer preview)
   /// instead.
   ///
   /// The type of a space.
@@ -4062,6 +4142,7 @@ class Space {
     this.displayName,
     this.name,
     this.singleUserBotDm,
+    this.spaceDetails,
     this.threaded,
     this.type,
   });
@@ -4075,6 +4156,10 @@ class Space {
           singleUserBotDm: _json.containsKey('singleUserBotDm')
               ? _json['singleUserBotDm'] as core.bool
               : null,
+          spaceDetails: _json.containsKey('spaceDetails')
+              ? SpaceDetails.fromJson(
+                  _json['spaceDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           threaded: _json.containsKey('threaded')
               ? _json['threaded'] as core.bool
               : null,
@@ -4085,8 +4170,45 @@ class Space {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,
+        if (spaceDetails != null) 'spaceDetails': spaceDetails!,
         if (threaded != null) 'threaded': threaded!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Details about the space including description and rules.
+class SpaceDetails {
+  /// A description of the space.
+  ///
+  /// It could describe the space's discussion topic, functional purpose, or
+  /// participants.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The space's rules, expectations, and etiquette.
+  ///
+  /// Optional.
+  core.String? guidelines;
+
+  SpaceDetails({
+    this.description,
+    this.guidelines,
+  });
+
+  SpaceDetails.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          guidelines: _json.containsKey('guidelines')
+              ? _json['guidelines'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (guidelines != null) 'guidelines': guidelines!,
       };
 }
 

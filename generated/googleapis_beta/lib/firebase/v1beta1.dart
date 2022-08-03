@@ -667,18 +667,19 @@ class ProjectsResource {
   /// \[`platform`\](../projects.apps#FirebaseAppInfo.FIELDS.platform) We also
   /// support the following "virtual" fields (fields which are not actually part
   /// of the returned resource object, but can be queried as if they are
-  /// pre-populated with specific values): * `sha1_hash`: This field is
-  /// considered to be a repeated `string` field, populated with the list of all
-  /// SHA-1 certificate fingerprints registered with the app. This list is empty
-  /// if the app is not an Android app. * `sha256_hash`: This field is
-  /// considered to be a repeated `string` field, populated with the list of all
-  /// SHA-256 certificate fingerprints registered with the app. This list is
-  /// empty if the app is not an Android app. * `app_store_id`: This field is
-  /// considered to be a singular `string` field, populated with the Apple App
-  /// Store ID registered with the app. This field is empty if the app is not an
-  /// iOS app. * `team_id`: This field is considered to be a singular `string`
-  /// field, populated with the Apple team ID registered with the app. This
-  /// field is empty if the app is not an iOS app.
+  /// pre-populated with specific values): * `sha1_hash` or `sha1_hashes`: This
+  /// field is considered to be a repeated `string` field, populated with the
+  /// list of all SHA-1 certificate fingerprints registered with the app. This
+  /// list is empty if the app is not an Android app. * `sha256_hash` or
+  /// `sha256_hashes`: This field is considered to be a repeated `string` field,
+  /// populated with the list of all SHA-256 certificate fingerprints registered
+  /// with the app. This list is empty if the app is not an Android app. *
+  /// `app_store_id`: This field is considered to be a singular `string` field,
+  /// populated with the Apple App Store ID registered with the app. This field
+  /// is empty if the app is not an iOS app. * `team_id`: This field is
+  /// considered to be a singular `string` field, populated with the Apple team
+  /// ID registered with the app. This field is empty if the app is not an iOS
+  /// app.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
@@ -687,6 +688,9 @@ class ProjectsResource {
   ///
   /// [pageToken] - Token returned from a previous call to `SearchFirebaseApps`
   /// indicating where in the set of Apps to resume listing.
+  ///
+  /// [showDeleted] - Controls whether Apps in the DELETED state should be
+  /// returned. Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -703,12 +707,14 @@ class ProjectsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -887,6 +893,9 @@ class ProjectsAndroidAppsResource {
   /// [pageToken] - Token returned from a previous call to `ListAndroidApps`
   /// indicating where in the set of Apps to resume listing.
   ///
+  /// [showDeleted] - Controls whether Apps in the DELETED state should be
+  /// returned. Defaults to false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -901,11 +910,13 @@ class ProjectsAndroidAppsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -940,7 +951,8 @@ class ProjectsAndroidAppsResource {
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
-  /// `name`, `app_id`, `project_id`, and `package_name` are all immutable.
+  /// `name`, `app_id`, `project_id`, `package_name`, and `state` are all
+  /// immutable.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -974,6 +986,51 @@ class ProjectsAndroidAppsResource {
     );
     return AndroidApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes the specified AndroidApp from the project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the AndroidApp, in the format:
+  /// projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a
+  /// unique identifier, the Unique Resource from Sub-Collection access pattern
+  /// may be used here, in the format: projects/-/androidApps/APP_ID Refer to
+  /// the AndroidApp \[name\](../projects.androidApps#AndroidApp.FIELDS.name)
+  /// field for details about PROJECT_IDENTIFIER and APP_ID values.
+  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> remove(
+    RemoveAndroidAppRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1432,6 +1489,9 @@ class ProjectsIosAppsResource {
   /// [pageToken] - Token returned from a previous call to `ListIosApps`
   /// indicating where in the set of Apps to resume listing.
   ///
+  /// [showDeleted] - Controls whether Apps in the DELETED state should be
+  /// returned. Defaults to false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1446,11 +1506,13 @@ class ProjectsIosAppsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1485,7 +1547,7 @@ class ProjectsIosAppsResource {
   /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
-  /// `name`, `appId`, `projectId`, and `bundleId` are all immutable.
+  /// `name`, `appId`, `projectId`, `bundleId`, and `state` are all immutable
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1518,6 +1580,51 @@ class ProjectsIosAppsResource {
       queryParams: _queryParams,
     );
     return IosApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes the specified IosApp from the project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the IosApp, in the format:
+  /// projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique
+  /// identifier, the Unique Resource from Sub-Collection access pattern may be
+  /// used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp
+  /// \[name\](../projects.iosApps#IosApp.FIELDS.name) field for details about
+  /// PROJECT_IDENTIFIER and APP_ID values.
+  /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> remove(
+    RemoveIosAppRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1677,6 +1784,9 @@ class ProjectsWebAppsResource {
   /// [pageToken] - Token returned from a previous call to `ListWebApps`
   /// indicating where in the set of Apps to resume listing.
   ///
+  /// [showDeleted] - Controls whether Apps in the DELETED state should be
+  /// returned. Defaults to false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1691,11 +1801,13 @@ class ProjectsWebAppsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1730,7 +1842,7 @@ class ProjectsWebAppsResource {
   /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
-  /// `name`, `appId`, and `projectId` are all immutable.
+  /// `name`, `appId`, `projectId` and `state` are all immutable
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1763,6 +1875,51 @@ class ProjectsWebAppsResource {
       queryParams: _queryParams,
     );
     return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes the specified WebApp from the project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the WebApp, in the format:
+  /// projects/ PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique
+  /// identifier, the Unique Resource from Sub-Collection access pattern may be
+  /// used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp
+  /// \[name\](../projects.webApps#WebApp.FIELDS.name) field for details about
+  /// PROJECT_IDENTIFIER and APP_ID values.
+  /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> remove(
+    RemoveWebAppRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1995,7 +2152,7 @@ class AndroidApp {
   /// This identifier should be treated as an opaque token, as the data format
   /// is not specified.
   ///
-  /// Immutable.
+  /// Output only. Immutable.
   core.String? appId;
 
   /// The user-assigned display name for the `AndroidApp`.
@@ -2024,8 +2181,23 @@ class AndroidApp {
   /// A user-assigned unique identifier of the parent FirebaseProject for the
   /// `AndroidApp`.
   ///
-  /// Immutable.
+  /// Output only. Immutable.
   core.String? projectId;
+
+  /// The SHA1 certificate hashes for the AndroidApp.
+  core.List<core.String>? sha1Hashes;
+
+  /// The SHA256 certificate hashes for the AndroidApp.
+  core.List<core.String>? sha256Hashes;
+
+  /// The lifecycle state of the App.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : The app has been soft deleted.
+  core.String? state;
 
   AndroidApp({
     this.apiKeyId,
@@ -2034,6 +2206,9 @@ class AndroidApp {
     this.name,
     this.packageName,
     this.projectId,
+    this.sha1Hashes,
+    this.sha256Hashes,
+    this.state,
   });
 
   AndroidApp.fromJson(core.Map _json)
@@ -2053,6 +2228,18 @@ class AndroidApp {
           projectId: _json.containsKey('projectId')
               ? _json['projectId'] as core.String
               : null,
+          sha1Hashes: _json.containsKey('sha1Hashes')
+              ? (_json['sha1Hashes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sha256Hashes: _json.containsKey('sha256Hashes')
+              ? (_json['sha256Hashes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2062,6 +2249,9 @@ class AndroidApp {
         if (name != null) 'name': name!,
         if (packageName != null) 'packageName': packageName!,
         if (projectId != null) 'projectId': projectId!,
+        if (sha1Hashes != null) 'sha1Hashes': sha1Hashes!,
+        if (sha256Hashes != null) 'sha256Hashes': sha256Hashes!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2116,6 +2306,8 @@ class DefaultResources {
   /// alphanumeric characters to create your default Hosting site name. For
   /// example, if your `projectId` is `myproject123`, your default Hosting site
   /// name might be: `myproject123-a5c16`
+  ///
+  /// Output only.
   core.String? hostingSite;
 
   /// The ID of the Project's default GCP resource location.
@@ -2126,6 +2318,8 @@ class DefaultResources {
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
+  ///
+  /// Output only.
   core.String? locationId;
 
   /// The default Firebase Realtime Database instance name, in the format:
@@ -2138,10 +2332,14 @@ class DefaultResources {
   /// alphanumeric characters to create your default Realtime Database instance
   /// name. For example, if your `projectId` is `myproject123`, your default
   /// database instance name might be: `myproject123-a5c16`
+  ///
+  /// Output only.
   core.String? realtimeDatabaseInstance;
 
   /// The default Cloud Storage for Firebase storage bucket, in the format:
   /// PROJECT_ID.appspot.com
+  ///
+  /// Output only.
   core.String? storageBucket;
 
   DefaultResources({
@@ -2210,6 +2408,14 @@ class FinalizeDefaultLocationRequest {
 
 /// A high-level summary of an App.
 class FirebaseAppInfo {
+  /// The key_id of the GCP ApiKey associated with this App.
+  ///
+  /// If set must have no restrictions, or only have restrictions that are valid
+  /// for the associated Firebase App. Cannot be set to an empty value in update
+  /// requests. If left unset on create requests, an existing valid API Key will
+  /// be chosen, or if no valid API Keys exist, one will be provisioned for you.
+  core.String? apiKeyId;
+
   /// The globally unique, Firebase-assigned identifier for the `WebApp`.
   ///
   /// This identifier should be treated as an opaque token, as the data format
@@ -2248,16 +2454,30 @@ class FirebaseAppInfo {
   /// - "WEB" : The Firebase App is associated with web.
   core.String? platform;
 
+  /// The lifecycle state of the App.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : The app has been soft deleted.
+  core.String? state;
+
   FirebaseAppInfo({
+    this.apiKeyId,
     this.appId,
     this.displayName,
     this.name,
     this.namespace,
     this.platform,
+    this.state,
   });
 
   FirebaseAppInfo.fromJson(core.Map _json)
       : this(
+          apiKeyId: _json.containsKey('apiKeyId')
+              ? _json['apiKeyId'] as core.String
+              : null,
           appId:
               _json.containsKey('appId') ? _json['appId'] as core.String : null,
           displayName: _json.containsKey('displayName')
@@ -2270,14 +2490,18 @@ class FirebaseAppInfo {
           platform: _json.containsKey('platform')
               ? _json['platform'] as core.String
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiKeyId != null) 'apiKeyId': apiKeyId!,
         if (appId != null) 'appId': appId!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (namespace != null) 'namespace': namespace!,
         if (platform != null) 'platform': platform!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2294,8 +2518,23 @@ class FirebaseAppInfo {
 /// the same underlying GCP identifiers (`projectNumber` and `projectId`). This
 /// allows for easy interop with Google APIs.
 class FirebaseProject {
+  /// Set of user-defined annotations for the FirebaseProject as per
+  /// \[AIP-128\](https://google.aip.dev/128#annotations).
+  ///
+  /// These annotations are intended solely for developers and client-side tools
+  /// Firebase services will not mutate this annotation set.
+  core.Map<core.String, core.String>? annotations;
+
   /// The user-assigned display name of the Project.
   core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  ///
+  /// \[AIP-154\](https://google.aip.dev/154#declarative-friendly-resources).
+  /// This etag is strongly validated.
+  core.String? etag;
 
   /// The resource name of the Project, in the format:
   /// projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's
@@ -2314,7 +2553,7 @@ class FirebaseProject {
   /// associated with the Project, but it should generally be treated as a
   /// convenience alias to reference the Project.
   ///
-  /// Immutable.
+  /// Output only.
   core.String? projectId;
 
   /// The globally unique, Google-assigned canonical identifier for the Project.
@@ -2322,10 +2561,12 @@ class FirebaseProject {
   /// Use this identifier when configuring integrations and/or making API calls
   /// to Firebase or third-party services.
   ///
-  /// Immutable.
+  /// Output only.
   core.String? projectNumber;
 
   /// The default Firebase resources associated with the Project.
+  ///
+  /// Output only.
   DefaultResources? resources;
 
   /// The lifecycle state of the Project.
@@ -2342,7 +2583,9 @@ class FirebaseProject {
   core.String? state;
 
   FirebaseProject({
+    this.annotations,
     this.displayName,
+    this.etag,
     this.name,
     this.projectId,
     this.projectNumber,
@@ -2352,9 +2595,19 @@ class FirebaseProject {
 
   FirebaseProject.fromJson(core.Map _json)
       : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           projectId: _json.containsKey('projectId')
               ? _json['projectId'] as core.String
@@ -2371,7 +2624,9 @@ class FirebaseProject {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
@@ -2396,7 +2651,7 @@ class IosApp {
   /// This identifier should be treated as an opaque token, as the data format
   /// is not specified.
   ///
-  /// Immutable.
+  /// Output only. Immutable.
   core.String? appId;
 
   /// The automatically generated Apple ID assigned to the iOS app by Apple in
@@ -2429,8 +2684,17 @@ class IosApp {
   /// A user-assigned unique identifier of the parent FirebaseProject for the
   /// `IosApp`.
   ///
-  /// Immutable.
+  /// Output only. Immutable.
   core.String? projectId;
+
+  /// The lifecycle state of the App.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : The app has been soft deleted.
+  core.String? state;
 
   /// The Apple Developer Team ID associated with the App in the App Store.
   core.String? teamId;
@@ -2443,6 +2707,7 @@ class IosApp {
     this.displayName,
     this.name,
     this.projectId,
+    this.state,
     this.teamId,
   });
 
@@ -2466,6 +2731,8 @@ class IosApp {
           projectId: _json.containsKey('projectId')
               ? _json['projectId'] as core.String
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
           teamId: _json.containsKey('teamId')
               ? _json['teamId'] as core.String
               : null,
@@ -2479,6 +2746,7 @@ class IosApp {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
+        if (state != null) 'state': state!,
         if (teamId != null) 'teamId': teamId!,
       };
 }
@@ -2974,6 +3242,114 @@ class RemoveAnalyticsRequest {
       };
 }
 
+class RemoveAndroidAppRequest {
+  /// If set to true, and the App is not found, the request will succeed but no
+  /// action will be taken on the server.
+  core.bool? allowMissing;
+
+  /// Checksum provided in the AndroidApp entity, which if provided ensures the
+  /// client has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// If set to true, only validate the request and do not delete the app.
+  core.bool? validateOnly;
+
+  RemoveAndroidAppRequest({
+    this.allowMissing,
+    this.etag,
+    this.validateOnly,
+  });
+
+  RemoveAndroidAppRequest.fromJson(core.Map _json)
+      : this(
+          allowMissing: _json.containsKey('allowMissing')
+              ? _json['allowMissing'] as core.bool
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+class RemoveIosAppRequest {
+  /// If set to true, and the App is not found, the request will succeed but no
+  /// action will be taken on the server.
+  core.bool? allowMissing;
+
+  /// Checksum provided in the IosApp entity, which if provided ensures the
+  /// client has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// If set to true, only validate the request and do not delete the app.
+  core.bool? validateOnly;
+
+  RemoveIosAppRequest({
+    this.allowMissing,
+    this.etag,
+    this.validateOnly,
+  });
+
+  RemoveIosAppRequest.fromJson(core.Map _json)
+      : this(
+          allowMissing: _json.containsKey('allowMissing')
+              ? _json['allowMissing'] as core.bool
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+class RemoveWebAppRequest {
+  /// If set to true, and the App is not found, the request will succeed but no
+  /// action will be taken on the server.
+  core.bool? allowMissing;
+
+  /// Checksum provided in the WebApp entity, which if provided ensures the
+  /// client has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// If set to true, only validate the request and do not delete the app.
+  core.bool? validateOnly;
+
+  RemoveWebAppRequest({
+    this.allowMissing,
+    this.etag,
+    this.validateOnly,
+  });
+
+  RemoveWebAppRequest.fromJson(core.Map _json)
+      : this(
+          allowMissing: _json.containsKey('allowMissing')
+              ? _json['allowMissing'] as core.bool
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
 class SearchFirebaseAppsResponse {
   /// One page of results from a call to `SearchFirebaseApps`.
   core.List<FirebaseAppInfo>? apps;
@@ -3167,6 +3543,15 @@ class WebApp {
   /// Output only. Immutable.
   core.String? projectId;
 
+  /// The lifecycle state of the App.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : The app has been soft deleted.
+  core.String? state;
+
   /// A unique, Firebase-assigned identifier for the `WebApp`.
   ///
   /// This identifier is only used to populate the `namespace` value for the
@@ -3184,6 +3569,7 @@ class WebApp {
     this.displayName,
     this.name,
     this.projectId,
+    this.state,
     this.webId,
   });
 
@@ -3206,6 +3592,8 @@ class WebApp {
           projectId: _json.containsKey('projectId')
               ? _json['projectId'] as core.String
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
           webId:
               _json.containsKey('webId') ? _json['webId'] as core.String : null,
         );
@@ -3217,6 +3605,7 @@ class WebApp {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
+        if (state != null) 'state': state!,
         if (webId != null) 'webId': webId!,
       };
 }

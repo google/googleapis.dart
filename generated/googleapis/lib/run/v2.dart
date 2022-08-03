@@ -1584,6 +1584,7 @@ class GoogleCloudRunV2Condition {
   /// - "NON_ZERO_EXIT_CODE" : A task reached its retry limit and the last
   /// attempt failed due to the user container exiting with a non-zero exit
   /// code.
+  /// - "CANCELLED" : The execution was cancelled by users.
   core.String? executionReason;
 
   /// Last time the condition transitioned from one status to another.
@@ -1779,6 +1780,12 @@ class GoogleCloudRunV2Container {
   /// Volume to mount into the container's filesystem.
   core.List<GoogleCloudRunV2VolumeMount>? volumeMounts;
 
+  /// Container's working directory.
+  ///
+  /// If not specified, the container runtime's default will be used, which
+  /// might be configured in the container image.
+  core.String? workingDir;
+
   GoogleCloudRunV2Container({
     this.args,
     this.command,
@@ -1788,6 +1795,7 @@ class GoogleCloudRunV2Container {
     this.ports,
     this.resources,
     this.volumeMounts,
+    this.workingDir,
   });
 
   GoogleCloudRunV2Container.fromJson(core.Map _json)
@@ -1827,6 +1835,9 @@ class GoogleCloudRunV2Container {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          workingDir: _json.containsKey('workingDir')
+              ? _json['workingDir'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1838,6 +1849,7 @@ class GoogleCloudRunV2Container {
         if (ports != null) 'ports': ports!,
         if (resources != null) 'resources': resources!,
         if (volumeMounts != null) 'volumeMounts': volumeMounts!,
+        if (workingDir != null) 'workingDir': workingDir!,
       };
 }
 
@@ -2280,18 +2292,25 @@ class GoogleCloudRunV2Execution {
 /// including the latest status.
 class GoogleCloudRunV2ExecutionReference {
   /// Creation timestamp of the execution.
+  core.String? completionTime;
+
+  /// Creation timestamp of the execution.
   core.String? createTime;
 
   /// Name of the execution.
   core.String? name;
 
   GoogleCloudRunV2ExecutionReference({
+    this.completionTime,
     this.createTime,
     this.name,
   });
 
   GoogleCloudRunV2ExecutionReference.fromJson(core.Map _json)
       : this(
+          completionTime: _json.containsKey('completionTime')
+              ? _json['completionTime'] as core.String
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -2299,6 +2318,7 @@ class GoogleCloudRunV2ExecutionReference {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
       };
@@ -3526,7 +3546,7 @@ class GoogleCloudRunV2SecretKeySelector {
 class GoogleCloudRunV2SecretVolumeSource {
   /// Integer representation of mode bits to use on created files by default.
   ///
-  /// Must be a value between 0000 and 0777 (octal), defaulting to 0644.
+  /// Must be a value between 0000 and 0777 (octal), defaulting to 0444.
   /// Directories within the path are not affected by this setting. Notes *
   /// Internally, a umask of 0222 will be applied to any non-zero value. * This
   /// is an integer representation of the mode bits. So, the octal integer value

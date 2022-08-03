@@ -1336,7 +1336,7 @@
             }
         }
     },
-    "revision": "20220604",
+    "revision": "20220730",
     "rootUrl": "https://firebaseappcheck.googleapis.com/",
     "schemas": {
         "GoogleFirebaseAppcheckV1AppAttestConfig": {

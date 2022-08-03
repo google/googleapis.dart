@@ -187,7 +187,7 @@ The Dataproc Metastore API is used to manage the lifecycle and configuration of 
 
 #### Network Connectivity API - `networkconnectivity.v1alpha1`
 
-The Network Connectivity API provides access to Network Connectivity Center.
+This API enables connectivity with and between Google Cloud resources.
 
 - [Documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/networkconnectivity.v1alpha1/networkconnectivity.v1alpha1-library.html)

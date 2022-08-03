@@ -690,6 +690,7 @@ class FilterPair {
   /// - "FILTER_MEDIA_TYPE"
   /// - "FILTER_AUDIO_FEED_TYPE_NAME"
   /// - "FILTER_TRUEVIEW_TARGETING_EXPANSION"
+  /// - "FILTER_PUBLISHER_TRAFFIC_SOURCE"
   core.String? type;
 
   /// Filter value.
@@ -1305,6 +1306,7 @@ class PathQueryOptionsFilter {
   /// - "FILTER_MEDIA_TYPE"
   /// - "FILTER_AUDIO_FEED_TYPE_NAME"
   /// - "FILTER_TRUEVIEW_TARGETING_EXPANSION"
+  /// - "FILTER_PUBLISHER_TRAFFIC_SOURCE"
   core.String? filter;
 
   /// Indicates how the filter should be matched to the value.

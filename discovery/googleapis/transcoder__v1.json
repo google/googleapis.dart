@@ -383,7 +383,7 @@
             }
         }
     },
-    "revision": "20220518",
+    "revision": "20220719",
     "rootUrl": "https://transcoder.googleapis.com/",
     "schemas": {
         "AdBreak": {
@@ -973,6 +973,13 @@
                     "description": "Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
                     "type": "string"
                 },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The labels associated with this job. You can use these to organize and group your jobs.",
+                    "type": "object"
+                },
                 "name": {
                     "description": "The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`",
                     "type": "string"
@@ -1080,7 +1087,7 @@
                     "description": "Destination on Pub/Sub."
                 },
                 "spriteSheets": {
-                    "description": "List of output sprite sheets.",
+                    "description": "List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.",
                     "items": {
                         "$ref": "SpriteSheet"
                     },
@@ -1096,6 +1103,13 @@
                 "config": {
                     "$ref": "JobConfig",
                     "description": "The configuration for this template."
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The labels associated with this job template. You can use these to organize and group your job templates.",
+                    "type": "object"
                 },
                 "name": {
                     "description": "The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`",

@@ -398,7 +398,7 @@
             }
         }
     },
-    "revision": "20220604",
+    "revision": "20220802",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "AmpInspectionResult": {

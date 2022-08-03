@@ -490,12 +490,82 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Package> buildUnnamed8() => [
+core.List<api.MavenArtifact> buildUnnamed8() => [
+      buildMavenArtifact(),
+      buildMavenArtifact(),
+    ];
+
+void checkUnnamed8(core.List<api.MavenArtifact> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMavenArtifact(o[0]);
+  checkMavenArtifact(o[1]);
+}
+
+core.int buildCounterListMavenArtifactsResponse = 0;
+api.ListMavenArtifactsResponse buildListMavenArtifactsResponse() {
+  final o = api.ListMavenArtifactsResponse();
+  buildCounterListMavenArtifactsResponse++;
+  if (buildCounterListMavenArtifactsResponse < 3) {
+    o.mavenArtifacts = buildUnnamed8();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListMavenArtifactsResponse--;
+  return o;
+}
+
+void checkListMavenArtifactsResponse(api.ListMavenArtifactsResponse o) {
+  buildCounterListMavenArtifactsResponse++;
+  if (buildCounterListMavenArtifactsResponse < 3) {
+    checkUnnamed8(o.mavenArtifacts!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListMavenArtifactsResponse--;
+}
+
+core.List<api.NpmPackage> buildUnnamed9() => [
+      buildNpmPackage(),
+      buildNpmPackage(),
+    ];
+
+void checkUnnamed9(core.List<api.NpmPackage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNpmPackage(o[0]);
+  checkNpmPackage(o[1]);
+}
+
+core.int buildCounterListNpmPackagesResponse = 0;
+api.ListNpmPackagesResponse buildListNpmPackagesResponse() {
+  final o = api.ListNpmPackagesResponse();
+  buildCounterListNpmPackagesResponse++;
+  if (buildCounterListNpmPackagesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.npmPackages = buildUnnamed9();
+  }
+  buildCounterListNpmPackagesResponse--;
+  return o;
+}
+
+void checkListNpmPackagesResponse(api.ListNpmPackagesResponse o) {
+  buildCounterListNpmPackagesResponse++;
+  if (buildCounterListNpmPackagesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed9(o.npmPackages!);
+  }
+  buildCounterListNpmPackagesResponse--;
+}
+
+core.List<api.Package> buildUnnamed10() => [
       buildPackage(),
       buildPackage(),
     ];
 
-void checkUnnamed8(core.List<api.Package> o) {
+void checkUnnamed10(core.List<api.Package> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPackage(o[0]);
   checkPackage(o[1]);
@@ -507,7 +577,7 @@ api.ListPackagesResponse buildListPackagesResponse() {
   buildCounterListPackagesResponse++;
   if (buildCounterListPackagesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.packages = buildUnnamed8();
+    o.packages = buildUnnamed10();
   }
   buildCounterListPackagesResponse--;
   return o;
@@ -520,17 +590,52 @@ void checkListPackagesResponse(api.ListPackagesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.packages!);
+    checkUnnamed10(o.packages!);
   }
   buildCounterListPackagesResponse--;
 }
 
-core.List<api.Repository> buildUnnamed9() => [
+core.List<api.PythonPackage> buildUnnamed11() => [
+      buildPythonPackage(),
+      buildPythonPackage(),
+    ];
+
+void checkUnnamed11(core.List<api.PythonPackage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPythonPackage(o[0]);
+  checkPythonPackage(o[1]);
+}
+
+core.int buildCounterListPythonPackagesResponse = 0;
+api.ListPythonPackagesResponse buildListPythonPackagesResponse() {
+  final o = api.ListPythonPackagesResponse();
+  buildCounterListPythonPackagesResponse++;
+  if (buildCounterListPythonPackagesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.pythonPackages = buildUnnamed11();
+  }
+  buildCounterListPythonPackagesResponse--;
+  return o;
+}
+
+void checkListPythonPackagesResponse(api.ListPythonPackagesResponse o) {
+  buildCounterListPythonPackagesResponse++;
+  if (buildCounterListPythonPackagesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed11(o.pythonPackages!);
+  }
+  buildCounterListPythonPackagesResponse--;
+}
+
+core.List<api.Repository> buildUnnamed12() => [
       buildRepository(),
       buildRepository(),
     ];
 
-void checkUnnamed9(core.List<api.Repository> o) {
+void checkUnnamed12(core.List<api.Repository> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRepository(o[0]);
   checkRepository(o[1]);
@@ -542,7 +647,7 @@ api.ListRepositoriesResponse buildListRepositoriesResponse() {
   buildCounterListRepositoriesResponse++;
   if (buildCounterListRepositoriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.repositories = buildUnnamed9();
+    o.repositories = buildUnnamed12();
   }
   buildCounterListRepositoriesResponse--;
   return o;
@@ -555,17 +660,17 @@ void checkListRepositoriesResponse(api.ListRepositoriesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.repositories!);
+    checkUnnamed12(o.repositories!);
   }
   buildCounterListRepositoriesResponse--;
 }
 
-core.List<api.Tag> buildUnnamed10() => [
+core.List<api.Tag> buildUnnamed13() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed10(core.List<api.Tag> o) {
+void checkUnnamed13(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -577,7 +682,7 @@ api.ListTagsResponse buildListTagsResponse() {
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tags = buildUnnamed10();
+    o.tags = buildUnnamed13();
   }
   buildCounterListTagsResponse--;
   return o;
@@ -590,17 +695,17 @@ void checkListTagsResponse(api.ListTagsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.tags!);
+    checkUnnamed13(o.tags!);
   }
   buildCounterListTagsResponse--;
 }
 
-core.List<api.Version> buildUnnamed11() => [
+core.List<api.Version> buildUnnamed14() => [
       buildVersion(),
       buildVersion(),
     ];
 
-void checkUnnamed11(core.List<api.Version> o) {
+void checkUnnamed14(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVersion(o[0]);
   checkVersion(o[1]);
@@ -612,7 +717,7 @@ api.ListVersionsResponse buildListVersionsResponse() {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.versions = buildUnnamed11();
+    o.versions = buildUnnamed14();
   }
   buildCounterListVersionsResponse--;
   return o;
@@ -625,17 +730,17 @@ void checkListVersionsResponse(api.ListVersionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.versions!);
+    checkUnnamed14(o.versions!);
   }
   buildCounterListVersionsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed12() => {
+core.Map<core.String, core.String> buildUnnamed15() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed12(core.Map<core.String, core.String> o) {
+void checkUnnamed15(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -647,7 +752,7 @@ void checkUnnamed12(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.Map<core.String, core.Object?> buildUnnamed16() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -660,7 +765,7 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
       },
     };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
+void checkUnnamed16(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -698,9 +803,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed12();
+    o.labels = buildUnnamed15();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed13();
+    o.metadata = buildUnnamed16();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -714,18 +819,70 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.labels!);
+    checkUnnamed15(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.metadata!);
+    checkUnnamed16(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
   }
   buildCounterLocation--;
+}
+
+core.int buildCounterMavenArtifact = 0;
+api.MavenArtifact buildMavenArtifact() {
+  final o = api.MavenArtifact();
+  buildCounterMavenArtifact++;
+  if (buildCounterMavenArtifact < 3) {
+    o.artifactId = 'foo';
+    o.createTime = 'foo';
+    o.groupId = 'foo';
+    o.name = 'foo';
+    o.pomUri = 'foo';
+    o.updateTime = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterMavenArtifact--;
+  return o;
+}
+
+void checkMavenArtifact(api.MavenArtifact o) {
+  buildCounterMavenArtifact++;
+  if (buildCounterMavenArtifact < 3) {
+    unittest.expect(
+      o.artifactId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.groupId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pomUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMavenArtifact--;
 }
 
 core.int buildCounterMavenRepositoryConfig = 0;
@@ -752,7 +909,68 @@ void checkMavenRepositoryConfig(api.MavenRepositoryConfig o) {
   buildCounterMavenRepositoryConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed14() => {
+core.List<core.String> buildUnnamed17() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed17(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterNpmPackage = 0;
+api.NpmPackage buildNpmPackage() {
+  final o = api.NpmPackage();
+  buildCounterNpmPackage++;
+  if (buildCounterNpmPackage < 3) {
+    o.createTime = 'foo';
+    o.name = 'foo';
+    o.packageName = 'foo';
+    o.tags = buildUnnamed17();
+    o.updateTime = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterNpmPackage--;
+  return o;
+}
+
+void checkNpmPackage(api.NpmPackage o) {
+  buildCounterNpmPackage++;
+  if (buildCounterNpmPackage < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed17(o.tags!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNpmPackage--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed18() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -765,7 +983,7 @@ core.Map<core.String, core.Object?> buildUnnamed14() => {
       },
     };
 
-void checkUnnamed14(core.Map<core.String, core.Object?> o) {
+void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -797,7 +1015,7 @@ void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed15() => {
+core.Map<core.String, core.Object?> buildUnnamed19() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -810,7 +1028,7 @@ core.Map<core.String, core.Object?> buildUnnamed15() => {
       },
     };
 
-void checkUnnamed15(core.Map<core.String, core.Object?> o) {
+void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -849,9 +1067,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed14();
+    o.metadata = buildUnnamed18();
     o.name = 'foo';
-    o.response = buildUnnamed15();
+    o.response = buildUnnamed19();
   }
   buildCounterOperation--;
   return o;
@@ -862,12 +1080,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed14(o.metadata!);
+    checkUnnamed18(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.response!);
+    checkUnnamed19(o.response!);
   }
   buildCounterOperation--;
 }
@@ -909,12 +1127,12 @@ void checkPackage(api.Package o) {
   buildCounterPackage--;
 }
 
-core.List<api.Binding> buildUnnamed16() => [
+core.List<api.Binding> buildUnnamed20() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed16(core.List<api.Binding> o) {
+void checkUnnamed20(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -925,7 +1143,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed16();
+    o.bindings = buildUnnamed20();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -936,7 +1154,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed16(o.bindings!);
+    checkUnnamed20(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -976,12 +1194,59 @@ void checkProjectSettings(api.ProjectSettings o) {
   buildCounterProjectSettings--;
 }
 
-core.Map<core.String, core.String> buildUnnamed17() => {
+core.int buildCounterPythonPackage = 0;
+api.PythonPackage buildPythonPackage() {
+  final o = api.PythonPackage();
+  buildCounterPythonPackage++;
+  if (buildCounterPythonPackage < 3) {
+    o.createTime = 'foo';
+    o.name = 'foo';
+    o.packageName = 'foo';
+    o.updateTime = 'foo';
+    o.uri = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterPythonPackage--;
+  return o;
+}
+
+void checkPythonPackage(api.PythonPackage o) {
+  buildCounterPythonPackage++;
+  if (buildCounterPythonPackage < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPythonPackage--;
+}
+
+core.Map<core.String, core.String> buildUnnamed21() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed17(core.Map<core.String, core.String> o) {
+void checkUnnamed21(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1002,7 +1267,7 @@ api.Repository buildRepository() {
     o.description = 'foo';
     o.format = 'foo';
     o.kmsKeyName = 'foo';
-    o.labels = buildUnnamed17();
+    o.labels = buildUnnamed21();
     o.mavenConfig = buildMavenRepositoryConfig();
     o.name = 'foo';
     o.sizeBytes = 'foo';
@@ -1031,7 +1296,7 @@ void checkRepository(api.Repository o) {
       o.kmsKeyName!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.labels!);
+    checkUnnamed21(o.labels!);
     checkMavenRepositoryConfig(o.mavenConfig!);
     unittest.expect(
       o.name!,
@@ -1068,7 +1333,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed22() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1081,7 +1346,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
       },
     };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
+void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1113,15 +1378,15 @@ void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed19() => [
-      buildUnnamed18(),
-      buildUnnamed18(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed23() => [
+      buildUnnamed22(),
+      buildUnnamed22(),
     ];
 
-void checkUnnamed19(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed23(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed18(o[0]);
-  checkUnnamed18(o[1]);
+  checkUnnamed22(o[0]);
+  checkUnnamed22(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1130,7 +1395,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed19();
+    o.details = buildUnnamed23();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1144,7 +1409,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed19(o.details!);
+    checkUnnamed23(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1180,12 +1445,12 @@ void checkTag(api.Tag o) {
   buildCounterTag--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed24() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1202,7 +1467,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed20();
+    o.permissions = buildUnnamed24();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1211,17 +1476,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed20(o.permissions!);
+    checkUnnamed24(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1238,7 +1503,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed21();
+    o.permissions = buildUnnamed25();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1247,7 +1512,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed21(o.permissions!);
+    checkUnnamed25(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1320,7 +1585,7 @@ void checkUploadYumArtifactRequest(api.UploadYumArtifactRequest o) {
   buildCounterUploadYumArtifactRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed22() => {
+core.Map<core.String, core.Object?> buildUnnamed26() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1333,7 +1598,7 @@ core.Map<core.String, core.Object?> buildUnnamed22() => {
       },
     };
 
-void checkUnnamed22(core.Map<core.String, core.Object?> o) {
+void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -1365,12 +1630,12 @@ void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.Tag> buildUnnamed23() => [
+core.List<api.Tag> buildUnnamed27() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed23(core.List<api.Tag> o) {
+void checkUnnamed27(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -1383,9 +1648,9 @@ api.Version buildVersion() {
   if (buildCounterVersion < 3) {
     o.createTime = 'foo';
     o.description = 'foo';
-    o.metadata = buildUnnamed22();
+    o.metadata = buildUnnamed26();
     o.name = 'foo';
-    o.relatedTags = buildUnnamed23();
+    o.relatedTags = buildUnnamed27();
     o.updateTime = 'foo';
   }
   buildCounterVersion--;
@@ -1403,12 +1668,12 @@ void checkVersion(api.Version o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.metadata!);
+    checkUnnamed26(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.relatedTags!);
+    checkUnnamed27(o.relatedTags!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -1548,6 +1813,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListMavenArtifactsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListMavenArtifactsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListMavenArtifactsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListMavenArtifactsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListNpmPackagesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListNpmPackagesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListNpmPackagesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListNpmPackagesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListPackagesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListPackagesResponse();
@@ -1555,6 +1840,16 @@ void main() {
       final od = api.ListPackagesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListPackagesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListPythonPackagesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListPythonPackagesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListPythonPackagesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListPythonPackagesResponse(od);
     });
   });
 
@@ -1598,6 +1893,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MavenArtifact', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMavenArtifact();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MavenArtifact.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMavenArtifact(od);
+    });
+  });
+
   unittest.group('obj-schema-MavenRepositoryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMavenRepositoryConfig();
@@ -1605,6 +1910,16 @@ void main() {
       final od = api.MavenRepositoryConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMavenRepositoryConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-NpmPackage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNpmPackage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.NpmPackage.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkNpmPackage(od);
     });
   });
 
@@ -1645,6 +1960,16 @@ void main() {
       final od = api.ProjectSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkProjectSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-PythonPackage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPythonPackage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PythonPackage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPythonPackage(od);
     });
   });
 
@@ -2921,6 +3246,263 @@ void main() {
     });
   });
 
+  unittest.group('resource-ProjectsLocationsRepositoriesMavenArtifactsResource',
+      () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .mavenArtifacts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildMavenArtifact());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMavenArtifact(response as api.MavenArtifact);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .mavenArtifacts;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListMavenArtifactsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMavenArtifactsResponse(
+          response as api.ListMavenArtifactsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsRepositoriesNpmPackagesResource',
+      () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .npmPackages;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildNpmPackage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkNpmPackage(response as api.NpmPackage);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .npmPackages;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListNpmPackagesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNpmPackagesResponse(response as api.ListNpmPackagesResponse);
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsRepositoriesPackagesResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
@@ -3641,6 +4223,135 @@ void main() {
           view: arg_view,
           $fields: arg_$fields);
       checkListVersionsResponse(response as api.ListVersionsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsRepositoriesPythonPackagesResource',
+      () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .pythonPackages;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPythonPackage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkPythonPackage(response as api.PythonPackage);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .pythonPackages;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListPythonPackagesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPythonPackagesResponse(
+          response as api.ListPythonPackagesResponse);
     });
   });
 

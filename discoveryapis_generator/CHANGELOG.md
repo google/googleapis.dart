@@ -3,6 +3,7 @@
 - Require Dart 2.16 or later.
 - Add positional parameters to all schema types.
 - Added `Function` to the set of reserved names.
+- Remove extra parenthesis from date encoding.
 
 ## 1.0.0
 

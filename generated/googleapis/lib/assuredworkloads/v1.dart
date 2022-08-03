@@ -426,6 +426,61 @@ class OrganizationsLocationsWorkloadsResource {
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Restrict the list of resources allowed in the Workload environment.
+  ///
+  /// The current list of allowed products can be found at
+  /// https://cloud.google.com/assured-workloads/docs/supported-products In
+  /// addition to assuredworkloads.workload.update permission, the user should
+  /// also have orgpolicy.policy.set permission on the folder resource to use
+  /// this functionality.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Workload. This is the
+  /// workloads's relative path in the API, formatted as
+  /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
+  /// For example,
+  /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse>
+      restrictAllowedResources(
+    GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$name') + ':restrictAllowedResources';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// Response of ListWorkloads endpoint.
@@ -463,6 +518,43 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
       };
 }
 
+/// Request for restricting list of available resources in Workload environment.
+class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
+  /// The type of restriction for using gcp products in the Workload
+  /// environment.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESTRICTION_TYPE_UNSPECIFIED" : Unknown restriction type.
+  /// - "ALLOW_ALL_GCP_RESOURCES" : Allow the use all of all gcp products,
+  /// irrespective of the compliance posture. This effectively removes
+  /// gcp.restrictServiceUsage OrgPolicy on the AssuredWorkloads Folder.
+  /// - "ALLOW_COMPLIANT_RESOURCES" : Based on Workload's compliance regime,
+  /// allowed list changes. See -
+  /// https://cloud.google.com/assured-workloads/docs/supported-products for the
+  /// list of supported resources.
+  core.String? restrictionType;
+
+  GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest({
+    this.restrictionType,
+  });
+
+  GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
+      core.Map _json)
+      : this(
+          restrictionType: _json.containsKey('restrictionType')
+              ? _json['restrictionType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (restrictionType != null) 'restrictionType': restrictionType!,
+      };
+}
+
+/// Response for restricting the list of allowed resources.
+typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
+
 /// An Workload object for managing highly regulated workloads of cloud
 /// customers.
 class GoogleCloudAssuredworkloadsV1Workload {
@@ -495,6 +587,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// controls
   /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
   /// Support controls
+  /// - "ITAR" : International Traffic in Arms Regulations
+  /// - "AU_REGIONS_AND_US_SUPPORT" : Assured Workloads for Australia Regions
+  /// and Support controls
   core.String? complianceRegime;
 
   /// The Workload creation timestamp.

@@ -14,7 +14,7 @@
 
 /// Network Connectivity API - v1alpha1
 ///
-/// The Network Connectivity API provides access to Network Connectivity Center.
+/// This API enables connectivity with and between Google Cloud resources.
 ///
 /// For more information, see
 /// <https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest>
@@ -28,6 +28,7 @@
 ///       - [ProjectsLocationsGlobalHubsResource]
 ///     - [ProjectsLocationsInternalRangesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsServiceIdentifiersResource]
 ///     - [ProjectsLocationsServiceInstancesResource]
 ///     - [ProjectsLocationsSpokesResource]
 library networkconnectivity.v1alpha1;
@@ -46,7 +47,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Network Connectivity API provides access to Network Connectivity Center.
+/// This API enables connectivity with and between Google Cloud resources.
 class NetworkconnectivityApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -84,6 +85,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsInternalRangesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsServiceIdentifiersResource get serviceIdentifiers =>
+      ProjectsLocationsServiceIdentifiersResource(_requester);
   ProjectsLocationsServiceInstancesResource get serviceInstances =>
       ProjectsLocationsServiceInstancesResource(_requester);
   ProjectsLocationsSpokesResource get spokes =>
@@ -359,7 +362,7 @@ class ProjectsLocationsGlobalHubsResource {
   ProjectsLocationsGlobalHubsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Hub in a given project and location.
+  /// Creates a new Network Connectivity Center hub in the specified project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -418,7 +421,7 @@ class ProjectsLocationsGlobalHubsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single Hub.
+  /// Deletes a Network Connectivity Center hub.
   ///
   /// Request parameters:
   ///
@@ -469,7 +472,7 @@ class ProjectsLocationsGlobalHubsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single Hub.
+  /// Gets details about a Network Connectivity Center hub.
   ///
   /// Request parameters:
   ///
@@ -563,7 +566,8 @@ class ProjectsLocationsGlobalHubsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists Hubs in a given project and location.
+  /// Lists the Network Connectivity Center hubs associated with a given
+  /// project.
   ///
   /// Request parameters:
   ///
@@ -617,7 +621,8 @@ class ProjectsLocationsGlobalHubsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the parameters of a single Hub.
+  /// Updates the description and/or labels of a Network Connectivity Center
+  /// hub.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1139,6 +1144,170 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsServiceIdentifiersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServiceIdentifiersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceIdentifiers/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceIdentifiers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceIdentifiers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsServiceInstancesResource {
   final commons.ApiRequester _requester;
 
@@ -1309,7 +1478,7 @@ class ProjectsLocationsSpokesResource {
   ProjectsLocationsSpokesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Spoke in a given project and location.
+  /// Creates a Network Connectivity Center spoke.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1368,7 +1537,7 @@ class ProjectsLocationsSpokesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single Spoke.
+  /// Deletes a Network Connectivity Center spoke.
   ///
   /// Request parameters:
   ///
@@ -1419,7 +1588,7 @@ class ProjectsLocationsSpokesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single Spoke.
+  /// Gets details about a Network Connectivity Center spoke.
   ///
   /// Request parameters:
   ///
@@ -1513,7 +1682,8 @@ class ProjectsLocationsSpokesResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists Spokes in a given project and location.
+  /// Lists the Network Connectivity Center spokes in a specified project and
+  /// location.
   ///
   /// Request parameters:
   ///
@@ -1567,7 +1737,7 @@ class ProjectsLocationsSpokesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the parameters of a single Spoke.
+  /// Updates the parameters of a Network Connectivity Center spoke.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2051,6 +2221,7 @@ class Hub {
   /// - "CREATING" : The resource's create operation is in progress
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's Delete operation is in progress
+  /// - "UPDATING" : The resource's Update operation is in progress
   core.String? state;
 
   /// Google-generated UUID for this resource.
@@ -2477,6 +2648,7 @@ class Spoke {
   /// - "CREATING" : The resource's create operation is in progress
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's Delete operation is in progress
+  /// - "UPDATING" : The resource's Update operation is in progress
   core.String? state;
 
   /// Google-generated UUID for this resource.

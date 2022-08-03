@@ -301,6 +301,128 @@ class CustomersReportsResource {
 
   CustomersReportsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Generate report of the number of devices expiring in each month of the
+  /// selected time frame.
+  ///
+  /// Devices are grouped by auto update expiration date and model. Further
+  /// information can be found
+  /// [here](https://support.google.com/chrome/a/answer/10564947).
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID or "my_customer" prefixed with
+  /// "customers/".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [maxAueDate] - Optional. Maximum expiration date in format yyyy-mm-dd in
+  /// UTC timezone. If included returns all devices that have already expired
+  /// and devices with auto expiration date equal to or earlier than the maximum
+  /// date.
+  ///
+  /// [minAueDate] - Optional. Maximum expiration date in format yyyy-mm-dd in
+  /// UTC timezone. If included returns all devices that have already expired
+  /// and devices with auto expiration date equal to or later than the minimum
+  /// date.
+  ///
+  /// [orgUnitId] - Optional. The organizational unit ID, if omitted, will
+  /// return data for all organizational units.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse>
+      countChromeDevicesReachingAutoExpirationDate(
+    core.String customer, {
+    core.String? maxAueDate,
+    core.String? minAueDate,
+    core.String? orgUnitId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxAueDate != null) 'maxAueDate': [maxAueDate],
+      if (minAueDate != null) 'minAueDate': [minAueDate],
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countChromeDevicesReachingAutoExpirationDate';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Counts of ChromeOS devices that have not synced policies or have lacked
+  /// user activity in the past 28 days, are out of date, or are not complaint.
+  ///
+  /// Further information can be found here
+  /// https://support.google.com/chrome/a/answer/10564947
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID or "my_customer" prefixed with
+  /// "customers/".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [orgUnitId] - Optional. The ID of the organizational unit. If omitted, all
+  /// data will be returned.
+  ///
+  /// [readMask] - Required. Mask of the fields that should be populated in the
+  /// returned report.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse>
+      countChromeDevicesThatNeedAttention(
+    core.String customer, {
+    core.String? orgUnitId,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countChromeDevicesThatNeedAttention';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate report of installed Chrome versions.
   ///
   /// Request parameters:
@@ -1631,6 +1753,100 @@ class GoogleChromeManagementV1CountChromeAppRequestsResponse {
       };
 }
 
+/// Response containing a list of devices expiring in each month of a selected
+/// time frame.
+///
+/// Counts are grouped by model and Auto Update Expiration date.
+class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse {
+  /// The list of reports sorted by auto update expiration date in ascending
+  /// order.
+  core.List<GoogleChromeManagementV1DeviceAueCountReport>?
+      deviceAueCountReports;
+
+  GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse({
+    this.deviceAueCountReports,
+  });
+
+  GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse.fromJson(
+      core.Map _json)
+      : this(
+          deviceAueCountReports: _json.containsKey('deviceAueCountReports')
+              ? (_json['deviceAueCountReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceAueCountReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceAueCountReports != null)
+          'deviceAueCountReports': deviceAueCountReports!,
+      };
+}
+
+/// Response containing counts for devices that need attention.
+class GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse {
+  /// Number of ChromeOS devices have not synced policies in the past 28 days.
+  core.String? noRecentPolicySyncCount;
+
+  /// Number of ChromeOS devices that have not seen any user activity in the
+  /// past 28 days.
+  core.String? noRecentUserActivityCount;
+
+  /// Number of devices whose OS version is not compliant.
+  core.String? osVersionNotCompliantCount;
+
+  /// Number of devices that are pending an OS update.
+  core.String? pendingUpdate;
+
+  /// Number of devices that are unable to apply a policy due to an OS version
+  /// mismatch.
+  core.String? unsupportedPolicyCount;
+
+  GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse({
+    this.noRecentPolicySyncCount,
+    this.noRecentUserActivityCount,
+    this.osVersionNotCompliantCount,
+    this.pendingUpdate,
+    this.unsupportedPolicyCount,
+  });
+
+  GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse.fromJson(
+      core.Map _json)
+      : this(
+          noRecentPolicySyncCount: _json.containsKey('noRecentPolicySyncCount')
+              ? _json['noRecentPolicySyncCount'] as core.String
+              : null,
+          noRecentUserActivityCount:
+              _json.containsKey('noRecentUserActivityCount')
+                  ? _json['noRecentUserActivityCount'] as core.String
+                  : null,
+          osVersionNotCompliantCount:
+              _json.containsKey('osVersionNotCompliantCount')
+                  ? _json['osVersionNotCompliantCount'] as core.String
+                  : null,
+          pendingUpdate: _json.containsKey('pendingUpdate')
+              ? _json['pendingUpdate'] as core.String
+              : null,
+          unsupportedPolicyCount: _json.containsKey('unsupportedPolicyCount')
+              ? _json['unsupportedPolicyCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (noRecentPolicySyncCount != null)
+          'noRecentPolicySyncCount': noRecentPolicySyncCount!,
+        if (noRecentUserActivityCount != null)
+          'noRecentUserActivityCount': noRecentUserActivityCount!,
+        if (osVersionNotCompliantCount != null)
+          'osVersionNotCompliantCount': osVersionNotCompliantCount!,
+        if (pendingUpdate != null) 'pendingUpdate': pendingUpdate!,
+        if (unsupportedPolicyCount != null)
+          'unsupportedPolicyCount': unsupportedPolicyCount!,
+      };
+}
+
 /// Response containing requested browser versions details and counts.
 class GoogleChromeManagementV1CountChromeVersionsResponse {
   /// List of all browser versions and their install counts.
@@ -1722,6 +1938,18 @@ class GoogleChromeManagementV1CpuInfo {
   /// - "X64" : x64 architecture
   core.String? architecture;
 
+  /// Whether keylocker is configured.`TRUE` = Enabled; `FALSE` = disabled.
+  ///
+  /// Only reported if keylockerSupported = `TRUE`.
+  ///
+  /// Output only.
+  core.bool? keylockerConfigured;
+
+  /// Whether keylocker is supported.
+  ///
+  /// Output only.
+  core.bool? keylockerSupported;
+
   /// The max CPU clock speed in kHz.
   ///
   /// Output only.
@@ -1736,6 +1964,8 @@ class GoogleChromeManagementV1CpuInfo {
 
   GoogleChromeManagementV1CpuInfo({
     this.architecture,
+    this.keylockerConfigured,
+    this.keylockerSupported,
     this.maxClockSpeed,
     this.model,
   });
@@ -1744,6 +1974,12 @@ class GoogleChromeManagementV1CpuInfo {
       : this(
           architecture: _json.containsKey('architecture')
               ? _json['architecture'] as core.String
+              : null,
+          keylockerConfigured: _json.containsKey('keylockerConfigured')
+              ? _json['keylockerConfigured'] as core.bool
+              : null,
+          keylockerSupported: _json.containsKey('keylockerSupported')
+              ? _json['keylockerSupported'] as core.bool
               : null,
           maxClockSpeed: _json.containsKey('maxClockSpeed')
               ? _json['maxClockSpeed'] as core.int
@@ -1754,6 +1990,10 @@ class GoogleChromeManagementV1CpuInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
+        if (keylockerConfigured != null)
+          'keylockerConfigured': keylockerConfigured!,
+        if (keylockerSupported != null)
+          'keylockerSupported': keylockerSupported!,
         if (maxClockSpeed != null) 'maxClockSpeed': maxClockSpeed!,
         if (model != null) 'model': model!,
       };
@@ -1885,6 +2125,78 @@ class GoogleChromeManagementV1Device {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (machine != null) 'machine': machine!,
+      };
+}
+
+/// Report for CountChromeDevicesPerAueDateResponse, contains the count of
+/// devices of a specific model and auto update expiration range.
+class GoogleChromeManagementV1DeviceAueCountReport {
+  /// Enum value of month corresponding to the auto update expiration date in
+  /// UTC time zone.
+  ///
+  /// If the device is already expired, this field is empty.
+  /// Possible string values are:
+  /// - "MONTH_UNSPECIFIED" : The unspecified month.
+  /// - "JANUARY" : The month of January.
+  /// - "FEBRUARY" : The month of February.
+  /// - "MARCH" : The month of March.
+  /// - "APRIL" : The month of April.
+  /// - "MAY" : The month of May.
+  /// - "JUNE" : The month of June.
+  /// - "JULY" : The month of July.
+  /// - "AUGUST" : The month of August.
+  /// - "SEPTEMBER" : The month of September.
+  /// - "OCTOBER" : The month of October.
+  /// - "NOVEMBER" : The month of November.
+  /// - "DECEMBER" : The month of December.
+  core.String? aueMonth;
+
+  /// Int value of year corresponding to the Auto Update Expiration date in UTC
+  /// time zone.
+  ///
+  /// If the device is already expired, this field is empty.
+  core.String? aueYear;
+
+  /// Count of devices of this model.
+  core.String? count;
+
+  /// Boolean value for whether or not the device has already expired.
+  core.bool? expired;
+
+  /// Public model name of the devices.
+  core.String? model;
+
+  GoogleChromeManagementV1DeviceAueCountReport({
+    this.aueMonth,
+    this.aueYear,
+    this.count,
+    this.expired,
+    this.model,
+  });
+
+  GoogleChromeManagementV1DeviceAueCountReport.fromJson(core.Map _json)
+      : this(
+          aueMonth: _json.containsKey('aueMonth')
+              ? _json['aueMonth'] as core.String
+              : null,
+          aueYear: _json.containsKey('aueYear')
+              ? _json['aueYear'] as core.String
+              : null,
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+          expired: _json.containsKey('expired')
+              ? _json['expired'] as core.bool
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aueMonth != null) 'aueMonth': aueMonth!,
+        if (aueYear != null) 'aueYear': aueYear!,
+        if (count != null) 'count': count!,
+        if (expired != null) 'expired': expired!,
+        if (model != null) 'model': model!,
       };
 }
 
@@ -2250,6 +2562,52 @@ class GoogleChromeManagementV1GraphicsStatusReport {
       };
 }
 
+/// Data that describes the result of the HTTPS latency diagnostics routine,
+/// with the HTTPS requests issued to Google websites.
+class GoogleChromeManagementV1HttpsLatencyRoutineData {
+  /// HTTPS latency if routine succeeded or failed because of HIGH_LATENCY or
+  /// VERY_HIGH_LATENCY.
+  ///
+  /// Output only.
+  core.String? latency;
+
+  /// HTTPS latency routine problem if a problem occurred.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HTTPS_LATENCY_PROBLEM_UNSPECIFIED" : HTTPS latency problem not
+  /// specified.
+  /// - "FAILED_DNS_RESOLUTIONS" : One or more DNS resolutions resulted in a
+  /// failure.
+  /// - "FAILED_HTTPS_REQUESTS" : One or more HTTPS requests resulted in a
+  /// failure.
+  /// - "HIGH_LATENCY" : Average HTTPS request latency time between 500ms and
+  /// 1000ms is high.
+  /// - "VERY_HIGH_LATENCY" : Average HTTPS request latency time greater than
+  /// 1000ms is very high.
+  core.String? problem;
+
+  GoogleChromeManagementV1HttpsLatencyRoutineData({
+    this.latency,
+    this.problem,
+  });
+
+  GoogleChromeManagementV1HttpsLatencyRoutineData.fromJson(core.Map _json)
+      : this(
+          latency: _json.containsKey('latency')
+              ? _json['latency'] as core.String
+              : null,
+          problem: _json.containsKey('problem')
+              ? _json['problem'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latency != null) 'latency': latency!,
+        if (problem != null) 'problem': problem!,
+      };
+}
+
 /// Describes an installed app.
 class GoogleChromeManagementV1InstalledApp {
   /// Unique identifier of the app.
@@ -2437,6 +2795,11 @@ class GoogleChromeManagementV1MemoryInfo {
   /// Output only.
   core.String? availableRamBytes;
 
+  /// Total memory encryption info for the device.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TotalMemoryEncryptionInfo? totalMemoryEncryption;
+
   /// Total RAM in bytes.
   ///
   /// Output only.
@@ -2444,6 +2807,7 @@ class GoogleChromeManagementV1MemoryInfo {
 
   GoogleChromeManagementV1MemoryInfo({
     this.availableRamBytes,
+    this.totalMemoryEncryption,
     this.totalRamBytes,
   });
 
@@ -2452,6 +2816,11 @@ class GoogleChromeManagementV1MemoryInfo {
           availableRamBytes: _json.containsKey('availableRamBytes')
               ? _json['availableRamBytes'] as core.String
               : null,
+          totalMemoryEncryption: _json.containsKey('totalMemoryEncryption')
+              ? GoogleChromeManagementV1TotalMemoryEncryptionInfo.fromJson(
+                  _json['totalMemoryEncryption']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           totalRamBytes: _json.containsKey('totalRamBytes')
               ? _json['totalRamBytes'] as core.String
               : null,
@@ -2459,6 +2828,8 @@ class GoogleChromeManagementV1MemoryInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableRamBytes != null) 'availableRamBytes': availableRamBytes!,
+        if (totalMemoryEncryption != null)
+          'totalMemoryEncryption': totalMemoryEncryption!,
         if (totalRamBytes != null) 'totalRamBytes': totalRamBytes!,
       };
 }
@@ -2518,17 +2889,192 @@ class GoogleChromeManagementV1MemoryStatusReport {
       };
 }
 
+/// Network device.
+class GoogleChromeManagementV1NetworkDevice {
+  /// The integrated circuit card ID associated with the device's sim card.
+  ///
+  /// Output only.
+  core.String? iccid;
+
+  /// IMEI (if applicable) of the corresponding network device.
+  ///
+  /// Output only.
+  core.String? imei;
+
+  /// MAC address (if applicable) of the corresponding network device.
+  ///
+  /// Output only.
+  core.String? macAddress;
+
+  /// The mobile directory number associated with the device's sim card.
+  ///
+  /// Output only.
+  core.String? mdn;
+
+  /// MEID (if applicable) of the corresponding network device.
+  ///
+  /// Output only.
+  core.String? meid;
+
+  /// Network device type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NETWORK_DEVICE_TYPE_UNSPECIFIED" : Network device type not specified.
+  /// - "CELLULAR_DEVICE" : Cellular device.
+  /// - "ETHERNET_DEVICE" : Ethernet device.
+  /// - "WIFI_DEVICE" : Wifi device.
+  core.String? type;
+
+  GoogleChromeManagementV1NetworkDevice({
+    this.iccid,
+    this.imei,
+    this.macAddress,
+    this.mdn,
+    this.meid,
+    this.type,
+  });
+
+  GoogleChromeManagementV1NetworkDevice.fromJson(core.Map _json)
+      : this(
+          iccid:
+              _json.containsKey('iccid') ? _json['iccid'] as core.String : null,
+          imei: _json.containsKey('imei') ? _json['imei'] as core.String : null,
+          macAddress: _json.containsKey('macAddress')
+              ? _json['macAddress'] as core.String
+              : null,
+          mdn: _json.containsKey('mdn') ? _json['mdn'] as core.String : null,
+          meid: _json.containsKey('meid') ? _json['meid'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iccid != null) 'iccid': iccid!,
+        if (imei != null) 'imei': imei!,
+        if (macAddress != null) 'macAddress': macAddress!,
+        if (mdn != null) 'mdn': mdn!,
+        if (meid != null) 'meid': meid!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Network testing results to determine the health of the device's network
+/// connection, for example whether the HTTPS latency is high or normal.
+class GoogleChromeManagementV1NetworkDiagnosticsReport {
+  /// HTTPS latency test data.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1HttpsLatencyRoutineData? httpsLatencyData;
+
+  /// Timestamp of when the diagnostics were collected.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  GoogleChromeManagementV1NetworkDiagnosticsReport({
+    this.httpsLatencyData,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1NetworkDiagnosticsReport.fromJson(core.Map _json)
+      : this(
+          httpsLatencyData: _json.containsKey('httpsLatencyData')
+              ? GoogleChromeManagementV1HttpsLatencyRoutineData.fromJson(
+                  _json['httpsLatencyData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (httpsLatencyData != null) 'httpsLatencyData': httpsLatencyData!,
+        if (reportTime != null) 'reportTime': reportTime!,
+      };
+}
+
+/// Network devices info.
+class GoogleChromeManagementV1NetworkInfo {
+  /// List of network devices.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1NetworkDevice>? networkDevices;
+
+  GoogleChromeManagementV1NetworkInfo({
+    this.networkDevices,
+  });
+
+  GoogleChromeManagementV1NetworkInfo.fromJson(core.Map _json)
+      : this(
+          networkDevices: _json.containsKey('networkDevices')
+              ? (_json['networkDevices'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1NetworkDevice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkDevices != null) 'networkDevices': networkDevices!,
+      };
+}
+
 /// State of visible/configured networks.
 class GoogleChromeManagementV1NetworkStatusReport {
+  /// Current connection state of the network.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NETWORK_CONNECTION_STATE_UNSPECIFIED" : Network connection state
+  /// unspecified.
+  /// - "ONLINE" : The network is connected and internet connectivity is
+  /// available.
+  /// - "CONNECTED" : The network is connected and not in a detected portal
+  /// state, but internet connectivity may not be available.
+  /// - "PORTAL" : The network is connected but a portal state was detected.
+  /// Internet connectivity may be limited.
+  /// - "CONNECTING" : The network is in the process of connecting.
+  /// - "NOT_CONNECTED" : The network is not connected.
+  core.String? connectionState;
+
+  /// Network connection type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NETWORK_TYPE_UNSPECIFIED" : Network connection type unspecified
+  /// - "CELLULAR" : Cellular network connection.
+  /// - "ETHERNET" : Ethernet network connection.
+  /// - "TETHER" : Tether network connection.
+  /// - "VPN" : VPN network connection.
+  /// - "WIFI" : Wifi network connection.
+  core.String? connectionType;
+
+  /// Whether the wifi encryption key is turned off.
+  ///
+  /// Output only.
+  core.bool? encryptionOn;
+
   /// Gateway IP address.
   ///
   /// Output only.
   core.String? gatewayIpAddress;
 
+  /// Network connection guid.
+  ///
+  /// Output only.
+  core.String? guid;
+
   /// LAN IP address.
   ///
   /// Output only.
   core.String? lanIpAddress;
+
+  /// Receiving bit rate measured in Megabits per second.
+  ///
+  /// Output only.
+  core.String? receivingBitRateMbps;
 
   /// Time at which the network state was reported.
   ///
@@ -2545,21 +3091,66 @@ class GoogleChromeManagementV1NetworkStatusReport {
   /// Output only.
   core.int? signalStrengthDbm;
 
+  /// Transmission bit rate measured in Megabits per second.
+  ///
+  /// Output only.
+  core.String? transmissionBitRateMbps;
+
+  /// Transmission power measured in decibels.
+  ///
+  /// Output only.
+  core.int? transmissionPowerDbm;
+
+  /// Wifi link quality.
+  ///
+  /// Value ranges from \[0, 70\]. 0 indicates no signal and 70 indicates a
+  /// strong signal.
+  ///
+  /// Output only.
+  core.String? wifiLinkQuality;
+
+  /// Wifi power management enabled
+  ///
+  /// Output only.
+  core.bool? wifiPowerManagementEnabled;
+
   GoogleChromeManagementV1NetworkStatusReport({
+    this.connectionState,
+    this.connectionType,
+    this.encryptionOn,
     this.gatewayIpAddress,
+    this.guid,
     this.lanIpAddress,
+    this.receivingBitRateMbps,
     this.reportTime,
     this.sampleFrequency,
     this.signalStrengthDbm,
+    this.transmissionBitRateMbps,
+    this.transmissionPowerDbm,
+    this.wifiLinkQuality,
+    this.wifiPowerManagementEnabled,
   });
 
   GoogleChromeManagementV1NetworkStatusReport.fromJson(core.Map _json)
       : this(
+          connectionState: _json.containsKey('connectionState')
+              ? _json['connectionState'] as core.String
+              : null,
+          connectionType: _json.containsKey('connectionType')
+              ? _json['connectionType'] as core.String
+              : null,
+          encryptionOn: _json.containsKey('encryptionOn')
+              ? _json['encryptionOn'] as core.bool
+              : null,
           gatewayIpAddress: _json.containsKey('gatewayIpAddress')
               ? _json['gatewayIpAddress'] as core.String
               : null,
+          guid: _json.containsKey('guid') ? _json['guid'] as core.String : null,
           lanIpAddress: _json.containsKey('lanIpAddress')
               ? _json['lanIpAddress'] as core.String
+              : null,
+          receivingBitRateMbps: _json.containsKey('receivingBitRateMbps')
+              ? _json['receivingBitRateMbps'] as core.String
               : null,
           reportTime: _json.containsKey('reportTime')
               ? _json['reportTime'] as core.String
@@ -2570,14 +3161,40 @@ class GoogleChromeManagementV1NetworkStatusReport {
           signalStrengthDbm: _json.containsKey('signalStrengthDbm')
               ? _json['signalStrengthDbm'] as core.int
               : null,
+          transmissionBitRateMbps: _json.containsKey('transmissionBitRateMbps')
+              ? _json['transmissionBitRateMbps'] as core.String
+              : null,
+          transmissionPowerDbm: _json.containsKey('transmissionPowerDbm')
+              ? _json['transmissionPowerDbm'] as core.int
+              : null,
+          wifiLinkQuality: _json.containsKey('wifiLinkQuality')
+              ? _json['wifiLinkQuality'] as core.String
+              : null,
+          wifiPowerManagementEnabled:
+              _json.containsKey('wifiPowerManagementEnabled')
+                  ? _json['wifiPowerManagementEnabled'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionState != null) 'connectionState': connectionState!,
+        if (connectionType != null) 'connectionType': connectionType!,
+        if (encryptionOn != null) 'encryptionOn': encryptionOn!,
         if (gatewayIpAddress != null) 'gatewayIpAddress': gatewayIpAddress!,
+        if (guid != null) 'guid': guid!,
         if (lanIpAddress != null) 'lanIpAddress': lanIpAddress!,
+        if (receivingBitRateMbps != null)
+          'receivingBitRateMbps': receivingBitRateMbps!,
         if (reportTime != null) 'reportTime': reportTime!,
         if (sampleFrequency != null) 'sampleFrequency': sampleFrequency!,
         if (signalStrengthDbm != null) 'signalStrengthDbm': signalStrengthDbm!,
+        if (transmissionBitRateMbps != null)
+          'transmissionBitRateMbps': transmissionBitRateMbps!,
+        if (transmissionPowerDbm != null)
+          'transmissionPowerDbm': transmissionPowerDbm!,
+        if (wifiLinkQuality != null) 'wifiLinkQuality': wifiLinkQuality!,
+        if (wifiPowerManagementEnabled != null)
+          'wifiPowerManagementEnabled': wifiPowerManagementEnabled!,
       };
 }
 
@@ -2851,6 +3468,17 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.String? name;
 
+  /// Network diagnostics collected periodically.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1NetworkDiagnosticsReport>?
+      networkDiagnosticsReport;
+
+  /// Network devices information.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1NetworkInfo? networkInfo;
+
   /// Network specs collected periodically.
   ///
   /// Output only.
@@ -2884,6 +3512,11 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.List<GoogleChromeManagementV1StorageStatusReport>? storageStatusReport;
 
+  /// Information on Thunderbolt bus.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1ThunderboltInfo>? thunderboltInfo;
+
   GoogleChromeManagementV1TelemetryDevice({
     this.audioStatusReport,
     this.batteryInfo,
@@ -2897,12 +3530,15 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.memoryInfo,
     this.memoryStatusReport,
     this.name,
+    this.networkDiagnosticsReport,
+    this.networkInfo,
     this.networkStatusReport,
     this.orgUnitId,
     this.osUpdateStatus,
     this.serialNumber,
     this.storageInfo,
     this.storageStatusReport,
+    this.thunderboltInfo,
   });
 
   GoogleChromeManagementV1TelemetryDevice.fromJson(core.Map _json)
@@ -2969,6 +3605,18 @@ class GoogleChromeManagementV1TelemetryDevice {
                   .toList()
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkDiagnosticsReport: _json
+                  .containsKey('networkDiagnosticsReport')
+              ? (_json['networkDiagnosticsReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1NetworkDiagnosticsReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          networkInfo: _json.containsKey('networkInfo')
+              ? GoogleChromeManagementV1NetworkInfo.fromJson(
+                  _json['networkInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           networkStatusReport: _json.containsKey('networkStatusReport')
               ? (_json['networkStatusReport'] as core.List)
                   .map((value) =>
@@ -3000,6 +3648,13 @@ class GoogleChromeManagementV1TelemetryDevice {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          thunderboltInfo: _json.containsKey('thunderboltInfo')
+              ? (_json['thunderboltInfo'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1ThunderboltInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3018,6 +3673,9 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (memoryStatusReport != null)
           'memoryStatusReport': memoryStatusReport!,
         if (name != null) 'name': name!,
+        if (networkDiagnosticsReport != null)
+          'networkDiagnosticsReport': networkDiagnosticsReport!,
+        if (networkInfo != null) 'networkInfo': networkInfo!,
         if (networkStatusReport != null)
           'networkStatusReport': networkStatusReport!,
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
@@ -3026,6 +3684,113 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (storageInfo != null) 'storageInfo': storageInfo!,
         if (storageStatusReport != null)
           'storageStatusReport': storageStatusReport!,
+        if (thunderboltInfo != null) 'thunderboltInfo': thunderboltInfo!,
+      };
+}
+
+/// Thunderbolt bus info.
+class GoogleChromeManagementV1ThunderboltInfo {
+  /// Security level of the Thunderbolt bus.
+  /// Possible string values are:
+  /// - "THUNDERBOLT_SECURITY_LEVEL_UNSPECIFIED" : Thunderbolt security level is
+  /// not set.
+  /// - "THUNDERBOLT_SECURITY_NONE_LEVEL" : All devices are automatically
+  /// connected by the firmware. No user approval is needed.
+  /// - "THUNDERBOLT_SECURITY_USER_LEVEL" : User is asked whether the device is
+  /// allowed to be connected.
+  /// - "THUNDERBOLT_SECURITY_SECURE_LEVEL" : User is asked whether the device
+  /// is allowed to be connected. In addition the device is sent a challenge
+  /// that should match the expected one based on a random key written to the
+  /// key sysfs attribute
+  /// - "THUNDERBOLT_SECURITY_DP_ONLY_LEVEL" : The firmware automatically
+  /// creates tunnels for Thunderbolt.
+  /// - "THUNDERBOLT_SECURITY_USB_ONLY_LEVEL" : The firmware automatically
+  /// creates tunnels for the USB controller and Display Port in a dock. All
+  /// PCIe links downstream of the dock are removed.
+  /// - "THUNDERBOLT_SECURITY_NO_PCIE_LEVEL" : PCIE tunneling is disabled.
+  core.String? securityLevel;
+
+  GoogleChromeManagementV1ThunderboltInfo({
+    this.securityLevel,
+  });
+
+  GoogleChromeManagementV1ThunderboltInfo.fromJson(core.Map _json)
+      : this(
+          securityLevel: _json.containsKey('securityLevel')
+              ? _json['securityLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (securityLevel != null) 'securityLevel': securityLevel!,
+      };
+}
+
+/// Memory encryption information of a device.
+class GoogleChromeManagementV1TotalMemoryEncryptionInfo {
+  /// Memory encryption algorithm.
+  /// Possible string values are:
+  /// - "MEMORY_ENCRYPTION_ALGORITHM_UNSPECIFIED" : Memory encryption algorithm
+  /// is not set.
+  /// - "MEMORY_ENCRYPTION_ALGORITHM_UNKNOWN" : The memory encryption algorithm
+  /// being used is unknown.
+  /// - "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_128" : The memory encryption
+  /// algorithm is using the AES_XTS encryption algorithm with a 128 bit block
+  /// cypher.
+  /// - "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_256" : The memory encryption
+  /// algorithm is using the AES_XTS encryption algorithm with a 256 bit block
+  /// cypher.
+  core.String? encryptionAlgorithm;
+
+  /// The state of memory encryption on the device.
+  /// Possible string values are:
+  /// - "MEMORY_ENCRYPTION_STATE_UNSPECIFIED" : Memory encryption state is not
+  /// set.
+  /// - "MEMORY_ENCRYPTION_STATE_UNKNOWN" : The memory encryption state is
+  /// unknown.
+  /// - "MEMORY_ENCRYPTION_STATE_DISABLED" : Memory encrpytion on the device is
+  /// disabled.
+  /// - "MEMORY_ENCRYPTION_STATE_TME" : Memory encryption on the device uses
+  /// total memory encryption.
+  /// - "MEMORY_ENCRYPTION_STATE_MKTME" : Memory encryption on the device uses
+  /// multi-key total memory encryption.
+  core.String? encryptionState;
+
+  /// The length of the encryption keys.
+  core.String? keyLength;
+
+  /// The maximum number of keys that can be used for encryption.
+  core.String? maxKeys;
+
+  GoogleChromeManagementV1TotalMemoryEncryptionInfo({
+    this.encryptionAlgorithm,
+    this.encryptionState,
+    this.keyLength,
+    this.maxKeys,
+  });
+
+  GoogleChromeManagementV1TotalMemoryEncryptionInfo.fromJson(core.Map _json)
+      : this(
+          encryptionAlgorithm: _json.containsKey('encryptionAlgorithm')
+              ? _json['encryptionAlgorithm'] as core.String
+              : null,
+          encryptionState: _json.containsKey('encryptionState')
+              ? _json['encryptionState'] as core.String
+              : null,
+          keyLength: _json.containsKey('keyLength')
+              ? _json['keyLength'] as core.String
+              : null,
+          maxKeys: _json.containsKey('maxKeys')
+              ? _json['maxKeys'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionAlgorithm != null)
+          'encryptionAlgorithm': encryptionAlgorithm!,
+        if (encryptionState != null) 'encryptionState': encryptionState!,
+        if (keyLength != null) 'keyLength': keyLength!,
+        if (maxKeys != null) 'maxKeys': maxKeys!,
       };
 }
 

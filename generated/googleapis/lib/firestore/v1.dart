@@ -107,9 +107,6 @@ class ProjectsDatabasesResource {
   /// /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database id
   /// is also valid.
   ///
-  /// [validateOnly] - If set, validate the request and preview the response,
-  /// but do not actually create the database.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -124,13 +121,11 @@ class ProjectsDatabasesResource {
     GoogleFirestoreAdminV1Database request,
     core.String parent, {
     core.String? databaseId,
-    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (databaseId != null) 'databaseId': [databaseId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 

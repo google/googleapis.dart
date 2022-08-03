@@ -5604,7 +5604,7 @@ class Job {
   /// any given time. Jobs in different regions can have the same name. If a
   /// caller attempts to create a Job with the same name as an already-existing
   /// Job, the attempt returns the existing Job. The name must match the regular
-  /// expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+  /// expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
   core.String? name;
 
   /// Preliminary field: The format of this data may change at any time.
@@ -6464,6 +6464,9 @@ class LaunchTemplateParameters {
   RuntimeEnvironment? environment;
 
   /// The job name to use for the created job.
+  ///
+  /// The name must match the regular expression
+  /// `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
   ///
   /// Required.
   core.String? jobName;
@@ -8431,6 +8434,7 @@ class SDKInfo {
   /// - "UNKNOWN" : UNKNOWN Language.
   /// - "JAVA" : Java.
   /// - "PYTHON" : Python.
+  /// - "GO" : Go.
   core.String? language;
 
   /// The SDK version.

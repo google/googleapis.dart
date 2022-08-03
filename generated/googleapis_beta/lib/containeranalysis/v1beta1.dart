@@ -1185,6 +1185,11 @@ class ProjectsScanConfigsResource {
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
+/// Indicates which analysis completed successfully.
+///
+/// Multiple types of analysis can be performed on a single resource.
+typedef AnalysisCompleted = $AnalysisCompleted;
+
 /// Artifact describes a build product.
 typedef Artifact = $Artifact;
 
@@ -2409,11 +2414,19 @@ class Digest {
 
 /// Provides information about the analysis status of a discovered resource.
 class Discovered {
+  AnalysisCompleted? analysisCompleted;
+
+  /// Indicates any errors encountered during analysis of a resource.
+  ///
+  /// There could be 0 or more of these errors.
+  core.List<Status>? analysisError;
+
   /// The status of discovery for the resource.
   /// Possible string values are:
   /// - "ANALYSIS_STATUS_UNSPECIFIED" : Unknown.
   /// - "PENDING" : Resource is known but no action has been taken yet.
   /// - "SCANNING" : Resource is being analyzed.
+  /// - "COMPLETE" : Analysis has completed.
   /// - "FINISHED_SUCCESS" : Analysis has finished successfully.
   /// - "FINISHED_FAILED" : Analysis has finished unsuccessfully, the analysis
   /// itself is in a bad state.
@@ -2439,6 +2452,8 @@ class Discovered {
   core.String? lastAnalysisTime;
 
   Discovered({
+    this.analysisCompleted,
+    this.analysisError,
     this.analysisStatus,
     this.analysisStatusError,
     this.continuousAnalysis,
@@ -2447,6 +2462,16 @@ class Discovered {
 
   Discovered.fromJson(core.Map _json)
       : this(
+          analysisCompleted: _json.containsKey('analysisCompleted')
+              ? AnalysisCompleted.fromJson(_json['analysisCompleted']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          analysisError: _json.containsKey('analysisError')
+              ? (_json['analysisError'] as core.List)
+                  .map((value) => Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           analysisStatus: _json.containsKey('analysisStatus')
               ? _json['analysisStatus'] as core.String
               : null,
@@ -2463,6 +2488,8 @@ class Discovered {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (analysisCompleted != null) 'analysisCompleted': analysisCompleted!,
+        if (analysisError != null) 'analysisError': analysisError!,
         if (analysisStatus != null) 'analysisStatus': analysisStatus!,
         if (analysisStatusError != null)
           'analysisStatusError': analysisStatusError!,

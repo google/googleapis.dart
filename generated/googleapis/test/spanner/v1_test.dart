@@ -1060,6 +1060,38 @@ void checkField(api.Field o) {
   buildCounterField--;
 }
 
+core.int buildCounterFreeInstanceMetadata = 0;
+api.FreeInstanceMetadata buildFreeInstanceMetadata() {
+  final o = api.FreeInstanceMetadata();
+  buildCounterFreeInstanceMetadata++;
+  if (buildCounterFreeInstanceMetadata < 3) {
+    o.expireBehavior = 'foo';
+    o.expireTime = 'foo';
+    o.upgradeTime = 'foo';
+  }
+  buildCounterFreeInstanceMetadata--;
+  return o;
+}
+
+void checkFreeInstanceMetadata(api.FreeInstanceMetadata o) {
+  buildCounterFreeInstanceMetadata++;
+  if (buildCounterFreeInstanceMetadata < 3) {
+    unittest.expect(
+      o.expireBehavior!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.upgradeTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFreeInstanceMetadata--;
+}
+
 core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
@@ -1246,6 +1278,8 @@ api.Instance buildInstance() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.endpointUris = buildUnnamed14();
+    o.freeInstanceMetadata = buildFreeInstanceMetadata();
+    o.instanceType = 'foo';
     o.labels = buildUnnamed15();
     o.name = 'foo';
     o.nodeCount = 42;
@@ -1273,6 +1307,11 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkUnnamed14(o.endpointUris!);
+    checkFreeInstanceMetadata(o.freeInstanceMetadata!);
+    unittest.expect(
+      o.instanceType!,
+      unittest.equals('foo'),
+    );
     checkUnnamed15(o.labels!);
     unittest.expect(
       o.name!,
@@ -1332,6 +1371,7 @@ api.InstanceConfig buildInstanceConfig() {
   buildCounterInstanceConfig++;
   if (buildCounterInstanceConfig < 3) {
     o.displayName = 'foo';
+    o.freeInstanceAvailability = 'foo';
     o.leaderOptions = buildUnnamed16();
     o.name = 'foo';
     o.replicas = buildUnnamed17();
@@ -1345,6 +1385,10 @@ void checkInstanceConfig(api.InstanceConfig o) {
   if (buildCounterInstanceConfig < 3) {
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.freeInstanceAvailability!,
       unittest.equals('foo'),
     );
     checkUnnamed16(o.leaderOptions!);
@@ -4667,6 +4711,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-FreeInstanceMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFreeInstanceMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FreeInstanceMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFreeInstanceMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-GetDatabaseDdlResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGetDatabaseDdlResponse();
@@ -7822,6 +7876,66 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListDatabaseRolesResponse(response as api.ListDatabaseRolesResponse);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.SpannerApi(mock).projects.instances.databases.databaseRoles;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 

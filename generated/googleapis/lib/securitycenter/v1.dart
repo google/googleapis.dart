@@ -4888,7 +4888,40 @@ class Access {
   core.String? methodName;
 
   /// Associated email, such as "foo@google.com".
+  ///
+  /// The email address of the authenticated user (or service account on behalf
+  /// of third party principal) making the request. For third party identity
+  /// callers, the `principal_subject` field is populated instead of this field.
+  /// For privacy reasons, the principal email address is sometimes redacted.
+  /// For more information, see
+  /// [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).
   core.String? principalEmail;
+
+  /// A string representing the principal_subject associated with the identity.
+  ///
+  /// As compared to `principal_email`, supports principals that aren't
+  /// associated with email addresses, such as third party principals. For most
+  /// identities, the format will be `principal://iam.googleapis.com/{identity
+  /// pool name}/subject/{subject)` except for some GKE identities
+  /// (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
+  /// format `serviceAccount:{identity pool name}[{subject}]`
+  core.String? principalSubject;
+
+  /// Identity delegation history of an authenticated service account that makes
+  /// the request.
+  ///
+  /// It contains information on the real authorities that try to access GCP
+  /// resources by delegating on a service account. When multiple authorities
+  /// are present, they are guaranteed to be sorted based on the original
+  /// ordering of the identity delegation events.
+  core.List<ServiceAccountDelegationInfo>? serviceAccountDelegationInfo;
+
+  /// The name of the service account key used to create or exchange credentials
+  /// for authenticating the service account making the request.
+  ///
+  /// This is a scheme-less URI full resource name. For example:
+  /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"
+  core.String? serviceAccountKeyName;
 
   /// This is the API service that the service account made a call to, e.g.
   /// "iam.googleapis.com"
@@ -4903,6 +4936,9 @@ class Access {
     this.callerIpGeo,
     this.methodName,
     this.principalEmail,
+    this.principalSubject,
+    this.serviceAccountDelegationInfo,
+    this.serviceAccountKeyName,
     this.serviceName,
     this.userAgentFamily,
   });
@@ -4922,6 +4958,19 @@ class Access {
           principalEmail: _json.containsKey('principalEmail')
               ? _json['principalEmail'] as core.String
               : null,
+          principalSubject: _json.containsKey('principalSubject')
+              ? _json['principalSubject'] as core.String
+              : null,
+          serviceAccountDelegationInfo:
+              _json.containsKey('serviceAccountDelegationInfo')
+                  ? (_json['serviceAccountDelegationInfo'] as core.List)
+                      .map((value) => ServiceAccountDelegationInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          serviceAccountKeyName: _json.containsKey('serviceAccountKeyName')
+              ? _json['serviceAccountKeyName'] as core.String
+              : null,
           serviceName: _json.containsKey('serviceName')
               ? _json['serviceName'] as core.String
               : null,
@@ -4935,8 +4984,90 @@ class Access {
         if (callerIpGeo != null) 'callerIpGeo': callerIpGeo!,
         if (methodName != null) 'methodName': methodName!,
         if (principalEmail != null) 'principalEmail': principalEmail!,
+        if (principalSubject != null) 'principalSubject': principalSubject!,
+        if (serviceAccountDelegationInfo != null)
+          'serviceAccountDelegationInfo': serviceAccountDelegationInfo!,
+        if (serviceAccountKeyName != null)
+          'serviceAccountKeyName': serviceAccountKeyName!,
         if (serviceName != null) 'serviceName': serviceName!,
         if (userAgentFamily != null) 'userAgentFamily': userAgentFamily!,
+      };
+}
+
+/// Conveys information about a Kubernetes access review (e.g. kubectl auth
+/// can-i ...) that was involved in a finding.
+class AccessReview {
+  /// Group is the API Group of the Resource.
+  ///
+  /// "*" means all.
+  core.String? group;
+
+  /// Name is the name of the resource being requested.
+  ///
+  /// Empty means all.
+  core.String? name;
+
+  /// Namespace of the action being requested.
+  ///
+  /// Currently, there is no distinction between no namespace and all
+  /// namespaces. Both are represented by "" (empty).
+  core.String? ns;
+
+  /// Resource is the optional resource type requested.
+  ///
+  /// "*" means all.
+  core.String? resource;
+
+  /// Subresource is the optional subresource type.
+  core.String? subresource;
+
+  /// Verb is a Kubernetes resource API verb, like: get, list, watch, create,
+  /// update, delete, proxy.
+  ///
+  /// "*" means all.
+  core.String? verb;
+
+  /// Version is the API Version of the Resource.
+  ///
+  /// "*" means all.
+  core.String? version;
+
+  AccessReview({
+    this.group,
+    this.name,
+    this.ns,
+    this.resource,
+    this.subresource,
+    this.verb,
+    this.version,
+  });
+
+  AccessReview.fromJson(core.Map _json)
+      : this(
+          group:
+              _json.containsKey('group') ? _json['group'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ns: _json.containsKey('ns') ? _json['ns'] as core.String : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          subresource: _json.containsKey('subresource')
+              ? _json['subresource'] as core.String
+              : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (group != null) 'group': group!,
+        if (name != null) 'name': name!,
+        if (ns != null) 'ns': ns!,
+        if (resource != null) 'resource': resource!,
+        if (subresource != null) 'subresource': subresource!,
+        if (verb != null) 'verb': verb!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5432,6 +5563,55 @@ class ContactDetails {
       };
 }
 
+/// Container associated with the finding.
+class Container {
+  /// Optional container image id, when provided by the container runtime.
+  ///
+  /// Uniquely identifies the container image launched using a container image
+  /// digest.
+  core.String? imageId;
+
+  /// Container labels, as provided by the container runtime.
+  core.List<Label>? labels;
+
+  /// Container name.
+  core.String? name;
+
+  /// Container image URI provided when configuring a pod/container.
+  ///
+  /// May identify a container image version using mutable tags.
+  core.String? uri;
+
+  Container({
+    this.imageId,
+    this.labels,
+    this.name,
+    this.uri,
+  });
+
+  Container.fromJson(core.Map _json)
+      : this(
+          imageId: _json.containsKey('imageId')
+              ? _json['imageId'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map((value) => Label.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageId != null) 'imageId': imageId!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// CVE stands for Common Vulnerabilities and Exposures.
 ///
 /// More information: https://cve.mitre.org
@@ -5648,6 +5828,37 @@ class Cvssv3 {
           'privilegesRequired': privilegesRequired!,
         if (scope != null) 'scope': scope!,
         if (userInteraction != null) 'userInteraction': userInteraction!,
+      };
+}
+
+/// Memory hash detection contributing to the binary family match.
+class Detection {
+  /// The name of the binary associated with the memory hash signature
+  /// detection.
+  core.String? binary;
+
+  /// The percentage of memory page hashes in the signature that were matched.
+  core.double? percentPagesMatched;
+
+  Detection({
+    this.binary,
+    this.percentPagesMatched,
+  });
+
+  Detection.fromJson(core.Map _json)
+      : this(
+          binary: _json.containsKey('binary')
+              ? _json['binary'] as core.String
+              : null,
+          percentPagesMatched: _json.containsKey('percentPagesMatched')
+              ? (_json['percentPagesMatched'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binary != null) 'binary': binary!,
+        if (percentPagesMatched != null)
+          'percentPagesMatched': percentPagesMatched!,
       };
 }
 
@@ -5888,11 +6099,17 @@ class Finding {
   /// The key represents the type of contact, while the value contains a list of
   /// all the contacts that pertain. Please refer to:
   /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories
-  /// { “security”: {contact: {email: “person1@company.com”} contact: {email:
-  /// “person2@company.com”} }
+  /// { "security": { "contacts": \[ { "email": "person1@company.com" }, {
+  /// "email": "person2@company.com" } \] }
   ///
   /// Output only.
   core.Map<core.String, ContactDetails>? contacts;
+
+  /// Containers associated with the finding.
+  ///
+  /// containers provides information for both Kubernetes and non-Kubernetes
+  /// containers.
+  core.List<Container>? containers;
 
   /// The time at which the finding was created in Security Command Center.
   core.String? createTime;
@@ -5950,6 +6167,9 @@ class Finding {
   /// with high confidence, indicates a computer intrusion. Reference:
   /// https://en.wikipedia.org/wiki/Indicator_of_compromise
   Indicator? indicator;
+
+  /// Kubernetes resources associated with the finding.
+  Kubernetes? kubernetes;
 
   /// MITRE ATT&CK tactics and techniques related to this finding.
   ///
@@ -6096,6 +6316,7 @@ class Finding {
     this.compliances,
     this.connections,
     this.contacts,
+    this.containers,
     this.createTime,
     this.description,
     this.eventTime,
@@ -6105,6 +6326,7 @@ class Finding {
     this.findingClass,
     this.iamBindings,
     this.indicator,
+    this.kubernetes,
     this.mitreAttack,
     this.mute,
     this.muteInitiator,
@@ -6154,6 +6376,12 @@ class Finding {
                   ),
                 )
               : null,
+          containers: _json.containsKey('containers')
+              ? (_json['containers'] as core.List)
+                  .map((value) => Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -6193,6 +6421,10 @@ class Finding {
           indicator: _json.containsKey('indicator')
               ? Indicator.fromJson(
                   _json['indicator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kubernetes: _json.containsKey('kubernetes')
+              ? Kubernetes.fromJson(
+                  _json['kubernetes'] as core.Map<core.String, core.dynamic>)
               : null,
           mitreAttack: _json.containsKey('mitreAttack')
               ? MitreAttack.fromJson(
@@ -6246,6 +6478,7 @@ class Finding {
         if (compliances != null) 'compliances': compliances!,
         if (connections != null) 'connections': connections!,
         if (contacts != null) 'contacts': contacts!,
+        if (containers != null) 'containers': containers!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (eventTime != null) 'eventTime': eventTime!,
@@ -6255,6 +6488,7 @@ class Finding {
         if (findingClass != null) 'findingClass': findingClass!,
         if (iamBindings != null) 'iamBindings': iamBindings!,
         if (indicator != null) 'indicator': indicator!,
+        if (kubernetes != null) 'kubernetes': kubernetes!,
         if (mitreAttack != null) 'mitreAttack': mitreAttack!,
         if (mute != null) 'mute': mute!,
         if (muteInitiator != null) 'muteInitiator': muteInitiator!,
@@ -6467,6 +6701,53 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
         if (name != null) 'name': name!,
         if (principal != null) 'principal': principal!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Represents a Kubernetes RoleBinding or ClusterRoleBinding.
+class GoogleCloudSecuritycenterV1Binding {
+  /// Name for binding.
+  core.String? name;
+
+  /// Namespace for binding.
+  core.String? ns;
+
+  /// The Role or ClusterRole referenced by the binding.
+  Role? role;
+
+  /// Represents the subjects(s) bound to the role.
+  ///
+  /// Not always available for PATCH requests.
+  core.List<Subject>? subjects;
+
+  GoogleCloudSecuritycenterV1Binding({
+    this.name,
+    this.ns,
+    this.role,
+    this.subjects,
+  });
+
+  GoogleCloudSecuritycenterV1Binding.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ns: _json.containsKey('ns') ? _json['ns'] as core.String : null,
+          role: _json.containsKey('role')
+              ? Role.fromJson(
+                  _json['role'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subjects: _json.containsKey('subjects')
+              ? (_json['subjects'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (ns != null) 'ns': ns!,
+        if (role != null) 'role': role!,
+        if (subjects != null) 'subjects': subjects!,
       };
 }
 
@@ -7114,9 +7395,18 @@ class Indicator {
   /// List of ip addresses associated to the Finding.
   core.List<core.String>? ipAddresses;
 
+  /// The list of matched signatures indicating that the given process is
+  /// present in the environment.
+  core.List<ProcessSignature>? signatures;
+
+  /// The list of URIs associated to the Findings
+  core.List<core.String>? uris;
+
   Indicator({
     this.domains,
     this.ipAddresses,
+    this.signatures,
+    this.uris,
   });
 
   Indicator.fromJson(core.Map _json)
@@ -7131,11 +7421,141 @@ class Indicator {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          signatures: _json.containsKey('signatures')
+              ? (_json['signatures'] as core.List)
+                  .map((value) => ProcessSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          uris: _json.containsKey('uris')
+              ? (_json['uris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domains != null) 'domains': domains!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
+        if (signatures != null) 'signatures': signatures!,
+        if (uris != null) 'uris': uris!,
+      };
+}
+
+/// Kubernetes related attributes.
+class Kubernetes {
+  /// Provides information on any Kubernetes access reviews (i.e. privilege
+  /// checks) relevant to the finding.
+  core.List<AccessReview>? accessReviews;
+
+  /// Provides Kubernetes role binding information for findings that involve
+  /// RoleBindings or ClusterRoleBindings.
+  core.List<GoogleCloudSecuritycenterV1Binding>? bindings;
+
+  /// GKE Node Pools associated with the finding.
+  ///
+  /// This field will contain NodePool information for each Node, when it is
+  /// available.
+  core.List<NodePool>? nodePools;
+
+  /// Provides Kubernetes Node information.
+  core.List<Node>? nodes;
+
+  /// Kubernetes Pods associated with the finding.
+  ///
+  /// This field will contain Pod records for each container that is owned by a
+  /// Pod.
+  core.List<Pod>? pods;
+
+  /// Provides Kubernetes role information for findings that involve Roles or
+  /// ClusterRoles.
+  core.List<Role>? roles;
+
+  Kubernetes({
+    this.accessReviews,
+    this.bindings,
+    this.nodePools,
+    this.nodes,
+    this.pods,
+    this.roles,
+  });
+
+  Kubernetes.fromJson(core.Map _json)
+      : this(
+          accessReviews: _json.containsKey('accessReviews')
+              ? (_json['accessReviews'] as core.List)
+                  .map((value) => AccessReview.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map((value) => GoogleCloudSecuritycenterV1Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nodePools: _json.containsKey('nodePools')
+              ? (_json['nodePools'] as core.List)
+                  .map((value) => NodePool.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nodes: _json.containsKey('nodes')
+              ? (_json['nodes'] as core.List)
+                  .map((value) => Node.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pods: _json.containsKey('pods')
+              ? (_json['pods'] as core.List)
+                  .map((value) => Pod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          roles: _json.containsKey('roles')
+              ? (_json['roles'] as core.List)
+                  .map((value) => Role.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessReviews != null) 'accessReviews': accessReviews!,
+        if (bindings != null) 'bindings': bindings!,
+        if (nodePools != null) 'nodePools': nodePools!,
+        if (nodes != null) 'nodes': nodes!,
+        if (pods != null) 'pods': pods!,
+        if (roles != null) 'roles': roles!,
+      };
+}
+
+/// Label represents a generic name=value label.
+///
+/// Label has separate name and value fields to support filtering with
+/// contains().
+class Label {
+  /// Label name.
+  core.String? name;
+
+  /// Label value.
+  core.String? value;
+
+  Label({
+    this.name,
+    this.value,
+  });
+
+  Label.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7494,6 +7914,39 @@ class ListSourcesResponse {
       };
 }
 
+/// A signature corresponding to memory page hashes.
+class MemoryHashSignature {
+  /// The binary family.
+  core.String? binaryFamily;
+
+  /// The list of memory hash detections contributing to the binary family
+  /// match.
+  core.List<Detection>? detections;
+
+  MemoryHashSignature({
+    this.binaryFamily,
+    this.detections,
+  });
+
+  MemoryHashSignature.fromJson(core.Map _json)
+      : this(
+          binaryFamily: _json.containsKey('binaryFamily')
+              ? _json['binaryFamily'] as core.String
+              : null,
+          detections: _json.containsKey('detections')
+              ? (_json['detections'] as core.List)
+                  .map((value) => Detection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryFamily != null) 'binaryFamily': binaryFamily!,
+        if (detections != null) 'detections': detections!,
+      };
+}
+
 /// MITRE ATT&CK tactics and techniques related to this finding.
 ///
 /// See: https://attack.mitre.org
@@ -7579,6 +8032,55 @@ class MitreAttack {
         if (primaryTactic != null) 'primaryTactic': primaryTactic!,
         if (primaryTechniques != null) 'primaryTechniques': primaryTechniques!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Kubernetes Nodes associated with the finding.
+class Node {
+  /// Full Resource name of the Compute Engine VM running the cluster node.
+  core.String? name;
+
+  Node({
+    this.name,
+  });
+
+  Node.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Provides GKE Node Pool information.
+class NodePool {
+  /// Kubernetes Node pool name.
+  core.String? name;
+
+  /// Nodes associated with the finding.
+  core.List<Node>? nodes;
+
+  NodePool({
+    this.name,
+    this.nodes,
+  });
+
+  NodePool.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodes: _json.containsKey('nodes')
+              ? (_json['nodes'] as core.List)
+                  .map((value) => Node.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (nodes != null) 'nodes': nodes!,
       };
 }
 
@@ -7771,6 +8273,55 @@ class OrganizationSettings {
       };
 }
 
+/// Kubernetes Pod.
+class Pod {
+  /// Pod containers associated with this finding, if any.
+  core.List<Container>? containers;
+
+  /// Pod labels.
+  ///
+  /// For Kubernetes containers, these are applied to the container.
+  core.List<Label>? labels;
+
+  /// Kubernetes Pod name.
+  core.String? name;
+
+  /// Kubernetes Pod namespace.
+  core.String? ns;
+
+  Pod({
+    this.containers,
+    this.labels,
+    this.name,
+    this.ns,
+  });
+
+  Pod.fromJson(core.Map _json)
+      : this(
+          containers: _json.containsKey('containers')
+              ? (_json['containers'] as core.List)
+                  .map((value) => Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map((value) => Label.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ns: _json.containsKey('ns') ? _json['ns'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containers != null) 'containers': containers!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (ns != null) 'ns': ns!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -7912,6 +8463,10 @@ class Process {
   /// File information for libraries loaded by the process.
   core.List<File>? libraries;
 
+  /// The process name visible in utilities like `top` and `ps`; it can be
+  /// accessed via `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`.
+  core.String? name;
+
   /// The parent process id.
   core.String? parentPid;
 
@@ -7930,6 +8485,7 @@ class Process {
     this.envVariables,
     this.envVariablesTruncated,
     this.libraries,
+    this.name,
     this.parentPid,
     this.pid,
     this.script,
@@ -7964,6 +8520,7 @@ class Process {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
           parentPid: _json.containsKey('parentPid')
               ? _json['parentPid'] as core.String
               : null,
@@ -7983,9 +8540,42 @@ class Process {
         if (envVariablesTruncated != null)
           'envVariablesTruncated': envVariablesTruncated!,
         if (libraries != null) 'libraries': libraries!,
+        if (name != null) 'name': name!,
         if (parentPid != null) 'parentPid': parentPid!,
         if (pid != null) 'pid': pid!,
         if (script != null) 'script': script!,
+      };
+}
+
+/// Indicates what signature matched this process.
+class ProcessSignature {
+  /// Signature indicating that a binary family was matched.
+  MemoryHashSignature? memoryHashSignature;
+
+  /// Signature indicating that a YARA rule was matched.
+  YaraRuleSignature? yaraRuleSignature;
+
+  ProcessSignature({
+    this.memoryHashSignature,
+    this.yaraRuleSignature,
+  });
+
+  ProcessSignature.fromJson(core.Map _json)
+      : this(
+          memoryHashSignature: _json.containsKey('memoryHashSignature')
+              ? MemoryHashSignature.fromJson(_json['memoryHashSignature']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          yaraRuleSignature: _json.containsKey('yaraRuleSignature')
+              ? YaraRuleSignature.fromJson(_json['yaraRuleSignature']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memoryHashSignature != null)
+          'memoryHashSignature': memoryHashSignature!,
+        if (yaraRuleSignature != null) 'yaraRuleSignature': yaraRuleSignature!,
       };
 }
 
@@ -8098,6 +8688,41 @@ class Resource {
           'projectDisplayName': projectDisplayName!,
         if (projectName != null) 'projectName': projectName!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Kubernetes Role or ClusterRole.
+class Role {
+  /// Role type.
+  /// Possible string values are:
+  /// - "KIND_UNSPECIFIED" : Role type is not specified.
+  /// - "ROLE" : Kubernetes Role.
+  /// - "CLUSTER_ROLE" : Kubernetes ClusterRole.
+  core.String? kind;
+
+  /// Role name.
+  core.String? name;
+
+  /// Role namespace.
+  core.String? ns;
+
+  Role({
+    this.kind,
+    this.name,
+    this.ns,
+  });
+
+  Role.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ns: _json.containsKey('ns') ? _json['ns'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (ns != null) 'ns': ns!,
       };
 }
 
@@ -8280,6 +8905,44 @@ class SecurityMarks {
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (marks != null) 'marks': marks!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Identity delegation history of an authenticated service account.
+class ServiceAccountDelegationInfo {
+  /// The email address of a Google account.
+  ///
+  /// .
+  core.String? principalEmail;
+
+  /// A string representing the principal_subject associated with the identity.
+  ///
+  /// As compared to `principal_email`, supports principals that aren't
+  /// associated with email addresses, such as third party principals. For most
+  /// identities, the format will be `principal://iam.googleapis.com/{identity
+  /// pool name}/subject/{subject)` except for some GKE identities
+  /// (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
+  /// format `serviceAccount:{identity pool name}[{subject}]`
+  core.String? principalSubject;
+
+  ServiceAccountDelegationInfo({
+    this.principalEmail,
+    this.principalSubject,
+  });
+
+  ServiceAccountDelegationInfo.fromJson(core.Map _json)
+      : this(
+          principalEmail: _json.containsKey('principalEmail')
+              ? _json['principalEmail'] as core.String
+              : null,
+          principalSubject: _json.containsKey('principalSubject')
+              ? _json['principalSubject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (principalEmail != null) 'principalEmail': principalEmail!,
+        if (principalSubject != null) 'principalSubject': principalSubject!,
       };
 }
 
@@ -8492,6 +9155,43 @@ class StreamingConfig {
       };
 }
 
+/// Represents a Kubernetes Subject.
+class Subject {
+  /// Authentication type for subject.
+  /// Possible string values are:
+  /// - "AUTH_TYPE_UNSPECIFIED" : Authentication is not specified.
+  /// - "USER" : User with valid certificate.
+  /// - "SERVICEACCOUNT" : Users managed by Kubernetes API with credentials
+  /// stored as Secrets.
+  /// - "GROUP" : Collection of users.
+  core.String? kind;
+
+  /// Name for subject.
+  core.String? name;
+
+  /// Namespace for subject.
+  core.String? ns;
+
+  Subject({
+    this.kind,
+    this.name,
+    this.ns,
+  });
+
+  Subject.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ns: _json.containsKey('ns') ? _json['ns'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (ns != null) 'ns': ns!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
@@ -8518,5 +9218,26 @@ class Vulnerability {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cve != null) 'cve': cve!,
+      };
+}
+
+/// A signature corresponding to a YARA rule.
+class YaraRuleSignature {
+  /// The name of the YARA rule.
+  core.String? yaraRule;
+
+  YaraRuleSignature({
+    this.yaraRule,
+  });
+
+  YaraRuleSignature.fromJson(core.Map _json)
+      : this(
+          yaraRule: _json.containsKey('yaraRule')
+              ? _json['yaraRule'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (yaraRule != null) 'yaraRule': yaraRule!,
       };
 }

@@ -1631,6 +1631,7 @@ api.Network buildNetwork() {
   buildCounterNetwork++;
   if (buildCounterNetwork < 3) {
     o.forwardedPorts = buildUnnamed18();
+    o.instanceIpMode = 'foo';
     o.instanceTag = 'foo';
     o.name = 'foo';
     o.sessionAffinity = true;
@@ -1644,6 +1645,10 @@ void checkNetwork(api.Network o) {
   buildCounterNetwork++;
   if (buildCounterNetwork < 3) {
     checkUnnamed18(o.forwardedPorts!);
+    unittest.expect(
+      o.instanceIpMode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.instanceTag!,
       unittest.equals('foo'),

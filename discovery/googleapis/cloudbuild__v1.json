@@ -1466,7 +1466,7 @@
                                     ]
                                 },
                                 "run": {
-                                    "description": "Runs a `BuildTrigger` at a particular source revision.",
+                                    "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path. The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:run",
                                     "httpMethod": "POST",
                                     "id": "cloudbuild.projects.locations.triggers.run",
@@ -1900,7 +1900,7 @@
                             ]
                         },
                         "run": {
-                            "description": "Runs a `BuildTrigger` at a particular source revision.",
+                            "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path. The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
                             "flatPath": "v1/projects/{projectId}/triggers/{triggerId}:run",
                             "httpMethod": "POST",
                             "id": "cloudbuild.projects.triggers.run",
@@ -2009,7 +2009,7 @@
             }
         }
     },
-    "revision": "20220601",
+    "revision": "20220715",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "ApprovalConfig": {

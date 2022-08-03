@@ -3996,7 +3996,7 @@ class StreamObject {
 class VpcPeeringConfig {
   /// A free subnet for peering.
   ///
-  /// (CIDR of /29) TODO(b/172995841) add validators.
+  /// (CIDR of /29)
   ///
   /// Required.
   core.String? subnet;

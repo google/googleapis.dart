@@ -2049,6 +2049,7 @@ api.Product buildProduct() {
   final o = api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
+    o.appRestrictionsSchema = buildAppRestrictionsSchema();
     o.appTracks = buildUnnamed29();
     o.appVersion = buildUnnamed30();
     o.authorName = 'foo';
@@ -2081,6 +2082,7 @@ api.Product buildProduct() {
 void checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
+    checkAppRestrictionsSchema(o.appRestrictionsSchema!);
     checkUnnamed29(o.appTracks!);
     checkUnnamed30(o.appVersion!);
     unittest.expect(

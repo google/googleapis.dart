@@ -26,7 +26,6 @@
 ///   - [AccountsLabelsResource]
 ///   - [AccountsReturncarrierResource]
 /// - [AccountstatusesResource]
-/// - [AccountstatusesbyexternalselleridResource]
 /// - [AccounttaxResource]
 /// - [BuyongoogleprogramsResource]
 /// - [CollectionsResource]
@@ -88,9 +87,6 @@ class ShoppingContentApi {
   AccountsResource get accounts => AccountsResource(_requester);
   AccountstatusesResource get accountstatuses =>
       AccountstatusesResource(_requester);
-  AccountstatusesbyexternalselleridResource
-      get accountstatusesbyexternalsellerid =>
-          AccountstatusesbyexternalselleridResource(_requester);
   AccounttaxResource get accounttax => AccounttaxResource(_requester);
   BuyongoogleprogramsResource get buyongoogleprograms =>
       BuyongoogleprogramsResource(_requester);
@@ -1319,60 +1315,6 @@ class AccountstatusesResource {
       queryParams: _queryParams,
     );
     return AccountstatusesListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class AccountstatusesbyexternalselleridResource {
-  final commons.ApiRequester _requester;
-
-  AccountstatusesbyexternalselleridResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets status of the account with the specified external_seller_id belonging
-  /// to the MCA with the specified merchant_id.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The ID of the MCA containing the seller.
-  ///
-  /// [externalSellerId] - Required. The External Seller ID of the seller
-  /// account to be retrieved.
-  ///
-  /// [destinations] - If set, only issues for the specified destinations are
-  /// returned, otherwise only issues for the Shopping destination.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [AccountStatus].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<AccountStatus> get(
-    core.String merchantId,
-    core.String externalSellerId, {
-    core.List<core.String>? destinations,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (destinations != null) 'destinations': destinations,
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = commons.escapeVariable('$merchantId') +
-        '/accountstatusesbyexternalsellerid/' +
-        commons.escapeVariable('$externalSellerId');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return AccountStatus.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -9854,7 +9796,9 @@ class AccountsCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int? batchId;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   /// Identifies what kind of resource this is.
@@ -10233,7 +10177,9 @@ class AccountstatusesCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int? batchId;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   AccountstatusesCustomBatchResponseEntry({
@@ -10421,7 +10367,9 @@ class AccounttaxCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int? batchId;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   /// Identifies what kind of resource this is.
@@ -12119,7 +12067,9 @@ class DatafeedsCustomBatchResponseEntry {
   /// Defined if and only if the request was successful.
   Datafeed? datafeed;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   DatafeedsCustomBatchResponseEntry({
@@ -12342,7 +12292,9 @@ class DatafeedstatusesCustomBatchResponseEntry {
   /// Defined if and only if the request was successful.
   DatafeedStatus? datafeedStatus;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   DatafeedstatusesCustomBatchResponseEntry({
@@ -12430,57 +12382,58 @@ typedef Date = $Date;
 /// unset: a civil time on a calendar day in a particular time zone. * When
 /// neither time_zone nor utc_offset is set: a civil time on a calendar day in
 /// local time. The date is relative to the Proleptic Gregorian Calendar. If
-/// year is 0, the DateTime is considered not to have a specific year. month and
-/// day must have valid, non-zero values. This type may also be used to
-/// represent a physical time if all the date and time fields are set and either
-/// case of the `time_offset` oneof is set. Consider using `Timestamp` message
-/// for physical time instead. If your use case also would like to store the
-/// user's timezone, that can be done in another field. This type is more
-/// flexible than some applications may want. Make sure to document and validate
-/// your application's limitations.
+/// year, month, or day are 0, the DateTime is considered not to have a specific
+/// year, month, or day respectively. This type may also be used to represent a
+/// physical time if all the date and time fields are set and either case of the
+/// `time_offset` oneof is set. Consider using `Timestamp` message for physical
+/// time instead. If your use case also would like to store the user's timezone,
+/// that can be done in another field. This type is more flexible than some
+/// applications may want. Make sure to document and validate your application's
+/// limitations.
 class DateTime {
   /// Day of month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
+  /// a datetime without a day.
   ///
-  /// Required.
+  /// Optional.
   core.int? day;
 
   /// Hours of day in 24 hour format.
   ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
+  /// Should be from 0 to 23, defaults to 0 (midnight). An API may choose to
+  /// allow the value "24:00:00" for scenarios like business closing time.
   ///
-  /// Required.
+  /// Optional.
   core.int? hours;
 
   /// Minutes of hour of day.
   ///
-  /// Must be from 0 to 59.
+  /// Must be from 0 to 59, defaults to 0.
   ///
-  /// Required.
+  /// Optional.
   core.int? minutes;
 
   /// Month of year.
   ///
-  /// Must be from 1 to 12.
+  /// Must be from 1 to 12, or 0 if specifying a datetime without a month.
   ///
-  /// Required.
+  /// Optional.
   core.int? month;
 
   /// Fractions of seconds in nanoseconds.
   ///
-  /// Must be from 0 to 999,999,999.
+  /// Must be from 0 to 999,999,999, defaults to 0.
   ///
-  /// Required.
+  /// Optional.
   core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
+  /// Must normally be from 0 to 59, defaults to 0. An API may allow the value
+  /// 60 if it allows leap-seconds.
   ///
-  /// Required.
+  /// Optional.
   core.int? seconds;
 
   /// Time zone.
@@ -14873,7 +14826,9 @@ class LocalinventoryCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int? batchId;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   /// Identifies what kind of resource this is.
@@ -15205,7 +15160,8 @@ class MerchantRejectionReason {
 class Metrics {
   /// Average order size - the average number of items in an order.
   ///
-  /// **This metric cannot be segmented by product dimensions.**
+  /// **This metric cannot be segmented by product dimensions and
+  /// customer_country_code.**
   core.double? aos;
 
   /// Average order value - the average value (total price of items) of all
@@ -15215,7 +15171,8 @@ class Metrics {
   /// If this metric is selected, 'segments.currency_code' is automatically
   /// added to the SELECT clause in the search query (unless it is explicitly
   /// selected by the user) and the currency_code segment is populated in the
-  /// response. **This metric cannot be segmented by product dimensions.**
+  /// response. **This metric cannot be segmented by product dimensions and
+  /// customer_country_code.**
   core.double? aovMicros;
 
   /// Number of clicks.
@@ -15256,20 +15213,23 @@ class Metrics {
   /// Average number of days between an order being placed and the order being
   /// fully shipped, reported on the last shipment date.
   ///
-  /// **This metric cannot be segmented by product dimensions.**
+  /// **This metric cannot be segmented by product dimensions and
+  /// customer_country_code.**
   core.double? daysToShip;
 
   /// Number of times merchant's products are shown.
   core.String? impressions;
 
   /// Average number of days between an item being ordered and the item being
+  /// **This metric cannot be segmented by customer_country_code.**
   core.double? itemDaysToShip;
 
   /// Percentage of shipped items in relation to all finalized items (shipped or
   /// rejected by the merchant; unshipped items are not taken into account),
   /// reported on the order date.
   ///
-  /// Item fill rate is lowered by merchant rejections.
+  /// Item fill rate is lowered by merchant rejections. **This metric cannot be
+  /// segmented by customer_country_code.**
   core.double? itemFillRate;
 
   /// Total price of ordered items.
@@ -15279,23 +15239,27 @@ class Metrics {
   /// returned value is stored in the currency_code segment. If this metric is
   /// selected, 'segments.currency_code' is automatically added to the SELECT
   /// clause in the search query (unless it is explicitly selected by the user)
-  /// and the currency_code segment is populated in the response.
+  /// and the currency_code segment is populated in the response. **This metric
+  /// cannot be segmented by customer_country_code.**
   core.String? orderedItemSalesMicros;
 
   /// Number of ordered items.
   ///
   /// Excludes customer cancellations that happened within 30 minutes of placing
-  /// the order.
+  /// the order. **This metric cannot be segmented by customer_country_code.**
   core.String? orderedItems;
 
   /// Number of placed orders.
   ///
   /// Excludes customer cancellations that happened within 30 minutes of placing
-  /// the order. **This metric cannot be segmented by product dimensions.**
+  /// the order. **This metric cannot be segmented by product dimensions and
+  /// customer_country_code.**
   core.String? orders;
 
   /// Number of ordered items canceled by the merchant, reported on the order
   /// date.
+  ///
+  /// **This metric cannot be segmented by customer_country_code.**
   core.String? rejectedItems;
 
   /// Total price of returned items divided by the total price of shipped items,
@@ -15304,11 +15268,13 @@ class Metrics {
   /// If this metric is selected, 'segments.currency_code' is automatically
   /// added to the SELECT clause in the search query (unless it is explicitly
   /// selected by the user) and the currency_code segment is populated in the
-  /// response.
+  /// response. **This metric cannot be segmented by customer_country_code.**
   core.double? returnRate;
 
   /// Number of ordered items sent back for return, reported on the date when
   /// the merchant accepted the return.
+  ///
+  /// **This metric cannot be segmented by customer_country_code.**
   core.String? returnedItems;
 
   /// Total price of ordered items sent back for return, reported on the date
@@ -15318,7 +15284,7 @@ class Metrics {
   /// If this metric is selected, 'segments.currency_code' is automatically
   /// added to the SELECT clause in the search query (unless it is explicitly
   /// selected by the user) and the currency_code segment is populated in the
-  /// response.
+  /// response. **This metric cannot be segmented by customer_country_code.**
   core.String? returnsMicros;
 
   /// Total price of shipped items, reported on the order date.
@@ -15327,22 +15293,26 @@ class Metrics {
   /// is stored in the currency_code segment. If this metric is selected,
   /// 'segments.currency_code' is automatically added to the SELECT clause in
   /// the search query (unless it is explicitly selected by the user) and the
-  /// currency_code segment is populated in the response.
+  /// currency_code segment is populated in the response. **This metric cannot
+  /// be segmented by customer_country_code.**
   core.String? shippedItemSalesMicros;
 
   /// Number of shipped items, reported on the shipment date.
+  ///
+  /// **This metric cannot be segmented by customer_country_code.**
   core.String? shippedItems;
 
   /// Number of fully shipped orders, reported on the last shipment date.
   ///
-  /// **This metric cannot be segmented by product dimensions.**
+  /// **This metric cannot be segmented by product dimensions and
+  /// customer_country_code.**
   core.String? shippedOrders;
 
   /// Number of ordered items not shipped up until the end of the queried day.
   ///
   /// If a multi-day period is specified in the search query, the returned value
   /// is the average number of unshipped items over the days in the queried
-  /// period.
+  /// period. **This metric cannot be segmented by customer_country_code.**
   core.double? unshippedItems;
 
   /// Number of orders not shipped or partially shipped up until the end of the
@@ -15350,7 +15320,8 @@ class Metrics {
   ///
   /// If a multi-day period is specified in the search query, the returned value
   /// is the average number of unshipped orders over the days in the queried
-  /// period. **This metric cannot be segmented by product dimensions.**
+  /// period. **This metric cannot be segmented by product dimensions and
+  /// customer_country_code.**
   core.double? unshippedOrders;
 
   Metrics({
@@ -23438,6 +23409,337 @@ class ProductUnitPricingMeasure {
       };
 }
 
+/// Product fields.
+///
+/// Values are only set for fields requested explicitly in the request's search
+/// query.
+class ProductView {
+  /// Aggregated destination status.
+  /// Possible string values are:
+  /// - "AGGREGATED_STATUS_UNSPECIFIED" : Undefined aggregated status.
+  /// - "NOT_ELIGIBLE_OR_DISAPPROVED" : Offer isn't eligible, or is disapproved
+  /// for all destinations.
+  /// - "PENDING" : Offer's status is pending in all destinations.
+  /// - "ELIGIBLE_LIMITED" : Offer is eligible for some (but not all)
+  /// destinations.
+  /// - "ELIGIBLE" : Offer is eligible for all destinations.
+  core.String? aggregatedDestinationStatus;
+
+  /// Availability of the product.
+  core.String? availability;
+
+  /// Brand of the product.
+  core.String? brand;
+
+  /// Channel of the product (online versus local).
+  /// Possible string values are:
+  /// - "CHANNEL_UNSPECIFIED" : Indicates that the channel is unspecified.
+  /// - "LOCAL" : Indicates that the channel is local.
+  /// - "ONLINE" : Indicates that the channel is online.
+  core.String? channel;
+
+  /// Condition of the product.
+  core.String? condition;
+
+  /// The time the merchant created the product in timestamp seconds.
+  core.String? creationTime;
+
+  /// Product price currency code (for example, ISO 4217).
+  ///
+  /// Absent if product price is not available.
+  core.String? currencyCode;
+
+  /// Expiration date for the product.
+  ///
+  /// Specified on insertion.
+  Date? expirationDate;
+
+  /// GTIN of the product.
+  core.List<core.String>? gtin;
+
+  /// The REST ID of the product, in the form of
+  /// channel:contentLanguage:targetCountry:offerId.
+  ///
+  /// Content API methods that operate on products take this as their productId
+  /// parameter. Should always be included in the SELECT clause.
+  core.String? id;
+
+  /// Item group ID provided by the merchant for grouping variants together.
+  core.String? itemGroupId;
+
+  /// List of item issues for the product.
+  core.List<ProductViewItemIssue>? itemIssues;
+
+  /// Language code of the product in BCP 47 format.
+  core.String? languageCode;
+
+  /// Merchant-provided id of the product.
+  core.String? offerId;
+
+  /// Product price specified as micros in the product currency.
+  ///
+  /// Absent in case the information about the price of the product is not
+  /// available.
+  core.String? priceMicros;
+
+  /// The normalized shipping label specified in the feed
+  core.String? shippingLabel;
+
+  /// Title of the product.
+  core.String? title;
+
+  ProductView({
+    this.aggregatedDestinationStatus,
+    this.availability,
+    this.brand,
+    this.channel,
+    this.condition,
+    this.creationTime,
+    this.currencyCode,
+    this.expirationDate,
+    this.gtin,
+    this.id,
+    this.itemGroupId,
+    this.itemIssues,
+    this.languageCode,
+    this.offerId,
+    this.priceMicros,
+    this.shippingLabel,
+    this.title,
+  });
+
+  ProductView.fromJson(core.Map _json)
+      : this(
+          aggregatedDestinationStatus:
+              _json.containsKey('aggregatedDestinationStatus')
+                  ? _json['aggregatedDestinationStatus'] as core.String
+                  : null,
+          availability: _json.containsKey('availability')
+              ? _json['availability'] as core.String
+              : null,
+          brand:
+              _json.containsKey('brand') ? _json['brand'] as core.String : null,
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.String
+              : null,
+          condition: _json.containsKey('condition')
+              ? _json['condition'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          expirationDate: _json.containsKey('expirationDate')
+              ? Date.fromJson(_json['expirationDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gtin: _json.containsKey('gtin')
+              ? (_json['gtin'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          itemGroupId: _json.containsKey('itemGroupId')
+              ? _json['itemGroupId'] as core.String
+              : null,
+          itemIssues: _json.containsKey('itemIssues')
+              ? (_json['itemIssues'] as core.List)
+                  .map((value) => ProductViewItemIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          offerId: _json.containsKey('offerId')
+              ? _json['offerId'] as core.String
+              : null,
+          priceMicros: _json.containsKey('priceMicros')
+              ? _json['priceMicros'] as core.String
+              : null,
+          shippingLabel: _json.containsKey('shippingLabel')
+              ? _json['shippingLabel'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregatedDestinationStatus != null)
+          'aggregatedDestinationStatus': aggregatedDestinationStatus!,
+        if (availability != null) 'availability': availability!,
+        if (brand != null) 'brand': brand!,
+        if (channel != null) 'channel': channel!,
+        if (condition != null) 'condition': condition!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (expirationDate != null) 'expirationDate': expirationDate!,
+        if (gtin != null) 'gtin': gtin!,
+        if (id != null) 'id': id!,
+        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+        if (itemIssues != null) 'itemIssues': itemIssues!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (offerId != null) 'offerId': offerId!,
+        if (priceMicros != null) 'priceMicros': priceMicros!,
+        if (shippingLabel != null) 'shippingLabel': shippingLabel!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Item issue associated with the product.
+class ProductViewItemIssue {
+  /// Item issue type.
+  ProductViewItemIssueItemIssueType? issueType;
+
+  /// Item issue resolution.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown resolution type.
+  /// - "MERCHANT_ACTION" : The merchant has to fix the issue.
+  /// - "PENDING_PROCESSING" : The issue will be resolved automatically (for
+  /// example, image crawl), or Google review. No merchant action is required
+  /// now. Resolution might lead to another issue (for example, if crawl fails).
+  core.String? resolution;
+
+  /// Item issue severity.
+  ProductViewItemIssueItemIssueSeverity? severity;
+
+  ProductViewItemIssue({
+    this.issueType,
+    this.resolution,
+    this.severity,
+  });
+
+  ProductViewItemIssue.fromJson(core.Map _json)
+      : this(
+          issueType: _json.containsKey('issueType')
+              ? ProductViewItemIssueItemIssueType.fromJson(
+                  _json['issueType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resolution: _json.containsKey('resolution')
+              ? _json['resolution'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? ProductViewItemIssueItemIssueSeverity.fromJson(
+                  _json['severity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issueType != null) 'issueType': issueType!,
+        if (resolution != null) 'resolution': resolution!,
+        if (severity != null) 'severity': severity!,
+      };
+}
+
+/// Issue severity for all affected regions in a destination.
+class ProductViewItemIssueIssueSeverityPerDestination {
+  /// List of demoted countries in the destination.
+  core.List<core.String>? demotedCountries;
+
+  /// Issue destination.
+  core.String? destination;
+
+  /// List of disapproved countries in the destination.
+  core.List<core.String>? disapprovedCountries;
+
+  ProductViewItemIssueIssueSeverityPerDestination({
+    this.demotedCountries,
+    this.destination,
+    this.disapprovedCountries,
+  });
+
+  ProductViewItemIssueIssueSeverityPerDestination.fromJson(core.Map _json)
+      : this(
+          demotedCountries: _json.containsKey('demotedCountries')
+              ? (_json['demotedCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          destination: _json.containsKey('destination')
+              ? _json['destination'] as core.String
+              : null,
+          disapprovedCountries: _json.containsKey('disapprovedCountries')
+              ? (_json['disapprovedCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (demotedCountries != null) 'demotedCountries': demotedCountries!,
+        if (destination != null) 'destination': destination!,
+        if (disapprovedCountries != null)
+          'disapprovedCountries': disapprovedCountries!,
+      };
+}
+
+/// Severity of an issue per destination in a region, and aggregated severity.
+class ProductViewItemIssueItemIssueSeverity {
+  /// Severity of an issue aggregated for destination.
+  /// Possible string values are:
+  /// - "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED" : Undefined Issue severity.
+  /// - "DISAPPROVED" : Issue disapproves the product in at least one of the
+  /// selected destinations.
+  /// - "DEMOTED" : Issue demotes the product in all selected destinations it
+  /// affects.
+  /// - "PENDING" : Issue resolution is `PENDING_PROCESSING`.
+  core.String? aggregatedSeverity;
+
+  /// Item issue severity for every destination.
+  core.List<ProductViewItemIssueIssueSeverityPerDestination>?
+      severityPerDestination;
+
+  ProductViewItemIssueItemIssueSeverity({
+    this.aggregatedSeverity,
+    this.severityPerDestination,
+  });
+
+  ProductViewItemIssueItemIssueSeverity.fromJson(core.Map _json)
+      : this(
+          aggregatedSeverity: _json.containsKey('aggregatedSeverity')
+              ? _json['aggregatedSeverity'] as core.String
+              : null,
+          severityPerDestination: _json.containsKey('severityPerDestination')
+              ? (_json['severityPerDestination'] as core.List)
+                  .map((value) =>
+                      ProductViewItemIssueIssueSeverityPerDestination.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregatedSeverity != null)
+          'aggregatedSeverity': aggregatedSeverity!,
+        if (severityPerDestination != null)
+          'severityPerDestination': severityPerDestination!,
+      };
+}
+
+/// Type of the item issue.
+class ProductViewItemIssueItemIssueType {
+  /// Canonical attribute name for attribute-specific issues.
+  core.String? canonicalAttribute;
+
+  ProductViewItemIssueItemIssueType({
+    this.canonicalAttribute,
+  });
+
+  ProductViewItemIssueItemIssueType.fromJson(core.Map _json)
+      : this(
+          canonicalAttribute: _json.containsKey('canonicalAttribute')
+              ? _json['canonicalAttribute'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalAttribute != null)
+          'canonicalAttribute': canonicalAttribute!,
+      };
+}
+
 class ProductWeight {
   /// The weight unit.
   ///
@@ -23620,7 +23922,9 @@ class ProductsCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int? batchId;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   /// Identifies what kind of resource this is.
@@ -23829,7 +24133,9 @@ class ProductstatusesCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int? batchId;
 
-  /// A list of errors, if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   /// Identifies what kind of resource this is.
@@ -23911,10 +24217,9 @@ class ProductstatusesListResponse {
       };
 }
 
-/// The Promotions feature is available for `AU`, `CA`, `DE`, `FR`, `GB`, `IN`
-/// and `US` target countries, and `en` content language.
+/// Represents a promotion.
 ///
-/// Represents a promotion. See the following articles for more details. *
+/// See the following articles for more details. *
 /// [Promotions feed specification](https://support.google.com/merchants/answer/2906014)
 /// *
 /// [Local promotions feed specification](https://support.google.com/merchants/answer/10146130)
@@ -23929,7 +24234,9 @@ class Promotion {
 
   /// The content language used as part of the unique identifier.
   ///
-  /// Currently only `en` value is supported.
+  /// `en` content language is available for all target countries. `fr` content
+  /// language is available for `CA` and `FR` target countries, and `de` content
+  /// language is available for `DE` target country.
   ///
   /// Required.
   core.String? contentLanguage;
@@ -24908,7 +25215,9 @@ class RegionalinventoryCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int? batchId;
 
-  /// A list of errors defined if and only if the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   /// Identifies what kind of resource this is.
@@ -24958,6 +25267,13 @@ class ReportRow {
   /// Metric values are only set for metrics requested explicitly in the query.
   Metrics? metrics;
 
+  /// Product fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries `ProductView`.
+  /// `product_view` field is available only to allowlisted users who can query
+  /// the `ProductView` table.
+  ProductView? productView;
+
   /// Segmentation dimensions requested by the merchant in the query.
   ///
   /// Dimension values are only set for dimensions requested explicitly in the
@@ -24966,6 +25282,7 @@ class ReportRow {
 
   ReportRow({
     this.metrics,
+    this.productView,
     this.segments,
   });
 
@@ -24975,6 +25292,10 @@ class ReportRow {
               ? Metrics.fromJson(
                   _json['metrics'] as core.Map<core.String, core.dynamic>)
               : null,
+          productView: _json.containsKey('productView')
+              ? ProductView.fromJson(
+                  _json['productView'] as core.Map<core.String, core.dynamic>)
+              : null,
           segments: _json.containsKey('segments')
               ? Segments.fromJson(
                   _json['segments'] as core.Map<core.String, core.dynamic>)
@@ -24983,6 +25304,7 @@ class ReportRow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null) 'metrics': metrics!,
+        if (productView != null) 'productView': productView!,
         if (segments != null) 'segments': segments!,
       };
 }
@@ -27200,11 +27522,11 @@ class SearchResponse {
 
 /// Dimensions according to which metrics are segmented in the response.
 ///
-/// Values of product dimensions, e.g., offer id, reflect the state of a product
-/// at the time of the corresponding event, e.g., impression or order. Segment
-/// fields cannot be selected in queries without also selecting at least one
-/// metric field. Values are only set for dimensions requested explicitly in the
-/// request's search query.
+/// Values of product dimensions, such as `offer_id`, reflect the state of a
+/// product at the time of the corresponding event, for example, impression or
+/// order. Segment fields cannot be selected in queries without also selecting
+/// at least one metric field. Values are only set for dimensions requested
+/// explicitly in the request's search query.
 class Segments {
   /// Brand of the product.
   core.String? brand;
@@ -27234,9 +27556,9 @@ class Segments {
   /// in Google's product taxonomy.
   core.String? categoryL5;
 
-  /// Currency in which price metrics are represented, e.g., if you select
-  /// `ordered_item_sales_micros`, the returned value will be represented by
-  /// this currency.
+  /// Currency in which price metrics are represented, for example, if you
+  /// select `ordered_item_sales_micros`, the returned value will be represented
+  /// by this currency.
   core.String? currencyCode;
 
   /// Custom label 0 for custom grouping of products.
@@ -27253,6 +27575,13 @@ class Segments {
 
   /// Custom label 4 for custom grouping of products.
   core.String? customLabel4;
+
+  /// Code of the country where the customer is located at the time of the
+  /// event.
+  ///
+  /// Represented in the ISO 3166 format. If the customer country cannot be
+  /// determined, a special 'ZZ' code is returned.
+  core.String? customerCountryCode;
 
   /// Date in the merchant timezone to which metrics apply.
   Date? date;
@@ -27285,7 +27614,7 @@ class Segments {
   /// in merchant's own product taxonomy.
   core.String? productTypeL5;
 
-  /// Program to which metrics apply, e.g., Free Product Listing.
+  /// Program to which metrics apply, for example, Free Product Listing.
   /// Possible string values are:
   /// - "PROGRAM_UNSPECIFIED" : Not specified.
   /// - "SHOPPING_ADS" : Shopping Ads.
@@ -27314,6 +27643,7 @@ class Segments {
     this.customLabel2,
     this.customLabel3,
     this.customLabel4,
+    this.customerCountryCode,
     this.date,
     this.offerId,
     this.productTypeL1,
@@ -27363,6 +27693,9 @@ class Segments {
           customLabel4: _json.containsKey('customLabel4')
               ? _json['customLabel4'] as core.String
               : null,
+          customerCountryCode: _json.containsKey('customerCountryCode')
+              ? _json['customerCountryCode'] as core.String
+              : null,
           date: _json.containsKey('date')
               ? Date.fromJson(
                   _json['date'] as core.Map<core.String, core.dynamic>)
@@ -27409,6 +27742,8 @@ class Segments {
         if (customLabel2 != null) 'customLabel2': customLabel2!,
         if (customLabel3 != null) 'customLabel3': customLabel3!,
         if (customLabel4 != null) 'customLabel4': customLabel4!,
+        if (customerCountryCode != null)
+          'customerCountryCode': customerCountryCode!,
         if (date != null) 'date': date!,
         if (offerId != null) 'offerId': offerId!,
         if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
@@ -28310,7 +28645,9 @@ class ShippingsettingsCustomBatchResponseEntry {
   /// The ID of the request entry to which this entry responds.
   core.int? batchId;
 
-  /// A list of errors defined if, and only if, the request failed.
+  /// A list of errors for failed custombatch entries.
+  ///
+  /// *Note:* Schema errors fail the whole request.
   Errors? errors;
 
   /// Identifies what kind of resource this is.

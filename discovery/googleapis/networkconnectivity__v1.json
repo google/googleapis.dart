@@ -12,7 +12,7 @@
     "baseUrl": "https://networkconnectivity.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "networkconnectivity",
-    "description": "The Network Connectivity API provides access to Network Connectivity Center.",
+    "description": "This API enables connectivity with and between Google Cloud resources.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest",
     "icons": {
@@ -180,7 +180,7 @@
                                 "hubs": {
                                     "methods": {
                                         "create": {
-                                            "description": "Creates a new hub in the specified project.",
+                                            "description": "Creates a new Network Connectivity Center hub in the specified project.",
                                             "flatPath": "v1/projects/{projectsId}/locations/global/hubs",
                                             "httpMethod": "POST",
                                             "id": "networkconnectivity.projects.locations.global.hubs.create",
@@ -218,7 +218,7 @@
                                             ]
                                         },
                                         "delete": {
-                                            "description": "Deletes the specified hub.",
+                                            "description": "Deletes a Network Connectivity Center hub.",
                                             "flatPath": "v1/projects/{projectsId}/locations/global/hubs/{hubsId}",
                                             "httpMethod": "DELETE",
                                             "id": "networkconnectivity.projects.locations.global.hubs.delete",
@@ -248,7 +248,7 @@
                                             ]
                                         },
                                         "get": {
-                                            "description": "Gets details about the specified hub.",
+                                            "description": "Gets details about a Network Connectivity Center hub.",
                                             "flatPath": "v1/projects/{projectsId}/locations/global/hubs/{hubsId}",
                                             "httpMethod": "GET",
                                             "id": "networkconnectivity.projects.locations.global.hubs.get",
@@ -304,7 +304,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists hubs in a given project.",
+                                            "description": "Lists the Network Connectivity Center hubs associated with a given project.",
                                             "flatPath": "v1/projects/{projectsId}/locations/global/hubs",
                                             "httpMethod": "GET",
                                             "id": "networkconnectivity.projects.locations.global.hubs.list",
@@ -350,7 +350,7 @@
                                             ]
                                         },
                                         "patch": {
-                                            "description": "Updates the description and/or labels of the specified hub.",
+                                            "description": "Updates the description and/or labels of a Network Connectivity Center hub.",
                                             "flatPath": "v1/projects/{projectsId}/locations/global/hubs/{hubsId}",
                                             "httpMethod": "PATCH",
                                             "id": "networkconnectivity.projects.locations.global.hubs.patch",
@@ -665,7 +665,7 @@
                         "spokes": {
                             "methods": {
                                 "create": {
-                                    "description": "Creates a spoke in the specified project and location.",
+                                    "description": "Creates a Network Connectivity Center spoke.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/spokes",
                                     "httpMethod": "POST",
                                     "id": "networkconnectivity.projects.locations.spokes.create",
@@ -703,7 +703,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes the specified spoke.",
+                                    "description": "Deletes a Network Connectivity Center spoke.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
                                     "httpMethod": "DELETE",
                                     "id": "networkconnectivity.projects.locations.spokes.delete",
@@ -733,7 +733,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets details about the specified spoke.",
+                                    "description": "Gets details about a Network Connectivity Center spoke.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
                                     "httpMethod": "GET",
                                     "id": "networkconnectivity.projects.locations.spokes.get",
@@ -789,7 +789,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists the spokes in the specified project and location.",
+                                    "description": "Lists the Network Connectivity Center spokes in a specified project and location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/spokes",
                                     "httpMethod": "GET",
                                     "id": "networkconnectivity.projects.locations.spokes.list",
@@ -835,7 +835,7 @@
                                     ]
                                 },
                                 "patch": {
-                                    "description": "Updates the parameters of the specified spoke.",
+                                    "description": "Updates the parameters of a Network Connectivity Center spoke.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
                                     "httpMethod": "PATCH",
                                     "id": "networkconnectivity.projects.locations.spokes.patch",
@@ -936,7 +936,7 @@
             }
         }
     },
-    "revision": "20220505",
+    "revision": "20220728",
     "rootUrl": "https://networkconnectivity.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1125,7 +1125,7 @@
             "type": "object"
         },
         "Hub": {
-            "description": "A hub is a collection of spokes. A single hub can contain spokes from multiple regions. However, if any of a hub's spokes use the data transfer feature, the resources associated with those spokes must all reside in the same VPC network. Spokes that do not use data transfer can be associated with any VPC network in your project.",
+            "description": "A Network Connectivity Center hub is a collection of spokes. A single hub can contain spokes from multiple regions. However, if any of a hub's spokes use the data transfer feature, the resources associated with those spokes must all reside in the same VPC network. Spokes that do not use data transfer can be associated with any VPC network in your project.",
             "id": "Hub",
             "properties": {
                 "createTime": {
@@ -1162,13 +1162,15 @@
                         "STATE_UNSPECIFIED",
                         "CREATING",
                         "ACTIVE",
-                        "DELETING"
+                        "DELETING",
+                        "UPDATING"
                     ],
                     "enumDescriptions": [
                         "No state information available",
                         "The resource's create operation is in progress",
                         "The resource is active",
-                        "The resource's Delete operation is in progress"
+                        "The resource's Delete operation is in progress",
+                        "The resource's Update operation is in progress"
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1458,7 +1460,7 @@
             "type": "object"
         },
         "RoutingVPC": {
-            "description": "RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.",
+            "description": "RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.",
             "id": "RoutingVPC",
             "properties": {
                 "requiredForNewSiteToSiteDataTransferSpokes": {
@@ -1490,7 +1492,7 @@
             "type": "object"
         },
         "Spoke": {
-            "description": "A spoke represents a connection between your Google Cloud network resources and a non-Google-Cloud network. When you create a spoke, you associate it with a hub. You must also identify a value for exactly one of the following fields: * linked_vpn_tunnels * linked_interconnect_attachments * linked_router_appliance_instances",
+            "description": "A Network Connectivity Center spoke represents a connection between your Google Cloud network resources and a non-Google-Cloud network. When you create a spoke, you associate it with a hub. You must also identify a value for exactly one of the following fields: * linked_vpn_tunnels * linked_interconnect_attachments * linked_router_appliance_instances",
             "id": "Spoke",
             "properties": {
                 "createTime": {
@@ -1536,13 +1538,15 @@
                         "STATE_UNSPECIFIED",
                         "CREATING",
                         "ACTIVE",
-                        "DELETING"
+                        "DELETING",
+                        "UPDATING"
                     ],
                     "enumDescriptions": [
                         "No state information available",
                         "The resource's create operation is in progress",
                         "The resource is active",
-                        "The resource's Delete operation is in progress"
+                        "The resource's Delete operation is in progress",
+                        "The resource's Update operation is in progress"
                     ],
                     "readOnly": true,
                     "type": "string"
