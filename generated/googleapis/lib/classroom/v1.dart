@@ -205,20 +205,20 @@ class CoursesResource {
     Course request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/courses';
+    const url_ = 'v1/courses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Course.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a course.
@@ -246,18 +246,18 @@ class CoursesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.escapeVariable('$id');
+    final url_ = 'v1/courses/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a course.
@@ -285,18 +285,18 @@ class CoursesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.escapeVariable('$id');
+    final url_ = 'v1/courses/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Course.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of courses that the requesting user is permitted to view,
@@ -351,7 +351,7 @@ class CoursesResource {
     core.String? teacherId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (courseStates != null) 'courseStates': courseStates,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -360,15 +360,15 @@ class CoursesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/courses';
+    const url_ = 'v1/courses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCoursesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields in a course.
@@ -412,21 +412,21 @@ class CoursesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.escapeVariable('$id');
+    final url_ = 'v1/courses/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Course.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a course.
@@ -459,20 +459,20 @@ class CoursesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' + commons.escapeVariable('$id');
+    final url_ = 'v1/courses/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Course.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -512,22 +512,22 @@ class CoursesAliasesResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/aliases';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CourseAlias.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an alias of a course.
@@ -562,21 +562,21 @@ class CoursesAliasesResource {
     core.String alias, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/aliases/' +
         commons.escapeVariable('$alias');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of aliases for a course.
@@ -615,22 +615,22 @@ class CoursesAliasesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/aliases';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCourseAliasesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -672,22 +672,22 @@ class CoursesAnnouncementsResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/announcements';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an announcement.
@@ -724,21 +724,21 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns an announcement.
@@ -771,22 +771,22 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of announcements that the requester is permitted to view.
@@ -840,7 +840,7 @@ class CoursesAnnouncementsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (announcementStates != null) 'announcementStates': announcementStates,
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -848,16 +848,16 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/announcements';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAnnouncementsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies assignee mode and options of an announcement.
@@ -894,25 +894,25 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id') +
         ':modifyAssignees';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of an announcement.
@@ -959,25 +959,25 @@ class CoursesAnnouncementsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1026,22 +1026,22 @@ class CoursesCourseWorkResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/courseWork';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a course work.
@@ -1078,21 +1078,21 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns course work.
@@ -1125,22 +1125,22 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of course work that the requester is permitted to view.
@@ -1194,7 +1194,7 @@ class CoursesCourseWorkResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (courseWorkStates != null) 'courseWorkStates': courseWorkStates,
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1202,16 +1202,16 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/courseWork';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCourseWorkResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies assignee mode and options of a coursework.
@@ -1248,25 +1248,25 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id') +
         ':modifyAssignees';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a course work.
@@ -1320,25 +1320,25 @@ class CoursesCourseWorkResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1380,24 +1380,24 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of student submissions that the requester is permitted to
@@ -1468,7 +1468,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String? userId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (late != null) 'late': [late],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1477,19 +1477,19 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListStudentSubmissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies attachments of student submission.
@@ -1534,12 +1534,12 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -1547,14 +1547,14 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.escapeVariable('$id') +
         ':modifyAttachments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a student submission.
@@ -1605,27 +1605,27 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
         '/studentSubmissions/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reclaims a student submission on behalf of the student that owns it.
@@ -1672,12 +1672,12 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -1685,13 +1685,13 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.escapeVariable('$id') +
         ':reclaim';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a student submission.
@@ -1738,12 +1738,12 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -1751,13 +1751,13 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.escapeVariable('$id') +
         ':return';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Turns in a student submission.
@@ -1802,12 +1802,12 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -1815,13 +1815,13 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.escapeVariable('$id') +
         ':turnIn';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1863,23 +1863,23 @@ class CoursesCourseWorkMaterialsResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a course work material.
@@ -1917,21 +1917,21 @@ class CoursesCourseWorkMaterialsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a course work material.
@@ -1964,22 +1964,22 @@ class CoursesCourseWorkMaterialsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of course work material that the requester is permitted to
@@ -2044,7 +2044,7 @@ class CoursesCourseWorkMaterialsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (courseWorkMaterialStates != null)
         'courseWorkMaterialStates': courseWorkMaterialStates,
       if (materialDriveId != null) 'materialDriveId': [materialDriveId],
@@ -2055,17 +2055,17 @@ class CoursesCourseWorkMaterialsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCourseWorkMaterialResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a course work material.
@@ -2112,25 +2112,25 @@ class CoursesCourseWorkMaterialsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2182,22 +2182,22 @@ class CoursesStudentsResource {
     core.String? enrollmentCode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (enrollmentCode != null) 'enrollmentCode': [enrollmentCode],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/students';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Student.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Student.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a student of a course.
@@ -2232,21 +2232,21 @@ class CoursesStudentsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/students/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a student of a course.
@@ -2281,21 +2281,21 @@ class CoursesStudentsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/students/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Student.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Student.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of students of this course that the requester is permitted
@@ -2334,22 +2334,22 @@ class CoursesStudentsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/students';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListStudentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2395,21 +2395,21 @@ class CoursesTeachersResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/teachers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Teacher.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Teacher.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified teacher from the specified course.
@@ -2448,21 +2448,21 @@ class CoursesTeachersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/teachers/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a teacher of a course.
@@ -2497,21 +2497,21 @@ class CoursesTeachersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/teachers/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Teacher.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Teacher.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of teachers of this course that the requester is permitted
@@ -2550,22 +2550,22 @@ class CoursesTeachersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/teachers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTeachersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2604,21 +2604,21 @@ class CoursesTopicsResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/topics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Topic.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a topic.
@@ -2651,21 +2651,21 @@ class CoursesTopicsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/topics/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a topic.
@@ -2696,21 +2696,21 @@ class CoursesTopicsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/topics/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Topic.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of topics that the requester is permitted to view.
@@ -2750,22 +2750,22 @@ class CoursesTopicsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/courses/' + commons.escapeVariable('$courseId') + '/topics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTopicResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a topic.
@@ -2809,24 +2809,24 @@ class CoursesTopicsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/courses/' +
+    final url_ = 'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/topics/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Topic.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2864,18 +2864,18 @@ class InvitationsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/invitations/' + commons.escapeVariable('$id') + ':accept';
+    final url_ = 'v1/invitations/' + commons.escapeVariable('$id') + ':accept';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an invitation.
@@ -2907,21 +2907,21 @@ class InvitationsResource {
     Invitation request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/invitations';
+    const url_ = 'v1/invitations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Invitation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an invitation.
@@ -2949,18 +2949,18 @@ class InvitationsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/invitations/' + commons.escapeVariable('$id');
+    final url_ = 'v1/invitations/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns an invitation.
@@ -2988,19 +2988,19 @@ class InvitationsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/invitations/' + commons.escapeVariable('$id');
+    final url_ = 'v1/invitations/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Invitation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of invitations that the requesting user is permitted to
@@ -3046,7 +3046,7 @@ class InvitationsResource {
     core.String? userId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (courseId != null) 'courseId': [courseId],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3054,15 +3054,15 @@ class InvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/invitations';
+    const url_ = 'v1/invitations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListInvitationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3114,21 +3114,21 @@ class RegistrationsResource {
     Registration request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/registrations';
+    const url_ = 'v1/registrations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Registration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `Registration`, causing Classroom to stop sending notifications
@@ -3153,19 +3153,19 @@ class RegistrationsResource {
     core.String registrationId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/registrations/' + commons.escapeVariable('$registrationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3206,19 +3206,19 @@ class UserProfilesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' + commons.escapeVariable('$userId');
+    final url_ = 'v1/userProfiles/' + commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return UserProfile.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3275,23 +3275,23 @@ class UserProfilesGuardianInvitationsResource {
     core.String studentId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' +
+    final url_ = 'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a specific guardian invitation.
@@ -3329,22 +3329,22 @@ class UserProfilesGuardianInvitationsResource {
     core.String invitationId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' +
+    final url_ = 'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations/' +
         commons.escapeVariable('$invitationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of guardian invitations that the requesting user is
@@ -3404,7 +3404,7 @@ class UserProfilesGuardianInvitationsResource {
     core.List<core.String>? states,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (invitedEmailAddress != null)
         'invitedEmailAddress': [invitedEmailAddress],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3413,17 +3413,17 @@ class UserProfilesGuardianInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' +
+    final url_ = 'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGuardianInvitationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a guardian invitation.
@@ -3474,25 +3474,25 @@ class UserProfilesGuardianInvitationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' +
+    final url_ = 'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations/' +
         commons.escapeVariable('$invitationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3540,21 +3540,21 @@ class UserProfilesGuardiansResource {
     core.String guardianId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' +
+    final url_ = 'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardians/' +
         commons.escapeVariable('$guardianId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a specific guardian.
@@ -3594,21 +3594,21 @@ class UserProfilesGuardiansResource {
     core.String guardianId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' +
+    final url_ = 'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardians/' +
         commons.escapeVariable('$guardianId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Guardian.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Guardian.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of guardians that the requesting user is permitted to view,
@@ -3668,7 +3668,7 @@ class UserProfilesGuardiansResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (invitedEmailAddress != null)
         'invitedEmailAddress': [invitedEmailAddress],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3676,17 +3676,17 @@ class UserProfilesGuardiansResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/userProfiles/' +
+    final url_ = 'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardians';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGuardiansResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3785,44 +3785,44 @@ class Announcement {
     this.updateTime,
   });
 
-  Announcement.fromJson(core.Map _json)
+  Announcement.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          assigneeMode: _json.containsKey('assigneeMode')
-              ? _json['assigneeMode'] as core.String
+          assigneeMode: json_.containsKey('assigneeMode')
+              ? json_['assigneeMode'] as core.String
               : null,
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          creatorUserId: _json.containsKey('creatorUserId')
-              ? _json['creatorUserId'] as core.String
+          creatorUserId: json_.containsKey('creatorUserId')
+              ? json_['creatorUserId'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
           individualStudentsOptions:
-              _json.containsKey('individualStudentsOptions')
+              json_.containsKey('individualStudentsOptions')
                   ? IndividualStudentsOptions.fromJson(
-                      _json['individualStudentsOptions']
+                      json_['individualStudentsOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          materials: _json.containsKey('materials')
-              ? (_json['materials'] as core.List)
+          materials: json_.containsKey('materials')
+              ? (json_['materials'] as core.List)
                   .map((value) => Material.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          scheduledTime: _json.containsKey('scheduledTime')
-              ? _json['scheduledTime'] as core.String
+          scheduledTime: json_.containsKey('scheduledTime')
+              ? json_['scheduledTime'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -3854,10 +3854,10 @@ class Assignment {
     this.studentWorkFolder,
   });
 
-  Assignment.fromJson(core.Map _json)
+  Assignment.fromJson(core.Map json_)
       : this(
-          studentWorkFolder: _json.containsKey('studentWorkFolder')
-              ? DriveFolder.fromJson(_json['studentWorkFolder']
+          studentWorkFolder: json_.containsKey('studentWorkFolder')
+              ? DriveFolder.fromJson(json_['studentWorkFolder']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3882,10 +3882,10 @@ class AssignmentSubmission {
     this.attachments,
   });
 
-  AssignmentSubmission.fromJson(core.Map _json)
+  AssignmentSubmission.fromJson(core.Map json_)
       : this(
-          attachments: _json.containsKey('attachments')
-              ? (_json['attachments'] as core.List)
+          attachments: json_.containsKey('attachments')
+              ? (json_['attachments'] as core.List)
                   .map((value) => Attachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3920,23 +3920,23 @@ class Attachment {
     this.youTubeVideo,
   });
 
-  Attachment.fromJson(core.Map _json)
+  Attachment.fromJson(core.Map json_)
       : this(
-          driveFile: _json.containsKey('driveFile')
+          driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
               : null,
-          form: _json.containsKey('form')
+          form: json_.containsKey('form')
               ? Form.fromJson(
-                  _json['form'] as core.Map<core.String, core.dynamic>)
+                  json_['form'] as core.Map<core.String, core.dynamic>)
               : null,
-          link: _json.containsKey('link')
+          link: json_.containsKey('link')
               ? Link.fromJson(
-                  _json['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          youTubeVideo: _json.containsKey('youTubeVideo')
+          youTubeVideo: json_.containsKey('youTubeVideo')
               ? YouTubeVideo.fromJson(
-                  _json['youTubeVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3962,10 +3962,10 @@ class CloudPubsubTopic {
     this.topicName,
   });
 
-  CloudPubsubTopic.fromJson(core.Map _json)
+  CloudPubsubTopic.fromJson(core.Map json_)
       : this(
-          topicName: _json.containsKey('topicName')
-              ? _json['topicName'] as core.String
+          topicName: json_.containsKey('topicName')
+              ? json_['topicName'] as core.String
               : null,
         );
 
@@ -4136,63 +4136,63 @@ class Course {
     this.updateTime,
   });
 
-  Course.fromJson(core.Map _json)
+  Course.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          calendarId: _json.containsKey('calendarId')
-              ? _json['calendarId'] as core.String
+          calendarId: json_.containsKey('calendarId')
+              ? json_['calendarId'] as core.String
               : null,
-          courseGroupEmail: _json.containsKey('courseGroupEmail')
-              ? _json['courseGroupEmail'] as core.String
+          courseGroupEmail: json_.containsKey('courseGroupEmail')
+              ? json_['courseGroupEmail'] as core.String
               : null,
-          courseMaterialSets: _json.containsKey('courseMaterialSets')
-              ? (_json['courseMaterialSets'] as core.List)
+          courseMaterialSets: json_.containsKey('courseMaterialSets')
+              ? (json_['courseMaterialSets'] as core.List)
                   .map((value) => CourseMaterialSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          courseState: _json.containsKey('courseState')
-              ? _json['courseState'] as core.String
+          courseState: json_.containsKey('courseState')
+              ? json_['courseState'] as core.String
               : null,
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          descriptionHeading: _json.containsKey('descriptionHeading')
-              ? _json['descriptionHeading'] as core.String
+          descriptionHeading: json_.containsKey('descriptionHeading')
+              ? json_['descriptionHeading'] as core.String
               : null,
-          enrollmentCode: _json.containsKey('enrollmentCode')
-              ? _json['enrollmentCode'] as core.String
+          enrollmentCode: json_.containsKey('enrollmentCode')
+              ? json_['enrollmentCode'] as core.String
               : null,
-          gradebookSettings: _json.containsKey('gradebookSettings')
-              ? GradebookSettings.fromJson(_json['gradebookSettings']
+          gradebookSettings: json_.containsKey('gradebookSettings')
+              ? GradebookSettings.fromJson(json_['gradebookSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          guardiansEnabled: _json.containsKey('guardiansEnabled')
-              ? _json['guardiansEnabled'] as core.bool
+          guardiansEnabled: json_.containsKey('guardiansEnabled')
+              ? json_['guardiansEnabled'] as core.bool
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          ownerId: _json.containsKey('ownerId')
-              ? _json['ownerId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ownerId: json_.containsKey('ownerId')
+              ? json_['ownerId'] as core.String
               : null,
-          room: _json.containsKey('room') ? _json['room'] as core.String : null,
-          section: _json.containsKey('section')
-              ? _json['section'] as core.String
+          room: json_.containsKey('room') ? json_['room'] as core.String : null,
+          section: json_.containsKey('section')
+              ? json_['section'] as core.String
               : null,
-          teacherFolder: _json.containsKey('teacherFolder')
+          teacherFolder: json_.containsKey('teacherFolder')
               ? DriveFolder.fromJson(
-                  _json['teacherFolder'] as core.Map<core.String, core.dynamic>)
+                  json_['teacherFolder'] as core.Map<core.String, core.dynamic>)
               : null,
-          teacherGroupEmail: _json.containsKey('teacherGroupEmail')
-              ? _json['teacherGroupEmail'] as core.String
+          teacherGroupEmail: json_.containsKey('teacherGroupEmail')
+              ? json_['teacherGroupEmail'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -4247,10 +4247,10 @@ class CourseAlias {
     this.alias,
   });
 
-  CourseAlias.fromJson(core.Map _json)
+  CourseAlias.fromJson(core.Map json_)
       : this(
           alias:
-              _json.containsKey('alias') ? _json['alias'] as core.String : null,
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4279,23 +4279,23 @@ class CourseMaterial {
     this.youTubeVideo,
   });
 
-  CourseMaterial.fromJson(core.Map _json)
+  CourseMaterial.fromJson(core.Map json_)
       : this(
-          driveFile: _json.containsKey('driveFile')
+          driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
               : null,
-          form: _json.containsKey('form')
+          form: json_.containsKey('form')
               ? Form.fromJson(
-                  _json['form'] as core.Map<core.String, core.dynamic>)
+                  json_['form'] as core.Map<core.String, core.dynamic>)
               : null,
-          link: _json.containsKey('link')
+          link: json_.containsKey('link')
               ? Link.fromJson(
-                  _json['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          youTubeVideo: _json.containsKey('youTubeVideo')
+          youTubeVideo: json_.containsKey('youTubeVideo')
               ? YouTubeVideo.fromJson(
-                  _json['youTubeVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4323,16 +4323,16 @@ class CourseMaterialSet {
     this.title,
   });
 
-  CourseMaterialSet.fromJson(core.Map _json)
+  CourseMaterialSet.fromJson(core.Map json_)
       : this(
-          materials: _json.containsKey('materials')
-              ? (_json['materials'] as core.List)
+          materials: json_.containsKey('materials')
+              ? (json_['materials'] as core.List)
                   .map((value) => CourseMaterial.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4350,10 +4350,10 @@ class CourseRosterChangesInfo {
     this.courseId,
   });
 
-  CourseRosterChangesInfo.fromJson(core.Map _json)
+  CourseRosterChangesInfo.fromJson(core.Map json_)
       : this(
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
         );
 
@@ -4541,84 +4541,84 @@ class CourseWork {
     this.workType,
   });
 
-  CourseWork.fromJson(core.Map _json)
+  CourseWork.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          assigneeMode: _json.containsKey('assigneeMode')
-              ? _json['assigneeMode'] as core.String
+          assigneeMode: json_.containsKey('assigneeMode')
+              ? json_['assigneeMode'] as core.String
               : null,
-          assignment: _json.containsKey('assignment')
+          assignment: json_.containsKey('assignment')
               ? Assignment.fromJson(
-                  _json['assignment'] as core.Map<core.String, core.dynamic>)
+                  json_['assignment'] as core.Map<core.String, core.dynamic>)
               : null,
-          associatedWithDeveloper: _json.containsKey('associatedWithDeveloper')
-              ? _json['associatedWithDeveloper'] as core.bool
+          associatedWithDeveloper: json_.containsKey('associatedWithDeveloper')
+              ? json_['associatedWithDeveloper'] as core.bool
               : null,
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          creatorUserId: _json.containsKey('creatorUserId')
-              ? _json['creatorUserId'] as core.String
+          creatorUserId: json_.containsKey('creatorUserId')
+              ? json_['creatorUserId'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          dueDate: _json.containsKey('dueDate')
+          dueDate: json_.containsKey('dueDate')
               ? Date.fromJson(
-                  _json['dueDate'] as core.Map<core.String, core.dynamic>)
+                  json_['dueDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          dueTime: _json.containsKey('dueTime')
+          dueTime: json_.containsKey('dueTime')
               ? TimeOfDay.fromJson(
-                  _json['dueTime'] as core.Map<core.String, core.dynamic>)
+                  json_['dueTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          gradeCategory: _json.containsKey('gradeCategory')
+          gradeCategory: json_.containsKey('gradeCategory')
               ? GradeCategory.fromJson(
-                  _json['gradeCategory'] as core.Map<core.String, core.dynamic>)
+                  json_['gradeCategory'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
           individualStudentsOptions:
-              _json.containsKey('individualStudentsOptions')
+              json_.containsKey('individualStudentsOptions')
                   ? IndividualStudentsOptions.fromJson(
-                      _json['individualStudentsOptions']
+                      json_['individualStudentsOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          materials: _json.containsKey('materials')
-              ? (_json['materials'] as core.List)
+          materials: json_.containsKey('materials')
+              ? (json_['materials'] as core.List)
                   .map((value) => Material.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          maxPoints: _json.containsKey('maxPoints')
-              ? (_json['maxPoints'] as core.num).toDouble()
+          maxPoints: json_.containsKey('maxPoints')
+              ? (json_['maxPoints'] as core.num).toDouble()
               : null,
-          multipleChoiceQuestion: _json.containsKey('multipleChoiceQuestion')
-              ? MultipleChoiceQuestion.fromJson(_json['multipleChoiceQuestion']
+          multipleChoiceQuestion: json_.containsKey('multipleChoiceQuestion')
+              ? MultipleChoiceQuestion.fromJson(json_['multipleChoiceQuestion']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          scheduledTime: _json.containsKey('scheduledTime')
-              ? _json['scheduledTime'] as core.String
+          scheduledTime: json_.containsKey('scheduledTime')
+              ? json_['scheduledTime'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
           submissionModificationMode:
-              _json.containsKey('submissionModificationMode')
-                  ? _json['submissionModificationMode'] as core.String
+              json_.containsKey('submissionModificationMode')
+                  ? json_['submissionModificationMode'] as core.String
                   : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          topicId: _json.containsKey('topicId')
-              ? _json['topicId'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          topicId: json_.containsKey('topicId')
+              ? json_['topicId'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          workType: _json.containsKey('workType')
-              ? _json['workType'] as core.String
+          workType: json_.containsKey('workType')
+              ? json_['workType'] as core.String
               : null,
         );
 
@@ -4662,10 +4662,10 @@ class CourseWorkChangesInfo {
     this.courseId,
   });
 
-  CourseWorkChangesInfo.fromJson(core.Map _json)
+  CourseWorkChangesInfo.fromJson(core.Map json_)
       : this(
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
         );
 
@@ -4785,51 +4785,51 @@ class CourseWorkMaterial {
     this.updateTime,
   });
 
-  CourseWorkMaterial.fromJson(core.Map _json)
+  CourseWorkMaterial.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          assigneeMode: _json.containsKey('assigneeMode')
-              ? _json['assigneeMode'] as core.String
+          assigneeMode: json_.containsKey('assigneeMode')
+              ? json_['assigneeMode'] as core.String
               : null,
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          creatorUserId: _json.containsKey('creatorUserId')
-              ? _json['creatorUserId'] as core.String
+          creatorUserId: json_.containsKey('creatorUserId')
+              ? json_['creatorUserId'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
           individualStudentsOptions:
-              _json.containsKey('individualStudentsOptions')
+              json_.containsKey('individualStudentsOptions')
                   ? IndividualStudentsOptions.fromJson(
-                      _json['individualStudentsOptions']
+                      json_['individualStudentsOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          materials: _json.containsKey('materials')
-              ? (_json['materials'] as core.List)
+          materials: json_.containsKey('materials')
+              ? (json_['materials'] as core.List)
                   .map((value) => Material.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          scheduledTime: _json.containsKey('scheduledTime')
-              ? _json['scheduledTime'] as core.String
+          scheduledTime: json_.containsKey('scheduledTime')
+              ? json_['scheduledTime'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          topicId: _json.containsKey('topicId')
-              ? _json['topicId'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          topicId: json_.containsKey('topicId')
+              ? json_['topicId'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -4891,17 +4891,17 @@ class DriveFile {
     this.title,
   });
 
-  DriveFile.fromJson(core.Map _json)
+  DriveFile.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          thumbnailUrl: _json.containsKey('thumbnailUrl')
-              ? _json['thumbnailUrl'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          thumbnailUrl: json_.containsKey('thumbnailUrl')
+              ? json_['thumbnailUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4933,14 +4933,14 @@ class DriveFolder {
     this.title,
   });
 
-  DriveFolder.fromJson(core.Map _json)
+  DriveFolder.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5000,19 +5000,19 @@ class Feed {
     this.feedType,
   });
 
-  Feed.fromJson(core.Map _json)
+  Feed.fromJson(core.Map json_)
       : this(
-          courseRosterChangesInfo: _json.containsKey('courseRosterChangesInfo')
+          courseRosterChangesInfo: json_.containsKey('courseRosterChangesInfo')
               ? CourseRosterChangesInfo.fromJson(
-                  _json['courseRosterChangesInfo']
+                  json_['courseRosterChangesInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          courseWorkChangesInfo: _json.containsKey('courseWorkChangesInfo')
-              ? CourseWorkChangesInfo.fromJson(_json['courseWorkChangesInfo']
+          courseWorkChangesInfo: json_.containsKey('courseWorkChangesInfo')
+              ? CourseWorkChangesInfo.fromJson(json_['courseWorkChangesInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          feedType: _json.containsKey('feedType')
-              ? _json['feedType'] as core.String
+          feedType: json_.containsKey('feedType')
+              ? json_['feedType'] as core.String
               : null,
         );
 
@@ -5053,19 +5053,19 @@ class Form {
     this.title,
   });
 
-  Form.fromJson(core.Map _json)
+  Form.fromJson(core.Map json_)
       : this(
-          formUrl: _json.containsKey('formUrl')
-              ? _json['formUrl'] as core.String
+          formUrl: json_.containsKey('formUrl')
+              ? json_['formUrl'] as core.String
               : null,
-          responseUrl: _json.containsKey('responseUrl')
-              ? _json['responseUrl'] as core.String
+          responseUrl: json_.containsKey('responseUrl')
+              ? json_['responseUrl'] as core.String
               : null,
-          thumbnailUrl: _json.containsKey('thumbnailUrl')
-              ? _json['thumbnailUrl'] as core.String
+          thumbnailUrl: json_.containsKey('thumbnailUrl')
+              ? json_['thumbnailUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5089,10 +5089,10 @@ class GlobalPermission {
     this.permission,
   });
 
-  GlobalPermission.fromJson(core.Map _json)
+  GlobalPermission.fromJson(core.Map json_)
       : this(
-          permission: _json.containsKey('permission')
-              ? _json['permission'] as core.String
+          permission: json_.containsKey('permission')
+              ? json_['permission'] as core.String
               : null,
         );
 
@@ -5133,15 +5133,15 @@ class GradeCategory {
     this.weight,
   });
 
-  GradeCategory.fromJson(core.Map _json)
+  GradeCategory.fromJson(core.Map json_)
       : this(
-          defaultGradeDenominator: _json.containsKey('defaultGradeDenominator')
-              ? _json['defaultGradeDenominator'] as core.int
+          defaultGradeDenominator: json_.containsKey('defaultGradeDenominator')
+              ? json_['defaultGradeDenominator'] as core.int
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           weight:
-              _json.containsKey('weight') ? _json['weight'] as core.int : null,
+              json_.containsKey('weight') ? json_['weight'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5186,22 +5186,22 @@ class GradeHistory {
     this.pointsEarned,
   });
 
-  GradeHistory.fromJson(core.Map _json)
+  GradeHistory.fromJson(core.Map json_)
       : this(
-          actorUserId: _json.containsKey('actorUserId')
-              ? _json['actorUserId'] as core.String
+          actorUserId: json_.containsKey('actorUserId')
+              ? json_['actorUserId'] as core.String
               : null,
-          gradeChangeType: _json.containsKey('gradeChangeType')
-              ? _json['gradeChangeType'] as core.String
+          gradeChangeType: json_.containsKey('gradeChangeType')
+              ? json_['gradeChangeType'] as core.String
               : null,
-          gradeTimestamp: _json.containsKey('gradeTimestamp')
-              ? _json['gradeTimestamp'] as core.String
+          gradeTimestamp: json_.containsKey('gradeTimestamp')
+              ? json_['gradeTimestamp'] as core.String
               : null,
-          maxPoints: _json.containsKey('maxPoints')
-              ? (_json['maxPoints'] as core.num).toDouble()
+          maxPoints: json_.containsKey('maxPoints')
+              ? (json_['maxPoints'] as core.num).toDouble()
               : null,
-          pointsEarned: _json.containsKey('pointsEarned')
-              ? (_json['pointsEarned'] as core.num).toDouble()
+          pointsEarned: json_.containsKey('pointsEarned')
+              ? (json_['pointsEarned'] as core.num).toDouble()
               : null,
         );
 
@@ -5252,16 +5252,16 @@ class GradebookSettings {
     this.gradeCategories,
   });
 
-  GradebookSettings.fromJson(core.Map _json)
+  GradebookSettings.fromJson(core.Map json_)
       : this(
-          calculationType: _json.containsKey('calculationType')
-              ? _json['calculationType'] as core.String
+          calculationType: json_.containsKey('calculationType')
+              ? json_['calculationType'] as core.String
               : null,
-          displaySetting: _json.containsKey('displaySetting')
-              ? _json['displaySetting'] as core.String
+          displaySetting: json_.containsKey('displaySetting')
+              ? json_['displaySetting'] as core.String
               : null,
-          gradeCategories: _json.containsKey('gradeCategories')
-              ? (_json['gradeCategories'] as core.List)
+          gradeCategories: json_.containsKey('gradeCategories')
+              ? (json_['gradeCategories'] as core.List)
                   .map((value) => GradeCategory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5300,20 +5300,20 @@ class Guardian {
     this.studentId,
   });
 
-  Guardian.fromJson(core.Map _json)
+  Guardian.fromJson(core.Map json_)
       : this(
-          guardianId: _json.containsKey('guardianId')
-              ? _json['guardianId'] as core.String
+          guardianId: json_.containsKey('guardianId')
+              ? json_['guardianId'] as core.String
               : null,
-          guardianProfile: _json.containsKey('guardianProfile')
-              ? UserProfile.fromJson(_json['guardianProfile']
+          guardianProfile: json_.containsKey('guardianProfile')
+              ? UserProfile.fromJson(json_['guardianProfile']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          invitedEmailAddress: _json.containsKey('invitedEmailAddress')
-              ? _json['invitedEmailAddress'] as core.String
+          invitedEmailAddress: json_.containsKey('invitedEmailAddress')
+              ? json_['invitedEmailAddress'] as core.String
               : null,
-          studentId: _json.containsKey('studentId')
-              ? _json['studentId'] as core.String
+          studentId: json_.containsKey('studentId')
+              ? json_['studentId'] as core.String
               : null,
         );
 
@@ -5363,21 +5363,21 @@ class GuardianInvitation {
     this.studentId,
   });
 
-  GuardianInvitation.fromJson(core.Map _json)
+  GuardianInvitation.fromJson(core.Map json_)
       : this(
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          invitationId: _json.containsKey('invitationId')
-              ? _json['invitationId'] as core.String
+          invitationId: json_.containsKey('invitationId')
+              ? json_['invitationId'] as core.String
               : null,
-          invitedEmailAddress: _json.containsKey('invitedEmailAddress')
-              ? _json['invitedEmailAddress'] as core.String
+          invitedEmailAddress: json_.containsKey('invitedEmailAddress')
+              ? json_['invitedEmailAddress'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          studentId: _json.containsKey('studentId')
-              ? _json['studentId'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          studentId: json_.containsKey('studentId')
+              ? json_['studentId'] as core.String
               : null,
         );
 
@@ -5403,10 +5403,10 @@ class IndividualStudentsOptions {
     this.studentIds,
   });
 
-  IndividualStudentsOptions.fromJson(core.Map _json)
+  IndividualStudentsOptions.fromJson(core.Map json_)
       : this(
-          studentIds: _json.containsKey('studentIds')
-              ? (_json['studentIds'] as core.List)
+          studentIds: json_.containsKey('studentIds')
+              ? (json_['studentIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -5452,15 +5452,15 @@ class Invitation {
     this.userId,
   });
 
-  Invitation.fromJson(core.Map _json)
+  Invitation.fromJson(core.Map json_)
       : this(
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -5496,14 +5496,14 @@ class Link {
     this.url,
   });
 
-  Link.fromJson(core.Map _json)
+  Link.fromJson(core.Map json_)
       : this(
-          thumbnailUrl: _json.containsKey('thumbnailUrl')
-              ? _json['thumbnailUrl'] as core.String
+          thumbnailUrl: json_.containsKey('thumbnailUrl')
+              ? json_['thumbnailUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5528,16 +5528,16 @@ class ListAnnouncementsResponse {
     this.nextPageToken,
   });
 
-  ListAnnouncementsResponse.fromJson(core.Map _json)
+  ListAnnouncementsResponse.fromJson(core.Map json_)
       : this(
-          announcements: _json.containsKey('announcements')
-              ? (_json['announcements'] as core.List)
+          announcements: json_.containsKey('announcements')
+              ? (json_['announcements'] as core.List)
                   .map((value) => Announcement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5562,16 +5562,16 @@ class ListCourseAliasesResponse {
     this.nextPageToken,
   });
 
-  ListCourseAliasesResponse.fromJson(core.Map _json)
+  ListCourseAliasesResponse.fromJson(core.Map json_)
       : this(
-          aliases: _json.containsKey('aliases')
-              ? (_json['aliases'] as core.List)
+          aliases: json_.containsKey('aliases')
+              ? (json_['aliases'] as core.List)
                   .map((value) => CourseAlias.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5596,16 +5596,16 @@ class ListCourseWorkMaterialResponse {
     this.nextPageToken,
   });
 
-  ListCourseWorkMaterialResponse.fromJson(core.Map _json)
+  ListCourseWorkMaterialResponse.fromJson(core.Map json_)
       : this(
-          courseWorkMaterial: _json.containsKey('courseWorkMaterial')
-              ? (_json['courseWorkMaterial'] as core.List)
+          courseWorkMaterial: json_.containsKey('courseWorkMaterial')
+              ? (json_['courseWorkMaterial'] as core.List)
                   .map((value) => CourseWorkMaterial.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5631,16 +5631,16 @@ class ListCourseWorkResponse {
     this.nextPageToken,
   });
 
-  ListCourseWorkResponse.fromJson(core.Map _json)
+  ListCourseWorkResponse.fromJson(core.Map json_)
       : this(
-          courseWork: _json.containsKey('courseWork')
-              ? (_json['courseWork'] as core.List)
+          courseWork: json_.containsKey('courseWork')
+              ? (json_['courseWork'] as core.List)
                   .map((value) => CourseWork.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5665,16 +5665,16 @@ class ListCoursesResponse {
     this.nextPageToken,
   });
 
-  ListCoursesResponse.fromJson(core.Map _json)
+  ListCoursesResponse.fromJson(core.Map json_)
       : this(
-          courses: _json.containsKey('courses')
-              ? (_json['courses'] as core.List)
+          courses: json_.containsKey('courses')
+              ? (json_['courses'] as core.List)
                   .map((value) => Course.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5699,16 +5699,16 @@ class ListGuardianInvitationsResponse {
     this.nextPageToken,
   });
 
-  ListGuardianInvitationsResponse.fromJson(core.Map _json)
+  ListGuardianInvitationsResponse.fromJson(core.Map json_)
       : this(
-          guardianInvitations: _json.containsKey('guardianInvitations')
-              ? (_json['guardianInvitations'] as core.List)
+          guardianInvitations: json_.containsKey('guardianInvitations')
+              ? (json_['guardianInvitations'] as core.List)
                   .map((value) => GuardianInvitation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5735,16 +5735,16 @@ class ListGuardiansResponse {
     this.nextPageToken,
   });
 
-  ListGuardiansResponse.fromJson(core.Map _json)
+  ListGuardiansResponse.fromJson(core.Map json_)
       : this(
-          guardians: _json.containsKey('guardians')
-              ? (_json['guardians'] as core.List)
+          guardians: json_.containsKey('guardians')
+              ? (json_['guardians'] as core.List)
                   .map((value) => Guardian.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5769,16 +5769,16 @@ class ListInvitationsResponse {
     this.nextPageToken,
   });
 
-  ListInvitationsResponse.fromJson(core.Map _json)
+  ListInvitationsResponse.fromJson(core.Map json_)
       : this(
-          invitations: _json.containsKey('invitations')
-              ? (_json['invitations'] as core.List)
+          invitations: json_.containsKey('invitations')
+              ? (json_['invitations'] as core.List)
                   .map((value) => Invitation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5803,13 +5803,13 @@ class ListStudentSubmissionsResponse {
     this.studentSubmissions,
   });
 
-  ListStudentSubmissionsResponse.fromJson(core.Map _json)
+  ListStudentSubmissionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          studentSubmissions: _json.containsKey('studentSubmissions')
-              ? (_json['studentSubmissions'] as core.List)
+          studentSubmissions: json_.containsKey('studentSubmissions')
+              ? (json_['studentSubmissions'] as core.List)
                   .map((value) => StudentSubmission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5838,13 +5838,13 @@ class ListStudentsResponse {
     this.students,
   });
 
-  ListStudentsResponse.fromJson(core.Map _json)
+  ListStudentsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          students: _json.containsKey('students')
-              ? (_json['students'] as core.List)
+          students: json_.containsKey('students')
+              ? (json_['students'] as core.List)
                   .map((value) => Student.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5872,13 +5872,13 @@ class ListTeachersResponse {
     this.teachers,
   });
 
-  ListTeachersResponse.fromJson(core.Map _json)
+  ListTeachersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          teachers: _json.containsKey('teachers')
-              ? (_json['teachers'] as core.List)
+          teachers: json_.containsKey('teachers')
+              ? (json_['teachers'] as core.List)
                   .map((value) => Teacher.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5906,13 +5906,13 @@ class ListTopicResponse {
     this.topic,
   });
 
-  ListTopicResponse.fromJson(core.Map _json)
+  ListTopicResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          topic: _json.containsKey('topic')
-              ? (_json['topic'] as core.List)
+          topic: json_.containsKey('topic')
+              ? (json_['topic'] as core.List)
                   .map((value) => Topic.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5951,23 +5951,23 @@ class Material {
     this.youtubeVideo,
   });
 
-  Material.fromJson(core.Map _json)
+  Material.fromJson(core.Map json_)
       : this(
-          driveFile: _json.containsKey('driveFile')
+          driveFile: json_.containsKey('driveFile')
               ? SharedDriveFile.fromJson(
-                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
               : null,
-          form: _json.containsKey('form')
+          form: json_.containsKey('form')
               ? Form.fromJson(
-                  _json['form'] as core.Map<core.String, core.dynamic>)
+                  json_['form'] as core.Map<core.String, core.dynamic>)
               : null,
-          link: _json.containsKey('link')
+          link: json_.containsKey('link')
               ? Link.fromJson(
-                  _json['link'] as core.Map<core.String, core.dynamic>)
+                  json_['link'] as core.Map<core.String, core.dynamic>)
               : null,
-          youtubeVideo: _json.containsKey('youtubeVideo')
+          youtubeVideo: json_.containsKey('youtubeVideo')
               ? YouTubeVideo.fromJson(
-                  _json['youtubeVideo'] as core.Map<core.String, core.dynamic>)
+                  json_['youtubeVideo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6000,15 +6000,15 @@ class ModifyAnnouncementAssigneesRequest {
     this.modifyIndividualStudentsOptions,
   });
 
-  ModifyAnnouncementAssigneesRequest.fromJson(core.Map _json)
+  ModifyAnnouncementAssigneesRequest.fromJson(core.Map json_)
       : this(
-          assigneeMode: _json.containsKey('assigneeMode')
-              ? _json['assigneeMode'] as core.String
+          assigneeMode: json_.containsKey('assigneeMode')
+              ? json_['assigneeMode'] as core.String
               : null,
           modifyIndividualStudentsOptions:
-              _json.containsKey('modifyIndividualStudentsOptions')
+              json_.containsKey('modifyIndividualStudentsOptions')
                   ? ModifyIndividualStudentsOptions.fromJson(
-                      _json['modifyIndividualStudentsOptions']
+                      json_['modifyIndividualStudentsOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -6032,10 +6032,10 @@ class ModifyAttachmentsRequest {
     this.addAttachments,
   });
 
-  ModifyAttachmentsRequest.fromJson(core.Map _json)
+  ModifyAttachmentsRequest.fromJson(core.Map json_)
       : this(
-          addAttachments: _json.containsKey('addAttachments')
-              ? (_json['addAttachments'] as core.List)
+          addAttachments: json_.containsKey('addAttachments')
+              ? (json_['addAttachments'] as core.List)
                   .map((value) => Attachment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6068,15 +6068,15 @@ class ModifyCourseWorkAssigneesRequest {
     this.modifyIndividualStudentsOptions,
   });
 
-  ModifyCourseWorkAssigneesRequest.fromJson(core.Map _json)
+  ModifyCourseWorkAssigneesRequest.fromJson(core.Map json_)
       : this(
-          assigneeMode: _json.containsKey('assigneeMode')
-              ? _json['assigneeMode'] as core.String
+          assigneeMode: json_.containsKey('assigneeMode')
+              ? json_['assigneeMode'] as core.String
               : null,
           modifyIndividualStudentsOptions:
-              _json.containsKey('modifyIndividualStudentsOptions')
+              json_.containsKey('modifyIndividualStudentsOptions')
                   ? ModifyIndividualStudentsOptions.fromJson(
-                      _json['modifyIndividualStudentsOptions']
+                      json_['modifyIndividualStudentsOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -6104,15 +6104,15 @@ class ModifyIndividualStudentsOptions {
     this.removeStudentIds,
   });
 
-  ModifyIndividualStudentsOptions.fromJson(core.Map _json)
+  ModifyIndividualStudentsOptions.fromJson(core.Map json_)
       : this(
-          addStudentIds: _json.containsKey('addStudentIds')
-              ? (_json['addStudentIds'] as core.List)
+          addStudentIds: json_.containsKey('addStudentIds')
+              ? (json_['addStudentIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          removeStudentIds: _json.containsKey('removeStudentIds')
-              ? (_json['removeStudentIds'] as core.List)
+          removeStudentIds: json_.containsKey('removeStudentIds')
+              ? (json_['removeStudentIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -6133,10 +6133,10 @@ class MultipleChoiceQuestion {
     this.choices,
   });
 
-  MultipleChoiceQuestion.fromJson(core.Map _json)
+  MultipleChoiceQuestion.fromJson(core.Map json_)
       : this(
-          choices: _json.containsKey('choices')
-              ? (_json['choices'] as core.List)
+          choices: json_.containsKey('choices')
+              ? (json_['choices'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -6156,10 +6156,10 @@ class MultipleChoiceSubmission {
     this.answer,
   });
 
-  MultipleChoiceSubmission.fromJson(core.Map _json)
+  MultipleChoiceSubmission.fromJson(core.Map json_)
       : this(
-          answer: _json.containsKey('answer')
-              ? _json['answer'] as core.String
+          answer: json_.containsKey('answer')
+              ? json_['answer'] as core.String
               : null,
         );
 
@@ -6192,16 +6192,16 @@ class Name {
     this.givenName,
   });
 
-  Name.fromJson(core.Map _json)
+  Name.fromJson(core.Map json_)
       : this(
-          familyName: _json.containsKey('familyName')
-              ? _json['familyName'] as core.String
+          familyName: json_.containsKey('familyName')
+              ? json_['familyName'] as core.String
               : null,
-          fullName: _json.containsKey('fullName')
-              ? _json['fullName'] as core.String
+          fullName: json_.containsKey('fullName')
+              ? json_['fullName'] as core.String
               : null,
-          givenName: _json.containsKey('givenName')
-              ? _json['givenName'] as core.String
+          givenName: json_.containsKey('givenName')
+              ? json_['givenName'] as core.String
               : null,
         );
 
@@ -6242,21 +6242,21 @@ class Registration {
     this.registrationId,
   });
 
-  Registration.fromJson(core.Map _json)
+  Registration.fromJson(core.Map json_)
       : this(
-          cloudPubsubTopic: _json.containsKey('cloudPubsubTopic')
-              ? CloudPubsubTopic.fromJson(_json['cloudPubsubTopic']
+          cloudPubsubTopic: json_.containsKey('cloudPubsubTopic')
+              ? CloudPubsubTopic.fromJson(json_['cloudPubsubTopic']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          expiryTime: _json.containsKey('expiryTime')
-              ? _json['expiryTime'] as core.String
+          expiryTime: json_.containsKey('expiryTime')
+              ? json_['expiryTime'] as core.String
               : null,
-          feed: _json.containsKey('feed')
+          feed: json_.containsKey('feed')
               ? Feed.fromJson(
-                  _json['feed'] as core.Map<core.String, core.dynamic>)
+                  json_['feed'] as core.Map<core.String, core.dynamic>)
               : null,
-          registrationId: _json.containsKey('registrationId')
-              ? _json['registrationId'] as core.String
+          registrationId: json_.containsKey('registrationId')
+              ? json_['registrationId'] as core.String
               : null,
         );
 
@@ -6290,14 +6290,14 @@ class SharedDriveFile {
     this.shareMode,
   });
 
-  SharedDriveFile.fromJson(core.Map _json)
+  SharedDriveFile.fromJson(core.Map json_)
       : this(
-          driveFile: _json.containsKey('driveFile')
+          driveFile: json_.containsKey('driveFile')
               ? DriveFile.fromJson(
-                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
               : null,
-          shareMode: _json.containsKey('shareMode')
-              ? _json['shareMode'] as core.String
+          shareMode: json_.containsKey('shareMode')
+              ? json_['shareMode'] as core.String
               : null,
         );
 
@@ -6316,10 +6316,10 @@ class ShortAnswerSubmission {
     this.answer,
   });
 
-  ShortAnswerSubmission.fromJson(core.Map _json)
+  ShortAnswerSubmission.fromJson(core.Map json_)
       : this(
-          answer: _json.containsKey('answer')
-              ? _json['answer'] as core.String
+          answer: json_.containsKey('answer')
+              ? json_['answer'] as core.String
               : null,
         );
 
@@ -6358,15 +6358,15 @@ class StateHistory {
     this.stateTimestamp,
   });
 
-  StateHistory.fromJson(core.Map _json)
+  StateHistory.fromJson(core.Map json_)
       : this(
-          actorUserId: _json.containsKey('actorUserId')
-              ? _json['actorUserId'] as core.String
+          actorUserId: json_.containsKey('actorUserId')
+              ? json_['actorUserId'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateTimestamp: _json.containsKey('stateTimestamp')
-              ? _json['stateTimestamp'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateTimestamp: json_.containsKey('stateTimestamp')
+              ? json_['stateTimestamp'] as core.String
               : null,
         );
 
@@ -6408,21 +6408,21 @@ class Student {
     this.userId,
   });
 
-  Student.fromJson(core.Map _json)
+  Student.fromJson(core.Map json_)
       : this(
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          profile: _json.containsKey('profile')
+          profile: json_.containsKey('profile')
               ? UserProfile.fromJson(
-                  _json['profile'] as core.Map<core.String, core.dynamic>)
+                  json_['profile'] as core.Map<core.String, core.dynamic>)
               : null,
-          studentWorkFolder: _json.containsKey('studentWorkFolder')
-              ? DriveFolder.fromJson(_json['studentWorkFolder']
+          studentWorkFolder: json_.containsKey('studentWorkFolder')
+              ? DriveFolder.fromJson(json_['studentWorkFolder']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -6561,61 +6561,61 @@ class StudentSubmission {
     this.userId,
   });
 
-  StudentSubmission.fromJson(core.Map _json)
+  StudentSubmission.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          assignedGrade: _json.containsKey('assignedGrade')
-              ? (_json['assignedGrade'] as core.num).toDouble()
+          assignedGrade: json_.containsKey('assignedGrade')
+              ? (json_['assignedGrade'] as core.num).toDouble()
               : null,
-          assignmentSubmission: _json.containsKey('assignmentSubmission')
-              ? AssignmentSubmission.fromJson(_json['assignmentSubmission']
+          assignmentSubmission: json_.containsKey('assignmentSubmission')
+              ? AssignmentSubmission.fromJson(json_['assignmentSubmission']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          associatedWithDeveloper: _json.containsKey('associatedWithDeveloper')
-              ? _json['associatedWithDeveloper'] as core.bool
+          associatedWithDeveloper: json_.containsKey('associatedWithDeveloper')
+              ? json_['associatedWithDeveloper'] as core.bool
               : null,
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          courseWorkId: _json.containsKey('courseWorkId')
-              ? _json['courseWorkId'] as core.String
+          courseWorkId: json_.containsKey('courseWorkId')
+              ? json_['courseWorkId'] as core.String
               : null,
-          courseWorkType: _json.containsKey('courseWorkType')
-              ? _json['courseWorkType'] as core.String
+          courseWorkType: json_.containsKey('courseWorkType')
+              ? json_['courseWorkType'] as core.String
               : null,
-          creationTime: _json.containsKey('creationTime')
-              ? _json['creationTime'] as core.String
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
               : null,
-          draftGrade: _json.containsKey('draftGrade')
-              ? (_json['draftGrade'] as core.num).toDouble()
+          draftGrade: json_.containsKey('draftGrade')
+              ? (json_['draftGrade'] as core.num).toDouble()
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          late: _json.containsKey('late') ? _json['late'] as core.bool : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          late: json_.containsKey('late') ? json_['late'] as core.bool : null,
           multipleChoiceSubmission:
-              _json.containsKey('multipleChoiceSubmission')
+              json_.containsKey('multipleChoiceSubmission')
                   ? MultipleChoiceSubmission.fromJson(
-                      _json['multipleChoiceSubmission']
+                      json_['multipleChoiceSubmission']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          shortAnswerSubmission: _json.containsKey('shortAnswerSubmission')
-              ? ShortAnswerSubmission.fromJson(_json['shortAnswerSubmission']
+          shortAnswerSubmission: json_.containsKey('shortAnswerSubmission')
+              ? ShortAnswerSubmission.fromJson(json_['shortAnswerSubmission']
                   as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          submissionHistory: _json.containsKey('submissionHistory')
-              ? (_json['submissionHistory'] as core.List)
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          submissionHistory: json_.containsKey('submissionHistory')
+              ? (json_['submissionHistory'] as core.List)
                   .map((value) => SubmissionHistory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -6659,15 +6659,15 @@ class SubmissionHistory {
     this.stateHistory,
   });
 
-  SubmissionHistory.fromJson(core.Map _json)
+  SubmissionHistory.fromJson(core.Map json_)
       : this(
-          gradeHistory: _json.containsKey('gradeHistory')
+          gradeHistory: json_.containsKey('gradeHistory')
               ? GradeHistory.fromJson(
-                  _json['gradeHistory'] as core.Map<core.String, core.dynamic>)
+                  json_['gradeHistory'] as core.Map<core.String, core.dynamic>)
               : null,
-          stateHistory: _json.containsKey('stateHistory')
+          stateHistory: json_.containsKey('stateHistory')
               ? StateHistory.fromJson(
-                  _json['stateHistory'] as core.Map<core.String, core.dynamic>)
+                  json_['stateHistory'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6702,17 +6702,17 @@ class Teacher {
     this.userId,
   });
 
-  Teacher.fromJson(core.Map _json)
+  Teacher.fromJson(core.Map json_)
       : this(
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          profile: _json.containsKey('profile')
+          profile: json_.containsKey('profile')
               ? UserProfile.fromJson(
-                  _json['profile'] as core.Map<core.String, core.dynamic>)
+                  json_['profile'] as core.Map<core.String, core.dynamic>)
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -6762,17 +6762,17 @@ class Topic {
     this.updateTime,
   });
 
-  Topic.fromJson(core.Map _json)
+  Topic.fromJson(core.Map json_)
       : this(
-          courseId: _json.containsKey('courseId')
-              ? _json['courseId'] as core.String
+          courseId: json_.containsKey('courseId')
+              ? json_['courseId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          topicId: _json.containsKey('topicId')
-              ? _json['topicId'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          topicId: json_.containsKey('topicId')
+              ? json_['topicId'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -6830,27 +6830,27 @@ class UserProfile {
     this.verifiedTeacher,
   });
 
-  UserProfile.fromJson(core.Map _json)
+  UserProfile.fromJson(core.Map json_)
       : this(
-          emailAddress: _json.containsKey('emailAddress')
-              ? _json['emailAddress'] as core.String
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name')
               ? Name.fromJson(
-                  _json['name'] as core.Map<core.String, core.dynamic>)
+                  json_['name'] as core.Map<core.String, core.dynamic>)
               : null,
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
                   .map((value) => GlobalPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          photoUrl: _json.containsKey('photoUrl')
-              ? _json['photoUrl'] as core.String
+          photoUrl: json_.containsKey('photoUrl')
+              ? json_['photoUrl'] as core.String
               : null,
-          verifiedTeacher: _json.containsKey('verifiedTeacher')
-              ? _json['verifiedTeacher'] as core.bool
+          verifiedTeacher: json_.containsKey('verifiedTeacher')
+              ? json_['verifiedTeacher'] as core.bool
               : null,
         );
 
@@ -6891,17 +6891,17 @@ class YouTubeVideo {
     this.title,
   });
 
-  YouTubeVideo.fromJson(core.Map _json)
+  YouTubeVideo.fromJson(core.Map json_)
       : this(
-          alternateLink: _json.containsKey('alternateLink')
-              ? _json['alternateLink'] as core.String
+          alternateLink: json_.containsKey('alternateLink')
+              ? json_['alternateLink'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          thumbnailUrl: _json.containsKey('thumbnailUrl')
-              ? _json['thumbnailUrl'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          thumbnailUrl: json_.containsKey('thumbnailUrl')
+              ? json_['thumbnailUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

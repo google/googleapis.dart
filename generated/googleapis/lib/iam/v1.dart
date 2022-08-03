@@ -118,21 +118,21 @@ class IamPoliciesResource {
     LintPolicyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/iamPolicies:lintPolicy';
+    const url_ = 'v1/iamPolicies:lintPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LintPolicyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of services that allow you to opt into audit logs that are
@@ -159,21 +159,21 @@ class IamPoliciesResource {
     QueryAuditableServicesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/iamPolicies:queryAuditableServices';
+    const url_ = 'v1/iamPolicies:queryAuditableServices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return QueryAuditableServicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -231,18 +231,18 @@ class LocationsWorkforcePoolsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -300,18 +300,18 @@ class LocationsWorkforcePoolsProvidersKeysOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -347,18 +347,18 @@ class LocationsWorkforcePoolsProvidersOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -403,18 +403,18 @@ class LocationsWorkforcePoolsSubjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -473,20 +473,20 @@ class OrganizationsRolesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a custom Role.
@@ -541,19 +541,19 @@ class OrganizationsRolesResource {
     core.String? etag,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the definition of a Role.
@@ -602,18 +602,18 @@ class OrganizationsRolesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -683,7 +683,7 @@ class OrganizationsRolesResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
@@ -691,15 +691,15 @@ class OrganizationsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListRolesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the definition of a custom Role.
@@ -748,21 +748,21 @@ class OrganizationsRolesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a custom Role.
@@ -808,20 +808,20 @@ class OrganizationsRolesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -853,21 +853,21 @@ class PermissionsResource {
     QueryTestablePermissionsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/permissions:queryTestablePermissions';
+    const url_ = 'v1/permissions:queryTestablePermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return QueryTestablePermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -936,23 +936,23 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     core.String? workloadIdentityPoolId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (workloadIdentityPoolId != null)
         'workloadIdentityPoolId': [workloadIdentityPoolId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/workloadIdentityPools';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a WorkloadIdentityPool.
@@ -985,18 +985,18 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an individual WorkloadIdentityPool.
@@ -1021,19 +1021,19 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return WorkloadIdentityPool.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all non-deleted WorkloadIdentityPools in a project.
@@ -1072,23 +1072,23 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/workloadIdentityPools';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListWorkloadIdentityPoolsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing WorkloadIdentityPool.
@@ -1119,21 +1119,21 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a WorkloadIdentityPool, as long as it was deleted fewer than 30
@@ -1162,20 +1162,20 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1211,18 +1211,18 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1274,22 +1274,22 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
     core.String? workloadIdentityPoolProviderId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (workloadIdentityPoolProviderId != null)
         'workloadIdentityPoolProviderId': [workloadIdentityPoolProviderId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a WorkloadIdentityPoolProvider.
@@ -1319,18 +1319,18 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an individual WorkloadIdentityPoolProvider.
@@ -1355,19 +1355,19 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return WorkloadIdentityPoolProvider.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all non-deleted WorkloadIdentityPoolProviders in a
@@ -1409,22 +1409,22 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListWorkloadIdentityPoolProvidersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing WorkloadIdentityPoolProvider.
@@ -1455,21 +1455,21 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a WorkloadIdentityPoolProvider, as long as it was deleted fewer
@@ -1498,20 +1498,20 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1560,18 +1560,18 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1607,18 +1607,18 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1668,20 +1668,20 @@ class ProjectsRolesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a custom Role.
@@ -1736,19 +1736,19 @@ class ProjectsRolesResource {
     core.String? etag,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the definition of a Role.
@@ -1797,18 +1797,18 @@ class ProjectsRolesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -1878,7 +1878,7 @@ class ProjectsRolesResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
@@ -1886,15 +1886,15 @@ class ProjectsRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/roles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListRolesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the definition of a custom Role.
@@ -1943,21 +1943,21 @@ class ProjectsRolesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a custom Role.
@@ -2003,20 +2003,20 @@ class ProjectsRolesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2054,21 +2054,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/serviceAccounts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/serviceAccounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a ServiceAccount.
@@ -2107,18 +2107,18 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Disables a ServiceAccount immediately.
@@ -2161,20 +2161,20 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables a ServiceAccount that was disabled by DisableServiceAccount.
@@ -2210,20 +2210,20 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a ServiceAccount.
@@ -2251,19 +2251,19 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM policy that is attached to a ServiceAccount.
@@ -2312,20 +2312,20 @@ class ProjectsServiceAccountsResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every ServiceAccount that belongs to a specific project.
@@ -2360,21 +2360,21 @@ class ProjectsServiceAccountsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/serviceAccounts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/serviceAccounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListServiceAccountsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a ServiceAccount.
@@ -2412,21 +2412,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM policy that is attached to a ServiceAccount.
@@ -2469,20 +2469,20 @@ class ProjectsServiceAccountsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// **Note:** This method is deprecated.
@@ -2523,21 +2523,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signBlob';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':signBlob';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SignBlobResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// **Note:** This method is deprecated.
@@ -2578,21 +2578,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':signJwt';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':signJwt';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SignJwtResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests whether the caller has the specified permissions on a
@@ -2623,22 +2623,22 @@ class ProjectsServiceAccountsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a deleted ServiceAccount.
@@ -2673,21 +2673,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return UndeleteServiceAccountResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// **Note:** We are in the process of deprecating this method.
@@ -2728,21 +2728,21 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2780,21 +2780,21 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/keys';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/keys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ServiceAccountKey.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a ServiceAccountKey.
@@ -2827,18 +2827,18 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Disable a ServiceAccountKey.
@@ -2874,20 +2874,20 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Enable a ServiceAccountKey.
@@ -2920,20 +2920,20 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a ServiceAccountKey.
@@ -2971,20 +2971,20 @@ class ProjectsServiceAccountsKeysResource {
     core.String? publicKeyType,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (publicKeyType != null) 'publicKeyType': [publicKeyType],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ServiceAccountKey.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every ServiceAccountKey for a service account.
@@ -3017,20 +3017,20 @@ class ProjectsServiceAccountsKeysResource {
     core.List<core.String>? keyTypes,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (keyTypes != null) 'keyTypes': keyTypes,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/keys';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/keys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListServiceAccountKeysResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Uploads the public key portion of a key pair that you manage, and
@@ -3065,21 +3065,21 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/keys:upload';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/keys:upload';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ServiceAccountKey.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3134,18 +3134,18 @@ class RolesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -3214,7 +3214,7 @@ class RolesResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (parent != null) 'parent': [parent],
@@ -3223,15 +3223,15 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/roles';
+    const url_ = 'v1/roles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListRolesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists roles that can be granted on a Google Cloud resource.
@@ -3257,21 +3257,21 @@ class RolesResource {
     QueryGrantableRolesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/roles:queryGrantableRoles';
+    const url_ = 'v1/roles:queryGrantableRoles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return QueryGrantableRolesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3307,16 +3307,16 @@ class AuditConfig {
     this.service,
   });
 
-  AuditConfig.fromJson(core.Map _json)
+  AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: _json.containsKey('auditLogConfigs')
-              ? (_json['auditLogConfigs'] as core.List)
+          auditLogConfigs: json_.containsKey('auditLogConfigs')
+              ? (json_['auditLogConfigs'] as core.List)
                   .map((value) => AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
         );
 
@@ -3345,9 +3345,9 @@ class AuditableService {
     this.name,
   });
 
-  AuditableService.fromJson(core.Map _json)
+  AuditableService.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3366,10 +3366,10 @@ class Aws {
     this.accountId,
   });
 
-  Aws.fromJson(core.Map _json)
+  Aws.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
         );
 
@@ -3434,18 +3434,18 @@ class Binding {
     this.role,
   });
 
-  Binding.fromJson(core.Map _json)
+  Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3472,14 +3472,14 @@ class CreateRoleRequest {
     this.roleId,
   });
 
-  CreateRoleRequest.fromJson(core.Map _json)
+  CreateRoleRequest.fromJson(core.Map json_)
       : this(
-          role: _json.containsKey('role')
+          role: json_.containsKey('role')
               ? Role.fromJson(
-                  _json['role'] as core.Map<core.String, core.dynamic>)
+                  json_['role'] as core.Map<core.String, core.dynamic>)
               : null,
-          roleId: _json.containsKey('roleId')
-              ? _json['roleId'] as core.String
+          roleId: json_.containsKey('roleId')
+              ? json_['roleId'] as core.String
               : null,
         );
 
@@ -3519,13 +3519,13 @@ class CreateServiceAccountKeyRequest {
     this.privateKeyType,
   });
 
-  CreateServiceAccountKeyRequest.fromJson(core.Map _json)
+  CreateServiceAccountKeyRequest.fromJson(core.Map json_)
       : this(
-          keyAlgorithm: _json.containsKey('keyAlgorithm')
-              ? _json['keyAlgorithm'] as core.String
+          keyAlgorithm: json_.containsKey('keyAlgorithm')
+              ? json_['keyAlgorithm'] as core.String
               : null,
-          privateKeyType: _json.containsKey('privateKeyType')
-              ? _json['privateKeyType'] as core.String
+          privateKeyType: json_.containsKey('privateKeyType')
+              ? json_['privateKeyType'] as core.String
               : null,
         );
 
@@ -3557,13 +3557,13 @@ class CreateServiceAccountRequest {
     this.serviceAccount,
   });
 
-  CreateServiceAccountRequest.fromJson(core.Map _json)
+  CreateServiceAccountRequest.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          serviceAccount: _json.containsKey('serviceAccount')
-              ? ServiceAccount.fromJson(_json['serviceAccount']
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? ServiceAccount.fromJson(json_['serviceAccount']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3634,14 +3634,14 @@ class LintPolicyRequest {
     this.fullResourceName,
   });
 
-  LintPolicyRequest.fromJson(core.Map _json)
+  LintPolicyRequest.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          fullResourceName: _json.containsKey('fullResourceName')
-              ? _json['fullResourceName'] as core.String
+          fullResourceName: json_.containsKey('fullResourceName')
+              ? json_['fullResourceName'] as core.String
               : null,
         );
 
@@ -3663,10 +3663,10 @@ class LintPolicyResponse {
     this.lintResults,
   });
 
-  LintPolicyResponse.fromJson(core.Map _json)
+  LintPolicyResponse.fromJson(core.Map json_)
       : this(
-          lintResults: _json.containsKey('lintResults')
-              ? (_json['lintResults'] as core.List)
+          lintResults: json_.containsKey('lintResults')
+              ? (json_['lintResults'] as core.List)
                   .map((value) => LintResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3742,24 +3742,24 @@ class LintResult {
     this.validationUnitName,
   });
 
-  LintResult.fromJson(core.Map _json)
+  LintResult.fromJson(core.Map json_)
       : this(
-          debugMessage: _json.containsKey('debugMessage')
-              ? _json['debugMessage'] as core.String
+          debugMessage: json_.containsKey('debugMessage')
+              ? json_['debugMessage'] as core.String
               : null,
-          fieldName: _json.containsKey('fieldName')
-              ? _json['fieldName'] as core.String
+          fieldName: json_.containsKey('fieldName')
+              ? json_['fieldName'] as core.String
               : null,
           level:
-              _json.containsKey('level') ? _json['level'] as core.String : null,
-          locationOffset: _json.containsKey('locationOffset')
-              ? _json['locationOffset'] as core.int
+              json_.containsKey('level') ? json_['level'] as core.String : null,
+          locationOffset: json_.containsKey('locationOffset')
+              ? json_['locationOffset'] as core.int
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          validationUnitName: _json.containsKey('validationUnitName')
-              ? _json['validationUnitName'] as core.String
+          validationUnitName: json_.containsKey('validationUnitName')
+              ? json_['validationUnitName'] as core.String
               : null,
         );
 
@@ -3788,13 +3788,13 @@ class ListRolesResponse {
     this.roles,
   });
 
-  ListRolesResponse.fromJson(core.Map _json)
+  ListRolesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          roles: _json.containsKey('roles')
-              ? (_json['roles'] as core.List)
+          roles: json_.containsKey('roles')
+              ? (json_['roles'] as core.List)
                   .map((value) => Role.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3816,10 +3816,10 @@ class ListServiceAccountKeysResponse {
     this.keys,
   });
 
-  ListServiceAccountKeysResponse.fromJson(core.Map _json)
+  ListServiceAccountKeysResponse.fromJson(core.Map json_)
       : this(
-          keys: _json.containsKey('keys')
-              ? (_json['keys'] as core.List)
+          keys: json_.containsKey('keys')
+              ? (json_['keys'] as core.List)
                   .map((value) => ServiceAccountKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3845,16 +3845,16 @@ class ListServiceAccountsResponse {
     this.nextPageToken,
   });
 
-  ListServiceAccountsResponse.fromJson(core.Map _json)
+  ListServiceAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: _json.containsKey('accounts')
-              ? (_json['accounts'] as core.List)
+          accounts: json_.containsKey('accounts')
+              ? (json_['accounts'] as core.List)
                   .map((value) => ServiceAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3879,14 +3879,14 @@ class ListWorkloadIdentityPoolProvidersResponse {
     this.workloadIdentityPoolProviders,
   });
 
-  ListWorkloadIdentityPoolProvidersResponse.fromJson(core.Map _json)
+  ListWorkloadIdentityPoolProvidersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
           workloadIdentityPoolProviders:
-              _json.containsKey('workloadIdentityPoolProviders')
-                  ? (_json['workloadIdentityPoolProviders'] as core.List)
+              json_.containsKey('workloadIdentityPoolProviders')
+                  ? (json_['workloadIdentityPoolProviders'] as core.List)
                       .map((value) => WorkloadIdentityPoolProvider.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -3915,13 +3915,13 @@ class ListWorkloadIdentityPoolsResponse {
     this.workloadIdentityPools,
   });
 
-  ListWorkloadIdentityPoolsResponse.fromJson(core.Map _json)
+  ListWorkloadIdentityPoolsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          workloadIdentityPools: _json.containsKey('workloadIdentityPools')
-              ? (_json['workloadIdentityPools'] as core.List)
+          workloadIdentityPools: json_.containsKey('workloadIdentityPools')
+              ? (json_['workloadIdentityPools'] as core.List)
                   .map((value) => WorkloadIdentityPool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3962,15 +3962,15 @@ class Oidc {
     this.issuerUri,
   });
 
-  Oidc.fromJson(core.Map _json)
+  Oidc.fromJson(core.Map json_)
       : this(
-          allowedAudiences: _json.containsKey('allowedAudiences')
-              ? (_json['allowedAudiences'] as core.List)
+          allowedAudiences: json_.containsKey('allowedAudiences')
+              ? (json_['allowedAudiences'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          issuerUri: _json.containsKey('issuerUri')
-              ? _json['issuerUri'] as core.String
+          issuerUri: json_.containsKey('issuerUri')
+              ? json_['issuerUri'] as core.String
               : null,
         );
 
@@ -4031,19 +4031,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -4071,14 +4071,14 @@ class PatchServiceAccountRequest {
     this.updateMask,
   });
 
-  PatchServiceAccountRequest.fromJson(core.Map _json)
+  PatchServiceAccountRequest.fromJson(core.Map json_)
       : this(
-          serviceAccount: _json.containsKey('serviceAccount')
-              ? ServiceAccount.fromJson(_json['serviceAccount']
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? ServiceAccount.fromJson(json_['serviceAccount']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: _json.containsKey('updateMask')
-              ? _json['updateMask'] as core.String
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
               : null,
         );
 
@@ -4139,28 +4139,28 @@ class Permission {
     this.title,
   });
 
-  Permission.fromJson(core.Map _json)
+  Permission.fromJson(core.Map json_)
       : this(
-          apiDisabled: _json.containsKey('apiDisabled')
-              ? _json['apiDisabled'] as core.bool
+          apiDisabled: json_.containsKey('apiDisabled')
+              ? json_['apiDisabled'] as core.bool
               : null,
-          customRolesSupportLevel: _json.containsKey('customRolesSupportLevel')
-              ? _json['customRolesSupportLevel'] as core.String
+          customRolesSupportLevel: json_.containsKey('customRolesSupportLevel')
+              ? json_['customRolesSupportLevel'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          onlyInPredefinedRoles: _json.containsKey('onlyInPredefinedRoles')
-              ? _json['onlyInPredefinedRoles'] as core.bool
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          onlyInPredefinedRoles: json_.containsKey('onlyInPredefinedRoles')
+              ? json_['onlyInPredefinedRoles'] as core.bool
               : null,
-          primaryPermission: _json.containsKey('primaryPermission')
-              ? _json['primaryPermission'] as core.String
+          primaryPermission: json_.containsKey('primaryPermission')
+              ? json_['primaryPermission'] as core.String
               : null,
           stage:
-              _json.containsKey('stage') ? _json['stage'] as core.String : null,
+              json_.containsKey('stage') ? json_['stage'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4239,9 +4239,9 @@ class Policy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -4270,23 +4270,23 @@ class Policy {
     this.version,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: _json.containsKey('auditConfigs')
-              ? (_json['auditConfigs'] as core.List)
+          auditConfigs: json_.containsKey('auditConfigs')
+              ? (json_['auditConfigs'] as core.List)
                   .map((value) => AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -4313,10 +4313,10 @@ class QueryAuditableServicesRequest {
     this.fullResourceName,
   });
 
-  QueryAuditableServicesRequest.fromJson(core.Map _json)
+  QueryAuditableServicesRequest.fromJson(core.Map json_)
       : this(
-          fullResourceName: _json.containsKey('fullResourceName')
-              ? _json['fullResourceName'] as core.String
+          fullResourceName: json_.containsKey('fullResourceName')
+              ? json_['fullResourceName'] as core.String
               : null,
         );
 
@@ -4334,10 +4334,10 @@ class QueryAuditableServicesResponse {
     this.services,
   });
 
-  QueryAuditableServicesResponse.fromJson(core.Map _json)
+  QueryAuditableServicesResponse.fromJson(core.Map json_)
       : this(
-          services: _json.containsKey('services')
-              ? (_json['services'] as core.List)
+          services: json_.containsKey('services')
+              ? (json_['services'] as core.List)
                   .map((value) => AuditableService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4383,18 +4383,18 @@ class QueryGrantableRolesRequest {
     this.view,
   });
 
-  QueryGrantableRolesRequest.fromJson(core.Map _json)
+  QueryGrantableRolesRequest.fromJson(core.Map json_)
       : this(
-          fullResourceName: _json.containsKey('fullResourceName')
-              ? _json['fullResourceName'] as core.String
+          fullResourceName: json_.containsKey('fullResourceName')
+              ? json_['fullResourceName'] as core.String
               : null,
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
-          view: _json.containsKey('view') ? _json['view'] as core.String : null,
+          view: json_.containsKey('view') ? json_['view'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4419,13 +4419,13 @@ class QueryGrantableRolesResponse {
     this.roles,
   });
 
-  QueryGrantableRolesResponse.fromJson(core.Map _json)
+  QueryGrantableRolesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          roles: _json.containsKey('roles')
-              ? (_json['roles'] as core.List)
+          roles: json_.containsKey('roles')
+              ? (json_['roles'] as core.List)
                   .map((value) => Role.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4464,16 +4464,16 @@ class QueryTestablePermissionsRequest {
     this.pageToken,
   });
 
-  QueryTestablePermissionsRequest.fromJson(core.Map _json)
+  QueryTestablePermissionsRequest.fromJson(core.Map json_)
       : this(
-          fullResourceName: _json.containsKey('fullResourceName')
-              ? _json['fullResourceName'] as core.String
+          fullResourceName: json_.containsKey('fullResourceName')
+              ? json_['fullResourceName'] as core.String
               : null,
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
         );
 
@@ -4498,13 +4498,13 @@ class QueryTestablePermissionsResponse {
     this.permissions,
   });
 
-  QueryTestablePermissionsResponse.fromJson(core.Map _json)
+  QueryTestablePermissionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
                   .map((value) => Permission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4534,9 +4534,9 @@ class Role {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The names of the permissions this role grants when bound in an IAM policy.
@@ -4583,25 +4583,25 @@ class Role {
     this.title,
   });
 
-  Role.fromJson(core.Map _json)
+  Role.fromJson(core.Map json_)
       : this(
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          includedPermissions: _json.containsKey('includedPermissions')
-              ? (_json['includedPermissions'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          includedPermissions: json_.containsKey('includedPermissions')
+              ? (json_['includedPermissions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           stage:
-              _json.containsKey('stage') ? _json['stage'] as core.String : null,
+              json_.containsKey('stage') ? json_['stage'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4640,10 +4640,10 @@ class Saml {
     this.idpMetadataXml,
   });
 
-  Saml.fromJson(core.Map _json)
+  Saml.fromJson(core.Map json_)
       : this(
-          idpMetadataXml: _json.containsKey('idpMetadataXml')
-              ? _json['idpMetadataXml'] as core.String
+          idpMetadataXml: json_.containsKey('idpMetadataXml')
+              ? json_['idpMetadataXml'] as core.String
               : null,
         );
 
@@ -4693,9 +4693,9 @@ class ServiceAccount {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The resource name of the service account.
@@ -4745,29 +4745,29 @@ class ServiceAccount {
     this.uniqueId,
   });
 
-  ServiceAccount.fromJson(core.Map _json)
+  ServiceAccount.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          oauth2ClientId: _json.containsKey('oauth2ClientId')
-              ? _json['oauth2ClientId'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          oauth2ClientId: json_.containsKey('oauth2ClientId')
+              ? json_['oauth2ClientId'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          uniqueId: _json.containsKey('uniqueId')
-              ? _json['uniqueId'] as core.String
+          uniqueId: json_.containsKey('uniqueId')
+              ? json_['uniqueId'] as core.String
               : null,
         );
 
@@ -4842,9 +4842,9 @@ class ServiceAccountKey {
   core.List<core.int> get privateKeyDataAsBytes =>
       convert.base64.decode(privateKeyData!);
 
-  set privateKeyDataAsBytes(core.List<core.int> _bytes) {
+  set privateKeyDataAsBytes(core.List<core.int> bytes_) {
     privateKeyData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The output format for the private key.
@@ -4869,9 +4869,9 @@ class ServiceAccountKey {
   core.List<core.int> get publicKeyDataAsBytes =>
       convert.base64.decode(publicKeyData!);
 
-  set publicKeyDataAsBytes(core.List<core.int> _bytes) {
+  set publicKeyDataAsBytes(core.List<core.int> bytes_) {
     publicKeyData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The key can be used after this timestamp.
@@ -4897,35 +4897,35 @@ class ServiceAccountKey {
     this.validBeforeTime,
   });
 
-  ServiceAccountKey.fromJson(core.Map _json)
+  ServiceAccountKey.fromJson(core.Map json_)
       : this(
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          keyAlgorithm: _json.containsKey('keyAlgorithm')
-              ? _json['keyAlgorithm'] as core.String
+          keyAlgorithm: json_.containsKey('keyAlgorithm')
+              ? json_['keyAlgorithm'] as core.String
               : null,
-          keyOrigin: _json.containsKey('keyOrigin')
-              ? _json['keyOrigin'] as core.String
+          keyOrigin: json_.containsKey('keyOrigin')
+              ? json_['keyOrigin'] as core.String
               : null,
-          keyType: _json.containsKey('keyType')
-              ? _json['keyType'] as core.String
+          keyType: json_.containsKey('keyType')
+              ? json_['keyType'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          privateKeyData: _json.containsKey('privateKeyData')
-              ? _json['privateKeyData'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          privateKeyData: json_.containsKey('privateKeyData')
+              ? json_['privateKeyData'] as core.String
               : null,
-          privateKeyType: _json.containsKey('privateKeyType')
-              ? _json['privateKeyType'] as core.String
+          privateKeyType: json_.containsKey('privateKeyType')
+              ? json_['privateKeyType'] as core.String
               : null,
-          publicKeyData: _json.containsKey('publicKeyData')
-              ? _json['publicKeyData'] as core.String
+          publicKeyData: json_.containsKey('publicKeyData')
+              ? json_['publicKeyData'] as core.String
               : null,
-          validAfterTime: _json.containsKey('validAfterTime')
-              ? _json['validAfterTime'] as core.String
+          validAfterTime: json_.containsKey('validAfterTime')
+              ? json_['validAfterTime'] as core.String
               : null,
-          validBeforeTime: _json.containsKey('validBeforeTime')
-              ? _json['validBeforeTime'] as core.String
+          validBeforeTime: json_.containsKey('validBeforeTime')
+              ? json_['validBeforeTime'] as core.String
               : null,
         );
 
@@ -4963,14 +4963,14 @@ class SetIamPolicyRequest {
     this.updateMask,
   });
 
-  SetIamPolicyRequest.fromJson(core.Map _json)
+  SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: _json.containsKey('updateMask')
-              ? _json['updateMask'] as core.String
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
               : null,
         );
 
@@ -4995,19 +4995,19 @@ class SignBlobRequest {
   core.List<core.int> get bytesToSignAsBytes =>
       convert.base64.decode(bytesToSign!);
 
-  set bytesToSignAsBytes(core.List<core.int> _bytes) {
+  set bytesToSignAsBytes(core.List<core.int> bytes_) {
     bytesToSign =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignBlobRequest({
     this.bytesToSign,
   });
 
-  SignBlobRequest.fromJson(core.Map _json)
+  SignBlobRequest.fromJson(core.Map json_)
       : this(
-          bytesToSign: _json.containsKey('bytesToSign')
-              ? _json['bytesToSign'] as core.String
+          bytesToSign: json_.containsKey('bytesToSign')
+              ? json_['bytesToSign'] as core.String
               : null,
         );
 
@@ -5037,9 +5037,9 @@ class SignBlobResponse {
   core.String? signature;
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
-  set signatureAsBytes(core.List<core.int> _bytes) {
+  set signatureAsBytes(core.List<core.int> bytes_) {
     signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignBlobResponse({
@@ -5047,12 +5047,12 @@ class SignBlobResponse {
     this.signature,
   });
 
-  SignBlobResponse.fromJson(core.Map _json)
+  SignBlobResponse.fromJson(core.Map json_)
       : this(
           keyId:
-              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
         );
 
@@ -5085,10 +5085,10 @@ class SignJwtRequest {
     this.payload,
   });
 
-  SignJwtRequest.fromJson(core.Map _json)
+  SignJwtRequest.fromJson(core.Map json_)
       : this(
-          payload: _json.containsKey('payload')
-              ? _json['payload'] as core.String
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.String
               : null,
         );
 
@@ -5122,12 +5122,12 @@ class SignJwtResponse {
     this.signedJwt,
   });
 
-  SignJwtResponse.fromJson(core.Map _json)
+  SignJwtResponse.fromJson(core.Map json_)
       : this(
           keyId:
-              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
-          signedJwt: _json.containsKey('signedJwt')
-              ? _json['signedJwt'] as core.String
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          signedJwt: json_.containsKey('signedJwt')
+              ? json_['signedJwt'] as core.String
               : null,
         );
 
@@ -5158,18 +5158,18 @@ class UndeleteRoleRequest {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   UndeleteRoleRequest({
     this.etag,
   });
 
-  UndeleteRoleRequest.fromJson(core.Map _json)
+  UndeleteRoleRequest.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5188,10 +5188,10 @@ class UndeleteServiceAccountResponse {
     this.restoredAccount,
   });
 
-  UndeleteServiceAccountResponse.fromJson(core.Map _json)
+  UndeleteServiceAccountResponse.fromJson(core.Map json_)
       : this(
-          restoredAccount: _json.containsKey('restoredAccount')
-              ? ServiceAccount.fromJson(_json['restoredAccount']
+          restoredAccount: json_.containsKey('restoredAccount')
+              ? ServiceAccount.fromJson(json_['restoredAccount']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5218,19 +5218,19 @@ class UploadServiceAccountKeyRequest {
   core.List<core.int> get publicKeyDataAsBytes =>
       convert.base64.decode(publicKeyData!);
 
-  set publicKeyDataAsBytes(core.List<core.int> _bytes) {
+  set publicKeyDataAsBytes(core.List<core.int> bytes_) {
     publicKeyData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   UploadServiceAccountKeyRequest({
     this.publicKeyData,
   });
 
-  UploadServiceAccountKeyRequest.fromJson(core.Map _json)
+  UploadServiceAccountKeyRequest.fromJson(core.Map json_)
       : this(
-          publicKeyData: _json.containsKey('publicKeyData')
-              ? _json['publicKeyData'] as core.String
+          publicKeyData: json_.containsKey('publicKeyData')
+              ? json_['publicKeyData'] as core.String
               : null,
         );
 
@@ -5289,20 +5289,20 @@ class WorkloadIdentityPool {
     this.state,
   });
 
-  WorkloadIdentityPool.fromJson(core.Map _json)
+  WorkloadIdentityPool.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5433,13 +5433,13 @@ class WorkloadIdentityPoolProvider {
     this.state,
   });
 
-  WorkloadIdentityPoolProvider.fromJson(core.Map _json)
+  WorkloadIdentityPoolProvider.fromJson(core.Map json_)
       : this(
-          attributeCondition: _json.containsKey('attributeCondition')
-              ? _json['attributeCondition'] as core.String
+          attributeCondition: json_.containsKey('attributeCondition')
+              ? json_['attributeCondition'] as core.String
               : null,
-          attributeMapping: _json.containsKey('attributeMapping')
-              ? (_json['attributeMapping']
+          attributeMapping: json_.containsKey('attributeMapping')
+              ? (json_['attributeMapping']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -5448,30 +5448,30 @@ class WorkloadIdentityPoolProvider {
                   ),
                 )
               : null,
-          aws: _json.containsKey('aws')
+          aws: json_.containsKey('aws')
               ? Aws.fromJson(
-                  _json['aws'] as core.Map<core.String, core.dynamic>)
+                  json_['aws'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          oidc: _json.containsKey('oidc')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          oidc: json_.containsKey('oidc')
               ? Oidc.fromJson(
-                  _json['oidc'] as core.Map<core.String, core.dynamic>)
+                  json_['oidc'] as core.Map<core.String, core.dynamic>)
               : null,
-          saml: _json.containsKey('saml')
+          saml: json_.containsKey('saml')
               ? Saml.fromJson(
-                  _json['saml'] as core.Map<core.String, core.dynamic>)
+                  json_['saml'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

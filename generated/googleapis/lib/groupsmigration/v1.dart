@@ -90,28 +90,28 @@ class ArchiveResource {
     core.String? $fields,
     commons.Media? uploadMedia,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url =
+      url_ =
           'groups/v1/groups/' + commons.escapeVariable('$groupId') + '/archive';
     } else {
-      _url = '/upload/groups/v1/groups/' +
+      url_ = '/upload/groups/v1/groups/' +
           commons.escapeVariable('$groupId') +
           '/archive';
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
-    return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Groups.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -128,11 +128,11 @@ class Groups {
     this.responseCode,
   });
 
-  Groups.fromJson(core.Map _json)
+  Groups.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          responseCode: _json.containsKey('responseCode')
-              ? _json['responseCode'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          responseCode: json_.containsKey('responseCode')
+              ? json_['responseCode'] as core.String
               : null,
         );
 

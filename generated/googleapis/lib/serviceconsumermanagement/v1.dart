@@ -99,20 +99,20 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -140,18 +140,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -178,18 +178,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -231,22 +231,22 @@ class OperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -306,22 +306,22 @@ class ServicesResource {
     core.String? query,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':search';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SearchTenancyUnitsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -362,20 +362,20 @@ class ServicesTenancyUnitsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':addProject';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':addProject';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Apply a configuration to an existing tenant project.
@@ -419,20 +419,20 @@ class ServicesTenancyUnitsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':applyProjectConfig';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':applyProjectConfig';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Attach an existing project to the tenancy unit as a new tenant resource.
@@ -471,20 +471,20 @@ class ServicesTenancyUnitsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':attachProject';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':attachProject';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a tenancy unit with no tenant resources.
@@ -521,21 +521,21 @@ class ServicesTenancyUnitsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TenancyUnit.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a tenancy unit.
@@ -563,18 +563,18 @@ class ServicesTenancyUnitsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified project resource identified by a tenant resource
@@ -612,20 +612,20 @@ class ServicesTenancyUnitsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':deleteProject';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':deleteProject';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Find the tenancy unit for a managed service and service consumer.
@@ -672,22 +672,22 @@ class ServicesTenancyUnitsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/tenancyUnits';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTenancyUnitsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified project resource identified by a tenant resource
@@ -724,20 +724,20 @@ class ServicesTenancyUnitsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':removeProject';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':removeProject';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Attempts to undelete a previously deleted tenant project.
@@ -771,20 +771,20 @@ class ServicesTenancyUnitsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':undeleteProject';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undeleteProject';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -807,13 +807,13 @@ class AddTenantProjectRequest {
     this.tag,
   });
 
-  AddTenantProjectRequest.fromJson(core.Map _json)
+  AddTenantProjectRequest.fromJson(core.Map json_)
       : this(
-          projectConfig: _json.containsKey('projectConfig')
+          projectConfig: json_.containsKey('projectConfig')
               ? TenantProjectConfig.fromJson(
-                  _json['projectConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['projectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -839,13 +839,13 @@ class ApplyTenantProjectConfigRequest {
     this.tag,
   });
 
-  ApplyTenantProjectConfigRequest.fromJson(core.Map _json)
+  ApplyTenantProjectConfigRequest.fromJson(core.Map json_)
       : this(
-          projectConfig: _json.containsKey('projectConfig')
+          projectConfig: json_.containsKey('projectConfig')
               ? TenantProjectConfig.fromJson(
-                  _json['projectConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['projectConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -881,15 +881,15 @@ class AttachTenantProjectRequest {
     this.tag,
   });
 
-  AttachTenantProjectRequest.fromJson(core.Map _json)
+  AttachTenantProjectRequest.fromJson(core.Map json_)
       : this(
-          externalResource: _json.containsKey('externalResource')
-              ? _json['externalResource'] as core.String
+          externalResource: json_.containsKey('externalResource')
+              ? json_['externalResource'] as core.String
               : null,
-          reservedResource: _json.containsKey('reservedResource')
-              ? _json['reservedResource'] as core.String
+          reservedResource: json_.containsKey('reservedResource')
+              ? json_['reservedResource'] as core.String
               : null,
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -910,10 +910,10 @@ class BillingConfig {
     this.billingAccount,
   });
 
-  BillingConfig.fromJson(core.Map _json)
+  BillingConfig.fromJson(core.Map json_)
       : this(
-          billingAccount: _json.containsKey('billingAccount')
-              ? _json['billingAccount'] as core.String
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
               : null,
         );
 
@@ -944,10 +944,10 @@ class CreateTenancyUnitRequest {
     this.tenancyUnitId,
   });
 
-  CreateTenancyUnitRequest.fromJson(core.Map _json)
+  CreateTenancyUnitRequest.fromJson(core.Map json_)
       : this(
-          tenancyUnitId: _json.containsKey('tenancyUnitId')
-              ? _json['tenancyUnitId'] as core.String
+          tenancyUnitId: json_.containsKey('tenancyUnitId')
+              ? json_['tenancyUnitId'] as core.String
               : null,
         );
 
@@ -980,13 +980,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1012,13 +1012,13 @@ class ListTenancyUnitsResponse {
     this.tenancyUnits,
   });
 
-  ListTenancyUnitsResponse.fromJson(core.Map _json)
+  ListTenancyUnitsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          tenancyUnits: _json.containsKey('tenancyUnits')
-              ? (_json['tenancyUnits'] as core.List)
+          tenancyUnits: json_.containsKey('tenancyUnits')
+              ? (json_['tenancyUnits'] as core.List)
                   .map((value) => TenancyUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1082,19 +1082,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1126,14 +1126,14 @@ class PolicyBinding {
     this.role,
   });
 
-  PolicyBinding.fromJson(core.Map _json)
+  PolicyBinding.fromJson(core.Map json_)
       : this(
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1158,13 +1158,13 @@ class SearchTenancyUnitsResponse {
     this.tenancyUnits,
   });
 
-  SearchTenancyUnitsResponse.fromJson(core.Map _json)
+  SearchTenancyUnitsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          tenancyUnits: _json.containsKey('tenancyUnits')
-              ? (_json['tenancyUnits'] as core.List)
+          tenancyUnits: json_.containsKey('tenancyUnits')
+              ? (json_['tenancyUnits'] as core.List)
                   .map((value) => TenancyUnit.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1195,13 +1195,13 @@ class ServiceAccountConfig {
     this.tenantProjectRoles,
   });
 
-  ServiceAccountConfig.fromJson(core.Map _json)
+  ServiceAccountConfig.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          tenantProjectRoles: _json.containsKey('tenantProjectRoles')
-              ? (_json['tenantProjectRoles'] as core.List)
+          tenantProjectRoles: json_.containsKey('tenantProjectRoles')
+              ? (json_['tenantProjectRoles'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1261,20 +1261,20 @@ class TenancyUnit {
     this.tenantResources,
   });
 
-  TenancyUnit.fromJson(core.Map _json)
+  TenancyUnit.fromJson(core.Map json_)
       : this(
-          consumer: _json.containsKey('consumer')
-              ? _json['consumer'] as core.String
+          consumer: json_.containsKey('consumer')
+              ? json_['consumer'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
-          tenantResources: _json.containsKey('tenantResources')
-              ? (_json['tenantResources'] as core.List)
+          tenantResources: json_.containsKey('tenantResources')
+              ? (json_['tenantResources'] as core.List)
                   .map((value) => TenantResource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1335,34 +1335,34 @@ class TenantProjectConfig {
     this.tenantProjectPolicy,
   });
 
-  TenantProjectConfig.fromJson(core.Map _json)
+  TenantProjectConfig.fromJson(core.Map json_)
       : this(
-          billingConfig: _json.containsKey('billingConfig')
+          billingConfig: json_.containsKey('billingConfig')
               ? BillingConfig.fromJson(
-                  _json['billingConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['billingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          folder: _json.containsKey('folder')
-              ? _json['folder'] as core.String
+          folder: json_.containsKey('folder')
+              ? json_['folder'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          serviceAccountConfig: _json.containsKey('serviceAccountConfig')
-              ? ServiceAccountConfig.fromJson(_json['serviceAccountConfig']
+          serviceAccountConfig: json_.containsKey('serviceAccountConfig')
+              ? ServiceAccountConfig.fromJson(json_['serviceAccountConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          services: _json.containsKey('services')
-              ? (_json['services'] as core.List)
+          services: json_.containsKey('services')
+              ? (json_['services'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          tenantProjectPolicy: _json.containsKey('tenantProjectPolicy')
-              ? TenantProjectPolicy.fromJson(_json['tenantProjectPolicy']
+          tenantProjectPolicy: json_.containsKey('tenantProjectPolicy')
+              ? TenantProjectPolicy.fromJson(json_['tenantProjectPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1391,10 +1391,10 @@ class TenantProjectPolicy {
     this.policyBindings,
   });
 
-  TenantProjectPolicy.fromJson(core.Map _json)
+  TenantProjectPolicy.fromJson(core.Map json_)
       : this(
-          policyBindings: _json.containsKey('policyBindings')
-              ? (_json['policyBindings'] as core.List)
+          policyBindings: json_.containsKey('policyBindings')
+              ? (json_['policyBindings'] as core.List)
                   .map((value) => PolicyBinding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1435,15 +1435,15 @@ class TenantResource {
     this.tag,
   });
 
-  TenantResource.fromJson(core.Map _json)
+  TenantResource.fromJson(core.Map json_)
       : this(
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.String
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

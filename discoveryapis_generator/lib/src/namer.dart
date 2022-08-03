@@ -90,7 +90,7 @@ class Scope {
     return child;
   }
 
-  static final _dashStringRegExp = RegExp('\-([a-zA-Z])');
+  static final _dashStringRegExp = RegExp('-([a-zA-Z])');
 
   /// Converts [preferredName] to a valid identifier.
   static String toValidIdentifier(

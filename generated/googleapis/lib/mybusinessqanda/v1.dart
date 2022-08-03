@@ -95,20 +95,20 @@ class LocationsQuestionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent');
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Question.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Question.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a specific question written by the current user.
@@ -132,18 +132,18 @@ class LocationsQuestionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the paginated list of questions and some of its answers for a
@@ -192,7 +192,7 @@ class LocationsQuestionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (answersPerQuestion != null)
         'answersPerQuestion': ['${answersPerQuestion}'],
       if (filter != null) 'filter': [filter],
@@ -202,15 +202,15 @@ class LocationsQuestionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent');
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListQuestionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a specific question written by the current user.
@@ -242,21 +242,21 @@ class LocationsQuestionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Question.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Question.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -287,18 +287,18 @@ class LocationsQuestionsAnswersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/answers:delete';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/answers:delete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the paginated list of answers for a specified question.
@@ -336,22 +336,22 @@ class LocationsQuestionsAnswersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/answers';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/answers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAnswersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an answer or updates the existing answer written by the user for
@@ -381,20 +381,20 @@ class LocationsQuestionsAnswersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/answers:upsert';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/answers:upsert';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Answer.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Answer.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -446,22 +446,22 @@ class Answer {
     this.upvoteCount,
   });
 
-  Answer.fromJson(core.Map _json)
+  Answer.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
+          author: json_.containsKey('author')
               ? Author.fromJson(
-                  _json['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          upvoteCount: _json.containsKey('upvoteCount')
-              ? _json['upvoteCount'] as core.int
+          upvoteCount: json_.containsKey('upvoteCount')
+              ? json_['upvoteCount'] as core.int
               : null,
         );
 
@@ -497,15 +497,15 @@ class Author {
     this.type,
   });
 
-  Author.fromJson(core.Map _json)
+  Author.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          profilePhotoUri: _json.containsKey('profilePhotoUri')
-              ? _json['profilePhotoUri'] as core.String
+          profilePhotoUri: json_.containsKey('profilePhotoUri')
+              ? json_['profilePhotoUri'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -544,19 +544,19 @@ class ListAnswersResponse {
     this.totalSize,
   });
 
-  ListAnswersResponse.fromJson(core.Map _json)
+  ListAnswersResponse.fromJson(core.Map json_)
       : this(
-          answers: _json.containsKey('answers')
-              ? (_json['answers'] as core.List)
+          answers: json_.containsKey('answers')
+              ? (json_['answers'] as core.List)
                   .map((value) => Answer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -588,19 +588,19 @@ class ListQuestionsResponse {
     this.totalSize,
   });
 
-  ListQuestionsResponse.fromJson(core.Map _json)
+  ListQuestionsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          questions: _json.containsKey('questions')
-              ? (_json['questions'] as core.List)
+          questions: json_.containsKey('questions')
+              ? (json_['questions'] as core.List)
                   .map((value) => Question.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -674,31 +674,31 @@ class Question {
     this.upvoteCount,
   });
 
-  Question.fromJson(core.Map _json)
+  Question.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
+          author: json_.containsKey('author')
               ? Author.fromJson(
-                  _json['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-          topAnswers: _json.containsKey('topAnswers')
-              ? (_json['topAnswers'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          topAnswers: json_.containsKey('topAnswers')
+              ? (json_['topAnswers'] as core.List)
                   .map((value) => Answer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalAnswerCount: _json.containsKey('totalAnswerCount')
-              ? _json['totalAnswerCount'] as core.int
+          totalAnswerCount: json_.containsKey('totalAnswerCount')
+              ? json_['totalAnswerCount'] as core.int
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          upvoteCount: _json.containsKey('upvoteCount')
-              ? _json['upvoteCount'] as core.int
+          upvoteCount: json_.containsKey('upvoteCount')
+              ? json_['upvoteCount'] as core.int
               : null,
         );
 
@@ -725,11 +725,11 @@ class UpsertAnswerRequest {
     this.answer,
   });
 
-  UpsertAnswerRequest.fromJson(core.Map _json)
+  UpsertAnswerRequest.fromJson(core.Map json_)
       : this(
-          answer: _json.containsKey('answer')
+          answer: json_.containsKey('answer')
               ? Answer.fromJson(
-                  _json['answer'] as core.Map<core.String, core.dynamic>)
+                  json_['answer'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

@@ -142,19 +142,19 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -216,22 +216,22 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -265,21 +265,21 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -327,19 +327,19 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -400,22 +400,22 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -451,21 +451,21 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -501,21 +501,21 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -551,21 +551,21 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -630,19 +630,19 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -704,22 +704,22 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -753,21 +753,21 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -813,19 +813,19 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -886,22 +886,22 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -937,21 +937,21 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -987,21 +987,21 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -1037,21 +1037,21 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1115,19 +1115,19 @@ class OrganizationsLocationsInsightTypesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an InsightTypeConfig change.
@@ -1165,23 +1165,23 @@ class OrganizationsLocationsInsightTypesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1217,19 +1217,19 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -1291,22 +1291,22 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -1340,21 +1340,21 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1398,19 +1398,19 @@ class OrganizationsLocationsRecommendersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Recommender Config.
@@ -1448,23 +1448,23 @@ class OrganizationsLocationsRecommendersResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1500,19 +1500,19 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -1573,22 +1573,22 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -1624,21 +1624,21 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -1674,21 +1674,21 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -1724,21 +1724,21 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1801,19 +1801,19 @@ class ProjectsLocationsInsightTypesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an InsightTypeConfig change.
@@ -1851,23 +1851,23 @@ class ProjectsLocationsInsightTypesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1InsightTypeConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1902,19 +1902,19 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for the specified Cloud Resource.
@@ -1976,22 +1976,22 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/insights';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -2025,21 +2025,21 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markAccepted';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2082,19 +2082,19 @@ class ProjectsLocationsRecommendersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Recommender Config.
@@ -2132,23 +2132,23 @@ class ProjectsLocationsRecommendersResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1RecommenderConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2184,19 +2184,19 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for the specified Cloud Resource.
@@ -2257,22 +2257,22 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/recommendations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -2308,21 +2308,21 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markClaimed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -2358,21 +2358,21 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markFailed';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -2408,21 +2408,21 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markSucceeded';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2444,14 +2444,14 @@ class GoogleCloudRecommenderV1CostProjection {
     this.duration,
   });
 
-  GoogleCloudRecommenderV1CostProjection.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1CostProjection.fromJson(core.Map json_)
       : this(
-          cost: _json.containsKey('cost')
+          cost: json_.containsKey('cost')
               ? GoogleTypeMoney.fromJson(
-                  _json['cost'] as core.Map<core.String, core.dynamic>)
+                  json_['cost'] as core.Map<core.String, core.dynamic>)
               : null,
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
               : null,
         );
 
@@ -2487,19 +2487,19 @@ class GoogleCloudRecommenderV1Impact {
     this.securityProjection,
   });
 
-  GoogleCloudRecommenderV1Impact.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1Impact.fromJson(core.Map json_)
       : this(
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
               : null,
-          costProjection: _json.containsKey('costProjection')
+          costProjection: json_.containsKey('costProjection')
               ? GoogleCloudRecommenderV1CostProjection.fromJson(
-                  _json['costProjection']
+                  json_['costProjection']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          securityProjection: _json.containsKey('securityProjection')
+          securityProjection: json_.containsKey('securityProjection')
               ? GoogleCloudRecommenderV1SecurityProjection.fromJson(
-                  _json['securityProjection']
+                  json_['securityProjection']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2594,46 +2594,46 @@ class GoogleCloudRecommenderV1Insight {
     this.targetResources,
   });
 
-  GoogleCloudRecommenderV1Insight.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1Insight.fromJson(core.Map json_)
       : this(
           associatedRecommendations:
-              _json.containsKey('associatedRecommendations')
-                  ? (_json['associatedRecommendations'] as core.List)
+              json_.containsKey('associatedRecommendations')
+                  ? (json_['associatedRecommendations'] as core.List)
                       .map((value) =>
                           GoogleCloudRecommenderV1InsightRecommendationReference
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
               : null,
-          content: _json.containsKey('content')
-              ? _json['content'] as core.Map<core.String, core.dynamic>
+          content: json_.containsKey('content')
+              ? json_['content'] as core.Map<core.String, core.dynamic>
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          insightSubtype: _json.containsKey('insightSubtype')
-              ? _json['insightSubtype'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          insightSubtype: json_.containsKey('insightSubtype')
+              ? json_['insightSubtype'] as core.String
               : null,
-          lastRefreshTime: _json.containsKey('lastRefreshTime')
-              ? _json['lastRefreshTime'] as core.String
+          lastRefreshTime: json_.containsKey('lastRefreshTime')
+              ? json_['lastRefreshTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          observationPeriod: _json.containsKey('observationPeriod')
-              ? _json['observationPeriod'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          observationPeriod: json_.containsKey('observationPeriod')
+              ? json_['observationPeriod'] as core.String
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          stateInfo: _json.containsKey('stateInfo')
+          stateInfo: json_.containsKey('stateInfo')
               ? GoogleCloudRecommenderV1InsightStateInfo.fromJson(
-                  _json['stateInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['stateInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          targetResources: _json.containsKey('targetResources')
-              ? (_json['targetResources'] as core.List)
+          targetResources: json_.containsKey('targetResources')
+              ? (json_['targetResources'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2667,10 +2667,10 @@ class GoogleCloudRecommenderV1InsightRecommendationReference {
   });
 
   GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          recommendation: _json.containsKey('recommendation')
-              ? _json['recommendation'] as core.String
+          recommendation: json_.containsKey('recommendation')
+              ? json_['recommendation'] as core.String
               : null,
         );
 
@@ -2703,12 +2703,12 @@ class GoogleCloudRecommenderV1InsightStateInfo {
     this.stateMetadata,
   });
 
-  GoogleCloudRecommenderV1InsightStateInfo.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1InsightStateInfo.fromJson(core.Map json_)
       : this(
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateMetadata: json_.containsKey('stateMetadata')
+              ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -2777,10 +2777,10 @@ class GoogleCloudRecommenderV1InsightTypeConfig {
     this.updateTime,
   });
 
-  GoogleCloudRecommenderV1InsightTypeConfig.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1InsightTypeConfig.fromJson(core.Map json_)
       : this(
-          annotations: _json.containsKey('annotations')
-              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -2788,22 +2788,22 @@ class GoogleCloudRecommenderV1InsightTypeConfig {
                   ),
                 )
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          insightTypeGenerationConfig: _json
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          insightTypeGenerationConfig: json_
                   .containsKey('insightTypeGenerationConfig')
               ? GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(
-                  _json['insightTypeGenerationConfig']
+                  json_['insightTypeGenerationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -2835,10 +2835,10 @@ class GoogleCloudRecommenderV1InsightTypeGenerationConfig {
     this.params,
   });
 
-  GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(core.Map json_)
       : this(
-          params: _json.containsKey('params')
-              ? _json['params'] as core.Map<core.String, core.dynamic>
+          params: json_.containsKey('params')
+              ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2862,16 +2862,16 @@ class GoogleCloudRecommenderV1ListInsightsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudRecommenderV1ListInsightsResponse.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1ListInsightsResponse.fromJson(core.Map json_)
       : this(
-          insights: _json.containsKey('insights')
-              ? (_json['insights'] as core.List)
+          insights: json_.containsKey('insights')
+              ? (json_['insights'] as core.List)
                   .map((value) => GoogleCloudRecommenderV1Insight.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2896,13 +2896,13 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
     this.recommendations,
   });
 
-  GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          recommendations: _json.containsKey('recommendations')
-              ? (_json['recommendations'] as core.List)
+          recommendations: json_.containsKey('recommendations')
+              ? (json_['recommendations'] as core.List)
                   .map((value) =>
                       GoogleCloudRecommenderV1Recommendation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -2937,11 +2937,11 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
     this.stateMetadata,
   });
 
-  GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          stateMetadata: json_.containsKey('stateMetadata')
+              ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -3067,17 +3067,17 @@ class GoogleCloudRecommenderV1Operation {
     this.valueMatcher,
   });
 
-  GoogleCloudRecommenderV1Operation.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1Operation.fromJson(core.Map json_)
       : this(
-          action: _json.containsKey('action')
-              ? _json['action'] as core.String
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
               : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-          pathFilters: _json.containsKey('pathFilters')
-              ? _json['pathFilters'] as core.Map<core.String, core.dynamic>
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          pathFilters: json_.containsKey('pathFilters')
+              ? json_['pathFilters'] as core.Map<core.String, core.dynamic>
               : null,
-          pathValueMatchers: _json.containsKey('pathValueMatchers')
-              ? (_json['pathValueMatchers']
+          pathValueMatchers: json_.containsKey('pathValueMatchers')
+              ? (json_['pathValueMatchers']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -3087,22 +3087,22 @@ class GoogleCloudRecommenderV1Operation {
                   ),
                 )
               : null,
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.String
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
               : null,
-          resourceType: _json.containsKey('resourceType')
-              ? _json['resourceType'] as core.String
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
               : null,
-          sourcePath: _json.containsKey('sourcePath')
-              ? _json['sourcePath'] as core.String
+          sourcePath: json_.containsKey('sourcePath')
+              ? json_['sourcePath'] as core.String
               : null,
-          sourceResource: _json.containsKey('sourceResource')
-              ? _json['sourceResource'] as core.String
+          sourceResource: json_.containsKey('sourceResource')
+              ? json_['sourceResource'] as core.String
               : null,
-          value: _json.containsKey('value') ? _json['value'] : null,
-          valueMatcher: _json.containsKey('valueMatcher')
+          value: json_.containsKey('value') ? json_['value'] : null,
+          valueMatcher: json_.containsKey('valueMatcher')
               ? GoogleCloudRecommenderV1ValueMatcher.fromJson(
-                  _json['valueMatcher'] as core.Map<core.String, core.dynamic>)
+                  json_['valueMatcher'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3131,10 +3131,10 @@ class GoogleCloudRecommenderV1OperationGroup {
     this.operations,
   });
 
-  GoogleCloudRecommenderV1OperationGroup.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1OperationGroup.fromJson(core.Map json_)
       : this(
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => GoogleCloudRecommenderV1Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3232,50 +3232,50 @@ class GoogleCloudRecommenderV1Recommendation {
     this.xorGroupId,
   });
 
-  GoogleCloudRecommenderV1Recommendation.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1Recommendation.fromJson(core.Map json_)
       : this(
-          additionalImpact: _json.containsKey('additionalImpact')
-              ? (_json['additionalImpact'] as core.List)
+          additionalImpact: json_.containsKey('additionalImpact')
+              ? (json_['additionalImpact'] as core.List)
                   .map((value) => GoogleCloudRecommenderV1Impact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          associatedInsights: _json.containsKey('associatedInsights')
-              ? (_json['associatedInsights'] as core.List)
+          associatedInsights: json_.containsKey('associatedInsights')
+              ? (json_['associatedInsights'] as core.List)
                   .map((value) =>
                       GoogleCloudRecommenderV1RecommendationInsightReference
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          content: _json.containsKey('content')
+          content: json_.containsKey('content')
               ? GoogleCloudRecommenderV1RecommendationContent.fromJson(
-                  _json['content'] as core.Map<core.String, core.dynamic>)
+                  json_['content'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          lastRefreshTime: _json.containsKey('lastRefreshTime')
-              ? _json['lastRefreshTime'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          lastRefreshTime: json_.containsKey('lastRefreshTime')
+              ? json_['lastRefreshTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          primaryImpact: _json.containsKey('primaryImpact')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          primaryImpact: json_.containsKey('primaryImpact')
               ? GoogleCloudRecommenderV1Impact.fromJson(
-                  _json['primaryImpact'] as core.Map<core.String, core.dynamic>)
+                  json_['primaryImpact'] as core.Map<core.String, core.dynamic>)
               : null,
-          priority: _json.containsKey('priority')
-              ? _json['priority'] as core.String
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
               : null,
-          recommenderSubtype: _json.containsKey('recommenderSubtype')
-              ? _json['recommenderSubtype'] as core.String
+          recommenderSubtype: json_.containsKey('recommenderSubtype')
+              ? json_['recommenderSubtype'] as core.String
               : null,
-          stateInfo: _json.containsKey('stateInfo')
+          stateInfo: json_.containsKey('stateInfo')
               ? GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
-                  _json['stateInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['stateInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          xorGroupId: _json.containsKey('xorGroupId')
-              ? _json['xorGroupId'] as core.String
+          xorGroupId: json_.containsKey('xorGroupId')
+              ? json_['xorGroupId'] as core.String
               : null,
         );
 
@@ -3315,17 +3315,17 @@ class GoogleCloudRecommenderV1RecommendationContent {
     this.overview,
   });
 
-  GoogleCloudRecommenderV1RecommendationContent.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1RecommendationContent.fromJson(core.Map json_)
       : this(
-          operationGroups: _json.containsKey('operationGroups')
-              ? (_json['operationGroups'] as core.List)
+          operationGroups: json_.containsKey('operationGroups')
+              ? (json_['operationGroups'] as core.List)
                   .map((value) =>
                       GoogleCloudRecommenderV1OperationGroup.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          overview: _json.containsKey('overview')
-              ? _json['overview'] as core.Map<core.String, core.dynamic>
+          overview: json_.containsKey('overview')
+              ? json_['overview'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3346,10 +3346,10 @@ class GoogleCloudRecommenderV1RecommendationInsightReference {
   });
 
   GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          insight: _json.containsKey('insight')
-              ? _json['insight'] as core.String
+          insight: json_.containsKey('insight')
+              ? json_['insight'] as core.String
               : null,
         );
 
@@ -3390,12 +3390,12 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
     this.stateMetadata,
   });
 
-  GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(core.Map json_)
       : this(
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateMetadata: json_.containsKey('stateMetadata')
+              ? (json_['stateMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -3464,10 +3464,10 @@ class GoogleCloudRecommenderV1RecommenderConfig {
     this.updateTime,
   });
 
-  GoogleCloudRecommenderV1RecommenderConfig.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1RecommenderConfig.fromJson(core.Map json_)
       : this(
-          annotations: _json.containsKey('annotations')
-              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -3475,22 +3475,22 @@ class GoogleCloudRecommenderV1RecommenderConfig {
                   ),
                 )
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          recommenderGenerationConfig: _json
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          recommenderGenerationConfig: json_
                   .containsKey('recommenderGenerationConfig')
               ? GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(
-                  _json['recommenderGenerationConfig']
+                  json_['recommenderGenerationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -3523,10 +3523,10 @@ class GoogleCloudRecommenderV1RecommenderGenerationConfig {
     this.params,
   });
 
-  GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(core.Map json_)
       : this(
-          params: _json.containsKey('params')
-              ? _json['params'] as core.Map<core.String, core.dynamic>
+          params: json_.containsKey('params')
+              ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3547,10 +3547,10 @@ class GoogleCloudRecommenderV1SecurityProjection {
     this.details,
   });
 
-  GoogleCloudRecommenderV1SecurityProjection.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1SecurityProjection.fromJson(core.Map json_)
       : this(
-          details: _json.containsKey('details')
-              ? _json['details'] as core.Map<core.String, core.dynamic>
+          details: json_.containsKey('details')
+              ? json_['details'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3572,10 +3572,10 @@ class GoogleCloudRecommenderV1ValueMatcher {
     this.matchesPattern,
   });
 
-  GoogleCloudRecommenderV1ValueMatcher.fromJson(core.Map _json)
+  GoogleCloudRecommenderV1ValueMatcher.fromJson(core.Map json_)
       : this(
-          matchesPattern: _json.containsKey('matchesPattern')
-              ? _json['matchesPattern'] as core.String
+          matchesPattern: json_.containsKey('matchesPattern')
+              ? json_['matchesPattern'] as core.String
               : null,
         );
 

@@ -51,16 +51,16 @@ class WrapApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WrapResponse> helloPost(WrapRequest request) async {
-    final _body = convert.json.encode(request);
-    const _url = 'helloPost';
+    final body_ = convert.json.encode(request);
+    const url_ = 'helloPost';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
+      body: body_,
     );
     return WrapResponse.fromJson(
-        (_response as core.Map)['data'] as core.Map<core.String, core.dynamic>);
+        (response_ as core.Map)['data'] as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -76,7 +76,7 @@ class Empty {
 
   Empty.fromJson(
       // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+      core.Map json_);
 
   core.Map<core.String, core.dynamic> toJson() => {};
 }
@@ -90,10 +90,10 @@ class WrapRequest {
     this.name,
   });
 
-  WrapRequest.fromJson(core.Map _json)
+  WrapRequest.fromJson(core.Map json_)
       : this(
-          age: _json.containsKey('age') ? _json['age'] as core.int : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          age: json_.containsKey('age') ? json_['age'] as core.int : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -109,10 +109,10 @@ class WrapResponse {
     this.result,
   });
 
-  WrapResponse.fromJson(core.Map _json)
+  WrapResponse.fromJson(core.Map json_)
       : this(
-          result: _json.containsKey('result')
-              ? _json['result'] as core.String
+          result: json_.containsKey('result')
+              ? json_['result'] as core.String
               : null,
         );
 

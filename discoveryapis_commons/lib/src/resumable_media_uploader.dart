@@ -59,7 +59,7 @@ class ResumableMediaUploader {
         subscription.pause();
 
         // Upload all chunks except the last one.
-        Iterable<_ResumableChunk> fullChunks;
+        Iterable<ResumableChunk> fullChunks;
         if (hasPartialChunk) {
           fullChunks = chunkStack.removeSublist(0, chunkStack.length);
         } else {
@@ -68,7 +68,7 @@ class ResumableMediaUploader {
 
         Future.forEach(
           fullChunks,
-          (_ResumableChunk c) => _uploadChunkDrained(uploadUri, c),
+          (ResumableChunk c) => _uploadChunkDrained(uploadUri, c),
         ).then((_) {
           // All chunks uploaded, we can continue consuming data.
           subscription.resume();
@@ -88,7 +88,7 @@ class ResumableMediaUploader {
       if (!completed) {
         chunkStack.finalize();
 
-        _ResumableChunk lastChunk;
+        ResumableChunk lastChunk;
         if (chunkStack.length == 1) {
           lastChunk = chunkStack.removeSublist(0, chunkStack.length).first;
         } else {
@@ -166,7 +166,7 @@ class ResumableMediaUploader {
 
   /// Uploads [chunk], retries upon server errors. The response stream will be
   /// drained.
-  Future _uploadChunkDrained(Uri uri, _ResumableChunk chunk) async {
+  Future _uploadChunkDrained(Uri uri, ResumableChunk chunk) async {
     final response = await _uploadChunkResumable(uri, chunk);
     await response.stream.drain();
   }
@@ -174,7 +174,7 @@ class ResumableMediaUploader {
   /// Does repeated attempts to upload [chunk].
   Future<http.StreamedResponse> _uploadChunkResumable(
     Uri uri,
-    _ResumableChunk chunk, {
+    ResumableChunk chunk, {
     bool lastChunk = false,
   }) {
     Future<http.StreamedResponse> tryUpload(int attemptsLeft) async {
@@ -226,7 +226,7 @@ class ResumableMediaUploader {
   /// The response stream will not be listened to.
   Future<http.StreamedResponse> _uploadChunk(
     Uri uri,
-    _ResumableChunk chunk, {
+    ResumableChunk chunk, {
     bool lastChunk = false,
   }) {
     // If [uploadMedia.length] is null, we do not know the length.
@@ -254,11 +254,11 @@ class ResumableMediaUploader {
   }
 }
 
-/// Represents a stack of [_ResumableChunk]s.
+/// Represents a stack of [ResumableChunk]s.
 @visibleForTesting
 class ChunkStack {
   final int _chunkSize;
-  final List<_ResumableChunk> _chunkStack = [];
+  final List<ResumableChunk> _chunkStack = [];
 
   // Currently accumulated data.
   List<List<int>> _byteArrays = [];
@@ -269,15 +269,15 @@ class ChunkStack {
 
   ChunkStack(this._chunkSize);
 
-  /// Whether data for a not-yet-finished [_ResumableChunk] is present.
+  /// Whether data for a not-yet-finished [ResumableChunk] is present.
   ///
-  /// A call to `finalize` will create a [_ResumableChunk] of this data.
+  /// A call to `finalize` will create a [ResumableChunk] of this data.
   bool get hasPartialChunk => _length > 0;
 
   /// The number of chunks in this [ChunkStack].
   int get length => _chunkStack.length;
 
-  /// The total number of bytes which have been converted to [_ResumableChunk]s.
+  /// The total number of bytes which have been converted to [ResumableChunk]s.
   /// Can only be called once this [ChunkStack] has been finalized.
   int get totalByteLength {
     if (!_finalized) {
@@ -288,14 +288,14 @@ class ChunkStack {
   }
 
   /// Returns the chunks [from] ... [to] and deletes it from the stack.
-  List<_ResumableChunk> removeSublist(int from, int to) {
+  List<ResumableChunk> removeSublist(int from, int to) {
     final sublist = _chunkStack.sublist(from, to);
     _chunkStack.removeRange(from, to);
     return sublist;
   }
 
   /// Adds [bytes] to the buffer. If the buffer is larger than the given chunk
-  /// size a new [_ResumableChunk] will be created.
+  /// size a new [ResumableChunk] will be created.
   void addBytes(List<int> bytes) {
     if (_finalized) {
       throw StateError('ChunkStack has already been finalized.');
@@ -310,7 +310,7 @@ class ChunkStack {
       _byteArrays.add(left);
       _length += left.length;
 
-      _chunkStack.add(_ResumableChunk(_byteArrays, _offset, _length));
+      _chunkStack.add(ResumableChunk(_byteArrays, _offset, _length));
 
       _byteArrays = [];
       _offset += _length;
@@ -332,14 +332,15 @@ class ChunkStack {
     _finalized = true;
 
     if (_length > 0) {
-      _chunkStack.add(_ResumableChunk(_byteArrays, _offset, _length));
+      _chunkStack.add(ResumableChunk(_byteArrays, _offset, _length));
       _offset += _length;
     }
   }
 }
 
 /// Represents a chunk of data that will be transferred in one http request.
-class _ResumableChunk {
+@visibleForTesting
+class ResumableChunk {
   final List<List<int>> byteArrays;
   final int offset;
   final int length;
@@ -347,5 +348,5 @@ class _ResumableChunk {
   /// Index of the next byte after this chunk.
   int get endOfChunk => offset + length;
 
-  _ResumableChunk(this.byteArrays, this.offset, this.length);
+  ResumableChunk(this.byteArrays, this.offset, this.length);
 }

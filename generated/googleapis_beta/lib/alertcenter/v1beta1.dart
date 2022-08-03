@@ -88,21 +88,21 @@ class AlertsResource {
     BatchDeleteAlertsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/alerts:batchDelete';
+    const url_ = 'v1beta1/alerts:batchDelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchDeleteAlertsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs batch undelete operation on alerts.
@@ -125,21 +125,21 @@ class AlertsResource {
     BatchUndeleteAlertsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/alerts:batchUndelete';
+    const url_ = 'v1beta1/alerts:batchUndelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchUndeleteAlertsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the specified alert for deletion.
@@ -172,19 +172,19 @@ class AlertsResource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
+    final url_ = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified alert.
@@ -214,19 +214,19 @@ class AlertsResource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
+    final url_ = 'v1beta1/alerts/' + commons.escapeVariable('$alertId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Alert.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Alert.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the metadata of an alert.
@@ -258,21 +258,21 @@ class AlertsResource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/alerts/' + commons.escapeVariable('$alertId') + '/metadata';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AlertMetadata.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the alerts.
@@ -321,7 +321,7 @@ class AlertsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -330,15 +330,15 @@ class AlertsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/alerts';
+    const url_ = 'v1beta1/alerts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAlertsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores, or "undeletes", an alert that was marked for deletion within the
@@ -370,21 +370,21 @@ class AlertsResource {
     core.String alertId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/alerts/' + commons.escapeVariable('$alertId') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Alert.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Alert.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -426,23 +426,23 @@ class AlertsFeedbackResource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/alerts/' + commons.escapeVariable('$alertId') + '/feedback';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AlertFeedback.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the feedback for an alert.
@@ -481,22 +481,22 @@ class AlertsFeedbackResource {
     core.String? filter,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (filter != null) 'filter': [filter],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/alerts/' + commons.escapeVariable('$alertId') + '/feedback';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAlertFeedbackResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -527,19 +527,19 @@ class V1beta1Resource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/settings';
+    const url_ = 'v1beta1/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the customer-level settings.
@@ -567,21 +567,21 @@ class V1beta1Resource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/settings';
+    const url_ = 'v1beta1/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -695,44 +695,44 @@ class Alert {
     this.updateTime,
   });
 
-  Alert.fromJson(core.Map _json)
+  Alert.fromJson(core.Map json_)
       : this(
-          alertId: _json.containsKey('alertId')
-              ? _json['alertId'] as core.String
+          alertId: json_.containsKey('alertId')
+              ? json_['alertId'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
-          data: _json.containsKey('data')
-              ? _json['data'] as core.Map<core.String, core.dynamic>
+          data: json_.containsKey('data')
+              ? json_['data'] as core.Map<core.String, core.dynamic>
               : null,
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          metadata: _json.containsKey('metadata')
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          metadata: json_.containsKey('metadata')
               ? AlertMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           securityInvestigationToolLink:
-              _json.containsKey('securityInvestigationToolLink')
-                  ? _json['securityInvestigationToolLink'] as core.String
+              json_.containsKey('securityInvestigationToolLink')
+                  ? json_['securityInvestigationToolLink'] as core.String
                   : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -800,23 +800,23 @@ class AlertFeedback {
     this.type,
   });
 
-  AlertFeedback.fromJson(core.Map _json)
+  AlertFeedback.fromJson(core.Map json_)
       : this(
-          alertId: _json.containsKey('alertId')
-              ? _json['alertId'] as core.String
+          alertId: json_.containsKey('alertId')
+              ? json_['alertId'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          feedbackId: _json.containsKey('feedbackId')
-              ? _json['feedbackId'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          feedbackId: json_.containsKey('feedbackId')
+              ? json_['feedbackId'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -887,26 +887,26 @@ class AlertMetadata {
     this.updateTime,
   });
 
-  AlertMetadata.fromJson(core.Map _json)
+  AlertMetadata.fromJson(core.Map json_)
       : this(
-          alertId: _json.containsKey('alertId')
-              ? _json['alertId'] as core.String
+          alertId: json_.containsKey('alertId')
+              ? json_['alertId'] as core.String
               : null,
-          assignee: _json.containsKey('assignee')
-              ? _json['assignee'] as core.String
+          assignee: json_.containsKey('assignee')
+              ? json_['assignee'] as core.String
               : null,
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -937,10 +937,10 @@ class BatchDeleteAlertsResponse {
     this.successAlertIds,
   });
 
-  BatchDeleteAlertsResponse.fromJson(core.Map _json)
+  BatchDeleteAlertsResponse.fromJson(core.Map json_)
       : this(
-          failedAlertStatus: _json.containsKey('failedAlertStatus')
-              ? (_json['failedAlertStatus']
+          failedAlertStatus: json_.containsKey('failedAlertStatus')
+              ? (json_['failedAlertStatus']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -950,8 +950,8 @@ class BatchDeleteAlertsResponse {
                   ),
                 )
               : null,
-          successAlertIds: _json.containsKey('successAlertIds')
-              ? (_json['successAlertIds'] as core.List)
+          successAlertIds: json_.containsKey('successAlertIds')
+              ? (json_['successAlertIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -979,10 +979,10 @@ class BatchUndeleteAlertsResponse {
     this.successAlertIds,
   });
 
-  BatchUndeleteAlertsResponse.fromJson(core.Map _json)
+  BatchUndeleteAlertsResponse.fromJson(core.Map json_)
       : this(
-          failedAlertStatus: _json.containsKey('failedAlertStatus')
-              ? (_json['failedAlertStatus']
+          failedAlertStatus: json_.containsKey('failedAlertStatus')
+              ? (json_['failedAlertStatus']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -992,8 +992,8 @@ class BatchUndeleteAlertsResponse {
                   ),
                 )
               : null,
-          successAlertIds: _json.containsKey('successAlertIds')
-              ? (_json['successAlertIds'] as core.List)
+          successAlertIds: json_.containsKey('successAlertIds')
+              ? (json_['successAlertIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1031,13 +1031,13 @@ class CloudPubsubTopic {
     this.topicName,
   });
 
-  CloudPubsubTopic.fromJson(core.Map _json)
+  CloudPubsubTopic.fromJson(core.Map json_)
       : this(
-          payloadFormat: _json.containsKey('payloadFormat')
-              ? _json['payloadFormat'] as core.String
+          payloadFormat: json_.containsKey('payloadFormat')
+              ? json_['payloadFormat'] as core.String
               : null,
-          topicName: _json.containsKey('topicName')
-              ? _json['topicName'] as core.String
+          topicName: json_.containsKey('topicName')
+              ? json_['topicName'] as core.String
               : null,
         );
 
@@ -1066,10 +1066,10 @@ class ListAlertFeedbackResponse {
     this.feedback,
   });
 
-  ListAlertFeedbackResponse.fromJson(core.Map _json)
+  ListAlertFeedbackResponse.fromJson(core.Map json_)
       : this(
-          feedback: _json.containsKey('feedback')
-              ? (_json['feedback'] as core.List)
+          feedback: json_.containsKey('feedback')
+              ? (json_['feedback'] as core.List)
                   .map((value) => AlertFeedback.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1098,16 +1098,16 @@ class ListAlertsResponse {
     this.nextPageToken,
   });
 
-  ListAlertsResponse.fromJson(core.Map _json)
+  ListAlertsResponse.fromJson(core.Map json_)
       : this(
-          alerts: _json.containsKey('alerts')
-              ? (_json['alerts'] as core.List)
+          alerts: json_.containsKey('alerts')
+              ? (json_['alerts'] as core.List)
                   .map((value) => Alert.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1129,10 +1129,10 @@ class Notification {
     this.cloudPubsubTopic,
   });
 
-  Notification.fromJson(core.Map _json)
+  Notification.fromJson(core.Map json_)
       : this(
-          cloudPubsubTopic: _json.containsKey('cloudPubsubTopic')
-              ? CloudPubsubTopic.fromJson(_json['cloudPubsubTopic']
+          cloudPubsubTopic: json_.containsKey('cloudPubsubTopic')
+              ? CloudPubsubTopic.fromJson(json_['cloudPubsubTopic']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1151,10 +1151,10 @@ class Settings {
     this.notifications,
   });
 
-  Settings.fromJson(core.Map _json)
+  Settings.fromJson(core.Map json_)
       : this(
-          notifications: _json.containsKey('notifications')
-              ? (_json['notifications'] as core.List)
+          notifications: json_.containsKey('notifications')
+              ? (json_['notifications'] as core.List)
                   .map((value) => Notification.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1189,10 +1189,10 @@ class UndeleteAlertRequest {
     this.customerId,
   });
 
-  UndeleteAlertRequest.fromJson(core.Map _json)
+  UndeleteAlertRequest.fromJson(core.Map json_)
       : this(
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
         );
 

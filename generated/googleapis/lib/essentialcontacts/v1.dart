@@ -114,7 +114,7 @@ class FoldersContactsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (notificationCategories != null)
         'notificationCategories': notificationCategories,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -122,15 +122,15 @@ class FoldersContactsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds a new contact for a resource.
@@ -159,21 +159,21 @@ class FoldersContactsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a contact.
@@ -200,19 +200,19 @@ class FoldersContactsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a single contact.
@@ -239,19 +239,19 @@ class FoldersContactsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the contacts that have been set on a resource.
@@ -289,21 +289,21 @@ class FoldersContactsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a contact.
@@ -338,22 +338,22 @@ class FoldersContactsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Allows a contact admin to send a test message to contact to verify that it
@@ -385,22 +385,22 @@ class FoldersContactsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + '/contacts:sendTestMessage';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -461,7 +461,7 @@ class OrganizationsContactsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (notificationCategories != null)
         'notificationCategories': notificationCategories,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -469,15 +469,15 @@ class OrganizationsContactsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds a new contact for a resource.
@@ -506,21 +506,21 @@ class OrganizationsContactsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a contact.
@@ -547,19 +547,19 @@ class OrganizationsContactsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a single contact.
@@ -586,19 +586,19 @@ class OrganizationsContactsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the contacts that have been set on a resource.
@@ -636,21 +636,21 @@ class OrganizationsContactsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a contact.
@@ -685,22 +685,22 @@ class OrganizationsContactsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Allows a contact admin to send a test message to contact to verify that it
@@ -732,22 +732,22 @@ class OrganizationsContactsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + '/contacts:sendTestMessage';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -806,7 +806,7 @@ class ProjectsContactsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (notificationCategories != null)
         'notificationCategories': notificationCategories,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -814,15 +814,15 @@ class ProjectsContactsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts:compute';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds a new contact for a resource.
@@ -851,21 +851,21 @@ class ProjectsContactsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a contact.
@@ -892,19 +892,19 @@ class ProjectsContactsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a single contact.
@@ -931,19 +931,19 @@ class ProjectsContactsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the contacts that have been set on a resource.
@@ -981,21 +981,21 @@ class ProjectsContactsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/contacts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a contact.
@@ -1030,22 +1030,22 @@ class ProjectsContactsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudEssentialcontactsV1Contact.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Allows a contact admin to send a test message to contact to verify that it
@@ -1077,22 +1077,22 @@ class ProjectsContactsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + '/contacts:sendTestMessage';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1116,17 +1116,17 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(core.Map _json)
+  GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(core.Map json_)
       : this(
-          contacts: _json.containsKey('contacts')
-              ? (_json['contacts'] as core.List)
+          contacts: json_.containsKey('contacts')
+              ? (json_['contacts'] as core.List)
                   .map((value) =>
                       GoogleCloudEssentialcontactsV1Contact.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1190,25 +1190,25 @@ class GoogleCloudEssentialcontactsV1Contact {
     this.validationState,
   });
 
-  GoogleCloudEssentialcontactsV1Contact.fromJson(core.Map _json)
+  GoogleCloudEssentialcontactsV1Contact.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          languageTag: _json.containsKey('languageTag')
-              ? _json['languageTag'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          languageTag: json_.containsKey('languageTag')
+              ? json_['languageTag'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notificationCategorySubscriptions:
-              _json.containsKey('notificationCategorySubscriptions')
-                  ? (_json['notificationCategorySubscriptions'] as core.List)
+              json_.containsKey('notificationCategorySubscriptions')
+                  ? (json_['notificationCategorySubscriptions'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          validateTime: _json.containsKey('validateTime')
-              ? _json['validateTime'] as core.String
+          validateTime: json_.containsKey('validateTime')
+              ? json_['validateTime'] as core.String
               : null,
-          validationState: _json.containsKey('validationState')
-              ? _json['validationState'] as core.String
+          validationState: json_.containsKey('validationState')
+              ? json_['validationState'] as core.String
               : null,
         );
 
@@ -1242,17 +1242,17 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(core.Map _json)
+  GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(core.Map json_)
       : this(
-          contacts: _json.containsKey('contacts')
-              ? (_json['contacts'] as core.List)
+          contacts: json_.containsKey('contacts')
+              ? (json_['contacts'] as core.List)
                   .map((value) =>
                       GoogleCloudEssentialcontactsV1Contact.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1304,15 +1304,15 @@ class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
     this.notificationCategory,
   });
 
-  GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(core.Map _json)
+  GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(core.Map json_)
       : this(
-          contacts: _json.containsKey('contacts')
-              ? (_json['contacts'] as core.List)
+          contacts: json_.containsKey('contacts')
+              ? (json_['contacts'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          notificationCategory: _json.containsKey('notificationCategory')
-              ? _json['notificationCategory'] as core.String
+          notificationCategory: json_.containsKey('notificationCategory')
+              ? json_['notificationCategory'] as core.String
               : null,
         );
 

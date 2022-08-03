@@ -180,19 +180,19 @@ class BillingAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Log Router settings for the given resource.Note: Settings for the
@@ -233,18 +233,18 @@ class BillingAccountsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -285,21 +285,21 @@ class BillingAccountsExclusionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -328,18 +328,18 @@ class BillingAccountsExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion in the _Default sink.
@@ -368,19 +368,19 @@ class BillingAccountsExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -417,21 +417,21 @@ class BillingAccountsExclusionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -472,22 +472,22 @@ class BillingAccountsExclusionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -523,18 +523,18 @@ class BillingAccountsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -571,22 +571,22 @@ class BillingAccountsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -632,21 +632,21 @@ class BillingAccountsLocationsBucketsResource {
     core.String? bucketId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -680,18 +680,18 @@ class BillingAccountsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a log bucket.
@@ -721,18 +721,18 @@ class BillingAccountsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists log buckets.
@@ -773,21 +773,21 @@ class BillingAccountsLocationsBucketsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a log bucket.
@@ -835,21 +835,21 @@ class BillingAccountsLocationsBucketsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a log bucket.
@@ -885,20 +885,20 @@ class BillingAccountsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -943,21 +943,21 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.String? viewId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view on a log bucket.
@@ -989,18 +989,18 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view on a log bucket..
@@ -1028,18 +1028,18 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a log bucket.
@@ -1076,21 +1076,21 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view on a log bucket.
@@ -1134,21 +1134,21 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1205,22 +1205,22 @@ class BillingAccountsLocationsBucketsViewsLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1264,20 +1264,20 @@ class BillingAccountsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1305,18 +1305,18 @@ class BillingAccountsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1358,22 +1358,22 @@ class BillingAccountsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1416,18 +1416,18 @@ class BillingAccountsLogsResource {
     core.String logName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$logName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$logName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -1476,22 +1476,22 @@ class BillingAccountsLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1544,22 +1544,22 @@ class BillingAccountsSinksResource {
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -1592,18 +1592,18 @@ class BillingAccountsSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -1632,18 +1632,18 @@ class BillingAccountsSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -1680,21 +1680,21 @@ class BillingAccountsSinksResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -1752,23 +1752,23 @@ class BillingAccountsSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -1826,23 +1826,23 @@ class BillingAccountsSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1871,20 +1871,20 @@ class EntriesResource {
     CopyLogEntriesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/entries:copy';
+    const url_ = 'v2/entries:copy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists log entries.
@@ -1912,21 +1912,21 @@ class EntriesResource {
     ListLogEntriesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/entries:list';
+    const url_ = 'v2/entries:list';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ListLogEntriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Streaming read of log entries as they are ingested.
@@ -1951,21 +1951,21 @@ class EntriesResource {
     TailLogEntriesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/entries:tail';
+    const url_ = 'v2/entries:tail';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TailLogEntriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Writes log entries to Logging.
@@ -1994,21 +1994,21 @@ class EntriesResource {
     WriteLogEntriesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/entries:write';
+    const url_ = 'v2/entries:write';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return WriteLogEntriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2048,21 +2048,21 @@ class ExclusionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -2091,18 +2091,18 @@ class ExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion in the _Default sink.
@@ -2131,19 +2131,19 @@ class ExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -2180,21 +2180,21 @@ class ExclusionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -2235,22 +2235,22 @@ class ExclusionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2302,19 +2302,19 @@ class FoldersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Log Router settings for the given resource.Note: Settings for the
@@ -2355,18 +2355,18 @@ class FoldersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Log Router settings for the given resource.Note: Settings for
@@ -2415,21 +2415,21 @@ class FoldersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2469,21 +2469,21 @@ class FoldersExclusionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -2512,18 +2512,18 @@ class FoldersExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion in the _Default sink.
@@ -2552,19 +2552,19 @@ class FoldersExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -2601,21 +2601,21 @@ class FoldersExclusionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -2656,22 +2656,22 @@ class FoldersExclusionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2706,18 +2706,18 @@ class FoldersLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -2754,22 +2754,22 @@ class FoldersLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2815,21 +2815,21 @@ class FoldersLocationsBucketsResource {
     core.String? bucketId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -2863,18 +2863,18 @@ class FoldersLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a log bucket.
@@ -2904,18 +2904,18 @@ class FoldersLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists log buckets.
@@ -2956,21 +2956,21 @@ class FoldersLocationsBucketsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a log bucket.
@@ -3018,21 +3018,21 @@ class FoldersLocationsBucketsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a log bucket.
@@ -3068,20 +3068,20 @@ class FoldersLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3126,21 +3126,21 @@ class FoldersLocationsBucketsViewsResource {
     core.String? viewId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view on a log bucket.
@@ -3172,18 +3172,18 @@ class FoldersLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view on a log bucket..
@@ -3211,18 +3211,18 @@ class FoldersLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a log bucket.
@@ -3259,21 +3259,21 @@ class FoldersLocationsBucketsViewsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view on a log bucket.
@@ -3317,21 +3317,21 @@ class FoldersLocationsBucketsViewsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3388,22 +3388,22 @@ class FoldersLocationsBucketsViewsLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3447,20 +3447,20 @@ class FoldersLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -3488,18 +3488,18 @@ class FoldersLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3541,22 +3541,22 @@ class FoldersLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3598,18 +3598,18 @@ class FoldersLogsResource {
     core.String logName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$logName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$logName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -3658,22 +3658,22 @@ class FoldersLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3725,22 +3725,22 @@ class FoldersSinksResource {
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -3773,18 +3773,18 @@ class FoldersSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -3813,18 +3813,18 @@ class FoldersSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -3861,21 +3861,21 @@ class FoldersSinksResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -3933,23 +3933,23 @@ class FoldersSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -4007,23 +4007,23 @@ class FoldersSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4057,18 +4057,18 @@ class LocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -4105,22 +4105,22 @@ class LocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4165,21 +4165,21 @@ class LocationsBucketsResource {
     core.String? bucketId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -4213,18 +4213,18 @@ class LocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a log bucket.
@@ -4254,18 +4254,18 @@ class LocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists log buckets.
@@ -4306,21 +4306,21 @@ class LocationsBucketsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a log bucket.
@@ -4368,21 +4368,21 @@ class LocationsBucketsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a log bucket.
@@ -4418,20 +4418,20 @@ class LocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4473,21 +4473,21 @@ class LocationsBucketsViewsResource {
     core.String? viewId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view on a log bucket.
@@ -4519,18 +4519,18 @@ class LocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view on a log bucket..
@@ -4558,18 +4558,18 @@ class LocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a log bucket.
@@ -4606,21 +4606,21 @@ class LocationsBucketsViewsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view on a log bucket.
@@ -4664,21 +4664,21 @@ class LocationsBucketsViewsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4722,20 +4722,20 @@ class LocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -4763,18 +4763,18 @@ class LocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -4816,22 +4816,22 @@ class LocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4873,18 +4873,18 @@ class LogsResource {
     core.String logName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$logName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$logName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -4933,22 +4933,22 @@ class LogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4986,21 +4986,21 @@ class MonitoredResourceDescriptorsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/monitoredResourceDescriptors';
+    const url_ = 'v2/monitoredResourceDescriptors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListMonitoredResourceDescriptorsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5053,19 +5053,19 @@ class OrganizationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Log Router settings for the given resource.Note: Settings for the
@@ -5106,18 +5106,18 @@ class OrganizationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for
@@ -5168,22 +5168,22 @@ class OrganizationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Log Router settings for the given resource.Note: Settings for
@@ -5232,21 +5232,21 @@ class OrganizationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5287,21 +5287,21 @@ class OrganizationsExclusionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -5330,18 +5330,18 @@ class OrganizationsExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion in the _Default sink.
@@ -5370,19 +5370,19 @@ class OrganizationsExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -5419,21 +5419,21 @@ class OrganizationsExclusionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -5474,22 +5474,22 @@ class OrganizationsExclusionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5525,18 +5525,18 @@ class OrganizationsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -5573,22 +5573,22 @@ class OrganizationsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5634,21 +5634,21 @@ class OrganizationsLocationsBucketsResource {
     core.String? bucketId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -5682,18 +5682,18 @@ class OrganizationsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a log bucket.
@@ -5723,18 +5723,18 @@ class OrganizationsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists log buckets.
@@ -5775,21 +5775,21 @@ class OrganizationsLocationsBucketsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a log bucket.
@@ -5837,21 +5837,21 @@ class OrganizationsLocationsBucketsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a log bucket.
@@ -5887,20 +5887,20 @@ class OrganizationsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5945,21 +5945,21 @@ class OrganizationsLocationsBucketsViewsResource {
     core.String? viewId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view on a log bucket.
@@ -5991,18 +5991,18 @@ class OrganizationsLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view on a log bucket..
@@ -6030,18 +6030,18 @@ class OrganizationsLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a log bucket.
@@ -6078,21 +6078,21 @@ class OrganizationsLocationsBucketsViewsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view on a log bucket.
@@ -6136,21 +6136,21 @@ class OrganizationsLocationsBucketsViewsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6207,22 +6207,22 @@ class OrganizationsLocationsBucketsViewsLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6266,20 +6266,20 @@ class OrganizationsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -6307,18 +6307,18 @@ class OrganizationsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -6360,22 +6360,22 @@ class OrganizationsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6417,18 +6417,18 @@ class OrganizationsLogsResource {
     core.String logName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$logName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$logName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -6477,22 +6477,22 @@ class OrganizationsLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6544,22 +6544,22 @@ class OrganizationsSinksResource {
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -6592,18 +6592,18 @@ class OrganizationsSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -6632,18 +6632,18 @@ class OrganizationsSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -6680,21 +6680,21 @@ class OrganizationsSinksResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -6752,23 +6752,23 @@ class OrganizationsSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -6826,23 +6826,23 @@ class OrganizationsSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6895,19 +6895,19 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Log Router settings for the given resource.Note: Settings for the
@@ -6948,18 +6948,18 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6999,21 +6999,21 @@ class ProjectsExclusionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion in the _Default sink.
@@ -7042,18 +7042,18 @@ class ProjectsExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion in the _Default sink.
@@ -7082,19 +7082,19 @@ class ProjectsExclusionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions on the _Default sink in a parent resource.
@@ -7131,21 +7131,21 @@ class ProjectsExclusionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/exclusions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListExclusionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion in the _Default
@@ -7186,22 +7186,22 @@ class ProjectsExclusionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LogExclusion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7236,18 +7236,18 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -7284,22 +7284,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7345,21 +7345,21 @@ class ProjectsLocationsBucketsResource {
     core.String? bucketId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a log bucket.Changes the bucket's lifecycle_state to the
@@ -7393,18 +7393,18 @@ class ProjectsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a log bucket.
@@ -7434,18 +7434,18 @@ class ProjectsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists log buckets.
@@ -7486,21 +7486,21 @@ class ProjectsLocationsBucketsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/buckets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBucketsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a log bucket.
@@ -7548,21 +7548,21 @@ class ProjectsLocationsBucketsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogBucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a log bucket.
@@ -7598,20 +7598,20 @@ class ProjectsLocationsBucketsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7656,21 +7656,21 @@ class ProjectsLocationsBucketsViewsResource {
     core.String? viewId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view on a log bucket.
@@ -7702,18 +7702,18 @@ class ProjectsLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view on a log bucket..
@@ -7741,18 +7741,18 @@ class ProjectsLocationsBucketsViewsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a log bucket.
@@ -7789,21 +7789,21 @@ class ProjectsLocationsBucketsViewsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/views';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListViewsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view on a log bucket.
@@ -7847,21 +7847,21 @@ class ProjectsLocationsBucketsViewsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogView.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7918,22 +7918,22 @@ class ProjectsLocationsBucketsViewsLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7977,20 +7977,20 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -8018,18 +8018,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -8071,22 +8071,22 @@ class ProjectsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8128,18 +8128,18 @@ class ProjectsLogsResource {
     core.String logName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$logName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$logName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -8188,22 +8188,22 @@ class ProjectsLogsResource {
     core.List<core.String>? resourceNames,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (resourceNames != null) 'resourceNames': resourceNames,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/logs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8238,20 +8238,20 @@ class ProjectsMetricsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/metrics';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/metrics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogMetric.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogMetric.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a logs-based metric.
@@ -8276,18 +8276,18 @@ class ProjectsMetricsResource {
     core.String metricName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$metricName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$metricName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a logs-based metric.
@@ -8312,18 +8312,18 @@ class ProjectsMetricsResource {
     core.String metricName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$metricName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$metricName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogMetric.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogMetric.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists logs-based metrics.
@@ -8359,21 +8359,21 @@ class ProjectsMetricsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/metrics';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/metrics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLogMetricsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates or updates a logs-based metric.
@@ -8404,20 +8404,20 @@ class ProjectsMetricsResource {
     core.String metricName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$metricName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$metricName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogMetric.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogMetric.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8469,22 +8469,22 @@ class ProjectsSinksResource {
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -8517,18 +8517,18 @@ class ProjectsSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -8557,18 +8557,18 @@ class ProjectsSinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -8605,21 +8605,21 @@ class ProjectsSinksResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -8677,23 +8677,23 @@ class ProjectsSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -8751,23 +8751,23 @@ class ProjectsSinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8819,22 +8819,22 @@ class SinksResource {
     core.bool? uniqueWriterIdentity,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -8867,18 +8867,18 @@ class SinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -8907,18 +8907,18 @@ class SinksResource {
     core.String sinkName, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -8955,21 +8955,21 @@ class SinksResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/sinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSinksResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -9027,23 +9027,23 @@ class SinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$sinkName');
+    final url_ = 'v2/' + core.Uri.encodeFull('$sinkName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return LogSink.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9088,19 +9088,19 @@ class V2Resource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Log Router settings for the given resource.Note: Settings for the
@@ -9141,18 +9141,18 @@ class V2Resource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for
@@ -9203,22 +9203,22 @@ class V2Resource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CmekSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Log Router settings for the given resource.Note: Settings for
@@ -9267,21 +9267,21 @@ class V2Resource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9316,14 +9316,14 @@ class BigQueryOptions {
     this.usesTimestampColumnPartitioning,
   });
 
-  BigQueryOptions.fromJson(core.Map _json)
+  BigQueryOptions.fromJson(core.Map json_)
       : this(
-          usePartitionedTables: _json.containsKey('usePartitionedTables')
-              ? _json['usePartitionedTables'] as core.bool
+          usePartitionedTables: json_.containsKey('usePartitionedTables')
+              ? json_['usePartitionedTables'] as core.bool
               : null,
           usesTimestampColumnPartitioning:
-              _json.containsKey('usesTimestampColumnPartitioning')
-                  ? _json['usesTimestampColumnPartitioning'] as core.bool
+              json_.containsKey('usesTimestampColumnPartitioning')
+                  ? json_['usesTimestampColumnPartitioning'] as core.bool
                   : null,
         );
 
@@ -9366,19 +9366,19 @@ class BucketOptions {
     this.linearBuckets,
   });
 
-  BucketOptions.fromJson(core.Map _json)
+  BucketOptions.fromJson(core.Map json_)
       : this(
-          explicitBuckets: _json.containsKey('explicitBuckets')
-              ? Explicit.fromJson(_json['explicitBuckets']
+          explicitBuckets: json_.containsKey('explicitBuckets')
+              ? Explicit.fromJson(json_['explicitBuckets']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          exponentialBuckets: _json.containsKey('exponentialBuckets')
-              ? Exponential.fromJson(_json['exponentialBuckets']
+          exponentialBuckets: json_.containsKey('exponentialBuckets')
+              ? Exponential.fromJson(json_['exponentialBuckets']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          linearBuckets: _json.containsKey('linearBuckets')
+          linearBuckets: json_.containsKey('linearBuckets')
               ? Linear.fromJson(
-                  _json['linearBuckets'] as core.Map<core.String, core.dynamic>)
+                  json_['linearBuckets'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9460,17 +9460,17 @@ class CmekSettings {
     this.serviceAccountId,
   });
 
-  CmekSettings.fromJson(core.Map _json)
+  CmekSettings.fromJson(core.Map json_)
       : this(
-          kmsKeyName: _json.containsKey('kmsKeyName')
-              ? _json['kmsKeyName'] as core.String
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
               : null,
-          kmsKeyVersionName: _json.containsKey('kmsKeyVersionName')
-              ? _json['kmsKeyVersionName'] as core.String
+          kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
+              ? json_['kmsKeyVersionName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          serviceAccountId: _json.containsKey('serviceAccountId')
-              ? _json['serviceAccountId'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceAccountId: json_.containsKey('serviceAccountId')
+              ? json_['serviceAccountId'] as core.String
               : null,
         );
 
@@ -9509,15 +9509,15 @@ class CopyLogEntriesRequest {
     this.name,
   });
 
-  CopyLogEntriesRequest.fromJson(core.Map _json)
+  CopyLogEntriesRequest.fromJson(core.Map json_)
       : this(
-          destination: _json.containsKey('destination')
-              ? _json['destination'] as core.String
+          destination: json_.containsKey('destination')
+              ? json_['destination'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9652,52 +9652,52 @@ class HttpRequest {
     this.userAgent,
   });
 
-  HttpRequest.fromJson(core.Map _json)
+  HttpRequest.fromJson(core.Map json_)
       : this(
-          cacheFillBytes: _json.containsKey('cacheFillBytes')
-              ? _json['cacheFillBytes'] as core.String
+          cacheFillBytes: json_.containsKey('cacheFillBytes')
+              ? json_['cacheFillBytes'] as core.String
               : null,
-          cacheHit: _json.containsKey('cacheHit')
-              ? _json['cacheHit'] as core.bool
+          cacheHit: json_.containsKey('cacheHit')
+              ? json_['cacheHit'] as core.bool
               : null,
-          cacheLookup: _json.containsKey('cacheLookup')
-              ? _json['cacheLookup'] as core.bool
+          cacheLookup: json_.containsKey('cacheLookup')
+              ? json_['cacheLookup'] as core.bool
               : null,
           cacheValidatedWithOriginServer:
-              _json.containsKey('cacheValidatedWithOriginServer')
-                  ? _json['cacheValidatedWithOriginServer'] as core.bool
+              json_.containsKey('cacheValidatedWithOriginServer')
+                  ? json_['cacheValidatedWithOriginServer'] as core.bool
                   : null,
-          latency: _json.containsKey('latency')
-              ? _json['latency'] as core.String
+          latency: json_.containsKey('latency')
+              ? json_['latency'] as core.String
               : null,
-          protocol: _json.containsKey('protocol')
-              ? _json['protocol'] as core.String
+          protocol: json_.containsKey('protocol')
+              ? json_['protocol'] as core.String
               : null,
-          referer: _json.containsKey('referer')
-              ? _json['referer'] as core.String
+          referer: json_.containsKey('referer')
+              ? json_['referer'] as core.String
               : null,
-          remoteIp: _json.containsKey('remoteIp')
-              ? _json['remoteIp'] as core.String
+          remoteIp: json_.containsKey('remoteIp')
+              ? json_['remoteIp'] as core.String
               : null,
-          requestMethod: _json.containsKey('requestMethod')
-              ? _json['requestMethod'] as core.String
+          requestMethod: json_.containsKey('requestMethod')
+              ? json_['requestMethod'] as core.String
               : null,
-          requestSize: _json.containsKey('requestSize')
-              ? _json['requestSize'] as core.String
+          requestSize: json_.containsKey('requestSize')
+              ? json_['requestSize'] as core.String
               : null,
-          requestUrl: _json.containsKey('requestUrl')
-              ? _json['requestUrl'] as core.String
+          requestUrl: json_.containsKey('requestUrl')
+              ? json_['requestUrl'] as core.String
               : null,
-          responseSize: _json.containsKey('responseSize')
-              ? _json['responseSize'] as core.String
+          responseSize: json_.containsKey('responseSize')
+              ? json_['responseSize'] as core.String
               : null,
-          serverIp: _json.containsKey('serverIp')
-              ? _json['serverIp'] as core.String
+          serverIp: json_.containsKey('serverIp')
+              ? json_['serverIp'] as core.String
               : null,
           status:
-              _json.containsKey('status') ? _json['status'] as core.int : null,
-          userAgent: _json.containsKey('userAgent')
-              ? _json['userAgent'] as core.String
+              json_.containsKey('status') ? json_['status'] as core.int : null,
+          userAgent: json_.containsKey('userAgent')
+              ? json_['userAgent'] as core.String
               : null,
         );
 
@@ -9754,15 +9754,15 @@ class IndexConfig {
     this.type,
   });
 
-  IndexConfig.fromJson(core.Map _json)
+  IndexConfig.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          fieldPath: _json.containsKey('fieldPath')
-              ? _json['fieldPath'] as core.String
+          fieldPath: json_.containsKey('fieldPath')
+              ? json_['fieldPath'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9801,16 +9801,16 @@ class ListBucketsResponse {
     this.nextPageToken,
   });
 
-  ListBucketsResponse.fromJson(core.Map _json)
+  ListBucketsResponse.fromJson(core.Map json_)
       : this(
-          buckets: _json.containsKey('buckets')
-              ? (_json['buckets'] as core.List)
+          buckets: json_.containsKey('buckets')
+              ? (json_['buckets'] as core.List)
                   .map((value) => LogBucket.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -9837,16 +9837,16 @@ class ListExclusionsResponse {
     this.nextPageToken,
   });
 
-  ListExclusionsResponse.fromJson(core.Map _json)
+  ListExclusionsResponse.fromJson(core.Map json_)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
+          exclusions: json_.containsKey('exclusions')
+              ? (json_['exclusions'] as core.List)
                   .map((value) => LogExclusion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -9869,16 +9869,16 @@ class ListLocationsResponse {
     this.nextPageToken,
   });
 
-  ListLocationsResponse.fromJson(core.Map _json)
+  ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -9963,27 +9963,27 @@ class ListLogEntriesRequest {
     this.resourceNames,
   });
 
-  ListLogEntriesRequest.fromJson(core.Map _json)
+  ListLogEntriesRequest.fromJson(core.Map json_)
       : this(
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          orderBy: _json.containsKey('orderBy')
-              ? _json['orderBy'] as core.String
+          orderBy: json_.containsKey('orderBy')
+              ? json_['orderBy'] as core.String
               : null,
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
-          projectIds: _json.containsKey('projectIds')
-              ? (_json['projectIds'] as core.List)
+          projectIds: json_.containsKey('projectIds')
+              ? (json_['projectIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          resourceNames: _json.containsKey('resourceNames')
-              ? (_json['resourceNames'] as core.List)
+          resourceNames: json_.containsKey('resourceNames')
+              ? (json_['resourceNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -10025,16 +10025,16 @@ class ListLogEntriesResponse {
     this.nextPageToken,
   });
 
-  ListLogEntriesResponse.fromJson(core.Map _json)
+  ListLogEntriesResponse.fromJson(core.Map json_)
       : this(
-          entries: _json.containsKey('entries')
-              ? (_json['entries'] as core.List)
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.List)
                   .map((value) => LogEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -10061,16 +10061,16 @@ class ListLogMetricsResponse {
     this.nextPageToken,
   });
 
-  ListLogMetricsResponse.fromJson(core.Map _json)
+  ListLogMetricsResponse.fromJson(core.Map json_)
       : this(
-          metrics: _json.containsKey('metrics')
-              ? (_json['metrics'] as core.List)
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
                   .map((value) => LogMetric.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -10100,15 +10100,15 @@ class ListLogsResponse {
     this.nextPageToken,
   });
 
-  ListLogsResponse.fromJson(core.Map _json)
+  ListLogsResponse.fromJson(core.Map json_)
       : this(
-          logNames: _json.containsKey('logNames')
-              ? (_json['logNames'] as core.List)
+          logNames: json_.containsKey('logNames')
+              ? (json_['logNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -10135,13 +10135,13 @@ class ListMonitoredResourceDescriptorsResponse {
     this.resourceDescriptors,
   });
 
-  ListMonitoredResourceDescriptorsResponse.fromJson(core.Map _json)
+  ListMonitoredResourceDescriptorsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          resourceDescriptors: _json.containsKey('resourceDescriptors')
-              ? (_json['resourceDescriptors'] as core.List)
+          resourceDescriptors: json_.containsKey('resourceDescriptors')
+              ? (json_['resourceDescriptors'] as core.List)
                   .map((value) => MonitoredResourceDescriptor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -10168,13 +10168,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -10204,13 +10204,13 @@ class ListSinksResponse {
     this.sinks,
   });
 
-  ListSinksResponse.fromJson(core.Map _json)
+  ListSinksResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          sinks: _json.containsKey('sinks')
-              ? (_json['sinks'] as core.List)
+          sinks: json_.containsKey('sinks')
+              ? (json_['sinks'] as core.List)
                   .map((value) => LogSink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -10240,13 +10240,13 @@ class ListViewsResponse {
     this.views,
   });
 
-  ListViewsResponse.fromJson(core.Map _json)
+  ListViewsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          views: _json.containsKey('views')
-              ? (_json['views'] as core.List)
+          views: json_.containsKey('views')
+              ? (json_['views'] as core.List)
                   .map((value) => LogView.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -10347,40 +10347,40 @@ class LogBucket {
     this.updateTime,
   });
 
-  LogBucket.fromJson(core.Map _json)
+  LogBucket.fromJson(core.Map json_)
       : this(
-          cmekSettings: _json.containsKey('cmekSettings')
+          cmekSettings: json_.containsKey('cmekSettings')
               ? CmekSettings.fromJson(
-                  _json['cmekSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['cmekSettings'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          indexConfigs: _json.containsKey('indexConfigs')
-              ? (_json['indexConfigs'] as core.List)
+          indexConfigs: json_.containsKey('indexConfigs')
+              ? (json_['indexConfigs'] as core.List)
                   .map((value) => IndexConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          lifecycleState: _json.containsKey('lifecycleState')
-              ? _json['lifecycleState'] as core.String
+          lifecycleState: json_.containsKey('lifecycleState')
+              ? json_['lifecycleState'] as core.String
               : null,
           locked:
-              _json.containsKey('locked') ? _json['locked'] as core.bool : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          restrictedFields: _json.containsKey('restrictedFields')
-              ? (_json['restrictedFields'] as core.List)
+              json_.containsKey('locked') ? json_['locked'] as core.bool : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          restrictedFields: json_.containsKey('restrictedFields')
+              ? (json_['restrictedFields'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          retentionDays: _json.containsKey('retentionDays')
-              ? _json['retentionDays'] as core.int
+          retentionDays: json_.containsKey('retentionDays')
+              ? json_['retentionDays'] as core.int
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -10619,71 +10619,71 @@ class LogEntry {
     this.traceSampled,
   });
 
-  LogEntry.fromJson(core.Map _json)
+  LogEntry.fromJson(core.Map json_)
       : this(
-          httpRequest: _json.containsKey('httpRequest')
+          httpRequest: json_.containsKey('httpRequest')
               ? HttpRequest.fromJson(
-                  _json['httpRequest'] as core.Map<core.String, core.dynamic>)
+                  json_['httpRequest'] as core.Map<core.String, core.dynamic>)
               : null,
-          insertId: _json.containsKey('insertId')
-              ? _json['insertId'] as core.String
+          insertId: json_.containsKey('insertId')
+              ? json_['insertId'] as core.String
               : null,
-          jsonPayload: _json.containsKey('jsonPayload')
-              ? _json['jsonPayload'] as core.Map<core.String, core.dynamic>
+          jsonPayload: json_.containsKey('jsonPayload')
+              ? json_['jsonPayload'] as core.Map<core.String, core.dynamic>
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          logName: _json.containsKey('logName')
-              ? _json['logName'] as core.String
+          logName: json_.containsKey('logName')
+              ? json_['logName'] as core.String
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? MonitoredResourceMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          operation: _json.containsKey('operation')
+          operation: json_.containsKey('operation')
               ? LogEntryOperation.fromJson(
-                  _json['operation'] as core.Map<core.String, core.dynamic>)
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
               : null,
-          protoPayload: _json.containsKey('protoPayload')
-              ? _json['protoPayload'] as core.Map<core.String, core.dynamic>
+          protoPayload: json_.containsKey('protoPayload')
+              ? json_['protoPayload'] as core.Map<core.String, core.dynamic>
               : null,
-          receiveTimestamp: _json.containsKey('receiveTimestamp')
-              ? _json['receiveTimestamp'] as core.String
+          receiveTimestamp: json_.containsKey('receiveTimestamp')
+              ? json_['receiveTimestamp'] as core.String
               : null,
-          resource: _json.containsKey('resource')
+          resource: json_.containsKey('resource')
               ? MonitoredResource.fromJson(
-                  _json['resource'] as core.Map<core.String, core.dynamic>)
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          sourceLocation: _json.containsKey('sourceLocation')
-              ? LogEntrySourceLocation.fromJson(_json['sourceLocation']
+          sourceLocation: json_.containsKey('sourceLocation')
+              ? LogEntrySourceLocation.fromJson(json_['sourceLocation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          spanId: _json.containsKey('spanId')
-              ? _json['spanId'] as core.String
+          spanId: json_.containsKey('spanId')
+              ? json_['spanId'] as core.String
               : null,
-          split: _json.containsKey('split')
+          split: json_.containsKey('split')
               ? LogSplit.fromJson(
-                  _json['split'] as core.Map<core.String, core.dynamic>)
+                  json_['split'] as core.Map<core.String, core.dynamic>)
               : null,
-          textPayload: _json.containsKey('textPayload')
-              ? _json['textPayload'] as core.String
+          textPayload: json_.containsKey('textPayload')
+              ? json_['textPayload'] as core.String
               : null,
-          timestamp: _json.containsKey('timestamp')
-              ? _json['timestamp'] as core.String
+          timestamp: json_.containsKey('timestamp')
+              ? json_['timestamp'] as core.String
               : null,
           trace:
-              _json.containsKey('trace') ? _json['trace'] as core.String : null,
-          traceSampled: _json.containsKey('traceSampled')
-              ? _json['traceSampled'] as core.bool
+              json_.containsKey('trace') ? json_['trace'] as core.String : null,
+          traceSampled: json_.containsKey('traceSampled')
+              ? json_['traceSampled'] as core.bool
               : null,
         );
 
@@ -10746,14 +10746,14 @@ class LogEntryOperation {
     this.producer,
   });
 
-  LogEntryOperation.fromJson(core.Map _json)
+  LogEntryOperation.fromJson(core.Map json_)
       : this(
           first:
-              _json.containsKey('first') ? _json['first'] as core.bool : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          last: _json.containsKey('last') ? _json['last'] as core.bool : null,
-          producer: _json.containsKey('producer')
-              ? _json['producer'] as core.String
+              json_.containsKey('first') ? json_['first'] as core.bool : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          last: json_.containsKey('last') ? json_['last'] as core.bool : null,
+          producer: json_.containsKey('producer')
+              ? json_['producer'] as core.String
               : null,
         );
 
@@ -10800,13 +10800,13 @@ class LogEntrySourceLocation {
     this.line,
   });
 
-  LogEntrySourceLocation.fromJson(core.Map _json)
+  LogEntrySourceLocation.fromJson(core.Map json_)
       : this(
-          file: _json.containsKey('file') ? _json['file'] as core.String : null,
-          function: _json.containsKey('function')
-              ? _json['function'] as core.String
+          file: json_.containsKey('file') ? json_['file'] as core.String : null,
+          function: json_.containsKey('function')
+              ? json_['function'] as core.String
               : null,
-          line: _json.containsKey('line') ? _json['line'] as core.String : null,
+          line: json_.containsKey('line') ? json_['line'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10880,23 +10880,23 @@ class LogExclusion {
     this.updateTime,
   });
 
-  LogExclusion.fromJson(core.Map _json)
+  LogExclusion.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -11054,26 +11054,26 @@ class LogMetric {
     this.version,
   });
 
-  LogMetric.fromJson(core.Map _json)
+  LogMetric.fromJson(core.Map json_)
       : this(
-          bucketOptions: _json.containsKey('bucketOptions')
+          bucketOptions: json_.containsKey('bucketOptions')
               ? BucketOptions.fromJson(
-                  _json['bucketOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['bucketOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          labelExtractors: _json.containsKey('labelExtractors')
-              ? (_json['labelExtractors']
+          labelExtractors: json_.containsKey('labelExtractors')
+              ? (json_['labelExtractors']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -11082,19 +11082,19 @@ class LogMetric {
                   ),
                 )
               : null,
-          metricDescriptor: _json.containsKey('metricDescriptor')
-              ? MetricDescriptor.fromJson(_json['metricDescriptor']
+          metricDescriptor: json_.containsKey('metricDescriptor')
+              ? MetricDescriptor.fromJson(json_['metricDescriptor']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          valueExtractor: _json.containsKey('valueExtractor')
-              ? _json['valueExtractor'] as core.String
+          valueExtractor: json_.containsKey('valueExtractor')
+              ? json_['valueExtractor'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -11248,45 +11248,45 @@ class LogSink {
     this.writerIdentity,
   });
 
-  LogSink.fromJson(core.Map _json)
+  LogSink.fromJson(core.Map json_)
       : this(
-          bigqueryOptions: _json.containsKey('bigqueryOptions')
-              ? BigQueryOptions.fromJson(_json['bigqueryOptions']
+          bigqueryOptions: json_.containsKey('bigqueryOptions')
+              ? BigQueryOptions.fromJson(json_['bigqueryOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          destination: _json.containsKey('destination')
-              ? _json['destination'] as core.String
+          destination: json_.containsKey('destination')
+              ? json_['destination'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
+          exclusions: json_.containsKey('exclusions')
+              ? (json_['exclusions'] as core.List)
                   .map((value) => LogExclusion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          includeChildren: _json.containsKey('includeChildren')
-              ? _json['includeChildren'] as core.bool
+          includeChildren: json_.containsKey('includeChildren')
+              ? json_['includeChildren'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          outputVersionFormat: _json.containsKey('outputVersionFormat')
-              ? _json['outputVersionFormat'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          outputVersionFormat: json_.containsKey('outputVersionFormat')
+              ? json_['outputVersionFormat'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          writerIdentity: _json.containsKey('writerIdentity')
-              ? _json['writerIdentity'] as core.String
+          writerIdentity: json_.containsKey('writerIdentity')
+              ? json_['writerIdentity'] as core.String
               : null,
         );
 
@@ -11334,13 +11334,13 @@ class LogSplit {
     this.uid,
   });
 
-  LogSplit.fromJson(core.Map _json)
+  LogSplit.fromJson(core.Map json_)
       : this(
-          index: _json.containsKey('index') ? _json['index'] as core.int : null,
-          totalSplits: _json.containsKey('totalSplits')
-              ? _json['totalSplits'] as core.int
+          index: json_.containsKey('index') ? json_['index'] as core.int : null,
+          totalSplits: json_.containsKey('totalSplits')
+              ? json_['totalSplits'] as core.int
               : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11385,20 +11385,20 @@ class LogView {
     this.updateTime,
   });
 
-  LogView.fromJson(core.Map _json)
+  LogView.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -11590,40 +11590,40 @@ class MetricDescriptor {
     this.valueType,
   });
 
-  MetricDescriptor.fromJson(core.Map _json)
+  MetricDescriptor.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => LabelDescriptor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          launchStage: _json.containsKey('launchStage')
-              ? _json['launchStage'] as core.String
+          launchStage: json_.containsKey('launchStage')
+              ? json_['launchStage'] as core.String
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? MetricDescriptorMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          metricKind: _json.containsKey('metricKind')
-              ? _json['metricKind'] as core.String
+          metricKind: json_.containsKey('metricKind')
+              ? json_['metricKind'] as core.String
               : null,
-          monitoredResourceTypes: _json.containsKey('monitoredResourceTypes')
-              ? (_json['monitoredResourceTypes'] as core.List)
+          monitoredResourceTypes: json_.containsKey('monitoredResourceTypes')
+              ? (json_['monitoredResourceTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
-          valueType: _json.containsKey('valueType')
-              ? _json['valueType'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
+          valueType: json_.containsKey('valueType')
+              ? json_['valueType'] as core.String
               : null,
         );
 
@@ -11684,17 +11684,17 @@ class MonitoredResource {
     this.type,
   });
 
-  MonitoredResource.fromJson(core.Map _json)
+  MonitoredResource.fromJson(core.Map json_)
       : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11803,25 +11803,25 @@ class MonitoredResourceDescriptor {
     this.type,
   });
 
-  MonitoredResourceDescriptor.fromJson(core.Map _json)
+  MonitoredResourceDescriptor.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => LabelDescriptor.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          launchStage: _json.containsKey('launchStage')
-              ? _json['launchStage'] as core.String
+          launchStage: json_.containsKey('launchStage')
+              ? json_['launchStage'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11894,19 +11894,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -11987,20 +11987,20 @@ class Settings {
     this.storageLocation,
   });
 
-  Settings.fromJson(core.Map _json)
+  Settings.fromJson(core.Map json_)
       : this(
-          disableDefaultSink: _json.containsKey('disableDefaultSink')
-              ? _json['disableDefaultSink'] as core.bool
+          disableDefaultSink: json_.containsKey('disableDefaultSink')
+              ? json_['disableDefaultSink'] as core.bool
               : null,
-          kmsKeyName: _json.containsKey('kmsKeyName')
-              ? _json['kmsKeyName'] as core.String
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
               : null,
-          kmsServiceAccountId: _json.containsKey('kmsServiceAccountId')
-              ? _json['kmsServiceAccountId'] as core.String
+          kmsServiceAccountId: json_.containsKey('kmsServiceAccountId')
+              ? json_['kmsServiceAccountId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          storageLocation: _json.containsKey('storageLocation')
-              ? _json['storageLocation'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          storageLocation: json_.containsKey('storageLocation')
+              ? json_['storageLocation'] as core.String
               : null,
         );
 
@@ -12045,13 +12045,13 @@ class SuppressionInfo {
     this.suppressedCount,
   });
 
-  SuppressionInfo.fromJson(core.Map _json)
+  SuppressionInfo.fromJson(core.Map json_)
       : this(
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
               : null,
-          suppressedCount: _json.containsKey('suppressedCount')
-              ? _json['suppressedCount'] as core.int
+          suppressedCount: json_.containsKey('suppressedCount')
+              ? json_['suppressedCount'] as core.int
               : null,
         );
 
@@ -12102,16 +12102,16 @@ class TailLogEntriesRequest {
     this.resourceNames,
   });
 
-  TailLogEntriesRequest.fromJson(core.Map _json)
+  TailLogEntriesRequest.fromJson(core.Map json_)
       : this(
-          bufferWindow: _json.containsKey('bufferWindow')
-              ? _json['bufferWindow'] as core.String
+          bufferWindow: json_.containsKey('bufferWindow')
+              ? json_['bufferWindow'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          resourceNames: _json.containsKey('resourceNames')
-              ? (_json['resourceNames'] as core.List)
+          resourceNames: json_.containsKey('resourceNames')
+              ? (json_['resourceNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -12146,16 +12146,16 @@ class TailLogEntriesResponse {
     this.suppressionInfo,
   });
 
-  TailLogEntriesResponse.fromJson(core.Map _json)
+  TailLogEntriesResponse.fromJson(core.Map json_)
       : this(
-          entries: _json.containsKey('entries')
-              ? (_json['entries'] as core.List)
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.List)
                   .map((value) => LogEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          suppressionInfo: _json.containsKey('suppressionInfo')
-              ? (_json['suppressionInfo'] as core.List)
+          suppressionInfo: json_.containsKey('suppressionInfo')
+              ? (json_['suppressionInfo'] as core.List)
                   .map((value) => SuppressionInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -12263,33 +12263,33 @@ class WriteLogEntriesRequest {
     this.resource,
   });
 
-  WriteLogEntriesRequest.fromJson(core.Map _json)
+  WriteLogEntriesRequest.fromJson(core.Map json_)
       : this(
           dryRun:
-              _json.containsKey('dryRun') ? _json['dryRun'] as core.bool : null,
-          entries: _json.containsKey('entries')
-              ? (_json['entries'] as core.List)
+              json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.List)
                   .map((value) => LogEntry.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          logName: _json.containsKey('logName')
-              ? _json['logName'] as core.String
+          logName: json_.containsKey('logName')
+              ? json_['logName'] as core.String
               : null,
-          partialSuccess: _json.containsKey('partialSuccess')
-              ? _json['partialSuccess'] as core.bool
+          partialSuccess: json_.containsKey('partialSuccess')
+              ? json_['partialSuccess'] as core.bool
               : null,
-          resource: _json.containsKey('resource')
+          resource: json_.containsKey('resource')
               ? MonitoredResource.fromJson(
-                  _json['resource'] as core.Map<core.String, core.dynamic>)
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

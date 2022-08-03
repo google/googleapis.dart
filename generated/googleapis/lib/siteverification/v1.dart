@@ -79,16 +79,16 @@ class WebResourceResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.escapeVariable('$id');
+    final url_ = 'webResource/' + commons.escapeVariable('$id');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -113,19 +113,19 @@ class WebResourceResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.escapeVariable('$id');
+    final url_ = 'webResource/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a verification token for placing on a website or domain.
@@ -148,21 +148,21 @@ class WebResourceResource {
     SiteVerificationWebResourceGettokenRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'token';
+    const url_ = 'token';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SiteVerificationWebResourceGettokenResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Attempt verification of a website or domain.
@@ -188,22 +188,22 @@ class WebResourceResource {
     core.String verificationMethod, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       'verificationMethod': [verificationMethod],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'webResource';
+    const url_ = 'webResource';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the list of your verified websites and domains.
@@ -223,19 +223,19 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceListResponse> list({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'webResource';
+    const url_ = 'webResource';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SiteVerificationWebResourceListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modify the list of owners for your website or domain.
@@ -263,21 +263,21 @@ class WebResourceResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.escapeVariable('$id');
+    final url_ = 'webResource/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modify the list of owners for your website or domain.
@@ -303,21 +303,21 @@ class WebResourceResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'webResource/' + commons.escapeVariable('$id');
+    final url_ = 'webResource/' + commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SiteVerificationWebResourceResource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -339,12 +339,12 @@ class SiteVerificationWebResourceGettokenRequestSite {
     this.type,
   });
 
-  SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map _json)
+  SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map json_)
       : this(
-          identifier: _json.containsKey('identifier')
-              ? _json['identifier'] as core.String
+          identifier: json_.containsKey('identifier')
+              ? json_['identifier'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -368,14 +368,14 @@ class SiteVerificationWebResourceGettokenRequest {
     this.verificationMethod,
   });
 
-  SiteVerificationWebResourceGettokenRequest.fromJson(core.Map _json)
+  SiteVerificationWebResourceGettokenRequest.fromJson(core.Map json_)
       : this(
-          site: _json.containsKey('site')
+          site: json_.containsKey('site')
               ? SiteVerificationWebResourceGettokenRequestSite.fromJson(
-                  _json['site'] as core.Map<core.String, core.dynamic>)
+                  json_['site'] as core.Map<core.String, core.dynamic>)
               : null,
-          verificationMethod: _json.containsKey('verificationMethod')
-              ? _json['verificationMethod'] as core.String
+          verificationMethod: json_.containsKey('verificationMethod')
+              ? json_['verificationMethod'] as core.String
               : null,
         );
 
@@ -406,13 +406,13 @@ class SiteVerificationWebResourceGettokenResponse {
     this.token,
   });
 
-  SiteVerificationWebResourceGettokenResponse.fromJson(core.Map _json)
+  SiteVerificationWebResourceGettokenResponse.fromJson(core.Map json_)
       : this(
-          method: _json.containsKey('method')
-              ? _json['method'] as core.String
+          method: json_.containsKey('method')
+              ? json_['method'] as core.String
               : null,
           token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
+              json_.containsKey('token') ? json_['token'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -429,10 +429,10 @@ class SiteVerificationWebResourceListResponse {
     this.items,
   });
 
-  SiteVerificationWebResourceListResponse.fromJson(core.Map _json)
+  SiteVerificationWebResourceListResponse.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => SiteVerificationWebResourceResource.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -462,12 +462,12 @@ class SiteVerificationWebResourceResourceSite {
     this.type,
   });
 
-  SiteVerificationWebResourceResourceSite.fromJson(core.Map _json)
+  SiteVerificationWebResourceResourceSite.fromJson(core.Map json_)
       : this(
-          identifier: _json.containsKey('identifier')
-              ? _json['identifier'] as core.String
+          identifier: json_.containsKey('identifier')
+              ? json_['identifier'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -495,17 +495,17 @@ class SiteVerificationWebResourceResource {
     this.site,
   });
 
-  SiteVerificationWebResourceResource.fromJson(core.Map _json)
+  SiteVerificationWebResourceResource.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          owners: _json.containsKey('owners')
-              ? (_json['owners'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          owners: json_.containsKey('owners')
+              ? (json_['owners'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          site: _json.containsKey('site')
+          site: json_.containsKey('site')
               ? SiteVerificationWebResourceResourceSite.fromJson(
-                  _json['site'] as core.Map<core.String, core.dynamic>)
+                  json_['site'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 

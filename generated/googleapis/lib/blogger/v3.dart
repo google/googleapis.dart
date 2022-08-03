@@ -103,23 +103,23 @@ class BlogUserInfosResource {
     core.int? maxPosts,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/users/' +
+    final url_ = 'v3/users/' +
         commons.escapeVariable('$userId') +
         '/blogs/' +
         commons.escapeVariable('$blogId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BlogUserInfo.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -159,20 +159,20 @@ class BlogsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId');
+    final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Blog.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Blog.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a blog by url.
@@ -203,20 +203,20 @@ class BlogsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'url': [url],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v3/blogs/byurl';
+    const url_ = 'v3/blogs/byurl';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Blog.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Blog.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists blogs by user.
@@ -256,7 +256,7 @@ class BlogsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fetchUserInfo != null) 'fetchUserInfo': ['${fetchUserInfo}'],
       if (role != null) 'role': role,
       if (status != null) 'status': status,
@@ -264,14 +264,14 @@ class BlogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/users/' + commons.escapeVariable('$userId') + '/blogs';
+    final url_ = 'v3/users/' + commons.escapeVariable('$userId') + '/blogs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return BlogList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return BlogList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -306,11 +306,11 @@ class CommentsResource {
     core.String commentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -318,12 +318,12 @@ class CommentsResource {
         commons.escapeVariable('$commentId') +
         '/approve';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a comment by blog id, post id and comment id.
@@ -350,11 +350,11 @@ class CommentsResource {
     core.String commentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -362,9 +362,9 @@ class CommentsResource {
         commons.escapeVariable('$commentId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -403,24 +403,24 @@ class CommentsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
         '/comments/' +
         commons.escapeVariable('$commentId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists comments.
@@ -477,7 +477,7 @@ class CommentsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -488,19 +488,19 @@ class CommentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
         '/comments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CommentList.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists comments by blog.
@@ -541,7 +541,7 @@ class CommentsResource {
     core.List<core.String>? status,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -551,15 +551,15 @@ class CommentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/comments';
+    final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/comments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CommentList.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks a comment as spam by blog id, post id and comment id.
@@ -588,11 +588,11 @@ class CommentsResource {
     core.String commentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -600,12 +600,12 @@ class CommentsResource {
         commons.escapeVariable('$commentId') +
         '/spam';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the content of a comment by blog id, post id and comment id.
@@ -634,11 +634,11 @@ class CommentsResource {
     core.String commentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -646,12 +646,12 @@ class CommentsResource {
         commons.escapeVariable('$commentId') +
         '/removecontent';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -683,19 +683,19 @@ class PageViewsResource {
     core.List<core.String>? range,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (range != null) 'range': range,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pageviews';
+    final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pageviews';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Pageviews.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Pageviews.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -725,19 +725,19 @@ class PagesResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/pages/' +
         commons.escapeVariable('$pageId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -773,22 +773,22 @@ class PagesResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/pages/' +
         commons.escapeVariable('$pageId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a page.
@@ -817,21 +817,21 @@ class PagesResource {
     core.bool? isDraft,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (isDraft != null) 'isDraft': ['${isDraft}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
+    final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists pages.
@@ -874,7 +874,7 @@ class PagesResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -883,14 +883,14 @@ class PagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
+    final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/pages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return PageList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return PageList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a page.
@@ -925,25 +925,25 @@ class PagesResource {
     core.bool? revert_1,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (publish_1 != null) 'publish': ['${publish_1}'],
       if (revert_1 != null) 'revert': ['${revert_1}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/pages/' +
         commons.escapeVariable('$pageId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a page.
@@ -969,22 +969,22 @@ class PagesResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/pages/' +
         commons.escapeVariable('$pageId') +
         '/publish';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts a published or scheduled page to draft state.
@@ -1010,22 +1010,22 @@ class PagesResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/pages/' +
         commons.escapeVariable('$pageId') +
         '/revert';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a page by blog id and page id.
@@ -1060,25 +1060,25 @@ class PagesResource {
     core.bool? revert_1,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (publish_1 != null) 'publish': ['${publish_1}'],
       if (revert_1 != null) 'revert': ['${revert_1}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/pages/' +
         commons.escapeVariable('$pageId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1116,25 +1116,25 @@ class PostUserInfosResource {
     core.int? maxComments,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxComments != null) 'maxComments': ['${maxComments}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/users/' +
+    final url_ = 'v3/users/' +
         commons.escapeVariable('$userId') +
         '/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PostUserInfo.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists post and user info pairs.
@@ -1196,7 +1196,7 @@ class PostUserInfosResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
       if (labels != null) 'labels': [labels],
@@ -1209,19 +1209,19 @@ class PostUserInfosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/users/' +
+    final url_ = 'v3/users/' +
         commons.escapeVariable('$userId') +
         '/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PostUserInfosList.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1251,19 +1251,19 @@ class PostsResource {
     core.String postId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1308,7 +1308,7 @@ class PostsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
       if (maxComments != null) 'maxComments': ['${maxComments}'],
@@ -1316,17 +1316,17 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a post by path.
@@ -1363,22 +1363,22 @@ class PostsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'path': [path],
       if (maxComments != null) 'maxComments': ['${maxComments}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts/bypath';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a post.
@@ -1413,23 +1413,23 @@ class PostsResource {
     core.bool? isDraft,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
       if (isDraft != null) 'isDraft': ['${isDraft}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
+    final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists posts.
@@ -1491,7 +1491,7 @@ class PostsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
@@ -1505,14 +1505,14 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
+    final url_ = 'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return PostList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return PostList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a post.
@@ -1556,8 +1556,8 @@ class PostsResource {
     core.bool? revert_1,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
       if (maxComments != null) 'maxComments': ['${maxComments}'],
@@ -1566,18 +1566,18 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a post.
@@ -1606,23 +1606,23 @@ class PostsResource {
     core.String? publishDate,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (publishDate != null) 'publishDate': [publishDate],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
         '/publish';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts a published or scheduled post to draft state.
@@ -1648,22 +1648,22 @@ class PostsResource {
     core.String postId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
         '/revert';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches for posts matching given query terms in the specified blog.
@@ -1699,22 +1699,22 @@ class PostsResource {
     core.String? orderBy,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'q': [q],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
       if (orderBy != null) 'orderBy': [orderBy],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v3/blogs/' + commons.escapeVariable('$blogId') + '/posts/search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return PostList.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return PostList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a post by blog id and post id.
@@ -1758,8 +1758,8 @@ class PostsResource {
     core.bool? revert_1,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
       if (maxComments != null) 'maxComments': ['${maxComments}'],
@@ -1768,18 +1768,18 @@ class PostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/blogs/' +
+    final url_ = 'v3/blogs/' +
         commons.escapeVariable('$blogId') +
         '/posts/' +
         commons.escapeVariable('$postId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1808,18 +1808,18 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/users/' + commons.escapeVariable('$userId');
+    final url_ = 'v3/users/' + commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1840,16 +1840,16 @@ class BlogLocale {
     this.variant,
   });
 
-  BlogLocale.fromJson(core.Map _json)
+  BlogLocale.fromJson(core.Map json_)
       : this(
-          country: _json.containsKey('country')
-              ? _json['country'] as core.String
+          country: json_.containsKey('country')
+              ? json_['country'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          variant: _json.containsKey('variant')
-              ? _json['variant'] as core.String
+          variant: json_.containsKey('variant')
+              ? json_['variant'] as core.String
               : null,
         );
 
@@ -1873,13 +1873,13 @@ class BlogPages {
     this.totalItems,
   });
 
-  BlogPages.fromJson(core.Map _json)
+  BlogPages.fromJson(core.Map json_)
       : this(
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.int
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.int
               : null,
         );
 
@@ -1906,19 +1906,19 @@ class BlogPosts {
     this.totalItems,
   });
 
-  BlogPosts.fromJson(core.Map _json)
+  BlogPosts.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Post.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.int
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.int
               : null,
         );
 
@@ -1994,42 +1994,42 @@ class Blog {
     this.url,
   });
 
-  Blog.fromJson(core.Map _json)
+  Blog.fromJson(core.Map json_)
       : this(
-          customMetaData: _json.containsKey('customMetaData')
-              ? _json['customMetaData'] as core.String
+          customMetaData: json_.containsKey('customMetaData')
+              ? json_['customMetaData'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          locale: _json.containsKey('locale')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          locale: json_.containsKey('locale')
               ? BlogLocale.fromJson(
-                  _json['locale'] as core.Map<core.String, core.dynamic>)
+                  json_['locale'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pages: _json.containsKey('pages')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pages: json_.containsKey('pages')
               ? BlogPages.fromJson(
-                  _json['pages'] as core.Map<core.String, core.dynamic>)
+                  json_['pages'] as core.Map<core.String, core.dynamic>)
               : null,
-          posts: _json.containsKey('posts')
+          posts: json_.containsKey('posts')
               ? BlogPosts.fromJson(
-                  _json['posts'] as core.Map<core.String, core.dynamic>)
+                  json_['posts'] as core.Map<core.String, core.dynamic>)
               : null,
-          published: _json.containsKey('published')
-              ? _json['published'] as core.String
+          published: json_.containsKey('published')
+              ? json_['published'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2067,21 +2067,21 @@ class BlogList {
     this.kind,
   });
 
-  BlogList.fromJson(core.Map _json)
+  BlogList.fromJson(core.Map json_)
       : this(
-          blogUserInfos: _json.containsKey('blogUserInfos')
-              ? (_json['blogUserInfos'] as core.List)
+          blogUserInfos: json_.containsKey('blogUserInfos')
+              ? (json_['blogUserInfos'] as core.List)
                   .map((value) => BlogUserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Blog.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2127,21 +2127,21 @@ class BlogPerUserInfo {
     this.userId,
   });
 
-  BlogPerUserInfo.fromJson(core.Map _json)
+  BlogPerUserInfo.fromJson(core.Map json_)
       : this(
-          blogId: _json.containsKey('blogId')
-              ? _json['blogId'] as core.String
+          blogId: json_.containsKey('blogId')
+              ? json_['blogId'] as core.String
               : null,
-          hasAdminAccess: _json.containsKey('hasAdminAccess')
-              ? _json['hasAdminAccess'] as core.bool
+          hasAdminAccess: json_.containsKey('hasAdminAccess')
+              ? json_['hasAdminAccess'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          photosAlbumKey: _json.containsKey('photosAlbumKey')
-              ? _json['photosAlbumKey'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          photosAlbumKey: json_.containsKey('photosAlbumKey')
+              ? json_['photosAlbumKey'] as core.String
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -2173,17 +2173,17 @@ class BlogUserInfo {
     this.kind,
   });
 
-  BlogUserInfo.fromJson(core.Map _json)
+  BlogUserInfo.fromJson(core.Map json_)
       : this(
-          blog: _json.containsKey('blog')
+          blog: json_.containsKey('blog')
               ? Blog.fromJson(
-                  _json['blog'] as core.Map<core.String, core.dynamic>)
+                  json_['blog'] as core.Map<core.String, core.dynamic>)
               : null,
-          blogUserInfo: _json.containsKey('blog_user_info')
-              ? BlogPerUserInfo.fromJson(_json['blog_user_info']
+          blogUserInfo: json_.containsKey('blog_user_info')
+              ? BlogPerUserInfo.fromJson(json_['blog_user_info']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2202,9 +2202,9 @@ class CommentAuthorImage {
     this.url,
   });
 
-  CommentAuthorImage.fromJson(core.Map _json)
+  CommentAuthorImage.fromJson(core.Map json_)
       : this(
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2233,17 +2233,17 @@ class CommentAuthor {
     this.url,
   });
 
-  CommentAuthor.fromJson(core.Map _json)
+  CommentAuthor.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          image: _json.containsKey('image')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          image: json_.containsKey('image')
               ? CommentAuthorImage.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2263,9 +2263,9 @@ class CommentBlog {
     this.id,
   });
 
-  CommentBlog.fromJson(core.Map _json)
+  CommentBlog.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2282,9 +2282,9 @@ class CommentInReplyTo {
     this.id,
   });
 
-  CommentInReplyTo.fromJson(core.Map _json)
+  CommentInReplyTo.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2301,9 +2301,9 @@ class CommentPost {
     this.id,
   });
 
-  CommentPost.fromJson(core.Map _json)
+  CommentPost.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2368,40 +2368,40 @@ class Comment {
     this.updated,
   });
 
-  Comment.fromJson(core.Map _json)
+  Comment.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
+          author: json_.containsKey('author')
               ? CommentAuthor.fromJson(
-                  _json['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          blog: _json.containsKey('blog')
+          blog: json_.containsKey('blog')
               ? CommentBlog.fromJson(
-                  _json['blog'] as core.Map<core.String, core.dynamic>)
+                  json_['blog'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          inReplyTo: _json.containsKey('inReplyTo')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          inReplyTo: json_.containsKey('inReplyTo')
               ? CommentInReplyTo.fromJson(
-                  _json['inReplyTo'] as core.Map<core.String, core.dynamic>)
+                  json_['inReplyTo'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          post: _json.containsKey('post')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          post: json_.containsKey('post')
               ? CommentPost.fromJson(
-                  _json['post'] as core.Map<core.String, core.dynamic>)
+                  json_['post'] as core.Map<core.String, core.dynamic>)
               : null,
-          published: _json.containsKey('published')
-              ? _json['published'] as core.String
+          published: json_.containsKey('published')
+              ? json_['published'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
         );
 
@@ -2446,21 +2446,21 @@ class CommentList {
     this.prevPageToken,
   });
 
-  CommentList.fromJson(core.Map _json)
+  CommentList.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Comment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          prevPageToken: _json.containsKey('prevPageToken')
-              ? _json['prevPageToken'] as core.String
+          prevPageToken: json_.containsKey('prevPageToken')
+              ? json_['prevPageToken'] as core.String
               : null,
         );
 
@@ -2482,9 +2482,9 @@ class PageAuthorImage {
     this.url,
   });
 
-  PageAuthorImage.fromJson(core.Map _json)
+  PageAuthorImage.fromJson(core.Map json_)
       : this(
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2513,17 +2513,17 @@ class PageAuthor {
     this.url,
   });
 
-  PageAuthor.fromJson(core.Map _json)
+  PageAuthor.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          image: _json.containsKey('image')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          image: json_.containsKey('image')
               ? PageAuthorImage.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2543,9 +2543,9 @@ class PageBlog {
     this.id,
   });
 
-  PageBlog.fromJson(core.Map _json)
+  PageBlog.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2617,40 +2617,40 @@ class Page {
     this.url,
   });
 
-  Page.fromJson(core.Map _json)
+  Page.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
+          author: json_.containsKey('author')
               ? PageAuthor.fromJson(
-                  _json['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          blog: _json.containsKey('blog')
+          blog: json_.containsKey('blog')
               ? PageBlog.fromJson(
-                  _json['blog'] as core.Map<core.String, core.dynamic>)
+                  json_['blog'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          published: _json.containsKey('published')
-              ? _json['published'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          published: json_.containsKey('published')
+              ? json_['published'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          trashed: _json.containsKey('trashed')
-              ? _json['trashed'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          trashed: json_.containsKey('trashed')
+              ? json_['trashed'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2692,18 +2692,18 @@ class PageList {
     this.nextPageToken,
   });
 
-  PageList.fromJson(core.Map _json)
+  PageList.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Page.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2731,12 +2731,12 @@ class PageviewsCounts {
     this.timeRange,
   });
 
-  PageviewsCounts.fromJson(core.Map _json)
+  PageviewsCounts.fromJson(core.Map json_)
       : this(
           count:
-              _json.containsKey('count') ? _json['count'] as core.String : null,
-          timeRange: _json.containsKey('timeRange')
-              ? _json['timeRange'] as core.String
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          timeRange: json_.containsKey('timeRange')
+              ? json_['timeRange'] as core.String
               : null,
         );
 
@@ -2764,18 +2764,18 @@ class Pageviews {
     this.kind,
   });
 
-  Pageviews.fromJson(core.Map _json)
+  Pageviews.fromJson(core.Map json_)
       : this(
-          blogId: _json.containsKey('blogId')
-              ? _json['blogId'] as core.String
+          blogId: json_.containsKey('blogId')
+              ? json_['blogId'] as core.String
               : null,
-          counts: _json.containsKey('counts')
-              ? (_json['counts'] as core.List)
+          counts: json_.containsKey('counts')
+              ? (json_['counts'] as core.List)
                   .map((value) => PageviewsCounts.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2794,9 +2794,9 @@ class PostAuthorImage {
     this.url,
   });
 
-  PostAuthorImage.fromJson(core.Map _json)
+  PostAuthorImage.fromJson(core.Map json_)
       : this(
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2825,17 +2825,17 @@ class PostAuthor {
     this.url,
   });
 
-  PostAuthor.fromJson(core.Map _json)
+  PostAuthor.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          image: _json.containsKey('image')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          image: json_.containsKey('image')
               ? PostAuthorImage.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2855,9 +2855,9 @@ class PostBlog {
     this.id,
   });
 
-  PostBlog.fromJson(core.Map _json)
+  PostBlog.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2872,9 +2872,9 @@ class PostImages {
     this.url,
   });
 
-  PostImages.fromJson(core.Map _json)
+  PostImages.fromJson(core.Map json_)
       : this(
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2905,16 +2905,16 @@ class PostLocation {
     this.span,
   });
 
-  PostLocation.fromJson(core.Map _json)
+  PostLocation.fromJson(core.Map json_)
       : this(
-          lat: _json.containsKey('lat')
-              ? (_json['lat'] as core.num).toDouble()
+          lat: json_.containsKey('lat')
+              ? (json_['lat'] as core.num).toDouble()
               : null,
-          lng: _json.containsKey('lng')
-              ? (_json['lng'] as core.num).toDouble()
+          lng: json_.containsKey('lng')
+              ? (json_['lng'] as core.num).toDouble()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          span: _json.containsKey('span') ? _json['span'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          span: json_.containsKey('span') ? json_['span'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2942,19 +2942,19 @@ class PostReplies {
     this.totalItems,
   });
 
-  PostReplies.fromJson(core.Map _json)
+  PostReplies.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Comment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.String
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.String
               : null,
         );
 
@@ -3064,68 +3064,68 @@ class Post {
     this.url,
   });
 
-  Post.fromJson(core.Map _json)
+  Post.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
+          author: json_.containsKey('author')
               ? PostAuthor.fromJson(
-                  _json['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          blog: _json.containsKey('blog')
+          blog: json_.containsKey('blog')
               ? PostBlog.fromJson(
-                  _json['blog'] as core.Map<core.String, core.dynamic>)
+                  json_['blog'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          customMetaData: _json.containsKey('customMetaData')
-              ? _json['customMetaData'] as core.String
+          customMetaData: json_.containsKey('customMetaData')
+              ? json_['customMetaData'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          images: _json.containsKey('images')
-              ? (_json['images'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          images: json_.containsKey('images')
+              ? (json_['images'] as core.List)
                   .map((value) => PostImages.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? PostLocation.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          published: _json.containsKey('published')
-              ? _json['published'] as core.String
+          published: json_.containsKey('published')
+              ? json_['published'] as core.String
               : null,
-          readerComments: _json.containsKey('readerComments')
-              ? _json['readerComments'] as core.String
+          readerComments: json_.containsKey('readerComments')
+              ? json_['readerComments'] as core.String
               : null,
-          replies: _json.containsKey('replies')
+          replies: json_.containsKey('replies')
               ? PostReplies.fromJson(
-                  _json['replies'] as core.Map<core.String, core.dynamic>)
+                  json_['replies'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          titleLink: _json.containsKey('titleLink')
-              ? _json['titleLink'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          titleLink: json_.containsKey('titleLink')
+              ? json_['titleLink'] as core.String
               : null,
-          trashed: _json.containsKey('trashed')
-              ? _json['trashed'] as core.String
+          trashed: json_.containsKey('trashed')
+              ? json_['trashed'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3178,21 +3178,21 @@ class PostList {
     this.prevPageToken,
   });
 
-  PostList.fromJson(core.Map _json)
+  PostList.fromJson(core.Map json_)
       : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Post.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          prevPageToken: _json.containsKey('prevPageToken')
-              ? _json['prevPageToken'] as core.String
+          prevPageToken: json_.containsKey('prevPageToken')
+              ? json_['prevPageToken'] as core.String
               : null,
         );
 
@@ -3231,20 +3231,20 @@ class PostPerUserInfo {
     this.userId,
   });
 
-  PostPerUserInfo.fromJson(core.Map _json)
+  PostPerUserInfo.fromJson(core.Map json_)
       : this(
-          blogId: _json.containsKey('blogId')
-              ? _json['blogId'] as core.String
+          blogId: json_.containsKey('blogId')
+              ? json_['blogId'] as core.String
               : null,
-          hasEditAccess: _json.containsKey('hasEditAccess')
-              ? _json['hasEditAccess'] as core.bool
+          hasEditAccess: json_.containsKey('hasEditAccess')
+              ? json_['hasEditAccess'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          postId: _json.containsKey('postId')
-              ? _json['postId'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          postId: json_.containsKey('postId')
+              ? json_['postId'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -3275,15 +3275,15 @@ class PostUserInfo {
     this.postUserInfo,
   });
 
-  PostUserInfo.fromJson(core.Map _json)
+  PostUserInfo.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          post: _json.containsKey('post')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          post: json_.containsKey('post')
               ? Post.fromJson(
-                  _json['post'] as core.Map<core.String, core.dynamic>)
+                  json_['post'] as core.Map<core.String, core.dynamic>)
               : null,
-          postUserInfo: _json.containsKey('post_user_info')
-              ? PostPerUserInfo.fromJson(_json['post_user_info']
+          postUserInfo: json_.containsKey('post_user_info')
+              ? PostPerUserInfo.fromJson(json_['post_user_info']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3313,17 +3313,17 @@ class PostUserInfosList {
     this.nextPageToken,
   });
 
-  PostUserInfosList.fromJson(core.Map _json)
+  PostUserInfosList.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => PostUserInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3343,10 +3343,10 @@ class UserBlogs {
     this.selfLink,
   });
 
-  UserBlogs.fromJson(core.Map _json)
+  UserBlogs.fromJson(core.Map json_)
       : this(
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
         );
 
@@ -3372,16 +3372,16 @@ class UserLocale {
     this.variant,
   });
 
-  UserLocale.fromJson(core.Map _json)
+  UserLocale.fromJson(core.Map json_)
       : this(
-          country: _json.containsKey('country')
-              ? _json['country'] as core.String
+          country: json_.containsKey('country')
+              ? json_['country'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          variant: _json.containsKey('variant')
-              ? _json['variant'] as core.String
+          variant: json_.containsKey('variant')
+              ? json_['variant'] as core.String
               : null,
         );
 
@@ -3434,30 +3434,30 @@ class User {
     this.url,
   });
 
-  User.fromJson(core.Map _json)
+  User.fromJson(core.Map json_)
       : this(
           about:
-              _json.containsKey('about') ? _json['about'] as core.String : null,
-          blogs: _json.containsKey('blogs')
+              json_.containsKey('about') ? json_['about'] as core.String : null,
+          blogs: json_.containsKey('blogs')
               ? UserBlogs.fromJson(
-                  _json['blogs'] as core.Map<core.String, core.dynamic>)
+                  json_['blogs'] as core.Map<core.String, core.dynamic>)
               : null,
-          created: _json.containsKey('created')
-              ? _json['created'] as core.String
+          created: json_.containsKey('created')
+              ? json_['created'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          locale: _json.containsKey('locale')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          locale: json_.containsKey('locale')
               ? UserLocale.fromJson(
-                  _json['locale'] as core.Map<core.String, core.dynamic>)
+                  json_['locale'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

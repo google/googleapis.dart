@@ -136,23 +136,23 @@ class ProjectsLocationsInstancesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (databaseId != null) 'databaseId': [databaseId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks a DatabaseInstance to be deleted.
@@ -184,19 +184,19 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Disables a DatabaseInstance.
@@ -230,21 +230,21 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + ':disable';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':disable';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the DatabaseInstance identified by the specified resource name.
@@ -276,19 +276,19 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each DatabaseInstance associated with the specified parent project.
@@ -336,22 +336,22 @@ class ProjectsLocationsInstancesResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/instances';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDatabaseInstancesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables a DatabaseInstance.
@@ -385,21 +385,21 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + ':reenable';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':reenable';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a DatabaseInstance that was previously marked to be deleted.
@@ -435,21 +435,21 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + ':undelete';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -512,18 +512,18 @@ class DatabaseInstance {
     this.type,
   });
 
-  DatabaseInstance.fromJson(core.Map _json)
+  DatabaseInstance.fromJson(core.Map json_)
       : this(
-          databaseUrl: _json.containsKey('databaseUrl')
-              ? _json['databaseUrl'] as core.String
+          databaseUrl: json_.containsKey('databaseUrl')
+              ? json_['databaseUrl'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          project: _json.containsKey('project')
-              ? _json['project'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -557,16 +557,16 @@ class ListDatabaseInstancesResponse {
     this.nextPageToken,
   });
 
-  ListDatabaseInstancesResponse.fromJson(core.Map _json)
+  ListDatabaseInstancesResponse.fromJson(core.Map json_)
       : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
+          instances: json_.containsKey('instances')
+              ? (json_['instances'] as core.List)
                   .map((value) => DatabaseInstance.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 

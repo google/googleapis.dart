@@ -101,22 +101,22 @@ class LabelsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleAppsDriveLabelsV2Label.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// --------------------------------------------------------------------------
@@ -187,7 +187,7 @@ class LabelsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (minimumRole != null) 'minimumRole': [minimumRole],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -198,15 +198,15 @@ class LabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/labels';
+    const url_ = 'v2/labels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleAppsDriveLabelsV2ListLabelsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -234,19 +234,19 @@ class GoogleAppsDriveLabelsV2BadgeColors {
     this.soloColor,
   });
 
-  GoogleAppsDriveLabelsV2BadgeColors.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2BadgeColors.fromJson(core.Map json_)
       : this(
-          backgroundColor: _json.containsKey('backgroundColor')
-              ? GoogleTypeColor.fromJson(_json['backgroundColor']
+          backgroundColor: json_.containsKey('backgroundColor')
+              ? GoogleTypeColor.fromJson(json_['backgroundColor']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          foregroundColor: _json.containsKey('foregroundColor')
-              ? GoogleTypeColor.fromJson(_json['foregroundColor']
+          foregroundColor: json_.containsKey('foregroundColor')
+              ? GoogleTypeColor.fromJson(json_['foregroundColor']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          soloColor: _json.containsKey('soloColor')
+          soloColor: json_.containsKey('soloColor')
               ? GoogleTypeColor.fromJson(
-                  _json['soloColor'] as core.Map<core.String, core.dynamic>)
+                  json_['soloColor'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -275,14 +275,14 @@ class GoogleAppsDriveLabelsV2BadgeConfig {
     this.priorityOverride,
   });
 
-  GoogleAppsDriveLabelsV2BadgeConfig.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2BadgeConfig.fromJson(core.Map json_)
       : this(
-          color: _json.containsKey('color')
+          color: json_.containsKey('color')
               ? GoogleTypeColor.fromJson(
-                  _json['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          priorityOverride: _json.containsKey('priorityOverride')
-              ? _json['priorityOverride'] as core.String
+          priorityOverride: json_.containsKey('priorityOverride')
+              ? json_['priorityOverride'] as core.String
               : null,
         );
 
@@ -420,84 +420,84 @@ class GoogleAppsDriveLabelsV2Field {
     this.userOptions,
   });
 
-  GoogleAppsDriveLabelsV2Field.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2Field.fromJson(core.Map json_)
       : this(
-          appliedCapabilities: _json.containsKey('appliedCapabilities')
+          appliedCapabilities: json_.containsKey('appliedCapabilities')
               ? GoogleAppsDriveLabelsV2FieldAppliedCapabilities.fromJson(
-                  _json['appliedCapabilities']
+                  json_['appliedCapabilities']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          creator: _json.containsKey('creator')
+          creator: json_.containsKey('creator')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['creator'] as core.Map<core.String, core.dynamic>)
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
               : null,
-          dateOptions: _json.containsKey('dateOptions')
+          dateOptions: json_.containsKey('dateOptions')
               ? GoogleAppsDriveLabelsV2FieldDateOptions.fromJson(
-                  _json['dateOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['dateOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          disableTime: _json.containsKey('disableTime')
-              ? _json['disableTime'] as core.String
+          disableTime: json_.containsKey('disableTime')
+              ? json_['disableTime'] as core.String
               : null,
-          disabler: _json.containsKey('disabler')
+          disabler: json_.containsKey('disabler')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['disabler'] as core.Map<core.String, core.dynamic>)
+                  json_['disabler'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayHints: _json.containsKey('displayHints')
+          displayHints: json_.containsKey('displayHints')
               ? GoogleAppsDriveLabelsV2FieldDisplayHints.fromJson(
-                  _json['displayHints'] as core.Map<core.String, core.dynamic>)
+                  json_['displayHints'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          integerOptions: _json.containsKey('integerOptions')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          integerOptions: json_.containsKey('integerOptions')
               ? GoogleAppsDriveLabelsV2FieldIntegerOptions.fromJson(
-                  _json['integerOptions']
+                  json_['integerOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          lifecycle: _json.containsKey('lifecycle')
+          lifecycle: json_.containsKey('lifecycle')
               ? GoogleAppsDriveLabelsV2Lifecycle.fromJson(
-                  _json['lifecycle'] as core.Map<core.String, core.dynamic>)
+                  json_['lifecycle'] as core.Map<core.String, core.dynamic>)
               : null,
-          lockStatus: _json.containsKey('lockStatus')
+          lockStatus: json_.containsKey('lockStatus')
               ? GoogleAppsDriveLabelsV2LockStatus.fromJson(
-                  _json['lockStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['lockStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          properties: _json.containsKey('properties')
+          properties: json_.containsKey('properties')
               ? GoogleAppsDriveLabelsV2FieldProperties.fromJson(
-                  _json['properties'] as core.Map<core.String, core.dynamic>)
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
-          publisher: _json.containsKey('publisher')
+          publisher: json_.containsKey('publisher')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['publisher'] as core.Map<core.String, core.dynamic>)
+                  json_['publisher'] as core.Map<core.String, core.dynamic>)
               : null,
-          queryKey: _json.containsKey('queryKey')
-              ? _json['queryKey'] as core.String
+          queryKey: json_.containsKey('queryKey')
+              ? json_['queryKey'] as core.String
               : null,
-          schemaCapabilities: _json.containsKey('schemaCapabilities')
+          schemaCapabilities: json_.containsKey('schemaCapabilities')
               ? GoogleAppsDriveLabelsV2FieldSchemaCapabilities.fromJson(
-                  _json['schemaCapabilities']
+                  json_['schemaCapabilities']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          selectionOptions: _json.containsKey('selectionOptions')
+          selectionOptions: json_.containsKey('selectionOptions')
               ? GoogleAppsDriveLabelsV2FieldSelectionOptions.fromJson(
-                  _json['selectionOptions']
+                  json_['selectionOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          textOptions: _json.containsKey('textOptions')
+          textOptions: json_.containsKey('textOptions')
               ? GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(
-                  _json['textOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['textOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          updater: _json.containsKey('updater')
+          updater: json_.containsKey('updater')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['updater'] as core.Map<core.String, core.dynamic>)
+                  json_['updater'] as core.Map<core.String, core.dynamic>)
               : null,
-          userOptions: _json.containsKey('userOptions')
+          userOptions: json_.containsKey('userOptions')
               ? GoogleAppsDriveLabelsV2FieldUserOptions.fromJson(
-                  _json['userOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['userOptions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -544,16 +544,16 @@ class GoogleAppsDriveLabelsV2FieldAppliedCapabilities {
     this.canWrite,
   });
 
-  GoogleAppsDriveLabelsV2FieldAppliedCapabilities.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldAppliedCapabilities.fromJson(core.Map json_)
       : this(
-          canRead: _json.containsKey('canRead')
-              ? _json['canRead'] as core.bool
+          canRead: json_.containsKey('canRead')
+              ? json_['canRead'] as core.bool
               : null,
-          canSearch: _json.containsKey('canSearch')
-              ? _json['canSearch'] as core.bool
+          canSearch: json_.containsKey('canSearch')
+              ? json_['canSearch'] as core.bool
               : null,
-          canWrite: _json.containsKey('canWrite')
-              ? _json['canWrite'] as core.bool
+          canWrite: json_.containsKey('canWrite')
+              ? json_['canWrite'] as core.bool
               : null,
         );
 
@@ -597,21 +597,21 @@ class GoogleAppsDriveLabelsV2FieldDateOptions {
     this.minValue,
   });
 
-  GoogleAppsDriveLabelsV2FieldDateOptions.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldDateOptions.fromJson(core.Map json_)
       : this(
-          dateFormat: _json.containsKey('dateFormat')
-              ? _json['dateFormat'] as core.String
+          dateFormat: json_.containsKey('dateFormat')
+              ? json_['dateFormat'] as core.String
               : null,
-          dateFormatType: _json.containsKey('dateFormatType')
-              ? _json['dateFormatType'] as core.String
+          dateFormatType: json_.containsKey('dateFormatType')
+              ? json_['dateFormatType'] as core.String
               : null,
-          maxValue: _json.containsKey('maxValue')
+          maxValue: json_.containsKey('maxValue')
               ? GoogleTypeDate.fromJson(
-                  _json['maxValue'] as core.Map<core.String, core.dynamic>)
+                  json_['maxValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          minValue: _json.containsKey('minValue')
+          minValue: json_.containsKey('minValue')
               ? GoogleTypeDate.fromJson(
-                  _json['minValue'] as core.Map<core.String, core.dynamic>)
+                  json_['minValue'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -644,19 +644,19 @@ class GoogleAppsDriveLabelsV2FieldDisplayHints {
     this.shownInApply,
   });
 
-  GoogleAppsDriveLabelsV2FieldDisplayHints.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldDisplayHints.fromJson(core.Map json_)
       : this(
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          hiddenInSearch: _json.containsKey('hiddenInSearch')
-              ? _json['hiddenInSearch'] as core.bool
+          hiddenInSearch: json_.containsKey('hiddenInSearch')
+              ? json_['hiddenInSearch'] as core.bool
               : null,
-          required: _json.containsKey('required')
-              ? _json['required'] as core.bool
+          required: json_.containsKey('required')
+              ? json_['required'] as core.bool
               : null,
-          shownInApply: _json.containsKey('shownInApply')
-              ? _json['shownInApply'] as core.bool
+          shownInApply: json_.containsKey('shownInApply')
+              ? json_['shownInApply'] as core.bool
               : null,
         );
 
@@ -685,13 +685,13 @@ class GoogleAppsDriveLabelsV2FieldIntegerOptions {
     this.minValue,
   });
 
-  GoogleAppsDriveLabelsV2FieldIntegerOptions.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldIntegerOptions.fromJson(core.Map json_)
       : this(
-          maxValue: _json.containsKey('maxValue')
-              ? _json['maxValue'] as core.String
+          maxValue: json_.containsKey('maxValue')
+              ? json_['maxValue'] as core.String
               : null,
-          minValue: _json.containsKey('minValue')
-              ? _json['minValue'] as core.String
+          minValue: json_.containsKey('minValue')
+              ? json_['minValue'] as core.String
               : null,
         );
 
@@ -710,10 +710,10 @@ class GoogleAppsDriveLabelsV2FieldListOptions {
     this.maxEntries,
   });
 
-  GoogleAppsDriveLabelsV2FieldListOptions.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldListOptions.fromJson(core.Map json_)
       : this(
-          maxEntries: _json.containsKey('maxEntries')
-              ? _json['maxEntries'] as core.int
+          maxEntries: json_.containsKey('maxEntries')
+              ? json_['maxEntries'] as core.int
               : null,
         );
 
@@ -744,16 +744,16 @@ class GoogleAppsDriveLabelsV2FieldProperties {
     this.required,
   });
 
-  GoogleAppsDriveLabelsV2FieldProperties.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldProperties.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          insertBeforeField: _json.containsKey('insertBeforeField')
-              ? _json['insertBeforeField'] as core.String
+          insertBeforeField: json_.containsKey('insertBeforeField')
+              ? json_['insertBeforeField'] as core.String
               : null,
-          required: _json.containsKey('required')
-              ? _json['required'] as core.bool
+          required: json_.containsKey('required')
+              ? json_['required'] as core.bool
               : null,
         );
 
@@ -792,19 +792,19 @@ class GoogleAppsDriveLabelsV2FieldSchemaCapabilities {
     this.canUpdate,
   });
 
-  GoogleAppsDriveLabelsV2FieldSchemaCapabilities.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldSchemaCapabilities.fromJson(core.Map json_)
       : this(
-          canDelete: _json.containsKey('canDelete')
-              ? _json['canDelete'] as core.bool
+          canDelete: json_.containsKey('canDelete')
+              ? json_['canDelete'] as core.bool
               : null,
-          canDisable: _json.containsKey('canDisable')
-              ? _json['canDisable'] as core.bool
+          canDisable: json_.containsKey('canDisable')
+              ? json_['canDisable'] as core.bool
               : null,
-          canEnable: _json.containsKey('canEnable')
-              ? _json['canEnable'] as core.bool
+          canEnable: json_.containsKey('canEnable')
+              ? json_['canEnable'] as core.bool
               : null,
-          canUpdate: _json.containsKey('canUpdate')
-              ? _json['canUpdate'] as core.bool
+          canUpdate: json_.containsKey('canUpdate')
+              ? json_['canUpdate'] as core.bool
               : null,
         );
 
@@ -833,19 +833,19 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptions {
     this.listOptions,
   });
 
-  GoogleAppsDriveLabelsV2FieldSelectionOptions.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldSelectionOptions.fromJson(core.Map json_)
       : this(
-          choices: _json.containsKey('choices')
-              ? (_json['choices'] as core.List)
+          choices: json_.containsKey('choices')
+              ? (json_['choices'] as core.List)
                   .map((value) =>
                       GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          listOptions: _json.containsKey('listOptions')
+          listOptions: json_.containsKey('listOptions')
               ? GoogleAppsDriveLabelsV2FieldListOptions.fromJson(
-                  _json['listOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['listOptions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -958,64 +958,64 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice {
     this.updater,
   });
 
-  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice.fromJson(core.Map json_)
       : this(
-          appliedCapabilities: _json.containsKey('appliedCapabilities')
+          appliedCapabilities: json_.containsKey('appliedCapabilities')
               ? GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities
-                  .fromJson(_json['appliedCapabilities']
+                  .fromJson(json_['appliedCapabilities']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          creator: _json.containsKey('creator')
+          creator: json_.containsKey('creator')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['creator'] as core.Map<core.String, core.dynamic>)
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
               : null,
-          disableTime: _json.containsKey('disableTime')
-              ? _json['disableTime'] as core.String
+          disableTime: json_.containsKey('disableTime')
+              ? json_['disableTime'] as core.String
               : null,
-          disabler: _json.containsKey('disabler')
+          disabler: json_.containsKey('disabler')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['disabler'] as core.Map<core.String, core.dynamic>)
+                  json_['disabler'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayHints: _json.containsKey('displayHints')
+          displayHints: json_.containsKey('displayHints')
               ? GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints
-                  .fromJson(_json['displayHints']
+                  .fromJson(json_['displayHints']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          lifecycle: _json.containsKey('lifecycle')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          lifecycle: json_.containsKey('lifecycle')
               ? GoogleAppsDriveLabelsV2Lifecycle.fromJson(
-                  _json['lifecycle'] as core.Map<core.String, core.dynamic>)
+                  json_['lifecycle'] as core.Map<core.String, core.dynamic>)
               : null,
-          lockStatus: _json.containsKey('lockStatus')
+          lockStatus: json_.containsKey('lockStatus')
               ? GoogleAppsDriveLabelsV2LockStatus.fromJson(
-                  _json['lockStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['lockStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          properties: _json.containsKey('properties')
+          properties: json_.containsKey('properties')
               ? GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties
-                  .fromJson(_json['properties']
+                  .fromJson(json_['properties']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          publishTime: _json.containsKey('publishTime')
-              ? _json['publishTime'] as core.String
+          publishTime: json_.containsKey('publishTime')
+              ? json_['publishTime'] as core.String
               : null,
-          publisher: _json.containsKey('publisher')
+          publisher: json_.containsKey('publisher')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['publisher'] as core.Map<core.String, core.dynamic>)
+                  json_['publisher'] as core.Map<core.String, core.dynamic>)
               : null,
-          schemaCapabilities: _json.containsKey('schemaCapabilities')
+          schemaCapabilities: json_.containsKey('schemaCapabilities')
               ? GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities
-                  .fromJson(_json['schemaCapabilities']
+                  .fromJson(json_['schemaCapabilities']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          updater: _json.containsKey('updater')
+          updater: json_.containsKey('updater')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['updater'] as core.Map<core.String, core.dynamic>)
+                  json_['updater'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1058,16 +1058,16 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities {
   });
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          canRead: _json.containsKey('canRead')
-              ? _json['canRead'] as core.bool
+          canRead: json_.containsKey('canRead')
+              ? json_['canRead'] as core.bool
               : null,
-          canSearch: _json.containsKey('canSearch')
-              ? _json['canSearch'] as core.bool
+          canSearch: json_.containsKey('canSearch')
+              ? json_['canSearch'] as core.bool
               : null,
-          canSelect: _json.containsKey('canSelect')
-              ? _json['canSelect'] as core.bool
+          canSelect: json_.containsKey('canSelect')
+              ? json_['canSelect'] as core.bool
               : null,
         );
 
@@ -1121,28 +1121,28 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints {
   });
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          badgeColors: _json.containsKey('badgeColors')
+          badgeColors: json_.containsKey('badgeColors')
               ? GoogleAppsDriveLabelsV2BadgeColors.fromJson(
-                  _json['badgeColors'] as core.Map<core.String, core.dynamic>)
+                  json_['badgeColors'] as core.Map<core.String, core.dynamic>)
               : null,
-          badgePriority: _json.containsKey('badgePriority')
-              ? _json['badgePriority'] as core.String
+          badgePriority: json_.containsKey('badgePriority')
+              ? json_['badgePriority'] as core.String
               : null,
-          darkBadgeColors: _json.containsKey('darkBadgeColors')
+          darkBadgeColors: json_.containsKey('darkBadgeColors')
               ? GoogleAppsDriveLabelsV2BadgeColors.fromJson(
-                  _json['darkBadgeColors']
+                  json_['darkBadgeColors']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          hiddenInSearch: _json.containsKey('hiddenInSearch')
-              ? _json['hiddenInSearch'] as core.bool
+          hiddenInSearch: json_.containsKey('hiddenInSearch')
+              ? json_['hiddenInSearch'] as core.bool
               : null,
-          shownInApply: _json.containsKey('shownInApply')
-              ? _json['shownInApply'] as core.bool
+          shownInApply: json_.containsKey('shownInApply')
+              ? json_['shownInApply'] as core.bool
               : null,
         );
 
@@ -1186,20 +1186,20 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties {
   });
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          badgeConfig: _json.containsKey('badgeConfig')
+          badgeConfig: json_.containsKey('badgeConfig')
               ? GoogleAppsDriveLabelsV2BadgeConfig.fromJson(
-                  _json['badgeConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['badgeConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          insertBeforeChoice: _json.containsKey('insertBeforeChoice')
-              ? _json['insertBeforeChoice'] as core.String
+          insertBeforeChoice: json_.containsKey('insertBeforeChoice')
+              ? json_['insertBeforeChoice'] as core.String
               : null,
         );
 
@@ -1234,19 +1234,19 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities {
   });
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          canDelete: _json.containsKey('canDelete')
-              ? _json['canDelete'] as core.bool
+          canDelete: json_.containsKey('canDelete')
+              ? json_['canDelete'] as core.bool
               : null,
-          canDisable: _json.containsKey('canDisable')
-              ? _json['canDisable'] as core.bool
+          canDisable: json_.containsKey('canDisable')
+              ? json_['canDisable'] as core.bool
               : null,
-          canEnable: _json.containsKey('canEnable')
-              ? _json['canEnable'] as core.bool
+          canEnable: json_.containsKey('canEnable')
+              ? json_['canEnable'] as core.bool
               : null,
-          canUpdate: _json.containsKey('canUpdate')
-              ? _json['canUpdate'] as core.bool
+          canUpdate: json_.containsKey('canUpdate')
+              ? json_['canUpdate'] as core.bool
               : null,
         );
 
@@ -1275,13 +1275,13 @@ class GoogleAppsDriveLabelsV2FieldTextOptions {
     this.minLength,
   });
 
-  GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(core.Map json_)
       : this(
-          maxLength: _json.containsKey('maxLength')
-              ? _json['maxLength'] as core.int
+          maxLength: json_.containsKey('maxLength')
+              ? json_['maxLength'] as core.int
               : null,
-          minLength: _json.containsKey('minLength')
-              ? _json['minLength'] as core.int
+          minLength: json_.containsKey('minLength')
+              ? json_['minLength'] as core.int
               : null,
         );
 
@@ -1302,11 +1302,11 @@ class GoogleAppsDriveLabelsV2FieldUserOptions {
     this.listOptions,
   });
 
-  GoogleAppsDriveLabelsV2FieldUserOptions.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2FieldUserOptions.fromJson(core.Map json_)
       : this(
-          listOptions: _json.containsKey('listOptions')
+          listOptions: json_.containsKey('listOptions')
               ? GoogleAppsDriveLabelsV2FieldListOptions.fromJson(
-                  _json['listOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['listOptions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1473,83 +1473,83 @@ class GoogleAppsDriveLabelsV2Label {
     this.schemaCapabilities,
   });
 
-  GoogleAppsDriveLabelsV2Label.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2Label.fromJson(core.Map json_)
       : this(
-          appliedCapabilities: _json.containsKey('appliedCapabilities')
+          appliedCapabilities: json_.containsKey('appliedCapabilities')
               ? GoogleAppsDriveLabelsV2LabelAppliedCapabilities.fromJson(
-                  _json['appliedCapabilities']
+                  json_['appliedCapabilities']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          appliedLabelPolicy: _json.containsKey('appliedLabelPolicy')
+          appliedLabelPolicy: json_.containsKey('appliedLabelPolicy')
               ? GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy.fromJson(
-                  _json['appliedLabelPolicy']
+                  json_['appliedLabelPolicy']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          creator: _json.containsKey('creator')
+          creator: json_.containsKey('creator')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['creator'] as core.Map<core.String, core.dynamic>)
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
               : null,
-          disableTime: _json.containsKey('disableTime')
-              ? _json['disableTime'] as core.String
+          disableTime: json_.containsKey('disableTime')
+              ? json_['disableTime'] as core.String
               : null,
-          disabler: _json.containsKey('disabler')
+          disabler: json_.containsKey('disabler')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['disabler'] as core.Map<core.String, core.dynamic>)
+                  json_['disabler'] as core.Map<core.String, core.dynamic>)
               : null,
-          displayHints: _json.containsKey('displayHints')
+          displayHints: json_.containsKey('displayHints')
               ? GoogleAppsDriveLabelsV2LabelDisplayHints.fromJson(
-                  _json['displayHints'] as core.Map<core.String, core.dynamic>)
+                  json_['displayHints'] as core.Map<core.String, core.dynamic>)
               : null,
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
                   .map((value) => GoogleAppsDriveLabelsV2Field.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          labelType: _json.containsKey('labelType')
-              ? _json['labelType'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          labelType: json_.containsKey('labelType')
+              ? json_['labelType'] as core.String
               : null,
-          learnMoreUri: _json.containsKey('learnMoreUri')
-              ? _json['learnMoreUri'] as core.String
+          learnMoreUri: json_.containsKey('learnMoreUri')
+              ? json_['learnMoreUri'] as core.String
               : null,
-          lifecycle: _json.containsKey('lifecycle')
+          lifecycle: json_.containsKey('lifecycle')
               ? GoogleAppsDriveLabelsV2Lifecycle.fromJson(
-                  _json['lifecycle'] as core.Map<core.String, core.dynamic>)
+                  json_['lifecycle'] as core.Map<core.String, core.dynamic>)
               : null,
-          lockStatus: _json.containsKey('lockStatus')
+          lockStatus: json_.containsKey('lockStatus')
               ? GoogleAppsDriveLabelsV2LockStatus.fromJson(
-                  _json['lockStatus'] as core.Map<core.String, core.dynamic>)
+                  json_['lockStatus'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          properties: _json.containsKey('properties')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          properties: json_.containsKey('properties')
               ? GoogleAppsDriveLabelsV2LabelProperties.fromJson(
-                  _json['properties'] as core.Map<core.String, core.dynamic>)
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
               : null,
-          publishTime: _json.containsKey('publishTime')
-              ? _json['publishTime'] as core.String
+          publishTime: json_.containsKey('publishTime')
+              ? json_['publishTime'] as core.String
               : null,
-          publisher: _json.containsKey('publisher')
+          publisher: json_.containsKey('publisher')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['publisher'] as core.Map<core.String, core.dynamic>)
+                  json_['publisher'] as core.Map<core.String, core.dynamic>)
               : null,
-          revisionCreateTime: _json.containsKey('revisionCreateTime')
-              ? _json['revisionCreateTime'] as core.String
+          revisionCreateTime: json_.containsKey('revisionCreateTime')
+              ? json_['revisionCreateTime'] as core.String
               : null,
-          revisionCreator: _json.containsKey('revisionCreator')
+          revisionCreator: json_.containsKey('revisionCreator')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
-                  _json['revisionCreator']
+                  json_['revisionCreator']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
-          schemaCapabilities: _json.containsKey('schemaCapabilities')
+          schemaCapabilities: json_.containsKey('schemaCapabilities')
               ? GoogleAppsDriveLabelsV2LabelSchemaCapabilities.fromJson(
-                  _json['schemaCapabilities']
+                  json_['schemaCapabilities']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1600,16 +1600,16 @@ class GoogleAppsDriveLabelsV2LabelAppliedCapabilities {
     this.canRemove,
   });
 
-  GoogleAppsDriveLabelsV2LabelAppliedCapabilities.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2LabelAppliedCapabilities.fromJson(core.Map json_)
       : this(
-          canApply: _json.containsKey('canApply')
-              ? _json['canApply'] as core.bool
+          canApply: json_.containsKey('canApply')
+              ? json_['canApply'] as core.bool
               : null,
-          canRead: _json.containsKey('canRead')
-              ? _json['canRead'] as core.bool
+          canRead: json_.containsKey('canRead')
+              ? json_['canRead'] as core.bool
               : null,
-          canRemove: _json.containsKey('canRemove')
-              ? _json['canRemove'] as core.bool
+          canRemove: json_.containsKey('canRemove')
+              ? json_['canRemove'] as core.bool
               : null,
         );
 
@@ -1639,10 +1639,10 @@ class GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy {
     this.copyMode,
   });
 
-  GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy.fromJson(core.Map json_)
       : this(
-          copyMode: _json.containsKey('copyMode')
-              ? _json['copyMode'] as core.String
+          copyMode: json_.containsKey('copyMode')
+              ? json_['copyMode'] as core.String
               : null,
         );
 
@@ -1673,19 +1673,19 @@ class GoogleAppsDriveLabelsV2LabelDisplayHints {
     this.shownInApply,
   });
 
-  GoogleAppsDriveLabelsV2LabelDisplayHints.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2LabelDisplayHints.fromJson(core.Map json_)
       : this(
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          hiddenInSearch: _json.containsKey('hiddenInSearch')
-              ? _json['hiddenInSearch'] as core.bool
+          hiddenInSearch: json_.containsKey('hiddenInSearch')
+              ? json_['hiddenInSearch'] as core.bool
               : null,
-          priority: _json.containsKey('priority')
-              ? _json['priority'] as core.String
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
               : null,
-          shownInApply: _json.containsKey('shownInApply')
-              ? _json['shownInApply'] as core.bool
+          shownInApply: json_.containsKey('shownInApply')
+              ? json_['shownInApply'] as core.bool
               : null,
         );
 
@@ -1712,13 +1712,13 @@ class GoogleAppsDriveLabelsV2LabelProperties {
     this.title,
   });
 
-  GoogleAppsDriveLabelsV2LabelProperties.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2LabelProperties.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1754,19 +1754,19 @@ class GoogleAppsDriveLabelsV2LabelSchemaCapabilities {
     this.canUpdate,
   });
 
-  GoogleAppsDriveLabelsV2LabelSchemaCapabilities.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2LabelSchemaCapabilities.fromJson(core.Map json_)
       : this(
-          canDelete: _json.containsKey('canDelete')
-              ? _json['canDelete'] as core.bool
+          canDelete: json_.containsKey('canDelete')
+              ? json_['canDelete'] as core.bool
               : null,
-          canDisable: _json.containsKey('canDisable')
-              ? _json['canDisable'] as core.bool
+          canDisable: json_.containsKey('canDisable')
+              ? json_['canDisable'] as core.bool
               : null,
-          canEnable: _json.containsKey('canEnable')
-              ? _json['canEnable'] as core.bool
+          canEnable: json_.containsKey('canEnable')
+              ? json_['canEnable'] as core.bool
               : null,
-          canUpdate: _json.containsKey('canUpdate')
-              ? _json['canUpdate'] as core.bool
+          canUpdate: json_.containsKey('canUpdate')
+              ? json_['canUpdate'] as core.bool
               : null,
         );
 
@@ -1822,18 +1822,18 @@ class GoogleAppsDriveLabelsV2Lifecycle {
     this.state,
   });
 
-  GoogleAppsDriveLabelsV2Lifecycle.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2Lifecycle.fromJson(core.Map json_)
       : this(
-          disabledPolicy: _json.containsKey('disabledPolicy')
+          disabledPolicy: json_.containsKey('disabledPolicy')
               ? GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(
-                  _json['disabledPolicy']
+                  json_['disabledPolicy']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          hasUnpublishedChanges: _json.containsKey('hasUnpublishedChanges')
-              ? _json['hasUnpublishedChanges'] as core.bool
+          hasUnpublishedChanges: json_.containsKey('hasUnpublishedChanges')
+              ? json_['hasUnpublishedChanges'] as core.bool
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1867,13 +1867,13 @@ class GoogleAppsDriveLabelsV2LifecycleDisabledPolicy {
     this.showInApply,
   });
 
-  GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(core.Map json_)
       : this(
-          hideInSearch: _json.containsKey('hideInSearch')
-              ? _json['hideInSearch'] as core.bool
+          hideInSearch: json_.containsKey('hideInSearch')
+              ? json_['hideInSearch'] as core.bool
               : null,
-          showInApply: _json.containsKey('showInApply')
-              ? _json['showInApply'] as core.bool
+          showInApply: json_.containsKey('showInApply')
+              ? json_['showInApply'] as core.bool
               : null,
         );
 
@@ -1896,16 +1896,16 @@ class GoogleAppsDriveLabelsV2ListLabelsResponse {
     this.nextPageToken,
   });
 
-  GoogleAppsDriveLabelsV2ListLabelsResponse.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2ListLabelsResponse.fromJson(core.Map json_)
       : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => GoogleAppsDriveLabelsV2Label.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1931,10 +1931,10 @@ class GoogleAppsDriveLabelsV2LockStatus {
     this.locked,
   });
 
-  GoogleAppsDriveLabelsV2LockStatus.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2LockStatus.fromJson(core.Map json_)
       : this(
           locked:
-              _json.containsKey('locked') ? _json['locked'] as core.bool : null,
+              json_.containsKey('locked') ? json_['locked'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1954,10 +1954,10 @@ class GoogleAppsDriveLabelsV2UserInfo {
     this.person,
   });
 
-  GoogleAppsDriveLabelsV2UserInfo.fromJson(core.Map _json)
+  GoogleAppsDriveLabelsV2UserInfo.fromJson(core.Map json_)
       : this(
-          person: _json.containsKey('person')
-              ? _json['person'] as core.String
+          person: json_.containsKey('person')
+              ? json_['person'] as core.String
               : null,
         );
 

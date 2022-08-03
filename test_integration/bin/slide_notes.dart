@@ -8,14 +8,14 @@ import 'package:googleapis/slides/v1.dart' hide List;
 import 'package:test_integration/test_integration.dart';
 
 Future<void> main(List<String> args) async {
-  final _presentationId = args.first;
+  final presentationId = args.first;
 
   await withClientFromUserCredentials(
     [SlidesApi.presentationsReadonlyScope],
     (client) async {
       final api = SlidesApi(client).presentations;
 
-      final result = await api.get(_presentationId);
+      final result = await api.get(presentationId);
 
       var count = 0;
       for (var slide in result.slides!) {

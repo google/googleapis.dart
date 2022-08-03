@@ -105,19 +105,19 @@ class LocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BusinessCallsSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Business call settings for the specified location.
@@ -148,22 +148,22 @@ class LocationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BusinessCallsSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -225,23 +225,23 @@ class LocationsBusinesscallsinsightsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/businesscallsinsights';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBusinessCallsInsightsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -276,30 +276,30 @@ class AggregateMetrics {
     this.weekdayMetrics,
   });
 
-  AggregateMetrics.fromJson(core.Map _json)
+  AggregateMetrics.fromJson(core.Map json_)
       : this(
-          answeredCallsCount: _json.containsKey('answeredCallsCount')
-              ? _json['answeredCallsCount'] as core.int
+          answeredCallsCount: json_.containsKey('answeredCallsCount')
+              ? json_['answeredCallsCount'] as core.int
               : null,
-          endDate: _json.containsKey('endDate')
+          endDate: json_.containsKey('endDate')
               ? Date.fromJson(
-                  _json['endDate'] as core.Map<core.String, core.dynamic>)
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          hourlyMetrics: _json.containsKey('hourlyMetrics')
-              ? (_json['hourlyMetrics'] as core.List)
+          hourlyMetrics: json_.containsKey('hourlyMetrics')
+              ? (json_['hourlyMetrics'] as core.List)
                   .map((value) => HourlyMetrics.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          missedCallsCount: _json.containsKey('missedCallsCount')
-              ? _json['missedCallsCount'] as core.int
+          missedCallsCount: json_.containsKey('missedCallsCount')
+              ? json_['missedCallsCount'] as core.int
               : null,
-          startDate: _json.containsKey('startDate')
+          startDate: json_.containsKey('startDate')
               ? Date.fromJson(
-                  _json['startDate'] as core.Map<core.String, core.dynamic>)
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          weekdayMetrics: _json.containsKey('weekdayMetrics')
-              ? (_json['weekdayMetrics'] as core.List)
+          weekdayMetrics: json_.containsKey('weekdayMetrics')
+              ? (json_['weekdayMetrics'] as core.List)
                   .map((value) => WeekDayMetrics.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -342,16 +342,16 @@ class BusinessCallsInsights {
     this.name,
   });
 
-  BusinessCallsInsights.fromJson(core.Map _json)
+  BusinessCallsInsights.fromJson(core.Map json_)
       : this(
-          aggregateMetrics: _json.containsKey('aggregateMetrics')
-              ? AggregateMetrics.fromJson(_json['aggregateMetrics']
+          aggregateMetrics: json_.containsKey('aggregateMetrics')
+              ? AggregateMetrics.fromJson(json_['aggregateMetrics']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          metricType: _json.containsKey('metricType')
-              ? _json['metricType'] as core.String
+          metricType: json_.containsKey('metricType')
+              ? json_['metricType'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -391,15 +391,15 @@ class BusinessCallsSettings {
     this.name,
   });
 
-  BusinessCallsSettings.fromJson(core.Map _json)
+  BusinessCallsSettings.fromJson(core.Map json_)
       : this(
-          callsState: _json.containsKey('callsState')
-              ? _json['callsState'] as core.String
+          callsState: json_.containsKey('callsState')
+              ? json_['callsState'] as core.String
               : null,
-          consentTime: _json.containsKey('consentTime')
-              ? _json['consentTime'] as core.String
+          consentTime: json_.containsKey('consentTime')
+              ? json_['consentTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -436,11 +436,11 @@ class HourlyMetrics {
     this.missedCallsCount,
   });
 
-  HourlyMetrics.fromJson(core.Map _json)
+  HourlyMetrics.fromJson(core.Map json_)
       : this(
-          hour: _json.containsKey('hour') ? _json['hour'] as core.int : null,
-          missedCallsCount: _json.containsKey('missedCallsCount')
-              ? _json['missedCallsCount'] as core.int
+          hour: json_.containsKey('hour') ? json_['hour'] as core.int : null,
+          missedCallsCount: json_.containsKey('missedCallsCount')
+              ? json_['missedCallsCount'] as core.int
               : null,
         );
 
@@ -467,16 +467,16 @@ class ListBusinessCallsInsightsResponse {
     this.nextPageToken,
   });
 
-  ListBusinessCallsInsightsResponse.fromJson(core.Map _json)
+  ListBusinessCallsInsightsResponse.fromJson(core.Map json_)
       : this(
-          businessCallsInsights: _json.containsKey('businessCallsInsights')
-              ? (_json['businessCallsInsights'] as core.List)
+          businessCallsInsights: json_.containsKey('businessCallsInsights')
+              ? (json_['businessCallsInsights'] as core.List)
                   .map((value) => BusinessCallsInsights.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -511,11 +511,11 @@ class WeekDayMetrics {
     this.missedCallsCount,
   });
 
-  WeekDayMetrics.fromJson(core.Map _json)
+  WeekDayMetrics.fromJson(core.Map json_)
       : this(
-          day: _json.containsKey('day') ? _json['day'] as core.String : null,
-          missedCallsCount: _json.containsKey('missedCallsCount')
-              ? _json['missedCallsCount'] as core.int
+          day: json_.containsKey('day') ? json_['day'] as core.String : null,
+          missedCallsCount: json_.containsKey('missedCallsCount')
+              ? json_['missedCallsCount'] as core.int
               : null,
         );
 

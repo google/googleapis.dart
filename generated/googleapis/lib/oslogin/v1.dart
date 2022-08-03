@@ -106,21 +106,21 @@ class UsersResource {
     core.String? systemId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (systemId != null) 'systemId': [systemId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/loginProfile';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/loginProfile';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LoginProfile.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds an SSH public key and returns the profile information.
@@ -153,22 +153,22 @@ class UsersResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + ':importSshPublicKey';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':importSshPublicKey';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ImportSshPublicKeyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -201,18 +201,18 @@ class UsersProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -245,21 +245,21 @@ class UsersSshPublicKeysResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sshPublicKeys';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sshPublicKeys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an SSH public key.
@@ -285,18 +285,18 @@ class UsersSshPublicKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an SSH public key.
@@ -322,19 +322,19 @@ class UsersSshPublicKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an SSH public key and returns the profile information.
@@ -369,22 +369,22 @@ class UsersSshPublicKeysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -409,14 +409,14 @@ class ImportSshPublicKeyResponse {
     this.loginProfile,
   });
 
-  ImportSshPublicKeyResponse.fromJson(core.Map _json)
+  ImportSshPublicKeyResponse.fromJson(core.Map json_)
       : this(
-          details: _json.containsKey('details')
-              ? _json['details'] as core.String
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
               : null,
-          loginProfile: _json.containsKey('loginProfile')
+          loginProfile: json_.containsKey('loginProfile')
               ? LoginProfile.fromJson(
-                  _json['loginProfile'] as core.Map<core.String, core.dynamic>)
+                  json_['loginProfile'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -446,17 +446,17 @@ class LoginProfile {
     this.sshPublicKeys,
   });
 
-  LoginProfile.fromJson(core.Map _json)
+  LoginProfile.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          posixAccounts: _json.containsKey('posixAccounts')
-              ? (_json['posixAccounts'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          posixAccounts: json_.containsKey('posixAccounts')
+              ? (json_['posixAccounts'] as core.List)
                   .map((value) => PosixAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          sshPublicKeys: _json.containsKey('sshPublicKeys')
-              ? (_json['sshPublicKeys'] as core.Map<core.String, core.dynamic>)
+          sshPublicKeys: json_.containsKey('sshPublicKeys')
+              ? (json_['sshPublicKeys'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -534,32 +534,32 @@ class PosixAccount {
     this.username,
   });
 
-  PosixAccount.fromJson(core.Map _json)
+  PosixAccount.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
           gecos:
-              _json.containsKey('gecos') ? _json['gecos'] as core.String : null,
-          gid: _json.containsKey('gid') ? _json['gid'] as core.String : null,
-          homeDirectory: _json.containsKey('homeDirectory')
-              ? _json['homeDirectory'] as core.String
+              json_.containsKey('gecos') ? json_['gecos'] as core.String : null,
+          gid: json_.containsKey('gid') ? json_['gid'] as core.String : null,
+          homeDirectory: json_.containsKey('homeDirectory')
+              ? json_['homeDirectory'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          operatingSystemType: _json.containsKey('operatingSystemType')
-              ? _json['operatingSystemType'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          operatingSystemType: json_.containsKey('operatingSystemType')
+              ? json_['operatingSystemType'] as core.String
               : null,
-          primary: _json.containsKey('primary')
-              ? _json['primary'] as core.bool
+          primary: json_.containsKey('primary')
+              ? json_['primary'] as core.bool
               : null,
           shell:
-              _json.containsKey('shell') ? _json['shell'] as core.String : null,
-          systemId: _json.containsKey('systemId')
-              ? _json['systemId'] as core.String
+              json_.containsKey('shell') ? json_['shell'] as core.String : null,
+          systemId: json_.containsKey('systemId')
+              ? json_['systemId'] as core.String
               : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
-          username: _json.containsKey('username')
-              ? _json['username'] as core.String
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
               : null,
         );
 
@@ -604,16 +604,16 @@ class SshPublicKey {
     this.name,
   });
 
-  SshPublicKey.fromJson(core.Map _json)
+  SshPublicKey.fromJson(core.Map json_)
       : this(
-          expirationTimeUsec: _json.containsKey('expirationTimeUsec')
-              ? _json['expirationTimeUsec'] as core.String
+          expirationTimeUsec: json_.containsKey('expirationTimeUsec')
+              ? json_['expirationTimeUsec'] as core.String
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

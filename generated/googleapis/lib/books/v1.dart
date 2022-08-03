@@ -125,22 +125,22 @@ class BookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/users/' +
+    final url_ = 'books/v1/users/' +
         commons.escapeVariable('$userId') +
         '/bookshelves/' +
         commons.escapeVariable('$shelf');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Bookshelf.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Bookshelf.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of public bookshelves for the specified user.
@@ -166,21 +166,21 @@ class BookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'books/v1/users/' + commons.escapeVariable('$userId') + '/bookshelves';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Bookshelves.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -225,7 +225,7 @@ class BookshelvesVolumesResource {
     core.int? startIndex,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (showPreorders != null) 'showPreorders': ['${showPreorders}'],
       if (source != null) 'source': [source],
@@ -233,18 +233,18 @@ class BookshelvesVolumesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/users/' +
+    final url_ = 'books/v1/users/' +
         commons.escapeVariable('$userId') +
         '/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/volumes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -285,7 +285,7 @@ class CloudloadingResource {
     core.String? uploadClientToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (driveDocumentId != null) 'drive_document_id': [driveDocumentId],
       if (mimeType != null) 'mime_type': [mimeType],
       if (name != null) 'name': [name],
@@ -293,15 +293,15 @@ class CloudloadingResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/cloudloading/addBook';
+    const url_ = 'books/v1/cloudloading/addBook';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BooksCloudloadingResource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Remove the book and its contents
@@ -324,19 +324,19 @@ class CloudloadingResource {
     core.String volumeId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/cloudloading/deleteBook';
+    const url_ = 'books/v1/cloudloading/deleteBook';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user-upload volume.
@@ -359,21 +359,21 @@ class CloudloadingResource {
     BooksCloudloadingResource request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/cloudloading/updateBook';
+    const url_ = 'books/v1/cloudloading/updateBook';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BooksCloudloadingResource.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -402,19 +402,19 @@ class DictionaryResource {
     core.String cpksver, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/dictionary/listOfflineMetadata';
+    const url_ = 'books/v1/dictionary/listOfflineMetadata';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Metadata.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Metadata.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -443,20 +443,20 @@ class FamilysharingResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/familysharing/getFamilyInfo';
+    const url_ = 'books/v1/familysharing/getFamilyInfo';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return FamilyInfo.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Initiates sharing of the content with the user's family.
@@ -487,21 +487,21 @@ class FamilysharingResource {
     core.String? volumeId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (docId != null) 'docId': [docId],
       if (source != null) 'source': [source],
       if (volumeId != null) 'volumeId': [volumeId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/familysharing/share';
+    const url_ = 'books/v1/familysharing/share';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Initiates revoking content that has already been shared with the user's
@@ -533,21 +533,21 @@ class FamilysharingResource {
     core.String? volumeId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (docId != null) 'docId': [docId],
       if (source != null) 'source': [source],
       if (volumeId != null) 'volumeId': [volumeId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/familysharing/unshare';
+    const url_ = 'books/v1/familysharing/unshare';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -590,24 +590,24 @@ class LayersResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' +
+    final url_ = 'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layersummary/' +
         commons.escapeVariable('$summaryId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Layersummary.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List the layer summaries for a volume.
@@ -643,7 +643,7 @@ class LayersResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -651,17 +651,17 @@ class LayersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' +
+    final url_ = 'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layersummary';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Layersummaries.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -723,7 +723,7 @@ class LayersAnnotationDataResource {
     core.int? w,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'contentVersion': [contentVersion],
       if (allowWebDefinitions != null)
         'allowWebDefinitions': ['${allowWebDefinitions}'],
@@ -735,20 +735,20 @@ class LayersAnnotationDataResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' +
+    final url_ = 'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId') +
         '/data/' +
         commons.escapeVariable('$annotationDataId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DictionaryAnnotationdata.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the annotation data for a volume and layer.
@@ -814,7 +814,7 @@ class LayersAnnotationDataResource {
     core.int? w,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'contentVersion': [contentVersion],
       if (annotationDataId != null) 'annotationDataId': annotationDataId,
       if (h != null) 'h': ['${h}'],
@@ -829,19 +829,19 @@ class LayersAnnotationDataResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' +
+    final url_ = 'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId') +
         '/data';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Annotationsdata.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -884,26 +884,26 @@ class LayersVolumeAnnotationsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' +
+    final url_ = 'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId') +
         '/annotations/' +
         commons.escapeVariable('$annotationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Volumeannotation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the volume annotations for a volume and layer.
@@ -974,7 +974,7 @@ class LayersVolumeAnnotationsResource {
     core.String? volumeAnnotationsVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'contentVersion': [contentVersion],
       if (endOffset != null) 'endOffset': [endOffset],
       if (endPosition != null) 'endPosition': [endPosition],
@@ -992,18 +992,18 @@ class LayersVolumeAnnotationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' +
+    final url_ = 'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Volumeannotations.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1033,20 +1033,20 @@ class MyconfigResource {
     core.String? country,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/myconfig/getUserSettings';
+    const url_ = 'books/v1/myconfig/getUserSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Usersettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Release downloaded content access restriction.
@@ -1082,7 +1082,7 @@ class MyconfigResource {
     if (volumeIds.isEmpty) {
       throw core.ArgumentError('Parameter volumeIds cannot be empty.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
       'volumeIds': volumeIds,
       if (locale != null) 'locale': [locale],
@@ -1090,15 +1090,15 @@ class MyconfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/myconfig/releaseDownloadAccess';
+    const url_ = 'books/v1/myconfig/releaseDownloadAccess';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DownloadAccesses.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Request concurrent and download access restrictions.
@@ -1143,7 +1143,7 @@ class MyconfigResource {
     core.String? locale,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
       'nonce': [nonce],
       'source': [source],
@@ -1153,15 +1153,15 @@ class MyconfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/myconfig/requestAccess';
+    const url_ = 'books/v1/myconfig/requestAccess';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return RequestAccessData.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Request downloaded content access for specified volumes on the My eBooks
@@ -1209,7 +1209,7 @@ class MyconfigResource {
     core.List<core.String>? volumeIds,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
       'nonce': [nonce],
       'source': [source],
@@ -1222,14 +1222,14 @@ class MyconfigResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/myconfig/syncVolumeLicenses';
+    const url_ = 'books/v1/myconfig/syncVolumeLicenses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the settings for the user.
@@ -1256,21 +1256,21 @@ class MyconfigResource {
     Usersettings request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/myconfig/updateUserSettings';
+    const url_ = 'books/v1/myconfig/updateUserSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Usersettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1316,20 +1316,20 @@ class MylibraryAnnotationsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/annotations/' +
+    final url_ = 'books/v1/mylibrary/annotations/' +
         commons.escapeVariable('$annotationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new annotation.
@@ -1365,8 +1365,8 @@ class MylibraryAnnotationsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (annotationId != null) 'annotationId': [annotationId],
       if (country != null) 'country': [country],
       if (showOnlySummaryInResponse != null)
@@ -1375,16 +1375,16 @@ class MylibraryAnnotationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/mylibrary/annotations';
+    const url_ = 'books/v1/mylibrary/annotations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Annotation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of annotations, possibly filtered.
@@ -1438,7 +1438,7 @@ class MylibraryAnnotationsResource {
     core.String? volumeId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
       if (layerId != null) 'layerId': [layerId],
       if (layerIds != null) 'layerIds': layerIds,
@@ -1452,15 +1452,15 @@ class MylibraryAnnotationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/mylibrary/annotations';
+    const url_ = 'books/v1/mylibrary/annotations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Annotations.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the summary of specified layers.
@@ -1489,21 +1489,21 @@ class MylibraryAnnotationsResource {
     if (layerIds.isEmpty) {
       throw core.ArgumentError('Parameter layerIds cannot be empty.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'layerIds': layerIds,
       'volumeId': [volumeId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/mylibrary/annotations/summary';
+    const url_ = 'books/v1/mylibrary/annotations/summary';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AnnotationsSummary.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing annotation.
@@ -1532,23 +1532,23 @@ class MylibraryAnnotationsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/annotations/' +
+    final url_ = 'books/v1/mylibrary/annotations/' +
         commons.escapeVariable('$annotationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Annotation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1595,23 +1595,23 @@ class MylibraryBookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       if (reason != null) 'reason': [reason],
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/bookshelves/' +
+    final url_ = 'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/addVolume';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Clears all volumes from a bookshelf.
@@ -1637,21 +1637,21 @@ class MylibraryBookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/bookshelves/' +
+    final url_ = 'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/clearVolumes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves metadata for a specific bookshelf belonging to the authenticated
@@ -1678,20 +1678,20 @@ class MylibraryBookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'books/v1/mylibrary/bookshelves/' + commons.escapeVariable('$shelf');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Bookshelf.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Bookshelf.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of bookshelves belonging to the authenticated user.
@@ -1714,20 +1714,20 @@ class MylibraryBookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/mylibrary/bookshelves';
+    const url_ = 'books/v1/mylibrary/bookshelves';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Bookshelves.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a volume within a bookshelf.
@@ -1761,23 +1761,23 @@ class MylibraryBookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       'volumePosition': ['${volumePosition}'],
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/bookshelves/' +
+    final url_ = 'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/moveVolume';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a volume from a bookshelf.
@@ -1812,23 +1812,23 @@ class MylibraryBookshelvesResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       if (reason != null) 'reason': [reason],
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/bookshelves/' +
+    final url_ = 'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/removeVolume';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1884,7 +1884,7 @@ class MylibraryBookshelvesVolumesResource {
     core.int? startIndex,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (projection != null) 'projection': [projection],
@@ -1895,16 +1895,16 @@ class MylibraryBookshelvesVolumesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/bookshelves/' +
+    final url_ = 'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/volumes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1941,22 +1941,22 @@ class MylibraryReadingpositionsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/readingpositions/' +
+    final url_ = 'books/v1/mylibrary/readingpositions/' +
         commons.escapeVariable('$volumeId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ReadingPosition.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets my reading position information for a volume.
@@ -2007,7 +2007,7 @@ class MylibraryReadingpositionsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'position': [position],
       'timestamp': [timestamp],
       if (action != null) 'action': [action],
@@ -2017,16 +2017,16 @@ class MylibraryReadingpositionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/mylibrary/readingpositions/' +
+    final url_ = 'books/v1/mylibrary/readingpositions/' +
         commons.escapeVariable('$volumeId') +
         '/setPosition';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2062,22 +2062,22 @@ class NotificationResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'notification_id': [notificationId],
       if (locale != null) 'locale': [locale],
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/notification/get';
+    const url_ = 'books/v1/notification/get';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Notification.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2107,19 +2107,19 @@ class OnboardingResource {
     core.String? locale,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/onboarding/listCategories';
+    const url_ = 'books/v1/onboarding/listCategories';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Category.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Category.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List available volumes under categories for onboarding experience.
@@ -2161,7 +2161,7 @@ class OnboardingResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (categoryId != null) 'categoryId': categoryId,
       if (locale != null) 'locale': [locale],
       if (maxAllowedMaturityRating != null)
@@ -2171,14 +2171,14 @@ class OnboardingResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/onboarding/listCategoryVolumes';
+    const url_ = 'books/v1/onboarding/listCategoryVolumes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volume2.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volume2.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2220,7 +2220,7 @@ class PersonalizedstreamResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
       if (maxAllowedMaturityRating != null)
         'maxAllowedMaturityRating': [maxAllowedMaturityRating],
@@ -2228,15 +2228,15 @@ class PersonalizedstreamResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/personalizedstream/get';
+    const url_ = 'books/v1/personalizedstream/get';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Discoveryclusters.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2286,7 +2286,7 @@ class PromoofferResource {
     core.String? volumeId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (androidId != null) 'androidId': [androidId],
       if (device != null) 'device': [device],
       if (manufacturer != null) 'manufacturer': [manufacturer],
@@ -2298,14 +2298,14 @@ class PromoofferResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/promooffer/accept';
+    const url_ = 'books/v1/promooffer/accept';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the promo offer as dismissed.
@@ -2346,7 +2346,7 @@ class PromoofferResource {
     core.String? serial,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (androidId != null) 'androidId': [androidId],
       if (device != null) 'device': [device],
       if (manufacturer != null) 'manufacturer': [manufacturer],
@@ -2357,14 +2357,14 @@ class PromoofferResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/promooffer/dismiss';
+    const url_ = 'books/v1/promooffer/dismiss';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of promo offers available to the user
@@ -2402,7 +2402,7 @@ class PromoofferResource {
     core.String? serial,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (androidId != null) 'androidId': [androidId],
       if (device != null) 'device': [device],
       if (manufacturer != null) 'manufacturer': [manufacturer],
@@ -2412,14 +2412,14 @@ class PromoofferResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/promooffer/get';
+    const url_ = 'books/v1/promooffer/get';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Offers.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Offers.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2454,19 +2454,19 @@ class SeriesResource {
     if (seriesId.isEmpty) {
       throw core.ArgumentError('Parameter seriesId cannot be empty.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'series_id': seriesId,
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/series/get';
+    const url_ = 'books/v1/series/get';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Series.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Series.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2502,22 +2502,22 @@ class SeriesMembershipResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'series_id': [seriesId],
       if (pageSize != null) 'page_size': ['${pageSize}'],
       if (pageToken != null) 'page_token': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/series/membership/get';
+    const url_ = 'books/v1/series/membership/get';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Seriesmembership.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2577,7 +2577,7 @@ class VolumesResource {
     core.bool? userLibraryConsistentRead,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if (includeNonComicsSeries != null)
         'includeNonComicsSeries': ['${includeNonComicsSeries}'],
@@ -2589,14 +2589,14 @@ class VolumesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' + commons.escapeVariable('$volumeId');
+    final url_ = 'books/v1/volumes/' + commons.escapeVariable('$volumeId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volume.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volume.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs a book search.
@@ -2693,7 +2693,7 @@ class VolumesResource {
     core.int? startIndex,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'q': [q],
       if (download != null) 'download': [download],
       if (filter != null) 'filter': [filter],
@@ -2712,14 +2712,14 @@ class VolumesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/volumes';
+    const url_ = 'books/v1/volumes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2772,7 +2772,7 @@ class VolumesAssociatedResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (association != null) 'association': [association],
       if (locale != null) 'locale': [locale],
       if (maxAllowedMaturityRating != null)
@@ -2781,16 +2781,16 @@ class VolumesAssociatedResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'books/v1/volumes/' +
+    final url_ = 'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/associated';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2841,7 +2841,7 @@ class VolumesMybooksResource {
     core.int? startIndex,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (acquireMethod != null) 'acquireMethod': acquireMethod,
       if (country != null) 'country': [country],
       if (locale != null) 'locale': [locale],
@@ -2852,14 +2852,14 @@ class VolumesMybooksResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/volumes/mybooks';
+    const url_ = 'books/v1/volumes/mybooks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2901,7 +2901,7 @@ class VolumesRecommendedResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
       if (maxAllowedMaturityRating != null)
         'maxAllowedMaturityRating': [maxAllowedMaturityRating],
@@ -2909,14 +2909,14 @@ class VolumesRecommendedResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/volumes/recommended';
+    const url_ = 'books/v1/volumes/recommended';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Rate a recommended book for the current user.
@@ -2953,7 +2953,7 @@ class VolumesRecommendedResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'rating': [rating],
       'volumeId': [volumeId],
       if (locale != null) 'locale': [locale],
@@ -2961,15 +2961,15 @@ class VolumesRecommendedResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/volumes/recommended/rate';
+    const url_ = 'books/v1/volumes/recommended/rate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BooksVolumesRecommendedRateResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3018,7 +3018,7 @@ class VolumesUseruploadedResource {
     core.List<core.String>? volumeId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (processingState != null) 'processingState': processingState,
@@ -3028,14 +3028,14 @@ class VolumesUseruploadedResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'books/v1/volumes/useruploaded';
+    const url_ = 'books/v1/volumes/useruploaded';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3064,26 +3064,26 @@ class AnnotationClientVersionRanges {
     this.imageCfiRange,
   });
 
-  AnnotationClientVersionRanges.fromJson(core.Map _json)
+  AnnotationClientVersionRanges.fromJson(core.Map json_)
       : this(
-          cfiRange: _json.containsKey('cfiRange')
+          cfiRange: json_.containsKey('cfiRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['cfiRange'] as core.Map<core.String, core.dynamic>)
+                  json_['cfiRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          contentVersion: _json.containsKey('contentVersion')
-              ? _json['contentVersion'] as core.String
+          contentVersion: json_.containsKey('contentVersion')
+              ? json_['contentVersion'] as core.String
               : null,
-          gbImageRange: _json.containsKey('gbImageRange')
+          gbImageRange: json_.containsKey('gbImageRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['gbImageRange'] as core.Map<core.String, core.dynamic>)
+                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          gbTextRange: _json.containsKey('gbTextRange')
+          gbTextRange: json_.containsKey('gbTextRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['gbTextRange'] as core.Map<core.String, core.dynamic>)
+                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          imageCfiRange: _json.containsKey('imageCfiRange')
+          imageCfiRange: json_.containsKey('imageCfiRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['imageCfiRange'] as core.Map<core.String, core.dynamic>)
+                  json_['imageCfiRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3121,26 +3121,26 @@ class AnnotationCurrentVersionRanges {
     this.imageCfiRange,
   });
 
-  AnnotationCurrentVersionRanges.fromJson(core.Map _json)
+  AnnotationCurrentVersionRanges.fromJson(core.Map json_)
       : this(
-          cfiRange: _json.containsKey('cfiRange')
+          cfiRange: json_.containsKey('cfiRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['cfiRange'] as core.Map<core.String, core.dynamic>)
+                  json_['cfiRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          contentVersion: _json.containsKey('contentVersion')
-              ? _json['contentVersion'] as core.String
+          contentVersion: json_.containsKey('contentVersion')
+              ? json_['contentVersion'] as core.String
               : null,
-          gbImageRange: _json.containsKey('gbImageRange')
+          gbImageRange: json_.containsKey('gbImageRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['gbImageRange'] as core.Map<core.String, core.dynamic>)
+                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          gbTextRange: _json.containsKey('gbTextRange')
+          gbTextRange: json_.containsKey('gbTextRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['gbTextRange'] as core.Map<core.String, core.dynamic>)
+                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          imageCfiRange: _json.containsKey('imageCfiRange')
+          imageCfiRange: json_.containsKey('imageCfiRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['imageCfiRange'] as core.Map<core.String, core.dynamic>)
+                  json_['imageCfiRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3172,16 +3172,16 @@ class AnnotationLayerSummary {
     this.remainingCharacterCount,
   });
 
-  AnnotationLayerSummary.fromJson(core.Map _json)
+  AnnotationLayerSummary.fromJson(core.Map json_)
       : this(
-          allowedCharacterCount: _json.containsKey('allowedCharacterCount')
-              ? _json['allowedCharacterCount'] as core.int
+          allowedCharacterCount: json_.containsKey('allowedCharacterCount')
+              ? json_['allowedCharacterCount'] as core.int
               : null,
-          limitType: _json.containsKey('limitType')
-              ? _json['limitType'] as core.String
+          limitType: json_.containsKey('limitType')
+              ? json_['limitType'] as core.String
               : null,
-          remainingCharacterCount: _json.containsKey('remainingCharacterCount')
-              ? _json['remainingCharacterCount'] as core.int
+          remainingCharacterCount: json_.containsKey('remainingCharacterCount')
+              ? json_['remainingCharacterCount'] as core.int
               : null,
         );
 
@@ -3270,59 +3270,59 @@ class Annotation {
     this.volumeId,
   });
 
-  Annotation.fromJson(core.Map _json)
+  Annotation.fromJson(core.Map json_)
       : this(
-          afterSelectedText: _json.containsKey('afterSelectedText')
-              ? _json['afterSelectedText'] as core.String
+          afterSelectedText: json_.containsKey('afterSelectedText')
+              ? json_['afterSelectedText'] as core.String
               : null,
-          beforeSelectedText: _json.containsKey('beforeSelectedText')
-              ? _json['beforeSelectedText'] as core.String
+          beforeSelectedText: json_.containsKey('beforeSelectedText')
+              ? json_['beforeSelectedText'] as core.String
               : null,
-          clientVersionRanges: _json.containsKey('clientVersionRanges')
+          clientVersionRanges: json_.containsKey('clientVersionRanges')
               ? AnnotationClientVersionRanges.fromJson(
-                  _json['clientVersionRanges']
+                  json_['clientVersionRanges']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          created: _json.containsKey('created')
-              ? _json['created'] as core.String
+          created: json_.containsKey('created')
+              ? json_['created'] as core.String
               : null,
-          currentVersionRanges: _json.containsKey('currentVersionRanges')
+          currentVersionRanges: json_.containsKey('currentVersionRanges')
               ? AnnotationCurrentVersionRanges.fromJson(
-                  _json['currentVersionRanges']
+                  json_['currentVersionRanges']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
-          highlightStyle: _json.containsKey('highlightStyle')
-              ? _json['highlightStyle'] as core.String
+          highlightStyle: json_.containsKey('highlightStyle')
+              ? json_['highlightStyle'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          layerId: _json.containsKey('layerId')
-              ? _json['layerId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          layerId: json_.containsKey('layerId')
+              ? json_['layerId'] as core.String
               : null,
-          layerSummary: _json.containsKey('layerSummary')
+          layerSummary: json_.containsKey('layerSummary')
               ? AnnotationLayerSummary.fromJson(
-                  _json['layerSummary'] as core.Map<core.String, core.dynamic>)
+                  json_['layerSummary'] as core.Map<core.String, core.dynamic>)
               : null,
-          pageIds: _json.containsKey('pageIds')
-              ? (_json['pageIds'] as core.List)
+          pageIds: json_.containsKey('pageIds')
+              ? (json_['pageIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          selectedText: _json.containsKey('selectedText')
-              ? _json['selectedText'] as core.String
+          selectedText: json_.containsKey('selectedText')
+              ? json_['selectedText'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -3375,20 +3375,20 @@ class Annotations {
     this.totalItems,
   });
 
-  Annotations.fromJson(core.Map _json)
+  Annotations.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Annotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.int
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.int
               : null,
         );
 
@@ -3415,22 +3415,22 @@ class AnnotationsSummaryLayers {
     this.updated,
   });
 
-  AnnotationsSummaryLayers.fromJson(core.Map _json)
+  AnnotationsSummaryLayers.fromJson(core.Map json_)
       : this(
-          allowedCharacterCount: _json.containsKey('allowedCharacterCount')
-              ? _json['allowedCharacterCount'] as core.int
+          allowedCharacterCount: json_.containsKey('allowedCharacterCount')
+              ? json_['allowedCharacterCount'] as core.int
               : null,
-          layerId: _json.containsKey('layerId')
-              ? _json['layerId'] as core.String
+          layerId: json_.containsKey('layerId')
+              ? json_['layerId'] as core.String
               : null,
-          limitType: _json.containsKey('limitType')
-              ? _json['limitType'] as core.String
+          limitType: json_.containsKey('limitType')
+              ? json_['limitType'] as core.String
               : null,
-          remainingCharacterCount: _json.containsKey('remainingCharacterCount')
-              ? _json['remainingCharacterCount'] as core.int
+          remainingCharacterCount: json_.containsKey('remainingCharacterCount')
+              ? json_['remainingCharacterCount'] as core.int
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
         );
 
@@ -3454,11 +3454,11 @@ class AnnotationsSummary {
     this.layers,
   });
 
-  AnnotationsSummary.fromJson(core.Map _json)
+  AnnotationsSummary.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          layers: _json.containsKey('layers')
-              ? (_json['layers'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          layers: json_.containsKey('layers')
+              ? (json_['layers'] as core.List)
                   .map((value) => AnnotationsSummaryLayers.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3493,20 +3493,20 @@ class Annotationsdata {
     this.totalItems,
   });
 
-  Annotationsdata.fromJson(core.Map _json)
+  Annotationsdata.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => GeoAnnotationdata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.int
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.int
               : null,
         );
 
@@ -3538,19 +3538,19 @@ class BooksAnnotationsRange {
     this.startPosition,
   });
 
-  BooksAnnotationsRange.fromJson(core.Map _json)
+  BooksAnnotationsRange.fromJson(core.Map json_)
       : this(
-          endOffset: _json.containsKey('endOffset')
-              ? _json['endOffset'] as core.String
+          endOffset: json_.containsKey('endOffset')
+              ? json_['endOffset'] as core.String
               : null,
-          endPosition: _json.containsKey('endPosition')
-              ? _json['endPosition'] as core.String
+          endPosition: json_.containsKey('endPosition')
+              ? json_['endPosition'] as core.String
               : null,
-          startOffset: _json.containsKey('startOffset')
-              ? _json['startOffset'] as core.String
+          startOffset: json_.containsKey('startOffset')
+              ? json_['startOffset'] as core.String
               : null,
-          startPosition: _json.containsKey('startPosition')
-              ? _json['startPosition'] as core.String
+          startPosition: json_.containsKey('startPosition')
+              ? json_['startPosition'] as core.String
               : null,
         );
 
@@ -3575,18 +3575,18 @@ class BooksCloudloadingResource {
     this.volumeId,
   });
 
-  BooksCloudloadingResource.fromJson(core.Map _json)
+  BooksCloudloadingResource.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
-              ? _json['author'] as core.String
+          author: json_.containsKey('author')
+              ? json_['author'] as core.String
               : null,
-          processingState: _json.containsKey('processingState')
-              ? _json['processingState'] as core.String
+          processingState: json_.containsKey('processingState')
+              ? json_['processingState'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -3605,10 +3605,10 @@ class BooksVolumesRecommendedRateResponse {
     this.consistencyToken,
   });
 
-  BooksVolumesRecommendedRateResponse.fromJson(core.Map _json)
+  BooksVolumesRecommendedRateResponse.fromJson(core.Map json_)
       : this(
-          consistencyToken: _json.containsKey('consistency_token')
-              ? _json['consistency_token'] as core.String
+          consistencyToken: json_.containsKey('consistency_token')
+              ? json_['consistency_token'] as core.String
               : null,
         );
 
@@ -3664,32 +3664,32 @@ class Bookshelf {
     this.volumesLastUpdated,
   });
 
-  Bookshelf.fromJson(core.Map _json)
+  Bookshelf.fromJson(core.Map json_)
       : this(
-          access: _json.containsKey('access')
-              ? _json['access'] as core.String
+          access: json_.containsKey('access')
+              ? json_['access'] as core.String
               : null,
-          created: _json.containsKey('created')
-              ? _json['created'] as core.String
+          created: json_.containsKey('created')
+              ? json_['created'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.int : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.int : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          volumeCount: _json.containsKey('volumeCount')
-              ? _json['volumeCount'] as core.int
+          volumeCount: json_.containsKey('volumeCount')
+              ? json_['volumeCount'] as core.int
               : null,
-          volumesLastUpdated: _json.containsKey('volumesLastUpdated')
-              ? _json['volumesLastUpdated'] as core.String
+          volumesLastUpdated: json_.containsKey('volumesLastUpdated')
+              ? json_['volumesLastUpdated'] as core.String
               : null,
         );
 
@@ -3720,15 +3720,15 @@ class Bookshelves {
     this.kind,
   });
 
-  Bookshelves.fromJson(core.Map _json)
+  Bookshelves.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Bookshelf.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3748,15 +3748,15 @@ class CategoryItems {
     this.name,
   });
 
-  CategoryItems.fromJson(core.Map _json)
+  CategoryItems.fromJson(core.Map json_)
       : this(
-          badgeUrl: _json.containsKey('badgeUrl')
-              ? _json['badgeUrl'] as core.String
+          badgeUrl: json_.containsKey('badgeUrl')
+              ? json_['badgeUrl'] as core.String
               : null,
-          categoryId: _json.containsKey('categoryId')
-              ? _json['categoryId'] as core.String
+          categoryId: json_.containsKey('categoryId')
+              ? json_['categoryId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3778,15 +3778,15 @@ class Category {
     this.kind,
   });
 
-  Category.fromJson(core.Map _json)
+  Category.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => CategoryItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3847,37 +3847,37 @@ class ConcurrentAccessRestriction {
     this.volumeId,
   });
 
-  ConcurrentAccessRestriction.fromJson(core.Map _json)
+  ConcurrentAccessRestriction.fromJson(core.Map json_)
       : this(
-          deviceAllowed: _json.containsKey('deviceAllowed')
-              ? _json['deviceAllowed'] as core.bool
+          deviceAllowed: json_.containsKey('deviceAllowed')
+              ? json_['deviceAllowed'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          maxConcurrentDevices: _json.containsKey('maxConcurrentDevices')
-              ? _json['maxConcurrentDevices'] as core.int
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          maxConcurrentDevices: json_.containsKey('maxConcurrentDevices')
+              ? json_['maxConcurrentDevices'] as core.int
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
           nonce:
-              _json.containsKey('nonce') ? _json['nonce'] as core.String : null,
-          reasonCode: _json.containsKey('reasonCode')
-              ? _json['reasonCode'] as core.String
+              json_.containsKey('nonce') ? json_['nonce'] as core.String : null,
+          reasonCode: json_.containsKey('reasonCode')
+              ? json_['reasonCode'] as core.String
               : null,
-          restricted: _json.containsKey('restricted')
-              ? _json['restricted'] as core.bool
+          restricted: json_.containsKey('restricted')
+              ? json_['restricted'] as core.bool
               : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
               : null,
-          timeWindowSeconds: _json.containsKey('timeWindowSeconds')
-              ? _json['timeWindowSeconds'] as core.int
+          timeWindowSeconds: json_.containsKey('timeWindowSeconds')
+              ? json_['timeWindowSeconds'] as core.int
               : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -3912,9 +3912,9 @@ class DictionaryAnnotationdata {
   core.List<core.int> get encodedDataAsBytes =>
       convert.base64.decode(encodedData!);
 
-  set encodedDataAsBytes(core.List<core.int> _bytes) {
+  set encodedDataAsBytes(core.List<core.int> bytes_) {
     encodedData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Unique id for this annotation data.
@@ -3955,31 +3955,31 @@ class DictionaryAnnotationdata {
     this.volumeId,
   });
 
-  DictionaryAnnotationdata.fromJson(core.Map _json)
+  DictionaryAnnotationdata.fromJson(core.Map json_)
       : this(
-          annotationType: _json.containsKey('annotationType')
-              ? _json['annotationType'] as core.String
+          annotationType: json_.containsKey('annotationType')
+              ? json_['annotationType'] as core.String
               : null,
-          data: _json.containsKey('data')
+          data: json_.containsKey('data')
               ? Dictlayerdata.fromJson(
-                  _json['data'] as core.Map<core.String, core.dynamic>)
+                  json_['data'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodedData: _json.containsKey('encodedData')
-              ? _json['encodedData'] as core.String
+          encodedData: json_.containsKey('encodedData')
+              ? json_['encodedData'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          layerId: _json.containsKey('layerId')
-              ? _json['layerId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          layerId: json_.containsKey('layerId')
+              ? json_['layerId'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -4005,10 +4005,10 @@ class DictlayerdataCommon {
     this.title,
   });
 
-  DictlayerdataCommon.fromJson(core.Map _json)
+  DictlayerdataCommon.fromJson(core.Map json_)
       : this(
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4026,12 +4026,12 @@ class DictlayerdataDictSource {
     this.url,
   });
 
-  DictlayerdataDictSource.fromJson(core.Map _json)
+  DictlayerdataDictSource.fromJson(core.Map json_)
       : this(
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
+          attribution: json_.containsKey('attribution')
+              ? json_['attribution'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4049,12 +4049,12 @@ class DictlayerdataDictWordsDerivativesSource {
     this.url,
   });
 
-  DictlayerdataDictWordsDerivativesSource.fromJson(core.Map _json)
+  DictlayerdataDictWordsDerivativesSource.fromJson(core.Map json_)
       : this(
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
+          attribution: json_.containsKey('attribution')
+              ? json_['attribution'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4072,13 +4072,13 @@ class DictlayerdataDictWordsDerivatives {
     this.text,
   });
 
-  DictlayerdataDictWordsDerivatives.fromJson(core.Map _json)
+  DictlayerdataDictWordsDerivatives.fromJson(core.Map json_)
       : this(
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? DictlayerdataDictWordsDerivativesSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4096,12 +4096,12 @@ class DictlayerdataDictWordsExamplesSource {
     this.url,
   });
 
-  DictlayerdataDictWordsExamplesSource.fromJson(core.Map _json)
+  DictlayerdataDictWordsExamplesSource.fromJson(core.Map json_)
       : this(
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
+          attribution: json_.containsKey('attribution')
+              ? json_['attribution'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4119,13 +4119,13 @@ class DictlayerdataDictWordsExamples {
     this.text,
   });
 
-  DictlayerdataDictWordsExamples.fromJson(core.Map _json)
+  DictlayerdataDictWordsExamples.fromJson(core.Map json_)
       : this(
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? DictlayerdataDictWordsExamplesSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4143,11 +4143,11 @@ class DictlayerdataDictWordsSensesConjugations {
     this.value,
   });
 
-  DictlayerdataDictWordsSensesConjugations.fromJson(core.Map _json)
+  DictlayerdataDictWordsSensesConjugations.fromJson(core.Map json_)
       : this(
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4165,12 +4165,12 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
     this.url,
   });
 
-  DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(core.Map _json)
+  DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(core.Map json_)
       : this(
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
+          attribution: json_.containsKey('attribution')
+              ? json_['attribution'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4188,13 +4188,13 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
     this.text,
   });
 
-  DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(core.Map _json)
+  DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(core.Map json_)
       : this(
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4212,13 +4212,13 @@ class DictlayerdataDictWordsSensesDefinitions {
     this.examples,
   });
 
-  DictlayerdataDictWordsSensesDefinitions.fromJson(core.Map _json)
+  DictlayerdataDictWordsSensesDefinitions.fromJson(core.Map json_)
       : this(
-          definition: _json.containsKey('definition')
-              ? _json['definition'] as core.String
+          definition: json_.containsKey('definition')
+              ? json_['definition'] as core.String
               : null,
-          examples: _json.containsKey('examples')
-              ? (_json['examples'] as core.List)
+          examples: json_.containsKey('examples')
+              ? (json_['examples'] as core.List)
                   .map((value) =>
                       DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -4241,12 +4241,12 @@ class DictlayerdataDictWordsSensesSource {
     this.url,
   });
 
-  DictlayerdataDictWordsSensesSource.fromJson(core.Map _json)
+  DictlayerdataDictWordsSensesSource.fromJson(core.Map json_)
       : this(
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
+          attribution: json_.containsKey('attribution')
+              ? json_['attribution'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4264,12 +4264,12 @@ class DictlayerdataDictWordsSensesSynonymsSource {
     this.url,
   });
 
-  DictlayerdataDictWordsSensesSynonymsSource.fromJson(core.Map _json)
+  DictlayerdataDictWordsSensesSynonymsSource.fromJson(core.Map json_)
       : this(
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
+          attribution: json_.containsKey('attribution')
+              ? json_['attribution'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4287,13 +4287,13 @@ class DictlayerdataDictWordsSensesSynonyms {
     this.text,
   });
 
-  DictlayerdataDictWordsSensesSynonyms.fromJson(core.Map _json)
+  DictlayerdataDictWordsSensesSynonyms.fromJson(core.Map json_)
       : this(
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? DictlayerdataDictWordsSensesSynonymsSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4323,40 +4323,40 @@ class DictlayerdataDictWordsSenses {
     this.synonyms,
   });
 
-  DictlayerdataDictWordsSenses.fromJson(core.Map _json)
+  DictlayerdataDictWordsSenses.fromJson(core.Map json_)
       : this(
-          conjugations: _json.containsKey('conjugations')
-              ? (_json['conjugations'] as core.List)
+          conjugations: json_.containsKey('conjugations')
+              ? (json_['conjugations'] as core.List)
                   .map((value) =>
                       DictlayerdataDictWordsSensesConjugations.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          definitions: _json.containsKey('definitions')
-              ? (_json['definitions'] as core.List)
+          definitions: json_.containsKey('definitions')
+              ? (json_['definitions'] as core.List)
                   .map((value) =>
                       DictlayerdataDictWordsSensesDefinitions.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          partOfSpeech: _json.containsKey('partOfSpeech')
-              ? _json['partOfSpeech'] as core.String
+          partOfSpeech: json_.containsKey('partOfSpeech')
+              ? json_['partOfSpeech'] as core.String
               : null,
-          pronunciation: _json.containsKey('pronunciation')
-              ? _json['pronunciation'] as core.String
+          pronunciation: json_.containsKey('pronunciation')
+              ? json_['pronunciation'] as core.String
               : null,
-          pronunciationUrl: _json.containsKey('pronunciationUrl')
-              ? _json['pronunciationUrl'] as core.String
+          pronunciationUrl: json_.containsKey('pronunciationUrl')
+              ? json_['pronunciationUrl'] as core.String
               : null,
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? DictlayerdataDictWordsSensesSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          syllabification: _json.containsKey('syllabification')
-              ? _json['syllabification'] as core.String
+          syllabification: json_.containsKey('syllabification')
+              ? json_['syllabification'] as core.String
               : null,
-          synonyms: _json.containsKey('synonyms')
-              ? (_json['synonyms'] as core.List)
+          synonyms: json_.containsKey('synonyms')
+              ? (json_['synonyms'] as core.List)
                   .map((value) => DictlayerdataDictWordsSensesSynonyms.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4386,12 +4386,12 @@ class DictlayerdataDictWordsSource {
     this.url,
   });
 
-  DictlayerdataDictWordsSource.fromJson(core.Map _json)
+  DictlayerdataDictWordsSource.fromJson(core.Map json_)
       : this(
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
+          attribution: json_.containsKey('attribution')
+              ? json_['attribution'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4416,29 +4416,29 @@ class DictlayerdataDictWords {
     this.source,
   });
 
-  DictlayerdataDictWords.fromJson(core.Map _json)
+  DictlayerdataDictWords.fromJson(core.Map json_)
       : this(
-          derivatives: _json.containsKey('derivatives')
-              ? (_json['derivatives'] as core.List)
+          derivatives: json_.containsKey('derivatives')
+              ? (json_['derivatives'] as core.List)
                   .map((value) => DictlayerdataDictWordsDerivatives.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          examples: _json.containsKey('examples')
-              ? (_json['examples'] as core.List)
+          examples: json_.containsKey('examples')
+              ? (json_['examples'] as core.List)
                   .map((value) => DictlayerdataDictWordsExamples.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          senses: _json.containsKey('senses')
-              ? (_json['senses'] as core.List)
+          senses: json_.containsKey('senses')
+              ? (json_['senses'] as core.List)
                   .map((value) => DictlayerdataDictWordsSenses.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? DictlayerdataDictWordsSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4460,14 +4460,14 @@ class DictlayerdataDict {
     this.words,
   });
 
-  DictlayerdataDict.fromJson(core.Map _json)
+  DictlayerdataDict.fromJson(core.Map json_)
       : this(
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? DictlayerdataDictSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          words: _json.containsKey('words')
-              ? (_json['words'] as core.List)
+          words: json_.containsKey('words')
+              ? (json_['words'] as core.List)
                   .map((value) => DictlayerdataDictWords.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4491,17 +4491,17 @@ class Dictlayerdata {
     this.kind,
   });
 
-  Dictlayerdata.fromJson(core.Map _json)
+  Dictlayerdata.fromJson(core.Map json_)
       : this(
-          common: _json.containsKey('common')
+          common: json_.containsKey('common')
               ? DictlayerdataCommon.fromJson(
-                  _json['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>)
               : null,
-          dict: _json.containsKey('dict')
+          dict: json_.containsKey('dict')
               ? DictlayerdataDict.fromJson(
-                  _json['dict'] as core.Map<core.String, core.dynamic>)
+                  json_['dict'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4528,25 +4528,25 @@ class DiscoveryclustersClustersBannerWithContentContainer {
     this.textColorArgb,
   });
 
-  DiscoveryclustersClustersBannerWithContentContainer.fromJson(core.Map _json)
+  DiscoveryclustersClustersBannerWithContentContainer.fromJson(core.Map json_)
       : this(
-          fillColorArgb: _json.containsKey('fillColorArgb')
-              ? _json['fillColorArgb'] as core.String
+          fillColorArgb: json_.containsKey('fillColorArgb')
+              ? json_['fillColorArgb'] as core.String
               : null,
-          imageUrl: _json.containsKey('imageUrl')
-              ? _json['imageUrl'] as core.String
+          imageUrl: json_.containsKey('imageUrl')
+              ? json_['imageUrl'] as core.String
               : null,
-          maskColorArgb: _json.containsKey('maskColorArgb')
-              ? _json['maskColorArgb'] as core.String
+          maskColorArgb: json_.containsKey('maskColorArgb')
+              ? json_['maskColorArgb'] as core.String
               : null,
-          moreButtonText: _json.containsKey('moreButtonText')
-              ? _json['moreButtonText'] as core.String
+          moreButtonText: json_.containsKey('moreButtonText')
+              ? json_['moreButtonText'] as core.String
               : null,
-          moreButtonUrl: _json.containsKey('moreButtonUrl')
-              ? _json['moreButtonUrl'] as core.String
+          moreButtonUrl: json_.containsKey('moreButtonUrl')
+              ? json_['moreButtonUrl'] as core.String
               : null,
-          textColorArgb: _json.containsKey('textColorArgb')
-              ? _json['textColorArgb'] as core.String
+          textColorArgb: json_.containsKey('textColorArgb')
+              ? json_['textColorArgb'] as core.String
               : null,
         );
 
@@ -4578,25 +4578,25 @@ class DiscoveryclustersClusters {
     this.volumes,
   });
 
-  DiscoveryclustersClusters.fromJson(core.Map _json)
+  DiscoveryclustersClusters.fromJson(core.Map json_)
       : this(
-          bannerWithContentContainer: _json
+          bannerWithContentContainer: json_
                   .containsKey('banner_with_content_container')
               ? DiscoveryclustersClustersBannerWithContentContainer.fromJson(
-                  _json['banner_with_content_container']
+                  json_['banner_with_content_container']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          subTitle: _json.containsKey('subTitle')
-              ? _json['subTitle'] as core.String
+          subTitle: json_.containsKey('subTitle')
+              ? json_['subTitle'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          totalVolumes: _json.containsKey('totalVolumes')
-              ? _json['totalVolumes'] as core.int
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          totalVolumes: json_.containsKey('totalVolumes')
+              ? json_['totalVolumes'] as core.int
               : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
-          volumes: _json.containsKey('volumes')
-              ? (_json['volumes'] as core.List)
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          volumes: json_.containsKey('volumes')
+              ? (json_['volumes'] as core.List)
                   .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4627,17 +4627,17 @@ class Discoveryclusters {
     this.totalClusters,
   });
 
-  Discoveryclusters.fromJson(core.Map _json)
+  Discoveryclusters.fromJson(core.Map json_)
       : this(
-          clusters: _json.containsKey('clusters')
-              ? (_json['clusters'] as core.List)
+          clusters: json_.containsKey('clusters')
+              ? (json_['clusters'] as core.List)
                   .map((value) => DiscoveryclustersClusters.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          totalClusters: _json.containsKey('totalClusters')
-              ? _json['totalClusters'] as core.int
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          totalClusters: json_.containsKey('totalClusters')
+              ? json_['totalClusters'] as core.int
               : null,
         );
 
@@ -4710,40 +4710,40 @@ class DownloadAccessRestriction {
     this.volumeId,
   });
 
-  DownloadAccessRestriction.fromJson(core.Map _json)
+  DownloadAccessRestriction.fromJson(core.Map json_)
       : this(
-          deviceAllowed: _json.containsKey('deviceAllowed')
-              ? _json['deviceAllowed'] as core.bool
+          deviceAllowed: json_.containsKey('deviceAllowed')
+              ? json_['deviceAllowed'] as core.bool
               : null,
-          downloadsAcquired: _json.containsKey('downloadsAcquired')
-              ? _json['downloadsAcquired'] as core.int
+          downloadsAcquired: json_.containsKey('downloadsAcquired')
+              ? json_['downloadsAcquired'] as core.int
               : null,
-          justAcquired: _json.containsKey('justAcquired')
-              ? _json['justAcquired'] as core.bool
+          justAcquired: json_.containsKey('justAcquired')
+              ? json_['justAcquired'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          maxDownloadDevices: _json.containsKey('maxDownloadDevices')
-              ? _json['maxDownloadDevices'] as core.int
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          maxDownloadDevices: json_.containsKey('maxDownloadDevices')
+              ? json_['maxDownloadDevices'] as core.int
               : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
           nonce:
-              _json.containsKey('nonce') ? _json['nonce'] as core.String : null,
-          reasonCode: _json.containsKey('reasonCode')
-              ? _json['reasonCode'] as core.String
+              json_.containsKey('nonce') ? json_['nonce'] as core.String : null,
+          reasonCode: json_.containsKey('reasonCode')
+              ? json_['reasonCode'] as core.String
               : null,
-          restricted: _json.containsKey('restricted')
-              ? _json['restricted'] as core.bool
+          restricted: json_.containsKey('restricted')
+              ? json_['restricted'] as core.bool
               : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
               : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -4776,15 +4776,15 @@ class DownloadAccesses {
     this.kind,
   });
 
-  DownloadAccesses.fromJson(core.Map _json)
+  DownloadAccesses.fromJson(core.Map json_)
       : this(
-          downloadAccessList: _json.containsKey('downloadAccessList')
-              ? (_json['downloadAccessList'] as core.List)
+          downloadAccessList: json_.containsKey('downloadAccessList')
+              ? (json_['downloadAccessList'] as core.List)
                   .map((value) => DownloadAccessRestriction.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4825,21 +4825,21 @@ class FamilyInfoMembership {
     this.role,
   });
 
-  FamilyInfoMembership.fromJson(core.Map _json)
+  FamilyInfoMembership.fromJson(core.Map json_)
       : this(
-          acquirePermission: _json.containsKey('acquirePermission')
-              ? _json['acquirePermission'] as core.String
+          acquirePermission: json_.containsKey('acquirePermission')
+              ? json_['acquirePermission'] as core.String
               : null,
-          ageGroup: _json.containsKey('ageGroup')
-              ? _json['ageGroup'] as core.String
+          ageGroup: json_.containsKey('ageGroup')
+              ? json_['ageGroup'] as core.String
               : null,
-          allowedMaturityRating: _json.containsKey('allowedMaturityRating')
-              ? _json['allowedMaturityRating'] as core.String
+          allowedMaturityRating: json_.containsKey('allowedMaturityRating')
+              ? json_['allowedMaturityRating'] as core.String
               : null,
-          isInFamily: _json.containsKey('isInFamily')
-              ? _json['isInFamily'] as core.bool
+          isInFamily: json_.containsKey('isInFamily')
+              ? json_['isInFamily'] as core.bool
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4864,12 +4864,12 @@ class FamilyInfo {
     this.membership,
   });
 
-  FamilyInfo.fromJson(core.Map _json)
+  FamilyInfo.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          membership: _json.containsKey('membership')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          membership: json_.containsKey('membership')
               ? FamilyInfoMembership.fromJson(
-                  _json['membership'] as core.Map<core.String, core.dynamic>)
+                  json_['membership'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4894,9 +4894,9 @@ class GeoAnnotationdata {
   core.List<core.int> get encodedDataAsBytes =>
       convert.base64.decode(encodedData!);
 
-  set encodedDataAsBytes(core.List<core.int> _bytes) {
+  set encodedDataAsBytes(core.List<core.int> bytes_) {
     encodedData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Unique id for this annotation data.
@@ -4937,31 +4937,31 @@ class GeoAnnotationdata {
     this.volumeId,
   });
 
-  GeoAnnotationdata.fromJson(core.Map _json)
+  GeoAnnotationdata.fromJson(core.Map json_)
       : this(
-          annotationType: _json.containsKey('annotationType')
-              ? _json['annotationType'] as core.String
+          annotationType: json_.containsKey('annotationType')
+              ? json_['annotationType'] as core.String
               : null,
-          data: _json.containsKey('data')
+          data: json_.containsKey('data')
               ? Geolayerdata.fromJson(
-                  _json['data'] as core.Map<core.String, core.dynamic>)
+                  json_['data'] as core.Map<core.String, core.dynamic>)
               : null,
-          encodedData: _json.containsKey('encodedData')
-              ? _json['encodedData'] as core.String
+          encodedData: json_.containsKey('encodedData')
+              ? json_['encodedData'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          layerId: _json.containsKey('layerId')
-              ? _json['layerId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          layerId: json_.containsKey('layerId')
+              ? json_['layerId'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -5005,20 +5005,20 @@ class GeolayerdataCommon {
     this.title,
   });
 
-  GeolayerdataCommon.fromJson(core.Map _json)
+  GeolayerdataCommon.fromJson(core.Map json_)
       : this(
-          lang: _json.containsKey('lang') ? _json['lang'] as core.String : null,
-          previewImageUrl: _json.containsKey('previewImageUrl')
-              ? _json['previewImageUrl'] as core.String
+          lang: json_.containsKey('lang') ? json_['lang'] as core.String : null,
+          previewImageUrl: json_.containsKey('previewImageUrl')
+              ? json_['previewImageUrl'] as core.String
               : null,
-          snippet: _json.containsKey('snippet')
-              ? _json['snippet'] as core.String
+          snippet: json_.containsKey('snippet')
+              ? json_['snippet'] as core.String
               : null,
-          snippetUrl: _json.containsKey('snippetUrl')
-              ? _json['snippetUrl'] as core.String
+          snippetUrl: json_.containsKey('snippetUrl')
+              ? json_['snippetUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5039,13 +5039,13 @@ class GeolayerdataGeoViewportHi {
     this.longitude,
   });
 
-  GeolayerdataGeoViewportHi.fromJson(core.Map _json)
+  GeolayerdataGeoViewportHi.fromJson(core.Map json_)
       : this(
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
+          latitude: json_.containsKey('latitude')
+              ? (json_['latitude'] as core.num).toDouble()
               : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
+          longitude: json_.containsKey('longitude')
+              ? (json_['longitude'] as core.num).toDouble()
               : null,
         );
 
@@ -5064,13 +5064,13 @@ class GeolayerdataGeoViewportLo {
     this.longitude,
   });
 
-  GeolayerdataGeoViewportLo.fromJson(core.Map _json)
+  GeolayerdataGeoViewportLo.fromJson(core.Map json_)
       : this(
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
+          latitude: json_.containsKey('latitude')
+              ? (json_['latitude'] as core.num).toDouble()
               : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
+          longitude: json_.containsKey('longitude')
+              ? (json_['longitude'] as core.num).toDouble()
               : null,
         );
 
@@ -5092,15 +5092,15 @@ class GeolayerdataGeoViewport {
     this.lo,
   });
 
-  GeolayerdataGeoViewport.fromJson(core.Map _json)
+  GeolayerdataGeoViewport.fromJson(core.Map json_)
       : this(
-          hi: _json.containsKey('hi')
+          hi: json_.containsKey('hi')
               ? GeolayerdataGeoViewportHi.fromJson(
-                  _json['hi'] as core.Map<core.String, core.dynamic>)
+                  json_['hi'] as core.Map<core.String, core.dynamic>)
               : null,
-          lo: _json.containsKey('lo')
+          lo: json_.containsKey('lo')
               ? GeolayerdataGeoViewportLo.fromJson(
-                  _json['lo'] as core.Map<core.String, core.dynamic>)
+                  json_['lo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5157,33 +5157,33 @@ class GeolayerdataGeo {
     this.zoom,
   });
 
-  GeolayerdataGeo.fromJson(core.Map _json)
+  GeolayerdataGeo.fromJson(core.Map json_)
       : this(
-          boundary: _json.containsKey('boundary')
-              ? (_json['boundary'] as core.List)
+          boundary: json_.containsKey('boundary')
+              ? (json_['boundary'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          cachePolicy: _json.containsKey('cachePolicy')
-              ? _json['cachePolicy'] as core.String
+          cachePolicy: json_.containsKey('cachePolicy')
+              ? json_['cachePolicy'] as core.String
               : null,
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
               : null,
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
+          latitude: json_.containsKey('latitude')
+              ? (json_['latitude'] as core.num).toDouble()
               : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
+          longitude: json_.containsKey('longitude')
+              ? (json_['longitude'] as core.num).toDouble()
               : null,
-          mapType: _json.containsKey('mapType')
-              ? _json['mapType'] as core.String
+          mapType: json_.containsKey('mapType')
+              ? json_['mapType'] as core.String
               : null,
-          viewport: _json.containsKey('viewport')
+          viewport: json_.containsKey('viewport')
               ? GeolayerdataGeoViewport.fromJson(
-                  _json['viewport'] as core.Map<core.String, core.dynamic>)
+                  json_['viewport'] as core.Map<core.String, core.dynamic>)
               : null,
-          zoom: _json.containsKey('zoom') ? _json['zoom'] as core.int : null,
+          zoom: json_.containsKey('zoom') ? json_['zoom'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5209,17 +5209,17 @@ class Geolayerdata {
     this.kind,
   });
 
-  Geolayerdata.fromJson(core.Map _json)
+  Geolayerdata.fromJson(core.Map json_)
       : this(
-          common: _json.containsKey('common')
+          common: json_.containsKey('common')
               ? GeolayerdataCommon.fromJson(
-                  _json['common'] as core.Map<core.String, core.dynamic>)
+                  json_['common'] as core.Map<core.String, core.dynamic>)
               : null,
-          geo: _json.containsKey('geo')
+          geo: json_.containsKey('geo')
               ? GeolayerdataGeo.fromJson(
-                  _json['geo'] as core.Map<core.String, core.dynamic>)
+                  json_['geo'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5245,17 +5245,17 @@ class Layersummaries {
     this.totalItems,
   });
 
-  Layersummaries.fromJson(core.Map _json)
+  Layersummaries.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Layersummary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.int
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.int
               : null,
         );
 
@@ -5328,45 +5328,45 @@ class Layersummary {
     this.volumeId,
   });
 
-  Layersummary.fromJson(core.Map _json)
+  Layersummary.fromJson(core.Map json_)
       : this(
-          annotationCount: _json.containsKey('annotationCount')
-              ? _json['annotationCount'] as core.int
+          annotationCount: json_.containsKey('annotationCount')
+              ? json_['annotationCount'] as core.int
               : null,
-          annotationTypes: _json.containsKey('annotationTypes')
-              ? (_json['annotationTypes'] as core.List)
+          annotationTypes: json_.containsKey('annotationTypes')
+              ? (json_['annotationTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          annotationsDataLink: _json.containsKey('annotationsDataLink')
-              ? _json['annotationsDataLink'] as core.String
+          annotationsDataLink: json_.containsKey('annotationsDataLink')
+              ? json_['annotationsDataLink'] as core.String
               : null,
-          annotationsLink: _json.containsKey('annotationsLink')
-              ? _json['annotationsLink'] as core.String
+          annotationsLink: json_.containsKey('annotationsLink')
+              ? json_['annotationsLink'] as core.String
               : null,
-          contentVersion: _json.containsKey('contentVersion')
-              ? _json['contentVersion'] as core.String
+          contentVersion: json_.containsKey('contentVersion')
+              ? json_['contentVersion'] as core.String
               : null,
-          dataCount: _json.containsKey('dataCount')
-              ? _json['dataCount'] as core.int
+          dataCount: json_.containsKey('dataCount')
+              ? json_['dataCount'] as core.int
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          layerId: _json.containsKey('layerId')
-              ? _json['layerId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          layerId: json_.containsKey('layerId')
+              ? json_['layerId'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
           volumeAnnotationsVersion:
-              _json.containsKey('volumeAnnotationsVersion')
-                  ? _json['volumeAnnotationsVersion'] as core.String
+              json_.containsKey('volumeAnnotationsVersion')
+                  ? json_['volumeAnnotationsVersion'] as core.String
                   : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -5404,20 +5404,20 @@ class MetadataItems {
     this.version,
   });
 
-  MetadataItems.fromJson(core.Map _json)
+  MetadataItems.fromJson(core.Map json_)
       : this(
-          downloadUrl: _json.containsKey('download_url')
-              ? _json['download_url'] as core.String
+          downloadUrl: json_.containsKey('download_url')
+              ? json_['download_url'] as core.String
               : null,
-          encryptedKey: _json.containsKey('encrypted_key')
-              ? _json['encrypted_key'] as core.String
+          encryptedKey: json_.containsKey('encrypted_key')
+              ? json_['encrypted_key'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          size: _json.containsKey('size') ? _json['size'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -5442,15 +5442,15 @@ class Metadata {
     this.kind,
   });
 
-  Metadata.fromJson(core.Map _json)
+  Metadata.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => MetadataItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5500,54 +5500,54 @@ class Notification {
     this.title,
   });
 
-  Notification.fromJson(core.Map _json)
+  Notification.fromJson(core.Map json_)
       : this(
-          body: _json.containsKey('body') ? _json['body'] as core.String : null,
-          crmExperimentIds: _json.containsKey('crmExperimentIds')
-              ? (_json['crmExperimentIds'] as core.List)
+          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          crmExperimentIds: json_.containsKey('crmExperimentIds')
+              ? (json_['crmExperimentIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          docId: _json.containsKey('doc_id')
-              ? _json['doc_id'] as core.String
+          docId: json_.containsKey('doc_id')
+              ? json_['doc_id'] as core.String
               : null,
-          docType: _json.containsKey('doc_type')
-              ? _json['doc_type'] as core.String
+          docType: json_.containsKey('doc_type')
+              ? json_['doc_type'] as core.String
               : null,
-          dontShowNotification: _json.containsKey('dont_show_notification')
-              ? _json['dont_show_notification'] as core.bool
+          dontShowNotification: json_.containsKey('dont_show_notification')
+              ? json_['dont_show_notification'] as core.bool
               : null,
-          iconUrl: _json.containsKey('iconUrl')
-              ? _json['iconUrl'] as core.String
+          iconUrl: json_.containsKey('iconUrl')
+              ? json_['iconUrl'] as core.String
               : null,
-          isDocumentMature: _json.containsKey('is_document_mature')
-              ? _json['is_document_mature'] as core.bool
+          isDocumentMature: json_.containsKey('is_document_mature')
+              ? json_['is_document_mature'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          notificationGroup: _json.containsKey('notificationGroup')
-              ? _json['notificationGroup'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          notificationGroup: json_.containsKey('notificationGroup')
+              ? json_['notificationGroup'] as core.String
               : null,
-          notificationType: _json.containsKey('notification_type')
-              ? _json['notification_type'] as core.String
+          notificationType: json_.containsKey('notification_type')
+              ? json_['notification_type'] as core.String
               : null,
-          pcampaignId: _json.containsKey('pcampaign_id')
-              ? _json['pcampaign_id'] as core.String
+          pcampaignId: json_.containsKey('pcampaign_id')
+              ? json_['pcampaign_id'] as core.String
               : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
               : null,
           showNotificationSettingsAction:
-              _json.containsKey('show_notification_settings_action')
-                  ? _json['show_notification_settings_action'] as core.bool
+              json_.containsKey('show_notification_settings_action')
+                  ? json_['show_notification_settings_action'] as core.bool
                   : null,
-          targetUrl: _json.containsKey('targetUrl')
-              ? _json['targetUrl'] as core.String
+          targetUrl: json_.containsKey('targetUrl')
+              ? json_['targetUrl'] as core.String
               : null,
-          timeToExpireMs: _json.containsKey('timeToExpireMs')
-              ? _json['timeToExpireMs'] as core.String
+          timeToExpireMs: json_.containsKey('timeToExpireMs')
+              ? json_['timeToExpireMs'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5589,24 +5589,24 @@ class OffersItemsItems {
     this.volumeId,
   });
 
-  OffersItemsItems.fromJson(core.Map _json)
+  OffersItemsItems.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
-              ? _json['author'] as core.String
+          author: json_.containsKey('author')
+              ? json_['author'] as core.String
               : null,
-          canonicalVolumeLink: _json.containsKey('canonicalVolumeLink')
-              ? _json['canonicalVolumeLink'] as core.String
+          canonicalVolumeLink: json_.containsKey('canonicalVolumeLink')
+              ? json_['canonicalVolumeLink'] as core.String
               : null,
-          coverUrl: _json.containsKey('coverUrl')
-              ? _json['coverUrl'] as core.String
+          coverUrl: json_.containsKey('coverUrl')
+              ? json_['coverUrl'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -5634,17 +5634,17 @@ class OffersItems {
     this.items,
   });
 
-  OffersItems.fromJson(core.Map _json)
+  OffersItems.fromJson(core.Map json_)
       : this(
-          artUrl: _json.containsKey('artUrl')
-              ? _json['artUrl'] as core.String
+          artUrl: json_.containsKey('artUrl')
+              ? json_['artUrl'] as core.String
               : null,
-          gservicesKey: _json.containsKey('gservicesKey')
-              ? _json['gservicesKey'] as core.String
+          gservicesKey: json_.containsKey('gservicesKey')
+              ? json_['gservicesKey'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => OffersItemsItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5671,15 +5671,15 @@ class Offers {
     this.kind,
   });
 
-  Offers.fromJson(core.Map _json)
+  Offers.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => OffersItems.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5721,26 +5721,26 @@ class ReadingPosition {
     this.volumeId,
   });
 
-  ReadingPosition.fromJson(core.Map _json)
+  ReadingPosition.fromJson(core.Map json_)
       : this(
-          epubCfiPosition: _json.containsKey('epubCfiPosition')
-              ? _json['epubCfiPosition'] as core.String
+          epubCfiPosition: json_.containsKey('epubCfiPosition')
+              ? json_['epubCfiPosition'] as core.String
               : null,
-          gbImagePosition: _json.containsKey('gbImagePosition')
-              ? _json['gbImagePosition'] as core.String
+          gbImagePosition: json_.containsKey('gbImagePosition')
+              ? json_['gbImagePosition'] as core.String
               : null,
-          gbTextPosition: _json.containsKey('gbTextPosition')
-              ? _json['gbTextPosition'] as core.String
+          gbTextPosition: json_.containsKey('gbTextPosition')
+              ? json_['gbTextPosition'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          pdfPosition: _json.containsKey('pdfPosition')
-              ? _json['pdfPosition'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          pdfPosition: json_.containsKey('pdfPosition')
+              ? json_['pdfPosition'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -5771,17 +5771,17 @@ class RequestAccessData {
     this.kind,
   });
 
-  RequestAccessData.fromJson(core.Map _json)
+  RequestAccessData.fromJson(core.Map json_)
       : this(
-          concurrentAccess: _json.containsKey('concurrentAccess')
-              ? ConcurrentAccessRestriction.fromJson(_json['concurrentAccess']
+          concurrentAccess: json_.containsKey('concurrentAccess')
+              ? ConcurrentAccessRestriction.fromJson(json_['concurrentAccess']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          downloadAccess: _json.containsKey('downloadAccess')
-              ? DownloadAccessRestriction.fromJson(_json['downloadAccess']
+          downloadAccess: json_.containsKey('downloadAccess')
+              ? DownloadAccessRestriction.fromJson(json_['downloadAccess']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5800,10 +5800,10 @@ class ReviewAuthor {
     this.displayName,
   });
 
-  ReviewAuthor.fromJson(core.Map _json)
+  ReviewAuthor.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
         );
 
@@ -5830,15 +5830,15 @@ class ReviewSource {
     this.url,
   });
 
-  ReviewSource.fromJson(core.Map _json)
+  ReviewSource.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          extraDescription: _json.containsKey('extraDescription')
-              ? _json['extraDescription'] as core.String
+          extraDescription: json_.containsKey('extraDescription')
+              ? json_['extraDescription'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5897,32 +5897,32 @@ class Review {
     this.volumeId,
   });
 
-  Review.fromJson(core.Map _json)
+  Review.fromJson(core.Map json_)
       : this(
-          author: _json.containsKey('author')
+          author: json_.containsKey('author')
               ? ReviewAuthor.fromJson(
-                  _json['author'] as core.Map<core.String, core.dynamic>)
+                  json_['author'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          date: _json.containsKey('date') ? _json['date'] as core.String : null,
-          fullTextUrl: _json.containsKey('fullTextUrl')
-              ? _json['fullTextUrl'] as core.String
+          date: json_.containsKey('date') ? json_['date'] as core.String : null,
+          fullTextUrl: json_.containsKey('fullTextUrl')
+              ? json_['fullTextUrl'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          rating: _json.containsKey('rating')
-              ? _json['rating'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          rating: json_.containsKey('rating')
+              ? json_['rating'] as core.String
               : null,
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? ReviewSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -5954,19 +5954,19 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
   });
 
   SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          amountInMicros: _json.containsKey('amountInMicros')
-              ? (_json['amountInMicros'] as core.num).toDouble()
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? (json_['amountInMicros'] as core.num).toDouble()
               : null,
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
-          releaseNumber: _json.containsKey('releaseNumber')
-              ? _json['releaseNumber'] as core.String
+          releaseNumber: json_.containsKey('releaseNumber')
+              ? json_['releaseNumber'] as core.String
               : null,
-          releaseTime: _json.containsKey('releaseTime')
-              ? _json['releaseTime'] as core.String
+          releaseTime: json_.containsKey('releaseTime')
+              ? json_['releaseTime'] as core.String
               : null,
         );
 
@@ -5992,19 +5992,19 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
   });
 
   SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          amountInMicros: _json.containsKey('amountInMicros')
-              ? (_json['amountInMicros'] as core.num).toDouble()
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? (json_['amountInMicros'] as core.num).toDouble()
               : null,
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
-          releaseNumber: _json.containsKey('releaseNumber')
-              ? _json['releaseNumber'] as core.String
+          releaseNumber: json_.containsKey('releaseNumber')
+              ? json_['releaseNumber'] as core.String
               : null,
-          releaseTime: _json.containsKey('releaseTime')
-              ? _json['releaseTime'] as core.String
+          releaseTime: json_.containsKey('releaseTime')
+              ? json_['releaseTime'] as core.String
               : null,
         );
 
@@ -6030,23 +6030,23 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
     this.seriesSubscriptionType,
   });
 
-  SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(core.Map _json)
+  SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(core.Map json_)
       : this(
-          cancelTime: _json.containsKey('cancelTime')
-              ? _json['cancelTime'] as core.String
+          cancelTime: json_.containsKey('cancelTime')
+              ? json_['cancelTime'] as core.String
               : null,
-          currentReleaseInfo: _json.containsKey('currentReleaseInfo')
+          currentReleaseInfo: json_.containsKey('currentReleaseInfo')
               ? SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo
-                  .fromJson(_json['currentReleaseInfo']
+                  .fromJson(json_['currentReleaseInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          nextReleaseInfo: _json.containsKey('nextReleaseInfo')
+          nextReleaseInfo: json_.containsKey('nextReleaseInfo')
               ? SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo
-                  .fromJson(_json['nextReleaseInfo']
+                  .fromJson(json_['nextReleaseInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          seriesSubscriptionType: _json.containsKey('seriesSubscriptionType')
-              ? _json['seriesSubscriptionType'] as core.String
+          seriesSubscriptionType: json_.containsKey('seriesSubscriptionType')
+              ? json_['seriesSubscriptionType'] as core.String
               : null,
         );
 
@@ -6085,40 +6085,40 @@ class SeriesSeries {
     this.title,
   });
 
-  SeriesSeries.fromJson(core.Map _json)
+  SeriesSeries.fromJson(core.Map json_)
       : this(
-          bannerImageUrl: _json.containsKey('bannerImageUrl')
-              ? _json['bannerImageUrl'] as core.String
+          bannerImageUrl: json_.containsKey('bannerImageUrl')
+              ? json_['bannerImageUrl'] as core.String
               : null,
-          eligibleForSubscription: _json.containsKey('eligibleForSubscription')
-              ? _json['eligibleForSubscription'] as core.bool
+          eligibleForSubscription: json_.containsKey('eligibleForSubscription')
+              ? json_['eligibleForSubscription'] as core.bool
               : null,
-          imageUrl: _json.containsKey('imageUrl')
-              ? _json['imageUrl'] as core.String
+          imageUrl: json_.containsKey('imageUrl')
+              ? json_['imageUrl'] as core.String
               : null,
-          isComplete: _json.containsKey('isComplete')
-              ? _json['isComplete'] as core.bool
+          isComplete: json_.containsKey('isComplete')
+              ? json_['isComplete'] as core.bool
               : null,
-          seriesFormatType: _json.containsKey('seriesFormatType')
-              ? _json['seriesFormatType'] as core.String
+          seriesFormatType: json_.containsKey('seriesFormatType')
+              ? json_['seriesFormatType'] as core.String
               : null,
-          seriesId: _json.containsKey('seriesId')
-              ? _json['seriesId'] as core.String
+          seriesId: json_.containsKey('seriesId')
+              ? json_['seriesId'] as core.String
               : null,
           seriesSubscriptionReleaseInfo:
-              _json.containsKey('seriesSubscriptionReleaseInfo')
+              json_.containsKey('seriesSubscriptionReleaseInfo')
                   ? SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(
-                      _json['seriesSubscriptionReleaseInfo']
+                      json_['seriesSubscriptionReleaseInfo']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          seriesType: _json.containsKey('seriesType')
-              ? _json['seriesType'] as core.String
+          seriesType: json_.containsKey('seriesType')
+              ? json_['seriesType'] as core.String
               : null,
-          subscriptionId: _json.containsKey('subscriptionId')
-              ? _json['subscriptionId'] as core.String
+          subscriptionId: json_.containsKey('subscriptionId')
+              ? json_['subscriptionId'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6147,11 +6147,11 @@ class Series {
     this.series,
   });
 
-  Series.fromJson(core.Map _json)
+  Series.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          series: _json.containsKey('series')
-              ? (_json['series'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          series: json_.containsKey('series')
+              ? (json_['series'] as core.List)
                   .map((value) => SeriesSeries.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6176,17 +6176,17 @@ class Seriesmembership {
     this.nextPageToken,
   });
 
-  Seriesmembership.fromJson(core.Map _json)
+  Seriesmembership.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          member: _json.containsKey('member')
-              ? (_json['member'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          member: json_.containsKey('member')
+              ? (json_['member'] as core.List)
                   .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6207,13 +6207,13 @@ class UsersettingsNotesExport {
     this.isEnabled,
   });
 
-  UsersettingsNotesExport.fromJson(core.Map _json)
+  UsersettingsNotesExport.fromJson(core.Map json_)
       : this(
-          folderName: _json.containsKey('folderName')
-              ? _json['folderName'] as core.String
+          folderName: json_.containsKey('folderName')
+              ? json_['folderName'] as core.String
               : null,
-          isEnabled: _json.containsKey('isEnabled')
-              ? _json['isEnabled'] as core.bool
+          isEnabled: json_.containsKey('isEnabled')
+              ? json_['isEnabled'] as core.bool
               : null,
         );
 
@@ -6230,10 +6230,10 @@ class UsersettingsNotificationMatchMyInterests {
     this.optedState,
   });
 
-  UsersettingsNotificationMatchMyInterests.fromJson(core.Map _json)
+  UsersettingsNotificationMatchMyInterests.fromJson(core.Map json_)
       : this(
-          optedState: _json.containsKey('opted_state')
-              ? _json['opted_state'] as core.String
+          optedState: json_.containsKey('opted_state')
+              ? json_['opted_state'] as core.String
               : null,
         );
 
@@ -6249,10 +6249,10 @@ class UsersettingsNotificationMoreFromAuthors {
     this.optedState,
   });
 
-  UsersettingsNotificationMoreFromAuthors.fromJson(core.Map _json)
+  UsersettingsNotificationMoreFromAuthors.fromJson(core.Map json_)
       : this(
-          optedState: _json.containsKey('opted_state')
-              ? _json['opted_state'] as core.String
+          optedState: json_.containsKey('opted_state')
+              ? json_['opted_state'] as core.String
               : null,
         );
 
@@ -6268,10 +6268,10 @@ class UsersettingsNotificationMoreFromSeries {
     this.optedState,
   });
 
-  UsersettingsNotificationMoreFromSeries.fromJson(core.Map _json)
+  UsersettingsNotificationMoreFromSeries.fromJson(core.Map json_)
       : this(
-          optedState: _json.containsKey('opted_state')
-              ? _json['opted_state'] as core.String
+          optedState: json_.containsKey('opted_state')
+              ? json_['opted_state'] as core.String
               : null,
         );
 
@@ -6287,10 +6287,10 @@ class UsersettingsNotificationPriceDrop {
     this.optedState,
   });
 
-  UsersettingsNotificationPriceDrop.fromJson(core.Map _json)
+  UsersettingsNotificationPriceDrop.fromJson(core.Map json_)
       : this(
-          optedState: _json.containsKey('opted_state')
-              ? _json['opted_state'] as core.String
+          optedState: json_.containsKey('opted_state')
+              ? json_['opted_state'] as core.String
               : null,
         );
 
@@ -6306,10 +6306,10 @@ class UsersettingsNotificationRewardExpirations {
     this.optedState,
   });
 
-  UsersettingsNotificationRewardExpirations.fromJson(core.Map _json)
+  UsersettingsNotificationRewardExpirations.fromJson(core.Map json_)
       : this(
-          optedState: _json.containsKey('opted_state')
-              ? _json['opted_state'] as core.String
+          optedState: json_.containsKey('opted_state')
+              ? json_['opted_state'] as core.String
               : null,
         );
 
@@ -6333,30 +6333,30 @@ class UsersettingsNotification {
     this.rewardExpirations,
   });
 
-  UsersettingsNotification.fromJson(core.Map _json)
+  UsersettingsNotification.fromJson(core.Map json_)
       : this(
-          matchMyInterests: _json.containsKey('matchMyInterests')
+          matchMyInterests: json_.containsKey('matchMyInterests')
               ? UsersettingsNotificationMatchMyInterests.fromJson(
-                  _json['matchMyInterests']
+                  json_['matchMyInterests']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          moreFromAuthors: _json.containsKey('moreFromAuthors')
+          moreFromAuthors: json_.containsKey('moreFromAuthors')
               ? UsersettingsNotificationMoreFromAuthors.fromJson(
-                  _json['moreFromAuthors']
+                  json_['moreFromAuthors']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          moreFromSeries: _json.containsKey('moreFromSeries')
+          moreFromSeries: json_.containsKey('moreFromSeries')
               ? UsersettingsNotificationMoreFromSeries.fromJson(
-                  _json['moreFromSeries']
+                  json_['moreFromSeries']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          priceDrop: _json.containsKey('priceDrop')
+          priceDrop: json_.containsKey('priceDrop')
               ? UsersettingsNotificationPriceDrop.fromJson(
-                  _json['priceDrop'] as core.Map<core.String, core.dynamic>)
+                  json_['priceDrop'] as core.Map<core.String, core.dynamic>)
               : null,
-          rewardExpirations: _json.containsKey('rewardExpirations')
+          rewardExpirations: json_.containsKey('rewardExpirations')
               ? UsersettingsNotificationRewardExpirations.fromJson(
-                  _json['rewardExpirations']
+                  json_['rewardExpirations']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6384,16 +6384,16 @@ class Usersettings {
     this.notification,
   });
 
-  Usersettings.fromJson(core.Map _json)
+  Usersettings.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          notesExport: _json.containsKey('notesExport')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          notesExport: json_.containsKey('notesExport')
               ? UsersettingsNotesExport.fromJson(
-                  _json['notesExport'] as core.Map<core.String, core.dynamic>)
+                  json_['notesExport'] as core.Map<core.String, core.dynamic>)
               : null,
-          notification: _json.containsKey('notification')
+          notification: json_.containsKey('notification')
               ? UsersettingsNotification.fromJson(
-                  _json['notification'] as core.Map<core.String, core.dynamic>)
+                  json_['notification'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6429,16 +6429,16 @@ class VolumeAccessInfoEpub {
     this.isAvailable,
   });
 
-  VolumeAccessInfoEpub.fromJson(core.Map _json)
+  VolumeAccessInfoEpub.fromJson(core.Map json_)
       : this(
-          acsTokenLink: _json.containsKey('acsTokenLink')
-              ? _json['acsTokenLink'] as core.String
+          acsTokenLink: json_.containsKey('acsTokenLink')
+              ? json_['acsTokenLink'] as core.String
               : null,
-          downloadLink: _json.containsKey('downloadLink')
-              ? _json['downloadLink'] as core.String
+          downloadLink: json_.containsKey('downloadLink')
+              ? json_['downloadLink'] as core.String
               : null,
-          isAvailable: _json.containsKey('isAvailable')
-              ? _json['isAvailable'] as core.bool
+          isAvailable: json_.containsKey('isAvailable')
+              ? json_['isAvailable'] as core.bool
               : null,
         );
 
@@ -6474,16 +6474,16 @@ class VolumeAccessInfoPdf {
     this.isAvailable,
   });
 
-  VolumeAccessInfoPdf.fromJson(core.Map _json)
+  VolumeAccessInfoPdf.fromJson(core.Map json_)
       : this(
-          acsTokenLink: _json.containsKey('acsTokenLink')
-              ? _json['acsTokenLink'] as core.String
+          acsTokenLink: json_.containsKey('acsTokenLink')
+              ? json_['acsTokenLink'] as core.String
               : null,
-          downloadLink: _json.containsKey('downloadLink')
-              ? _json['downloadLink'] as core.String
+          downloadLink: json_.containsKey('downloadLink')
+              ? json_['downloadLink'] as core.String
               : null,
-          isAvailable: _json.containsKey('isAvailable')
-              ? _json['isAvailable'] as core.bool
+          isAvailable: json_.containsKey('isAvailable')
+              ? json_['isAvailable'] as core.bool
               : null,
         );
 
@@ -6585,54 +6585,54 @@ class VolumeAccessInfo {
     this.webReaderLink,
   });
 
-  VolumeAccessInfo.fromJson(core.Map _json)
+  VolumeAccessInfo.fromJson(core.Map json_)
       : this(
-          accessViewStatus: _json.containsKey('accessViewStatus')
-              ? _json['accessViewStatus'] as core.String
+          accessViewStatus: json_.containsKey('accessViewStatus')
+              ? json_['accessViewStatus'] as core.String
               : null,
-          country: _json.containsKey('country')
-              ? _json['country'] as core.String
+          country: json_.containsKey('country')
+              ? json_['country'] as core.String
               : null,
-          downloadAccess: _json.containsKey('downloadAccess')
-              ? DownloadAccessRestriction.fromJson(_json['downloadAccess']
+          downloadAccess: json_.containsKey('downloadAccess')
+              ? DownloadAccessRestriction.fromJson(json_['downloadAccess']
                   as core.Map<core.String, core.dynamic>)
               : null,
           driveImportedContentLink:
-              _json.containsKey('driveImportedContentLink')
-                  ? _json['driveImportedContentLink'] as core.String
+              json_.containsKey('driveImportedContentLink')
+                  ? json_['driveImportedContentLink'] as core.String
                   : null,
-          embeddable: _json.containsKey('embeddable')
-              ? _json['embeddable'] as core.bool
+          embeddable: json_.containsKey('embeddable')
+              ? json_['embeddable'] as core.bool
               : null,
-          epub: _json.containsKey('epub')
+          epub: json_.containsKey('epub')
               ? VolumeAccessInfoEpub.fromJson(
-                  _json['epub'] as core.Map<core.String, core.dynamic>)
+                  json_['epub'] as core.Map<core.String, core.dynamic>)
               : null,
           explicitOfflineLicenseManagement:
-              _json.containsKey('explicitOfflineLicenseManagement')
-                  ? _json['explicitOfflineLicenseManagement'] as core.bool
+              json_.containsKey('explicitOfflineLicenseManagement')
+                  ? json_['explicitOfflineLicenseManagement'] as core.bool
                   : null,
-          pdf: _json.containsKey('pdf')
+          pdf: json_.containsKey('pdf')
               ? VolumeAccessInfoPdf.fromJson(
-                  _json['pdf'] as core.Map<core.String, core.dynamic>)
+                  json_['pdf'] as core.Map<core.String, core.dynamic>)
               : null,
-          publicDomain: _json.containsKey('publicDomain')
-              ? _json['publicDomain'] as core.bool
+          publicDomain: json_.containsKey('publicDomain')
+              ? json_['publicDomain'] as core.bool
               : null,
-          quoteSharingAllowed: _json.containsKey('quoteSharingAllowed')
-              ? _json['quoteSharingAllowed'] as core.bool
+          quoteSharingAllowed: json_.containsKey('quoteSharingAllowed')
+              ? json_['quoteSharingAllowed'] as core.bool
               : null,
-          textToSpeechPermission: _json.containsKey('textToSpeechPermission')
-              ? _json['textToSpeechPermission'] as core.String
+          textToSpeechPermission: json_.containsKey('textToSpeechPermission')
+              ? json_['textToSpeechPermission'] as core.String
               : null,
-          viewOrderUrl: _json.containsKey('viewOrderUrl')
-              ? _json['viewOrderUrl'] as core.String
+          viewOrderUrl: json_.containsKey('viewOrderUrl')
+              ? json_['viewOrderUrl'] as core.String
               : null,
-          viewability: _json.containsKey('viewability')
-              ? _json['viewability'] as core.String
+          viewability: json_.containsKey('viewability')
+              ? json_['viewability'] as core.String
               : null,
-          webReaderLink: _json.containsKey('webReaderLink')
-              ? _json['webReaderLink'] as core.String
+          webReaderLink: json_.containsKey('webReaderLink')
+              ? json_['webReaderLink'] as core.String
               : null,
         );
 
@@ -6674,14 +6674,14 @@ class VolumeLayerInfoLayers {
     this.volumeAnnotationsVersion,
   });
 
-  VolumeLayerInfoLayers.fromJson(core.Map _json)
+  VolumeLayerInfoLayers.fromJson(core.Map json_)
       : this(
-          layerId: _json.containsKey('layerId')
-              ? _json['layerId'] as core.String
+          layerId: json_.containsKey('layerId')
+              ? json_['layerId'] as core.String
               : null,
           volumeAnnotationsVersion:
-              _json.containsKey('volumeAnnotationsVersion')
-                  ? _json['volumeAnnotationsVersion'] as core.String
+              json_.containsKey('volumeAnnotationsVersion')
+                  ? json_['volumeAnnotationsVersion'] as core.String
                   : null,
         );
 
@@ -6701,10 +6701,10 @@ class VolumeLayerInfo {
     this.layers,
   });
 
-  VolumeLayerInfo.fromJson(core.Map _json)
+  VolumeLayerInfo.fromJson(core.Map json_)
       : this(
-          layers: _json.containsKey('layers')
-              ? (_json['layers'] as core.List)
+          layers: json_.containsKey('layers')
+              ? (json_['layers'] as core.List)
                   .map((value) => VolumeLayerInfoLayers.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6725,10 +6725,10 @@ class VolumeRecommendedInfo {
     this.explanation,
   });
 
-  VolumeRecommendedInfo.fromJson(core.Map _json)
+  VolumeRecommendedInfo.fromJson(core.Map json_)
       : this(
-          explanation: _json.containsKey('explanation')
-              ? _json['explanation'] as core.String
+          explanation: json_.containsKey('explanation')
+              ? json_['explanation'] as core.String
               : null,
         );
 
@@ -6756,13 +6756,13 @@ class VolumeSaleInfoListPrice {
     this.currencyCode,
   });
 
-  VolumeSaleInfoListPrice.fromJson(core.Map _json)
+  VolumeSaleInfoListPrice.fromJson(core.Map json_)
       : this(
-          amount: _json.containsKey('amount')
-              ? (_json['amount'] as core.num).toDouble()
+          amount: json_.containsKey('amount')
+              ? (json_['amount'] as core.num).toDouble()
               : null,
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
         );
 
@@ -6782,13 +6782,13 @@ class VolumeSaleInfoOffersListPrice {
     this.currencyCode,
   });
 
-  VolumeSaleInfoOffersListPrice.fromJson(core.Map _json)
+  VolumeSaleInfoOffersListPrice.fromJson(core.Map json_)
       : this(
-          amountInMicros: _json.containsKey('amountInMicros')
-              ? (_json['amountInMicros'] as core.num).toDouble()
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? (json_['amountInMicros'] as core.num).toDouble()
               : null,
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
         );
 
@@ -6808,12 +6808,12 @@ class VolumeSaleInfoOffersRentalDuration {
     this.unit,
   });
 
-  VolumeSaleInfoOffersRentalDuration.fromJson(core.Map _json)
+  VolumeSaleInfoOffersRentalDuration.fromJson(core.Map json_)
       : this(
-          count: _json.containsKey('count')
-              ? (_json['count'] as core.num).toDouble()
+          count: json_.containsKey('count')
+              ? (json_['count'] as core.num).toDouble()
               : null,
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6832,13 +6832,13 @@ class VolumeSaleInfoOffersRetailPrice {
     this.currencyCode,
   });
 
-  VolumeSaleInfoOffersRetailPrice.fromJson(core.Map _json)
+  VolumeSaleInfoOffersRetailPrice.fromJson(core.Map json_)
       : this(
-          amountInMicros: _json.containsKey('amountInMicros')
-              ? (_json['amountInMicros'] as core.num).toDouble()
+          amountInMicros: json_.containsKey('amountInMicros')
+              ? (json_['amountInMicros'] as core.num).toDouble()
               : null,
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
         );
 
@@ -6872,26 +6872,26 @@ class VolumeSaleInfoOffers {
     this.retailPrice,
   });
 
-  VolumeSaleInfoOffers.fromJson(core.Map _json)
+  VolumeSaleInfoOffers.fromJson(core.Map json_)
       : this(
-          finskyOfferType: _json.containsKey('finskyOfferType')
-              ? _json['finskyOfferType'] as core.int
+          finskyOfferType: json_.containsKey('finskyOfferType')
+              ? json_['finskyOfferType'] as core.int
               : null,
-          giftable: _json.containsKey('giftable')
-              ? _json['giftable'] as core.bool
+          giftable: json_.containsKey('giftable')
+              ? json_['giftable'] as core.bool
               : null,
-          listPrice: _json.containsKey('listPrice')
+          listPrice: json_.containsKey('listPrice')
               ? VolumeSaleInfoOffersListPrice.fromJson(
-                  _json['listPrice'] as core.Map<core.String, core.dynamic>)
+                  json_['listPrice'] as core.Map<core.String, core.dynamic>)
               : null,
-          rentalDuration: _json.containsKey('rentalDuration')
+          rentalDuration: json_.containsKey('rentalDuration')
               ? VolumeSaleInfoOffersRentalDuration.fromJson(
-                  _json['rentalDuration']
+                  json_['rentalDuration']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          retailPrice: _json.containsKey('retailPrice')
+          retailPrice: json_.containsKey('retailPrice')
               ? VolumeSaleInfoOffersRetailPrice.fromJson(
-                  _json['retailPrice'] as core.Map<core.String, core.dynamic>)
+                  json_['retailPrice'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6924,13 +6924,13 @@ class VolumeSaleInfoRetailPrice {
     this.currencyCode,
   });
 
-  VolumeSaleInfoRetailPrice.fromJson(core.Map _json)
+  VolumeSaleInfoRetailPrice.fromJson(core.Map json_)
       : this(
-          amount: _json.containsKey('amount')
-              ? (_json['amount'] as core.num).toDouble()
+          amount: json_.containsKey('amount')
+              ? (json_['amount'] as core.num).toDouble()
               : null,
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
               : null,
         );
 
@@ -6996,36 +6996,36 @@ class VolumeSaleInfo {
     this.saleability,
   });
 
-  VolumeSaleInfo.fromJson(core.Map _json)
+  VolumeSaleInfo.fromJson(core.Map json_)
       : this(
-          buyLink: _json.containsKey('buyLink')
-              ? _json['buyLink'] as core.String
+          buyLink: json_.containsKey('buyLink')
+              ? json_['buyLink'] as core.String
               : null,
-          country: _json.containsKey('country')
-              ? _json['country'] as core.String
+          country: json_.containsKey('country')
+              ? json_['country'] as core.String
               : null,
-          isEbook: _json.containsKey('isEbook')
-              ? _json['isEbook'] as core.bool
+          isEbook: json_.containsKey('isEbook')
+              ? json_['isEbook'] as core.bool
               : null,
-          listPrice: _json.containsKey('listPrice')
+          listPrice: json_.containsKey('listPrice')
               ? VolumeSaleInfoListPrice.fromJson(
-                  _json['listPrice'] as core.Map<core.String, core.dynamic>)
+                  json_['listPrice'] as core.Map<core.String, core.dynamic>)
               : null,
-          offers: _json.containsKey('offers')
-              ? (_json['offers'] as core.List)
+          offers: json_.containsKey('offers')
+              ? (json_['offers'] as core.List)
                   .map((value) => VolumeSaleInfoOffers.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          onSaleDate: _json.containsKey('onSaleDate')
-              ? _json['onSaleDate'] as core.String
+          onSaleDate: json_.containsKey('onSaleDate')
+              ? json_['onSaleDate'] as core.String
               : null,
-          retailPrice: _json.containsKey('retailPrice')
+          retailPrice: json_.containsKey('retailPrice')
               ? VolumeSaleInfoRetailPrice.fromJson(
-                  _json['retailPrice'] as core.Map<core.String, core.dynamic>)
+                  json_['retailPrice'] as core.Map<core.String, core.dynamic>)
               : null,
-          saleability: _json.containsKey('saleability')
-              ? _json['saleability'] as core.String
+          saleability: json_.containsKey('saleability')
+              ? json_['saleability'] as core.String
               : null,
         );
 
@@ -7050,10 +7050,10 @@ class VolumeSearchInfo {
     this.textSnippet,
   });
 
-  VolumeSearchInfo.fromJson(core.Map _json)
+  VolumeSearchInfo.fromJson(core.Map json_)
       : this(
-          textSnippet: _json.containsKey('textSnippet')
-              ? _json['textSnippet'] as core.String
+          textSnippet: json_.containsKey('textSnippet')
+              ? json_['textSnippet'] as core.String
               : null,
         );
 
@@ -7076,19 +7076,19 @@ class VolumeUserInfoCopy {
     this.updated,
   });
 
-  VolumeUserInfoCopy.fromJson(core.Map _json)
+  VolumeUserInfoCopy.fromJson(core.Map json_)
       : this(
-          allowedCharacterCount: _json.containsKey('allowedCharacterCount')
-              ? _json['allowedCharacterCount'] as core.int
+          allowedCharacterCount: json_.containsKey('allowedCharacterCount')
+              ? json_['allowedCharacterCount'] as core.int
               : null,
-          limitType: _json.containsKey('limitType')
-              ? _json['limitType'] as core.String
+          limitType: json_.containsKey('limitType')
+              ? json_['limitType'] as core.String
               : null,
-          remainingCharacterCount: _json.containsKey('remainingCharacterCount')
-              ? _json['remainingCharacterCount'] as core.int
+          remainingCharacterCount: json_.containsKey('remainingCharacterCount')
+              ? json_['remainingCharacterCount'] as core.int
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
         );
 
@@ -7123,16 +7123,16 @@ class VolumeUserInfoFamilySharing {
     this.isSharingDisabledByFop,
   });
 
-  VolumeUserInfoFamilySharing.fromJson(core.Map _json)
+  VolumeUserInfoFamilySharing.fromJson(core.Map json_)
       : this(
-          familyRole: _json.containsKey('familyRole')
-              ? _json['familyRole'] as core.String
+          familyRole: json_.containsKey('familyRole')
+              ? json_['familyRole'] as core.String
               : null,
-          isSharingAllowed: _json.containsKey('isSharingAllowed')
-              ? _json['isSharingAllowed'] as core.bool
+          isSharingAllowed: json_.containsKey('isSharingAllowed')
+              ? json_['isSharingAllowed'] as core.bool
               : null,
-          isSharingDisabledByFop: _json.containsKey('isSharingDisabledByFop')
-              ? _json['isSharingDisabledByFop'] as core.bool
+          isSharingDisabledByFop: json_.containsKey('isSharingDisabledByFop')
+              ? json_['isSharingDisabledByFop'] as core.bool
               : null,
         );
 
@@ -7154,13 +7154,13 @@ class VolumeUserInfoRentalPeriod {
     this.startUtcSec,
   });
 
-  VolumeUserInfoRentalPeriod.fromJson(core.Map _json)
+  VolumeUserInfoRentalPeriod.fromJson(core.Map json_)
       : this(
-          endUtcSec: _json.containsKey('endUtcSec')
-              ? _json['endUtcSec'] as core.String
+          endUtcSec: json_.containsKey('endUtcSec')
+              ? json_['endUtcSec'] as core.String
               : null,
-          startUtcSec: _json.containsKey('startUtcSec')
-              ? _json['startUtcSec'] as core.String
+          startUtcSec: json_.containsKey('startUtcSec')
+              ? json_['startUtcSec'] as core.String
               : null,
         );
 
@@ -7177,10 +7177,10 @@ class VolumeUserInfoUserUploadedVolumeInfo {
     this.processingState,
   });
 
-  VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map _json)
+  VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map json_)
       : this(
-          processingState: _json.containsKey('processingState')
-              ? _json['processingState'] as core.String
+          processingState: json_.containsKey('processingState')
+              ? json_['processingState'] as core.String
               : null,
         );
 
@@ -7284,71 +7284,71 @@ class VolumeUserInfo {
     this.userUploadedVolumeInfo,
   });
 
-  VolumeUserInfo.fromJson(core.Map _json)
+  VolumeUserInfo.fromJson(core.Map json_)
       : this(
-          acquiredTime: _json.containsKey('acquiredTime')
-              ? _json['acquiredTime'] as core.String
+          acquiredTime: json_.containsKey('acquiredTime')
+              ? json_['acquiredTime'] as core.String
               : null,
-          acquisitionType: _json.containsKey('acquisitionType')
-              ? _json['acquisitionType'] as core.int
+          acquisitionType: json_.containsKey('acquisitionType')
+              ? json_['acquisitionType'] as core.int
               : null,
-          copy: _json.containsKey('copy')
+          copy: json_.containsKey('copy')
               ? VolumeUserInfoCopy.fromJson(
-                  _json['copy'] as core.Map<core.String, core.dynamic>)
+                  json_['copy'] as core.Map<core.String, core.dynamic>)
               : null,
-          entitlementType: _json.containsKey('entitlementType')
-              ? _json['entitlementType'] as core.int
+          entitlementType: json_.containsKey('entitlementType')
+              ? json_['entitlementType'] as core.int
               : null,
-          familySharing: _json.containsKey('familySharing')
+          familySharing: json_.containsKey('familySharing')
               ? VolumeUserInfoFamilySharing.fromJson(
-                  _json['familySharing'] as core.Map<core.String, core.dynamic>)
+                  json_['familySharing'] as core.Map<core.String, core.dynamic>)
               : null,
-          isFamilySharedFromUser: _json.containsKey('isFamilySharedFromUser')
-              ? _json['isFamilySharedFromUser'] as core.bool
+          isFamilySharedFromUser: json_.containsKey('isFamilySharedFromUser')
+              ? json_['isFamilySharedFromUser'] as core.bool
               : null,
-          isFamilySharedToUser: _json.containsKey('isFamilySharedToUser')
-              ? _json['isFamilySharedToUser'] as core.bool
+          isFamilySharedToUser: json_.containsKey('isFamilySharedToUser')
+              ? json_['isFamilySharedToUser'] as core.bool
               : null,
-          isFamilySharingAllowed: _json.containsKey('isFamilySharingAllowed')
-              ? _json['isFamilySharingAllowed'] as core.bool
+          isFamilySharingAllowed: json_.containsKey('isFamilySharingAllowed')
+              ? json_['isFamilySharingAllowed'] as core.bool
               : null,
           isFamilySharingDisabledByFop:
-              _json.containsKey('isFamilySharingDisabledByFop')
-                  ? _json['isFamilySharingDisabledByFop'] as core.bool
+              json_.containsKey('isFamilySharingDisabledByFop')
+                  ? json_['isFamilySharingDisabledByFop'] as core.bool
                   : null,
-          isInMyBooks: _json.containsKey('isInMyBooks')
-              ? _json['isInMyBooks'] as core.bool
+          isInMyBooks: json_.containsKey('isInMyBooks')
+              ? json_['isInMyBooks'] as core.bool
               : null,
-          isPreordered: _json.containsKey('isPreordered')
-              ? _json['isPreordered'] as core.bool
+          isPreordered: json_.containsKey('isPreordered')
+              ? json_['isPreordered'] as core.bool
               : null,
-          isPurchased: _json.containsKey('isPurchased')
-              ? _json['isPurchased'] as core.bool
+          isPurchased: json_.containsKey('isPurchased')
+              ? json_['isPurchased'] as core.bool
               : null,
-          isUploaded: _json.containsKey('isUploaded')
-              ? _json['isUploaded'] as core.bool
+          isUploaded: json_.containsKey('isUploaded')
+              ? json_['isUploaded'] as core.bool
               : null,
-          readingPosition: _json.containsKey('readingPosition')
-              ? ReadingPosition.fromJson(_json['readingPosition']
+          readingPosition: json_.containsKey('readingPosition')
+              ? ReadingPosition.fromJson(json_['readingPosition']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          rentalPeriod: _json.containsKey('rentalPeriod')
+          rentalPeriod: json_.containsKey('rentalPeriod')
               ? VolumeUserInfoRentalPeriod.fromJson(
-                  _json['rentalPeriod'] as core.Map<core.String, core.dynamic>)
+                  json_['rentalPeriod'] as core.Map<core.String, core.dynamic>)
               : null,
-          rentalState: _json.containsKey('rentalState')
-              ? _json['rentalState'] as core.String
+          rentalState: json_.containsKey('rentalState')
+              ? json_['rentalState'] as core.String
               : null,
-          review: _json.containsKey('review')
+          review: json_.containsKey('review')
               ? Review.fromJson(
-                  _json['review'] as core.Map<core.String, core.dynamic>)
+                  json_['review'] as core.Map<core.String, core.dynamic>)
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          userUploadedVolumeInfo: _json.containsKey('userUploadedVolumeInfo')
+          userUploadedVolumeInfo: json_.containsKey('userUploadedVolumeInfo')
               ? VolumeUserInfoUserUploadedVolumeInfo.fromJson(
-                  _json['userUploadedVolumeInfo']
+                  json_['userUploadedVolumeInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7398,16 +7398,16 @@ class VolumeVolumeInfoDimensions {
     this.width,
   });
 
-  VolumeVolumeInfoDimensions.fromJson(core.Map _json)
+  VolumeVolumeInfoDimensions.fromJson(core.Map json_)
       : this(
-          height: _json.containsKey('height')
-              ? _json['height'] as core.String
+          height: json_.containsKey('height')
+              ? json_['height'] as core.String
               : null,
-          thickness: _json.containsKey('thickness')
-              ? _json['thickness'] as core.String
+          thickness: json_.containsKey('thickness')
+              ? json_['thickness'] as core.String
               : null,
           width:
-              _json.containsKey('width') ? _json['width'] as core.String : null,
+              json_.containsKey('width') ? json_['width'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7460,23 +7460,23 @@ class VolumeVolumeInfoImageLinks {
     this.thumbnail,
   });
 
-  VolumeVolumeInfoImageLinks.fromJson(core.Map _json)
+  VolumeVolumeInfoImageLinks.fromJson(core.Map json_)
       : this(
-          extraLarge: _json.containsKey('extraLarge')
-              ? _json['extraLarge'] as core.String
+          extraLarge: json_.containsKey('extraLarge')
+              ? json_['extraLarge'] as core.String
               : null,
           large:
-              _json.containsKey('large') ? _json['large'] as core.String : null,
-          medium: _json.containsKey('medium')
-              ? _json['medium'] as core.String
+              json_.containsKey('large') ? json_['large'] as core.String : null,
+          medium: json_.containsKey('medium')
+              ? json_['medium'] as core.String
               : null,
           small:
-              _json.containsKey('small') ? _json['small'] as core.String : null,
-          smallThumbnail: _json.containsKey('smallThumbnail')
-              ? _json['smallThumbnail'] as core.String
+              json_.containsKey('small') ? json_['small'] as core.String : null,
+          smallThumbnail: json_.containsKey('smallThumbnail')
+              ? json_['smallThumbnail'] as core.String
               : null,
-          thumbnail: _json.containsKey('thumbnail')
-              ? _json['thumbnail'] as core.String
+          thumbnail: json_.containsKey('thumbnail')
+              ? json_['thumbnail'] as core.String
               : null,
         );
 
@@ -7504,12 +7504,12 @@ class VolumeVolumeInfoIndustryIdentifiers {
     this.type,
   });
 
-  VolumeVolumeInfoIndustryIdentifiers.fromJson(core.Map _json)
+  VolumeVolumeInfoIndustryIdentifiers.fromJson(core.Map json_)
       : this(
-          identifier: _json.containsKey('identifier')
-              ? _json['identifier'] as core.String
+          identifier: json_.containsKey('identifier')
+              ? json_['identifier'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7532,19 +7532,19 @@ class VolumeVolumeInfoPanelizationSummary {
     this.imageBubbleVersion,
   });
 
-  VolumeVolumeInfoPanelizationSummary.fromJson(core.Map _json)
+  VolumeVolumeInfoPanelizationSummary.fromJson(core.Map json_)
       : this(
-          containsEpubBubbles: _json.containsKey('containsEpubBubbles')
-              ? _json['containsEpubBubbles'] as core.bool
+          containsEpubBubbles: json_.containsKey('containsEpubBubbles')
+              ? json_['containsEpubBubbles'] as core.bool
               : null,
-          containsImageBubbles: _json.containsKey('containsImageBubbles')
-              ? _json['containsImageBubbles'] as core.bool
+          containsImageBubbles: json_.containsKey('containsImageBubbles')
+              ? json_['containsImageBubbles'] as core.bool
               : null,
-          epubBubbleVersion: _json.containsKey('epubBubbleVersion')
-              ? _json['epubBubbleVersion'] as core.String
+          epubBubbleVersion: json_.containsKey('epubBubbleVersion')
+              ? json_['epubBubbleVersion'] as core.String
               : null,
-          imageBubbleVersion: _json.containsKey('imageBubbleVersion')
-              ? _json['imageBubbleVersion'] as core.String
+          imageBubbleVersion: json_.containsKey('imageBubbleVersion')
+              ? json_['imageBubbleVersion'] as core.String
               : null,
         );
 
@@ -7569,11 +7569,11 @@ class VolumeVolumeInfoReadingModes {
     this.text,
   });
 
-  VolumeVolumeInfoReadingModes.fromJson(core.Map _json)
+  VolumeVolumeInfoReadingModes.fromJson(core.Map json_)
       : this(
           image:
-              _json.containsKey('image') ? _json['image'] as core.bool : null,
-          text: _json.containsKey('text') ? _json['text'] as core.bool : null,
+              json_.containsKey('image') ? json_['image'] as core.bool : null,
+          text: json_.containsKey('text') ? json_['text'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7725,104 +7725,104 @@ class VolumeVolumeInfo {
     this.title,
   });
 
-  VolumeVolumeInfo.fromJson(core.Map _json)
+  VolumeVolumeInfo.fromJson(core.Map json_)
       : this(
-          allowAnonLogging: _json.containsKey('allowAnonLogging')
-              ? _json['allowAnonLogging'] as core.bool
+          allowAnonLogging: json_.containsKey('allowAnonLogging')
+              ? json_['allowAnonLogging'] as core.bool
               : null,
-          authors: _json.containsKey('authors')
-              ? (_json['authors'] as core.List)
+          authors: json_.containsKey('authors')
+              ? (json_['authors'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          averageRating: _json.containsKey('averageRating')
-              ? (_json['averageRating'] as core.num).toDouble()
+          averageRating: json_.containsKey('averageRating')
+              ? (json_['averageRating'] as core.num).toDouble()
               : null,
-          canonicalVolumeLink: _json.containsKey('canonicalVolumeLink')
-              ? _json['canonicalVolumeLink'] as core.String
+          canonicalVolumeLink: json_.containsKey('canonicalVolumeLink')
+              ? json_['canonicalVolumeLink'] as core.String
               : null,
-          categories: _json.containsKey('categories')
-              ? (_json['categories'] as core.List)
+          categories: json_.containsKey('categories')
+              ? (json_['categories'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          comicsContent: _json.containsKey('comicsContent')
-              ? _json['comicsContent'] as core.bool
+          comicsContent: json_.containsKey('comicsContent')
+              ? json_['comicsContent'] as core.bool
               : null,
-          contentVersion: _json.containsKey('contentVersion')
-              ? _json['contentVersion'] as core.String
+          contentVersion: json_.containsKey('contentVersion')
+              ? json_['contentVersion'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          dimensions: _json.containsKey('dimensions')
+          dimensions: json_.containsKey('dimensions')
               ? VolumeVolumeInfoDimensions.fromJson(
-                  _json['dimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['dimensions'] as core.Map<core.String, core.dynamic>)
               : null,
-          imageLinks: _json.containsKey('imageLinks')
+          imageLinks: json_.containsKey('imageLinks')
               ? VolumeVolumeInfoImageLinks.fromJson(
-                  _json['imageLinks'] as core.Map<core.String, core.dynamic>)
+                  json_['imageLinks'] as core.Map<core.String, core.dynamic>)
               : null,
-          industryIdentifiers: _json.containsKey('industryIdentifiers')
-              ? (_json['industryIdentifiers'] as core.List)
+          industryIdentifiers: json_.containsKey('industryIdentifiers')
+              ? (json_['industryIdentifiers'] as core.List)
                   .map((value) => VolumeVolumeInfoIndustryIdentifiers.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          infoLink: _json.containsKey('infoLink')
-              ? _json['infoLink'] as core.String
+          infoLink: json_.containsKey('infoLink')
+              ? json_['infoLink'] as core.String
               : null,
-          language: _json.containsKey('language')
-              ? _json['language'] as core.String
+          language: json_.containsKey('language')
+              ? json_['language'] as core.String
               : null,
-          mainCategory: _json.containsKey('mainCategory')
-              ? _json['mainCategory'] as core.String
+          mainCategory: json_.containsKey('mainCategory')
+              ? json_['mainCategory'] as core.String
               : null,
-          maturityRating: _json.containsKey('maturityRating')
-              ? _json['maturityRating'] as core.String
+          maturityRating: json_.containsKey('maturityRating')
+              ? json_['maturityRating'] as core.String
               : null,
-          pageCount: _json.containsKey('pageCount')
-              ? _json['pageCount'] as core.int
+          pageCount: json_.containsKey('pageCount')
+              ? json_['pageCount'] as core.int
               : null,
-          panelizationSummary: _json.containsKey('panelizationSummary')
+          panelizationSummary: json_.containsKey('panelizationSummary')
               ? VolumeVolumeInfoPanelizationSummary.fromJson(
-                  _json['panelizationSummary']
+                  json_['panelizationSummary']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          previewLink: _json.containsKey('previewLink')
-              ? _json['previewLink'] as core.String
+          previewLink: json_.containsKey('previewLink')
+              ? json_['previewLink'] as core.String
               : null,
-          printType: _json.containsKey('printType')
-              ? _json['printType'] as core.String
+          printType: json_.containsKey('printType')
+              ? json_['printType'] as core.String
               : null,
-          printedPageCount: _json.containsKey('printedPageCount')
-              ? _json['printedPageCount'] as core.int
+          printedPageCount: json_.containsKey('printedPageCount')
+              ? json_['printedPageCount'] as core.int
               : null,
-          publishedDate: _json.containsKey('publishedDate')
-              ? _json['publishedDate'] as core.String
+          publishedDate: json_.containsKey('publishedDate')
+              ? json_['publishedDate'] as core.String
               : null,
-          publisher: _json.containsKey('publisher')
-              ? _json['publisher'] as core.String
+          publisher: json_.containsKey('publisher')
+              ? json_['publisher'] as core.String
               : null,
-          ratingsCount: _json.containsKey('ratingsCount')
-              ? _json['ratingsCount'] as core.int
+          ratingsCount: json_.containsKey('ratingsCount')
+              ? json_['ratingsCount'] as core.int
               : null,
-          readingModes: _json.containsKey('readingModes')
+          readingModes: json_.containsKey('readingModes')
               ? VolumeVolumeInfoReadingModes.fromJson(
-                  _json['readingModes'] as core.Map<core.String, core.dynamic>)
+                  json_['readingModes'] as core.Map<core.String, core.dynamic>)
               : null,
-          samplePageCount: _json.containsKey('samplePageCount')
-              ? _json['samplePageCount'] as core.int
+          samplePageCount: json_.containsKey('samplePageCount')
+              ? json_['samplePageCount'] as core.int
               : null,
-          seriesInfo: _json.containsKey('seriesInfo')
+          seriesInfo: json_.containsKey('seriesInfo')
               ? Volumeseriesinfo.fromJson(
-                  _json['seriesInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['seriesInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          subtitle: _json.containsKey('subtitle')
-              ? _json['subtitle'] as core.String
+          subtitle: json_.containsKey('subtitle')
+              ? json_['subtitle'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7926,41 +7926,41 @@ class Volume {
     this.volumeInfo,
   });
 
-  Volume.fromJson(core.Map _json)
+  Volume.fromJson(core.Map json_)
       : this(
-          accessInfo: _json.containsKey('accessInfo')
+          accessInfo: json_.containsKey('accessInfo')
               ? VolumeAccessInfo.fromJson(
-                  _json['accessInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['accessInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          layerInfo: _json.containsKey('layerInfo')
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          layerInfo: json_.containsKey('layerInfo')
               ? VolumeLayerInfo.fromJson(
-                  _json['layerInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['layerInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          recommendedInfo: _json.containsKey('recommendedInfo')
-              ? VolumeRecommendedInfo.fromJson(_json['recommendedInfo']
+          recommendedInfo: json_.containsKey('recommendedInfo')
+              ? VolumeRecommendedInfo.fromJson(json_['recommendedInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          saleInfo: _json.containsKey('saleInfo')
+          saleInfo: json_.containsKey('saleInfo')
               ? VolumeSaleInfo.fromJson(
-                  _json['saleInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['saleInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          searchInfo: _json.containsKey('searchInfo')
+          searchInfo: json_.containsKey('searchInfo')
               ? VolumeSearchInfo.fromJson(
-                  _json['searchInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['searchInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          userInfo: _json.containsKey('userInfo')
+          userInfo: json_.containsKey('userInfo')
               ? VolumeUserInfo.fromJson(
-                  _json['userInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          volumeInfo: _json.containsKey('volumeInfo')
+          volumeInfo: json_.containsKey('volumeInfo')
               ? VolumeVolumeInfo.fromJson(
-                  _json['volumeInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['volumeInfo'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7993,17 +7993,17 @@ class Volume2 {
     this.nextPageToken,
   });
 
-  Volume2.fromJson(core.Map _json)
+  Volume2.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -8035,22 +8035,22 @@ class VolumeannotationContentRanges {
     this.gbTextRange,
   });
 
-  VolumeannotationContentRanges.fromJson(core.Map _json)
+  VolumeannotationContentRanges.fromJson(core.Map json_)
       : this(
-          cfiRange: _json.containsKey('cfiRange')
+          cfiRange: json_.containsKey('cfiRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['cfiRange'] as core.Map<core.String, core.dynamic>)
+                  json_['cfiRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          contentVersion: _json.containsKey('contentVersion')
-              ? _json['contentVersion'] as core.String
+          contentVersion: json_.containsKey('contentVersion')
+              ? json_['contentVersion'] as core.String
               : null,
-          gbImageRange: _json.containsKey('gbImageRange')
+          gbImageRange: json_.containsKey('gbImageRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['gbImageRange'] as core.Map<core.String, core.dynamic>)
+                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>)
               : null,
-          gbTextRange: _json.containsKey('gbTextRange')
+          gbTextRange: json_.containsKey('gbTextRange')
               ? BooksAnnotationsRange.fromJson(
-                  _json['gbTextRange'] as core.Map<core.String, core.dynamic>)
+                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8124,46 +8124,46 @@ class Volumeannotation {
     this.volumeId,
   });
 
-  Volumeannotation.fromJson(core.Map _json)
+  Volumeannotation.fromJson(core.Map json_)
       : this(
-          annotationDataId: _json.containsKey('annotationDataId')
-              ? _json['annotationDataId'] as core.String
+          annotationDataId: json_.containsKey('annotationDataId')
+              ? json_['annotationDataId'] as core.String
               : null,
-          annotationDataLink: _json.containsKey('annotationDataLink')
-              ? _json['annotationDataLink'] as core.String
+          annotationDataLink: json_.containsKey('annotationDataLink')
+              ? json_['annotationDataLink'] as core.String
               : null,
-          annotationType: _json.containsKey('annotationType')
-              ? _json['annotationType'] as core.String
+          annotationType: json_.containsKey('annotationType')
+              ? json_['annotationType'] as core.String
               : null,
-          contentRanges: _json.containsKey('contentRanges')
+          contentRanges: json_.containsKey('contentRanges')
               ? VolumeannotationContentRanges.fromJson(
-                  _json['contentRanges'] as core.Map<core.String, core.dynamic>)
+                  json_['contentRanges'] as core.Map<core.String, core.dynamic>)
               : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          layerId: _json.containsKey('layerId')
-              ? _json['layerId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          layerId: json_.containsKey('layerId')
+              ? json_['layerId'] as core.String
               : null,
-          pageIds: _json.containsKey('pageIds')
-              ? (_json['pageIds'] as core.List)
+          pageIds: json_.containsKey('pageIds')
+              ? (json_['pageIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          selectedText: _json.containsKey('selectedText')
-              ? _json['selectedText'] as core.String
+          selectedText: json_.containsKey('selectedText')
+              ? json_['selectedText'] as core.String
               : null,
-          selfLink: _json.containsKey('selfLink')
-              ? _json['selfLink'] as core.String
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
               : null,
-          updated: _json.containsKey('updated')
-              ? _json['updated'] as core.String
+          updated: json_.containsKey('updated')
+              ? json_['updated'] as core.String
               : null,
-          volumeId: _json.containsKey('volumeId')
-              ? _json['volumeId'] as core.String
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
               : null,
         );
 
@@ -8217,23 +8217,23 @@ class Volumeannotations {
     this.version,
   });
 
-  Volumeannotations.fromJson(core.Map _json)
+  Volumeannotations.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Volumeannotation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.int
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.int
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -8265,17 +8265,17 @@ class Volumes {
     this.totalItems,
   });
 
-  Volumes.fromJson(core.Map _json)
+  Volumes.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          totalItems: _json.containsKey('totalItems')
-              ? _json['totalItems'] as core.int
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          totalItems: json_.containsKey('totalItems')
+              ? json_['totalItems'] as core.int
               : null,
         );
 
@@ -8295,13 +8295,13 @@ class VolumeseriesinfoVolumeSeriesIssue {
     this.issueOrderNumber,
   });
 
-  VolumeseriesinfoVolumeSeriesIssue.fromJson(core.Map _json)
+  VolumeseriesinfoVolumeSeriesIssue.fromJson(core.Map json_)
       : this(
-          issueDisplayNumber: _json.containsKey('issueDisplayNumber')
-              ? _json['issueDisplayNumber'] as core.String
+          issueDisplayNumber: json_.containsKey('issueDisplayNumber')
+              ? json_['issueDisplayNumber'] as core.String
               : null,
-          issueOrderNumber: _json.containsKey('issueOrderNumber')
-              ? _json['issueOrderNumber'] as core.int
+          issueOrderNumber: json_.containsKey('issueOrderNumber')
+              ? json_['issueOrderNumber'] as core.int
               : null,
         );
 
@@ -8336,22 +8336,22 @@ class VolumeseriesinfoVolumeSeries {
     this.seriesId,
   });
 
-  VolumeseriesinfoVolumeSeries.fromJson(core.Map _json)
+  VolumeseriesinfoVolumeSeries.fromJson(core.Map json_)
       : this(
-          issue: _json.containsKey('issue')
-              ? (_json['issue'] as core.List)
+          issue: json_.containsKey('issue')
+              ? (json_['issue'] as core.List)
                   .map((value) => VolumeseriesinfoVolumeSeriesIssue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          orderNumber: _json.containsKey('orderNumber')
-              ? _json['orderNumber'] as core.int
+          orderNumber: json_.containsKey('orderNumber')
+              ? json_['orderNumber'] as core.int
               : null,
-          seriesBookType: _json.containsKey('seriesBookType')
-              ? _json['seriesBookType'] as core.String
+          seriesBookType: json_.containsKey('seriesBookType')
+              ? json_['seriesBookType'] as core.String
               : null,
-          seriesId: _json.containsKey('seriesId')
-              ? _json['seriesId'] as core.String
+          seriesId: json_.containsKey('seriesId')
+              ? json_['seriesId'] as core.String
               : null,
         );
 
@@ -8384,17 +8384,17 @@ class Volumeseriesinfo {
     this.volumeSeries,
   });
 
-  Volumeseriesinfo.fromJson(core.Map _json)
+  Volumeseriesinfo.fromJson(core.Map json_)
       : this(
-          bookDisplayNumber: _json.containsKey('bookDisplayNumber')
-              ? _json['bookDisplayNumber'] as core.String
+          bookDisplayNumber: json_.containsKey('bookDisplayNumber')
+              ? json_['bookDisplayNumber'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          shortSeriesBookTitle: _json.containsKey('shortSeriesBookTitle')
-              ? _json['shortSeriesBookTitle'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          shortSeriesBookTitle: json_.containsKey('shortSeriesBookTitle')
+              ? json_['shortSeriesBookTitle'] as core.String
               : null,
-          volumeSeries: _json.containsKey('volumeSeries')
-              ? (_json['volumeSeries'] as core.List)
+          volumeSeries: json_.containsKey('volumeSeries')
+              ? (json_['volumeSeries'] as core.List)
                   .map((value) => VolumeseriesinfoVolumeSeries.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()

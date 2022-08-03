@@ -112,22 +112,22 @@ class ProjectsLocationsResource {
     core.String location, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$location') + ':generateRandomBytes';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GenerateRandomBytesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a location.
@@ -151,18 +151,18 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -199,22 +199,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -253,22 +253,22 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String? ekmConnectionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (ekmConnectionId != null) 'ekmConnectionId': [ekmConnectionId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return EkmConnection.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given EkmConnection.
@@ -293,19 +293,19 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return EkmConnection.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -349,20 +349,20 @@ class ProjectsLocationsEkmConnectionsResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists EkmConnections.
@@ -409,7 +409,7 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -417,15 +417,15 @@ class ProjectsLocationsEkmConnectionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListEkmConnectionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an EkmConnection's metadata.
@@ -457,22 +457,22 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return EkmConnection.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -506,20 +506,20 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -555,22 +555,22 @@ class ProjectsLocationsEkmConnectionsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -614,21 +614,21 @@ class ProjectsLocationsKeyRingsResource {
     core.String? keyRingId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (keyRingId != null) 'keyRingId': [keyRingId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/keyRings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyRings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return KeyRing.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given KeyRing.
@@ -653,18 +653,18 @@ class ProjectsLocationsKeyRingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return KeyRing.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -708,20 +708,20 @@ class ProjectsLocationsKeyRingsResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists KeyRings.
@@ -767,7 +767,7 @@ class ProjectsLocationsKeyRingsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -775,15 +775,15 @@ class ProjectsLocationsKeyRingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/keyRings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keyRings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListKeyRingsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -817,20 +817,20 @@ class ProjectsLocationsKeyRingsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -866,22 +866,22 @@ class ProjectsLocationsKeyRingsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -934,23 +934,23 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.bool? skipInitialVersionCreation,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (cryptoKeyId != null) 'cryptoKeyId': [cryptoKeyId],
       if (skipInitialVersionCreation != null)
         'skipInitialVersionCreation': ['${skipInitialVersionCreation}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeys';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return CryptoKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Decrypts data that was protected by Encrypt.
@@ -981,21 +981,21 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':decrypt';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':decrypt';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DecryptResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Encrypts data, so that it can only be recovered by a call to Decrypt.
@@ -1027,21 +1027,21 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':encrypt';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':encrypt';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return EncryptResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given CryptoKey, as well as its primary
@@ -1067,18 +1067,18 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return CryptoKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1122,20 +1122,20 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists CryptoKeys.
@@ -1191,7 +1191,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String? versionView,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1200,15 +1200,15 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeys';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCryptoKeysResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a CryptoKey.
@@ -1240,21 +1240,21 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return CryptoKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1288,20 +1288,20 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1337,22 +1337,22 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the version of a CryptoKey that will be used in Encrypt.
@@ -1382,20 +1382,20 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':updatePrimaryVersion';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':updatePrimaryVersion';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return CryptoKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1434,21 +1434,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':asymmetricDecrypt';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':asymmetricDecrypt';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AsymmetricDecryptResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs data using a CryptoKeyVersion with CryptoKey.purpose
@@ -1479,21 +1479,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':asymmetricSign';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':asymmetricSign';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AsymmetricSignResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new CryptoKeyVersion in a CryptoKey.
@@ -1525,21 +1525,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Schedule a CryptoKeyVersion for destruction.
@@ -1574,21 +1574,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':destroy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':destroy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given CryptoKeyVersion.
@@ -1613,19 +1613,19 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the public key for the given CryptoKeyVersion.
@@ -1652,18 +1652,18 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + '/publicKey';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/publicKey';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return PublicKey.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return PublicKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Import wrapped key material into a CryptoKeyVersion.
@@ -1698,22 +1698,22 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions:import';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists CryptoKeyVersions.
@@ -1769,7 +1769,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1778,15 +1778,15 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCryptoKeyVersionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing
@@ -1816,21 +1816,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':macSign';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':macSign';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return MacSignResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and
@@ -1861,21 +1861,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':macVerify';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':macVerify';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return MacVerifyResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a CryptoKeyVersion's metadata.
@@ -1912,22 +1912,22 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
@@ -1958,21 +1958,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CryptoKeyVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2014,21 +2014,21 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String? importJobId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (importJobId != null) 'importJobId': [importJobId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return ImportJob.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given ImportJob.
@@ -2053,18 +2053,18 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return ImportJob.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2108,20 +2108,20 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.int? options_requestedPolicyVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ImportJobs.
@@ -2168,7 +2168,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2176,15 +2176,15 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/importJobs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListImportJobsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2218,20 +2218,20 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2267,22 +2267,22 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2296,9 +2296,9 @@ class AsymmetricDecryptRequest {
   core.List<core.int> get ciphertextAsBytes =>
       convert.base64.decode(ciphertext!);
 
-  set ciphertextAsBytes(core.List<core.int> _bytes) {
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
     ciphertext =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext.
@@ -2323,13 +2323,13 @@ class AsymmetricDecryptRequest {
     this.ciphertextCrc32c,
   });
 
-  AsymmetricDecryptRequest.fromJson(core.Map _json)
+  AsymmetricDecryptRequest.fromJson(core.Map json_)
       : this(
-          ciphertext: _json.containsKey('ciphertext')
-              ? _json['ciphertext'] as core.String
+          ciphertext: json_.containsKey('ciphertext')
+              ? json_['ciphertext'] as core.String
               : null,
-          ciphertextCrc32c: _json.containsKey('ciphertextCrc32c')
-              ? _json['ciphertextCrc32c'] as core.String
+          ciphertextCrc32c: json_.containsKey('ciphertextCrc32c')
+              ? json_['ciphertextCrc32c'] as core.String
               : null,
         );
 
@@ -2345,9 +2345,9 @@ class AsymmetricDecryptResponse {
   core.String? plaintext;
   core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
 
-  set plaintextAsBytes(core.List<core.int> _bytes) {
+  set plaintextAsBytes(core.List<core.int> bytes_) {
     plaintext =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field.
@@ -2392,20 +2392,20 @@ class AsymmetricDecryptResponse {
     this.verifiedCiphertextCrc32c,
   });
 
-  AsymmetricDecryptResponse.fromJson(core.Map _json)
+  AsymmetricDecryptResponse.fromJson(core.Map json_)
       : this(
-          plaintext: _json.containsKey('plaintext')
-              ? _json['plaintext'] as core.String
+          plaintext: json_.containsKey('plaintext')
+              ? json_['plaintext'] as core.String
               : null,
-          plaintextCrc32c: _json.containsKey('plaintextCrc32c')
-              ? _json['plaintextCrc32c'] as core.String
+          plaintextCrc32c: json_.containsKey('plaintextCrc32c')
+              ? json_['plaintextCrc32c'] as core.String
               : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
           verifiedCiphertextCrc32c:
-              _json.containsKey('verifiedCiphertextCrc32c')
-                  ? _json['verifiedCiphertextCrc32c'] as core.bool
+              json_.containsKey('verifiedCiphertextCrc32c')
+                  ? json_['verifiedCiphertextCrc32c'] as core.bool
                   : null,
         );
 
@@ -2428,9 +2428,9 @@ class AsymmetricSignRequest {
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
-  set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> bytes_) {
     data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the AsymmetricSignRequest.data.
@@ -2483,18 +2483,18 @@ class AsymmetricSignRequest {
     this.digestCrc32c,
   });
 
-  AsymmetricSignRequest.fromJson(core.Map _json)
+  AsymmetricSignRequest.fromJson(core.Map json_)
       : this(
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          dataCrc32c: _json.containsKey('dataCrc32c')
-              ? _json['dataCrc32c'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          dataCrc32c: json_.containsKey('dataCrc32c')
+              ? json_['dataCrc32c'] as core.String
               : null,
-          digest: _json.containsKey('digest')
+          digest: json_.containsKey('digest')
               ? Digest.fromJson(
-                  _json['digest'] as core.Map<core.String, core.dynamic>)
+                  json_['digest'] as core.Map<core.String, core.dynamic>)
               : null,
-          digestCrc32c: _json.containsKey('digestCrc32c')
-              ? _json['digestCrc32c'] as core.String
+          digestCrc32c: json_.containsKey('digestCrc32c')
+              ? json_['digestCrc32c'] as core.String
               : null,
         );
 
@@ -2528,9 +2528,9 @@ class AsymmetricSignResponse {
   core.String? signature;
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
-  set signatureAsBytes(core.List<core.int> _bytes) {
+  set signatureAsBytes(core.List<core.int> bytes_) {
     signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field.
@@ -2578,23 +2578,23 @@ class AsymmetricSignResponse {
     this.verifiedDigestCrc32c,
   });
 
-  AsymmetricSignResponse.fromJson(core.Map _json)
+  AsymmetricSignResponse.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
-          signatureCrc32c: _json.containsKey('signatureCrc32c')
-              ? _json['signatureCrc32c'] as core.String
+          signatureCrc32c: json_.containsKey('signatureCrc32c')
+              ? json_['signatureCrc32c'] as core.String
               : null,
-          verifiedDataCrc32c: _json.containsKey('verifiedDataCrc32c')
-              ? _json['verifiedDataCrc32c'] as core.bool
+          verifiedDataCrc32c: json_.containsKey('verifiedDataCrc32c')
+              ? json_['verifiedDataCrc32c'] as core.bool
               : null,
-          verifiedDigestCrc32c: _json.containsKey('verifiedDigestCrc32c')
-              ? _json['verifiedDigestCrc32c'] as core.bool
+          verifiedDigestCrc32c: json_.containsKey('verifiedDigestCrc32c')
+              ? json_['verifiedDigestCrc32c'] as core.bool
               : null,
         );
 
@@ -2642,16 +2642,16 @@ class AuditConfig {
     this.service,
   });
 
-  AuditConfig.fromJson(core.Map _json)
+  AuditConfig.fromJson(core.Map json_)
       : this(
-          auditLogConfigs: _json.containsKey('auditLogConfigs')
-              ? (_json['auditLogConfigs'] as core.List)
+          auditLogConfigs: json_.containsKey('auditLogConfigs')
+              ? (json_['auditLogConfigs'] as core.List)
                   .map((value) => AuditLogConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
         );
 
@@ -2725,18 +2725,18 @@ class Binding {
     this.role,
   });
 
-  Binding.fromJson(core.Map _json)
+  Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2781,9 +2781,9 @@ class Certificate {
   core.String? rawDer;
   core.List<core.int> get rawDerAsBytes => convert.base64.decode(rawDer!);
 
-  set rawDerAsBytes(core.List<core.int> _bytes) {
+  set rawDerAsBytes(core.List<core.int> bytes_) {
     rawDer =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The certificate serial number as a hex string.
@@ -2826,34 +2826,34 @@ class Certificate {
     this.subjectAlternativeDnsNames,
   });
 
-  Certificate.fromJson(core.Map _json)
+  Certificate.fromJson(core.Map json_)
       : this(
-          issuer: _json.containsKey('issuer')
-              ? _json['issuer'] as core.String
+          issuer: json_.containsKey('issuer')
+              ? json_['issuer'] as core.String
               : null,
-          notAfterTime: _json.containsKey('notAfterTime')
-              ? _json['notAfterTime'] as core.String
+          notAfterTime: json_.containsKey('notAfterTime')
+              ? json_['notAfterTime'] as core.String
               : null,
-          notBeforeTime: _json.containsKey('notBeforeTime')
-              ? _json['notBeforeTime'] as core.String
+          notBeforeTime: json_.containsKey('notBeforeTime')
+              ? json_['notBeforeTime'] as core.String
               : null,
           parsed:
-              _json.containsKey('parsed') ? _json['parsed'] as core.bool : null,
-          rawDer: _json.containsKey('rawDer')
-              ? _json['rawDer'] as core.String
+              json_.containsKey('parsed') ? json_['parsed'] as core.bool : null,
+          rawDer: json_.containsKey('rawDer')
+              ? json_['rawDer'] as core.String
               : null,
-          serialNumber: _json.containsKey('serialNumber')
-              ? _json['serialNumber'] as core.String
+          serialNumber: json_.containsKey('serialNumber')
+              ? json_['serialNumber'] as core.String
               : null,
-          sha256Fingerprint: _json.containsKey('sha256Fingerprint')
-              ? _json['sha256Fingerprint'] as core.String
+          sha256Fingerprint: json_.containsKey('sha256Fingerprint')
+              ? json_['sha256Fingerprint'] as core.String
               : null,
-          subject: _json.containsKey('subject')
-              ? _json['subject'] as core.String
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
               : null,
           subjectAlternativeDnsNames:
-              _json.containsKey('subjectAlternativeDnsNames')
-                  ? (_json['subjectAlternativeDnsNames'] as core.List)
+              json_.containsKey('subjectAlternativeDnsNames')
+                  ? (json_['subjectAlternativeDnsNames'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
@@ -2893,20 +2893,20 @@ class CertificateChains {
     this.googlePartitionCerts,
   });
 
-  CertificateChains.fromJson(core.Map _json)
+  CertificateChains.fromJson(core.Map json_)
       : this(
-          caviumCerts: _json.containsKey('caviumCerts')
-              ? (_json['caviumCerts'] as core.List)
+          caviumCerts: json_.containsKey('caviumCerts')
+              ? (json_['caviumCerts'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          googleCardCerts: _json.containsKey('googleCardCerts')
-              ? (_json['googleCardCerts'] as core.List)
+          googleCardCerts: json_.containsKey('googleCardCerts')
+              ? (json_['googleCardCerts'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          googlePartitionCerts: _json.containsKey('googlePartitionCerts')
-              ? (_json['googlePartitionCerts'] as core.List)
+          googlePartitionCerts: json_.containsKey('googlePartitionCerts')
+              ? (json_['googlePartitionCerts'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3030,45 +3030,45 @@ class CryptoKey {
     this.versionTemplate,
   });
 
-  CryptoKey.fromJson(core.Map _json)
+  CryptoKey.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          cryptoKeyBackend: _json.containsKey('cryptoKeyBackend')
-              ? _json['cryptoKeyBackend'] as core.String
+          cryptoKeyBackend: json_.containsKey('cryptoKeyBackend')
+              ? json_['cryptoKeyBackend'] as core.String
               : null,
           destroyScheduledDuration:
-              _json.containsKey('destroyScheduledDuration')
-                  ? _json['destroyScheduledDuration'] as core.String
+              json_.containsKey('destroyScheduledDuration')
+                  ? json_['destroyScheduledDuration'] as core.String
                   : null,
-          importOnly: _json.containsKey('importOnly')
-              ? _json['importOnly'] as core.bool
+          importOnly: json_.containsKey('importOnly')
+              ? json_['importOnly'] as core.bool
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          nextRotationTime: _json.containsKey('nextRotationTime')
-              ? _json['nextRotationTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nextRotationTime: json_.containsKey('nextRotationTime')
+              ? json_['nextRotationTime'] as core.String
               : null,
-          primary: _json.containsKey('primary')
+          primary: json_.containsKey('primary')
               ? CryptoKeyVersion.fromJson(
-                  _json['primary'] as core.Map<core.String, core.dynamic>)
+                  json_['primary'] as core.Map<core.String, core.dynamic>)
               : null,
-          purpose: _json.containsKey('purpose')
-              ? _json['purpose'] as core.String
+          purpose: json_.containsKey('purpose')
+              ? json_['purpose'] as core.String
               : null,
-          rotationPeriod: _json.containsKey('rotationPeriod')
-              ? _json['rotationPeriod'] as core.String
+          rotationPeriod: json_.containsKey('rotationPeriod')
+              ? json_['rotationPeriod'] as core.String
               : null,
-          versionTemplate: _json.containsKey('versionTemplate')
-              ? CryptoKeyVersionTemplate.fromJson(_json['versionTemplate']
+          versionTemplate: json_.containsKey('versionTemplate')
+              ? CryptoKeyVersionTemplate.fromJson(json_['versionTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3278,51 +3278,51 @@ class CryptoKeyVersion {
     this.state,
   });
 
-  CryptoKeyVersion.fromJson(core.Map _json)
+  CryptoKeyVersion.fromJson(core.Map json_)
       : this(
-          algorithm: _json.containsKey('algorithm')
-              ? _json['algorithm'] as core.String
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
               : null,
-          attestation: _json.containsKey('attestation')
+          attestation: json_.containsKey('attestation')
               ? KeyOperationAttestation.fromJson(
-                  _json['attestation'] as core.Map<core.String, core.dynamic>)
+                  json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          destroyEventTime: _json.containsKey('destroyEventTime')
-              ? _json['destroyEventTime'] as core.String
+          destroyEventTime: json_.containsKey('destroyEventTime')
+              ? json_['destroyEventTime'] as core.String
               : null,
-          destroyTime: _json.containsKey('destroyTime')
-              ? _json['destroyTime'] as core.String
+          destroyTime: json_.containsKey('destroyTime')
+              ? json_['destroyTime'] as core.String
               : null,
           externalProtectionLevelOptions:
-              _json.containsKey('externalProtectionLevelOptions')
+              json_.containsKey('externalProtectionLevelOptions')
                   ? ExternalProtectionLevelOptions.fromJson(
-                      _json['externalProtectionLevelOptions']
+                      json_['externalProtectionLevelOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          generateTime: _json.containsKey('generateTime')
-              ? _json['generateTime'] as core.String
+          generateTime: json_.containsKey('generateTime')
+              ? json_['generateTime'] as core.String
               : null,
-          importFailureReason: _json.containsKey('importFailureReason')
-              ? _json['importFailureReason'] as core.String
+          importFailureReason: json_.containsKey('importFailureReason')
+              ? json_['importFailureReason'] as core.String
               : null,
-          importJob: _json.containsKey('importJob')
-              ? _json['importJob'] as core.String
+          importJob: json_.containsKey('importJob')
+              ? json_['importJob'] as core.String
               : null,
-          importTime: _json.containsKey('importTime')
-              ? _json['importTime'] as core.String
+          importTime: json_.containsKey('importTime')
+              ? json_['importTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
-          reimportEligible: _json.containsKey('reimportEligible')
-              ? _json['reimportEligible'] as core.bool
+          reimportEligible: json_.containsKey('reimportEligible')
+              ? json_['reimportEligible'] as core.bool
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3423,13 +3423,13 @@ class CryptoKeyVersionTemplate {
     this.protectionLevel,
   });
 
-  CryptoKeyVersionTemplate.fromJson(core.Map _json)
+  CryptoKeyVersionTemplate.fromJson(core.Map json_)
       : this(
-          algorithm: _json.containsKey('algorithm')
-              ? _json['algorithm'] as core.String
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
               : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
         );
 
@@ -3449,9 +3449,9 @@ class DecryptRequest {
   core.List<core.int> get additionalAuthenticatedDataAsBytes =>
       convert.base64.decode(additionalAuthenticatedData!);
 
-  set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
+  set additionalAuthenticatedDataAsBytes(core.List<core.int> bytes_) {
     additionalAuthenticatedData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the
@@ -3479,9 +3479,9 @@ class DecryptRequest {
   core.List<core.int> get ciphertextAsBytes =>
       convert.base64.decode(ciphertext!);
 
-  set ciphertextAsBytes(core.List<core.int> _bytes) {
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
     ciphertext =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the DecryptRequest.ciphertext.
@@ -3508,21 +3508,21 @@ class DecryptRequest {
     this.ciphertextCrc32c,
   });
 
-  DecryptRequest.fromJson(core.Map _json)
+  DecryptRequest.fromJson(core.Map json_)
       : this(
           additionalAuthenticatedData:
-              _json.containsKey('additionalAuthenticatedData')
-                  ? _json['additionalAuthenticatedData'] as core.String
+              json_.containsKey('additionalAuthenticatedData')
+                  ? json_['additionalAuthenticatedData'] as core.String
                   : null,
           additionalAuthenticatedDataCrc32c:
-              _json.containsKey('additionalAuthenticatedDataCrc32c')
-                  ? _json['additionalAuthenticatedDataCrc32c'] as core.String
+              json_.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? json_['additionalAuthenticatedDataCrc32c'] as core.String
                   : null,
-          ciphertext: _json.containsKey('ciphertext')
-              ? _json['ciphertext'] as core.String
+          ciphertext: json_.containsKey('ciphertext')
+              ? json_['ciphertext'] as core.String
               : null,
-          ciphertextCrc32c: _json.containsKey('ciphertextCrc32c')
-              ? _json['ciphertextCrc32c'] as core.String
+          ciphertextCrc32c: json_.containsKey('ciphertextCrc32c')
+              ? json_['ciphertextCrc32c'] as core.String
               : null,
         );
 
@@ -3543,9 +3543,9 @@ class DecryptResponse {
   core.String? plaintext;
   core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
 
-  set plaintextAsBytes(core.List<core.int> _bytes) {
+  set plaintextAsBytes(core.List<core.int> bytes_) {
     plaintext =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field.
@@ -3583,19 +3583,19 @@ class DecryptResponse {
     this.usedPrimary,
   });
 
-  DecryptResponse.fromJson(core.Map _json)
+  DecryptResponse.fromJson(core.Map json_)
       : this(
-          plaintext: _json.containsKey('plaintext')
-              ? _json['plaintext'] as core.String
+          plaintext: json_.containsKey('plaintext')
+              ? json_['plaintext'] as core.String
               : null,
-          plaintextCrc32c: _json.containsKey('plaintextCrc32c')
-              ? _json['plaintextCrc32c'] as core.String
+          plaintextCrc32c: json_.containsKey('plaintextCrc32c')
+              ? json_['plaintextCrc32c'] as core.String
               : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
-          usedPrimary: _json.containsKey('usedPrimary')
-              ? _json['usedPrimary'] as core.bool
+          usedPrimary: json_.containsKey('usedPrimary')
+              ? json_['usedPrimary'] as core.bool
               : null,
         );
 
@@ -3616,27 +3616,27 @@ class Digest {
   core.String? sha256;
   core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
 
-  set sha256AsBytes(core.List<core.int> _bytes) {
+  set sha256AsBytes(core.List<core.int> bytes_) {
     sha256 =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A message digest produced with the SHA-384 algorithm.
   core.String? sha384;
   core.List<core.int> get sha384AsBytes => convert.base64.decode(sha384!);
 
-  set sha384AsBytes(core.List<core.int> _bytes) {
+  set sha384AsBytes(core.List<core.int> bytes_) {
     sha384 =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A message digest produced with the SHA-512 algorithm.
   core.String? sha512;
   core.List<core.int> get sha512AsBytes => convert.base64.decode(sha512!);
 
-  set sha512AsBytes(core.List<core.int> _bytes) {
+  set sha512AsBytes(core.List<core.int> bytes_) {
     sha512 =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   Digest({
@@ -3645,16 +3645,16 @@ class Digest {
     this.sha512,
   });
 
-  Digest.fromJson(core.Map _json)
+  Digest.fromJson(core.Map json_)
       : this(
-          sha256: _json.containsKey('sha256')
-              ? _json['sha256'] as core.String
+          sha256: json_.containsKey('sha256')
+              ? json_['sha256'] as core.String
               : null,
-          sha384: _json.containsKey('sha384')
-              ? _json['sha384'] as core.String
+          sha384: json_.containsKey('sha384')
+              ? json_['sha384'] as core.String
               : null,
-          sha512: _json.containsKey('sha512')
-              ? _json['sha512'] as core.String
+          sha512: json_.containsKey('sha512')
+              ? json_['sha512'] as core.String
               : null,
         );
 
@@ -3702,15 +3702,15 @@ class EkmConnection {
     this.serviceResolvers,
   });
 
-  EkmConnection.fromJson(core.Map _json)
+  EkmConnection.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          serviceResolvers: _json.containsKey('serviceResolvers')
-              ? (_json['serviceResolvers'] as core.List)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceResolvers: json_.containsKey('serviceResolvers')
+              ? (json_['serviceResolvers'] as core.List)
                   .map((value) => ServiceResolver.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3740,9 +3740,9 @@ class EncryptRequest {
   core.List<core.int> get additionalAuthenticatedDataAsBytes =>
       convert.base64.decode(additionalAuthenticatedData!);
 
-  set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
+  set additionalAuthenticatedDataAsBytes(core.List<core.int> bytes_) {
     additionalAuthenticatedData =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the
@@ -3775,9 +3775,9 @@ class EncryptRequest {
   core.String? plaintext;
   core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
 
-  set plaintextAsBytes(core.List<core.int> _bytes) {
+  set plaintextAsBytes(core.List<core.int> bytes_) {
     plaintext =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the EncryptRequest.plaintext.
@@ -3804,21 +3804,21 @@ class EncryptRequest {
     this.plaintextCrc32c,
   });
 
-  EncryptRequest.fromJson(core.Map _json)
+  EncryptRequest.fromJson(core.Map json_)
       : this(
           additionalAuthenticatedData:
-              _json.containsKey('additionalAuthenticatedData')
-                  ? _json['additionalAuthenticatedData'] as core.String
+              json_.containsKey('additionalAuthenticatedData')
+                  ? json_['additionalAuthenticatedData'] as core.String
                   : null,
           additionalAuthenticatedDataCrc32c:
-              _json.containsKey('additionalAuthenticatedDataCrc32c')
-                  ? _json['additionalAuthenticatedDataCrc32c'] as core.String
+              json_.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? json_['additionalAuthenticatedDataCrc32c'] as core.String
                   : null,
-          plaintext: _json.containsKey('plaintext')
-              ? _json['plaintext'] as core.String
+          plaintext: json_.containsKey('plaintext')
+              ? json_['plaintext'] as core.String
               : null,
-          plaintextCrc32c: _json.containsKey('plaintextCrc32c')
-              ? _json['plaintextCrc32c'] as core.String
+          plaintextCrc32c: json_.containsKey('plaintextCrc32c')
+              ? json_['plaintextCrc32c'] as core.String
               : null,
         );
 
@@ -3840,9 +3840,9 @@ class EncryptResponse {
   core.List<core.int> get ciphertextAsBytes =>
       convert.base64.decode(ciphertext!);
 
-  set ciphertextAsBytes(core.List<core.int> _bytes) {
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
     ciphertext =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field.
@@ -3907,24 +3907,24 @@ class EncryptResponse {
     this.verifiedPlaintextCrc32c,
   });
 
-  EncryptResponse.fromJson(core.Map _json)
+  EncryptResponse.fromJson(core.Map json_)
       : this(
-          ciphertext: _json.containsKey('ciphertext')
-              ? _json['ciphertext'] as core.String
+          ciphertext: json_.containsKey('ciphertext')
+              ? json_['ciphertext'] as core.String
               : null,
-          ciphertextCrc32c: _json.containsKey('ciphertextCrc32c')
-              ? _json['ciphertextCrc32c'] as core.String
+          ciphertextCrc32c: json_.containsKey('ciphertextCrc32c')
+              ? json_['ciphertextCrc32c'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
-          verifiedAdditionalAuthenticatedDataCrc32c: _json
+          verifiedAdditionalAuthenticatedDataCrc32c: json_
                   .containsKey('verifiedAdditionalAuthenticatedDataCrc32c')
-              ? _json['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool
+              ? json_['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool
               : null,
-          verifiedPlaintextCrc32c: _json.containsKey('verifiedPlaintextCrc32c')
-              ? _json['verifiedPlaintextCrc32c'] as core.bool
+          verifiedPlaintextCrc32c: json_.containsKey('verifiedPlaintextCrc32c')
+              ? json_['verifiedPlaintextCrc32c'] as core.bool
               : null,
         );
 
@@ -3979,13 +3979,13 @@ class ExternalProtectionLevelOptions {
     this.externalKeyUri,
   });
 
-  ExternalProtectionLevelOptions.fromJson(core.Map _json)
+  ExternalProtectionLevelOptions.fromJson(core.Map json_)
       : this(
-          ekmConnectionKeyPath: _json.containsKey('ekmConnectionKeyPath')
-              ? _json['ekmConnectionKeyPath'] as core.String
+          ekmConnectionKeyPath: json_.containsKey('ekmConnectionKeyPath')
+              ? json_['ekmConnectionKeyPath'] as core.String
               : null,
-          externalKeyUri: _json.containsKey('externalKeyUri')
-              ? _json['externalKeyUri'] as core.String
+          externalKeyUri: json_.containsKey('externalKeyUri')
+              ? json_['externalKeyUri'] as core.String
               : null,
         );
 
@@ -4020,13 +4020,13 @@ class GenerateRandomBytesRequest {
     this.protectionLevel,
   });
 
-  GenerateRandomBytesRequest.fromJson(core.Map _json)
+  GenerateRandomBytesRequest.fromJson(core.Map json_)
       : this(
-          lengthBytes: _json.containsKey('lengthBytes')
-              ? _json['lengthBytes'] as core.int
+          lengthBytes: json_.containsKey('lengthBytes')
+              ? json_['lengthBytes'] as core.int
               : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
         );
 
@@ -4042,9 +4042,9 @@ class GenerateRandomBytesResponse {
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
-  set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> bytes_) {
     data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field.
@@ -4066,11 +4066,11 @@ class GenerateRandomBytesResponse {
     this.dataCrc32c,
   });
 
-  GenerateRandomBytesResponse.fromJson(core.Map _json)
+  GenerateRandomBytesResponse.fromJson(core.Map json_)
       : this(
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          dataCrc32c: _json.containsKey('dataCrc32c')
-              ? _json['dataCrc32c'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          dataCrc32c: json_.containsKey('dataCrc32c')
+              ? json_['dataCrc32c'] as core.String
               : null,
         );
 
@@ -4168,9 +4168,9 @@ class ImportCryptoKeyVersionRequest {
   core.List<core.int> get rsaAesWrappedKeyAsBytes =>
       convert.base64.decode(rsaAesWrappedKey!);
 
-  set rsaAesWrappedKeyAsBytes(core.List<core.int> _bytes) {
+  set rsaAesWrappedKeyAsBytes(core.List<core.int> bytes_) {
     rsaAesWrappedKey =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The wrapped key material to import.
@@ -4197,9 +4197,9 @@ class ImportCryptoKeyVersionRequest {
   core.List<core.int> get wrappedKeyAsBytes =>
       convert.base64.decode(wrappedKey!);
 
-  set wrappedKeyAsBytes(core.List<core.int> _bytes) {
+  set wrappedKeyAsBytes(core.List<core.int> bytes_) {
     wrappedKey =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   ImportCryptoKeyVersionRequest({
@@ -4210,22 +4210,22 @@ class ImportCryptoKeyVersionRequest {
     this.wrappedKey,
   });
 
-  ImportCryptoKeyVersionRequest.fromJson(core.Map _json)
+  ImportCryptoKeyVersionRequest.fromJson(core.Map json_)
       : this(
-          algorithm: _json.containsKey('algorithm')
-              ? _json['algorithm'] as core.String
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
               : null,
-          cryptoKeyVersion: _json.containsKey('cryptoKeyVersion')
-              ? _json['cryptoKeyVersion'] as core.String
+          cryptoKeyVersion: json_.containsKey('cryptoKeyVersion')
+              ? json_['cryptoKeyVersion'] as core.String
               : null,
-          importJob: _json.containsKey('importJob')
-              ? _json['importJob'] as core.String
+          importJob: json_.containsKey('importJob')
+              ? json_['importJob'] as core.String
               : null,
-          rsaAesWrappedKey: _json.containsKey('rsaAesWrappedKey')
-              ? _json['rsaAesWrappedKey'] as core.String
+          rsaAesWrappedKey: json_.containsKey('rsaAesWrappedKey')
+              ? json_['rsaAesWrappedKey'] as core.String
               : null,
-          wrappedKey: _json.containsKey('wrappedKey')
-              ? _json['wrappedKey'] as core.String
+          wrappedKey: json_.containsKey('wrappedKey')
+              ? json_['wrappedKey'] as core.String
               : null,
         );
 
@@ -4385,37 +4385,37 @@ class ImportJob {
     this.state,
   });
 
-  ImportJob.fromJson(core.Map _json)
+  ImportJob.fromJson(core.Map json_)
       : this(
-          attestation: _json.containsKey('attestation')
+          attestation: json_.containsKey('attestation')
               ? KeyOperationAttestation.fromJson(
-                  _json['attestation'] as core.Map<core.String, core.dynamic>)
+                  json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          expireEventTime: _json.containsKey('expireEventTime')
-              ? _json['expireEventTime'] as core.String
+          expireEventTime: json_.containsKey('expireEventTime')
+              ? json_['expireEventTime'] as core.String
               : null,
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
-          generateTime: _json.containsKey('generateTime')
-              ? _json['generateTime'] as core.String
+          generateTime: json_.containsKey('generateTime')
+              ? json_['generateTime'] as core.String
               : null,
-          importMethod: _json.containsKey('importMethod')
-              ? _json['importMethod'] as core.String
+          importMethod: json_.containsKey('importMethod')
+              ? json_['importMethod'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
-          publicKey: _json.containsKey('publicKey')
+          publicKey: json_.containsKey('publicKey')
               ? WrappingPublicKey.fromJson(
-                  _json['publicKey'] as core.Map<core.String, core.dynamic>)
+                  json_['publicKey'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4449,9 +4449,9 @@ class KeyOperationAttestation {
   core.String? content;
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
-  set contentAsBytes(core.List<core.int> _bytes) {
+  set contentAsBytes(core.List<core.int> bytes_) {
     content =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The format of the attestation data.
@@ -4473,17 +4473,17 @@ class KeyOperationAttestation {
     this.format,
   });
 
-  KeyOperationAttestation.fromJson(core.Map _json)
+  KeyOperationAttestation.fromJson(core.Map json_)
       : this(
-          certChains: _json.containsKey('certChains')
+          certChains: json_.containsKey('certChains')
               ? CertificateChains.fromJson(
-                  _json['certChains'] as core.Map<core.String, core.dynamic>)
+                  json_['certChains'] as core.Map<core.String, core.dynamic>)
               : null,
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
         );
 
@@ -4512,12 +4512,12 @@ class KeyRing {
     this.name,
   });
 
-  KeyRing.fromJson(core.Map _json)
+  KeyRing.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4546,19 +4546,19 @@ class ListCryptoKeyVersionsResponse {
     this.totalSize,
   });
 
-  ListCryptoKeyVersionsResponse.fromJson(core.Map _json)
+  ListCryptoKeyVersionsResponse.fromJson(core.Map json_)
       : this(
-          cryptoKeyVersions: _json.containsKey('cryptoKeyVersions')
-              ? (_json['cryptoKeyVersions'] as core.List)
+          cryptoKeyVersions: json_.containsKey('cryptoKeyVersions')
+              ? (json_['cryptoKeyVersions'] as core.List)
                   .map((value) => CryptoKeyVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -4589,19 +4589,19 @@ class ListCryptoKeysResponse {
     this.totalSize,
   });
 
-  ListCryptoKeysResponse.fromJson(core.Map _json)
+  ListCryptoKeysResponse.fromJson(core.Map json_)
       : this(
-          cryptoKeys: _json.containsKey('cryptoKeys')
-              ? (_json['cryptoKeys'] as core.List)
+          cryptoKeys: json_.containsKey('cryptoKeys')
+              ? (json_['cryptoKeys'] as core.List)
                   .map((value) => CryptoKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -4632,19 +4632,19 @@ class ListEkmConnectionsResponse {
     this.totalSize,
   });
 
-  ListEkmConnectionsResponse.fromJson(core.Map _json)
+  ListEkmConnectionsResponse.fromJson(core.Map json_)
       : this(
-          ekmConnections: _json.containsKey('ekmConnections')
-              ? (_json['ekmConnections'] as core.List)
+          ekmConnections: json_.containsKey('ekmConnections')
+              ? (json_['ekmConnections'] as core.List)
                   .map((value) => EkmConnection.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -4675,19 +4675,19 @@ class ListImportJobsResponse {
     this.totalSize,
   });
 
-  ListImportJobsResponse.fromJson(core.Map _json)
+  ListImportJobsResponse.fromJson(core.Map json_)
       : this(
-          importJobs: _json.containsKey('importJobs')
-              ? (_json['importJobs'] as core.List)
+          importJobs: json_.containsKey('importJobs')
+              ? (json_['importJobs'] as core.List)
                   .map((value) => ImportJob.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -4718,19 +4718,19 @@ class ListKeyRingsResponse {
     this.totalSize,
   });
 
-  ListKeyRingsResponse.fromJson(core.Map _json)
+  ListKeyRingsResponse.fromJson(core.Map json_)
       : this(
-          keyRings: _json.containsKey('keyRings')
-              ? (_json['keyRings'] as core.List)
+          keyRings: json_.containsKey('keyRings')
+              ? (json_['keyRings'] as core.List)
                   .map((value) => KeyRing.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          totalSize: _json.containsKey('totalSize')
-              ? _json['totalSize'] as core.int
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
               : null,
         );
 
@@ -4754,16 +4754,16 @@ class ListLocationsResponse {
     this.nextPageToken,
   });
 
-  ListLocationsResponse.fromJson(core.Map _json)
+  ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4787,9 +4787,9 @@ class MacSignRequest {
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
-  set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> bytes_) {
     data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the MacSignRequest.data.
@@ -4813,11 +4813,11 @@ class MacSignRequest {
     this.dataCrc32c,
   });
 
-  MacSignRequest.fromJson(core.Map _json)
+  MacSignRequest.fromJson(core.Map json_)
       : this(
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          dataCrc32c: _json.containsKey('dataCrc32c')
-              ? _json['dataCrc32c'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          dataCrc32c: json_.containsKey('dataCrc32c')
+              ? json_['dataCrc32c'] as core.String
               : null,
         );
 
@@ -4833,9 +4833,9 @@ class MacSignResponse {
   core.String? mac;
   core.List<core.int> get macAsBytes => convert.base64.decode(mac!);
 
-  set macAsBytes(core.List<core.int> _bytes) {
+  set macAsBytes(core.List<core.int> bytes_) {
     mac =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Integrity verification field.
@@ -4886,18 +4886,18 @@ class MacSignResponse {
     this.verifiedDataCrc32c,
   });
 
-  MacSignResponse.fromJson(core.Map _json)
+  MacSignResponse.fromJson(core.Map json_)
       : this(
-          mac: _json.containsKey('mac') ? _json['mac'] as core.String : null,
-          macCrc32c: _json.containsKey('macCrc32c')
-              ? _json['macCrc32c'] as core.String
+          mac: json_.containsKey('mac') ? json_['mac'] as core.String : null,
+          macCrc32c: json_.containsKey('macCrc32c')
+              ? json_['macCrc32c'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
-          verifiedDataCrc32c: _json.containsKey('verifiedDataCrc32c')
-              ? _json['verifiedDataCrc32c'] as core.bool
+          verifiedDataCrc32c: json_.containsKey('verifiedDataCrc32c')
+              ? json_['verifiedDataCrc32c'] as core.bool
               : null,
         );
 
@@ -4919,9 +4919,9 @@ class MacVerifyRequest {
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
-  set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> bytes_) {
     data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the MacVerifyRequest.data.
@@ -4947,9 +4947,9 @@ class MacVerifyRequest {
   core.String? mac;
   core.List<core.int> get macAsBytes => convert.base64.decode(mac!);
 
-  set macAsBytes(core.List<core.int> _bytes) {
+  set macAsBytes(core.List<core.int> bytes_) {
     mac =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// An optional CRC32C checksum of the MacVerifyRequest.mac.
@@ -4976,15 +4976,15 @@ class MacVerifyRequest {
     this.macCrc32c,
   });
 
-  MacVerifyRequest.fromJson(core.Map _json)
+  MacVerifyRequest.fromJson(core.Map json_)
       : this(
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          dataCrc32c: _json.containsKey('dataCrc32c')
-              ? _json['dataCrc32c'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          dataCrc32c: json_.containsKey('dataCrc32c')
+              ? json_['dataCrc32c'] as core.String
               : null,
-          mac: _json.containsKey('mac') ? _json['mac'] as core.String : null,
-          macCrc32c: _json.containsKey('macCrc32c')
-              ? _json['macCrc32c'] as core.String
+          mac: json_.containsKey('mac') ? json_['mac'] as core.String : null,
+          macCrc32c: json_.containsKey('macCrc32c')
+              ? json_['macCrc32c'] as core.String
               : null,
         );
 
@@ -5057,24 +5057,24 @@ class MacVerifyResponse {
     this.verifiedSuccessIntegrity,
   });
 
-  MacVerifyResponse.fromJson(core.Map _json)
+  MacVerifyResponse.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
-          success: _json.containsKey('success')
-              ? _json['success'] as core.bool
+          success: json_.containsKey('success')
+              ? json_['success'] as core.bool
               : null,
-          verifiedDataCrc32c: _json.containsKey('verifiedDataCrc32c')
-              ? _json['verifiedDataCrc32c'] as core.bool
+          verifiedDataCrc32c: json_.containsKey('verifiedDataCrc32c')
+              ? json_['verifiedDataCrc32c'] as core.bool
               : null,
-          verifiedMacCrc32c: _json.containsKey('verifiedMacCrc32c')
-              ? _json['verifiedMacCrc32c'] as core.bool
+          verifiedMacCrc32c: json_.containsKey('verifiedMacCrc32c')
+              ? json_['verifiedMacCrc32c'] as core.bool
               : null,
           verifiedSuccessIntegrity:
-              _json.containsKey('verifiedSuccessIntegrity')
-                  ? _json['verifiedSuccessIntegrity'] as core.bool
+              json_.containsKey('verifiedSuccessIntegrity')
+                  ? json_['verifiedSuccessIntegrity'] as core.bool
                   : null,
         );
 
@@ -5152,9 +5152,9 @@ class Policy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -5183,23 +5183,23 @@ class Policy {
     this.version,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
-          auditConfigs: _json.containsKey('auditConfigs')
-              ? (_json['auditConfigs'] as core.List)
+          auditConfigs: json_.containsKey('auditConfigs')
+              ? (json_['auditConfigs'] as core.List)
                   .map((value) => AuditConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -5312,18 +5312,18 @@ class PublicKey {
     this.protectionLevel,
   });
 
-  PublicKey.fromJson(core.Map _json)
+  PublicKey.fromJson(core.Map json_)
       : this(
-          algorithm: _json.containsKey('algorithm')
-              ? _json['algorithm'] as core.String
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pem: _json.containsKey('pem') ? _json['pem'] as core.String : null,
-          pemCrc32c: _json.containsKey('pemCrc32c')
-              ? _json['pemCrc32c'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pem: json_.containsKey('pem') ? json_['pem'] as core.String : null,
+          pemCrc32c: json_.containsKey('pemCrc32c')
+              ? json_['pemCrc32c'] as core.String
               : null,
-          protectionLevel: _json.containsKey('protectionLevel')
-              ? _json['protectionLevel'] as core.String
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
               : null,
         );
 
@@ -5379,22 +5379,22 @@ class ServiceResolver {
     this.serviceDirectoryService,
   });
 
-  ServiceResolver.fromJson(core.Map _json)
+  ServiceResolver.fromJson(core.Map json_)
       : this(
-          endpointFilter: _json.containsKey('endpointFilter')
-              ? _json['endpointFilter'] as core.String
+          endpointFilter: json_.containsKey('endpointFilter')
+              ? json_['endpointFilter'] as core.String
               : null,
-          hostname: _json.containsKey('hostname')
-              ? _json['hostname'] as core.String
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
               : null,
-          serverCertificates: _json.containsKey('serverCertificates')
-              ? (_json['serverCertificates'] as core.List)
+          serverCertificates: json_.containsKey('serverCertificates')
+              ? (json_['serverCertificates'] as core.List)
                   .map((value) => Certificate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          serviceDirectoryService: _json.containsKey('serviceDirectoryService')
-              ? _json['serviceDirectoryService'] as core.String
+          serviceDirectoryService: json_.containsKey('serviceDirectoryService')
+              ? json_['serviceDirectoryService'] as core.String
               : null,
         );
 
@@ -5428,14 +5428,14 @@ class SetIamPolicyRequest {
     this.updateMask,
   });
 
-  SetIamPolicyRequest.fromJson(core.Map _json)
+  SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: _json.containsKey('updateMask')
-              ? _json['updateMask'] as core.String
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
               : null,
         );
 
@@ -5462,10 +5462,10 @@ class UpdateCryptoKeyPrimaryVersionRequest {
     this.cryptoKeyVersionId,
   });
 
-  UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map _json)
+  UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map json_)
       : this(
-          cryptoKeyVersionId: _json.containsKey('cryptoKeyVersionId')
-              ? _json['cryptoKeyVersionId'] as core.String
+          cryptoKeyVersionId: json_.containsKey('cryptoKeyVersionId')
+              ? json_['cryptoKeyVersionId'] as core.String
               : null,
         );
 
@@ -5493,9 +5493,9 @@ class WrappingPublicKey {
     this.pem,
   });
 
-  WrappingPublicKey.fromJson(core.Map _json)
+  WrappingPublicKey.fromJson(core.Map json_)
       : this(
-          pem: _json.containsKey('pem') ? _json['pem'] as core.String : null,
+          pem: json_.containsKey('pem') ? json_['pem'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

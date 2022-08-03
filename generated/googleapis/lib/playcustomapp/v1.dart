@@ -107,35 +107,35 @@ class AccountsCustomAppsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url = 'playcustomapp/v1/accounts/' +
+      url_ = 'playcustomapp/v1/accounts/' +
           commons.escapeVariable('$account') +
           '/customApps';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/playcustomapp/v1/accounts/' +
+      url_ = '/resumable/upload/playcustomapp/v1/accounts/' +
           commons.escapeVariable('$account') +
           '/customApps';
     } else {
-      _url = '/upload/playcustomapp/v1/accounts/' +
+      url_ = '/upload/playcustomapp/v1/accounts/' +
           commons.escapeVariable('$account') +
           '/customApps';
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
     );
-    return CustomApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return CustomApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -171,22 +171,22 @@ class CustomApp {
     this.title,
   });
 
-  CustomApp.fromJson(core.Map _json)
+  CustomApp.fromJson(core.Map json_)
       : this(
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          organizations: _json.containsKey('organizations')
-              ? (_json['organizations'] as core.List)
+          organizations: json_.containsKey('organizations')
+              ? (json_['organizations'] as core.List)
                   .map((value) => Organization.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -215,13 +215,13 @@ class Organization {
     this.organizationName,
   });
 
-  Organization.fromJson(core.Map _json)
+  Organization.fromJson(core.Map json_)
       : this(
-          organizationId: _json.containsKey('organizationId')
-              ? _json['organizationId'] as core.String
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
               : null,
-          organizationName: _json.containsKey('organizationName')
-              ? _json['organizationName'] as core.String
+          organizationName: json_.containsKey('organizationName')
+              ? json_['organizationName'] as core.String
               : null,
         );
 

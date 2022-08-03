@@ -101,21 +101,21 @@ class LocationsPlaceActionLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/placeActionLinks';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/placeActionLinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return PlaceActionLink.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a place action link from the specified location.
@@ -140,18 +140,18 @@ class LocationsPlaceActionLinksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified place action link.
@@ -175,19 +175,19 @@ class LocationsPlaceActionLinksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlaceActionLink.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the place action links for the specified location.
@@ -226,22 +226,22 @@ class LocationsPlaceActionLinksResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/placeActionLinks';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/placeActionLinks';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListPlaceActionLinksResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified place action link and returns it.
@@ -280,22 +280,22 @@ class LocationsPlaceActionLinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return PlaceActionLink.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -347,7 +347,7 @@ class PlaceActionTypeMetadataResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (languageCode != null) 'languageCode': [languageCode],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -355,15 +355,15 @@ class PlaceActionTypeMetadataResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/placeActionTypeMetadata';
+    const url_ = 'v1/placeActionTypeMetadata';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListPlaceActionTypeMetadataResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -389,13 +389,13 @@ class ListPlaceActionLinksResponse {
     this.placeActionLinks,
   });
 
-  ListPlaceActionLinksResponse.fromJson(core.Map _json)
+  ListPlaceActionLinksResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          placeActionLinks: _json.containsKey('placeActionLinks')
-              ? (_json['placeActionLinks'] as core.List)
+          placeActionLinks: json_.containsKey('placeActionLinks')
+              ? (json_['placeActionLinks'] as core.List)
                   .map((value) => PlaceActionLink.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -426,13 +426,13 @@ class ListPlaceActionTypeMetadataResponse {
     this.placeActionTypeMetadata,
   });
 
-  ListPlaceActionTypeMetadataResponse.fromJson(core.Map _json)
+  ListPlaceActionTypeMetadataResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          placeActionTypeMetadata: _json.containsKey('placeActionTypeMetadata')
-              ? (_json['placeActionTypeMetadata'] as core.List)
+          placeActionTypeMetadata: json_.containsKey('placeActionTypeMetadata')
+              ? (json_['placeActionTypeMetadata'] as core.List)
                   .map((value) => PlaceActionTypeMetadata.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -530,28 +530,28 @@ class PlaceActionLink {
     this.uri,
   });
 
-  PlaceActionLink.fromJson(core.Map _json)
+  PlaceActionLink.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          isEditable: _json.containsKey('isEditable')
-              ? _json['isEditable'] as core.bool
+          isEditable: json_.containsKey('isEditable')
+              ? json_['isEditable'] as core.bool
               : null,
-          isPreferred: _json.containsKey('isPreferred')
-              ? _json['isPreferred'] as core.bool
+          isPreferred: json_.containsKey('isPreferred')
+              ? json_['isPreferred'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          placeActionType: _json.containsKey('placeActionType')
-              ? _json['placeActionType'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          placeActionType: json_.containsKey('placeActionType')
+              ? json_['placeActionType'] as core.String
               : null,
-          providerType: _json.containsKey('providerType')
-              ? _json['providerType'] as core.String
+          providerType: json_.containsKey('providerType')
+              ? json_['providerType'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -589,13 +589,13 @@ class PlaceActionTypeMetadata {
     this.placeActionType,
   });
 
-  PlaceActionTypeMetadata.fromJson(core.Map _json)
+  PlaceActionTypeMetadata.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          placeActionType: _json.containsKey('placeActionType')
-              ? _json['placeActionType'] as core.String
+          placeActionType: json_.containsKey('placeActionType')
+              ? json_['placeActionType'] as core.String
               : null,
         );
 

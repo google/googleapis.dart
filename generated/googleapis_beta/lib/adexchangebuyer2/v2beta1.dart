@@ -145,21 +145,21 @@ class AccountsClientsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/accounts/' + commons.escapeVariable('$accountId') + '/clients';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Client.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a client buyer with a given client account ID.
@@ -187,21 +187,21 @@ class AccountsClientsResource {
     core.String clientAccountId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Client.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the clients for the current sponsor buyer.
@@ -239,23 +239,23 @@ class AccountsClientsResource {
     core.String? partnerClientId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (partnerClientId != null) 'partnerClientId': [partnerClientId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/accounts/' + commons.escapeVariable('$accountId') + '/clients';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListClientsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing client buyer.
@@ -287,23 +287,23 @@ class AccountsClientsResource {
     core.String clientAccountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Client.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -342,25 +342,25 @@ class AccountsClientsInvitationsResource {
     core.String clientAccountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId') +
         '/invitations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ClientUserInvitation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an existing client user invitation.
@@ -392,24 +392,24 @@ class AccountsClientsInvitationsResource {
     core.String invitationId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId') +
         '/invitations/' +
         commons.escapeVariable('$invitationId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ClientUserInvitation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the client users invitations for a client with a given account
@@ -450,25 +450,25 @@ class AccountsClientsInvitationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId') +
         '/invitations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListClientUserInvitationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -506,24 +506,24 @@ class AccountsClientsUsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId') +
         '/users/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ClientUser.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the known client users for a specified sponsor buyer account ID.
@@ -563,25 +563,25 @@ class AccountsClientsUsersResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId') +
         '/users';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListClientUsersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing client user.
@@ -617,26 +617,26 @@ class AccountsClientsUsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/clients/' +
         commons.escapeVariable('$clientAccountId') +
         '/users/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ClientUser.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -685,23 +685,23 @@ class AccountsCreativesResource {
     core.String? duplicateIdMode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (duplicateIdMode != null) 'duplicateIdMode': [duplicateIdMode],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Creative.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a creative.
@@ -727,21 +727,21 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives/' +
         commons.escapeVariable('$creativeId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Creative.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists creatives.
@@ -788,24 +788,24 @@ class AccountsCreativesResource {
     core.String? query,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCreativesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops watching a creative.
@@ -838,24 +838,24 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives/' +
         commons.escapeVariable('$creativeId') +
         ':stopWatching';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a creative.
@@ -886,23 +886,23 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives/' +
         commons.escapeVariable('$creativeId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Creative.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Watches a creative.
@@ -937,24 +937,24 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives/' +
         commons.escapeVariable('$creativeId') +
         ':watch';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -990,24 +990,24 @@ class AccountsCreativesDealAssociationsResource {
     core.String creativeId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives/' +
         commons.escapeVariable('$creativeId') +
         '/dealAssociations:add';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all creative-deal associations.
@@ -1054,26 +1054,26 @@ class AccountsCreativesDealAssociationsResource {
     core.String? query,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives/' +
         commons.escapeVariable('$creativeId') +
         '/dealAssociations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDealAssociationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Remove the association between a deal and a creative.
@@ -1102,24 +1102,24 @@ class AccountsCreativesDealAssociationsResource {
     core.String creativeId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/creatives/' +
         commons.escapeVariable('$creativeId') +
         '/dealAssociations:remove';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1177,7 +1177,7 @@ class AccountsFinalizedProposalsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (filterSyntax != null) 'filterSyntax': [filterSyntax],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1185,17 +1185,17 @@ class AccountsFinalizedProposalsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/finalizedProposals';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListProposalsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update given deals to pause serving.
@@ -1232,24 +1232,24 @@ class AccountsFinalizedProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/finalizedProposals/' +
         commons.escapeVariable('$proposalId') +
         ':pause';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update given deals to resume serving.
@@ -1287,24 +1287,24 @@ class AccountsFinalizedProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/finalizedProposals/' +
         commons.escapeVariable('$proposalId') +
         ':resume';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1336,21 +1336,21 @@ class AccountsProductsResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/products/' +
         commons.escapeVariable('$productId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Product.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all products visible to the buyer (optionally filtered by the
@@ -1387,24 +1387,24 @@ class AccountsProductsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/products';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListProductsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1445,24 +1445,24 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId') +
         ':accept';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new note and attach it to the proposal.
@@ -1494,24 +1494,24 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId') +
         ':addNote';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Note.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Note.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancel an ongoing negotiation on a proposal.
@@ -1543,24 +1543,24 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId') +
         ':cancelNegotiation';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// You can opt-in to manually update proposals to indicate that setup is
@@ -1599,24 +1599,24 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId') +
         ':completeSetup';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Create the given proposal.
@@ -1645,22 +1645,22 @@ class AccountsProposalsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a proposal given its ID.
@@ -1688,21 +1688,21 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List proposals.
@@ -1757,7 +1757,7 @@ class AccountsProposalsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (filterSyntax != null) 'filterSyntax': [filterSyntax],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1765,17 +1765,17 @@ class AccountsProposalsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListProposalsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given proposal to pause serving.
@@ -1810,24 +1810,24 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId') +
         ':pause';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given proposal to resume serving.
@@ -1863,24 +1863,24 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId') +
         ':resume';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given proposal at the client known revision number.
@@ -1919,23 +1919,23 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/proposals/' +
         commons.escapeVariable('$proposalId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1968,22 +1968,22 @@ class AccountsPublisherProfilesResource {
     core.String publisherProfileId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/publisherProfiles/' +
         commons.escapeVariable('$publisherProfileId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PublisherProfile.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all publisher profiles visible to the buyer
@@ -2012,23 +2012,23 @@ class AccountsPublisherProfilesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/accounts/' +
+    final url_ = 'v2beta1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/publisherProfiles';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListPublisherProfilesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2112,21 +2112,21 @@ class BiddersAccountsFilterSetsResource {
     core.bool? isTransient,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (isTransient != null) 'isTransient': ['${isTransient}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return FilterSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the requested filter set from the account with the given account
@@ -2157,18 +2157,18 @@ class BiddersAccountsFilterSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the requested filter set for the account with the given account
@@ -2199,18 +2199,18 @@ class BiddersAccountsFilterSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return FilterSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all filter sets for the account with the given account ID.
@@ -2249,21 +2249,21 @@ class BiddersAccountsFilterSetsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFilterSetsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2311,22 +2311,22 @@ class BiddersAccountsFilterSetsBidMetricsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/bidMetrics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBidMetricsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2376,23 +2376,23 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/bidResponseErrors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBidResponseErrorsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2443,23 +2443,23 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/bidResponsesWithoutBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBidResponsesWithoutBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2509,23 +2509,23 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/filteredBidRequests';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFilteredBidRequestsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2579,22 +2579,22 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/filteredBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFilteredBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2649,25 +2649,25 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
         commons.escapeVariable('$creativeStatusId') +
         '/creatives';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCreativeStatusBreakdownByCreativeResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2724,25 +2724,25 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
         commons.escapeVariable('$creativeStatusId') +
         '/details';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCreativeStatusBreakdownByDetailResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2791,23 +2791,23 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/impressionMetrics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListImpressionMetricsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2856,22 +2856,22 @@ class BiddersAccountsFilterSetsLosingBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/losingBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLosingBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2921,23 +2921,23 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/nonBillableWinningBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListNonBillableWinningBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2999,21 +2999,21 @@ class BiddersFilterSetsResource {
     core.bool? isTransient,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (isTransient != null) 'isTransient': ['${isTransient}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return FilterSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the requested filter set from the account with the given account
@@ -3043,18 +3043,18 @@ class BiddersFilterSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the requested filter set for the account with the given account
@@ -3084,18 +3084,18 @@ class BiddersFilterSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return FilterSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all filter sets for the account with the given account ID.
@@ -3134,21 +3134,21 @@ class BiddersFilterSetsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
+    final url_ = 'v2beta1/' + core.Uri.encodeFull('$ownerName') + '/filterSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFilterSetsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3195,22 +3195,22 @@ class BiddersFilterSetsBidMetricsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/bidMetrics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBidMetricsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3258,23 +3258,23 @@ class BiddersFilterSetsBidResponseErrorsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/bidResponseErrors';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBidResponseErrorsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3323,23 +3323,23 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/bidResponsesWithoutBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBidResponsesWithoutBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3387,23 +3387,23 @@ class BiddersFilterSetsFilteredBidRequestsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/filteredBidRequests';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFilteredBidRequestsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3456,22 +3456,22 @@ class BiddersFilterSetsFilteredBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/filteredBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFilteredBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3524,25 +3524,25 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
         commons.escapeVariable('$creativeStatusId') +
         '/creatives';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCreativeStatusBreakdownByCreativeResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3597,25 +3597,25 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/filteredBids/' +
         commons.escapeVariable('$creativeStatusId') +
         '/details';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCreativeStatusBreakdownByDetailResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3662,23 +3662,23 @@ class BiddersFilterSetsImpressionMetricsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/impressionMetrics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListImpressionMetricsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3726,22 +3726,22 @@ class BiddersFilterSetsLosingBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v2beta1/' + core.Uri.encodeFull('$filterSetName') + '/losingBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLosingBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3789,23 +3789,23 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2beta1/' +
+    final url_ = 'v2beta1/' +
         core.Uri.encodeFull('$filterSetName') +
         '/nonBillableWinningBids';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListNonBillableWinningBidsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3833,15 +3833,15 @@ class AbsoluteDateRange {
     this.startDate,
   });
 
-  AbsoluteDateRange.fromJson(core.Map _json)
+  AbsoluteDateRange.fromJson(core.Map json_)
       : this(
-          endDate: _json.containsKey('endDate')
+          endDate: json_.containsKey('endDate')
               ? Date.fromJson(
-                  _json['endDate'] as core.Map<core.String, core.dynamic>)
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
               : null,
-          startDate: _json.containsKey('startDate')
+          startDate: json_.containsKey('startDate')
               ? Date.fromJson(
-                  _json['startDate'] as core.Map<core.String, core.dynamic>)
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3860,10 +3860,10 @@ class AcceptProposalRequest {
     this.proposalRevision,
   });
 
-  AcceptProposalRequest.fromJson(core.Map _json)
+  AcceptProposalRequest.fromJson(core.Map json_)
       : this(
-          proposalRevision: _json.containsKey('proposalRevision')
-              ? _json['proposalRevision'] as core.String
+          proposalRevision: json_.containsKey('proposalRevision')
+              ? json_['proposalRevision'] as core.String
               : null,
         );
 
@@ -3900,16 +3900,16 @@ class AdSize {
     this.width,
   });
 
-  AdSize.fromJson(core.Map _json)
+  AdSize.fromJson(core.Map json_)
       : this(
-          height: _json.containsKey('height')
-              ? _json['height'] as core.String
+          height: json_.containsKey('height')
+              ? json_['height'] as core.String
               : null,
-          sizeType: _json.containsKey('sizeType')
-              ? _json['sizeType'] as core.String
+          sizeType: json_.containsKey('sizeType')
+              ? json_['sizeType'] as core.String
               : null,
           width:
-              _json.containsKey('width') ? _json['width'] as core.String : null,
+              json_.containsKey('width') ? json_['width'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3950,15 +3950,15 @@ class AdTechnologyProviders {
     this.hasUnidentifiedProvider,
   });
 
-  AdTechnologyProviders.fromJson(core.Map _json)
+  AdTechnologyProviders.fromJson(core.Map json_)
       : this(
-          detectedProviderIds: _json.containsKey('detectedProviderIds')
-              ? (_json['detectedProviderIds'] as core.List)
+          detectedProviderIds: json_.containsKey('detectedProviderIds')
+              ? (json_['detectedProviderIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          hasUnidentifiedProvider: _json.containsKey('hasUnidentifiedProvider')
-              ? _json['hasUnidentifiedProvider'] as core.bool
+          hasUnidentifiedProvider: json_.containsKey('hasUnidentifiedProvider')
+              ? json_['hasUnidentifiedProvider'] as core.bool
               : null,
         );
 
@@ -3979,11 +3979,11 @@ class AddDealAssociationRequest {
     this.association,
   });
 
-  AddDealAssociationRequest.fromJson(core.Map _json)
+  AddDealAssociationRequest.fromJson(core.Map json_)
       : this(
-          association: _json.containsKey('association')
+          association: json_.containsKey('association')
               ? CreativeDealAssociation.fromJson(
-                  _json['association'] as core.Map<core.String, core.dynamic>)
+                  json_['association'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4001,11 +4001,11 @@ class AddNoteRequest {
     this.note,
   });
 
-  AddNoteRequest.fromJson(core.Map _json)
+  AddNoteRequest.fromJson(core.Map json_)
       : this(
-          note: _json.containsKey('note')
+          note: json_.containsKey('note')
               ? Note.fromJson(
-                  _json['note'] as core.Map<core.String, core.dynamic>)
+                  json_['note'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4025,10 +4025,10 @@ class AppContext {
     this.appTypes,
   });
 
-  AppContext.fromJson(core.Map _json)
+  AppContext.fromJson(core.Map json_)
       : this(
-          appTypes: _json.containsKey('appTypes')
-              ? (_json['appTypes'] as core.List)
+          appTypes: json_.containsKey('appTypes')
+              ? (json_['appTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4050,10 +4050,10 @@ class AuctionContext {
     this.auctionTypes,
   });
 
-  AuctionContext.fromJson(core.Map _json)
+  AuctionContext.fromJson(core.Map json_)
       : this(
-          auctionTypes: _json.containsKey('auctionTypes')
-              ? (_json['auctionTypes'] as core.List)
+          auctionTypes: json_.containsKey('auctionTypes')
+              ? (json_['auctionTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4106,38 +4106,38 @@ class BidMetricsRow {
     this.viewableImpressions,
   });
 
-  BidMetricsRow.fromJson(core.Map _json)
+  BidMetricsRow.fromJson(core.Map json_)
       : this(
-          bids: _json.containsKey('bids')
+          bids: json_.containsKey('bids')
               ? MetricValue.fromJson(
-                  _json['bids'] as core.Map<core.String, core.dynamic>)
+                  json_['bids'] as core.Map<core.String, core.dynamic>)
               : null,
-          bidsInAuction: _json.containsKey('bidsInAuction')
+          bidsInAuction: json_.containsKey('bidsInAuction')
               ? MetricValue.fromJson(
-                  _json['bidsInAuction'] as core.Map<core.String, core.dynamic>)
+                  json_['bidsInAuction'] as core.Map<core.String, core.dynamic>)
               : null,
-          billedImpressions: _json.containsKey('billedImpressions')
-              ? MetricValue.fromJson(_json['billedImpressions']
+          billedImpressions: json_.containsKey('billedImpressions')
+              ? MetricValue.fromJson(json_['billedImpressions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          impressionsWon: _json.containsKey('impressionsWon')
-              ? MetricValue.fromJson(_json['impressionsWon']
+          impressionsWon: json_.containsKey('impressionsWon')
+              ? MetricValue.fromJson(json_['impressionsWon']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          measurableImpressions: _json.containsKey('measurableImpressions')
-              ? MetricValue.fromJson(_json['measurableImpressions']
+          measurableImpressions: json_.containsKey('measurableImpressions')
+              ? MetricValue.fromJson(json_['measurableImpressions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          reachedQueries: _json.containsKey('reachedQueries')
-              ? MetricValue.fromJson(_json['reachedQueries']
+          reachedQueries: json_.containsKey('reachedQueries')
+              ? MetricValue.fromJson(json_['reachedQueries']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
-          viewableImpressions: _json.containsKey('viewableImpressions')
-              ? MetricValue.fromJson(_json['viewableImpressions']
+          viewableImpressions: json_.containsKey('viewableImpressions')
+              ? MetricValue.fromJson(json_['viewableImpressions']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -4190,18 +4190,18 @@ class BidResponseWithoutBidsStatusRow {
     this.status,
   });
 
-  BidResponseWithoutBidsStatusRow.fromJson(core.Map _json)
+  BidResponseWithoutBidsStatusRow.fromJson(core.Map json_)
       : this(
-          impressionCount: _json.containsKey('impressionCount')
-              ? MetricValue.fromJson(_json['impressionCount']
+          impressionCount: json_.containsKey('impressionCount')
+              ? MetricValue.fromJson(json_['impressionCount']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 
@@ -4223,10 +4223,10 @@ class Buyer {
     this.accountId,
   });
 
-  Buyer.fromJson(core.Map _json)
+  Buyer.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
         );
 
@@ -4258,18 +4258,18 @@ class CalloutStatusRow {
     this.rowDimensions,
   });
 
-  CalloutStatusRow.fromJson(core.Map _json)
+  CalloutStatusRow.fromJson(core.Map json_)
       : this(
-          calloutStatusId: _json.containsKey('calloutStatusId')
-              ? _json['calloutStatusId'] as core.int
+          calloutStatusId: json_.containsKey('calloutStatusId')
+              ? json_['calloutStatusId'] as core.int
               : null,
-          impressionCount: _json.containsKey('impressionCount')
-              ? MetricValue.fromJson(_json['impressionCount']
+          impressionCount: json_.containsKey('impressionCount')
+              ? MetricValue.fromJson(json_['impressionCount']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4390,32 +4390,32 @@ class Client {
     this.visibleToSeller,
   });
 
-  Client.fromJson(core.Map _json)
+  Client.fromJson(core.Map json_)
       : this(
-          clientAccountId: _json.containsKey('clientAccountId')
-              ? _json['clientAccountId'] as core.String
+          clientAccountId: json_.containsKey('clientAccountId')
+              ? json_['clientAccountId'] as core.String
               : null,
-          clientName: _json.containsKey('clientName')
-              ? _json['clientName'] as core.String
+          clientName: json_.containsKey('clientName')
+              ? json_['clientName'] as core.String
               : null,
-          entityId: _json.containsKey('entityId')
-              ? _json['entityId'] as core.String
+          entityId: json_.containsKey('entityId')
+              ? json_['entityId'] as core.String
               : null,
-          entityName: _json.containsKey('entityName')
-              ? _json['entityName'] as core.String
+          entityName: json_.containsKey('entityName')
+              ? json_['entityName'] as core.String
               : null,
-          entityType: _json.containsKey('entityType')
-              ? _json['entityType'] as core.String
+          entityType: json_.containsKey('entityType')
+              ? json_['entityType'] as core.String
               : null,
-          partnerClientId: _json.containsKey('partnerClientId')
-              ? _json['partnerClientId'] as core.String
+          partnerClientId: json_.containsKey('partnerClientId')
+              ? json_['partnerClientId'] as core.String
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          visibleToSeller: _json.containsKey('visibleToSeller')
-              ? _json['visibleToSeller'] as core.bool
+          visibleToSeller: json_.containsKey('visibleToSeller')
+              ? json_['visibleToSeller'] as core.bool
               : null,
         );
 
@@ -4473,18 +4473,18 @@ class ClientUser {
     this.userId,
   });
 
-  ClientUser.fromJson(core.Map _json)
+  ClientUser.fromJson(core.Map json_)
       : this(
-          clientAccountId: _json.containsKey('clientAccountId')
-              ? _json['clientAccountId'] as core.String
+          clientAccountId: json_.containsKey('clientAccountId')
+              ? json_['clientAccountId'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -4524,15 +4524,15 @@ class ClientUserInvitation {
     this.invitationId,
   });
 
-  ClientUserInvitation.fromJson(core.Map _json)
+  ClientUserInvitation.fromJson(core.Map json_)
       : this(
-          clientAccountId: _json.containsKey('clientAccountId')
-              ? _json['clientAccountId'] as core.String
+          clientAccountId: json_.containsKey('clientAccountId')
+              ? json_['clientAccountId'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          invitationId: _json.containsKey('invitationId')
-              ? _json['invitationId'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          invitationId: json_.containsKey('invitationId')
+              ? json_['invitationId'] as core.String
               : null,
         );
 
@@ -4559,11 +4559,11 @@ class ContactInformation {
     this.name,
   });
 
-  ContactInformation.fromJson(core.Map _json)
+  ContactInformation.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4616,20 +4616,20 @@ class Correction {
     this.type,
   });
 
-  Correction.fromJson(core.Map _json)
+  Correction.fromJson(core.Map json_)
       : this(
-          contexts: _json.containsKey('contexts')
-              ? (_json['contexts'] as core.List)
+          contexts: json_.containsKey('contexts')
+              ? (json_['contexts'] as core.List)
                   .map((value) => ServingContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4830,120 +4830,120 @@ class Creative {
     this.video,
   });
 
-  Creative.fromJson(core.Map _json)
+  Creative.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          adChoicesDestinationUrl: _json.containsKey('adChoicesDestinationUrl')
-              ? _json['adChoicesDestinationUrl'] as core.String
+          adChoicesDestinationUrl: json_.containsKey('adChoicesDestinationUrl')
+              ? json_['adChoicesDestinationUrl'] as core.String
               : null,
-          adTechnologyProviders: _json.containsKey('adTechnologyProviders')
-              ? AdTechnologyProviders.fromJson(_json['adTechnologyProviders']
+          adTechnologyProviders: json_.containsKey('adTechnologyProviders')
+              ? AdTechnologyProviders.fromJson(json_['adTechnologyProviders']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          advertiserName: _json.containsKey('advertiserName')
-              ? _json['advertiserName'] as core.String
+          advertiserName: json_.containsKey('advertiserName')
+              ? json_['advertiserName'] as core.String
               : null,
-          agencyId: _json.containsKey('agencyId')
-              ? _json['agencyId'] as core.String
+          agencyId: json_.containsKey('agencyId')
+              ? json_['agencyId'] as core.String
               : null,
-          apiUpdateTime: _json.containsKey('apiUpdateTime')
-              ? _json['apiUpdateTime'] as core.String
+          apiUpdateTime: json_.containsKey('apiUpdateTime')
+              ? json_['apiUpdateTime'] as core.String
               : null,
-          attributes: _json.containsKey('attributes')
-              ? (_json['attributes'] as core.List)
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          clickThroughUrls: _json.containsKey('clickThroughUrls')
-              ? (_json['clickThroughUrls'] as core.List)
+          clickThroughUrls: json_.containsKey('clickThroughUrls')
+              ? (json_['clickThroughUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          corrections: _json.containsKey('corrections')
-              ? (_json['corrections'] as core.List)
+          corrections: json_.containsKey('corrections')
+              ? (json_['corrections'] as core.List)
                   .map((value) => Correction.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          creativeId: _json.containsKey('creativeId')
-              ? _json['creativeId'] as core.String
+          creativeId: json_.containsKey('creativeId')
+              ? json_['creativeId'] as core.String
               : null,
-          dealsStatus: _json.containsKey('dealsStatus')
-              ? _json['dealsStatus'] as core.String
+          dealsStatus: json_.containsKey('dealsStatus')
+              ? json_['dealsStatus'] as core.String
               : null,
           declaredClickThroughUrls:
-              _json.containsKey('declaredClickThroughUrls')
-                  ? (_json['declaredClickThroughUrls'] as core.List)
+              json_.containsKey('declaredClickThroughUrls')
+                  ? (json_['declaredClickThroughUrls'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          detectedAdvertiserIds: _json.containsKey('detectedAdvertiserIds')
-              ? (_json['detectedAdvertiserIds'] as core.List)
+          detectedAdvertiserIds: json_.containsKey('detectedAdvertiserIds')
+              ? (json_['detectedAdvertiserIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          detectedDomains: _json.containsKey('detectedDomains')
-              ? (_json['detectedDomains'] as core.List)
+          detectedDomains: json_.containsKey('detectedDomains')
+              ? (json_['detectedDomains'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          detectedLanguages: _json.containsKey('detectedLanguages')
-              ? (_json['detectedLanguages'] as core.List)
+          detectedLanguages: json_.containsKey('detectedLanguages')
+              ? (json_['detectedLanguages'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           detectedProductCategories:
-              _json.containsKey('detectedProductCategories')
-                  ? (_json['detectedProductCategories'] as core.List)
+              json_.containsKey('detectedProductCategories')
+                  ? (json_['detectedProductCategories'] as core.List)
                       .map((value) => value as core.int)
                       .toList()
                   : null,
           detectedSensitiveCategories:
-              _json.containsKey('detectedSensitiveCategories')
-                  ? (_json['detectedSensitiveCategories'] as core.List)
+              json_.containsKey('detectedSensitiveCategories')
+                  ? (json_['detectedSensitiveCategories'] as core.List)
                       .map((value) => value as core.int)
                       .toList()
                   : null,
-          html: _json.containsKey('html')
+          html: json_.containsKey('html')
               ? HtmlContent.fromJson(
-                  _json['html'] as core.Map<core.String, core.dynamic>)
+                  json_['html'] as core.Map<core.String, core.dynamic>)
               : null,
-          impressionTrackingUrls: _json.containsKey('impressionTrackingUrls')
-              ? (_json['impressionTrackingUrls'] as core.List)
+          impressionTrackingUrls: json_.containsKey('impressionTrackingUrls')
+              ? (json_['impressionTrackingUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          native: _json.containsKey('native')
+          native: json_.containsKey('native')
               ? NativeContent.fromJson(
-                  _json['native'] as core.Map<core.String, core.dynamic>)
+                  json_['native'] as core.Map<core.String, core.dynamic>)
               : null,
-          openAuctionStatus: _json.containsKey('openAuctionStatus')
-              ? _json['openAuctionStatus'] as core.String
+          openAuctionStatus: json_.containsKey('openAuctionStatus')
+              ? json_['openAuctionStatus'] as core.String
               : null,
-          restrictedCategories: _json.containsKey('restrictedCategories')
-              ? (_json['restrictedCategories'] as core.List)
+          restrictedCategories: json_.containsKey('restrictedCategories')
+              ? (json_['restrictedCategories'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          servingRestrictions: _json.containsKey('servingRestrictions')
-              ? (_json['servingRestrictions'] as core.List)
+          servingRestrictions: json_.containsKey('servingRestrictions')
+              ? (json_['servingRestrictions'] as core.List)
                   .map((value) => ServingRestriction.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          vendorIds: _json.containsKey('vendorIds')
-              ? (_json['vendorIds'] as core.List)
+          vendorIds: json_.containsKey('vendorIds')
+              ? (json_['vendorIds'] as core.List)
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
-          video: _json.containsKey('video')
+          video: json_.containsKey('video')
               ? VideoContent.fromJson(
-                  _json['video'] as core.Map<core.String, core.dynamic>)
+                  json_['video'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5003,16 +5003,16 @@ class CreativeDealAssociation {
     this.dealsId,
   });
 
-  CreativeDealAssociation.fromJson(core.Map _json)
+  CreativeDealAssociation.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          creativeId: _json.containsKey('creativeId')
-              ? _json['creativeId'] as core.String
+          creativeId: json_.containsKey('creativeId')
+              ? json_['creativeId'] as core.String
               : null,
-          dealsId: _json.containsKey('dealsId')
-              ? _json['dealsId'] as core.String
+          dealsId: json_.containsKey('dealsId')
+              ? json_['dealsId'] as core.String
               : null,
         );
 
@@ -5057,19 +5057,19 @@ class CreativeRestrictions {
     this.skippableAdType,
   });
 
-  CreativeRestrictions.fromJson(core.Map _json)
+  CreativeRestrictions.fromJson(core.Map json_)
       : this(
-          creativeFormat: _json.containsKey('creativeFormat')
-              ? _json['creativeFormat'] as core.String
+          creativeFormat: json_.containsKey('creativeFormat')
+              ? json_['creativeFormat'] as core.String
               : null,
-          creativeSpecifications: _json.containsKey('creativeSpecifications')
-              ? (_json['creativeSpecifications'] as core.List)
+          creativeSpecifications: json_.containsKey('creativeSpecifications')
+              ? (json_['creativeSpecifications'] as core.List)
                   .map((value) => CreativeSpecification.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          skippableAdType: _json.containsKey('skippableAdType')
-              ? _json['skippableAdType'] as core.String
+          skippableAdType: json_.containsKey('skippableAdType')
+              ? json_['skippableAdType'] as core.String
               : null,
         );
 
@@ -5149,31 +5149,31 @@ class CreativeSize {
     this.skippableAdType,
   });
 
-  CreativeSize.fromJson(core.Map _json)
+  CreativeSize.fromJson(core.Map json_)
       : this(
-          allowedFormats: _json.containsKey('allowedFormats')
-              ? (_json['allowedFormats'] as core.List)
+          allowedFormats: json_.containsKey('allowedFormats')
+              ? (json_['allowedFormats'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          companionSizes: _json.containsKey('companionSizes')
-              ? (_json['companionSizes'] as core.List)
+          companionSizes: json_.containsKey('companionSizes')
+              ? (json_['companionSizes'] as core.List)
                   .map((value) => Size.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          creativeSizeType: _json.containsKey('creativeSizeType')
-              ? _json['creativeSizeType'] as core.String
+          creativeSizeType: json_.containsKey('creativeSizeType')
+              ? json_['creativeSizeType'] as core.String
               : null,
-          nativeTemplate: _json.containsKey('nativeTemplate')
-              ? _json['nativeTemplate'] as core.String
+          nativeTemplate: json_.containsKey('nativeTemplate')
+              ? json_['nativeTemplate'] as core.String
               : null,
-          size: _json.containsKey('size')
+          size: json_.containsKey('size')
               ? Size.fromJson(
-                  _json['size'] as core.Map<core.String, core.dynamic>)
+                  json_['size'] as core.Map<core.String, core.dynamic>)
               : null,
-          skippableAdType: _json.containsKey('skippableAdType')
-              ? _json['skippableAdType'] as core.String
+          skippableAdType: json_.containsKey('skippableAdType')
+              ? json_['skippableAdType'] as core.String
               : null,
         );
 
@@ -5201,17 +5201,17 @@ class CreativeSpecification {
     this.creativeSize,
   });
 
-  CreativeSpecification.fromJson(core.Map _json)
+  CreativeSpecification.fromJson(core.Map json_)
       : this(
-          creativeCompanionSizes: _json.containsKey('creativeCompanionSizes')
-              ? (_json['creativeCompanionSizes'] as core.List)
+          creativeCompanionSizes: json_.containsKey('creativeCompanionSizes')
+              ? (json_['creativeCompanionSizes'] as core.List)
                   .map((value) => AdSize.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          creativeSize: _json.containsKey('creativeSize')
+          creativeSize: json_.containsKey('creativeSize')
               ? AdSize.fromJson(
-                  _json['creativeSize'] as core.Map<core.String, core.dynamic>)
+                  json_['creativeSize'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5244,18 +5244,18 @@ class CreativeStatusRow {
     this.rowDimensions,
   });
 
-  CreativeStatusRow.fromJson(core.Map _json)
+  CreativeStatusRow.fromJson(core.Map json_)
       : this(
-          bidCount: _json.containsKey('bidCount')
+          bidCount: json_.containsKey('bidCount')
               ? MetricValue.fromJson(
-                  _json['bidCount'] as core.Map<core.String, core.dynamic>)
+                  json_['bidCount'] as core.Map<core.String, core.dynamic>)
               : null,
-          creativeStatusId: _json.containsKey('creativeStatusId')
-              ? _json['creativeStatusId'] as core.int
+          creativeStatusId: json_.containsKey('creativeStatusId')
+              ? json_['creativeStatusId'] as core.int
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5280,15 +5280,15 @@ class CriteriaTargeting {
     this.targetedCriteriaIds,
   });
 
-  CriteriaTargeting.fromJson(core.Map _json)
+  CriteriaTargeting.fromJson(core.Map json_)
       : this(
-          excludedCriteriaIds: _json.containsKey('excludedCriteriaIds')
-              ? (_json['excludedCriteriaIds'] as core.List)
+          excludedCriteriaIds: json_.containsKey('excludedCriteriaIds')
+              ? (json_['excludedCriteriaIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          targetedCriteriaIds: _json.containsKey('targetedCriteriaIds')
-              ? (_json['targetedCriteriaIds'] as core.List)
+          targetedCriteriaIds: json_.containsKey('targetedCriteriaIds')
+              ? (json_['targetedCriteriaIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -5350,18 +5350,18 @@ class DayPart {
     this.startTime,
   });
 
-  DayPart.fromJson(core.Map _json)
+  DayPart.fromJson(core.Map json_)
       : this(
-          dayOfWeek: _json.containsKey('dayOfWeek')
-              ? _json['dayOfWeek'] as core.String
+          dayOfWeek: json_.containsKey('dayOfWeek')
+              ? json_['dayOfWeek'] as core.String
               : null,
-          endTime: _json.containsKey('endTime')
+          endTime: json_.containsKey('endTime')
               ? TimeOfDay.fromJson(
-                  _json['endTime'] as core.Map<core.String, core.dynamic>)
+                  json_['endTime'] as core.Map<core.String, core.dynamic>)
               : null,
-          startTime: _json.containsKey('startTime')
+          startTime: json_.containsKey('startTime')
               ? TimeOfDay.fromJson(
-                  _json['startTime'] as core.Map<core.String, core.dynamic>)
+                  json_['startTime'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5390,16 +5390,16 @@ class DayPartTargeting {
     this.timeZoneType,
   });
 
-  DayPartTargeting.fromJson(core.Map _json)
+  DayPartTargeting.fromJson(core.Map json_)
       : this(
-          dayParts: _json.containsKey('dayParts')
-              ? (_json['dayParts'] as core.List)
+          dayParts: json_.containsKey('dayParts')
+              ? (json_['dayParts'] as core.List)
                   .map((value) => DayPart.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeZoneType: _json.containsKey('timeZoneType')
-              ? _json['timeZoneType'] as core.String
+          timeZoneType: json_.containsKey('timeZoneType')
+              ? json_['timeZoneType'] as core.String
               : null,
         );
 
@@ -5604,97 +5604,97 @@ class Deal {
     this.webPropertyCode,
   });
 
-  Deal.fromJson(core.Map _json)
+  Deal.fromJson(core.Map json_)
       : this(
-          availableEndTime: _json.containsKey('availableEndTime')
-              ? _json['availableEndTime'] as core.String
+          availableEndTime: json_.containsKey('availableEndTime')
+              ? json_['availableEndTime'] as core.String
               : null,
-          availableStartTime: _json.containsKey('availableStartTime')
-              ? _json['availableStartTime'] as core.String
+          availableStartTime: json_.containsKey('availableStartTime')
+              ? json_['availableStartTime'] as core.String
               : null,
-          buyerPrivateData: _json.containsKey('buyerPrivateData')
-              ? PrivateData.fromJson(_json['buyerPrivateData']
+          buyerPrivateData: json_.containsKey('buyerPrivateData')
+              ? PrivateData.fromJson(json_['buyerPrivateData']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createProductId: _json.containsKey('createProductId')
-              ? _json['createProductId'] as core.String
+          createProductId: json_.containsKey('createProductId')
+              ? json_['createProductId'] as core.String
               : null,
-          createProductRevision: _json.containsKey('createProductRevision')
-              ? _json['createProductRevision'] as core.String
+          createProductRevision: json_.containsKey('createProductRevision')
+              ? json_['createProductRevision'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
           creativePreApprovalPolicy:
-              _json.containsKey('creativePreApprovalPolicy')
-                  ? _json['creativePreApprovalPolicy'] as core.String
+              json_.containsKey('creativePreApprovalPolicy')
+                  ? json_['creativePreApprovalPolicy'] as core.String
                   : null,
-          creativeRestrictions: _json.containsKey('creativeRestrictions')
-              ? CreativeRestrictions.fromJson(_json['creativeRestrictions']
+          creativeRestrictions: json_.containsKey('creativeRestrictions')
+              ? CreativeRestrictions.fromJson(json_['creativeRestrictions']
                   as core.Map<core.String, core.dynamic>)
               : null,
           creativeSafeFrameCompatibility:
-              _json.containsKey('creativeSafeFrameCompatibility')
-                  ? _json['creativeSafeFrameCompatibility'] as core.String
+              json_.containsKey('creativeSafeFrameCompatibility')
+                  ? json_['creativeSafeFrameCompatibility'] as core.String
                   : null,
-          dealId: _json.containsKey('dealId')
-              ? _json['dealId'] as core.String
+          dealId: json_.containsKey('dealId')
+              ? json_['dealId'] as core.String
               : null,
-          dealServingMetadata: _json.containsKey('dealServingMetadata')
-              ? DealServingMetadata.fromJson(_json['dealServingMetadata']
+          dealServingMetadata: json_.containsKey('dealServingMetadata')
+              ? DealServingMetadata.fromJson(json_['dealServingMetadata']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          dealTerms: _json.containsKey('dealTerms')
+          dealTerms: json_.containsKey('dealTerms')
               ? DealTerms.fromJson(
-                  _json['dealTerms'] as core.Map<core.String, core.dynamic>)
+                  json_['dealTerms'] as core.Map<core.String, core.dynamic>)
               : null,
-          deliveryControl: _json.containsKey('deliveryControl')
-              ? DeliveryControl.fromJson(_json['deliveryControl']
+          deliveryControl: json_.containsKey('deliveryControl')
+              ? DeliveryControl.fromJson(json_['deliveryControl']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          externalDealId: _json.containsKey('externalDealId')
-              ? _json['externalDealId'] as core.String
+          externalDealId: json_.containsKey('externalDealId')
+              ? json_['externalDealId'] as core.String
               : null,
-          isSetupComplete: _json.containsKey('isSetupComplete')
-              ? _json['isSetupComplete'] as core.bool
+          isSetupComplete: json_.containsKey('isSetupComplete')
+              ? json_['isSetupComplete'] as core.bool
               : null,
           programmaticCreativeSource:
-              _json.containsKey('programmaticCreativeSource')
-                  ? _json['programmaticCreativeSource'] as core.String
+              json_.containsKey('programmaticCreativeSource')
+                  ? json_['programmaticCreativeSource'] as core.String
                   : null,
-          proposalId: _json.containsKey('proposalId')
-              ? _json['proposalId'] as core.String
+          proposalId: json_.containsKey('proposalId')
+              ? json_['proposalId'] as core.String
               : null,
-          sellerContacts: _json.containsKey('sellerContacts')
-              ? (_json['sellerContacts'] as core.List)
+          sellerContacts: json_.containsKey('sellerContacts')
+              ? (json_['sellerContacts'] as core.List)
                   .map((value) => ContactInformation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          syndicationProduct: _json.containsKey('syndicationProduct')
-              ? _json['syndicationProduct'] as core.String
+          syndicationProduct: json_.containsKey('syndicationProduct')
+              ? json_['syndicationProduct'] as core.String
               : null,
-          targeting: _json.containsKey('targeting')
+          targeting: json_.containsKey('targeting')
               ? MarketplaceTargeting.fromJson(
-                  _json['targeting'] as core.Map<core.String, core.dynamic>)
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
               : null,
-          targetingCriterion: _json.containsKey('targetingCriterion')
-              ? (_json['targetingCriterion'] as core.List)
+          targetingCriterion: json_.containsKey('targetingCriterion')
+              ? (json_['targetingCriterion'] as core.List)
                   .map((value) => TargetingCriteria.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          webPropertyCode: _json.containsKey('webPropertyCode')
-              ? _json['webPropertyCode'] as core.String
+          webPropertyCode: json_.containsKey('webPropertyCode')
+              ? json_['webPropertyCode'] as core.String
               : null,
         );
 
@@ -5769,22 +5769,22 @@ class DealPauseStatus {
     this.sellerPauseReason,
   });
 
-  DealPauseStatus.fromJson(core.Map _json)
+  DealPauseStatus.fromJson(core.Map json_)
       : this(
-          buyerPauseReason: _json.containsKey('buyerPauseReason')
-              ? _json['buyerPauseReason'] as core.String
+          buyerPauseReason: json_.containsKey('buyerPauseReason')
+              ? json_['buyerPauseReason'] as core.String
               : null,
-          firstPausedBy: _json.containsKey('firstPausedBy')
-              ? _json['firstPausedBy'] as core.String
+          firstPausedBy: json_.containsKey('firstPausedBy')
+              ? json_['firstPausedBy'] as core.String
               : null,
-          hasBuyerPaused: _json.containsKey('hasBuyerPaused')
-              ? _json['hasBuyerPaused'] as core.bool
+          hasBuyerPaused: json_.containsKey('hasBuyerPaused')
+              ? json_['hasBuyerPaused'] as core.bool
               : null,
-          hasSellerPaused: _json.containsKey('hasSellerPaused')
-              ? _json['hasSellerPaused'] as core.bool
+          hasSellerPaused: json_.containsKey('hasSellerPaused')
+              ? json_['hasSellerPaused'] as core.bool
               : null,
-          sellerPauseReason: _json.containsKey('sellerPauseReason')
-              ? _json['sellerPauseReason'] as core.String
+          sellerPauseReason: json_.containsKey('sellerPauseReason')
+              ? json_['sellerPauseReason'] as core.String
               : null,
         );
 
@@ -5808,10 +5808,10 @@ class DealServingMetadata {
     this.dealPauseStatus,
   });
 
-  DealServingMetadata.fromJson(core.Map _json)
+  DealServingMetadata.fromJson(core.Map json_)
       : this(
-          dealPauseStatus: _json.containsKey('dealPauseStatus')
-              ? DealPauseStatus.fromJson(_json['dealPauseStatus']
+          dealPauseStatus: json_.containsKey('dealPauseStatus')
+              ? DealPauseStatus.fromJson(json_['dealPauseStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5878,42 +5878,42 @@ class DealTerms {
     this.sellerTimeZone,
   });
 
-  DealTerms.fromJson(core.Map _json)
+  DealTerms.fromJson(core.Map json_)
       : this(
-          brandingType: _json.containsKey('brandingType')
-              ? _json['brandingType'] as core.String
+          brandingType: json_.containsKey('brandingType')
+              ? json_['brandingType'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          estimatedGrossSpend: _json.containsKey('estimatedGrossSpend')
-              ? Price.fromJson(_json['estimatedGrossSpend']
+          estimatedGrossSpend: json_.containsKey('estimatedGrossSpend')
+              ? Price.fromJson(json_['estimatedGrossSpend']
                   as core.Map<core.String, core.dynamic>)
               : null,
           estimatedImpressionsPerDay:
-              _json.containsKey('estimatedImpressionsPerDay')
-                  ? _json['estimatedImpressionsPerDay'] as core.String
+              json_.containsKey('estimatedImpressionsPerDay')
+                  ? json_['estimatedImpressionsPerDay'] as core.String
                   : null,
           guaranteedFixedPriceTerms:
-              _json.containsKey('guaranteedFixedPriceTerms')
+              json_.containsKey('guaranteedFixedPriceTerms')
                   ? GuaranteedFixedPriceTerms.fromJson(
-                      _json['guaranteedFixedPriceTerms']
+                      json_['guaranteedFixedPriceTerms']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           nonGuaranteedAuctionTerms:
-              _json.containsKey('nonGuaranteedAuctionTerms')
+              json_.containsKey('nonGuaranteedAuctionTerms')
                   ? NonGuaranteedAuctionTerms.fromJson(
-                      _json['nonGuaranteedAuctionTerms']
+                      json_['nonGuaranteedAuctionTerms']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           nonGuaranteedFixedPriceTerms:
-              _json.containsKey('nonGuaranteedFixedPriceTerms')
+              json_.containsKey('nonGuaranteedFixedPriceTerms')
                   ? NonGuaranteedFixedPriceTerms.fromJson(
-                      _json['nonGuaranteedFixedPriceTerms']
+                      json_['nonGuaranteedFixedPriceTerms']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          sellerTimeZone: _json.containsKey('sellerTimeZone')
-              ? _json['sellerTimeZone'] as core.String
+          sellerTimeZone: json_.containsKey('sellerTimeZone')
+              ? json_['sellerTimeZone'] as core.String
               : null,
         );
 
@@ -5969,16 +5969,16 @@ class DeliveryControl {
     this.frequencyCaps,
   });
 
-  DeliveryControl.fromJson(core.Map _json)
+  DeliveryControl.fromJson(core.Map json_)
       : this(
-          creativeBlockingLevel: _json.containsKey('creativeBlockingLevel')
-              ? _json['creativeBlockingLevel'] as core.String
+          creativeBlockingLevel: json_.containsKey('creativeBlockingLevel')
+              ? json_['creativeBlockingLevel'] as core.String
               : null,
-          deliveryRateType: _json.containsKey('deliveryRateType')
-              ? _json['deliveryRateType'] as core.String
+          deliveryRateType: json_.containsKey('deliveryRateType')
+              ? json_['deliveryRateType'] as core.String
               : null,
-          frequencyCaps: _json.containsKey('frequencyCaps')
-              ? (_json['frequencyCaps'] as core.List)
+          frequencyCaps: json_.containsKey('frequencyCaps')
+              ? (json_['frequencyCaps'] as core.List)
                   .map((value) => FrequencyCap.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6162,15 +6162,15 @@ class Disapproval {
     this.reason,
   });
 
-  Disapproval.fromJson(core.Map _json)
+  Disapproval.fromJson(core.Map json_)
       : this(
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
               : null,
         );
 
@@ -6316,60 +6316,60 @@ class FilterSet {
     this.timeSeriesGranularity,
   });
 
-  FilterSet.fromJson(core.Map _json)
+  FilterSet.fromJson(core.Map json_)
       : this(
-          absoluteDateRange: _json.containsKey('absoluteDateRange')
-              ? AbsoluteDateRange.fromJson(_json['absoluteDateRange']
+          absoluteDateRange: json_.containsKey('absoluteDateRange')
+              ? AbsoluteDateRange.fromJson(json_['absoluteDateRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          breakdownDimensions: _json.containsKey('breakdownDimensions')
-              ? (_json['breakdownDimensions'] as core.List)
+          breakdownDimensions: json_.containsKey('breakdownDimensions')
+              ? (json_['breakdownDimensions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          creativeId: _json.containsKey('creativeId')
-              ? _json['creativeId'] as core.String
+          creativeId: json_.containsKey('creativeId')
+              ? json_['creativeId'] as core.String
               : null,
-          dealId: _json.containsKey('dealId')
-              ? _json['dealId'] as core.String
+          dealId: json_.containsKey('dealId')
+              ? json_['dealId'] as core.String
               : null,
-          environment: _json.containsKey('environment')
-              ? _json['environment'] as core.String
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.String
               : null,
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
-          formats: _json.containsKey('formats')
-              ? (_json['formats'] as core.List)
+          formats: json_.containsKey('formats')
+              ? (json_['formats'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          platforms: _json.containsKey('platforms')
-              ? (_json['platforms'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          platforms: json_.containsKey('platforms')
+              ? (json_['platforms'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          publisherIdentifiers: _json.containsKey('publisherIdentifiers')
-              ? (_json['publisherIdentifiers'] as core.List)
+          publisherIdentifiers: json_.containsKey('publisherIdentifiers')
+              ? (json_['publisherIdentifiers'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          realtimeTimeRange: _json.containsKey('realtimeTimeRange')
-              ? RealtimeTimeRange.fromJson(_json['realtimeTimeRange']
+          realtimeTimeRange: json_.containsKey('realtimeTimeRange')
+              ? RealtimeTimeRange.fromJson(json_['realtimeTimeRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          relativeDateRange: _json.containsKey('relativeDateRange')
-              ? RelativeDateRange.fromJson(_json['relativeDateRange']
+          relativeDateRange: json_.containsKey('relativeDateRange')
+              ? RelativeDateRange.fromJson(json_['relativeDateRange']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sellerNetworkIds: _json.containsKey('sellerNetworkIds')
-              ? (_json['sellerNetworkIds'] as core.List)
+          sellerNetworkIds: json_.containsKey('sellerNetworkIds')
+              ? (json_['sellerNetworkIds'] as core.List)
                   .map((value) => value as core.int)
                   .toList()
               : null,
-          timeSeriesGranularity: _json.containsKey('timeSeriesGranularity')
-              ? _json['timeSeriesGranularity'] as core.String
+          timeSeriesGranularity: json_.containsKey('timeSeriesGranularity')
+              ? json_['timeSeriesGranularity'] as core.String
               : null,
         );
 
@@ -6412,18 +6412,18 @@ class FilteredBidCreativeRow {
     this.rowDimensions,
   });
 
-  FilteredBidCreativeRow.fromJson(core.Map _json)
+  FilteredBidCreativeRow.fromJson(core.Map json_)
       : this(
-          bidCount: _json.containsKey('bidCount')
+          bidCount: json_.containsKey('bidCount')
               ? MetricValue.fromJson(
-                  _json['bidCount'] as core.Map<core.String, core.dynamic>)
+                  json_['bidCount'] as core.Map<core.String, core.dynamic>)
               : null,
-          creativeId: _json.containsKey('creativeId')
-              ? _json['creativeId'] as core.String
+          creativeId: json_.containsKey('creativeId')
+              ? json_['creativeId'] as core.String
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6466,21 +6466,21 @@ class FilteredBidDetailRow {
     this.rowDimensions,
   });
 
-  FilteredBidDetailRow.fromJson(core.Map _json)
+  FilteredBidDetailRow.fromJson(core.Map json_)
       : this(
-          bidCount: _json.containsKey('bidCount')
+          bidCount: json_.containsKey('bidCount')
               ? MetricValue.fromJson(
-                  _json['bidCount'] as core.Map<core.String, core.dynamic>)
+                  json_['bidCount'] as core.Map<core.String, core.dynamic>)
               : null,
-          detail: _json.containsKey('detail')
-              ? _json['detail'] as core.String
+          detail: json_.containsKey('detail')
+              ? json_['detail'] as core.String
               : null,
-          detailId: _json.containsKey('detailId')
-              ? _json['detailId'] as core.int
+          detailId: json_.containsKey('detailId')
+              ? json_['detailId'] as core.int
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6511,15 +6511,15 @@ class FirstPartyMobileApplicationTargeting {
     this.targetedAppIds,
   });
 
-  FirstPartyMobileApplicationTargeting.fromJson(core.Map _json)
+  FirstPartyMobileApplicationTargeting.fromJson(core.Map json_)
       : this(
-          excludedAppIds: _json.containsKey('excludedAppIds')
-              ? (_json['excludedAppIds'] as core.List)
+          excludedAppIds: json_.containsKey('excludedAppIds')
+              ? (json_['excludedAppIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          targetedAppIds: _json.containsKey('targetedAppIds')
-              ? (_json['targetedAppIds'] as core.List)
+          targetedAppIds: json_.containsKey('targetedAppIds')
+              ? (json_['targetedAppIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -6567,16 +6567,16 @@ class FrequencyCap {
     this.timeUnitType,
   });
 
-  FrequencyCap.fromJson(core.Map _json)
+  FrequencyCap.fromJson(core.Map json_)
       : this(
-          maxImpressions: _json.containsKey('maxImpressions')
-              ? _json['maxImpressions'] as core.int
+          maxImpressions: json_.containsKey('maxImpressions')
+              ? json_['maxImpressions'] as core.int
               : null,
-          numTimeUnits: _json.containsKey('numTimeUnits')
-              ? _json['numTimeUnits'] as core.int
+          numTimeUnits: json_.containsKey('numTimeUnits')
+              ? json_['numTimeUnits'] as core.int
               : null,
-          timeUnitType: _json.containsKey('timeUnitType')
-              ? _json['timeUnitType'] as core.String
+          timeUnitType: json_.containsKey('timeUnitType')
+              ? json_['timeUnitType'] as core.String
               : null,
         );
 
@@ -6638,31 +6638,31 @@ class GuaranteedFixedPriceTerms {
     this.reservationType,
   });
 
-  GuaranteedFixedPriceTerms.fromJson(core.Map _json)
+  GuaranteedFixedPriceTerms.fromJson(core.Map json_)
       : this(
-          fixedPrices: _json.containsKey('fixedPrices')
-              ? (_json['fixedPrices'] as core.List)
+          fixedPrices: json_.containsKey('fixedPrices')
+              ? (json_['fixedPrices'] as core.List)
                   .map((value) => PricePerBuyer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          guaranteedImpressions: _json.containsKey('guaranteedImpressions')
-              ? _json['guaranteedImpressions'] as core.String
+          guaranteedImpressions: json_.containsKey('guaranteedImpressions')
+              ? json_['guaranteedImpressions'] as core.String
               : null,
-          guaranteedLooks: _json.containsKey('guaranteedLooks')
-              ? _json['guaranteedLooks'] as core.String
+          guaranteedLooks: json_.containsKey('guaranteedLooks')
+              ? json_['guaranteedLooks'] as core.String
               : null,
-          impressionCap: _json.containsKey('impressionCap')
-              ? _json['impressionCap'] as core.String
+          impressionCap: json_.containsKey('impressionCap')
+              ? json_['impressionCap'] as core.String
               : null,
-          minimumDailyLooks: _json.containsKey('minimumDailyLooks')
-              ? _json['minimumDailyLooks'] as core.String
+          minimumDailyLooks: json_.containsKey('minimumDailyLooks')
+              ? json_['minimumDailyLooks'] as core.String
               : null,
-          percentShareOfVoice: _json.containsKey('percentShareOfVoice')
-              ? _json['percentShareOfVoice'] as core.String
+          percentShareOfVoice: json_.containsKey('percentShareOfVoice')
+              ? json_['percentShareOfVoice'] as core.String
               : null,
-          reservationType: _json.containsKey('reservationType')
-              ? _json['reservationType'] as core.String
+          reservationType: json_.containsKey('reservationType')
+              ? json_['reservationType'] as core.String
               : null,
         );
 
@@ -6696,14 +6696,14 @@ class HtmlContent {
     this.width,
   });
 
-  HtmlContent.fromJson(core.Map _json)
+  HtmlContent.fromJson(core.Map json_)
       : this(
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          snippet: _json.containsKey('snippet')
-              ? _json['snippet'] as core.String
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          snippet: json_.containsKey('snippet')
+              ? json_['snippet'] as core.String
               : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6733,12 +6733,12 @@ class Image {
     this.width,
   });
 
-  Image.fromJson(core.Map _json)
+  Image.fromJson(core.Map json_)
       : this(
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6784,30 +6784,30 @@ class ImpressionMetricsRow {
     this.successfulResponses,
   });
 
-  ImpressionMetricsRow.fromJson(core.Map _json)
+  ImpressionMetricsRow.fromJson(core.Map json_)
       : this(
-          availableImpressions: _json.containsKey('availableImpressions')
-              ? MetricValue.fromJson(_json['availableImpressions']
+          availableImpressions: json_.containsKey('availableImpressions')
+              ? MetricValue.fromJson(json_['availableImpressions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          bidRequests: _json.containsKey('bidRequests')
+          bidRequests: json_.containsKey('bidRequests')
               ? MetricValue.fromJson(
-                  _json['bidRequests'] as core.Map<core.String, core.dynamic>)
+                  json_['bidRequests'] as core.Map<core.String, core.dynamic>)
               : null,
-          inventoryMatches: _json.containsKey('inventoryMatches')
-              ? MetricValue.fromJson(_json['inventoryMatches']
+          inventoryMatches: json_.containsKey('inventoryMatches')
+              ? MetricValue.fromJson(json_['inventoryMatches']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          responsesWithBids: _json.containsKey('responsesWithBids')
-              ? MetricValue.fromJson(_json['responsesWithBids']
+          responsesWithBids: json_.containsKey('responsesWithBids')
+              ? MetricValue.fromJson(json_['responsesWithBids']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
-          successfulResponses: _json.containsKey('successfulResponses')
-              ? MetricValue.fromJson(_json['successfulResponses']
+          successfulResponses: json_.containsKey('successfulResponses')
+              ? MetricValue.fromJson(json_['successfulResponses']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6841,16 +6841,16 @@ class InventorySizeTargeting {
     this.targetedInventorySizes,
   });
 
-  InventorySizeTargeting.fromJson(core.Map _json)
+  InventorySizeTargeting.fromJson(core.Map json_)
       : this(
-          excludedInventorySizes: _json.containsKey('excludedInventorySizes')
-              ? (_json['excludedInventorySizes'] as core.List)
+          excludedInventorySizes: json_.containsKey('excludedInventorySizes')
+              ? (json_['excludedInventorySizes'] as core.List)
                   .map((value) => AdSize.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          targetedInventorySizes: _json.containsKey('targetedInventorySizes')
-              ? (_json['targetedInventorySizes'] as core.List)
+          targetedInventorySizes: json_.containsKey('targetedInventorySizes')
+              ? (json_['targetedInventorySizes'] as core.List)
                   .map((value) => AdSize.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6883,16 +6883,16 @@ class ListBidMetricsResponse {
     this.nextPageToken,
   });
 
-  ListBidMetricsResponse.fromJson(core.Map _json)
+  ListBidMetricsResponse.fromJson(core.Map json_)
       : this(
-          bidMetricsRows: _json.containsKey('bidMetricsRows')
-              ? (_json['bidMetricsRows'] as core.List)
+          bidMetricsRows: json_.containsKey('bidMetricsRows')
+              ? (json_['bidMetricsRows'] as core.List)
                   .map((value) => BidMetricsRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6920,16 +6920,16 @@ class ListBidResponseErrorsResponse {
     this.nextPageToken,
   });
 
-  ListBidResponseErrorsResponse.fromJson(core.Map _json)
+  ListBidResponseErrorsResponse.fromJson(core.Map json_)
       : this(
-          calloutStatusRows: _json.containsKey('calloutStatusRows')
-              ? (_json['calloutStatusRows'] as core.List)
+          calloutStatusRows: json_.containsKey('calloutStatusRows')
+              ? (json_['calloutStatusRows'] as core.List)
                   .map((value) => CalloutStatusRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6958,17 +6958,17 @@ class ListBidResponsesWithoutBidsResponse {
     this.nextPageToken,
   });
 
-  ListBidResponsesWithoutBidsResponse.fromJson(core.Map _json)
+  ListBidResponsesWithoutBidsResponse.fromJson(core.Map json_)
       : this(
           bidResponseWithoutBidsStatusRows:
-              _json.containsKey('bidResponseWithoutBidsStatusRows')
-                  ? (_json['bidResponseWithoutBidsStatusRows'] as core.List)
+              json_.containsKey('bidResponseWithoutBidsStatusRows')
+                  ? (json_['bidResponseWithoutBidsStatusRows'] as core.List)
                       .map((value) => BidResponseWithoutBidsStatusRow.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6995,16 +6995,16 @@ class ListClientUserInvitationsResponse {
     this.nextPageToken,
   });
 
-  ListClientUserInvitationsResponse.fromJson(core.Map _json)
+  ListClientUserInvitationsResponse.fromJson(core.Map json_)
       : this(
-          invitations: _json.containsKey('invitations')
-              ? (_json['invitations'] as core.List)
+          invitations: json_.containsKey('invitations')
+              ? (json_['invitations'] as core.List)
                   .map((value) => ClientUserInvitation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7030,13 +7030,13 @@ class ListClientUsersResponse {
     this.users,
   });
 
-  ListClientUsersResponse.fromJson(core.Map _json)
+  ListClientUsersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          users: _json.containsKey('users')
-              ? (_json['users'] as core.List)
+          users: json_.containsKey('users')
+              ? (json_['users'] as core.List)
                   .map((value) => ClientUser.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7065,16 +7065,16 @@ class ListClientsResponse {
     this.nextPageToken,
   });
 
-  ListClientsResponse.fromJson(core.Map _json)
+  ListClientsResponse.fromJson(core.Map json_)
       : this(
-          clients: _json.containsKey('clients')
-              ? (_json['clients'] as core.List)
+          clients: json_.containsKey('clients')
+              ? (json_['clients'] as core.List)
                   .map((value) => Client.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7104,16 +7104,16 @@ class ListCreativeStatusBreakdownByCreativeResponse {
     this.nextPageToken,
   });
 
-  ListCreativeStatusBreakdownByCreativeResponse.fromJson(core.Map _json)
+  ListCreativeStatusBreakdownByCreativeResponse.fromJson(core.Map json_)
       : this(
-          filteredBidCreativeRows: _json.containsKey('filteredBidCreativeRows')
-              ? (_json['filteredBidCreativeRows'] as core.List)
+          filteredBidCreativeRows: json_.containsKey('filteredBidCreativeRows')
+              ? (json_['filteredBidCreativeRows'] as core.List)
                   .map((value) => FilteredBidCreativeRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7178,19 +7178,19 @@ class ListCreativeStatusBreakdownByDetailResponse {
     this.nextPageToken,
   });
 
-  ListCreativeStatusBreakdownByDetailResponse.fromJson(core.Map _json)
+  ListCreativeStatusBreakdownByDetailResponse.fromJson(core.Map json_)
       : this(
-          detailType: _json.containsKey('detailType')
-              ? _json['detailType'] as core.String
+          detailType: json_.containsKey('detailType')
+              ? json_['detailType'] as core.String
               : null,
-          filteredBidDetailRows: _json.containsKey('filteredBidDetailRows')
-              ? (_json['filteredBidDetailRows'] as core.List)
+          filteredBidDetailRows: json_.containsKey('filteredBidDetailRows')
+              ? (json_['filteredBidDetailRows'] as core.List)
                   .map((value) => FilteredBidDetailRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7219,16 +7219,16 @@ class ListCreativesResponse {
     this.nextPageToken,
   });
 
-  ListCreativesResponse.fromJson(core.Map _json)
+  ListCreativesResponse.fromJson(core.Map json_)
       : this(
-          creatives: _json.containsKey('creatives')
-              ? (_json['creatives'] as core.List)
+          creatives: json_.containsKey('creatives')
+              ? (json_['creatives'] as core.List)
                   .map((value) => Creative.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7255,16 +7255,16 @@ class ListDealAssociationsResponse {
     this.nextPageToken,
   });
 
-  ListDealAssociationsResponse.fromJson(core.Map _json)
+  ListDealAssociationsResponse.fromJson(core.Map json_)
       : this(
-          associations: _json.containsKey('associations')
-              ? (_json['associations'] as core.List)
+          associations: json_.containsKey('associations')
+              ? (json_['associations'] as core.List)
                   .map((value) => CreativeDealAssociation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7291,16 +7291,16 @@ class ListFilterSetsResponse {
     this.nextPageToken,
   });
 
-  ListFilterSetsResponse.fromJson(core.Map _json)
+  ListFilterSetsResponse.fromJson(core.Map json_)
       : this(
-          filterSets: _json.containsKey('filterSets')
-              ? (_json['filterSets'] as core.List)
+          filterSets: json_.containsKey('filterSets')
+              ? (json_['filterSets'] as core.List)
                   .map((value) => FilterSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7329,16 +7329,16 @@ class ListFilteredBidRequestsResponse {
     this.nextPageToken,
   });
 
-  ListFilteredBidRequestsResponse.fromJson(core.Map _json)
+  ListFilteredBidRequestsResponse.fromJson(core.Map json_)
       : this(
-          calloutStatusRows: _json.containsKey('calloutStatusRows')
-              ? (_json['calloutStatusRows'] as core.List)
+          calloutStatusRows: json_.containsKey('calloutStatusRows')
+              ? (json_['calloutStatusRows'] as core.List)
                   .map((value) => CalloutStatusRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7367,16 +7367,16 @@ class ListFilteredBidsResponse {
     this.nextPageToken,
   });
 
-  ListFilteredBidsResponse.fromJson(core.Map _json)
+  ListFilteredBidsResponse.fromJson(core.Map json_)
       : this(
-          creativeStatusRows: _json.containsKey('creativeStatusRows')
-              ? (_json['creativeStatusRows'] as core.List)
+          creativeStatusRows: json_.containsKey('creativeStatusRows')
+              ? (json_['creativeStatusRows'] as core.List)
                   .map((value) => CreativeStatusRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7405,16 +7405,16 @@ class ListImpressionMetricsResponse {
     this.nextPageToken,
   });
 
-  ListImpressionMetricsResponse.fromJson(core.Map _json)
+  ListImpressionMetricsResponse.fromJson(core.Map json_)
       : this(
-          impressionMetricsRows: _json.containsKey('impressionMetricsRows')
-              ? (_json['impressionMetricsRows'] as core.List)
+          impressionMetricsRows: json_.containsKey('impressionMetricsRows')
+              ? (json_['impressionMetricsRows'] as core.List)
                   .map((value) => ImpressionMetricsRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7443,16 +7443,16 @@ class ListLosingBidsResponse {
     this.nextPageToken,
   });
 
-  ListLosingBidsResponse.fromJson(core.Map _json)
+  ListLosingBidsResponse.fromJson(core.Map json_)
       : this(
-          creativeStatusRows: _json.containsKey('creativeStatusRows')
-              ? (_json['creativeStatusRows'] as core.List)
+          creativeStatusRows: json_.containsKey('creativeStatusRows')
+              ? (json_['creativeStatusRows'] as core.List)
                   .map((value) => CreativeStatusRow.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -7481,14 +7481,14 @@ class ListNonBillableWinningBidsResponse {
     this.nonBillableWinningBidStatusRows,
   });
 
-  ListNonBillableWinningBidsResponse.fromJson(core.Map _json)
+  ListNonBillableWinningBidsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
           nonBillableWinningBidStatusRows:
-              _json.containsKey('nonBillableWinningBidStatusRows')
-                  ? (_json['nonBillableWinningBidStatusRows'] as core.List)
+              json_.containsKey('nonBillableWinningBidStatusRows')
+                  ? (json_['nonBillableWinningBidStatusRows'] as core.List)
                       .map((value) => NonBillableWinningBidStatusRow.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -7515,13 +7515,13 @@ class ListProductsResponse {
     this.products,
   });
 
-  ListProductsResponse.fromJson(core.Map _json)
+  ListProductsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          products: _json.containsKey('products')
-              ? (_json['products'] as core.List)
+          products: json_.containsKey('products')
+              ? (json_['products'] as core.List)
                   .map((value) => Product.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7547,13 +7547,13 @@ class ListProposalsResponse {
     this.proposals,
   });
 
-  ListProposalsResponse.fromJson(core.Map _json)
+  ListProposalsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          proposals: _json.containsKey('proposals')
-              ? (_json['proposals'] as core.List)
+          proposals: json_.containsKey('proposals')
+              ? (json_['proposals'] as core.List)
                   .map((value) => Proposal.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7579,13 +7579,13 @@ class ListPublisherProfilesResponse {
     this.publisherProfiles,
   });
 
-  ListPublisherProfilesResponse.fromJson(core.Map _json)
+  ListPublisherProfilesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          publisherProfiles: _json.containsKey('publisherProfiles')
-              ? (_json['publisherProfiles'] as core.List)
+          publisherProfiles: json_.containsKey('publisherProfiles')
+              ? (json_['publisherProfiles'] as core.List)
                   .map((value) => PublisherProfile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7613,10 +7613,10 @@ class LocationContext {
     this.geoCriteriaIds,
   });
 
-  LocationContext.fromJson(core.Map _json)
+  LocationContext.fromJson(core.Map json_)
       : this(
-          geoCriteriaIds: _json.containsKey('geoCriteriaIds')
-              ? (_json['geoCriteriaIds'] as core.List)
+          geoCriteriaIds: json_.containsKey('geoCriteriaIds')
+              ? (json_['geoCriteriaIds'] as core.List)
                   .map((value) => value as core.int)
                   .toList()
               : null,
@@ -7657,26 +7657,26 @@ class MarketplaceTargeting {
     this.videoTargeting,
   });
 
-  MarketplaceTargeting.fromJson(core.Map _json)
+  MarketplaceTargeting.fromJson(core.Map json_)
       : this(
-          geoTargeting: _json.containsKey('geoTargeting')
+          geoTargeting: json_.containsKey('geoTargeting')
               ? CriteriaTargeting.fromJson(
-                  _json['geoTargeting'] as core.Map<core.String, core.dynamic>)
+                  json_['geoTargeting'] as core.Map<core.String, core.dynamic>)
               : null,
-          inventorySizeTargeting: _json.containsKey('inventorySizeTargeting')
-              ? InventorySizeTargeting.fromJson(_json['inventorySizeTargeting']
+          inventorySizeTargeting: json_.containsKey('inventorySizeTargeting')
+              ? InventorySizeTargeting.fromJson(json_['inventorySizeTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          placementTargeting: _json.containsKey('placementTargeting')
-              ? PlacementTargeting.fromJson(_json['placementTargeting']
+          placementTargeting: json_.containsKey('placementTargeting')
+              ? PlacementTargeting.fromJson(json_['placementTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          technologyTargeting: _json.containsKey('technologyTargeting')
-              ? TechnologyTargeting.fromJson(_json['technologyTargeting']
+          technologyTargeting: json_.containsKey('technologyTargeting')
+              ? TechnologyTargeting.fromJson(json_['technologyTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          videoTargeting: _json.containsKey('videoTargeting')
-              ? VideoTargeting.fromJson(_json['videoTargeting']
+          videoTargeting: json_.containsKey('videoTargeting')
+              ? VideoTargeting.fromJson(json_['videoTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7713,12 +7713,12 @@ class MetricValue {
     this.variance,
   });
 
-  MetricValue.fromJson(core.Map _json)
+  MetricValue.fromJson(core.Map json_)
       : this(
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-          variance: _json.containsKey('variance')
-              ? _json['variance'] as core.String
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+          variance: json_.containsKey('variance')
+              ? json_['variance'] as core.String
               : null,
         );
 
@@ -7738,11 +7738,11 @@ class MobileApplicationTargeting {
     this.firstPartyTargeting,
   });
 
-  MobileApplicationTargeting.fromJson(core.Map _json)
+  MobileApplicationTargeting.fromJson(core.Map json_)
       : this(
-          firstPartyTargeting: _json.containsKey('firstPartyTargeting')
+          firstPartyTargeting: json_.containsKey('firstPartyTargeting')
               ? FirstPartyMobileApplicationTargeting.fromJson(
-                  _json['firstPartyTargeting']
+                  json_['firstPartyTargeting']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -7815,47 +7815,47 @@ class NativeContent {
     this.videoUrl,
   });
 
-  NativeContent.fromJson(core.Map _json)
+  NativeContent.fromJson(core.Map json_)
       : this(
-          advertiserName: _json.containsKey('advertiserName')
-              ? _json['advertiserName'] as core.String
+          advertiserName: json_.containsKey('advertiserName')
+              ? json_['advertiserName'] as core.String
               : null,
-          appIcon: _json.containsKey('appIcon')
+          appIcon: json_.containsKey('appIcon')
               ? Image.fromJson(
-                  _json['appIcon'] as core.Map<core.String, core.dynamic>)
+                  json_['appIcon'] as core.Map<core.String, core.dynamic>)
               : null,
-          body: _json.containsKey('body') ? _json['body'] as core.String : null,
-          callToAction: _json.containsKey('callToAction')
-              ? _json['callToAction'] as core.String
+          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          callToAction: json_.containsKey('callToAction')
+              ? json_['callToAction'] as core.String
               : null,
-          clickLinkUrl: _json.containsKey('clickLinkUrl')
-              ? _json['clickLinkUrl'] as core.String
+          clickLinkUrl: json_.containsKey('clickLinkUrl')
+              ? json_['clickLinkUrl'] as core.String
               : null,
-          clickTrackingUrl: _json.containsKey('clickTrackingUrl')
-              ? _json['clickTrackingUrl'] as core.String
+          clickTrackingUrl: json_.containsKey('clickTrackingUrl')
+              ? json_['clickTrackingUrl'] as core.String
               : null,
-          headline: _json.containsKey('headline')
-              ? _json['headline'] as core.String
+          headline: json_.containsKey('headline')
+              ? json_['headline'] as core.String
               : null,
-          image: _json.containsKey('image')
+          image: json_.containsKey('image')
               ? Image.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          logo: _json.containsKey('logo')
+          logo: json_.containsKey('logo')
               ? Image.fromJson(
-                  _json['logo'] as core.Map<core.String, core.dynamic>)
+                  json_['logo'] as core.Map<core.String, core.dynamic>)
               : null,
-          priceDisplayText: _json.containsKey('priceDisplayText')
-              ? _json['priceDisplayText'] as core.String
+          priceDisplayText: json_.containsKey('priceDisplayText')
+              ? json_['priceDisplayText'] as core.String
               : null,
-          starRating: _json.containsKey('starRating')
-              ? (_json['starRating'] as core.num).toDouble()
+          starRating: json_.containsKey('starRating')
+              ? (json_['starRating'] as core.num).toDouble()
               : null,
-          storeUrl: _json.containsKey('storeUrl')
-              ? _json['storeUrl'] as core.String
+          storeUrl: json_.containsKey('storeUrl')
+              ? json_['storeUrl'] as core.String
               : null,
-          videoUrl: _json.containsKey('videoUrl')
-              ? _json['videoUrl'] as core.String
+          videoUrl: json_.containsKey('videoUrl')
+              ? json_['videoUrl'] as core.String
               : null,
         );
 
@@ -7905,18 +7905,18 @@ class NonBillableWinningBidStatusRow {
     this.status,
   });
 
-  NonBillableWinningBidStatusRow.fromJson(core.Map _json)
+  NonBillableWinningBidStatusRow.fromJson(core.Map json_)
       : this(
-          bidCount: _json.containsKey('bidCount')
+          bidCount: json_.containsKey('bidCount')
               ? MetricValue.fromJson(
-                  _json['bidCount'] as core.Map<core.String, core.dynamic>)
+                  json_['bidCount'] as core.Map<core.String, core.dynamic>)
               : null,
-          rowDimensions: _json.containsKey('rowDimensions')
+          rowDimensions: json_.containsKey('rowDimensions')
               ? RowDimensions.fromJson(
-                  _json['rowDimensions'] as core.Map<core.String, core.dynamic>)
+                  json_['rowDimensions'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 
@@ -7944,14 +7944,14 @@ class NonGuaranteedAuctionTerms {
     this.reservePricesPerBuyer,
   });
 
-  NonGuaranteedAuctionTerms.fromJson(core.Map _json)
+  NonGuaranteedAuctionTerms.fromJson(core.Map json_)
       : this(
           autoOptimizePrivateAuction:
-              _json.containsKey('autoOptimizePrivateAuction')
-                  ? _json['autoOptimizePrivateAuction'] as core.bool
+              json_.containsKey('autoOptimizePrivateAuction')
+                  ? json_['autoOptimizePrivateAuction'] as core.bool
                   : null,
-          reservePricesPerBuyer: _json.containsKey('reservePricesPerBuyer')
-              ? (_json['reservePricesPerBuyer'] as core.List)
+          reservePricesPerBuyer: json_.containsKey('reservePricesPerBuyer')
+              ? (json_['reservePricesPerBuyer'] as core.List)
                   .map((value) => PricePerBuyer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7975,10 +7975,10 @@ class NonGuaranteedFixedPriceTerms {
     this.fixedPrices,
   });
 
-  NonGuaranteedFixedPriceTerms.fromJson(core.Map _json)
+  NonGuaranteedFixedPriceTerms.fromJson(core.Map json_)
       : this(
-          fixedPrices: _json.containsKey('fixedPrices')
-              ? (_json['fixedPrices'] as core.List)
+          fixedPrices: json_.containsKey('fixedPrices')
+              ? (json_['fixedPrices'] as core.List)
                   .map((value) => PricePerBuyer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -8032,20 +8032,20 @@ class Note {
     this.proposalRevision,
   });
 
-  Note.fromJson(core.Map _json)
+  Note.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          creatorRole: _json.containsKey('creatorRole')
-              ? _json['creatorRole'] as core.String
+          creatorRole: json_.containsKey('creatorRole')
+              ? json_['creatorRole'] as core.String
               : null,
-          note: _json.containsKey('note') ? _json['note'] as core.String : null,
-          noteId: _json.containsKey('noteId')
-              ? _json['noteId'] as core.String
+          note: json_.containsKey('note') ? json_['note'] as core.String : null,
+          noteId: json_.containsKey('noteId')
+              ? json_['noteId'] as core.String
               : null,
-          proposalRevision: _json.containsKey('proposalRevision')
-              ? _json['proposalRevision'] as core.String
+          proposalRevision: json_.containsKey('proposalRevision')
+              ? json_['proposalRevision'] as core.String
               : null,
         );
 
@@ -8071,16 +8071,16 @@ class OperatingSystemTargeting {
     this.operatingSystemVersionCriteria,
   });
 
-  OperatingSystemTargeting.fromJson(core.Map _json)
+  OperatingSystemTargeting.fromJson(core.Map json_)
       : this(
-          operatingSystemCriteria: _json.containsKey('operatingSystemCriteria')
-              ? CriteriaTargeting.fromJson(_json['operatingSystemCriteria']
+          operatingSystemCriteria: json_.containsKey('operatingSystemCriteria')
+              ? CriteriaTargeting.fromJson(json_['operatingSystemCriteria']
                   as core.Map<core.String, core.dynamic>)
               : null,
           operatingSystemVersionCriteria:
-              _json.containsKey('operatingSystemVersionCriteria')
+              json_.containsKey('operatingSystemVersionCriteria')
                   ? CriteriaTargeting.fromJson(
-                      _json['operatingSystemVersionCriteria']
+                      json_['operatingSystemVersionCriteria']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -8111,15 +8111,15 @@ class PauseProposalDealsRequest {
     this.reason,
   });
 
-  PauseProposalDealsRequest.fromJson(core.Map _json)
+  PauseProposalDealsRequest.fromJson(core.Map json_)
       : this(
-          externalDealIds: _json.containsKey('externalDealIds')
-              ? (_json['externalDealIds'] as core.List)
+          externalDealIds: json_.containsKey('externalDealIds')
+              ? (json_['externalDealIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
               : null,
         );
 
@@ -8141,10 +8141,10 @@ class PauseProposalRequest {
     this.reason,
   });
 
-  PauseProposalRequest.fromJson(core.Map _json)
+  PauseProposalRequest.fromJson(core.Map json_)
       : this(
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
               : null,
         );
 
@@ -8171,17 +8171,17 @@ class PlacementTargeting {
     this.urlTargeting,
   });
 
-  PlacementTargeting.fromJson(core.Map _json)
+  PlacementTargeting.fromJson(core.Map json_)
       : this(
           mobileApplicationTargeting:
-              _json.containsKey('mobileApplicationTargeting')
+              json_.containsKey('mobileApplicationTargeting')
                   ? MobileApplicationTargeting.fromJson(
-                      _json['mobileApplicationTargeting']
+                      json_['mobileApplicationTargeting']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          urlTargeting: _json.containsKey('urlTargeting')
+          urlTargeting: json_.containsKey('urlTargeting')
               ? UrlTargeting.fromJson(
-                  _json['urlTargeting'] as core.Map<core.String, core.dynamic>)
+                  json_['urlTargeting'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8203,10 +8203,10 @@ class PlatformContext {
     this.platforms,
   });
 
-  PlatformContext.fromJson(core.Map _json)
+  PlatformContext.fromJson(core.Map json_)
       : this(
-          platforms: _json.containsKey('platforms')
-              ? (_json['platforms'] as core.List)
+          platforms: json_.containsKey('platforms')
+              ? (json_['platforms'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -8238,14 +8238,14 @@ class Price {
     this.pricingType,
   });
 
-  Price.fromJson(core.Map _json)
+  Price.fromJson(core.Map json_)
       : this(
-          amount: _json.containsKey('amount')
+          amount: json_.containsKey('amount')
               ? Money.fromJson(
-                  _json['amount'] as core.Map<core.String, core.dynamic>)
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
-          pricingType: _json.containsKey('pricingType')
-              ? _json['pricingType'] as core.String
+          pricingType: json_.containsKey('pricingType')
+              ? json_['pricingType'] as core.String
               : null,
         );
 
@@ -8283,20 +8283,20 @@ class PricePerBuyer {
     this.price,
   });
 
-  PricePerBuyer.fromJson(core.Map _json)
+  PricePerBuyer.fromJson(core.Map json_)
       : this(
-          advertiserIds: _json.containsKey('advertiserIds')
-              ? (_json['advertiserIds'] as core.List)
+          advertiserIds: json_.containsKey('advertiserIds')
+              ? (json_['advertiserIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          buyer: _json.containsKey('buyer')
+          buyer: json_.containsKey('buyer')
               ? Buyer.fromJson(
-                  _json['buyer'] as core.Map<core.String, core.dynamic>)
+                  json_['buyer'] as core.Map<core.String, core.dynamic>)
               : null,
-          price: _json.containsKey('price')
+          price: json_.containsKey('price')
               ? Price.fromJson(
-                  _json['price'] as core.Map<core.String, core.dynamic>)
+                  json_['price'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -8320,10 +8320,10 @@ class PrivateData {
     this.referenceId,
   });
 
-  PrivateData.fromJson(core.Map _json)
+  PrivateData.fromJson(core.Map json_)
       : this(
-          referenceId: _json.containsKey('referenceId')
-              ? _json['referenceId'] as core.String
+          referenceId: json_.containsKey('referenceId')
+              ? json_['referenceId'] as core.String
               : null,
         );
 
@@ -8423,60 +8423,60 @@ class Product {
     this.webPropertyCode,
   });
 
-  Product.fromJson(core.Map _json)
+  Product.fromJson(core.Map json_)
       : this(
-          availableEndTime: _json.containsKey('availableEndTime')
-              ? _json['availableEndTime'] as core.String
+          availableEndTime: json_.containsKey('availableEndTime')
+              ? json_['availableEndTime'] as core.String
               : null,
-          availableStartTime: _json.containsKey('availableStartTime')
-              ? _json['availableStartTime'] as core.String
+          availableStartTime: json_.containsKey('availableStartTime')
+              ? json_['availableStartTime'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          creatorContacts: _json.containsKey('creatorContacts')
-              ? (_json['creatorContacts'] as core.List)
+          creatorContacts: json_.containsKey('creatorContacts')
+              ? (json_['creatorContacts'] as core.List)
                   .map((value) => ContactInformation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          hasCreatorSignedOff: _json.containsKey('hasCreatorSignedOff')
-              ? _json['hasCreatorSignedOff'] as core.bool
+          hasCreatorSignedOff: json_.containsKey('hasCreatorSignedOff')
+              ? json_['hasCreatorSignedOff'] as core.bool
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          productRevision: _json.containsKey('productRevision')
-              ? _json['productRevision'] as core.String
+          productRevision: json_.containsKey('productRevision')
+              ? json_['productRevision'] as core.String
               : null,
-          publisherProfileId: _json.containsKey('publisherProfileId')
-              ? _json['publisherProfileId'] as core.String
+          publisherProfileId: json_.containsKey('publisherProfileId')
+              ? json_['publisherProfileId'] as core.String
               : null,
-          seller: _json.containsKey('seller')
+          seller: json_.containsKey('seller')
               ? Seller.fromJson(
-                  _json['seller'] as core.Map<core.String, core.dynamic>)
+                  json_['seller'] as core.Map<core.String, core.dynamic>)
               : null,
-          syndicationProduct: _json.containsKey('syndicationProduct')
-              ? _json['syndicationProduct'] as core.String
+          syndicationProduct: json_.containsKey('syndicationProduct')
+              ? json_['syndicationProduct'] as core.String
               : null,
-          targetingCriterion: _json.containsKey('targetingCriterion')
-              ? (_json['targetingCriterion'] as core.List)
+          targetingCriterion: json_.containsKey('targetingCriterion')
+              ? (json_['targetingCriterion'] as core.List)
                   .map((value) => TargetingCriteria.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          terms: _json.containsKey('terms')
+          terms: json_.containsKey('terms')
               ? DealTerms.fromJson(
-                  _json['terms'] as core.Map<core.String, core.dynamic>)
+                  json_['terms'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          webPropertyCode: _json.containsKey('webPropertyCode')
-              ? _json['webPropertyCode'] as core.String
+          webPropertyCode: json_.containsKey('webPropertyCode')
+              ? json_['webPropertyCode'] as core.String
               : null,
         );
 
@@ -8655,81 +8655,81 @@ class Proposal {
     this.updateTime,
   });
 
-  Proposal.fromJson(core.Map _json)
+  Proposal.fromJson(core.Map json_)
       : this(
-          billedBuyer: _json.containsKey('billedBuyer')
+          billedBuyer: json_.containsKey('billedBuyer')
               ? Buyer.fromJson(
-                  _json['billedBuyer'] as core.Map<core.String, core.dynamic>)
+                  json_['billedBuyer'] as core.Map<core.String, core.dynamic>)
               : null,
-          buyer: _json.containsKey('buyer')
+          buyer: json_.containsKey('buyer')
               ? Buyer.fromJson(
-                  _json['buyer'] as core.Map<core.String, core.dynamic>)
+                  json_['buyer'] as core.Map<core.String, core.dynamic>)
               : null,
-          buyerContacts: _json.containsKey('buyerContacts')
-              ? (_json['buyerContacts'] as core.List)
+          buyerContacts: json_.containsKey('buyerContacts')
+              ? (json_['buyerContacts'] as core.List)
                   .map((value) => ContactInformation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          buyerPrivateData: _json.containsKey('buyerPrivateData')
-              ? PrivateData.fromJson(_json['buyerPrivateData']
+          buyerPrivateData: json_.containsKey('buyerPrivateData')
+              ? PrivateData.fromJson(json_['buyerPrivateData']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deals: _json.containsKey('deals')
-              ? (_json['deals'] as core.List)
+          deals: json_.containsKey('deals')
+              ? (json_['deals'] as core.List)
                   .map((value) => Deal.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          isRenegotiating: _json.containsKey('isRenegotiating')
-              ? _json['isRenegotiating'] as core.bool
+          isRenegotiating: json_.containsKey('isRenegotiating')
+              ? json_['isRenegotiating'] as core.bool
               : null,
-          isSetupComplete: _json.containsKey('isSetupComplete')
-              ? _json['isSetupComplete'] as core.bool
+          isSetupComplete: json_.containsKey('isSetupComplete')
+              ? json_['isSetupComplete'] as core.bool
               : null,
           lastUpdaterOrCommentorRole:
-              _json.containsKey('lastUpdaterOrCommentorRole')
-                  ? _json['lastUpdaterOrCommentorRole'] as core.String
+              json_.containsKey('lastUpdaterOrCommentorRole')
+                  ? json_['lastUpdaterOrCommentorRole'] as core.String
                   : null,
-          notes: _json.containsKey('notes')
-              ? (_json['notes'] as core.List)
+          notes: json_.containsKey('notes')
+              ? (json_['notes'] as core.List)
                   .map((value) => Note.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          originatorRole: _json.containsKey('originatorRole')
-              ? _json['originatorRole'] as core.String
+          originatorRole: json_.containsKey('originatorRole')
+              ? json_['originatorRole'] as core.String
               : null,
-          privateAuctionId: _json.containsKey('privateAuctionId')
-              ? _json['privateAuctionId'] as core.String
+          privateAuctionId: json_.containsKey('privateAuctionId')
+              ? json_['privateAuctionId'] as core.String
               : null,
-          proposalId: _json.containsKey('proposalId')
-              ? _json['proposalId'] as core.String
+          proposalId: json_.containsKey('proposalId')
+              ? json_['proposalId'] as core.String
               : null,
-          proposalRevision: _json.containsKey('proposalRevision')
-              ? _json['proposalRevision'] as core.String
+          proposalRevision: json_.containsKey('proposalRevision')
+              ? json_['proposalRevision'] as core.String
               : null,
-          proposalState: _json.containsKey('proposalState')
-              ? _json['proposalState'] as core.String
+          proposalState: json_.containsKey('proposalState')
+              ? json_['proposalState'] as core.String
               : null,
-          seller: _json.containsKey('seller')
+          seller: json_.containsKey('seller')
               ? Seller.fromJson(
-                  _json['seller'] as core.Map<core.String, core.dynamic>)
+                  json_['seller'] as core.Map<core.String, core.dynamic>)
               : null,
-          sellerContacts: _json.containsKey('sellerContacts')
-              ? (_json['sellerContacts'] as core.List)
+          sellerContacts: json_.containsKey('sellerContacts')
+              ? (json_['sellerContacts'] as core.List)
                   .map((value) => ContactInformation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          termsAndConditions: _json.containsKey('termsAndConditions')
-              ? _json['termsAndConditions'] as core.String
+          termsAndConditions: json_.containsKey('termsAndConditions')
+              ? json_['termsAndConditions'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -8861,65 +8861,65 @@ class PublisherProfile {
     this.topHeadlines,
   });
 
-  PublisherProfile.fromJson(core.Map _json)
+  PublisherProfile.fromJson(core.Map json_)
       : this(
-          audienceDescription: _json.containsKey('audienceDescription')
-              ? _json['audienceDescription'] as core.String
+          audienceDescription: json_.containsKey('audienceDescription')
+              ? json_['audienceDescription'] as core.String
               : null,
-          buyerPitchStatement: _json.containsKey('buyerPitchStatement')
-              ? _json['buyerPitchStatement'] as core.String
+          buyerPitchStatement: json_.containsKey('buyerPitchStatement')
+              ? json_['buyerPitchStatement'] as core.String
               : null,
-          directDealsContact: _json.containsKey('directDealsContact')
-              ? _json['directDealsContact'] as core.String
+          directDealsContact: json_.containsKey('directDealsContact')
+              ? json_['directDealsContact'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          domains: _json.containsKey('domains')
-              ? (_json['domains'] as core.List)
+          domains: json_.containsKey('domains')
+              ? (json_['domains'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          googlePlusUrl: _json.containsKey('googlePlusUrl')
-              ? _json['googlePlusUrl'] as core.String
+          googlePlusUrl: json_.containsKey('googlePlusUrl')
+              ? json_['googlePlusUrl'] as core.String
               : null,
-          isParent: _json.containsKey('isParent')
-              ? _json['isParent'] as core.bool
+          isParent: json_.containsKey('isParent')
+              ? json_['isParent'] as core.bool
               : null,
-          logoUrl: _json.containsKey('logoUrl')
-              ? _json['logoUrl'] as core.String
+          logoUrl: json_.containsKey('logoUrl')
+              ? json_['logoUrl'] as core.String
               : null,
-          mediaKitUrl: _json.containsKey('mediaKitUrl')
-              ? _json['mediaKitUrl'] as core.String
+          mediaKitUrl: json_.containsKey('mediaKitUrl')
+              ? json_['mediaKitUrl'] as core.String
               : null,
-          mobileApps: _json.containsKey('mobileApps')
-              ? (_json['mobileApps'] as core.List)
+          mobileApps: json_.containsKey('mobileApps')
+              ? (json_['mobileApps'] as core.List)
                   .map((value) => PublisherProfileMobileApplication.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          overview: _json.containsKey('overview')
-              ? _json['overview'] as core.String
+          overview: json_.containsKey('overview')
+              ? json_['overview'] as core.String
               : null,
           programmaticDealsContact:
-              _json.containsKey('programmaticDealsContact')
-                  ? _json['programmaticDealsContact'] as core.String
+              json_.containsKey('programmaticDealsContact')
+                  ? json_['programmaticDealsContact'] as core.String
                   : null,
-          publisherProfileId: _json.containsKey('publisherProfileId')
-              ? _json['publisherProfileId'] as core.String
+          publisherProfileId: json_.containsKey('publisherProfileId')
+              ? json_['publisherProfileId'] as core.String
               : null,
-          rateCardInfoUrl: _json.containsKey('rateCardInfoUrl')
-              ? _json['rateCardInfoUrl'] as core.String
+          rateCardInfoUrl: json_.containsKey('rateCardInfoUrl')
+              ? json_['rateCardInfoUrl'] as core.String
               : null,
-          samplePageUrl: _json.containsKey('samplePageUrl')
-              ? _json['samplePageUrl'] as core.String
+          samplePageUrl: json_.containsKey('samplePageUrl')
+              ? json_['samplePageUrl'] as core.String
               : null,
-          seller: _json.containsKey('seller')
+          seller: json_.containsKey('seller')
               ? Seller.fromJson(
-                  _json['seller'] as core.Map<core.String, core.dynamic>)
+                  json_['seller'] as core.Map<core.String, core.dynamic>)
               : null,
-          topHeadlines: _json.containsKey('topHeadlines')
-              ? (_json['topHeadlines'] as core.List)
+          topHeadlines: json_.containsKey('topHeadlines')
+              ? (json_['topHeadlines'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -8982,15 +8982,15 @@ class PublisherProfileMobileApplication {
     this.name,
   });
 
-  PublisherProfileMobileApplication.fromJson(core.Map _json)
+  PublisherProfileMobileApplication.fromJson(core.Map json_)
       : this(
-          appStore: _json.containsKey('appStore')
-              ? _json['appStore'] as core.String
+          appStore: json_.containsKey('appStore')
+              ? json_['appStore'] as core.String
               : null,
-          externalAppId: _json.containsKey('externalAppId')
-              ? _json['externalAppId'] as core.String
+          externalAppId: json_.containsKey('externalAppId')
+              ? json_['externalAppId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9012,10 +9012,10 @@ class RealtimeTimeRange {
     this.startTimestamp,
   });
 
-  RealtimeTimeRange.fromJson(core.Map _json)
+  RealtimeTimeRange.fromJson(core.Map json_)
       : this(
-          startTimestamp: _json.containsKey('startTimestamp')
-              ? _json['startTimestamp'] as core.String
+          startTimestamp: json_.containsKey('startTimestamp')
+              ? json_['startTimestamp'] as core.String
               : null,
         );
 
@@ -9045,13 +9045,13 @@ class RelativeDateRange {
     this.offsetDays,
   });
 
-  RelativeDateRange.fromJson(core.Map _json)
+  RelativeDateRange.fromJson(core.Map json_)
       : this(
-          durationDays: _json.containsKey('durationDays')
-              ? _json['durationDays'] as core.int
+          durationDays: json_.containsKey('durationDays')
+              ? json_['durationDays'] as core.int
               : null,
-          offsetDays: _json.containsKey('offsetDays')
-              ? _json['offsetDays'] as core.int
+          offsetDays: json_.containsKey('offsetDays')
+              ? json_['offsetDays'] as core.int
               : null,
         );
 
@@ -9070,11 +9070,11 @@ class RemoveDealAssociationRequest {
     this.association,
   });
 
-  RemoveDealAssociationRequest.fromJson(core.Map _json)
+  RemoveDealAssociationRequest.fromJson(core.Map json_)
       : this(
-          association: _json.containsKey('association')
+          association: json_.containsKey('association')
               ? CreativeDealAssociation.fromJson(
-                  _json['association'] as core.Map<core.String, core.dynamic>)
+                  json_['association'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9094,10 +9094,10 @@ class ResumeProposalDealsRequest {
     this.externalDealIds,
   });
 
-  ResumeProposalDealsRequest.fromJson(core.Map _json)
+  ResumeProposalDealsRequest.fromJson(core.Map json_)
       : this(
-          externalDealIds: _json.containsKey('externalDealIds')
-              ? (_json['externalDealIds'] as core.List)
+          externalDealIds: json_.containsKey('externalDealIds')
+              ? (json_['externalDealIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -9130,14 +9130,14 @@ class RowDimensions {
     this.timeInterval,
   });
 
-  RowDimensions.fromJson(core.Map _json)
+  RowDimensions.fromJson(core.Map json_)
       : this(
-          publisherIdentifier: _json.containsKey('publisherIdentifier')
-              ? _json['publisherIdentifier'] as core.String
+          publisherIdentifier: json_.containsKey('publisherIdentifier')
+              ? json_['publisherIdentifier'] as core.String
               : null,
-          timeInterval: _json.containsKey('timeInterval')
+          timeInterval: json_.containsKey('timeInterval')
               ? TimeInterval.fromJson(
-                  _json['timeInterval'] as core.Map<core.String, core.dynamic>)
+                  json_['timeInterval'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9159,10 +9159,10 @@ class SecurityContext {
     this.securities,
   });
 
-  SecurityContext.fromJson(core.Map _json)
+  SecurityContext.fromJson(core.Map json_)
       : this(
-          securities: _json.containsKey('securities')
-              ? (_json['securities'] as core.List)
+          securities: json_.containsKey('securities')
+              ? (json_['securities'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -9193,13 +9193,13 @@ class Seller {
     this.subAccountId,
   });
 
-  Seller.fromJson(core.Map _json)
+  Seller.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          subAccountId: _json.containsKey('subAccountId')
-              ? _json['subAccountId'] as core.String
+          subAccountId: json_.containsKey('subAccountId')
+              ? json_['subAccountId'] as core.String
               : null,
         );
 
@@ -9241,28 +9241,28 @@ class ServingContext {
     this.securityType,
   });
 
-  ServingContext.fromJson(core.Map _json)
+  ServingContext.fromJson(core.Map json_)
       : this(
-          all: _json.containsKey('all') ? _json['all'] as core.String : null,
-          appType: _json.containsKey('appType')
+          all: json_.containsKey('all') ? json_['all'] as core.String : null,
+          appType: json_.containsKey('appType')
               ? AppContext.fromJson(
-                  _json['appType'] as core.Map<core.String, core.dynamic>)
+                  json_['appType'] as core.Map<core.String, core.dynamic>)
               : null,
-          auctionType: _json.containsKey('auctionType')
+          auctionType: json_.containsKey('auctionType')
               ? AuctionContext.fromJson(
-                  _json['auctionType'] as core.Map<core.String, core.dynamic>)
+                  json_['auctionType'] as core.Map<core.String, core.dynamic>)
               : null,
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? LocationContext.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          platform: _json.containsKey('platform')
+          platform: json_.containsKey('platform')
               ? PlatformContext.fromJson(
-                  _json['platform'] as core.Map<core.String, core.dynamic>)
+                  json_['platform'] as core.Map<core.String, core.dynamic>)
               : null,
-          securityType: _json.containsKey('securityType')
+          securityType: json_.containsKey('securityType')
               ? SecurityContext.fromJson(
-                  _json['securityType'] as core.Map<core.String, core.dynamic>)
+                  json_['securityType'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -9315,26 +9315,26 @@ class ServingRestriction {
     this.status,
   });
 
-  ServingRestriction.fromJson(core.Map _json)
+  ServingRestriction.fromJson(core.Map json_)
       : this(
-          contexts: _json.containsKey('contexts')
-              ? (_json['contexts'] as core.List)
+          contexts: json_.containsKey('contexts')
+              ? (json_['contexts'] as core.List)
                   .map((value) => ServingContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          disapproval: _json.containsKey('disapproval')
+          disapproval: json_.containsKey('disapproval')
               ? Disapproval.fromJson(
-                  _json['disapproval'] as core.Map<core.String, core.dynamic>)
+                  json_['disapproval'] as core.Map<core.String, core.dynamic>)
               : null,
-          disapprovalReasons: _json.containsKey('disapprovalReasons')
-              ? (_json['disapprovalReasons'] as core.List)
+          disapprovalReasons: json_.containsKey('disapprovalReasons')
+              ? (json_['disapprovalReasons'] as core.List)
                   .map((value) => Disapproval.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 
@@ -9362,11 +9362,11 @@ class Size {
     this.width,
   });
 
-  Size.fromJson(core.Map _json)
+  Size.fromJson(core.Map json_)
       : this(
           height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+              json_.containsKey('height') ? json_['height'] as core.int : null,
+          width: json_.containsKey('width') ? json_['width'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9407,21 +9407,21 @@ class TargetingCriteria {
     this.key,
   });
 
-  TargetingCriteria.fromJson(core.Map _json)
+  TargetingCriteria.fromJson(core.Map json_)
       : this(
-          exclusions: _json.containsKey('exclusions')
-              ? (_json['exclusions'] as core.List)
+          exclusions: json_.containsKey('exclusions')
+              ? (json_['exclusions'] as core.List)
                   .map((value) => TargetingValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          inclusions: _json.containsKey('inclusions')
-              ? (_json['inclusions'] as core.List)
+          inclusions: json_.containsKey('inclusions')
+              ? (json_['inclusions'] as core.List)
                   .map((value) => TargetingValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9457,21 +9457,21 @@ class TargetingValue {
     this.stringValue,
   });
 
-  TargetingValue.fromJson(core.Map _json)
+  TargetingValue.fromJson(core.Map json_)
       : this(
-          creativeSizeValue: _json.containsKey('creativeSizeValue')
-              ? CreativeSize.fromJson(_json['creativeSizeValue']
+          creativeSizeValue: json_.containsKey('creativeSizeValue')
+              ? CreativeSize.fromJson(json_['creativeSizeValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          dayPartTargetingValue: _json.containsKey('dayPartTargetingValue')
-              ? DayPartTargeting.fromJson(_json['dayPartTargetingValue']
+          dayPartTargetingValue: json_.containsKey('dayPartTargetingValue')
+              ? DayPartTargeting.fromJson(json_['dayPartTargetingValue']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          longValue: _json.containsKey('longValue')
-              ? _json['longValue'] as core.String
+          longValue: json_.containsKey('longValue')
+              ? json_['longValue'] as core.String
               : null,
-          stringValue: _json.containsKey('stringValue')
-              ? _json['stringValue'] as core.String
+          stringValue: json_.containsKey('stringValue')
+              ? json_['stringValue'] as core.String
               : null,
         );
 
@@ -9501,21 +9501,21 @@ class TechnologyTargeting {
     this.operatingSystemTargeting,
   });
 
-  TechnologyTargeting.fromJson(core.Map _json)
+  TechnologyTargeting.fromJson(core.Map json_)
       : this(
-          deviceCapabilityTargeting: _json
+          deviceCapabilityTargeting: json_
                   .containsKey('deviceCapabilityTargeting')
-              ? CriteriaTargeting.fromJson(_json['deviceCapabilityTargeting']
+              ? CriteriaTargeting.fromJson(json_['deviceCapabilityTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deviceCategoryTargeting: _json.containsKey('deviceCategoryTargeting')
-              ? CriteriaTargeting.fromJson(_json['deviceCategoryTargeting']
+          deviceCategoryTargeting: json_.containsKey('deviceCategoryTargeting')
+              ? CriteriaTargeting.fromJson(json_['deviceCategoryTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
           operatingSystemTargeting:
-              _json.containsKey('operatingSystemTargeting')
+              json_.containsKey('operatingSystemTargeting')
                   ? OperatingSystemTargeting.fromJson(
-                      _json['operatingSystemTargeting']
+                      json_['operatingSystemTargeting']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -9545,13 +9545,13 @@ class TimeInterval {
     this.startTime,
   });
 
-  TimeInterval.fromJson(core.Map _json)
+  TimeInterval.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -9596,15 +9596,15 @@ class TimeOfDay {
     this.seconds,
   });
 
-  TimeOfDay.fromJson(core.Map _json)
+  TimeOfDay.fromJson(core.Map json_)
       : this(
-          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
-          minutes: _json.containsKey('minutes')
-              ? _json['minutes'] as core.int
+          hours: json_.containsKey('hours') ? json_['hours'] as core.int : null,
+          minutes: json_.containsKey('minutes')
+              ? json_['minutes'] as core.int
               : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          seconds: _json.containsKey('seconds')
-              ? _json['seconds'] as core.int
+          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
+          seconds: json_.containsKey('seconds')
+              ? json_['seconds'] as core.int
               : null,
         );
 
@@ -9633,15 +9633,15 @@ class UrlTargeting {
     this.targetedUrls,
   });
 
-  UrlTargeting.fromJson(core.Map _json)
+  UrlTargeting.fromJson(core.Map json_)
       : this(
-          excludedUrls: _json.containsKey('excludedUrls')
-              ? (_json['excludedUrls'] as core.List)
+          excludedUrls: json_.containsKey('excludedUrls')
+              ? (json_['excludedUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          targetedUrls: _json.containsKey('targetedUrls')
-              ? (_json['targetedUrls'] as core.List)
+          targetedUrls: json_.containsKey('targetedUrls')
+              ? (json_['targetedUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -9668,13 +9668,13 @@ class VideoContent {
     this.videoVastXml,
   });
 
-  VideoContent.fromJson(core.Map _json)
+  VideoContent.fromJson(core.Map json_)
       : this(
-          videoUrl: _json.containsKey('videoUrl')
-              ? _json['videoUrl'] as core.String
+          videoUrl: json_.containsKey('videoUrl')
+              ? json_['videoUrl'] as core.String
               : null,
-          videoVastXml: _json.containsKey('videoVastXml')
-              ? _json['videoVastXml'] as core.String
+          videoVastXml: json_.containsKey('videoVastXml')
+              ? json_['videoVastXml'] as core.String
               : null,
         );
 
@@ -9702,15 +9702,15 @@ class VideoTargeting {
     this.targetedPositionTypes,
   });
 
-  VideoTargeting.fromJson(core.Map _json)
+  VideoTargeting.fromJson(core.Map json_)
       : this(
-          excludedPositionTypes: _json.containsKey('excludedPositionTypes')
-              ? (_json['excludedPositionTypes'] as core.List)
+          excludedPositionTypes: json_.containsKey('excludedPositionTypes')
+              ? (json_['excludedPositionTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          targetedPositionTypes: _json.containsKey('targetedPositionTypes')
-              ? (_json['targetedPositionTypes'] as core.List)
+          targetedPositionTypes: json_.containsKey('targetedPositionTypes')
+              ? (json_['targetedPositionTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -9738,10 +9738,10 @@ class WatchCreativeRequest {
     this.topic,
   });
 
-  WatchCreativeRequest.fromJson(core.Map _json)
+  WatchCreativeRequest.fromJson(core.Map json_)
       : this(
           topic:
-              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

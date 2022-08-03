@@ -98,20 +98,20 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -139,18 +139,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -177,18 +177,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -230,22 +230,22 @@ class OperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -292,20 +292,20 @@ class UsersEnvironmentsResource {
     core.String environment, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$environment') + ':addPublicKey';
+    final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':addPublicKey';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends OAuth credentials to a running environment on behalf of a user.
@@ -338,20 +338,20 @@ class UsersEnvironmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':authorize';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':authorize';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an environment.
@@ -379,19 +379,19 @@ class UsersEnvironmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Environment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a public SSH key from an environment.
@@ -423,21 +423,21 @@ class UsersEnvironmentsResource {
     core.String environment, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$environment') + ':removePublicKey';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts an existing environment, allowing clients to connect to it.
@@ -472,20 +472,20 @@ class UsersEnvironmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':start';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':start';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -503,9 +503,9 @@ class AddPublicKeyRequest {
     this.key,
   });
 
-  AddPublicKeyRequest.fromJson(core.Map _json)
+  AddPublicKeyRequest.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -533,16 +533,16 @@ class AuthorizeEnvironmentRequest {
     this.idToken,
   });
 
-  AuthorizeEnvironmentRequest.fromJson(core.Map _json)
+  AuthorizeEnvironmentRequest.fromJson(core.Map json_)
       : this(
-          accessToken: _json.containsKey('accessToken')
-              ? _json['accessToken'] as core.String
+          accessToken: json_.containsKey('accessToken')
+              ? json_['accessToken'] as core.String
               : null,
-          expireTime: _json.containsKey('expireTime')
-              ? _json['expireTime'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
-          idToken: _json.containsKey('idToken')
-              ? _json['idToken'] as core.String
+          idToken: json_.containsKey('idToken')
+              ? json_['idToken'] as core.String
               : null,
         );
 
@@ -652,31 +652,31 @@ class Environment {
     this.webHost,
   });
 
-  Environment.fromJson(core.Map _json)
+  Environment.fromJson(core.Map json_)
       : this(
-          dockerImage: _json.containsKey('dockerImage')
-              ? _json['dockerImage'] as core.String
+          dockerImage: json_.containsKey('dockerImage')
+              ? json_['dockerImage'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          publicKeys: _json.containsKey('publicKeys')
-              ? (_json['publicKeys'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          publicKeys: json_.containsKey('publicKeys')
+              ? (json_['publicKeys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sshHost: _json.containsKey('sshHost')
-              ? _json['sshHost'] as core.String
+          sshHost: json_.containsKey('sshHost')
+              ? json_['sshHost'] as core.String
               : null,
-          sshPort: _json.containsKey('sshPort')
-              ? _json['sshPort'] as core.int
+          sshPort: json_.containsKey('sshPort')
+              ? json_['sshPort'] as core.int
               : null,
-          sshUsername: _json.containsKey('sshUsername')
-              ? _json['sshUsername'] as core.String
+          sshUsername: json_.containsKey('sshUsername')
+              ? json_['sshUsername'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          webHost: _json.containsKey('webHost')
-              ? _json['webHost'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          webHost: json_.containsKey('webHost')
+              ? json_['webHost'] as core.String
               : null,
         );
 
@@ -706,13 +706,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -776,19 +776,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -810,9 +810,9 @@ class RemovePublicKeyRequest {
     this.key,
   });
 
-  RemovePublicKeyRequest.fromJson(core.Map _json)
+  RemovePublicKeyRequest.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -838,13 +838,13 @@ class StartEnvironmentRequest {
     this.publicKeys,
   });
 
-  StartEnvironmentRequest.fromJson(core.Map _json)
+  StartEnvironmentRequest.fromJson(core.Map json_)
       : this(
-          accessToken: _json.containsKey('accessToken')
-              ? _json['accessToken'] as core.String
+          accessToken: json_.containsKey('accessToken')
+              ? json_['accessToken'] as core.String
               : null,
-          publicKeys: _json.containsKey('publicKeys')
-              ? (_json['publicKeys'] as core.List)
+          publicKeys: json_.containsKey('publicKeys')
+              ? (json_['publicKeys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,

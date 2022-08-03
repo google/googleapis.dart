@@ -90,21 +90,21 @@ class AchievementsResource {
     core.String achievementId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/achievements/' +
+    final url_ = 'games/v1management/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/reset';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AchievementResetResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets all achievements for the currently authenticated player for your
@@ -128,19 +128,19 @@ class AchievementsResource {
   async.Future<AchievementResetAllResponse> resetAll({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/achievements/reset';
+    const url_ = 'games/v1management/achievements/reset';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AchievementResetAllResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets all draft achievements for all players.
@@ -160,16 +160,16 @@ class AchievementsResource {
   async.Future<void> resetAllForAllPlayers({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/achievements/resetAllForAllPlayers';
+    const url_ = 'games/v1management/achievements/resetAllForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -195,18 +195,18 @@ class AchievementsResource {
     core.String achievementId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/achievements/' +
+    final url_ = 'games/v1management/achievements/' +
         commons.escapeVariable('$achievementId') +
         '/resetForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -232,18 +232,18 @@ class AchievementsResource {
     AchievementResetMultipleForAllRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/achievements/resetMultipleForAllPlayers';
+    const url_ = 'games/v1management/achievements/resetMultipleForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -285,23 +285,23 @@ class ApplicationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/applications/' +
+    final url_ = 'games/v1management/applications/' +
         commons.escapeVariable('$applicationId') +
         '/players/hidden';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return HiddenPlayerList.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -332,18 +332,18 @@ class EventsResource {
     core.String eventId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/events/' +
+    final url_ = 'games/v1management/events/' +
         commons.escapeVariable('$eventId') +
         '/reset';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -367,16 +367,16 @@ class EventsResource {
   async.Future<void> resetAll({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/events/reset';
+    const url_ = 'games/v1management/events/reset';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -398,16 +398,16 @@ class EventsResource {
   async.Future<void> resetAllForAllPlayers({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/events/resetAllForAllPlayers';
+    const url_ = 'games/v1management/events/resetAllForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -433,18 +433,18 @@ class EventsResource {
     core.String eventId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/events/' +
+    final url_ = 'games/v1management/events/' +
         commons.escapeVariable('$eventId') +
         '/resetForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -470,18 +470,18 @@ class EventsResource {
     EventsResetMultipleForAllRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/events/resetMultipleForAllPlayers';
+    const url_ = 'games/v1management/events/resetMultipleForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -517,19 +517,19 @@ class PlayersResource {
     core.String playerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/applications/' +
+    final url_ = 'games/v1management/applications/' +
         commons.escapeVariable('$applicationId') +
         '/players/hidden/' +
         commons.escapeVariable('$playerId');
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -559,19 +559,19 @@ class PlayersResource {
     core.String playerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/applications/' +
+    final url_ = 'games/v1management/applications/' +
         commons.escapeVariable('$applicationId') +
         '/players/hidden/' +
         commons.escapeVariable('$playerId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -606,21 +606,21 @@ class ScoresResource {
     core.String leaderboardId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/leaderboards/' +
+    final url_ = 'games/v1management/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/scores/reset';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlayerScoreResetResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets all scores for all leaderboards for the currently authenticated
@@ -644,19 +644,19 @@ class ScoresResource {
   async.Future<PlayerScoreResetAllResponse> resetAll({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/scores/reset';
+    const url_ = 'games/v1management/scores/reset';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PlayerScoreResetAllResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets scores for all draft leaderboards for all players.
@@ -676,16 +676,16 @@ class ScoresResource {
   async.Future<void> resetAllForAllPlayers({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/scores/resetAllForAllPlayers';
+    const url_ = 'games/v1management/scores/resetAllForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -711,18 +711,18 @@ class ScoresResource {
     core.String leaderboardId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'games/v1management/leaderboards/' +
+    final url_ = 'games/v1management/leaderboards/' +
         commons.escapeVariable('$leaderboardId') +
         '/scores/resetForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -748,18 +748,18 @@ class ScoresResource {
     ScoresResetMultipleForAllRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'games/v1management/scores/resetMultipleForAllPlayers';
+    const url_ = 'games/v1management/scores/resetMultipleForAllPlayers';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -781,11 +781,11 @@ class AchievementResetAllResponse {
     this.results,
   });
 
-  AchievementResetAllResponse.fromJson(core.Map _json)
+  AchievementResetAllResponse.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          results: _json.containsKey('results')
-              ? (_json['results'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          results: json_.containsKey('results')
+              ? (json_['results'] as core.List)
                   .map((value) => AchievementResetResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -813,14 +813,14 @@ class AchievementResetMultipleForAllRequest {
     this.kind,
   });
 
-  AchievementResetMultipleForAllRequest.fromJson(core.Map _json)
+  AchievementResetMultipleForAllRequest.fromJson(core.Map json_)
       : this(
-          achievementIds: _json.containsKey('achievement_ids')
-              ? (_json['achievement_ids'] as core.List)
+          achievementIds: json_.containsKey('achievement_ids')
+              ? (json_['achievement_ids'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -857,17 +857,17 @@ class AchievementResetResponse {
     this.updateOccurred,
   });
 
-  AchievementResetResponse.fromJson(core.Map _json)
+  AchievementResetResponse.fromJson(core.Map json_)
       : this(
-          currentState: _json.containsKey('currentState')
-              ? _json['currentState'] as core.String
+          currentState: json_.containsKey('currentState')
+              ? json_['currentState'] as core.String
               : null,
-          definitionId: _json.containsKey('definitionId')
-              ? _json['definitionId'] as core.String
+          definitionId: json_.containsKey('definitionId')
+              ? json_['definitionId'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          updateOccurred: _json.containsKey('updateOccurred')
-              ? _json['updateOccurred'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          updateOccurred: json_.containsKey('updateOccurred')
+              ? json_['updateOccurred'] as core.bool
               : null,
         );
 
@@ -895,14 +895,14 @@ class EventsResetMultipleForAllRequest {
     this.kind,
   });
 
-  EventsResetMultipleForAllRequest.fromJson(core.Map _json)
+  EventsResetMultipleForAllRequest.fromJson(core.Map json_)
       : this(
-          eventIds: _json.containsKey('event_ids')
-              ? (_json['event_ids'] as core.List)
+          eventIds: json_.containsKey('event_ids')
+              ? (json_['event_ids'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -936,22 +936,22 @@ class GamesPlayerExperienceInfoResource {
     this.nextLevel,
   });
 
-  GamesPlayerExperienceInfoResource.fromJson(core.Map _json)
+  GamesPlayerExperienceInfoResource.fromJson(core.Map json_)
       : this(
-          currentExperiencePoints: _json.containsKey('currentExperiencePoints')
-              ? _json['currentExperiencePoints'] as core.String
+          currentExperiencePoints: json_.containsKey('currentExperiencePoints')
+              ? json_['currentExperiencePoints'] as core.String
               : null,
-          currentLevel: _json.containsKey('currentLevel')
+          currentLevel: json_.containsKey('currentLevel')
               ? GamesPlayerLevelResource.fromJson(
-                  _json['currentLevel'] as core.Map<core.String, core.dynamic>)
+                  json_['currentLevel'] as core.Map<core.String, core.dynamic>)
               : null,
           lastLevelUpTimestampMillis:
-              _json.containsKey('lastLevelUpTimestampMillis')
-                  ? _json['lastLevelUpTimestampMillis'] as core.String
+              json_.containsKey('lastLevelUpTimestampMillis')
+                  ? json_['lastLevelUpTimestampMillis'] as core.String
                   : null,
-          nextLevel: _json.containsKey('nextLevel')
+          nextLevel: json_.containsKey('nextLevel')
               ? GamesPlayerLevelResource.fromJson(
-                  _json['nextLevel'] as core.Map<core.String, core.dynamic>)
+                  json_['nextLevel'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -982,14 +982,14 @@ class GamesPlayerLevelResource {
     this.minExperiencePoints,
   });
 
-  GamesPlayerLevelResource.fromJson(core.Map _json)
+  GamesPlayerLevelResource.fromJson(core.Map json_)
       : this(
-          level: _json.containsKey('level') ? _json['level'] as core.int : null,
-          maxExperiencePoints: _json.containsKey('maxExperiencePoints')
-              ? _json['maxExperiencePoints'] as core.String
+          level: json_.containsKey('level') ? json_['level'] as core.int : null,
+          maxExperiencePoints: json_.containsKey('maxExperiencePoints')
+              ? json_['maxExperiencePoints'] as core.String
               : null,
-          minExperiencePoints: _json.containsKey('minExperiencePoints')
-              ? _json['minExperiencePoints'] as core.String
+          minExperiencePoints: json_.containsKey('minExperiencePoints')
+              ? json_['minExperiencePoints'] as core.String
               : null,
         );
 
@@ -1027,15 +1027,15 @@ class HiddenPlayer {
     this.player,
   });
 
-  HiddenPlayer.fromJson(core.Map _json)
+  HiddenPlayer.fromJson(core.Map json_)
       : this(
-          hiddenTimeMillis: _json.containsKey('hiddenTimeMillis')
-              ? _json['hiddenTimeMillis'] as core.String
+          hiddenTimeMillis: json_.containsKey('hiddenTimeMillis')
+              ? json_['hiddenTimeMillis'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          player: _json.containsKey('player')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          player: json_.containsKey('player')
               ? Player.fromJson(
-                  _json['player'] as core.Map<core.String, core.dynamic>)
+                  json_['player'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1065,17 +1065,17 @@ class HiddenPlayerList {
     this.nextPageToken,
   });
 
-  HiddenPlayerList.fromJson(core.Map _json)
+  HiddenPlayerList.fromJson(core.Map json_)
       : this(
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => HiddenPlayer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1105,13 +1105,13 @@ class PlayerName {
     this.givenName,
   });
 
-  PlayerName.fromJson(core.Map _json)
+  PlayerName.fromJson(core.Map json_)
       : this(
-          familyName: _json.containsKey('familyName')
-              ? _json['familyName'] as core.String
+          familyName: json_.containsKey('familyName')
+              ? json_['familyName'] as core.String
               : null,
-          givenName: _json.containsKey('givenName')
-              ? _json['givenName'] as core.String
+          givenName: json_.containsKey('givenName')
+              ? json_['givenName'] as core.String
               : null,
         );
 
@@ -1182,42 +1182,42 @@ class Player {
     this.title,
   });
 
-  Player.fromJson(core.Map _json)
+  Player.fromJson(core.Map json_)
       : this(
-          avatarImageUrl: _json.containsKey('avatarImageUrl')
-              ? _json['avatarImageUrl'] as core.String
+          avatarImageUrl: json_.containsKey('avatarImageUrl')
+              ? json_['avatarImageUrl'] as core.String
               : null,
-          bannerUrlLandscape: _json.containsKey('bannerUrlLandscape')
-              ? _json['bannerUrlLandscape'] as core.String
+          bannerUrlLandscape: json_.containsKey('bannerUrlLandscape')
+              ? json_['bannerUrlLandscape'] as core.String
               : null,
-          bannerUrlPortrait: _json.containsKey('bannerUrlPortrait')
-              ? _json['bannerUrlPortrait'] as core.String
+          bannerUrlPortrait: json_.containsKey('bannerUrlPortrait')
+              ? json_['bannerUrlPortrait'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          experienceInfo: _json.containsKey('experienceInfo')
+          experienceInfo: json_.containsKey('experienceInfo')
               ? GamesPlayerExperienceInfoResource.fromJson(
-                  _json['experienceInfo']
+                  json_['experienceInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name')
               ? PlayerName.fromJson(
-                  _json['name'] as core.Map<core.String, core.dynamic>)
+                  json_['name'] as core.Map<core.String, core.dynamic>)
               : null,
-          originalPlayerId: _json.containsKey('originalPlayerId')
-              ? _json['originalPlayerId'] as core.String
+          originalPlayerId: json_.containsKey('originalPlayerId')
+              ? json_['originalPlayerId'] as core.String
               : null,
-          playerId: _json.containsKey('playerId')
-              ? _json['playerId'] as core.String
+          playerId: json_.containsKey('playerId')
+              ? json_['playerId'] as core.String
               : null,
-          profileSettings: _json.containsKey('profileSettings')
-              ? ProfileSettings.fromJson(_json['profileSettings']
+          profileSettings: json_.containsKey('profileSettings')
+              ? ProfileSettings.fromJson(json_['profileSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1252,11 +1252,11 @@ class PlayerScoreResetAllResponse {
     this.results,
   });
 
-  PlayerScoreResetAllResponse.fromJson(core.Map _json)
+  PlayerScoreResetAllResponse.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          results: _json.containsKey('results')
-              ? (_json['results'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          results: json_.containsKey('results')
+              ? (json_['results'] as core.List)
                   .map((value) => PlayerScoreResetResponse.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1293,14 +1293,14 @@ class PlayerScoreResetResponse {
     this.resetScoreTimeSpans,
   });
 
-  PlayerScoreResetResponse.fromJson(core.Map _json)
+  PlayerScoreResetResponse.fromJson(core.Map json_)
       : this(
-          definitionId: _json.containsKey('definitionId')
-              ? _json['definitionId'] as core.String
+          definitionId: json_.containsKey('definitionId')
+              ? json_['definitionId'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          resetScoreTimeSpans: _json.containsKey('resetScoreTimeSpans')
-              ? (_json['resetScoreTimeSpans'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          resetScoreTimeSpans: json_.containsKey('resetScoreTimeSpans')
+              ? (json_['resetScoreTimeSpans'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1327,11 +1327,11 @@ class ProfileSettings {
     this.profileVisible,
   });
 
-  ProfileSettings.fromJson(core.Map _json)
+  ProfileSettings.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          profileVisible: _json.containsKey('profileVisible')
-              ? _json['profileVisible'] as core.bool
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          profileVisible: json_.containsKey('profileVisible')
+              ? json_['profileVisible'] as core.bool
               : null,
         );
 
@@ -1356,11 +1356,11 @@ class ScoresResetMultipleForAllRequest {
     this.leaderboardIds,
   });
 
-  ScoresResetMultipleForAllRequest.fromJson(core.Map _json)
+  ScoresResetMultipleForAllRequest.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          leaderboardIds: _json.containsKey('leaderboard_ids')
-              ? (_json['leaderboard_ids'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          leaderboardIds: json_.containsKey('leaderboard_ids')
+              ? (json_['leaderboard_ids'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,

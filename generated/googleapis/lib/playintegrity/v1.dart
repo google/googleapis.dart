@@ -83,22 +83,22 @@ class V1Resource {
     core.String packageName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$packageName') + ':decodeIntegrityToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DecodeIntegrityTokenResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -124,10 +124,10 @@ class AccountDetails {
     this.appLicensingVerdict,
   });
 
-  AccountDetails.fromJson(core.Map _json)
+  AccountDetails.fromJson(core.Map json_)
       : this(
-          appLicensingVerdict: _json.containsKey('appLicensingVerdict')
-              ? _json['appLicensingVerdict'] as core.String
+          appLicensingVerdict: json_.containsKey('appLicensingVerdict')
+              ? json_['appLicensingVerdict'] as core.String
               : null,
         );
 
@@ -176,21 +176,21 @@ class AppIntegrity {
     this.versionCode,
   });
 
-  AppIntegrity.fromJson(core.Map _json)
+  AppIntegrity.fromJson(core.Map json_)
       : this(
-          appRecognitionVerdict: _json.containsKey('appRecognitionVerdict')
-              ? _json['appRecognitionVerdict'] as core.String
+          appRecognitionVerdict: json_.containsKey('appRecognitionVerdict')
+              ? json_['appRecognitionVerdict'] as core.String
               : null,
-          certificateSha256Digest: _json.containsKey('certificateSha256Digest')
-              ? (_json['certificateSha256Digest'] as core.List)
+          certificateSha256Digest: json_.containsKey('certificateSha256Digest')
+              ? (json_['certificateSha256Digest'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
-          versionCode: _json.containsKey('versionCode')
-              ? _json['versionCode'] as core.String
+          versionCode: json_.containsKey('versionCode')
+              ? json_['versionCode'] as core.String
               : null,
         );
 
@@ -213,10 +213,10 @@ class DecodeIntegrityTokenRequest {
     this.integrityToken,
   });
 
-  DecodeIntegrityTokenRequest.fromJson(core.Map _json)
+  DecodeIntegrityTokenRequest.fromJson(core.Map json_)
       : this(
-          integrityToken: _json.containsKey('integrityToken')
-              ? _json['integrityToken'] as core.String
+          integrityToken: json_.containsKey('integrityToken')
+              ? json_['integrityToken'] as core.String
               : null,
         );
 
@@ -234,10 +234,10 @@ class DecodeIntegrityTokenResponse {
     this.tokenPayloadExternal,
   });
 
-  DecodeIntegrityTokenResponse.fromJson(core.Map _json)
+  DecodeIntegrityTokenResponse.fromJson(core.Map json_)
       : this(
-          tokenPayloadExternal: _json.containsKey('tokenPayloadExternal')
-              ? TokenPayloadExternal.fromJson(_json['tokenPayloadExternal']
+          tokenPayloadExternal: json_.containsKey('tokenPayloadExternal')
+              ? TokenPayloadExternal.fromJson(json_['tokenPayloadExternal']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -257,11 +257,11 @@ class DeviceIntegrity {
     this.deviceRecognitionVerdict,
   });
 
-  DeviceIntegrity.fromJson(core.Map _json)
+  DeviceIntegrity.fromJson(core.Map json_)
       : this(
           deviceRecognitionVerdict:
-              _json.containsKey('deviceRecognitionVerdict')
-                  ? (_json['deviceRecognitionVerdict'] as core.List)
+              json_.containsKey('deviceRecognitionVerdict')
+                  ? (json_['deviceRecognitionVerdict'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
@@ -299,15 +299,15 @@ class RequestDetails {
     this.timestampMillis,
   });
 
-  RequestDetails.fromJson(core.Map _json)
+  RequestDetails.fromJson(core.Map json_)
       : this(
           nonce:
-              _json.containsKey('nonce') ? _json['nonce'] as core.String : null,
-          requestPackageName: _json.containsKey('requestPackageName')
-              ? _json['requestPackageName'] as core.String
+              json_.containsKey('nonce') ? json_['nonce'] as core.String : null,
+          requestPackageName: json_.containsKey('requestPackageName')
+              ? json_['requestPackageName'] as core.String
               : null,
-          timestampMillis: _json.containsKey('timestampMillis')
-              ? _json['timestampMillis'] as core.String
+          timestampMillis: json_.containsKey('timestampMillis')
+              ? json_['timestampMillis'] as core.String
               : null,
         );
 
@@ -331,10 +331,10 @@ class TestingDetails {
     this.isTestingResponse,
   });
 
-  TestingDetails.fromJson(core.Map _json)
+  TestingDetails.fromJson(core.Map json_)
       : this(
-          isTestingResponse: _json.containsKey('isTestingResponse')
-              ? _json['isTestingResponse'] as core.bool
+          isTestingResponse: json_.containsKey('isTestingResponse')
+              ? json_['isTestingResponse'] as core.bool
               : null,
         );
 
@@ -378,26 +378,26 @@ class TokenPayloadExternal {
     this.testingDetails,
   });
 
-  TokenPayloadExternal.fromJson(core.Map _json)
+  TokenPayloadExternal.fromJson(core.Map json_)
       : this(
-          accountDetails: _json.containsKey('accountDetails')
-              ? AccountDetails.fromJson(_json['accountDetails']
+          accountDetails: json_.containsKey('accountDetails')
+              ? AccountDetails.fromJson(json_['accountDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          appIntegrity: _json.containsKey('appIntegrity')
+          appIntegrity: json_.containsKey('appIntegrity')
               ? AppIntegrity.fromJson(
-                  _json['appIntegrity'] as core.Map<core.String, core.dynamic>)
+                  json_['appIntegrity'] as core.Map<core.String, core.dynamic>)
               : null,
-          deviceIntegrity: _json.containsKey('deviceIntegrity')
-              ? DeviceIntegrity.fromJson(_json['deviceIntegrity']
+          deviceIntegrity: json_.containsKey('deviceIntegrity')
+              ? DeviceIntegrity.fromJson(json_['deviceIntegrity']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          requestDetails: _json.containsKey('requestDetails')
-              ? RequestDetails.fromJson(_json['requestDetails']
+          requestDetails: json_.containsKey('requestDetails')
+              ? RequestDetails.fromJson(json_['requestDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          testingDetails: _json.containsKey('testingDetails')
-              ? TestingDetails.fromJson(_json['testingDetails']
+          testingDetails: json_.containsKey('testingDetails')
+              ? TestingDetails.fromJson(json_['testingDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );

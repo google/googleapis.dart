@@ -110,9 +110,9 @@ class ObjectType extends ComplexDartSchemaType {
 
         propertyString.write('  set ${property.byteArrayAccessor}');
         propertyString.writeln(
-            '(${imports.core.ref()}List<${imports.core.ref()}int> _bytes) {');
+            '(${imports.core.ref()}List<${imports.core.ref()}int> bytes_) {');
         propertyString.writeln('    ${property.name} = ${imports.convert.ref()}'
-            "base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');");
+            "base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');");
         propertyString.writeln('  }');
       }
     }
@@ -124,7 +124,7 @@ class ObjectType extends ComplexDartSchemaType {
         : '';
     fromJsonString.writeln(
       '  $className.fromJson'
-      '($emptyPropertiesComment ${imports.core.ref()}Map _json)',
+      '($emptyPropertiesComment ${imports.core.ref()}Map json_)',
     );
     if (properties.isEmpty) {
       fromJsonString.writeln(';');
@@ -460,7 +460,7 @@ class EnumType extends StringType {
   @override
   String decodeFromMap(String jsonName) {
     if (isNullValue) {
-      return "_json.containsKey('${escapeString(jsonName)}') ? "
+      return "json_.containsKey('${escapeString(jsonName)}') ? "
           "'NULL_VALUE' : null";
     }
 
@@ -764,8 +764,8 @@ class NamedMapType extends ComplexDartSchemaType {
     final core = imports.core.ref();
     final decode = StringBuffer();
     decode.writeln('  $className.fromJson(');
-    decode.writeln('      ${imports.coreJsonMap} _json) {');
-    decode.writeln('    _json.forEach((${core}String key, value) {');
+    decode.writeln('      ${imports.coreJsonMap} json_) {');
+    decode.writeln('    json_.forEach((${core}String key, value) {');
     decode.writeln('      this[key] = ${toType!.jsonDecode('value')};');
     decode.writeln('    });');
     decode.writeln('  }');

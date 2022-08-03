@@ -113,21 +113,21 @@ class ControllerDebuggeesResource {
     RegisterDebuggeeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/controller/debuggees/register';
+    const url_ = 'v2/controller/debuggees/register';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return RegisterDebuggeeResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -184,24 +184,24 @@ class ControllerDebuggeesBreakpointsResource {
     core.String? waitToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (agentId != null) 'agentId': [agentId],
       if (successOnTimeout != null) 'successOnTimeout': ['${successOnTimeout}'],
       if (waitToken != null) 'waitToken': [waitToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/controller/debuggees/' +
+    final url_ = 'v2/controller/debuggees/' +
         commons.escapeVariable('$debuggeeId') +
         '/breakpoints';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListActiveBreakpointsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the breakpoint state or mutable fields.
@@ -237,24 +237,24 @@ class ControllerDebuggeesBreakpointsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/controller/debuggees/' +
+    final url_ = 'v2/controller/debuggees/' +
         commons.escapeVariable('$debuggeeId') +
         '/breakpoints/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return UpdateActiveBreakpointResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -304,22 +304,22 @@ class DebuggerDebuggeesResource {
     core.String? project,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (clientVersion != null) 'clientVersion': [clientVersion],
       if (includeInactive != null) 'includeInactive': ['${includeInactive}'],
       if (project != null) 'project': [project],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v2/debugger/debuggees';
+    const url_ = 'v2/debugger/debuggees';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDebuggeesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -356,22 +356,22 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String? clientVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (clientVersion != null) 'clientVersion': [clientVersion],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/debugger/debuggees/' +
+    final url_ = 'v2/debugger/debuggees/' +
         commons.escapeVariable('$debuggeeId') +
         '/breakpoints/' +
         commons.escapeVariable('$breakpointId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets breakpoint information.
@@ -401,23 +401,23 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String? clientVersion,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (clientVersion != null) 'clientVersion': [clientVersion],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/debugger/debuggees/' +
+    final url_ = 'v2/debugger/debuggees/' +
         commons.escapeVariable('$debuggeeId') +
         '/breakpoints/' +
         commons.escapeVariable('$breakpointId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GetBreakpointResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all breakpoints for the debuggee.
@@ -475,7 +475,7 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String? waitToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (action_value != null) 'action.value': [action_value],
       if (clientVersion != null) 'clientVersion': [clientVersion],
       if (includeAllUsers != null) 'includeAllUsers': ['${includeAllUsers}'],
@@ -485,17 +485,17 @@ class DebuggerDebuggeesBreakpointsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/debugger/debuggees/' +
+    final url_ = 'v2/debugger/debuggees/' +
         commons.escapeVariable('$debuggeeId') +
         '/breakpoints';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBreakpointsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the breakpoint to the debuggee.
@@ -539,25 +539,25 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String? clientVersion,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (canaryOption != null) 'canaryOption': [canaryOption],
       if (clientVersion != null) 'clientVersion': [clientVersion],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v2/debugger/debuggees/' +
+    final url_ = 'v2/debugger/debuggees/' +
         commons.escapeVariable('$debuggeeId') +
         '/breakpoints/set';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SetBreakpointResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -581,10 +581,10 @@ class AliasContext {
     this.name,
   });
 
-  AliasContext.fromJson(core.Map _json)
+  AliasContext.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -739,73 +739,73 @@ class Breakpoint {
     this.variableTable,
   });
 
-  Breakpoint.fromJson(core.Map _json)
+  Breakpoint.fromJson(core.Map json_)
       : this(
-          action: _json.containsKey('action')
-              ? _json['action'] as core.String
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
               : null,
-          canaryExpireTime: _json.containsKey('canaryExpireTime')
-              ? _json['canaryExpireTime'] as core.String
+          canaryExpireTime: json_.containsKey('canaryExpireTime')
+              ? json_['canaryExpireTime'] as core.String
               : null,
-          condition: _json.containsKey('condition')
-              ? _json['condition'] as core.String
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          evaluatedExpressions: _json.containsKey('evaluatedExpressions')
-              ? (_json['evaluatedExpressions'] as core.List)
+          evaluatedExpressions: json_.containsKey('evaluatedExpressions')
+              ? (json_['evaluatedExpressions'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          expressions: _json.containsKey('expressions')
-              ? (_json['expressions'] as core.List)
+          expressions: json_.containsKey('expressions')
+              ? (json_['expressions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          finalTime: _json.containsKey('finalTime')
-              ? _json['finalTime'] as core.String
+          finalTime: json_.containsKey('finalTime')
+              ? json_['finalTime'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          isFinalState: _json.containsKey('isFinalState')
-              ? _json['isFinalState'] as core.bool
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          isFinalState: json_.containsKey('isFinalState')
+              ? json_['isFinalState'] as core.bool
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? SourceLocation.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
-          logLevel: _json.containsKey('logLevel')
-              ? _json['logLevel'] as core.String
+          logLevel: json_.containsKey('logLevel')
+              ? json_['logLevel'] as core.String
               : null,
-          logMessageFormat: _json.containsKey('logMessageFormat')
-              ? _json['logMessageFormat'] as core.String
+          logMessageFormat: json_.containsKey('logMessageFormat')
+              ? json_['logMessageFormat'] as core.String
               : null,
-          stackFrames: _json.containsKey('stackFrames')
-              ? (_json['stackFrames'] as core.List)
+          stackFrames: json_.containsKey('stackFrames')
+              ? (json_['stackFrames'] as core.List)
                   .map((value) => StackFrame.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          status: _json.containsKey('status')
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          status: json_.containsKey('status')
               ? StatusMessage.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          userEmail: _json.containsKey('userEmail')
-              ? _json['userEmail'] as core.String
+          userEmail: json_.containsKey('userEmail')
+              ? json_['userEmail'] as core.String
               : null,
-          variableTable: _json.containsKey('variableTable')
-              ? (_json['variableTable'] as core.List)
+          variableTable: json_.containsKey('variableTable')
+              ? (json_['variableTable'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -857,21 +857,21 @@ class CloudRepoSourceContext {
     this.revisionId,
   });
 
-  CloudRepoSourceContext.fromJson(core.Map _json)
+  CloudRepoSourceContext.fromJson(core.Map json_)
       : this(
-          aliasContext: _json.containsKey('aliasContext')
+          aliasContext: json_.containsKey('aliasContext')
               ? AliasContext.fromJson(
-                  _json['aliasContext'] as core.Map<core.String, core.dynamic>)
+                  json_['aliasContext'] as core.Map<core.String, core.dynamic>)
               : null,
-          aliasName: _json.containsKey('aliasName')
-              ? _json['aliasName'] as core.String
+          aliasName: json_.containsKey('aliasName')
+              ? json_['aliasName'] as core.String
               : null,
-          repoId: _json.containsKey('repoId')
+          repoId: json_.containsKey('repoId')
               ? RepoId.fromJson(
-                  _json['repoId'] as core.Map<core.String, core.dynamic>)
+                  json_['repoId'] as core.Map<core.String, core.dynamic>)
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
         );
 
@@ -902,12 +902,12 @@ class CloudWorkspaceId {
     this.repoId,
   });
 
-  CloudWorkspaceId.fromJson(core.Map _json)
+  CloudWorkspaceId.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          repoId: _json.containsKey('repoId')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          repoId: json_.containsKey('repoId')
               ? RepoId.fromJson(
-                  _json['repoId'] as core.Map<core.String, core.dynamic>)
+                  json_['repoId'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -932,14 +932,14 @@ class CloudWorkspaceSourceContext {
     this.workspaceId,
   });
 
-  CloudWorkspaceSourceContext.fromJson(core.Map _json)
+  CloudWorkspaceSourceContext.fromJson(core.Map json_)
       : this(
-          snapshotId: _json.containsKey('snapshotId')
-              ? _json['snapshotId'] as core.String
+          snapshotId: json_.containsKey('snapshotId')
+              ? json_['snapshotId'] as core.String
               : null,
-          workspaceId: _json.containsKey('workspaceId')
+          workspaceId: json_.containsKey('workspaceId')
               ? CloudWorkspaceId.fromJson(
-                  _json['workspaceId'] as core.Map<core.String, core.dynamic>)
+                  json_['workspaceId'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1044,53 +1044,53 @@ class Debuggee {
     this.uniquifier,
   });
 
-  Debuggee.fromJson(core.Map _json)
+  Debuggee.fromJson(core.Map json_)
       : this(
-          agentVersion: _json.containsKey('agentVersion')
-              ? _json['agentVersion'] as core.String
+          agentVersion: json_.containsKey('agentVersion')
+              ? json_['agentVersion'] as core.String
               : null,
-          canaryMode: _json.containsKey('canaryMode')
-              ? _json['canaryMode'] as core.String
+          canaryMode: json_.containsKey('canaryMode')
+              ? json_['canaryMode'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          extSourceContexts: _json.containsKey('extSourceContexts')
-              ? (_json['extSourceContexts'] as core.List)
+          extSourceContexts: json_.containsKey('extSourceContexts')
+              ? (json_['extSourceContexts'] as core.List)
                   .map((value) => ExtendedSourceContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          isDisabled: _json.containsKey('isDisabled')
-              ? _json['isDisabled'] as core.bool
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          isDisabled: json_.containsKey('isDisabled')
+              ? json_['isDisabled'] as core.bool
               : null,
-          isInactive: _json.containsKey('isInactive')
-              ? _json['isInactive'] as core.bool
+          isInactive: json_.containsKey('isInactive')
+              ? json_['isInactive'] as core.bool
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          project: _json.containsKey('project')
-              ? _json['project'] as core.String
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
               : null,
-          sourceContexts: _json.containsKey('sourceContexts')
-              ? (_json['sourceContexts'] as core.List)
+          sourceContexts: json_.containsKey('sourceContexts')
+              ? (json_['sourceContexts'] as core.List)
                   .map((value) => SourceContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          status: _json.containsKey('status')
+          status: json_.containsKey('status')
               ? StatusMessage.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          uniquifier: _json.containsKey('uniquifier')
-              ? _json['uniquifier'] as core.String
+          uniquifier: json_.containsKey('uniquifier')
+              ? json_['uniquifier'] as core.String
               : null,
         );
 
@@ -1132,14 +1132,14 @@ class ExtendedSourceContext {
     this.labels,
   });
 
-  ExtendedSourceContext.fromJson(core.Map _json)
+  ExtendedSourceContext.fromJson(core.Map json_)
       : this(
-          context: _json.containsKey('context')
+          context: json_.containsKey('context')
               ? SourceContext.fromJson(
-                  _json['context'] as core.Map<core.String, core.dynamic>)
+                  json_['context'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
@@ -1172,13 +1172,13 @@ class FormatMessage {
     this.parameters,
   });
 
-  FormatMessage.fromJson(core.Map _json)
+  FormatMessage.fromJson(core.Map json_)
       : this(
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
-          parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.List)
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1218,23 +1218,23 @@ class GerritSourceContext {
     this.revisionId,
   });
 
-  GerritSourceContext.fromJson(core.Map _json)
+  GerritSourceContext.fromJson(core.Map json_)
       : this(
-          aliasContext: _json.containsKey('aliasContext')
+          aliasContext: json_.containsKey('aliasContext')
               ? AliasContext.fromJson(
-                  _json['aliasContext'] as core.Map<core.String, core.dynamic>)
+                  json_['aliasContext'] as core.Map<core.String, core.dynamic>)
               : null,
-          aliasName: _json.containsKey('aliasName')
-              ? _json['aliasName'] as core.String
+          aliasName: json_.containsKey('aliasName')
+              ? json_['aliasName'] as core.String
               : null,
-          gerritProject: _json.containsKey('gerritProject')
-              ? _json['gerritProject'] as core.String
+          gerritProject: json_.containsKey('gerritProject')
+              ? json_['gerritProject'] as core.String
               : null,
-          hostUri: _json.containsKey('hostUri')
-              ? _json['hostUri'] as core.String
+          hostUri: json_.containsKey('hostUri')
+              ? json_['hostUri'] as core.String
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
         );
 
@@ -1258,11 +1258,11 @@ class GetBreakpointResponse {
     this.breakpoint,
   });
 
-  GetBreakpointResponse.fromJson(core.Map _json)
+  GetBreakpointResponse.fromJson(core.Map json_)
       : this(
-          breakpoint: _json.containsKey('breakpoint')
+          breakpoint: json_.containsKey('breakpoint')
               ? Breakpoint.fromJson(
-                  _json['breakpoint'] as core.Map<core.String, core.dynamic>)
+                  json_['breakpoint'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1287,12 +1287,12 @@ class GitSourceContext {
     this.url,
   });
 
-  GitSourceContext.fromJson(core.Map _json)
+  GitSourceContext.fromJson(core.Map json_)
       : this(
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1325,19 +1325,19 @@ class ListActiveBreakpointsResponse {
     this.waitExpired,
   });
 
-  ListActiveBreakpointsResponse.fromJson(core.Map _json)
+  ListActiveBreakpointsResponse.fromJson(core.Map json_)
       : this(
-          breakpoints: _json.containsKey('breakpoints')
-              ? (_json['breakpoints'] as core.List)
+          breakpoints: json_.containsKey('breakpoints')
+              ? (json_['breakpoints'] as core.List)
                   .map((value) => Breakpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextWaitToken: _json.containsKey('nextWaitToken')
-              ? _json['nextWaitToken'] as core.String
+          nextWaitToken: json_.containsKey('nextWaitToken')
+              ? json_['nextWaitToken'] as core.String
               : null,
-          waitExpired: _json.containsKey('waitExpired')
-              ? _json['waitExpired'] as core.bool
+          waitExpired: json_.containsKey('waitExpired')
+              ? json_['waitExpired'] as core.bool
               : null,
         );
 
@@ -1367,16 +1367,16 @@ class ListBreakpointsResponse {
     this.nextWaitToken,
   });
 
-  ListBreakpointsResponse.fromJson(core.Map _json)
+  ListBreakpointsResponse.fromJson(core.Map json_)
       : this(
-          breakpoints: _json.containsKey('breakpoints')
-              ? (_json['breakpoints'] as core.List)
+          breakpoints: json_.containsKey('breakpoints')
+              ? (json_['breakpoints'] as core.List)
                   .map((value) => Breakpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextWaitToken: _json.containsKey('nextWaitToken')
-              ? _json['nextWaitToken'] as core.String
+          nextWaitToken: json_.containsKey('nextWaitToken')
+              ? json_['nextWaitToken'] as core.String
               : null,
         );
 
@@ -1399,10 +1399,10 @@ class ListDebuggeesResponse {
     this.debuggees,
   });
 
-  ListDebuggeesResponse.fromJson(core.Map _json)
+  ListDebuggeesResponse.fromJson(core.Map json_)
       : this(
-          debuggees: _json.containsKey('debuggees')
-              ? (_json['debuggees'] as core.List)
+          debuggees: json_.containsKey('debuggees')
+              ? (json_['debuggees'] as core.List)
                   .map((value) => Debuggee.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1432,11 +1432,11 @@ class RegisterDebuggeeRequest {
     this.debuggee,
   });
 
-  RegisterDebuggeeRequest.fromJson(core.Map _json)
+  RegisterDebuggeeRequest.fromJson(core.Map json_)
       : this(
-          debuggee: _json.containsKey('debuggee')
+          debuggee: json_.containsKey('debuggee')
               ? Debuggee.fromJson(
-                  _json['debuggee'] as core.Map<core.String, core.dynamic>)
+                  json_['debuggee'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1465,14 +1465,14 @@ class RegisterDebuggeeResponse {
     this.debuggee,
   });
 
-  RegisterDebuggeeResponse.fromJson(core.Map _json)
+  RegisterDebuggeeResponse.fromJson(core.Map json_)
       : this(
-          agentId: _json.containsKey('agentId')
-              ? _json['agentId'] as core.String
+          agentId: json_.containsKey('agentId')
+              ? json_['agentId'] as core.String
               : null,
-          debuggee: _json.containsKey('debuggee')
+          debuggee: json_.containsKey('debuggee')
               ? Debuggee.fromJson(
-                  _json['debuggee'] as core.Map<core.String, core.dynamic>)
+                  json_['debuggee'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1495,13 +1495,13 @@ class RepoId {
     this.uid,
   });
 
-  RepoId.fromJson(core.Map _json)
+  RepoId.fromJson(core.Map json_)
       : this(
-          projectRepoId: _json.containsKey('projectRepoId')
+          projectRepoId: json_.containsKey('projectRepoId')
               ? ProjectRepoId.fromJson(
-                  _json['projectRepoId'] as core.Map<core.String, core.dynamic>)
+                  json_['projectRepoId'] as core.Map<core.String, core.dynamic>)
               : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1521,11 +1521,11 @@ class SetBreakpointResponse {
     this.breakpoint,
   });
 
-  SetBreakpointResponse.fromJson(core.Map _json)
+  SetBreakpointResponse.fromJson(core.Map json_)
       : this(
-          breakpoint: _json.containsKey('breakpoint')
+          breakpoint: json_.containsKey('breakpoint')
               ? Breakpoint.fromJson(
-                  _json['breakpoint'] as core.Map<core.String, core.dynamic>)
+                  json_['breakpoint'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1558,23 +1558,23 @@ class SourceContext {
     this.git,
   });
 
-  SourceContext.fromJson(core.Map _json)
+  SourceContext.fromJson(core.Map json_)
       : this(
-          cloudRepo: _json.containsKey('cloudRepo')
+          cloudRepo: json_.containsKey('cloudRepo')
               ? CloudRepoSourceContext.fromJson(
-                  _json['cloudRepo'] as core.Map<core.String, core.dynamic>)
+                  json_['cloudRepo'] as core.Map<core.String, core.dynamic>)
               : null,
-          cloudWorkspace: _json.containsKey('cloudWorkspace')
-              ? CloudWorkspaceSourceContext.fromJson(_json['cloudWorkspace']
+          cloudWorkspace: json_.containsKey('cloudWorkspace')
+              ? CloudWorkspaceSourceContext.fromJson(json_['cloudWorkspace']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          gerrit: _json.containsKey('gerrit')
+          gerrit: json_.containsKey('gerrit')
               ? GerritSourceContext.fromJson(
-                  _json['gerrit'] as core.Map<core.String, core.dynamic>)
+                  json_['gerrit'] as core.Map<core.String, core.dynamic>)
               : null,
-          git: _json.containsKey('git')
+          git: json_.containsKey('git')
               ? GitSourceContext.fromJson(
-                  _json['git'] as core.Map<core.String, core.dynamic>)
+                  json_['git'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1608,12 +1608,12 @@ class SourceLocation {
     this.path,
   });
 
-  SourceLocation.fromJson(core.Map _json)
+  SourceLocation.fromJson(core.Map json_)
       : this(
           column:
-              _json.containsKey('column') ? _json['column'] as core.int : null,
-          line: _json.containsKey('line') ? _json['line'] as core.int : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+              json_.containsKey('column') ? json_['column'] as core.int : null,
+          line: json_.containsKey('line') ? json_['line'] as core.int : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1648,26 +1648,26 @@ class StackFrame {
     this.location,
   });
 
-  StackFrame.fromJson(core.Map _json)
+  StackFrame.fromJson(core.Map json_)
       : this(
-          arguments: _json.containsKey('arguments')
-              ? (_json['arguments'] as core.List)
+          arguments: json_.containsKey('arguments')
+              ? (json_['arguments'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          function: _json.containsKey('function')
-              ? _json['function'] as core.String
+          function: json_.containsKey('function')
+              ? json_['function'] as core.String
               : null,
-          locals: _json.containsKey('locals')
-              ? (_json['locals'] as core.List)
+          locals: json_.containsKey('locals')
+              ? (json_['locals'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          location: _json.containsKey('location')
+          location: json_.containsKey('location')
               ? SourceLocation.fromJson(
-                  _json['location'] as core.Map<core.String, core.dynamic>)
+                  json_['location'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1716,17 +1716,17 @@ class StatusMessage {
     this.refersTo,
   });
 
-  StatusMessage.fromJson(core.Map _json)
+  StatusMessage.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
+          description: json_.containsKey('description')
               ? FormatMessage.fromJson(
-                  _json['description'] as core.Map<core.String, core.dynamic>)
+                  json_['description'] as core.Map<core.String, core.dynamic>)
               : null,
-          isError: _json.containsKey('isError')
-              ? _json['isError'] as core.bool
+          isError: json_.containsKey('isError')
+              ? json_['isError'] as core.bool
               : null,
-          refersTo: _json.containsKey('refersTo')
-              ? _json['refersTo'] as core.String
+          refersTo: json_.containsKey('refersTo')
+              ? json_['refersTo'] as core.String
               : null,
         );
 
@@ -1751,11 +1751,11 @@ class UpdateActiveBreakpointRequest {
     this.breakpoint,
   });
 
-  UpdateActiveBreakpointRequest.fromJson(core.Map _json)
+  UpdateActiveBreakpointRequest.fromJson(core.Map json_)
       : this(
-          breakpoint: _json.containsKey('breakpoint')
+          breakpoint: json_.containsKey('breakpoint')
               ? Breakpoint.fromJson(
-                  _json['breakpoint'] as core.Map<core.String, core.dynamic>)
+                  json_['breakpoint'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1850,24 +1850,24 @@ class Variable {
     this.varTableIndex,
   });
 
-  Variable.fromJson(core.Map _json)
+  Variable.fromJson(core.Map json_)
       : this(
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          status: _json.containsKey('status')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          status: json_.containsKey('status')
               ? StatusMessage.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-          varTableIndex: _json.containsKey('varTableIndex')
-              ? _json['varTableIndex'] as core.int
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+          varTableIndex: json_.containsKey('varTableIndex')
+              ? json_['varTableIndex'] as core.int
               : null,
         );
 

@@ -109,22 +109,22 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/matters/' + commons.escapeVariable('$matterId') + ':addPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return MatterPermission.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Closes the specified matter.
@@ -152,21 +152,21 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + ':close';
+    final url_ = 'v1/matters/' + commons.escapeVariable('$matterId') + ':close';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CloseMatterResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Counts the accounts processed by the specified query.
@@ -192,20 +192,20 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + ':count';
+    final url_ = 'v1/matters/' + commons.escapeVariable('$matterId') + ':count';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a matter with the given name and description.
@@ -231,20 +231,20 @@ class MattersResource {
     Matter request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/matters';
+    const url_ = 'v1/matters';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Matter.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified matter.
@@ -269,18 +269,18 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.escapeVariable('$matterId');
+    final url_ = 'v1/matters/' + commons.escapeVariable('$matterId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Matter.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified matter.
@@ -315,19 +315,19 @@ class MattersResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.escapeVariable('$matterId');
+    final url_ = 'v1/matters/' + commons.escapeVariable('$matterId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Matter.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists matters the requestor has access to.
@@ -375,7 +375,7 @@ class MattersResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (state != null) 'state': [state],
@@ -383,15 +383,15 @@ class MattersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/matters';
+    const url_ = 'v1/matters';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListMattersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes an account as a matter collaborator.
@@ -417,22 +417,22 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         ':removePermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Reopens the specified matter.
@@ -460,22 +460,22 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/matters/' + commons.escapeVariable('$matterId') + ':reopen';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ReopenMatterResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes the specified matter.
@@ -503,21 +503,21 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/matters/' + commons.escapeVariable('$matterId') + ':undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Matter.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified matter.
@@ -547,20 +547,20 @@ class MattersResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.escapeVariable('$matterId');
+    final url_ = 'v1/matters/' + commons.escapeVariable('$matterId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Matter.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -592,21 +592,21 @@ class MattersExportsResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/matters/' + commons.escapeVariable('$matterId') + '/exports';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Export.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Export.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an export.
@@ -632,21 +632,21 @@ class MattersExportsResource {
     core.String exportId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/exports/' +
         commons.escapeVariable('$exportId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an export.
@@ -672,21 +672,21 @@ class MattersExportsResource {
     core.String exportId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/exports/' +
         commons.escapeVariable('$exportId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Export.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Export.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists details about the exports in the specified matter.
@@ -715,22 +715,22 @@ class MattersExportsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/matters/' + commons.escapeVariable('$matterId') + '/exports';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListExportsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -771,25 +771,25 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId') +
         ':addHeldAccounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AddHeldAccountsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a hold in the specified matter.
@@ -815,20 +815,20 @@ class MattersHoldsResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + '/holds';
+    final url_ = 'v1/matters/' + commons.escapeVariable('$matterId') + '/holds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Hold.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified hold and releases the accounts or organizational
@@ -858,21 +858,21 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified hold.
@@ -907,22 +907,22 @@ class MattersHoldsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Hold.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the holds in a matter.
@@ -963,22 +963,22 @@ class MattersHoldsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' + commons.escapeVariable('$matterId') + '/holds';
+    final url_ = 'v1/matters/' + commons.escapeVariable('$matterId') + '/holds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListHoldsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified accounts from a hold.
@@ -1009,25 +1009,25 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId') +
         ':removeHeldAccounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return RemoveHeldAccountsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the scope (organizational unit or accounts) and query parameters
@@ -1061,23 +1061,23 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Hold.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1117,25 +1117,25 @@ class MattersHoldsAccountsResource {
     core.String holdId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId') +
         '/accounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return HeldAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes an account from a hold.
@@ -1164,23 +1164,23 @@ class MattersHoldsAccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId') +
         '/accounts/' +
         commons.escapeVariable('$accountId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the accounts covered by a hold.
@@ -1211,23 +1211,23 @@ class MattersHoldsAccountsResource {
     core.String holdId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/holds/' +
         commons.escapeVariable('$holdId') +
         '/accounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListHeldAccountsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1260,22 +1260,22 @@ class MattersSavedQueriesResource {
     core.String matterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/matters/' + commons.escapeVariable('$matterId') + '/savedQueries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified saved query.
@@ -1301,21 +1301,21 @@ class MattersSavedQueriesResource {
     core.String savedQueryId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/savedQueries/' +
         commons.escapeVariable('$savedQueryId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified saved query.
@@ -1341,22 +1341,22 @@ class MattersSavedQueriesResource {
     core.String savedQueryId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/matters/' +
+    final url_ = 'v1/matters/' +
         commons.escapeVariable('$matterId') +
         '/savedQueries/' +
         commons.escapeVariable('$savedQueryId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the saved queries in a matter.
@@ -1386,22 +1386,22 @@ class MattersSavedQueriesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/matters/' + commons.escapeVariable('$matterId') + '/savedQueries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1443,20 +1443,20 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -1484,18 +1484,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1522,18 +1522,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1575,22 +1575,22 @@ class OperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1603,10 +1603,10 @@ class AccountInfo {
     this.emails,
   });
 
-  AccountInfo.fromJson(core.Map _json)
+  AccountInfo.fromJson(core.Map json_)
       : this(
-          emails: _json.containsKey('emails')
-              ? (_json['emails'] as core.List)
+          emails: json_.containsKey('emails')
+              ? (json_['emails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1632,15 +1632,15 @@ class AddHeldAccountResult {
     this.status,
   });
 
-  AddHeldAccountResult.fromJson(core.Map _json)
+  AddHeldAccountResult.fromJson(core.Map json_)
       : this(
-          account: _json.containsKey('account')
+          account: json_.containsKey('account')
               ? HeldAccount.fromJson(
-                  _json['account'] as core.Map<core.String, core.dynamic>)
+                  json_['account'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: _json.containsKey('status')
+          status: json_.containsKey('status')
               ? Status.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1668,15 +1668,15 @@ class AddHeldAccountsRequest {
     this.emails,
   });
 
-  AddHeldAccountsRequest.fromJson(core.Map _json)
+  AddHeldAccountsRequest.fromJson(core.Map json_)
       : this(
-          accountIds: _json.containsKey('accountIds')
-              ? (_json['accountIds'] as core.List)
+          accountIds: json_.containsKey('accountIds')
+              ? (json_['accountIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          emails: _json.containsKey('emails')
-              ? (_json['emails'] as core.List)
+          emails: json_.containsKey('emails')
+              ? (json_['emails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1697,10 +1697,10 @@ class AddHeldAccountsResponse {
     this.responses,
   });
 
-  AddHeldAccountsResponse.fromJson(core.Map _json)
+  AddHeldAccountsResponse.fromJson(core.Map json_)
       : this(
-          responses: _json.containsKey('responses')
-              ? (_json['responses'] as core.List)
+          responses: json_.containsKey('responses')
+              ? (json_['responses'] as core.List)
                   .map((value) => AddHeldAccountResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1737,15 +1737,15 @@ class AddMatterPermissionsRequest {
     this.sendEmails,
   });
 
-  AddMatterPermissionsRequest.fromJson(core.Map _json)
+  AddMatterPermissionsRequest.fromJson(core.Map json_)
       : this(
-          ccMe: _json.containsKey('ccMe') ? _json['ccMe'] as core.bool : null,
-          matterPermission: _json.containsKey('matterPermission')
-              ? MatterPermission.fromJson(_json['matterPermission']
+          ccMe: json_.containsKey('ccMe') ? json_['ccMe'] as core.bool : null,
+          matterPermission: json_.containsKey('matterPermission')
+              ? MatterPermission.fromJson(json_['matterPermission']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sendEmails: _json.containsKey('sendEmails')
-              ? _json['sendEmails'] as core.bool
+          sendEmails: json_.containsKey('sendEmails')
+              ? json_['sendEmails'] as core.bool
               : null,
         );
 
@@ -1771,11 +1771,11 @@ class CloseMatterResponse {
     this.matter,
   });
 
-  CloseMatterResponse.fromJson(core.Map _json)
+  CloseMatterResponse.fromJson(core.Map json_)
       : this(
-          matter: _json.containsKey('matter')
+          matter: json_.containsKey('matter')
               ? Matter.fromJson(
-                  _json['matter'] as core.Map<core.String, core.dynamic>)
+                  json_['matter'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1814,18 +1814,18 @@ class CloudStorageFile {
     this.size,
   });
 
-  CloudStorageFile.fromJson(core.Map _json)
+  CloudStorageFile.fromJson(core.Map json_)
       : this(
-          bucketName: _json.containsKey('bucketName')
-              ? _json['bucketName'] as core.String
+          bucketName: json_.containsKey('bucketName')
+              ? json_['bucketName'] as core.String
               : null,
-          md5Hash: _json.containsKey('md5Hash')
-              ? _json['md5Hash'] as core.String
+          md5Hash: json_.containsKey('md5Hash')
+              ? json_['md5Hash'] as core.String
               : null,
-          objectName: _json.containsKey('objectName')
-              ? _json['objectName'] as core.String
+          objectName: json_.containsKey('objectName')
+              ? json_['objectName'] as core.String
               : null,
-          size: _json.containsKey('size') ? _json['size'] as core.String : null,
+          size: json_.containsKey('size') ? json_['size'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1847,10 +1847,10 @@ class CloudStorageSink {
     this.files,
   });
 
-  CloudStorageSink.fromJson(core.Map _json)
+  CloudStorageSink.fromJson(core.Map json_)
       : this(
-          files: _json.containsKey('files')
-              ? (_json['files'] as core.List)
+          files: json_.containsKey('files')
+              ? (json_['files'] as core.List)
                   .map((value) => CloudStorageFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1897,27 +1897,27 @@ class CorpusQuery {
     this.voiceQuery,
   });
 
-  CorpusQuery.fromJson(core.Map _json)
+  CorpusQuery.fromJson(core.Map json_)
       : this(
-          driveQuery: _json.containsKey('driveQuery')
+          driveQuery: json_.containsKey('driveQuery')
               ? HeldDriveQuery.fromJson(
-                  _json['driveQuery'] as core.Map<core.String, core.dynamic>)
+                  json_['driveQuery'] as core.Map<core.String, core.dynamic>)
               : null,
-          groupsQuery: _json.containsKey('groupsQuery')
+          groupsQuery: json_.containsKey('groupsQuery')
               ? HeldGroupsQuery.fromJson(
-                  _json['groupsQuery'] as core.Map<core.String, core.dynamic>)
+                  json_['groupsQuery'] as core.Map<core.String, core.dynamic>)
               : null,
-          hangoutsChatQuery: _json.containsKey('hangoutsChatQuery')
-              ? HeldHangoutsChatQuery.fromJson(_json['hangoutsChatQuery']
+          hangoutsChatQuery: json_.containsKey('hangoutsChatQuery')
+              ? HeldHangoutsChatQuery.fromJson(json_['hangoutsChatQuery']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mailQuery: _json.containsKey('mailQuery')
+          mailQuery: json_.containsKey('mailQuery')
               ? HeldMailQuery.fromJson(
-                  _json['mailQuery'] as core.Map<core.String, core.dynamic>)
+                  json_['mailQuery'] as core.Map<core.String, core.dynamic>)
               : null,
-          voiceQuery: _json.containsKey('voiceQuery')
+          voiceQuery: json_.containsKey('voiceQuery')
               ? HeldVoiceQuery.fromJson(
-                  _json['voiceQuery'] as core.Map<core.String, core.dynamic>)
+                  json_['voiceQuery'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1950,13 +1950,13 @@ class CountArtifactsRequest {
     this.view,
   });
 
-  CountArtifactsRequest.fromJson(core.Map _json)
+  CountArtifactsRequest.fromJson(core.Map json_)
       : this(
-          query: _json.containsKey('query')
+          query: json_.containsKey('query')
               ? Query.fromJson(
-                  _json['query'] as core.Map<core.String, core.dynamic>)
+                  json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
-          view: _json.containsKey('view') ? _json['view'] as core.String : null,
+          view: json_.containsKey('view') ? json_['view'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1976,10 +1976,10 @@ class DriveExportOptions {
     this.includeAccessInfo,
   });
 
-  DriveExportOptions.fromJson(core.Map _json)
+  DriveExportOptions.fromJson(core.Map json_)
       : this(
-          includeAccessInfo: _json.containsKey('includeAccessInfo')
-              ? _json['includeAccessInfo'] as core.bool
+          includeAccessInfo: json_.containsKey('includeAccessInfo')
+              ? json_['includeAccessInfo'] as core.bool
               : null,
         );
 
@@ -2026,20 +2026,20 @@ class DriveOptions {
     this.versionDate,
   });
 
-  DriveOptions.fromJson(core.Map _json)
+  DriveOptions.fromJson(core.Map json_)
       : this(
           clientSideEncryptedOption:
-              _json.containsKey('clientSideEncryptedOption')
-                  ? _json['clientSideEncryptedOption'] as core.String
+              json_.containsKey('clientSideEncryptedOption')
+                  ? json_['clientSideEncryptedOption'] as core.String
                   : null,
-          includeSharedDrives: _json.containsKey('includeSharedDrives')
-              ? _json['includeSharedDrives'] as core.bool
+          includeSharedDrives: json_.containsKey('includeSharedDrives')
+              ? json_['includeSharedDrives'] as core.bool
               : null,
-          includeTeamDrives: _json.containsKey('includeTeamDrives')
-              ? _json['includeTeamDrives'] as core.bool
+          includeTeamDrives: json_.containsKey('includeTeamDrives')
+              ? json_['includeTeamDrives'] as core.bool
               : null,
-          versionDate: _json.containsKey('versionDate')
-              ? _json['versionDate'] as core.String
+          versionDate: json_.containsKey('versionDate')
+              ? json_['versionDate'] as core.String
               : null,
         );
 
@@ -2134,38 +2134,38 @@ class Export {
     this.status,
   });
 
-  Export.fromJson(core.Map _json)
+  Export.fromJson(core.Map json_)
       : this(
-          cloudStorageSink: _json.containsKey('cloudStorageSink')
-              ? CloudStorageSink.fromJson(_json['cloudStorageSink']
+          cloudStorageSink: json_.containsKey('cloudStorageSink')
+              ? CloudStorageSink.fromJson(json_['cloudStorageSink']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          exportOptions: _json.containsKey('exportOptions')
+          exportOptions: json_.containsKey('exportOptions')
               ? ExportOptions.fromJson(
-                  _json['exportOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['exportOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          matterId: _json.containsKey('matterId')
-              ? _json['matterId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          matterId: json_.containsKey('matterId')
+              ? json_['matterId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          query: _json.containsKey('query')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          query: json_.containsKey('query')
               ? Query.fromJson(
-                  _json['query'] as core.Map<core.String, core.dynamic>)
+                  json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
-          requester: _json.containsKey('requester')
+          requester: json_.containsKey('requester')
               ? UserInfo.fromJson(
-                  _json['requester'] as core.Map<core.String, core.dynamic>)
+                  json_['requester'] as core.Map<core.String, core.dynamic>)
               : null,
-          stats: _json.containsKey('stats')
+          stats: json_.containsKey('stats')
               ? ExportStats.fromJson(
-                  _json['stats'] as core.Map<core.String, core.dynamic>)
+                  json_['stats'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 
@@ -2218,30 +2218,30 @@ class ExportOptions {
     this.voiceOptions,
   });
 
-  ExportOptions.fromJson(core.Map _json)
+  ExportOptions.fromJson(core.Map json_)
       : this(
-          driveOptions: _json.containsKey('driveOptions')
+          driveOptions: json_.containsKey('driveOptions')
               ? DriveExportOptions.fromJson(
-                  _json['driveOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['driveOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          groupsOptions: _json.containsKey('groupsOptions')
+          groupsOptions: json_.containsKey('groupsOptions')
               ? GroupsExportOptions.fromJson(
-                  _json['groupsOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['groupsOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          hangoutsChatOptions: _json.containsKey('hangoutsChatOptions')
-              ? HangoutsChatExportOptions.fromJson(_json['hangoutsChatOptions']
+          hangoutsChatOptions: json_.containsKey('hangoutsChatOptions')
+              ? HangoutsChatExportOptions.fromJson(json_['hangoutsChatOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mailOptions: _json.containsKey('mailOptions')
+          mailOptions: json_.containsKey('mailOptions')
               ? MailExportOptions.fromJson(
-                  _json['mailOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['mailOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          region: _json.containsKey('region')
-              ? _json['region'] as core.String
+          region: json_.containsKey('region')
+              ? json_['region'] as core.String
               : null,
-          voiceOptions: _json.containsKey('voiceOptions')
+          voiceOptions: json_.containsKey('voiceOptions')
               ? VoiceExportOptions.fromJson(
-                  _json['voiceOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['voiceOptions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2273,16 +2273,16 @@ class ExportStats {
     this.totalArtifactCount,
   });
 
-  ExportStats.fromJson(core.Map _json)
+  ExportStats.fromJson(core.Map json_)
       : this(
-          exportedArtifactCount: _json.containsKey('exportedArtifactCount')
-              ? _json['exportedArtifactCount'] as core.String
+          exportedArtifactCount: json_.containsKey('exportedArtifactCount')
+              ? json_['exportedArtifactCount'] as core.String
               : null,
-          sizeInBytes: _json.containsKey('sizeInBytes')
-              ? _json['sizeInBytes'] as core.String
+          sizeInBytes: json_.containsKey('sizeInBytes')
+              ? json_['sizeInBytes'] as core.String
               : null,
-          totalArtifactCount: _json.containsKey('totalArtifactCount')
-              ? _json['totalArtifactCount'] as core.String
+          totalArtifactCount: json_.containsKey('totalArtifactCount')
+              ? json_['totalArtifactCount'] as core.String
               : null,
         );
 
@@ -2311,10 +2311,10 @@ class HangoutsChatInfo {
     this.roomId,
   });
 
-  HangoutsChatInfo.fromJson(core.Map _json)
+  HangoutsChatInfo.fromJson(core.Map json_)
       : this(
-          roomId: _json.containsKey('roomId')
-              ? (_json['roomId'] as core.List)
+          roomId: json_.containsKey('roomId')
+              ? (json_['roomId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2335,10 +2335,10 @@ class HangoutsChatOptions {
     this.includeRooms,
   });
 
-  HangoutsChatOptions.fromJson(core.Map _json)
+  HangoutsChatOptions.fromJson(core.Map json_)
       : this(
-          includeRooms: _json.containsKey('includeRooms')
-              ? _json['includeRooms'] as core.bool
+          includeRooms: json_.containsKey('includeRooms')
+              ? json_['includeRooms'] as core.bool
               : null,
         );
 
@@ -2389,21 +2389,21 @@ class HeldAccount {
     this.lastName,
   });
 
-  HeldAccount.fromJson(core.Map _json)
+  HeldAccount.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          firstName: _json.containsKey('firstName')
-              ? _json['firstName'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          firstName: json_.containsKey('firstName')
+              ? json_['firstName'] as core.String
               : null,
-          holdTime: _json.containsKey('holdTime')
-              ? _json['holdTime'] as core.String
+          holdTime: json_.containsKey('holdTime')
+              ? json_['holdTime'] as core.String
               : null,
-          lastName: _json.containsKey('lastName')
-              ? _json['lastName'] as core.String
+          lastName: json_.containsKey('lastName')
+              ? json_['lastName'] as core.String
               : null,
         );
 
@@ -2429,13 +2429,13 @@ class HeldDriveQuery {
     this.includeTeamDriveFiles,
   });
 
-  HeldDriveQuery.fromJson(core.Map _json)
+  HeldDriveQuery.fromJson(core.Map json_)
       : this(
-          includeSharedDriveFiles: _json.containsKey('includeSharedDriveFiles')
-              ? _json['includeSharedDriveFiles'] as core.bool
+          includeSharedDriveFiles: json_.containsKey('includeSharedDriveFiles')
+              ? json_['includeSharedDriveFiles'] as core.bool
               : null,
-          includeTeamDriveFiles: _json.containsKey('includeTeamDriveFiles')
-              ? _json['includeTeamDriveFiles'] as core.bool
+          includeTeamDriveFiles: json_.containsKey('includeTeamDriveFiles')
+              ? json_['includeTeamDriveFiles'] as core.bool
               : null,
         );
 
@@ -2460,10 +2460,10 @@ class HeldHangoutsChatQuery {
     this.includeRooms,
   });
 
-  HeldHangoutsChatQuery.fromJson(core.Map _json)
+  HeldHangoutsChatQuery.fromJson(core.Map json_)
       : this(
-          includeRooms: _json.containsKey('includeRooms')
-              ? _json['includeRooms'] as core.bool
+          includeRooms: json_.containsKey('includeRooms')
+              ? json_['includeRooms'] as core.bool
               : null,
         );
 
@@ -2493,13 +2493,13 @@ class HeldOrgUnit {
     this.orgUnitId,
   });
 
-  HeldOrgUnit.fromJson(core.Map _json)
+  HeldOrgUnit.fromJson(core.Map json_)
       : this(
-          holdTime: _json.containsKey('holdTime')
-              ? _json['holdTime'] as core.String
+          holdTime: json_.containsKey('holdTime')
+              ? json_['holdTime'] as core.String
               : null,
-          orgUnitId: _json.containsKey('orgUnitId')
-              ? _json['orgUnitId'] as core.String
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
               : null,
         );
 
@@ -2520,10 +2520,10 @@ class HeldVoiceQuery {
     this.coveredData,
   });
 
-  HeldVoiceQuery.fromJson(core.Map _json)
+  HeldVoiceQuery.fromJson(core.Map json_)
       : this(
-          coveredData: _json.containsKey('coveredData')
-              ? (_json['coveredData'] as core.List)
+          coveredData: json_.containsKey('coveredData')
+              ? (json_['coveredData'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2591,31 +2591,31 @@ class Hold {
     this.updateTime,
   });
 
-  Hold.fromJson(core.Map _json)
+  Hold.fromJson(core.Map json_)
       : this(
-          accounts: _json.containsKey('accounts')
-              ? (_json['accounts'] as core.List)
+          accounts: json_.containsKey('accounts')
+              ? (json_['accounts'] as core.List)
                   .map((value) => HeldAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          corpus: _json.containsKey('corpus')
-              ? _json['corpus'] as core.String
+          corpus: json_.containsKey('corpus')
+              ? json_['corpus'] as core.String
               : null,
-          holdId: _json.containsKey('holdId')
-              ? _json['holdId'] as core.String
+          holdId: json_.containsKey('holdId')
+              ? json_['holdId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          orgUnit: _json.containsKey('orgUnit')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          orgUnit: json_.containsKey('orgUnit')
               ? HeldOrgUnit.fromJson(
-                  _json['orgUnit'] as core.Map<core.String, core.dynamic>)
+                  json_['orgUnit'] as core.Map<core.String, core.dynamic>)
               : null,
-          query: _json.containsKey('query')
+          query: json_.containsKey('query')
               ? CorpusQuery.fromJson(
-                  _json['query'] as core.Map<core.String, core.dynamic>)
+                  json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -2643,16 +2643,16 @@ class ListExportsResponse {
     this.nextPageToken,
   });
 
-  ListExportsResponse.fromJson(core.Map _json)
+  ListExportsResponse.fromJson(core.Map json_)
       : this(
-          exports: _json.containsKey('exports')
-              ? (_json['exports'] as core.List)
+          exports: json_.containsKey('exports')
+              ? (json_['exports'] as core.List)
                   .map((value) => Export.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2671,10 +2671,10 @@ class ListHeldAccountsResponse {
     this.accounts,
   });
 
-  ListHeldAccountsResponse.fromJson(core.Map _json)
+  ListHeldAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: _json.containsKey('accounts')
-              ? (_json['accounts'] as core.List)
+          accounts: json_.containsKey('accounts')
+              ? (json_['accounts'] as core.List)
                   .map((value) => HeldAccount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2701,16 +2701,16 @@ class ListHoldsResponse {
     this.nextPageToken,
   });
 
-  ListHoldsResponse.fromJson(core.Map _json)
+  ListHoldsResponse.fromJson(core.Map json_)
       : this(
-          holds: _json.containsKey('holds')
-              ? (_json['holds'] as core.List)
+          holds: json_.containsKey('holds')
+              ? (json_['holds'] as core.List)
                   .map((value) => Hold.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2733,16 +2733,16 @@ class ListMattersResponse {
     this.nextPageToken,
   });
 
-  ListMattersResponse.fromJson(core.Map _json)
+  ListMattersResponse.fromJson(core.Map json_)
       : this(
-          matters: _json.containsKey('matters')
-              ? (_json['matters'] as core.List)
+          matters: json_.containsKey('matters')
+              ? (json_['matters'] as core.List)
                   .map((value) => Matter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2765,13 +2765,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2799,13 +2799,13 @@ class ListSavedQueriesResponse {
     this.savedQueries,
   });
 
-  ListSavedQueriesResponse.fromJson(core.Map _json)
+  ListSavedQueriesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          savedQueries: _json.containsKey('savedQueries')
-              ? (_json['savedQueries'] as core.List)
+          savedQueries: json_.containsKey('savedQueries')
+              ? (json_['savedQueries'] as core.List)
                   .map((value) => SavedQuery.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2841,17 +2841,17 @@ class MailExportOptions {
     this.useNewExport,
   });
 
-  MailExportOptions.fromJson(core.Map _json)
+  MailExportOptions.fromJson(core.Map json_)
       : this(
-          exportFormat: _json.containsKey('exportFormat')
-              ? _json['exportFormat'] as core.String
+          exportFormat: json_.containsKey('exportFormat')
+              ? json_['exportFormat'] as core.String
               : null,
           showConfidentialModeContent:
-              _json.containsKey('showConfidentialModeContent')
-                  ? _json['showConfidentialModeContent'] as core.bool
+              json_.containsKey('showConfidentialModeContent')
+                  ? json_['showConfidentialModeContent'] as core.bool
                   : null,
-          useNewExport: _json.containsKey('useNewExport')
-              ? _json['useNewExport'] as core.bool
+          useNewExport: json_.containsKey('useNewExport')
+              ? json_['useNewExport'] as core.bool
               : null,
         );
 
@@ -2872,10 +2872,10 @@ class MailOptions {
     this.excludeDrafts,
   });
 
-  MailOptions.fromJson(core.Map _json)
+  MailOptions.fromJson(core.Map json_)
       : this(
-          excludeDrafts: _json.containsKey('excludeDrafts')
-              ? _json['excludeDrafts'] as core.bool
+          excludeDrafts: json_.containsKey('excludeDrafts')
+              ? json_['excludeDrafts'] as core.bool
               : null,
         );
 
@@ -2925,23 +2925,23 @@ class Matter {
     this.state,
   });
 
-  Matter.fromJson(core.Map _json)
+  Matter.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          matterId: _json.containsKey('matterId')
-              ? _json['matterId'] as core.String
+          matterId: json_.containsKey('matterId')
+              ? json_['matterId'] as core.String
               : null,
-          matterPermissions: _json.containsKey('matterPermissions')
-              ? (_json['matterPermissions'] as core.List)
+          matterPermissions: json_.containsKey('matterPermissions')
+              ? (json_['matterPermissions'] as core.List)
                   .map((value) => MatterPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2975,12 +2975,12 @@ class MatterPermission {
     this.role,
   });
 
-  MatterPermission.fromJson(core.Map _json)
+  MatterPermission.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3040,19 +3040,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3075,10 +3075,10 @@ class OrgUnitInfo {
     this.orgUnitId,
   });
 
-  OrgUnitInfo.fromJson(core.Map _json)
+  OrgUnitInfo.fromJson(core.Map json_)
       : this(
-          orgUnitId: _json.containsKey('orgUnitId')
-              ? _json['orgUnitId'] as core.String
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
               : null,
         );
 
@@ -3236,70 +3236,70 @@ class Query {
     this.voiceOptions,
   });
 
-  Query.fromJson(core.Map _json)
+  Query.fromJson(core.Map json_)
       : this(
-          accountInfo: _json.containsKey('accountInfo')
+          accountInfo: json_.containsKey('accountInfo')
               ? AccountInfo.fromJson(
-                  _json['accountInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['accountInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          corpus: _json.containsKey('corpus')
-              ? _json['corpus'] as core.String
+          corpus: json_.containsKey('corpus')
+              ? json_['corpus'] as core.String
               : null,
-          dataScope: _json.containsKey('dataScope')
-              ? _json['dataScope'] as core.String
+          dataScope: json_.containsKey('dataScope')
+              ? json_['dataScope'] as core.String
               : null,
-          driveOptions: _json.containsKey('driveOptions')
+          driveOptions: json_.containsKey('driveOptions')
               ? DriveOptions.fromJson(
-                  _json['driveOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['driveOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          hangoutsChatInfo: _json.containsKey('hangoutsChatInfo')
-              ? HangoutsChatInfo.fromJson(_json['hangoutsChatInfo']
+          hangoutsChatInfo: json_.containsKey('hangoutsChatInfo')
+              ? HangoutsChatInfo.fromJson(json_['hangoutsChatInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          hangoutsChatOptions: _json.containsKey('hangoutsChatOptions')
-              ? HangoutsChatOptions.fromJson(_json['hangoutsChatOptions']
+          hangoutsChatOptions: json_.containsKey('hangoutsChatOptions')
+              ? HangoutsChatOptions.fromJson(json_['hangoutsChatOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mailOptions: _json.containsKey('mailOptions')
+          mailOptions: json_.containsKey('mailOptions')
               ? MailOptions.fromJson(
-                  _json['mailOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['mailOptions'] as core.Map<core.String, core.dynamic>)
               : null,
-          method: _json.containsKey('method')
-              ? _json['method'] as core.String
+          method: json_.containsKey('method')
+              ? json_['method'] as core.String
               : null,
-          orgUnitInfo: _json.containsKey('orgUnitInfo')
+          orgUnitInfo: json_.containsKey('orgUnitInfo')
               ? OrgUnitInfo.fromJson(
-                  _json['orgUnitInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['orgUnitInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          searchMethod: _json.containsKey('searchMethod')
-              ? _json['searchMethod'] as core.String
+          searchMethod: json_.containsKey('searchMethod')
+              ? json_['searchMethod'] as core.String
               : null,
-          sharedDriveInfo: _json.containsKey('sharedDriveInfo')
-              ? SharedDriveInfo.fromJson(_json['sharedDriveInfo']
+          sharedDriveInfo: json_.containsKey('sharedDriveInfo')
+              ? SharedDriveInfo.fromJson(json_['sharedDriveInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          sitesUrlInfo: _json.containsKey('sitesUrlInfo')
+          sitesUrlInfo: json_.containsKey('sitesUrlInfo')
               ? SitesUrlInfo.fromJson(
-                  _json['sitesUrlInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['sitesUrlInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          teamDriveInfo: _json.containsKey('teamDriveInfo')
+          teamDriveInfo: json_.containsKey('teamDriveInfo')
               ? TeamDriveInfo.fromJson(
-                  _json['teamDriveInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['teamDriveInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           terms:
-              _json.containsKey('terms') ? _json['terms'] as core.String : null,
-          timeZone: _json.containsKey('timeZone')
-              ? _json['timeZone'] as core.String
+              json_.containsKey('terms') ? json_['terms'] as core.String : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
               : null,
-          voiceOptions: _json.containsKey('voiceOptions')
+          voiceOptions: json_.containsKey('voiceOptions')
               ? VoiceOptions.fromJson(
-                  _json['voiceOptions'] as core.Map<core.String, core.dynamic>)
+                  json_['voiceOptions'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3335,10 +3335,10 @@ class RemoveHeldAccountsRequest {
     this.accountIds,
   });
 
-  RemoveHeldAccountsRequest.fromJson(core.Map _json)
+  RemoveHeldAccountsRequest.fromJson(core.Map json_)
       : this(
-          accountIds: _json.containsKey('accountIds')
-              ? (_json['accountIds'] as core.List)
+          accountIds: json_.containsKey('accountIds')
+              ? (json_['accountIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3360,10 +3360,10 @@ class RemoveHeldAccountsResponse {
     this.statuses,
   });
 
-  RemoveHeldAccountsResponse.fromJson(core.Map _json)
+  RemoveHeldAccountsResponse.fromJson(core.Map json_)
       : this(
-          statuses: _json.containsKey('statuses')
-              ? (_json['statuses'] as core.List)
+          statuses: json_.containsKey('statuses')
+              ? (json_['statuses'] as core.List)
                   .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3384,10 +3384,10 @@ class RemoveMatterPermissionsRequest {
     this.accountId,
   });
 
-  RemoveMatterPermissionsRequest.fromJson(core.Map _json)
+  RemoveMatterPermissionsRequest.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
         );
 
@@ -3408,11 +3408,11 @@ class ReopenMatterResponse {
     this.matter,
   });
 
-  ReopenMatterResponse.fromJson(core.Map _json)
+  ReopenMatterResponse.fromJson(core.Map json_)
       : this(
-          matter: _json.containsKey('matter')
+          matter: json_.containsKey('matter')
               ? Matter.fromJson(
-                  _json['matter'] as core.Map<core.String, core.dynamic>)
+                  json_['matter'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3459,23 +3459,23 @@ class SavedQuery {
     this.savedQueryId,
   });
 
-  SavedQuery.fromJson(core.Map _json)
+  SavedQuery.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          matterId: _json.containsKey('matterId')
-              ? _json['matterId'] as core.String
+          matterId: json_.containsKey('matterId')
+              ? json_['matterId'] as core.String
               : null,
-          query: _json.containsKey('query')
+          query: json_.containsKey('query')
               ? Query.fromJson(
-                  _json['query'] as core.Map<core.String, core.dynamic>)
+                  json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
-          savedQueryId: _json.containsKey('savedQueryId')
-              ? _json['savedQueryId'] as core.String
+          savedQueryId: json_.containsKey('savedQueryId')
+              ? json_['savedQueryId'] as core.String
               : null,
         );
 
@@ -3498,10 +3498,10 @@ class SharedDriveInfo {
     this.sharedDriveIds,
   });
 
-  SharedDriveInfo.fromJson(core.Map _json)
+  SharedDriveInfo.fromJson(core.Map json_)
       : this(
-          sharedDriveIds: _json.containsKey('sharedDriveIds')
-              ? (_json['sharedDriveIds'] as core.List)
+          sharedDriveIds: json_.containsKey('sharedDriveIds')
+              ? (json_['sharedDriveIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3521,10 +3521,10 @@ class SitesUrlInfo {
     this.urls,
   });
 
-  SitesUrlInfo.fromJson(core.Map _json)
+  SitesUrlInfo.fromJson(core.Map json_)
       : this(
-          urls: _json.containsKey('urls')
-              ? (_json['urls'] as core.List)
+          urls: json_.containsKey('urls')
+              ? (json_['urls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3554,10 +3554,10 @@ class TeamDriveInfo {
     this.teamDriveIds,
   });
 
-  TeamDriveInfo.fromJson(core.Map _json)
+  TeamDriveInfo.fromJson(core.Map json_)
       : this(
-          teamDriveIds: _json.containsKey('teamDriveIds')
-              ? (_json['teamDriveIds'] as core.List)
+          teamDriveIds: json_.containsKey('teamDriveIds')
+              ? (json_['teamDriveIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3584,13 +3584,13 @@ class UserInfo {
     this.email,
   });
 
-  UserInfo.fromJson(core.Map _json)
+  UserInfo.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3614,10 +3614,10 @@ class VoiceExportOptions {
     this.exportFormat,
   });
 
-  VoiceExportOptions.fromJson(core.Map _json)
+  VoiceExportOptions.fromJson(core.Map json_)
       : this(
-          exportFormat: _json.containsKey('exportFormat')
-              ? _json['exportFormat'] as core.String
+          exportFormat: json_.containsKey('exportFormat')
+              ? json_['exportFormat'] as core.String
               : null,
         );
 
@@ -3635,10 +3635,10 @@ class VoiceOptions {
     this.coveredData,
   });
 
-  VoiceOptions.fromJson(core.Map _json)
+  VoiceOptions.fromJson(core.Map json_)
       : this(
-          coveredData: _json.containsKey('coveredData')
-              ? (_json['coveredData'] as core.List)
+          coveredData: json_.containsKey('coveredData')
+              ? (json_['coveredData'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,

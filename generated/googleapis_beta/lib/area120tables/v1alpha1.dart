@@ -104,18 +104,18 @@ class TablesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Table.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Table.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists tables for the user.
@@ -150,22 +150,22 @@ class TablesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/tables';
+    const url_ = 'v1alpha1/tables';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTablesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -199,22 +199,22 @@ class TablesRowsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows:batchCreate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchCreateRowsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes multiple rows.
@@ -242,21 +242,21 @@ class TablesRowsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows:batchDelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates multiple rows.
@@ -284,22 +284,22 @@ class TablesRowsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows:batchUpdate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BatchUpdateRowsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a row.
@@ -335,21 +335,21 @@ class TablesRowsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Row.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Row.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a row.
@@ -374,18 +374,18 @@ class TablesRowsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a row.
@@ -420,19 +420,19 @@ class TablesRowsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Row.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Row.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists rows in a table.
@@ -486,7 +486,7 @@ class TablesRowsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -495,15 +495,15 @@ class TablesRowsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows';
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/rows';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListRowsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a row.
@@ -542,22 +542,22 @@ class TablesRowsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Row.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Row.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -590,18 +590,18 @@ class WorkspacesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1alpha1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Workspace.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists workspaces for the user.
@@ -632,21 +632,21 @@ class WorkspacesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1alpha1/workspaces';
+    const url_ = 'v1alpha1/workspaces';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListWorkspacesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -663,10 +663,10 @@ class BatchCreateRowsRequest {
     this.requests,
   });
 
-  BatchCreateRowsRequest.fromJson(core.Map _json)
+  BatchCreateRowsRequest.fromJson(core.Map json_)
       : this(
-          requests: _json.containsKey('requests')
-              ? (_json['requests'] as core.List)
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
                   .map((value) => CreateRowRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -687,10 +687,10 @@ class BatchCreateRowsResponse {
     this.rows,
   });
 
-  BatchCreateRowsResponse.fromJson(core.Map _json)
+  BatchCreateRowsResponse.fromJson(core.Map json_)
       : this(
-          rows: _json.containsKey('rows')
-              ? (_json['rows'] as core.List)
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
                   .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -717,10 +717,10 @@ class BatchDeleteRowsRequest {
     this.names,
   });
 
-  BatchDeleteRowsRequest.fromJson(core.Map _json)
+  BatchDeleteRowsRequest.fromJson(core.Map json_)
       : this(
-          names: _json.containsKey('names')
-              ? (_json['names'] as core.List)
+          names: json_.containsKey('names')
+              ? (json_['names'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -744,10 +744,10 @@ class BatchUpdateRowsRequest {
     this.requests,
   });
 
-  BatchUpdateRowsRequest.fromJson(core.Map _json)
+  BatchUpdateRowsRequest.fromJson(core.Map json_)
       : this(
-          requests: _json.containsKey('requests')
-              ? (_json['requests'] as core.List)
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
                   .map((value) => UpdateRowRequest.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -768,10 +768,10 @@ class BatchUpdateRowsResponse {
     this.rows,
   });
 
-  BatchUpdateRowsResponse.fromJson(core.Map _json)
+  BatchUpdateRowsResponse.fromJson(core.Map json_)
       : this(
-          rows: _json.containsKey('rows')
-              ? (_json['rows'] as core.List)
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
                   .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -853,36 +853,36 @@ class ColumnDescription {
     this.relationshipDetails,
   });
 
-  ColumnDescription.fromJson(core.Map _json)
+  ColumnDescription.fromJson(core.Map json_)
       : this(
-          dataType: _json.containsKey('dataType')
-              ? _json['dataType'] as core.String
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
               : null,
-          dateDetails: _json.containsKey('dateDetails')
+          dateDetails: json_.containsKey('dateDetails')
               ? DateDetails.fromJson(
-                  _json['dateDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['dateDetails'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => LabeledItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          lookupDetails: _json.containsKey('lookupDetails')
+          lookupDetails: json_.containsKey('lookupDetails')
               ? LookupDetails.fromJson(
-                  _json['lookupDetails'] as core.Map<core.String, core.dynamic>)
+                  json_['lookupDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           multipleValuesDisallowed:
-              _json.containsKey('multipleValuesDisallowed')
-                  ? _json['multipleValuesDisallowed'] as core.bool
+              json_.containsKey('multipleValuesDisallowed')
+                  ? json_['multipleValuesDisallowed'] as core.bool
                   : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          readonly: _json.containsKey('readonly')
-              ? _json['readonly'] as core.bool
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          readonly: json_.containsKey('readonly')
+              ? json_['readonly'] as core.bool
               : null,
-          relationshipDetails: _json.containsKey('relationshipDetails')
-              ? RelationshipDetails.fromJson(_json['relationshipDetails']
+          relationshipDetails: json_.containsKey('relationshipDetails')
+              ? RelationshipDetails.fromJson(json_['relationshipDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -933,16 +933,16 @@ class CreateRowRequest {
     this.view,
   });
 
-  CreateRowRequest.fromJson(core.Map _json)
+  CreateRowRequest.fromJson(core.Map json_)
       : this(
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
-          row: _json.containsKey('row')
+          row: json_.containsKey('row')
               ? Row.fromJson(
-                  _json['row'] as core.Map<core.String, core.dynamic>)
+                  json_['row'] as core.Map<core.String, core.dynamic>)
               : null,
-          view: _json.containsKey('view') ? _json['view'] as core.String : null,
+          view: json_.containsKey('view') ? json_['view'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -961,10 +961,10 @@ class DateDetails {
     this.hasTime,
   });
 
-  DateDetails.fromJson(core.Map _json)
+  DateDetails.fromJson(core.Map json_)
       : this(
-          hasTime: _json.containsKey('hasTime')
-              ? _json['hasTime'] as core.bool
+          hasTime: json_.containsKey('hasTime')
+              ? json_['hasTime'] as core.bool
               : null,
         );
 
@@ -994,10 +994,10 @@ class LabeledItem {
     this.name,
   });
 
-  LabeledItem.fromJson(core.Map _json)
+  LabeledItem.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1021,13 +1021,13 @@ class ListRowsResponse {
     this.rows,
   });
 
-  ListRowsResponse.fromJson(core.Map _json)
+  ListRowsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          rows: _json.containsKey('rows')
-              ? (_json['rows'] as core.List)
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
                   .map((value) => Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1055,13 +1055,13 @@ class ListTablesResponse {
     this.tables,
   });
 
-  ListTablesResponse.fromJson(core.Map _json)
+  ListTablesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          tables: _json.containsKey('tables')
-              ? (_json['tables'] as core.List)
+          tables: json_.containsKey('tables')
+              ? (json_['tables'] as core.List)
                   .map((value) => Table.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1089,13 +1089,13 @@ class ListWorkspacesResponse {
     this.workspaces,
   });
 
-  ListWorkspacesResponse.fromJson(core.Map _json)
+  ListWorkspacesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          workspaces: _json.containsKey('workspaces')
-              ? (_json['workspaces'] as core.List)
+          workspaces: json_.containsKey('workspaces')
+              ? (json_['workspaces'] as core.List)
                   .map((value) => Workspace.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1122,13 +1122,13 @@ class LookupDetails {
     this.relationshipColumnId,
   });
 
-  LookupDetails.fromJson(core.Map _json)
+  LookupDetails.fromJson(core.Map json_)
       : this(
-          relationshipColumn: _json.containsKey('relationshipColumn')
-              ? _json['relationshipColumn'] as core.String
+          relationshipColumn: json_.containsKey('relationshipColumn')
+              ? json_['relationshipColumn'] as core.String
               : null,
-          relationshipColumnId: _json.containsKey('relationshipColumnId')
-              ? _json['relationshipColumnId'] as core.String
+          relationshipColumnId: json_.containsKey('relationshipColumnId')
+              ? json_['relationshipColumnId'] as core.String
               : null,
         );
 
@@ -1149,10 +1149,10 @@ class RelationshipDetails {
     this.linkedTable,
   });
 
-  RelationshipDetails.fromJson(core.Map _json)
+  RelationshipDetails.fromJson(core.Map json_)
       : this(
-          linkedTable: _json.containsKey('linkedTable')
-              ? _json['linkedTable'] as core.String
+          linkedTable: json_.containsKey('linkedTable')
+              ? json_['linkedTable'] as core.String
               : null,
         );
 
@@ -1191,17 +1191,17 @@ class Row {
     this.values,
   });
 
-  Row.fromJson(core.Map _json)
+  Row.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          values: _json.containsKey('values')
-              ? _json['values'] as core.Map<core.String, core.dynamic>
+          values: json_.containsKey('values')
+              ? json_['values'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1228,10 +1228,10 @@ class SavedView {
     this.name,
   });
 
-  SavedView.fromJson(core.Map _json)
+  SavedView.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1281,32 +1281,32 @@ class Table {
     this.updateTime,
   });
 
-  Table.fromJson(core.Map _json)
+  Table.fromJson(core.Map json_)
       : this(
-          columns: _json.containsKey('columns')
-              ? (_json['columns'] as core.List)
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
                   .map((value) => ColumnDescription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          savedViews: _json.containsKey('savedViews')
-              ? (_json['savedViews'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          savedViews: json_.containsKey('savedViews')
+              ? (json_['savedViews'] as core.List)
                   .map((value) => SavedView.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeZone: _json.containsKey('timeZone')
-              ? _json['timeZone'] as core.String
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -1348,16 +1348,16 @@ class UpdateRowRequest {
     this.view,
   });
 
-  UpdateRowRequest.fromJson(core.Map _json)
+  UpdateRowRequest.fromJson(core.Map json_)
       : this(
-          row: _json.containsKey('row')
+          row: json_.containsKey('row')
               ? Row.fromJson(
-                  _json['row'] as core.Map<core.String, core.dynamic>)
+                  json_['row'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: _json.containsKey('updateMask')
-              ? _json['updateMask'] as core.String
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
               : null,
-          view: _json.containsKey('view') ? _json['view'] as core.String : null,
+          view: json_.containsKey('view') ? json_['view'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1394,23 +1394,23 @@ class Workspace {
     this.updateTime,
   });
 
-  Workspace.fromJson(core.Map _json)
+  Workspace.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          tables: _json.containsKey('tables')
-              ? (_json['tables'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tables: json_.containsKey('tables')
+              ? (json_['tables'] as core.List)
                   .map((value) => Table.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 

@@ -123,21 +123,21 @@ class AvailableProjectsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/availableProjects';
+    const url_ = 'v1beta1/availableProjects';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAvailableProjectsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -170,18 +170,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -255,20 +255,20 @@ class ProjectsResource {
     core.String project, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$project') + ':addFirebase';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$project') + ':addFirebase';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Links the specified FirebaseProject with an existing
@@ -336,21 +336,21 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + ':addGoogleAnalytics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified FirebaseProject.
@@ -377,19 +377,19 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return FirebaseProject.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified
@@ -421,19 +421,19 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AdminSdkConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Google Analytics details currently associated with the specified
@@ -464,19 +464,19 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AnalyticsDetails.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each FirebaseProject accessible to the caller.
@@ -515,21 +515,21 @@ class ProjectsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1beta1/projects';
+    const url_ = 'v1beta1/projects';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFirebaseProjectsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified FirebaseProject.
@@ -570,22 +570,22 @@ class ProjectsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return FirebaseProject.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Unlinks the specified FirebaseProject from its Google Analytics account.
@@ -628,21 +628,21 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + ':removeAnalytics';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all available Apps for the specified FirebaseProject.
@@ -710,7 +710,7 @@ class ProjectsResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -718,15 +718,15 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + ':searchApps';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + ':searchApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SearchFirebaseAppsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -772,20 +772,20 @@ class ProjectsAndroidAppsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified AndroidApp.
@@ -814,19 +814,19 @@ class ProjectsAndroidAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AndroidApp.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified AndroidApp.
@@ -856,19 +856,19 @@ class ProjectsAndroidAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AndroidAppConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each AndroidApp associated with the specified FirebaseProject.
@@ -913,22 +913,22 @@ class ProjectsAndroidAppsResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/androidApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAndroidAppsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified AndroidApp.
@@ -970,22 +970,22 @@ class ProjectsAndroidAppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AndroidApp.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified AndroidApp from the project.
@@ -1017,20 +1017,20 @@ class ProjectsAndroidAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1070,21 +1070,21 @@ class ProjectsAndroidAppsShaResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ShaCertificate.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a ShaCertificate from the specified AndroidApp.
@@ -1116,18 +1116,18 @@ class ProjectsAndroidAppsShaResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the SHA-1 and SHA-256 certificates for the specified AndroidApp.
@@ -1157,19 +1157,19 @@ class ProjectsAndroidAppsShaResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/sha';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListShaCertificatesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1233,22 +1233,22 @@ class ProjectsAvailableLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/availableLocations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAvailableLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1314,22 +1314,22 @@ class ProjectsDefaultLocationResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
+    final url_ = 'v1beta1/' +
         core.Uri.encodeFull('$parent') +
         '/defaultLocation:finalize';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1370,20 +1370,20 @@ class ProjectsIosAppsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified IosApp.
@@ -1412,18 +1412,18 @@ class ProjectsIosAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return IosApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return IosApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified IosApp.
@@ -1452,19 +1452,19 @@ class ProjectsIosAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return IosAppConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each IosApp associated with the specified FirebaseProject.
@@ -1509,22 +1509,22 @@ class ProjectsIosAppsResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/iosApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListIosAppsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified IosApp.
@@ -1565,21 +1565,21 @@ class ProjectsIosAppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return IosApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return IosApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified IosApp from the project.
@@ -1611,20 +1611,20 @@ class ProjectsIosAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1665,20 +1665,20 @@ class ProjectsWebAppsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified WebApp.
@@ -1707,18 +1707,18 @@ class ProjectsWebAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return WebApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified WebApp.
@@ -1747,19 +1747,19 @@ class ProjectsWebAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return WebAppConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each WebApp associated with the specified FirebaseProject.
@@ -1804,22 +1804,22 @@ class ProjectsWebAppsResource {
     core.bool? showDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/webApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListWebAppsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified WebApp.
@@ -1860,21 +1860,21 @@ class ProjectsWebAppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return WebApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified WebApp from the project.
@@ -1906,20 +1906,20 @@ class ProjectsWebAppsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1940,10 +1940,10 @@ class AddFirebaseRequest {
     this.locationId,
   });
 
-  AddFirebaseRequest.fromJson(core.Map _json)
+  AddFirebaseRequest.fromJson(core.Map json_)
       : this(
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
         );
 
@@ -1971,13 +1971,13 @@ class AddGoogleAnalyticsRequest {
     this.analyticsPropertyId,
   });
 
-  AddGoogleAnalyticsRequest.fromJson(core.Map _json)
+  AddGoogleAnalyticsRequest.fromJson(core.Map json_)
       : this(
-          analyticsAccountId: _json.containsKey('analyticsAccountId')
-              ? _json['analyticsAccountId'] as core.String
+          analyticsAccountId: json_.containsKey('analyticsAccountId')
+              ? json_['analyticsAccountId'] as core.String
               : null,
-          analyticsPropertyId: _json.containsKey('analyticsPropertyId')
-              ? _json['analyticsPropertyId'] as core.String
+          analyticsPropertyId: json_.containsKey('analyticsPropertyId')
+              ? json_['analyticsPropertyId'] as core.String
               : null,
         );
 
@@ -2022,19 +2022,19 @@ class AdminSdkConfig {
     this.storageBucket,
   });
 
-  AdminSdkConfig.fromJson(core.Map _json)
+  AdminSdkConfig.fromJson(core.Map json_)
       : this(
-          databaseURL: _json.containsKey('databaseURL')
-              ? _json['databaseURL'] as core.String
+          databaseURL: json_.containsKey('databaseURL')
+              ? json_['databaseURL'] as core.String
               : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          storageBucket: _json.containsKey('storageBucket')
-              ? _json['storageBucket'] as core.String
+          storageBucket: json_.containsKey('storageBucket')
+              ? json_['storageBucket'] as core.String
               : null,
         );
 
@@ -2068,14 +2068,14 @@ class AnalyticsDetails {
     this.streamMappings,
   });
 
-  AnalyticsDetails.fromJson(core.Map _json)
+  AnalyticsDetails.fromJson(core.Map json_)
       : this(
-          analyticsProperty: _json.containsKey('analyticsProperty')
-              ? AnalyticsProperty.fromJson(_json['analyticsProperty']
+          analyticsProperty: json_.containsKey('analyticsProperty')
+              ? AnalyticsProperty.fromJson(json_['analyticsProperty']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          streamMappings: _json.containsKey('streamMappings')
-              ? (_json['streamMappings'] as core.List)
+          streamMappings: json_.containsKey('streamMappings')
+              ? (json_['streamMappings'] as core.List)
                   .map((value) => StreamMapping.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2117,15 +2117,15 @@ class AnalyticsProperty {
     this.id,
   });
 
-  AnalyticsProperty.fromJson(core.Map _json)
+  AnalyticsProperty.fromJson(core.Map json_)
       : this(
-          analyticsAccountId: _json.containsKey('analyticsAccountId')
-              ? _json['analyticsAccountId'] as core.String
+          analyticsAccountId: json_.containsKey('analyticsAccountId')
+              ? json_['analyticsAccountId'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2211,35 +2211,35 @@ class AndroidApp {
     this.state,
   });
 
-  AndroidApp.fromJson(core.Map _json)
+  AndroidApp.fromJson(core.Map json_)
       : this(
-          apiKeyId: _json.containsKey('apiKeyId')
-              ? _json['apiKeyId'] as core.String
+          apiKeyId: json_.containsKey('apiKeyId')
+              ? json_['apiKeyId'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          sha1Hashes: _json.containsKey('sha1Hashes')
-              ? (_json['sha1Hashes'] as core.List)
+          sha1Hashes: json_.containsKey('sha1Hashes')
+              ? (json_['sha1Hashes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sha256Hashes: _json.containsKey('sha256Hashes')
-              ? (_json['sha256Hashes'] as core.List)
+          sha256Hashes: json_.containsKey('sha256Hashes')
+              ? (json_['sha256Hashes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2262,9 +2262,9 @@ class AndroidAppConfig {
   core.List<core.int> get configFileContentsAsBytes =>
       convert.base64.decode(configFileContents!);
 
-  set configFileContentsAsBytes(core.List<core.int> _bytes) {
+  set configFileContentsAsBytes(core.List<core.int> bytes_) {
     configFileContents =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The filename that the configuration artifact for the `AndroidApp` is
@@ -2278,13 +2278,13 @@ class AndroidAppConfig {
     this.configFilename,
   });
 
-  AndroidAppConfig.fromJson(core.Map _json)
+  AndroidAppConfig.fromJson(core.Map json_)
       : this(
-          configFileContents: _json.containsKey('configFileContents')
-              ? _json['configFileContents'] as core.String
+          configFileContents: json_.containsKey('configFileContents')
+              ? json_['configFileContents'] as core.String
               : null,
-          configFilename: _json.containsKey('configFilename')
-              ? _json['configFilename'] as core.String
+          configFilename: json_.containsKey('configFilename')
+              ? json_['configFilename'] as core.String
               : null,
         );
 
@@ -2349,20 +2349,20 @@ class DefaultResources {
     this.storageBucket,
   });
 
-  DefaultResources.fromJson(core.Map _json)
+  DefaultResources.fromJson(core.Map json_)
       : this(
-          hostingSite: _json.containsKey('hostingSite')
-              ? _json['hostingSite'] as core.String
+          hostingSite: json_.containsKey('hostingSite')
+              ? json_['hostingSite'] as core.String
               : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
           realtimeDatabaseInstance:
-              _json.containsKey('realtimeDatabaseInstance')
-                  ? _json['realtimeDatabaseInstance'] as core.String
+              json_.containsKey('realtimeDatabaseInstance')
+                  ? json_['realtimeDatabaseInstance'] as core.String
                   : null,
-          storageBucket: _json.containsKey('storageBucket')
-              ? _json['storageBucket'] as core.String
+          storageBucket: json_.containsKey('storageBucket')
+              ? json_['storageBucket'] as core.String
               : null,
         );
 
@@ -2394,10 +2394,10 @@ class FinalizeDefaultLocationRequest {
     this.locationId,
   });
 
-  FinalizeDefaultLocationRequest.fromJson(core.Map _json)
+  FinalizeDefaultLocationRequest.fromJson(core.Map json_)
       : this(
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
         );
 
@@ -2473,25 +2473,25 @@ class FirebaseAppInfo {
     this.state,
   });
 
-  FirebaseAppInfo.fromJson(core.Map _json)
+  FirebaseAppInfo.fromJson(core.Map json_)
       : this(
-          apiKeyId: _json.containsKey('apiKeyId')
-              ? _json['apiKeyId'] as core.String
+          apiKeyId: json_.containsKey('apiKeyId')
+              ? json_['apiKeyId'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          namespace: _json.containsKey('namespace')
-              ? _json['namespace'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          namespace: json_.containsKey('namespace')
+              ? json_['namespace'] as core.String
               : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
+          platform: json_.containsKey('platform')
+              ? json_['platform'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2593,10 +2593,10 @@ class FirebaseProject {
     this.state,
   });
 
-  FirebaseProject.fromJson(core.Map _json)
+  FirebaseProject.fromJson(core.Map json_)
       : this(
-          annotations: _json.containsKey('annotations')
-              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -2604,23 +2604,23 @@ class FirebaseProject {
                   ),
                 )
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          projectNumber: _json.containsKey('projectNumber')
-              ? _json['projectNumber'] as core.String
+          projectNumber: json_.containsKey('projectNumber')
+              ? json_['projectNumber'] as core.String
               : null,
-          resources: _json.containsKey('resources')
+          resources: json_.containsKey('resources')
               ? DefaultResources.fromJson(
-                  _json['resources'] as core.Map<core.String, core.dynamic>)
+                  json_['resources'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2711,30 +2711,30 @@ class IosApp {
     this.teamId,
   });
 
-  IosApp.fromJson(core.Map _json)
+  IosApp.fromJson(core.Map json_)
       : this(
-          apiKeyId: _json.containsKey('apiKeyId')
-              ? _json['apiKeyId'] as core.String
+          apiKeyId: json_.containsKey('apiKeyId')
+              ? json_['apiKeyId'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          appStoreId: _json.containsKey('appStoreId')
-              ? _json['appStoreId'] as core.String
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appStoreId: json_.containsKey('appStoreId')
+              ? json_['appStoreId'] as core.String
               : null,
-          bundleId: _json.containsKey('bundleId')
-              ? _json['bundleId'] as core.String
+          bundleId: json_.containsKey('bundleId')
+              ? json_['bundleId'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          teamId: _json.containsKey('teamId')
-              ? _json['teamId'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          teamId: json_.containsKey('teamId')
+              ? json_['teamId'] as core.String
               : null,
         );
 
@@ -2758,9 +2758,9 @@ class IosAppConfig {
   core.List<core.int> get configFileContentsAsBytes =>
       convert.base64.decode(configFileContents!);
 
-  set configFileContentsAsBytes(core.List<core.int> _bytes) {
+  set configFileContentsAsBytes(core.List<core.int> bytes_) {
     configFileContents =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The filename that the configuration artifact for the `IosApp` is typically
@@ -2774,13 +2774,13 @@ class IosAppConfig {
     this.configFilename,
   });
 
-  IosAppConfig.fromJson(core.Map _json)
+  IosAppConfig.fromJson(core.Map json_)
       : this(
-          configFileContents: _json.containsKey('configFileContents')
-              ? _json['configFileContents'] as core.String
+          configFileContents: json_.containsKey('configFileContents')
+              ? json_['configFileContents'] as core.String
               : null,
-          configFilename: _json.containsKey('configFilename')
-              ? _json['configFilename'] as core.String
+          configFilename: json_.containsKey('configFilename')
+              ? json_['configFilename'] as core.String
               : null,
         );
 
@@ -2809,16 +2809,16 @@ class ListAndroidAppsResponse {
     this.nextPageToken,
   });
 
-  ListAndroidAppsResponse.fromJson(core.Map _json)
+  ListAndroidAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: _json.containsKey('apps')
-              ? (_json['apps'] as core.List)
+          apps: json_.containsKey('apps')
+              ? (json_['apps'] as core.List)
                   .map((value) => AndroidApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2846,16 +2846,16 @@ class ListAvailableLocationsResponse {
     this.nextPageToken,
   });
 
-  ListAvailableLocationsResponse.fromJson(core.Map _json)
+  ListAvailableLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2884,13 +2884,13 @@ class ListAvailableProjectsResponse {
     this.projectInfo,
   });
 
-  ListAvailableProjectsResponse.fromJson(core.Map _json)
+  ListAvailableProjectsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          projectInfo: _json.containsKey('projectInfo')
-              ? (_json['projectInfo'] as core.List)
+          projectInfo: json_.containsKey('projectInfo')
+              ? (json_['projectInfo'] as core.List)
                   .map((value) => ProjectInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2921,13 +2921,13 @@ class ListFirebaseProjectsResponse {
     this.results,
   });
 
-  ListFirebaseProjectsResponse.fromJson(core.Map _json)
+  ListFirebaseProjectsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          results: _json.containsKey('results')
-              ? (_json['results'] as core.List)
+          results: json_.containsKey('results')
+              ? (json_['results'] as core.List)
                   .map((value) => FirebaseProject.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2958,16 +2958,16 @@ class ListIosAppsResponse {
     this.nextPageToken,
   });
 
-  ListIosAppsResponse.fromJson(core.Map _json)
+  ListIosAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: _json.containsKey('apps')
-              ? (_json['apps'] as core.List)
+          apps: json_.containsKey('apps')
+              ? (json_['apps'] as core.List)
                   .map((value) => IosApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2985,10 +2985,10 @@ class ListShaCertificatesResponse {
     this.certificates,
   });
 
-  ListShaCertificatesResponse.fromJson(core.Map _json)
+  ListShaCertificatesResponse.fromJson(core.Map json_)
       : this(
-          certificates: _json.containsKey('certificates')
-              ? (_json['certificates'] as core.List)
+          certificates: json_.containsKey('certificates')
+              ? (json_['certificates'] as core.List)
                   .map((value) => ShaCertificate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3018,16 +3018,16 @@ class ListWebAppsResponse {
     this.nextPageToken,
   });
 
-  ListWebAppsResponse.fromJson(core.Map _json)
+  ListWebAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: _json.containsKey('apps')
-              ? (_json['apps'] as core.List)
+          apps: json_.containsKey('apps')
+              ? (json_['apps'] as core.List)
                   .map((value) => WebApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3068,17 +3068,17 @@ class Location {
     this.type,
   });
 
-  Location.fromJson(core.Map _json)
+  Location.fromJson(core.Map json_)
       : this(
-          features: _json.containsKey('features')
-              ? (_json['features'] as core.List)
+          features: json_.containsKey('features')
+              ? (json_['features'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3139,19 +3139,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -3192,16 +3192,16 @@ class ProjectInfo {
     this.project,
   });
 
-  ProjectInfo.fromJson(core.Map _json)
+  ProjectInfo.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
-          project: _json.containsKey('project')
-              ? _json['project'] as core.String
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
               : null,
         );
 
@@ -3229,10 +3229,10 @@ class RemoveAnalyticsRequest {
     this.analyticsPropertyId,
   });
 
-  RemoveAnalyticsRequest.fromJson(core.Map _json)
+  RemoveAnalyticsRequest.fromJson(core.Map json_)
       : this(
-          analyticsPropertyId: _json.containsKey('analyticsPropertyId')
-              ? _json['analyticsPropertyId'] as core.String
+          analyticsPropertyId: json_.containsKey('analyticsPropertyId')
+              ? json_['analyticsPropertyId'] as core.String
               : null,
         );
 
@@ -3260,14 +3260,14 @@ class RemoveAndroidAppRequest {
     this.validateOnly,
   });
 
-  RemoveAndroidAppRequest.fromJson(core.Map _json)
+  RemoveAndroidAppRequest.fromJson(core.Map json_)
       : this(
-          allowMissing: _json.containsKey('allowMissing')
-              ? _json['allowMissing'] as core.bool
+          allowMissing: json_.containsKey('allowMissing')
+              ? json_['allowMissing'] as core.bool
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
               : null,
         );
 
@@ -3296,14 +3296,14 @@ class RemoveIosAppRequest {
     this.validateOnly,
   });
 
-  RemoveIosAppRequest.fromJson(core.Map _json)
+  RemoveIosAppRequest.fromJson(core.Map json_)
       : this(
-          allowMissing: _json.containsKey('allowMissing')
-              ? _json['allowMissing'] as core.bool
+          allowMissing: json_.containsKey('allowMissing')
+              ? json_['allowMissing'] as core.bool
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
               : null,
         );
 
@@ -3332,14 +3332,14 @@ class RemoveWebAppRequest {
     this.validateOnly,
   });
 
-  RemoveWebAppRequest.fromJson(core.Map _json)
+  RemoveWebAppRequest.fromJson(core.Map json_)
       : this(
-          allowMissing: _json.containsKey('allowMissing')
-              ? _json['allowMissing'] as core.bool
+          allowMissing: json_.containsKey('allowMissing')
+              ? json_['allowMissing'] as core.bool
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
               : null,
         );
 
@@ -3367,16 +3367,16 @@ class SearchFirebaseAppsResponse {
     this.nextPageToken,
   });
 
-  SearchFirebaseAppsResponse.fromJson(core.Map _json)
+  SearchFirebaseAppsResponse.fromJson(core.Map json_)
       : this(
-          apps: _json.containsKey('apps')
-              ? (_json['apps'] as core.List)
+          apps: json_.containsKey('apps')
+              ? (json_['apps'] as core.List)
                   .map((value) => FirebaseAppInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3421,14 +3421,14 @@ class ShaCertificate {
     this.shaHash,
   });
 
-  ShaCertificate.fromJson(core.Map _json)
+  ShaCertificate.fromJson(core.Map json_)
       : this(
-          certType: _json.containsKey('certType')
-              ? _json['certType'] as core.String
+          certType: json_.containsKey('certType')
+              ? json_['certType'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          shaHash: _json.containsKey('shaHash')
-              ? _json['shaHash'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          shaHash: json_.containsKey('shaHash')
+              ? json_['shaHash'] as core.String
               : null,
         );
 
@@ -3480,14 +3480,14 @@ class StreamMapping {
     this.streamId,
   });
 
-  StreamMapping.fromJson(core.Map _json)
+  StreamMapping.fromJson(core.Map json_)
       : this(
-          app: _json.containsKey('app') ? _json['app'] as core.String : null,
-          measurementId: _json.containsKey('measurementId')
-              ? _json['measurementId'] as core.String
+          app: json_.containsKey('app') ? json_['app'] as core.String : null,
+          measurementId: json_.containsKey('measurementId')
+              ? json_['measurementId'] as core.String
               : null,
-          streamId: _json.containsKey('streamId')
-              ? _json['streamId'] as core.String
+          streamId: json_.containsKey('streamId')
+              ? json_['streamId'] as core.String
               : null,
         );
 
@@ -3573,29 +3573,29 @@ class WebApp {
     this.webId,
   });
 
-  WebApp.fromJson(core.Map _json)
+  WebApp.fromJson(core.Map json_)
       : this(
-          apiKeyId: _json.containsKey('apiKeyId')
-              ? _json['apiKeyId'] as core.String
+          apiKeyId: json_.containsKey('apiKeyId')
+              ? json_['apiKeyId'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          appUrls: _json.containsKey('appUrls')
-              ? (_json['appUrls'] as core.List)
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appUrls: json_.containsKey('appUrls')
+              ? (json_['appUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
           webId:
-              _json.containsKey('webId') ? _json['webId'] as core.String : null,
+              json_.containsKey('webId') ? json_['webId'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3677,33 +3677,33 @@ class WebAppConfig {
     this.storageBucket,
   });
 
-  WebAppConfig.fromJson(core.Map _json)
+  WebAppConfig.fromJson(core.Map json_)
       : this(
-          apiKey: _json.containsKey('apiKey')
-              ? _json['apiKey'] as core.String
+          apiKey: json_.containsKey('apiKey')
+              ? json_['apiKey'] as core.String
               : null,
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          authDomain: _json.containsKey('authDomain')
-              ? _json['authDomain'] as core.String
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          authDomain: json_.containsKey('authDomain')
+              ? json_['authDomain'] as core.String
               : null,
-          databaseURL: _json.containsKey('databaseURL')
-              ? _json['databaseURL'] as core.String
+          databaseURL: json_.containsKey('databaseURL')
+              ? json_['databaseURL'] as core.String
               : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
+          locationId: json_.containsKey('locationId')
+              ? json_['locationId'] as core.String
               : null,
-          measurementId: _json.containsKey('measurementId')
-              ? _json['measurementId'] as core.String
+          measurementId: json_.containsKey('measurementId')
+              ? json_['measurementId'] as core.String
               : null,
-          messagingSenderId: _json.containsKey('messagingSenderId')
-              ? _json['messagingSenderId'] as core.String
+          messagingSenderId: json_.containsKey('messagingSenderId')
+              ? json_['messagingSenderId'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          storageBucket: _json.containsKey('storageBucket')
-              ? _json['storageBucket'] as core.String
+          storageBucket: json_.containsKey('storageBucket')
+              ? json_['storageBucket'] as core.String
               : null,
         );
 

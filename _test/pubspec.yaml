@@ -2,11 +2,14 @@ name: file_test_package
 description: Pubspec used for unittesting of the discoveryapis_generator package.
 publish_to: none
 environment:
-  sdk: '>=2.16.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
   _discoveryapis_commons: ^1.0.0
   http: any
+
+dev_dependencies:
+  lints: ^2.0.0
 
 dependency_overrides:
   _discoveryapis_commons:

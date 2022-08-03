@@ -122,19 +122,19 @@ class AccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tagmanager/v1/accounts/' + commons.escapeVariable('$accountId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Accounts that a user has access to.
@@ -154,19 +154,19 @@ class AccountsResource {
   async.Future<ListAccountsResponse> list({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'tagmanager/v1/accounts';
+    const url_ = 'tagmanager/v1/accounts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAccountsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Account.
@@ -196,22 +196,22 @@ class AccountsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'tagmanager/v1/accounts/' + commons.escapeVariable('$accountId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Account.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -261,22 +261,22 @@ class AccountsContainersResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Container.
@@ -300,19 +300,19 @@ class AccountsContainersResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -340,21 +340,21 @@ class AccountsContainersResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Containers that belongs to a GTM Account.
@@ -377,21 +377,21 @@ class AccountsContainersResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListContainersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container.
@@ -424,24 +424,24 @@ class AccountsContainersResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -477,25 +477,25 @@ class AccountsContainersEnvironmentsResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/environments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Environment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Environment.
@@ -522,11 +522,11 @@ class AccountsContainersEnvironmentsResource {
     core.String environmentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -534,9 +534,9 @@ class AccountsContainersEnvironmentsResource {
         commons.escapeVariable('$environmentId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -567,24 +567,24 @@ class AccountsContainersEnvironmentsResource {
     core.String environmentId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/environments/' +
         commons.escapeVariable('$environmentId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Environment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Environments of a GTM Container.
@@ -610,23 +610,23 @@ class AccountsContainersEnvironmentsResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/environments';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListEnvironmentsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Environment.
@@ -662,27 +662,27 @@ class AccountsContainersEnvironmentsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/environments/' +
         commons.escapeVariable('$environmentId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Environment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -721,24 +721,24 @@ class AccountsContainersFoldersResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/folders';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Folder.
@@ -765,11 +765,11 @@ class AccountsContainersFoldersResource {
     core.String folderId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -777,9 +777,9 @@ class AccountsContainersFoldersResource {
         commons.escapeVariable('$folderId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -810,23 +810,23 @@ class AccountsContainersFoldersResource {
     core.String folderId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/folders/' +
         commons.escapeVariable('$folderId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Folders of a Container.
@@ -852,23 +852,23 @@ class AccountsContainersFoldersResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/folders';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFoldersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Folder.
@@ -904,26 +904,26 @@ class AccountsContainersFoldersResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/folders/' +
         commons.escapeVariable('$folderId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -959,11 +959,11 @@ class AccountsContainersFoldersEntitiesResource {
     core.String folderId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -971,13 +971,13 @@ class AccountsContainersFoldersEntitiesResource {
         commons.escapeVariable('$folderId') +
         '/entities';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return FolderEntities.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1023,15 +1023,15 @@ class AccountsContainersMoveFoldersResource {
     core.List<core.String>? variableId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (tagId != null) 'tagId': tagId,
       if (triggerId != null) 'triggerId': triggerId,
       if (variableId != null) 'variableId': variableId,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -1039,10 +1039,10 @@ class AccountsContainersMoveFoldersResource {
         commons.escapeVariable('$folderId');
 
     await _requester.request(
-      _url,
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1083,26 +1083,26 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     core.String environmentId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/reauthorize_environments/' +
         commons.escapeVariable('$environmentId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Environment.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1138,24 +1138,24 @@ class AccountsContainersTagsResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/tags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Tag.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Tag.
@@ -1182,11 +1182,11 @@ class AccountsContainersTagsResource {
     core.String tagId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -1194,9 +1194,9 @@ class AccountsContainersTagsResource {
         commons.escapeVariable('$tagId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1227,23 +1227,23 @@ class AccountsContainersTagsResource {
     core.String tagId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/tags/' +
         commons.escapeVariable('$tagId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Tag.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Tags of a Container.
@@ -1269,23 +1269,23 @@ class AccountsContainersTagsResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/tags';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTagsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Tag.
@@ -1321,26 +1321,26 @@ class AccountsContainersTagsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/tags/' +
         commons.escapeVariable('$tagId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Tag.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1376,24 +1376,24 @@ class AccountsContainersTriggersResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/triggers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Trigger.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Trigger.
@@ -1420,11 +1420,11 @@ class AccountsContainersTriggersResource {
     core.String triggerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -1432,9 +1432,9 @@ class AccountsContainersTriggersResource {
         commons.escapeVariable('$triggerId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1465,23 +1465,23 @@ class AccountsContainersTriggersResource {
     core.String triggerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Trigger.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Triggers of a Container.
@@ -1507,23 +1507,23 @@ class AccountsContainersTriggersResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/triggers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTriggersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Trigger.
@@ -1559,26 +1559,26 @@ class AccountsContainersTriggersResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Trigger.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1614,24 +1614,24 @@ class AccountsContainersVariablesResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/variables';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Variable.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Variable.
@@ -1658,11 +1658,11 @@ class AccountsContainersVariablesResource {
     core.String variableId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -1670,9 +1670,9 @@ class AccountsContainersVariablesResource {
         commons.escapeVariable('$variableId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1703,23 +1703,23 @@ class AccountsContainersVariablesResource {
     core.String variableId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/variables/' +
         commons.escapeVariable('$variableId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Variable.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Variables of a Container.
@@ -1745,23 +1745,23 @@ class AccountsContainersVariablesResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/variables';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVariablesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Variable.
@@ -1797,26 +1797,26 @@ class AccountsContainersVariablesResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/variables/' +
         commons.escapeVariable('$variableId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Variable.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1852,25 +1852,25 @@ class AccountsContainersVersionsResource {
     core.String containerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/versions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CreateContainerVersionResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Container Version.
@@ -1897,11 +1897,11 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -1909,9 +1909,9 @@ class AccountsContainersVersionsResource {
         commons.escapeVariable('$containerVersionId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1943,24 +1943,24 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/versions/' +
         commons.escapeVariable('$containerVersionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Container Versions of a GTM Container.
@@ -1992,25 +1992,25 @@ class AccountsContainersVersionsResource {
     core.bool? includeDeleted,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (headers != null) 'headers': ['${headers}'],
       if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/versions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListContainerVersionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a Container Version.
@@ -2043,12 +2043,12 @@ class AccountsContainersVersionsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -2056,13 +2056,13 @@ class AccountsContainersVersionsResource {
         commons.escapeVariable('$containerVersionId') +
         '/publish';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PublishContainerVersionResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a Container Version.
@@ -2095,11 +2095,11 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -2107,13 +2107,13 @@ class AccountsContainersVersionsResource {
         commons.escapeVariable('$containerVersionId') +
         '/restore';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a Container Version.
@@ -2142,11 +2142,11 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
@@ -2154,13 +2154,13 @@ class AccountsContainersVersionsResource {
         commons.escapeVariable('$containerVersionId') +
         '/undelete';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container Version.
@@ -2196,27 +2196,27 @@ class AccountsContainersVersionsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/containers/' +
         commons.escapeVariable('$containerId') +
         '/versions/' +
         commons.escapeVariable('$containerVersionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2249,23 +2249,23 @@ class AccountsPermissionsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/permissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return UserAccess.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a user from the account, revoking access to it and all of its
@@ -2290,19 +2290,19 @@ class AccountsPermissionsResource {
     core.String permissionId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/permissions/' +
         commons.escapeVariable('$permissionId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2330,22 +2330,22 @@ class AccountsPermissionsResource {
     core.String permissionId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/permissions/' +
         commons.escapeVariable('$permissionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return UserAccess.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users that have access to the account along with Account and
@@ -2369,21 +2369,21 @@ class AccountsPermissionsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/permissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListAccountUsersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user's Account & Container Permissions.
@@ -2412,24 +2412,24 @@ class AccountsPermissionsResource {
     core.String permissionId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'tagmanager/v1/accounts/' +
+    final url_ = 'tagmanager/v1/accounts/' +
         commons.escapeVariable('$accountId') +
         '/permissions/' +
         commons.escapeVariable('$permissionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return UserAccess.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2460,17 +2460,17 @@ class Account {
     this.shareData,
   });
 
-  Account.fromJson(core.Map _json)
+  Account.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          shareData: _json.containsKey('shareData')
-              ? _json['shareData'] as core.bool
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          shareData: json_.containsKey('shareData')
+              ? json_['shareData'] as core.bool
               : null,
         );
 
@@ -2495,10 +2495,10 @@ class AccountAccess {
     this.permission,
   });
 
-  AccountAccess.fromJson(core.Map _json)
+  AccountAccess.fromJson(core.Map json_)
       : this(
-          permission: _json.containsKey('permission')
-              ? (_json['permission'] as core.List)
+          permission: json_.containsKey('permission')
+              ? (json_['permission'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2547,15 +2547,15 @@ class Condition {
     this.type,
   });
 
-  Condition.fromJson(core.Map _json)
+  Condition.fromJson(core.Map json_)
       : this(
-          parameter: _json.containsKey('parameter')
-              ? (_json['parameter'] as core.List)
+          parameter: json_.containsKey('parameter')
+              ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2643,41 +2643,41 @@ class Container {
     this.usageContext,
   });
 
-  Container.fromJson(core.Map _json)
+  Container.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          domainName: _json.containsKey('domainName')
-              ? (_json['domainName'] as core.List)
+          domainName: json_.containsKey('domainName')
+              ? (json_['domainName'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          enabledBuiltInVariable: _json.containsKey('enabledBuiltInVariable')
-              ? (_json['enabledBuiltInVariable'] as core.List)
+          enabledBuiltInVariable: json_.containsKey('enabledBuiltInVariable')
+              ? (json_['enabledBuiltInVariable'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          publicId: _json.containsKey('publicId')
-              ? _json['publicId'] as core.String
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          publicId: json_.containsKey('publicId')
+              ? json_['publicId'] as core.String
               : null,
-          timeZoneCountryId: _json.containsKey('timeZoneCountryId')
-              ? _json['timeZoneCountryId'] as core.String
+          timeZoneCountryId: json_.containsKey('timeZoneCountryId')
+              ? json_['timeZoneCountryId'] as core.String
               : null,
-          timeZoneId: _json.containsKey('timeZoneId')
-              ? _json['timeZoneId'] as core.String
+          timeZoneId: json_.containsKey('timeZoneId')
+              ? json_['timeZoneId'] as core.String
               : null,
-          usageContext: _json.containsKey('usageContext')
-              ? (_json['usageContext'] as core.List)
+          usageContext: json_.containsKey('usageContext')
+              ? (json_['usageContext'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2719,13 +2719,13 @@ class ContainerAccess {
     this.permission,
   });
 
-  ContainerAccess.fromJson(core.Map _json)
+  ContainerAccess.fromJson(core.Map json_)
       : this(
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          permission: _json.containsKey('permission')
-              ? (_json['permission'] as core.List)
+          permission: json_.containsKey('permission')
+              ? (json_['permission'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2804,62 +2804,62 @@ class ContainerVersion {
     this.variable,
   });
 
-  ContainerVersion.fromJson(core.Map _json)
+  ContainerVersion.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          container: _json.containsKey('container')
+          container: json_.containsKey('container')
               ? Container.fromJson(
-                  _json['container'] as core.Map<core.String, core.dynamic>)
+                  json_['container'] as core.Map<core.String, core.dynamic>)
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          containerVersionId: _json.containsKey('containerVersionId')
-              ? _json['containerVersionId'] as core.String
+          containerVersionId: json_.containsKey('containerVersionId')
+              ? json_['containerVersionId'] as core.String
               : null,
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          folder: _json.containsKey('folder')
-              ? (_json['folder'] as core.List)
+          folder: json_.containsKey('folder')
+              ? (json_['folder'] as core.List)
                   .map((value) => Folder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          macro: _json.containsKey('macro')
-              ? (_json['macro'] as core.List)
+          macro: json_.containsKey('macro')
+              ? (json_['macro'] as core.List)
                   .map((value) => Macro.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          rule: _json.containsKey('rule')
-              ? (_json['rule'] as core.List)
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          rule: json_.containsKey('rule')
+              ? (json_['rule'] as core.List)
                   .map((value) => Rule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tag: _json.containsKey('tag')
-              ? (_json['tag'] as core.List)
+          tag: json_.containsKey('tag')
+              ? (json_['tag'] as core.List)
                   .map((value) => Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          trigger: _json.containsKey('trigger')
-              ? (_json['trigger'] as core.List)
+          trigger: json_.containsKey('trigger')
+              ? (json_['trigger'] as core.List)
                   .map((value) => Trigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          variable: _json.containsKey('variable')
-              ? (_json['variable'] as core.List)
+          variable: json_.containsKey('variable')
+              ? (json_['variable'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2930,35 +2930,35 @@ class ContainerVersionHeader {
     this.numVariables,
   });
 
-  ContainerVersionHeader.fromJson(core.Map _json)
+  ContainerVersionHeader.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          containerVersionId: _json.containsKey('containerVersionId')
-              ? _json['containerVersionId'] as core.String
+          containerVersionId: json_.containsKey('containerVersionId')
+              ? json_['containerVersionId'] as core.String
               : null,
-          deleted: _json.containsKey('deleted')
-              ? _json['deleted'] as core.bool
+          deleted: json_.containsKey('deleted')
+              ? json_['deleted'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          numMacros: _json.containsKey('numMacros')
-              ? _json['numMacros'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          numMacros: json_.containsKey('numMacros')
+              ? json_['numMacros'] as core.String
               : null,
-          numRules: _json.containsKey('numRules')
-              ? _json['numRules'] as core.String
+          numRules: json_.containsKey('numRules')
+              ? json_['numRules'] as core.String
               : null,
-          numTags: _json.containsKey('numTags')
-              ? _json['numTags'] as core.String
+          numTags: json_.containsKey('numTags')
+              ? json_['numTags'] as core.String
               : null,
-          numTriggers: _json.containsKey('numTriggers')
-              ? _json['numTriggers'] as core.String
+          numTriggers: json_.containsKey('numTriggers')
+              ? json_['numTriggers'] as core.String
               : null,
-          numVariables: _json.containsKey('numVariables')
-              ? _json['numVariables'] as core.String
+          numVariables: json_.containsKey('numVariables')
+              ? json_['numVariables'] as core.String
               : null,
         );
 
@@ -2995,13 +2995,13 @@ class CreateContainerVersionRequestVersionOptions {
     this.quickPreview,
   });
 
-  CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json)
+  CreateContainerVersionRequestVersionOptions.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          quickPreview: _json.containsKey('quickPreview')
-              ? _json['quickPreview'] as core.bool
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          quickPreview: json_.containsKey('quickPreview')
+              ? json_['quickPreview'] as core.bool
               : null,
         );
 
@@ -3025,13 +3025,13 @@ class CreateContainerVersionResponse {
     this.containerVersion,
   });
 
-  CreateContainerVersionResponse.fromJson(core.Map _json)
+  CreateContainerVersionResponse.fromJson(core.Map json_)
       : this(
-          compilerError: _json.containsKey('compilerError')
-              ? _json['compilerError'] as core.bool
+          compilerError: json_.containsKey('compilerError')
+              ? json_['compilerError'] as core.bool
               : null,
-          containerVersion: _json.containsKey('containerVersion')
-              ? ContainerVersion.fromJson(_json['containerVersion']
+          containerVersion: json_.containsKey('containerVersion')
+              ? ContainerVersion.fromJson(json_['containerVersion']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3121,39 +3121,39 @@ class Environment {
     this.url,
   });
 
-  Environment.fromJson(core.Map _json)
+  Environment.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          authorizationCode: _json.containsKey('authorizationCode')
-              ? _json['authorizationCode'] as core.String
+          authorizationCode: json_.containsKey('authorizationCode')
+              ? json_['authorizationCode'] as core.String
               : null,
           authorizationTimestampMs:
-              _json.containsKey('authorizationTimestampMs')
-                  ? _json['authorizationTimestampMs'] as core.String
+              json_.containsKey('authorizationTimestampMs')
+                  ? json_['authorizationTimestampMs'] as core.String
                   : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          containerVersionId: _json.containsKey('containerVersionId')
-              ? _json['containerVersionId'] as core.String
+          containerVersionId: json_.containsKey('containerVersionId')
+              ? json_['containerVersionId'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          enableDebug: _json.containsKey('enableDebug')
-              ? _json['enableDebug'] as core.bool
+          enableDebug: json_.containsKey('enableDebug')
+              ? json_['enableDebug'] as core.bool
               : null,
-          environmentId: _json.containsKey('environmentId')
-              ? _json['environmentId'] as core.String
+          environmentId: json_.containsKey('environmentId')
+              ? json_['environmentId'] as core.String
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3204,21 +3204,21 @@ class Folder {
     this.name,
   });
 
-  Folder.fromJson(core.Map _json)
+  Folder.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          folderId: _json.containsKey('folderId')
-              ? _json['folderId'] as core.String
+          folderId: json_.containsKey('folderId')
+              ? json_['folderId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3247,22 +3247,22 @@ class FolderEntities {
     this.variable,
   });
 
-  FolderEntities.fromJson(core.Map _json)
+  FolderEntities.fromJson(core.Map json_)
       : this(
-          tag: _json.containsKey('tag')
-              ? (_json['tag'] as core.List)
+          tag: json_.containsKey('tag')
+              ? (json_['tag'] as core.List)
                   .map((value) => Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          trigger: _json.containsKey('trigger')
-              ? (_json['trigger'] as core.List)
+          trigger: json_.containsKey('trigger')
+              ? (json_['trigger'] as core.List)
                   .map((value) => Trigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          variable: _json.containsKey('variable')
-              ? (_json['variable'] as core.List)
+          variable: json_.containsKey('variable')
+              ? (json_['variable'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3285,10 +3285,10 @@ class ListAccountUsersResponse {
     this.userAccess,
   });
 
-  ListAccountUsersResponse.fromJson(core.Map _json)
+  ListAccountUsersResponse.fromJson(core.Map json_)
       : this(
-          userAccess: _json.containsKey('userAccess')
-              ? (_json['userAccess'] as core.List)
+          userAccess: json_.containsKey('userAccess')
+              ? (json_['userAccess'] as core.List)
                   .map((value) => UserAccess.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3309,10 +3309,10 @@ class ListAccountsResponse {
     this.accounts,
   });
 
-  ListAccountsResponse.fromJson(core.Map _json)
+  ListAccountsResponse.fromJson(core.Map json_)
       : this(
-          accounts: _json.containsKey('accounts')
-              ? (_json['accounts'] as core.List)
+          accounts: json_.containsKey('accounts')
+              ? (json_['accounts'] as core.List)
                   .map((value) => Account.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3337,16 +3337,16 @@ class ListContainerVersionsResponse {
     this.containerVersionHeader,
   });
 
-  ListContainerVersionsResponse.fromJson(core.Map _json)
+  ListContainerVersionsResponse.fromJson(core.Map json_)
       : this(
-          containerVersion: _json.containsKey('containerVersion')
-              ? (_json['containerVersion'] as core.List)
+          containerVersion: json_.containsKey('containerVersion')
+              ? (json_['containerVersion'] as core.List)
                   .map((value) => ContainerVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          containerVersionHeader: _json.containsKey('containerVersionHeader')
-              ? (_json['containerVersionHeader'] as core.List)
+          containerVersionHeader: json_.containsKey('containerVersionHeader')
+              ? (json_['containerVersionHeader'] as core.List)
                   .map((value) => ContainerVersionHeader.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3369,10 +3369,10 @@ class ListContainersResponse {
     this.containers,
   });
 
-  ListContainersResponse.fromJson(core.Map _json)
+  ListContainersResponse.fromJson(core.Map json_)
       : this(
-          containers: _json.containsKey('containers')
-              ? (_json['containers'] as core.List)
+          containers: json_.containsKey('containers')
+              ? (json_['containers'] as core.List)
                   .map((value) => Container.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3393,10 +3393,10 @@ class ListEnvironmentsResponse {
     this.environments,
   });
 
-  ListEnvironmentsResponse.fromJson(core.Map _json)
+  ListEnvironmentsResponse.fromJson(core.Map json_)
       : this(
-          environments: _json.containsKey('environments')
-              ? (_json['environments'] as core.List)
+          environments: json_.containsKey('environments')
+              ? (json_['environments'] as core.List)
                   .map((value) => Environment.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3417,10 +3417,10 @@ class ListFoldersResponse {
     this.folders,
   });
 
-  ListFoldersResponse.fromJson(core.Map _json)
+  ListFoldersResponse.fromJson(core.Map json_)
       : this(
-          folders: _json.containsKey('folders')
-              ? (_json['folders'] as core.List)
+          folders: json_.containsKey('folders')
+              ? (json_['folders'] as core.List)
                   .map((value) => Folder.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3441,10 +3441,10 @@ class ListTagsResponse {
     this.tags,
   });
 
-  ListTagsResponse.fromJson(core.Map _json)
+  ListTagsResponse.fromJson(core.Map json_)
       : this(
-          tags: _json.containsKey('tags')
-              ? (_json['tags'] as core.List)
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
                   .map((value) => Tag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3465,10 +3465,10 @@ class ListTriggersResponse {
     this.triggers,
   });
 
-  ListTriggersResponse.fromJson(core.Map _json)
+  ListTriggersResponse.fromJson(core.Map json_)
       : this(
-          triggers: _json.containsKey('triggers')
-              ? (_json['triggers'] as core.List)
+          triggers: json_.containsKey('triggers')
+              ? (json_['triggers'] as core.List)
                   .map((value) => Trigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3489,10 +3489,10 @@ class ListVariablesResponse {
     this.variables,
   });
 
-  ListVariablesResponse.fromJson(core.Map _json)
+  ListVariablesResponse.fromJson(core.Map json_)
       : this(
-          variables: _json.containsKey('variables')
-              ? (_json['variables'] as core.List)
+          variables: json_.containsKey('variables')
+              ? (json_['variables'] as core.List)
                   .map((value) => Variable.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3593,49 +3593,49 @@ class Macro {
     this.type,
   });
 
-  Macro.fromJson(core.Map _json)
+  Macro.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          disablingRuleId: _json.containsKey('disablingRuleId')
-              ? (_json['disablingRuleId'] as core.List)
+          disablingRuleId: json_.containsKey('disablingRuleId')
+              ? (json_['disablingRuleId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          enablingRuleId: _json.containsKey('enablingRuleId')
-              ? (_json['enablingRuleId'] as core.List)
+          enablingRuleId: json_.containsKey('enablingRuleId')
+              ? (json_['enablingRuleId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          macroId: _json.containsKey('macroId')
-              ? _json['macroId'] as core.String
+          macroId: json_.containsKey('macroId')
+              ? json_['macroId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          parameter: _json.containsKey('parameter')
-              ? (_json['parameter'] as core.List)
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          parameter: json_.containsKey('parameter')
+              ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: _json.containsKey('parentFolderId')
-              ? _json['parentFolderId'] as core.String
+          parentFolderId: json_.containsKey('parentFolderId')
+              ? json_['parentFolderId'] as core.String
               : null,
-          scheduleEndMs: _json.containsKey('scheduleEndMs')
-              ? _json['scheduleEndMs'] as core.String
+          scheduleEndMs: json_.containsKey('scheduleEndMs')
+              ? json_['scheduleEndMs'] as core.String
               : null,
-          scheduleStartMs: _json.containsKey('scheduleStartMs')
-              ? _json['scheduleStartMs'] as core.String
+          scheduleStartMs: json_.containsKey('scheduleStartMs')
+              ? json_['scheduleStartMs'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3733,24 +3733,24 @@ class Parameter {
     this.value,
   });
 
-  Parameter.fromJson(core.Map _json)
+  Parameter.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          list: _json.containsKey('list')
-              ? (_json['list'] as core.List)
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          list: json_.containsKey('list')
+              ? (json_['list'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          map: _json.containsKey('map')
-              ? (_json['map'] as core.List)
+          map: json_.containsKey('map')
+              ? (json_['map'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3775,13 +3775,13 @@ class PublishContainerVersionResponse {
     this.containerVersion,
   });
 
-  PublishContainerVersionResponse.fromJson(core.Map _json)
+  PublishContainerVersionResponse.fromJson(core.Map json_)
       : this(
-          compilerError: _json.containsKey('compilerError')
-              ? _json['compilerError'] as core.bool
+          compilerError: json_.containsKey('compilerError')
+              ? json_['compilerError'] as core.bool
               : null,
-          containerVersion: _json.containsKey('containerVersion')
-              ? ContainerVersion.fromJson(_json['containerVersion']
+          containerVersion: json_.containsKey('containerVersion')
+              ? ContainerVersion.fromJson(json_['containerVersion']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3836,28 +3836,28 @@ class Rule {
     this.ruleId,
   });
 
-  Rule.fromJson(core.Map _json)
+  Rule.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          condition: _json.containsKey('condition')
-              ? (_json['condition'] as core.List)
+          condition: json_.containsKey('condition')
+              ? (json_['condition'] as core.List)
                   .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          ruleId: _json.containsKey('ruleId')
-              ? _json['ruleId'] as core.String
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          ruleId: json_.containsKey('ruleId')
+              ? json_['ruleId'] as core.String
               : null,
         );
 
@@ -4024,82 +4024,82 @@ class Tag {
     this.type,
   });
 
-  Tag.fromJson(core.Map _json)
+  Tag.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          blockingRuleId: _json.containsKey('blockingRuleId')
-              ? (_json['blockingRuleId'] as core.List)
+          blockingRuleId: json_.containsKey('blockingRuleId')
+              ? (json_['blockingRuleId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          blockingTriggerId: _json.containsKey('blockingTriggerId')
-              ? (_json['blockingTriggerId'] as core.List)
+          blockingTriggerId: json_.containsKey('blockingTriggerId')
+              ? (json_['blockingTriggerId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          firingRuleId: _json.containsKey('firingRuleId')
-              ? (_json['firingRuleId'] as core.List)
+          firingRuleId: json_.containsKey('firingRuleId')
+              ? (json_['firingRuleId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          firingTriggerId: _json.containsKey('firingTriggerId')
-              ? (_json['firingTriggerId'] as core.List)
+          firingTriggerId: json_.containsKey('firingTriggerId')
+              ? (json_['firingTriggerId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          liveOnly: _json.containsKey('liveOnly')
-              ? _json['liveOnly'] as core.bool
+          liveOnly: json_.containsKey('liveOnly')
+              ? json_['liveOnly'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          parameter: _json.containsKey('parameter')
-              ? (_json['parameter'] as core.List)
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          parameter: json_.containsKey('parameter')
+              ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: _json.containsKey('parentFolderId')
-              ? _json['parentFolderId'] as core.String
+          parentFolderId: json_.containsKey('parentFolderId')
+              ? json_['parentFolderId'] as core.String
               : null,
           paused:
-              _json.containsKey('paused') ? _json['paused'] as core.bool : null,
-          priority: _json.containsKey('priority')
+              json_.containsKey('paused') ? json_['paused'] as core.bool : null,
+          priority: json_.containsKey('priority')
               ? Parameter.fromJson(
-                  _json['priority'] as core.Map<core.String, core.dynamic>)
+                  json_['priority'] as core.Map<core.String, core.dynamic>)
               : null,
-          scheduleEndMs: _json.containsKey('scheduleEndMs')
-              ? _json['scheduleEndMs'] as core.String
+          scheduleEndMs: json_.containsKey('scheduleEndMs')
+              ? json_['scheduleEndMs'] as core.String
               : null,
-          scheduleStartMs: _json.containsKey('scheduleStartMs')
-              ? _json['scheduleStartMs'] as core.String
+          scheduleStartMs: json_.containsKey('scheduleStartMs')
+              ? json_['scheduleStartMs'] as core.String
               : null,
-          setupTag: _json.containsKey('setupTag')
-              ? (_json['setupTag'] as core.List)
+          setupTag: json_.containsKey('setupTag')
+              ? (json_['setupTag'] as core.List)
                   .map((value) => SetupTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tagFiringOption: _json.containsKey('tagFiringOption')
-              ? _json['tagFiringOption'] as core.String
+          tagFiringOption: json_.containsKey('tagFiringOption')
+              ? json_['tagFiringOption'] as core.String
               : null,
           tagId:
-              _json.containsKey('tagId') ? _json['tagId'] as core.String : null,
-          teardownTag: _json.containsKey('teardownTag')
-              ? (_json['teardownTag'] as core.List)
+              json_.containsKey('tagId') ? json_['tagId'] as core.String : null,
+          teardownTag: json_.containsKey('teardownTag')
+              ? (json_['teardownTag'] as core.List)
                   .map((value) => TeardownTag.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4367,119 +4367,119 @@ class Trigger {
     this.waitForTagsTimeout,
   });
 
-  Trigger.fromJson(core.Map _json)
+  Trigger.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          autoEventFilter: _json.containsKey('autoEventFilter')
-              ? (_json['autoEventFilter'] as core.List)
+          autoEventFilter: json_.containsKey('autoEventFilter')
+              ? (json_['autoEventFilter'] as core.List)
                   .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          checkValidation: _json.containsKey('checkValidation')
-              ? Parameter.fromJson(_json['checkValidation']
+          checkValidation: json_.containsKey('checkValidation')
+              ? Parameter.fromJson(json_['checkValidation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
           continuousTimeMinMilliseconds:
-              _json.containsKey('continuousTimeMinMilliseconds')
-                  ? Parameter.fromJson(_json['continuousTimeMinMilliseconds']
+              json_.containsKey('continuousTimeMinMilliseconds')
+                  ? Parameter.fromJson(json_['continuousTimeMinMilliseconds']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          customEventFilter: _json.containsKey('customEventFilter')
-              ? (_json['customEventFilter'] as core.List)
+          customEventFilter: json_.containsKey('customEventFilter')
+              ? (json_['customEventFilter'] as core.List)
                   .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          eventName: _json.containsKey('eventName')
+          eventName: json_.containsKey('eventName')
               ? Parameter.fromJson(
-                  _json['eventName'] as core.Map<core.String, core.dynamic>)
+                  json_['eventName'] as core.Map<core.String, core.dynamic>)
               : null,
-          filter: _json.containsKey('filter')
-              ? (_json['filter'] as core.List)
+          filter: json_.containsKey('filter')
+              ? (json_['filter'] as core.List)
                   .map((value) => Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
           horizontalScrollPercentageList:
-              _json.containsKey('horizontalScrollPercentageList')
-                  ? Parameter.fromJson(_json['horizontalScrollPercentageList']
+              json_.containsKey('horizontalScrollPercentageList')
+                  ? Parameter.fromJson(json_['horizontalScrollPercentageList']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          interval: _json.containsKey('interval')
+          interval: json_.containsKey('interval')
               ? Parameter.fromJson(
-                  _json['interval'] as core.Map<core.String, core.dynamic>)
+                  json_['interval'] as core.Map<core.String, core.dynamic>)
               : null,
-          intervalSeconds: _json.containsKey('intervalSeconds')
-              ? Parameter.fromJson(_json['intervalSeconds']
+          intervalSeconds: json_.containsKey('intervalSeconds')
+              ? Parameter.fromJson(json_['intervalSeconds']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          limit: _json.containsKey('limit')
+          limit: json_.containsKey('limit')
               ? Parameter.fromJson(
-                  _json['limit'] as core.Map<core.String, core.dynamic>)
+                  json_['limit'] as core.Map<core.String, core.dynamic>)
               : null,
-          maxTimerLengthSeconds: _json.containsKey('maxTimerLengthSeconds')
-              ? Parameter.fromJson(_json['maxTimerLengthSeconds']
+          maxTimerLengthSeconds: json_.containsKey('maxTimerLengthSeconds')
+              ? Parameter.fromJson(json_['maxTimerLengthSeconds']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parameter: _json.containsKey('parameter')
-              ? (_json['parameter'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parameter: json_.containsKey('parameter')
+              ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: _json.containsKey('parentFolderId')
-              ? _json['parentFolderId'] as core.String
+          parentFolderId: json_.containsKey('parentFolderId')
+              ? json_['parentFolderId'] as core.String
               : null,
-          selector: _json.containsKey('selector')
+          selector: json_.containsKey('selector')
               ? Parameter.fromJson(
-                  _json['selector'] as core.Map<core.String, core.dynamic>)
+                  json_['selector'] as core.Map<core.String, core.dynamic>)
               : null,
           totalTimeMinMilliseconds:
-              _json.containsKey('totalTimeMinMilliseconds')
-                  ? Parameter.fromJson(_json['totalTimeMinMilliseconds']
+              json_.containsKey('totalTimeMinMilliseconds')
+                  ? Parameter.fromJson(json_['totalTimeMinMilliseconds']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          triggerId: _json.containsKey('triggerId')
-              ? _json['triggerId'] as core.String
+          triggerId: json_.containsKey('triggerId')
+              ? json_['triggerId'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          uniqueTriggerId: _json.containsKey('uniqueTriggerId')
-              ? Parameter.fromJson(_json['uniqueTriggerId']
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uniqueTriggerId: json_.containsKey('uniqueTriggerId')
+              ? Parameter.fromJson(json_['uniqueTriggerId']
                   as core.Map<core.String, core.dynamic>)
               : null,
           verticalScrollPercentageList:
-              _json.containsKey('verticalScrollPercentageList')
-                  ? Parameter.fromJson(_json['verticalScrollPercentageList']
+              json_.containsKey('verticalScrollPercentageList')
+                  ? Parameter.fromJson(json_['verticalScrollPercentageList']
                       as core.Map<core.String, core.dynamic>)
                   : null,
-          visibilitySelector: _json.containsKey('visibilitySelector')
-              ? Parameter.fromJson(_json['visibilitySelector']
+          visibilitySelector: json_.containsKey('visibilitySelector')
+              ? Parameter.fromJson(json_['visibilitySelector']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          visiblePercentageMax: _json.containsKey('visiblePercentageMax')
-              ? Parameter.fromJson(_json['visiblePercentageMax']
+          visiblePercentageMax: json_.containsKey('visiblePercentageMax')
+              ? Parameter.fromJson(json_['visiblePercentageMax']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          visiblePercentageMin: _json.containsKey('visiblePercentageMin')
-              ? Parameter.fromJson(_json['visiblePercentageMin']
+          visiblePercentageMin: json_.containsKey('visiblePercentageMin')
+              ? Parameter.fromJson(json_['visiblePercentageMin']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          waitForTags: _json.containsKey('waitForTags')
+          waitForTags: json_.containsKey('waitForTags')
               ? Parameter.fromJson(
-                  _json['waitForTags'] as core.Map<core.String, core.dynamic>)
+                  json_['waitForTags'] as core.Map<core.String, core.dynamic>)
               : null,
-          waitForTagsTimeout: _json.containsKey('waitForTagsTimeout')
-              ? Parameter.fromJson(_json['waitForTagsTimeout']
+          waitForTagsTimeout: json_.containsKey('waitForTagsTimeout')
+              ? Parameter.fromJson(json_['waitForTagsTimeout']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -4558,26 +4558,26 @@ class UserAccess {
     this.permissionId,
   });
 
-  UserAccess.fromJson(core.Map _json)
+  UserAccess.fromJson(core.Map json_)
       : this(
-          accountAccess: _json.containsKey('accountAccess')
+          accountAccess: json_.containsKey('accountAccess')
               ? AccountAccess.fromJson(
-                  _json['accountAccess'] as core.Map<core.String, core.dynamic>)
+                  json_['accountAccess'] as core.Map<core.String, core.dynamic>)
               : null,
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          containerAccess: _json.containsKey('containerAccess')
-              ? (_json['containerAccess'] as core.List)
+          containerAccess: json_.containsKey('containerAccess')
+              ? (json_['containerAccess'] as core.List)
                   .map((value) => ContainerAccess.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          emailAddress: _json.containsKey('emailAddress')
-              ? _json['emailAddress'] as core.String
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
               : null,
-          permissionId: _json.containsKey('permissionId')
-              ? _json['permissionId'] as core.String
+          permissionId: json_.containsKey('permissionId')
+              ? json_['permissionId'] as core.String
               : null,
         );
 
@@ -4679,48 +4679,48 @@ class Variable {
     this.variableId,
   });
 
-  Variable.fromJson(core.Map _json)
+  Variable.fromJson(core.Map json_)
       : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
               : null,
-          containerId: _json.containsKey('containerId')
-              ? _json['containerId'] as core.String
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
               : null,
-          disablingTriggerId: _json.containsKey('disablingTriggerId')
-              ? (_json['disablingTriggerId'] as core.List)
+          disablingTriggerId: json_.containsKey('disablingTriggerId')
+              ? (json_['disablingTriggerId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          enablingTriggerId: _json.containsKey('enablingTriggerId')
-              ? (_json['enablingTriggerId'] as core.List)
+          enablingTriggerId: json_.containsKey('enablingTriggerId')
+              ? (json_['enablingTriggerId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          fingerprint: _json.containsKey('fingerprint')
-              ? _json['fingerprint'] as core.String
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
-              _json.containsKey('notes') ? _json['notes'] as core.String : null,
-          parameter: _json.containsKey('parameter')
-              ? (_json['parameter'] as core.List)
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          parameter: json_.containsKey('parameter')
+              ? (json_['parameter'] as core.List)
                   .map((value) => Parameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          parentFolderId: _json.containsKey('parentFolderId')
-              ? _json['parentFolderId'] as core.String
+          parentFolderId: json_.containsKey('parentFolderId')
+              ? json_['parentFolderId'] as core.String
               : null,
-          scheduleEndMs: _json.containsKey('scheduleEndMs')
-              ? _json['scheduleEndMs'] as core.String
+          scheduleEndMs: json_.containsKey('scheduleEndMs')
+              ? json_['scheduleEndMs'] as core.String
               : null,
-          scheduleStartMs: _json.containsKey('scheduleStartMs')
-              ? _json['scheduleStartMs'] as core.String
+          scheduleStartMs: json_.containsKey('scheduleStartMs')
+              ? json_['scheduleStartMs'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          variableId: _json.containsKey('variableId')
-              ? _json['variableId'] as core.String
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          variableId: json_.containsKey('variableId')
+              ? json_['variableId'] as core.String
               : null,
         );
 

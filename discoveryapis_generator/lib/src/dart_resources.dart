@@ -237,7 +237,7 @@ class DartResourceMethod {
       final parameterEncode =
           requestParameter!.type.jsonEncode('${requestParameter!.name}');
       params.write(
-        'final _body = ${imports.convert.ref()}json.encode($parameterEncode);',
+        'final body_ = ${imports.convert.ref()}json.encode($parameterEncode);',
       );
     }
 
@@ -316,7 +316,7 @@ class DartResourceMethod {
     if (queryParams.isNotEmpty) {
       params.writeln(
         '''
-final _queryParams = <${core}String, ${core}List<${core}String>>{
+final queryParams_ = <${core}String, ${core}List<${core}String>>{
   ${queryParams.join('\n')}
 };''',
       );
@@ -325,34 +325,34 @@ final _queryParams = <${core}String, ${core}List<${core}String>>{
     final urlPatternCode = StringBuffer();
     if (!mediaUpload) {
       urlPatternCode.writeln(
-        urlPattern.variableDeclaration('_url', templateVars),
+        urlPattern.variableDeclaration('url_', templateVars),
       );
     } else {
-      urlPatternCode.writeln('    ${core}String _url;');
+      urlPatternCode.writeln('    ${core}String url_;');
       final patternExpr = urlPattern.stringExpression(templateVars);
       if (!mediaUploadResumable) {
         urlPatternCode.write('''
     if (uploadMedia == null) {
-      _url = $patternExpr;
+      url_ = $patternExpr;
     } else {
-      _url = ${mediaUploadPatterns!['simple']!.stringExpression(templateVars)};
+      url_ = ${mediaUploadPatterns!['simple']!.stringExpression(templateVars)};
     }
 ''');
       } else {
         urlPatternCode.write('''
     if (uploadMedia == null) {
-      _url = $patternExpr;
+      url_ = $patternExpr;
     } else if (uploadOptions is ${imports.commons}.ResumableUploadOptions) {
-      _url = ${mediaUploadPatterns!['resumable']!.stringExpression(templateVars)};
+      url_ = ${mediaUploadPatterns!['resumable']!.stringExpression(templateVars)};
     } else {
-      _url = ${mediaUploadPatterns!['simple']!.stringExpression(templateVars)};
+      url_ = ${mediaUploadPatterns!['simple']!.stringExpression(templateVars)};
     }
 ''');
       }
     }
 
     final responseVar =
-        (returnType == null && !mediaDownload) ? '' : 'final _response = ';
+        (returnType == null && !mediaDownload) ? '' : 'final response_ = ';
 
     final downloadOptions = mediaDownload
         ? 'downloadOptions: downloadOptions,'
@@ -360,9 +360,9 @@ final _queryParams = <${core}String, ${core}List<${core}String>>{
             ? 'downloadOptions: null,'
             : '';
 
-    final bodyOption = requestParameter == null ? '' : 'body: _body,';
+    final bodyOption = requestParameter == null ? '' : 'body: body_,';
     final queryParamsArg =
-        queryParams.isNotEmpty ? 'queryParams: _queryParams,' : '';
+        queryParams.isNotEmpty ? 'queryParams: queryParams_,' : '';
     final mediaUploadArg = mediaUpload ? 'uploadMedia: uploadMedia,' : '';
     final mediaResumableArg = mediaUploadResumable
         ? 'uploadOptions: uploadOptions,'
@@ -377,7 +377,7 @@ final _queryParams = <${core}String, ${core}List<${core}String>>{
 $urlPatternCode
 
     $responseVar await _requester.request(
-      _url,
+      url_,
       '$httpMethod',
       $bodyOption
       $queryParamsArg
@@ -388,8 +388,8 @@ $urlPatternCode
 ''');
 
     final data = enableDataWrapper
-        ? "(_response as ${imports.core.ref()}Map)['data']"
-        : '_response';
+        ? "(response_ as ${imports.core.ref()}Map)['data']"
+        : 'response_';
     final plainResponse =
         returnType != null ? returnType!.jsonDecode(data) : 'null';
     if (mediaDownload) {
@@ -397,7 +397,7 @@ $urlPatternCode
     if (downloadOptions.isMetadataDownload) {
       return $plainResponse;
     } else {
-      return _response as ${imports.commons}.Media;
+      return response_ as ${imports.commons}.Media;
     }
 ''');
     } else if (returnType != null) {

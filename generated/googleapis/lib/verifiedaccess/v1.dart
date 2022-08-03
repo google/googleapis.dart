@@ -82,20 +82,20 @@ class ChallengeResource {
     Empty request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/challenge';
+    const url_ = 'v1/challenge';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Challenge.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Challenge.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// VerifyChallengeResponse API
@@ -118,21 +118,21 @@ class ChallengeResource {
     VerifyChallengeResponseRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/challenge:verify';
+    const url_ = 'v1/challenge:verify';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return VerifyChallengeResponseResult.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -150,15 +150,15 @@ class Challenge {
     this.challenge,
   });
 
-  Challenge.fromJson(core.Map _json)
+  Challenge.fromJson(core.Map json_)
       : this(
-          alternativeChallenge: _json.containsKey('alternativeChallenge')
-              ? SignedData.fromJson(_json['alternativeChallenge']
+          alternativeChallenge: json_.containsKey('alternativeChallenge')
+              ? SignedData.fromJson(json_['alternativeChallenge']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          challenge: _json.containsKey('challenge')
+          challenge: json_.containsKey('challenge')
               ? SignedData.fromJson(
-                  _json['challenge'] as core.Map<core.String, core.dynamic>)
+                  json_['challenge'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -183,18 +183,18 @@ class SignedData {
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
-  set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> bytes_) {
     data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The signature of the data field.
   core.String? signature;
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
-  set signatureAsBytes(core.List<core.int> _bytes) {
+  set signatureAsBytes(core.List<core.int> bytes_) {
     signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SignedData({
@@ -202,11 +202,11 @@ class SignedData {
     this.signature,
   });
 
-  SignedData.fromJson(core.Map _json)
+  SignedData.fromJson(core.Map json_)
       : this(
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
         );
 
@@ -234,14 +234,14 @@ class VerifyChallengeResponseRequest {
     this.expectedIdentity,
   });
 
-  VerifyChallengeResponseRequest.fromJson(core.Map _json)
+  VerifyChallengeResponseRequest.fromJson(core.Map json_)
       : this(
-          challengeResponse: _json.containsKey('challengeResponse')
-              ? SignedData.fromJson(_json['challengeResponse']
+          challengeResponse: json_.containsKey('challengeResponse')
+              ? SignedData.fromJson(json_['challengeResponse']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          expectedIdentity: _json.containsKey('expectedIdentity')
-              ? _json['expectedIdentity'] as core.String
+          expectedIdentity: json_.containsKey('expectedIdentity')
+              ? json_['expectedIdentity'] as core.String
               : null,
         );
 
@@ -284,20 +284,20 @@ class VerifyChallengeResponseResult {
     this.verificationOutput,
   });
 
-  VerifyChallengeResponseResult.fromJson(core.Map _json)
+  VerifyChallengeResponseResult.fromJson(core.Map json_)
       : this(
-          deviceEnrollmentId: _json.containsKey('deviceEnrollmentId')
-              ? _json['deviceEnrollmentId'] as core.String
+          deviceEnrollmentId: json_.containsKey('deviceEnrollmentId')
+              ? json_['deviceEnrollmentId'] as core.String
               : null,
-          devicePermanentId: _json.containsKey('devicePermanentId')
-              ? _json['devicePermanentId'] as core.String
+          devicePermanentId: json_.containsKey('devicePermanentId')
+              ? json_['devicePermanentId'] as core.String
               : null,
           signedPublicKeyAndChallenge:
-              _json.containsKey('signedPublicKeyAndChallenge')
-                  ? _json['signedPublicKeyAndChallenge'] as core.String
+              json_.containsKey('signedPublicKeyAndChallenge')
+                  ? json_['signedPublicKeyAndChallenge'] as core.String
                   : null,
-          verificationOutput: _json.containsKey('verificationOutput')
-              ? _json['verificationOutput'] as core.String
+          verificationOutput: json_.containsKey('verificationOutput')
+              ? json_['verificationOutput'] as core.String
               : null,
         );
 

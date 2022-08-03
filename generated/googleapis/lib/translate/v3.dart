@@ -102,21 +102,21 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + ':detectLanguage';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':detectLanguage';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DetectLanguageResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of supported languages for translation.
@@ -160,22 +160,22 @@ class ProjectsResource {
     core.String? model,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (displayLanguageCode != null)
         'displayLanguageCode': [displayLanguageCode],
       if (model != null) 'model': [model],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/supportedLanguages';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/supportedLanguages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SupportedLanguages.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Translates input text and returns translated text.
@@ -209,21 +209,21 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + ':translateText';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':translateText';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TranslateTextResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -271,21 +271,21 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v3/' + core.Uri.encodeFull('$parent') + ':batchTranslateDocument';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Translates a large volume of text in asynchronous batch mode.
@@ -323,20 +323,20 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + ':batchTranslateText';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':batchTranslateText';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Detects the language of text within a request.
@@ -370,21 +370,21 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + ':detectLanguage';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':detectLanguage';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DetectLanguageResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a location.
@@ -408,18 +408,18 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name');
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of supported languages for translation.
@@ -463,22 +463,22 @@ class ProjectsLocationsResource {
     core.String? model,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (displayLanguageCode != null)
         'displayLanguageCode': [displayLanguageCode],
       if (model != null) 'model': [model],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/supportedLanguages';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/supportedLanguages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SupportedLanguages.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -515,22 +515,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name') + '/locations';
+    final url_ = 'v3/' + core.Uri.encodeFull('$name') + '/locations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Translates documents in synchronous mode.
@@ -563,21 +563,21 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + ':translateDocument';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':translateDocument';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TranslateDocumentResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Translates input text and returns translated text.
@@ -611,21 +611,21 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + ':translateText';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':translateText';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TranslateTextResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -661,20 +661,20 @@ class ProjectsLocationsGlossariesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/glossaries';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/glossaries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a glossary, or cancels glossary construction if the glossary isn't
@@ -702,18 +702,18 @@ class ProjectsLocationsGlossariesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name');
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a glossary.
@@ -740,18 +740,18 @@ class ProjectsLocationsGlossariesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name');
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Glossary.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Glossary.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists glossaries in a project.
@@ -807,22 +807,22 @@ class ProjectsLocationsGlossariesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/glossaries';
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/glossaries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGlossariesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -866,20 +866,20 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -908,18 +908,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name');
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -947,18 +947,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name');
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1000,22 +1000,22 @@ class ProjectsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v3/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Waits until the specified long-running operation is done or reaches at
@@ -1052,20 +1052,20 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v3/' + core.Uri.encodeFull('$name') + ':wait';
+    final url_ = 'v3/' + core.Uri.encodeFull('$name') + ':wait';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1092,11 +1092,11 @@ class BatchDocumentInputConfig {
     this.gcsSource,
   });
 
-  BatchDocumentInputConfig.fromJson(core.Map _json)
+  BatchDocumentInputConfig.fromJson(core.Map json_)
       : this(
-          gcsSource: _json.containsKey('gcsSource')
+          gcsSource: json_.containsKey('gcsSource')
               ? GcsSource.fromJson(
-                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1149,10 +1149,10 @@ class BatchDocumentOutputConfig {
     this.gcsDestination,
   });
 
-  BatchDocumentOutputConfig.fromJson(core.Map _json)
+  BatchDocumentOutputConfig.fromJson(core.Map json_)
       : this(
-          gcsDestination: _json.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(_json['gcsDestination']
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GcsDestination.fromJson(json_['gcsDestination']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1231,10 +1231,10 @@ class BatchTranslateDocumentRequest {
     this.targetLanguageCodes,
   });
 
-  BatchTranslateDocumentRequest.fromJson(core.Map _json)
+  BatchTranslateDocumentRequest.fromJson(core.Map json_)
       : this(
-          formatConversions: _json.containsKey('formatConversions')
-              ? (_json['formatConversions']
+          formatConversions: json_.containsKey('formatConversions')
+              ? (json_['formatConversions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -1243,8 +1243,8 @@ class BatchTranslateDocumentRequest {
                   ),
                 )
               : null,
-          glossaries: _json.containsKey('glossaries')
-              ? (_json['glossaries'] as core.Map<core.String, core.dynamic>)
+          glossaries: json_.containsKey('glossaries')
+              ? (json_['glossaries'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -1253,29 +1253,29 @@ class BatchTranslateDocumentRequest {
                   ),
                 )
               : null,
-          inputConfigs: _json.containsKey('inputConfigs')
-              ? (_json['inputConfigs'] as core.List)
+          inputConfigs: json_.containsKey('inputConfigs')
+              ? (json_['inputConfigs'] as core.List)
                   .map((value) => BatchDocumentInputConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          models: _json.containsKey('models')
-              ? (_json['models'] as core.Map<core.String, core.dynamic>).map(
+          models: json_.containsKey('models')
+              ? (json_['models'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          outputConfig: _json.containsKey('outputConfig')
+          outputConfig: json_.containsKey('outputConfig')
               ? BatchDocumentOutputConfig.fromJson(
-                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceLanguageCode: _json.containsKey('sourceLanguageCode')
-              ? _json['sourceLanguageCode'] as core.String
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
               : null,
-          targetLanguageCodes: _json.containsKey('targetLanguageCodes')
-              ? (_json['targetLanguageCodes'] as core.List)
+          targetLanguageCodes: json_.containsKey('targetLanguageCodes')
+              ? (json_['targetLanguageCodes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1366,10 +1366,10 @@ class BatchTranslateTextRequest {
     this.targetLanguageCodes,
   });
 
-  BatchTranslateTextRequest.fromJson(core.Map _json)
+  BatchTranslateTextRequest.fromJson(core.Map json_)
       : this(
-          glossaries: _json.containsKey('glossaries')
-              ? (_json['glossaries'] as core.Map<core.String, core.dynamic>)
+          glossaries: json_.containsKey('glossaries')
+              ? (json_['glossaries'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -1378,37 +1378,37 @@ class BatchTranslateTextRequest {
                   ),
                 )
               : null,
-          inputConfigs: _json.containsKey('inputConfigs')
-              ? (_json['inputConfigs'] as core.List)
+          inputConfigs: json_.containsKey('inputConfigs')
+              ? (json_['inputConfigs'] as core.List)
                   .map((value) => InputConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          models: _json.containsKey('models')
-              ? (_json['models'] as core.Map<core.String, core.dynamic>).map(
+          models: json_.containsKey('models')
+              ? (json_['models'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          outputConfig: _json.containsKey('outputConfig')
+          outputConfig: json_.containsKey('outputConfig')
               ? OutputConfig.fromJson(
-                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceLanguageCode: _json.containsKey('sourceLanguageCode')
-              ? _json['sourceLanguageCode'] as core.String
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
               : null,
-          targetLanguageCodes: _json.containsKey('targetLanguageCodes')
-              ? (_json['targetLanguageCodes'] as core.List)
+          targetLanguageCodes: json_.containsKey('targetLanguageCodes')
+              ? (json_['targetLanguageCodes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1472,24 +1472,24 @@ class DetectLanguageRequest {
     this.model,
   });
 
-  DetectLanguageRequest.fromJson(core.Map _json)
+  DetectLanguageRequest.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
+              json_.containsKey('model') ? json_['model'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1511,10 +1511,10 @@ class DetectLanguageResponse {
     this.languages,
   });
 
-  DetectLanguageResponse.fromJson(core.Map _json)
+  DetectLanguageResponse.fromJson(core.Map json_)
       : this(
-          languages: _json.containsKey('languages')
-              ? (_json['languages'] as core.List)
+          languages: json_.containsKey('languages')
+              ? (json_['languages'] as core.List)
                   .map((value) => DetectedLanguage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1540,13 +1540,13 @@ class DetectedLanguage {
     this.languageCode,
   });
 
-  DetectedLanguage.fromJson(core.Map _json)
+  DetectedLanguage.fromJson(core.Map json_)
       : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
+          confidence: json_.containsKey('confidence')
+              ? (json_['confidence'] as core.num).toDouble()
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
         );
 
@@ -1562,9 +1562,9 @@ class DocumentInputConfig {
   core.String? content;
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
-  set contentAsBytes(core.List<core.int> _bytes) {
+  set contentAsBytes(core.List<core.int> bytes_) {
     content =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Google Cloud Storage location.
@@ -1590,17 +1590,17 @@ class DocumentInputConfig {
     this.mimeType,
   });
 
-  DocumentInputConfig.fromJson(core.Map _json)
+  DocumentInputConfig.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          gcsSource: _json.containsKey('gcsSource')
+          gcsSource: json_.containsKey('gcsSource')
               ? GcsSource.fromJson(
-                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
         );
 
@@ -1665,14 +1665,14 @@ class DocumentOutputConfig {
     this.mimeType,
   });
 
-  DocumentOutputConfig.fromJson(core.Map _json)
+  DocumentOutputConfig.fromJson(core.Map json_)
       : this(
-          gcsDestination: _json.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(_json['gcsDestination']
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GcsDestination.fromJson(json_['gcsDestination']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
         );
 
@@ -1707,18 +1707,18 @@ class DocumentTranslation {
     this.mimeType,
   });
 
-  DocumentTranslation.fromJson(core.Map _json)
+  DocumentTranslation.fromJson(core.Map json_)
       : this(
-          byteStreamOutputs: _json.containsKey('byteStreamOutputs')
-              ? (_json['byteStreamOutputs'] as core.List)
+          byteStreamOutputs: json_.containsKey('byteStreamOutputs')
+              ? (json_['byteStreamOutputs'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          detectedLanguageCode: _json.containsKey('detectedLanguageCode')
-              ? _json['detectedLanguageCode'] as core.String
+          detectedLanguageCode: json_.containsKey('detectedLanguageCode')
+              ? json_['detectedLanguageCode'] as core.String
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
         );
 
@@ -1754,10 +1754,10 @@ class GcsDestination {
     this.outputUriPrefix,
   });
 
-  GcsDestination.fromJson(core.Map _json)
+  GcsDestination.fromJson(core.Map json_)
       : this(
-          outputUriPrefix: _json.containsKey('outputUriPrefix')
-              ? _json['outputUriPrefix'] as core.String
+          outputUriPrefix: json_.containsKey('outputUriPrefix')
+              ? json_['outputUriPrefix'] as core.String
               : null,
         );
 
@@ -1779,10 +1779,10 @@ class GcsSource {
     this.inputUri,
   });
 
-  GcsSource.fromJson(core.Map _json)
+  GcsSource.fromJson(core.Map json_)
       : this(
-          inputUri: _json.containsKey('inputUri')
-              ? _json['inputUri'] as core.String
+          inputUri: json_.containsKey('inputUri')
+              ? json_['inputUri'] as core.String
               : null,
         );
 
@@ -1839,29 +1839,29 @@ class Glossary {
     this.submitTime,
   });
 
-  Glossary.fromJson(core.Map _json)
+  Glossary.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          entryCount: _json.containsKey('entryCount')
-              ? _json['entryCount'] as core.int
+          entryCount: json_.containsKey('entryCount')
+              ? json_['entryCount'] as core.int
               : null,
-          inputConfig: _json.containsKey('inputConfig')
+          inputConfig: json_.containsKey('inputConfig')
               ? GlossaryInputConfig.fromJson(
-                  _json['inputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          languageCodesSet: _json.containsKey('languageCodesSet')
-              ? LanguageCodesSet.fromJson(_json['languageCodesSet']
+          languageCodesSet: json_.containsKey('languageCodesSet')
+              ? LanguageCodesSet.fromJson(json_['languageCodesSet']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          languagePair: _json.containsKey('languagePair')
+          languagePair: json_.containsKey('languagePair')
               ? LanguageCodePair.fromJson(
-                  _json['languagePair'] as core.Map<core.String, core.dynamic>)
+                  json_['languagePair'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          submitTime: _json.containsKey('submitTime')
-              ? _json['submitTime'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          submitTime: json_.containsKey('submitTime')
+              ? json_['submitTime'] as core.String
               : null,
         );
 
@@ -1900,11 +1900,11 @@ class GlossaryInputConfig {
     this.gcsSource,
   });
 
-  GlossaryInputConfig.fromJson(core.Map _json)
+  GlossaryInputConfig.fromJson(core.Map json_)
       : this(
-          gcsSource: _json.containsKey('gcsSource')
+          gcsSource: json_.containsKey('gcsSource')
               ? GcsSource.fromJson(
-                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1947,14 +1947,14 @@ class InputConfig {
     this.mimeType,
   });
 
-  InputConfig.fromJson(core.Map _json)
+  InputConfig.fromJson(core.Map json_)
       : this(
-          gcsSource: _json.containsKey('gcsSource')
+          gcsSource: json_.containsKey('gcsSource')
               ? GcsSource.fromJson(
-                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
         );
 
@@ -1985,13 +1985,13 @@ class LanguageCodePair {
     this.targetLanguageCode,
   });
 
-  LanguageCodePair.fromJson(core.Map _json)
+  LanguageCodePair.fromJson(core.Map json_)
       : this(
-          sourceLanguageCode: _json.containsKey('sourceLanguageCode')
-              ? _json['sourceLanguageCode'] as core.String
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
               : null,
-          targetLanguageCode: _json.containsKey('targetLanguageCode')
-              ? _json['targetLanguageCode'] as core.String
+          targetLanguageCode: json_.containsKey('targetLanguageCode')
+              ? json_['targetLanguageCode'] as core.String
               : null,
         );
 
@@ -2015,10 +2015,10 @@ class LanguageCodesSet {
     this.languageCodes,
   });
 
-  LanguageCodesSet.fromJson(core.Map _json)
+  LanguageCodesSet.fromJson(core.Map json_)
       : this(
-          languageCodes: _json.containsKey('languageCodes')
-              ? (_json['languageCodes'] as core.List)
+          languageCodes: json_.containsKey('languageCodes')
+              ? (json_['languageCodes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2046,16 +2046,16 @@ class ListGlossariesResponse {
     this.nextPageToken,
   });
 
-  ListGlossariesResponse.fromJson(core.Map _json)
+  ListGlossariesResponse.fromJson(core.Map json_)
       : this(
-          glossaries: _json.containsKey('glossaries')
-              ? (_json['glossaries'] as core.List)
+          glossaries: json_.containsKey('glossaries')
+              ? (json_['glossaries'] as core.List)
                   .map((value) => Glossary.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2078,16 +2078,16 @@ class ListLocationsResponse {
     this.nextPageToken,
   });
 
-  ListLocationsResponse.fromJson(core.Map _json)
+  ListLocationsResponse.fromJson(core.Map json_)
       : this(
-          locations: _json.containsKey('locations')
-              ? (_json['locations'] as core.List)
+          locations: json_.containsKey('locations')
+              ? (json_['locations'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -2110,13 +2110,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2183,19 +2183,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2265,10 +2265,10 @@ class OutputConfig {
     this.gcsDestination,
   });
 
-  OutputConfig.fromJson(core.Map _json)
+  OutputConfig.fromJson(core.Map json_)
       : this(
-          gcsDestination: _json.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(_json['gcsDestination']
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GcsDestination.fromJson(json_['gcsDestination']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2314,19 +2314,19 @@ class SupportedLanguage {
     this.supportTarget,
   });
 
-  SupportedLanguage.fromJson(core.Map _json)
+  SupportedLanguage.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          supportSource: _json.containsKey('supportSource')
-              ? _json['supportSource'] as core.bool
+          supportSource: json_.containsKey('supportSource')
+              ? json_['supportSource'] as core.bool
               : null,
-          supportTarget: _json.containsKey('supportTarget')
-              ? _json['supportTarget'] as core.bool
+          supportTarget: json_.containsKey('supportTarget')
+              ? json_['supportTarget'] as core.bool
               : null,
         );
 
@@ -2350,10 +2350,10 @@ class SupportedLanguages {
     this.languages,
   });
 
-  SupportedLanguages.fromJson(core.Map _json)
+  SupportedLanguages.fromJson(core.Map json_)
       : this(
-          languages: _json.containsKey('languages')
-              ? (_json['languages'] as core.List)
+          languages: json_.containsKey('languages')
+              ? (json_['languages'] as core.List)
                   .map((value) => SupportedLanguage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2442,22 +2442,22 @@ class TranslateDocumentRequest {
     this.targetLanguageCode,
   });
 
-  TranslateDocumentRequest.fromJson(core.Map _json)
+  TranslateDocumentRequest.fromJson(core.Map json_)
       : this(
-          documentInputConfig: _json.containsKey('documentInputConfig')
-              ? DocumentInputConfig.fromJson(_json['documentInputConfig']
+          documentInputConfig: json_.containsKey('documentInputConfig')
+              ? DocumentInputConfig.fromJson(json_['documentInputConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          documentOutputConfig: _json.containsKey('documentOutputConfig')
-              ? DocumentOutputConfig.fromJson(_json['documentOutputConfig']
+          documentOutputConfig: json_.containsKey('documentOutputConfig')
+              ? DocumentOutputConfig.fromJson(json_['documentOutputConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          glossaryConfig: _json.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']
+          glossaryConfig: json_.containsKey('glossaryConfig')
+              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
@@ -2465,12 +2465,12 @@ class TranslateDocumentRequest {
                 )
               : null,
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
-          sourceLanguageCode: _json.containsKey('sourceLanguageCode')
-              ? _json['sourceLanguageCode'] as core.String
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
               : null,
-          targetLanguageCode: _json.containsKey('targetLanguageCode')
-              ? _json['targetLanguageCode'] as core.String
+          targetLanguageCode: json_.containsKey('targetLanguageCode')
+              ? json_['targetLanguageCode'] as core.String
               : null,
         );
 
@@ -2520,24 +2520,24 @@ class TranslateDocumentResponse {
     this.model,
   });
 
-  TranslateDocumentResponse.fromJson(core.Map _json)
+  TranslateDocumentResponse.fromJson(core.Map json_)
       : this(
-          documentTranslation: _json.containsKey('documentTranslation')
-              ? DocumentTranslation.fromJson(_json['documentTranslation']
+          documentTranslation: json_.containsKey('documentTranslation')
+              ? DocumentTranslation.fromJson(json_['documentTranslation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          glossaryConfig: _json.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']
+          glossaryConfig: json_.containsKey('glossaryConfig')
+              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           glossaryDocumentTranslation:
-              _json.containsKey('glossaryDocumentTranslation')
+              json_.containsKey('glossaryDocumentTranslation')
                   ? DocumentTranslation.fromJson(
-                      _json['glossaryDocumentTranslation']
+                      json_['glossaryDocumentTranslation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
+              json_.containsKey('model') ? json_['model'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2573,13 +2573,13 @@ class TranslateTextGlossaryConfig {
     this.ignoreCase,
   });
 
-  TranslateTextGlossaryConfig.fromJson(core.Map _json)
+  TranslateTextGlossaryConfig.fromJson(core.Map json_)
       : this(
-          glossary: _json.containsKey('glossary')
-              ? _json['glossary'] as core.String
+          glossary: json_.containsKey('glossary')
+              ? json_['glossary'] as core.String
               : null,
-          ignoreCase: _json.containsKey('ignoreCase')
-              ? _json['ignoreCase'] as core.bool
+          ignoreCase: json_.containsKey('ignoreCase')
+              ? json_['ignoreCase'] as core.bool
               : null,
         );
 
@@ -2666,35 +2666,35 @@ class TranslateTextRequest {
     this.targetLanguageCode,
   });
 
-  TranslateTextRequest.fromJson(core.Map _json)
+  TranslateTextRequest.fromJson(core.Map json_)
       : this(
-          contents: _json.containsKey('contents')
-              ? (_json['contents'] as core.List)
+          contents: json_.containsKey('contents')
+              ? (json_['contents'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          glossaryConfig: _json.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']
+          glossaryConfig: json_.containsKey('glossaryConfig')
+              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
-          sourceLanguageCode: _json.containsKey('sourceLanguageCode')
-              ? _json['sourceLanguageCode'] as core.String
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
               : null,
-          targetLanguageCode: _json.containsKey('targetLanguageCode')
-              ? _json['targetLanguageCode'] as core.String
+          targetLanguageCode: json_.containsKey('targetLanguageCode')
+              ? json_['targetLanguageCode'] as core.String
               : null,
         );
 
@@ -2728,16 +2728,16 @@ class TranslateTextResponse {
     this.translations,
   });
 
-  TranslateTextResponse.fromJson(core.Map _json)
+  TranslateTextResponse.fromJson(core.Map json_)
       : this(
-          glossaryTranslations: _json.containsKey('glossaryTranslations')
-              ? (_json['glossaryTranslations'] as core.List)
+          glossaryTranslations: json_.containsKey('glossaryTranslations')
+              ? (json_['glossaryTranslations'] as core.List)
                   .map((value) => Translation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          translations: _json.containsKey('translations')
-              ? (_json['translations'] as core.List)
+          translations: json_.containsKey('translations')
+              ? (json_['translations'] as core.List)
                   .map((value) => Translation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2786,19 +2786,19 @@ class Translation {
     this.translatedText,
   });
 
-  Translation.fromJson(core.Map _json)
+  Translation.fromJson(core.Map json_)
       : this(
-          detectedLanguageCode: _json.containsKey('detectedLanguageCode')
-              ? _json['detectedLanguageCode'] as core.String
+          detectedLanguageCode: json_.containsKey('detectedLanguageCode')
+              ? json_['detectedLanguageCode'] as core.String
               : null,
-          glossaryConfig: _json.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']
+          glossaryConfig: json_.containsKey('glossaryConfig')
+              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
-          translatedText: _json.containsKey('translatedText')
-              ? _json['translatedText'] as core.String
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          translatedText: json_.containsKey('translatedText')
+              ? json_['translatedText'] as core.String
               : null,
         );
 
@@ -2824,10 +2824,10 @@ class WaitOperationRequest {
     this.timeout,
   });
 
-  WaitOperationRequest.fromJson(core.Map _json)
+  WaitOperationRequest.fromJson(core.Map json_)
       : this(
-          timeout: _json.containsKey('timeout')
-              ? _json['timeout'] as core.String
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
               : null,
         );
 

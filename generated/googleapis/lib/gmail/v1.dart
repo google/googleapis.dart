@@ -158,19 +158,19 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/profile';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Profile.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Stop receiving push notifications for the given user mailbox.
@@ -192,17 +192,17 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/stop';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -231,22 +231,22 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/watch';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return WatchResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -287,33 +287,33 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url = 'gmail/v1/users/' + commons.escapeVariable('$userId') + '/drafts';
+      url_ = 'gmail/v1/users/' + commons.escapeVariable('$userId') + '/drafts';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' +
+      url_ = '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts';
     } else {
-      _url = '/upload/gmail/v1/users/' +
+      url_ = '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts';
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
     );
-    return Draft.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Draft.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Immediately and permanently deletes the specified draft.
@@ -340,19 +340,19 @@ class UsersDraftsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/drafts/' +
         commons.escapeVariable('$id');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -395,22 +395,22 @@ class UsersDraftsResource {
     core.String? format,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/drafts/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Draft.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Draft.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the drafts in the user's mailbox.
@@ -451,7 +451,7 @@ class UsersDraftsResource {
     core.String? q,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (includeSpamTrash != null) 'includeSpamTrash': ['${includeSpamTrash}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -459,16 +459,16 @@ class UsersDraftsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/drafts';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDraftsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends the specified, existing draft to the recipients in the `To`, `Cc`,
@@ -504,35 +504,35 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url = 'gmail/v1/users/' +
+      url_ = 'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/send';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' +
+      url_ = '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/send';
     } else {
-      _url = '/upload/gmail/v1/users/' +
+      url_ = '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/send';
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Replaces a draft's content.
@@ -570,38 +570,38 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url = 'gmail/v1/users/' +
+      url_ = 'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/' +
           commons.escapeVariable('$id');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' +
+      url_ = '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/' +
           commons.escapeVariable('$id');
     } else {
-      _url = '/upload/gmail/v1/users/' +
+      url_ = '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/' +
           commons.escapeVariable('$id');
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
     );
-    return Draft.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Draft.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -661,7 +661,7 @@ class UsersHistoryResource {
     core.String? startHistoryId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (historyTypes != null) 'historyTypes': historyTypes,
       if (labelId != null) 'labelId': [labelId],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -670,16 +670,16 @@ class UsersHistoryResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/history';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListHistoryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -712,21 +712,21 @@ class UsersLabelsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/labels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Label.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Immediately and permanently deletes the specified label and removes it
@@ -752,19 +752,19 @@ class UsersLabelsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -793,21 +793,21 @@ class UsersLabelsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Label.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all labels in the user's mailbox.
@@ -831,20 +831,20 @@ class UsersLabelsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/labels';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListLabelsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patch the specified label.
@@ -874,23 +874,23 @@ class UsersLabelsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Label.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified label.
@@ -920,23 +920,23 @@ class UsersLabelsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Label.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -973,20 +973,20 @@ class UsersMessagesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/batchDelete';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1013,20 +1013,20 @@ class UsersMessagesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/batchModify';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1055,19 +1055,19 @@ class UsersMessagesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1116,23 +1116,23 @@ class UsersMessagesResource {
     core.List<core.String>? metadataHeaders,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (metadataHeaders != null) 'metadataHeaders': metadataHeaders,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports a message into only this user's mailbox, with standard email
@@ -1194,8 +1194,8 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (deleted != null) 'deleted': ['${deleted}'],
       if (internalDateSource != null)
         'internalDateSource': [internalDateSource],
@@ -1205,30 +1205,30 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url = 'gmail/v1/users/' +
+      url_ = 'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/import';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' +
+      url_ = '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/import';
     } else {
-      _url = '/upload/gmail/v1/users/' +
+      url_ = '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/import';
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Directly inserts a message into only this user's mailbox similar to `IMAP
@@ -1279,37 +1279,37 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (deleted != null) 'deleted': ['${deleted}'],
       if (internalDateSource != null)
         'internalDateSource': [internalDateSource],
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url =
+      url_ =
           'gmail/v1/users/' + commons.escapeVariable('$userId') + '/messages';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' +
+      url_ = '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages';
     } else {
-      _url = '/upload/gmail/v1/users/' +
+      url_ = '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages';
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the messages in the user's mailbox.
@@ -1355,7 +1355,7 @@ class UsersMessagesResource {
     core.String? q,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (includeSpamTrash != null) 'includeSpamTrash': ['${includeSpamTrash}'],
       if (labelIds != null) 'labelIds': labelIds,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1364,16 +1364,16 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/messages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListMessagesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the labels on the specified message.
@@ -1403,24 +1403,24 @@ class UsersMessagesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id') +
         '/modify';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
@@ -1456,35 +1456,35 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    core.String _url;
+    core.String url_;
     if (uploadMedia == null) {
-      _url = 'gmail/v1/users/' +
+      url_ = 'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/send';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' +
+      url_ = '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/send';
     } else {
-      _url = '/upload/gmail/v1/users/' +
+      url_ = '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/send';
     }
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves the specified message to the trash.
@@ -1511,22 +1511,22 @@ class UsersMessagesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id') +
         '/trash';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified message from the trash.
@@ -1553,22 +1553,22 @@ class UsersMessagesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id') +
         '/untrash';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1605,24 +1605,24 @@ class UsersMessagesAttachmentsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$messageId') +
         '/attachments/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return MessagePartBody.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1661,21 +1661,21 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/autoForwarding';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AutoForwarding.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets IMAP settings.
@@ -1699,21 +1699,21 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/imap';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ImapSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets language settings.
@@ -1737,21 +1737,21 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/language';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return LanguageSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets POP settings.
@@ -1775,20 +1775,20 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/settings/pop';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return PopSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets vacation responder settings.
@@ -1812,21 +1812,21 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/vacation';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return VacationSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the auto-forwarding setting for the specified account.
@@ -1857,23 +1857,23 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/autoForwarding';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AutoForwarding.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates IMAP settings.
@@ -1900,23 +1900,23 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/imap';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ImapSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates language settings.
@@ -1949,23 +1949,23 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/language';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return LanguageSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates POP settings.
@@ -1992,22 +1992,22 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/settings/pop';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return PopSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates vacation responder settings.
@@ -2034,23 +2034,23 @@ class UsersSettingsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/vacation';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return VacationSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2096,22 +2096,22 @@ class UsersSettingsDelegatesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Delegate.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Delegate.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified delegate (which can be of any verification status),
@@ -2142,19 +2142,19 @@ class UsersSettingsDelegatesResource {
     core.String delegateEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates/' +
         commons.escapeVariable('$delegateEmail');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2188,21 +2188,21 @@ class UsersSettingsDelegatesResource {
     core.String delegateEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates/' +
         commons.escapeVariable('$delegateEmail');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Delegate.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Delegate.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the delegates for the specified account.
@@ -2229,21 +2229,21 @@ class UsersSettingsDelegatesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDelegatesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2279,22 +2279,22 @@ class UsersSettingsFiltersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Filter.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Immediately and permanently deletes the specified filter.
@@ -2319,19 +2319,19 @@ class UsersSettingsFiltersResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters/' +
         commons.escapeVariable('$id');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2360,21 +2360,21 @@ class UsersSettingsFiltersResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Filter.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the message filters of a Gmail user.
@@ -2398,21 +2398,21 @@ class UsersSettingsFiltersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFiltersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2452,23 +2452,23 @@ class UsersSettingsForwardingAddressesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ForwardingAddress.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified forwarding address and revokes any verification that
@@ -2497,19 +2497,19 @@ class UsersSettingsForwardingAddressesResource {
     core.String forwardingEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
         commons.escapeVariable('$forwardingEmail');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2538,22 +2538,22 @@ class UsersSettingsForwardingAddressesResource {
     core.String forwardingEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
         commons.escapeVariable('$forwardingEmail');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ForwardingAddress.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the forwarding addresses for the specified account.
@@ -2577,21 +2577,21 @@ class UsersSettingsForwardingAddressesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListForwardingAddressesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2637,22 +2637,22 @@ class UsersSettingsSendAsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return SendAs.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified send-as alias.
@@ -2681,19 +2681,19 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2725,21 +2725,21 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return SendAs.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the send-as aliases for the specified account.
@@ -2766,21 +2766,21 @@ class UsersSettingsSendAsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSendAsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Patch the specified send-as alias.
@@ -2810,23 +2810,23 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return SendAs.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a send-as alias.
@@ -2861,23 +2861,23 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return SendAs.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends a verification email to the specified send-as alias address.
@@ -2905,20 +2905,20 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
         '/verify';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2956,11 +2956,11 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -2968,9 +2968,9 @@ class UsersSettingsSendAsSmimeInfoResource {
         commons.escapeVariable('$id');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -3003,23 +3003,23 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return SmimeInfo.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return SmimeInfo.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Insert (upload) the given S/MIME config for the specified send-as alias.
@@ -3052,24 +3052,24 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String sendAsEmail, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return SmimeInfo.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return SmimeInfo.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists S/MIME configs for the specified send-as alias.
@@ -3097,23 +3097,23 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String sendAsEmail, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
         '/smimeInfo';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListSmimeInfoResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the default S/MIME config for the specified send-as alias.
@@ -3142,11 +3142,11 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -3155,9 +3155,9 @@ class UsersSettingsSendAsSmimeInfoResource {
         '/setDefault';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -3193,19 +3193,19 @@ class UsersThreadsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -3248,23 +3248,23 @@ class UsersThreadsResource {
     core.List<core.String>? metadataHeaders,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (metadataHeaders != null) 'metadataHeaders': metadataHeaders,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the threads in the user's mailbox.
@@ -3310,7 +3310,7 @@ class UsersThreadsResource {
     core.String? q,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (includeSpamTrash != null) 'includeSpamTrash': ['${includeSpamTrash}'],
       if (labelIds != null) 'labelIds': labelIds,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -3319,16 +3319,16 @@ class UsersThreadsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'gmail/v1/users/' + commons.escapeVariable('$userId') + '/threads';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListThreadsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the labels applied to the thread.
@@ -3360,24 +3360,24 @@ class UsersThreadsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id') +
         '/modify';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves the specified thread to the trash.
@@ -3406,22 +3406,22 @@ class UsersThreadsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id') +
         '/trash';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified thread from the trash.
@@ -3450,22 +3450,22 @@ class UsersThreadsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'gmail/v1/users/' +
+    final url_ = 'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id') +
         '/untrash';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3494,16 +3494,16 @@ class AutoForwarding {
     this.enabled,
   });
 
-  AutoForwarding.fromJson(core.Map _json)
+  AutoForwarding.fromJson(core.Map json_)
       : this(
-          disposition: _json.containsKey('disposition')
-              ? _json['disposition'] as core.String
+          disposition: json_.containsKey('disposition')
+              ? json_['disposition'] as core.String
               : null,
-          emailAddress: _json.containsKey('emailAddress')
-              ? _json['emailAddress'] as core.String
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
               : null,
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
         );
 
@@ -3522,10 +3522,10 @@ class BatchDeleteMessagesRequest {
     this.ids,
   });
 
-  BatchDeleteMessagesRequest.fromJson(core.Map _json)
+  BatchDeleteMessagesRequest.fromJson(core.Map json_)
       : this(
-          ids: _json.containsKey('ids')
-              ? (_json['ids'] as core.List)
+          ids: json_.containsKey('ids')
+              ? (json_['ids'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3554,20 +3554,20 @@ class BatchModifyMessagesRequest {
     this.removeLabelIds,
   });
 
-  BatchModifyMessagesRequest.fromJson(core.Map _json)
+  BatchModifyMessagesRequest.fromJson(core.Map json_)
       : this(
-          addLabelIds: _json.containsKey('addLabelIds')
-              ? (_json['addLabelIds'] as core.List)
+          addLabelIds: json_.containsKey('addLabelIds')
+              ? (json_['addLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          ids: _json.containsKey('ids')
-              ? (_json['ids'] as core.List)
+          ids: json_.containsKey('ids')
+              ? (json_['ids'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          removeLabelIds: _json.containsKey('removeLabelIds')
-              ? (_json['removeLabelIds'] as core.List)
+          removeLabelIds: json_.containsKey('removeLabelIds')
+              ? (json_['removeLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3609,13 +3609,13 @@ class Delegate {
     this.verificationStatus,
   });
 
-  Delegate.fromJson(core.Map _json)
+  Delegate.fromJson(core.Map json_)
       : this(
-          delegateEmail: _json.containsKey('delegateEmail')
-              ? _json['delegateEmail'] as core.String
+          delegateEmail: json_.containsKey('delegateEmail')
+              ? json_['delegateEmail'] as core.String
               : null,
-          verificationStatus: _json.containsKey('verificationStatus')
-              ? _json['verificationStatus'] as core.String
+          verificationStatus: json_.containsKey('verificationStatus')
+              ? json_['verificationStatus'] as core.String
               : null,
         );
 
@@ -3639,12 +3639,12 @@ class Draft {
     this.message,
   });
 
-  Draft.fromJson(core.Map _json)
+  Draft.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          message: _json.containsKey('message')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          message: json_.containsKey('message')
               ? Message.fromJson(
-                  _json['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3673,17 +3673,17 @@ class Filter {
     this.id,
   });
 
-  Filter.fromJson(core.Map _json)
+  Filter.fromJson(core.Map json_)
       : this(
-          action: _json.containsKey('action')
+          action: json_.containsKey('action')
               ? FilterAction.fromJson(
-                  _json['action'] as core.Map<core.String, core.dynamic>)
+                  json_['action'] as core.Map<core.String, core.dynamic>)
               : null,
-          criteria: _json.containsKey('criteria')
+          criteria: json_.containsKey('criteria')
               ? FilterCriteria.fromJson(
-                  _json['criteria'] as core.Map<core.String, core.dynamic>)
+                  json_['criteria'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3710,18 +3710,18 @@ class FilterAction {
     this.removeLabelIds,
   });
 
-  FilterAction.fromJson(core.Map _json)
+  FilterAction.fromJson(core.Map json_)
       : this(
-          addLabelIds: _json.containsKey('addLabelIds')
-              ? (_json['addLabelIds'] as core.List)
+          addLabelIds: json_.containsKey('addLabelIds')
+              ? (json_['addLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          forward: _json.containsKey('forward')
-              ? _json['forward'] as core.String
+          forward: json_.containsKey('forward')
+              ? json_['forward'] as core.String
               : null,
-          removeLabelIds: _json.containsKey('removeLabelIds')
-              ? (_json['removeLabelIds'] as core.List)
+          removeLabelIds: json_.containsKey('removeLabelIds')
+              ? (json_['removeLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -3793,28 +3793,28 @@ class FilterCriteria {
     this.to,
   });
 
-  FilterCriteria.fromJson(core.Map _json)
+  FilterCriteria.fromJson(core.Map json_)
       : this(
-          excludeChats: _json.containsKey('excludeChats')
-              ? _json['excludeChats'] as core.bool
+          excludeChats: json_.containsKey('excludeChats')
+              ? json_['excludeChats'] as core.bool
               : null,
-          from: _json.containsKey('from') ? _json['from'] as core.String : null,
-          hasAttachment: _json.containsKey('hasAttachment')
-              ? _json['hasAttachment'] as core.bool
+          from: json_.containsKey('from') ? json_['from'] as core.String : null,
+          hasAttachment: json_.containsKey('hasAttachment')
+              ? json_['hasAttachment'] as core.bool
               : null,
-          negatedQuery: _json.containsKey('negatedQuery')
-              ? _json['negatedQuery'] as core.String
+          negatedQuery: json_.containsKey('negatedQuery')
+              ? json_['negatedQuery'] as core.String
               : null,
           query:
-              _json.containsKey('query') ? _json['query'] as core.String : null,
-          size: _json.containsKey('size') ? _json['size'] as core.int : null,
-          sizeComparison: _json.containsKey('sizeComparison')
-              ? _json['sizeComparison'] as core.String
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+          size: json_.containsKey('size') ? json_['size'] as core.int : null,
+          sizeComparison: json_.containsKey('sizeComparison')
+              ? json_['sizeComparison'] as core.String
               : null,
-          subject: _json.containsKey('subject')
-              ? _json['subject'] as core.String
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
               : null,
-          to: _json.containsKey('to') ? _json['to'] as core.String : null,
+          to: json_.containsKey('to') ? json_['to'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3850,13 +3850,13 @@ class ForwardingAddress {
     this.verificationStatus,
   });
 
-  ForwardingAddress.fromJson(core.Map _json)
+  ForwardingAddress.fromJson(core.Map json_)
       : this(
-          forwardingEmail: _json.containsKey('forwardingEmail')
-              ? _json['forwardingEmail'] as core.String
+          forwardingEmail: json_.containsKey('forwardingEmail')
+              ? json_['forwardingEmail'] as core.String
               : null,
-          verificationStatus: _json.containsKey('verificationStatus')
-              ? _json['verificationStatus'] as core.String
+          verificationStatus: json_.containsKey('verificationStatus')
+              ? json_['verificationStatus'] as core.String
               : null,
         );
 
@@ -3902,35 +3902,35 @@ class History {
     this.messagesDeleted,
   });
 
-  History.fromJson(core.Map _json)
+  History.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          labelsAdded: _json.containsKey('labelsAdded')
-              ? (_json['labelsAdded'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          labelsAdded: json_.containsKey('labelsAdded')
+              ? (json_['labelsAdded'] as core.List)
                   .map((value) => HistoryLabelAdded.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          labelsRemoved: _json.containsKey('labelsRemoved')
-              ? (_json['labelsRemoved'] as core.List)
+          labelsRemoved: json_.containsKey('labelsRemoved')
+              ? (json_['labelsRemoved'] as core.List)
                   .map((value) => HistoryLabelRemoved.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          messages: _json.containsKey('messages')
-              ? (_json['messages'] as core.List)
+          messages: json_.containsKey('messages')
+              ? (json_['messages'] as core.List)
                   .map((value) => Message.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          messagesAdded: _json.containsKey('messagesAdded')
-              ? (_json['messagesAdded'] as core.List)
+          messagesAdded: json_.containsKey('messagesAdded')
+              ? (json_['messagesAdded'] as core.List)
                   .map((value) => HistoryMessageAdded.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          messagesDeleted: _json.containsKey('messagesDeleted')
-              ? (_json['messagesDeleted'] as core.List)
+          messagesDeleted: json_.containsKey('messagesDeleted')
+              ? (json_['messagesDeleted'] as core.List)
                   .map((value) => HistoryMessageDeleted.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3957,16 +3957,16 @@ class HistoryLabelAdded {
     this.message,
   });
 
-  HistoryLabelAdded.fromJson(core.Map _json)
+  HistoryLabelAdded.fromJson(core.Map json_)
       : this(
-          labelIds: _json.containsKey('labelIds')
-              ? (_json['labelIds'] as core.List)
+          labelIds: json_.containsKey('labelIds')
+              ? (json_['labelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          message: _json.containsKey('message')
+          message: json_.containsKey('message')
               ? Message.fromJson(
-                  _json['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3986,16 +3986,16 @@ class HistoryLabelRemoved {
     this.message,
   });
 
-  HistoryLabelRemoved.fromJson(core.Map _json)
+  HistoryLabelRemoved.fromJson(core.Map json_)
       : this(
-          labelIds: _json.containsKey('labelIds')
-              ? (_json['labelIds'] as core.List)
+          labelIds: json_.containsKey('labelIds')
+              ? (json_['labelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          message: _json.containsKey('message')
+          message: json_.containsKey('message')
               ? Message.fromJson(
-                  _json['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4012,11 +4012,11 @@ class HistoryMessageAdded {
     this.message,
   });
 
-  HistoryMessageAdded.fromJson(core.Map _json)
+  HistoryMessageAdded.fromJson(core.Map json_)
       : this(
-          message: _json.containsKey('message')
+          message: json_.containsKey('message')
               ? Message.fromJson(
-                  _json['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4032,11 +4032,11 @@ class HistoryMessageDeleted {
     this.message,
   });
 
-  HistoryMessageDeleted.fromJson(core.Map _json)
+  HistoryMessageDeleted.fromJson(core.Map json_)
       : this(
-          message: _json.containsKey('message')
+          message: json_.containsKey('message')
               ? Message.fromJson(
-                  _json['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4081,19 +4081,19 @@ class ImapSettings {
     this.maxFolderSize,
   });
 
-  ImapSettings.fromJson(core.Map _json)
+  ImapSettings.fromJson(core.Map json_)
       : this(
-          autoExpunge: _json.containsKey('autoExpunge')
-              ? _json['autoExpunge'] as core.bool
+          autoExpunge: json_.containsKey('autoExpunge')
+              ? json_['autoExpunge'] as core.bool
               : null,
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
-          expungeBehavior: _json.containsKey('expungeBehavior')
-              ? _json['expungeBehavior'] as core.String
+          expungeBehavior: json_.containsKey('expungeBehavior')
+              ? json_['expungeBehavior'] as core.String
               : null,
-          maxFolderSize: _json.containsKey('maxFolderSize')
-              ? _json['maxFolderSize'] as core.int
+          maxFolderSize: json_.containsKey('maxFolderSize')
+              ? json_['maxFolderSize'] as core.int
               : null,
         );
 
@@ -4176,33 +4176,33 @@ class Label {
     this.type,
   });
 
-  Label.fromJson(core.Map _json)
+  Label.fromJson(core.Map json_)
       : this(
-          color: _json.containsKey('color')
+          color: json_.containsKey('color')
               ? LabelColor.fromJson(
-                  _json['color'] as core.Map<core.String, core.dynamic>)
+                  json_['color'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          labelListVisibility: _json.containsKey('labelListVisibility')
-              ? _json['labelListVisibility'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          labelListVisibility: json_.containsKey('labelListVisibility')
+              ? json_['labelListVisibility'] as core.String
               : null,
-          messageListVisibility: _json.containsKey('messageListVisibility')
-              ? _json['messageListVisibility'] as core.String
+          messageListVisibility: json_.containsKey('messageListVisibility')
+              ? json_['messageListVisibility'] as core.String
               : null,
-          messagesTotal: _json.containsKey('messagesTotal')
-              ? _json['messagesTotal'] as core.int
+          messagesTotal: json_.containsKey('messagesTotal')
+              ? json_['messagesTotal'] as core.int
               : null,
-          messagesUnread: _json.containsKey('messagesUnread')
-              ? _json['messagesUnread'] as core.int
+          messagesUnread: json_.containsKey('messagesUnread')
+              ? json_['messagesUnread'] as core.int
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          threadsTotal: _json.containsKey('threadsTotal')
-              ? _json['threadsTotal'] as core.int
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          threadsTotal: json_.containsKey('threadsTotal')
+              ? json_['threadsTotal'] as core.int
               : null,
-          threadsUnread: _json.containsKey('threadsUnread')
-              ? _json['threadsUnread'] as core.int
+          threadsUnread: json_.containsKey('threadsUnread')
+              ? json_['threadsUnread'] as core.int
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4265,13 +4265,13 @@ class LabelColor {
     this.textColor,
   });
 
-  LabelColor.fromJson(core.Map _json)
+  LabelColor.fromJson(core.Map json_)
       : this(
-          backgroundColor: _json.containsKey('backgroundColor')
-              ? _json['backgroundColor'] as core.String
+          backgroundColor: json_.containsKey('backgroundColor')
+              ? json_['backgroundColor'] as core.String
               : null,
-          textColor: _json.containsKey('textColor')
-              ? _json['textColor'] as core.String
+          textColor: json_.containsKey('textColor')
+              ? json_['textColor'] as core.String
               : null,
         );
 
@@ -4304,10 +4304,10 @@ class LanguageSettings {
     this.displayLanguage,
   });
 
-  LanguageSettings.fromJson(core.Map _json)
+  LanguageSettings.fromJson(core.Map json_)
       : this(
-          displayLanguage: _json.containsKey('displayLanguage')
-              ? _json['displayLanguage'] as core.String
+          displayLanguage: json_.containsKey('displayLanguage')
+              ? json_['displayLanguage'] as core.String
               : null,
         );
 
@@ -4327,10 +4327,10 @@ class ListDelegatesResponse {
     this.delegates,
   });
 
-  ListDelegatesResponse.fromJson(core.Map _json)
+  ListDelegatesResponse.fromJson(core.Map json_)
       : this(
-          delegates: _json.containsKey('delegates')
-              ? (_json['delegates'] as core.List)
+          delegates: json_.containsKey('delegates')
+              ? (json_['delegates'] as core.List)
                   .map((value) => Delegate.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4362,19 +4362,19 @@ class ListDraftsResponse {
     this.resultSizeEstimate,
   });
 
-  ListDraftsResponse.fromJson(core.Map _json)
+  ListDraftsResponse.fromJson(core.Map json_)
       : this(
-          drafts: _json.containsKey('drafts')
-              ? (_json['drafts'] as core.List)
+          drafts: json_.containsKey('drafts')
+              ? (json_['drafts'] as core.List)
                   .map((value) => Draft.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          resultSizeEstimate: _json.containsKey('resultSizeEstimate')
-              ? _json['resultSizeEstimate'] as core.int
+          resultSizeEstimate: json_.containsKey('resultSizeEstimate')
+              ? json_['resultSizeEstimate'] as core.int
               : null,
         );
 
@@ -4395,10 +4395,10 @@ class ListFiltersResponse {
     this.filter,
   });
 
-  ListFiltersResponse.fromJson(core.Map _json)
+  ListFiltersResponse.fromJson(core.Map json_)
       : this(
-          filter: _json.containsKey('filter')
-              ? (_json['filter'] as core.List)
+          filter: json_.containsKey('filter')
+              ? (json_['filter'] as core.List)
                   .map((value) => Filter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4419,10 +4419,10 @@ class ListForwardingAddressesResponse {
     this.forwardingAddresses,
   });
 
-  ListForwardingAddressesResponse.fromJson(core.Map _json)
+  ListForwardingAddressesResponse.fromJson(core.Map json_)
       : this(
-          forwardingAddresses: _json.containsKey('forwardingAddresses')
-              ? (_json['forwardingAddresses'] as core.List)
+          forwardingAddresses: json_.containsKey('forwardingAddresses')
+              ? (json_['forwardingAddresses'] as core.List)
                   .map((value) => ForwardingAddress.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4454,19 +4454,19 @@ class ListHistoryResponse {
     this.nextPageToken,
   });
 
-  ListHistoryResponse.fromJson(core.Map _json)
+  ListHistoryResponse.fromJson(core.Map json_)
       : this(
-          history: _json.containsKey('history')
-              ? (_json['history'] as core.List)
+          history: json_.containsKey('history')
+              ? (json_['history'] as core.List)
                   .map((value) => History.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          historyId: _json.containsKey('historyId')
-              ? _json['historyId'] as core.String
+          historyId: json_.containsKey('historyId')
+              ? json_['historyId'] as core.String
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -4489,10 +4489,10 @@ class ListLabelsResponse {
     this.labels,
   });
 
-  ListLabelsResponse.fromJson(core.Map _json)
+  ListLabelsResponse.fromJson(core.Map json_)
       : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.List)
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.List)
                   .map((value) => Label.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4523,19 +4523,19 @@ class ListMessagesResponse {
     this.resultSizeEstimate,
   });
 
-  ListMessagesResponse.fromJson(core.Map _json)
+  ListMessagesResponse.fromJson(core.Map json_)
       : this(
-          messages: _json.containsKey('messages')
-              ? (_json['messages'] as core.List)
+          messages: json_.containsKey('messages')
+              ? (json_['messages'] as core.List)
                   .map((value) => Message.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          resultSizeEstimate: _json.containsKey('resultSizeEstimate')
-              ? _json['resultSizeEstimate'] as core.int
+          resultSizeEstimate: json_.containsKey('resultSizeEstimate')
+              ? json_['resultSizeEstimate'] as core.int
               : null,
         );
 
@@ -4556,10 +4556,10 @@ class ListSendAsResponse {
     this.sendAs,
   });
 
-  ListSendAsResponse.fromJson(core.Map _json)
+  ListSendAsResponse.fromJson(core.Map json_)
       : this(
-          sendAs: _json.containsKey('sendAs')
-              ? (_json['sendAs'] as core.List)
+          sendAs: json_.containsKey('sendAs')
+              ? (json_['sendAs'] as core.List)
                   .map((value) => SendAs.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4579,10 +4579,10 @@ class ListSmimeInfoResponse {
     this.smimeInfo,
   });
 
-  ListSmimeInfoResponse.fromJson(core.Map _json)
+  ListSmimeInfoResponse.fromJson(core.Map json_)
       : this(
-          smimeInfo: _json.containsKey('smimeInfo')
-              ? (_json['smimeInfo'] as core.List)
+          smimeInfo: json_.containsKey('smimeInfo')
+              ? (json_['smimeInfo'] as core.List)
                   .map((value) => SmimeInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4614,16 +4614,16 @@ class ListThreadsResponse {
     this.threads,
   });
 
-  ListThreadsResponse.fromJson(core.Map _json)
+  ListThreadsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          resultSizeEstimate: _json.containsKey('resultSizeEstimate')
-              ? _json['resultSizeEstimate'] as core.int
+          resultSizeEstimate: json_.containsKey('resultSizeEstimate')
+              ? json_['resultSizeEstimate'] as core.int
               : null,
-          threads: _json.containsKey('threads')
-              ? (_json['threads'] as core.List)
+          threads: json_.containsKey('threads')
+              ? (json_['threads'] as core.List)
                   .map((value) => Thread.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4669,9 +4669,9 @@ class Message {
   core.String? raw;
   core.List<core.int> get rawAsBytes => convert.base64.decode(raw!);
 
-  set rawAsBytes(core.List<core.int> _bytes) {
+  set rawAsBytes(core.List<core.int> bytes_) {
     raw =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Estimated size in bytes of the message.
@@ -4702,33 +4702,33 @@ class Message {
     this.threadId,
   });
 
-  Message.fromJson(core.Map _json)
+  Message.fromJson(core.Map json_)
       : this(
-          historyId: _json.containsKey('historyId')
-              ? _json['historyId'] as core.String
+          historyId: json_.containsKey('historyId')
+              ? json_['historyId'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          internalDate: _json.containsKey('internalDate')
-              ? _json['internalDate'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          internalDate: json_.containsKey('internalDate')
+              ? json_['internalDate'] as core.String
               : null,
-          labelIds: _json.containsKey('labelIds')
-              ? (_json['labelIds'] as core.List)
+          labelIds: json_.containsKey('labelIds')
+              ? (json_['labelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          payload: _json.containsKey('payload')
+          payload: json_.containsKey('payload')
               ? MessagePart.fromJson(
-                  _json['payload'] as core.Map<core.String, core.dynamic>)
+                  json_['payload'] as core.Map<core.String, core.dynamic>)
               : null,
-          raw: _json.containsKey('raw') ? _json['raw'] as core.String : null,
-          sizeEstimate: _json.containsKey('sizeEstimate')
-              ? _json['sizeEstimate'] as core.int
+          raw: json_.containsKey('raw') ? json_['raw'] as core.String : null,
+          sizeEstimate: json_.containsKey('sizeEstimate')
+              ? json_['sizeEstimate'] as core.int
               : null,
-          snippet: _json.containsKey('snippet')
-              ? _json['snippet'] as core.String
+          snippet: json_.containsKey('snippet')
+              ? json_['snippet'] as core.String
               : null,
-          threadId: _json.containsKey('threadId')
-              ? _json['threadId'] as core.String
+          threadId: json_.containsKey('threadId')
+              ? json_['threadId'] as core.String
               : null,
         );
 
@@ -4785,29 +4785,29 @@ class MessagePart {
     this.parts,
   });
 
-  MessagePart.fromJson(core.Map _json)
+  MessagePart.fromJson(core.Map json_)
       : this(
-          body: _json.containsKey('body')
+          body: json_.containsKey('body')
               ? MessagePartBody.fromJson(
-                  _json['body'] as core.Map<core.String, core.dynamic>)
+                  json_['body'] as core.Map<core.String, core.dynamic>)
               : null,
-          filename: _json.containsKey('filename')
-              ? _json['filename'] as core.String
+          filename: json_.containsKey('filename')
+              ? json_['filename'] as core.String
               : null,
-          headers: _json.containsKey('headers')
-              ? (_json['headers'] as core.List)
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.List)
                   .map((value) => MessagePartHeader.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
-          partId: _json.containsKey('partId')
-              ? _json['partId'] as core.String
+          partId: json_.containsKey('partId')
+              ? json_['partId'] as core.String
               : null,
-          parts: _json.containsKey('parts')
-              ? (_json['parts'] as core.List)
+          parts: json_.containsKey('parts')
+              ? (json_['parts'] as core.List)
                   .map((value) => MessagePart.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4841,9 +4841,9 @@ class MessagePartBody {
   core.String? data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
-  set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> bytes_) {
     data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Number of bytes for the message part data (encoding notwithstanding).
@@ -4855,13 +4855,13 @@ class MessagePartBody {
     this.size,
   });
 
-  MessagePartBody.fromJson(core.Map _json)
+  MessagePartBody.fromJson(core.Map json_)
       : this(
-          attachmentId: _json.containsKey('attachmentId')
-              ? _json['attachmentId'] as core.String
+          attachmentId: json_.containsKey('attachmentId')
+              ? json_['attachmentId'] as core.String
               : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          size: _json.containsKey('size') ? _json['size'] as core.int : null,
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          size: json_.containsKey('size') ? json_['size'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4887,11 +4887,11 @@ class MessagePartHeader {
     this.value,
   });
 
-  MessagePartHeader.fromJson(core.Map _json)
+  MessagePartHeader.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4916,15 +4916,15 @@ class ModifyMessageRequest {
     this.removeLabelIds,
   });
 
-  ModifyMessageRequest.fromJson(core.Map _json)
+  ModifyMessageRequest.fromJson(core.Map json_)
       : this(
-          addLabelIds: _json.containsKey('addLabelIds')
-              ? (_json['addLabelIds'] as core.List)
+          addLabelIds: json_.containsKey('addLabelIds')
+              ? (json_['addLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          removeLabelIds: _json.containsKey('removeLabelIds')
-              ? (_json['removeLabelIds'] as core.List)
+          removeLabelIds: json_.containsKey('removeLabelIds')
+              ? (json_['removeLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4952,15 +4952,15 @@ class ModifyThreadRequest {
     this.removeLabelIds,
   });
 
-  ModifyThreadRequest.fromJson(core.Map _json)
+  ModifyThreadRequest.fromJson(core.Map json_)
       : this(
-          addLabelIds: _json.containsKey('addLabelIds')
-              ? (_json['addLabelIds'] as core.List)
+          addLabelIds: json_.containsKey('addLabelIds')
+              ? (json_['addLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          removeLabelIds: _json.containsKey('removeLabelIds')
-              ? (_json['removeLabelIds'] as core.List)
+          removeLabelIds: json_.containsKey('removeLabelIds')
+              ? (json_['removeLabelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4999,13 +4999,13 @@ class PopSettings {
     this.disposition,
   });
 
-  PopSettings.fromJson(core.Map _json)
+  PopSettings.fromJson(core.Map json_)
       : this(
-          accessWindow: _json.containsKey('accessWindow')
-              ? _json['accessWindow'] as core.String
+          accessWindow: json_.containsKey('accessWindow')
+              ? json_['accessWindow'] as core.String
               : null,
-          disposition: _json.containsKey('disposition')
-              ? _json['disposition'] as core.String
+          disposition: json_.containsKey('disposition')
+              ? json_['disposition'] as core.String
               : null,
         );
 
@@ -5036,19 +5036,19 @@ class Profile {
     this.threadsTotal,
   });
 
-  Profile.fromJson(core.Map _json)
+  Profile.fromJson(core.Map json_)
       : this(
-          emailAddress: _json.containsKey('emailAddress')
-              ? _json['emailAddress'] as core.String
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
               : null,
-          historyId: _json.containsKey('historyId')
-              ? _json['historyId'] as core.String
+          historyId: json_.containsKey('historyId')
+              ? json_['historyId'] as core.String
               : null,
-          messagesTotal: _json.containsKey('messagesTotal')
-              ? _json['messagesTotal'] as core.int
+          messagesTotal: json_.containsKey('messagesTotal')
+              ? json_['messagesTotal'] as core.int
               : null,
-          threadsTotal: _json.containsKey('threadsTotal')
-              ? _json['threadsTotal'] as core.int
+          threadsTotal: json_.containsKey('threadsTotal')
+              ? json_['threadsTotal'] as core.int
               : null,
         );
 
@@ -5145,35 +5145,35 @@ class SendAs {
     this.verificationStatus,
   });
 
-  SendAs.fromJson(core.Map _json)
+  SendAs.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          isDefault: _json.containsKey('isDefault')
-              ? _json['isDefault'] as core.bool
+          isDefault: json_.containsKey('isDefault')
+              ? json_['isDefault'] as core.bool
               : null,
-          isPrimary: _json.containsKey('isPrimary')
-              ? _json['isPrimary'] as core.bool
+          isPrimary: json_.containsKey('isPrimary')
+              ? json_['isPrimary'] as core.bool
               : null,
-          replyToAddress: _json.containsKey('replyToAddress')
-              ? _json['replyToAddress'] as core.String
+          replyToAddress: json_.containsKey('replyToAddress')
+              ? json_['replyToAddress'] as core.String
               : null,
-          sendAsEmail: _json.containsKey('sendAsEmail')
-              ? _json['sendAsEmail'] as core.String
+          sendAsEmail: json_.containsKey('sendAsEmail')
+              ? json_['sendAsEmail'] as core.String
               : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
+          signature: json_.containsKey('signature')
+              ? json_['signature'] as core.String
               : null,
-          smtpMsa: _json.containsKey('smtpMsa')
+          smtpMsa: json_.containsKey('smtpMsa')
               ? SmtpMsa.fromJson(
-                  _json['smtpMsa'] as core.Map<core.String, core.dynamic>)
+                  json_['smtpMsa'] as core.Map<core.String, core.dynamic>)
               : null,
-          treatAsAlias: _json.containsKey('treatAsAlias')
-              ? _json['treatAsAlias'] as core.bool
+          treatAsAlias: json_.containsKey('treatAsAlias')
+              ? json_['treatAsAlias'] as core.bool
               : null,
-          verificationStatus: _json.containsKey('verificationStatus')
-              ? _json['verificationStatus'] as core.String
+          verificationStatus: json_.containsKey('verificationStatus')
+              ? json_['verificationStatus'] as core.String
               : null,
         );
 
@@ -5225,9 +5225,9 @@ class SmimeInfo {
   core.String? pkcs12;
   core.List<core.int> get pkcs12AsBytes => convert.base64.decode(pkcs12!);
 
-  set pkcs12AsBytes(core.List<core.int> _bytes) {
+  set pkcs12AsBytes(core.List<core.int> bytes_) {
     pkcs12 =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   SmimeInfo({
@@ -5240,24 +5240,24 @@ class SmimeInfo {
     this.pkcs12,
   });
 
-  SmimeInfo.fromJson(core.Map _json)
+  SmimeInfo.fromJson(core.Map json_)
       : this(
-          encryptedKeyPassword: _json.containsKey('encryptedKeyPassword')
-              ? _json['encryptedKeyPassword'] as core.String
+          encryptedKeyPassword: json_.containsKey('encryptedKeyPassword')
+              ? json_['encryptedKeyPassword'] as core.String
               : null,
-          expiration: _json.containsKey('expiration')
-              ? _json['expiration'] as core.String
+          expiration: json_.containsKey('expiration')
+              ? json_['expiration'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          isDefault: _json.containsKey('isDefault')
-              ? _json['isDefault'] as core.bool
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          isDefault: json_.containsKey('isDefault')
+              ? json_['isDefault'] as core.bool
               : null,
-          issuerCn: _json.containsKey('issuerCn')
-              ? _json['issuerCn'] as core.String
+          issuerCn: json_.containsKey('issuerCn')
+              ? json_['issuerCn'] as core.String
               : null,
-          pem: _json.containsKey('pem') ? _json['pem'] as core.String : null,
-          pkcs12: _json.containsKey('pkcs12')
-              ? _json['pkcs12'] as core.String
+          pem: json_.containsKey('pem') ? json_['pem'] as core.String : null,
+          pkcs12: json_.containsKey('pkcs12')
+              ? json_['pkcs12'] as core.String
               : null,
         );
 
@@ -5318,18 +5318,18 @@ class SmtpMsa {
     this.username,
   });
 
-  SmtpMsa.fromJson(core.Map _json)
+  SmtpMsa.fromJson(core.Map json_)
       : this(
-          host: _json.containsKey('host') ? _json['host'] as core.String : null,
-          password: _json.containsKey('password')
-              ? _json['password'] as core.String
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
               : null,
-          port: _json.containsKey('port') ? _json['port'] as core.int : null,
-          securityMode: _json.containsKey('securityMode')
-              ? _json['securityMode'] as core.String
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          securityMode: json_.containsKey('securityMode')
+              ? json_['securityMode'] as core.String
               : null,
-          username: _json.containsKey('username')
-              ? _json['username'] as core.String
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
               : null,
         );
 
@@ -5363,20 +5363,20 @@ class Thread {
     this.snippet,
   });
 
-  Thread.fromJson(core.Map _json)
+  Thread.fromJson(core.Map json_)
       : this(
-          historyId: _json.containsKey('historyId')
-              ? _json['historyId'] as core.String
+          historyId: json_.containsKey('historyId')
+              ? json_['historyId'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          messages: _json.containsKey('messages')
-              ? (_json['messages'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          messages: json_.containsKey('messages')
+              ? (json_['messages'] as core.List)
                   .map((value) => Message.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          snippet: _json.containsKey('snippet')
-              ? _json['snippet'] as core.String
+          snippet: json_.containsKey('snippet')
+              ? json_['snippet'] as core.String
               : null,
         );
 
@@ -5450,31 +5450,31 @@ class VacationSettings {
     this.startTime,
   });
 
-  VacationSettings.fromJson(core.Map _json)
+  VacationSettings.fromJson(core.Map json_)
       : this(
-          enableAutoReply: _json.containsKey('enableAutoReply')
-              ? _json['enableAutoReply'] as core.bool
+          enableAutoReply: json_.containsKey('enableAutoReply')
+              ? json_['enableAutoReply'] as core.bool
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          responseBodyHtml: _json.containsKey('responseBodyHtml')
-              ? _json['responseBodyHtml'] as core.String
+          responseBodyHtml: json_.containsKey('responseBodyHtml')
+              ? json_['responseBodyHtml'] as core.String
               : null,
-          responseBodyPlainText: _json.containsKey('responseBodyPlainText')
-              ? _json['responseBodyPlainText'] as core.String
+          responseBodyPlainText: json_.containsKey('responseBodyPlainText')
+              ? json_['responseBodyPlainText'] as core.String
               : null,
-          responseSubject: _json.containsKey('responseSubject')
-              ? _json['responseSubject'] as core.String
+          responseSubject: json_.containsKey('responseSubject')
+              ? json_['responseSubject'] as core.String
               : null,
-          restrictToContacts: _json.containsKey('restrictToContacts')
-              ? _json['restrictToContacts'] as core.bool
+          restrictToContacts: json_.containsKey('restrictToContacts')
+              ? json_['restrictToContacts'] as core.bool
               : null,
-          restrictToDomain: _json.containsKey('restrictToDomain')
-              ? _json['restrictToDomain'] as core.bool
+          restrictToDomain: json_.containsKey('restrictToDomain')
+              ? json_['restrictToDomain'] as core.bool
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -5526,18 +5526,18 @@ class WatchRequest {
     this.topicName,
   });
 
-  WatchRequest.fromJson(core.Map _json)
+  WatchRequest.fromJson(core.Map json_)
       : this(
-          labelFilterAction: _json.containsKey('labelFilterAction')
-              ? _json['labelFilterAction'] as core.String
+          labelFilterAction: json_.containsKey('labelFilterAction')
+              ? json_['labelFilterAction'] as core.String
               : null,
-          labelIds: _json.containsKey('labelIds')
-              ? (_json['labelIds'] as core.List)
+          labelIds: json_.containsKey('labelIds')
+              ? (json_['labelIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          topicName: _json.containsKey('topicName')
-              ? _json['topicName'] as core.String
+          topicName: json_.containsKey('topicName')
+              ? json_['topicName'] as core.String
               : null,
         );
 
@@ -5564,13 +5564,13 @@ class WatchResponse {
     this.historyId,
   });
 
-  WatchResponse.fromJson(core.Map _json)
+  WatchResponse.fromJson(core.Map json_)
       : this(
-          expiration: _json.containsKey('expiration')
-              ? _json['expiration'] as core.String
+          expiration: json_.containsKey('expiration')
+              ? json_['expiration'] as core.String
               : null,
-          historyId: _json.containsKey('historyId')
-              ? _json['historyId'] as core.String
+          historyId: json_.containsKey('historyId')
+              ? json_['historyId'] as core.String
               : null,
         );
 

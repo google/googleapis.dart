@@ -87,7 +87,7 @@ T libraryDeduplicateLogic<T>(T Function() action) {
 mixin DedupeMixin {
   List<RestDescription> get descriptions;
 
-  List<_DuplicateItem> wrapPackageDeduplicateLogic(void Function() action) {
+  List<DuplicateItem> wrapPackageDeduplicateLogic(void Function() action) {
     final dupes = <String, Set<_Replacement>>{};
 
     for (var api in descriptions) {
@@ -110,7 +110,7 @@ mixin DedupeMixin {
       }
     }
 
-    final candidates = <String, _DuplicateItem>{};
+    final candidates = <String, DuplicateItem>{};
 
     for (var dupe in dupes.entries) {
       if (dupe.value.length < 2) {
@@ -122,7 +122,7 @@ mixin DedupeMixin {
 
       candidates.putIfAbsent(
         dupe.key,
-        () => _DuplicateItem(
+        () => DuplicateItem._(
           desiredClassName: shortestKey,
           replacements: dupe.value,
         ),
@@ -165,15 +165,15 @@ class _LibraryZoneData {
 }
 
 class _PackageZoneData {
-  final Map<String, _DuplicateItem> candidates;
-  final usedItems = <_DuplicateItem>{};
+  final Map<String, DuplicateItem> candidates;
+  final usedItems = <DuplicateItem>{};
 
   _PackageZoneData(this.candidates);
 }
 
-class _DuplicateItem implements Comparable<_DuplicateItem> {
+class DuplicateItem implements Comparable<DuplicateItem> {
   final String desiredClassName;
-  final Set<_Replacement> replacements;
+  final Set<_Replacement> _replacements;
 
   late final String outputName;
 
@@ -184,13 +184,13 @@ class _DuplicateItem implements Comparable<_DuplicateItem> {
   String get definition => '''
 /// Used by:
 ///
-${replacements.map((e) => '/// - $e').join('\n')}
+${_replacements.map((e) => '/// - $e').join('\n')}
 $_definition''';
 
-  _DuplicateItem({
+  DuplicateItem._({
     required this.desiredClassName,
-    required this.replacements,
-  });
+    required Set<_Replacement> replacements,
+  }) : _replacements = replacements;
 
   void populateDefinition(String value) {
     _definition ??= value;
@@ -207,13 +207,13 @@ $_definition''';
   String toString() => desiredClassName;
 
   @override
-  int compareTo(_DuplicateItem other) {
+  int compareTo(DuplicateItem other) {
     var value = desiredClassName.compareTo(other.desiredClassName);
     if (value == 0) {
-      value = other.replacements.length.compareTo(replacements.length);
+      value = other._replacements.length.compareTo(_replacements.length);
     }
     if (value == 0) {
-      value = replacements.first.compareTo(other.replacements.first);
+      value = _replacements.first.compareTo(other._replacements.first);
     }
     return value;
   }

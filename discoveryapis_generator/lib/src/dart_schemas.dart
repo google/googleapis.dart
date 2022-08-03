@@ -339,7 +339,7 @@ Comment extendEnumComment(Comment baseComment, DartSchemaType type) {
 
 Comment extendAnyTypeComment(Comment baseComment, DartSchemaType type,
     {bool includeNamedTypes = false}) {
-  const _anyTypeComment =
+  const anyTypeComment =
       'The values for Object must be JSON objects. It can consist of `num`, '
       '`String`, `bool` and `null` as well as `Map` and `List` values.';
 
@@ -367,7 +367,7 @@ Comment extendAnyTypeComment(Comment baseComment, DartSchemaType type,
   }
 
   if (traverseType(type)) {
-    return Comment('${baseComment.rawComment}\n\n$_anyTypeComment');
+    return Comment('${baseComment.rawComment}\n\n$anyTypeComment');
   }
   return baseComment;
 }

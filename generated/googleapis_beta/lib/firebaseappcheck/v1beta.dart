@@ -104,19 +104,19 @@ class JwksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaPublicJwkSet.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -183,22 +183,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeAppAttestAssertion';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Accepts an App Attest CBOR attestation and verifies it with Apple using
@@ -237,23 +237,23 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$app') +
         ':exchangeAppAttestAttestation';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a custom token signed using your project's Admin SDK service
@@ -287,22 +287,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeCustomToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a debug token secret that you have previously created using
@@ -338,22 +338,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeDebugToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Accepts a
@@ -389,22 +389,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeDeviceCheckToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates an
@@ -439,22 +439,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangePlayIntegrityToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a
@@ -489,23 +489,23 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$app') +
         ':exchangeRecaptchaEnterpriseToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a
@@ -540,22 +540,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeRecaptchaToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a
@@ -590,22 +590,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeRecaptchaV3Token';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates a
@@ -640,22 +640,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeSafetyNetToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a challenge that protects the integrity of an immediately
@@ -692,22 +692,22 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$app') + ':generateAppAttestChallenge';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a challenge that protects the integrity of an immediately
@@ -746,23 +746,23 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$app') +
         ':generatePlayIntegrityChallenge';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -805,22 +805,22 @@ class ProjectsAppsAppAttestConfigResource {
     core.List<core.String>? names,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/apps/-/appAttestConfig:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the AppAttestConfig for the specified app.
@@ -846,19 +846,19 @@ class ProjectsAppsAppAttestConfigResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the AppAttestConfig for the specified app.
@@ -894,22 +894,22 @@ class ProjectsAppsAppAttestConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -949,21 +949,21 @@ class ProjectsAppsDebugTokensResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/debugTokens';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/debugTokens';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified DebugToken.
@@ -994,19 +994,19 @@ class ProjectsAppsDebugTokensResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified DebugToken.
@@ -1036,19 +1036,19 @@ class ProjectsAppsDebugTokensResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all DebugTokens for the specified app.
@@ -1090,21 +1090,21 @@ class ProjectsAppsDebugTokensResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/debugTokens';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/debugTokens';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaListDebugTokensResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified DebugToken.
@@ -1142,22 +1142,22 @@ class ProjectsAppsDebugTokensResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1203,22 +1203,22 @@ class ProjectsAppsDeviceCheckConfigResource {
     core.List<core.String>? names,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/apps/-/deviceCheckConfig:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the DeviceCheckConfig for the specified app.
@@ -1248,19 +1248,19 @@ class ProjectsAppsDeviceCheckConfigResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the DeviceCheckConfig for the specified app.
@@ -1298,22 +1298,22 @@ class ProjectsAppsDeviceCheckConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1356,22 +1356,22 @@ class ProjectsAppsPlayIntegrityConfigResource {
     core.List<core.String>? names,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/apps/-/playIntegrityConfig:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the PlayIntegrityConfig for the specified app.
@@ -1398,19 +1398,19 @@ class ProjectsAppsPlayIntegrityConfigResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the PlayIntegrityConfig for the specified app.
@@ -1447,22 +1447,22 @@ class ProjectsAppsPlayIntegrityConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1508,22 +1508,22 @@ class ProjectsAppsRecaptchaConfigResource {
     core.List<core.String>? names,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/apps/-/recaptchaConfig:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the RecaptchaConfig for the specified app.
@@ -1552,19 +1552,19 @@ class ProjectsAppsRecaptchaConfigResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the RecaptchaConfig for the specified app.
@@ -1601,22 +1601,22 @@ class ProjectsAppsRecaptchaConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1661,22 +1661,22 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
     core.List<core.String>? names,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/apps/-/recaptchaEnterpriseConfig:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the RecaptchaEnterpriseConfig for the specified app.
@@ -1703,19 +1703,19 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the RecaptchaEnterpriseConfig for the specified app.
@@ -1752,22 +1752,22 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1813,22 +1813,22 @@ class ProjectsAppsRecaptchaV3ConfigResource {
     core.List<core.String>? names,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/apps/-/recaptchaV3Config:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the RecaptchaV3Config for the specified app.
@@ -1858,19 +1858,19 @@ class ProjectsAppsRecaptchaV3ConfigResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaRecaptchaV3Config.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the RecaptchaV3Config for the specified app.
@@ -1908,22 +1908,22 @@ class ProjectsAppsRecaptchaV3ConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaRecaptchaV3Config.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1966,22 +1966,22 @@ class ProjectsAppsSafetyNetConfigResource {
     core.List<core.String>? names,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' +
+    final url_ = 'v1beta/' +
         core.Uri.encodeFull('$parent') +
         '/apps/-/safetyNetConfig:batchGet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the SafetyNetConfig for the specified app.
@@ -2007,19 +2007,19 @@ class ProjectsAppsSafetyNetConfigResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the SafetyNetConfig for the specified app.
@@ -2055,22 +2055,22 @@ class ProjectsAppsSafetyNetConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2108,22 +2108,22 @@ class ProjectsServicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta/' + core.Uri.encodeFull('$parent') + '/services:batchUpdate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Service configuration for the specified service name.
@@ -2153,19 +2153,19 @@ class ProjectsServicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaService.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Service configurations for the specified project.
@@ -2207,21 +2207,21 @@ class ProjectsServicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$parent') + '/services';
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/services';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaListServicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified Service configuration.
@@ -2258,22 +2258,22 @@ class ProjectsServicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1betaService.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2304,11 +2304,11 @@ class GoogleFirebaseAppcheckV1betaAppAttestConfig {
     this.tokenTtl,
   });
 
-  GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          tokenTtl: _json.containsKey('tokenTtl')
-              ? _json['tokenTtl'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tokenTtl: json_.containsKey('tokenTtl')
+              ? json_['tokenTtl'] as core.String
               : null,
         );
 
@@ -2348,14 +2348,14 @@ class GoogleFirebaseAppcheckV1betaAppCheckToken {
     this.ttl,
   });
 
-  GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(core.Map json_)
       : this(
-          attestationToken: _json.containsKey('attestationToken')
-              ? _json['attestationToken'] as core.String
+          attestationToken: json_.containsKey('attestationToken')
+              ? json_['attestationToken'] as core.String
               : null,
           token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
-          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2387,12 +2387,12 @@ class GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
     this.ttl,
   });
 
-  GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(core.Map json_)
       : this(
-          attestationToken: _json.containsKey('attestationToken')
-              ? _json['attestationToken'] as core.String
+          attestationToken: json_.containsKey('attestationToken')
+              ? json_['attestationToken'] as core.String
               : null,
-          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2411,10 +2411,10 @@ class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaAppAttestConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -2437,10 +2437,10 @@ class GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -2463,10 +2463,10 @@ class GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -2489,10 +2489,10 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -2515,10 +2515,10 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig
                           .fromJson(
@@ -2542,10 +2542,10 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaRecaptchaV3Config.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -2568,10 +2568,10 @@ class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -2608,17 +2608,17 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
   });
 
   GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          requests: _json.containsKey('requests')
-              ? (_json['requests'] as core.List)
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          updateMask: _json.containsKey('updateMask')
-              ? _json['updateMask'] as core.String
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
               : null,
         );
 
@@ -2638,10 +2638,10 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse {
   });
 
   GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          services: _json.containsKey('services')
-              ? (_json['services'] as core.List)
+          services: json_.containsKey('services')
+              ? (json_['services'] as core.List)
                   .map((value) => GoogleFirebaseAppcheckV1betaService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2688,14 +2688,14 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
     this.token,
   });
 
-  GoogleFirebaseAppcheckV1betaDebugToken.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaDebugToken.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
+              json_.containsKey('token') ? json_['token'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2758,19 +2758,19 @@ class GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
     this.tokenTtl,
   });
 
-  GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(core.Map json_)
       : this(
           keyId:
-              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          privateKey: _json.containsKey('privateKey')
-              ? _json['privateKey'] as core.String
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          privateKey: json_.containsKey('privateKey')
+              ? json_['privateKey'] as core.String
               : null,
-          privateKeySet: _json.containsKey('privateKeySet')
-              ? _json['privateKeySet'] as core.bool
+          privateKeySet: json_.containsKey('privateKeySet')
+              ? json_['privateKeySet'] as core.bool
               : null,
-          tokenTtl: _json.containsKey('tokenTtl')
-              ? _json['tokenTtl'] as core.String
+          tokenTtl: json_.containsKey('tokenTtl')
+              ? json_['tokenTtl'] as core.String
               : null,
         );
 
@@ -2791,9 +2791,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
   core.String? artifact;
   core.List<core.int> get artifactAsBytes => convert.base64.decode(artifact!);
 
-  set artifactAsBytes(core.List<core.int> _bytes) {
+  set artifactAsBytes(core.List<core.int> bytes_) {
     artifact =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The CBOR-encoded assertion returned by the client-side App Attest API.
@@ -2802,9 +2802,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
   core.String? assertion;
   core.List<core.int> get assertionAsBytes => convert.base64.decode(assertion!);
 
-  set assertionAsBytes(core.List<core.int> _bytes) {
+  set assertionAsBytes(core.List<core.int> bytes_) {
     assertion =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A one-time challenge returned by an immediately prior call to
@@ -2814,9 +2814,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
   core.String? challenge;
   core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
 
-  set challengeAsBytes(core.List<core.int> _bytes) {
+  set challengeAsBytes(core.List<core.int> bytes_) {
     challenge =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest({
@@ -2826,16 +2826,16 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          artifact: _json.containsKey('artifact')
-              ? _json['artifact'] as core.String
+          artifact: json_.containsKey('artifact')
+              ? json_['artifact'] as core.String
               : null,
-          assertion: _json.containsKey('assertion')
-              ? _json['assertion'] as core.String
+          assertion: json_.containsKey('assertion')
+              ? json_['assertion'] as core.String
               : null,
-          challenge: _json.containsKey('challenge')
-              ? _json['challenge'] as core.String
+          challenge: json_.containsKey('challenge')
+              ? json_['challenge'] as core.String
               : null,
         );
 
@@ -2857,9 +2857,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
   core.List<core.int> get attestationStatementAsBytes =>
       convert.base64.decode(attestationStatement!);
 
-  set attestationStatementAsBytes(core.List<core.int> _bytes) {
+  set attestationStatementAsBytes(core.List<core.int> bytes_) {
     attestationStatement =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// A one-time challenge returned by an immediately prior call to
@@ -2869,9 +2869,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
   core.String? challenge;
   core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
 
-  set challengeAsBytes(core.List<core.int> _bytes) {
+  set challengeAsBytes(core.List<core.int> bytes_) {
     challenge =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The key ID generated by App Attest for the client app.
@@ -2880,9 +2880,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
   core.String? keyId;
   core.List<core.int> get keyIdAsBytes => convert.base64.decode(keyId!);
 
-  set keyIdAsBytes(core.List<core.int> _bytes) {
+  set keyIdAsBytes(core.List<core.int> bytes_) {
     keyId =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest({
@@ -2892,16 +2892,16 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          attestationStatement: _json.containsKey('attestationStatement')
-              ? _json['attestationStatement'] as core.String
+          attestationStatement: json_.containsKey('attestationStatement')
+              ? json_['attestationStatement'] as core.String
               : null,
-          challenge: _json.containsKey('challenge')
-              ? _json['challenge'] as core.String
+          challenge: json_.containsKey('challenge')
+              ? json_['challenge'] as core.String
               : null,
           keyId:
-              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2922,9 +2922,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
   core.String? artifact;
   core.List<core.int> get artifactAsBytes => convert.base64.decode(artifact!);
 
-  set artifactAsBytes(core.List<core.int> _bytes) {
+  set artifactAsBytes(core.List<core.int> bytes_) {
     artifact =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Encapsulates an App Check token.
@@ -2937,18 +2937,18 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          appCheckToken: _json.containsKey('appCheckToken')
+          appCheckToken: json_.containsKey('appCheckToken')
               ? GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
-                  _json['appCheckToken'] as core.Map<core.String, core.dynamic>)
+                  json_['appCheckToken'] as core.Map<core.String, core.dynamic>)
               : null,
-          artifact: _json.containsKey('artifact')
-              ? _json['artifact'] as core.String
+          artifact: json_.containsKey('artifact')
+              ? json_['artifact'] as core.String
               : null,
-          attestationToken: _json.containsKey('attestationToken')
+          attestationToken: json_.containsKey('attestationToken')
               ? GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
-                  _json['attestationToken']
+                  json_['attestationToken']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2973,10 +2973,10 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          customToken: _json.containsKey('customToken')
-              ? _json['customToken'] as core.String
+          customToken: json_.containsKey('customToken')
+              ? json_['customToken'] as core.String
               : null,
         );
 
@@ -2999,10 +2999,10 @@ class GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
     this.debugToken,
   });
 
-  GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest.fromJson(core.Map json_)
       : this(
-          debugToken: _json.containsKey('debugToken')
-              ? _json['debugToken'] as core.String
+          debugToken: json_.containsKey('debugToken')
+              ? json_['debugToken'] as core.String
               : null,
         );
 
@@ -3026,10 +3026,10 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          deviceToken: _json.containsKey('deviceToken')
-              ? _json['deviceToken'] as core.String
+          deviceToken: json_.containsKey('deviceToken')
+              ? json_['deviceToken'] as core.String
               : null,
         );
 
@@ -3052,10 +3052,10 @@ class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          playIntegrityToken: _json.containsKey('playIntegrityToken')
-              ? _json['playIntegrityToken'] as core.String
+          playIntegrityToken: json_.containsKey('playIntegrityToken')
+              ? json_['playIntegrityToken'] as core.String
               : null,
         );
 
@@ -3078,11 +3078,11 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
           recaptchaEnterpriseToken:
-              _json.containsKey('recaptchaEnterpriseToken')
-                  ? _json['recaptchaEnterpriseToken'] as core.String
+              json_.containsKey('recaptchaEnterpriseToken')
+                  ? json_['recaptchaEnterpriseToken'] as core.String
                   : null,
         );
 
@@ -3105,10 +3105,10 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          recaptchaToken: _json.containsKey('recaptchaToken')
-              ? _json['recaptchaToken'] as core.String
+          recaptchaToken: json_.containsKey('recaptchaToken')
+              ? json_['recaptchaToken'] as core.String
               : null,
         );
 
@@ -3130,10 +3130,10 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          recaptchaV3Token: _json.containsKey('recaptchaV3Token')
-              ? _json['recaptchaV3Token'] as core.String
+          recaptchaV3Token: json_.containsKey('recaptchaV3Token')
+              ? json_['recaptchaV3Token'] as core.String
               : null,
         );
 
@@ -3156,10 +3156,10 @@ class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest {
   });
 
   GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          safetyNetToken: _json.containsKey('safetyNetToken')
-              ? _json['safetyNetToken'] as core.String
+          safetyNetToken: json_.containsKey('safetyNetToken')
+              ? json_['safetyNetToken'] as core.String
               : null,
         );
 
@@ -3177,9 +3177,9 @@ class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse {
   core.String? challenge;
   core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
 
-  set challengeAsBytes(core.List<core.int> _bytes) {
+  set challengeAsBytes(core.List<core.int> bytes_) {
     challenge =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// The duration from the time this challenge is minted until its expiration.
@@ -3195,12 +3195,12 @@ class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse {
   });
 
   GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          challenge: _json.containsKey('challenge')
-              ? _json['challenge'] as core.String
+          challenge: json_.containsKey('challenge')
+              ? json_['challenge'] as core.String
               : null,
-          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3233,12 +3233,12 @@ class GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse {
   });
 
   GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          challenge: _json.containsKey('challenge')
-              ? _json['challenge'] as core.String
+          challenge: json_.containsKey('challenge')
+              ? json_['challenge'] as core.String
               : null,
-          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3266,17 +3266,17 @@ class GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
     this.nextPageToken,
   });
 
-  GoogleFirebaseAppcheckV1betaListDebugTokensResponse.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaListDebugTokensResponse.fromJson(core.Map json_)
       : this(
-          debugTokens: _json.containsKey('debugTokens')
-              ? (_json['debugTokens'] as core.List)
+          debugTokens: json_.containsKey('debugTokens')
+              ? (json_['debugTokens'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -3305,13 +3305,13 @@ class GoogleFirebaseAppcheckV1betaListServicesResponse {
     this.services,
   });
 
-  GoogleFirebaseAppcheckV1betaListServicesResponse.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaListServicesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          services: _json.containsKey('services')
-              ? (_json['services'] as core.List)
+          services: json_.containsKey('services')
+              ? (json_['services'] as core.List)
                   .map((value) => GoogleFirebaseAppcheckV1betaService.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3352,11 +3352,11 @@ class GoogleFirebaseAppcheckV1betaPlayIntegrityConfig {
     this.tokenTtl,
   });
 
-  GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaPlayIntegrityConfig.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          tokenTtl: _json.containsKey('tokenTtl')
-              ? _json['tokenTtl'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tokenTtl: json_.containsKey('tokenTtl')
+              ? json_['tokenTtl'] as core.String
               : null,
         );
 
@@ -3403,14 +3403,14 @@ class GoogleFirebaseAppcheckV1betaPublicJwk {
     this.use,
   });
 
-  GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(core.Map json_)
       : this(
-          alg: _json.containsKey('alg') ? _json['alg'] as core.String : null,
-          e: _json.containsKey('e') ? _json['e'] as core.String : null,
-          kid: _json.containsKey('kid') ? _json['kid'] as core.String : null,
-          kty: _json.containsKey('kty') ? _json['kty'] as core.String : null,
-          n: _json.containsKey('n') ? _json['n'] as core.String : null,
-          use: _json.containsKey('use') ? _json['use'] as core.String : null,
+          alg: json_.containsKey('alg') ? json_['alg'] as core.String : null,
+          e: json_.containsKey('e') ? json_['e'] as core.String : null,
+          kid: json_.containsKey('kid') ? json_['kid'] as core.String : null,
+          kty: json_.containsKey('kty') ? json_['kty'] as core.String : null,
+          n: json_.containsKey('n') ? json_['n'] as core.String : null,
+          use: json_.containsKey('use') ? json_['use'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3440,10 +3440,10 @@ class GoogleFirebaseAppcheckV1betaPublicJwkSet {
     this.keys,
   });
 
-  GoogleFirebaseAppcheckV1betaPublicJwkSet.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaPublicJwkSet.fromJson(core.Map json_)
       : this(
-          keys: _json.containsKey('keys')
-              ? (_json['keys'] as core.List)
+          keys: json_.containsKey('keys')
+              ? (json_['keys'] as core.List)
                   .map((value) =>
                       GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3500,17 +3500,17 @@ class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
     this.tokenTtl,
   });
 
-  GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          siteSecret: _json.containsKey('siteSecret')
-              ? _json['siteSecret'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          siteSecret: json_.containsKey('siteSecret')
+              ? json_['siteSecret'] as core.String
               : null,
-          siteSecretSet: _json.containsKey('siteSecretSet')
-              ? _json['siteSecretSet'] as core.bool
+          siteSecretSet: json_.containsKey('siteSecretSet')
+              ? json_['siteSecretSet'] as core.bool
               : null,
-          tokenTtl: _json.containsKey('tokenTtl')
-              ? _json['tokenTtl'] as core.String
+          tokenTtl: json_.containsKey('tokenTtl')
+              ? json_['tokenTtl'] as core.String
               : null,
         );
 
@@ -3558,14 +3558,14 @@ class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig {
     this.tokenTtl,
   });
 
-  GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          siteKey: _json.containsKey('siteKey')
-              ? _json['siteKey'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          siteKey: json_.containsKey('siteKey')
+              ? json_['siteKey'] as core.String
               : null,
-          tokenTtl: _json.containsKey('tokenTtl')
-              ? _json['tokenTtl'] as core.String
+          tokenTtl: json_.containsKey('tokenTtl')
+              ? json_['tokenTtl'] as core.String
               : null,
         );
 
@@ -3620,17 +3620,17 @@ class GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
     this.tokenTtl,
   });
 
-  GoogleFirebaseAppcheckV1betaRecaptchaV3Config.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaRecaptchaV3Config.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          siteSecret: _json.containsKey('siteSecret')
-              ? _json['siteSecret'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          siteSecret: json_.containsKey('siteSecret')
+              ? json_['siteSecret'] as core.String
               : null,
-          siteSecretSet: _json.containsKey('siteSecretSet')
-              ? _json['siteSecretSet'] as core.bool
+          siteSecretSet: json_.containsKey('siteSecretSet')
+              ? json_['siteSecretSet'] as core.bool
               : null,
-          tokenTtl: _json.containsKey('tokenTtl')
-              ? _json['tokenTtl'] as core.String
+          tokenTtl: json_.containsKey('tokenTtl')
+              ? json_['tokenTtl'] as core.String
               : null,
         );
 
@@ -3669,11 +3669,11 @@ class GoogleFirebaseAppcheckV1betaSafetyNetConfig {
     this.tokenTtl,
   });
 
-  GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaSafetyNetConfig.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          tokenTtl: _json.containsKey('tokenTtl')
-              ? _json['tokenTtl'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tokenTtl: json_.containsKey('tokenTtl')
+              ? json_['tokenTtl'] as core.String
               : null,
         );
 
@@ -3733,12 +3733,12 @@ class GoogleFirebaseAppcheckV1betaService {
     this.name,
   });
 
-  GoogleFirebaseAppcheckV1betaService.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaService.fromJson(core.Map json_)
       : this(
-          enforcementMode: _json.containsKey('enforcementMode')
-              ? _json['enforcementMode'] as core.String
+          enforcementMode: json_.containsKey('enforcementMode')
+              ? json_['enforcementMode'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3775,14 +3775,14 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
     this.updateMask,
   });
 
-  GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(core.Map _json)
+  GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(core.Map json_)
       : this(
-          service: _json.containsKey('service')
+          service: json_.containsKey('service')
               ? GoogleFirebaseAppcheckV1betaService.fromJson(
-                  _json['service'] as core.Map<core.String, core.dynamic>)
+                  json_['service'] as core.Map<core.String, core.dynamic>)
               : null,
-          updateMask: _json.containsKey('updateMask')
-              ? _json['updateMask'] as core.String
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
               : null,
         );
 

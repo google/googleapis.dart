@@ -108,21 +108,21 @@ class LocationsResource {
     core.String? webhookKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (webhookKey != null) 'webhookKey': [webhookKey],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$location') + '/regionalWebhook';
+    final url_ = 'v1/' + core.Uri.encodeFull('$location') + '/regionalWebhook';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -164,20 +164,20 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -204,18 +204,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -265,20 +265,20 @@ class ProjectsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancels a build in progress.
@@ -307,24 +307,24 @@ class ProjectsBuildsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/builds/' +
         commons.escapeVariable('$id') +
         ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Build.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts a build with the specified configuration.
@@ -358,22 +358,22 @@ class ProjectsBuildsResource {
     core.String? parent,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$projectId') + '/builds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a previously requested build.
@@ -406,22 +406,22 @@ class ProjectsBuildsResource {
     core.String? name,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/builds/' +
         commons.escapeVariable('$id');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Build.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists previously requested builds.
@@ -464,7 +464,7 @@ class ProjectsBuildsResource {
     core.String? parent,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -472,16 +472,16 @@ class ProjectsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$projectId') + '/builds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBuildsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new build based on the specified build.
@@ -527,24 +527,24 @@ class ProjectsBuildsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/builds/' +
         commons.escapeVariable('$id') +
         ':retry';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -590,23 +590,23 @@ class ProjectsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (gheConfigId != null) 'gheConfigId': [gheConfigId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an association between a GCP project and a GitHub Enterprise
@@ -640,20 +640,20 @@ class ProjectsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve a GitHubEnterpriseConfig.
@@ -686,21 +686,21 @@ class ProjectsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GitHubEnterpriseConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all GitHubEnterpriseConfigs for a given project.
@@ -728,21 +728,21 @@ class ProjectsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGithubEnterpriseConfigsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an association between a GCP project and a GitHub Enterprise
@@ -777,21 +777,21 @@ class ProjectsGithubEnterpriseConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -862,23 +862,23 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     core.String? bitbucketServerConfigId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (bitbucketServerConfigId != null)
         'bitbucketServerConfigId': [bitbucketServerConfigId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/bitbucketServerConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a `BitbucketServerConfig`.
@@ -905,18 +905,18 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve a `BitbucketServerConfig`.
@@ -943,19 +943,19 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BitbucketServerConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all `BitbucketServerConfigs` for a given project.
@@ -994,22 +994,22 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/bitbucketServerConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBitbucketServerConfigsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing `BitbucketServerConfig`.
@@ -1044,21 +1044,21 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Remove a Bitbucket Server repository from a given BitbucketServerConfig's
@@ -1091,22 +1091,22 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     core.String config, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$config') +
         ':removeBitbucketServerConnectedRepository';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1144,22 +1144,22 @@ class ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/connectedRepositories:batchCreate';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1207,21 +1207,21 @@ class ProjectsLocationsBitbucketServerConfigsReposResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/repos';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/repos';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBitbucketServerRepositoriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1260,20 +1260,20 @@ class ProjectsLocationsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancels a build in progress.
@@ -1302,20 +1302,20 @@ class ProjectsLocationsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Build.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts a build with the specified configuration.
@@ -1350,21 +1350,21 @@ class ProjectsLocationsBuildsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/builds';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/builds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a previously requested build.
@@ -1399,20 +1399,20 @@ class ProjectsLocationsBuildsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Build.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists previously requested builds.
@@ -1456,7 +1456,7 @@ class ProjectsLocationsBuildsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1464,15 +1464,15 @@ class ProjectsLocationsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/builds';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/builds';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBuildsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new build based on the specified build.
@@ -1518,20 +1518,20 @@ class ProjectsLocationsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':retry';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':retry';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1577,23 +1577,23 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (gheConfigId != null) 'gheConfigId': [gheConfigId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an association between a GCP project and a GitHub Enterprise
@@ -1627,20 +1627,20 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve a GitHubEnterpriseConfig.
@@ -1673,21 +1673,21 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GitHubEnterpriseConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List all GitHubEnterpriseConfigs for a given project.
@@ -1715,21 +1715,21 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/githubEnterpriseConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListGithubEnterpriseConfigsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an association between a GCP project and a GitHub Enterprise
@@ -1764,21 +1764,21 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1822,20 +1822,20 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1863,18 +1863,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1915,22 +1915,22 @@ class ProjectsLocationsTriggersResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/triggers';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/triggers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
@@ -1964,20 +1964,20 @@ class ProjectsLocationsTriggersResource {
     core.String? triggerId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (triggerId != null) 'triggerId': [triggerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a `BuildTrigger`.
@@ -2012,21 +2012,21 @@ class ProjectsLocationsTriggersResource {
     core.String? triggerId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (triggerId != null) 'triggerId': [triggerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists existing `BuildTrigger`s.
@@ -2062,22 +2062,22 @@ class ProjectsLocationsTriggersResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/triggers';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/triggers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBuildTriggersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
@@ -2115,23 +2115,23 @@ class ProjectsLocationsTriggersResource {
     core.String? triggerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (triggerId != null) 'triggerId': [triggerId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resourceName');
+    final url_ = 'v1/' + core.Uri.encodeFull('$resourceName');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs a `BuildTrigger` at a particular source revision.
@@ -2165,20 +2165,20 @@ class ProjectsLocationsTriggersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// ReceiveTriggerWebhook \[Experimental\] is called when the API receives a
@@ -2218,24 +2218,24 @@ class ProjectsLocationsTriggersResource {
     core.String? trigger,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (secret != null) 'secret': [secret],
       if (trigger != null) 'trigger': [trigger],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':webhook';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':webhook';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ReceiveTriggerWebhookResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2279,22 +2279,22 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String? workerPoolId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if (workerPoolId != null) 'workerPoolId': [workerPoolId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workerPools';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workerPools';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `WorkerPool`.
@@ -2332,21 +2332,21 @@ class ProjectsLocationsWorkerPoolsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns details of a `WorkerPool`.
@@ -2372,19 +2372,19 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return WorkerPool.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists `WorkerPool`s.
@@ -2418,21 +2418,21 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/workerPools';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workerPools';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListWorkerPoolsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a `WorkerPool`.
@@ -2471,22 +2471,22 @@ class ProjectsLocationsWorkerPoolsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2525,23 +2525,23 @@ class ProjectsTriggersResource {
     core.String? parent,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$projectId') + '/triggers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
@@ -2573,22 +2573,22 @@ class ProjectsTriggersResource {
     core.String? name,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a `BuildTrigger`.
@@ -2621,23 +2621,23 @@ class ProjectsTriggersResource {
     core.String? name,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists existing `BuildTrigger`s.
@@ -2672,23 +2672,23 @@ class ProjectsTriggersResource {
     core.String? parent,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/projects/' + commons.escapeVariable('$projectId') + '/triggers';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBuildTriggersResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
@@ -2719,24 +2719,24 @@ class ProjectsTriggersResource {
     core.String triggerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs a `BuildTrigger` at a particular source revision.
@@ -2774,25 +2774,25 @@ class ProjectsTriggersResource {
     core.String? name,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId') +
         ':run';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// ReceiveTriggerWebhook \[Experimental\] is called when the API receives a
@@ -2830,27 +2830,27 @@ class ProjectsTriggersResource {
     core.String? secret,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if (secret != null) 'secret': [secret],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/projects/' +
+    final url_ = 'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$trigger') +
         ':webhook';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ReceiveTriggerWebhookResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2884,21 +2884,21 @@ class V1Resource {
     core.String? webhookKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (webhookKey != null) 'webhookKey': [webhookKey],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/webhook';
+    const url_ = 'v1/webhook';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2914,10 +2914,10 @@ class ApprovalConfig {
     this.approvalRequired,
   });
 
-  ApprovalConfig.fromJson(core.Map _json)
+  ApprovalConfig.fromJson(core.Map json_)
       : this(
-          approvalRequired: _json.containsKey('approvalRequired')
-              ? _json['approvalRequired'] as core.bool
+          approvalRequired: json_.containsKey('approvalRequired')
+              ? json_['approvalRequired'] as core.bool
               : null,
         );
 
@@ -2971,21 +2971,21 @@ class ApprovalResult {
     this.url,
   });
 
-  ApprovalResult.fromJson(core.Map _json)
+  ApprovalResult.fromJson(core.Map json_)
       : this(
-          approvalTime: _json.containsKey('approvalTime')
-              ? _json['approvalTime'] as core.String
+          approvalTime: json_.containsKey('approvalTime')
+              ? json_['approvalTime'] as core.String
               : null,
-          approverAccount: _json.containsKey('approverAccount')
-              ? _json['approverAccount'] as core.String
+          approverAccount: json_.containsKey('approverAccount')
+              ? json_['approverAccount'] as core.String
               : null,
-          comment: _json.containsKey('comment')
-              ? _json['comment'] as core.String
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
               : null,
-          decision: _json.containsKey('decision')
-              ? _json['decision'] as core.String
+          decision: json_.containsKey('decision')
+              ? json_['decision'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3006,10 +3006,10 @@ class ApproveBuildRequest {
     this.approvalResult,
   });
 
-  ApproveBuildRequest.fromJson(core.Map _json)
+  ApproveBuildRequest.fromJson(core.Map json_)
       : this(
-          approvalResult: _json.containsKey('approvalResult')
-              ? ApprovalResult.fromJson(_json['approvalResult']
+          approvalResult: json_.containsKey('approvalResult')
+              ? ApprovalResult.fromJson(json_['approvalResult']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3045,19 +3045,19 @@ class ArtifactObjects {
     this.timing,
   });
 
-  ArtifactObjects.fromJson(core.Map _json)
+  ArtifactObjects.fromJson(core.Map json_)
       : this(
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
               : null,
-          paths: _json.containsKey('paths')
-              ? (_json['paths'] as core.List)
+          paths: json_.containsKey('paths')
+              ? (json_['paths'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          timing: _json.containsKey('timing')
+          timing: json_.containsKey('timing')
               ? TimeSpan.fromJson(
-                  _json['timing'] as core.Map<core.String, core.dynamic>)
+                  json_['timing'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3095,16 +3095,16 @@ class Artifacts {
     this.objects,
   });
 
-  Artifacts.fromJson(core.Map _json)
+  Artifacts.fromJson(core.Map json_)
       : this(
-          images: _json.containsKey('images')
-              ? (_json['images'] as core.List)
+          images: json_.containsKey('images')
+              ? (json_['images'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          objects: _json.containsKey('objects')
+          objects: json_.containsKey('objects')
               ? ArtifactObjects.fromJson(
-                  _json['objects'] as core.Map<core.String, core.dynamic>)
+                  json_['objects'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3127,10 +3127,10 @@ class BatchCreateBitbucketServerConnectedRepositoriesRequest {
   });
 
   BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          requests: _json.containsKey('requests')
-              ? (_json['requests'] as core.List)
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
                   .map((value) =>
                       CreateBitbucketServerConnectedRepositoryRequest.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -3222,38 +3222,38 @@ class BitbucketServerConfig {
     this.webhookKey,
   });
 
-  BitbucketServerConfig.fromJson(core.Map _json)
+  BitbucketServerConfig.fromJson(core.Map json_)
       : this(
-          apiKey: _json.containsKey('apiKey')
-              ? _json['apiKey'] as core.String
+          apiKey: json_.containsKey('apiKey')
+              ? json_['apiKey'] as core.String
               : null,
-          connectedRepositories: _json.containsKey('connectedRepositories')
-              ? (_json['connectedRepositories'] as core.List)
+          connectedRepositories: json_.containsKey('connectedRepositories')
+              ? (json_['connectedRepositories'] as core.List)
                   .map((value) => BitbucketServerRepositoryId.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          hostUri: _json.containsKey('hostUri')
-              ? _json['hostUri'] as core.String
+          hostUri: json_.containsKey('hostUri')
+              ? json_['hostUri'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          peeredNetwork: _json.containsKey('peeredNetwork')
-              ? _json['peeredNetwork'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          peeredNetwork: json_.containsKey('peeredNetwork')
+              ? json_['peeredNetwork'] as core.String
               : null,
-          secrets: _json.containsKey('secrets')
+          secrets: json_.containsKey('secrets')
               ? BitbucketServerSecrets.fromJson(
-                  _json['secrets'] as core.Map<core.String, core.dynamic>)
+                  json_['secrets'] as core.Map<core.String, core.dynamic>)
               : null,
           sslCa:
-              _json.containsKey('sslCa') ? _json['sslCa'] as core.String : null,
-          username: _json.containsKey('username')
-              ? _json['username'] as core.String
+              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
               : null,
-          webhookKey: _json.containsKey('webhookKey')
-              ? _json['webhookKey'] as core.String
+          webhookKey: json_.containsKey('webhookKey')
+              ? json_['webhookKey'] as core.String
               : null,
         );
 
@@ -3295,18 +3295,18 @@ class BitbucketServerConnectedRepository {
     this.status,
   });
 
-  BitbucketServerConnectedRepository.fromJson(core.Map _json)
+  BitbucketServerConnectedRepository.fromJson(core.Map json_)
       : this(
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
-          repo: _json.containsKey('repo')
+          repo: json_.containsKey('repo')
               ? BitbucketServerRepositoryId.fromJson(
-                  _json['repo'] as core.Map<core.String, core.dynamic>)
+                  json_['repo'] as core.Map<core.String, core.dynamic>)
               : null,
-          status: _json.containsKey('status')
+          status: json_.containsKey('status')
               ? Status.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3343,21 +3343,21 @@ class BitbucketServerRepository {
     this.repoId,
   });
 
-  BitbucketServerRepository.fromJson(core.Map _json)
+  BitbucketServerRepository.fromJson(core.Map json_)
       : this(
-          browseUri: _json.containsKey('browseUri')
-              ? _json['browseUri'] as core.String
+          browseUri: json_.containsKey('browseUri')
+              ? json_['browseUri'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          repoId: _json.containsKey('repoId')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          repoId: json_.containsKey('repoId')
               ? BitbucketServerRepositoryId.fromJson(
-                  _json['repoId'] as core.Map<core.String, core.dynamic>)
+                  json_['repoId'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3397,16 +3397,16 @@ class BitbucketServerRepositoryId {
     this.webhookId,
   });
 
-  BitbucketServerRepositoryId.fromJson(core.Map _json)
+  BitbucketServerRepositoryId.fromJson(core.Map json_)
       : this(
-          projectKey: _json.containsKey('projectKey')
-              ? _json['projectKey'] as core.String
+          projectKey: json_.containsKey('projectKey')
+              ? json_['projectKey'] as core.String
               : null,
-          repoSlug: _json.containsKey('repoSlug')
-              ? _json['repoSlug'] as core.String
+          repoSlug: json_.containsKey('repoSlug')
+              ? json_['repoSlug'] as core.String
               : null,
-          webhookId: _json.containsKey('webhookId')
-              ? _json['webhookId'] as core.int
+          webhookId: json_.containsKey('webhookId')
+              ? json_['webhookId'] as core.int
               : null,
         );
 
@@ -3444,19 +3444,19 @@ class BitbucketServerSecrets {
     this.webhookSecretVersionName,
   });
 
-  BitbucketServerSecrets.fromJson(core.Map _json)
+  BitbucketServerSecrets.fromJson(core.Map json_)
       : this(
           adminAccessTokenVersionName:
-              _json.containsKey('adminAccessTokenVersionName')
-                  ? _json['adminAccessTokenVersionName'] as core.String
+              json_.containsKey('adminAccessTokenVersionName')
+                  ? json_['adminAccessTokenVersionName'] as core.String
                   : null,
           readAccessTokenVersionName:
-              _json.containsKey('readAccessTokenVersionName')
-                  ? _json['readAccessTokenVersionName'] as core.String
+              json_.containsKey('readAccessTokenVersionName')
+                  ? json_['readAccessTokenVersionName'] as core.String
                   : null,
           webhookSecretVersionName:
-              _json.containsKey('webhookSecretVersionName')
-                  ? _json['webhookSecretVersionName'] as core.String
+              json_.containsKey('webhookSecretVersionName')
+                  ? json_['webhookSecretVersionName'] as core.String
                   : null,
         );
 
@@ -3517,29 +3517,29 @@ class BitbucketServerTriggerConfig {
     this.repoSlug,
   });
 
-  BitbucketServerTriggerConfig.fromJson(core.Map _json)
+  BitbucketServerTriggerConfig.fromJson(core.Map json_)
       : this(
-          bitbucketServerConfig: _json.containsKey('bitbucketServerConfig')
-              ? BitbucketServerConfig.fromJson(_json['bitbucketServerConfig']
+          bitbucketServerConfig: json_.containsKey('bitbucketServerConfig')
+              ? BitbucketServerConfig.fromJson(json_['bitbucketServerConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           bitbucketServerConfigResource:
-              _json.containsKey('bitbucketServerConfigResource')
-                  ? _json['bitbucketServerConfigResource'] as core.String
+              json_.containsKey('bitbucketServerConfigResource')
+                  ? json_['bitbucketServerConfigResource'] as core.String
                   : null,
-          projectKey: _json.containsKey('projectKey')
-              ? _json['projectKey'] as core.String
+          projectKey: json_.containsKey('projectKey')
+              ? json_['projectKey'] as core.String
               : null,
-          pullRequest: _json.containsKey('pullRequest')
+          pullRequest: json_.containsKey('pullRequest')
               ? PullRequestFilter.fromJson(
-                  _json['pullRequest'] as core.Map<core.String, core.dynamic>)
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
               : null,
-          push: _json.containsKey('push')
+          push: json_.containsKey('push')
               ? PushFilter.fromJson(
-                  _json['push'] as core.Map<core.String, core.dynamic>)
+                  json_['push'] as core.Map<core.String, core.dynamic>)
               : null,
-          repoSlug: _json.containsKey('repoSlug')
-              ? _json['repoSlug'] as core.String
+          repoSlug: json_.containsKey('repoSlug')
+              ? json_['repoSlug'] as core.String
               : null,
         );
 
@@ -3775,94 +3775,94 @@ class Build {
     this.warnings,
   });
 
-  Build.fromJson(core.Map _json)
+  Build.fromJson(core.Map json_)
       : this(
-          approval: _json.containsKey('approval')
+          approval: json_.containsKey('approval')
               ? BuildApproval.fromJson(
-                  _json['approval'] as core.Map<core.String, core.dynamic>)
+                  json_['approval'] as core.Map<core.String, core.dynamic>)
               : null,
-          artifacts: _json.containsKey('artifacts')
+          artifacts: json_.containsKey('artifacts')
               ? Artifacts.fromJson(
-                  _json['artifacts'] as core.Map<core.String, core.dynamic>)
+                  json_['artifacts'] as core.Map<core.String, core.dynamic>)
               : null,
-          availableSecrets: _json.containsKey('availableSecrets')
-              ? Secrets.fromJson(_json['availableSecrets']
+          availableSecrets: json_.containsKey('availableSecrets')
+              ? Secrets.fromJson(json_['availableSecrets']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          buildTriggerId: _json.containsKey('buildTriggerId')
-              ? _json['buildTriggerId'] as core.String
+          buildTriggerId: json_.containsKey('buildTriggerId')
+              ? json_['buildTriggerId'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          failureInfo: _json.containsKey('failureInfo')
+          failureInfo: json_.containsKey('failureInfo')
               ? FailureInfo.fromJson(
-                  _json['failureInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['failureInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          finishTime: _json.containsKey('finishTime')
-              ? _json['finishTime'] as core.String
+          finishTime: json_.containsKey('finishTime')
+              ? json_['finishTime'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          images: _json.containsKey('images')
-              ? (_json['images'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          images: json_.containsKey('images')
+              ? (json_['images'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          logUrl: _json.containsKey('logUrl')
-              ? _json['logUrl'] as core.String
+          logUrl: json_.containsKey('logUrl')
+              ? json_['logUrl'] as core.String
               : null,
-          logsBucket: _json.containsKey('logsBucket')
-              ? _json['logsBucket'] as core.String
+          logsBucket: json_.containsKey('logsBucket')
+              ? json_['logsBucket'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          options: _json.containsKey('options')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          options: json_.containsKey('options')
               ? BuildOptions.fromJson(
-                  _json['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          queueTtl: _json.containsKey('queueTtl')
-              ? _json['queueTtl'] as core.String
+          queueTtl: json_.containsKey('queueTtl')
+              ? json_['queueTtl'] as core.String
               : null,
-          results: _json.containsKey('results')
+          results: json_.containsKey('results')
               ? Results.fromJson(
-                  _json['results'] as core.Map<core.String, core.dynamic>)
+                  json_['results'] as core.Map<core.String, core.dynamic>)
               : null,
-          secrets: _json.containsKey('secrets')
-              ? (_json['secrets'] as core.List)
+          secrets: json_.containsKey('secrets')
+              ? (json_['secrets'] as core.List)
                   .map((value) => Secret.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          serviceAccount: _json.containsKey('serviceAccount')
-              ? _json['serviceAccount'] as core.String
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
               : null,
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? Source.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          sourceProvenance: _json.containsKey('sourceProvenance')
-              ? SourceProvenance.fromJson(_json['sourceProvenance']
+          sourceProvenance: json_.containsKey('sourceProvenance')
+              ? SourceProvenance.fromJson(json_['sourceProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          statusDetail: _json.containsKey('statusDetail')
-              ? _json['statusDetail'] as core.String
+          statusDetail: json_.containsKey('statusDetail')
+              ? json_['statusDetail'] as core.String
               : null,
-          steps: _json.containsKey('steps')
-              ? (_json['steps'] as core.List)
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
                   .map((value) => BuildStep.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          substitutions: _json.containsKey('substitutions')
-              ? (_json['substitutions'] as core.Map<core.String, core.dynamic>)
+          substitutions: json_.containsKey('substitutions')
+              ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -3870,16 +3870,16 @@ class Build {
                   ),
                 )
               : null,
-          tags: _json.containsKey('tags')
-              ? (_json['tags'] as core.List)
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          timeout: _json.containsKey('timeout')
-              ? _json['timeout'] as core.String
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
               : null,
-          timing: _json.containsKey('timing')
-              ? (_json['timing'] as core.Map<core.String, core.dynamic>).map(
+          timing: json_.containsKey('timing')
+              ? (json_['timing'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     TimeSpan.fromJson(
@@ -3887,8 +3887,8 @@ class Build {
                   ),
                 )
               : null,
-          warnings: _json.containsKey('warnings')
-              ? (_json['warnings'] as core.List)
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
                   .map((value) => Warning.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3957,18 +3957,18 @@ class BuildApproval {
     this.state,
   });
 
-  BuildApproval.fromJson(core.Map _json)
+  BuildApproval.fromJson(core.Map json_)
       : this(
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? ApprovalConfig.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          result: _json.containsKey('result')
+          result: json_.containsKey('result')
               ? ApprovalResult.fromJson(
-                  _json['result'] as core.Map<core.String, core.dynamic>)
+                  json_['result'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4103,56 +4103,56 @@ class BuildOptions {
     this.workerPool,
   });
 
-  BuildOptions.fromJson(core.Map _json)
+  BuildOptions.fromJson(core.Map json_)
       : this(
-          diskSizeGb: _json.containsKey('diskSizeGb')
-              ? _json['diskSizeGb'] as core.String
+          diskSizeGb: json_.containsKey('diskSizeGb')
+              ? json_['diskSizeGb'] as core.String
               : null,
-          dynamicSubstitutions: _json.containsKey('dynamicSubstitutions')
-              ? _json['dynamicSubstitutions'] as core.bool
+          dynamicSubstitutions: json_.containsKey('dynamicSubstitutions')
+              ? json_['dynamicSubstitutions'] as core.bool
               : null,
-          env: _json.containsKey('env')
-              ? (_json['env'] as core.List)
+          env: json_.containsKey('env')
+              ? (json_['env'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          logStreamingOption: _json.containsKey('logStreamingOption')
-              ? _json['logStreamingOption'] as core.String
+          logStreamingOption: json_.containsKey('logStreamingOption')
+              ? json_['logStreamingOption'] as core.String
               : null,
-          logging: _json.containsKey('logging')
-              ? _json['logging'] as core.String
+          logging: json_.containsKey('logging')
+              ? json_['logging'] as core.String
               : null,
-          machineType: _json.containsKey('machineType')
-              ? _json['machineType'] as core.String
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
               : null,
-          pool: _json.containsKey('pool')
+          pool: json_.containsKey('pool')
               ? PoolOption.fromJson(
-                  _json['pool'] as core.Map<core.String, core.dynamic>)
+                  json_['pool'] as core.Map<core.String, core.dynamic>)
               : null,
-          requestedVerifyOption: _json.containsKey('requestedVerifyOption')
-              ? _json['requestedVerifyOption'] as core.String
+          requestedVerifyOption: json_.containsKey('requestedVerifyOption')
+              ? json_['requestedVerifyOption'] as core.String
               : null,
-          secretEnv: _json.containsKey('secretEnv')
-              ? (_json['secretEnv'] as core.List)
+          secretEnv: json_.containsKey('secretEnv')
+              ? (json_['secretEnv'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          sourceProvenanceHash: _json.containsKey('sourceProvenanceHash')
-              ? (_json['sourceProvenanceHash'] as core.List)
+          sourceProvenanceHash: json_.containsKey('sourceProvenanceHash')
+              ? (json_['sourceProvenanceHash'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          substitutionOption: _json.containsKey('substitutionOption')
-              ? _json['substitutionOption'] as core.String
+          substitutionOption: json_.containsKey('substitutionOption')
+              ? json_['substitutionOption'] as core.String
               : null,
-          volumes: _json.containsKey('volumes')
-              ? (_json['volumes'] as core.List)
+          volumes: json_.containsKey('volumes')
+              ? (json_['volumes'] as core.List)
                   .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          workerPool: _json.containsKey('workerPool')
-              ? _json['workerPool'] as core.String
+          workerPool: json_.containsKey('workerPool')
+              ? json_['workerPool'] as core.String
               : null,
         );
 
@@ -4313,54 +4313,54 @@ class BuildStep {
     this.waitFor,
   });
 
-  BuildStep.fromJson(core.Map _json)
+  BuildStep.fromJson(core.Map json_)
       : this(
-          args: _json.containsKey('args')
-              ? (_json['args'] as core.List)
+          args: json_.containsKey('args')
+              ? (json_['args'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
-          entrypoint: _json.containsKey('entrypoint')
-              ? _json['entrypoint'] as core.String
+          dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
+          entrypoint: json_.containsKey('entrypoint')
+              ? json_['entrypoint'] as core.String
               : null,
-          env: _json.containsKey('env')
-              ? (_json['env'] as core.List)
+          env: json_.containsKey('env')
+              ? (json_['env'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pullTiming: _json.containsKey('pullTiming')
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pullTiming: json_.containsKey('pullTiming')
               ? TimeSpan.fromJson(
-                  _json['pullTiming'] as core.Map<core.String, core.dynamic>)
+                  json_['pullTiming'] as core.Map<core.String, core.dynamic>)
               : null,
-          script: _json.containsKey('script')
-              ? _json['script'] as core.String
+          script: json_.containsKey('script')
+              ? json_['script'] as core.String
               : null,
-          secretEnv: _json.containsKey('secretEnv')
-              ? (_json['secretEnv'] as core.List)
+          secretEnv: json_.containsKey('secretEnv')
+              ? (json_['secretEnv'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          timeout: _json.containsKey('timeout')
-              ? _json['timeout'] as core.String
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
               : null,
-          timing: _json.containsKey('timing')
+          timing: json_.containsKey('timing')
               ? TimeSpan.fromJson(
-                  _json['timing'] as core.Map<core.String, core.dynamic>)
+                  json_['timing'] as core.Map<core.String, core.dynamic>)
               : null,
-          volumes: _json.containsKey('volumes')
-              ? (_json['volumes'] as core.List)
+          volumes: json_.containsKey('volumes')
+              ? (json_['volumes'] as core.List)
                   .map((value) => Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          waitFor: _json.containsKey('waitFor')
-              ? (_json['waitFor'] as core.List)
+          waitFor: json_.containsKey('waitFor')
+              ? (json_['waitFor'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4563,82 +4563,82 @@ class BuildTrigger {
     this.webhookConfig,
   });
 
-  BuildTrigger.fromJson(core.Map _json)
+  BuildTrigger.fromJson(core.Map json_)
       : this(
-          approvalConfig: _json.containsKey('approvalConfig')
-              ? ApprovalConfig.fromJson(_json['approvalConfig']
+          approvalConfig: json_.containsKey('approvalConfig')
+              ? ApprovalConfig.fromJson(json_['approvalConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          autodetect: _json.containsKey('autodetect')
-              ? _json['autodetect'] as core.bool
+          autodetect: json_.containsKey('autodetect')
+              ? json_['autodetect'] as core.bool
               : null,
           bitbucketServerTriggerConfig:
-              _json.containsKey('bitbucketServerTriggerConfig')
+              json_.containsKey('bitbucketServerTriggerConfig')
                   ? BitbucketServerTriggerConfig.fromJson(
-                      _json['bitbucketServerTriggerConfig']
+                      json_['bitbucketServerTriggerConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          build: _json.containsKey('build')
+          build: json_.containsKey('build')
               ? Build.fromJson(
-                  _json['build'] as core.Map<core.String, core.dynamic>)
+                  json_['build'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          disabled: _json.containsKey('disabled')
-              ? _json['disabled'] as core.bool
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
               : null,
-          eventType: _json.containsKey('eventType')
-              ? _json['eventType'] as core.String
+          eventType: json_.containsKey('eventType')
+              ? json_['eventType'] as core.String
               : null,
-          filename: _json.containsKey('filename')
-              ? _json['filename'] as core.String
+          filename: json_.containsKey('filename')
+              ? json_['filename'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          gitFileSource: _json.containsKey('gitFileSource')
+          gitFileSource: json_.containsKey('gitFileSource')
               ? GitFileSource.fromJson(
-                  _json['gitFileSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gitFileSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          github: _json.containsKey('github')
+          github: json_.containsKey('github')
               ? GitHubEventsConfig.fromJson(
-                  _json['github'] as core.Map<core.String, core.dynamic>)
+                  json_['github'] as core.Map<core.String, core.dynamic>)
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          ignoredFiles: _json.containsKey('ignoredFiles')
-              ? (_json['ignoredFiles'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          ignoredFiles: json_.containsKey('ignoredFiles')
+              ? (json_['ignoredFiles'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          includeBuildLogs: _json.containsKey('includeBuildLogs')
-              ? _json['includeBuildLogs'] as core.String
+          includeBuildLogs: json_.containsKey('includeBuildLogs')
+              ? json_['includeBuildLogs'] as core.String
               : null,
-          includedFiles: _json.containsKey('includedFiles')
-              ? (_json['includedFiles'] as core.List)
+          includedFiles: json_.containsKey('includedFiles')
+              ? (json_['includedFiles'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pubsubConfig: _json.containsKey('pubsubConfig')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pubsubConfig: json_.containsKey('pubsubConfig')
               ? PubsubConfig.fromJson(
-                  _json['pubsubConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          resourceName: _json.containsKey('resourceName')
-              ? _json['resourceName'] as core.String
+          resourceName: json_.containsKey('resourceName')
+              ? json_['resourceName'] as core.String
               : null,
-          serviceAccount: _json.containsKey('serviceAccount')
-              ? _json['serviceAccount'] as core.String
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
               : null,
-          sourceToBuild: _json.containsKey('sourceToBuild')
+          sourceToBuild: json_.containsKey('sourceToBuild')
               ? GitRepoSource.fromJson(
-                  _json['sourceToBuild'] as core.Map<core.String, core.dynamic>)
+                  json_['sourceToBuild'] as core.Map<core.String, core.dynamic>)
               : null,
-          substitutions: _json.containsKey('substitutions')
-              ? (_json['substitutions'] as core.Map<core.String, core.dynamic>)
+          substitutions: json_.containsKey('substitutions')
+              ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -4646,18 +4646,18 @@ class BuildTrigger {
                   ),
                 )
               : null,
-          tags: _json.containsKey('tags')
-              ? (_json['tags'] as core.List)
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          triggerTemplate: _json.containsKey('triggerTemplate')
-              ? RepoSource.fromJson(_json['triggerTemplate']
+          triggerTemplate: json_.containsKey('triggerTemplate')
+              ? RepoSource.fromJson(json_['triggerTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          webhookConfig: _json.containsKey('webhookConfig')
+          webhookConfig: json_.containsKey('webhookConfig')
               ? WebhookConfig.fromJson(
-                  _json['webhookConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['webhookConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4711,15 +4711,15 @@ class BuiltImage {
     this.pushTiming,
   });
 
-  BuiltImage.fromJson(core.Map _json)
+  BuiltImage.fromJson(core.Map json_)
       : this(
-          digest: _json.containsKey('digest')
-              ? _json['digest'] as core.String
+          digest: json_.containsKey('digest')
+              ? json_['digest'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pushTiming: _json.containsKey('pushTiming')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pushTiming: json_.containsKey('pushTiming')
               ? TimeSpan.fromJson(
-                  _json['pushTiming'] as core.Map<core.String, core.dynamic>)
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4753,12 +4753,12 @@ class CancelBuildRequest {
     this.projectId,
   });
 
-  CancelBuildRequest.fromJson(core.Map _json)
+  CancelBuildRequest.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
         );
 
@@ -4792,16 +4792,16 @@ class CreateBitbucketServerConnectedRepositoryRequest {
     this.parent,
   });
 
-  CreateBitbucketServerConnectedRepositoryRequest.fromJson(core.Map _json)
+  CreateBitbucketServerConnectedRepositoryRequest.fromJson(core.Map json_)
       : this(
           bitbucketServerConnectedRepository:
-              _json.containsKey('bitbucketServerConnectedRepository')
+              json_.containsKey('bitbucketServerConnectedRepository')
                   ? BitbucketServerConnectedRepository.fromJson(
-                      _json['bitbucketServerConnectedRepository']
+                      json_['bitbucketServerConnectedRepository']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
         );
 
@@ -4842,12 +4842,12 @@ class FailureInfo {
     this.type,
   });
 
-  FailureInfo.fromJson(core.Map _json)
+  FailureInfo.fromJson(core.Map json_)
       : this(
-          detail: _json.containsKey('detail')
-              ? _json['detail'] as core.String
+          detail: json_.containsKey('detail')
+              ? json_['detail'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4866,10 +4866,10 @@ class FileHashes {
     this.fileHash,
   });
 
-  FileHashes.fromJson(core.Map _json)
+  FileHashes.fromJson(core.Map json_)
       : this(
-          fileHash: _json.containsKey('fileHash')
-              ? (_json['fileHash'] as core.List)
+          fileHash: json_.containsKey('fileHash')
+              ? (json_['fileHash'] as core.List)
                   .map((value) => Hash.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4934,22 +4934,22 @@ class GitFileSource {
     this.uri,
   });
 
-  GitFileSource.fromJson(core.Map _json)
+  GitFileSource.fromJson(core.Map json_)
       : this(
-          bitbucketServerConfig: _json.containsKey('bitbucketServerConfig')
-              ? _json['bitbucketServerConfig'] as core.String
+          bitbucketServerConfig: json_.containsKey('bitbucketServerConfig')
+              ? json_['bitbucketServerConfig'] as core.String
               : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
+          githubEnterpriseConfig: json_.containsKey('githubEnterpriseConfig')
+              ? json_['githubEnterpriseConfig'] as core.String
               : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-          repoType: _json.containsKey('repoType')
-              ? _json['repoType'] as core.String
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          repoType: json_.containsKey('repoType')
+              ? json_['repoType'] as core.String
               : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.String
+          revision: json_.containsKey('revision')
+              ? json_['revision'] as core.String
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5027,31 +5027,31 @@ class GitHubEnterpriseConfig {
     this.webhookKey,
   });
 
-  GitHubEnterpriseConfig.fromJson(core.Map _json)
+  GitHubEnterpriseConfig.fromJson(core.Map json_)
       : this(
           appId:
-              _json.containsKey('appId') ? _json['appId'] as core.String : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          hostUrl: _json.containsKey('hostUrl')
-              ? _json['hostUrl'] as core.String
+          hostUrl: json_.containsKey('hostUrl')
+              ? json_['hostUrl'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          peeredNetwork: _json.containsKey('peeredNetwork')
-              ? _json['peeredNetwork'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          peeredNetwork: json_.containsKey('peeredNetwork')
+              ? json_['peeredNetwork'] as core.String
               : null,
-          secrets: _json.containsKey('secrets')
+          secrets: json_.containsKey('secrets')
               ? GitHubEnterpriseSecrets.fromJson(
-                  _json['secrets'] as core.Map<core.String, core.dynamic>)
+                  json_['secrets'] as core.Map<core.String, core.dynamic>)
               : null,
           sslCa:
-              _json.containsKey('sslCa') ? _json['sslCa'] as core.String : null,
-          webhookKey: _json.containsKey('webhookKey')
-              ? _json['webhookKey'] as core.String
+              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+          webhookKey: json_.containsKey('webhookKey')
+              ? json_['webhookKey'] as core.String
               : null,
         );
 
@@ -5109,33 +5109,33 @@ class GitHubEnterpriseSecrets {
     this.webhookSecretVersionName,
   });
 
-  GitHubEnterpriseSecrets.fromJson(core.Map _json)
+  GitHubEnterpriseSecrets.fromJson(core.Map json_)
       : this(
-          oauthClientIdName: _json.containsKey('oauthClientIdName')
-              ? _json['oauthClientIdName'] as core.String
+          oauthClientIdName: json_.containsKey('oauthClientIdName')
+              ? json_['oauthClientIdName'] as core.String
               : null,
           oauthClientIdVersionName:
-              _json.containsKey('oauthClientIdVersionName')
-                  ? _json['oauthClientIdVersionName'] as core.String
+              json_.containsKey('oauthClientIdVersionName')
+                  ? json_['oauthClientIdVersionName'] as core.String
                   : null,
-          oauthSecretName: _json.containsKey('oauthSecretName')
-              ? _json['oauthSecretName'] as core.String
+          oauthSecretName: json_.containsKey('oauthSecretName')
+              ? json_['oauthSecretName'] as core.String
               : null,
-          oauthSecretVersionName: _json.containsKey('oauthSecretVersionName')
-              ? _json['oauthSecretVersionName'] as core.String
+          oauthSecretVersionName: json_.containsKey('oauthSecretVersionName')
+              ? json_['oauthSecretVersionName'] as core.String
               : null,
-          privateKeyName: _json.containsKey('privateKeyName')
-              ? _json['privateKeyName'] as core.String
+          privateKeyName: json_.containsKey('privateKeyName')
+              ? json_['privateKeyName'] as core.String
               : null,
-          privateKeyVersionName: _json.containsKey('privateKeyVersionName')
-              ? _json['privateKeyVersionName'] as core.String
+          privateKeyVersionName: json_.containsKey('privateKeyVersionName')
+              ? json_['privateKeyVersionName'] as core.String
               : null,
-          webhookSecretName: _json.containsKey('webhookSecretName')
-              ? _json['webhookSecretName'] as core.String
+          webhookSecretName: json_.containsKey('webhookSecretName')
+              ? json_['webhookSecretName'] as core.String
               : null,
           webhookSecretVersionName:
-              _json.containsKey('webhookSecretVersionName')
-                  ? _json['webhookSecretVersionName'] as core.String
+              json_.containsKey('webhookSecretVersionName')
+                  ? json_['webhookSecretVersionName'] as core.String
                   : null,
         );
 
@@ -5197,25 +5197,25 @@ class GitHubEventsConfig {
     this.push,
   });
 
-  GitHubEventsConfig.fromJson(core.Map _json)
+  GitHubEventsConfig.fromJson(core.Map json_)
       : this(
           enterpriseConfigResourceName:
-              _json.containsKey('enterpriseConfigResourceName')
-                  ? _json['enterpriseConfigResourceName'] as core.String
+              json_.containsKey('enterpriseConfigResourceName')
+                  ? json_['enterpriseConfigResourceName'] as core.String
                   : null,
-          installationId: _json.containsKey('installationId')
-              ? _json['installationId'] as core.String
+          installationId: json_.containsKey('installationId')
+              ? json_['installationId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           owner:
-              _json.containsKey('owner') ? _json['owner'] as core.String : null,
-          pullRequest: _json.containsKey('pullRequest')
+              json_.containsKey('owner') ? json_['owner'] as core.String : null,
+          pullRequest: json_.containsKey('pullRequest')
               ? PullRequestFilter.fromJson(
-                  _json['pullRequest'] as core.Map<core.String, core.dynamic>)
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
               : null,
-          push: _json.containsKey('push')
+          push: json_.containsKey('push')
               ? PushFilter.fromJson(
-                  _json['push'] as core.Map<core.String, core.dynamic>)
+                  json_['push'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5273,19 +5273,19 @@ class GitRepoSource {
     this.uri,
   });
 
-  GitRepoSource.fromJson(core.Map _json)
+  GitRepoSource.fromJson(core.Map json_)
       : this(
-          bitbucketServerConfig: _json.containsKey('bitbucketServerConfig')
-              ? _json['bitbucketServerConfig'] as core.String
+          bitbucketServerConfig: json_.containsKey('bitbucketServerConfig')
+              ? json_['bitbucketServerConfig'] as core.String
               : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
+          githubEnterpriseConfig: json_.containsKey('githubEnterpriseConfig')
+              ? json_['githubEnterpriseConfig'] as core.String
               : null,
-          ref: _json.containsKey('ref') ? _json['ref'] as core.String : null,
-          repoType: _json.containsKey('repoType')
-              ? _json['repoType'] as core.String
+          ref: json_.containsKey('ref') ? json_['ref'] as core.String : null,
+          repoType: json_.containsKey('repoType')
+              ? json_['repoType'] as core.String
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5312,9 +5312,9 @@ class Hash {
   core.String? value;
   core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
-  set valueAsBytes(core.List<core.int> _bytes) {
+  set valueAsBytes(core.List<core.int> bytes_) {
     value =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   Hash({
@@ -5322,11 +5322,11 @@ class Hash {
     this.value,
   });
 
-  Hash.fromJson(core.Map _json)
+  Hash.fromJson(core.Map json_)
       : this(
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5376,18 +5376,18 @@ class InlineSecret {
     this.kmsKeyName,
   });
 
-  InlineSecret.fromJson(core.Map _json)
+  InlineSecret.fromJson(core.Map json_)
       : this(
-          envMap: _json.containsKey('envMap')
-              ? (_json['envMap'] as core.Map<core.String, core.dynamic>).map(
+          envMap: json_.containsKey('envMap')
+              ? (json_['envMap'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          kmsKeyName: _json.containsKey('kmsKeyName')
-              ? _json['kmsKeyName'] as core.String
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
               : null,
         );
 
@@ -5412,16 +5412,16 @@ class ListBitbucketServerConfigsResponse {
     this.nextPageToken,
   });
 
-  ListBitbucketServerConfigsResponse.fromJson(core.Map _json)
+  ListBitbucketServerConfigsResponse.fromJson(core.Map json_)
       : this(
-          bitbucketServerConfigs: _json.containsKey('bitbucketServerConfigs')
-              ? (_json['bitbucketServerConfigs'] as core.List)
+          bitbucketServerConfigs: json_.containsKey('bitbucketServerConfigs')
+              ? (json_['bitbucketServerConfigs'] as core.List)
                   .map((value) => BitbucketServerConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5448,17 +5448,17 @@ class ListBitbucketServerRepositoriesResponse {
     this.nextPageToken,
   });
 
-  ListBitbucketServerRepositoriesResponse.fromJson(core.Map _json)
+  ListBitbucketServerRepositoriesResponse.fromJson(core.Map json_)
       : this(
           bitbucketServerRepositories:
-              _json.containsKey('bitbucketServerRepositories')
-                  ? (_json['bitbucketServerRepositories'] as core.List)
+              json_.containsKey('bitbucketServerRepositories')
+                  ? (json_['bitbucketServerRepositories'] as core.List)
                       .map((value) => BitbucketServerRepository.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5482,13 +5482,13 @@ class ListBuildTriggersResponse {
     this.triggers,
   });
 
-  ListBuildTriggersResponse.fromJson(core.Map _json)
+  ListBuildTriggersResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          triggers: _json.containsKey('triggers')
-              ? (_json['triggers'] as core.List)
+          triggers: json_.containsKey('triggers')
+              ? (json_['triggers'] as core.List)
                   .map((value) => BuildTrigger.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5516,16 +5516,16 @@ class ListBuildsResponse {
     this.nextPageToken,
   });
 
-  ListBuildsResponse.fromJson(core.Map _json)
+  ListBuildsResponse.fromJson(core.Map json_)
       : this(
-          builds: _json.containsKey('builds')
-              ? (_json['builds'] as core.List)
+          builds: json_.containsKey('builds')
+              ? (json_['builds'] as core.List)
                   .map((value) => Build.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5544,10 +5544,10 @@ class ListGithubEnterpriseConfigsResponse {
     this.configs,
   });
 
-  ListGithubEnterpriseConfigsResponse.fromJson(core.Map _json)
+  ListGithubEnterpriseConfigsResponse.fromJson(core.Map json_)
       : this(
-          configs: _json.containsKey('configs')
-              ? (_json['configs'] as core.List)
+          configs: json_.containsKey('configs')
+              ? (json_['configs'] as core.List)
                   .map((value) => GitHubEnterpriseConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5575,13 +5575,13 @@ class ListWorkerPoolsResponse {
     this.workerPools,
   });
 
-  ListWorkerPoolsResponse.fromJson(core.Map _json)
+  ListWorkerPoolsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          workerPools: _json.containsKey('workerPools')
-              ? (_json['workerPools'] as core.List)
+          workerPools: json_.containsKey('workerPools')
+              ? (json_['workerPools'] as core.List)
                   .map((value) => WorkerPool.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5623,13 +5623,13 @@ class NetworkConfig {
     this.peeredNetwork,
   });
 
-  NetworkConfig.fromJson(core.Map _json)
+  NetworkConfig.fromJson(core.Map json_)
       : this(
-          egressOption: _json.containsKey('egressOption')
-              ? _json['egressOption'] as core.String
+          egressOption: json_.containsKey('egressOption')
+              ? json_['egressOption'] as core.String
               : null,
-          peeredNetwork: _json.containsKey('peeredNetwork')
-              ? _json['peeredNetwork'] as core.String
+          peeredNetwork: json_.containsKey('peeredNetwork')
+              ? json_['peeredNetwork'] as core.String
               : null,
         );
 
@@ -5690,19 +5690,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -5732,9 +5732,9 @@ class PoolOption {
     this.name,
   });
 
-  PoolOption.fromJson(core.Map _json)
+  PoolOption.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5755,15 +5755,15 @@ class PrivatePoolV1Config {
     this.workerConfig,
   });
 
-  PrivatePoolV1Config.fromJson(core.Map _json)
+  PrivatePoolV1Config.fromJson(core.Map json_)
       : this(
-          networkConfig: _json.containsKey('networkConfig')
+          networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
-                  _json['networkConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          workerConfig: _json.containsKey('workerConfig')
+          workerConfig: json_.containsKey('workerConfig')
               ? WorkerConfig.fromJson(
-                  _json['workerConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['workerConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5811,18 +5811,18 @@ class PubsubConfig {
     this.topic,
   });
 
-  PubsubConfig.fromJson(core.Map _json)
+  PubsubConfig.fromJson(core.Map json_)
       : this(
-          serviceAccountEmail: _json.containsKey('serviceAccountEmail')
-              ? _json['serviceAccountEmail'] as core.String
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          subscription: _json.containsKey('subscription')
-              ? _json['subscription'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          subscription: json_.containsKey('subscription')
+              ? json_['subscription'] as core.String
               : null,
           topic:
-              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5864,16 +5864,16 @@ class PullRequestFilter {
     this.invertRegex,
   });
 
-  PullRequestFilter.fromJson(core.Map _json)
+  PullRequestFilter.fromJson(core.Map json_)
       : this(
-          branch: _json.containsKey('branch')
-              ? _json['branch'] as core.String
+          branch: json_.containsKey('branch')
+              ? json_['branch'] as core.String
               : null,
-          commentControl: _json.containsKey('commentControl')
-              ? _json['commentControl'] as core.String
+          commentControl: json_.containsKey('commentControl')
+              ? json_['commentControl'] as core.String
               : null,
-          invertRegex: _json.containsKey('invertRegex')
-              ? _json['invertRegex'] as core.bool
+          invertRegex: json_.containsKey('invertRegex')
+              ? json_['invertRegex'] as core.bool
               : null,
         );
 
@@ -5908,15 +5908,15 @@ class PushFilter {
     this.tag,
   });
 
-  PushFilter.fromJson(core.Map _json)
+  PushFilter.fromJson(core.Map json_)
       : this(
-          branch: _json.containsKey('branch')
-              ? _json['branch'] as core.String
+          branch: json_.containsKey('branch')
+              ? json_['branch'] as core.String
               : null,
-          invertRegex: _json.containsKey('invertRegex')
-              ? _json['invertRegex'] as core.bool
+          invertRegex: json_.containsKey('invertRegex')
+              ? json_['invertRegex'] as core.bool
               : null,
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5940,11 +5940,11 @@ class RemoveBitbucketServerConnectedRepositoryRequest {
     this.connectedRepository,
   });
 
-  RemoveBitbucketServerConnectedRepositoryRequest.fromJson(core.Map _json)
+  RemoveBitbucketServerConnectedRepositoryRequest.fromJson(core.Map json_)
       : this(
-          connectedRepository: _json.containsKey('connectedRepository')
+          connectedRepository: json_.containsKey('connectedRepository')
               ? BitbucketServerRepositoryId.fromJson(
-                  _json['connectedRepository']
+                  json_['connectedRepository']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6006,26 +6006,26 @@ class RepoSource {
     this.tagName,
   });
 
-  RepoSource.fromJson(core.Map _json)
+  RepoSource.fromJson(core.Map json_)
       : this(
-          branchName: _json.containsKey('branchName')
-              ? _json['branchName'] as core.String
+          branchName: json_.containsKey('branchName')
+              ? json_['branchName'] as core.String
               : null,
-          commitSha: _json.containsKey('commitSha')
-              ? _json['commitSha'] as core.String
+          commitSha: json_.containsKey('commitSha')
+              ? json_['commitSha'] as core.String
               : null,
-          dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
-          invertRegex: _json.containsKey('invertRegex')
-              ? _json['invertRegex'] as core.bool
+          dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
+          invertRegex: json_.containsKey('invertRegex')
+              ? json_['invertRegex'] as core.bool
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          repoName: _json.containsKey('repoName')
-              ? _json['repoName'] as core.String
+          repoName: json_.containsKey('repoName')
+              ? json_['repoName'] as core.String
               : null,
-          substitutions: _json.containsKey('substitutions')
-              ? (_json['substitutions'] as core.Map<core.String, core.dynamic>)
+          substitutions: json_.containsKey('substitutions')
+              ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -6033,8 +6033,8 @@ class RepoSource {
                   ),
                 )
               : null,
-          tagName: _json.containsKey('tagName')
-              ? _json['tagName'] as core.String
+          tagName: json_.containsKey('tagName')
+              ? json_['tagName'] as core.String
               : null,
         );
 
@@ -6089,33 +6089,33 @@ class Results {
     this.numArtifacts,
   });
 
-  Results.fromJson(core.Map _json)
+  Results.fromJson(core.Map json_)
       : this(
-          artifactManifest: _json.containsKey('artifactManifest')
-              ? _json['artifactManifest'] as core.String
+          artifactManifest: json_.containsKey('artifactManifest')
+              ? json_['artifactManifest'] as core.String
               : null,
-          artifactTiming: _json.containsKey('artifactTiming')
-              ? TimeSpan.fromJson(_json['artifactTiming']
+          artifactTiming: json_.containsKey('artifactTiming')
+              ? TimeSpan.fromJson(json_['artifactTiming']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          buildStepImages: _json.containsKey('buildStepImages')
-              ? (_json['buildStepImages'] as core.List)
+          buildStepImages: json_.containsKey('buildStepImages')
+              ? (json_['buildStepImages'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          buildStepOutputs: _json.containsKey('buildStepOutputs')
-              ? (_json['buildStepOutputs'] as core.List)
+          buildStepOutputs: json_.containsKey('buildStepOutputs')
+              ? (json_['buildStepOutputs'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          images: _json.containsKey('images')
-              ? (_json['images'] as core.List)
+          images: json_.containsKey('images')
+              ? (json_['images'] as core.List)
                   .map((value) => BuiltImage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          numArtifacts: _json.containsKey('numArtifacts')
-              ? _json['numArtifacts'] as core.String
+          numArtifacts: json_.containsKey('numArtifacts')
+              ? json_['numArtifacts'] as core.String
               : null,
         );
 
@@ -6152,12 +6152,12 @@ class RetryBuildRequest {
     this.projectId,
   });
 
-  RetryBuildRequest.fromJson(core.Map _json)
+  RetryBuildRequest.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
         );
 
@@ -6191,17 +6191,17 @@ class RunBuildTriggerRequest {
     this.triggerId,
   });
 
-  RunBuildTriggerRequest.fromJson(core.Map _json)
+  RunBuildTriggerRequest.fromJson(core.Map json_)
       : this(
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          source: _json.containsKey('source')
+          source: json_.containsKey('source')
               ? RepoSource.fromJson(
-                  _json['source'] as core.Map<core.String, core.dynamic>)
+                  json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
-          triggerId: _json.containsKey('triggerId')
-              ? _json['triggerId'] as core.String
+          triggerId: json_.containsKey('triggerId')
+              ? json_['triggerId'] as core.String
               : null,
         );
 
@@ -6235,13 +6235,13 @@ class Secret {
     this.secretEnv,
   });
 
-  Secret.fromJson(core.Map _json)
+  Secret.fromJson(core.Map json_)
       : this(
-          kmsKeyName: _json.containsKey('kmsKeyName')
-              ? _json['kmsKeyName'] as core.String
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
               : null,
-          secretEnv: _json.containsKey('secretEnv')
-              ? (_json['secretEnv'] as core.Map<core.String, core.dynamic>).map(
+          secretEnv: json_.containsKey('secretEnv')
+              ? (json_['secretEnv'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
@@ -6274,11 +6274,11 @@ class SecretManagerSecret {
     this.versionName,
   });
 
-  SecretManagerSecret.fromJson(core.Map _json)
+  SecretManagerSecret.fromJson(core.Map json_)
       : this(
-          env: _json.containsKey('env') ? _json['env'] as core.String : null,
-          versionName: _json.containsKey('versionName')
-              ? _json['versionName'] as core.String
+          env: json_.containsKey('env') ? json_['env'] as core.String : null,
+          versionName: json_.containsKey('versionName')
+              ? json_['versionName'] as core.String
               : null,
         );
 
@@ -6302,16 +6302,16 @@ class Secrets {
     this.secretManager,
   });
 
-  Secrets.fromJson(core.Map _json)
+  Secrets.fromJson(core.Map json_)
       : this(
-          inline: _json.containsKey('inline')
-              ? (_json['inline'] as core.List)
+          inline: json_.containsKey('inline')
+              ? (json_['inline'] as core.List)
                   .map((value) => InlineSecret.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          secretManager: _json.containsKey('secretManager')
-              ? (_json['secretManager'] as core.List)
+          secretManager: json_.containsKey('secretManager')
+              ? (json_['secretManager'] as core.List)
                   .map((value) => SecretManagerSecret.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6345,18 +6345,18 @@ class Source {
     this.storageSourceManifest,
   });
 
-  Source.fromJson(core.Map _json)
+  Source.fromJson(core.Map json_)
       : this(
-          repoSource: _json.containsKey('repoSource')
+          repoSource: json_.containsKey('repoSource')
               ? RepoSource.fromJson(
-                  _json['repoSource'] as core.Map<core.String, core.dynamic>)
+                  json_['repoSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          storageSource: _json.containsKey('storageSource')
+          storageSource: json_.containsKey('storageSource')
               ? StorageSource.fromJson(
-                  _json['storageSource'] as core.Map<core.String, core.dynamic>)
+                  json_['storageSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          storageSourceManifest: _json.containsKey('storageSourceManifest')
-              ? StorageSourceManifest.fromJson(_json['storageSourceManifest']
+          storageSourceManifest: json_.containsKey('storageSourceManifest')
+              ? StorageSourceManifest.fromJson(json_['storageSourceManifest']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6408,10 +6408,10 @@ class SourceProvenance {
     this.resolvedStorageSourceManifest,
   });
 
-  SourceProvenance.fromJson(core.Map _json)
+  SourceProvenance.fromJson(core.Map json_)
       : this(
-          fileHashes: _json.containsKey('fileHashes')
-              ? (_json['fileHashes'] as core.Map<core.String, core.dynamic>)
+          fileHashes: json_.containsKey('fileHashes')
+              ? (json_['fileHashes'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -6420,18 +6420,18 @@ class SourceProvenance {
                   ),
                 )
               : null,
-          resolvedRepoSource: _json.containsKey('resolvedRepoSource')
-              ? RepoSource.fromJson(_json['resolvedRepoSource']
+          resolvedRepoSource: json_.containsKey('resolvedRepoSource')
+              ? RepoSource.fromJson(json_['resolvedRepoSource']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          resolvedStorageSource: _json.containsKey('resolvedStorageSource')
-              ? StorageSource.fromJson(_json['resolvedStorageSource']
+          resolvedStorageSource: json_.containsKey('resolvedStorageSource')
+              ? StorageSource.fromJson(json_['resolvedStorageSource']
                   as core.Map<core.String, core.dynamic>)
               : null,
           resolvedStorageSourceManifest:
-              _json.containsKey('resolvedStorageSourceManifest')
+              json_.containsKey('resolvedStorageSourceManifest')
                   ? StorageSourceManifest.fromJson(
-                      _json['resolvedStorageSourceManifest']
+                      json_['resolvedStorageSourceManifest']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -6479,16 +6479,16 @@ class StorageSource {
     this.object,
   });
 
-  StorageSource.fromJson(core.Map _json)
+  StorageSource.fromJson(core.Map json_)
       : this(
-          bucket: _json.containsKey('bucket')
-              ? _json['bucket'] as core.String
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
               : null,
-          generation: _json.containsKey('generation')
-              ? _json['generation'] as core.String
+          generation: json_.containsKey('generation')
+              ? json_['generation'] as core.String
               : null,
-          object: _json.containsKey('object')
-              ? _json['object'] as core.String
+          object: json_.containsKey('object')
+              ? json_['object'] as core.String
               : null,
         );
 
@@ -6524,16 +6524,16 @@ class StorageSourceManifest {
     this.object,
   });
 
-  StorageSourceManifest.fromJson(core.Map _json)
+  StorageSourceManifest.fromJson(core.Map json_)
       : this(
-          bucket: _json.containsKey('bucket')
-              ? _json['bucket'] as core.String
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
               : null,
-          generation: _json.containsKey('generation')
-              ? _json['generation'] as core.String
+          generation: json_.containsKey('generation')
+              ? json_['generation'] as core.String
               : null,
-          object: _json.containsKey('object')
-              ? _json['object'] as core.String
+          object: json_.containsKey('object')
+              ? json_['object'] as core.String
               : null,
         );
 
@@ -6557,13 +6557,13 @@ class TimeSpan {
     this.startTime,
   });
 
-  TimeSpan.fromJson(core.Map _json)
+  TimeSpan.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
         );
 
@@ -6594,10 +6594,10 @@ class Volume {
     this.path,
   });
 
-  Volume.fromJson(core.Map _json)
+  Volume.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6625,12 +6625,12 @@ class Warning {
     this.text,
   });
 
-  Warning.fromJson(core.Map _json)
+  Warning.fromJson(core.Map json_)
       : this(
-          priority: _json.containsKey('priority')
-              ? _json['priority'] as core.String
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6661,13 +6661,13 @@ class WebhookConfig {
     this.state,
   });
 
-  WebhookConfig.fromJson(core.Map _json)
+  WebhookConfig.fromJson(core.Map json_)
       : this(
-          secret: _json.containsKey('secret')
-              ? _json['secret'] as core.String
+          secret: json_.containsKey('secret')
+              ? json_['secret'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6698,13 +6698,13 @@ class WorkerConfig {
     this.machineType,
   });
 
-  WorkerConfig.fromJson(core.Map _json)
+  WorkerConfig.fromJson(core.Map json_)
       : this(
-          diskSizeGb: _json.containsKey('diskSizeGb')
-              ? _json['diskSizeGb'] as core.String
+          diskSizeGb: json_.containsKey('diskSizeGb')
+              ? json_['diskSizeGb'] as core.String
               : null,
-          machineType: _json.containsKey('machineType')
-              ? _json['machineType'] as core.String
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
               : null,
         );
 
@@ -6803,10 +6803,10 @@ class WorkerPool {
     this.updateTime,
   });
 
-  WorkerPool.fromJson(core.Map _json)
+  WorkerPool.fromJson(core.Map json_)
       : this(
-          annotations: _json.containsKey('annotations')
-              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -6814,26 +6814,26 @@ class WorkerPool {
                   ),
                 )
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          deleteTime: _json.containsKey('deleteTime')
-              ? _json['deleteTime'] as core.String
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          privatePoolV1Config: _json.containsKey('privatePoolV1Config')
-              ? PrivatePoolV1Config.fromJson(_json['privatePoolV1Config']
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          privatePoolV1Config: json_.containsKey('privatePoolV1Config')
+              ? PrivatePoolV1Config.fromJson(json_['privatePoolV1Config']
                   as core.Map<core.String, core.dynamic>)
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 

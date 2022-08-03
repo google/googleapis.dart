@@ -16,7 +16,7 @@ String gapiUrl = 'https://apis.google.com/js/client.js';
 
 // According to the CSP3 spec a nonce must be a valid base64 string.
 // https://w3c.github.io/webappsec-csp/#grammardef-base64-value
-final _noncePattern = RegExp('^[\\w+\/_-]+[=]{0,2}\$');
+final _noncePattern = RegExp('^[\\w+/_-]+[=]{0,2}\$');
 
 /// This class performs the implicit browser-based oauth2 flow.
 ///

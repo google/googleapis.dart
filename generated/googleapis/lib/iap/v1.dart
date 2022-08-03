@@ -114,20 +114,20 @@ class ProjectsBrandsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/brands';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/brands';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Brand.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Brand.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the OAuth brand of the project.
@@ -152,18 +152,18 @@ class ProjectsBrandsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Brand.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Brand.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the existing brands for the project.
@@ -188,19 +188,19 @@ class ProjectsBrandsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/brands';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/brands';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListBrandsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -239,22 +239,22 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/identityAwareProxyClients';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return IdentityAwareProxyClient.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an Identity Aware Proxy (IAP) OAuth client.
@@ -285,18 +285,18 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an Identity Aware Proxy (IAP) OAuth client.
@@ -325,19 +325,19 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return IdentityAwareProxyClient.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the existing clients for the brand.
@@ -375,22 +375,22 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/identityAwareProxyClients';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListIdentityAwareProxyClientsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets an Identity Aware Proxy (IAP) OAuth client secret.
@@ -423,21 +423,21 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':resetSecret';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resetSecret';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return IdentityAwareProxyClient.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -497,22 +497,22 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
     core.String? tunnelDestGroupId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (tunnelDestGroupId != null) 'tunnelDestGroupId': [tunnelDestGroupId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/destGroups';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/destGroups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TunnelDestGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a TunnelDestGroup.
@@ -539,18 +539,18 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an existing TunnelDestGroup.
@@ -577,19 +577,19 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TunnelDestGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the existing TunnelDestGroups.
@@ -631,21 +631,21 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/destGroups';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/destGroups';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTunnelDestGroupsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a TunnelDestGroup.
@@ -680,22 +680,22 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TunnelDestGroup.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -735,20 +735,20 @@ class V1Resource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAP settings on a particular IAP protected resource.
@@ -774,19 +774,19 @@ class V1Resource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':iapSettings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':iapSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return IapSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for an Identity-Aware Proxy protected
@@ -821,20 +821,20 @@ class V1Resource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the Identity-Aware Proxy
@@ -868,22 +868,22 @@ class V1Resource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the IAP settings on a particular IAP protected resource.
@@ -917,22 +917,22 @@ class V1Resource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':iapSettings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':iapSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return IapSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -959,18 +959,18 @@ class AccessDeniedPageSettings {
     this.remediationTokenGenerationEnabled,
   });
 
-  AccessDeniedPageSettings.fromJson(core.Map _json)
+  AccessDeniedPageSettings.fromJson(core.Map json_)
       : this(
-          accessDeniedPageUri: _json.containsKey('accessDeniedPageUri')
-              ? _json['accessDeniedPageUri'] as core.String
+          accessDeniedPageUri: json_.containsKey('accessDeniedPageUri')
+              ? json_['accessDeniedPageUri'] as core.String
               : null,
           generateTroubleshootingUri:
-              _json.containsKey('generateTroubleshootingUri')
-                  ? _json['generateTroubleshootingUri'] as core.bool
+              json_.containsKey('generateTroubleshootingUri')
+                  ? json_['generateTroubleshootingUri'] as core.bool
                   : null,
           remediationTokenGenerationEnabled:
-              _json.containsKey('remediationTokenGenerationEnabled')
-                  ? _json['remediationTokenGenerationEnabled'] as core.bool
+              json_.containsKey('remediationTokenGenerationEnabled')
+                  ? json_['remediationTokenGenerationEnabled'] as core.bool
                   : null,
         );
 
@@ -1017,32 +1017,32 @@ class AccessSettings {
     this.reauthSettings,
   });
 
-  AccessSettings.fromJson(core.Map _json)
+  AccessSettings.fromJson(core.Map json_)
       : this(
-          allowedDomainsSettings: _json.containsKey('allowedDomainsSettings')
-              ? AllowedDomainsSettings.fromJson(_json['allowedDomainsSettings']
+          allowedDomainsSettings: json_.containsKey('allowedDomainsSettings')
+              ? AllowedDomainsSettings.fromJson(json_['allowedDomainsSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          corsSettings: _json.containsKey('corsSettings')
+          corsSettings: json_.containsKey('corsSettings')
               ? CorsSettings.fromJson(
-                  _json['corsSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['corsSettings'] as core.Map<core.String, core.dynamic>)
               : null,
-          gcipSettings: _json.containsKey('gcipSettings')
+          gcipSettings: json_.containsKey('gcipSettings')
               ? GcipSettings.fromJson(
-                  _json['gcipSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['gcipSettings'] as core.Map<core.String, core.dynamic>)
               : null,
-          oauthSettings: _json.containsKey('oauthSettings')
+          oauthSettings: json_.containsKey('oauthSettings')
               ? OAuthSettings.fromJson(
-                  _json['oauthSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['oauthSettings'] as core.Map<core.String, core.dynamic>)
               : null,
           policyDelegationSettings:
-              _json.containsKey('policyDelegationSettings')
+              json_.containsKey('policyDelegationSettings')
                   ? PolicyDelegationSettings.fromJson(
-                      _json['policyDelegationSettings']
+                      json_['policyDelegationSettings']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          reauthSettings: _json.containsKey('reauthSettings')
-              ? ReauthSettings.fromJson(_json['reauthSettings']
+          reauthSettings: json_.containsKey('reauthSettings')
+              ? ReauthSettings.fromJson(json_['reauthSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1075,15 +1075,15 @@ class AllowedDomainsSettings {
     this.enable,
   });
 
-  AllowedDomainsSettings.fromJson(core.Map _json)
+  AllowedDomainsSettings.fromJson(core.Map json_)
       : this(
-          domains: _json.containsKey('domains')
-              ? (_json['domains'] as core.List)
+          domains: json_.containsKey('domains')
+              ? (json_['domains'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           enable:
-              _json.containsKey('enable') ? _json['enable'] as core.bool : null,
+              json_.containsKey('enable') ? json_['enable'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1112,20 +1112,20 @@ class ApplicationSettings {
     this.csmSettings,
   });
 
-  ApplicationSettings.fromJson(core.Map _json)
+  ApplicationSettings.fromJson(core.Map json_)
       : this(
           accessDeniedPageSettings:
-              _json.containsKey('accessDeniedPageSettings')
+              json_.containsKey('accessDeniedPageSettings')
                   ? AccessDeniedPageSettings.fromJson(
-                      _json['accessDeniedPageSettings']
+                      json_['accessDeniedPageSettings']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          cookieDomain: _json.containsKey('cookieDomain')
-              ? _json['cookieDomain'] as core.String
+          cookieDomain: json_.containsKey('cookieDomain')
+              ? json_['cookieDomain'] as core.String
               : null,
-          csmSettings: _json.containsKey('csmSettings')
+          csmSettings: json_.containsKey('csmSettings')
               ? CsmSettings.fromJson(
-                  _json['csmSettings'] as core.Map<core.String, core.dynamic>)
+                  json_['csmSettings'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1193,18 +1193,18 @@ class Binding {
     this.role,
   });
 
-  Binding.fromJson(core.Map _json)
+  Binding.fromJson(core.Map json_)
       : this(
-          condition: _json.containsKey('condition')
+          condition: json_.containsKey('condition')
               ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
               : null,
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
+          members: json_.containsKey('members')
+              ? (json_['members'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1245,17 +1245,17 @@ class Brand {
     this.supportEmail,
   });
 
-  Brand.fromJson(core.Map _json)
+  Brand.fromJson(core.Map json_)
       : this(
-          applicationTitle: _json.containsKey('applicationTitle')
-              ? _json['applicationTitle'] as core.String
+          applicationTitle: json_.containsKey('applicationTitle')
+              ? json_['applicationTitle'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          orgInternalOnly: _json.containsKey('orgInternalOnly')
-              ? _json['orgInternalOnly'] as core.bool
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          orgInternalOnly: json_.containsKey('orgInternalOnly')
+              ? json_['orgInternalOnly'] as core.bool
               : null,
-          supportEmail: _json.containsKey('supportEmail')
-              ? _json['supportEmail'] as core.String
+          supportEmail: json_.containsKey('supportEmail')
+              ? json_['supportEmail'] as core.String
               : null,
         );
 
@@ -1279,10 +1279,10 @@ class CorsSettings {
     this.allowHttpOptions,
   });
 
-  CorsSettings.fromJson(core.Map _json)
+  CorsSettings.fromJson(core.Map json_)
       : this(
-          allowHttpOptions: _json.containsKey('allowHttpOptions')
-              ? _json['allowHttpOptions'] as core.bool
+          allowHttpOptions: json_.containsKey('allowHttpOptions')
+              ? json_['allowHttpOptions'] as core.bool
               : null,
         );
 
@@ -1307,10 +1307,10 @@ class CsmSettings {
     this.rctokenAud,
   });
 
-  CsmSettings.fromJson(core.Map _json)
+  CsmSettings.fromJson(core.Map json_)
       : this(
-          rctokenAud: _json.containsKey('rctokenAud')
-              ? _json['rctokenAud'] as core.String
+          rctokenAud: json_.containsKey('rctokenAud')
+              ? json_['rctokenAud'] as core.String
               : null,
         );
 
@@ -1369,13 +1369,13 @@ class GcipSettings {
     this.tenantIds,
   });
 
-  GcipSettings.fromJson(core.Map _json)
+  GcipSettings.fromJson(core.Map json_)
       : this(
-          loginPageUri: _json.containsKey('loginPageUri')
-              ? _json['loginPageUri'] as core.String
+          loginPageUri: json_.containsKey('loginPageUri')
+              ? json_['loginPageUri'] as core.String
               : null,
-          tenantIds: _json.containsKey('tenantIds')
-              ? (_json['tenantIds'] as core.List)
+          tenantIds: json_.containsKey('tenantIds')
+              ? (json_['tenantIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1397,11 +1397,11 @@ class GetIamPolicyRequest {
     this.options,
   });
 
-  GetIamPolicyRequest.fromJson(core.Map _json)
+  GetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          options: _json.containsKey('options')
+          options: json_.containsKey('options')
               ? GetPolicyOptions.fromJson(
-                  _json['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1432,17 +1432,17 @@ class IapSettings {
     this.name,
   });
 
-  IapSettings.fromJson(core.Map _json)
+  IapSettings.fromJson(core.Map json_)
       : this(
-          accessSettings: _json.containsKey('accessSettings')
-              ? AccessSettings.fromJson(_json['accessSettings']
+          accessSettings: json_.containsKey('accessSettings')
+              ? AccessSettings.fromJson(json_['accessSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          applicationSettings: _json.containsKey('applicationSettings')
-              ? ApplicationSettings.fromJson(_json['applicationSettings']
+          applicationSettings: json_.containsKey('applicationSettings')
+              ? ApplicationSettings.fromJson(json_['applicationSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1474,14 +1474,14 @@ class IdentityAwareProxyClient {
     this.secret,
   });
 
-  IdentityAwareProxyClient.fromJson(core.Map _json)
+  IdentityAwareProxyClient.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          secret: _json.containsKey('secret')
-              ? _json['secret'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          secret: json_.containsKey('secret')
+              ? json_['secret'] as core.String
               : null,
         );
 
@@ -1501,10 +1501,10 @@ class ListBrandsResponse {
     this.brands,
   });
 
-  ListBrandsResponse.fromJson(core.Map _json)
+  ListBrandsResponse.fromJson(core.Map json_)
       : this(
-          brands: _json.containsKey('brands')
-              ? (_json['brands'] as core.List)
+          brands: json_.containsKey('brands')
+              ? (json_['brands'] as core.List)
                   .map((value) => Brand.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1531,17 +1531,17 @@ class ListIdentityAwareProxyClientsResponse {
     this.nextPageToken,
   });
 
-  ListIdentityAwareProxyClientsResponse.fromJson(core.Map _json)
+  ListIdentityAwareProxyClientsResponse.fromJson(core.Map json_)
       : this(
           identityAwareProxyClients:
-              _json.containsKey('identityAwareProxyClients')
-                  ? (_json['identityAwareProxyClients'] as core.List)
+              json_.containsKey('identityAwareProxyClients')
+                  ? (json_['identityAwareProxyClients'] as core.List)
                       .map((value) => IdentityAwareProxyClient.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1567,13 +1567,13 @@ class ListTunnelDestGroupsResponse {
     this.tunnelDestGroups,
   });
 
-  ListTunnelDestGroupsResponse.fromJson(core.Map _json)
+  ListTunnelDestGroupsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          tunnelDestGroups: _json.containsKey('tunnelDestGroups')
-              ? (_json['tunnelDestGroups'] as core.List)
+          tunnelDestGroups: json_.containsKey('tunnelDestGroups')
+              ? (json_['tunnelDestGroups'] as core.List)
                   .map((value) => TunnelDestGroup.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1601,10 +1601,10 @@ class OAuthSettings {
     this.loginHint,
   });
 
-  OAuthSettings.fromJson(core.Map _json)
+  OAuthSettings.fromJson(core.Map json_)
       : this(
-          loginHint: _json.containsKey('loginHint')
-              ? _json['loginHint'] as core.String
+          loginHint: json_.containsKey('loginHint')
+              ? json_['loginHint'] as core.String
               : null,
         );
 
@@ -1672,9 +1672,9 @@ class Policy {
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
-  set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> bytes_) {
     etag =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -1702,17 +1702,17 @@ class Policy {
     this.version,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
-          bindings: _json.containsKey('bindings')
-              ? (_json['bindings'] as core.List)
+          bindings: json_.containsKey('bindings')
+              ? (json_['bindings'] as core.List)
                   .map((value) => Binding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.int
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.int
               : null,
         );
 
@@ -1753,21 +1753,21 @@ class PolicyDelegationSettings {
     this.resource,
   });
 
-  PolicyDelegationSettings.fromJson(core.Map _json)
+  PolicyDelegationSettings.fromJson(core.Map json_)
       : this(
-          iamPermission: _json.containsKey('iamPermission')
-              ? _json['iamPermission'] as core.String
+          iamPermission: json_.containsKey('iamPermission')
+              ? json_['iamPermission'] as core.String
               : null,
-          iamServiceName: _json.containsKey('iamServiceName')
-              ? _json['iamServiceName'] as core.String
+          iamServiceName: json_.containsKey('iamServiceName')
+              ? json_['iamServiceName'] as core.String
               : null,
-          policyName: _json.containsKey('policyName')
+          policyName: json_.containsKey('policyName')
               ? PolicyName.fromJson(
-                  _json['policyName'] as core.Map<core.String, core.dynamic>)
+                  json_['policyName'] as core.Map<core.String, core.dynamic>)
               : null,
-          resource: _json.containsKey('resource')
+          resource: json_.containsKey('resource')
               ? Resource.fromJson(
-                  _json['resource'] as core.Map<core.String, core.dynamic>)
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1811,13 +1811,13 @@ class PolicyName {
     this.type,
   });
 
-  PolicyName.fromJson(core.Map _json)
+  PolicyName.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          region: _json.containsKey('region')
-              ? _json['region'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          region: json_.containsKey('region')
+              ? json_['region'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1858,16 +1858,16 @@ class ReauthSettings {
     this.policyType,
   });
 
-  ReauthSettings.fromJson(core.Map _json)
+  ReauthSettings.fromJson(core.Map json_)
       : this(
-          maxAge: _json.containsKey('maxAge')
-              ? _json['maxAge'] as core.String
+          maxAge: json_.containsKey('maxAge')
+              ? json_['maxAge'] as core.String
               : null,
-          method: _json.containsKey('method')
-              ? _json['method'] as core.String
+          method: json_.containsKey('method')
+              ? json_['method'] as core.String
               : null,
-          policyType: _json.containsKey('policyType')
-              ? _json['policyType'] as core.String
+          policyType: json_.containsKey('policyType')
+              ? json_['policyType'] as core.String
               : null,
         );
 
@@ -1937,21 +1937,21 @@ class Resource {
     this.type,
   });
 
-  Resource.fromJson(core.Map _json)
+  Resource.fromJson(core.Map json_)
       : this(
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          service: _json.containsKey('service')
-              ? _json['service'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1975,11 +1975,11 @@ class SetIamPolicyRequest {
     this.policy,
   });
 
-  SetIamPolicyRequest.fromJson(core.Map _json)
+  SetIamPolicyRequest.fromJson(core.Map json_)
       : this(
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2016,19 +2016,19 @@ class TunnelDestGroup {
     this.name,
   });
 
-  TunnelDestGroup.fromJson(core.Map _json)
+  TunnelDestGroup.fromJson(core.Map json_)
       : this(
-          cidrs: _json.containsKey('cidrs')
-              ? (_json['cidrs'] as core.List)
+          cidrs: json_.containsKey('cidrs')
+              ? (json_['cidrs'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          fqdns: _json.containsKey('fqdns')
-              ? (_json['fqdns'] as core.List)
+          fqdns: json_.containsKey('fqdns')
+              ? (json_['fqdns'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

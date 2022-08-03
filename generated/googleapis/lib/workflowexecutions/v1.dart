@@ -113,21 +113,21 @@ class ProjectsLocationsWorkflowsResource {
     core.String workflow, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1/' + core.Uri.encodeFull('$workflow') + ':triggerPubsubExecution';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Execution.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -163,20 +163,20 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Execution.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new execution using the latest revision of the given workflow.
@@ -207,20 +207,20 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Execution.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns an execution of the given name.
@@ -256,19 +256,19 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Execution.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of executions which belong to the workflow with the given
@@ -322,22 +322,22 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/executions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListExecutionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -361,17 +361,17 @@ class Error {
     this.stackTrace,
   });
 
-  Error.fromJson(core.Map _json)
+  Error.fromJson(core.Map json_)
       : this(
-          context: _json.containsKey('context')
-              ? _json['context'] as core.String
+          context: json_.containsKey('context')
+              ? json_['context'] as core.String
               : null,
-          payload: _json.containsKey('payload')
-              ? _json['payload'] as core.String
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.String
               : null,
-          stackTrace: _json.containsKey('stackTrace')
+          stackTrace: json_.containsKey('stackTrace')
               ? StackTrace.fromJson(
-                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
+                  json_['stackTrace'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -463,32 +463,32 @@ class Execution {
     this.workflowRevisionId,
   });
 
-  Execution.fromJson(core.Map _json)
+  Execution.fromJson(core.Map json_)
       : this(
-          argument: _json.containsKey('argument')
-              ? _json['argument'] as core.String
+          argument: json_.containsKey('argument')
+              ? json_['argument'] as core.String
               : null,
-          callLogLevel: _json.containsKey('callLogLevel')
-              ? _json['callLogLevel'] as core.String
+          callLogLevel: json_.containsKey('callLogLevel')
+              ? json_['callLogLevel'] as core.String
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          error: _json.containsKey('error')
+          error: json_.containsKey('error')
               ? Error.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          result: _json.containsKey('result')
-              ? _json['result'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          result: json_.containsKey('result')
+              ? json_['result'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          workflowRevisionId: _json.containsKey('workflowRevisionId')
-              ? _json['workflowRevisionId'] as core.String
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          workflowRevisionId: json_.containsKey('workflowRevisionId')
+              ? json_['workflowRevisionId'] as core.String
               : null,
         );
 
@@ -521,16 +521,16 @@ class ListExecutionsResponse {
     this.nextPageToken,
   });
 
-  ListExecutionsResponse.fromJson(core.Map _json)
+  ListExecutionsResponse.fromJson(core.Map json_)
       : this(
-          executions: _json.containsKey('executions')
-              ? (_json['executions'] as core.List)
+          executions: json_.containsKey('executions')
+              ? (json_['executions'] as core.List)
                   .map((value) => Execution.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -559,15 +559,15 @@ class Position {
     this.line,
   });
 
-  Position.fromJson(core.Map _json)
+  Position.fromJson(core.Map json_)
       : this(
-          column: _json.containsKey('column')
-              ? _json['column'] as core.String
+          column: json_.containsKey('column')
+              ? json_['column'] as core.String
               : null,
-          length: _json.containsKey('length')
-              ? _json['length'] as core.String
+          length: json_.containsKey('length')
+              ? json_['length'] as core.String
               : null,
-          line: _json.containsKey('line') ? _json['line'] as core.String : null,
+          line: json_.containsKey('line') ? json_['line'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -597,10 +597,10 @@ class StackTrace {
     this.elements,
   });
 
-  StackTrace.fromJson(core.Map _json)
+  StackTrace.fromJson(core.Map json_)
       : this(
-          elements: _json.containsKey('elements')
-              ? (_json['elements'] as core.List)
+          elements: json_.containsKey('elements')
+              ? (json_['elements'] as core.List)
                   .map((value) => StackTraceElement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -629,16 +629,16 @@ class StackTraceElement {
     this.step,
   });
 
-  StackTraceElement.fromJson(core.Map _json)
+  StackTraceElement.fromJson(core.Map json_)
       : this(
-          position: _json.containsKey('position')
+          position: json_.containsKey('position')
               ? Position.fromJson(
-                  _json['position'] as core.Map<core.String, core.dynamic>)
+                  json_['position'] as core.Map<core.String, core.dynamic>)
               : null,
-          routine: _json.containsKey('routine')
-              ? _json['routine'] as core.String
+          routine: json_.containsKey('routine')
+              ? json_['routine'] as core.String
               : null,
-          step: _json.containsKey('step') ? _json['step'] as core.String : null,
+          step: json_.containsKey('step') ? json_['step'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -674,17 +674,17 @@ class TriggerPubsubExecutionRequest {
     this.subscription,
   });
 
-  TriggerPubsubExecutionRequest.fromJson(core.Map _json)
+  TriggerPubsubExecutionRequest.fromJson(core.Map json_)
       : this(
-          GCPCloudEventsMode: _json.containsKey('GCPCloudEventsMode')
-              ? _json['GCPCloudEventsMode'] as core.String
+          GCPCloudEventsMode: json_.containsKey('GCPCloudEventsMode')
+              ? json_['GCPCloudEventsMode'] as core.String
               : null,
-          message: _json.containsKey('message')
+          message: json_.containsKey('message')
               ? PubsubMessage.fromJson(
-                  _json['message'] as core.Map<core.String, core.dynamic>)
+                  json_['message'] as core.Map<core.String, core.dynamic>)
               : null,
-          subscription: _json.containsKey('subscription')
-              ? _json['subscription'] as core.String
+          subscription: json_.containsKey('subscription')
+              ? json_['subscription'] as core.String
               : null,
         );
 

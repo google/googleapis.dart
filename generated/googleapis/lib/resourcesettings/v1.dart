@@ -115,20 +115,20 @@ class FoldersSettingsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the settings that are available on the Cloud resource `parent`.
@@ -173,22 +173,22 @@ class FoldersSettingsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/settings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a specified setting.
@@ -229,21 +229,21 @@ class FoldersSettingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -299,20 +299,20 @@ class OrganizationsSettingsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the settings that are available on the Cloud resource `parent`.
@@ -357,22 +357,22 @@ class OrganizationsSettingsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/settings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a specified setting.
@@ -413,21 +413,21 @@ class OrganizationsSettingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -481,20 +481,20 @@ class ProjectsSettingsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the settings that are available on the Cloud resource `parent`.
@@ -539,22 +539,22 @@ class ProjectsSettingsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/settings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/settings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a specified setting.
@@ -595,21 +595,21 @@ class ProjectsSettingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudResourcesettingsV1Setting.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -628,13 +628,13 @@ class GoogleCloudResourcesettingsV1ListSettingsResponse {
     this.settings,
   });
 
-  GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(core.Map _json)
+  GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          settings: _json.containsKey('settings')
-              ? (_json['settings'] as core.List)
+          settings: json_.containsKey('settings')
+              ? (json_['settings'] as core.List)
                   .map((value) => GoogleCloudResourcesettingsV1Setting.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -698,23 +698,23 @@ class GoogleCloudResourcesettingsV1Setting {
     this.name,
   });
 
-  GoogleCloudResourcesettingsV1Setting.fromJson(core.Map _json)
+  GoogleCloudResourcesettingsV1Setting.fromJson(core.Map json_)
       : this(
-          effectiveValue: _json.containsKey('effectiveValue')
+          effectiveValue: json_.containsKey('effectiveValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
-                  _json['effectiveValue']
+                  json_['effectiveValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          localValue: _json.containsKey('localValue')
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          localValue: json_.containsKey('localValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
-                  _json['localValue'] as core.Map<core.String, core.dynamic>)
+                  json_['localValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? GoogleCloudResourcesettingsV1SettingMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -764,23 +764,23 @@ class GoogleCloudResourcesettingsV1SettingMetadata {
     this.readOnly,
   });
 
-  GoogleCloudResourcesettingsV1SettingMetadata.fromJson(core.Map _json)
+  GoogleCloudResourcesettingsV1SettingMetadata.fromJson(core.Map json_)
       : this(
-          dataType: _json.containsKey('dataType')
-              ? _json['dataType'] as core.String
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
               : null,
-          defaultValue: _json.containsKey('defaultValue')
+          defaultValue: json_.containsKey('defaultValue')
               ? GoogleCloudResourcesettingsV1Value.fromJson(
-                  _json['defaultValue'] as core.Map<core.String, core.dynamic>)
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          readOnly: _json.containsKey('readOnly')
-              ? _json['readOnly'] as core.bool
+          readOnly: json_.containsKey('readOnly')
+              ? json_['readOnly'] as core.bool
               : null,
         );
 
@@ -822,30 +822,30 @@ class GoogleCloudResourcesettingsV1Value {
     this.stringValue,
   });
 
-  GoogleCloudResourcesettingsV1Value.fromJson(core.Map _json)
+  GoogleCloudResourcesettingsV1Value.fromJson(core.Map json_)
       : this(
-          booleanValue: _json.containsKey('booleanValue')
-              ? _json['booleanValue'] as core.bool
+          booleanValue: json_.containsKey('booleanValue')
+              ? json_['booleanValue'] as core.bool
               : null,
-          durationValue: _json.containsKey('durationValue')
-              ? _json['durationValue'] as core.String
+          durationValue: json_.containsKey('durationValue')
+              ? json_['durationValue'] as core.String
               : null,
-          enumValue: _json.containsKey('enumValue')
+          enumValue: json_.containsKey('enumValue')
               ? GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(
-                  _json['enumValue'] as core.Map<core.String, core.dynamic>)
+                  json_['enumValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          stringMapValue: _json.containsKey('stringMapValue')
+          stringMapValue: json_.containsKey('stringMapValue')
               ? GoogleCloudResourcesettingsV1ValueStringMap.fromJson(
-                  _json['stringMapValue']
+                  json_['stringMapValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          stringSetValue: _json.containsKey('stringSetValue')
+          stringSetValue: json_.containsKey('stringSetValue')
               ? GoogleCloudResourcesettingsV1ValueStringSet.fromJson(
-                  _json['stringSetValue']
+                  json_['stringSetValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          stringValue: _json.containsKey('stringValue')
-              ? _json['stringValue'] as core.String
+          stringValue: json_.containsKey('stringValue')
+              ? json_['stringValue'] as core.String
               : null,
         );
 
@@ -871,10 +871,10 @@ class GoogleCloudResourcesettingsV1ValueEnumValue {
     this.value,
   });
 
-  GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(core.Map _json)
+  GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(core.Map json_)
       : this(
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -895,10 +895,10 @@ class GoogleCloudResourcesettingsV1ValueStringMap {
     this.mappings,
   });
 
-  GoogleCloudResourcesettingsV1ValueStringMap.fromJson(core.Map _json)
+  GoogleCloudResourcesettingsV1ValueStringMap.fromJson(core.Map json_)
       : this(
-          mappings: _json.containsKey('mappings')
-              ? (_json['mappings'] as core.Map<core.String, core.dynamic>).map(
+          mappings: json_.containsKey('mappings')
+              ? (json_['mappings'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
@@ -924,10 +924,10 @@ class GoogleCloudResourcesettingsV1ValueStringSet {
     this.values,
   });
 
-  GoogleCloudResourcesettingsV1ValueStringSet.fromJson(core.Map _json)
+  GoogleCloudResourcesettingsV1ValueStringSet.fromJson(core.Map json_)
       : this(
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,

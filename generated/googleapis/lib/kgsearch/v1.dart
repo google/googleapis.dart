@@ -98,7 +98,7 @@ class EntitiesResource {
     core.List<core.String>? types,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (indent != null) 'indent': ['${indent}'],
       if (languages != null) 'languages': languages,
@@ -109,15 +109,15 @@ class EntitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/entities:search';
+    const url_ = 'v1/entities:search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -150,12 +150,12 @@ class SearchResponse {
     this.itemListElement,
   });
 
-  SearchResponse.fromJson(core.Map _json)
+  SearchResponse.fromJson(core.Map json_)
       : this(
-          P_context: _json.containsKey('@context') ? _json['@context'] : null,
-          P_type: _json.containsKey('@type') ? _json['@type'] : null,
-          itemListElement: _json.containsKey('itemListElement')
-              ? _json['itemListElement'] as core.List
+          P_context: json_.containsKey('@context') ? json_['@context'] : null,
+          P_type: json_.containsKey('@type') ? json_['@type'] : null,
+          itemListElement: json_.containsKey('itemListElement')
+              ? json_['itemListElement'] as core.List
               : null,
         );
 

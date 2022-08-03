@@ -92,18 +92,18 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/operations/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/operations/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -144,7 +144,7 @@ class OperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -152,15 +152,15 @@ class OperationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/operations';
+    const url_ = 'v1/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -221,21 +221,21 @@ class ProjectsLocationsCustomClassesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customClasses';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customClasses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a custom class.
@@ -267,18 +267,18 @@ class ProjectsLocationsCustomClassesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a custom class.
@@ -304,19 +304,19 @@ class ProjectsLocationsCustomClassesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List custom classes.
@@ -359,21 +359,21 @@ class ProjectsLocationsCustomClassesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customClasses';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customClasses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCustomClassesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a custom class.
@@ -404,22 +404,22 @@ class ProjectsLocationsCustomClassesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -464,20 +464,20 @@ class ProjectsLocationsPhraseSetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/phraseSets';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/phraseSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return PhraseSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return PhraseSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a phrase set.
@@ -503,18 +503,18 @@ class ProjectsLocationsPhraseSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a phrase set.
@@ -546,18 +546,18 @@ class ProjectsLocationsPhraseSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return PhraseSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return PhraseSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List phrase sets.
@@ -599,21 +599,21 @@ class ProjectsLocationsPhraseSetsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/phraseSets';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/phraseSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListPhraseSetResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a phrase set.
@@ -644,21 +644,21 @@ class ProjectsLocationsPhraseSetsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return PhraseSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return PhraseSet.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -693,20 +693,20 @@ class SpeechResource {
     LongRunningRecognizeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/speech:longrunningrecognize';
+    const url_ = 'v1/speech:longrunningrecognize';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs synchronous speech recognition: receive results after all audio
@@ -730,21 +730,21 @@ class SpeechResource {
     RecognizeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/speech:recognize';
+    const url_ = 'v1/speech:recognize';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return RecognizeResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -757,10 +757,10 @@ class ClassItem {
     this.value,
   });
 
-  ClassItem.fromJson(core.Map _json)
+  ClassItem.fromJson(core.Map json_)
       : this(
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -790,14 +790,14 @@ class CreateCustomClassRequest {
     this.customClassId,
   });
 
-  CreateCustomClassRequest.fromJson(core.Map _json)
+  CreateCustomClassRequest.fromJson(core.Map json_)
       : this(
-          customClass: _json.containsKey('customClass')
+          customClass: json_.containsKey('customClass')
               ? CustomClass.fromJson(
-                  _json['customClass'] as core.Map<core.String, core.dynamic>)
+                  json_['customClass'] as core.Map<core.String, core.dynamic>)
               : null,
-          customClassId: _json.containsKey('customClassId')
-              ? _json['customClassId'] as core.String
+          customClassId: json_.containsKey('customClassId')
+              ? json_['customClassId'] as core.String
               : null,
         );
 
@@ -829,14 +829,14 @@ class CreatePhraseSetRequest {
     this.phraseSetId,
   });
 
-  CreatePhraseSetRequest.fromJson(core.Map _json)
+  CreatePhraseSetRequest.fromJson(core.Map json_)
       : this(
-          phraseSet: _json.containsKey('phraseSet')
+          phraseSet: json_.containsKey('phraseSet')
               ? PhraseSet.fromJson(
-                  _json['phraseSet'] as core.Map<core.String, core.dynamic>)
+                  json_['phraseSet'] as core.Map<core.String, core.dynamic>)
               : null,
-          phraseSetId: _json.containsKey('phraseSetId')
-              ? _json['phraseSetId'] as core.String
+          phraseSetId: json_.containsKey('phraseSetId')
+              ? json_['phraseSetId'] as core.String
               : null,
         );
 
@@ -870,18 +870,18 @@ class CustomClass {
     this.name,
   });
 
-  CustomClass.fromJson(core.Map _json)
+  CustomClass.fromJson(core.Map json_)
       : this(
-          customClassId: _json.containsKey('customClassId')
-              ? _json['customClassId'] as core.String
+          customClassId: json_.containsKey('customClassId')
+              ? json_['customClassId'] as core.String
               : null,
-          items: _json.containsKey('items')
-              ? (_json['items'] as core.List)
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
                   .map((value) => ClassItem.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -914,16 +914,16 @@ class ListCustomClassesResponse {
     this.nextPageToken,
   });
 
-  ListCustomClassesResponse.fromJson(core.Map _json)
+  ListCustomClassesResponse.fromJson(core.Map json_)
       : this(
-          customClasses: _json.containsKey('customClasses')
-              ? (_json['customClasses'] as core.List)
+          customClasses: json_.containsKey('customClasses')
+              ? (json_['customClasses'] as core.List)
                   .map((value) => CustomClass.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -946,13 +946,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -980,13 +980,13 @@ class ListPhraseSetResponse {
     this.phraseSets,
   });
 
-  ListPhraseSetResponse.fromJson(core.Map _json)
+  ListPhraseSetResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          phraseSets: _json.containsKey('phraseSets')
-              ? (_json['phraseSets'] as core.List)
+          phraseSets: json_.containsKey('phraseSets')
+              ? (json_['phraseSets'] as core.List)
                   .map((value) => PhraseSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1024,19 +1024,19 @@ class LongRunningRecognizeRequest {
     this.outputConfig,
   });
 
-  LongRunningRecognizeRequest.fromJson(core.Map _json)
+  LongRunningRecognizeRequest.fromJson(core.Map json_)
       : this(
-          audio: _json.containsKey('audio')
+          audio: json_.containsKey('audio')
               ? RecognitionAudio.fromJson(
-                  _json['audio'] as core.Map<core.String, core.dynamic>)
+                  json_['audio'] as core.Map<core.String, core.dynamic>)
               : null,
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? RecognitionConfig.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          outputConfig: _json.containsKey('outputConfig')
+          outputConfig: json_.containsKey('outputConfig')
               ? TranscriptOutputConfig.fromJson(
-                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1098,19 +1098,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1168,13 +1168,13 @@ class Phrase {
     this.value,
   });
 
-  Phrase.fromJson(core.Map _json)
+  Phrase.fromJson(core.Map json_)
       : this(
-          boost: _json.containsKey('boost')
-              ? (_json['boost'] as core.num).toDouble()
+          boost: json_.containsKey('boost')
+              ? (json_['boost'] as core.num).toDouble()
               : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1211,14 +1211,14 @@ class PhraseSet {
     this.phrases,
   });
 
-  PhraseSet.fromJson(core.Map _json)
+  PhraseSet.fromJson(core.Map json_)
       : this(
-          boost: _json.containsKey('boost')
-              ? (_json['boost'] as core.num).toDouble()
+          boost: json_.containsKey('boost')
+              ? (json_['boost'] as core.num).toDouble()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          phrases: _json.containsKey('phrases')
-              ? (_json['phrases'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          phrases: json_.containsKey('phrases')
+              ? (json_['phrases'] as core.List)
                   .map((value) => Phrase.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1245,9 +1245,9 @@ class RecognitionAudio {
   core.String? content;
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
-  set contentAsBytes(core.List<core.int> _bytes) {
+  set contentAsBytes(core.List<core.int> bytes_) {
     content =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// URI that points to a file that contains audio data bytes as specified in
@@ -1265,12 +1265,12 @@ class RecognitionAudio {
     this.uri,
   });
 
-  RecognitionAudio.fromJson(core.Map _json)
+  RecognitionAudio.fromJson(core.Map json_)
       : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1512,74 +1512,74 @@ class RecognitionConfig {
     this.useEnhanced,
   });
 
-  RecognitionConfig.fromJson(core.Map _json)
+  RecognitionConfig.fromJson(core.Map json_)
       : this(
-          adaptation: _json.containsKey('adaptation')
+          adaptation: json_.containsKey('adaptation')
               ? SpeechAdaptation.fromJson(
-                  _json['adaptation'] as core.Map<core.String, core.dynamic>)
+                  json_['adaptation'] as core.Map<core.String, core.dynamic>)
               : null,
           alternativeLanguageCodes:
-              _json.containsKey('alternativeLanguageCodes')
-                  ? (_json['alternativeLanguageCodes'] as core.List)
+              json_.containsKey('alternativeLanguageCodes')
+                  ? (json_['alternativeLanguageCodes'] as core.List)
                       .map((value) => value as core.String)
                       .toList()
                   : null,
-          audioChannelCount: _json.containsKey('audioChannelCount')
-              ? _json['audioChannelCount'] as core.int
+          audioChannelCount: json_.containsKey('audioChannelCount')
+              ? json_['audioChannelCount'] as core.int
               : null,
-          diarizationConfig: _json.containsKey('diarizationConfig')
-              ? SpeakerDiarizationConfig.fromJson(_json['diarizationConfig']
+          diarizationConfig: json_.containsKey('diarizationConfig')
+              ? SpeakerDiarizationConfig.fromJson(json_['diarizationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           enableAutomaticPunctuation:
-              _json.containsKey('enableAutomaticPunctuation')
-                  ? _json['enableAutomaticPunctuation'] as core.bool
+              json_.containsKey('enableAutomaticPunctuation')
+                  ? json_['enableAutomaticPunctuation'] as core.bool
                   : null,
           enableSeparateRecognitionPerChannel:
-              _json.containsKey('enableSeparateRecognitionPerChannel')
-                  ? _json['enableSeparateRecognitionPerChannel'] as core.bool
+              json_.containsKey('enableSeparateRecognitionPerChannel')
+                  ? json_['enableSeparateRecognitionPerChannel'] as core.bool
                   : null,
-          enableSpokenEmojis: _json.containsKey('enableSpokenEmojis')
-              ? _json['enableSpokenEmojis'] as core.bool
+          enableSpokenEmojis: json_.containsKey('enableSpokenEmojis')
+              ? json_['enableSpokenEmojis'] as core.bool
               : null,
-          enableSpokenPunctuation: _json.containsKey('enableSpokenPunctuation')
-              ? _json['enableSpokenPunctuation'] as core.bool
+          enableSpokenPunctuation: json_.containsKey('enableSpokenPunctuation')
+              ? json_['enableSpokenPunctuation'] as core.bool
               : null,
-          enableWordConfidence: _json.containsKey('enableWordConfidence')
-              ? _json['enableWordConfidence'] as core.bool
+          enableWordConfidence: json_.containsKey('enableWordConfidence')
+              ? json_['enableWordConfidence'] as core.bool
               : null,
-          enableWordTimeOffsets: _json.containsKey('enableWordTimeOffsets')
-              ? _json['enableWordTimeOffsets'] as core.bool
+          enableWordTimeOffsets: json_.containsKey('enableWordTimeOffsets')
+              ? json_['enableWordTimeOffsets'] as core.bool
               : null,
-          encoding: _json.containsKey('encoding')
-              ? _json['encoding'] as core.String
+          encoding: json_.containsKey('encoding')
+              ? json_['encoding'] as core.String
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          maxAlternatives: _json.containsKey('maxAlternatives')
-              ? _json['maxAlternatives'] as core.int
+          maxAlternatives: json_.containsKey('maxAlternatives')
+              ? json_['maxAlternatives'] as core.int
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? RecognitionMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
           model:
-              _json.containsKey('model') ? _json['model'] as core.String : null,
-          profanityFilter: _json.containsKey('profanityFilter')
-              ? _json['profanityFilter'] as core.bool
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          profanityFilter: json_.containsKey('profanityFilter')
+              ? json_['profanityFilter'] as core.bool
               : null,
-          sampleRateHertz: _json.containsKey('sampleRateHertz')
-              ? _json['sampleRateHertz'] as core.int
+          sampleRateHertz: json_.containsKey('sampleRateHertz')
+              ? json_['sampleRateHertz'] as core.int
               : null,
-          speechContexts: _json.containsKey('speechContexts')
-              ? (_json['speechContexts'] as core.List)
+          speechContexts: json_.containsKey('speechContexts')
+              ? (json_['speechContexts'] as core.List)
                   .map((value) => SpeechContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          useEnhanced: _json.containsKey('useEnhanced')
-              ? _json['useEnhanced'] as core.bool
+          useEnhanced: json_.containsKey('useEnhanced')
+              ? json_['useEnhanced'] as core.bool
               : null,
         );
 
@@ -1704,32 +1704,32 @@ class RecognitionMetadata {
     this.recordingDeviceType,
   });
 
-  RecognitionMetadata.fromJson(core.Map _json)
+  RecognitionMetadata.fromJson(core.Map json_)
       : this(
-          audioTopic: _json.containsKey('audioTopic')
-              ? _json['audioTopic'] as core.String
+          audioTopic: json_.containsKey('audioTopic')
+              ? json_['audioTopic'] as core.String
               : null,
           industryNaicsCodeOfAudio:
-              _json.containsKey('industryNaicsCodeOfAudio')
-                  ? _json['industryNaicsCodeOfAudio'] as core.int
+              json_.containsKey('industryNaicsCodeOfAudio')
+                  ? json_['industryNaicsCodeOfAudio'] as core.int
                   : null,
-          interactionType: _json.containsKey('interactionType')
-              ? _json['interactionType'] as core.String
+          interactionType: json_.containsKey('interactionType')
+              ? json_['interactionType'] as core.String
               : null,
-          microphoneDistance: _json.containsKey('microphoneDistance')
-              ? _json['microphoneDistance'] as core.String
+          microphoneDistance: json_.containsKey('microphoneDistance')
+              ? json_['microphoneDistance'] as core.String
               : null,
-          originalMediaType: _json.containsKey('originalMediaType')
-              ? _json['originalMediaType'] as core.String
+          originalMediaType: json_.containsKey('originalMediaType')
+              ? json_['originalMediaType'] as core.String
               : null,
-          originalMimeType: _json.containsKey('originalMimeType')
-              ? _json['originalMimeType'] as core.String
+          originalMimeType: json_.containsKey('originalMimeType')
+              ? json_['originalMimeType'] as core.String
               : null,
-          recordingDeviceName: _json.containsKey('recordingDeviceName')
-              ? _json['recordingDeviceName'] as core.String
+          recordingDeviceName: json_.containsKey('recordingDeviceName')
+              ? json_['recordingDeviceName'] as core.String
               : null,
-          recordingDeviceType: _json.containsKey('recordingDeviceType')
-              ? _json['recordingDeviceType'] as core.String
+          recordingDeviceType: json_.containsKey('recordingDeviceType')
+              ? json_['recordingDeviceType'] as core.String
               : null,
         );
 
@@ -1767,15 +1767,15 @@ class RecognizeRequest {
     this.config,
   });
 
-  RecognizeRequest.fromJson(core.Map _json)
+  RecognizeRequest.fromJson(core.Map json_)
       : this(
-          audio: _json.containsKey('audio')
+          audio: json_.containsKey('audio')
               ? RecognitionAudio.fromJson(
-                  _json['audio'] as core.Map<core.String, core.dynamic>)
+                  json_['audio'] as core.Map<core.String, core.dynamic>)
               : null,
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? RecognitionConfig.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1802,16 +1802,16 @@ class RecognizeResponse {
     this.totalBilledTime,
   });
 
-  RecognizeResponse.fromJson(core.Map _json)
+  RecognizeResponse.fromJson(core.Map json_)
       : this(
-          results: _json.containsKey('results')
-              ? (_json['results'] as core.List)
+          results: json_.containsKey('results')
+              ? (json_['results'] as core.List)
                   .map((value) => SpeechRecognitionResult.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          totalBilledTime: _json.containsKey('totalBilledTime')
-              ? _json['totalBilledTime'] as core.String
+          totalBilledTime: json_.containsKey('totalBilledTime')
+              ? json_['totalBilledTime'] as core.String
               : null,
         );
 
@@ -1854,20 +1854,20 @@ class SpeakerDiarizationConfig {
     this.speakerTag,
   });
 
-  SpeakerDiarizationConfig.fromJson(core.Map _json)
+  SpeakerDiarizationConfig.fromJson(core.Map json_)
       : this(
           enableSpeakerDiarization:
-              _json.containsKey('enableSpeakerDiarization')
-                  ? _json['enableSpeakerDiarization'] as core.bool
+              json_.containsKey('enableSpeakerDiarization')
+                  ? json_['enableSpeakerDiarization'] as core.bool
                   : null,
-          maxSpeakerCount: _json.containsKey('maxSpeakerCount')
-              ? _json['maxSpeakerCount'] as core.int
+          maxSpeakerCount: json_.containsKey('maxSpeakerCount')
+              ? json_['maxSpeakerCount'] as core.int
               : null,
-          minSpeakerCount: _json.containsKey('minSpeakerCount')
-              ? _json['minSpeakerCount'] as core.int
+          minSpeakerCount: json_.containsKey('minSpeakerCount')
+              ? json_['minSpeakerCount'] as core.int
               : null,
-          speakerTag: _json.containsKey('speakerTag')
-              ? _json['speakerTag'] as core.int
+          speakerTag: json_.containsKey('speakerTag')
+              ? json_['speakerTag'] as core.int
               : null,
         );
 
@@ -1904,21 +1904,21 @@ class SpeechAdaptation {
     this.phraseSets,
   });
 
-  SpeechAdaptation.fromJson(core.Map _json)
+  SpeechAdaptation.fromJson(core.Map json_)
       : this(
-          customClasses: _json.containsKey('customClasses')
-              ? (_json['customClasses'] as core.List)
+          customClasses: json_.containsKey('customClasses')
+              ? (json_['customClasses'] as core.List)
                   .map((value) => CustomClass.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          phraseSetReferences: _json.containsKey('phraseSetReferences')
-              ? (_json['phraseSetReferences'] as core.List)
+          phraseSetReferences: json_.containsKey('phraseSetReferences')
+              ? (json_['phraseSetReferences'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          phraseSets: _json.containsKey('phraseSets')
-              ? (_json['phraseSets'] as core.List)
+          phraseSets: json_.containsKey('phraseSets')
+              ? (json_['phraseSets'] as core.List)
                   .map((value) => PhraseSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1968,13 +1968,13 @@ class SpeechContext {
     this.phrases,
   });
 
-  SpeechContext.fromJson(core.Map _json)
+  SpeechContext.fromJson(core.Map json_)
       : this(
-          boost: _json.containsKey('boost')
-              ? (_json['boost'] as core.num).toDouble()
+          boost: json_.containsKey('boost')
+              ? (json_['boost'] as core.num).toDouble()
               : null,
-          phrases: _json.containsKey('phrases')
-              ? (_json['phrases'] as core.List)
+          phrases: json_.containsKey('phrases')
+              ? (json_['phrases'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2017,16 +2017,16 @@ class SpeechRecognitionAlternative {
     this.words,
   });
 
-  SpeechRecognitionAlternative.fromJson(core.Map _json)
+  SpeechRecognitionAlternative.fromJson(core.Map json_)
       : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
+          confidence: json_.containsKey('confidence')
+              ? (json_['confidence'] as core.num).toDouble()
               : null,
-          transcript: _json.containsKey('transcript')
-              ? _json['transcript'] as core.String
+          transcript: json_.containsKey('transcript')
+              ? json_['transcript'] as core.String
               : null,
-          words: _json.containsKey('words')
-              ? (_json['words'] as core.List)
+          words: json_.containsKey('words')
+              ? (json_['words'] as core.List)
                   .map((value) => WordInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2075,22 +2075,22 @@ class SpeechRecognitionResult {
     this.resultEndTime,
   });
 
-  SpeechRecognitionResult.fromJson(core.Map _json)
+  SpeechRecognitionResult.fromJson(core.Map json_)
       : this(
-          alternatives: _json.containsKey('alternatives')
-              ? (_json['alternatives'] as core.List)
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
                   .map((value) => SpeechRecognitionAlternative.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          channelTag: _json.containsKey('channelTag')
-              ? _json['channelTag'] as core.int
+          channelTag: json_.containsKey('channelTag')
+              ? json_['channelTag'] as core.int
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          resultEndTime: _json.containsKey('resultEndTime')
-              ? _json['resultEndTime'] as core.String
+          resultEndTime: json_.containsKey('resultEndTime')
+              ? json_['resultEndTime'] as core.String
               : null,
         );
 
@@ -2123,10 +2123,10 @@ class TranscriptOutputConfig {
     this.gcsUri,
   });
 
-  TranscriptOutputConfig.fromJson(core.Map _json)
+  TranscriptOutputConfig.fromJson(core.Map json_)
       : this(
-          gcsUri: _json.containsKey('gcsUri')
-              ? _json['gcsUri'] as core.String
+          gcsUri: json_.containsKey('gcsUri')
+              ? json_['gcsUri'] as core.String
               : null,
         );
 
@@ -2184,21 +2184,21 @@ class WordInfo {
     this.word,
   });
 
-  WordInfo.fromJson(core.Map _json)
+  WordInfo.fromJson(core.Map json_)
       : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
+          confidence: json_.containsKey('confidence')
+              ? (json_['confidence'] as core.num).toDouble()
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          speakerTag: _json.containsKey('speakerTag')
-              ? _json['speakerTag'] as core.int
+          speakerTag: json_.containsKey('speakerTag')
+              ? json_['speakerTag'] as core.int
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          word: _json.containsKey('word') ? _json['word'] as core.String : null,
+          word: json_.containsKey('word') ? json_['word'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {

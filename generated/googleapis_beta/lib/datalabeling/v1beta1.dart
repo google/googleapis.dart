@@ -121,22 +121,22 @@ class ProjectsAnnotationSpecSetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/annotationSpecSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an annotation spec set by resource name.
@@ -161,19 +161,19 @@ class ProjectsAnnotationSpecSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an annotation spec set by resource name.
@@ -198,19 +198,19 @@ class ProjectsAnnotationSpecSetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists annotation spec sets for a project.
@@ -253,23 +253,23 @@ class ProjectsAnnotationSpecSetsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/annotationSpecSets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -318,21 +318,21 @@ class ProjectsDatasetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/datasets';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/datasets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1Dataset.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a dataset by resource name.
@@ -357,19 +357,19 @@ class ProjectsDatasetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports data and annotations from dataset.
@@ -397,21 +397,21 @@ class ProjectsDatasetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':exportData';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':exportData';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets dataset by resource name.
@@ -436,19 +436,19 @@ class ProjectsDatasetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1Dataset.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports data into dataset based on source locations defined in request.
@@ -481,21 +481,21 @@ class ProjectsDatasetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':importData';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':importData';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists datasets under a project.
@@ -536,22 +536,22 @@ class ProjectsDatasetsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/datasets';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/datasets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -593,19 +593,19 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an annotated dataset by resource name.
@@ -632,19 +632,19 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists annotated datasets for a dataset.
@@ -687,23 +687,23 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/annotatedDatasets';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -739,19 +739,19 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1DataItem.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists data items in a dataset.
@@ -793,22 +793,22 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/dataItems';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/dataItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -847,20 +847,20 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
     core.String? filter,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1Example.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists examples in an annotated dataset.
@@ -903,22 +903,22 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/examples';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/examples';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -958,19 +958,19 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a FeedbackThread object.
@@ -996,19 +996,19 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List FeedbackThreads with pagination.
@@ -1046,22 +1046,22 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/feedbackThreads';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1098,22 +1098,22 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/feedbackMessages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a FeedbackMessage.
@@ -1140,19 +1140,19 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a FeedbackMessage object.
@@ -1178,19 +1178,19 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List FeedbackMessages with pagination.
@@ -1228,22 +1228,22 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/feedbackMessages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1278,19 +1278,19 @@ class ProjectsDatasetsDataItemsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1DataItem.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists data items in a dataset.
@@ -1331,22 +1331,22 @@ class ProjectsDatasetsDataItemsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/dataItems';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/dataItems';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1384,19 +1384,19 @@ class ProjectsDatasetsEvaluationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1Evaluation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1440,23 +1440,23 @@ class ProjectsDatasetsEvaluationsExampleComparisonsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' +
+    final url_ = 'v1beta1/' +
         core.Uri.encodeFull('$parent') +
         '/exampleComparisons:search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1493,21 +1493,21 @@ class ProjectsDatasetsImageResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/image:label';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/image:label';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1544,21 +1544,21 @@ class ProjectsDatasetsTextResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/text:label';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/text:label';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1595,21 +1595,21 @@ class ProjectsDatasetsVideoResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/video:label';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/video:label';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1644,22 +1644,22 @@ class ProjectsEvaluationJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/evaluationJobs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops and deletes an evaluation job.
@@ -1684,19 +1684,19 @@ class ProjectsEvaluationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an evaluation job by resource name.
@@ -1721,19 +1721,19 @@ class ProjectsEvaluationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all evaluation jobs within a project with possible filters.
@@ -1779,23 +1779,23 @@ class ProjectsEvaluationJobsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/evaluationJobs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an evaluation job.
@@ -1837,22 +1837,22 @@ class ProjectsEvaluationJobsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Pauses an evaluation job.
@@ -1882,21 +1882,21 @@ class ProjectsEvaluationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':pause';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':pause';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resumes a paused evaluation job.
@@ -1927,21 +1927,21 @@ class ProjectsEvaluationJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':resume';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':resume';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2002,23 +2002,23 @@ class ProjectsEvaluationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/evaluations:search';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2053,21 +2053,21 @@ class ProjectsInstructionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/instructions';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/instructions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an instruction object by resource name.
@@ -2092,19 +2092,19 @@ class ProjectsInstructionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an instruction by resource name.
@@ -2129,19 +2129,19 @@ class ProjectsInstructionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1Instruction.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists instructions for a project.
@@ -2181,22 +2181,22 @@ class ProjectsInstructionsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/instructions';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$parent') + '/instructions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2235,19 +2235,19 @@ class ProjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -2275,19 +2275,19 @@ class ProjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -2314,19 +2314,19 @@ class ProjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2368,22 +2368,22 @@ class ProjectsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2497,43 +2497,43 @@ class GoogleCloudDatalabelingV1beta1AnnotatedDataset {
     this.name,
   });
 
-  GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(core.Map json_)
       : this(
-          annotationSource: _json.containsKey('annotationSource')
-              ? _json['annotationSource'] as core.String
+          annotationSource: json_.containsKey('annotationSource')
+              ? json_['annotationSource'] as core.String
               : null,
-          annotationType: _json.containsKey('annotationType')
-              ? _json['annotationType'] as core.String
+          annotationType: json_.containsKey('annotationType')
+              ? json_['annotationType'] as core.String
               : null,
-          blockingResources: _json.containsKey('blockingResources')
-              ? (_json['blockingResources'] as core.List)
+          blockingResources: json_.containsKey('blockingResources')
+              ? (json_['blockingResources'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          completedExampleCount: _json.containsKey('completedExampleCount')
-              ? _json['completedExampleCount'] as core.String
+          completedExampleCount: json_.containsKey('completedExampleCount')
+              ? json_['completedExampleCount'] as core.String
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          exampleCount: _json.containsKey('exampleCount')
-              ? _json['exampleCount'] as core.String
+          exampleCount: json_.containsKey('exampleCount')
+              ? json_['exampleCount'] as core.String
               : null,
-          labelStats: _json.containsKey('labelStats')
+          labelStats: json_.containsKey('labelStats')
               ? GoogleCloudDatalabelingV1beta1LabelStats.fromJson(
-                  _json['labelStats'] as core.Map<core.String, core.dynamic>)
+                  json_['labelStats'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2607,64 +2607,64 @@ class GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata {
   });
 
   GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          boundingPolyConfig: _json.containsKey('boundingPolyConfig')
+          boundingPolyConfig: json_.containsKey('boundingPolyConfig')
               ? GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(
-                  _json['boundingPolyConfig']
+                  json_['boundingPolyConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          eventConfig: _json.containsKey('eventConfig')
+          eventConfig: json_.containsKey('eventConfig')
               ? GoogleCloudDatalabelingV1beta1EventConfig.fromJson(
-                  _json['eventConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['eventConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          humanAnnotationConfig: _json.containsKey('humanAnnotationConfig')
+          humanAnnotationConfig: json_.containsKey('humanAnnotationConfig')
               ? GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
-                  _json['humanAnnotationConfig']
+                  json_['humanAnnotationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           imageClassificationConfig:
-              _json.containsKey('imageClassificationConfig')
+              json_.containsKey('imageClassificationConfig')
                   ? GoogleCloudDatalabelingV1beta1ImageClassificationConfig
-                      .fromJson(_json['imageClassificationConfig']
+                      .fromJson(json_['imageClassificationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          objectDetectionConfig: _json.containsKey('objectDetectionConfig')
+          objectDetectionConfig: json_.containsKey('objectDetectionConfig')
               ? GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(
-                  _json['objectDetectionConfig']
+                  json_['objectDetectionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          objectTrackingConfig: _json.containsKey('objectTrackingConfig')
+          objectTrackingConfig: json_.containsKey('objectTrackingConfig')
               ? GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(
-                  _json['objectTrackingConfig']
+                  json_['objectTrackingConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          polylineConfig: _json.containsKey('polylineConfig')
+          polylineConfig: json_.containsKey('polylineConfig')
               ? GoogleCloudDatalabelingV1beta1PolylineConfig.fromJson(
-                  _json['polylineConfig']
+                  json_['polylineConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          segmentationConfig: _json.containsKey('segmentationConfig')
+          segmentationConfig: json_.containsKey('segmentationConfig')
               ? GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(
-                  _json['segmentationConfig']
+                  json_['segmentationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          textClassificationConfig: _json
+          textClassificationConfig: json_
                   .containsKey('textClassificationConfig')
               ? GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
-                  _json['textClassificationConfig']
+                  json_['textClassificationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           textEntityExtractionConfig:
-              _json.containsKey('textEntityExtractionConfig')
+              json_.containsKey('textEntityExtractionConfig')
                   ? GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig
-                      .fromJson(_json['textEntityExtractionConfig']
+                      .fromJson(json_['textEntityExtractionConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           videoClassificationConfig:
-              _json.containsKey('videoClassificationConfig')
+              json_.containsKey('videoClassificationConfig')
                   ? GoogleCloudDatalabelingV1beta1VideoClassificationConfig
-                      .fromJson(_json['videoClassificationConfig']
+                      .fromJson(json_['videoClassificationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -2741,25 +2741,25 @@ class GoogleCloudDatalabelingV1beta1Annotation {
     this.name,
   });
 
-  GoogleCloudDatalabelingV1beta1Annotation.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Annotation.fromJson(core.Map json_)
       : this(
-          annotationMetadata: _json.containsKey('annotationMetadata')
+          annotationMetadata: json_.containsKey('annotationMetadata')
               ? GoogleCloudDatalabelingV1beta1AnnotationMetadata.fromJson(
-                  _json['annotationMetadata']
+                  json_['annotationMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          annotationSentiment: _json.containsKey('annotationSentiment')
-              ? _json['annotationSentiment'] as core.String
+          annotationSentiment: json_.containsKey('annotationSentiment')
+              ? json_['annotationSentiment'] as core.String
               : null,
-          annotationSource: _json.containsKey('annotationSource')
-              ? _json['annotationSource'] as core.String
+          annotationSource: json_.containsKey('annotationSource')
+              ? json_['annotationSource'] as core.String
               : null,
-          annotationValue: _json.containsKey('annotationValue')
+          annotationValue: json_.containsKey('annotationValue')
               ? GoogleCloudDatalabelingV1beta1AnnotationValue.fromJson(
-                  _json['annotationValue']
+                  json_['annotationValue']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2782,11 +2782,11 @@ class GoogleCloudDatalabelingV1beta1AnnotationMetadata {
     this.operatorMetadata,
   });
 
-  GoogleCloudDatalabelingV1beta1AnnotationMetadata.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1AnnotationMetadata.fromJson(core.Map json_)
       : this(
-          operatorMetadata: _json.containsKey('operatorMetadata')
+          operatorMetadata: json_.containsKey('operatorMetadata')
               ? GoogleCloudDatalabelingV1beta1OperatorMetadata.fromJson(
-                  _json['operatorMetadata']
+                  json_['operatorMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2835,15 +2835,15 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpec {
     this.index,
   });
 
-  GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          index: json_.containsKey('index') ? json_['index'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2901,27 +2901,27 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
     this.name,
   });
 
-  GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(core.Map json_)
       : this(
-          annotationSpecs: _json.containsKey('annotationSpecs')
-              ? (_json['annotationSpecs'] as core.List)
+          annotationSpecs: json_.containsKey('annotationSpecs')
+              ? (json_['annotationSpecs'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          blockingResources: _json.containsKey('blockingResources')
-              ? (_json['blockingResources'] as core.List)
+          blockingResources: json_.containsKey('blockingResources')
+              ? (json_['blockingResources'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2951,13 +2951,13 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig {
     this.annotationSpecSet,
   });
 
-  GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig.fromJson(core.Map json_)
       : this(
-          allowMultiLabel: _json.containsKey('allowMultiLabel')
-              ? _json['allowMultiLabel'] as core.bool
+          allowMultiLabel: json_.containsKey('allowMultiLabel')
+              ? json_['allowMultiLabel'] as core.bool
               : null,
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
         );
 
@@ -3021,58 +3021,58 @@ class GoogleCloudDatalabelingV1beta1AnnotationValue {
     this.videoObjectTrackingAnnotation,
   });
 
-  GoogleCloudDatalabelingV1beta1AnnotationValue.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1AnnotationValue.fromJson(core.Map json_)
       : this(
           imageBoundingPolyAnnotation:
-              _json.containsKey('imageBoundingPolyAnnotation')
+              json_.containsKey('imageBoundingPolyAnnotation')
                   ? GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation
-                      .fromJson(_json['imageBoundingPolyAnnotation']
+                      .fromJson(json_['imageBoundingPolyAnnotation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           imageClassificationAnnotation:
-              _json.containsKey('imageClassificationAnnotation')
+              json_.containsKey('imageClassificationAnnotation')
                   ? GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation
-                      .fromJson(_json['imageClassificationAnnotation']
+                      .fromJson(json_['imageClassificationAnnotation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          imagePolylineAnnotation: _json.containsKey('imagePolylineAnnotation')
+          imagePolylineAnnotation: json_.containsKey('imagePolylineAnnotation')
               ? GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation.fromJson(
-                  _json['imagePolylineAnnotation']
+                  json_['imagePolylineAnnotation']
                       as core.Map<core.String, core.dynamic>)
               : null,
           imageSegmentationAnnotation:
-              _json.containsKey('imageSegmentationAnnotation')
+              json_.containsKey('imageSegmentationAnnotation')
                   ? GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation
-                      .fromJson(_json['imageSegmentationAnnotation']
+                      .fromJson(json_['imageSegmentationAnnotation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           textClassificationAnnotation:
-              _json.containsKey('textClassificationAnnotation')
+              json_.containsKey('textClassificationAnnotation')
                   ? GoogleCloudDatalabelingV1beta1TextClassificationAnnotation
-                      .fromJson(_json['textClassificationAnnotation']
+                      .fromJson(json_['textClassificationAnnotation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           textEntityExtractionAnnotation:
-              _json.containsKey('textEntityExtractionAnnotation')
+              json_.containsKey('textEntityExtractionAnnotation')
                   ? GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation
-                      .fromJson(_json['textEntityExtractionAnnotation']
+                      .fromJson(json_['textEntityExtractionAnnotation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           videoClassificationAnnotation:
-              _json.containsKey('videoClassificationAnnotation')
+              json_.containsKey('videoClassificationAnnotation')
                   ? GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation
-                      .fromJson(_json['videoClassificationAnnotation']
+                      .fromJson(json_['videoClassificationAnnotation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          videoEventAnnotation: _json.containsKey('videoEventAnnotation')
+          videoEventAnnotation: json_.containsKey('videoEventAnnotation')
               ? GoogleCloudDatalabelingV1beta1VideoEventAnnotation.fromJson(
-                  _json['videoEventAnnotation']
+                  json_['videoEventAnnotation']
                       as core.Map<core.String, core.dynamic>)
               : null,
           videoObjectTrackingAnnotation:
-              _json.containsKey('videoObjectTrackingAnnotation')
+              json_.containsKey('videoObjectTrackingAnnotation')
                   ? GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation
-                      .fromJson(_json['videoObjectTrackingAnnotation']
+                      .fromJson(json_['videoObjectTrackingAnnotation']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -3111,13 +3111,13 @@ class GoogleCloudDatalabelingV1beta1Attempt {
     this.partialFailures,
   });
 
-  GoogleCloudDatalabelingV1beta1Attempt.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Attempt.fromJson(core.Map json_)
       : this(
-          attemptTime: _json.containsKey('attemptTime')
-              ? _json['attemptTime'] as core.String
+          attemptTime: json_.containsKey('attemptTime')
+              ? json_['attemptTime'] as core.String
               : null,
-          partialFailures: _json.containsKey('partialFailures')
-              ? (_json['partialFailures'] as core.List)
+          partialFailures: json_.containsKey('partialFailures')
+              ? (json_['partialFailures'] as core.List)
                   .map((value) => GoogleRpcStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3153,10 +3153,10 @@ class GoogleCloudDatalabelingV1beta1BigQuerySource {
     this.inputUri,
   });
 
-  GoogleCloudDatalabelingV1beta1BigQuerySource.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1BigQuerySource.fromJson(core.Map json_)
       : this(
-          inputUri: _json.containsKey('inputUri')
-              ? _json['inputUri'] as core.String
+          inputUri: json_.containsKey('inputUri')
+              ? json_['inputUri'] as core.String
               : null,
         );
 
@@ -3179,10 +3179,10 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
   });
 
   GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          iouThreshold: _json.containsKey('iouThreshold')
-              ? (_json['iouThreshold'] as core.num).toDouble()
+          iouThreshold: json_.containsKey('iouThreshold')
+              ? (json_['iouThreshold'] as core.num).toDouble()
               : null,
         );
 
@@ -3200,10 +3200,10 @@ class GoogleCloudDatalabelingV1beta1BoundingPoly {
     this.vertices,
   });
 
-  GoogleCloudDatalabelingV1beta1BoundingPoly.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1BoundingPoly.fromJson(core.Map json_)
       : this(
-          vertices: _json.containsKey('vertices')
-              ? (_json['vertices'] as core.List)
+          vertices: json_.containsKey('vertices')
+              ? (json_['vertices'] as core.List)
                   .map((value) => GoogleCloudDatalabelingV1beta1Vertex.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3227,10 +3227,10 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
     this.isMultiLabel,
   });
 
-  GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromJson(core.Map json_)
       : this(
-          isMultiLabel: _json.containsKey('isMultiLabel')
-              ? _json['isMultiLabel'] as core.bool
+          isMultiLabel: json_.containsKey('isMultiLabel')
+              ? json_['isMultiLabel'] as core.bool
               : null,
         );
 
@@ -3255,16 +3255,16 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetrics {
     this.prCurve,
   });
 
-  GoogleCloudDatalabelingV1beta1ClassificationMetrics.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ClassificationMetrics.fromJson(core.Map json_)
       : this(
-          confusionMatrix: _json.containsKey('confusionMatrix')
+          confusionMatrix: json_.containsKey('confusionMatrix')
               ? GoogleCloudDatalabelingV1beta1ConfusionMatrix.fromJson(
-                  _json['confusionMatrix']
+                  json_['confusionMatrix']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          prCurve: _json.containsKey('prCurve')
+          prCurve: json_.containsKey('prCurve')
               ? GoogleCloudDatalabelingV1beta1PrCurve.fromJson(
-                  _json['prCurve'] as core.Map<core.String, core.dynamic>)
+                  json_['prCurve'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3326,37 +3326,37 @@ class GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
     this.recallAt5,
   });
 
-  GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(core.Map json_)
       : this(
-          confidenceThreshold: _json.containsKey('confidenceThreshold')
-              ? (_json['confidenceThreshold'] as core.num).toDouble()
+          confidenceThreshold: json_.containsKey('confidenceThreshold')
+              ? (json_['confidenceThreshold'] as core.num).toDouble()
               : null,
-          f1Score: _json.containsKey('f1Score')
-              ? (_json['f1Score'] as core.num).toDouble()
+          f1Score: json_.containsKey('f1Score')
+              ? (json_['f1Score'] as core.num).toDouble()
               : null,
-          f1ScoreAt1: _json.containsKey('f1ScoreAt1')
-              ? (_json['f1ScoreAt1'] as core.num).toDouble()
+          f1ScoreAt1: json_.containsKey('f1ScoreAt1')
+              ? (json_['f1ScoreAt1'] as core.num).toDouble()
               : null,
-          f1ScoreAt5: _json.containsKey('f1ScoreAt5')
-              ? (_json['f1ScoreAt5'] as core.num).toDouble()
+          f1ScoreAt5: json_.containsKey('f1ScoreAt5')
+              ? (json_['f1ScoreAt5'] as core.num).toDouble()
               : null,
-          precision: _json.containsKey('precision')
-              ? (_json['precision'] as core.num).toDouble()
+          precision: json_.containsKey('precision')
+              ? (json_['precision'] as core.num).toDouble()
               : null,
-          precisionAt1: _json.containsKey('precisionAt1')
-              ? (_json['precisionAt1'] as core.num).toDouble()
+          precisionAt1: json_.containsKey('precisionAt1')
+              ? (json_['precisionAt1'] as core.num).toDouble()
               : null,
-          precisionAt5: _json.containsKey('precisionAt5')
-              ? (_json['precisionAt5'] as core.num).toDouble()
+          precisionAt5: json_.containsKey('precisionAt5')
+              ? (json_['precisionAt5'] as core.num).toDouble()
               : null,
-          recall: _json.containsKey('recall')
-              ? (_json['recall'] as core.num).toDouble()
+          recall: json_.containsKey('recall')
+              ? (json_['recall'] as core.num).toDouble()
               : null,
-          recallAt1: _json.containsKey('recallAt1')
-              ? (_json['recallAt1'] as core.num).toDouble()
+          recallAt1: json_.containsKey('recallAt1')
+              ? (json_['recallAt1'] as core.num).toDouble()
               : null,
-          recallAt5: _json.containsKey('recallAt5')
-              ? (_json['recallAt5'] as core.num).toDouble()
+          recallAt5: json_.containsKey('recallAt5')
+              ? (json_['recallAt5'] as core.num).toDouble()
               : null,
         );
 
@@ -3386,10 +3386,10 @@ class GoogleCloudDatalabelingV1beta1ConfusionMatrix {
     this.row,
   });
 
-  GoogleCloudDatalabelingV1beta1ConfusionMatrix.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ConfusionMatrix.fromJson(core.Map json_)
       : this(
-          row: _json.containsKey('row')
-              ? (_json['row'] as core.List)
+          row: json_.containsKey('row')
+              ? (json_['row'] as core.List)
                   .map((value) => GoogleCloudDatalabelingV1beta1Row.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3416,15 +3416,15 @@ class GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry {
     this.itemCount,
   });
 
-  GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry.fromJson(core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          itemCount: _json.containsKey('itemCount')
-              ? _json['itemCount'] as core.int
+          itemCount: json_.containsKey('itemCount')
+              ? json_['itemCount'] as core.int
               : null,
         );
 
@@ -3449,11 +3449,11 @@ class GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest {
   });
 
   GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
-                  _json['annotationSpecSet']
+                  json_['annotationSpecSet']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -3474,11 +3474,11 @@ class GoogleCloudDatalabelingV1beta1CreateDatasetRequest {
     this.dataset,
   });
 
-  GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(core.Map json_)
       : this(
-          dataset: _json.containsKey('dataset')
+          dataset: json_.containsKey('dataset')
               ? GoogleCloudDatalabelingV1beta1Dataset.fromJson(
-                  _json['dataset'] as core.Map<core.String, core.dynamic>)
+                  json_['dataset'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3499,11 +3499,11 @@ class GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest {
   });
 
   GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          job: _json.containsKey('job')
+          job: json_.containsKey('job')
               ? GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
-                  _json['job'] as core.Map<core.String, core.dynamic>)
+                  json_['job'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3524,11 +3524,11 @@ class GoogleCloudDatalabelingV1beta1CreateInstructionRequest {
   });
 
   GoogleCloudDatalabelingV1beta1CreateInstructionRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          instruction: _json.containsKey('instruction')
+          instruction: json_.containsKey('instruction')
               ? GoogleCloudDatalabelingV1beta1Instruction.fromJson(
-                  _json['instruction'] as core.Map<core.String, core.dynamic>)
+                  json_['instruction'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3550,10 +3550,10 @@ class GoogleCloudDatalabelingV1beta1CsvInstruction {
     this.gcsFileUri,
   });
 
-  GoogleCloudDatalabelingV1beta1CsvInstruction.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1CsvInstruction.fromJson(core.Map json_)
       : this(
-          gcsFileUri: _json.containsKey('gcsFileUri')
-              ? _json['gcsFileUri'] as core.String
+          gcsFileUri: json_.containsKey('gcsFileUri')
+              ? json_['gcsFileUri'] as core.String
               : null,
         );
 
@@ -3588,20 +3588,20 @@ class GoogleCloudDatalabelingV1beta1DataItem {
     this.videoPayload,
   });
 
-  GoogleCloudDatalabelingV1beta1DataItem.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1DataItem.fromJson(core.Map json_)
       : this(
-          imagePayload: _json.containsKey('imagePayload')
+          imagePayload: json_.containsKey('imagePayload')
               ? GoogleCloudDatalabelingV1beta1ImagePayload.fromJson(
-                  _json['imagePayload'] as core.Map<core.String, core.dynamic>)
+                  json_['imagePayload'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          textPayload: _json.containsKey('textPayload')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          textPayload: json_.containsKey('textPayload')
               ? GoogleCloudDatalabelingV1beta1TextPayload.fromJson(
-                  _json['textPayload'] as core.Map<core.String, core.dynamic>)
+                  json_['textPayload'] as core.Map<core.String, core.dynamic>)
               : null,
-          videoPayload: _json.containsKey('videoPayload')
+          videoPayload: json_.containsKey('videoPayload')
               ? GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(
-                  _json['videoPayload'] as core.Map<core.String, core.dynamic>)
+                  json_['videoPayload'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3679,36 +3679,36 @@ class GoogleCloudDatalabelingV1beta1Dataset {
     this.name,
   });
 
-  GoogleCloudDatalabelingV1beta1Dataset.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Dataset.fromJson(core.Map json_)
       : this(
-          blockingResources: _json.containsKey('blockingResources')
-              ? (_json['blockingResources'] as core.List)
+          blockingResources: json_.containsKey('blockingResources')
+              ? (json_['blockingResources'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          dataItemCount: _json.containsKey('dataItemCount')
-              ? _json['dataItemCount'] as core.String
+          dataItemCount: json_.containsKey('dataItemCount')
+              ? json_['dataItemCount'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          inputConfigs: _json.containsKey('inputConfigs')
-              ? (_json['inputConfigs'] as core.List)
+          inputConfigs: json_.containsKey('inputConfigs')
+              ? (json_['inputConfigs'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1InputConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          lastMigrateTime: _json.containsKey('lastMigrateTime')
-              ? _json['lastMigrateTime'] as core.String
+          lastMigrateTime: json_.containsKey('lastMigrateTime')
+              ? json_['lastMigrateTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3803,30 +3803,30 @@ class GoogleCloudDatalabelingV1beta1Evaluation {
     this.name,
   });
 
-  GoogleCloudDatalabelingV1beta1Evaluation.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Evaluation.fromJson(core.Map json_)
       : this(
-          annotationType: _json.containsKey('annotationType')
-              ? _json['annotationType'] as core.String
+          annotationType: json_.containsKey('annotationType')
+              ? json_['annotationType'] as core.String
               : null,
-          config: _json.containsKey('config')
+          config: json_.containsKey('config')
               ? GoogleCloudDatalabelingV1beta1EvaluationConfig.fromJson(
-                  _json['config'] as core.Map<core.String, core.dynamic>)
+                  json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          evaluatedItemCount: _json.containsKey('evaluatedItemCount')
-              ? _json['evaluatedItemCount'] as core.String
+          evaluatedItemCount: json_.containsKey('evaluatedItemCount')
+              ? json_['evaluatedItemCount'] as core.String
               : null,
-          evaluationJobRunTime: _json.containsKey('evaluationJobRunTime')
-              ? _json['evaluationJobRunTime'] as core.String
+          evaluationJobRunTime: json_.containsKey('evaluationJobRunTime')
+              ? json_['evaluationJobRunTime'] as core.String
               : null,
-          evaluationMetrics: _json.containsKey('evaluationMetrics')
+          evaluationMetrics: json_.containsKey('evaluationMetrics')
               ? GoogleCloudDatalabelingV1beta1EvaluationMetrics.fromJson(
-                  _json['evaluationMetrics']
+                  json_['evaluationMetrics']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3856,12 +3856,12 @@ class GoogleCloudDatalabelingV1beta1EvaluationConfig {
     this.boundingBoxEvaluationOptions,
   });
 
-  GoogleCloudDatalabelingV1beta1EvaluationConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1EvaluationConfig.fromJson(core.Map json_)
       : this(
           boundingBoxEvaluationOptions:
-              _json.containsKey('boundingBoxEvaluationOptions')
+              json_.containsKey('boundingBoxEvaluationOptions')
                   ? GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions
-                      .fromJson(_json['boundingBoxEvaluationOptions']
+                      .fromJson(json_['boundingBoxEvaluationOptions']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -4001,41 +4001,41 @@ class GoogleCloudDatalabelingV1beta1EvaluationJob {
     this.state,
   });
 
-  GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(core.Map json_)
       : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
-          attempts: _json.containsKey('attempts')
-              ? (_json['attempts'] as core.List)
+          attempts: json_.containsKey('attempts')
+              ? (json_['attempts'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1Attempt.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          evaluationJobConfig: _json.containsKey('evaluationJobConfig')
+          evaluationJobConfig: json_.containsKey('evaluationJobConfig')
               ? GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(
-                  _json['evaluationJobConfig']
+                  json_['evaluationJobConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          labelMissingGroundTruth: _json.containsKey('labelMissingGroundTruth')
-              ? _json['labelMissingGroundTruth'] as core.bool
+          labelMissingGroundTruth: json_.containsKey('labelMissingGroundTruth')
+              ? json_['labelMissingGroundTruth'] as core.bool
               : null,
-          modelVersion: _json.containsKey('modelVersion')
-              ? _json['modelVersion'] as core.String
+          modelVersion: json_.containsKey('modelVersion')
+              ? json_['modelVersion'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          schedule: _json.containsKey('schedule')
-              ? _json['schedule'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          schedule: json_.containsKey('schedule')
+              ? json_['schedule'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4078,13 +4078,13 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   });
 
   GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
           minAcceptableMeanAveragePrecision:
-              _json.containsKey('minAcceptableMeanAveragePrecision')
-                  ? (_json['minAcceptableMeanAveragePrecision'] as core.num)
+              json_.containsKey('minAcceptableMeanAveragePrecision')
+                  ? (json_['minAcceptableMeanAveragePrecision'] as core.num)
                       .toDouble()
                   : null,
         );
@@ -4220,10 +4220,10 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
     this.textClassificationConfig,
   });
 
-  GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(core.Map json_)
       : this(
-          bigqueryImportKeys: _json.containsKey('bigqueryImportKeys')
-              ? (_json['bigqueryImportKeys']
+          bigqueryImportKeys: json_.containsKey('bigqueryImportKeys')
+              ? (json_['bigqueryImportKeys']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -4232,47 +4232,47 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
                   ),
                 )
               : null,
-          boundingPolyConfig: _json.containsKey('boundingPolyConfig')
+          boundingPolyConfig: json_.containsKey('boundingPolyConfig')
               ? GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(
-                  _json['boundingPolyConfig']
+                  json_['boundingPolyConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          evaluationConfig: _json.containsKey('evaluationConfig')
+          evaluationConfig: json_.containsKey('evaluationConfig')
               ? GoogleCloudDatalabelingV1beta1EvaluationConfig.fromJson(
-                  _json['evaluationConfig']
+                  json_['evaluationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          evaluationJobAlertConfig: _json
+          evaluationJobAlertConfig: json_
                   .containsKey('evaluationJobAlertConfig')
               ? GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromJson(
-                  _json['evaluationJobAlertConfig']
+                  json_['evaluationJobAlertConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          exampleCount: _json.containsKey('exampleCount')
-              ? _json['exampleCount'] as core.int
+          exampleCount: json_.containsKey('exampleCount')
+              ? json_['exampleCount'] as core.int
               : null,
-          exampleSamplePercentage: _json.containsKey('exampleSamplePercentage')
-              ? (_json['exampleSamplePercentage'] as core.num).toDouble()
+          exampleSamplePercentage: json_.containsKey('exampleSamplePercentage')
+              ? (json_['exampleSamplePercentage'] as core.num).toDouble()
               : null,
-          humanAnnotationConfig: _json.containsKey('humanAnnotationConfig')
+          humanAnnotationConfig: json_.containsKey('humanAnnotationConfig')
               ? GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
-                  _json['humanAnnotationConfig']
+                  json_['humanAnnotationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           imageClassificationConfig:
-              _json.containsKey('imageClassificationConfig')
+              json_.containsKey('imageClassificationConfig')
                   ? GoogleCloudDatalabelingV1beta1ImageClassificationConfig
-                      .fromJson(_json['imageClassificationConfig']
+                      .fromJson(json_['imageClassificationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          inputConfig: _json.containsKey('inputConfig')
+          inputConfig: json_.containsKey('inputConfig')
               ? GoogleCloudDatalabelingV1beta1InputConfig.fromJson(
-                  _json['inputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          textClassificationConfig: _json
+          textClassificationConfig: json_
                   .containsKey('textClassificationConfig')
               ? GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
-                  _json['textClassificationConfig']
+                  json_['textClassificationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -4307,16 +4307,16 @@ class GoogleCloudDatalabelingV1beta1EvaluationMetrics {
     this.objectDetectionMetrics,
   });
 
-  GoogleCloudDatalabelingV1beta1EvaluationMetrics.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1EvaluationMetrics.fromJson(core.Map json_)
       : this(
-          classificationMetrics: _json.containsKey('classificationMetrics')
+          classificationMetrics: json_.containsKey('classificationMetrics')
               ? GoogleCloudDatalabelingV1beta1ClassificationMetrics.fromJson(
-                  _json['classificationMetrics']
+                  json_['classificationMetrics']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          objectDetectionMetrics: _json.containsKey('objectDetectionMetrics')
+          objectDetectionMetrics: json_.containsKey('objectDetectionMetrics')
               ? GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics.fromJson(
-                  _json['objectDetectionMetrics']
+                  json_['objectDetectionMetrics']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -4356,18 +4356,18 @@ class GoogleCloudDatalabelingV1beta1EventConfig {
     this.overlapLength,
   });
 
-  GoogleCloudDatalabelingV1beta1EventConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1EventConfig.fromJson(core.Map json_)
       : this(
-          annotationSpecSets: _json.containsKey('annotationSpecSets')
-              ? (_json['annotationSpecSets'] as core.List)
+          annotationSpecSets: json_.containsKey('annotationSpecSets')
+              ? (json_['annotationSpecSets'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          clipLength: _json.containsKey('clipLength')
-              ? _json['clipLength'] as core.int
+          clipLength: json_.containsKey('clipLength')
+              ? json_['clipLength'] as core.int
               : null,
-          overlapLength: _json.containsKey('overlapLength')
-              ? _json['overlapLength'] as core.int
+          overlapLength: json_.containsKey('overlapLength')
+              ? json_['overlapLength'] as core.int
               : null,
         );
 
@@ -4414,27 +4414,27 @@ class GoogleCloudDatalabelingV1beta1Example {
     this.videoPayload,
   });
 
-  GoogleCloudDatalabelingV1beta1Example.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Example.fromJson(core.Map json_)
       : this(
-          annotations: _json.containsKey('annotations')
-              ? (_json['annotations'] as core.List)
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1Annotation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          imagePayload: _json.containsKey('imagePayload')
+          imagePayload: json_.containsKey('imagePayload')
               ? GoogleCloudDatalabelingV1beta1ImagePayload.fromJson(
-                  _json['imagePayload'] as core.Map<core.String, core.dynamic>)
+                  json_['imagePayload'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          textPayload: _json.containsKey('textPayload')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          textPayload: json_.containsKey('textPayload')
               ? GoogleCloudDatalabelingV1beta1TextPayload.fromJson(
-                  _json['textPayload'] as core.Map<core.String, core.dynamic>)
+                  json_['textPayload'] as core.Map<core.String, core.dynamic>)
               : null,
-          videoPayload: _json.containsKey('videoPayload')
+          videoPayload: json_.containsKey('videoPayload')
               ? GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(
-                  _json['videoPayload'] as core.Map<core.String, core.dynamic>)
+                  json_['videoPayload'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4461,15 +4461,15 @@ class GoogleCloudDatalabelingV1beta1ExampleComparison {
     this.modelCreatedExamples,
   });
 
-  GoogleCloudDatalabelingV1beta1ExampleComparison.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ExampleComparison.fromJson(core.Map json_)
       : this(
-          groundTruthExample: _json.containsKey('groundTruthExample')
+          groundTruthExample: json_.containsKey('groundTruthExample')
               ? GoogleCloudDatalabelingV1beta1Example.fromJson(
-                  _json['groundTruthExample']
+                  json_['groundTruthExample']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          modelCreatedExamples: _json.containsKey('modelCreatedExamples')
-              ? (_json['modelCreatedExamples'] as core.List)
+          modelCreatedExamples: json_.containsKey('modelCreatedExamples')
+              ? (json_['modelCreatedExamples'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1Example.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -4520,20 +4520,20 @@ class GoogleCloudDatalabelingV1beta1ExportDataRequest {
     this.userEmailAddress,
   });
 
-  GoogleCloudDatalabelingV1beta1ExportDataRequest.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ExportDataRequest.fromJson(core.Map json_)
       : this(
-          annotatedDataset: _json.containsKey('annotatedDataset')
-              ? _json['annotatedDataset'] as core.String
+          annotatedDataset: json_.containsKey('annotatedDataset')
+              ? json_['annotatedDataset'] as core.String
               : null,
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
-          outputConfig: _json.containsKey('outputConfig')
+          outputConfig: json_.containsKey('outputConfig')
               ? GoogleCloudDatalabelingV1beta1OutputConfig.fromJson(
-                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
+          userEmailAddress: json_.containsKey('userEmailAddress')
+              ? json_['userEmailAddress'] as core.String
               : null,
         );
 
@@ -4560,9 +4560,9 @@ class GoogleCloudDatalabelingV1beta1FeedbackMessage {
   core.String? image;
   core.List<core.int> get imageAsBytes => convert.base64.decode(image!);
 
-  set imageAsBytes(core.List<core.int> _bytes) {
+  set imageAsBytes(core.List<core.int> bytes_) {
     image =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Name of the feedback message in a feedback thread.
@@ -4584,25 +4584,25 @@ class GoogleCloudDatalabelingV1beta1FeedbackMessage {
     this.requesterFeedbackMetadata,
   });
 
-  GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(core.Map json_)
       : this(
-          body: _json.containsKey('body') ? _json['body'] as core.String : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
           image:
-              _json.containsKey('image') ? _json['image'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          operatorFeedbackMetadata: _json
+              json_.containsKey('image') ? json_['image'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          operatorFeedbackMetadata: json_
                   .containsKey('operatorFeedbackMetadata')
               ? GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.fromJson(
-                  _json['operatorFeedbackMetadata']
+                  json_['operatorFeedbackMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
           requesterFeedbackMetadata:
-              _json.containsKey('requesterFeedbackMetadata')
+              json_.containsKey('requesterFeedbackMetadata')
                   ? GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata
-                      .fromJson(_json['requesterFeedbackMetadata']
+                      .fromJson(json_['requesterFeedbackMetadata']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -4635,14 +4635,14 @@ class GoogleCloudDatalabelingV1beta1FeedbackThread {
     this.name,
   });
 
-  GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(core.Map json_)
       : this(
-          feedbackThreadMetadata: _json.containsKey('feedbackThreadMetadata')
+          feedbackThreadMetadata: json_.containsKey('feedbackThreadMetadata')
               ? GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata.fromJson(
-                  _json['feedbackThreadMetadata']
+                  json_['feedbackThreadMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4670,9 +4670,9 @@ class GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
   core.String? thumbnail;
   core.List<core.int> get thumbnailAsBytes => convert.base64.decode(thumbnail!);
 
-  set thumbnailAsBytes(core.List<core.int> _bytes) {
+  set thumbnailAsBytes(core.List<core.int> bytes_) {
     thumbnail =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata({
@@ -4682,19 +4682,19 @@ class GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
     this.thumbnail,
   });
 
-  GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          lastUpdateTime: _json.containsKey('lastUpdateTime')
-              ? _json['lastUpdateTime'] as core.String
+          lastUpdateTime: json_.containsKey('lastUpdateTime')
+              ? json_['lastUpdateTime'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          thumbnail: _json.containsKey('thumbnail')
-              ? _json['thumbnail'] as core.String
+          thumbnail: json_.containsKey('thumbnail')
+              ? json_['thumbnail'] as core.String
               : null,
         );
 
@@ -4725,13 +4725,13 @@ class GoogleCloudDatalabelingV1beta1GcsDestination {
     this.outputUri,
   });
 
-  GoogleCloudDatalabelingV1beta1GcsDestination.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1GcsDestination.fromJson(core.Map json_)
       : this(
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
-          outputUri: _json.containsKey('outputUri')
-              ? _json['outputUri'] as core.String
+          outputUri: json_.containsKey('outputUri')
+              ? json_['outputUri'] as core.String
               : null,
         );
 
@@ -4752,10 +4752,10 @@ class GoogleCloudDatalabelingV1beta1GcsFolderDestination {
     this.outputFolderUri,
   });
 
-  GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(core.Map json_)
       : this(
-          outputFolderUri: _json.containsKey('outputFolderUri')
-              ? _json['outputFolderUri'] as core.String
+          outputFolderUri: json_.containsKey('outputFolderUri')
+              ? json_['outputFolderUri'] as core.String
               : null,
         );
 
@@ -4785,13 +4785,13 @@ class GoogleCloudDatalabelingV1beta1GcsSource {
     this.mimeType,
   });
 
-  GoogleCloudDatalabelingV1beta1GcsSource.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1GcsSource.fromJson(core.Map json_)
       : this(
-          inputUri: _json.containsKey('inputUri')
-              ? _json['inputUri'] as core.String
+          inputUri: json_.containsKey('inputUri')
+              ? json_['inputUri'] as core.String
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
         );
 
@@ -4882,38 +4882,38 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
     this.userEmailAddress,
   });
 
-  GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(core.Map json_)
       : this(
           annotatedDatasetDescription:
-              _json.containsKey('annotatedDatasetDescription')
-                  ? _json['annotatedDatasetDescription'] as core.String
+              json_.containsKey('annotatedDatasetDescription')
+                  ? json_['annotatedDatasetDescription'] as core.String
                   : null,
           annotatedDatasetDisplayName:
-              _json.containsKey('annotatedDatasetDisplayName')
-                  ? _json['annotatedDatasetDisplayName'] as core.String
+              json_.containsKey('annotatedDatasetDisplayName')
+                  ? json_['annotatedDatasetDisplayName'] as core.String
                   : null,
-          contributorEmails: _json.containsKey('contributorEmails')
-              ? (_json['contributorEmails'] as core.List)
+          contributorEmails: json_.containsKey('contributorEmails')
+              ? (json_['contributorEmails'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          instruction: _json.containsKey('instruction')
-              ? _json['instruction'] as core.String
+          instruction: json_.containsKey('instruction')
+              ? json_['instruction'] as core.String
               : null,
-          labelGroup: _json.containsKey('labelGroup')
-              ? _json['labelGroup'] as core.String
+          labelGroup: json_.containsKey('labelGroup')
+              ? json_['labelGroup'] as core.String
               : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
-          questionDuration: _json.containsKey('questionDuration')
-              ? _json['questionDuration'] as core.String
+          questionDuration: json_.containsKey('questionDuration')
+              ? json_['questionDuration'] as core.String
               : null,
-          replicaCount: _json.containsKey('replicaCount')
-              ? _json['replicaCount'] as core.int
+          replicaCount: json_.containsKey('replicaCount')
+              ? json_['replicaCount'] as core.int
               : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
+          userEmailAddress: json_.containsKey('userEmailAddress')
+              ? json_['userEmailAddress'] as core.String
               : null,
         );
 
@@ -4948,20 +4948,20 @@ class GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation {
   });
 
   GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          boundingPoly: _json.containsKey('boundingPoly')
+          boundingPoly: json_.containsKey('boundingPoly')
               ? GoogleCloudDatalabelingV1beta1BoundingPoly.fromJson(
-                  _json['boundingPoly'] as core.Map<core.String, core.dynamic>)
+                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          normalizedBoundingPoly: _json.containsKey('normalizedBoundingPoly')
+          normalizedBoundingPoly: json_.containsKey('normalizedBoundingPoly')
               ? GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(
-                  _json['normalizedBoundingPoly']
+                  json_['normalizedBoundingPoly']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -4984,11 +4984,11 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation {
   });
 
   GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5028,16 +5028,16 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
   });
 
   GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          allowMultiLabel: _json.containsKey('allowMultiLabel')
-              ? _json['allowMultiLabel'] as core.bool
+          allowMultiLabel: json_.containsKey('allowMultiLabel')
+              ? json_['allowMultiLabel'] as core.bool
               : null,
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
-          answerAggregationType: _json.containsKey('answerAggregationType')
-              ? _json['answerAggregationType'] as core.String
+          answerAggregationType: json_.containsKey('answerAggregationType')
+              ? json_['answerAggregationType'] as core.String
               : null,
         );
 
@@ -5056,9 +5056,9 @@ class GoogleCloudDatalabelingV1beta1ImagePayload {
   core.List<core.int> get imageThumbnailAsBytes =>
       convert.base64.decode(imageThumbnail!);
 
-  set imageThumbnailAsBytes(core.List<core.int> _bytes) {
+  set imageThumbnailAsBytes(core.List<core.int> bytes_) {
     imageThumbnail =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Image uri from the user bucket.
@@ -5077,19 +5077,19 @@ class GoogleCloudDatalabelingV1beta1ImagePayload {
     this.signedUri,
   });
 
-  GoogleCloudDatalabelingV1beta1ImagePayload.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ImagePayload.fromJson(core.Map json_)
       : this(
-          imageThumbnail: _json.containsKey('imageThumbnail')
-              ? _json['imageThumbnail'] as core.String
+          imageThumbnail: json_.containsKey('imageThumbnail')
+              ? json_['imageThumbnail'] as core.String
               : null,
-          imageUri: _json.containsKey('imageUri')
-              ? _json['imageUri'] as core.String
+          imageUri: json_.containsKey('imageUri')
+              ? json_['imageUri'] as core.String
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
-          signedUri: _json.containsKey('signedUri')
-              ? _json['signedUri'] as core.String
+          signedUri: json_.containsKey('signedUri')
+              ? json_['signedUri'] as core.String
               : null,
         );
 
@@ -5114,21 +5114,21 @@ class GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation {
     this.polyline,
   });
 
-  GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation.fromJson(core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          normalizedPolyline: _json.containsKey('normalizedPolyline')
+          normalizedPolyline: json_.containsKey('normalizedPolyline')
               ? GoogleCloudDatalabelingV1beta1NormalizedPolyline.fromJson(
-                  _json['normalizedPolyline']
+                  json_['normalizedPolyline']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          polyline: _json.containsKey('polyline')
+          polyline: json_.containsKey('polyline')
               ? GoogleCloudDatalabelingV1beta1Polyline.fromJson(
-                  _json['polyline'] as core.Map<core.String, core.dynamic>)
+                  json_['polyline'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5154,9 +5154,9 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
   core.List<core.int> get imageBytesAsBytes =>
       convert.base64.decode(imageBytes!);
 
-  set imageBytesAsBytes(core.List<core.int> _bytes) {
+  set imageBytesAsBytes(core.List<core.int> bytes_) {
     imageBytes =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Image format.
@@ -5169,10 +5169,10 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
   });
 
   GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationColors: _json.containsKey('annotationColors')
-              ? (_json['annotationColors']
+          annotationColors: json_.containsKey('annotationColors')
+              ? (json_['annotationColors']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -5182,11 +5182,11 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
                   ),
                 )
               : null,
-          imageBytes: _json.containsKey('imageBytes')
-              ? _json['imageBytes'] as core.String
+          imageBytes: json_.containsKey('imageBytes')
+              ? json_['imageBytes'] as core.String
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
         );
 
@@ -5215,14 +5215,14 @@ class GoogleCloudDatalabelingV1beta1ImportDataRequest {
     this.userEmailAddress,
   });
 
-  GoogleCloudDatalabelingV1beta1ImportDataRequest.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ImportDataRequest.fromJson(core.Map json_)
       : this(
-          inputConfig: _json.containsKey('inputConfig')
+          inputConfig: json_.containsKey('inputConfig')
               ? GoogleCloudDatalabelingV1beta1InputConfig.fromJson(
-                  _json['inputConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
+          userEmailAddress: json_.containsKey('userEmailAddress')
+              ? json_['userEmailAddress'] as core.String
               : null,
         );
 
@@ -5304,31 +5304,31 @@ class GoogleCloudDatalabelingV1beta1InputConfig {
     this.textMetadata,
   });
 
-  GoogleCloudDatalabelingV1beta1InputConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1InputConfig.fromJson(core.Map json_)
       : this(
-          annotationType: _json.containsKey('annotationType')
-              ? _json['annotationType'] as core.String
+          annotationType: json_.containsKey('annotationType')
+              ? json_['annotationType'] as core.String
               : null,
-          bigquerySource: _json.containsKey('bigquerySource')
+          bigquerySource: json_.containsKey('bigquerySource')
               ? GoogleCloudDatalabelingV1beta1BigQuerySource.fromJson(
-                  _json['bigquerySource']
+                  json_['bigquerySource']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          classificationMetadata: _json.containsKey('classificationMetadata')
+          classificationMetadata: json_.containsKey('classificationMetadata')
               ? GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromJson(
-                  _json['classificationMetadata']
+                  json_['classificationMetadata']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          dataType: _json.containsKey('dataType')
-              ? _json['dataType'] as core.String
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
               : null,
-          gcsSource: _json.containsKey('gcsSource')
+          gcsSource: json_.containsKey('gcsSource')
               ? GoogleCloudDatalabelingV1beta1GcsSource.fromJson(
-                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          textMetadata: _json.containsKey('textMetadata')
+          textMetadata: json_.containsKey('textMetadata')
               ? GoogleCloudDatalabelingV1beta1TextMetadata.fromJson(
-                  _json['textMetadata'] as core.Map<core.String, core.dynamic>)
+                  json_['textMetadata'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5419,38 +5419,38 @@ class GoogleCloudDatalabelingV1beta1Instruction {
     this.updateTime,
   });
 
-  GoogleCloudDatalabelingV1beta1Instruction.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Instruction.fromJson(core.Map json_)
       : this(
-          blockingResources: _json.containsKey('blockingResources')
-              ? (_json['blockingResources'] as core.List)
+          blockingResources: json_.containsKey('blockingResources')
+              ? (json_['blockingResources'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          csvInstruction: _json.containsKey('csvInstruction')
+          csvInstruction: json_.containsKey('csvInstruction')
               ? GoogleCloudDatalabelingV1beta1CsvInstruction.fromJson(
-                  _json['csvInstruction']
+                  json_['csvInstruction']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          dataType: _json.containsKey('dataType')
-              ? _json['dataType'] as core.String
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pdfInstruction: _json.containsKey('pdfInstruction')
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pdfInstruction: json_.containsKey('pdfInstruction')
               ? GoogleCloudDatalabelingV1beta1PdfInstruction.fromJson(
-                  _json['pdfInstruction']
+                  json_['pdfInstruction']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
@@ -5527,34 +5527,34 @@ class GoogleCloudDatalabelingV1beta1LabelImageRequest {
     this.segmentationConfig,
   });
 
-  GoogleCloudDatalabelingV1beta1LabelImageRequest.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1LabelImageRequest.fromJson(core.Map json_)
       : this(
-          basicConfig: _json.containsKey('basicConfig')
+          basicConfig: json_.containsKey('basicConfig')
               ? GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
-                  _json['basicConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['basicConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          boundingPolyConfig: _json.containsKey('boundingPolyConfig')
+          boundingPolyConfig: json_.containsKey('boundingPolyConfig')
               ? GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(
-                  _json['boundingPolyConfig']
+                  json_['boundingPolyConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          feature: _json.containsKey('feature')
-              ? _json['feature'] as core.String
+          feature: json_.containsKey('feature')
+              ? json_['feature'] as core.String
               : null,
           imageClassificationConfig:
-              _json.containsKey('imageClassificationConfig')
+              json_.containsKey('imageClassificationConfig')
                   ? GoogleCloudDatalabelingV1beta1ImageClassificationConfig
-                      .fromJson(_json['imageClassificationConfig']
+                      .fromJson(json_['imageClassificationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          polylineConfig: _json.containsKey('polylineConfig')
+          polylineConfig: json_.containsKey('polylineConfig')
               ? GoogleCloudDatalabelingV1beta1PolylineConfig.fromJson(
-                  _json['polylineConfig']
+                  json_['polylineConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          segmentationConfig: _json.containsKey('segmentationConfig')
+          segmentationConfig: json_.containsKey('segmentationConfig')
               ? GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(
-                  _json['segmentationConfig']
+                  json_['segmentationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -5586,10 +5586,10 @@ class GoogleCloudDatalabelingV1beta1LabelStats {
     this.exampleCount,
   });
 
-  GoogleCloudDatalabelingV1beta1LabelStats.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1LabelStats.fromJson(core.Map json_)
       : this(
-          exampleCount: _json.containsKey('exampleCount')
-              ? (_json['exampleCount'] as core.Map<core.String, core.dynamic>)
+          exampleCount: json_.containsKey('exampleCount')
+              ? (json_['exampleCount'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -5641,25 +5641,25 @@ class GoogleCloudDatalabelingV1beta1LabelTextRequest {
     this.textEntityExtractionConfig,
   });
 
-  GoogleCloudDatalabelingV1beta1LabelTextRequest.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1LabelTextRequest.fromJson(core.Map json_)
       : this(
-          basicConfig: _json.containsKey('basicConfig')
+          basicConfig: json_.containsKey('basicConfig')
               ? GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
-                  _json['basicConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['basicConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          feature: _json.containsKey('feature')
-              ? _json['feature'] as core.String
+          feature: json_.containsKey('feature')
+              ? json_['feature'] as core.String
               : null,
-          textClassificationConfig: _json
+          textClassificationConfig: json_
                   .containsKey('textClassificationConfig')
               ? GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
-                  _json['textClassificationConfig']
+                  json_['textClassificationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           textEntityExtractionConfig:
-              _json.containsKey('textEntityExtractionConfig')
+              json_.containsKey('textEntityExtractionConfig')
                   ? GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig
-                      .fromJson(_json['textEntityExtractionConfig']
+                      .fromJson(json_['textEntityExtractionConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -5728,33 +5728,33 @@ class GoogleCloudDatalabelingV1beta1LabelVideoRequest {
     this.videoClassificationConfig,
   });
 
-  GoogleCloudDatalabelingV1beta1LabelVideoRequest.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1LabelVideoRequest.fromJson(core.Map json_)
       : this(
-          basicConfig: _json.containsKey('basicConfig')
+          basicConfig: json_.containsKey('basicConfig')
               ? GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
-                  _json['basicConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['basicConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          eventConfig: _json.containsKey('eventConfig')
+          eventConfig: json_.containsKey('eventConfig')
               ? GoogleCloudDatalabelingV1beta1EventConfig.fromJson(
-                  _json['eventConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['eventConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          feature: _json.containsKey('feature')
-              ? _json['feature'] as core.String
+          feature: json_.containsKey('feature')
+              ? json_['feature'] as core.String
               : null,
-          objectDetectionConfig: _json.containsKey('objectDetectionConfig')
+          objectDetectionConfig: json_.containsKey('objectDetectionConfig')
               ? GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(
-                  _json['objectDetectionConfig']
+                  json_['objectDetectionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          objectTrackingConfig: _json.containsKey('objectTrackingConfig')
+          objectTrackingConfig: json_.containsKey('objectTrackingConfig')
               ? GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(
-                  _json['objectTrackingConfig']
+                  json_['objectTrackingConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           videoClassificationConfig:
-              _json.containsKey('videoClassificationConfig')
+              json_.containsKey('videoClassificationConfig')
                   ? GoogleCloudDatalabelingV1beta1VideoClassificationConfig
-                      .fromJson(_json['videoClassificationConfig']
+                      .fromJson(json_['videoClassificationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -5786,17 +5786,17 @@ class GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
   });
 
   GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotatedDatasets: _json.containsKey('annotatedDatasets')
-              ? (_json['annotatedDatasets'] as core.List)
+          annotatedDatasets: json_.containsKey('annotatedDatasets')
+              ? (json_['annotatedDatasets'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5821,17 +5821,17 @@ class GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
   });
 
   GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpecSets: _json.containsKey('annotationSpecSets')
-              ? (_json['annotationSpecSets'] as core.List)
+          annotationSpecSets: json_.containsKey('annotationSpecSets')
+              ? (json_['annotationSpecSets'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5855,17 +5855,17 @@ class GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(core.Map json_)
       : this(
-          dataItems: _json.containsKey('dataItems')
-              ? (_json['dataItems'] as core.List)
+          dataItems: json_.containsKey('dataItems')
+              ? (json_['dataItems'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1DataItem.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5888,17 +5888,17 @@ class GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(core.Map json_)
       : this(
-          datasets: _json.containsKey('datasets')
-              ? (_json['datasets'] as core.List)
+          datasets: json_.containsKey('datasets')
+              ? (json_['datasets'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1Dataset.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5922,17 +5922,17 @@ class GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
   });
 
   GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          evaluationJobs: _json.containsKey('evaluationJobs')
-              ? (_json['evaluationJobs'] as core.List)
+          evaluationJobs: json_.containsKey('evaluationJobs')
+              ? (json_['evaluationJobs'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5955,17 +5955,17 @@ class GoogleCloudDatalabelingV1beta1ListExamplesResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(core.Map json_)
       : this(
-          examples: _json.containsKey('examples')
-              ? (_json['examples'] as core.List)
+          examples: json_.containsKey('examples')
+              ? (json_['examples'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1Example.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -5989,17 +5989,17 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
   });
 
   GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          feedbackMessages: _json.containsKey('feedbackMessages')
-              ? (_json['feedbackMessages'] as core.List)
+          feedbackMessages: json_.containsKey('feedbackMessages')
+              ? (json_['feedbackMessages'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6023,17 +6023,17 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
   });
 
   GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          feedbackThreads: _json.containsKey('feedbackThreads')
-              ? (_json['feedbackThreads'] as core.List)
+          feedbackThreads: json_.containsKey('feedbackThreads')
+              ? (json_['feedbackThreads'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6057,17 +6057,17 @@ class GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
   });
 
   GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          instructions: _json.containsKey('instructions')
-              ? (_json['instructions'] as core.List)
+          instructions: json_.containsKey('instructions')
+              ? (json_['instructions'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1Instruction.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6086,10 +6086,10 @@ class GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
     this.normalizedVertices,
   });
 
-  GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(core.Map json_)
       : this(
-          normalizedVertices: _json.containsKey('normalizedVertices')
-              ? (_json['normalizedVertices'] as core.List)
+          normalizedVertices: json_.containsKey('normalizedVertices')
+              ? (json_['normalizedVertices'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -6112,10 +6112,10 @@ class GoogleCloudDatalabelingV1beta1NormalizedPolyline {
     this.normalizedVertices,
   });
 
-  GoogleCloudDatalabelingV1beta1NormalizedPolyline.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1NormalizedPolyline.fromJson(core.Map json_)
       : this(
-          normalizedVertices: _json.containsKey('normalizedVertices')
-              ? (_json['normalizedVertices'] as core.List)
+          normalizedVertices: json_.containsKey('normalizedVertices')
+              ? (json_['normalizedVertices'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(
                           value as core.Map<core.String, core.dynamic>))
@@ -6145,13 +6145,13 @@ class GoogleCloudDatalabelingV1beta1NormalizedVertex {
     this.y,
   });
 
-  GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(core.Map json_)
       : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
+          x: json_.containsKey('x')
+              ? (json_['x'] as core.num).toDouble()
               : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
+          y: json_.containsKey('y')
+              ? (json_['y'] as core.num).toDouble()
               : null,
         );
 
@@ -6183,13 +6183,13 @@ class GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
     this.extractionFrameRate,
   });
 
-  GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(core.Map json_)
       : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
-          extractionFrameRate: _json.containsKey('extractionFrameRate')
-              ? (_json['extractionFrameRate'] as core.num).toDouble()
+          extractionFrameRate: json_.containsKey('extractionFrameRate')
+              ? (json_['extractionFrameRate'] as core.num).toDouble()
               : null,
         );
 
@@ -6209,11 +6209,11 @@ class GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics {
     this.prCurve,
   });
 
-  GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics.fromJson(core.Map json_)
       : this(
-          prCurve: _json.containsKey('prCurve')
+          prCurve: json_.containsKey('prCurve')
               ? GoogleCloudDatalabelingV1beta1PrCurve.fromJson(
-                  _json['prCurve'] as core.Map<core.String, core.dynamic>)
+                  json_['prCurve'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6247,16 +6247,16 @@ class GoogleCloudDatalabelingV1beta1ObjectTrackingConfig {
     this.overlapLength,
   });
 
-  GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(core.Map json_)
       : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
-          clipLength: _json.containsKey('clipLength')
-              ? _json['clipLength'] as core.int
+          clipLength: json_.containsKey('clipLength')
+              ? json_['clipLength'] as core.int
               : null,
-          overlapLength: _json.containsKey('overlapLength')
-              ? _json['overlapLength'] as core.int
+          overlapLength: json_.containsKey('overlapLength')
+              ? json_['overlapLength'] as core.int
               : null,
         );
 
@@ -6281,19 +6281,19 @@ class GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
     this.timeOffset,
   });
 
-  GoogleCloudDatalabelingV1beta1ObjectTrackingFrame.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1ObjectTrackingFrame.fromJson(core.Map json_)
       : this(
-          boundingPoly: _json.containsKey('boundingPoly')
+          boundingPoly: json_.containsKey('boundingPoly')
               ? GoogleCloudDatalabelingV1beta1BoundingPoly.fromJson(
-                  _json['boundingPoly'] as core.Map<core.String, core.dynamic>)
+                  json_['boundingPoly'] as core.Map<core.String, core.dynamic>)
               : null,
-          normalizedBoundingPoly: _json.containsKey('normalizedBoundingPoly')
+          normalizedBoundingPoly: json_.containsKey('normalizedBoundingPoly')
               ? GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(
-                  _json['normalizedBoundingPoly']
+                  json_['normalizedBoundingPoly']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
+          timeOffset: json_.containsKey('timeOffset')
+              ? json_['timeOffset'] as core.String
               : null,
         );
 
@@ -6332,21 +6332,21 @@ class GoogleCloudDatalabelingV1beta1OperatorMetadata {
     this.totalVotes,
   });
 
-  GoogleCloudDatalabelingV1beta1OperatorMetadata.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1OperatorMetadata.fromJson(core.Map json_)
       : this(
-          comments: _json.containsKey('comments')
-              ? (_json['comments'] as core.List)
+          comments: json_.containsKey('comments')
+              ? (json_['comments'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          labelVotes: _json.containsKey('labelVotes')
-              ? _json['labelVotes'] as core.int
+          labelVotes: json_.containsKey('labelVotes')
+              ? json_['labelVotes'] as core.int
               : null,
-          score: _json.containsKey('score')
-              ? (_json['score'] as core.num).toDouble()
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
               : null,
-          totalVotes: _json.containsKey('totalVotes')
-              ? _json['totalVotes'] as core.int
+          totalVotes: json_.containsKey('totalVotes')
+              ? json_['totalVotes'] as core.int
               : null,
         );
 
@@ -6376,16 +6376,16 @@ class GoogleCloudDatalabelingV1beta1OutputConfig {
     this.gcsFolderDestination,
   });
 
-  GoogleCloudDatalabelingV1beta1OutputConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1OutputConfig.fromJson(core.Map json_)
       : this(
-          gcsDestination: _json.containsKey('gcsDestination')
+          gcsDestination: json_.containsKey('gcsDestination')
               ? GoogleCloudDatalabelingV1beta1GcsDestination.fromJson(
-                  _json['gcsDestination']
+                  json_['gcsDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          gcsFolderDestination: _json.containsKey('gcsFolderDestination')
+          gcsFolderDestination: json_.containsKey('gcsFolderDestination')
               ? GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(
-                  _json['gcsFolderDestination']
+                  json_['gcsFolderDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6411,10 +6411,10 @@ class GoogleCloudDatalabelingV1beta1PdfInstruction {
     this.gcsFileUri,
   });
 
-  GoogleCloudDatalabelingV1beta1PdfInstruction.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1PdfInstruction.fromJson(core.Map json_)
       : this(
-          gcsFileUri: _json.containsKey('gcsFileUri')
-              ? _json['gcsFileUri'] as core.String
+          gcsFileUri: json_.containsKey('gcsFileUri')
+              ? json_['gcsFileUri'] as core.String
               : null,
         );
 
@@ -6432,10 +6432,10 @@ class GoogleCloudDatalabelingV1beta1Polyline {
     this.vertices,
   });
 
-  GoogleCloudDatalabelingV1beta1Polyline.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Polyline.fromJson(core.Map json_)
       : this(
-          vertices: _json.containsKey('vertices')
-              ? (_json['vertices'] as core.List)
+          vertices: json_.containsKey('vertices')
+              ? (json_['vertices'] as core.List)
                   .map((value) => GoogleCloudDatalabelingV1beta1Vertex.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6481,27 +6481,27 @@ class GoogleCloudDatalabelingV1beta1PrCurve {
     this.meanAveragePrecision,
   });
 
-  GoogleCloudDatalabelingV1beta1PrCurve.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1PrCurve.fromJson(core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          areaUnderCurve: _json.containsKey('areaUnderCurve')
-              ? (_json['areaUnderCurve'] as core.num).toDouble()
+          areaUnderCurve: json_.containsKey('areaUnderCurve')
+              ? (json_['areaUnderCurve'] as core.num).toDouble()
               : null,
-          confidenceMetricsEntries: _json
+          confidenceMetricsEntries: json_
                   .containsKey('confidenceMetricsEntries')
-              ? (_json['confidenceMetricsEntries'] as core.List)
+              ? (json_['confidenceMetricsEntries'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          meanAveragePrecision: _json.containsKey('meanAveragePrecision')
-              ? (_json['meanAveragePrecision'] as core.num).toDouble()
+          meanAveragePrecision: json_.containsKey('meanAveragePrecision')
+              ? (json_['meanAveragePrecision'] as core.num).toDouble()
               : null,
         );
 
@@ -6538,15 +6538,15 @@ class GoogleCloudDatalabelingV1beta1Row {
     this.entries,
   });
 
-  GoogleCloudDatalabelingV1beta1Row.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Row.fromJson(core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          entries: _json.containsKey('entries')
-              ? (_json['entries'] as core.List)
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry
                           .fromJson(
@@ -6575,17 +6575,17 @@ class GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
   });
 
   GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          evaluations: _json.containsKey('evaluations')
-              ? (_json['evaluations'] as core.List)
+          evaluations: json_.containsKey('evaluations')
+              ? (json_['evaluations'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1Evaluation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6619,13 +6619,13 @@ class GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest {
   });
 
   GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          pageSize: _json.containsKey('pageSize')
-              ? _json['pageSize'] as core.int
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
               : null,
-          pageToken: _json.containsKey('pageToken')
-              ? _json['pageToken'] as core.String
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
               : null,
         );
 
@@ -6650,17 +6650,17 @@ class GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse {
   });
 
   GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          exampleComparisons: _json.containsKey('exampleComparisons')
-              ? (_json['exampleComparisons'] as core.List)
+          exampleComparisons: json_.containsKey('exampleComparisons')
+              ? (json_['exampleComparisons'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1ExampleComparison.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -6688,13 +6688,13 @@ class GoogleCloudDatalabelingV1beta1SegmentationConfig {
     this.instructionMessage,
   });
 
-  GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(core.Map json_)
       : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
-          instructionMessage: _json.containsKey('instructionMessage')
-              ? _json['instructionMessage'] as core.String
+          instructionMessage: json_.containsKey('instructionMessage')
+              ? json_['instructionMessage'] as core.String
               : null,
         );
 
@@ -6717,11 +6717,11 @@ class GoogleCloudDatalabelingV1beta1SentimentConfig {
     this.enableLabelSentimentSelection,
   });
 
-  GoogleCloudDatalabelingV1beta1SentimentConfig.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1SentimentConfig.fromJson(core.Map json_)
       : this(
           enableLabelSentimentSelection:
-              _json.containsKey('enableLabelSentimentSelection')
-                  ? _json['enableLabelSentimentSelection'] as core.bool
+              json_.containsKey('enableLabelSentimentSelection')
+                  ? json_['enableLabelSentimentSelection'] as core.bool
                   : null,
         );
 
@@ -6744,10 +6744,10 @@ class GoogleCloudDatalabelingV1beta1SequentialSegment {
     this.start,
   });
 
-  GoogleCloudDatalabelingV1beta1SequentialSegment.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1SequentialSegment.fromJson(core.Map json_)
       : this(
-          end: _json.containsKey('end') ? _json['end'] as core.int : null,
-          start: _json.containsKey('start') ? _json['start'] as core.int : null,
+          end: json_.containsKey('end') ? json_['end'] as core.int : null,
+          start: json_.containsKey('start') ? json_['start'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6766,11 +6766,11 @@ class GoogleCloudDatalabelingV1beta1TextClassificationAnnotation {
   });
 
   GoogleCloudDatalabelingV1beta1TextClassificationAnnotation.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6808,17 +6808,17 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   });
 
   GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          allowMultiLabel: _json.containsKey('allowMultiLabel')
-              ? _json['allowMultiLabel'] as core.bool
+          allowMultiLabel: json_.containsKey('allowMultiLabel')
+              ? json_['allowMultiLabel'] as core.bool
               : null,
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
-          sentimentConfig: _json.containsKey('sentimentConfig')
+          sentimentConfig: json_.containsKey('sentimentConfig')
               ? GoogleCloudDatalabelingV1beta1SentimentConfig.fromJson(
-                  _json['sentimentConfig']
+                  json_['sentimentConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6844,16 +6844,16 @@ class GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation {
   });
 
   GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          sequentialSegment: _json.containsKey('sequentialSegment')
+          sequentialSegment: json_.containsKey('sequentialSegment')
               ? GoogleCloudDatalabelingV1beta1SequentialSegment.fromJson(
-                  _json['sequentialSegment']
+                  json_['sequentialSegment']
                       as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6876,10 +6876,10 @@ class GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig {
   });
 
   GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
+          annotationSpecSet: json_.containsKey('annotationSpecSet')
+              ? json_['annotationSpecSet'] as core.String
               : null,
         );
 
@@ -6900,10 +6900,10 @@ class GoogleCloudDatalabelingV1beta1TextMetadata {
     this.languageCode,
   });
 
-  GoogleCloudDatalabelingV1beta1TextMetadata.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1TextMetadata.fromJson(core.Map json_)
       : this(
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
         );
 
@@ -6921,10 +6921,10 @@ class GoogleCloudDatalabelingV1beta1TextPayload {
     this.textContent,
   });
 
-  GoogleCloudDatalabelingV1beta1TextPayload.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1TextPayload.fromJson(core.Map json_)
       : this(
-          textContent: _json.containsKey('textContent')
-              ? _json['textContent'] as core.String
+          textContent: json_.containsKey('textContent')
+              ? json_['textContent'] as core.String
               : null,
         );
 
@@ -6948,13 +6948,13 @@ class GoogleCloudDatalabelingV1beta1TimeSegment {
     this.startTimeOffset,
   });
 
-  GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(core.Map json_)
       : this(
-          endTimeOffset: _json.containsKey('endTimeOffset')
-              ? _json['endTimeOffset'] as core.String
+          endTimeOffset: json_.containsKey('endTimeOffset')
+              ? json_['endTimeOffset'] as core.String
               : null,
-          startTimeOffset: _json.containsKey('startTimeOffset')
-              ? _json['startTimeOffset'] as core.String
+          startTimeOffset: json_.containsKey('startTimeOffset')
+              ? json_['startTimeOffset'] as core.String
               : null,
         );
 
@@ -6979,10 +6979,10 @@ class GoogleCloudDatalabelingV1beta1Vertex {
     this.y,
   });
 
-  GoogleCloudDatalabelingV1beta1Vertex.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1Vertex.fromJson(core.Map json_)
       : this(
-          x: _json.containsKey('x') ? _json['x'] as core.int : null,
-          y: _json.containsKey('y') ? _json['y'] as core.int : null,
+          x: json_.containsKey('x') ? json_['x'] as core.int : null,
+          y: json_.containsKey('y') ? json_['y'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7005,16 +7005,16 @@ class GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation {
   });
 
   GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          timeSegment: _json.containsKey('timeSegment')
+          timeSegment: json_.containsKey('timeSegment')
               ? GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(
-                  _json['timeSegment'] as core.Map<core.String, core.dynamic>)
+                  json_['timeSegment'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7053,19 +7053,19 @@ class GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
   });
 
   GoogleCloudDatalabelingV1beta1VideoClassificationConfig.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
           annotationSpecSetConfigs:
-              _json.containsKey('annotationSpecSetConfigs')
-                  ? (_json['annotationSpecSetConfigs'] as core.List)
+              json_.containsKey('annotationSpecSetConfigs')
+                  ? (json_['annotationSpecSetConfigs'] as core.List)
                       .map((value) =>
                           GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig
                               .fromJson(
                                   value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          applyShotDetection: _json.containsKey('applyShotDetection')
-              ? _json['applyShotDetection'] as core.bool
+          applyShotDetection: json_.containsKey('applyShotDetection')
+              ? json_['applyShotDetection'] as core.bool
               : null,
         );
 
@@ -7090,16 +7090,16 @@ class GoogleCloudDatalabelingV1beta1VideoEventAnnotation {
     this.timeSegment,
   });
 
-  GoogleCloudDatalabelingV1beta1VideoEventAnnotation.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1VideoEventAnnotation.fromJson(core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          timeSegment: _json.containsKey('timeSegment')
+          timeSegment: json_.containsKey('timeSegment')
               ? GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(
-                  _json['timeSegment'] as core.Map<core.String, core.dynamic>)
+                  json_['timeSegment'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7128,24 +7128,24 @@ class GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
   });
 
   GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          annotationSpec: _json.containsKey('annotationSpec')
+          annotationSpec: json_.containsKey('annotationSpec')
               ? GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  _json['annotationSpec']
+                  json_['annotationSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          objectTrackingFrames: _json.containsKey('objectTrackingFrames')
-              ? (_json['objectTrackingFrames'] as core.List)
+          objectTrackingFrames: json_.containsKey('objectTrackingFrames')
+              ? (json_['objectTrackingFrames'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1ObjectTrackingFrame
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          timeSegment: _json.containsKey('timeSegment')
+          timeSegment: json_.containsKey('timeSegment')
               ? GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(
-                  _json['timeSegment'] as core.Map<core.String, core.dynamic>)
+                  json_['timeSegment'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7182,26 +7182,26 @@ class GoogleCloudDatalabelingV1beta1VideoPayload {
     this.videoUri,
   });
 
-  GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(core.Map json_)
       : this(
-          frameRate: _json.containsKey('frameRate')
-              ? (_json['frameRate'] as core.num).toDouble()
+          frameRate: json_.containsKey('frameRate')
+              ? (json_['frameRate'] as core.num).toDouble()
               : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
+          mimeType: json_.containsKey('mimeType')
+              ? json_['mimeType'] as core.String
               : null,
-          signedUri: _json.containsKey('signedUri')
-              ? _json['signedUri'] as core.String
+          signedUri: json_.containsKey('signedUri')
+              ? json_['signedUri'] as core.String
               : null,
-          videoThumbnails: _json.containsKey('videoThumbnails')
-              ? (_json['videoThumbnails'] as core.List)
+          videoThumbnails: json_.containsKey('videoThumbnails')
+              ? (json_['videoThumbnails'] as core.List)
                   .map((value) =>
                       GoogleCloudDatalabelingV1beta1VideoThumbnail.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          videoUri: _json.containsKey('videoUri')
-              ? _json['videoUri'] as core.String
+          videoUri: json_.containsKey('videoUri')
+              ? json_['videoUri'] as core.String
               : null,
         );
 
@@ -7220,9 +7220,9 @@ class GoogleCloudDatalabelingV1beta1VideoThumbnail {
   core.String? thumbnail;
   core.List<core.int> get thumbnailAsBytes => convert.base64.decode(thumbnail!);
 
-  set thumbnailAsBytes(core.List<core.int> _bytes) {
+  set thumbnailAsBytes(core.List<core.int> bytes_) {
     thumbnail =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// Time offset relative to the beginning of the video, corresponding to the
@@ -7234,13 +7234,13 @@ class GoogleCloudDatalabelingV1beta1VideoThumbnail {
     this.timeOffset,
   });
 
-  GoogleCloudDatalabelingV1beta1VideoThumbnail.fromJson(core.Map _json)
+  GoogleCloudDatalabelingV1beta1VideoThumbnail.fromJson(core.Map json_)
       : this(
-          thumbnail: _json.containsKey('thumbnail')
-              ? _json['thumbnail'] as core.String
+          thumbnail: json_.containsKey('thumbnail')
+              ? json_['thumbnail'] as core.String
               : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
+          timeOffset: json_.containsKey('timeOffset')
+              ? json_['timeOffset'] as core.String
               : null,
         );
 
@@ -7263,13 +7263,13 @@ class GoogleLongrunningListOperationsResponse {
     this.operations,
   });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => GoogleLongrunningOperation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7333,19 +7333,19 @@ class GoogleLongrunningOperation {
     this.response,
   });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json)
+  GoogleLongrunningOperation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

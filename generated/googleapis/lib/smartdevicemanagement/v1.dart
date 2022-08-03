@@ -102,21 +102,21 @@ class EnterprisesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':executeCommand';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':executeCommand';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a device managed by the enterprise.
@@ -141,19 +141,19 @@ class EnterprisesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Device.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices managed by the enterprise.
@@ -189,22 +189,22 @@ class EnterprisesDevicesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -239,19 +239,19 @@ class EnterprisesStructuresResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Structure.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists structures managed by the enterprise.
@@ -286,22 +286,22 @@ class EnterprisesStructuresResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/structures';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/structures';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -334,19 +334,19 @@ class EnterprisesStructuresRoomsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1Room.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists rooms managed by the enterprise.
@@ -378,21 +378,21 @@ class EnterprisesStructuresRoomsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/rooms';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rooms';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -433,20 +433,20 @@ class GoogleHomeEnterpriseSdmV1Device {
     this.type,
   });
 
-  GoogleHomeEnterpriseSdmV1Device.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1Device.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parentRelations: _json.containsKey('parentRelations')
-              ? (_json['parentRelations'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parentRelations: json_.containsKey('parentRelations')
+              ? (json_['parentRelations'] as core.List)
                   .map((value) =>
                       GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          traits: _json.containsKey('traits')
-              ? _json['traits'] as core.Map<core.String, core.dynamic>
+          traits: json_.containsKey('traits')
+              ? json_['traits'] as core.Map<core.String, core.dynamic>
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -474,13 +474,13 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
     this.params,
   });
 
-  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(core.Map json_)
       : this(
-          command: _json.containsKey('command')
-              ? _json['command'] as core.String
+          command: json_.containsKey('command')
+              ? json_['command'] as core.String
               : null,
-          params: _json.containsKey('params')
-              ? _json['params'] as core.Map<core.String, core.dynamic>
+          params: json_.containsKey('params')
+              ? json_['params'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -502,10 +502,10 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
     this.results,
   });
 
-  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(core.Map json_)
       : this(
-          results: _json.containsKey('results')
-              ? _json['results'] as core.Map<core.String, core.dynamic>
+          results: json_.containsKey('results')
+              ? json_['results'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -527,16 +527,16 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
     this.nextPageToken,
   });
 
-  GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(core.Map json_)
       : this(
-          devices: _json.containsKey('devices')
-              ? (_json['devices'] as core.List)
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
                   .map((value) => GoogleHomeEnterpriseSdmV1Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -561,13 +561,13 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
     this.rooms,
   });
 
-  GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          rooms: _json.containsKey('rooms')
-              ? (_json['rooms'] as core.List)
+          rooms: json_.containsKey('rooms')
+              ? (json_['rooms'] as core.List)
                   .map((value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -595,13 +595,13 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
     this.structures,
   });
 
-  GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          structures: _json.containsKey('structures')
-              ? (_json['structures'] as core.List)
+          structures: json_.containsKey('structures')
+              ? (json_['structures'] as core.List)
                   .map((value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -637,13 +637,13 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
     this.parent,
   });
 
-  GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(core.Map json_)
       : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
         );
 
@@ -674,11 +674,11 @@ class GoogleHomeEnterpriseSdmV1Room {
     this.traits,
   });
 
-  GoogleHomeEnterpriseSdmV1Room.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1Room.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          traits: _json.containsKey('traits')
-              ? _json['traits'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          traits: json_.containsKey('traits')
+              ? json_['traits'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -709,11 +709,11 @@ class GoogleHomeEnterpriseSdmV1Structure {
     this.traits,
   });
 
-  GoogleHomeEnterpriseSdmV1Structure.fromJson(core.Map _json)
+  GoogleHomeEnterpriseSdmV1Structure.fromJson(core.Map json_)
       : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          traits: _json.containsKey('traits')
-              ? _json['traits'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          traits: json_.containsKey('traits')
+              ? json_['traits'] as core.Map<core.String, core.dynamic>
               : null,
         );
 

@@ -100,21 +100,21 @@ class AccountsProductsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/products/' +
         core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the product from a Manufacturer Center account, including product
@@ -159,22 +159,22 @@ class AccountsProductsResource {
     core.List<core.String>? include,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (include != null) 'include': include,
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/products/' +
         core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Product.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the products in a Manufacturer Center account.
@@ -210,22 +210,22 @@ class AccountsProductsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (include != null) 'include': include,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/products';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/products';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListProductsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts or updates the attributes of the product in a Manufacturer Center
@@ -276,23 +276,23 @@ class AccountsProductsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' +
+    final url_ = 'v1/' +
         core.Uri.encodeFull('$parent') +
         '/products/' +
         core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -565,136 +565,136 @@ class Attributes {
     this.videoLink,
   });
 
-  Attributes.fromJson(core.Map _json)
+  Attributes.fromJson(core.Map json_)
       : this(
-          additionalImageLink: _json.containsKey('additionalImageLink')
-              ? (_json['additionalImageLink'] as core.List)
+          additionalImageLink: json_.containsKey('additionalImageLink')
+              ? (json_['additionalImageLink'] as core.List)
                   .map((value) => Image.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          ageGroup: _json.containsKey('ageGroup')
-              ? _json['ageGroup'] as core.String
+          ageGroup: json_.containsKey('ageGroup')
+              ? json_['ageGroup'] as core.String
               : null,
           brand:
-              _json.containsKey('brand') ? _json['brand'] as core.String : null,
-          capacity: _json.containsKey('capacity')
+              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          capacity: json_.containsKey('capacity')
               ? Capacity.fromJson(
-                  _json['capacity'] as core.Map<core.String, core.dynamic>)
+                  json_['capacity'] as core.Map<core.String, core.dynamic>)
               : null,
           color:
-              _json.containsKey('color') ? _json['color'] as core.String : null,
-          count: _json.containsKey('count')
+              json_.containsKey('color') ? json_['color'] as core.String : null,
+          count: json_.containsKey('count')
               ? Count.fromJson(
-                  _json['count'] as core.Map<core.String, core.dynamic>)
+                  json_['count'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          disclosureDate: _json.containsKey('disclosureDate')
-              ? _json['disclosureDate'] as core.String
+          disclosureDate: json_.containsKey('disclosureDate')
+              ? json_['disclosureDate'] as core.String
               : null,
-          excludedDestination: _json.containsKey('excludedDestination')
-              ? (_json['excludedDestination'] as core.List)
+          excludedDestination: json_.containsKey('excludedDestination')
+              ? (json_['excludedDestination'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          featureDescription: _json.containsKey('featureDescription')
-              ? (_json['featureDescription'] as core.List)
+          featureDescription: json_.containsKey('featureDescription')
+              ? (json_['featureDescription'] as core.List)
                   .map((value) => FeatureDescription.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          flavor: _json.containsKey('flavor')
-              ? _json['flavor'] as core.String
+          flavor: json_.containsKey('flavor')
+              ? json_['flavor'] as core.String
               : null,
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
-          gender: _json.containsKey('gender')
-              ? _json['gender'] as core.String
+          gender: json_.containsKey('gender')
+              ? json_['gender'] as core.String
               : null,
-          gtin: _json.containsKey('gtin')
-              ? (_json['gtin'] as core.List)
+          gtin: json_.containsKey('gtin')
+              ? (json_['gtin'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          imageLink: _json.containsKey('imageLink')
+          imageLink: json_.containsKey('imageLink')
               ? Image.fromJson(
-                  _json['imageLink'] as core.Map<core.String, core.dynamic>)
+                  json_['imageLink'] as core.Map<core.String, core.dynamic>)
               : null,
-          includedDestination: _json.containsKey('includedDestination')
-              ? (_json['includedDestination'] as core.List)
+          includedDestination: json_.containsKey('includedDestination')
+              ? (json_['includedDestination'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          itemGroupId: _json.containsKey('itemGroupId')
-              ? _json['itemGroupId'] as core.String
+          itemGroupId: json_.containsKey('itemGroupId')
+              ? json_['itemGroupId'] as core.String
               : null,
-          material: _json.containsKey('material')
-              ? _json['material'] as core.String
+          material: json_.containsKey('material')
+              ? json_['material'] as core.String
               : null,
-          mpn: _json.containsKey('mpn') ? _json['mpn'] as core.String : null,
-          pattern: _json.containsKey('pattern')
-              ? _json['pattern'] as core.String
+          mpn: json_.containsKey('mpn') ? json_['mpn'] as core.String : null,
+          pattern: json_.containsKey('pattern')
+              ? json_['pattern'] as core.String
               : null,
-          productDetail: _json.containsKey('productDetail')
-              ? (_json['productDetail'] as core.List)
+          productDetail: json_.containsKey('productDetail')
+              ? (json_['productDetail'] as core.List)
                   .map((value) => ProductDetail.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          productHighlight: _json.containsKey('productHighlight')
-              ? (_json['productHighlight'] as core.List)
+          productHighlight: json_.containsKey('productHighlight')
+              ? (json_['productHighlight'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          productLine: _json.containsKey('productLine')
-              ? _json['productLine'] as core.String
+          productLine: json_.containsKey('productLine')
+              ? json_['productLine'] as core.String
               : null,
-          productName: _json.containsKey('productName')
-              ? _json['productName'] as core.String
+          productName: json_.containsKey('productName')
+              ? json_['productName'] as core.String
               : null,
-          productPageUrl: _json.containsKey('productPageUrl')
-              ? _json['productPageUrl'] as core.String
+          productPageUrl: json_.containsKey('productPageUrl')
+              ? json_['productPageUrl'] as core.String
               : null,
-          productType: _json.containsKey('productType')
-              ? (_json['productType'] as core.List)
+          productType: json_.containsKey('productType')
+              ? (json_['productType'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          releaseDate: _json.containsKey('releaseDate')
-              ? _json['releaseDate'] as core.String
+          releaseDate: json_.containsKey('releaseDate')
+              ? json_['releaseDate'] as core.String
               : null,
-          richProductContent: _json.containsKey('richProductContent')
-              ? (_json['richProductContent'] as core.List)
+          richProductContent: json_.containsKey('richProductContent')
+              ? (json_['richProductContent'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           scent:
-              _json.containsKey('scent') ? _json['scent'] as core.String : null,
-          size: _json.containsKey('size') ? _json['size'] as core.String : null,
-          sizeSystem: _json.containsKey('sizeSystem')
-              ? _json['sizeSystem'] as core.String
+              json_.containsKey('scent') ? json_['scent'] as core.String : null,
+          size: json_.containsKey('size') ? json_['size'] as core.String : null,
+          sizeSystem: json_.containsKey('sizeSystem')
+              ? json_['sizeSystem'] as core.String
               : null,
-          sizeType: _json.containsKey('sizeType')
-              ? (_json['sizeType'] as core.List)
+          sizeType: json_.containsKey('sizeType')
+              ? (json_['sizeType'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          suggestedRetailPrice: _json.containsKey('suggestedRetailPrice')
-              ? Price.fromJson(_json['suggestedRetailPrice']
+          suggestedRetailPrice: json_.containsKey('suggestedRetailPrice')
+              ? Price.fromJson(json_['suggestedRetailPrice']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          targetClientId: _json.containsKey('targetClientId')
-              ? _json['targetClientId'] as core.String
+          targetClientId: json_.containsKey('targetClientId')
+              ? json_['targetClientId'] as core.String
               : null,
           theme:
-              _json.containsKey('theme') ? _json['theme'] as core.String : null,
+              json_.containsKey('theme') ? json_['theme'] as core.String : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          videoLink: _json.containsKey('videoLink')
-              ? (_json['videoLink'] as core.List)
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          videoLink: json_.containsKey('videoLink')
+              ? (json_['videoLink'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -763,11 +763,11 @@ class Capacity {
     this.value,
   });
 
-  Capacity.fromJson(core.Map _json)
+  Capacity.fromJson(core.Map json_)
       : this(
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -792,11 +792,11 @@ class Count {
     this.value,
   });
 
-  Count.fromJson(core.Map _json)
+  Count.fromJson(core.Map json_)
       : this(
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+          unit: json_.containsKey('unit') ? json_['unit'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -823,13 +823,13 @@ class DestinationStatus {
     this.status,
   });
 
-  DestinationStatus.fromJson(core.Map _json)
+  DestinationStatus.fromJson(core.Map json_)
       : this(
-          destination: _json.containsKey('destination')
-              ? _json['destination'] as core.String
+          destination: json_.containsKey('destination')
+              ? json_['destination'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
         );
 
@@ -867,16 +867,16 @@ class FeatureDescription {
     this.text,
   });
 
-  FeatureDescription.fromJson(core.Map _json)
+  FeatureDescription.fromJson(core.Map json_)
       : this(
-          headline: _json.containsKey('headline')
-              ? _json['headline'] as core.String
+          headline: json_.containsKey('headline')
+              ? json_['headline'] as core.String
               : null,
-          image: _json.containsKey('image')
+          image: json_.containsKey('image')
               ? Image.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -933,15 +933,15 @@ class Image {
     this.type,
   });
 
-  Image.fromJson(core.Map _json)
+  Image.fromJson(core.Map json_)
       : this(
-          imageUrl: _json.containsKey('imageUrl')
-              ? _json['imageUrl'] as core.String
+          imageUrl: json_.containsKey('imageUrl')
+              ? json_['imageUrl'] as core.String
               : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1009,29 +1009,29 @@ class Issue {
     this.type,
   });
 
-  Issue.fromJson(core.Map _json)
+  Issue.fromJson(core.Map json_)
       : this(
-          attribute: _json.containsKey('attribute')
-              ? _json['attribute'] as core.String
+          attribute: json_.containsKey('attribute')
+              ? json_['attribute'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          destination: _json.containsKey('destination')
-              ? _json['destination'] as core.String
+          destination: json_.containsKey('destination')
+              ? json_['destination'] as core.String
               : null,
-          resolution: _json.containsKey('resolution')
-              ? _json['resolution'] as core.String
+          resolution: json_.containsKey('resolution')
+              ? json_['resolution'] as core.String
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          timestamp: _json.containsKey('timestamp')
-              ? _json['timestamp'] as core.String
+          timestamp: json_.containsKey('timestamp')
+              ? json_['timestamp'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1058,13 +1058,13 @@ class ListProductsResponse {
     this.products,
   });
 
-  ListProductsResponse.fromJson(core.Map _json)
+  ListProductsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          products: _json.containsKey('products')
-              ? (_json['products'] as core.List)
+          products: json_.containsKey('products')
+              ? (json_['products'] as core.List)
                   .map((value) => Product.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1090,13 +1090,13 @@ class Price {
     this.currency,
   });
 
-  Price.fromJson(core.Map _json)
+  Price.fromJson(core.Map json_)
       : this(
-          amount: _json.containsKey('amount')
-              ? _json['amount'] as core.String
+          amount: json_.containsKey('amount')
+              ? json_['amount'] as core.String
               : null,
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
+          currency: json_.containsKey('currency')
+              ? json_['currency'] as core.String
               : null,
         );
 
@@ -1158,36 +1158,36 @@ class Product {
     this.targetCountry,
   });
 
-  Product.fromJson(core.Map _json)
+  Product.fromJson(core.Map json_)
       : this(
-          attributes: _json.containsKey('attributes')
+          attributes: json_.containsKey('attributes')
               ? Attributes.fromJson(
-                  _json['attributes'] as core.Map<core.String, core.dynamic>)
+                  json_['attributes'] as core.Map<core.String, core.dynamic>)
               : null,
-          contentLanguage: _json.containsKey('contentLanguage')
-              ? _json['contentLanguage'] as core.String
+          contentLanguage: json_.containsKey('contentLanguage')
+              ? json_['contentLanguage'] as core.String
               : null,
-          destinationStatuses: _json.containsKey('destinationStatuses')
-              ? (_json['destinationStatuses'] as core.List)
+          destinationStatuses: json_.containsKey('destinationStatuses')
+              ? (json_['destinationStatuses'] as core.List)
                   .map((value) => DestinationStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          issues: _json.containsKey('issues')
-              ? (_json['issues'] as core.List)
+          issues: json_.containsKey('issues')
+              ? (json_['issues'] as core.List)
                   .map((value) => Issue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          targetCountry: _json.containsKey('targetCountry')
-              ? _json['targetCountry'] as core.String
+          targetCountry: json_.containsKey('targetCountry')
+              ? json_['targetCountry'] as core.String
               : null,
         );
 
@@ -1224,16 +1224,16 @@ class ProductDetail {
     this.sectionName,
   });
 
-  ProductDetail.fromJson(core.Map _json)
+  ProductDetail.fromJson(core.Map json_)
       : this(
-          attributeName: _json.containsKey('attributeName')
-              ? _json['attributeName'] as core.String
+          attributeName: json_.containsKey('attributeName')
+              ? json_['attributeName'] as core.String
               : null,
-          attributeValue: _json.containsKey('attributeValue')
-              ? _json['attributeValue'] as core.String
+          attributeValue: json_.containsKey('attributeValue')
+              ? json_['attributeValue'] as core.String
               : null,
-          sectionName: _json.containsKey('sectionName')
-              ? _json['sectionName'] as core.String
+          sectionName: json_.containsKey('sectionName')
+              ? json_['sectionName'] as core.String
               : null,
         );
 

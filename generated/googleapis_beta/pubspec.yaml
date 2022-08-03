@@ -9,4 +9,5 @@ dependencies:
   _discoveryapis_commons: ^1.0.0
   http: ">=0.13.0 <0.14.0"
 dev_dependencies:
+  lints: ^2.0.0
   test: ^1.16.0

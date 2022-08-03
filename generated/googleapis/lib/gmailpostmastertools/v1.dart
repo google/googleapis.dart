@@ -90,18 +90,18 @@ class DomainsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Domain.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Domain.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the domains that have been registered by the client.
@@ -134,21 +134,21 @@ class DomainsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/domains';
+    const url_ = 'v1/domains';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListDomainsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -183,19 +183,19 @@ class DomainsTrafficStatsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return TrafficStats.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List traffic statistics for all available days.
@@ -260,7 +260,7 @@ class DomainsTrafficStatsResource {
     core.int? startDate_year,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
       if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
       if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
@@ -272,15 +272,15 @@ class DomainsTrafficStatsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/trafficStats';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trafficStats';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListTrafficStatsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -333,16 +333,16 @@ class DeliveryError {
     this.errorType,
   });
 
-  DeliveryError.fromJson(core.Map _json)
+  DeliveryError.fromJson(core.Map json_)
       : this(
-          errorClass: _json.containsKey('errorClass')
-              ? _json['errorClass'] as core.String
+          errorClass: json_.containsKey('errorClass')
+              ? json_['errorClass'] as core.String
               : null,
-          errorRatio: _json.containsKey('errorRatio')
-              ? (_json['errorRatio'] as core.num).toDouble()
+          errorRatio: json_.containsKey('errorRatio')
+              ? (json_['errorRatio'] as core.num).toDouble()
               : null,
-          errorType: _json.containsKey('errorType')
-              ? _json['errorType'] as core.String
+          errorType: json_.containsKey('errorType')
+              ? json_['errorType'] as core.String
               : null,
         );
 
@@ -386,14 +386,14 @@ class Domain {
     this.permission,
   });
 
-  Domain.fromJson(core.Map _json)
+  Domain.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          permission: _json.containsKey('permission')
-              ? _json['permission'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          permission: json_.containsKey('permission')
+              ? json_['permission'] as core.String
               : null,
         );
 
@@ -419,11 +419,11 @@ class FeedbackLoop {
     this.spamRatio,
   });
 
-  FeedbackLoop.fromJson(core.Map _json)
+  FeedbackLoop.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          spamRatio: _json.containsKey('spamRatio')
-              ? (_json['spamRatio'] as core.num).toDouble()
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          spamRatio: json_.containsKey('spamRatio')
+              ? (json_['spamRatio'] as core.num).toDouble()
               : null,
         );
 
@@ -470,16 +470,16 @@ class IpReputation {
     this.sampleIps,
   });
 
-  IpReputation.fromJson(core.Map _json)
+  IpReputation.fromJson(core.Map json_)
       : this(
-          ipCount: _json.containsKey('ipCount')
-              ? _json['ipCount'] as core.String
+          ipCount: json_.containsKey('ipCount')
+              ? json_['ipCount'] as core.String
               : null,
-          reputation: _json.containsKey('reputation')
-              ? _json['reputation'] as core.String
+          reputation: json_.containsKey('reputation')
+              ? json_['reputation'] as core.String
               : null,
-          sampleIps: _json.containsKey('sampleIps')
-              ? (_json['sampleIps'] as core.List)
+          sampleIps: json_.containsKey('sampleIps')
+              ? (json_['sampleIps'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -506,16 +506,16 @@ class ListDomainsResponse {
     this.nextPageToken,
   });
 
-  ListDomainsResponse.fromJson(core.Map _json)
+  ListDomainsResponse.fromJson(core.Map json_)
       : this(
-          domains: _json.containsKey('domains')
-              ? (_json['domains'] as core.List)
+          domains: json_.containsKey('domains')
+              ? (json_['domains'] as core.List)
                   .map((value) => Domain.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -539,13 +539,13 @@ class ListTrafficStatsResponse {
     this.trafficStats,
   });
 
-  ListTrafficStatsResponse.fromJson(core.Map _json)
+  ListTrafficStatsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          trafficStats: _json.containsKey('trafficStats')
-              ? (_json['trafficStats'] as core.List)
+          trafficStats: json_.containsKey('trafficStats')
+              ? (json_['trafficStats'] as core.List)
                   .map((value) => TrafficStats.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -658,47 +658,47 @@ class TrafficStats {
     this.userReportedSpamRatio,
   });
 
-  TrafficStats.fromJson(core.Map _json)
+  TrafficStats.fromJson(core.Map json_)
       : this(
-          deliveryErrors: _json.containsKey('deliveryErrors')
-              ? (_json['deliveryErrors'] as core.List)
+          deliveryErrors: json_.containsKey('deliveryErrors')
+              ? (json_['deliveryErrors'] as core.List)
                   .map((value) => DeliveryError.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          dkimSuccessRatio: _json.containsKey('dkimSuccessRatio')
-              ? (_json['dkimSuccessRatio'] as core.num).toDouble()
+          dkimSuccessRatio: json_.containsKey('dkimSuccessRatio')
+              ? (json_['dkimSuccessRatio'] as core.num).toDouble()
               : null,
-          dmarcSuccessRatio: _json.containsKey('dmarcSuccessRatio')
-              ? (_json['dmarcSuccessRatio'] as core.num).toDouble()
+          dmarcSuccessRatio: json_.containsKey('dmarcSuccessRatio')
+              ? (json_['dmarcSuccessRatio'] as core.num).toDouble()
               : null,
-          domainReputation: _json.containsKey('domainReputation')
-              ? _json['domainReputation'] as core.String
+          domainReputation: json_.containsKey('domainReputation')
+              ? json_['domainReputation'] as core.String
               : null,
-          inboundEncryptionRatio: _json.containsKey('inboundEncryptionRatio')
-              ? (_json['inboundEncryptionRatio'] as core.num).toDouble()
+          inboundEncryptionRatio: json_.containsKey('inboundEncryptionRatio')
+              ? (json_['inboundEncryptionRatio'] as core.num).toDouble()
               : null,
-          ipReputations: _json.containsKey('ipReputations')
-              ? (_json['ipReputations'] as core.List)
+          ipReputations: json_.containsKey('ipReputations')
+              ? (json_['ipReputations'] as core.List)
                   .map((value) => IpReputation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          outboundEncryptionRatio: _json.containsKey('outboundEncryptionRatio')
-              ? (_json['outboundEncryptionRatio'] as core.num).toDouble()
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          outboundEncryptionRatio: json_.containsKey('outboundEncryptionRatio')
+              ? (json_['outboundEncryptionRatio'] as core.num).toDouble()
               : null,
-          spammyFeedbackLoops: _json.containsKey('spammyFeedbackLoops')
-              ? (_json['spammyFeedbackLoops'] as core.List)
+          spammyFeedbackLoops: json_.containsKey('spammyFeedbackLoops')
+              ? (json_['spammyFeedbackLoops'] as core.List)
                   .map((value) => FeedbackLoop.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          spfSuccessRatio: _json.containsKey('spfSuccessRatio')
-              ? (_json['spfSuccessRatio'] as core.num).toDouble()
+          spfSuccessRatio: json_.containsKey('spfSuccessRatio')
+              ? (json_['spfSuccessRatio'] as core.num).toDouble()
               : null,
-          userReportedSpamRatio: _json.containsKey('userReportedSpamRatio')
-              ? (_json['userReportedSpamRatio'] as core.num).toDouble()
+          userReportedSpamRatio: json_.containsKey('userReportedSpamRatio')
+              ? (json_['userReportedSpamRatio'] as core.num).toDouble()
               : null,
         );
 

@@ -126,11 +126,11 @@ class DevicesResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -139,9 +139,9 @@ class DevicesResource {
         '/forceReportUpload';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -172,23 +172,23 @@ class DevicesResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/devices/' +
         commons.escapeVariable('$deviceId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves whether a device's access to Google services is enabled or
@@ -223,11 +223,11 @@ class DevicesResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -235,13 +235,13 @@ class DevicesResource {
         commons.escapeVariable('$deviceId') +
         '/state';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DeviceState.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the IDs of all of a user's devices.
@@ -267,23 +267,23 @@ class DevicesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/devices';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return DevicesListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets whether a device's access to Google services is enabled or disabled.
@@ -320,12 +320,12 @@ class DevicesResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -333,14 +333,14 @@ class DevicesResource {
         commons.escapeVariable('$deviceId') +
         '/state';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return DeviceState.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the device policy.
@@ -385,26 +385,26 @@ class DevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/devices/' +
         commons.escapeVariable('$deviceId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -434,17 +434,17 @@ class EnterprisesResource {
     core.String? notificationSetId,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (notificationSetId != null) 'notificationSetId': [notificationSetId],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'androidenterprise/v1/enterprises/acknowledgeNotificationSet';
+    const url_ = 'androidenterprise/v1/enterprises/acknowledgeNotificationSet';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -477,21 +477,21 @@ class EnterprisesResource {
     core.String? enterpriseToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (completionToken != null) 'completionToken': [completionToken],
       if (enterpriseToken != null) 'enterpriseToken': [enterpriseToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'androidenterprise/v1/enterprises/completeSignup';
+    const url_ = 'androidenterprise/v1/enterprises/completeSignup';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a unique token to access an embeddable UI.
@@ -521,23 +521,23 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/createWebToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return AdministratorWebToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Enrolls an enterprise with the calling EMM.
@@ -564,22 +564,22 @@ class EnterprisesResource {
     core.String token, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       'token': [token],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'androidenterprise/v1/enterprises/enroll';
+    const url_ = 'androidenterprise/v1/enterprises/enroll';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a sign-up URL.
@@ -609,20 +609,20 @@ class EnterprisesResource {
     core.String? callbackUrl,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (callbackUrl != null) 'callbackUrl': [callbackUrl],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'androidenterprise/v1/enterprises/signupUrl';
+    const url_ = 'androidenterprise/v1/enterprises/signupUrl';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return SignupInfo.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the name and domain of an enterprise.
@@ -645,20 +645,20 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Enterprise.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a service account and credentials.
@@ -703,22 +703,22 @@ class EnterprisesResource {
     core.String? keyType,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (keyType != null) 'keyType': [keyType],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccount';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ServiceAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the store layout for the enterprise.
@@ -744,21 +744,21 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return StoreLayout.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up an enterprise by domain name.
@@ -787,20 +787,20 @@ class EnterprisesResource {
     core.String domain, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'domain': [domain],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'androidenterprise/v1/enterprises';
+    const url_ = 'androidenterprise/v1/enterprises';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return EnterprisesListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Pulls and returns a notification set for the enterprises associated with
@@ -848,20 +848,20 @@ class EnterprisesResource {
     core.String? requestMode,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (requestMode != null) 'requestMode': [requestMode],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'androidenterprise/v1/enterprises/pullNotificationSet';
+    const url_ = 'androidenterprise/v1/enterprises/pullNotificationSet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return NotificationSet.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends a test notification to validate the EMM integration with the Google
@@ -886,21 +886,21 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/sendTestPushNotification';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return EnterprisesSendTestPushNotificationResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the account that will be used to authenticate to the API as the
@@ -927,23 +927,23 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/account';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return EnterpriseAccount.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the store layout for the enterprise.
@@ -977,23 +977,23 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return StoreLayout.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Unenrolls an enterprise from the calling EMM.
@@ -1014,18 +1014,18 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/unenroll';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1061,11 +1061,11 @@ class EntitlementsResource {
     core.String entitlementId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1073,9 +1073,9 @@ class EntitlementsResource {
         commons.escapeVariable('$entitlementId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1107,24 +1107,24 @@ class EntitlementsResource {
     core.String entitlementId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/entitlements/' +
         commons.escapeVariable('$entitlementId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Entitlement.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all entitlements for the specified user.
@@ -1152,23 +1152,23 @@ class EntitlementsResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/entitlements';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return EntitlementsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds or updates an entitlement to an app for a user.
@@ -1207,27 +1207,27 @@ class EntitlementsResource {
     core.bool? install,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (install != null) 'install': ['${install}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/entitlements/' +
         commons.escapeVariable('$entitlementId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return Entitlement.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1260,22 +1260,22 @@ class GrouplicensesResource {
     core.String groupLicenseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.escapeVariable('$groupLicenseId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GroupLicense.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves IDs of all products for which the enterprise has a group
@@ -1299,21 +1299,21 @@ class GrouplicensesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/groupLicenses';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GroupLicensesListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1347,23 +1347,23 @@ class GrouplicenseusersResource {
     core.String groupLicenseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.escapeVariable('$groupLicenseId') +
         '/users';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GroupLicenseUsersListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1403,11 +1403,11 @@ class InstallsResource {
     core.String installId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1417,9 +1417,9 @@ class InstallsResource {
         commons.escapeVariable('$installId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1454,11 +1454,11 @@ class InstallsResource {
     core.String installId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1467,12 +1467,12 @@ class InstallsResource {
         '/installs/' +
         commons.escapeVariable('$installId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Install.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Install.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the details of all apps installed on the specified device.
@@ -1501,11 +1501,11 @@ class InstallsResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1513,13 +1513,13 @@ class InstallsResource {
         commons.escapeVariable('$deviceId') +
         '/installs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return InstallsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Requests to install the latest version of an app to a device.
@@ -1558,12 +1558,12 @@ class InstallsResource {
     core.String installId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1572,13 +1572,13 @@ class InstallsResource {
         '/installs/' +
         commons.escapeVariable('$installId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Install.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Install.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1617,11 +1617,11 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1631,9 +1631,9 @@ class ManagedconfigurationsfordeviceResource {
         commons.escapeVariable('$managedConfigurationForDeviceId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1668,11 +1668,11 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1681,13 +1681,13 @@ class ManagedconfigurationsfordeviceResource {
         '/managedConfigurationsForDevice/' +
         commons.escapeVariable('$managedConfigurationForDeviceId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the per-device managed configurations for the specified device.
@@ -1718,11 +1718,11 @@ class ManagedconfigurationsfordeviceResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1730,13 +1730,13 @@ class ManagedconfigurationsfordeviceResource {
         commons.escapeVariable('$deviceId') +
         '/managedConfigurationsForDevice';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ManagedConfigurationsForDeviceListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds or updates a per-device managed configuration for an app for the
@@ -1773,12 +1773,12 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1787,14 +1787,14 @@ class ManagedconfigurationsfordeviceResource {
         '/managedConfigurationsForDevice/' +
         commons.escapeVariable('$managedConfigurationForDeviceId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1830,11 +1830,11 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
@@ -1842,9 +1842,9 @@ class ManagedconfigurationsforuserResource {
         commons.escapeVariable('$managedConfigurationForUserId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -1877,24 +1877,24 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/managedConfigurationsForUser/' +
         commons.escapeVariable('$managedConfigurationForUserId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the per-user managed configurations for the specified user.
@@ -1922,23 +1922,23 @@ class ManagedconfigurationsforuserResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/managedConfigurationsForUser';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ManagedConfigurationsForUserListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds or updates the managed configuration settings for an app for the
@@ -1977,26 +1977,26 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/managedConfigurationsForUser/' +
         commons.escapeVariable('$managedConfigurationForUserId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ManagedConfiguration.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2030,23 +2030,23 @@ class ManagedconfigurationssettingsResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/managedConfigurationsSettings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ManagedConfigurationsSettingsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2080,21 +2080,21 @@ class PermissionsResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/permissions/' +
+    final url_ = 'androidenterprise/v1/permissions/' +
         commons.escapeVariable('$permissionId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return Permission.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2132,22 +2132,22 @@ class ProductsResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/approve';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2188,24 +2188,24 @@ class ProductsResource {
     core.String? languageCode,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/generateApprovalUrl';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ProductsGenerateApprovalUrlResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves details of a product for display to an enterprise admin.
@@ -2235,22 +2235,22 @@ class ProductsResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Product.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the schema that defines the configurable properties for this
@@ -2287,24 +2287,24 @@ class ProductsResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/appRestrictionsSchema';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AppRestrictionsSchema.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the Android app permissions required by this app.
@@ -2330,23 +2330,23 @@ class ProductsResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/permissions';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ProductPermissions.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds approved products that match a query, or all approved products if
@@ -2394,7 +2394,7 @@ class ProductsResource {
     core.String? token,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (approved != null) 'approved': ['${approved}'],
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -2403,17 +2403,17 @@ class ProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ProductsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Unapproves the specified product (and the relevant app permissions, if
@@ -2438,20 +2438,20 @@ class ProductsResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/products/' +
         commons.escapeVariable('$productId') +
         '/unapprove';
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2488,19 +2488,19 @@ class ServiceaccountkeysResource {
     core.String keyId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys/' +
         commons.escapeVariable('$keyId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2534,23 +2534,23 @@ class ServiceaccountkeysResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ServiceAccountKey.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all active credentials for the service account associated with this
@@ -2579,21 +2579,21 @@ class ServiceaccountkeysResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ServiceAccountKeysListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2627,11 +2627,11 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
@@ -2639,9 +2639,9 @@ class StorelayoutclustersResource {
         commons.escapeVariable('$clusterId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2672,24 +2672,24 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
         '/clusters/' +
         commons.escapeVariable('$clusterId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return StoreCluster.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new cluster in a page.
@@ -2718,25 +2718,25 @@ class StorelayoutclustersResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
         '/clusters';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return StoreCluster.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the details of all clusters on the specified page.
@@ -2762,23 +2762,23 @@ class StorelayoutclustersResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
         '/clusters';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return StoreLayoutClustersListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a cluster.
@@ -2810,26 +2810,26 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId') +
         '/clusters/' +
         commons.escapeVariable('$clusterId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return StoreCluster.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2859,19 +2859,19 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -2899,21 +2899,21 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return StorePage.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return StorePage.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new store page.
@@ -2939,22 +2939,22 @@ class StorelayoutpagesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return StorePage.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return StorePage.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the details of all pages in the store.
@@ -2977,21 +2977,21 @@ class StorelayoutpagesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return StoreLayoutPagesListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the content of a store page.
@@ -3020,23 +3020,23 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.escapeVariable('$pageId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return StorePage.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return StorePage.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3066,19 +3066,19 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -3111,23 +3111,23 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/authenticationToken';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return AuthenticationToken.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a user's details.
@@ -3153,21 +3153,21 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the set of products a user is entitled to access.
@@ -3193,23 +3193,23 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/availableProductSet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ProductSet.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new EMM-managed user.
@@ -3240,22 +3240,22 @@ class UsersResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up a user by primary email address.
@@ -3286,22 +3286,22 @@ class UsersResource {
     core.String email, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       'email': [email],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return UsersListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Revokes access to all devices currently provisioned to the user.
@@ -3328,20 +3328,20 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/deviceAccess';
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -3376,25 +3376,25 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId') +
         '/availableProductSet';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ProductSet.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the details of an EMM-managed user.
@@ -3428,23 +3428,23 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/users/' +
         commons.escapeVariable('$userId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3474,19 +3474,19 @@ class WebappsResource {
     core.String webAppId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.escapeVariable('$webAppId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -3514,21 +3514,21 @@ class WebappsResource {
     core.String webAppId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.escapeVariable('$webAppId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return WebApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new web app for the enterprise.
@@ -3554,22 +3554,22 @@ class WebappsResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return WebApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the details of all web apps for a given enterprise.
@@ -3592,21 +3592,21 @@ class WebappsResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return WebAppsListResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing web app.
@@ -3635,23 +3635,23 @@ class WebappsResource {
     core.String webAppId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'androidenterprise/v1/enterprises/' +
+    final url_ = 'androidenterprise/v1/enterprises/' +
         commons.escapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.escapeVariable('$webAppId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PUT',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return WebApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3665,10 +3665,10 @@ class Administrator {
     this.email,
   });
 
-  Administrator.fromJson(core.Map _json)
+  Administrator.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
+              json_.containsKey('email') ? json_['email'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3685,10 +3685,10 @@ class AdministratorWebToken {
     this.token,
   });
 
-  AdministratorWebToken.fromJson(core.Map _json)
+  AdministratorWebToken.fromJson(core.Map json_)
       : this(
           token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
+              json_.containsKey('token') ? json_['token'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3741,40 +3741,40 @@ class AdministratorWebTokenSpec {
     this.zeroTouch,
   });
 
-  AdministratorWebTokenSpec.fromJson(core.Map _json)
+  AdministratorWebTokenSpec.fromJson(core.Map json_)
       : this(
-          managedConfigurations: _json.containsKey('managedConfigurations')
+          managedConfigurations: json_.containsKey('managedConfigurations')
               ? AdministratorWebTokenSpecManagedConfigurations.fromJson(
-                  _json['managedConfigurations']
+                  json_['managedConfigurations']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
               : null,
-          permission: _json.containsKey('permission')
-              ? (_json['permission'] as core.List)
+          permission: json_.containsKey('permission')
+              ? (json_['permission'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          playSearch: _json.containsKey('playSearch')
+          playSearch: json_.containsKey('playSearch')
               ? AdministratorWebTokenSpecPlaySearch.fromJson(
-                  _json['playSearch'] as core.Map<core.String, core.dynamic>)
+                  json_['playSearch'] as core.Map<core.String, core.dynamic>)
               : null,
-          privateApps: _json.containsKey('privateApps')
+          privateApps: json_.containsKey('privateApps')
               ? AdministratorWebTokenSpecPrivateApps.fromJson(
-                  _json['privateApps'] as core.Map<core.String, core.dynamic>)
+                  json_['privateApps'] as core.Map<core.String, core.dynamic>)
               : null,
-          storeBuilder: _json.containsKey('storeBuilder')
+          storeBuilder: json_.containsKey('storeBuilder')
               ? AdministratorWebTokenSpecStoreBuilder.fromJson(
-                  _json['storeBuilder'] as core.Map<core.String, core.dynamic>)
+                  json_['storeBuilder'] as core.Map<core.String, core.dynamic>)
               : null,
-          webApps: _json.containsKey('webApps')
+          webApps: json_.containsKey('webApps')
               ? AdministratorWebTokenSpecWebApps.fromJson(
-                  _json['webApps'] as core.Map<core.String, core.dynamic>)
+                  json_['webApps'] as core.Map<core.String, core.dynamic>)
               : null,
-          zeroTouch: _json.containsKey('zeroTouch')
+          zeroTouch: json_.containsKey('zeroTouch')
               ? AdministratorWebTokenSpecZeroTouch.fromJson(
-                  _json['zeroTouch'] as core.Map<core.String, core.dynamic>)
+                  json_['zeroTouch'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3801,10 +3801,10 @@ class AdministratorWebTokenSpecManagedConfigurations {
     this.enabled,
   });
 
-  AdministratorWebTokenSpecManagedConfigurations.fromJson(core.Map _json)
+  AdministratorWebTokenSpecManagedConfigurations.fromJson(core.Map json_)
       : this(
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
         );
 
@@ -3829,13 +3829,13 @@ class AdministratorWebTokenSpecPlaySearch {
     this.enabled,
   });
 
-  AdministratorWebTokenSpecPlaySearch.fromJson(core.Map _json)
+  AdministratorWebTokenSpecPlaySearch.fromJson(core.Map json_)
       : this(
-          approveApps: _json.containsKey('approveApps')
-              ? _json['approveApps'] as core.bool
+          approveApps: json_.containsKey('approveApps')
+              ? json_['approveApps'] as core.bool
               : null,
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
         );
 
@@ -3855,10 +3855,10 @@ class AdministratorWebTokenSpecPrivateApps {
     this.enabled,
   });
 
-  AdministratorWebTokenSpecPrivateApps.fromJson(core.Map _json)
+  AdministratorWebTokenSpecPrivateApps.fromJson(core.Map json_)
       : this(
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
         );
 
@@ -3877,10 +3877,10 @@ class AdministratorWebTokenSpecStoreBuilder {
     this.enabled,
   });
 
-  AdministratorWebTokenSpecStoreBuilder.fromJson(core.Map _json)
+  AdministratorWebTokenSpecStoreBuilder.fromJson(core.Map json_)
       : this(
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
         );
 
@@ -3899,10 +3899,10 @@ class AdministratorWebTokenSpecWebApps {
     this.enabled,
   });
 
-  AdministratorWebTokenSpecWebApps.fromJson(core.Map _json)
+  AdministratorWebTokenSpecWebApps.fromJson(core.Map json_)
       : this(
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
         );
 
@@ -3921,10 +3921,10 @@ class AdministratorWebTokenSpecZeroTouch {
     this.enabled,
   });
 
-  AdministratorWebTokenSpecZeroTouch.fromJson(core.Map _json)
+  AdministratorWebTokenSpecZeroTouch.fromJson(core.Map json_)
       : this(
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
               : null,
         );
 
@@ -3947,11 +3947,11 @@ class AppRestrictionsSchema {
     this.restrictions,
   });
 
-  AppRestrictionsSchema.fromJson(core.Map _json)
+  AppRestrictionsSchema.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          restrictions: _json.containsKey('restrictions')
-              ? (_json['restrictions'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          restrictions: json_.containsKey('restrictions')
+              ? (json_['restrictions'] as core.List)
                   .map((value) => AppRestrictionsSchemaRestriction.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -3980,10 +3980,10 @@ class AppRestrictionsSchemaChangeEvent {
     this.productId,
   });
 
-  AppRestrictionsSchemaChangeEvent.fromJson(core.Map _json)
+  AppRestrictionsSchemaChangeEvent.fromJson(core.Map json_)
       : this(
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
         );
 
@@ -4054,37 +4054,37 @@ class AppRestrictionsSchemaRestriction {
     this.title,
   });
 
-  AppRestrictionsSchemaRestriction.fromJson(core.Map _json)
+  AppRestrictionsSchemaRestriction.fromJson(core.Map json_)
       : this(
-          defaultValue: _json.containsKey('defaultValue')
+          defaultValue: json_.containsKey('defaultValue')
               ? AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
-                  _json['defaultValue'] as core.Map<core.String, core.dynamic>)
+                  json_['defaultValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          entry: _json.containsKey('entry')
-              ? (_json['entry'] as core.List)
+          entry: json_.containsKey('entry')
+              ? (json_['entry'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          entryValue: _json.containsKey('entryValue')
-              ? (_json['entryValue'] as core.List)
+          entryValue: json_.containsKey('entryValue')
+              ? (json_['entryValue'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          nestedRestriction: _json.containsKey('nestedRestriction')
-              ? (_json['nestedRestriction'] as core.List)
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          nestedRestriction: json_.containsKey('nestedRestriction')
+              ? (json_['nestedRestriction'] as core.List)
                   .map((value) => AppRestrictionsSchemaRestriction.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          restrictionType: _json.containsKey('restrictionType')
-              ? _json['restrictionType'] as core.String
+          restrictionType: json_.containsKey('restrictionType')
+              ? json_['restrictionType'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4137,22 +4137,22 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
     this.valueString,
   });
 
-  AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(core.Map _json)
+  AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(core.Map json_)
       : this(
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          valueBool: _json.containsKey('valueBool')
-              ? _json['valueBool'] as core.bool
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          valueBool: json_.containsKey('valueBool')
+              ? json_['valueBool'] as core.bool
               : null,
-          valueInteger: _json.containsKey('valueInteger')
-              ? _json['valueInteger'] as core.int
+          valueInteger: json_.containsKey('valueInteger')
+              ? json_['valueInteger'] as core.int
               : null,
-          valueMultiselect: _json.containsKey('valueMultiselect')
-              ? (_json['valueMultiselect'] as core.List)
+          valueMultiselect: json_.containsKey('valueMultiselect')
+              ? (json_['valueMultiselect'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          valueString: _json.containsKey('valueString')
-              ? _json['valueString'] as core.String
+          valueString: json_.containsKey('valueString')
+              ? json_['valueString'] as core.String
               : null,
         );
 
@@ -4182,16 +4182,16 @@ class AppState {
     this.packageName,
   });
 
-  AppState.fromJson(core.Map _json)
+  AppState.fromJson(core.Map json_)
       : this(
-          keyedAppState: _json.containsKey('keyedAppState')
-              ? (_json['keyedAppState'] as core.List)
+          keyedAppState: json_.containsKey('keyedAppState')
+              ? (json_['keyedAppState'] as core.List)
                   .map((value) => KeyedAppState.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
               : null,
         );
 
@@ -4216,10 +4216,10 @@ class AppUpdateEvent {
     this.productId,
   });
 
-  AppUpdateEvent.fromJson(core.Map _json)
+  AppUpdateEvent.fromJson(core.Map json_)
       : this(
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
         );
 
@@ -4265,23 +4265,23 @@ class AppVersion {
     this.versionString,
   });
 
-  AppVersion.fromJson(core.Map _json)
+  AppVersion.fromJson(core.Map json_)
       : this(
-          isProduction: _json.containsKey('isProduction')
-              ? _json['isProduction'] as core.bool
+          isProduction: json_.containsKey('isProduction')
+              ? json_['isProduction'] as core.bool
               : null,
           track:
-              _json.containsKey('track') ? _json['track'] as core.String : null,
-          trackId: _json.containsKey('trackId')
-              ? (_json['trackId'] as core.List)
+              json_.containsKey('track') ? json_['track'] as core.String : null,
+          trackId: json_.containsKey('trackId')
+              ? (json_['trackId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          versionCode: _json.containsKey('versionCode')
-              ? _json['versionCode'] as core.int
+          versionCode: json_.containsKey('versionCode')
+              ? json_['versionCode'] as core.int
               : null,
-          versionString: _json.containsKey('versionString')
-              ? _json['versionString'] as core.String
+          versionString: json_.containsKey('versionString')
+              ? json_['versionString'] as core.String
               : null,
         );
 
@@ -4304,10 +4304,10 @@ class ApprovalUrlInfo {
     this.approvalUrl,
   });
 
-  ApprovalUrlInfo.fromJson(core.Map _json)
+  ApprovalUrlInfo.fromJson(core.Map json_)
       : this(
-          approvalUrl: _json.containsKey('approvalUrl')
-              ? _json['approvalUrl'] as core.String
+          approvalUrl: json_.containsKey('approvalUrl')
+              ? json_['approvalUrl'] as core.String
               : null,
         );
 
@@ -4328,10 +4328,10 @@ class AuthenticationToken {
     this.token,
   });
 
-  AuthenticationToken.fromJson(core.Map _json)
+  AuthenticationToken.fromJson(core.Map json_)
       : this(
           token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
+              json_.containsKey('token') ? json_['token'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4372,17 +4372,17 @@ class AutoInstallConstraint {
     this.networkTypeConstraint,
   });
 
-  AutoInstallConstraint.fromJson(core.Map _json)
+  AutoInstallConstraint.fromJson(core.Map json_)
       : this(
-          chargingStateConstraint: _json.containsKey('chargingStateConstraint')
-              ? _json['chargingStateConstraint'] as core.String
+          chargingStateConstraint: json_.containsKey('chargingStateConstraint')
+              ? json_['chargingStateConstraint'] as core.String
               : null,
           deviceIdleStateConstraint:
-              _json.containsKey('deviceIdleStateConstraint')
-                  ? _json['deviceIdleStateConstraint'] as core.String
+              json_.containsKey('deviceIdleStateConstraint')
+                  ? json_['deviceIdleStateConstraint'] as core.String
                   : null,
-          networkTypeConstraint: _json.containsKey('networkTypeConstraint')
-              ? _json['networkTypeConstraint'] as core.String
+          networkTypeConstraint: json_.containsKey('networkTypeConstraint')
+              ? json_['networkTypeConstraint'] as core.String
               : null,
         );
 
@@ -4436,22 +4436,22 @@ class AutoInstallPolicy {
     this.minimumVersionCode,
   });
 
-  AutoInstallPolicy.fromJson(core.Map _json)
+  AutoInstallPolicy.fromJson(core.Map json_)
       : this(
-          autoInstallConstraint: _json.containsKey('autoInstallConstraint')
-              ? (_json['autoInstallConstraint'] as core.List)
+          autoInstallConstraint: json_.containsKey('autoInstallConstraint')
+              ? (json_['autoInstallConstraint'] as core.List)
                   .map((value) => AutoInstallConstraint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          autoInstallMode: _json.containsKey('autoInstallMode')
-              ? _json['autoInstallMode'] as core.String
+          autoInstallMode: json_.containsKey('autoInstallMode')
+              ? json_['autoInstallMode'] as core.String
               : null,
-          autoInstallPriority: _json.containsKey('autoInstallPriority')
-              ? _json['autoInstallPriority'] as core.int
+          autoInstallPriority: json_.containsKey('autoInstallPriority')
+              ? json_['autoInstallPriority'] as core.int
               : null,
-          minimumVersionCode: _json.containsKey('minimumVersionCode')
-              ? _json['minimumVersionCode'] as core.int
+          minimumVersionCode: json_.containsKey('minimumVersionCode')
+              ? json_['minimumVersionCode'] as core.int
               : null,
         );
 
@@ -4484,12 +4484,12 @@ class ConfigurationVariables {
     this.variableSet,
   });
 
-  ConfigurationVariables.fromJson(core.Map _json)
+  ConfigurationVariables.fromJson(core.Map json_)
       : this(
           mcmId:
-              _json.containsKey('mcmId') ? _json['mcmId'] as core.String : null,
-          variableSet: _json.containsKey('variableSet')
-              ? (_json['variableSet'] as core.List)
+              json_.containsKey('mcmId') ? json_['mcmId'] as core.String : null,
+          variableSet: json_.containsKey('variableSet')
+              ? (json_['variableSet'] as core.List)
                   .map((value) => VariableSet.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4542,21 +4542,21 @@ class Device {
     this.report,
   });
 
-  Device.fromJson(core.Map _json)
+  Device.fromJson(core.Map json_)
       : this(
-          androidId: _json.containsKey('androidId')
-              ? _json['androidId'] as core.String
+          androidId: json_.containsKey('androidId')
+              ? json_['androidId'] as core.String
               : null,
-          managementType: _json.containsKey('managementType')
-              ? _json['managementType'] as core.String
+          managementType: json_.containsKey('managementType')
+              ? json_['managementType'] as core.String
               : null,
-          policy: _json.containsKey('policy')
+          policy: json_.containsKey('policy')
               ? Policy.fromJson(
-                  _json['policy'] as core.Map<core.String, core.dynamic>)
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
               : null,
-          report: _json.containsKey('report')
+          report: json_.containsKey('report')
               ? DeviceReport.fromJson(
-                  _json['report'] as core.Map<core.String, core.dynamic>)
+                  json_['report'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -4587,17 +4587,17 @@ class DeviceReport {
     this.lastUpdatedTimestampMillis,
   });
 
-  DeviceReport.fromJson(core.Map _json)
+  DeviceReport.fromJson(core.Map json_)
       : this(
-          appState: _json.containsKey('appState')
-              ? (_json['appState'] as core.List)
+          appState: json_.containsKey('appState')
+              ? (json_['appState'] as core.List)
                   .map((value) => AppState.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           lastUpdatedTimestampMillis:
-              _json.containsKey('lastUpdatedTimestampMillis')
-                  ? _json['lastUpdatedTimestampMillis'] as core.String
+              json_.containsKey('lastUpdatedTimestampMillis')
+                  ? json_['lastUpdatedTimestampMillis'] as core.String
                   : null,
         );
 
@@ -4631,17 +4631,17 @@ class DeviceReportUpdateEvent {
     this.userId,
   });
 
-  DeviceReportUpdateEvent.fromJson(core.Map _json)
+  DeviceReportUpdateEvent.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          report: _json.containsKey('report')
+          report: json_.containsKey('report')
               ? DeviceReport.fromJson(
-                  _json['report'] as core.Map<core.String, core.dynamic>)
+                  json_['report'] as core.Map<core.String, core.dynamic>)
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -4669,10 +4669,10 @@ class DeviceState {
     this.accountState,
   });
 
-  DeviceState.fromJson(core.Map _json)
+  DeviceState.fromJson(core.Map json_)
       : this(
-          accountState: _json.containsKey('accountState')
-              ? _json['accountState'] as core.String
+          accountState: json_.containsKey('accountState')
+              ? json_['accountState'] as core.String
               : null,
         );
 
@@ -4689,10 +4689,10 @@ class DevicesListResponse {
     this.device,
   });
 
-  DevicesListResponse.fromJson(core.Map _json)
+  DevicesListResponse.fromJson(core.Map json_)
       : this(
-          device: _json.containsKey('device')
-              ? (_json['device'] as core.List)
+          device: json_.containsKey('device')
+              ? (json_['device'] as core.List)
                   .map((value) => Device.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4740,18 +4740,18 @@ class Enterprise {
     this.primaryDomain,
   });
 
-  Enterprise.fromJson(core.Map _json)
+  Enterprise.fromJson(core.Map json_)
       : this(
-          administrator: _json.containsKey('administrator')
-              ? (_json['administrator'] as core.List)
+          administrator: json_.containsKey('administrator')
+              ? (json_['administrator'] as core.List)
                   .map((value) => Administrator.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          primaryDomain: _json.containsKey('primaryDomain')
-              ? _json['primaryDomain'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          primaryDomain: json_.containsKey('primaryDomain')
+              ? json_['primaryDomain'] as core.String
               : null,
         );
 
@@ -4773,10 +4773,10 @@ class EnterpriseAccount {
     this.accountEmail,
   });
 
-  EnterpriseAccount.fromJson(core.Map _json)
+  EnterpriseAccount.fromJson(core.Map json_)
       : this(
-          accountEmail: _json.containsKey('accountEmail')
-              ? _json['accountEmail'] as core.String
+          accountEmail: json_.containsKey('accountEmail')
+              ? json_['accountEmail'] as core.String
               : null,
         );
 
@@ -4795,9 +4795,9 @@ class EnterpriseAuthenticationAppLinkConfig {
     this.uri,
   });
 
-  EnterpriseAuthenticationAppLinkConfig.fromJson(core.Map _json)
+  EnterpriseAuthenticationAppLinkConfig.fromJson(core.Map json_)
       : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4813,10 +4813,10 @@ class EnterprisesListResponse {
     this.enterprise,
   });
 
-  EnterprisesListResponse.fromJson(core.Map _json)
+  EnterprisesListResponse.fromJson(core.Map json_)
       : this(
-          enterprise: _json.containsKey('enterprise')
-              ? (_json['enterprise'] as core.List)
+          enterprise: json_.containsKey('enterprise')
+              ? (json_['enterprise'] as core.List)
                   .map((value) => Enterprise.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -4841,13 +4841,13 @@ class EnterprisesSendTestPushNotificationResponse {
     this.topicName,
   });
 
-  EnterprisesSendTestPushNotificationResponse.fromJson(core.Map _json)
+  EnterprisesSendTestPushNotificationResponse.fromJson(core.Map json_)
       : this(
-          messageId: _json.containsKey('messageId')
-              ? _json['messageId'] as core.String
+          messageId: json_.containsKey('messageId')
+              ? json_['messageId'] as core.String
               : null,
-          topicName: _json.containsKey('topicName')
-              ? _json['topicName'] as core.String
+          topicName: json_.containsKey('topicName')
+              ? json_['topicName'] as core.String
               : null,
         );
 
@@ -4898,13 +4898,13 @@ class Entitlement {
     this.reason,
   });
 
-  Entitlement.fromJson(core.Map _json)
+  Entitlement.fromJson(core.Map json_)
       : this(
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
               : null,
         );
 
@@ -4925,10 +4925,10 @@ class EntitlementsListResponse {
     this.entitlement,
   });
 
-  EntitlementsListResponse.fromJson(core.Map _json)
+  EntitlementsListResponse.fromJson(core.Map json_)
       : this(
-          entitlement: _json.containsKey('entitlement')
-              ? (_json['entitlement'] as core.List)
+          entitlement: json_.containsKey('entitlement')
+              ? (json_['entitlement'] as core.List)
                   .map((value) => Entitlement.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5021,25 +5021,25 @@ class GroupLicense {
     this.productId,
   });
 
-  GroupLicense.fromJson(core.Map _json)
+  GroupLicense.fromJson(core.Map json_)
       : this(
-          acquisitionKind: _json.containsKey('acquisitionKind')
-              ? _json['acquisitionKind'] as core.String
+          acquisitionKind: json_.containsKey('acquisitionKind')
+              ? json_['acquisitionKind'] as core.String
               : null,
-          approval: _json.containsKey('approval')
-              ? _json['approval'] as core.String
+          approval: json_.containsKey('approval')
+              ? json_['approval'] as core.String
               : null,
-          numProvisioned: _json.containsKey('numProvisioned')
-              ? _json['numProvisioned'] as core.int
+          numProvisioned: json_.containsKey('numProvisioned')
+              ? json_['numProvisioned'] as core.int
               : null,
-          numPurchased: _json.containsKey('numPurchased')
-              ? _json['numPurchased'] as core.int
+          numPurchased: json_.containsKey('numPurchased')
+              ? json_['numPurchased'] as core.int
               : null,
-          permissions: _json.containsKey('permissions')
-              ? _json['permissions'] as core.String
+          permissions: json_.containsKey('permissions')
+              ? json_['permissions'] as core.String
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
         );
 
@@ -5061,10 +5061,10 @@ class GroupLicenseUsersListResponse {
     this.user,
   });
 
-  GroupLicenseUsersListResponse.fromJson(core.Map _json)
+  GroupLicenseUsersListResponse.fromJson(core.Map json_)
       : this(
-          user: _json.containsKey('user')
-              ? (_json['user'] as core.List)
+          user: json_.containsKey('user')
+              ? (json_['user'] as core.List)
                   .map((value) => User.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5084,10 +5084,10 @@ class GroupLicensesListResponse {
     this.groupLicense,
   });
 
-  GroupLicensesListResponse.fromJson(core.Map _json)
+  GroupLicensesListResponse.fromJson(core.Map json_)
       : this(
-          groupLicense: _json.containsKey('groupLicense')
-              ? (_json['groupLicense'] as core.List)
+          groupLicense: json_.containsKey('groupLicense')
+              ? (json_['groupLicense'] as core.List)
                   .map((value) => GroupLicense.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5145,16 +5145,16 @@ class Install {
     this.versionCode,
   });
 
-  Install.fromJson(core.Map _json)
+  Install.fromJson(core.Map json_)
       : this(
-          installState: _json.containsKey('installState')
-              ? _json['installState'] as core.String
+          installState: json_.containsKey('installState')
+              ? json_['installState'] as core.String
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          versionCode: _json.containsKey('versionCode')
-              ? _json['versionCode'] as core.int
+          versionCode: json_.containsKey('versionCode')
+              ? json_['versionCode'] as core.int
               : null,
         );
 
@@ -5205,22 +5205,22 @@ class InstallFailureEvent {
     this.userId,
   });
 
-  InstallFailureEvent.fromJson(core.Map _json)
+  InstallFailureEvent.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          failureDetails: _json.containsKey('failureDetails')
-              ? _json['failureDetails'] as core.String
+          failureDetails: json_.containsKey('failureDetails')
+              ? json_['failureDetails'] as core.String
               : null,
-          failureReason: _json.containsKey('failureReason')
-              ? _json['failureReason'] as core.String
+          failureReason: json_.containsKey('failureReason')
+              ? json_['failureReason'] as core.String
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -5244,10 +5244,10 @@ class InstallsListResponse {
     this.install,
   });
 
-  InstallsListResponse.fromJson(core.Map _json)
+  InstallsListResponse.fromJson(core.Map json_)
       : this(
-          install: _json.containsKey('install')
-              ? (_json['install'] as core.List)
+          install: json_.containsKey('install')
+              ? (json_['install'] as core.List)
                   .map((value) => Install.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5303,18 +5303,18 @@ class KeyedAppState {
     this.stateTimestampMillis,
   });
 
-  KeyedAppState.fromJson(core.Map _json)
+  KeyedAppState.fromJson(core.Map json_)
       : this(
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          stateTimestampMillis: _json.containsKey('stateTimestampMillis')
-              ? _json['stateTimestampMillis'] as core.String
+          stateTimestampMillis: json_.containsKey('stateTimestampMillis')
+              ? json_['stateTimestampMillis'] as core.String
               : null,
         );
 
@@ -5343,12 +5343,12 @@ class LocalizedText {
     this.text,
   });
 
-  LocalizedText.fromJson(core.Map _json)
+  LocalizedText.fromJson(core.Map json_)
       : this(
-          locale: _json.containsKey('locale')
-              ? _json['locale'] as core.String
+          locale: json_.containsKey('locale')
+              ? json_['locale'] as core.String
               : null,
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5378,14 +5378,14 @@ class MaintenanceWindow {
     this.startTimeAfterMidnightMs,
   });
 
-  MaintenanceWindow.fromJson(core.Map _json)
+  MaintenanceWindow.fromJson(core.Map json_)
       : this(
-          durationMs: _json.containsKey('durationMs')
-              ? _json['durationMs'] as core.String
+          durationMs: json_.containsKey('durationMs')
+              ? json_['durationMs'] as core.String
               : null,
           startTimeAfterMidnightMs:
-              _json.containsKey('startTimeAfterMidnightMs')
-                  ? _json['startTimeAfterMidnightMs'] as core.String
+              json_.containsKey('startTimeAfterMidnightMs')
+                  ? json_['startTimeAfterMidnightMs'] as core.String
                   : null,
         );
 
@@ -5421,21 +5421,21 @@ class ManagedConfiguration {
     this.productId,
   });
 
-  ManagedConfiguration.fromJson(core.Map _json)
+  ManagedConfiguration.fromJson(core.Map json_)
       : this(
-          configurationVariables: _json.containsKey('configurationVariables')
-              ? ConfigurationVariables.fromJson(_json['configurationVariables']
+          configurationVariables: json_.containsKey('configurationVariables')
+              ? ConfigurationVariables.fromJson(json_['configurationVariables']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          managedProperty: _json.containsKey('managedProperty')
-              ? (_json['managedProperty'] as core.List)
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          managedProperty: json_.containsKey('managedProperty')
+              ? (json_['managedProperty'] as core.List)
                   .map((value) => ManagedProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
         );
 
@@ -5456,11 +5456,11 @@ class ManagedConfigurationsForDeviceListResponse {
     this.managedConfigurationForDevice,
   });
 
-  ManagedConfigurationsForDeviceListResponse.fromJson(core.Map _json)
+  ManagedConfigurationsForDeviceListResponse.fromJson(core.Map json_)
       : this(
           managedConfigurationForDevice:
-              _json.containsKey('managedConfigurationForDevice')
-                  ? (_json['managedConfigurationForDevice'] as core.List)
+              json_.containsKey('managedConfigurationForDevice')
+                  ? (json_['managedConfigurationForDevice'] as core.List)
                       .map((value) => ManagedConfiguration.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -5481,11 +5481,11 @@ class ManagedConfigurationsForUserListResponse {
     this.managedConfigurationForUser,
   });
 
-  ManagedConfigurationsForUserListResponse.fromJson(core.Map _json)
+  ManagedConfigurationsForUserListResponse.fromJson(core.Map json_)
       : this(
           managedConfigurationForUser:
-              _json.containsKey('managedConfigurationForUser')
-                  ? (_json['managedConfigurationForUser'] as core.List)
+              json_.containsKey('managedConfigurationForUser')
+                  ? (json_['managedConfigurationForUser'] as core.List)
                       .map((value) => ManagedConfiguration.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -5521,15 +5521,15 @@ class ManagedConfigurationsSettings {
     this.name,
   });
 
-  ManagedConfigurationsSettings.fromJson(core.Map _json)
+  ManagedConfigurationsSettings.fromJson(core.Map json_)
       : this(
           lastUpdatedTimestampMillis:
-              _json.containsKey('lastUpdatedTimestampMillis')
-                  ? _json['lastUpdatedTimestampMillis'] as core.String
+              json_.containsKey('lastUpdatedTimestampMillis')
+                  ? json_['lastUpdatedTimestampMillis'] as core.String
                   : null,
           mcmId:
-              _json.containsKey('mcmId') ? _json['mcmId'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+              json_.containsKey('mcmId') ? json_['mcmId'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5549,11 +5549,11 @@ class ManagedConfigurationsSettingsListResponse {
     this.managedConfigurationsSettings,
   });
 
-  ManagedConfigurationsSettingsListResponse.fromJson(core.Map _json)
+  ManagedConfigurationsSettingsListResponse.fromJson(core.Map json_)
       : this(
           managedConfigurationsSettings:
-              _json.containsKey('managedConfigurationsSettings')
-                  ? (_json['managedConfigurationsSettings'] as core.List)
+              json_.containsKey('managedConfigurationsSettings')
+                  ? (json_['managedConfigurationsSettings'] as core.List)
                       .map((value) => ManagedConfigurationsSettings.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
@@ -5609,30 +5609,30 @@ class ManagedProperty {
     this.valueStringArray,
   });
 
-  ManagedProperty.fromJson(core.Map _json)
+  ManagedProperty.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          valueBool: _json.containsKey('valueBool')
-              ? _json['valueBool'] as core.bool
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          valueBool: json_.containsKey('valueBool')
+              ? json_['valueBool'] as core.bool
               : null,
-          valueBundle: _json.containsKey('valueBundle')
+          valueBundle: json_.containsKey('valueBundle')
               ? ManagedPropertyBundle.fromJson(
-                  _json['valueBundle'] as core.Map<core.String, core.dynamic>)
+                  json_['valueBundle'] as core.Map<core.String, core.dynamic>)
               : null,
-          valueBundleArray: _json.containsKey('valueBundleArray')
-              ? (_json['valueBundleArray'] as core.List)
+          valueBundleArray: json_.containsKey('valueBundleArray')
+              ? (json_['valueBundleArray'] as core.List)
                   .map((value) => ManagedPropertyBundle.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          valueInteger: _json.containsKey('valueInteger')
-              ? _json['valueInteger'] as core.int
+          valueInteger: json_.containsKey('valueInteger')
+              ? json_['valueInteger'] as core.int
               : null,
-          valueString: _json.containsKey('valueString')
-              ? _json['valueString'] as core.String
+          valueString: json_.containsKey('valueString')
+              ? json_['valueString'] as core.String
               : null,
-          valueStringArray: _json.containsKey('valueStringArray')
-              ? (_json['valueStringArray'] as core.List)
+          valueStringArray: json_.containsKey('valueStringArray')
+              ? (json_['valueStringArray'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -5658,10 +5658,10 @@ class ManagedPropertyBundle {
     this.managedProperty,
   });
 
-  ManagedPropertyBundle.fromJson(core.Map _json)
+  ManagedPropertyBundle.fromJson(core.Map json_)
       : this(
-          managedProperty: _json.containsKey('managedProperty')
-              ? (_json['managedProperty'] as core.List)
+          managedProperty: json_.containsKey('managedProperty')
+              ? (json_['managedProperty'] as core.List)
                   .map((value) => ManagedProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -5706,19 +5706,19 @@ class NewDeviceEvent {
     this.userId,
   });
 
-  NewDeviceEvent.fromJson(core.Map _json)
+  NewDeviceEvent.fromJson(core.Map json_)
       : this(
-          deviceId: _json.containsKey('deviceId')
-              ? _json['deviceId'] as core.String
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
               : null,
-          dpcPackageName: _json.containsKey('dpcPackageName')
-              ? _json['dpcPackageName'] as core.String
+          dpcPackageName: json_.containsKey('dpcPackageName')
+              ? json_['dpcPackageName'] as core.String
               : null,
-          managementType: _json.containsKey('managementType')
-              ? _json['managementType'] as core.String
+          managementType: json_.containsKey('managementType')
+              ? json_['managementType'] as core.String
               : null,
-          userId: _json.containsKey('userId')
-              ? _json['userId'] as core.String
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
               : null,
         );
 
@@ -5757,18 +5757,18 @@ class NewPermissionsEvent {
     this.requestedPermissions,
   });
 
-  NewPermissionsEvent.fromJson(core.Map _json)
+  NewPermissionsEvent.fromJson(core.Map json_)
       : this(
-          approvedPermissions: _json.containsKey('approvedPermissions')
-              ? (_json['approvedPermissions'] as core.List)
+          approvedPermissions: json_.containsKey('approvedPermissions')
+              ? (json_['approvedPermissions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          requestedPermissions: _json.containsKey('requestedPermissions')
-              ? (_json['requestedPermissions'] as core.List)
+          requestedPermissions: json_.containsKey('requestedPermissions')
+              ? (json_['requestedPermissions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -5851,53 +5851,53 @@ class Notification {
     this.timestampMillis,
   });
 
-  Notification.fromJson(core.Map _json)
+  Notification.fromJson(core.Map json_)
       : this(
           appRestrictionsSchemaChangeEvent:
-              _json.containsKey('appRestrictionsSchemaChangeEvent')
+              json_.containsKey('appRestrictionsSchemaChangeEvent')
                   ? AppRestrictionsSchemaChangeEvent.fromJson(
-                      _json['appRestrictionsSchemaChangeEvent']
+                      json_['appRestrictionsSchemaChangeEvent']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          appUpdateEvent: _json.containsKey('appUpdateEvent')
-              ? AppUpdateEvent.fromJson(_json['appUpdateEvent']
+          appUpdateEvent: json_.containsKey('appUpdateEvent')
+              ? AppUpdateEvent.fromJson(json_['appUpdateEvent']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          deviceReportUpdateEvent: _json.containsKey('deviceReportUpdateEvent')
+          deviceReportUpdateEvent: json_.containsKey('deviceReportUpdateEvent')
               ? DeviceReportUpdateEvent.fromJson(
-                  _json['deviceReportUpdateEvent']
+                  json_['deviceReportUpdateEvent']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          enterpriseId: _json.containsKey('enterpriseId')
-              ? _json['enterpriseId'] as core.String
+          enterpriseId: json_.containsKey('enterpriseId')
+              ? json_['enterpriseId'] as core.String
               : null,
-          installFailureEvent: _json.containsKey('installFailureEvent')
-              ? InstallFailureEvent.fromJson(_json['installFailureEvent']
+          installFailureEvent: json_.containsKey('installFailureEvent')
+              ? InstallFailureEvent.fromJson(json_['installFailureEvent']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          newDeviceEvent: _json.containsKey('newDeviceEvent')
-              ? NewDeviceEvent.fromJson(_json['newDeviceEvent']
+          newDeviceEvent: json_.containsKey('newDeviceEvent')
+              ? NewDeviceEvent.fromJson(json_['newDeviceEvent']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          newPermissionsEvent: _json.containsKey('newPermissionsEvent')
-              ? NewPermissionsEvent.fromJson(_json['newPermissionsEvent']
+          newPermissionsEvent: json_.containsKey('newPermissionsEvent')
+              ? NewPermissionsEvent.fromJson(json_['newPermissionsEvent']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          notificationType: _json.containsKey('notificationType')
-              ? _json['notificationType'] as core.String
+          notificationType: json_.containsKey('notificationType')
+              ? json_['notificationType'] as core.String
               : null,
-          productApprovalEvent: _json.containsKey('productApprovalEvent')
-              ? ProductApprovalEvent.fromJson(_json['productApprovalEvent']
+          productApprovalEvent: json_.containsKey('productApprovalEvent')
+              ? ProductApprovalEvent.fromJson(json_['productApprovalEvent']
                   as core.Map<core.String, core.dynamic>)
               : null,
           productAvailabilityChangeEvent:
-              _json.containsKey('productAvailabilityChangeEvent')
+              json_.containsKey('productAvailabilityChangeEvent')
                   ? ProductAvailabilityChangeEvent.fromJson(
-                      _json['productAvailabilityChangeEvent']
+                      json_['productAvailabilityChangeEvent']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          timestampMillis: _json.containsKey('timestampMillis')
-              ? _json['timestampMillis'] as core.String
+          timestampMillis: json_.containsKey('timestampMillis')
+              ? json_['timestampMillis'] as core.String
               : null,
         );
 
@@ -5940,16 +5940,16 @@ class NotificationSet {
     this.notificationSetId,
   });
 
-  NotificationSet.fromJson(core.Map _json)
+  NotificationSet.fromJson(core.Map json_)
       : this(
-          notification: _json.containsKey('notification')
-              ? (_json['notification'] as core.List)
+          notification: json_.containsKey('notification')
+              ? (json_['notification'] as core.List)
                   .map((value) => Notification.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          notificationSetId: _json.containsKey('notificationSetId')
-              ? _json['notificationSetId'] as core.String
+          notificationSetId: json_.containsKey('notificationSetId')
+              ? json_['notificationSetId'] as core.String
               : null,
         );
 
@@ -5990,14 +5990,14 @@ class Permission {
     this.permissionId,
   });
 
-  Permission.fromJson(core.Map _json)
+  Permission.fromJson(core.Map json_)
       : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          permissionId: _json.containsKey('permissionId')
-              ? _json['permissionId'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          permissionId: json_.containsKey('permissionId')
+              ? json_['permissionId'] as core.String
               : null,
         );
 
@@ -6072,24 +6072,24 @@ class Policy {
     this.productPolicy,
   });
 
-  Policy.fromJson(core.Map _json)
+  Policy.fromJson(core.Map json_)
       : this(
-          autoUpdatePolicy: _json.containsKey('autoUpdatePolicy')
-              ? _json['autoUpdatePolicy'] as core.String
+          autoUpdatePolicy: json_.containsKey('autoUpdatePolicy')
+              ? json_['autoUpdatePolicy'] as core.String
               : null,
-          deviceReportPolicy: _json.containsKey('deviceReportPolicy')
-              ? _json['deviceReportPolicy'] as core.String
+          deviceReportPolicy: json_.containsKey('deviceReportPolicy')
+              ? json_['deviceReportPolicy'] as core.String
               : null,
-          maintenanceWindow: _json.containsKey('maintenanceWindow')
-              ? MaintenanceWindow.fromJson(_json['maintenanceWindow']
+          maintenanceWindow: json_.containsKey('maintenanceWindow')
+              ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
                   as core.Map<core.String, core.dynamic>)
               : null,
           productAvailabilityPolicy:
-              _json.containsKey('productAvailabilityPolicy')
-                  ? _json['productAvailabilityPolicy'] as core.String
+              json_.containsKey('productAvailabilityPolicy')
+                  ? json_['productAvailabilityPolicy'] as core.String
                   : null,
-          productPolicy: _json.containsKey('productPolicy')
-              ? (_json['productPolicy'] as core.List)
+          productPolicy: json_.containsKey('productPolicy')
+              ? (json_['productPolicy'] as core.List)
                   .map((value) => ProductPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6255,101 +6255,101 @@ class Product {
     this.workDetailsUrl,
   });
 
-  Product.fromJson(core.Map _json)
+  Product.fromJson(core.Map json_)
       : this(
-          appRestrictionsSchema: _json.containsKey('appRestrictionsSchema')
-              ? AppRestrictionsSchema.fromJson(_json['appRestrictionsSchema']
+          appRestrictionsSchema: json_.containsKey('appRestrictionsSchema')
+              ? AppRestrictionsSchema.fromJson(json_['appRestrictionsSchema']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          appTracks: _json.containsKey('appTracks')
-              ? (_json['appTracks'] as core.List)
+          appTracks: json_.containsKey('appTracks')
+              ? (json_['appTracks'] as core.List)
                   .map((value) => TrackInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          appVersion: _json.containsKey('appVersion')
-              ? (_json['appVersion'] as core.List)
+          appVersion: json_.containsKey('appVersion')
+              ? (json_['appVersion'] as core.List)
                   .map((value) => AppVersion.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          authorName: _json.containsKey('authorName')
-              ? _json['authorName'] as core.String
+          authorName: json_.containsKey('authorName')
+              ? json_['authorName'] as core.String
               : null,
-          availableCountries: _json.containsKey('availableCountries')
-              ? (_json['availableCountries'] as core.List)
+          availableCountries: json_.containsKey('availableCountries')
+              ? (json_['availableCountries'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          availableTracks: _json.containsKey('availableTracks')
-              ? (_json['availableTracks'] as core.List)
+          availableTracks: json_.containsKey('availableTracks')
+              ? (json_['availableTracks'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
+          category: json_.containsKey('category')
+              ? json_['category'] as core.String
               : null,
-          contentRating: _json.containsKey('contentRating')
-              ? _json['contentRating'] as core.String
+          contentRating: json_.containsKey('contentRating')
+              ? json_['contentRating'] as core.String
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          detailsUrl: _json.containsKey('detailsUrl')
-              ? _json['detailsUrl'] as core.String
+          detailsUrl: json_.containsKey('detailsUrl')
+              ? json_['detailsUrl'] as core.String
               : null,
-          distributionChannel: _json.containsKey('distributionChannel')
-              ? _json['distributionChannel'] as core.String
+          distributionChannel: json_.containsKey('distributionChannel')
+              ? json_['distributionChannel'] as core.String
               : null,
-          features: _json.containsKey('features')
-              ? (_json['features'] as core.List)
+          features: json_.containsKey('features')
+              ? (json_['features'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          iconUrl: _json.containsKey('iconUrl')
-              ? _json['iconUrl'] as core.String
+          iconUrl: json_.containsKey('iconUrl')
+              ? json_['iconUrl'] as core.String
               : null,
           lastUpdatedTimestampMillis:
-              _json.containsKey('lastUpdatedTimestampMillis')
-                  ? _json['lastUpdatedTimestampMillis'] as core.String
+              json_.containsKey('lastUpdatedTimestampMillis')
+                  ? json_['lastUpdatedTimestampMillis'] as core.String
                   : null,
-          minAndroidSdkVersion: _json.containsKey('minAndroidSdkVersion')
-              ? _json['minAndroidSdkVersion'] as core.int
+          minAndroidSdkVersion: json_.containsKey('minAndroidSdkVersion')
+              ? json_['minAndroidSdkVersion'] as core.int
               : null,
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
                   .map((value) => ProductPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          productPricing: _json.containsKey('productPricing')
-              ? _json['productPricing'] as core.String
+          productPricing: json_.containsKey('productPricing')
+              ? json_['productPricing'] as core.String
               : null,
-          recentChanges: _json.containsKey('recentChanges')
-              ? _json['recentChanges'] as core.String
+          recentChanges: json_.containsKey('recentChanges')
+              ? json_['recentChanges'] as core.String
               : null,
-          requiresContainerApp: _json.containsKey('requiresContainerApp')
-              ? _json['requiresContainerApp'] as core.bool
+          requiresContainerApp: json_.containsKey('requiresContainerApp')
+              ? json_['requiresContainerApp'] as core.bool
               : null,
-          screenshotUrls: _json.containsKey('screenshotUrls')
-              ? (_json['screenshotUrls'] as core.List)
+          screenshotUrls: json_.containsKey('screenshotUrls')
+              ? (json_['screenshotUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          signingCertificate: _json.containsKey('signingCertificate')
-              ? ProductSigningCertificate.fromJson(_json['signingCertificate']
+          signingCertificate: json_.containsKey('signingCertificate')
+              ? ProductSigningCertificate.fromJson(json_['signingCertificate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          smallIconUrl: _json.containsKey('smallIconUrl')
-              ? _json['smallIconUrl'] as core.String
+          smallIconUrl: json_.containsKey('smallIconUrl')
+              ? json_['smallIconUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          workDetailsUrl: _json.containsKey('workDetailsUrl')
-              ? _json['workDetailsUrl'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          workDetailsUrl: json_.containsKey('workDetailsUrl')
+              ? json_['workDetailsUrl'] as core.String
               : null,
         );
 
@@ -6411,13 +6411,13 @@ class ProductApprovalEvent {
     this.productId,
   });
 
-  ProductApprovalEvent.fromJson(core.Map _json)
+  ProductApprovalEvent.fromJson(core.Map json_)
       : this(
-          approved: _json.containsKey('approved')
-              ? _json['approved'] as core.String
+          approved: json_.containsKey('approved')
+              ? json_['approved'] as core.String
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
         );
 
@@ -6451,13 +6451,13 @@ class ProductAvailabilityChangeEvent {
     this.productId,
   });
 
-  ProductAvailabilityChangeEvent.fromJson(core.Map _json)
+  ProductAvailabilityChangeEvent.fromJson(core.Map json_)
       : this(
-          availabilityStatus: _json.containsKey('availabilityStatus')
-              ? _json['availabilityStatus'] as core.String
+          availabilityStatus: json_.containsKey('availabilityStatus')
+              ? json_['availabilityStatus'] as core.String
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
         );
 
@@ -6490,13 +6490,13 @@ class ProductPermission {
     this.state,
   });
 
-  ProductPermission.fromJson(core.Map _json)
+  ProductPermission.fromJson(core.Map json_)
       : this(
-          permissionId: _json.containsKey('permissionId')
-              ? _json['permissionId'] as core.String
+          permissionId: json_.containsKey('permissionId')
+              ? json_['permissionId'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6520,16 +6520,16 @@ class ProductPermissions {
     this.productId,
   });
 
-  ProductPermissions.fromJson(core.Map _json)
+  ProductPermissions.fromJson(core.Map json_)
       : this(
-          permission: _json.containsKey('permission')
-              ? (_json['permission'] as core.List)
+          permission: json_.containsKey('permission')
+              ? (json_['permission'] as core.List)
                   .map((value) => ProductPermission.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
         );
 
@@ -6608,37 +6608,37 @@ class ProductPolicy {
     this.tracks,
   });
 
-  ProductPolicy.fromJson(core.Map _json)
+  ProductPolicy.fromJson(core.Map json_)
       : this(
-          autoInstallPolicy: _json.containsKey('autoInstallPolicy')
-              ? AutoInstallPolicy.fromJson(_json['autoInstallPolicy']
+          autoInstallPolicy: json_.containsKey('autoInstallPolicy')
+              ? AutoInstallPolicy.fromJson(json_['autoInstallPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          autoUpdateMode: _json.containsKey('autoUpdateMode')
-              ? _json['autoUpdateMode'] as core.String
+          autoUpdateMode: json_.containsKey('autoUpdateMode')
+              ? json_['autoUpdateMode'] as core.String
               : null,
-          enterpriseAuthenticationAppLinkConfigs: _json
+          enterpriseAuthenticationAppLinkConfigs: json_
                   .containsKey('enterpriseAuthenticationAppLinkConfigs')
-              ? (_json['enterpriseAuthenticationAppLinkConfigs'] as core.List)
+              ? (json_['enterpriseAuthenticationAppLinkConfigs'] as core.List)
                   .map((value) =>
                       EnterpriseAuthenticationAppLinkConfig.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          managedConfiguration: _json.containsKey('managedConfiguration')
-              ? ManagedConfiguration.fromJson(_json['managedConfiguration']
+          managedConfiguration: json_.containsKey('managedConfiguration')
+              ? ManagedConfiguration.fromJson(json_['managedConfiguration']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          trackIds: _json.containsKey('trackIds')
-              ? (_json['trackIds'] as core.List)
+          trackIds: json_.containsKey('trackIds')
+              ? (json_['trackIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          tracks: _json.containsKey('tracks')
-              ? (_json['tracks'] as core.List)
+          tracks: json_.containsKey('tracks')
+              ? (json_['tracks'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -6702,18 +6702,18 @@ class ProductSet {
     this.productVisibility,
   });
 
-  ProductSet.fromJson(core.Map _json)
+  ProductSet.fromJson(core.Map json_)
       : this(
-          productId: _json.containsKey('productId')
-              ? (_json['productId'] as core.List)
+          productId: json_.containsKey('productId')
+              ? (json_['productId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          productSetBehavior: _json.containsKey('productSetBehavior')
-              ? _json['productSetBehavior'] as core.String
+          productSetBehavior: json_.containsKey('productSetBehavior')
+              ? json_['productSetBehavior'] as core.String
               : null,
-          productVisibility: _json.containsKey('productVisibility')
-              ? (_json['productVisibility'] as core.List)
+          productVisibility: json_.containsKey('productVisibility')
+              ? (json_['productVisibility'] as core.List)
                   .map((value) => ProductVisibility.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6743,13 +6743,13 @@ class ProductSigningCertificate {
     this.certificateHashSha256,
   });
 
-  ProductSigningCertificate.fromJson(core.Map _json)
+  ProductSigningCertificate.fromJson(core.Map json_)
       : this(
-          certificateHashSha1: _json.containsKey('certificateHashSha1')
-              ? _json['certificateHashSha1'] as core.String
+          certificateHashSha1: json_.containsKey('certificateHashSha1')
+              ? json_['certificateHashSha1'] as core.String
               : null,
-          certificateHashSha256: _json.containsKey('certificateHashSha256')
-              ? _json['certificateHashSha256'] as core.String
+          certificateHashSha256: json_.containsKey('certificateHashSha256')
+              ? json_['certificateHashSha256'] as core.String
               : null,
         );
 
@@ -6783,18 +6783,18 @@ class ProductVisibility {
     this.tracks,
   });
 
-  ProductVisibility.fromJson(core.Map _json)
+  ProductVisibility.fromJson(core.Map json_)
       : this(
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
               : null,
-          trackIds: _json.containsKey('trackIds')
-              ? (_json['trackIds'] as core.List)
+          trackIds: json_.containsKey('trackIds')
+              ? (json_['trackIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          tracks: _json.containsKey('tracks')
-              ? (_json['tracks'] as core.List)
+          tracks: json_.containsKey('tracks')
+              ? (json_['tracks'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -6838,14 +6838,14 @@ class ProductsApproveRequest {
     this.approvedPermissions,
   });
 
-  ProductsApproveRequest.fromJson(core.Map _json)
+  ProductsApproveRequest.fromJson(core.Map json_)
       : this(
-          approvalUrlInfo: _json.containsKey('approvalUrlInfo')
-              ? ApprovalUrlInfo.fromJson(_json['approvalUrlInfo']
+          approvalUrlInfo: json_.containsKey('approvalUrlInfo')
+              ? ApprovalUrlInfo.fromJson(json_['approvalUrlInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          approvedPermissions: _json.containsKey('approvedPermissions')
-              ? _json['approvedPermissions'] as core.String
+          approvedPermissions: json_.containsKey('approvedPermissions')
+              ? json_['approvedPermissions'] as core.String
               : null,
         );
 
@@ -6873,9 +6873,9 @@ class ProductsGenerateApprovalUrlResponse {
     this.url,
   });
 
-  ProductsGenerateApprovalUrlResponse.fromJson(core.Map _json)
+  ProductsGenerateApprovalUrlResponse.fromJson(core.Map json_)
       : this(
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6900,20 +6900,20 @@ class ProductsListResponse {
     this.tokenPagination,
   });
 
-  ProductsListResponse.fromJson(core.Map _json)
+  ProductsListResponse.fromJson(core.Map json_)
       : this(
-          pageInfo: _json.containsKey('pageInfo')
+          pageInfo: json_.containsKey('pageInfo')
               ? PageInfo.fromJson(
-                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['pageInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          product: _json.containsKey('product')
-              ? (_json['product'] as core.List)
+          product: json_.containsKey('product')
+              ? (json_['product'] as core.List)
                   .map((value) => Product.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          tokenPagination: _json.containsKey('tokenPagination')
-              ? TokenPagination.fromJson(_json['tokenPagination']
+          tokenPagination: json_.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(json_['tokenPagination']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -6941,13 +6941,13 @@ class ServiceAccount {
     this.name,
   });
 
-  ServiceAccount.fromJson(core.Map _json)
+  ServiceAccount.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key')
+          key: json_.containsKey('key')
               ? ServiceAccountKey.fromJson(
-                  _json['key'] as core.Map<core.String, core.dynamic>)
+                  json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6993,14 +6993,14 @@ class ServiceAccountKey {
     this.type,
   });
 
-  ServiceAccountKey.fromJson(core.Map _json)
+  ServiceAccountKey.fromJson(core.Map json_)
       : this(
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          publicData: _json.containsKey('publicData')
-              ? _json['publicData'] as core.String
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          publicData: json_.containsKey('publicData')
+              ? json_['publicData'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7019,10 +7019,10 @@ class ServiceAccountKeysListResponse {
     this.serviceAccountKey,
   });
 
-  ServiceAccountKeysListResponse.fromJson(core.Map _json)
+  ServiceAccountKeysListResponse.fromJson(core.Map json_)
       : this(
-          serviceAccountKey: _json.containsKey('serviceAccountKey')
-              ? (_json['serviceAccountKey'] as core.List)
+          serviceAccountKey: json_.containsKey('serviceAccountKey')
+              ? (json_['serviceAccountKey'] as core.List)
                   .map((value) => ServiceAccountKey.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7055,13 +7055,13 @@ class SignupInfo {
     this.url,
   });
 
-  SignupInfo.fromJson(core.Map _json)
+  SignupInfo.fromJson(core.Map json_)
       : this(
-          completionToken: _json.containsKey('completionToken')
-              ? _json['completionToken'] as core.String
+          completionToken: json_.containsKey('completionToken')
+              ? json_['completionToken'] as core.String
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7108,20 +7108,20 @@ class StoreCluster {
     this.productId,
   });
 
-  StoreCluster.fromJson(core.Map _json)
+  StoreCluster.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name')
-              ? (_json['name'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name')
+              ? (json_['name'] as core.List)
                   .map((value) => LocalizedText.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          orderInPage: _json.containsKey('orderInPage')
-              ? _json['orderInPage'] as core.String
+          orderInPage: json_.containsKey('orderInPage')
+              ? json_['orderInPage'] as core.String
               : null,
-          productId: _json.containsKey('productId')
-              ? (_json['productId'] as core.List)
+          productId: json_.containsKey('productId')
+              ? (json_['productId'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -7161,13 +7161,13 @@ class StoreLayout {
     this.storeLayoutType,
   });
 
-  StoreLayout.fromJson(core.Map _json)
+  StoreLayout.fromJson(core.Map json_)
       : this(
-          homepageId: _json.containsKey('homepageId')
-              ? _json['homepageId'] as core.String
+          homepageId: json_.containsKey('homepageId')
+              ? json_['homepageId'] as core.String
               : null,
-          storeLayoutType: _json.containsKey('storeLayoutType')
-              ? _json['storeLayoutType'] as core.String
+          storeLayoutType: json_.containsKey('storeLayoutType')
+              ? json_['storeLayoutType'] as core.String
               : null,
         );
 
@@ -7185,10 +7185,10 @@ class StoreLayoutClustersListResponse {
     this.cluster,
   });
 
-  StoreLayoutClustersListResponse.fromJson(core.Map _json)
+  StoreLayoutClustersListResponse.fromJson(core.Map json_)
       : this(
-          cluster: _json.containsKey('cluster')
-              ? (_json['cluster'] as core.List)
+          cluster: json_.containsKey('cluster')
+              ? (json_['cluster'] as core.List)
                   .map((value) => StoreCluster.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7208,10 +7208,10 @@ class StoreLayoutPagesListResponse {
     this.page,
   });
 
-  StoreLayoutPagesListResponse.fromJson(core.Map _json)
+  StoreLayoutPagesListResponse.fromJson(core.Map json_)
       : this(
-          page: _json.containsKey('page')
-              ? (_json['page'] as core.List)
+          page: json_.containsKey('page')
+              ? (json_['page'] as core.List)
                   .map((value) => StorePage.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7253,16 +7253,16 @@ class StorePage {
     this.name,
   });
 
-  StorePage.fromJson(core.Map _json)
+  StorePage.fromJson(core.Map json_)
       : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          link: _json.containsKey('link')
-              ? (_json['link'] as core.List)
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          link: json_.containsKey('link')
+              ? (json_['link'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          name: _json.containsKey('name')
-              ? (_json['name'] as core.List)
+          name: json_.containsKey('name')
+              ? (json_['name'] as core.List)
                   .map((value) => LocalizedText.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7306,13 +7306,13 @@ class TrackInfo {
     this.trackId,
   });
 
-  TrackInfo.fromJson(core.Map _json)
+  TrackInfo.fromJson(core.Map json_)
       : this(
-          trackAlias: _json.containsKey('trackAlias')
-              ? _json['trackAlias'] as core.String
+          trackAlias: json_.containsKey('trackAlias')
+              ? json_['trackAlias'] as core.String
               : null,
-          trackId: _json.containsKey('trackId')
-              ? _json['trackId'] as core.String
+          trackId: json_.containsKey('trackId')
+              ? json_['trackId'] as core.String
               : null,
         );
 
@@ -7388,23 +7388,23 @@ class User {
     this.primaryEmail,
   });
 
-  User.fromJson(core.Map _json)
+  User.fromJson(core.Map json_)
       : this(
-          accountIdentifier: _json.containsKey('accountIdentifier')
-              ? _json['accountIdentifier'] as core.String
+          accountIdentifier: json_.containsKey('accountIdentifier')
+              ? json_['accountIdentifier'] as core.String
               : null,
-          accountType: _json.containsKey('accountType')
-              ? _json['accountType'] as core.String
+          accountType: json_.containsKey('accountType')
+              ? json_['accountType'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          managementType: _json.containsKey('managementType')
-              ? _json['managementType'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          managementType: json_.containsKey('managementType')
+              ? json_['managementType'] as core.String
               : null,
-          primaryEmail: _json.containsKey('primaryEmail')
-              ? _json['primaryEmail'] as core.String
+          primaryEmail: json_.containsKey('primaryEmail')
+              ? json_['primaryEmail'] as core.String
               : null,
         );
 
@@ -7426,10 +7426,10 @@ class UsersListResponse {
     this.user,
   });
 
-  UsersListResponse.fromJson(core.Map _json)
+  UsersListResponse.fromJson(core.Map json_)
       : this(
-          user: _json.containsKey('user')
-              ? (_json['user'] as core.List)
+          user: json_.containsKey('user')
+              ? (json_['user'] as core.List)
                   .map((value) => User.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -7459,13 +7459,13 @@ class VariableSet {
     this.userValue,
   });
 
-  VariableSet.fromJson(core.Map _json)
+  VariableSet.fromJson(core.Map json_)
       : this(
-          placeholder: _json.containsKey('placeholder')
-              ? _json['placeholder'] as core.String
+          placeholder: json_.containsKey('placeholder')
+              ? json_['placeholder'] as core.String
               : null,
-          userValue: _json.containsKey('userValue')
-              ? _json['userValue'] as core.String
+          userValue: json_.containsKey('userValue')
+              ? json_['userValue'] as core.String
               : null,
         );
 
@@ -7544,30 +7544,30 @@ class WebApp {
     this.webAppId,
   });
 
-  WebApp.fromJson(core.Map _json)
+  WebApp.fromJson(core.Map json_)
       : this(
-          displayMode: _json.containsKey('displayMode')
-              ? _json['displayMode'] as core.String
+          displayMode: json_.containsKey('displayMode')
+              ? json_['displayMode'] as core.String
               : null,
-          icons: _json.containsKey('icons')
-              ? (_json['icons'] as core.List)
+          icons: json_.containsKey('icons')
+              ? (json_['icons'] as core.List)
                   .map((value) => WebAppIcon.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          isPublished: _json.containsKey('isPublished')
-              ? _json['isPublished'] as core.bool
+          isPublished: json_.containsKey('isPublished')
+              ? json_['isPublished'] as core.bool
               : null,
-          startUrl: _json.containsKey('startUrl')
-              ? _json['startUrl'] as core.String
+          startUrl: json_.containsKey('startUrl')
+              ? json_['startUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          versionCode: _json.containsKey('versionCode')
-              ? _json['versionCode'] as core.String
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          versionCode: json_.containsKey('versionCode')
+              ? json_['versionCode'] as core.String
               : null,
-          webAppId: _json.containsKey('webAppId')
-              ? _json['webAppId'] as core.String
+          webAppId: json_.containsKey('webAppId')
+              ? json_['webAppId'] as core.String
               : null,
         );
 
@@ -7593,10 +7593,10 @@ class WebAppsListResponse {
     this.webApp,
   });
 
-  WebAppsListResponse.fromJson(core.Map _json)
+  WebAppsListResponse.fromJson(core.Map json_)
       : this(
-          webApp: _json.containsKey('webApp')
-              ? (_json['webApp'] as core.List)
+          webApp: json_.containsKey('webApp')
+              ? (json_['webApp'] as core.List)
                   .map((value) => WebApp.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()

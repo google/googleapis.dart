@@ -125,22 +125,22 @@ class ProjectsLocationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent');
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -183,21 +183,21 @@ class ProjectsLocationsPipelinesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/pipelines';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/pipelines';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a pipeline.
@@ -225,19 +225,19 @@ class ProjectsLocationsPipelinesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up a single pipeline.
@@ -266,19 +266,19 @@ class ProjectsLocationsPipelinesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a pipeline.
@@ -326,22 +326,22 @@ class ProjectsLocationsPipelinesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a job for the specified pipeline directly.
@@ -376,21 +376,21 @@ class ProjectsLocationsPipelinesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1RunPipelineResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Freezes pipeline execution permanently.
@@ -422,21 +422,21 @@ class ProjectsLocationsPipelinesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -484,21 +484,21 @@ class ProjectsLocationsPipelinesJobsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -531,13 +531,13 @@ class GoogleCloudDatapipelinesV1DataflowJobDetails {
     this.sdkVersion,
   });
 
-  GoogleCloudDatapipelinesV1DataflowJobDetails.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1DataflowJobDetails.fromJson(core.Map json_)
       : this(
-          currentWorkers: _json.containsKey('currentWorkers')
-              ? _json['currentWorkers'] as core.int
+          currentWorkers: json_.containsKey('currentWorkers')
+              ? json_['currentWorkers'] as core.int
               : null,
-          resourceInfo: _json.containsKey('resourceInfo')
-              ? (_json['resourceInfo'] as core.Map<core.String, core.dynamic>)
+          resourceInfo: json_.containsKey('resourceInfo')
+              ? (json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -545,9 +545,9 @@ class GoogleCloudDatapipelinesV1DataflowJobDetails {
                   ),
                 )
               : null,
-          sdkVersion: _json.containsKey('sdkVersion')
+          sdkVersion: json_.containsKey('sdkVersion')
               ? GoogleCloudDatapipelinesV1SdkVersion.fromJson(
-                  _json['sdkVersion'] as core.Map<core.String, core.dynamic>)
+                  json_['sdkVersion'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -674,15 +674,15 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   });
 
   GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromJson(
-      core.Map _json)
+      core.Map json_)
       : this(
-          additionalExperiments: _json.containsKey('additionalExperiments')
-              ? (_json['additionalExperiments'] as core.List)
+          additionalExperiments: json_.containsKey('additionalExperiments')
+              ? (json_['additionalExperiments'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          additionalUserLabels: _json.containsKey('additionalUserLabels')
-              ? (_json['additionalUserLabels']
+          additionalUserLabels: json_.containsKey('additionalUserLabels')
+              ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -691,46 +691,46 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
                   ),
                 )
               : null,
-          enableStreamingEngine: _json.containsKey('enableStreamingEngine')
-              ? _json['enableStreamingEngine'] as core.bool
+          enableStreamingEngine: json_.containsKey('enableStreamingEngine')
+              ? json_['enableStreamingEngine'] as core.bool
               : null,
-          flexrsGoal: _json.containsKey('flexrsGoal')
-              ? _json['flexrsGoal'] as core.String
+          flexrsGoal: json_.containsKey('flexrsGoal')
+              ? json_['flexrsGoal'] as core.String
               : null,
-          ipConfiguration: _json.containsKey('ipConfiguration')
-              ? _json['ipConfiguration'] as core.String
+          ipConfiguration: json_.containsKey('ipConfiguration')
+              ? json_['ipConfiguration'] as core.String
               : null,
-          kmsKeyName: _json.containsKey('kmsKeyName')
-              ? _json['kmsKeyName'] as core.String
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
               : null,
-          machineType: _json.containsKey('machineType')
-              ? _json['machineType'] as core.String
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
               : null,
-          maxWorkers: _json.containsKey('maxWorkers')
-              ? _json['maxWorkers'] as core.int
+          maxWorkers: json_.containsKey('maxWorkers')
+              ? json_['maxWorkers'] as core.int
               : null,
-          network: _json.containsKey('network')
-              ? _json['network'] as core.String
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
               : null,
-          numWorkers: _json.containsKey('numWorkers')
-              ? _json['numWorkers'] as core.int
+          numWorkers: json_.containsKey('numWorkers')
+              ? json_['numWorkers'] as core.int
               : null,
-          serviceAccountEmail: _json.containsKey('serviceAccountEmail')
-              ? _json['serviceAccountEmail'] as core.String
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
               : null,
-          subnetwork: _json.containsKey('subnetwork')
-              ? _json['subnetwork'] as core.String
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
               : null,
-          tempLocation: _json.containsKey('tempLocation')
-              ? _json['tempLocation'] as core.String
+          tempLocation: json_.containsKey('tempLocation')
+              ? json_['tempLocation'] as core.String
               : null,
-          workerRegion: _json.containsKey('workerRegion')
-              ? _json['workerRegion'] as core.String
+          workerRegion: json_.containsKey('workerRegion')
+              ? json_['workerRegion'] as core.String
               : null,
-          workerZone: _json.containsKey('workerZone')
-              ? _json['workerZone'] as core.String
+          workerZone: json_.containsKey('workerZone')
+              ? json_['workerZone'] as core.String
               : null,
-          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -811,26 +811,26 @@ class GoogleCloudDatapipelinesV1Job {
     this.status,
   });
 
-  GoogleCloudDatapipelinesV1Job.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1Job.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          dataflowJobDetails: _json.containsKey('dataflowJobDetails')
+          dataflowJobDetails: json_.containsKey('dataflowJobDetails')
               ? GoogleCloudDatapipelinesV1DataflowJobDetails.fromJson(
-                  _json['dataflowJobDetails']
+                  json_['dataflowJobDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          status: _json.containsKey('status')
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          status: json_.containsKey('status')
               ? GoogleRpcStatus.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -895,21 +895,21 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
     this.update,
   });
 
-  GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(core.Map json_)
       : this(
-          containerSpecGcsPath: _json.containsKey('containerSpecGcsPath')
-              ? _json['containerSpecGcsPath'] as core.String
+          containerSpecGcsPath: json_.containsKey('containerSpecGcsPath')
+              ? json_['containerSpecGcsPath'] as core.String
               : null,
-          environment: _json.containsKey('environment')
+          environment: json_.containsKey('environment')
               ? GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment
-                  .fromJson(_json['environment']
+                  .fromJson(json_['environment']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          jobName: _json.containsKey('jobName')
-              ? _json['jobName'] as core.String
+          jobName: json_.containsKey('jobName')
+              ? json_['jobName'] as core.String
               : null,
-          launchOptions: _json.containsKey('launchOptions')
-              ? (_json['launchOptions'] as core.Map<core.String, core.dynamic>)
+          launchOptions: json_.containsKey('launchOptions')
+              ? (json_['launchOptions'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -917,8 +917,8 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
                   ),
                 )
               : null,
-          parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -926,8 +926,8 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
                   ),
                 )
               : null,
-          transformNameMappings: _json.containsKey('transformNameMappings')
-              ? (_json['transformNameMappings']
+          transformNameMappings: json_.containsKey('transformNameMappings')
+              ? (json_['transformNameMappings']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -937,7 +937,7 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
                 )
               : null,
           update:
-              _json.containsKey('update') ? _json['update'] as core.bool : null,
+              json_.containsKey('update') ? json_['update'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -986,21 +986,21 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
     this.validateOnly,
   });
 
-  GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(core.Map json_)
       : this(
-          launchParameter: _json.containsKey('launchParameter')
+          launchParameter: json_.containsKey('launchParameter')
               ? GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(
-                  _json['launchParameter']
+                  json_['launchParameter']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
               : null,
         );
 
@@ -1043,17 +1043,17 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
     this.update,
   });
 
-  GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(core.Map json_)
       : this(
-          environment: _json.containsKey('environment')
+          environment: json_.containsKey('environment')
               ? GoogleCloudDatapipelinesV1RuntimeEnvironment.fromJson(
-                  _json['environment'] as core.Map<core.String, core.dynamic>)
+                  json_['environment'] as core.Map<core.String, core.dynamic>)
               : null,
-          jobName: _json.containsKey('jobName')
-              ? _json['jobName'] as core.String
+          jobName: json_.containsKey('jobName')
+              ? json_['jobName'] as core.String
               : null,
-          parameters: _json.containsKey('parameters')
-              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -1061,8 +1061,8 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
                   ),
                 )
               : null,
-          transformNameMapping: _json.containsKey('transformNameMapping')
-              ? (_json['transformNameMapping']
+          transformNameMapping: json_.containsKey('transformNameMapping')
+              ? (json_['transformNameMapping']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -1072,7 +1072,7 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
                 )
               : null,
           update:
-              _json.containsKey('update') ? _json['update'] as core.bool : null,
+              json_.containsKey('update') ? json_['update'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1120,24 +1120,24 @@ class GoogleCloudDatapipelinesV1LaunchTemplateRequest {
     this.validateOnly,
   });
 
-  GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromJson(core.Map json_)
       : this(
-          gcsPath: _json.containsKey('gcsPath')
-              ? _json['gcsPath'] as core.String
+          gcsPath: json_.containsKey('gcsPath')
+              ? json_['gcsPath'] as core.String
               : null,
-          launchParameters: _json.containsKey('launchParameters')
+          launchParameters: json_.containsKey('launchParameters')
               ? GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(
-                  _json['launchParameters']
+                  json_['launchParameters']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          validateOnly: _json.containsKey('validateOnly')
-              ? _json['validateOnly'] as core.bool
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
               : null,
         );
 
@@ -1167,16 +1167,16 @@ class GoogleCloudDatapipelinesV1ListJobsResponse {
     this.nextPageToken,
   });
 
-  GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(core.Map json_)
       : this(
-          jobs: _json.containsKey('jobs')
-              ? (_json['jobs'] as core.List)
+          jobs: json_.containsKey('jobs')
+              ? (json_['jobs'] as core.List)
                   .map((value) => GoogleCloudDatapipelinesV1Job.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1204,13 +1204,13 @@ class GoogleCloudDatapipelinesV1ListPipelinesResponse {
     this.pipelines,
   });
 
-  GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          pipelines: _json.containsKey('pipelines')
-              ? (_json['pipelines'] as core.List)
+          pipelines: json_.containsKey('pipelines')
+              ? (json_['pipelines'] as core.List)
                   .map((value) => GoogleCloudDatapipelinesV1Pipeline.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1349,23 +1349,23 @@ class GoogleCloudDatapipelinesV1Pipeline {
     this.workload,
   });
 
-  GoogleCloudDatapipelinesV1Pipeline.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1Pipeline.fromJson(core.Map json_)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
-          jobCount: _json.containsKey('jobCount')
-              ? _json['jobCount'] as core.int
+          jobCount: json_.containsKey('jobCount')
+              ? json_['jobCount'] as core.int
               : null,
-          lastUpdateTime: _json.containsKey('lastUpdateTime')
-              ? _json['lastUpdateTime'] as core.String
+          lastUpdateTime: json_.containsKey('lastUpdateTime')
+              ? json_['lastUpdateTime'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          pipelineSources: _json.containsKey('pipelineSources')
-              ? (_json['pipelineSources']
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pipelineSources: json_.containsKey('pipelineSources')
+              ? (json_['pipelineSources']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -1374,20 +1374,20 @@ class GoogleCloudDatapipelinesV1Pipeline {
                   ),
                 )
               : null,
-          scheduleInfo: _json.containsKey('scheduleInfo')
+          scheduleInfo: json_.containsKey('scheduleInfo')
               ? GoogleCloudDatapipelinesV1ScheduleSpec.fromJson(
-                  _json['scheduleInfo'] as core.Map<core.String, core.dynamic>)
+                  json_['scheduleInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           schedulerServiceAccountEmail:
-              _json.containsKey('schedulerServiceAccountEmail')
-                  ? _json['schedulerServiceAccountEmail'] as core.String
+              json_.containsKey('schedulerServiceAccountEmail')
+                  ? json_['schedulerServiceAccountEmail'] as core.String
                   : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          workload: _json.containsKey('workload')
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          workload: json_.containsKey('workload')
               ? GoogleCloudDatapipelinesV1Workload.fromJson(
-                  _json['workload'] as core.Map<core.String, core.dynamic>)
+                  json_['workload'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1419,11 +1419,11 @@ class GoogleCloudDatapipelinesV1RunPipelineResponse {
     this.job,
   });
 
-  GoogleCloudDatapipelinesV1RunPipelineResponse.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1RunPipelineResponse.fromJson(core.Map json_)
       : this(
-          job: _json.containsKey('job')
+          job: json_.containsKey('job')
               ? GoogleCloudDatapipelinesV1Job.fromJson(
-                  _json['job'] as core.Map<core.String, core.dynamic>)
+                  json_['job'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1543,15 +1543,15 @@ class GoogleCloudDatapipelinesV1RuntimeEnvironment {
     this.zone,
   });
 
-  GoogleCloudDatapipelinesV1RuntimeEnvironment.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1RuntimeEnvironment.fromJson(core.Map json_)
       : this(
-          additionalExperiments: _json.containsKey('additionalExperiments')
-              ? (_json['additionalExperiments'] as core.List)
+          additionalExperiments: json_.containsKey('additionalExperiments')
+              ? (json_['additionalExperiments'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          additionalUserLabels: _json.containsKey('additionalUserLabels')
-              ? (_json['additionalUserLabels']
+          additionalUserLabels: json_.containsKey('additionalUserLabels')
+              ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
@@ -1560,46 +1560,46 @@ class GoogleCloudDatapipelinesV1RuntimeEnvironment {
                   ),
                 )
               : null,
-          bypassTempDirValidation: _json.containsKey('bypassTempDirValidation')
-              ? _json['bypassTempDirValidation'] as core.bool
+          bypassTempDirValidation: json_.containsKey('bypassTempDirValidation')
+              ? json_['bypassTempDirValidation'] as core.bool
               : null,
-          enableStreamingEngine: _json.containsKey('enableStreamingEngine')
-              ? _json['enableStreamingEngine'] as core.bool
+          enableStreamingEngine: json_.containsKey('enableStreamingEngine')
+              ? json_['enableStreamingEngine'] as core.bool
               : null,
-          ipConfiguration: _json.containsKey('ipConfiguration')
-              ? _json['ipConfiguration'] as core.String
+          ipConfiguration: json_.containsKey('ipConfiguration')
+              ? json_['ipConfiguration'] as core.String
               : null,
-          kmsKeyName: _json.containsKey('kmsKeyName')
-              ? _json['kmsKeyName'] as core.String
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
               : null,
-          machineType: _json.containsKey('machineType')
-              ? _json['machineType'] as core.String
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
               : null,
-          maxWorkers: _json.containsKey('maxWorkers')
-              ? _json['maxWorkers'] as core.int
+          maxWorkers: json_.containsKey('maxWorkers')
+              ? json_['maxWorkers'] as core.int
               : null,
-          network: _json.containsKey('network')
-              ? _json['network'] as core.String
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
               : null,
-          numWorkers: _json.containsKey('numWorkers')
-              ? _json['numWorkers'] as core.int
+          numWorkers: json_.containsKey('numWorkers')
+              ? json_['numWorkers'] as core.int
               : null,
-          serviceAccountEmail: _json.containsKey('serviceAccountEmail')
-              ? _json['serviceAccountEmail'] as core.String
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
               : null,
-          subnetwork: _json.containsKey('subnetwork')
-              ? _json['subnetwork'] as core.String
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
               : null,
-          tempLocation: _json.containsKey('tempLocation')
-              ? _json['tempLocation'] as core.String
+          tempLocation: json_.containsKey('tempLocation')
+              ? json_['tempLocation'] as core.String
               : null,
-          workerRegion: _json.containsKey('workerRegion')
-              ? _json['workerRegion'] as core.String
+          workerRegion: json_.containsKey('workerRegion')
+              ? json_['workerRegion'] as core.String
               : null,
-          workerZone: _json.containsKey('workerZone')
-              ? _json['workerZone'] as core.String
+          workerZone: json_.containsKey('workerZone')
+              ? json_['workerZone'] as core.String
               : null,
-          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1651,16 +1651,16 @@ class GoogleCloudDatapipelinesV1ScheduleSpec {
     this.timeZone,
   });
 
-  GoogleCloudDatapipelinesV1ScheduleSpec.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1ScheduleSpec.fromJson(core.Map json_)
       : this(
-          nextJobTime: _json.containsKey('nextJobTime')
-              ? _json['nextJobTime'] as core.String
+          nextJobTime: json_.containsKey('nextJobTime')
+              ? json_['nextJobTime'] as core.String
               : null,
-          schedule: _json.containsKey('schedule')
-              ? _json['schedule'] as core.String
+          schedule: json_.containsKey('schedule')
+              ? json_['schedule'] as core.String
               : null,
-          timeZone: _json.containsKey('timeZone')
-              ? _json['timeZone'] as core.String
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
               : null,
         );
 
@@ -1697,16 +1697,16 @@ class GoogleCloudDatapipelinesV1SdkVersion {
     this.versionDisplayName,
   });
 
-  GoogleCloudDatapipelinesV1SdkVersion.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1SdkVersion.fromJson(core.Map json_)
       : this(
-          sdkSupportStatus: _json.containsKey('sdkSupportStatus')
-              ? _json['sdkSupportStatus'] as core.String
+          sdkSupportStatus: json_.containsKey('sdkSupportStatus')
+              ? json_['sdkSupportStatus'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
-          versionDisplayName: _json.containsKey('versionDisplayName')
-              ? _json['versionDisplayName'] as core.String
+          versionDisplayName: json_.containsKey('versionDisplayName')
+              ? json_['versionDisplayName'] as core.String
               : null,
         );
 
@@ -1738,18 +1738,18 @@ class GoogleCloudDatapipelinesV1Workload {
     this.dataflowLaunchTemplateRequest,
   });
 
-  GoogleCloudDatapipelinesV1Workload.fromJson(core.Map _json)
+  GoogleCloudDatapipelinesV1Workload.fromJson(core.Map json_)
       : this(
-          dataflowFlexTemplateRequest: _json
+          dataflowFlexTemplateRequest: json_
                   .containsKey('dataflowFlexTemplateRequest')
               ? GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(
-                  _json['dataflowFlexTemplateRequest']
+                  json_['dataflowFlexTemplateRequest']
                       as core.Map<core.String, core.dynamic>)
               : null,
           dataflowLaunchTemplateRequest:
-              _json.containsKey('dataflowLaunchTemplateRequest')
+              json_.containsKey('dataflowLaunchTemplateRequest')
                   ? GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromJson(
-                      _json['dataflowLaunchTemplateRequest']
+                      json_['dataflowLaunchTemplateRequest']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );

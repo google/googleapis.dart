@@ -82,20 +82,20 @@ class Oauth2Api {
     core.String? idToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (accessToken != null) 'access_token': [accessToken],
       if (idToken != null) 'id_token': [idToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'oauth2/v2/tokeninfo';
+    const url_ = 'oauth2/v2/tokeninfo';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Tokeninfo.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Tokeninfo.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -121,18 +121,18 @@ class UserinfoResource {
   async.Future<Userinfo> get({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'oauth2/v2/userinfo';
+    const url_ = 'oauth2/v2/userinfo';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Userinfo.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Userinfo.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -164,18 +164,18 @@ class UserinfoV2MeResource {
   async.Future<Userinfo> get({
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'userinfo/v2/me';
+    const url_ = 'userinfo/v2/me';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Userinfo.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Userinfo.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -219,26 +219,26 @@ class Tokeninfo {
     this.verifiedEmail,
   });
 
-  Tokeninfo.fromJson(core.Map _json)
+  Tokeninfo.fromJson(core.Map json_)
       : this(
-          audience: _json.containsKey('audience')
-              ? _json['audience'] as core.String
+          audience: json_.containsKey('audience')
+              ? json_['audience'] as core.String
               : null,
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          expiresIn: _json.containsKey('expires_in')
-              ? _json['expires_in'] as core.int
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          expiresIn: json_.containsKey('expires_in')
+              ? json_['expires_in'] as core.int
               : null,
-          issuedTo: _json.containsKey('issued_to')
-              ? _json['issued_to'] as core.String
+          issuedTo: json_.containsKey('issued_to')
+              ? json_['issued_to'] as core.String
               : null,
           scope:
-              _json.containsKey('scope') ? _json['scope'] as core.String : null,
-          userId: _json.containsKey('user_id')
-              ? _json['user_id'] as core.String
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          userId: json_.containsKey('user_id')
+              ? json_['user_id'] as core.String
               : null,
-          verifiedEmail: _json.containsKey('verified_email')
-              ? _json['verified_email'] as core.bool
+          verifiedEmail: json_.containsKey('verified_email')
+              ? json_['verified_email'] as core.bool
               : null,
         );
 
@@ -303,31 +303,31 @@ class Userinfo {
     this.verifiedEmail,
   });
 
-  Userinfo.fromJson(core.Map _json)
+  Userinfo.fromJson(core.Map json_)
       : this(
           email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          familyName: _json.containsKey('family_name')
-              ? _json['family_name'] as core.String
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          familyName: json_.containsKey('family_name')
+              ? json_['family_name'] as core.String
               : null,
-          gender: _json.containsKey('gender')
-              ? _json['gender'] as core.String
+          gender: json_.containsKey('gender')
+              ? json_['gender'] as core.String
               : null,
-          givenName: _json.containsKey('given_name')
-              ? _json['given_name'] as core.String
+          givenName: json_.containsKey('given_name')
+              ? json_['given_name'] as core.String
               : null,
-          hd: _json.containsKey('hd') ? _json['hd'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          link: _json.containsKey('link') ? _json['link'] as core.String : null,
-          locale: _json.containsKey('locale')
-              ? _json['locale'] as core.String
+          hd: json_.containsKey('hd') ? json_['hd'] as core.String : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          link: json_.containsKey('link') ? json_['link'] as core.String : null,
+          locale: json_.containsKey('locale')
+              ? json_['locale'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          picture: _json.containsKey('picture')
-              ? _json['picture'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          picture: json_.containsKey('picture')
+              ? json_['picture'] as core.String
               : null,
-          verifiedEmail: _json.containsKey('verified_email')
-              ? _json['verified_email'] as core.bool
+          verifiedEmail: json_.containsKey('verified_email')
+              ? json_['verified_email'] as core.bool
               : null,
         );
 

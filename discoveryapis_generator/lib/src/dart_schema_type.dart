@@ -80,9 +80,9 @@ abstract class DartSchemaType {
       '${imports.core.ref()}Map$coreMapJsonTypeArguments';
 
   String decodeFromMap(String jsonName) {
-    final decodeString = jsonDecode("_json['${escapeString(jsonName)}']");
+    final decodeString = jsonDecode("json_['${escapeString(jsonName)}']");
 
-    return '_json.containsKey'
+    return 'json_.containsKey'
         "('${escapeString(jsonName)}') ? $decodeString : null";
   }
 }

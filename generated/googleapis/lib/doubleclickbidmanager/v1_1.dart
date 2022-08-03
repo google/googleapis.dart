@@ -85,21 +85,21 @@ class QueriesResource {
     core.bool? asynchronous,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'query';
+    const url_ = 'query';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Query.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Query.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a stored query as well as the associated stored reports.
@@ -120,16 +120,16 @@ class QueriesResource {
     core.String queryId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'query/' + commons.escapeVariable('$queryId');
+    final url_ = 'query/' + commons.escapeVariable('$queryId');
 
     await _requester.request(
-      _url,
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -154,18 +154,18 @@ class QueriesResource {
     core.String queryId, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'query/' + commons.escapeVariable('$queryId');
+    final url_ = 'query/' + commons.escapeVariable('$queryId');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Query.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Query.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves stored queries.
@@ -192,21 +192,21 @@ class QueriesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'queries';
+    const url_ = 'queries';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListQueriesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs a stored query to generate a report.
@@ -233,19 +233,19 @@ class QueriesResource {
     core.bool? asynchronous,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'query/' + commons.escapeVariable('$queryId');
+    final url_ = 'query/' + commons.escapeVariable('$queryId');
 
     await _requester.request(
-      _url,
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
       downloadOptions: null,
     );
   }
@@ -283,21 +283,21 @@ class ReportsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'queries/' + commons.escapeVariable('$queryId') + '/reports';
+    final url_ = 'queries/' + commons.escapeVariable('$queryId') + '/reports';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListReportsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -322,14 +322,14 @@ class ChannelGrouping {
     this.rules,
   });
 
-  ChannelGrouping.fromJson(core.Map _json)
+  ChannelGrouping.fromJson(core.Map json_)
       : this(
-          fallbackName: _json.containsKey('fallbackName')
-              ? _json['fallbackName'] as core.String
+          fallbackName: json_.containsKey('fallbackName')
+              ? json_['fallbackName'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          rules: _json.containsKey('rules')
-              ? (_json['rules'] as core.List)
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
                   .map((value) => Rule.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -355,10 +355,10 @@ class DisjunctiveMatchStatement {
     this.eventFilters,
   });
 
-  DisjunctiveMatchStatement.fromJson(core.Map _json)
+  DisjunctiveMatchStatement.fromJson(core.Map json_)
       : this(
-          eventFilters: _json.containsKey('eventFilters')
-              ? (_json['eventFilters'] as core.List)
+          eventFilters: json_.containsKey('eventFilters')
+              ? (json_['eventFilters'] as core.List)
                   .map((value) => EventFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -380,10 +380,10 @@ class EventFilter {
     this.dimensionFilter,
   });
 
-  EventFilter.fromJson(core.Map _json)
+  EventFilter.fromJson(core.Map json_)
       : this(
-          dimensionFilter: _json.containsKey('dimensionFilter')
-              ? PathQueryOptionsFilter.fromJson(_json['dimensionFilter']
+          dimensionFilter: json_.containsKey('dimensionFilter')
+              ? PathQueryOptionsFilter.fromJson(json_['dimensionFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -701,11 +701,11 @@ class FilterPair {
     this.value,
   });
 
-  FilterPair.fromJson(core.Map _json)
+  FilterPair.fromJson(core.Map json_)
       : this(
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -733,14 +733,14 @@ class ListQueriesResponse {
     this.queries,
   });
 
-  ListQueriesResponse.fromJson(core.Map _json)
+  ListQueriesResponse.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          queries: _json.containsKey('queries')
-              ? (_json['queries'] as core.List)
+          queries: json_.containsKey('queries')
+              ? (json_['queries'] as core.List)
                   .map((value) => Query.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -773,14 +773,14 @@ class ListReportsResponse {
     this.reports,
   });
 
-  ListReportsResponse.fromJson(core.Map _json)
+  ListReportsResponse.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          reports: _json.containsKey('reports')
-              ? (_json['reports'] as core.List)
+          reports: json_.containsKey('reports')
+              ? (json_['reports'] as core.List)
                   .map((value) => Report.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -809,14 +809,14 @@ class Options {
     this.pathQueryOptions,
   });
 
-  Options.fromJson(core.Map _json)
+  Options.fromJson(core.Map json_)
       : this(
           includeOnlyTargetedUserLists:
-              _json.containsKey('includeOnlyTargetedUserLists')
-                  ? _json['includeOnlyTargetedUserLists'] as core.bool
+              json_.containsKey('includeOnlyTargetedUserLists')
+                  ? json_['includeOnlyTargetedUserLists'] as core.bool
                   : null,
-          pathQueryOptions: _json.containsKey('pathQueryOptions')
-              ? PathQueryOptions.fromJson(_json['pathQueryOptions']
+          pathQueryOptions: json_.containsKey('pathQueryOptions')
+              ? PathQueryOptions.fromJson(json_['pathQueryOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -894,32 +894,32 @@ class Parameters {
     this.type,
   });
 
-  Parameters.fromJson(core.Map _json)
+  Parameters.fromJson(core.Map json_)
       : this(
-          filters: _json.containsKey('filters')
-              ? (_json['filters'] as core.List)
+          filters: json_.containsKey('filters')
+              ? (json_['filters'] as core.List)
                   .map((value) => FilterPair.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          groupBys: _json.containsKey('groupBys')
-              ? (_json['groupBys'] as core.List)
+          groupBys: json_.containsKey('groupBys')
+              ? (json_['groupBys'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          includeInviteData: _json.containsKey('includeInviteData')
-              ? _json['includeInviteData'] as core.bool
+          includeInviteData: json_.containsKey('includeInviteData')
+              ? json_['includeInviteData'] as core.bool
               : null,
-          metrics: _json.containsKey('metrics')
-              ? (_json['metrics'] as core.List)
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          options: _json.containsKey('options')
+          options: json_.containsKey('options')
               ? Options.fromJson(
-                  _json['options'] as core.Map<core.String, core.dynamic>)
+                  json_['options'] as core.Map<core.String, core.dynamic>)
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -955,16 +955,16 @@ class PathFilter {
     this.pathMatchPosition,
   });
 
-  PathFilter.fromJson(core.Map _json)
+  PathFilter.fromJson(core.Map json_)
       : this(
-          eventFilters: _json.containsKey('eventFilters')
-              ? (_json['eventFilters'] as core.List)
+          eventFilters: json_.containsKey('eventFilters')
+              ? (json_['eventFilters'] as core.List)
                   .map((value) => EventFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          pathMatchPosition: _json.containsKey('pathMatchPosition')
-              ? _json['pathMatchPosition'] as core.String
+          pathMatchPosition: json_.containsKey('pathMatchPosition')
+              ? json_['pathMatchPosition'] as core.String
               : null,
         );
 
@@ -989,14 +989,14 @@ class PathQueryOptions {
     this.pathFilters,
   });
 
-  PathQueryOptions.fromJson(core.Map _json)
+  PathQueryOptions.fromJson(core.Map json_)
       : this(
-          channelGrouping: _json.containsKey('channelGrouping')
-              ? ChannelGrouping.fromJson(_json['channelGrouping']
+          channelGrouping: json_.containsKey('channelGrouping')
+              ? ChannelGrouping.fromJson(json_['channelGrouping']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          pathFilters: _json.containsKey('pathFilters')
-              ? (_json['pathFilters'] as core.List)
+          pathFilters: json_.containsKey('pathFilters')
+              ? (json_['pathFilters'] as core.List)
                   .map((value) => PathFilter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1327,15 +1327,15 @@ class PathQueryOptionsFilter {
     this.values,
   });
 
-  PathQueryOptionsFilter.fromJson(core.Map _json)
+  PathQueryOptionsFilter.fromJson(core.Map json_)
       : this(
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
               : null,
           match:
-              _json.containsKey('match') ? _json['match'] as core.String : null,
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
+              json_.containsKey('match') ? json_['match'] as core.String : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1395,32 +1395,32 @@ class Query {
     this.timezoneCode,
   });
 
-  Query.fromJson(core.Map _json)
+  Query.fromJson(core.Map json_)
       : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          metadata: _json.containsKey('metadata')
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          metadata: json_.containsKey('metadata')
               ? QueryMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          params: _json.containsKey('params')
+          params: json_.containsKey('params')
               ? Parameters.fromJson(
-                  _json['params'] as core.Map<core.String, core.dynamic>)
+                  json_['params'] as core.Map<core.String, core.dynamic>)
               : null,
-          queryId: _json.containsKey('queryId')
-              ? _json['queryId'] as core.String
+          queryId: json_.containsKey('queryId')
+              ? json_['queryId'] as core.String
               : null,
-          reportDataEndTimeMs: _json.containsKey('reportDataEndTimeMs')
-              ? _json['reportDataEndTimeMs'] as core.String
+          reportDataEndTimeMs: json_.containsKey('reportDataEndTimeMs')
+              ? json_['reportDataEndTimeMs'] as core.String
               : null,
-          reportDataStartTimeMs: _json.containsKey('reportDataStartTimeMs')
-              ? _json['reportDataStartTimeMs'] as core.String
+          reportDataStartTimeMs: json_.containsKey('reportDataStartTimeMs')
+              ? json_['reportDataStartTimeMs'] as core.String
               : null,
-          schedule: _json.containsKey('schedule')
+          schedule: json_.containsKey('schedule')
               ? QuerySchedule.fromJson(
-                  _json['schedule'] as core.Map<core.String, core.dynamic>)
+                  json_['schedule'] as core.Map<core.String, core.dynamic>)
               : null,
-          timezoneCode: _json.containsKey('timezoneCode')
-              ? _json['timezoneCode'] as core.String
+          timezoneCode: json_.containsKey('timezoneCode')
+              ? json_['timezoneCode'] as core.String
               : null,
         );
 
@@ -1525,44 +1525,44 @@ class QueryMetadata {
     this.title,
   });
 
-  QueryMetadata.fromJson(core.Map _json)
+  QueryMetadata.fromJson(core.Map json_)
       : this(
-          dataRange: _json.containsKey('dataRange')
-              ? _json['dataRange'] as core.String
+          dataRange: json_.containsKey('dataRange')
+              ? json_['dataRange'] as core.String
               : null,
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
-          googleCloudStoragePathForLatestReport: _json
+          googleCloudStoragePathForLatestReport: json_
                   .containsKey('googleCloudStoragePathForLatestReport')
-              ? _json['googleCloudStoragePathForLatestReport'] as core.String
+              ? json_['googleCloudStoragePathForLatestReport'] as core.String
               : null,
           googleDrivePathForLatestReport:
-              _json.containsKey('googleDrivePathForLatestReport')
-                  ? _json['googleDrivePathForLatestReport'] as core.String
+              json_.containsKey('googleDrivePathForLatestReport')
+                  ? json_['googleDrivePathForLatestReport'] as core.String
                   : null,
-          latestReportRunTimeMs: _json.containsKey('latestReportRunTimeMs')
-              ? _json['latestReportRunTimeMs'] as core.String
+          latestReportRunTimeMs: json_.containsKey('latestReportRunTimeMs')
+              ? json_['latestReportRunTimeMs'] as core.String
               : null,
-          locale: _json.containsKey('locale')
-              ? _json['locale'] as core.String
+          locale: json_.containsKey('locale')
+              ? json_['locale'] as core.String
               : null,
-          reportCount: _json.containsKey('reportCount')
-              ? _json['reportCount'] as core.int
+          reportCount: json_.containsKey('reportCount')
+              ? json_['reportCount'] as core.int
               : null,
-          running: _json.containsKey('running')
-              ? _json['running'] as core.bool
+          running: json_.containsKey('running')
+              ? json_['running'] as core.bool
               : null,
-          sendNotification: _json.containsKey('sendNotification')
-              ? _json['sendNotification'] as core.bool
+          sendNotification: json_.containsKey('sendNotification')
+              ? json_['sendNotification'] as core.bool
               : null,
-          shareEmailAddress: _json.containsKey('shareEmailAddress')
-              ? (_json['shareEmailAddress'] as core.List)
+          shareEmailAddress: json_.containsKey('shareEmailAddress')
+              ? (json_['shareEmailAddress'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1624,22 +1624,22 @@ class QuerySchedule {
     this.startTimeMs,
   });
 
-  QuerySchedule.fromJson(core.Map _json)
+  QuerySchedule.fromJson(core.Map json_)
       : this(
-          endTimeMs: _json.containsKey('endTimeMs')
-              ? _json['endTimeMs'] as core.String
+          endTimeMs: json_.containsKey('endTimeMs')
+              ? json_['endTimeMs'] as core.String
               : null,
-          frequency: _json.containsKey('frequency')
-              ? _json['frequency'] as core.String
+          frequency: json_.containsKey('frequency')
+              ? json_['frequency'] as core.String
               : null,
-          nextRunMinuteOfDay: _json.containsKey('nextRunMinuteOfDay')
-              ? _json['nextRunMinuteOfDay'] as core.int
+          nextRunMinuteOfDay: json_.containsKey('nextRunMinuteOfDay')
+              ? json_['nextRunMinuteOfDay'] as core.int
               : null,
-          nextRunTimezoneCode: _json.containsKey('nextRunTimezoneCode')
-              ? _json['nextRunTimezoneCode'] as core.String
+          nextRunTimezoneCode: json_.containsKey('nextRunTimezoneCode')
+              ? json_['nextRunTimezoneCode'] as core.String
               : null,
-          startTimeMs: _json.containsKey('startTimeMs')
-              ? _json['startTimeMs'] as core.String
+          startTimeMs: json_.containsKey('startTimeMs')
+              ? json_['startTimeMs'] as core.String
               : null,
         );
 
@@ -1671,19 +1671,19 @@ class Report {
     this.params,
   });
 
-  Report.fromJson(core.Map _json)
+  Report.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key')
+          key: json_.containsKey('key')
               ? ReportKey.fromJson(
-                  _json['key'] as core.Map<core.String, core.dynamic>)
+                  json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? ReportMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          params: _json.containsKey('params')
+          params: json_.containsKey('params')
               ? Parameters.fromJson(
-                  _json['params'] as core.Map<core.String, core.dynamic>)
+                  json_['params'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1722,10 +1722,10 @@ class ReportFailure {
     this.errorCode,
   });
 
-  ReportFailure.fromJson(core.Map _json)
+  ReportFailure.fromJson(core.Map json_)
       : this(
-          errorCode: _json.containsKey('errorCode')
-              ? _json['errorCode'] as core.String
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.String
               : null,
         );
 
@@ -1747,13 +1747,13 @@ class ReportKey {
     this.reportId,
   });
 
-  ReportKey.fromJson(core.Map _json)
+  ReportKey.fromJson(core.Map json_)
       : this(
-          queryId: _json.containsKey('queryId')
-              ? _json['queryId'] as core.String
+          queryId: json_.containsKey('queryId')
+              ? json_['queryId'] as core.String
               : null,
-          reportId: _json.containsKey('reportId')
-              ? _json['reportId'] as core.String
+          reportId: json_.containsKey('reportId')
+              ? json_['reportId'] as core.String
               : null,
         );
 
@@ -1785,20 +1785,20 @@ class ReportMetadata {
     this.status,
   });
 
-  ReportMetadata.fromJson(core.Map _json)
+  ReportMetadata.fromJson(core.Map json_)
       : this(
-          googleCloudStoragePath: _json.containsKey('googleCloudStoragePath')
-              ? _json['googleCloudStoragePath'] as core.String
+          googleCloudStoragePath: json_.containsKey('googleCloudStoragePath')
+              ? json_['googleCloudStoragePath'] as core.String
               : null,
-          reportDataEndTimeMs: _json.containsKey('reportDataEndTimeMs')
-              ? _json['reportDataEndTimeMs'] as core.String
+          reportDataEndTimeMs: json_.containsKey('reportDataEndTimeMs')
+              ? json_['reportDataEndTimeMs'] as core.String
               : null,
-          reportDataStartTimeMs: _json.containsKey('reportDataStartTimeMs')
-              ? _json['reportDataStartTimeMs'] as core.String
+          reportDataStartTimeMs: json_.containsKey('reportDataStartTimeMs')
+              ? json_['reportDataStartTimeMs'] as core.String
               : null,
-          status: _json.containsKey('status')
+          status: json_.containsKey('status')
               ? ReportStatus.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
+                  json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1842,20 +1842,20 @@ class ReportStatus {
     this.state,
   });
 
-  ReportStatus.fromJson(core.Map _json)
+  ReportStatus.fromJson(core.Map json_)
       : this(
-          failure: _json.containsKey('failure')
+          failure: json_.containsKey('failure')
               ? ReportFailure.fromJson(
-                  _json['failure'] as core.Map<core.String, core.dynamic>)
+                  json_['failure'] as core.Map<core.String, core.dynamic>)
               : null,
-          finishTimeMs: _json.containsKey('finishTimeMs')
-              ? _json['finishTimeMs'] as core.String
+          finishTimeMs: json_.containsKey('finishTimeMs')
+              ? json_['finishTimeMs'] as core.String
               : null,
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
               : null,
           state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1881,16 +1881,16 @@ class Rule {
     this.name,
   });
 
-  Rule.fromJson(core.Map _json)
+  Rule.fromJson(core.Map json_)
       : this(
           disjunctiveMatchStatements:
-              _json.containsKey('disjunctiveMatchStatements')
-                  ? (_json['disjunctiveMatchStatements'] as core.List)
+              json_.containsKey('disjunctiveMatchStatements')
+                  ? (json_['disjunctiveMatchStatements'] as core.List)
                       .map((value) => DisjunctiveMatchStatement.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1950,19 +1950,19 @@ class RunQueryRequest {
     this.timezoneCode,
   });
 
-  RunQueryRequest.fromJson(core.Map _json)
+  RunQueryRequest.fromJson(core.Map json_)
       : this(
-          dataRange: _json.containsKey('dataRange')
-              ? _json['dataRange'] as core.String
+          dataRange: json_.containsKey('dataRange')
+              ? json_['dataRange'] as core.String
               : null,
-          reportDataEndTimeMs: _json.containsKey('reportDataEndTimeMs')
-              ? _json['reportDataEndTimeMs'] as core.String
+          reportDataEndTimeMs: json_.containsKey('reportDataEndTimeMs')
+              ? json_['reportDataEndTimeMs'] as core.String
               : null,
-          reportDataStartTimeMs: _json.containsKey('reportDataStartTimeMs')
-              ? _json['reportDataStartTimeMs'] as core.String
+          reportDataStartTimeMs: json_.containsKey('reportDataStartTimeMs')
+              ? json_['reportDataStartTimeMs'] as core.String
               : null,
-          timezoneCode: _json.containsKey('timezoneCode')
-              ? _json['timezoneCode'] as core.String
+          timezoneCode: json_.containsKey('timezoneCode')
+              ? json_['timezoneCode'] as core.String
               : null,
         );
 

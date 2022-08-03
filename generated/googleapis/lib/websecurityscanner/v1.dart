@@ -105,21 +105,21 @@ class ProjectsScanConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/scanConfigs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scanConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ScanConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing ScanConfig and its child resources.
@@ -145,18 +145,18 @@ class ProjectsScanConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a ScanConfig.
@@ -182,19 +182,19 @@ class ProjectsScanConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ScanConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ScanConfigs under a given project.
@@ -229,21 +229,21 @@ class ProjectsScanConfigsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/scanConfigs';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scanConfigs';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListScanConfigsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a ScanConfig.
@@ -279,22 +279,22 @@ class ProjectsScanConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'PATCH',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return ScanConfig.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Start a ScanRun according to the given ScanConfig.
@@ -323,20 +323,20 @@ class ProjectsScanConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':start';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':start';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return ScanRun.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -377,18 +377,18 @@ class ProjectsScanConfigsScanRunsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return ScanRun.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ScanRuns under a given ScanConfig, in descending order of ScanRun
@@ -425,21 +425,21 @@ class ProjectsScanConfigsScanRunsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/scanRuns';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/scanRuns';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListScanRunsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops a ScanRun.
@@ -471,20 +471,20 @@ class ProjectsScanConfigsScanRunsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return ScanRun.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -528,21 +528,21 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/crawledUrls';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/crawledUrls';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListCrawledUrlsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -577,19 +577,19 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findingTypeStats';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/findingTypeStats';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFindingTypeStatsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -623,18 +623,18 @@ class ProjectsScanConfigsScanRunsFindingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Finding.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// List Findings under a given ScanRun.
@@ -675,22 +675,22 @@ class ProjectsScanConfigsScanRunsFindingsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/findings';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListFindingsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -711,19 +711,19 @@ class Authentication {
     this.iapCredential,
   });
 
-  Authentication.fromJson(core.Map _json)
+  Authentication.fromJson(core.Map json_)
       : this(
-          customAccount: _json.containsKey('customAccount')
+          customAccount: json_.containsKey('customAccount')
               ? CustomAccount.fromJson(
-                  _json['customAccount'] as core.Map<core.String, core.dynamic>)
+                  json_['customAccount'] as core.Map<core.String, core.dynamic>)
               : null,
-          googleAccount: _json.containsKey('googleAccount')
+          googleAccount: json_.containsKey('googleAccount')
               ? GoogleAccount.fromJson(
-                  _json['googleAccount'] as core.Map<core.String, core.dynamic>)
+                  json_['googleAccount'] as core.Map<core.String, core.dynamic>)
               : null,
-          iapCredential: _json.containsKey('iapCredential')
+          iapCredential: json_.containsKey('iapCredential')
               ? IapCredential.fromJson(
-                  _json['iapCredential'] as core.Map<core.String, core.dynamic>)
+                  json_['iapCredential'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -761,13 +761,13 @@ class CrawledUrl {
     this.url,
   });
 
-  CrawledUrl.fromJson(core.Map _json)
+  CrawledUrl.fromJson(core.Map json_)
       : this(
-          body: _json.containsKey('body') ? _json['body'] as core.String : null,
-          httpMethod: _json.containsKey('httpMethod')
-              ? _json['httpMethod'] as core.String
+          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -803,16 +803,16 @@ class CustomAccount {
     this.username,
   });
 
-  CustomAccount.fromJson(core.Map _json)
+  CustomAccount.fromJson(core.Map json_)
       : this(
-          loginUrl: _json.containsKey('loginUrl')
-              ? _json['loginUrl'] as core.String
+          loginUrl: json_.containsKey('loginUrl')
+              ? json_['loginUrl'] as core.String
               : null,
-          password: _json.containsKey('password')
-              ? _json['password'] as core.String
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
               : null,
-          username: _json.containsKey('username')
-              ? _json['username'] as core.String
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
               : null,
         );
 
@@ -966,64 +966,64 @@ class Finding {
     this.xxe,
   });
 
-  Finding.fromJson(core.Map _json)
+  Finding.fromJson(core.Map json_)
       : this(
-          body: _json.containsKey('body') ? _json['body'] as core.String : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          body: json_.containsKey('body') ? json_['body'] as core.String : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          finalUrl: _json.containsKey('finalUrl')
-              ? _json['finalUrl'] as core.String
+          finalUrl: json_.containsKey('finalUrl')
+              ? json_['finalUrl'] as core.String
               : null,
-          findingType: _json.containsKey('findingType')
-              ? _json['findingType'] as core.String
+          findingType: json_.containsKey('findingType')
+              ? json_['findingType'] as core.String
               : null,
-          form: _json.containsKey('form')
+          form: json_.containsKey('form')
               ? Form.fromJson(
-                  _json['form'] as core.Map<core.String, core.dynamic>)
+                  json_['form'] as core.Map<core.String, core.dynamic>)
               : null,
-          frameUrl: _json.containsKey('frameUrl')
-              ? _json['frameUrl'] as core.String
+          frameUrl: json_.containsKey('frameUrl')
+              ? json_['frameUrl'] as core.String
               : null,
-          fuzzedUrl: _json.containsKey('fuzzedUrl')
-              ? _json['fuzzedUrl'] as core.String
+          fuzzedUrl: json_.containsKey('fuzzedUrl')
+              ? json_['fuzzedUrl'] as core.String
               : null,
-          httpMethod: _json.containsKey('httpMethod')
-              ? _json['httpMethod'] as core.String
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          outdatedLibrary: _json.containsKey('outdatedLibrary')
-              ? OutdatedLibrary.fromJson(_json['outdatedLibrary']
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          outdatedLibrary: json_.containsKey('outdatedLibrary')
+              ? OutdatedLibrary.fromJson(json_['outdatedLibrary']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          reproductionUrl: _json.containsKey('reproductionUrl')
-              ? _json['reproductionUrl'] as core.String
+          reproductionUrl: json_.containsKey('reproductionUrl')
+              ? json_['reproductionUrl'] as core.String
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          trackingId: _json.containsKey('trackingId')
-              ? _json['trackingId'] as core.String
+          trackingId: json_.containsKey('trackingId')
+              ? json_['trackingId'] as core.String
               : null,
-          violatingResource: _json.containsKey('violatingResource')
-              ? ViolatingResource.fromJson(_json['violatingResource']
+          violatingResource: json_.containsKey('violatingResource')
+              ? ViolatingResource.fromJson(json_['violatingResource']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          vulnerableHeaders: _json.containsKey('vulnerableHeaders')
-              ? VulnerableHeaders.fromJson(_json['vulnerableHeaders']
+          vulnerableHeaders: json_.containsKey('vulnerableHeaders')
+              ? VulnerableHeaders.fromJson(json_['vulnerableHeaders']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          vulnerableParameters: _json.containsKey('vulnerableParameters')
-              ? VulnerableParameters.fromJson(_json['vulnerableParameters']
+          vulnerableParameters: json_.containsKey('vulnerableParameters')
+              ? VulnerableParameters.fromJson(json_['vulnerableParameters']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          xss: _json.containsKey('xss')
+          xss: json_.containsKey('xss')
               ? Xss.fromJson(
-                  _json['xss'] as core.Map<core.String, core.dynamic>)
+                  json_['xss'] as core.Map<core.String, core.dynamic>)
               : null,
-          xxe: _json.containsKey('xxe')
+          xxe: json_.containsKey('xxe')
               ? Xxe.fromJson(
-                  _json['xxe'] as core.Map<core.String, core.dynamic>)
+                  json_['xxe'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1068,13 +1068,13 @@ class FindingTypeStats {
     this.findingType,
   });
 
-  FindingTypeStats.fromJson(core.Map _json)
+  FindingTypeStats.fromJson(core.Map json_)
       : this(
-          findingCount: _json.containsKey('findingCount')
-              ? _json['findingCount'] as core.int
+          findingCount: json_.containsKey('findingCount')
+              ? json_['findingCount'] as core.int
               : null,
-          findingType: _json.containsKey('findingType')
-              ? _json['findingType'] as core.String
+          findingType: json_.containsKey('findingType')
+              ? json_['findingType'] as core.String
               : null,
         );
 
@@ -1097,13 +1097,13 @@ class Form {
     this.fields,
   });
 
-  Form.fromJson(core.Map _json)
+  Form.fromJson(core.Map json_)
       : this(
-          actionUri: _json.containsKey('actionUri')
-              ? _json['actionUri'] as core.String
+          actionUri: json_.containsKey('actionUri')
+              ? json_['actionUri'] as core.String
               : null,
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.List)
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -1135,13 +1135,13 @@ class GoogleAccount {
     this.username,
   });
 
-  GoogleAccount.fromJson(core.Map _json)
+  GoogleAccount.fromJson(core.Map json_)
       : this(
-          password: _json.containsKey('password')
-              ? _json['password'] as core.String
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
               : null,
-          username: _json.containsKey('username')
-              ? _json['username'] as core.String
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
               : null,
         );
 
@@ -1164,12 +1164,12 @@ class IapCredential {
     this.iapTestServiceAccountInfo,
   });
 
-  IapCredential.fromJson(core.Map _json)
+  IapCredential.fromJson(core.Map json_)
       : this(
           iapTestServiceAccountInfo:
-              _json.containsKey('iapTestServiceAccountInfo')
+              json_.containsKey('iapTestServiceAccountInfo')
                   ? IapTestServiceAccountInfo.fromJson(
-                      _json['iapTestServiceAccountInfo']
+                      json_['iapTestServiceAccountInfo']
                           as core.Map<core.String, core.dynamic>)
                   : null,
         );
@@ -1193,10 +1193,10 @@ class IapTestServiceAccountInfo {
     this.targetAudienceClientId,
   });
 
-  IapTestServiceAccountInfo.fromJson(core.Map _json)
+  IapTestServiceAccountInfo.fromJson(core.Map json_)
       : this(
-          targetAudienceClientId: _json.containsKey('targetAudienceClientId')
-              ? _json['targetAudienceClientId'] as core.String
+          targetAudienceClientId: json_.containsKey('targetAudienceClientId')
+              ? json_['targetAudienceClientId'] as core.String
               : null,
         );
 
@@ -1220,16 +1220,16 @@ class ListCrawledUrlsResponse {
     this.nextPageToken,
   });
 
-  ListCrawledUrlsResponse.fromJson(core.Map _json)
+  ListCrawledUrlsResponse.fromJson(core.Map json_)
       : this(
-          crawledUrls: _json.containsKey('crawledUrls')
-              ? (_json['crawledUrls'] as core.List)
+          crawledUrls: json_.containsKey('crawledUrls')
+              ? (json_['crawledUrls'] as core.List)
                   .map((value) => CrawledUrl.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1248,10 +1248,10 @@ class ListFindingTypeStatsResponse {
     this.findingTypeStats,
   });
 
-  ListFindingTypeStatsResponse.fromJson(core.Map _json)
+  ListFindingTypeStatsResponse.fromJson(core.Map json_)
       : this(
-          findingTypeStats: _json.containsKey('findingTypeStats')
-              ? (_json['findingTypeStats'] as core.List)
+          findingTypeStats: json_.containsKey('findingTypeStats')
+              ? (json_['findingTypeStats'] as core.List)
                   .map((value) => FindingTypeStats.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1277,16 +1277,16 @@ class ListFindingsResponse {
     this.nextPageToken,
   });
 
-  ListFindingsResponse.fromJson(core.Map _json)
+  ListFindingsResponse.fromJson(core.Map json_)
       : this(
-          findings: _json.containsKey('findings')
-              ? (_json['findings'] as core.List)
+          findings: json_.containsKey('findings')
+              ? (json_['findings'] as core.List)
                   .map((value) => Finding.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
         );
 
@@ -1310,13 +1310,13 @@ class ListScanConfigsResponse {
     this.scanConfigs,
   });
 
-  ListScanConfigsResponse.fromJson(core.Map _json)
+  ListScanConfigsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          scanConfigs: _json.containsKey('scanConfigs')
-              ? (_json['scanConfigs'] as core.List)
+          scanConfigs: json_.containsKey('scanConfigs')
+              ? (json_['scanConfigs'] as core.List)
                   .map((value) => ScanConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1343,13 +1343,13 @@ class ListScanRunsResponse {
     this.scanRuns,
   });
 
-  ListScanRunsResponse.fromJson(core.Map _json)
+  ListScanRunsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          scanRuns: _json.containsKey('scanRuns')
-              ? (_json['scanRuns'] as core.List)
+          scanRuns: json_.containsKey('scanRuns')
+              ? (json_['scanRuns'] as core.List)
                   .map((value) => ScanRun.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1379,18 +1379,18 @@ class OutdatedLibrary {
     this.version,
   });
 
-  OutdatedLibrary.fromJson(core.Map _json)
+  OutdatedLibrary.fromJson(core.Map json_)
       : this(
-          learnMoreUrls: _json.containsKey('learnMoreUrls')
-              ? (_json['learnMoreUrls'] as core.List)
+          learnMoreUrls: json_.containsKey('learnMoreUrls')
+              ? (json_['learnMoreUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          libraryName: _json.containsKey('libraryName')
-              ? _json['libraryName'] as core.String
+          libraryName: json_.containsKey('libraryName')
+              ? json_['libraryName'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -1494,50 +1494,50 @@ class ScanConfig {
     this.userAgent,
   });
 
-  ScanConfig.fromJson(core.Map _json)
+  ScanConfig.fromJson(core.Map json_)
       : this(
-          authentication: _json.containsKey('authentication')
-              ? Authentication.fromJson(_json['authentication']
+          authentication: json_.containsKey('authentication')
+              ? Authentication.fromJson(json_['authentication']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          blacklistPatterns: _json.containsKey('blacklistPatterns')
-              ? (_json['blacklistPatterns'] as core.List)
+          blacklistPatterns: json_.containsKey('blacklistPatterns')
+              ? (json_['blacklistPatterns'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
           exportToSecurityCommandCenter:
-              _json.containsKey('exportToSecurityCommandCenter')
-                  ? _json['exportToSecurityCommandCenter'] as core.String
+              json_.containsKey('exportToSecurityCommandCenter')
+                  ? json_['exportToSecurityCommandCenter'] as core.String
                   : null,
-          ignoreHttpStatusErrors: _json.containsKey('ignoreHttpStatusErrors')
-              ? _json['ignoreHttpStatusErrors'] as core.bool
+          ignoreHttpStatusErrors: json_.containsKey('ignoreHttpStatusErrors')
+              ? json_['ignoreHttpStatusErrors'] as core.bool
               : null,
-          managedScan: _json.containsKey('managedScan')
-              ? _json['managedScan'] as core.bool
+          managedScan: json_.containsKey('managedScan')
+              ? json_['managedScan'] as core.bool
               : null,
           maxQps:
-              _json.containsKey('maxQps') ? _json['maxQps'] as core.int : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          riskLevel: _json.containsKey('riskLevel')
-              ? _json['riskLevel'] as core.String
+              json_.containsKey('maxQps') ? json_['maxQps'] as core.int : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          riskLevel: json_.containsKey('riskLevel')
+              ? json_['riskLevel'] as core.String
               : null,
-          schedule: _json.containsKey('schedule')
+          schedule: json_.containsKey('schedule')
               ? Schedule.fromJson(
-                  _json['schedule'] as core.Map<core.String, core.dynamic>)
+                  json_['schedule'] as core.Map<core.String, core.dynamic>)
               : null,
-          startingUrls: _json.containsKey('startingUrls')
-              ? (_json['startingUrls'] as core.List)
+          startingUrls: json_.containsKey('startingUrls')
+              ? (json_['startingUrls'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          staticIpScan: _json.containsKey('staticIpScan')
-              ? _json['staticIpScan'] as core.bool
+          staticIpScan: json_.containsKey('staticIpScan')
+              ? json_['staticIpScan'] as core.bool
               : null,
-          userAgent: _json.containsKey('userAgent')
-              ? _json['userAgent'] as core.String
+          userAgent: json_.containsKey('userAgent')
+              ? json_['userAgent'] as core.String
               : null,
         );
 
@@ -1665,11 +1665,11 @@ class ScanConfigError {
     this.fieldName,
   });
 
-  ScanConfigError.fromJson(core.Map _json)
+  ScanConfigError.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          fieldName: _json.containsKey('fieldName')
-              ? _json['fieldName'] as core.String
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          fieldName: json_.containsKey('fieldName')
+              ? json_['fieldName'] as core.String
               : null,
         );
 
@@ -1783,39 +1783,39 @@ class ScanRun {
     this.warningTraces,
   });
 
-  ScanRun.fromJson(core.Map _json)
+  ScanRun.fromJson(core.Map json_)
       : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          errorTrace: _json.containsKey('errorTrace')
+          errorTrace: json_.containsKey('errorTrace')
               ? ScanRunErrorTrace.fromJson(
-                  _json['errorTrace'] as core.Map<core.String, core.dynamic>)
+                  json_['errorTrace'] as core.Map<core.String, core.dynamic>)
               : null,
-          executionState: _json.containsKey('executionState')
-              ? _json['executionState'] as core.String
+          executionState: json_.containsKey('executionState')
+              ? json_['executionState'] as core.String
               : null,
-          hasVulnerabilities: _json.containsKey('hasVulnerabilities')
-              ? _json['hasVulnerabilities'] as core.bool
+          hasVulnerabilities: json_.containsKey('hasVulnerabilities')
+              ? json_['hasVulnerabilities'] as core.bool
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          progressPercent: _json.containsKey('progressPercent')
-              ? _json['progressPercent'] as core.int
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          progressPercent: json_.containsKey('progressPercent')
+              ? json_['progressPercent'] as core.int
               : null,
-          resultState: _json.containsKey('resultState')
-              ? _json['resultState'] as core.String
+          resultState: json_.containsKey('resultState')
+              ? json_['resultState'] as core.String
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          urlsCrawledCount: _json.containsKey('urlsCrawledCount')
-              ? _json['urlsCrawledCount'] as core.String
+          urlsCrawledCount: json_.containsKey('urlsCrawledCount')
+              ? json_['urlsCrawledCount'] as core.String
               : null,
-          urlsTestedCount: _json.containsKey('urlsTestedCount')
-              ? _json['urlsTestedCount'] as core.String
+          urlsTestedCount: json_.containsKey('urlsTestedCount')
+              ? json_['urlsTestedCount'] as core.String
               : null,
-          warningTraces: _json.containsKey('warningTraces')
-              ? (_json['warningTraces'] as core.List)
+          warningTraces: json_.containsKey('warningTraces')
+              ? (json_['warningTraces'] as core.List)
                   .map((value) => ScanRunWarningTrace.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1887,14 +1887,14 @@ class ScanRunErrorTrace {
     this.scanConfigError,
   });
 
-  ScanRunErrorTrace.fromJson(core.Map _json)
+  ScanRunErrorTrace.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          mostCommonHttpErrorCode: _json.containsKey('mostCommonHttpErrorCode')
-              ? _json['mostCommonHttpErrorCode'] as core.int
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          mostCommonHttpErrorCode: json_.containsKey('mostCommonHttpErrorCode')
+              ? json_['mostCommonHttpErrorCode'] as core.int
               : null,
-          scanConfigError: _json.containsKey('scanConfigError')
-              ? ScanConfigError.fromJson(_json['scanConfigError']
+          scanConfigError: json_.containsKey('scanConfigError')
+              ? ScanConfigError.fromJson(json_['scanConfigError']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1937,9 +1937,9 @@ class ScanRunWarningTrace {
     this.code,
   });
 
-  ScanRunWarningTrace.fromJson(core.Map _json)
+  ScanRunWarningTrace.fromJson(core.Map json_)
       : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1966,13 +1966,13 @@ class Schedule {
     this.scheduleTime,
   });
 
-  Schedule.fromJson(core.Map _json)
+  Schedule.fromJson(core.Map json_)
       : this(
-          intervalDurationDays: _json.containsKey('intervalDurationDays')
-              ? _json['intervalDurationDays'] as core.int
+          intervalDurationDays: json_.containsKey('intervalDurationDays')
+              ? json_['intervalDurationDays'] as core.int
               : null,
-          scheduleTime: _json.containsKey('scheduleTime')
-              ? _json['scheduleTime'] as core.String
+          scheduleTime: json_.containsKey('scheduleTime')
+              ? json_['scheduleTime'] as core.String
               : null,
         );
 
@@ -2003,13 +2003,13 @@ class ViolatingResource {
     this.resourceUrl,
   });
 
-  ViolatingResource.fromJson(core.Map _json)
+  ViolatingResource.fromJson(core.Map json_)
       : this(
-          contentType: _json.containsKey('contentType')
-              ? _json['contentType'] as core.String
+          contentType: json_.containsKey('contentType')
+              ? json_['contentType'] as core.String
               : null,
-          resourceUrl: _json.containsKey('resourceUrl')
-              ? _json['resourceUrl'] as core.String
+          resourceUrl: json_.containsKey('resourceUrl')
+              ? json_['resourceUrl'] as core.String
               : null,
         );
 
@@ -2032,16 +2032,16 @@ class VulnerableHeaders {
     this.missingHeaders,
   });
 
-  VulnerableHeaders.fromJson(core.Map _json)
+  VulnerableHeaders.fromJson(core.Map json_)
       : this(
-          headers: _json.containsKey('headers')
-              ? (_json['headers'] as core.List)
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.List)
                   .map((value) => Header.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          missingHeaders: _json.containsKey('missingHeaders')
-              ? (_json['missingHeaders'] as core.List)
+          missingHeaders: json_.containsKey('missingHeaders')
+              ? (json_['missingHeaders'] as core.List)
                   .map((value) => Header.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -2063,10 +2063,10 @@ class VulnerableParameters {
     this.parameterNames,
   });
 
-  VulnerableParameters.fromJson(core.Map _json)
+  VulnerableParameters.fromJson(core.Map json_)
       : this(
-          parameterNames: _json.containsKey('parameterNames')
-              ? (_json['parameterNames'] as core.List)
+          parameterNames: json_.containsKey('parameterNames')
+              ? (json_['parameterNames'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2121,21 +2121,21 @@ class Xss {
     this.storedXssSeedingUrl,
   });
 
-  Xss.fromJson(core.Map _json)
+  Xss.fromJson(core.Map json_)
       : this(
-          attackVector: _json.containsKey('attackVector')
-              ? _json['attackVector'] as core.String
+          attackVector: json_.containsKey('attackVector')
+              ? json_['attackVector'] as core.String
               : null,
-          errorMessage: _json.containsKey('errorMessage')
-              ? _json['errorMessage'] as core.String
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
               : null,
-          stackTraces: _json.containsKey('stackTraces')
-              ? (_json['stackTraces'] as core.List)
+          stackTraces: json_.containsKey('stackTraces')
+              ? (json_['stackTraces'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          storedXssSeedingUrl: _json.containsKey('storedXssSeedingUrl')
-              ? _json['storedXssSeedingUrl'] as core.String
+          storedXssSeedingUrl: json_.containsKey('storedXssSeedingUrl')
+              ? json_['storedXssSeedingUrl'] as core.String
               : null,
         );
 
@@ -2167,13 +2167,13 @@ class Xxe {
     this.payloadValue,
   });
 
-  Xxe.fromJson(core.Map _json)
+  Xxe.fromJson(core.Map json_)
       : this(
-          payloadLocation: _json.containsKey('payloadLocation')
-              ? _json['payloadLocation'] as core.String
+          payloadLocation: json_.containsKey('payloadLocation')
+              ? json_['payloadLocation'] as core.String
               : null,
-          payloadValue: _json.containsKey('payloadValue')
-              ? _json['payloadValue'] as core.String
+          payloadValue: json_.containsKey('payloadValue')
+              ? json_['payloadValue'] as core.String
               : null,
         );
 

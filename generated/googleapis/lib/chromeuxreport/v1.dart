@@ -79,21 +79,21 @@ class RecordsResource {
     QueryRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    const _url = 'v1/records:queryRecord';
+    const url_ = 'v1/records:queryRecord';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
     return QueryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -132,13 +132,13 @@ class Bin {
     this.start,
   });
 
-  Bin.fromJson(core.Map _json)
+  Bin.fromJson(core.Map json_)
       : this(
-          density: _json.containsKey('density')
-              ? (_json['density'] as core.num).toDouble()
+          density: json_.containsKey('density')
+              ? (json_['density'] as core.num).toDouble()
               : null,
-          end: _json.containsKey('end') ? _json['end'] : null,
-          start: _json.containsKey('start') ? _json['start'] : null,
+          end: json_.containsKey('end') ? json_['end'] : null,
+          start: json_.containsKey('start') ? json_['start'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -191,18 +191,18 @@ class Key {
     this.url,
   });
 
-  Key.fromJson(core.Map _json)
+  Key.fromJson(core.Map json_)
       : this(
-          effectiveConnectionType: _json.containsKey('effectiveConnectionType')
-              ? _json['effectiveConnectionType'] as core.String
+          effectiveConnectionType: json_.containsKey('effectiveConnectionType')
+              ? json_['effectiveConnectionType'] as core.String
               : null,
-          formFactor: _json.containsKey('formFactor')
-              ? _json['formFactor'] as core.String
+          formFactor: json_.containsKey('formFactor')
+              ? json_['formFactor'] as core.String
               : null,
-          origin: _json.containsKey('origin')
-              ? _json['origin'] as core.String
+          origin: json_.containsKey('origin')
+              ? json_['origin'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -237,17 +237,17 @@ class Metric {
     this.percentiles,
   });
 
-  Metric.fromJson(core.Map _json)
+  Metric.fromJson(core.Map json_)
       : this(
-          histogram: _json.containsKey('histogram')
-              ? (_json['histogram'] as core.List)
+          histogram: json_.containsKey('histogram')
+              ? (json_['histogram'] as core.List)
                   .map((value) => Bin.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          percentiles: _json.containsKey('percentiles')
+          percentiles: json_.containsKey('percentiles')
               ? Percentiles.fromJson(
-                  _json['percentiles'] as core.Map<core.String, core.dynamic>)
+                  json_['percentiles'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -273,9 +273,9 @@ class Percentiles {
     this.p75,
   });
 
-  Percentiles.fromJson(core.Map _json)
+  Percentiles.fromJson(core.Map json_)
       : this(
-          p75: _json.containsKey('p75') ? _json['p75'] : null,
+          p75: json_.containsKey('p75') ? json_['p75'] : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -339,23 +339,23 @@ class QueryRequest {
     this.url,
   });
 
-  QueryRequest.fromJson(core.Map _json)
+  QueryRequest.fromJson(core.Map json_)
       : this(
-          effectiveConnectionType: _json.containsKey('effectiveConnectionType')
-              ? _json['effectiveConnectionType'] as core.String
+          effectiveConnectionType: json_.containsKey('effectiveConnectionType')
+              ? json_['effectiveConnectionType'] as core.String
               : null,
-          formFactor: _json.containsKey('formFactor')
-              ? _json['formFactor'] as core.String
+          formFactor: json_.containsKey('formFactor')
+              ? json_['formFactor'] as core.String
               : null,
-          metrics: _json.containsKey('metrics')
-              ? (_json['metrics'] as core.List)
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          origin: _json.containsKey('origin')
-              ? _json['origin'] as core.String
+          origin: json_.containsKey('origin')
+              ? json_['origin'] as core.String
               : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -387,14 +387,14 @@ class QueryResponse {
     this.urlNormalizationDetails,
   });
 
-  QueryResponse.fromJson(core.Map _json)
+  QueryResponse.fromJson(core.Map json_)
       : this(
-          record: _json.containsKey('record')
+          record: json_.containsKey('record')
               ? Record.fromJson(
-                  _json['record'] as core.Map<core.String, core.dynamic>)
+                  json_['record'] as core.Map<core.String, core.dynamic>)
               : null,
-          urlNormalizationDetails: _json.containsKey('urlNormalizationDetails')
-              ? UrlNormalization.fromJson(_json['urlNormalizationDetails']
+          urlNormalizationDetails: json_.containsKey('urlNormalizationDetails')
+              ? UrlNormalization.fromJson(json_['urlNormalizationDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -428,14 +428,14 @@ class Record {
     this.metrics,
   });
 
-  Record.fromJson(core.Map _json)
+  Record.fromJson(core.Map json_)
       : this(
-          key: _json.containsKey('key')
+          key: json_.containsKey('key')
               ? Key.fromJson(
-                  _json['key'] as core.Map<core.String, core.dynamic>)
+                  json_['key'] as core.Map<core.String, core.dynamic>)
               : null,
-          metrics: _json.containsKey('metrics')
-              ? (_json['metrics'] as core.Map<core.String, core.dynamic>).map(
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     Metric.fromJson(
@@ -471,13 +471,13 @@ class UrlNormalization {
     this.originalUrl,
   });
 
-  UrlNormalization.fromJson(core.Map _json)
+  UrlNormalization.fromJson(core.Map json_)
       : this(
-          normalizedUrl: _json.containsKey('normalizedUrl')
-              ? _json['normalizedUrl'] as core.String
+          normalizedUrl: json_.containsKey('normalizedUrl')
+              ? json_['normalizedUrl'] as core.String
               : null,
-          originalUrl: _json.containsKey('originalUrl')
-              ? _json['originalUrl'] as core.String
+          originalUrl: json_.containsKey('originalUrl')
+              ? json_['originalUrl'] as core.String
               : null,
         );
 

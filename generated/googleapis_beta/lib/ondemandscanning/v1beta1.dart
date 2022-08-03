@@ -117,18 +117,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':cancel';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':cancel';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -157,18 +157,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'DELETE',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -196,18 +196,18 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name');
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -249,22 +249,22 @@ class ProjectsLocationsOperationsResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + '/operations';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + '/operations';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Waits until the specified long-running operation is done or reaches at
@@ -304,19 +304,19 @@ class ProjectsLocationsOperationsResource {
     core.String? timeout,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (timeout != null) 'timeout': [timeout],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1beta1/' + core.Uri.encodeFull('$name') + ':wait';
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':wait';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -354,21 +354,21 @@ class ProjectsLocationsScansResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/scans:analyzePackages';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'POST',
-      body: _body,
-      queryParams: _queryParams,
+      body: body_,
+      queryParams: queryParams_,
     );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -409,22 +409,22 @@ class ProjectsLocationsScansVulnerabilitiesResource {
     core.String? pageToken,
     core.String? $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
+    final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url =
+    final url_ =
         'v1beta1/' + core.Uri.encodeFull('$parent') + '/vulnerabilities';
 
-    final _response = await _requester.request(
-      _url,
+    final response_ = await _requester.request(
+      url_,
       'GET',
-      queryParams: _queryParams,
+      queryParams: queryParams_,
     );
     return ListVulnerabilitiesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -452,16 +452,16 @@ class AnalyzePackagesRequest {
     this.resourceUri,
   });
 
-  AnalyzePackagesRequest.fromJson(core.Map _json)
+  AnalyzePackagesRequest.fromJson(core.Map json_)
       : this(
-          packages: _json.containsKey('packages')
-              ? (_json['packages'] as core.List)
+          packages: json_.containsKey('packages')
+              ? (json_['packages'] as core.List)
                   .map((value) => PackageData.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
+          resourceUri: json_.containsKey('resourceUri')
+              ? json_['resourceUri'] as core.String
               : null,
         );
 
@@ -502,9 +502,9 @@ class AttestationOccurrence {
   core.List<core.int> get serializedPayloadAsBytes =>
       convert.base64.decode(serializedPayload!);
 
-  set serializedPayloadAsBytes(core.List<core.int> _bytes) {
+  set serializedPayloadAsBytes(core.List<core.int> bytes_) {
     serializedPayload =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   /// One or more signatures over `serialized_payload`.
@@ -520,19 +520,19 @@ class AttestationOccurrence {
     this.signatures,
   });
 
-  AttestationOccurrence.fromJson(core.Map _json)
+  AttestationOccurrence.fromJson(core.Map json_)
       : this(
-          jwts: _json.containsKey('jwts')
-              ? (_json['jwts'] as core.List)
+          jwts: json_.containsKey('jwts')
+              ? (json_['jwts'] as core.List)
                   .map((value) => Jwt.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          serializedPayload: _json.containsKey('serializedPayload')
-              ? _json['serializedPayload'] as core.String
+          serializedPayload: json_.containsKey('serializedPayload')
+              ? json_['serializedPayload'] as core.String
               : null,
-          signatures: _json.containsKey('signatures')
-              ? (_json['signatures'] as core.List)
+          signatures: json_.containsKey('signatures')
+              ? (json_['signatures'] as core.List)
                   .map((value) => Signature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -584,22 +584,22 @@ class BuildOccurrence {
     this.provenanceBytes,
   });
 
-  BuildOccurrence.fromJson(core.Map _json)
+  BuildOccurrence.fromJson(core.Map json_)
       : this(
-          intotoProvenance: _json.containsKey('intotoProvenance')
-              ? InTotoProvenance.fromJson(_json['intotoProvenance']
+          intotoProvenance: json_.containsKey('intotoProvenance')
+              ? InTotoProvenance.fromJson(json_['intotoProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          intotoStatement: _json.containsKey('intotoStatement')
-              ? InTotoStatement.fromJson(_json['intotoStatement']
+          intotoStatement: json_.containsKey('intotoStatement')
+              ? InTotoStatement.fromJson(json_['intotoStatement']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          provenance: _json.containsKey('provenance')
+          provenance: json_.containsKey('provenance')
               ? BuildProvenance.fromJson(
-                  _json['provenance'] as core.Map<core.String, core.dynamic>)
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
-          provenanceBytes: _json.containsKey('provenanceBytes')
-              ? _json['provenanceBytes'] as core.String
+          provenanceBytes: json_.containsKey('provenanceBytes')
+              ? json_['provenanceBytes'] as core.String
               : null,
         );
 
@@ -679,10 +679,10 @@ class BuildProvenance {
     this.triggerId,
   });
 
-  BuildProvenance.fromJson(core.Map _json)
+  BuildProvenance.fromJson(core.Map json_)
       : this(
-          buildOptions: _json.containsKey('buildOptions')
-              ? (_json['buildOptions'] as core.Map<core.String, core.dynamic>)
+          buildOptions: json_.containsKey('buildOptions')
+              ? (json_['buildOptions'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -690,46 +690,46 @@ class BuildProvenance {
                   ),
                 )
               : null,
-          builderVersion: _json.containsKey('builderVersion')
-              ? _json['builderVersion'] as core.String
+          builderVersion: json_.containsKey('builderVersion')
+              ? json_['builderVersion'] as core.String
               : null,
-          builtArtifacts: _json.containsKey('builtArtifacts')
-              ? (_json['builtArtifacts'] as core.List)
+          builtArtifacts: json_.containsKey('builtArtifacts')
+              ? (json_['builtArtifacts'] as core.List)
                   .map((value) => Artifact.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          commands: _json.containsKey('commands')
-              ? (_json['commands'] as core.List)
+          commands: json_.containsKey('commands')
+              ? (json_['commands'] as core.List)
                   .map((value) => Command.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          creator: _json.containsKey('creator')
-              ? _json['creator'] as core.String
+          creator: json_.containsKey('creator')
+              ? json_['creator'] as core.String
               : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
               : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          logsUri: _json.containsKey('logsUri')
-              ? _json['logsUri'] as core.String
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          logsUri: json_.containsKey('logsUri')
+              ? json_['logsUri'] as core.String
               : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          sourceProvenance: _json.containsKey('sourceProvenance')
-              ? Source.fromJson(_json['sourceProvenance']
+          sourceProvenance: json_.containsKey('sourceProvenance')
+              ? Source.fromJson(json_['sourceProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
               : null,
-          triggerId: _json.containsKey('triggerId')
-              ? _json['triggerId'] as core.String
+          triggerId: json_.containsKey('triggerId')
+              ? json_['triggerId'] as core.String
               : null,
         );
 
@@ -849,42 +849,42 @@ class CVSS {
     this.userInteraction,
   });
 
-  CVSS.fromJson(core.Map _json)
+  CVSS.fromJson(core.Map json_)
       : this(
-          attackComplexity: _json.containsKey('attackComplexity')
-              ? _json['attackComplexity'] as core.String
+          attackComplexity: json_.containsKey('attackComplexity')
+              ? json_['attackComplexity'] as core.String
               : null,
-          attackVector: _json.containsKey('attackVector')
-              ? _json['attackVector'] as core.String
+          attackVector: json_.containsKey('attackVector')
+              ? json_['attackVector'] as core.String
               : null,
-          authentication: _json.containsKey('authentication')
-              ? _json['authentication'] as core.String
+          authentication: json_.containsKey('authentication')
+              ? json_['authentication'] as core.String
               : null,
-          availabilityImpact: _json.containsKey('availabilityImpact')
-              ? _json['availabilityImpact'] as core.String
+          availabilityImpact: json_.containsKey('availabilityImpact')
+              ? json_['availabilityImpact'] as core.String
               : null,
-          baseScore: _json.containsKey('baseScore')
-              ? (_json['baseScore'] as core.num).toDouble()
+          baseScore: json_.containsKey('baseScore')
+              ? (json_['baseScore'] as core.num).toDouble()
               : null,
-          confidentialityImpact: _json.containsKey('confidentialityImpact')
-              ? _json['confidentialityImpact'] as core.String
+          confidentialityImpact: json_.containsKey('confidentialityImpact')
+              ? json_['confidentialityImpact'] as core.String
               : null,
-          exploitabilityScore: _json.containsKey('exploitabilityScore')
-              ? (_json['exploitabilityScore'] as core.num).toDouble()
+          exploitabilityScore: json_.containsKey('exploitabilityScore')
+              ? (json_['exploitabilityScore'] as core.num).toDouble()
               : null,
-          impactScore: _json.containsKey('impactScore')
-              ? (_json['impactScore'] as core.num).toDouble()
+          impactScore: json_.containsKey('impactScore')
+              ? (json_['impactScore'] as core.num).toDouble()
               : null,
-          integrityImpact: _json.containsKey('integrityImpact')
-              ? _json['integrityImpact'] as core.String
+          integrityImpact: json_.containsKey('integrityImpact')
+              ? json_['integrityImpact'] as core.String
               : null,
-          privilegesRequired: _json.containsKey('privilegesRequired')
-              ? _json['privilegesRequired'] as core.String
+          privilegesRequired: json_.containsKey('privilegesRequired')
+              ? json_['privilegesRequired'] as core.String
               : null,
           scope:
-              _json.containsKey('scope') ? _json['scope'] as core.String : null,
-          userInteraction: _json.containsKey('userInteraction')
-              ? _json['userInteraction'] as core.String
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          userInteraction: json_.containsKey('userInteraction')
+              ? json_['userInteraction'] as core.String
               : null,
         );
 
@@ -921,12 +921,12 @@ class Category {
     this.name,
   });
 
-  Category.fromJson(core.Map _json)
+  Category.fromJson(core.Map json_)
       : this(
-          categoryId: _json.containsKey('categoryId')
-              ? _json['categoryId'] as core.String
+          categoryId: json_.containsKey('categoryId')
+              ? json_['categoryId'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -953,18 +953,18 @@ class CloudRepoSourceContext {
     this.revisionId,
   });
 
-  CloudRepoSourceContext.fromJson(core.Map _json)
+  CloudRepoSourceContext.fromJson(core.Map json_)
       : this(
-          aliasContext: _json.containsKey('aliasContext')
+          aliasContext: json_.containsKey('aliasContext')
               ? AliasContext.fromJson(
-                  _json['aliasContext'] as core.Map<core.String, core.dynamic>)
+                  json_['aliasContext'] as core.Map<core.String, core.dynamic>)
               : null,
-          repoId: _json.containsKey('repoId')
+          repoId: json_.containsKey('repoId')
               ? RepoId.fromJson(
-                  _json['repoId'] as core.Map<core.String, core.dynamic>)
+                  json_['repoId'] as core.Map<core.String, core.dynamic>)
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
         );
 
@@ -993,13 +993,13 @@ class ComplianceOccurrence {
     this.nonCompliantFiles,
   });
 
-  ComplianceOccurrence.fromJson(core.Map _json)
+  ComplianceOccurrence.fromJson(core.Map json_)
       : this(
-          nonComplianceReason: _json.containsKey('nonComplianceReason')
-              ? _json['nonComplianceReason'] as core.String
+          nonComplianceReason: json_.containsKey('nonComplianceReason')
+              ? json_['nonComplianceReason'] as core.String
               : null,
-          nonCompliantFiles: _json.containsKey('nonCompliantFiles')
-              ? (_json['nonCompliantFiles'] as core.List)
+          nonCompliantFiles: json_.containsKey('nonCompliantFiles')
+              ? (json_['nonCompliantFiles'] as core.List)
                   .map((value) => NonCompliantFile.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1028,15 +1028,15 @@ class DSSEAttestationOccurrence {
     this.statement,
   });
 
-  DSSEAttestationOccurrence.fromJson(core.Map _json)
+  DSSEAttestationOccurrence.fromJson(core.Map json_)
       : this(
-          envelope: _json.containsKey('envelope')
+          envelope: json_.containsKey('envelope')
               ? Envelope.fromJson(
-                  _json['envelope'] as core.Map<core.String, core.dynamic>)
+                  json_['envelope'] as core.Map<core.String, core.dynamic>)
               : null,
-          statement: _json.containsKey('statement')
+          statement: json_.containsKey('statement')
               ? InTotoStatement.fromJson(
-                  _json['statement'] as core.Map<core.String, core.dynamic>)
+                  json_['statement'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1105,34 +1105,34 @@ class DiscoveryOccurrence {
     this.lastScanTime,
   });
 
-  DiscoveryOccurrence.fromJson(core.Map _json)
+  DiscoveryOccurrence.fromJson(core.Map json_)
       : this(
-          analysisCompleted: _json.containsKey('analysisCompleted')
-              ? AnalysisCompleted.fromJson(_json['analysisCompleted']
+          analysisCompleted: json_.containsKey('analysisCompleted')
+              ? AnalysisCompleted.fromJson(json_['analysisCompleted']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          analysisError: _json.containsKey('analysisError')
-              ? (_json['analysisError'] as core.List)
+          analysisError: json_.containsKey('analysisError')
+              ? (json_['analysisError'] as core.List)
                   .map((value) => Status.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          analysisStatus: _json.containsKey('analysisStatus')
-              ? _json['analysisStatus'] as core.String
+          analysisStatus: json_.containsKey('analysisStatus')
+              ? json_['analysisStatus'] as core.String
               : null,
-          analysisStatusError: _json.containsKey('analysisStatusError')
-              ? Status.fromJson(_json['analysisStatusError']
+          analysisStatusError: json_.containsKey('analysisStatusError')
+              ? Status.fromJson(json_['analysisStatusError']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          archiveTime: _json.containsKey('archiveTime')
-              ? _json['archiveTime'] as core.String
+          archiveTime: json_.containsKey('archiveTime')
+              ? json_['archiveTime'] as core.String
               : null,
-          continuousAnalysis: _json.containsKey('continuousAnalysis')
-              ? _json['continuousAnalysis'] as core.String
+          continuousAnalysis: json_.containsKey('continuousAnalysis')
+              ? json_['continuousAnalysis'] as core.String
               : null,
-          cpe: _json.containsKey('cpe') ? _json['cpe'] as core.String : null,
-          lastScanTime: _json.containsKey('lastScanTime')
-              ? _json['lastScanTime'] as core.String
+          cpe: json_.containsKey('cpe') ? json_['cpe'] as core.String : null,
+          lastScanTime: json_.containsKey('lastScanTime')
+              ? json_['lastScanTime'] as core.String
               : null,
         );
 
@@ -1166,9 +1166,9 @@ class Envelope {
   core.String? payload;
   core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
 
-  set payloadAsBytes(core.List<core.int> _bytes) {
+  set payloadAsBytes(core.List<core.int> bytes_) {
     payload =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   core.String? payloadType;
@@ -1180,16 +1180,16 @@ class Envelope {
     this.signatures,
   });
 
-  Envelope.fromJson(core.Map _json)
+  Envelope.fromJson(core.Map json_)
       : this(
-          payload: _json.containsKey('payload')
-              ? _json['payload'] as core.String
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.String
               : null,
-          payloadType: _json.containsKey('payloadType')
-              ? _json['payloadType'] as core.String
+          payloadType: json_.containsKey('payloadType')
+              ? json_['payloadType'] as core.String
               : null,
-          signatures: _json.containsKey('signatures')
-              ? (_json['signatures'] as core.List)
+          signatures: json_.containsKey('signatures')
+              ? (json_['signatures'] as core.List)
                   .map((value) => EnvelopeSignature.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1217,10 +1217,10 @@ class FileHashes {
     this.fileHash,
   });
 
-  FileHashes.fromJson(core.Map _json)
+  FileHashes.fromJson(core.Map json_)
       : this(
-          fileHash: _json.containsKey('fileHash')
-              ? (_json['fileHash'] as core.List)
+          fileHash: json_.containsKey('fileHash')
+              ? (json_['fileHash'] as core.List)
                   .map((value) => Hash.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1262,20 +1262,20 @@ class GerritSourceContext {
     this.revisionId,
   });
 
-  GerritSourceContext.fromJson(core.Map _json)
+  GerritSourceContext.fromJson(core.Map json_)
       : this(
-          aliasContext: _json.containsKey('aliasContext')
+          aliasContext: json_.containsKey('aliasContext')
               ? AliasContext.fromJson(
-                  _json['aliasContext'] as core.Map<core.String, core.dynamic>)
+                  json_['aliasContext'] as core.Map<core.String, core.dynamic>)
               : null,
-          gerritProject: _json.containsKey('gerritProject')
-              ? _json['gerritProject'] as core.String
+          gerritProject: json_.containsKey('gerritProject')
+              ? json_['gerritProject'] as core.String
               : null,
-          hostUri: _json.containsKey('hostUri')
-              ? _json['hostUri'] as core.String
+          hostUri: json_.containsKey('hostUri')
+              ? json_['hostUri'] as core.String
               : null,
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
               : null,
         );
 
@@ -1311,16 +1311,16 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
     this.parameters,
   });
 
-  GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(core.Map _json)
+  GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(core.Map json_)
       : this(
-          environment: _json.containsKey('environment')
-              ? _json['environment'] as core.bool
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.bool
               : null,
-          materials: _json.containsKey('materials')
-              ? _json['materials'] as core.bool
+          materials: json_.containsKey('materials')
+              ? json_['materials'] as core.bool
               : null,
-          parameters: _json.containsKey('parameters')
-              ? _json['parameters'] as core.bool
+          parameters: json_.containsKey('parameters')
+              ? json_['parameters'] as core.bool
               : null,
         );
 
@@ -1345,20 +1345,20 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
     this.uri,
   });
 
-  GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(core.Map _json)
+  GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(core.Map json_)
       : this(
-          digest: _json.containsKey('digest')
-              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+          digest: json_.containsKey('digest')
+              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          entryPoint: _json.containsKey('entryPoint')
-              ? _json['entryPoint'] as core.String
+          entryPoint: json_.containsKey('entryPoint')
+              ? json_['entryPoint'] as core.String
               : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1390,17 +1390,17 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
     this.parameters,
   });
 
-  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(core.Map _json)
+  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(core.Map json_)
       : this(
-          configSource: _json.containsKey('configSource')
+          configSource: json_.containsKey('configSource')
               ? GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromJson(
-                  _json['configSource'] as core.Map<core.String, core.dynamic>)
+                  json_['configSource'] as core.Map<core.String, core.dynamic>)
               : null,
-          environment: _json.containsKey('environment')
-              ? _json['environment'] as core.Map<core.String, core.dynamic>
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.Map<core.String, core.dynamic>
               : null,
-          parameters: _json.containsKey('parameters')
-              ? _json['parameters'] as core.Map<core.String, core.dynamic>
+          parameters: json_.containsKey('parameters')
+              ? json_['parameters'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -1431,23 +1431,23 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
     this.reproducible,
   });
 
-  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(core.Map _json)
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(core.Map json_)
       : this(
-          buildFinishedOn: _json.containsKey('buildFinishedOn')
-              ? _json['buildFinishedOn'] as core.String
+          buildFinishedOn: json_.containsKey('buildFinishedOn')
+              ? json_['buildFinishedOn'] as core.String
               : null,
-          buildInvocationId: _json.containsKey('buildInvocationId')
-              ? _json['buildInvocationId'] as core.String
+          buildInvocationId: json_.containsKey('buildInvocationId')
+              ? json_['buildInvocationId'] as core.String
               : null,
-          buildStartedOn: _json.containsKey('buildStartedOn')
-              ? _json['buildStartedOn'] as core.String
+          buildStartedOn: json_.containsKey('buildStartedOn')
+              ? json_['buildStartedOn'] as core.String
               : null,
-          completeness: _json.containsKey('completeness')
+          completeness: json_.containsKey('completeness')
               ? GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromJson(
-                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+                  json_['completeness'] as core.Map<core.String, core.dynamic>)
               : null,
-          reproducible: _json.containsKey('reproducible')
-              ? _json['reproducible'] as core.bool
+          reproducible: json_.containsKey('reproducible')
+              ? json_['reproducible'] as core.bool
               : null,
         );
 
@@ -1473,9 +1473,9 @@ class Hash {
   core.String? value;
   core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
-  set valueAsBytes(core.List<core.int> _bytes) {
+  set valueAsBytes(core.List<core.int> bytes_) {
     value =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
   Hash({
@@ -1483,11 +1483,11 @@ class Hash {
     this.value,
   });
 
-  Hash.fromJson(core.Map _json)
+  Hash.fromJson(core.Map json_)
       : this(
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
+              json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1509,13 +1509,13 @@ class Identity {
     this.updateId,
   });
 
-  Identity.fromJson(core.Map _json)
+  Identity.fromJson(core.Map json_)
       : this(
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.int
+          revision: json_.containsKey('revision')
+              ? json_['revision'] as core.int
               : null,
-          updateId: _json.containsKey('updateId')
-              ? _json['updateId'] as core.String
+          updateId: json_.containsKey('updateId')
+              ? json_['updateId'] as core.String
               : null,
         );
 
@@ -1557,20 +1557,20 @@ class ImageOccurrence {
     this.layerInfo,
   });
 
-  ImageOccurrence.fromJson(core.Map _json)
+  ImageOccurrence.fromJson(core.Map json_)
       : this(
-          baseResourceUrl: _json.containsKey('baseResourceUrl')
-              ? _json['baseResourceUrl'] as core.String
+          baseResourceUrl: json_.containsKey('baseResourceUrl')
+              ? json_['baseResourceUrl'] as core.String
               : null,
-          distance: _json.containsKey('distance')
-              ? _json['distance'] as core.int
+          distance: json_.containsKey('distance')
+              ? json_['distance'] as core.int
               : null,
-          fingerprint: _json.containsKey('fingerprint')
+          fingerprint: json_.containsKey('fingerprint')
               ? Fingerprint.fromJson(
-                  _json['fingerprint'] as core.Map<core.String, core.dynamic>)
+                  json_['fingerprint'] as core.Map<core.String, core.dynamic>)
               : null,
-          layerInfo: _json.containsKey('layerInfo')
-              ? (_json['layerInfo'] as core.List)
+          layerInfo: json_.containsKey('layerInfo')
+              ? (json_['layerInfo'] as core.List)
                   .map((value) => Layer.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1611,24 +1611,24 @@ class InTotoProvenance {
     this.recipe,
   });
 
-  InTotoProvenance.fromJson(core.Map _json)
+  InTotoProvenance.fromJson(core.Map json_)
       : this(
-          builderConfig: _json.containsKey('builderConfig')
+          builderConfig: json_.containsKey('builderConfig')
               ? BuilderConfig.fromJson(
-                  _json['builderConfig'] as core.Map<core.String, core.dynamic>)
+                  json_['builderConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          materials: _json.containsKey('materials')
-              ? (_json['materials'] as core.List)
+          materials: json_.containsKey('materials')
+              ? (json_['materials'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? Metadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          recipe: _json.containsKey('recipe')
+          recipe: json_.containsKey('recipe')
               ? Recipe.fromJson(
-                  _json['recipe'] as core.Map<core.String, core.dynamic>)
+                  json_['recipe'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1665,27 +1665,27 @@ class InTotoStatement {
     this.subject,
   });
 
-  InTotoStatement.fromJson(core.Map _json)
+  InTotoStatement.fromJson(core.Map json_)
       : this(
           P_type:
-              _json.containsKey('_type') ? _json['_type'] as core.String : null,
-          predicateType: _json.containsKey('predicateType')
-              ? _json['predicateType'] as core.String
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
               : null,
-          provenance: _json.containsKey('provenance')
+          provenance: json_.containsKey('provenance')
               ? InTotoProvenance.fromJson(
-                  _json['provenance'] as core.Map<core.String, core.dynamic>)
+                  json_['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
-          slsaProvenance: _json.containsKey('slsaProvenance')
-              ? SlsaProvenance.fromJson(_json['slsaProvenance']
+          slsaProvenance: json_.containsKey('slsaProvenance')
+              ? SlsaProvenance.fromJson(json_['slsaProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          slsaProvenanceZeroTwo: _json.containsKey('slsaProvenanceZeroTwo')
-              ? SlsaProvenanceZeroTwo.fromJson(_json['slsaProvenanceZeroTwo']
+          slsaProvenanceZeroTwo: json_.containsKey('slsaProvenanceZeroTwo')
+              ? SlsaProvenanceZeroTwo.fromJson(json_['slsaProvenanceZeroTwo']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          subject: _json.containsKey('subject')
-              ? (_json['subject'] as core.List)
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
                   .map((value) => Subject.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1714,10 +1714,10 @@ class Jwt {
     this.compactJwt,
   });
 
-  Jwt.fromJson(core.Map _json)
+  Jwt.fromJson(core.Map json_)
       : this(
-          compactJwt: _json.containsKey('compactJwt')
-              ? _json['compactJwt'] as core.String
+          compactJwt: json_.containsKey('compactJwt')
+              ? json_['compactJwt'] as core.String
               : null,
         );
 
@@ -1737,13 +1737,13 @@ class LanguagePackageDependency {
     this.version,
   });
 
-  LanguagePackageDependency.fromJson(core.Map _json)
+  LanguagePackageDependency.fromJson(core.Map json_)
       : this(
-          package: _json.containsKey('package')
-              ? _json['package'] as core.String
+          package: json_.containsKey('package')
+              ? json_['package'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -1771,13 +1771,13 @@ class Layer {
     this.directive,
   });
 
-  Layer.fromJson(core.Map _json)
+  Layer.fromJson(core.Map json_)
       : this(
-          arguments: _json.containsKey('arguments')
-              ? _json['arguments'] as core.String
+          arguments: json_.containsKey('arguments')
+              ? json_['arguments'] as core.String
               : null,
-          directive: _json.containsKey('directive')
-              ? _json['directive'] as core.String
+          directive: json_.containsKey('directive')
+              ? json_['directive'] as core.String
               : null,
         );
 
@@ -1803,13 +1803,13 @@ class ListOperationsResponse {
     this.operations,
   });
 
-  ListOperationsResponse.fromJson(core.Map _json)
+  ListOperationsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
                   .map((value) => Operation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1837,13 +1837,13 @@ class ListVulnerabilitiesResponse {
     this.occurrences,
   });
 
-  ListVulnerabilitiesResponse.fromJson(core.Map _json)
+  ListVulnerabilitiesResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
               : null,
-          occurrences: _json.containsKey('occurrences')
-              ? (_json['occurrences'] as core.List)
+          occurrences: json_.containsKey('occurrences')
+              ? (json_['occurrences'] as core.List)
                   .map((value) => Occurrence.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1880,15 +1880,15 @@ class Location {
     this.version,
   });
 
-  Location.fromJson(core.Map _json)
+  Location.fromJson(core.Map json_)
       : this(
-          cpeUri: _json.containsKey('cpeUri')
-              ? _json['cpeUri'] as core.String
+          cpeUri: json_.containsKey('cpeUri')
+              ? json_['cpeUri'] as core.String
               : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-          version: _json.containsKey('version')
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          version: json_.containsKey('version')
               ? Version.fromJson(
-                  _json['version'] as core.Map<core.String, core.dynamic>)
+                  json_['version'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1931,23 +1931,23 @@ class Metadata {
     this.reproducible,
   });
 
-  Metadata.fromJson(core.Map _json)
+  Metadata.fromJson(core.Map json_)
       : this(
-          buildFinishedOn: _json.containsKey('buildFinishedOn')
-              ? _json['buildFinishedOn'] as core.String
+          buildFinishedOn: json_.containsKey('buildFinishedOn')
+              ? json_['buildFinishedOn'] as core.String
               : null,
-          buildInvocationId: _json.containsKey('buildInvocationId')
-              ? _json['buildInvocationId'] as core.String
+          buildInvocationId: json_.containsKey('buildInvocationId')
+              ? json_['buildInvocationId'] as core.String
               : null,
-          buildStartedOn: _json.containsKey('buildStartedOn')
-              ? _json['buildStartedOn'] as core.String
+          buildStartedOn: json_.containsKey('buildStartedOn')
+              ? json_['buildStartedOn'] as core.String
               : null,
-          completeness: _json.containsKey('completeness')
+          completeness: json_.containsKey('completeness')
               ? Completeness.fromJson(
-                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+                  json_['completeness'] as core.Map<core.String, core.dynamic>)
               : null,
-          reproducible: _json.containsKey('reproducible')
-              ? _json['reproducible'] as core.bool
+          reproducible: json_.containsKey('reproducible')
+              ? json_['reproducible'] as core.bool
               : null,
         );
 
@@ -1981,14 +1981,14 @@ class NonCompliantFile {
     this.reason,
   });
 
-  NonCompliantFile.fromJson(core.Map _json)
+  NonCompliantFile.fromJson(core.Map json_)
       : this(
-          displayCommand: _json.containsKey('displayCommand')
-              ? _json['displayCommand'] as core.String
+          displayCommand: json_.containsKey('displayCommand')
+              ? json_['displayCommand'] as core.String
               : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
               : null,
         );
 
@@ -2112,68 +2112,68 @@ class Occurrence {
     this.vulnerability,
   });
 
-  Occurrence.fromJson(core.Map _json)
+  Occurrence.fromJson(core.Map json_)
       : this(
-          attestation: _json.containsKey('attestation')
+          attestation: json_.containsKey('attestation')
               ? AttestationOccurrence.fromJson(
-                  _json['attestation'] as core.Map<core.String, core.dynamic>)
+                  json_['attestation'] as core.Map<core.String, core.dynamic>)
               : null,
-          build: _json.containsKey('build')
+          build: json_.containsKey('build')
               ? BuildOccurrence.fromJson(
-                  _json['build'] as core.Map<core.String, core.dynamic>)
+                  json_['build'] as core.Map<core.String, core.dynamic>)
               : null,
-          compliance: _json.containsKey('compliance')
+          compliance: json_.containsKey('compliance')
               ? ComplianceOccurrence.fromJson(
-                  _json['compliance'] as core.Map<core.String, core.dynamic>)
+                  json_['compliance'] as core.Map<core.String, core.dynamic>)
               : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          deployment: _json.containsKey('deployment')
+          deployment: json_.containsKey('deployment')
               ? DeploymentOccurrence.fromJson(
-                  _json['deployment'] as core.Map<core.String, core.dynamic>)
+                  json_['deployment'] as core.Map<core.String, core.dynamic>)
               : null,
-          discovery: _json.containsKey('discovery')
+          discovery: json_.containsKey('discovery')
               ? DiscoveryOccurrence.fromJson(
-                  _json['discovery'] as core.Map<core.String, core.dynamic>)
+                  json_['discovery'] as core.Map<core.String, core.dynamic>)
               : null,
-          dsseAttestation: _json.containsKey('dsseAttestation')
-              ? DSSEAttestationOccurrence.fromJson(_json['dsseAttestation']
+          dsseAttestation: json_.containsKey('dsseAttestation')
+              ? DSSEAttestationOccurrence.fromJson(json_['dsseAttestation']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          envelope: _json.containsKey('envelope')
+          envelope: json_.containsKey('envelope')
               ? Envelope.fromJson(
-                  _json['envelope'] as core.Map<core.String, core.dynamic>)
+                  json_['envelope'] as core.Map<core.String, core.dynamic>)
               : null,
-          image: _json.containsKey('image')
+          image: json_.containsKey('image')
               ? ImageOccurrence.fromJson(
-                  _json['image'] as core.Map<core.String, core.dynamic>)
+                  json_['image'] as core.Map<core.String, core.dynamic>)
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          noteName: _json.containsKey('noteName')
-              ? _json['noteName'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          noteName: json_.containsKey('noteName')
+              ? json_['noteName'] as core.String
               : null,
-          package: _json.containsKey('package')
+          package: json_.containsKey('package')
               ? PackageOccurrence.fromJson(
-                  _json['package'] as core.Map<core.String, core.dynamic>)
+                  json_['package'] as core.Map<core.String, core.dynamic>)
               : null,
-          remediation: _json.containsKey('remediation')
-              ? _json['remediation'] as core.String
+          remediation: json_.containsKey('remediation')
+              ? json_['remediation'] as core.String
               : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
+          resourceUri: json_.containsKey('resourceUri')
+              ? json_['resourceUri'] as core.String
               : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
-          upgrade: _json.containsKey('upgrade')
+          upgrade: json_.containsKey('upgrade')
               ? UpgradeOccurrence.fromJson(
-                  _json['upgrade'] as core.Map<core.String, core.dynamic>)
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
               : null,
-          vulnerability: _json.containsKey('vulnerability')
+          vulnerability: json_.containsKey('vulnerability')
               ? VulnerabilityOccurrence.fromJson(
-                  _json['vulnerability'] as core.Map<core.String, core.dynamic>)
+                  json_['vulnerability'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2250,19 +2250,19 @@ class Operation {
     this.response,
   });
 
-  Operation.fromJson(core.Map _json)
+  Operation.fromJson(core.Map json_)
       : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
               ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
+                  json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -2340,46 +2340,46 @@ class PackageData {
     this.version,
   });
 
-  PackageData.fromJson(core.Map _json)
+  PackageData.fromJson(core.Map json_)
       : this(
-          cpeUri: _json.containsKey('cpeUri')
-              ? _json['cpeUri'] as core.String
+          cpeUri: json_.containsKey('cpeUri')
+              ? json_['cpeUri'] as core.String
               : null,
-          dependencyChain: _json.containsKey('dependencyChain')
-              ? (_json['dependencyChain'] as core.List)
+          dependencyChain: json_.containsKey('dependencyChain')
+              ? (json_['dependencyChain'] as core.List)
                   .map((value) => LanguagePackageDependency.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fileLocation: _json.containsKey('fileLocation')
-              ? (_json['fileLocation'] as core.List)
+          fileLocation: json_.containsKey('fileLocation')
+              ? (json_['fileLocation'] as core.List)
                   .map((value) => FileLocation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          hashDigest: _json.containsKey('hashDigest')
-              ? _json['hashDigest'] as core.String
+          hashDigest: json_.containsKey('hashDigest')
+              ? json_['hashDigest'] as core.String
               : null,
-          os: _json.containsKey('os') ? _json['os'] as core.String : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
+          os: json_.containsKey('os') ? json_['os'] as core.String : null,
+          osVersion: json_.containsKey('osVersion')
+              ? json_['osVersion'] as core.String
               : null,
-          package: _json.containsKey('package')
-              ? _json['package'] as core.String
+          package: json_.containsKey('package')
+              ? json_['package'] as core.String
               : null,
-          packageType: _json.containsKey('packageType')
-              ? _json['packageType'] as core.String
+          packageType: json_.containsKey('packageType')
+              ? json_['packageType'] as core.String
               : null,
-          patchedCve: _json.containsKey('patchedCve')
-              ? (_json['patchedCve'] as core.List)
+          patchedCve: json_.containsKey('patchedCve')
+              ? (json_['patchedCve'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          unused: _json.containsKey('unused')
-              ? _json['unused'] as core.String
+          unused: json_.containsKey('unused')
+              ? json_['unused'] as core.String
               : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -2474,42 +2474,42 @@ class PackageIssue {
     this.packageType,
   });
 
-  PackageIssue.fromJson(core.Map _json)
+  PackageIssue.fromJson(core.Map json_)
       : this(
-          affectedCpeUri: _json.containsKey('affectedCpeUri')
-              ? _json['affectedCpeUri'] as core.String
+          affectedCpeUri: json_.containsKey('affectedCpeUri')
+              ? json_['affectedCpeUri'] as core.String
               : null,
-          affectedPackage: _json.containsKey('affectedPackage')
-              ? _json['affectedPackage'] as core.String
+          affectedPackage: json_.containsKey('affectedPackage')
+              ? json_['affectedPackage'] as core.String
               : null,
-          affectedVersion: _json.containsKey('affectedVersion')
-              ? Version.fromJson(_json['affectedVersion']
+          affectedVersion: json_.containsKey('affectedVersion')
+              ? Version.fromJson(json_['affectedVersion']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          effectiveSeverity: _json.containsKey('effectiveSeverity')
-              ? _json['effectiveSeverity'] as core.String
+          effectiveSeverity: json_.containsKey('effectiveSeverity')
+              ? json_['effectiveSeverity'] as core.String
               : null,
-          fileLocation: _json.containsKey('fileLocation')
-              ? (_json['fileLocation'] as core.List)
+          fileLocation: json_.containsKey('fileLocation')
+              ? (json_['fileLocation'] as core.List)
                   .map((value) => GrafeasV1FileLocation.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          fixAvailable: _json.containsKey('fixAvailable')
-              ? _json['fixAvailable'] as core.bool
+          fixAvailable: json_.containsKey('fixAvailable')
+              ? json_['fixAvailable'] as core.bool
               : null,
-          fixedCpeUri: _json.containsKey('fixedCpeUri')
-              ? _json['fixedCpeUri'] as core.String
+          fixedCpeUri: json_.containsKey('fixedCpeUri')
+              ? json_['fixedCpeUri'] as core.String
               : null,
-          fixedPackage: _json.containsKey('fixedPackage')
-              ? _json['fixedPackage'] as core.String
+          fixedPackage: json_.containsKey('fixedPackage')
+              ? json_['fixedPackage'] as core.String
               : null,
-          fixedVersion: _json.containsKey('fixedVersion')
+          fixedVersion: json_.containsKey('fixedVersion')
               ? Version.fromJson(
-                  _json['fixedVersion'] as core.Map<core.String, core.dynamic>)
+                  json_['fixedVersion'] as core.Map<core.String, core.dynamic>)
               : null,
-          packageType: _json.containsKey('packageType')
-              ? _json['packageType'] as core.String
+          packageType: json_.containsKey('packageType')
+              ? json_['packageType'] as core.String
               : null,
         );
 
@@ -2582,31 +2582,31 @@ class PackageOccurrence {
     this.version,
   });
 
-  PackageOccurrence.fromJson(core.Map _json)
+  PackageOccurrence.fromJson(core.Map json_)
       : this(
-          architecture: _json.containsKey('architecture')
-              ? _json['architecture'] as core.String
+          architecture: json_.containsKey('architecture')
+              ? json_['architecture'] as core.String
               : null,
-          cpeUri: _json.containsKey('cpeUri')
-              ? _json['cpeUri'] as core.String
+          cpeUri: json_.containsKey('cpeUri')
+              ? json_['cpeUri'] as core.String
               : null,
-          license: _json.containsKey('license')
+          license: json_.containsKey('license')
               ? License.fromJson(
-                  _json['license'] as core.Map<core.String, core.dynamic>)
+                  json_['license'] as core.Map<core.String, core.dynamic>)
               : null,
-          location: _json.containsKey('location')
-              ? (_json['location'] as core.List)
+          location: json_.containsKey('location')
+              ? (json_['location'] as core.List)
                   .map((value) => Location.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          packageType: _json.containsKey('packageType')
-              ? _json['packageType'] as core.String
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          packageType: json_.containsKey('packageType')
+              ? json_['packageType'] as core.String
               : null,
-          version: _json.containsKey('version')
+          version: json_.containsKey('version')
               ? Version.fromJson(
-                  _json['version'] as core.Map<core.String, core.dynamic>)
+                  json_['version'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2685,25 +2685,25 @@ class Recipe {
     this.type,
   });
 
-  Recipe.fromJson(core.Map _json)
+  Recipe.fromJson(core.Map json_)
       : this(
-          arguments: _json.containsKey('arguments')
-              ? (_json['arguments'] as core.List)
+          arguments: json_.containsKey('arguments')
+              ? (json_['arguments'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
-          definedInMaterial: _json.containsKey('definedInMaterial')
-              ? _json['definedInMaterial'] as core.String
+          definedInMaterial: json_.containsKey('definedInMaterial')
+              ? json_['definedInMaterial'] as core.String
               : null,
-          entryPoint: _json.containsKey('entryPoint')
-              ? _json['entryPoint'] as core.String
+          entryPoint: json_.containsKey('entryPoint')
+              ? json_['entryPoint'] as core.String
               : null,
-          environment: _json.containsKey('environment')
-              ? (_json['environment'] as core.List)
+          environment: json_.containsKey('environment')
+              ? (json_['environment'] as core.List)
                   .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2731,13 +2731,13 @@ class RepoId {
     this.uid,
   });
 
-  RepoId.fromJson(core.Map _json)
+  RepoId.fromJson(core.Map json_)
       : this(
-          projectRepoId: _json.containsKey('projectRepoId')
+          projectRepoId: json_.containsKey('projectRepoId')
               ? ProjectRepoId.fromJson(
-                  _json['projectRepoId'] as core.Map<core.String, core.dynamic>)
+                  json_['projectRepoId'] as core.Map<core.String, core.dynamic>)
               : null,
-          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2802,23 +2802,23 @@ class SlsaMetadata {
     this.reproducible,
   });
 
-  SlsaMetadata.fromJson(core.Map _json)
+  SlsaMetadata.fromJson(core.Map json_)
       : this(
-          buildFinishedOn: _json.containsKey('buildFinishedOn')
-              ? _json['buildFinishedOn'] as core.String
+          buildFinishedOn: json_.containsKey('buildFinishedOn')
+              ? json_['buildFinishedOn'] as core.String
               : null,
-          buildInvocationId: _json.containsKey('buildInvocationId')
-              ? _json['buildInvocationId'] as core.String
+          buildInvocationId: json_.containsKey('buildInvocationId')
+              ? json_['buildInvocationId'] as core.String
               : null,
-          buildStartedOn: _json.containsKey('buildStartedOn')
-              ? _json['buildStartedOn'] as core.String
+          buildStartedOn: json_.containsKey('buildStartedOn')
+              ? json_['buildStartedOn'] as core.String
               : null,
-          completeness: _json.containsKey('completeness')
+          completeness: json_.containsKey('completeness')
               ? SlsaCompleteness.fromJson(
-                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+                  json_['completeness'] as core.Map<core.String, core.dynamic>)
               : null,
-          reproducible: _json.containsKey('reproducible')
-              ? _json['reproducible'] as core.bool
+          reproducible: json_.containsKey('reproducible')
+              ? json_['reproducible'] as core.bool
               : null,
         );
 
@@ -2857,25 +2857,25 @@ class SlsaProvenance {
     this.recipe,
   });
 
-  SlsaProvenance.fromJson(core.Map _json)
+  SlsaProvenance.fromJson(core.Map json_)
       : this(
-          builder: _json.containsKey('builder')
+          builder: json_.containsKey('builder')
               ? SlsaBuilder.fromJson(
-                  _json['builder'] as core.Map<core.String, core.dynamic>)
+                  json_['builder'] as core.Map<core.String, core.dynamic>)
               : null,
-          materials: _json.containsKey('materials')
-              ? (_json['materials'] as core.List)
+          materials: json_.containsKey('materials')
+              ? (json_['materials'] as core.List)
                   .map((value) => Material.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? SlsaMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
-          recipe: _json.containsKey('recipe')
+          recipe: json_.containsKey('recipe')
               ? SlsaRecipe.fromJson(
-                  _json['recipe'] as core.Map<core.String, core.dynamic>)
+                  json_['recipe'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -2909,32 +2909,32 @@ class SlsaProvenanceZeroTwo {
     this.metadata,
   });
 
-  SlsaProvenanceZeroTwo.fromJson(core.Map _json)
+  SlsaProvenanceZeroTwo.fromJson(core.Map json_)
       : this(
-          buildConfig: _json.containsKey('buildConfig')
-              ? _json['buildConfig'] as core.Map<core.String, core.dynamic>
+          buildConfig: json_.containsKey('buildConfig')
+              ? json_['buildConfig'] as core.Map<core.String, core.dynamic>
               : null,
-          buildType: _json.containsKey('buildType')
-              ? _json['buildType'] as core.String
+          buildType: json_.containsKey('buildType')
+              ? json_['buildType'] as core.String
               : null,
-          builder: _json.containsKey('builder')
+          builder: json_.containsKey('builder')
               ? GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromJson(
-                  _json['builder'] as core.Map<core.String, core.dynamic>)
+                  json_['builder'] as core.Map<core.String, core.dynamic>)
               : null,
-          invocation: _json.containsKey('invocation')
+          invocation: json_.containsKey('invocation')
               ? GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromJson(
-                  _json['invocation'] as core.Map<core.String, core.dynamic>)
+                  json_['invocation'] as core.Map<core.String, core.dynamic>)
               : null,
-          materials: _json.containsKey('materials')
-              ? (_json['materials'] as core.List)
+          materials: json_.containsKey('materials')
+              ? (json_['materials'] as core.List)
                   .map((value) =>
                       GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          metadata: _json.containsKey('metadata')
+          metadata: json_.containsKey('metadata')
               ? GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3006,21 +3006,21 @@ class SlsaRecipe {
     this.type,
   });
 
-  SlsaRecipe.fromJson(core.Map _json)
+  SlsaRecipe.fromJson(core.Map json_)
       : this(
-          arguments: _json.containsKey('arguments')
-              ? _json['arguments'] as core.Map<core.String, core.dynamic>
+          arguments: json_.containsKey('arguments')
+              ? json_['arguments'] as core.Map<core.String, core.dynamic>
               : null,
-          definedInMaterial: _json.containsKey('definedInMaterial')
-              ? _json['definedInMaterial'] as core.String
+          definedInMaterial: json_.containsKey('definedInMaterial')
+              ? json_['definedInMaterial'] as core.String
               : null,
-          entryPoint: _json.containsKey('entryPoint')
-              ? _json['entryPoint'] as core.String
+          entryPoint: json_.containsKey('entryPoint')
+              ? json_['entryPoint'] as core.String
               : null,
-          environment: _json.containsKey('environment')
-              ? _json['environment'] as core.Map<core.String, core.dynamic>
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.Map<core.String, core.dynamic>
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3064,24 +3064,24 @@ class Source {
     this.fileHashes,
   });
 
-  Source.fromJson(core.Map _json)
+  Source.fromJson(core.Map json_)
       : this(
-          additionalContexts: _json.containsKey('additionalContexts')
-              ? (_json['additionalContexts'] as core.List)
+          additionalContexts: json_.containsKey('additionalContexts')
+              ? (json_['additionalContexts'] as core.List)
                   .map((value) => SourceContext.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           artifactStorageSourceUri:
-              _json.containsKey('artifactStorageSourceUri')
-                  ? _json['artifactStorageSourceUri'] as core.String
+              json_.containsKey('artifactStorageSourceUri')
+                  ? json_['artifactStorageSourceUri'] as core.String
                   : null,
-          context: _json.containsKey('context')
+          context: json_.containsKey('context')
               ? SourceContext.fromJson(
-                  _json['context'] as core.Map<core.String, core.dynamic>)
+                  json_['context'] as core.Map<core.String, core.dynamic>)
               : null,
-          fileHashes: _json.containsKey('fileHashes')
-              ? (_json['fileHashes'] as core.Map<core.String, core.dynamic>)
+          fileHashes: json_.containsKey('fileHashes')
+              ? (json_['fileHashes'] as core.Map<core.String, core.dynamic>)
                   .map(
                   (key, item) => core.MapEntry(
                     key,
@@ -3126,22 +3126,22 @@ class SourceContext {
     this.labels,
   });
 
-  SourceContext.fromJson(core.Map _json)
+  SourceContext.fromJson(core.Map json_)
       : this(
-          cloudRepo: _json.containsKey('cloudRepo')
+          cloudRepo: json_.containsKey('cloudRepo')
               ? CloudRepoSourceContext.fromJson(
-                  _json['cloudRepo'] as core.Map<core.String, core.dynamic>)
+                  json_['cloudRepo'] as core.Map<core.String, core.dynamic>)
               : null,
-          gerrit: _json.containsKey('gerrit')
+          gerrit: json_.containsKey('gerrit')
               ? GerritSourceContext.fromJson(
-                  _json['gerrit'] as core.Map<core.String, core.dynamic>)
+                  json_['gerrit'] as core.Map<core.String, core.dynamic>)
               : null,
-          git: _json.containsKey('git')
+          git: json_.containsKey('git')
               ? GitSourceContext.fromJson(
-                  _json['git'] as core.Map<core.String, core.dynamic>)
+                  json_['git'] as core.Map<core.String, core.dynamic>)
               : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
@@ -3178,17 +3178,17 @@ class Subject {
     this.name,
   });
 
-  Subject.fromJson(core.Map _json)
+  Subject.fromJson(core.Map json_)
       : this(
-          digest: _json.containsKey('digest')
-              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+          digest: json_.containsKey('digest')
+              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     item as core.String,
                   ),
                 )
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3228,21 +3228,21 @@ class UpgradeDistribution {
     this.severity,
   });
 
-  UpgradeDistribution.fromJson(core.Map _json)
+  UpgradeDistribution.fromJson(core.Map json_)
       : this(
-          classification: _json.containsKey('classification')
-              ? _json['classification'] as core.String
+          classification: json_.containsKey('classification')
+              ? json_['classification'] as core.String
               : null,
-          cpeUri: _json.containsKey('cpeUri')
-              ? _json['cpeUri'] as core.String
+          cpeUri: json_.containsKey('cpeUri')
+              ? json_['cpeUri'] as core.String
               : null,
-          cve: _json.containsKey('cve')
-              ? (_json['cve'] as core.List)
+          cve: json_.containsKey('cve')
+              ? (json_['cve'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
         );
 
@@ -3291,22 +3291,22 @@ class UpgradeOccurrence {
     this.windowsUpdate,
   });
 
-  UpgradeOccurrence.fromJson(core.Map _json)
+  UpgradeOccurrence.fromJson(core.Map json_)
       : this(
-          distribution: _json.containsKey('distribution')
+          distribution: json_.containsKey('distribution')
               ? UpgradeDistribution.fromJson(
-                  _json['distribution'] as core.Map<core.String, core.dynamic>)
+                  json_['distribution'] as core.Map<core.String, core.dynamic>)
               : null,
-          package: _json.containsKey('package')
-              ? _json['package'] as core.String
+          package: json_.containsKey('package')
+              ? json_['package'] as core.String
               : null,
-          parsedVersion: _json.containsKey('parsedVersion')
+          parsedVersion: json_.containsKey('parsedVersion')
               ? Version.fromJson(
-                  _json['parsedVersion'] as core.Map<core.String, core.dynamic>)
+                  json_['parsedVersion'] as core.Map<core.String, core.dynamic>)
               : null,
-          windowsUpdate: _json.containsKey('windowsUpdate')
+          windowsUpdate: json_.containsKey('windowsUpdate')
               ? WindowsUpdate.fromJson(
-                  _json['windowsUpdate'] as core.Map<core.String, core.dynamic>)
+                  json_['windowsUpdate'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -3364,19 +3364,19 @@ class Version {
     this.revision,
   });
 
-  Version.fromJson(core.Map _json)
+  Version.fromJson(core.Map json_)
       : this(
-          epoch: _json.containsKey('epoch') ? _json['epoch'] as core.int : null,
-          fullName: _json.containsKey('fullName')
-              ? _json['fullName'] as core.String
+          epoch: json_.containsKey('epoch') ? json_['epoch'] as core.int : null,
+          fullName: json_.containsKey('fullName')
+              ? json_['fullName'] as core.String
               : null,
-          inclusive: _json.containsKey('inclusive')
-              ? _json['inclusive'] as core.bool
+          inclusive: json_.containsKey('inclusive')
+              ? json_['inclusive'] as core.bool
               : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.String
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          revision: json_.containsKey('revision')
+              ? json_['revision'] as core.String
               : null,
         );
 
@@ -3477,43 +3477,43 @@ class VulnerabilityOccurrence {
     this.type,
   });
 
-  VulnerabilityOccurrence.fromJson(core.Map _json)
+  VulnerabilityOccurrence.fromJson(core.Map json_)
       : this(
-          cvssScore: _json.containsKey('cvssScore')
-              ? (_json['cvssScore'] as core.num).toDouble()
+          cvssScore: json_.containsKey('cvssScore')
+              ? (json_['cvssScore'] as core.num).toDouble()
               : null,
-          cvssv3: _json.containsKey('cvssv3')
+          cvssv3: json_.containsKey('cvssv3')
               ? CVSS.fromJson(
-                  _json['cvssv3'] as core.Map<core.String, core.dynamic>)
+                  json_['cvssv3'] as core.Map<core.String, core.dynamic>)
               : null,
-          effectiveSeverity: _json.containsKey('effectiveSeverity')
-              ? _json['effectiveSeverity'] as core.String
+          effectiveSeverity: json_.containsKey('effectiveSeverity')
+              ? json_['effectiveSeverity'] as core.String
               : null,
-          fixAvailable: _json.containsKey('fixAvailable')
-              ? _json['fixAvailable'] as core.bool
+          fixAvailable: json_.containsKey('fixAvailable')
+              ? json_['fixAvailable'] as core.bool
               : null,
-          longDescription: _json.containsKey('longDescription')
-              ? _json['longDescription'] as core.String
+          longDescription: json_.containsKey('longDescription')
+              ? json_['longDescription'] as core.String
               : null,
-          packageIssue: _json.containsKey('packageIssue')
-              ? (_json['packageIssue'] as core.List)
+          packageIssue: json_.containsKey('packageIssue')
+              ? (json_['packageIssue'] as core.List)
                   .map((value) => PackageIssue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          relatedUrls: _json.containsKey('relatedUrls')
-              ? (_json['relatedUrls'] as core.List)
+          relatedUrls: json_.containsKey('relatedUrls')
+              ? (json_['relatedUrls'] as core.List)
                   .map((value) => RelatedUrl.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
               : null,
-          shortDescription: _json.containsKey('shortDescription')
-              ? _json['shortDescription'] as core.String
+          shortDescription: json_.containsKey('shortDescription')
+              ? json_['shortDescription'] as core.String
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3568,34 +3568,34 @@ class WindowsUpdate {
     this.title,
   });
 
-  WindowsUpdate.fromJson(core.Map _json)
+  WindowsUpdate.fromJson(core.Map json_)
       : this(
-          categories: _json.containsKey('categories')
-              ? (_json['categories'] as core.List)
+          categories: json_.containsKey('categories')
+              ? (json_['categories'] as core.List)
                   .map((value) => Category.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          identity: _json.containsKey('identity')
+          identity: json_.containsKey('identity')
               ? Identity.fromJson(
-                  _json['identity'] as core.Map<core.String, core.dynamic>)
+                  json_['identity'] as core.Map<core.String, core.dynamic>)
               : null,
-          kbArticleIds: _json.containsKey('kbArticleIds')
-              ? (_json['kbArticleIds'] as core.List)
+          kbArticleIds: json_.containsKey('kbArticleIds')
+              ? (json_['kbArticleIds'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          lastPublishedTimestamp: _json.containsKey('lastPublishedTimestamp')
-              ? _json['lastPublishedTimestamp'] as core.String
+          lastPublishedTimestamp: json_.containsKey('lastPublishedTimestamp')
+              ? json_['lastPublishedTimestamp'] as core.String
               : null,
-          supportUrl: _json.containsKey('supportUrl')
-              ? _json['supportUrl'] as core.String
+          supportUrl: json_.containsKey('supportUrl')
+              ? json_['supportUrl'] as core.String
               : null,
           title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
+              json_.containsKey('title') ? json_['title'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
