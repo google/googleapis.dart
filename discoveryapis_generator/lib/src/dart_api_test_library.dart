@@ -593,8 +593,7 @@ abstract class SchemaTest<T extends DartSchemaType> extends TestHelper {
 
 abstract class PrimitiveSchemaTest<T extends DartSchemaType>
     extends SchemaTest<T> {
-  PrimitiveSchemaTest(DartApiTestLibrary apiTestLibrary, T schema)
-      : super(apiTestLibrary, schema);
+  PrimitiveSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get buildSchemaFunction => '';
@@ -607,8 +606,7 @@ abstract class PrimitiveSchemaTest<T extends DartSchemaType>
 }
 
 class IntSchemaTest extends PrimitiveSchemaTest<IntegerType> {
-  IntSchemaTest(DartApiTestLibrary apiTestLibrary, IntegerType schema)
-      : super(apiTestLibrary, schema);
+  IntSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration => 'core.int';
@@ -622,9 +620,9 @@ class IntSchemaTest extends PrimitiveSchemaTest<IntegerType> {
 
 class StringIntSchemaTest extends PrimitiveSchemaTest<StringIntegerType> {
   StringIntSchemaTest(
-    DartApiTestLibrary apiTestLibrary,
-    StringIntegerType schema,
-  ) : super(apiTestLibrary, schema);
+    super.apiTestLibrary,
+    super.schema,
+  );
 
   @override
   String get declaration => 'core.int';
@@ -637,8 +635,7 @@ class StringIntSchemaTest extends PrimitiveSchemaTest<StringIntegerType> {
 }
 
 class DoubleSchemaTest extends PrimitiveSchemaTest<DoubleType> {
-  DoubleSchemaTest(DartApiTestLibrary apiTestLibrary, DoubleType schema)
-      : super(apiTestLibrary, schema);
+  DoubleSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration => 'core.double';
@@ -651,8 +648,7 @@ class DoubleSchemaTest extends PrimitiveSchemaTest<DoubleType> {
 }
 
 class BooleanSchemaTest extends PrimitiveSchemaTest<BooleanType> {
-  BooleanSchemaTest(DartApiTestLibrary apiTestLibrary, BooleanType schema)
-      : super(apiTestLibrary, schema);
+  BooleanSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration => 'core.bool';
@@ -665,8 +661,7 @@ class BooleanSchemaTest extends PrimitiveSchemaTest<BooleanType> {
 }
 
 class StringSchemaTest extends PrimitiveSchemaTest<StringType> {
-  StringSchemaTest(DartApiTestLibrary apiTestLibrary, StringType schema)
-      : super(apiTestLibrary, schema);
+  StringSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration =>
@@ -680,8 +675,7 @@ class StringSchemaTest extends PrimitiveSchemaTest<StringType> {
 }
 
 class DateSchemaTest extends PrimitiveSchemaTest<DateType> {
-  DateSchemaTest(DartApiTestLibrary apiTestLibrary, DateType schema)
-      : super(apiTestLibrary, schema);
+  DateSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration => 'core.DateTime';
@@ -695,8 +689,7 @@ class DateSchemaTest extends PrimitiveSchemaTest<DateType> {
 }
 
 class DateTimeSchemaTest extends PrimitiveSchemaTest<DateTimeType> {
-  DateTimeSchemaTest(DartApiTestLibrary apiTestLibrary, DateTimeType schema)
-      : super(apiTestLibrary, schema);
+  DateTimeSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration => 'core.DateTime';
@@ -709,8 +702,7 @@ class DateTimeSchemaTest extends PrimitiveSchemaTest<DateTimeType> {
 }
 
 class EnumSchemaTest extends StringSchemaTest {
-  EnumSchemaTest(DartApiTestLibrary apiTestLibrary, EnumType schema)
-      : super(apiTestLibrary, schema);
+  EnumSchemaTest(super.apiTestLibrary, EnumType super.schema);
 
   @override
   String get newSchemaExpr {
@@ -734,8 +726,7 @@ abstract class UnnamedSchemaTest<T extends DartSchemaType>
   static int _unnamedCounter = 0;
   final int _id = _unnamedCounter++;
 
-  UnnamedSchemaTest(DartApiTestLibrary apiTestLibrary, T schema)
-      : super(apiTestLibrary, schema);
+  UnnamedSchemaTest(super.apiTestLibrary, super.schema);
 
   static void resetCounter() {
     _unnamedCounter = 0;
@@ -752,8 +743,7 @@ abstract class UnnamedSchemaTest<T extends DartSchemaType>
 }
 
 class UnnamedMapTest extends UnnamedSchemaTest<UnnamedMapType> {
-  UnnamedMapTest(DartApiTestLibrary apiTestLibrary, UnnamedMapType schema)
-      : super(apiTestLibrary, schema);
+  UnnamedMapTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration {
@@ -790,8 +780,7 @@ $declaration buildUnnamed$_id() =>
 }
 
 class UnnamedArrayTest<T> extends UnnamedSchemaTest<UnnamedArrayType> {
-  UnnamedArrayTest(DartApiTestLibrary apiTestLibrary, UnnamedArrayType schema)
-      : super(apiTestLibrary, schema);
+  UnnamedArrayTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration {
@@ -829,8 +818,7 @@ core.List<${innerTest.declaration}> buildUnnamed$_id() =>
 
 abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
     extends SchemaTest<T> {
-  NamedSchemaTest(DartApiTestLibrary apiTestLibrary, T schema)
-      : super(apiTestLibrary, schema);
+  NamedSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get declaration => 'api.${schema.className}';
@@ -861,8 +849,7 @@ abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
 }
 
 class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
-  ObjectSchemaTest(DartApiTestLibrary apiTestLibrary, ObjectType schema)
-      : super(apiTestLibrary, schema);
+  ObjectSchemaTest(super.apiTestLibrary, super.schema);
 
   String get counterName => 'buildCounter${schema.className!.name}';
 
@@ -916,8 +903,7 @@ class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {
 }
 
 class NamedArraySchemaTest extends NamedSchemaTest<NamedArrayType> {
-  NamedArraySchemaTest(DartApiTestLibrary apiTestLibrary, NamedArrayType schema)
-      : super(apiTestLibrary, schema);
+  NamedArraySchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get buildSchemaFunction {
@@ -949,8 +935,7 @@ class NamedArraySchemaTest extends NamedSchemaTest<NamedArrayType> {
 }
 
 class NamedMapSchemaTest extends NamedSchemaTest<NamedMapType> {
-  NamedMapSchemaTest(DartApiTestLibrary apiTestLibrary, NamedMapType schema)
-      : super(apiTestLibrary, schema);
+  NamedMapSchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get buildSchemaFunction {
@@ -986,9 +971,9 @@ class AbstractVariantSchemaTest extends NamedSchemaTest<AbstractVariantType> {
   SchemaTest? subSchemaTest;
 
   AbstractVariantSchemaTest(
-    DartApiTestLibrary apiTestLibrary,
-    AbstractVariantType schema,
-  ) : super(apiTestLibrary, schema);
+    super.apiTestLibrary,
+    super.schema,
+  );
 
   void _init() {
     if (subSchema == null) {
@@ -1025,8 +1010,7 @@ class AbstractVariantSchemaTest extends NamedSchemaTest<AbstractVariantType> {
 class AnySchemaTest extends SchemaTest<AnyType> {
   int _counter = 0;
 
-  AnySchemaTest(DartApiTestLibrary apiTestLibrary, AnyType schema)
-      : super(apiTestLibrary, schema);
+  AnySchemaTest(super.apiTestLibrary, super.schema);
 
   @override
   String get buildSchemaFunction => '';

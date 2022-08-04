@@ -33,8 +33,7 @@ class StringPart extends Part {
 
 /// Represents a URI Template variable expression of the form {var}
 class VariableExpression extends Part {
-  VariableExpression(DartApiImports imports, String templateVar)
-      : super(imports, templateVar);
+  VariableExpression(super.imports, String super.templateVar);
 
   @override
   String stringExpression(Identifier? variable) =>
@@ -43,8 +42,7 @@ class VariableExpression extends Part {
 
 /// Represents a URI Template variable expression of the form {/var*}
 class PathVariableExpression extends Part {
-  PathVariableExpression(DartApiImports imports, String templateVar)
-      : super(imports, templateVar);
+  PathVariableExpression(super.imports, String super.templateVar);
 
   @override
   String stringExpression(Identifier? variable) =>
@@ -54,8 +52,7 @@ class PathVariableExpression extends Part {
 
 /// Represents a URI Template variable expression of the form {+var}
 class ReservedExpansionExpression extends Part {
-  ReservedExpansionExpression(DartApiImports imports, String templateVar)
-      : super(imports, templateVar);
+  ReservedExpansionExpression(super.imports, String super.templateVar);
 
   @override
   String stringExpression(Identifier? variable) =>

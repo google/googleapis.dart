@@ -12,8 +12,7 @@ import 'package:test/test.dart';
 import 'test_utils.dart';
 
 class DelegatingClientImpl extends DelegatingClient {
-  DelegatingClientImpl(Client base, {required bool closeUnderlyingClient})
-      : super(base, closeUnderlyingClient: closeUnderlyingClient);
+  DelegatingClientImpl(super.base, {required super.closeUnderlyingClient});
 
   @override
   Future<StreamedResponse> send(BaseRequest request) =>

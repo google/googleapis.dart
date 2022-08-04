@@ -39,9 +39,8 @@ class _FlowClient extends AutoRefreshDelegatingClient {
   AccessCredentials credentials;
   Client _authClient;
 
-  _FlowClient(Client client, this.credentials, this._flow)
-      : _authClient = authenticatedClient(client, credentials),
-        super(client);
+  _FlowClient(super.client, this.credentials, this._flow)
+      : _authClient = authenticatedClient(client, credentials);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {

@@ -45,3 +45,4 @@ linter:
     - unnecessary_statements
     - use_is_even_rather_than_modulo
     - use_string_buffers
+    - use_super_parameters

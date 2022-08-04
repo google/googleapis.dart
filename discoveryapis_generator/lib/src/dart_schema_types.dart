@@ -5,7 +5,6 @@
 // ignore_for_file: missing_whitespace_between_adjacent_strings
 
 import 'dart_api_library.dart';
-import 'dart_comments.dart';
 import 'dart_schema_type.dart';
 import 'dart_schemas.dart';
 import 'json_type.dart';
@@ -17,9 +16,7 @@ import 'utils.dart';
 ///
 /// Subclasses may be named dart classes or composed classes (e.g. List<X>).
 abstract class ComplexDartSchemaType extends DartSchemaType {
-  ComplexDartSchemaType(DartApiImports imports, Identifier? name,
-      {Comment? comment})
-      : super(imports, name, comment: comment);
+  ComplexDartSchemaType(super.imports, super.name, {super.comment});
 
   String? classDefinition();
 
@@ -49,11 +46,10 @@ class ObjectType extends ComplexDartSchemaType {
   // Will be set by the superVariantType when resolving forward references.
   AbstractVariantType? superVariantType;
 
-  ObjectType(DartApiImports imports, Identifier name, this.properties,
-      {Comment? comment})
+  ObjectType(super.imports, Identifier super.name, this.properties,
+      {super.comment})
       : jsonType =
-            MapJsonType(imports, StringJsonType(imports), AnyJsonType(imports)),
-        super(imports, name, comment: comment);
+            MapJsonType(imports, StringJsonType(imports), AnyJsonType(imports));
 
   @override
   DartSchemaType resolveCore(DartSchemaTypeDB db) {
@@ -204,11 +200,10 @@ class AbstractVariantType extends ComplexDartSchemaType {
   final JsonType jsonType;
 
   AbstractVariantType(
-      DartApiImports imports, Identifier name, this.discriminant, this.map,
-      {Comment? comment})
+      super.imports, Identifier super.name, this.discriminant, this.map,
+      {super.comment})
       : jsonType =
-            MapJsonType(imports, StringJsonType(imports), AnyJsonType(imports)),
-        super(imports, name, comment: comment);
+            MapJsonType(imports, StringJsonType(imports), AnyJsonType(imports));
 
   @override
   DartSchemaType resolveCore(DartSchemaTypeDB db) {
@@ -350,9 +345,7 @@ class BooleanType extends PrimitiveDartSchemaType {
   @override
   final JsonType jsonType;
 
-  BooleanType(DartApiImports imports)
-      : jsonType = BoolJsonType(imports),
-        super(imports);
+  BooleanType(super.imports) : jsonType = BoolJsonType(imports);
 
   @override
   String get declaration => '${imports.core.ref()}bool';
@@ -362,9 +355,7 @@ class IntegerType extends PrimitiveDartSchemaType {
   @override
   final JsonType jsonType;
 
-  IntegerType(DartApiImports imports)
-      : jsonType = IntJsonType(imports),
-        super(imports);
+  IntegerType(super.imports) : jsonType = IntJsonType(imports);
 
   @override
   String get declaration => '${imports.core.ref()}int';
@@ -374,9 +365,7 @@ class StringIntegerType extends PrimitiveDartSchemaType {
   @override
   final JsonType jsonType;
 
-  StringIntegerType(DartApiImports imports)
-      : jsonType = StringJsonType(imports),
-        super(imports);
+  StringIntegerType(super.imports) : jsonType = StringJsonType(imports);
 
   @override
   String get declaration => '${imports.core.ref()}int';
@@ -393,9 +382,7 @@ class DoubleType extends PrimitiveDartSchemaType {
   @override
   final JsonType jsonType;
 
-  DoubleType(DartApiImports imports)
-      : jsonType = DoubleJsonType(imports),
-        super(imports);
+  DoubleType(super.imports) : jsonType = DoubleJsonType(imports);
 
   @override
   String get declaration => '${imports.core.ref()}double';
@@ -409,9 +396,7 @@ class StringType extends PrimitiveDartSchemaType {
   @override
   final JsonType jsonType;
 
-  StringType(DartApiImports imports)
-      : jsonType = StringJsonType(imports),
-        super(imports);
+  StringType(super.imports) : jsonType = StringJsonType(imports);
 
   @override
   String? primitiveEncoding(String? value) => value;
@@ -422,7 +407,7 @@ class StringType extends PrimitiveDartSchemaType {
 
 /// Here to support the fix for https://github.com/google/googleapis.dart/issues/211
 class NullableStringType extends StringType {
-  NullableStringType(DartApiImports imports) : super(imports);
+  NullableStringType(super.imports);
 
   @override
   String get declaration => '${super.declaration}?';
@@ -448,8 +433,7 @@ class EnumType extends StringType {
     return EnumType._(imports, enumValues, enumDescriptions);
   }
 
-  EnumType._(DartApiImports imports, this.enumValues, this.enumDescriptions)
-      : super(imports);
+  EnumType._(super.imports, this.enumValues, this.enumDescriptions);
 
   /// Here to support https://github.com/google/googleapis.dart/issues/211
   bool get isNullValue =>
@@ -469,7 +453,7 @@ class EnumType extends StringType {
 }
 
 class DateType extends StringType {
-  DateType(DartApiImports imports) : super(imports);
+  DateType(super.imports);
 
   @override
   String get declaration => '${imports.core.ref()}DateTime';
@@ -489,7 +473,7 @@ class DateType extends StringType {
 }
 
 class DateTimeType extends StringType {
-  DateTimeType(DartApiImports imports) : super(imports);
+  DateTimeType(super.imports);
 
   @override
   String get declaration => '${imports.core.ref()}DateTime';
@@ -513,9 +497,7 @@ class AnyType extends PrimitiveDartSchemaType {
   @override
   final JsonType jsonType;
 
-  AnyType(DartApiImports imports)
-      : jsonType = AnyJsonType(imports),
-        super(imports);
+  AnyType(super.imports) : jsonType = AnyJsonType(imports);
 
   @override
   String get declaration => '${imports.core.ref()}Object?';
@@ -585,9 +567,8 @@ class NamedArrayType extends ComplexDartSchemaType implements HasInnertype {
   @override
   DartSchemaType? innerType;
 
-  NamedArrayType(DartApiImports imports, Identifier name, this.innerType,
-      {Comment? comment})
-      : super(imports, name, comment: comment);
+  NamedArrayType(super.imports, Identifier super.name, this.innerType,
+      {super.comment});
 
   @override
   DartSchemaType resolveCore(DartSchemaTypeDB db) {
@@ -738,10 +719,8 @@ class NamedMapType extends ComplexDartSchemaType {
   DartSchemaType? fromType;
   DartSchemaType? toType;
 
-  NamedMapType(
-      DartApiImports imports, Identifier name, this.fromType, this.toType,
-      {Comment? comment})
-      : super(imports, name, comment: comment) {
+  NamedMapType(super.imports, Identifier super.name, this.fromType, this.toType,
+      {super.comment}) {
     if (fromType is! StringType) {
       throw StateError('Violation of assumption: Keys in map types must '
           'be Strings.');
