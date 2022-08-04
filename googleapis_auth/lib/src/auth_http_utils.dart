@@ -19,8 +19,8 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
   final AccessCredentials credentials;
   final String? quotaProject;
 
-  AuthenticatedClient(Client client, this.credentials, {this.quotaProject})
-      : super(client, closeUnderlyingClient: false);
+  AuthenticatedClient(super.client, this.credentials, {this.quotaProject})
+      : super(closeUnderlyingClient: false);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
@@ -54,9 +54,9 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
 class ApiKeyClient extends DelegatingClient {
   final String _encodedApiKey;
 
-  ApiKeyClient(Client client, String apiKey)
+  ApiKeyClient(super.client, String apiKey)
       : _encodedApiKey = Uri.encodeQueryComponent(apiKey),
-        super(client, closeUnderlyingClient: true);
+        super(closeUnderlyingClient: true);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
@@ -89,14 +89,13 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
   late Client authClient;
 
   AutoRefreshingClient(
-    Client client,
+    super.client,
     this.clientId,
     this.credentials, {
-    bool closeUnderlyingClient = true,
+    super.closeUnderlyingClient,
     this.quotaProject,
   })  : assert(credentials.accessToken.type == 'Bearer'),
-        assert(credentials.refreshToken != null),
-        super(client, closeUnderlyingClient: closeUnderlyingClient) {
+        assert(credentials.refreshToken != null) {
     authClient = AuthenticatedClient(
       baseClient,
       credentials,
@@ -130,9 +129,9 @@ abstract class AutoRefreshDelegatingClient extends DelegatingClient
       StreamController.broadcast(sync: true);
 
   AutoRefreshDelegatingClient(
-    Client client, {
-    bool closeUnderlyingClient = true,
-  }) : super(client, closeUnderlyingClient: closeUnderlyingClient);
+    super.client, {
+    super.closeUnderlyingClient,
+  });
 
   @override
   Stream<AccessCredentials> get credentialUpdates =>

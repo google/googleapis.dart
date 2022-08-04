@@ -18,7 +18,7 @@ abstract class JsonType {
 class SimpleJsonType extends JsonType {
   final String name;
 
-  SimpleJsonType(DartApiImports imports, this.name) : super(imports);
+  SimpleJsonType(super.imports, this.name);
 
   @override
   String get declaration => '${imports.core.ref()}$name';
@@ -47,8 +47,7 @@ class MapJsonType extends JsonType {
   final JsonType keyJsonType;
   final JsonType valueJsonType;
 
-  MapJsonType(DartApiImports imports, this.keyJsonType, this.valueJsonType)
-      : super(imports);
+  MapJsonType(super.imports, this.keyJsonType, this.valueJsonType);
 
   @override
   String get declaration => '${imports.core.ref()}Map'
@@ -61,7 +60,7 @@ class MapJsonType extends JsonType {
 class ArrayJsonType extends JsonType {
   final JsonType valueJsonType;
 
-  ArrayJsonType(DartApiImports imports, this.valueJsonType) : super(imports);
+  ArrayJsonType(super.imports, this.valueJsonType);
 
   @override
   String get declaration =>
@@ -72,7 +71,7 @@ class ArrayJsonType extends JsonType {
 }
 
 class AnyJsonType extends JsonType {
-  AnyJsonType(DartApiImports imports) : super(imports);
+  AnyJsonType(super.imports);
 
   @override
   String get declaration => '${imports.core.ref()}dynamic';

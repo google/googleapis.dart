@@ -73,9 +73,9 @@ class ExpectCloseMockClient extends MockClient {
   late void Function() _expectedToBeCalled;
 
   ExpectCloseMockClient(
-    MockClientHandler requestHandler,
+    super.requestHandler,
     int c,
-  ) : super(requestHandler) {
+  ) {
     _expectedToBeCalled = expectAsync0(() {}, count: c);
   }
 

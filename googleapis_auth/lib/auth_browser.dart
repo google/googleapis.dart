@@ -277,9 +277,8 @@ class _AutoRefreshingBrowserClient extends AutoRefreshDelegatingClient {
   final ImplicitFlow _flow;
   Client _authClient;
 
-  _AutoRefreshingBrowserClient(Client client, this.credentials, this._flow)
-      : _authClient = authenticatedClient(client, credentials),
-        super(client);
+  _AutoRefreshingBrowserClient(super.client, this.credentials, this._flow)
+      : _authClient = authenticatedClient(client, credentials);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {

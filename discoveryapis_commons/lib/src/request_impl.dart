@@ -9,9 +9,8 @@ import 'package:http/http.dart' as http;
 class RequestImpl extends http.BaseRequest {
   final Stream<List<int>> _stream;
 
-  RequestImpl(String method, Uri url, [Stream<List<int>>? stream])
-      : _stream = stream ?? const Stream.empty(),
-        super(method, url);
+  RequestImpl(super.method, super.url, [Stream<List<int>>? stream])
+      : _stream = stream ?? const Stream.empty();
 
   @override
   http.ByteStream finalize() {

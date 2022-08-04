@@ -489,23 +489,16 @@ class DartApiClass extends DartResourceClass {
   final List<OAuth2Scope> scopes;
 
   DartApiClass(
-    DartApiImports imports,
-    Identifier name,
-    Comment comment,
-    List<DartResourceMethod> methods,
-    List<Identifier> subResourceIdentifiers,
-    List<DartResourceClass> subResources,
+    super.imports,
+    super.name,
+    super.comment,
+    super.methods,
+    super.subResourceIdentifiers,
+    super.subResources,
     this.rootUrl,
     this.servicePath,
     this.scopes,
-  ) : super(
-          imports,
-          name,
-          comment,
-          methods,
-          subResourceIdentifiers,
-          subResources,
-        );
+  );
 
   @override
   String get preamble {

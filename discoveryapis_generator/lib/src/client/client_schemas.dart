@@ -15,10 +15,8 @@ import '../utils.dart';
 
 /// Represents a named custom dart class with a number of properties.
 class ClientObjectType extends ObjectType {
-  ClientObjectType(DartApiImports imports, Identifier name,
-      List<DartClassProperty> properties,
-      {Comment? comment})
-      : super(imports, name, properties, comment: comment);
+  ClientObjectType(super.imports, super.name, super.properties,
+      {super.comment});
 
   @override
   String classDefinition() {

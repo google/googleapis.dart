@@ -5,10 +5,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:http/http.dart' as http;
-
 import '../access_credentials.dart';
-import '../client_id.dart';
 import '../exceptions.dart';
 import '../typedefs.dart';
 import 'auth_code.dart';
@@ -29,12 +26,12 @@ class AuthorizationCodeGrantServerFlow
   final PromptUserForConsent userPrompt;
 
   AuthorizationCodeGrantServerFlow(
-    ClientId clientId,
-    List<String> scopes,
-    http.Client client,
+    super.clientId,
+    super.scopes,
+    super.client,
     this.userPrompt, {
-    String? hostedDomain,
-  }) : super(clientId, scopes, client, hostedDomain: hostedDomain);
+    super.hostedDomain,
+  });
 
   @override
   Future<AccessCredentials> run() async {
