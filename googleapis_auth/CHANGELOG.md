@@ -1,6 +1,7 @@
 ## 1.3.2-dev
 
-- Require Dart 2.14 or later.
+- Update `README` to include a warning about Flutter application usage.
+- Require Dart 2.17 or later.
 
 ## 1.3.1
 
