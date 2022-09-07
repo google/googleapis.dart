@@ -5,6 +5,13 @@ This package also provides convenience functionality for:
 - obtaining authenticated HTTP clients
 - automatically refreshing OAuth2 credentials
 
+> Do _**NOT**_ use this package (`package:googleapis_auth`) with a
+> [Flutter](https://flutter.dev/) application.
+>
+> Use
+> [package:extension_google_sign_in_as_googleapis_auth](https://pub.dev/packages/extension_google_sign_in_as_googleapis_auth)
+> instead.
+
 ### Using this package
 
 Using this package requires creating a Google Cloud Project and obtaining
