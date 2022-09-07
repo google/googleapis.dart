@@ -1,3 +1,7 @@
+## 9.2.0-dev
+
+- Require Dart 2.17 or later.
+
 ## 9.1.0
 
 - Fixed `firestore/v1.dart` API.
