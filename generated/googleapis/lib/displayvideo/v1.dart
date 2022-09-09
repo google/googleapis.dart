@@ -2371,7 +2371,7 @@ class AdvertisersInsertionOrdersResource {
   /// [advertiserId] - The ID of the advertiser this insertion order belongs to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [insertionOrderId] - The ID of the insertion order we need to delete.
+  /// [insertionOrderId] - The ID of the insertion order to delete.
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3287,7 +3287,7 @@ class AdvertisersLineItemsResource {
   /// [advertiserId] - The ID of the advertiser this line item belongs to.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [lineItemId] - The ID of the line item we need to fetch.
+  /// [lineItemId] - The ID of the line item to delete.
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5905,7 +5905,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6054,7 +6055,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -11472,6 +11474,26 @@ class AgeRangeAssignedTargetingOptionDetails {
   /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
   /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
   /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
+  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
   /// The targeting_option_id of a TargetingOption of type
@@ -11520,6 +11542,26 @@ class AgeRangeTargetingOptionDetails {
   /// - "AGE_RANGE_55_64" : The age range of the audience is 55 to 64.
   /// - "AGE_RANGE_65_PLUS" : The age range of the audience is 65 and up.
   /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
+  /// - "AGE_RANGE_18_20" : The age range of the audience is 18 to 20, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_21_24" : The age range of the audience is 21 to 24, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_25_29" : The age range of the audience is 25 to 29, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_30_34" : The age range of the audience is 30 to 34, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_35_39" : The age range of the audience is 35 to 39, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_40_44" : The age range of the audience is 40 to 44, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_45_49" : The age range of the audience is 45 to 49, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_50_54" : The age range of the audience is 50 to 54, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_55_59" : The age range of the audience is 55 to 59, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
+  /// - "AGE_RANGE_60_64" : The age range of the audience is 60 to 64, only
+  /// supported for the AdGroup of YouTube Programmatic Reservation line item.
   core.String? ageRange;
 
   AgeRangeTargetingOptionDetails({
@@ -18906,9 +18948,12 @@ class ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_FYBER" : Fyber.
   /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
+  /// - "EXCHANGE_VISTAR" : Vistar.
+  /// - "EXCHANGE_DAX" : DAX.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -19033,9 +19078,12 @@ class ExchangeReviewStatus {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_FYBER" : Fyber.
   /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
+  /// - "EXCHANGE_VISTAR" : Vistar.
+  /// - "EXCHANGE_DAX" : DAX.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -19142,9 +19190,12 @@ class ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_FYBER" : Fyber.
   /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
+  /// - "EXCHANGE_VISTAR" : Vistar.
+  /// - "EXCHANGE_DAX" : DAX.
   core.String? exchange;
 
   ExchangeTargetingOptionDetails({
@@ -20395,9 +20446,12 @@ class GuaranteedOrder {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_FYBER" : Fyber.
   /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
+  /// - "EXCHANGE_VISTAR" : Vistar.
+  /// - "EXCHANGE_DAX" : DAX.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -21536,9 +21590,12 @@ class InventorySource {
   /// - "EXCHANGE_WAZE" : Waze.
   /// - "EXCHANGE_SOUNDCAST" : SoundCast.
   /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
+  /// - "EXCHANGE_FYBER" : Fyber.
   /// - "EXCHANGE_RED_FOR_PUBLISHERS" : Red For Publishers.
   /// - "EXCHANGE_MEDIANET" : Media.net.
   /// - "EXCHANGE_TAPJOY" : Tapjoy.
+  /// - "EXCHANGE_VISTAR" : Vistar.
+  /// - "EXCHANGE_DAX" : DAX.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.

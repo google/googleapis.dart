@@ -769,6 +769,8 @@ api.ApkManifest buildApkManifest() {
     o.packageName = 'foo';
     o.targetSdkVersion = 42;
     o.usesPermission = buildUnnamed19();
+    o.versionCode = 'foo';
+    o.versionName = 'foo';
   }
   buildCounterApkManifest--;
   return o;
@@ -799,6 +801,14 @@ void checkApkManifest(api.ApkManifest o) {
       unittest.equals(42),
     );
     checkUnnamed19(o.usesPermission!);
+    unittest.expect(
+      o.versionCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterApkManifest--;
 }

@@ -213,12 +213,14 @@ api.Attributes buildAttributes() {
     o.flavor = 'foo';
     o.format = 'foo';
     o.gender = 'foo';
+    o.grocery = buildGrocery();
     o.gtin = buildUnnamed3();
     o.imageLink = buildImage();
     o.includedDestination = buildUnnamed4();
     o.itemGroupId = 'foo';
     o.material = 'foo';
     o.mpn = 'foo';
+    o.nutrition = buildNutrition();
     o.pattern = 'foo';
     o.productDetail = buildUnnamed5();
     o.productHighlight = buildUnnamed6();
@@ -282,6 +284,7 @@ void checkAttributes(api.Attributes o) {
       o.gender!,
       unittest.equals('foo'),
     );
+    checkGrocery(o.grocery!);
     checkUnnamed3(o.gtin!);
     checkImage(o.imageLink!);
     checkUnnamed4(o.includedDestination!);
@@ -297,6 +300,7 @@ void checkAttributes(api.Attributes o) {
       o.mpn!,
       unittest.equals('foo'),
     );
+    checkNutrition(o.nutrition!);
     unittest.expect(
       o.pattern!,
       unittest.equals('foo'),
@@ -477,6 +481,123 @@ void checkFeatureDescription(api.FeatureDescription o) {
   buildCounterFeatureDescription--;
 }
 
+core.int buildCounterFloatUnit = 0;
+api.FloatUnit buildFloatUnit() {
+  final o = api.FloatUnit();
+  buildCounterFloatUnit++;
+  if (buildCounterFloatUnit < 3) {
+    o.amount = 42.0;
+    o.unit = 'foo';
+  }
+  buildCounterFloatUnit--;
+  return o;
+}
+
+void checkFloatUnit(api.FloatUnit o) {
+  buildCounterFloatUnit++;
+  if (buildCounterFloatUnit < 3) {
+    unittest.expect(
+      o.amount!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.unit!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFloatUnit--;
+}
+
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed12() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed12(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGrocery = 0;
+api.Grocery buildGrocery() {
+  final o = api.Grocery();
+  buildCounterGrocery++;
+  if (buildCounterGrocery < 3) {
+    o.activeIngredients = 'foo';
+    o.alcoholByVolume = 42.0;
+    o.allergens = 'foo';
+    o.derivedNutritionClaim = buildUnnamed11();
+    o.directions = 'foo';
+    o.indications = 'foo';
+    o.ingredients = 'foo';
+    o.nutritionClaim = buildUnnamed12();
+    o.storageInstructions = 'foo';
+  }
+  buildCounterGrocery--;
+  return o;
+}
+
+void checkGrocery(api.Grocery o) {
+  buildCounterGrocery++;
+  if (buildCounterGrocery < 3) {
+    unittest.expect(
+      o.activeIngredients!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.alcoholByVolume!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.allergens!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed11(o.derivedNutritionClaim!);
+    unittest.expect(
+      o.directions!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.indications!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ingredients!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed12(o.nutritionClaim!);
+    unittest.expect(
+      o.storageInstructions!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGrocery--;
+}
+
 core.int buildCounterImage = 0;
 api.Image buildImage() {
   final o = api.Image();
@@ -566,12 +687,12 @@ void checkIssue(api.Issue o) {
   buildCounterIssue--;
 }
 
-core.List<api.Product> buildUnnamed11() => [
+core.List<api.Product> buildUnnamed13() => [
       buildProduct(),
       buildProduct(),
     ];
 
-void checkUnnamed11(core.List<api.Product> o) {
+void checkUnnamed13(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0]);
   checkProduct(o[1]);
@@ -583,7 +704,7 @@ api.ListProductsResponse buildListProductsResponse() {
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.products = buildUnnamed11();
+    o.products = buildUnnamed13();
   }
   buildCounterListProductsResponse--;
   return o;
@@ -596,9 +717,183 @@ void checkListProductsResponse(api.ListProductsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.products!);
+    checkUnnamed13(o.products!);
   }
   buildCounterListProductsResponse--;
+}
+
+core.List<api.VoluntaryNutritionFact> buildUnnamed14() => [
+      buildVoluntaryNutritionFact(),
+      buildVoluntaryNutritionFact(),
+    ];
+
+void checkUnnamed14(core.List<api.VoluntaryNutritionFact> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkVoluntaryNutritionFact(o[0]);
+  checkVoluntaryNutritionFact(o[1]);
+}
+
+core.int buildCounterNutrition = 0;
+api.Nutrition buildNutrition() {
+  final o = api.Nutrition();
+  buildCounterNutrition++;
+  if (buildCounterNutrition < 3) {
+    o.addedSugars = buildFloatUnit();
+    o.addedSugarsDailyPercentage = 42.0;
+    o.calcium = buildFloatUnit();
+    o.calciumDailyPercentage = 42.0;
+    o.cholesterol = buildFloatUnit();
+    o.cholesterolDailyPercentage = 42.0;
+    o.dietaryFiber = buildFloatUnit();
+    o.dietaryFiberDailyPercentage = 42.0;
+    o.energy = buildFloatUnit();
+    o.energyFromFat = buildFloatUnit();
+    o.folateDailyPercentage = 42.0;
+    o.folateFolicAcid = buildFloatUnit();
+    o.folateMcgDfe = 42.0;
+    o.iron = buildFloatUnit();
+    o.ironDailyPercentage = 42.0;
+    o.monounsaturatedFat = buildFloatUnit();
+    o.nutritionFactMeasure = 'foo';
+    o.polyols = buildFloatUnit();
+    o.polyunsaturatedFat = buildFloatUnit();
+    o.potassium = buildFloatUnit();
+    o.potassiumDailyPercentage = 42.0;
+    o.preparedSizeDescription = 'foo';
+    o.protein = buildFloatUnit();
+    o.proteinDailyPercentage = 42.0;
+    o.saturatedFat = buildFloatUnit();
+    o.saturatedFatDailyPercentage = 42.0;
+    o.servingSizeDescription = 'foo';
+    o.servingSizeMeasure = buildFloatUnit();
+    o.servingsPerContainer = 'foo';
+    o.sodium = buildFloatUnit();
+    o.sodiumDailyPercentage = 42.0;
+    o.starch = buildFloatUnit();
+    o.totalCarbohydrate = buildFloatUnit();
+    o.totalCarbohydrateDailyPercentage = 42.0;
+    o.totalFat = buildFloatUnit();
+    o.totalFatDailyPercentage = 42.0;
+    o.totalSugars = buildFloatUnit();
+    o.totalSugarsDailyPercentage = 42.0;
+    o.transFat = buildFloatUnit();
+    o.transFatDailyPercentage = 42.0;
+    o.vitaminD = buildFloatUnit();
+    o.vitaminDDailyPercentage = 42.0;
+    o.voluntaryNutritionFact = buildUnnamed14();
+  }
+  buildCounterNutrition--;
+  return o;
+}
+
+void checkNutrition(api.Nutrition o) {
+  buildCounterNutrition++;
+  if (buildCounterNutrition < 3) {
+    checkFloatUnit(o.addedSugars!);
+    unittest.expect(
+      o.addedSugarsDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.calcium!);
+    unittest.expect(
+      o.calciumDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.cholesterol!);
+    unittest.expect(
+      o.cholesterolDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.dietaryFiber!);
+    unittest.expect(
+      o.dietaryFiberDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.energy!);
+    checkFloatUnit(o.energyFromFat!);
+    unittest.expect(
+      o.folateDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.folateFolicAcid!);
+    unittest.expect(
+      o.folateMcgDfe!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.iron!);
+    unittest.expect(
+      o.ironDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.monounsaturatedFat!);
+    unittest.expect(
+      o.nutritionFactMeasure!,
+      unittest.equals('foo'),
+    );
+    checkFloatUnit(o.polyols!);
+    checkFloatUnit(o.polyunsaturatedFat!);
+    checkFloatUnit(o.potassium!);
+    unittest.expect(
+      o.potassiumDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.preparedSizeDescription!,
+      unittest.equals('foo'),
+    );
+    checkFloatUnit(o.protein!);
+    unittest.expect(
+      o.proteinDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.saturatedFat!);
+    unittest.expect(
+      o.saturatedFatDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.servingSizeDescription!,
+      unittest.equals('foo'),
+    );
+    checkFloatUnit(o.servingSizeMeasure!);
+    unittest.expect(
+      o.servingsPerContainer!,
+      unittest.equals('foo'),
+    );
+    checkFloatUnit(o.sodium!);
+    unittest.expect(
+      o.sodiumDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.starch!);
+    checkFloatUnit(o.totalCarbohydrate!);
+    unittest.expect(
+      o.totalCarbohydrateDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.totalFat!);
+    unittest.expect(
+      o.totalFatDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.totalSugars!);
+    unittest.expect(
+      o.totalSugarsDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.transFat!);
+    unittest.expect(
+      o.transFatDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkFloatUnit(o.vitaminD!);
+    unittest.expect(
+      o.vitaminDDailyPercentage!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed14(o.voluntaryNutritionFact!);
+  }
+  buildCounterNutrition--;
 }
 
 core.int buildCounterPrice = 0;
@@ -628,23 +923,23 @@ void checkPrice(api.Price o) {
   buildCounterPrice--;
 }
 
-core.List<api.DestinationStatus> buildUnnamed12() => [
+core.List<api.DestinationStatus> buildUnnamed15() => [
       buildDestinationStatus(),
       buildDestinationStatus(),
     ];
 
-void checkUnnamed12(core.List<api.DestinationStatus> o) {
+void checkUnnamed15(core.List<api.DestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestinationStatus(o[0]);
   checkDestinationStatus(o[1]);
 }
 
-core.List<api.Issue> buildUnnamed13() => [
+core.List<api.Issue> buildUnnamed16() => [
       buildIssue(),
       buildIssue(),
     ];
 
-void checkUnnamed13(core.List<api.Issue> o) {
+void checkUnnamed16(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssue(o[0]);
   checkIssue(o[1]);
@@ -657,8 +952,8 @@ api.Product buildProduct() {
   if (buildCounterProduct < 3) {
     o.attributes = buildAttributes();
     o.contentLanguage = 'foo';
-    o.destinationStatuses = buildUnnamed12();
-    o.issues = buildUnnamed13();
+    o.destinationStatuses = buildUnnamed15();
+    o.issues = buildUnnamed16();
     o.name = 'foo';
     o.parent = 'foo';
     o.productId = 'foo';
@@ -676,8 +971,8 @@ void checkProduct(api.Product o) {
       o.contentLanguage!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.destinationStatuses!);
-    checkUnnamed13(o.issues!);
+    checkUnnamed15(o.destinationStatuses!);
+    checkUnnamed16(o.issues!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -730,12 +1025,41 @@ void checkProductDetail(api.ProductDetail o) {
   buildCounterProductDetail--;
 }
 
-core.List<core.String> buildUnnamed14() => [
+core.int buildCounterVoluntaryNutritionFact = 0;
+api.VoluntaryNutritionFact buildVoluntaryNutritionFact() {
+  final o = api.VoluntaryNutritionFact();
+  buildCounterVoluntaryNutritionFact++;
+  if (buildCounterVoluntaryNutritionFact < 3) {
+    o.dailyPercentage = 42.0;
+    o.name = 'foo';
+    o.value = buildFloatUnit();
+  }
+  buildCounterVoluntaryNutritionFact--;
+  return o;
+}
+
+void checkVoluntaryNutritionFact(api.VoluntaryNutritionFact o) {
+  buildCounterVoluntaryNutritionFact++;
+  if (buildCounterVoluntaryNutritionFact < 3) {
+    unittest.expect(
+      o.dailyPercentage!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkFloatUnit(o.value!);
+  }
+  buildCounterVoluntaryNutritionFact--;
+}
+
+core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed14(core.List<core.String> o) {
+void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -747,12 +1071,12 @@ void checkUnnamed14(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed15() => [
+core.List<core.String> buildUnnamed18() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed15(core.List<core.String> o) {
+void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -825,6 +1149,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-FloatUnit', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFloatUnit();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.FloatUnit.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFloatUnit(od);
+    });
+  });
+
+  unittest.group('obj-schema-Grocery', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGrocery();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Grocery.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGrocery(od);
+    });
+  });
+
   unittest.group('obj-schema-Image', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImage();
@@ -855,6 +1199,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Nutrition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNutrition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Nutrition.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkNutrition(od);
+    });
+  });
+
   unittest.group('obj-schema-Price', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPrice();
@@ -882,6 +1236,16 @@ void main() {
       final od = api.ProductDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkProductDetail(od);
+    });
+  });
+
+  unittest.group('obj-schema-VoluntaryNutritionFact', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVoluntaryNutritionFact();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VoluntaryNutritionFact.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVoluntaryNutritionFact(od);
     });
   });
 
@@ -945,7 +1309,7 @@ void main() {
       final res = api.ManufacturerCenterApi(mock).accounts.products;
       final arg_parent = 'foo';
       final arg_name = 'foo';
-      final arg_include = buildUnnamed14();
+      final arg_include = buildUnnamed17();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -1003,7 +1367,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ManufacturerCenterApi(mock).accounts.products;
       final arg_parent = 'foo';
-      final arg_include = buildUnnamed15();
+      final arg_include = buildUnnamed18();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';

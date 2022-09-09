@@ -1513,6 +1513,107 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// Specifies required connection parameters, and the parameters required to
+/// create an AlloyDB destination cluster.
+class AlloyDbConnectionProfile {
+  /// The AlloyDB cluster ID that this connection profile is associated with.
+  ///
+  /// Required.
+  core.String? clusterId;
+
+  /// Metadata used to create the destination AlloyDB cluster.
+  ///
+  /// Immutable.
+  AlloyDbSettings? settings;
+
+  AlloyDbConnectionProfile({
+    this.clusterId,
+    this.settings,
+  });
+
+  AlloyDbConnectionProfile.fromJson(core.Map json_)
+      : this(
+          clusterId: json_.containsKey('clusterId')
+              ? json_['clusterId'] as core.String
+              : null,
+          settings: json_.containsKey('settings')
+              ? AlloyDbSettings.fromJson(
+                  json_['settings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterId != null) 'clusterId': clusterId!,
+        if (settings != null) 'settings': settings!,
+      };
+}
+
+/// Settings for creating an AlloyDB cluster.
+class AlloyDbSettings {
+  /// Input only.
+  ///
+  /// Initial user to setup during cluster creation. Required.
+  ///
+  /// Required.
+  UserPassword? initialUser;
+
+  /// Labels for the AlloyDB cluster created by DMS.
+  ///
+  /// An object containing a list of 'key', 'value' pairs.
+  core.Map<core.String, core.String>? labels;
+  PrimaryInstanceSettings? primaryInstanceSettings;
+
+  /// The resource link for the VPC network in which cluster resources are
+  /// created and from which they are accessible via Private IP.
+  ///
+  /// The network must belong to the same project as the cluster. It is
+  /// specified in the form:
+  /// "projects/{project_number}/global/networks/{network_id}". This is required
+  /// to create a cluster.
+  ///
+  /// Required.
+  core.String? vpcNetwork;
+
+  AlloyDbSettings({
+    this.initialUser,
+    this.labels,
+    this.primaryInstanceSettings,
+    this.vpcNetwork,
+  });
+
+  AlloyDbSettings.fromJson(core.Map json_)
+      : this(
+          initialUser: json_.containsKey('initialUser')
+              ? UserPassword.fromJson(
+                  json_['initialUser'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          primaryInstanceSettings: json_.containsKey('primaryInstanceSettings')
+              ? PrimaryInstanceSettings.fromJson(
+                  json_['primaryInstanceSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (initialUser != null) 'initialUser': initialUser!,
+        if (labels != null) 'labels': labels!,
+        if (primaryInstanceSettings != null)
+          'primaryInstanceSettings': primaryInstanceSettings!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1591,10 +1692,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -1917,6 +2024,9 @@ class CloudSqlSettings {
 
 /// A connection profile definition.
 class ConnectionProfile {
+  /// An AlloyDB cluster connection profile.
+  AlloyDbConnectionProfile? alloydb;
+
   /// A CloudSQL database connection profile.
   CloudSqlConnectionProfile? cloudsql;
 
@@ -1959,6 +2069,7 @@ class ConnectionProfile {
   /// - "CLOUDSQL" : CloudSQL runs the database.
   /// - "RDS" : RDS runs the database.
   /// - "AURORA" : Amazon Aurora.
+  /// - "ALLOYDB" : AlloyDB.
   core.String? provider;
 
   /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -1982,6 +2093,7 @@ class ConnectionProfile {
   core.String? updateTime;
 
   ConnectionProfile({
+    this.alloydb,
     this.cloudsql,
     this.createTime,
     this.displayName,
@@ -1997,6 +2109,10 @@ class ConnectionProfile {
 
   ConnectionProfile.fromJson(core.Map json_)
       : this(
+          alloydb: json_.containsKey('alloydb')
+              ? AlloyDbConnectionProfile.fromJson(
+                  json_['alloydb'] as core.Map<core.String, core.dynamic>)
+              : null,
           cloudsql: json_.containsKey('cloudsql')
               ? CloudSqlConnectionProfile.fromJson(
                   json_['cloudsql'] as core.Map<core.String, core.dynamic>)
@@ -2039,6 +2155,7 @@ class ConnectionProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alloydb != null) 'alloydb': alloydb!,
         if (cloudsql != null) 'cloudsql': cloudsql!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
@@ -2069,6 +2186,7 @@ class DatabaseType {
   /// - "CLOUDSQL" : CloudSQL runs the database.
   /// - "RDS" : RDS runs the database.
   /// - "AURORA" : Amazon Aurora.
+  /// - "ALLOYDB" : AlloyDB.
   core.String? provider;
 
   DatabaseType({
@@ -2371,6 +2489,27 @@ class ListOperationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
+
+/// MachineConfig describes the configuration of a machine.
+class MachineConfig {
+  /// The number of CPU's in the VM instance.
+  core.int? cpuCount;
+
+  MachineConfig({
+    this.cpuCount,
+  });
+
+  MachineConfig.fromJson(core.Map json_)
+      : this(
+          cpuCount: json_.containsKey('cpuCount')
+              ? json_['cpuCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuCount != null) 'cpuCount': cpuCount!,
+      };
+}
 
 /// Represents a Database Migration Service migration job object.
 class MigrationJob {
@@ -2917,6 +3056,18 @@ class PostgreSqlConnectionProfile {
   /// Required.
   core.String? host;
 
+  /// If the source is a Cloud SQL database, this field indicates the network
+  /// architecture it's associated with.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NETWORK_ARCHITECTURE_UNSPECIFIED"
+  /// - "NETWORK_ARCHITECTURE_OLD_CSQL_PRODUCER" : Instance is in Cloud SQL's
+  /// old producer network architecture.
+  /// - "NETWORK_ARCHITECTURE_NEW_CSQL_PRODUCER" : Instance is in Cloud SQL's
+  /// new producer network architecture.
+  core.String? networkArchitecture;
+
   /// Input only.
   ///
   /// The password for the user that Database Migration Service will be using to
@@ -2950,6 +3101,7 @@ class PostgreSqlConnectionProfile {
   PostgreSqlConnectionProfile({
     this.cloudSqlId,
     this.host,
+    this.networkArchitecture,
     this.password,
     this.passwordSet,
     this.port,
@@ -2963,6 +3115,9 @@ class PostgreSqlConnectionProfile {
               ? json_['cloudSqlId'] as core.String
               : null,
           host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          networkArchitecture: json_.containsKey('networkArchitecture')
+              ? json_['networkArchitecture'] as core.String
+              : null,
           password: json_.containsKey('password')
               ? json_['password'] as core.String
               : null,
@@ -2982,11 +3137,89 @@ class PostgreSqlConnectionProfile {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
         if (host != null) 'host': host!,
+        if (networkArchitecture != null)
+          'networkArchitecture': networkArchitecture!,
         if (password != null) 'password': password!,
         if (passwordSet != null) 'passwordSet': passwordSet!,
         if (port != null) 'port': port!,
         if (ssl != null) 'ssl': ssl!,
         if (username != null) 'username': username!,
+      };
+}
+
+/// Settings for the cluster's primary instance
+class PrimaryInstanceSettings {
+  /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster
+  /// and instances.
+  ///
+  /// See the AlloyDB documentation for how these can be used.
+  core.Map<core.String, core.String>? databaseFlags;
+
+  /// The ID of the AlloyDB primary instance.
+  ///
+  /// The ID must satisfy the regex expression "\[a-z0-9-\]+".
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Labels for the AlloyDB primary instance created by DMS.
+  ///
+  /// An object containing a list of 'key', 'value' pairs.
+  core.Map<core.String, core.String>? labels;
+
+  /// Configuration for the machines that host the underlying database engine.
+  MachineConfig? machineConfig;
+
+  /// The private IP address for the Instance.
+  ///
+  /// This is the connection endpoint for an end-user application.
+  ///
+  /// Output only.
+  core.String? privateIp;
+
+  PrimaryInstanceSettings({
+    this.databaseFlags,
+    this.id,
+    this.labels,
+    this.machineConfig,
+    this.privateIp,
+  });
+
+  PrimaryInstanceSettings.fromJson(core.Map json_)
+      : this(
+          databaseFlags: json_.containsKey('databaseFlags')
+              ? (json_['databaseFlags'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          machineConfig: json_.containsKey('machineConfig')
+              ? MachineConfig.fromJson(
+                  json_['machineConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          privateIp: json_.containsKey('privateIp')
+              ? json_['privateIp'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseFlags != null) 'databaseFlags': databaseFlags!,
+        if (id != null) 'id': id!,
+        if (labels != null) 'labels': labels!,
+        if (machineConfig != null) 'machineConfig': machineConfig!,
+        if (privateIp != null) 'privateIp': privateIp!,
       };
 }
 
@@ -3302,6 +3535,45 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// The username/password for a database user.
+///
+/// Used for specifying initial users at cluster creation time.
+class UserPassword {
+  /// The initial password for the user.
+  core.String? password;
+
+  /// Indicates if the initial_user.password field has been set.
+  ///
+  /// Output only.
+  core.bool? passwordSet;
+
+  /// The database username.
+  core.String? user;
+
+  UserPassword({
+    this.password,
+    this.passwordSet,
+    this.user,
+  });
+
+  UserPassword.fromJson(core.Map json_)
+      : this(
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
+              : null,
+          passwordSet: json_.containsKey('passwordSet')
+              ? json_['passwordSet'] as core.bool
+              : null,
+          user: json_.containsKey('user') ? json_['user'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (password != null) 'password': password!,
+        if (passwordSet != null) 'passwordSet': passwordSet!,
+        if (user != null) 'user': user!,
+      };
+}
 
 /// Request message for 'VerifyMigrationJob' request.
 typedef VerifyMigrationJobRequest = $Empty;

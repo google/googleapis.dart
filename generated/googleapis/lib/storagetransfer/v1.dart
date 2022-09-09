@@ -400,6 +400,48 @@ class TransferJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes a transfer job.
+  ///
+  /// Deleting a transfer job sets its status to DELETED.
+  ///
+  /// Request parameters:
+  ///
+  /// [jobName] - Required. The job to delete.
+  /// Value must have pattern `^transferJobs/.*$`.
+  ///
+  /// [projectId] - Required. The ID of the Google Cloud project that owns the
+  /// job.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String jobName,
+    core.String projectId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$jobName');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a transfer job.
   ///
   /// Request parameters:
@@ -2594,7 +2636,7 @@ class UpdateTransferJobRequest {
   /// description, transfer_spec, notification_config, logging_config, and
   /// status. An `UpdateTransferJobRequest` that specifies other fields are
   /// rejected with the error INVALID_ARGUMENT. Updating a job status to DELETED
-  /// requires `storagetransfer.jobs.delete` permissions.
+  /// requires `storagetransfer.jobs.delete` permission.
   ///
   /// Required.
   TransferJob? transferJob;

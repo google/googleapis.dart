@@ -27,12 +27,10 @@
 ///     - [ProjectsLocationsConnectionsResource]
 ///       - [ProjectsLocationsConnectionsRuntimeActionSchemasResource]
 ///       - [ProjectsLocationsConnectionsRuntimeEntitySchemasResource]
-///     - [ProjectsLocationsGlobalResource]
-///       - [ProjectsLocationsGlobalProvidersResource]
-///         - [ProjectsLocationsGlobalProvidersConnectorsResource]
-///           - [ProjectsLocationsGlobalProvidersConnectorsVersionsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProvidersResource]
+///       - [ProjectsLocationsProvidersConnectorsResource]
+///         - [ProjectsLocationsProvidersConnectorsVersionsResource]
 library connectors.v1;
 
 import 'dart:async' as async;
@@ -82,8 +80,6 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsConnectionsResource get connections =>
       ProjectsLocationsConnectionsResource(_requester);
-  ProjectsLocationsGlobalResource get global =>
-      ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsProvidersResource get providers =>
@@ -792,314 +788,6 @@ class ProjectsLocationsConnectionsRuntimeEntitySchemasResource {
   }
 }
 
-class ProjectsLocationsGlobalResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsGlobalProvidersResource get providers =>
-      ProjectsLocationsGlobalProvidersResource(_requester);
-
-  ProjectsLocationsGlobalResource(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsLocationsGlobalProvidersResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsGlobalProvidersConnectorsResource get connectors =>
-      ProjectsLocationsGlobalProvidersConnectorsResource(_requester);
-
-  ProjectsLocationsGlobalProvidersResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets details of a single Provider.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Resource name of the form: `projects / * /locations / *
-  /// /providers / * `
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/providers/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Provider].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Provider> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Provider.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists Providers in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent resource of the API, of the form: `projects /
-  /// * /locations / * `
-  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
-  ///
-  /// [pageSize] - Page size.
-  ///
-  /// [pageToken] - Page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListProvidersResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListProvidersResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListProvidersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsGlobalProvidersConnectorsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsGlobalProvidersConnectorsVersionsResource get versions =>
-      ProjectsLocationsGlobalProvidersConnectorsVersionsResource(_requester);
-
-  ProjectsLocationsGlobalProvidersConnectorsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets details of a single Connector.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Resource name of the form: `projects / * /locations / *
-  /// /providers / * /connectors / * `
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/providers/\[^/\]+/connectors/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Connector].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Connector> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Connector.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists Connectors in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent resource of the connectors, of the form:
-  /// `projects / * /locations / * /providers / * `
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/providers/\[^/\]+$`.
-  ///
-  /// [pageSize] - Page size.
-  ///
-  /// [pageToken] - Page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListConnectorsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListConnectorsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/connectors';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListConnectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsGlobalProvidersConnectorsVersionsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsGlobalProvidersConnectorsVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets details of a single connector version.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Resource name of the form: `projects / * /locations / *
-  /// /providers / * /connectors / * /versions / * `
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/providers/\[^/\]+/connectors/\[^/\]+/versions/\[^/\]+$`.
-  ///
-  /// [view] - Specifies which fields of the ConnectorVersion are returned in
-  /// the response. Defaults to `CUSTOMER` view.
-  /// Possible string values are:
-  /// - "CONNECTOR_VERSION_VIEW_UNSPECIFIED" :
-  /// CONNECTOR_VERSION_VIEW_UNSPECIFIED.
-  /// - "CONNECTOR_VERSION_VIEW_BASIC" : Do not include role grant configs.
-  /// - "CONNECTOR_VERSION_VIEW_FULL" : Include role grant configs.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ConnectorVersion].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ConnectorVersion> get(
-    core.String name, {
-    core.String? view,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ConnectorVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists Connector Versions in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent resource of the connectors, of the form:
-  /// `projects / * /locations / * /providers / * /connectors / * `
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/providers/\[^/\]+/connectors/\[^/\]+$`.
-  ///
-  /// [pageSize] - Page size.
-  ///
-  /// [pageToken] - Page token.
-  ///
-  /// [view] - Specifies which fields of the ConnectorVersion are returned in
-  /// the response. Defaults to `CUSTOMER` view.
-  /// Possible string values are:
-  /// - "CONNECTOR_VERSION_VIEW_UNSPECIFIED" :
-  /// CONNECTOR_VERSION_VIEW_UNSPECIFIED.
-  /// - "CONNECTOR_VERSION_VIEW_BASIC" : Do not include role grant configs.
-  /// - "CONNECTOR_VERSION_VIEW_FULL" : Include role grant configs.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListConnectorVersionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListConnectorVersionsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? view,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (view != null) 'view': [view],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListConnectorVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1296,8 +984,48 @@ class ProjectsLocationsOperationsResource {
 class ProjectsLocationsProvidersResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsProvidersConnectorsResource get connectors =>
+      ProjectsLocationsProvidersConnectorsResource(_requester);
+
   ProjectsLocationsProvidersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets details of a provider.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /providers / * ` Only global location is supported for Provider resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Provider].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Provider> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Provider.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets the access control policy for a resource.
   ///
@@ -1354,6 +1082,52 @@ class ProjectsLocationsProvidersResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Providers in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the API, of the form: `projects /
+  /// * /locations / * ` Only global location is supported for Provider
+  /// resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProvidersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProvidersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListProvidersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1455,6 +1229,215 @@ class ProjectsLocationsProvidersResource {
   }
 }
 
+class ProjectsLocationsProvidersConnectorsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProvidersConnectorsVersionsResource get versions =>
+      ProjectsLocationsProvidersConnectorsVersionsResource(_requester);
+
+  ProjectsLocationsProvidersConnectorsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single Connector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /providers / * /connectors / * ` Only global location is supported for
+  /// Connector resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Connector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Connector> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Connector.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Connectors in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the connectors, of the form:
+  /// `projects / * /locations / * /providers / * ` Only global location is
+  /// supported for Connector resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConnectorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConnectorsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/connectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConnectorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsProvidersConnectorsVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProvidersConnectorsVersionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single connector version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /providers / * /connectors / * /versions / * ` Only global location is
+  /// supported for ConnectorVersion resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+/connectors/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [view] - Specifies which fields of the ConnectorVersion are returned in
+  /// the response. Defaults to `CUSTOMER` view.
+  /// Possible string values are:
+  /// - "CONNECTOR_VERSION_VIEW_UNSPECIFIED" :
+  /// CONNECTOR_VERSION_VIEW_UNSPECIFIED.
+  /// - "CONNECTOR_VERSION_VIEW_BASIC" : Do not include role grant configs.
+  /// - "CONNECTOR_VERSION_VIEW_FULL" : Include role grant configs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConnectorVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConnectorVersion> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConnectorVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Connector Versions in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the connectors, of the form:
+  /// `projects / * /locations / * /providers / * /connectors / * ` Only global
+  /// location is supported for ConnectorVersion resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [view] - Specifies which fields of the ConnectorVersion are returned in
+  /// the response. Defaults to `BASIC` view.
+  /// Possible string values are:
+  /// - "CONNECTOR_VERSION_VIEW_UNSPECIFIED" :
+  /// CONNECTOR_VERSION_VIEW_UNSPECIFIED.
+  /// - "CONNECTOR_VERSION_VIEW_BASIC" : Do not include role grant configs.
+  /// - "CONNECTOR_VERSION_VIEW_FULL" : Include role grant configs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConnectorVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConnectorVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConnectorVersionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1528,6 +1511,7 @@ class AuthConfig {
   /// - "OAUTH2_CLIENT_CREDENTIALS" : Oauth 2.0 Client Credentials Grant
   /// Authentication
   /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
   core.String? authType;
 
   /// Oauth2ClientCredentials.
@@ -1604,6 +1588,7 @@ class AuthConfigTemplate {
   /// - "OAUTH2_CLIENT_CREDENTIALS" : Oauth 2.0 Client Credentials Grant
   /// Authentication
   /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
   core.String? authType;
 
   /// Config variables to describe an `AuthConfig` for a `Connection`.
@@ -1637,6 +1622,13 @@ class AuthConfigTemplate {
 /// This configuration captures the details required to render an authorization
 /// link for the OAuth Authorization Code Flow.
 class AuthorizationCodeLink {
+  /// The client ID assigned to the GCP Connectors OAuth app for the connector
+  /// data source.
+  core.String? clientId;
+
+  /// Whether to enable PKCE for the auth code flow.
+  core.bool? enablePkce;
+
   /// The scopes for which the user will authorize GCP Connectors on the
   /// connector data source.
   core.List<core.String>? scopes;
@@ -1646,12 +1638,20 @@ class AuthorizationCodeLink {
   core.String? uri;
 
   AuthorizationCodeLink({
+    this.clientId,
+    this.enablePkce,
     this.scopes,
     this.uri,
   });
 
   AuthorizationCodeLink.fromJson(core.Map json_)
       : this(
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          enablePkce: json_.containsKey('enablePkce')
+              ? json_['enablePkce'] as core.bool
+              : null,
           scopes: json_.containsKey('scopes')
               ? (json_['scopes'] as core.List)
                   .map((value) => value as core.String)
@@ -1661,6 +1661,8 @@ class AuthorizationCodeLink {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (enablePkce != null) 'enablePkce': enablePkce!,
         if (scopes != null) 'scopes': scopes!,
         if (uri != null) 'uri': uri!,
       };
@@ -1687,8 +1689,12 @@ class Binding {
   /// represents anyone who is authenticated with a Google account or a service
   /// account. * `user:{emailid}`: An email address that represents a specific
   /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{emailid}`: An email address that represents a Google
+  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
+  /// An identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -1932,8 +1938,9 @@ class Connection {
 
   /// Connector version on which the connection is created.
   ///
-  /// The format is: projects / * /locations/global/providers / * /connectors /
-  /// * /versions / *
+  /// The format is: projects / * /locations / * /providers / * /connectors / *
+  /// /versions / * Only global location is supported for ConnectorVersion
+  /// resource.
   ///
   /// Required.
   core.String? connectorVersion;
@@ -1947,6 +1954,13 @@ class Connection {
   ///
   /// Optional.
   core.String? description;
+
+  /// Configuration of the Connector's destination.
+  ///
+  /// Only accepted for Connectors that accepts user defined destination(s).
+  ///
+  /// Optional.
+  core.List<DestinationConfig>? destinationConfigs;
 
   /// GCR location where the envoy image is stored.
   ///
@@ -1982,6 +1996,11 @@ class Connection {
   /// Output only.
   core.String? name;
 
+  /// Configuration for the connection.
+  ///
+  /// Optional.
+  NodeConfig? nodeConfig;
+
   /// Service account needed for runtime plane to access GCP resources.
   ///
   /// Optional.
@@ -2016,11 +2035,13 @@ class Connection {
     this.connectorVersion,
     this.createTime,
     this.description,
+    this.destinationConfigs,
     this.envoyImageLocation,
     this.imageLocation,
     this.labels,
     this.lockConfig,
     this.name,
+    this.nodeConfig,
     this.serviceAccount,
     this.serviceDirectory,
     this.status,
@@ -2049,6 +2070,12 @@ class Connection {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          destinationConfigs: json_.containsKey('destinationConfigs')
+              ? (json_['destinationConfigs'] as core.List)
+                  .map((value) => DestinationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           envoyImageLocation: json_.containsKey('envoyImageLocation')
               ? json_['envoyImageLocation'] as core.String
               : null,
@@ -2068,6 +2095,10 @@ class Connection {
                   json_['lockConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nodeConfig: json_.containsKey('nodeConfig')
+              ? NodeConfig.fromJson(
+                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
@@ -2092,12 +2123,15 @@ class Connection {
         if (connectorVersion != null) 'connectorVersion': connectorVersion!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (destinationConfigs != null)
+          'destinationConfigs': destinationConfigs!,
         if (envoyImageLocation != null)
           'envoyImageLocation': envoyImageLocation!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (labels != null) 'labels': labels!,
         if (lockConfig != null) 'lockConfig': lockConfig!,
         if (name != null) 'name': name!,
+        if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceDirectory != null) 'serviceDirectory': serviceDirectory!,
         if (status != null) 'status': status!,
@@ -2236,6 +2270,7 @@ class Connector {
   ///
   /// Format:
   /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}
+  /// Only global location is supported for Connector resource.
   ///
   /// Output only.
   core.String? name;
@@ -2363,6 +2398,7 @@ class ConnectorVersion {
   ///
   /// Format:
   /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}/versions/{version}
+  /// Only global location is supported for Connector resource.
   ///
   /// Output only.
   core.String? name;
@@ -2488,6 +2524,70 @@ class ConnectorVersion {
         if (supportedRuntimeFeatures != null)
           'supportedRuntimeFeatures': supportedRuntimeFeatures!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class Destination {
+  /// For publicly routable host.
+  core.String? host;
+
+  /// The port is the target port number that is accepted by the destination.
+  core.int? port;
+
+  /// PSC service attachments.
+  ///
+  /// Format: projects / * /regions / * /serviceAttachments / *
+  core.String? serviceAttachment;
+
+  Destination({
+    this.host,
+    this.port,
+    this.serviceAttachment,
+  });
+
+  Destination.fromJson(core.Map json_)
+      : this(
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          serviceAttachment: json_.containsKey('serviceAttachment')
+              ? json_['serviceAttachment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (host != null) 'host': host!,
+        if (port != null) 'port': port!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
+      };
+}
+
+/// Define the Connectors target endpoint.
+class DestinationConfig {
+  /// The destinations for the key.
+  core.List<Destination>? destinations;
+
+  /// The key is the destination identifier that is supported by the Connector.
+  core.String? key;
+
+  DestinationConfig({
+    this.destinations,
+    this.key,
+  });
+
+  DestinationConfig.fromJson(core.Map json_)
+      : this(
+          destinations: json_.containsKey('destinations')
+              ? (json_['destinations'] as core.List)
+                  .map((value) => Destination.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinations != null) 'destinations': destinations!,
+        if (key != null) 'key': key!,
       };
 }
 
@@ -3248,6 +3348,35 @@ class LockConfig {
       };
 }
 
+/// Configuration for the connection.
+class NodeConfig {
+  /// Maximum number of nodes in the runtime nodes.
+  core.int? maxNodeCount;
+
+  /// Minimum number of nodes in the runtime nodes.
+  core.int? minNodeCount;
+
+  NodeConfig({
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
+
+  NodeConfig.fromJson(core.Map json_)
+      : this(
+          maxNodeCount: json_.containsKey('maxNodeCount')
+              ? json_['maxNodeCount'] as core.int
+              : null,
+          minNodeCount: json_.containsKey('minNodeCount')
+              ? json_['minNodeCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+      };
+}
+
 /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication.
 ///
 /// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
@@ -3563,7 +3692,8 @@ class Provider {
 
   /// Resource name of the Provider.
   ///
-  /// Format: projects/{project}/locations/{location}/providers/{provider}
+  /// Format: projects/{project}/locations/{location}/providers/{provider} Only
+  /// global location is supported for Provider resource.
   ///
   /// Output only.
   core.String? name;

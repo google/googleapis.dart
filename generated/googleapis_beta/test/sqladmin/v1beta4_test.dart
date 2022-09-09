@@ -2611,6 +2611,7 @@ api.Settings buildSettings() {
     o.availabilityType = 'foo';
     o.backupConfiguration = buildBackupConfiguration();
     o.collation = 'foo';
+    o.connectorEnforcement = 'foo';
     o.crashSafeReplicationEnabled = true;
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
@@ -2653,6 +2654,10 @@ void checkSettings(api.Settings o) {
     checkBackupConfiguration(o.backupConfiguration!);
     unittest.expect(
       o.collation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.connectorEnforcement!,
       unittest.equals('foo'),
     );
     unittest.expect(o.crashSafeReplicationEnabled!, unittest.isTrue);

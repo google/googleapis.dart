@@ -81,6 +81,7 @@ packages:
     - composer:v1 # https://cloud.google.com/composer/
     - compute:v1 # https://developers.google.com/compute/
     - connectors:v1
+    - connectors:v2
     - contactcenterinsights:v1
     - container:v1 # https://cloud.google.com/container-engine/
     - containeranalysis:v1
@@ -366,6 +367,8 @@ skipped_apis:
 - healthcare:v1beta1 # v1 included
 - iam:v2beta
 - iap:v1beta1 # v1 included
+- identitytoolkit:v1
+- identitytoolkit:v2
 - ideahub:v1alpha
 - jobs:v3p1beta1 # v3 included
 - language:v1beta1 # v1 included
@@ -383,6 +386,7 @@ skipped_apis:
 - playdeveloperreporting:v1alpha1
 - playdeveloperreporting:v1beta1
 - policyanalyzer:v1beta1
+- policysimulator:v1alpha
 - policytroubleshooter:v1beta # v1 included
 - poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
@@ -401,7 +405,6 @@ skipped_apis:
 - servicenetworking:v1beta # v1 included
 - serviceusage:v1beta1 # v1 included
 - speech:v1p1beta1 # v1 included
-- speech:v2beta1 # v1 included
 - sqladmin:v1 # empty!
 - sts:v1beta #v1 included
 - texttospeech:v1beta1 # v1 included

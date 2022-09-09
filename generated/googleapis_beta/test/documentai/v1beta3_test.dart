@@ -428,7 +428,6 @@ api.GoogleCloudDocumentaiV1beta3DocumentEntity
     o.id = 'foo';
     o.mentionId = 'foo';
     o.mentionText = 'foo';
-    o.nonPresent = true;
     o.normalizedValue =
         buildGoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue();
     o.pageAnchor = buildGoogleCloudDocumentaiV1beta3DocumentPageAnchor();
@@ -462,7 +461,6 @@ void checkGoogleCloudDocumentaiV1beta3DocumentEntity(
       o.mentionText!,
       unittest.equals('foo'),
     );
-    unittest.expect(o.nonPresent!, unittest.isTrue);
     checkGoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue(
         o.normalizedValue!);
     checkGoogleCloudDocumentaiV1beta3DocumentPageAnchor(o.pageAnchor!);
@@ -1839,6 +1837,8 @@ api.GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType
   if (buildCounterGoogleCloudDocumentaiV1beta3DocumentSchemaEntityType < 3) {
     o.baseTypes = buildUnnamed39();
     o.displayName = 'foo';
+    o.entityTypeMetadata =
+        buildGoogleCloudDocumentaiV1beta3EntityTypeMetadata();
     o.enumValues =
         buildGoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues();
     o.name = 'foo';
@@ -1857,6 +1857,7 @@ void checkGoogleCloudDocumentaiV1beta3DocumentSchemaEntityType(
       o.displayName!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDocumentaiV1beta3EntityTypeMetadata(o.entityTypeMetadata!);
     checkGoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues(
         o.enumValues!);
     unittest.expect(
@@ -1922,6 +1923,7 @@ api.GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty
       3) {
     o.name = 'foo';
     o.occurrenceType = 'foo';
+    o.propertyMetadata = buildGoogleCloudDocumentaiV1beta3PropertyMetadata();
     o.valueType = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty--;
@@ -1941,6 +1943,7 @@ void checkGoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty(
       o.occurrenceType!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDocumentaiV1beta3PropertyMetadata(o.propertyMetadata!);
     unittest.expect(
       o.valueType!,
       unittest.equals('foo'),
@@ -1958,6 +1961,7 @@ api.GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata
     o.documentAllowMultipleLabels = true;
     o.documentSplitter = true;
     o.prefixedNamingOnProperties = true;
+    o.skipNamingValidation = true;
   }
   buildCounterGoogleCloudDocumentaiV1beta3DocumentSchemaMetadata--;
   return o;
@@ -1970,6 +1974,7 @@ void checkGoogleCloudDocumentaiV1beta3DocumentSchemaMetadata(
     unittest.expect(o.documentAllowMultipleLabels!, unittest.isTrue);
     unittest.expect(o.documentSplitter!, unittest.isTrue);
     unittest.expect(o.prefixedNamingOnProperties!, unittest.isTrue);
+    unittest.expect(o.skipNamingValidation!, unittest.isTrue);
   }
   buildCounterGoogleCloudDocumentaiV1beta3DocumentSchemaMetadata--;
 }
@@ -2209,6 +2214,37 @@ void checkGoogleCloudDocumentaiV1beta3EnableProcessorRequest(
   buildCounterGoogleCloudDocumentaiV1beta3EnableProcessorRequest--;
 }
 
+core.int buildCounterGoogleCloudDocumentaiV1beta3EntityTypeMetadata = 0;
+api.GoogleCloudDocumentaiV1beta3EntityTypeMetadata
+    buildGoogleCloudDocumentaiV1beta3EntityTypeMetadata() {
+  final o = api.GoogleCloudDocumentaiV1beta3EntityTypeMetadata();
+  buildCounterGoogleCloudDocumentaiV1beta3EntityTypeMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3EntityTypeMetadata < 3) {
+    o.humanReviewLabelingMetadata =
+        buildGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata();
+    o.humanReviewMetadata =
+        buildGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata();
+    o.inactive = true;
+    o.prefixedNamingOnProperties = true;
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3EntityTypeMetadata--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1beta3EntityTypeMetadata(
+    api.GoogleCloudDocumentaiV1beta3EntityTypeMetadata o) {
+  buildCounterGoogleCloudDocumentaiV1beta3EntityTypeMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3EntityTypeMetadata < 3) {
+    checkGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata(
+        o.humanReviewLabelingMetadata!);
+    checkGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata(
+        o.humanReviewMetadata!);
+    unittest.expect(o.inactive!, unittest.isTrue);
+    unittest.expect(o.prefixedNamingOnProperties!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3EntityTypeMetadata--;
+}
+
 core.List<api.GoogleCloudDocumentaiV1beta3ProcessorType> buildUnnamed44() => [
       buildGoogleCloudDocumentaiV1beta3ProcessorType(),
       buildGoogleCloudDocumentaiV1beta3ProcessorType(),
@@ -2328,6 +2364,28 @@ void checkGoogleCloudDocumentaiV1beta3GcsPrefix(
   buildCounterGoogleCloudDocumentaiV1beta3GcsPrefix--;
 }
 
+core.int buildCounterGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata =
+    0;
+api.GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata
+    buildGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata() {
+  final o = api.GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata();
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata < 3) {
+    o.enableNormalizationEditing = true;
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata(
+    api.GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata o) {
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata < 3) {
+    unittest.expect(o.enableNormalizationEditing!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata--;
+}
+
 core.int buildCounterGoogleCloudDocumentaiV1beta3HumanReviewStatus = 0;
 api.GoogleCloudDocumentaiV1beta3HumanReviewStatus
     buildGoogleCloudDocumentaiV1beta3HumanReviewStatus() {
@@ -2360,6 +2418,35 @@ void checkGoogleCloudDocumentaiV1beta3HumanReviewStatus(
     );
   }
   buildCounterGoogleCloudDocumentaiV1beta3HumanReviewStatus--;
+}
+
+core.int buildCounterGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata =
+    0;
+api.GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata
+    buildGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata() {
+  final o = api.GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata();
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata <
+      3) {
+    o.confidenceThreshold = 42.0;
+    o.enableValidation = true;
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata(
+    api.GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata o) {
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata <
+      3) {
+    unittest.expect(
+      o.confidenceThreshold!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(o.enableValidation!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata--;
 }
 
 core.List<api.GoogleCloudDocumentaiV1beta3ProcessorType> buildUnnamed46() => [
@@ -2792,6 +2879,35 @@ void checkGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo(
     );
   }
   buildCounterGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo--;
+}
+
+core.int buildCounterGoogleCloudDocumentaiV1beta3PropertyMetadata = 0;
+api.GoogleCloudDocumentaiV1beta3PropertyMetadata
+    buildGoogleCloudDocumentaiV1beta3PropertyMetadata() {
+  final o = api.GoogleCloudDocumentaiV1beta3PropertyMetadata();
+  buildCounterGoogleCloudDocumentaiV1beta3PropertyMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3PropertyMetadata < 3) {
+    o.humanReviewLabelingMetadata =
+        buildGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata();
+    o.humanReviewMetadata =
+        buildGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata();
+    o.inactive = true;
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3PropertyMetadata--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1beta3PropertyMetadata(
+    api.GoogleCloudDocumentaiV1beta3PropertyMetadata o) {
+  buildCounterGoogleCloudDocumentaiV1beta3PropertyMetadata++;
+  if (buildCounterGoogleCloudDocumentaiV1beta3PropertyMetadata < 3) {
+    checkGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata(
+        o.humanReviewLabelingMetadata!);
+    checkGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata(
+        o.humanReviewMetadata!);
+    unittest.expect(o.inactive!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDocumentaiV1beta3PropertyMetadata--;
 }
 
 core.int buildCounterGoogleCloudDocumentaiV1beta3RawDocument = 0;
@@ -4191,6 +4307,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3EntityTypeMetadata',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1beta3EntityTypeMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDocumentaiV1beta3EntityTypeMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1beta3EntityTypeMetadata(od);
+    });
+  });
+
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse', () {
     unittest.test('to-json--from-json', () async {
@@ -4233,6 +4360,18 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1beta3HumanReviewLabelingMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3HumanReviewStatus',
       () {
     unittest.test('to-json--from-json', () async {
@@ -4241,6 +4380,19 @@ void main() {
       final od = api.GoogleCloudDocumentaiV1beta3HumanReviewStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1beta3HumanReviewStatus(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1beta3HumanReviewValidationMetadata(od);
     });
   });
 
@@ -4363,6 +4515,16 @@ void main() {
       final od = api.GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3PropertyMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1beta3PropertyMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDocumentaiV1beta3PropertyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1beta3PropertyMetadata(od);
     });
   });
 

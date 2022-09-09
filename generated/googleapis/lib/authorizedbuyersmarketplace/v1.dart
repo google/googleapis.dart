@@ -1911,7 +1911,11 @@ class BuyersPublisherProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists publisher profiles
+  /// Lists publisher profiles.
+  ///
+  /// The returned publisher profiles aren't in any defined order. The order of
+  /// the results might change. A new publisher profile can appear in any place
+  /// in the list of returned results.
   ///
   /// Request parameters:
   ///
@@ -3332,6 +3336,29 @@ class InventorySizeTargeting {
       };
 }
 
+/// Targeting of the inventory types a bid request can originate from.
+class InventoryTypeTargeting {
+  /// The list of targeted inventory types for the bid request.
+  core.List<core.String>? inventoryTypes;
+
+  InventoryTypeTargeting({
+    this.inventoryTypes,
+  });
+
+  InventoryTypeTargeting.fromJson(core.Map json_)
+      : this(
+          inventoryTypes: json_.containsKey('inventoryTypes')
+              ? (json_['inventoryTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inventoryTypes != null) 'inventoryTypes': inventoryTypes!,
+      };
+}
+
 /// Response message for listing auction packages.
 class ListAuctionPackagesResponse {
   /// The list of auction packages.
@@ -3586,6 +3613,11 @@ class MarketplaceTargeting {
   /// Output only.
   InventorySizeTargeting? inventorySizeTargeting;
 
+  /// Inventory type targeting information.
+  ///
+  /// Output only.
+  InventoryTypeTargeting? inventoryTypeTargeting;
+
   /// Placement targeting information, for example, URL, mobile applications.
   ///
   /// Output only.
@@ -3612,6 +3644,7 @@ class MarketplaceTargeting {
     this.daypartTargeting,
     this.geoTargeting,
     this.inventorySizeTargeting,
+    this.inventoryTypeTargeting,
     this.placementTargeting,
     this.technologyTargeting,
     this.userListTargeting,
@@ -3630,6 +3663,10 @@ class MarketplaceTargeting {
               : null,
           inventorySizeTargeting: json_.containsKey('inventorySizeTargeting')
               ? InventorySizeTargeting.fromJson(json_['inventorySizeTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          inventoryTypeTargeting: json_.containsKey('inventoryTypeTargeting')
+              ? InventoryTypeTargeting.fromJson(json_['inventoryTypeTargeting']
                   as core.Map<core.String, core.dynamic>)
               : null,
           placementTargeting: json_.containsKey('placementTargeting')
@@ -3655,6 +3692,8 @@ class MarketplaceTargeting {
         if (geoTargeting != null) 'geoTargeting': geoTargeting!,
         if (inventorySizeTargeting != null)
           'inventorySizeTargeting': inventorySizeTargeting!,
+        if (inventoryTypeTargeting != null)
+          'inventoryTypeTargeting': inventoryTypeTargeting!,
         if (placementTargeting != null)
           'placementTargeting': placementTargeting!,
         if (technologyTargeting != null)

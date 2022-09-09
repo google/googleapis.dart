@@ -902,8 +902,8 @@ class DiscoveryOccurrence {
   /// - "ANALYSIS_STATUS_UNSPECIFIED" : Unknown.
   /// - "PENDING" : Resource is known but no action has been taken yet.
   /// - "SCANNING" : Resource is being analyzed.
-  /// - "COMPLETE" : Analysis has completed
   /// - "FINISHED_SUCCESS" : Analysis has finished successfully.
+  /// - "COMPLETE" : Analysis has completed
   /// - "FINISHED_FAILED" : Analysis has finished unsuccessfully, the analysis
   /// itself is in a bad state.
   /// - "FINISHED_UNSUPPORTED" : The resource is known not to be supported.

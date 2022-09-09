@@ -30,6 +30,7 @@
 ///         - [ProjectsLocationsCatalogsBranchesOperationsResource]
 ///         - [ProjectsLocationsCatalogsBranchesProductsResource]
 ///       - [ProjectsLocationsCatalogsCompletionDataResource]
+///       - [ProjectsLocationsCatalogsControlsResource]
 ///       - [ProjectsLocationsCatalogsOperationsResource]
 ///       - [ProjectsLocationsCatalogsPlacementsResource]
 ///       - [ProjectsLocationsCatalogsServingConfigsResource]
@@ -103,6 +104,8 @@ class ProjectsLocationsCatalogsResource {
       ProjectsLocationsCatalogsBranchesResource(_requester);
   ProjectsLocationsCatalogsCompletionDataResource get completionData =>
       ProjectsLocationsCatalogsCompletionDataResource(_requester);
+  ProjectsLocationsCatalogsControlsResource get controls =>
+      ProjectsLocationsCatalogsControlsResource(_requester);
   ProjectsLocationsCatalogsOperationsResource get operations =>
       ProjectsLocationsCatalogsOperationsResource(_requester);
   ProjectsLocationsCatalogsPlacementsResource get placements =>
@@ -118,7 +121,7 @@ class ProjectsLocationsCatalogsResource {
   /// Completes the specified prefix with keyword suggestions.
   ///
   /// This feature is only available for users who have Retail Search enabled.
-  /// Please enable Retail Search on Cloud Console before using this feature.
+  /// Enable Retail Search on Cloud Console before using this feature.
   ///
   /// Request parameters:
   ///
@@ -251,7 +254,7 @@ class ProjectsLocationsCatalogsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Full CompletionConfig resource name. Format:
-  /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/completionConfig`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/completionConfig$`.
   ///
@@ -702,6 +705,56 @@ class ProjectsLocationsCatalogsAttributesConfigResource {
     return GoogleCloudRetailV2AttributesConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Replaces the specified CatalogAttribute in the AttributesConfig by
+  /// updating the catalog attribute with the same CatalogAttribute.key.
+  ///
+  /// If the CatalogAttribute to replace does not exist, a NOT_FOUND error is
+  /// returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [attributesConfig] - Required. Full AttributesConfig resource name.
+  /// Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/attributesConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2AttributesConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2AttributesConfig> replaceCatalogAttribute(
+    GoogleCloudRetailV2ReplaceCatalogAttributeRequest request,
+    core.String attributesConfig, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$attributesConfig') +
+        ':replaceCatalogAttribute';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2AttributesConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsCatalogsBranchesResource {
@@ -777,9 +830,12 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// update will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, the added place IDs are not immediately manifested
   /// in the Product queried by ProductService.GetProduct or
-  /// ProductService.ListProducts. This feature is only available for users who
-  /// have Retail Search enabled. Please enable Retail Search on Cloud Console
-  /// before using this feature.
+  /// ProductService.ListProducts. The returned Operations will be obsolete
+  /// after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
+  /// conflicting updates are issued, the Operations associated with the stale
+  /// updates will not be marked as done until being obsolete. This feature is
+  /// only available for users who have Retail Search enabled. Enable Retail
+  /// Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -835,9 +891,13 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// Product queried by ProductService.GetProduct or
   /// ProductService.ListProducts. Local inventory information can only be
   /// modified using this method. ProductService.CreateProduct and
-  /// ProductService.UpdateProduct has no effect on local inventories. This
-  /// feature is only available for users who have Retail Search enabled. Please
-  /// enable Retail Search on Cloud Console before using this feature.
+  /// ProductService.UpdateProduct has no effect on local inventories. The
+  /// returned Operations will be obsolete after 1 day, and GetOperation API
+  /// will return NOT_FOUND afterwards. If conflicting updates are issued, the
+  /// Operations associated with the stale updates will not be marked as done
+  /// until being obsolete. This feature is only available for users who have
+  /// Retail Search enabled. Enable Retail Search on Cloud Console before using
+  /// this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1218,9 +1278,12 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// update will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, the removed place IDs are not immediately manifested
   /// in the Product queried by ProductService.GetProduct or
-  /// ProductService.ListProducts. This feature is only available for users who
-  /// have Retail Search enabled. Please enable Retail Search on Cloud Console
-  /// before using this feature.
+  /// ProductService.ListProducts. The returned Operations will be obsolete
+  /// after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
+  /// conflicting updates are issued, the Operations associated with the stale
+  /// updates will not be marked as done until being obsolete. This feature is
+  /// only available for users who have Retail Search enabled. Enable Retail
+  /// Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1275,9 +1338,12 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// by ProductService.GetProduct or ProductService.ListProducts. Local
   /// inventory information can only be removed using this method.
   /// ProductService.CreateProduct and ProductService.UpdateProduct has no
-  /// effect on local inventories. This feature is only available for users who
-  /// have Retail Search enabled. Please enable Retail Search on Cloud Console
-  /// before using this feature.
+  /// effect on local inventories. The returned Operations will be obsolete
+  /// after 1 day, and GetOperation API will return NOT_FOUND afterwards. If
+  /// conflicting updates are issued, the Operations associated with the stale
+  /// updates will not be marked as done until being obsolete. This feature is
+  /// only available for users who have Retail Search enabled. Enable Retail
+  /// Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1328,24 +1394,27 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   ///
   /// This process is asynchronous and does not require the Product to exist
   /// before updating fulfillment information. If the request is valid, the
-  /// update will be enqueued and processed downstream. As a consequence, when a
+  /// update is enqueued and processed downstream. As a consequence, when a
   /// response is returned, updates are not immediately manifested in the
   /// Product queried by ProductService.GetProduct or
   /// ProductService.ListProducts. When inventory is updated with
   /// ProductService.CreateProduct and ProductService.UpdateProduct, the
-  /// specified inventory field value(s) will overwrite any existing value(s)
-  /// while ignoring the last update time for this field. Furthermore, the last
-  /// update time for the specified inventory fields will be overwritten to the
-  /// time of the ProductService.CreateProduct or ProductService.UpdateProduct
-  /// request. If no inventory fields are set in CreateProductRequest.product,
-  /// then any pre-existing inventory information for this product will be used.
-  /// If no inventory fields are set in SetInventoryRequest.set_mask, then any
-  /// existing inventory information will be preserved. Pre-existing inventory
+  /// specified inventory field value(s) overwrite any existing value(s) while
+  /// ignoring the last update time for this field. Furthermore, the last update
+  /// times for the specified inventory fields are overwritten by the times of
+  /// the ProductService.CreateProduct or ProductService.UpdateProduct request.
+  /// If no inventory fields are set in CreateProductRequest.product, then any
+  /// pre-existing inventory information for this product is used. If no
+  /// inventory fields are set in SetInventoryRequest.set_mask, then any
+  /// existing inventory information is preserved. Pre-existing inventory
   /// information can only be updated with ProductService.SetInventory,
   /// ProductService.AddFulfillmentPlaces, and
-  /// ProductService.RemoveFulfillmentPlaces. This feature is only available for
-  /// users who have Retail Search enabled. Please enable Retail Search on Cloud
-  /// Console before using this feature.
+  /// ProductService.RemoveFulfillmentPlaces. The returned Operations is
+  /// obsolete after one day, and the GetOperation API returns `NOT_FOUND`
+  /// afterwards. If conflicting updates are issued, the Operations associated
+  /// with the stale updates are not marked as done until they are obsolete.
+  /// This feature is only available for users who have Retail Search enabled.
+  /// Enable Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1401,8 +1470,8 @@ class ProjectsLocationsCatalogsCompletionDataResource {
   /// Request processing is asynchronous. Partial updating is not supported. The
   /// operation is successfully finished only after the imported suggestions are
   /// indexed successfully and ready for serving. The process takes hours. This
-  /// feature is only available for users who have Retail Search enabled. Please
-  /// enable Retail Search on Cloud Console before using this feature.
+  /// feature is only available for users who have Retail Search enabled. Enable
+  /// Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1443,6 +1512,251 @@ class ProjectsLocationsCatalogsCompletionDataResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCatalogsControlsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCatalogsControlsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Control.
+  ///
+  /// If the Control to create already exists, an ALREADY_EXISTS error is
+  /// returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Full resource name of parent catalog. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [controlId] - Required. The ID to use for the Control, which will become
+  /// the final component of the Control's resource name. This value should be
+  /// 4-63 characters, and valid characters are /a-z-_/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2Control].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2Control> create(
+    GoogleCloudRetailV2Control request,
+    core.String parent, {
+    core.String? controlId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (controlId != null) 'controlId': [controlId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/controls';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2Control.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Control.
+  ///
+  /// If the Control to delete does not exist, a NOT_FOUND error is returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Control to delete. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/controls/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a Control.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Control to get. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/controls/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2Control].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2Control> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2Control.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Controls by their parent Catalog.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The catalog resource name. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to apply on the list results. Supported
+  /// features: * List all the products under the parent branch if filter is
+  /// unset. * List controls that are used in a single ServingConfig:
+  /// 'serving_config = "boosted_home_page_cvr"'
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. If
+  /// unspecified, defaults to 50. Max allowed value is 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListControls` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ListControlsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ListControlsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/controls';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ListControlsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Control.
+  ///
+  /// Control cannot be set to a different oneof field, if so an
+  /// INVALID_ARGUMENT is returned. If the Control to update does not exist, a
+  /// NOT_FOUND error is returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Fully qualified name `projects / *
+  /// /locations/global/catalogs / * /controls / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/controls/\[^/\]+$`.
+  ///
+  /// [updateMask] - Indicates which fields in the provided Control to update.
+  /// The following are NOT supported: * Control.name If not set or empty, all
+  /// supported fields are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2Control].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2Control> patch(
+    GoogleCloudRetailV2Control request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2Control.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1614,7 +1928,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// Performs a search.
   ///
   /// This feature is only available for users who have Retail Search enabled.
-  /// Please enable Retail Search on Cloud Console before using this feature.
+  /// Enable Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1669,6 +1983,288 @@ class ProjectsLocationsCatalogsServingConfigsResource {
   ProjectsLocationsCatalogsServingConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Enables a Control on the specified ServingConfig.
+  ///
+  /// The control is added in the last position of the list of controls it
+  /// belongs to (e.g. if it's a facet spec control it will be applied in the
+  /// last position of servingConfig.facetSpecIds) Returns a ALREADY_EXISTS
+  /// error if the control has already been applied. Returns a
+  /// FAILED_PRECONDITION error if the addition could exceed maximum number of
+  /// control allowed for that type of control.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [servingConfig] - Required. The source ServingConfig resource name .
+  /// Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ServingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ServingConfig> addControl(
+    GoogleCloudRetailV2AddControlRequest request,
+    core.String servingConfig, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$servingConfig') + ':addControl';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ServingConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a ServingConfig.
+  ///
+  /// A maximum of 100 ServingConfigs are allowed in a Catalog, otherwise a
+  /// FAILED_PRECONDITION error is returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Full resource name of parent. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [servingConfigId] - Required. The ID to use for the ServingConfig, which
+  /// will become the final component of the ServingConfig's resource name. This
+  /// value should be 4-63 characters, and valid characters are /a-z-_/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ServingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ServingConfig> create(
+    GoogleCloudRetailV2ServingConfig request,
+    core.String parent, {
+    core.String? servingConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (servingConfigId != null) 'servingConfigId': [servingConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/servingConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ServingConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a ServingConfig.
+  ///
+  /// Returns a NotFound error if the ServingConfig does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the ServingConfig to delete.
+  /// Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a ServingConfig.
+  ///
+  /// Returns a NotFound error if the ServingConfig does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the ServingConfig to get. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ServingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ServingConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ServingConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all ServingConfigs linked to this catalog.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The catalog resource name. Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. If
+  /// unspecified, defaults to 100. If a value greater than 100 is provided, at
+  /// most 100 results are returned.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListServingConfigs` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ListServingConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ListServingConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/servingConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ListServingConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a ServingConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Fully qualified name `projects / *
+  /// /locations/global/catalogs / * /servingConfig / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Indicates which fields in the provided ServingConfig to
+  /// update. The following are NOT supported: * ServingConfig.name If not set,
+  /// all supported fields are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ServingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ServingConfig> patch(
+    GoogleCloudRetailV2ServingConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ServingConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Makes a recommendation prediction.
   ///
   /// [request] - The metadata request object.
@@ -1722,10 +2318,58 @@ class ProjectsLocationsCatalogsServingConfigsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Disables a Control on the specified ServingConfig.
+  ///
+  /// The control is removed from the ServingConfig. Returns a NOT_FOUND error
+  /// if the Control is not enabled for the ServingConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [servingConfig] - Required. The source ServingConfig resource name .
+  /// Format:
+  /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ServingConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ServingConfig> removeControl(
+    GoogleCloudRetailV2RemoveControlRequest request,
+    core.String servingConfig, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$servingConfig') + ':removeControl';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ServingConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Performs a search.
   ///
   /// This feature is only available for users who have Retail Search enabled.
-  /// Please enable Retail Search on Cloud Console before using this feature.
+  /// Enable Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1844,9 +2488,9 @@ class ProjectsLocationsCatalogsUserEventsResource {
   ///
   /// Request processing might be synchronous. Events that already exist are
   /// skipped. Use this method for backfilling historical user events.
-  /// Operation.response is of type ImportResponse. Note that it is possible for
-  /// a subset of the items to be successfully inserted. Operation.metadata is
-  /// of type ImportMetadata.
+  /// `Operation.response` is of type `ImportResponse`. Note that it is possible
+  /// for a subset of the items to be successfully inserted.
+  /// `Operation.metadata` is of type `ImportMetadata`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1937,14 +2581,14 @@ class ProjectsLocationsCatalogsUserEventsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Starts a user event rejoin operation with latest product catalog.
+  /// Starts a user-event rejoin operation with latest product catalog.
   ///
-  /// Events will not be annotated with detailed product information if product
-  /// is missing from the catalog at the time the user event is ingested, and
-  /// these events are stored as unjoined events with a limited usage on
-  /// training and serving. This method can be used to start a join operation on
-  /// specified events with latest version of product catalog. It can also be
-  /// used to correct events joined with the wrong product catalog. A rejoin
+  /// Events are not annotated with detailed product information for products
+  /// that are missing from the catalog when the user event is ingested. These
+  /// events are stored as unjoined events with limited usage on training and
+  /// serving. You can use this method to start a join operation on specified
+  /// events with the latest version of product catalog. You can also use this
+  /// method to correct events joined with the wrong product catalog. A rejoin
   /// operation can take hours or days to complete.
   ///
   /// [request] - The metadata request object.
@@ -2283,6 +2927,32 @@ class GoogleCloudRetailV2AddCatalogAttributeRequest {
       };
 }
 
+/// Request for AddControl method.
+class GoogleCloudRetailV2AddControlRequest {
+  /// The id of the control to apply.
+  ///
+  /// Assumed to be in the same catalog as the serving config - if id is not
+  /// found a NOT_FOUND error is returned.
+  ///
+  /// Required.
+  core.String? controlId;
+
+  GoogleCloudRetailV2AddControlRequest({
+    this.controlId,
+  });
+
+  GoogleCloudRetailV2AddControlRequest.fromJson(core.Map json_)
+      : this(
+          controlId: json_.containsKey('controlId')
+              ? json_['controlId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlId != null) 'controlId': controlId!,
+      };
+}
+
 /// Request message for ProductService.AddFulfillmentPlaces method.
 class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
   /// The time when the fulfillment updates are issued, used to prevent
@@ -2432,8 +3102,8 @@ class GoogleCloudRetailV2AttributesConfig {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED" : Value used when unset. Defaults
-  /// to CATALOG_LEVEL_ATTRIBUTE_CONFIG.
+  /// - "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED" : Value used when unset. In this
+  /// case, server behavior defaults to CATALOG_LEVEL_ATTRIBUTE_CONFIG.
   /// - "PRODUCT_LEVEL_ATTRIBUTE_CONFIG" : At this level, we honor the attribute
   /// configurations set in Product.attributes.
   /// - "CATALOG_LEVEL_ATTRIBUTE_CONFIG" : At this level, we honor the attribute
@@ -2874,7 +3544,7 @@ class GoogleCloudRetailV2CompleteQueryResponse {
   /// CompleteQueryRequest.visitor_id field is set and UserEvent is imported.
   /// The recent searches satisfy the follow rules: * They are ordered from
   /// latest to oldest. * They are matched with CompleteQueryRequest.query case
-  /// insensitively. * They are transformed to lower cases. * They are UTF-8
+  /// insensitively. * They are transformed to lower case. * They are UTF-8
   /// safe. Recent searches are deduplicated. More recent searches will be
   /// reserved when duplication happens.
   core.List<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>?
@@ -3211,6 +3881,221 @@ class GoogleCloudRetailV2CompletionDetail {
       };
 }
 
+/// Metadata that is used to define a condition that triggers an action.
+///
+/// A valid condition must specify at least one of 'query_terms' or
+/// 'products_filter'. If multiple fields are specified, the condition is met if
+/// all the fields are satisfied e.g. if a set of query terms and product_filter
+/// are set, then only items matching the product_filter for requests with a
+/// query matching the query terms wil get boosted.
+class GoogleCloudRetailV2Condition {
+  /// Range of time(s) specifying when Condition is active.
+  ///
+  /// Condition true if any time range matches.
+  core.List<GoogleCloudRetailV2ConditionTimeRange>? activeTimeRange;
+
+  /// A list (up to 10 entries) of terms to match the query on.
+  ///
+  /// If not specified, match all queries. If many query terms are specified,
+  /// the condition is matched if any of the terms is a match (i.e. using the OR
+  /// operator).
+  core.List<GoogleCloudRetailV2ConditionQueryTerm>? queryTerms;
+
+  GoogleCloudRetailV2Condition({
+    this.activeTimeRange,
+    this.queryTerms,
+  });
+
+  GoogleCloudRetailV2Condition.fromJson(core.Map json_)
+      : this(
+          activeTimeRange: json_.containsKey('activeTimeRange')
+              ? (json_['activeTimeRange'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRetailV2ConditionTimeRange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          queryTerms: json_.containsKey('queryTerms')
+              ? (json_['queryTerms'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRetailV2ConditionQueryTerm.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeTimeRange != null) 'activeTimeRange': activeTimeRange!,
+        if (queryTerms != null) 'queryTerms': queryTerms!,
+      };
+}
+
+/// Query terms that we want to match on.
+class GoogleCloudRetailV2ConditionQueryTerm {
+  /// Whether this is supposed to be a full or partial match.
+  core.bool? fullMatch;
+
+  /// The value of the term to match on.
+  ///
+  /// Value cannot be empty. Value can have at most 3 terms if specified as a
+  /// partial match. Each space separated string is considered as one term. For
+  /// example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not
+  /// allowed for a partial match.
+  core.String? value;
+
+  GoogleCloudRetailV2ConditionQueryTerm({
+    this.fullMatch,
+    this.value,
+  });
+
+  GoogleCloudRetailV2ConditionQueryTerm.fromJson(core.Map json_)
+      : this(
+          fullMatch: json_.containsKey('fullMatch')
+              ? json_['fullMatch'] as core.bool
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullMatch != null) 'fullMatch': fullMatch!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Used for time-dependent conditions.
+///
+/// Example: Want to have rule applied for week long sale.
+class GoogleCloudRetailV2ConditionTimeRange {
+  /// End of time range.
+  ///
+  /// Range is inclusive.
+  core.String? endTime;
+
+  /// Start of time range.
+  ///
+  /// Range is inclusive.
+  core.String? startTime;
+
+  GoogleCloudRetailV2ConditionTimeRange({
+    this.endTime,
+    this.startTime,
+  });
+
+  GoogleCloudRetailV2ConditionTimeRange.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Configures dynamic metadata that can be linked to a ServingConfig and affect
+/// search or recommendation results at serving time.
+class GoogleCloudRetailV2Control {
+  /// List of serving configuration ids that are associated with this control in
+  /// the same Catalog.
+  ///
+  /// Note the association is managed via the ServingConfig, this is an output
+  /// only denormalized view.
+  ///
+  /// Output only.
+  core.List<core.String>? associatedServingConfigIds;
+
+  /// The human readable control display name.
+  ///
+  /// Used in Retail UI. This field must be a UTF-8 encoded string with a length
+  /// limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Fully qualified name `projects / * /locations/global/catalogs / *
+  /// /controls / * `
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// A rule control - a condition-action pair.
+  ///
+  /// Enacts a set action when the condition is triggered. For example: Boost
+  /// "gShoe" when query full matches "Running Shoes".
+  GoogleCloudRetailV2Rule? rule;
+
+  /// Specifies the use case for the control.
+  ///
+  /// Affects what condition fields can be set. Only settable by search
+  /// controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not
+  /// specified. Currently only allow one search_solution_use_case per control.
+  core.List<core.String>? searchSolutionUseCase;
+
+  /// The solution types that the control is used for.
+  ///
+  /// Currently we support setting only one type of solution at creation time.
+  /// Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no
+  /// solution type is provided at creation time, will default to
+  /// SOLUTION_TYPE_SEARCH.
+  ///
+  /// Required. Immutable.
+  core.List<core.String>? solutionTypes;
+
+  GoogleCloudRetailV2Control({
+    this.associatedServingConfigIds,
+    this.displayName,
+    this.name,
+    this.rule,
+    this.searchSolutionUseCase,
+    this.solutionTypes,
+  });
+
+  GoogleCloudRetailV2Control.fromJson(core.Map json_)
+      : this(
+          associatedServingConfigIds:
+              json_.containsKey('associatedServingConfigIds')
+                  ? (json_['associatedServingConfigIds'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rule: json_.containsKey('rule')
+              ? GoogleCloudRetailV2Rule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>)
+              : null,
+          searchSolutionUseCase: json_.containsKey('searchSolutionUseCase')
+              ? (json_['searchSolutionUseCase'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          solutionTypes: json_.containsKey('solutionTypes')
+              ? (json_['solutionTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (associatedServingConfigIds != null)
+          'associatedServingConfigIds': associatedServingConfigIds!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (rule != null) 'rule': rule!,
+        if (searchSolutionUseCase != null)
+          'searchSolutionUseCase': searchSolutionUseCase!,
+        if (solutionTypes != null) 'solutionTypes': solutionTypes!,
+      };
+}
+
 /// A custom attribute that is not explicitly modeled in Product.
 class GoogleCloudRetailV2CustomAttribute {
   /// This field is normally ignored unless
@@ -3332,8 +4217,6 @@ class GoogleCloudRetailV2FulfillmentInfo {
 }
 
 /// Google Cloud Storage location for input content.
-///
-/// format.
 class GoogleCloudRetailV2GcsSource {
   /// The schema to use when parsing the data from the source.
   ///
@@ -3344,8 +4227,8 @@ class GoogleCloudRetailV2GcsSource {
   /// Supported values for user events imports: * `user_event` (default): One
   /// JSON UserEvent per line. * `user_event_ga360`: Using
   /// https://support.google.com/analytics/answer/3437719. Supported values for
-  /// control imports: * 'control' (default): One JSON Control per line.
-  /// Supported values for catalog attribute imports: * 'catalog_attribute'
+  /// control imports: * `control` (default): One JSON Control per line.
+  /// Supported values for catalog attribute imports: * `catalog_attribute`
   /// (default): One CSV CatalogAttribute per line.
   core.String? dataSchema;
 
@@ -3479,8 +4362,8 @@ class GoogleCloudRetailV2ImportCompletionDataRequest {
 
   /// Pub/Sub topic for receiving notification.
   ///
-  /// If this field is set, when the import is finished, a notification will be
-  /// sent to specified Pub/Sub topic. The message data will be JSON string of a
+  /// If this field is set, when the import is finished, a notification is sent
+  /// to specified Pub/Sub topic. The message data is JSON string of a
   /// Operation. Format of the Pub/Sub topic is
   /// `projects/{project}/topics/{topic}`.
   core.String? notificationPubsubTopic;
@@ -3512,8 +4395,8 @@ class GoogleCloudRetailV2ImportCompletionDataRequest {
 class GoogleCloudRetailV2ImportErrorsConfig {
   /// Google Cloud Storage prefix for import errors.
   ///
-  /// This must be an empty, existing Cloud Storage directory. Import errors
-  /// will be written to sharded files in this directory, one per line, as a
+  /// This must be an empty, existing Cloud Storage directory. Import errors are
+  /// written to sharded files in this directory, one per line, as a
   /// JSON-encoded `google.rpc.Status` message.
   core.String? gcsPrefix;
 
@@ -3545,8 +4428,8 @@ class GoogleCloudRetailV2ImportProductsRequest {
 
   /// Full Pub/Sub topic name for receiving notification.
   ///
-  /// If this field is set, when the import is finished, a notification will be
-  /// sent to specified Pub/Sub topic. The message data will be JSON string of a
+  /// If this field is set, when the import is finished, a notification is sent
+  /// to specified Pub/Sub topic. The message data is JSON string of a
   /// Operation. Format of the Pub/Sub topic is
   /// `projects/{project}/topics/{topic}`. It has to be within the same project
   /// as ImportProductsRequest.parent. Make sure that
@@ -3571,9 +4454,9 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// Deprecated.
   core.String? requestId;
 
-  /// Indicates which fields in the provided imported 'products' to update.
+  /// Indicates which fields in the provided imported `products` to update.
   ///
-  /// If not set, will by default update all fields.
+  /// If not set, all fields are updated.
   core.String? updateMask;
 
   GoogleCloudRetailV2ImportProductsRequest({
@@ -3736,6 +4619,38 @@ class GoogleCloudRetailV2ListCatalogsResponse {
       };
 }
 
+/// Response for ListControls method.
+class GoogleCloudRetailV2ListControlsResponse {
+  /// All the Controls for a given catalog.
+  core.List<GoogleCloudRetailV2Control>? controls;
+
+  /// Pagination token, if not returned indicates the last page.
+  core.String? nextPageToken;
+
+  GoogleCloudRetailV2ListControlsResponse({
+    this.controls,
+    this.nextPageToken,
+  });
+
+  GoogleCloudRetailV2ListControlsResponse.fromJson(core.Map json_)
+      : this(
+          controls: json_.containsKey('controls')
+              ? (json_['controls'] as core.List)
+                  .map((value) => GoogleCloudRetailV2Control.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controls != null) 'controls': controls!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ProductService.ListProducts method.
 class GoogleCloudRetailV2ListProductsResponse {
   /// A token that can be sent as ListProductsRequest.page_token to retrieve the
@@ -3768,6 +4683,38 @@ class GoogleCloudRetailV2ListProductsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (products != null) 'products': products!,
+      };
+}
+
+/// Response for ListServingConfigs method.
+class GoogleCloudRetailV2ListServingConfigsResponse {
+  /// Pagination token, if not returned indicates the last page.
+  core.String? nextPageToken;
+
+  /// All the ServingConfigs for a given catalog.
+  core.List<GoogleCloudRetailV2ServingConfig>? servingConfigs;
+
+  GoogleCloudRetailV2ListServingConfigsResponse({
+    this.nextPageToken,
+    this.servingConfigs,
+  });
+
+  GoogleCloudRetailV2ListServingConfigsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          servingConfigs: json_.containsKey('servingConfigs')
+              ? (json_['servingConfigs'] as core.List)
+                  .map((value) => GoogleCloudRetailV2ServingConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (servingConfigs != null) 'servingConfigs': servingConfigs!,
       };
 }
 
@@ -3895,14 +4842,14 @@ class GoogleCloudRetailV2PredictRequest {
   /// for more details.
   core.Map<core.String, core.String>? labels;
 
-  /// Maximum number of results to return per page.
+  /// Maximum number of results to return.
   ///
   /// Set this property to the number of prediction results needed. If zero, the
   /// service will choose a reasonable default. The maximum allowed value is
   /// 100. Values above 100 will be coerced to 100.
   core.int? pageSize;
 
-  /// This field is not used for now, leave it unset.
+  /// This field is not used; leave it unset.
   core.String? pageToken;
 
   /// Additional domain specific parameters for the predictions.
@@ -4308,8 +5255,8 @@ class GoogleCloudRetailV2Product {
   /// parallel categories. Strongly recommended using the full path for better
   /// search / recommendation quality. To represent full path of category, use
   /// '\>' sign to separate different hierarchies. If '\>' is part of the
-  /// category name, please replace it with other character(s). For example, if
-  /// a shoes product belongs to both \["Shoes & Accessories" -\> "Shoes"\] and
+  /// category name, replace it with other character(s). For example, if a shoes
+  /// product belongs to both \["Shoes & Accessories" -\> "Shoes"\] and
   /// \["Sports & Fitness" -\> "Athletic Clothing" -\> "Shoes"\], it could be
   /// represented as: "categories": \[ "Shoes & Accessories \> Shoes", "Sports &
   /// Fitness \> Athletic Clothing \> Shoes" \] Must be set for Type.PRIMARY
@@ -4424,6 +5371,14 @@ class GoogleCloudRetailV2Product {
   /// degraded model performance. For product search this field is in use. It
   /// defaults to "en-US" if unset.
   core.String? languageCode;
+
+  /// A list of local inventories specific to different places.
+  ///
+  /// This is only available for users who have Retail Search enabled, and it
+  /// can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRetailV2LocalInventory>? localInventories;
 
   /// The material of the product.
   ///
@@ -4614,6 +5569,7 @@ class GoogleCloudRetailV2Product {
     this.id,
     this.images,
     this.languageCode,
+    this.localInventories,
     this.materials,
     this.name,
     this.patterns,
@@ -4704,6 +5660,12 @@ class GoogleCloudRetailV2Product {
           languageCode: json_.containsKey('languageCode')
               ? json_['languageCode'] as core.String
               : null,
+          localInventories: json_.containsKey('localInventories')
+              ? (json_['localInventories'] as core.List)
+                  .map((value) => GoogleCloudRetailV2LocalInventory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           materials: json_.containsKey('materials')
               ? (json_['materials'] as core.List)
                   .map((value) => value as core.String)
@@ -4780,6 +5742,7 @@ class GoogleCloudRetailV2Product {
         if (id != null) 'id': id!,
         if (images != null) 'images': images!,
         if (languageCode != null) 'languageCode': languageCode!,
+        if (localInventories != null) 'localInventories': localInventories!,
         if (materials != null) 'materials': materials!,
         if (name != null) 'name': name!,
         if (patterns != null) 'patterns': patterns!,
@@ -5162,8 +6125,8 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
   /// The type of the user event rejoin to define the scope and range of the
   /// user events to be rejoined with the latest product catalog.
   ///
-  /// Defaults to USER_EVENT_REJOIN_SCOPE_UNSPECIFIED if this field is not set,
-  /// or set to an invalid integer value.
+  /// Defaults to `USER_EVENT_REJOIN_SCOPE_UNSPECIFIED` if this field is not
+  /// set, or set to an invalid integer value.
   /// Possible string values are:
   /// - "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED" : Rejoin all events with the
   /// latest product catalog, including both joined events and unjoined events.
@@ -5208,6 +6171,31 @@ class GoogleCloudRetailV2RemoveCatalogAttributeRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
+      };
+}
+
+/// Request for RemoveControl method.
+class GoogleCloudRetailV2RemoveControlRequest {
+  /// The id of the control to apply.
+  ///
+  /// Assumed to be in the same catalog as the serving config.
+  ///
+  /// Required.
+  core.String? controlId;
+
+  GoogleCloudRetailV2RemoveControlRequest({
+    this.controlId,
+  });
+
+  GoogleCloudRetailV2RemoveControlRequest.fromJson(core.Map json_)
+      : this(
+          controlId: json_.containsKey('controlId')
+              ? json_['controlId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlId != null) 'controlId': controlId!,
       };
 }
 
@@ -5333,6 +6321,463 @@ class GoogleCloudRetailV2RemoveLocalInventoriesRequest {
       };
 }
 
+/// Request for CatalogService.ReplaceCatalogAttribute method.
+class GoogleCloudRetailV2ReplaceCatalogAttributeRequest {
+  /// The updated CatalogAttribute.
+  ///
+  /// Required.
+  GoogleCloudRetailV2CatalogAttribute? catalogAttribute;
+
+  /// Indicates which fields in the provided CatalogAttribute to update.
+  ///
+  /// The following are NOT supported: * CatalogAttribute.key If not set, all
+  /// supported fields are updated.
+  core.String? updateMask;
+
+  GoogleCloudRetailV2ReplaceCatalogAttributeRequest({
+    this.catalogAttribute,
+    this.updateMask,
+  });
+
+  GoogleCloudRetailV2ReplaceCatalogAttributeRequest.fromJson(core.Map json_)
+      : this(
+          catalogAttribute: json_.containsKey('catalogAttribute')
+              ? GoogleCloudRetailV2CatalogAttribute.fromJson(
+                  json_['catalogAttribute']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (catalogAttribute != null) 'catalogAttribute': catalogAttribute!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// A rule is a condition-action pair * A condition defines when a rule is to be
+/// triggered.
+///
+/// * An action specifies what occurs on that trigger. Currently rules only work
+/// for controls with SOLUTION_TYPE_SEARCH.
+class GoogleCloudRetailV2Rule {
+  /// A boost action.
+  GoogleCloudRetailV2RuleBoostAction? boostAction;
+
+  /// The condition that triggers the rule.
+  ///
+  /// If the condition is empty, the rule will always apply.
+  ///
+  /// Required.
+  GoogleCloudRetailV2Condition? condition;
+
+  /// Prevents term from being associated with other terms.
+  GoogleCloudRetailV2RuleDoNotAssociateAction? doNotAssociateAction;
+
+  /// Filters results.
+  GoogleCloudRetailV2RuleFilterAction? filterAction;
+
+  /// Ignores specific terms from query during search.
+  GoogleCloudRetailV2RuleIgnoreAction? ignoreAction;
+
+  /// Treats specific term as a synonym with a group of terms.
+  ///
+  /// Group of terms will not be treated as synonyms with the specific term.
+  GoogleCloudRetailV2RuleOnewaySynonymsAction? onewaySynonymsAction;
+
+  /// Redirects a shopper to a specific page.
+  GoogleCloudRetailV2RuleRedirectAction? redirectAction;
+
+  /// Replaces specific terms in the query.
+  GoogleCloudRetailV2RuleReplacementAction? replacementAction;
+
+  /// Treats a set of terms as synonyms of one another.
+  GoogleCloudRetailV2RuleTwowaySynonymsAction? twowaySynonymsAction;
+
+  GoogleCloudRetailV2Rule({
+    this.boostAction,
+    this.condition,
+    this.doNotAssociateAction,
+    this.filterAction,
+    this.ignoreAction,
+    this.onewaySynonymsAction,
+    this.redirectAction,
+    this.replacementAction,
+    this.twowaySynonymsAction,
+  });
+
+  GoogleCloudRetailV2Rule.fromJson(core.Map json_)
+      : this(
+          boostAction: json_.containsKey('boostAction')
+              ? GoogleCloudRetailV2RuleBoostAction.fromJson(
+                  json_['boostAction'] as core.Map<core.String, core.dynamic>)
+              : null,
+          condition: json_.containsKey('condition')
+              ? GoogleCloudRetailV2Condition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          doNotAssociateAction: json_.containsKey('doNotAssociateAction')
+              ? GoogleCloudRetailV2RuleDoNotAssociateAction.fromJson(
+                  json_['doNotAssociateAction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          filterAction: json_.containsKey('filterAction')
+              ? GoogleCloudRetailV2RuleFilterAction.fromJson(
+                  json_['filterAction'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ignoreAction: json_.containsKey('ignoreAction')
+              ? GoogleCloudRetailV2RuleIgnoreAction.fromJson(
+                  json_['ignoreAction'] as core.Map<core.String, core.dynamic>)
+              : null,
+          onewaySynonymsAction: json_.containsKey('onewaySynonymsAction')
+              ? GoogleCloudRetailV2RuleOnewaySynonymsAction.fromJson(
+                  json_['onewaySynonymsAction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          redirectAction: json_.containsKey('redirectAction')
+              ? GoogleCloudRetailV2RuleRedirectAction.fromJson(
+                  json_['redirectAction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          replacementAction: json_.containsKey('replacementAction')
+              ? GoogleCloudRetailV2RuleReplacementAction.fromJson(
+                  json_['replacementAction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          twowaySynonymsAction: json_.containsKey('twowaySynonymsAction')
+              ? GoogleCloudRetailV2RuleTwowaySynonymsAction.fromJson(
+                  json_['twowaySynonymsAction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boostAction != null) 'boostAction': boostAction!,
+        if (condition != null) 'condition': condition!,
+        if (doNotAssociateAction != null)
+          'doNotAssociateAction': doNotAssociateAction!,
+        if (filterAction != null) 'filterAction': filterAction!,
+        if (ignoreAction != null) 'ignoreAction': ignoreAction!,
+        if (onewaySynonymsAction != null)
+          'onewaySynonymsAction': onewaySynonymsAction!,
+        if (redirectAction != null) 'redirectAction': redirectAction!,
+        if (replacementAction != null) 'replacementAction': replacementAction!,
+        if (twowaySynonymsAction != null)
+          'twowaySynonymsAction': twowaySynonymsAction!,
+      };
+}
+
+/// A boost action to apply to results matching condition specified above.
+class GoogleCloudRetailV2RuleBoostAction {
+  /// Strength of the condition boost, which must be in \[-1, 1\].
+  ///
+  /// Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
+  /// item a big promotion. However, it does not necessarily mean that the
+  /// boosted item will be the top result at all times, nor that other items
+  /// will be excluded. Results could still be shown even when none of them
+  /// matches the condition. And results that are significantly more relevant to
+  /// the search query can still trump your heavily favored but irrelevant
+  /// items. Setting to -1.0 gives the item a big demotion. However, results
+  /// that are deeply relevant might still be shown. The item will have an
+  /// upstream battle to get a fairly high ranking, but it is not blocked out
+  /// completely. Setting to 0.0 means no boost applied. The boosting condition
+  /// is ignored.
+  core.double? boost;
+
+  /// The filter can have a max size of 5000 characters.
+  ///
+  /// An expression which specifies which products to apply an action to. The
+  /// syntax and supported fields are the same as a filter expression. See
+  /// SearchRequest.filter for detail syntax and limitations. Examples: * To
+  /// boost products with product ID "product_1" or "product_2", and color "Red"
+  /// or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies:
+  /// ANY("Red", "Blue")) *
+  core.String? productsFilter;
+
+  GoogleCloudRetailV2RuleBoostAction({
+    this.boost,
+    this.productsFilter,
+  });
+
+  GoogleCloudRetailV2RuleBoostAction.fromJson(core.Map json_)
+      : this(
+          boost: json_.containsKey('boost')
+              ? (json_['boost'] as core.num).toDouble()
+              : null,
+          productsFilter: json_.containsKey('productsFilter')
+              ? json_['productsFilter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boost != null) 'boost': boost!,
+        if (productsFilter != null) 'productsFilter': productsFilter!,
+      };
+}
+
+/// Prevents `query_term` from being associated with specified terms during
+/// search.
+///
+/// Example: Don't associate "gShoe" and "cheap".
+class GoogleCloudRetailV2RuleDoNotAssociateAction {
+  /// Cannot contain duplicates or the query term.
+  ///
+  /// Can specify up to 100 terms.
+  core.List<core.String>? doNotAssociateTerms;
+
+  /// Terms from the search query.
+  ///
+  /// Will not consider do_not_associate_terms for search if in search query.
+  /// Can specify up to 100 terms.
+  core.List<core.String>? queryTerms;
+
+  /// Will be \[deprecated = true\] post migration;
+  core.List<core.String>? terms;
+
+  GoogleCloudRetailV2RuleDoNotAssociateAction({
+    this.doNotAssociateTerms,
+    this.queryTerms,
+    this.terms,
+  });
+
+  GoogleCloudRetailV2RuleDoNotAssociateAction.fromJson(core.Map json_)
+      : this(
+          doNotAssociateTerms: json_.containsKey('doNotAssociateTerms')
+              ? (json_['doNotAssociateTerms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          queryTerms: json_.containsKey('queryTerms')
+              ? (json_['queryTerms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          terms: json_.containsKey('terms')
+              ? (json_['terms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (doNotAssociateTerms != null)
+          'doNotAssociateTerms': doNotAssociateTerms!,
+        if (queryTerms != null) 'queryTerms': queryTerms!,
+        if (terms != null) 'terms': terms!,
+      };
+}
+
+/// * Rule Condition: - No Condition.query_terms provided is a global match.
+///
+/// - 1 or more Condition.query_terms provided are combined with OR operator. *
+/// Action Input: The request query and filter that are applied to the retrieved
+/// products, in addition to any filters already provided with the
+/// SearchRequest. The AND operator is used to combine the query's existing
+/// filters with the filter rule(s). NOTE: May result in 0 results when filters
+/// conflict. * Action Result: Filters the returned objects to be ONLY those
+/// that passed the filter.
+class GoogleCloudRetailV2RuleFilterAction {
+  /// A filter to apply on the matching condition results.
+  ///
+  /// Supported features: * filter must be set. * Filter syntax is identical to
+  /// SearchRequest.filter. See more details at the Retail Search \[user
+  /// guide\](/retail/search/docs/filter-and-order#filter). * To filter products
+  /// with product ID "product_1" or "product_2", and color "Red" or "Blue":
+  /// *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red",
+  /// "Blue")) *
+  core.String? filter;
+
+  GoogleCloudRetailV2RuleFilterAction({
+    this.filter,
+  });
+
+  GoogleCloudRetailV2RuleFilterAction.fromJson(core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+      };
+}
+
+/// Prevents a term in the query from being used in search.
+///
+/// Example: Don't search for "shoddy".
+class GoogleCloudRetailV2RuleIgnoreAction {
+  /// Terms to ignore in the search query.
+  core.List<core.String>? ignoreTerms;
+
+  GoogleCloudRetailV2RuleIgnoreAction({
+    this.ignoreTerms,
+  });
+
+  GoogleCloudRetailV2RuleIgnoreAction.fromJson(core.Map json_)
+      : this(
+          ignoreTerms: json_.containsKey('ignoreTerms')
+              ? (json_['ignoreTerms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoreTerms != null) 'ignoreTerms': ignoreTerms!,
+      };
+}
+
+/// Maps a set of terms to a set of synonyms.
+///
+/// Set of synonyms will be treated as synonyms of each query term only.
+/// `query_terms` will not be treated as synonyms of each other. Example:
+/// "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of
+/// "sneakers".
+class GoogleCloudRetailV2RuleOnewaySynonymsAction {
+  /// Will be \[deprecated = true\] post migration;
+  core.List<core.String>? onewayTerms;
+
+  /// Terms from the search query.
+  ///
+  /// Will treat synonyms as their synonyms. Not themselves synonyms of the
+  /// synonyms. Can specify up to 100 terms.
+  core.List<core.String>? queryTerms;
+
+  /// Defines a set of synonyms.
+  ///
+  /// Cannot contain duplicates. Can specify up to 100 synonyms.
+  core.List<core.String>? synonyms;
+
+  GoogleCloudRetailV2RuleOnewaySynonymsAction({
+    this.onewayTerms,
+    this.queryTerms,
+    this.synonyms,
+  });
+
+  GoogleCloudRetailV2RuleOnewaySynonymsAction.fromJson(core.Map json_)
+      : this(
+          onewayTerms: json_.containsKey('onewayTerms')
+              ? (json_['onewayTerms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          queryTerms: json_.containsKey('queryTerms')
+              ? (json_['queryTerms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          synonyms: json_.containsKey('synonyms')
+              ? (json_['synonyms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (onewayTerms != null) 'onewayTerms': onewayTerms!,
+        if (queryTerms != null) 'queryTerms': queryTerms!,
+        if (synonyms != null) 'synonyms': synonyms!,
+      };
+}
+
+/// Redirects a shopper to a specific page.
+///
+/// * Rule Condition: - Must specify Condition.query_terms. * Action Input:
+/// Request Query * Action Result: Redirects shopper to provided uri.
+class GoogleCloudRetailV2RuleRedirectAction {
+  /// URL must have length equal or less than 2000 characters.
+  core.String? redirectUri;
+
+  GoogleCloudRetailV2RuleRedirectAction({
+    this.redirectUri,
+  });
+
+  GoogleCloudRetailV2RuleRedirectAction.fromJson(core.Map json_)
+      : this(
+          redirectUri: json_.containsKey('redirectUri')
+              ? json_['redirectUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (redirectUri != null) 'redirectUri': redirectUri!,
+      };
+}
+
+/// Replaces a term in the query.
+///
+/// Multiple replacement candidates can be specified. All `query_terms` will be
+/// replaced with the replacement term. Example: Replace "gShoe" with "google
+/// shoe".
+class GoogleCloudRetailV2RuleReplacementAction {
+  /// Terms from the search query.
+  ///
+  /// Will be replaced by replacement term. Can specify up to 100 terms.
+  core.List<core.String>? queryTerms;
+
+  /// Term that will be used for replacement.
+  core.String? replacementTerm;
+
+  /// Will be \[deprecated = true\] post migration;
+  core.String? term;
+
+  GoogleCloudRetailV2RuleReplacementAction({
+    this.queryTerms,
+    this.replacementTerm,
+    this.term,
+  });
+
+  GoogleCloudRetailV2RuleReplacementAction.fromJson(core.Map json_)
+      : this(
+          queryTerms: json_.containsKey('queryTerms')
+              ? (json_['queryTerms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          replacementTerm: json_.containsKey('replacementTerm')
+              ? json_['replacementTerm'] as core.String
+              : null,
+          term: json_.containsKey('term') ? json_['term'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (queryTerms != null) 'queryTerms': queryTerms!,
+        if (replacementTerm != null) 'replacementTerm': replacementTerm!,
+        if (term != null) 'term': term!,
+      };
+}
+
+/// Creates a set of terms that will be treated as synonyms of each other.
+///
+/// Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym
+/// of "shoes". * "shoes" will use a synonym of "sneakers".
+class GoogleCloudRetailV2RuleTwowaySynonymsAction {
+  /// Defines a set of synonyms.
+  ///
+  /// Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+  core.List<core.String>? synonyms;
+
+  GoogleCloudRetailV2RuleTwowaySynonymsAction({
+    this.synonyms,
+  });
+
+  GoogleCloudRetailV2RuleTwowaySynonymsAction.fromJson(core.Map json_)
+      : this(
+          synonyms: json_.containsKey('synonyms')
+              ? (json_['synonyms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (synonyms != null) 'synonyms': synonyms!,
+      };
+}
+
 /// Request message for SearchService.Search method.
 class GoogleCloudRetailV2SearchRequest {
   /// Boost specification to boost certain products.
@@ -5423,10 +6868,10 @@ class GoogleCloudRetailV2SearchRequest {
   /// Required for category navigation queries to achieve good search quality.
   /// The format should be the same as UserEvent.page_categories; To represent
   /// full path of category, use '\>' sign to separate different hierarchies. If
-  /// '\>' is part of the category name, please replace it with other
-  /// character(s). Category pages include special pages such as sales or
-  /// promotions. For instance, a special sale page may have the category
-  /// hierarchy: "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
+  /// '\>' is part of the category name, replace it with other character(s).
+  /// Category pages include special pages such as sales or promotions. For
+  /// instance, a special sale page may have the category hierarchy:
+  /// "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
   core.List<core.String>? pageCategories;
 
   /// Maximum number of Products to return.
@@ -5445,6 +6890,11 @@ class GoogleCloudRetailV2SearchRequest {
   core.String? pageToken;
 
   /// The specification for personalization.
+  ///
+  /// Notice that if both ServingConfig.personalization_spec and
+  /// SearchRequest.personalization_spec are set.
+  /// SearchRequest.personalization_spec will override
+  /// ServingConfig.personalization_spec.
   GoogleCloudRetailV2SearchRequestPersonalizationSpec? personalizationSpec;
 
   /// Raw search query.
@@ -5467,18 +6917,17 @@ class GoogleCloudRetailV2SearchRequest {
   /// Possible string values are:
   /// - "SEARCH_MODE_UNSPECIFIED" : Default value. In this case both product
   /// search and faceted search will be performed. Both
-  /// \[SearchResponse.SearchResult\] and \[SearchResponse.Facet\] will be
-  /// returned.
+  /// SearchResponse.SearchResult and SearchResponse.Facet will be returned.
   /// - "PRODUCT_SEARCH_ONLY" : Only product search will be performed. The
-  /// faceted search will be disabled. Only \[SearchResponse.SearchResult\] will
-  /// be returned. \[SearchResponse.Facet\] will not be returned, even if
+  /// faceted search will be disabled. Only SearchResponse.SearchResult will be
+  /// returned. SearchResponse.Facet will not be returned, even if
   /// SearchRequest.facet_specs or SearchRequest.dynamic_facet_spec is set.
   /// - "FACETED_SEARCH_ONLY" : Only faceted search will be performed. The
   /// product search will be disabled. When in this mode, one or both of
   /// SearchRequest.facet_specs and SearchRequest.dynamic_facet_spec should be
   /// set. Otherwise, an INVALID_ARGUMENT error is returned. Only
-  /// \[SearchResponse.Facet\] will be returned. \[SearchResponse.SearchResult\]
-  /// will not be returned.
+  /// SearchResponse.Facet will be returned. SearchResponse.SearchResult will
+  /// not be returned.
   core.String? searchMode;
 
   /// The spell correction specification that specifies the mode under which
@@ -6031,7 +7480,8 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
 class GoogleCloudRetailV2SearchRequestPersonalizationSpec {
   /// Defaults to Mode.AUTO.
   /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value. Defaults to Mode.AUTO.
+  /// - "MODE_UNSPECIFIED" : Default value. In this case, server behavior
+  /// defaults to Mode.AUTO.
   /// - "AUTO" : Let CRS decide whether to use personalization based on quality
   /// of user event data.
   /// - "DISABLED" : Disable personalization.
@@ -6058,8 +7508,8 @@ class GoogleCloudRetailV2SearchRequestQueryExpansionSpec {
   ///
   /// Default to Condition.DISABLED.
   /// Possible string values are:
-  /// - "CONDITION_UNSPECIFIED" : Unspecified query expansion condition. This
-  /// defaults to Condition.DISABLED.
+  /// - "CONDITION_UNSPECIFIED" : Unspecified query expansion condition. In this
+  /// case, server behavior defaults to Condition.DISABLED.
   /// - "DISABLED" : Disabled query expansion. Only the exact search query is
   /// used, even if SearchResponse.total_size is zero.
   /// - "AUTO" : Automatic query expansion built by Google Retail Search.
@@ -6100,8 +7550,8 @@ class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec {
   ///
   /// Default to Mode.AUTO.
   /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Unspecified spell correction mode. This defaults to
-  /// Mode.AUTO.
+  /// - "MODE_UNSPECIFIED" : Unspecified spell correction mode. In this case,
+  /// server behavior defaults to Mode.AUTO.
   /// - "SUGGESTION_ONLY" : Google Retail Search will try to find a spell
   /// suggestion if there is any and put in the SearchResponse.corrected_query.
   /// The spell suggestion will not be used as the search query.
@@ -6498,6 +7948,309 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
       };
 }
 
+/// Configures metadata that is used to generate serving time results (e.g.
+/// search results or recommendation predictions).
+class GoogleCloudRetailV2ServingConfig {
+  /// Condition boost specifications.
+  ///
+  /// If a product matches multiple conditions in the specifications, boost
+  /// scores from these specifications are all applied and combined in a
+  /// non-linear way. Maximum number of specifications is 100. Notice that if
+  /// both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set,
+  /// the boost conditions from both places are evaluated. If a search request
+  /// matches multiple boost conditions, the final boost score is equal to the
+  /// sum of the boost scores from all matched boost conditions. Can only be set
+  /// if solution_types is SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? boostControlIds;
+
+  /// The human readable serving config display name.
+  ///
+  /// Used in Retail UI. This field must be a UTF-8 encoded string with a length
+  /// limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// How much diversity to use in recommendation model results e.g.
+  /// `medium-diversity` or `high-diversity`.
+  ///
+  /// Currently supported values: * `no-diversity` * `low-diversity` *
+  /// `medium-diversity` * `high-diversity` * `auto-diversity` If not specified,
+  /// we choose default based on recommendation model type. Default value:
+  /// `no-diversity`. Can only be set if solution_types is
+  /// SOLUTION_TYPE_RECOMMENDATION.
+  core.String? diversityLevel;
+
+  /// What kind of diversity to use - data driven or rule based.
+  /// Possible string values are:
+  /// - "DIVERSITY_TYPE_UNSPECIFIED" : Default value.
+  /// - "RULE_BASED_DIVERSITY" : Rule based diversity.
+  /// - "DATA_DRIVEN_DIVERSITY" : Data driven diversity.
+  core.String? diversityType;
+
+  /// Condition do not associate specifications.
+  ///
+  /// If multiple do not associate conditions match, all matching do not
+  /// associate controls in the list will execute. - Order does not matter. -
+  /// Maximum number of specifications is 100. Can only be set if solution_types
+  /// is SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? doNotAssociateControlIds;
+
+  /// The specification for dynamically generated facets.
+  ///
+  /// Notice that only textual facets can be dynamically generated. Can only be
+  /// set if solution_types is SOLUTION_TYPE_SEARCH.
+  GoogleCloudRetailV2SearchRequestDynamicFacetSpec? dynamicFacetSpec;
+
+  /// Whether to add additional category filters on the `similar-items` model.
+  ///
+  /// If not specified, we enable it by default. Allowed values are: *
+  /// `no-category-match`: No additional filtering of original results from the
+  /// model and the customer's filters. * `relaxed-category-match`: Only keep
+  /// results with categories that match at least one item categories in the
+  /// PredictRequests's context item. * If customer also sends filters in the
+  /// PredictRequest, then the results will satisfy both conditions (user given
+  /// and category match). Can only be set if solution_types is
+  /// SOLUTION_TYPE_RECOMMENDATION.
+  core.String? enableCategoryFilterLevel;
+
+  /// Facet specifications for faceted search.
+  ///
+  /// If empty, no facets are returned. The ids refer to the ids of Control
+  /// resources with only the Facet control set. These controls are assumed to
+  /// be in the same Catalog as the ServingConfig. A maximum of 100 values are
+  /// allowed. Otherwise, an INVALID_ARGUMENT error is returned. Can only be set
+  /// if solution_types is SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? facetControlIds;
+
+  /// Condition filter specifications.
+  ///
+  /// If a product matches multiple conditions in the specifications, filters
+  /// from these specifications are all applied and combined via the AND
+  /// operator. Maximum number of specifications is 100. Can only be set if
+  /// solution_types is SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? filterControlIds;
+
+  /// Condition ignore specifications.
+  ///
+  /// If multiple ignore conditions match, all matching ignore controls in the
+  /// list will execute. - Order does not matter. - Maximum number of
+  /// specifications is 100. Can only be set if solution_types is
+  /// SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? ignoreControlIds;
+
+  /// The id of the model in the same Catalog to use at serving time.
+  ///
+  /// Currently only RecommendationModels are supported:
+  /// https://cloud.google.com/retail/recommendations-ai/docs/create-models Can
+  /// be changed but only to a compatible model (e.g. others-you-may-like CTR to
+  /// others-you-may-like CVR). Required when solution_types is
+  /// SOLUTION_TYPE_RECOMMENDATION.
+  core.String? modelId;
+
+  /// Fully qualified name `projects / * /locations/global/catalogs / *
+  /// /servingConfig / * `
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Condition oneway synonyms specifications.
+  ///
+  /// If multiple oneway synonyms conditions match, all matching oneway synonyms
+  /// controls in the list will execute. Order of controls in the list will not
+  /// matter. Maximum number of specifications is 100. Can only be set if
+  /// solution_types is SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? onewaySynonymsControlIds;
+
+  /// The specification for personalization spec.
+  ///
+  /// Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if
+  /// both ServingConfig.personalization_spec and
+  /// SearchRequest.personalization_spec are set.
+  /// SearchRequest.personalization_spec will override
+  /// ServingConfig.personalization_spec.
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec? personalizationSpec;
+
+  /// How much price ranking we want in serving results.
+  ///
+  /// Price reranking causes product items with a similar recommendation
+  /// probability to be ordered by price, with the highest-priced items first.
+  /// This setting could result in a decrease in click-through and conversion
+  /// rates. Allowed values are: * `no-price-reranking` * `low-price-raranking`
+  /// * `medium-price-reranking` * `high-price-reranking` If not specified, we
+  /// choose default based on model type. Default value: `no-price-reranking`.
+  /// Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  core.String? priceRerankingLevel;
+
+  /// Condition redirect specifications.
+  ///
+  /// Only the first triggered redirect action is applied, even if multiple
+  /// apply. Maximum number of specifications is 1000. Can only be set if
+  /// solution_types is SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? redirectControlIds;
+
+  /// Condition replacement specifications.
+  ///
+  /// - Applied according to the order in the list. - A previously replaced term
+  /// can not be re-replaced. - Maximum number of specifications is 100. Can
+  /// only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? replacementControlIds;
+
+  /// Specifies the solution types that a serving config can be associated with.
+  ///
+  /// Currently we support setting only one type of solution.
+  ///
+  /// Required. Immutable.
+  core.List<core.String>? solutionTypes;
+
+  /// Condition synonyms specifications.
+  ///
+  /// If multiple syonyms conditions match, all matching synonyms control in the
+  /// list will execute. Order of controls in the list will not matter. Maximum
+  /// number of specifications is 100. Can only be set if solution_types is
+  /// SOLUTION_TYPE_SEARCH.
+  core.List<core.String>? twowaySynonymsControlIds;
+
+  GoogleCloudRetailV2ServingConfig({
+    this.boostControlIds,
+    this.displayName,
+    this.diversityLevel,
+    this.diversityType,
+    this.doNotAssociateControlIds,
+    this.dynamicFacetSpec,
+    this.enableCategoryFilterLevel,
+    this.facetControlIds,
+    this.filterControlIds,
+    this.ignoreControlIds,
+    this.modelId,
+    this.name,
+    this.onewaySynonymsControlIds,
+    this.personalizationSpec,
+    this.priceRerankingLevel,
+    this.redirectControlIds,
+    this.replacementControlIds,
+    this.solutionTypes,
+    this.twowaySynonymsControlIds,
+  });
+
+  GoogleCloudRetailV2ServingConfig.fromJson(core.Map json_)
+      : this(
+          boostControlIds: json_.containsKey('boostControlIds')
+              ? (json_['boostControlIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          diversityLevel: json_.containsKey('diversityLevel')
+              ? json_['diversityLevel'] as core.String
+              : null,
+          diversityType: json_.containsKey('diversityType')
+              ? json_['diversityType'] as core.String
+              : null,
+          doNotAssociateControlIds:
+              json_.containsKey('doNotAssociateControlIds')
+                  ? (json_['doNotAssociateControlIds'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          dynamicFacetSpec: json_.containsKey('dynamicFacetSpec')
+              ? GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(
+                  json_['dynamicFacetSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          enableCategoryFilterLevel:
+              json_.containsKey('enableCategoryFilterLevel')
+                  ? json_['enableCategoryFilterLevel'] as core.String
+                  : null,
+          facetControlIds: json_.containsKey('facetControlIds')
+              ? (json_['facetControlIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          filterControlIds: json_.containsKey('filterControlIds')
+              ? (json_['filterControlIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          ignoreControlIds: json_.containsKey('ignoreControlIds')
+              ? (json_['ignoreControlIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          modelId: json_.containsKey('modelId')
+              ? json_['modelId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          onewaySynonymsControlIds:
+              json_.containsKey('onewaySynonymsControlIds')
+                  ? (json_['onewaySynonymsControlIds'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          personalizationSpec: json_.containsKey('personalizationSpec')
+              ? GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
+                  json_['personalizationSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          priceRerankingLevel: json_.containsKey('priceRerankingLevel')
+              ? json_['priceRerankingLevel'] as core.String
+              : null,
+          redirectControlIds: json_.containsKey('redirectControlIds')
+              ? (json_['redirectControlIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          replacementControlIds: json_.containsKey('replacementControlIds')
+              ? (json_['replacementControlIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          solutionTypes: json_.containsKey('solutionTypes')
+              ? (json_['solutionTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          twowaySynonymsControlIds:
+              json_.containsKey('twowaySynonymsControlIds')
+                  ? (json_['twowaySynonymsControlIds'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boostControlIds != null) 'boostControlIds': boostControlIds!,
+        if (displayName != null) 'displayName': displayName!,
+        if (diversityLevel != null) 'diversityLevel': diversityLevel!,
+        if (diversityType != null) 'diversityType': diversityType!,
+        if (doNotAssociateControlIds != null)
+          'doNotAssociateControlIds': doNotAssociateControlIds!,
+        if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
+        if (enableCategoryFilterLevel != null)
+          'enableCategoryFilterLevel': enableCategoryFilterLevel!,
+        if (facetControlIds != null) 'facetControlIds': facetControlIds!,
+        if (filterControlIds != null) 'filterControlIds': filterControlIds!,
+        if (ignoreControlIds != null) 'ignoreControlIds': ignoreControlIds!,
+        if (modelId != null) 'modelId': modelId!,
+        if (name != null) 'name': name!,
+        if (onewaySynonymsControlIds != null)
+          'onewaySynonymsControlIds': onewaySynonymsControlIds!,
+        if (personalizationSpec != null)
+          'personalizationSpec': personalizationSpec!,
+        if (priceRerankingLevel != null)
+          'priceRerankingLevel': priceRerankingLevel!,
+        if (redirectControlIds != null)
+          'redirectControlIds': redirectControlIds!,
+        if (replacementControlIds != null)
+          'replacementControlIds': replacementControlIds!,
+        if (solutionTypes != null) 'solutionTypes': solutionTypes!,
+        if (twowaySynonymsControlIds != null)
+          'twowaySynonymsControlIds': twowaySynonymsControlIds!,
+      };
+}
+
 /// Request message to set a specified branch as new default_branch.
 class GoogleCloudRetailV2SetDefaultBranchRequest {
   /// The final component of the resource name of a branch.
@@ -6738,8 +8491,8 @@ class GoogleCloudRetailV2UserEvent {
   /// The categories associated with a category page.
   ///
   /// To represent full path of category, use '\>' sign to separate different
-  /// hierarchies. If '\>' is part of the category name, please replace it with
-  /// other character(s). Category pages include special pages such as sales or
+  /// hierarchies. If '\>' is part of the category name, replace it with other
+  /// character(s). Category pages include special pages such as sales or
   /// promotions. For instance, a special sale page may have the category
   /// hierarchy: "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
   /// Required for `category-page-view` events. At least one of search_query or

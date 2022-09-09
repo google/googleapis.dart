@@ -2297,6 +2297,8 @@ api.File buildFile() {
     o.quotaBytesUsed = 'foo';
     o.resourceKey = 'foo';
     o.selfLink = 'foo';
+    o.sha1Checksum = 'foo';
+    o.sha256Checksum = 'foo';
     o.shareable = true;
     o.shared = true;
     o.sharedWithMeDate = core.DateTime.parse('2002-02-27T14:01:02Z');
@@ -2457,6 +2459,14 @@ void checkFile(api.File o) {
     );
     unittest.expect(
       o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sha1Checksum!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sha256Checksum!,
       unittest.equals('foo'),
     );
     unittest.expect(o.shareable!, unittest.isTrue);

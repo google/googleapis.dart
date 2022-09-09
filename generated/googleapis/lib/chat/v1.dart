@@ -912,7 +912,7 @@ class SpacesMessagesResource {
   /// [updateMask] - Required. The field paths to update. Separate multiple
   /// values with commas. Currently supported field paths: - text - cards
   /// (Requires \[service account
-  /// authentication\](/chat/api/guides/auth/service-accounts).)
+  /// authentication\](/chat/api/guides/auth/service-accounts).) - cards_v2
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1761,13 +1761,13 @@ class GoogleAppsCardV1Action {
   ///
   /// The default value is `false`. If `true`, form values remain after the
   /// action is triggered. When using
-  /// \[LoadIndicator.NONE\](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+  /// [LoadIndicator.NONE](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
   /// for actions, `persist_values` = `true`is recommended, as it ensures that
   /// any changes made by the user after form or on change actions are sent to
   /// the server are not overwritten by the response. If `false`, the form
   /// values are cleared when the action is triggered. When `persist_values` is
   /// set to `false`, it is strongly recommended that the card use
-  /// \[LoadIndicator.SPINNER\](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+  /// [LoadIndicator.SPINNER](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
   /// for all actions, as this locks the UI to ensure no changes are made by the
   /// user while the action is being processed. Not supported by Google Chat
   /// apps.
@@ -2752,12 +2752,12 @@ class GoogleAppsCardV1OpenLink {
   ///
   /// Not supported by Chat apps.
   /// Possible string values are:
-  /// - "NOTHING" : Doesn’t reload the card after the child window closes.
+  /// - "NOTHING" : Default value. The card does not reload; nothing happens.
   /// - "RELOAD" : Reloads the card after the child window closes. If used in
   /// conjunction with
-  /// \[OpenAs.OVERLAY\](/workspace/add-ons/reference/rpc/google.apps.card.v1#openas),
-  /// the child window acts as a modal dialog and the main card is blocked until
-  /// the child window closes.
+  /// [OpenAs.OVERLAY](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#openas),
+  /// the child window acts as a modal dialog and the parent card is blocked
+  /// until the child window closes.
   core.String? onClose;
 
   /// How to open a link.
@@ -3144,7 +3144,8 @@ class GoogleAppsCardV1TextInput {
 
 /// A paragraph of text that supports formatting.
 ///
-/// See \[Text formatting\](workspace/add-ons/concepts/widgets#text_formatting)
+/// See
+/// [Text formatting](https://developers.google.com/workspace/add-ons/concepts/widgets#text_formatting)
 /// for details.
 class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
@@ -4113,7 +4114,7 @@ class Space {
 
   /// Whether the space is a DM between a Chat app and a single human.
   ///
-  /// Output only.
+  /// Optional.
   core.bool? singleUserBotDm;
 
   /// Details about the space including description and rules.

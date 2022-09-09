@@ -719,6 +719,10 @@ class EditsBundlesResource {
   /// installation may trigger a warning on user devices (for example, if
   /// installation size may be over a threshold, typically 100 MB).
   ///
+  /// [deviceTierConfigId] - Device tier config (DTC) to be used for generating
+  /// deliverables (APKs). Contains id of the DTC or "LATEST" for last uploaded
+  /// DTC.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -739,6 +743,7 @@ class EditsBundlesResource {
     core.String packageName,
     core.String editId, {
     core.bool? ackBundleInstallationWarning,
+    core.String? deviceTierConfigId,
     core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
@@ -746,6 +751,8 @@ class EditsBundlesResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (ackBundleInstallationWarning != null)
         'ackBundleInstallationWarning': ['${ackBundleInstallationWarning}'],
+      if (deviceTierConfigId != null)
+        'deviceTierConfigId': [deviceTierConfigId],
       if ($fields != null) 'fields': [$fields],
     };
 

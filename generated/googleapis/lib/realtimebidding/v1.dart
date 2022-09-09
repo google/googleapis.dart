@@ -1182,9 +1182,9 @@ class BiddersPublisherConnectionsResource {
   /// information about filtering syntax.
   ///
   /// [orderBy] - Order specification by which results should be sorted. If no
-  /// sort order is specified, the results will be returned in an arbitrary
-  /// order. Currently results can be sorted by `createTime`. Example:
-  /// 'createTime DESC'.
+  /// sort order is specified, the results will be returned in alphabetic order
+  /// based on the publisher's publisher code. Results can be sorted by
+  /// `createTime`. Example: 'createTime DESC'.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested (due to timeout constraint) even if more are available via
@@ -4062,6 +4062,10 @@ class PolicyCompliance {
   /// - "PENDING_REVIEW" : Creative is pending review.
   /// - "DISAPPROVED" : Creative cannot serve.
   /// - "APPROVED" : Creative is approved.
+  /// - "CERTIFICATE_REQUIRED" : Certificates are required for the creative to
+  /// be served in some regions. For more information about creative
+  /// certification, refer to:
+  /// https://support.google.com/authorizedbuyers/answer/7450776
   core.String? status;
 
   /// Topics related to the policy compliance for this transaction type (e.g.,
@@ -4373,6 +4377,7 @@ class PretargetingConfig {
   /// or the `BidRequest.site.publisher.id` / `BidRequest.app.publisher.id`
   /// field on the
   /// [OpenRTB protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto).
+  /// Publisher IDs will be returned in the order that they were entered.
   StringTargetingDimension? publisherTargeting;
 
   /// The state of this pretargeting configuration.

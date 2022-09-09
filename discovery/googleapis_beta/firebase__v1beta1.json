@@ -339,6 +339,11 @@
                             "description": "Token returned from a previous call to `ListFirebaseProjects` indicating where in the set of Projects to resume listing.",
                             "location": "query",
                             "type": "string"
+                        },
+                        "showDeleted": {
+                            "description": "Optional. Controls whether Projects in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Projects will be returned.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v1beta1/projects",
@@ -369,7 +374,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "Specifies which fields to update. If this list is empty, then no state will be updated. Note that the fields `name`, `projectId`, and `projectNumber` are all immutable.",
+                            "description": "Specifies which fields of the FirebaseProject to update. Note that the following fields are immutable: `name`, `project_id`, and `project_number`. To update `state`, use any of the following Google Cloud endpoints: [`projects.delete`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/delete) or [`projects.undelete`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/undelete)",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -449,7 +454,7 @@
                             "type": "string"
                         },
                         "showDeleted": {
-                            "description": "Controls whether Apps in the DELETED state should be returned. Defaults to false.",
+                            "description": "Controls whether Apps in the DELETED state should be returned. If not specified, only `ACTIVE` Apps will be returned.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -582,7 +587,7 @@
                                     "type": "string"
                                 },
                                 "showDeleted": {
-                                    "description": "Controls whether Apps in the DELETED state should be returned. Defaults to false.",
+                                    "description": "Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned.",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -615,7 +620,7 @@
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "Specifies which fields to update. Note that the fields `name`, `app_id`, `project_id`, `package_name`, and `state` are all immutable.",
+                                    "description": "Specifies which fields of the AndroidApp to update. Note that the following fields are immutable: `name`, `app_id`, `project_id`, and `package_name`. To update `state`, use any of the following endpoints: RemoveAndroidApp or UndeleteAndroidApp.",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -634,7 +639,7 @@
                             ]
                         },
                         "remove": {
-                            "description": "Removes the specified AndroidApp from the project.",
+                            "description": "Removes the specified AndroidApp from the FirebaseProject.",
                             "flatPath": "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}:remove",
                             "httpMethod": "POST",
                             "id": "firebase.projects.androidApps.remove",
@@ -658,7 +663,37 @@
                                 "$ref": "Operation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
+                            ]
+                        },
+                        "undelete": {
+                            "description": "Restores the specified AndroidApp to the FirebaseProject.",
+                            "flatPath": "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}:undelete",
+                            "httpMethod": "POST",
+                            "id": "firebase.projects.androidApps.undelete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the AndroidApp [name](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/androidApps/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}:undelete",
+                            "request": {
+                                "$ref": "UndeleteAndroidAppRequest"
+                            },
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         }
                     },
@@ -943,7 +978,7 @@
                                     "type": "string"
                                 },
                                 "showDeleted": {
-                                    "description": "Controls whether Apps in the DELETED state should be returned. Defaults to false.",
+                                    "description": "Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned.",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -976,7 +1011,7 @@
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "Specifies which fields to update. Note that the fields `name`, `appId`, `projectId`, `bundleId`, and `state` are all immutable",
+                                    "description": "Specifies which fields of the IosApp to update. Note that the following fields are immutable: `name`, `app_id`, `project_id`, and `bundle_id`. To update `state`, use any of the following endpoints: RemoveIosApp or UndeleteIosApp.",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -995,7 +1030,7 @@
                             ]
                         },
                         "remove": {
-                            "description": "Removes the specified IosApp from the project.",
+                            "description": "Removes the specified IosApp from the FirebaseProject.",
                             "flatPath": "v1beta1/projects/{projectsId}/iosApps/{iosAppsId}:remove",
                             "httpMethod": "POST",
                             "id": "firebase.projects.iosApps.remove",
@@ -1019,7 +1054,37 @@
                                 "$ref": "Operation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
+                            ]
+                        },
+                        "undelete": {
+                            "description": "Restores the specified IosApp to the FirebaseProject.",
+                            "flatPath": "v1beta1/projects/{projectsId}/iosApps/{iosAppsId}:undelete",
+                            "httpMethod": "POST",
+                            "id": "firebase.projects.iosApps.undelete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The resource name of the IosApp, in the format: projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp [name](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/iosApps/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}:undelete",
+                            "request": {
+                                "$ref": "UndeleteIosAppRequest"
+                            },
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         }
                     }
@@ -1139,7 +1204,7 @@
                                     "type": "string"
                                 },
                                 "showDeleted": {
-                                    "description": "Controls whether Apps in the DELETED state should be returned. Defaults to false.",
+                                    "description": "Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned.",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -1172,7 +1237,7 @@
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "Specifies which fields to update. Note that the fields `name`, `appId`, `projectId` and `state` are all immutable",
+                                    "description": "Specifies which fields of the WebApp to update. Note that the following fields are immutable: `name`, `app_id`, and `project_id`. To update `state`, use any of the following endpoints: RemoveWebApp or UndeleteWebApp.",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -1191,7 +1256,7 @@
                             ]
                         },
                         "remove": {
-                            "description": "Removes the specified WebApp from the project.",
+                            "description": "Removes the specified WebApp from the FirebaseProject.",
                             "flatPath": "v1beta1/projects/{projectsId}/webApps/{webAppsId}:remove",
                             "httpMethod": "POST",
                             "id": "firebase.projects.webApps.remove",
@@ -1215,7 +1280,37 @@
                                 "$ref": "Operation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
+                            ]
+                        },
+                        "undelete": {
+                            "description": "Restores the specified WebApp to the FirebaseProject.",
+                            "flatPath": "v1beta1/projects/{projectsId}/webApps/{webAppsId}:undelete",
+                            "httpMethod": "POST",
+                            "id": "firebase.projects.webApps.undelete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The resource name of the WebApp, in the format: projects/ PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp [name](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/webApps/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}:undelete",
+                            "request": {
+                                "$ref": "UndeleteWebAppRequest"
+                            },
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         }
                     }
@@ -1223,7 +1318,7 @@
             }
         }
     },
-    "revision": "20220802",
+    "revision": "20220908",
     "rootUrl": "https://firebase.googleapis.com/",
     "schemas": {
         "AddFirebaseRequest": {
@@ -1315,7 +1410,7 @@
             "id": "AndroidApp",
             "properties": {
                 "apiKeyId": {
-                    "description": "The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.",
+                    "description": "The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `AndroidApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.androidApps/getConfig). If `api_key_id` is not set in requests to [`androidApps.Create`](../../rest/v1beta1/projects.androidApps/create), then Firebase automatically associates an `api_key_id` with the `AndroidApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `AndroidApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys.",
                     "type": "string"
                 },
                 "appId": {
@@ -1363,8 +1458,8 @@
                     ],
                     "enumDescriptions": [
                         "Unspecified state.",
-                        "The normal and active state.",
-                        "The app has been soft deleted."
+                        "The App is active.",
+                        "The App has been soft-deleted. Firebase permanantely deletes an App after it has been in the `DELETED` state for more than 30 days. Up until this time, you can restore the App by calling `Undelete` ([Android](projects.androidApps/undelete) | [iOS](projects.iosApps/undelete) | [web](projects.webApps/undelete))."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1436,7 +1531,7 @@
             "id": "FirebaseAppInfo",
             "properties": {
                 "apiKeyId": {
-                    "description": "The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set to an empty value in update requests. If left unset on create requests, an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you.",
+                    "description": "The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the App. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's configuration artifact ([`AndroidApp`](../../rest/v1beta1/projects.androidApps/getConfig) | [`IosApp`](../../rest/v1beta1/projects.iosApps/getConfig) | [`WebApp`](../../rest/v1beta1/projects.webApps/getConfig)). If `api_key_id` is not set in requests to create the App ([`AndroidApp`](../../rest/v1beta1/projects.androidApps/create) | [`IosApp`](../../rest/v1beta1/projects.iosApps/create) | [`WebApp`](../../rest/v1beta1/projects.webApps/create)), then Firebase automatically associates an `api_key_id` with the App. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.",
                     "type": "string"
                 },
                 "appId": {
@@ -1482,8 +1577,8 @@
                     ],
                     "enumDescriptions": [
                         "Unspecified state.",
-                        "The normal and active state.",
-                        "The app has been soft deleted."
+                        "The App is active.",
+                        "The App has been soft-deleted. Firebase permanantely deletes an App after it has been in the `DELETED` state for more than 30 days. Up until this time, you can restore the App by calling `Undelete` ([Android](projects.androidApps/undelete) | [iOS](projects.iosApps/undelete) | [web](projects.webApps/undelete))."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1531,7 +1626,7 @@
                     "readOnly": true
                 },
                 "state": {
-                    "description": "Output only. The lifecycle state of the Project. Updates to the state must be performed via com.google.cloudresourcemanager.v1.Projects.DeleteProject and com.google.cloudresourcemanager.v1.Projects.UndeleteProject",
+                    "description": "Output only. The lifecycle state of the Project.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "ACTIVE",
@@ -1539,8 +1634,8 @@
                     ],
                     "enumDescriptions": [
                         "Unspecified state.",
-                        "The normal and active state.",
-                        "The Project has been marked for deletion by the user."
+                        "The Project is active.",
+                        "The Project has been soft-deleted."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1553,7 +1648,7 @@
             "id": "IosApp",
             "properties": {
                 "apiKeyId": {
-                    "description": "The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.",
+                    "description": "The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `IosApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.iosApps/getConfig). If `api_key_id` is not set in requests to [`iosApps.Create`](../../rest/v1beta1/projects.iosApps/create), then Firebase automatically associates an `api_key_id` with the `IosApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `IosApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys.",
                     "type": "string"
                 },
                 "appId": {
@@ -1591,8 +1686,8 @@
                     ],
                     "enumDescriptions": [
                         "Unspecified state.",
-                        "The normal and active state.",
-                        "The app has been soft deleted."
+                        "The App is active.",
+                        "The App has been soft-deleted. Firebase permanantely deletes an App after it has been in the `DELETED` state for more than 30 days. Up until this time, you can restore the App by calling `Undelete` ([Android](projects.androidApps/undelete) | [iOS](projects.iosApps/undelete) | [web](projects.webApps/undelete))."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1861,7 +1956,7 @@
                     "type": "string"
                 },
                 "validateOnly": {
-                    "description": "If set to true, only validate the request and do not delete the app.",
+                    "description": "If set to true, the request is only validated. The App will _not_ be removed.",
                     "type": "boolean"
                 }
             },
@@ -1879,7 +1974,7 @@
                     "type": "string"
                 },
                 "validateOnly": {
-                    "description": "If set to true, only validate the request and do not delete the app.",
+                    "description": "If set to true, the request is only validated. The App will _not_ be removed.",
                     "type": "boolean"
                 }
             },
@@ -1897,7 +1992,7 @@
                     "type": "string"
                 },
                 "validateOnly": {
-                    "description": "If set to true, only validate the request and do not delete the app.",
+                    "description": "If set to true, the request is only validated. The App will _not_ be removed.",
                     "type": "boolean"
                 }
             },
@@ -2025,12 +2120,54 @@
             },
             "type": "object"
         },
+        "UndeleteAndroidAppRequest": {
+            "id": "UndeleteAndroidAppRequest",
+            "properties": {
+                "etag": {
+                    "description": "Checksum provided in the AndroidApp entity, which if provided ensures the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set to true, the request is only validated. The App will _not_ be undeleted.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UndeleteIosAppRequest": {
+            "id": "UndeleteIosAppRequest",
+            "properties": {
+                "etag": {
+                    "description": "Checksum provided in the IosApp entity, which if provided ensures the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set to true, the request is only validated. The App will _not_ be undeleted.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UndeleteWebAppRequest": {
+            "id": "UndeleteWebAppRequest",
+            "properties": {
+                "etag": {
+                    "description": "Checksum provided in the WebApp entity, which if provided ensures the client has an up-to-date value before proceeding.",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set to true, the request is only validated. The App will _not_ be undeleted.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "WebApp": {
             "description": "Details of a Firebase App for the web.",
             "id": "WebApp",
             "properties": {
                 "apiKeyId": {
-                    "description": "The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.",
+                    "description": "The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `WebApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.webApps/getConfig). If `api_key_id` is not set in requests to [`webApps.Create`](../../rest/v1beta1/projects.webApps/create), then Firebase automatically associates an `api_key_id` with the `WebApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `WebApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys.",
                     "type": "string"
                 },
                 "appId": {
@@ -2067,8 +2204,8 @@
                     ],
                     "enumDescriptions": [
                         "Unspecified state.",
-                        "The normal and active state.",
-                        "The app has been soft deleted."
+                        "The App is active.",
+                        "The App has been soft-deleted. Firebase permanantely deletes an App after it has been in the `DELETED` state for more than 30 days. Up until this time, you can restore the App by calling `Undelete` ([Android](projects.androidApps/undelete) | [iOS](projects.iosApps/undelete) | [web](projects.webApps/undelete))."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2086,7 +2223,7 @@
             "id": "WebAppConfig",
             "properties": {
                 "apiKey": {
-                    "description": "The API key associated with the `WebApp`.",
+                    "description": "The [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key associated with the `WebApp`. Note that this value is _not_ the [`apiKeyId`](../projects.webApps#WebApp.FIELDS.api_key_id) (the UID) of the API key associated with the `WebApp`.",
                     "type": "string"
                 },
                 "appId": {

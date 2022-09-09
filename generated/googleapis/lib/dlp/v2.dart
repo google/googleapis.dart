@@ -95,8 +95,7 @@ class InfoTypesResource {
 
   InfoTypesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a list of the sensitive information types that the DLP API
-  /// supports.
+  /// Returns a list of the sensitive information types that DLP API supports.
   ///
   /// See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
   ///
@@ -165,8 +164,7 @@ class LocationsInfoTypesResource {
 
   LocationsInfoTypesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a list of the sensitive information types that the DLP API
-  /// supports.
+  /// Returns a list of the sensitive information types that DLP API supports.
   ///
   /// See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
   ///
@@ -242,8 +240,8 @@ class OrganizationsDeidentifyTemplatesResource {
   OrganizationsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a DeidentifyTemplate for re-using frequently used configuration
-  /// for de-identifying content, images, and storage.
+  /// Creates a DeidentifyTemplate for reusing frequently used configuration for
+  /// de-identifying content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
   /// more.
@@ -416,12 +414,13 @@ class OrganizationsDeidentifyTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
@@ -519,7 +518,7 @@ class OrganizationsInspectTemplatesResource {
   OrganizationsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an InspectTemplate for re-using frequently used configuration for
+  /// Creates an InspectTemplate for reusing frequently used configuration for
   /// inspecting content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
@@ -688,12 +687,13 @@ class OrganizationsInspectTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListInspectTemplates`.
@@ -806,8 +806,8 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   OrganizationsLocationsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a DeidentifyTemplate for re-using frequently used configuration
-  /// for de-identifying content, images, and storage.
+  /// Creates a DeidentifyTemplate for reusing frequently used configuration for
+  /// de-identifying content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
   /// more.
@@ -980,12 +980,13 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
@@ -1108,16 +1109,16 @@ class OrganizationsLocationsDlpJobsResource {
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
   /// * Supported fields/values for inspect jobs: - `state` -
   /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
-  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of
-  /// the trigger that created job. - 'end_time` - Corresponds to time the job
-  /// finished. - 'start_time` - Corresponds to time the job finished. *
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The name of the
+  /// trigger that created the job. - 'end_time` - Corresponds to the time the
+  /// job finished. - 'start_time` - Corresponds to the time the job finished. *
   /// Supported fields for risk analysis jobs: - `state` -
-  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the
-  /// job finished. - 'start_time` - Corresponds to time the job finished. * The
-  /// operator must be `=` or `!=`. Examples: * inspected_storage =
-  /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
-  /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
-  /// (state = done OR state = canceled) * end_time \>
+  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time
+  /// the job finished. - 'start_time` - Corresponds to the time the job
+  /// finished. * The operator must be `=` or `!=`. Examples: *
+  /// inspected_storage = cloud_storage AND state = done * inspected_storage =
+  /// cloud_storage OR inspected_storage = bigquery * inspected_storage =
+  /// cloud_storage AND (state = done OR state = canceled) * end_time \>
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
@@ -1127,9 +1128,9 @@ class OrganizationsLocationsDlpJobsResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc, end_time asc, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the job was created. - `end_time`:
-  /// corresponds to time the job ended. - `name`: corresponds to job's name. -
-  /// `state`: corresponds to `state`
+  /// `create_time`: corresponds to the time the job was created. - `end_time`:
+  /// corresponds to the time the job ended. - `name`: corresponds to the job's
+  /// name. - `state`: corresponds to `state`
   ///
   /// [pageSize] - The standard list page size.
   ///
@@ -1189,7 +1190,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   OrganizationsLocationsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an InspectTemplate for re-using frequently used configuration for
+  /// Creates an InspectTemplate for reusing frequently used configuration for
   /// inspecting content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
@@ -1358,12 +1359,13 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListInspectTemplates`.
@@ -1631,11 +1633,11 @@ class OrganizationsLocationsJobTriggersResource {
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
-  /// fields are: - `create_time`: corresponds to time the JobTrigger was
-  /// created. - `update_time`: corresponds to time the JobTrigger was last
+  /// fields are: - `create_time`: corresponds to the time the JobTrigger was
+  /// created. - `update_time`: corresponds to the time the JobTrigger was last
   /// updated. - `last_run_time`: corresponds to the last time the JobTrigger
-  /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
-  /// corresponds to JobTrigger's display name. - `status`: corresponds to
+  /// ran. - `name`: corresponds to the JobTrigger's name. - `display_name`:
+  /// corresponds to the JobTrigger's display name. - `status`: corresponds to
   /// JobTrigger's status.
   ///
   /// [pageSize] - Size of the page, can be limited by a server.
@@ -1897,10 +1899,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
-  /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -1913,13 +1912,13 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc, display_name, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the most recent version of the resource
-  /// was created. - `state`: corresponds to the state of the resource. -
-  /// `name`: corresponds to resource name. - `display_name`: corresponds to
+  /// `create_time`: corresponds to the time the most recent version of the
+  /// resource was created. - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListStoredInfoTypes`.
@@ -2169,10 +2168,7 @@ class OrganizationsStoredInfoTypesResource {
   /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
-  /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -2185,13 +2181,13 @@ class OrganizationsStoredInfoTypesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc, display_name, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the most recent version of the resource
-  /// was created. - `state`: corresponds to the state of the resource. -
-  /// `name`: corresponds to resource name. - `display_name`: corresponds to
+  /// `create_time`: corresponds to the time the most recent version of the
+  /// resource was created. - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListStoredInfoTypes`.
@@ -2480,8 +2476,8 @@ class ProjectsDeidentifyTemplatesResource {
   ProjectsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a DeidentifyTemplate for re-using frequently used configuration
-  /// for de-identifying content, images, and storage.
+  /// Creates a DeidentifyTemplate for reusing frequently used configuration for
+  /// de-identifying content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
   /// more.
@@ -2652,12 +2648,13 @@ class ProjectsDeidentifyTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
@@ -2857,7 +2854,7 @@ class ProjectsDlpJobsResource {
   /// Deletes a long-running DlpJob.
   ///
   /// This method indicates that the client is no longer interested in the
-  /// DlpJob result. The job will be cancelled if possible. See
+  /// DlpJob result. The job will be canceled if possible. See
   /// https://cloud.google.com/dlp/docs/inspecting-storage and
   /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
   ///
@@ -2959,16 +2956,16 @@ class ProjectsDlpJobsResource {
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
   /// * Supported fields/values for inspect jobs: - `state` -
   /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
-  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of
-  /// the trigger that created job. - 'end_time` - Corresponds to time the job
-  /// finished. - 'start_time` - Corresponds to time the job finished. *
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The name of the
+  /// trigger that created the job. - 'end_time` - Corresponds to the time the
+  /// job finished. - 'start_time` - Corresponds to the time the job finished. *
   /// Supported fields for risk analysis jobs: - `state` -
-  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the
-  /// job finished. - 'start_time` - Corresponds to time the job finished. * The
-  /// operator must be `=` or `!=`. Examples: * inspected_storage =
-  /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
-  /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
-  /// (state = done OR state = canceled) * end_time \>
+  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time
+  /// the job finished. - 'start_time` - Corresponds to the time the job
+  /// finished. * The operator must be `=` or `!=`. Examples: *
+  /// inspected_storage = cloud_storage AND state = done * inspected_storage =
+  /// cloud_storage OR inspected_storage = bigquery * inspected_storage =
+  /// cloud_storage AND (state = done OR state = canceled) * end_time \>
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
@@ -2978,9 +2975,9 @@ class ProjectsDlpJobsResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc, end_time asc, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the job was created. - `end_time`:
-  /// corresponds to time the job ended. - `name`: corresponds to job's name. -
-  /// `state`: corresponds to `state`
+  /// `create_time`: corresponds to the time the job was created. - `end_time`:
+  /// corresponds to the time the job ended. - `name`: corresponds to the job's
+  /// name. - `state`: corresponds to `state`
   ///
   /// [pageSize] - The standard list page size.
   ///
@@ -3103,7 +3100,7 @@ class ProjectsInspectTemplatesResource {
   ProjectsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an InspectTemplate for re-using frequently used configuration for
+  /// Creates an InspectTemplate for reusing frequently used configuration for
   /// inspecting content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
@@ -3270,12 +3267,13 @@ class ProjectsInspectTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListInspectTemplates`.
@@ -3585,11 +3583,11 @@ class ProjectsJobTriggersResource {
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
-  /// fields are: - `create_time`: corresponds to time the JobTrigger was
-  /// created. - `update_time`: corresponds to time the JobTrigger was last
+  /// fields are: - `create_time`: corresponds to the time the JobTrigger was
+  /// created. - `update_time`: corresponds to the time the JobTrigger was last
   /// updated. - `last_run_time`: corresponds to the last time the JobTrigger
-  /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
-  /// corresponds to JobTrigger's display name. - `status`: corresponds to
+  /// ran. - `name`: corresponds to the JobTrigger's name. - `display_name`:
+  /// corresponds to the JobTrigger's display name. - `status`: corresponds to
   /// JobTrigger's status.
   ///
   /// [pageSize] - Size of the page, can be limited by a server.
@@ -3890,8 +3888,8 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   ProjectsLocationsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a DeidentifyTemplate for re-using frequently used configuration
-  /// for de-identifying content, images, and storage.
+  /// Creates a DeidentifyTemplate for reusing frequently used configuration for
+  /// de-identifying content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
   /// more.
@@ -4064,12 +4062,13 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
@@ -4272,7 +4271,7 @@ class ProjectsLocationsDlpJobsResource {
   /// Deletes a long-running DlpJob.
   ///
   /// This method indicates that the client is no longer interested in the
-  /// DlpJob result. The job will be cancelled if possible. See
+  /// DlpJob result. The job will be canceled if possible. See
   /// https://cloud.google.com/dlp/docs/inspecting-storage and
   /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
   ///
@@ -4467,16 +4466,16 @@ class ProjectsLocationsDlpJobsResource {
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
   /// * Supported fields/values for inspect jobs: - `state` -
   /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
-  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of
-  /// the trigger that created job. - 'end_time` - Corresponds to time the job
-  /// finished. - 'start_time` - Corresponds to time the job finished. *
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The name of the
+  /// trigger that created the job. - 'end_time` - Corresponds to the time the
+  /// job finished. - 'start_time` - Corresponds to the time the job finished. *
   /// Supported fields for risk analysis jobs: - `state` -
-  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the
-  /// job finished. - 'start_time` - Corresponds to time the job finished. * The
-  /// operator must be `=` or `!=`. Examples: * inspected_storage =
-  /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
-  /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
-  /// (state = done OR state = canceled) * end_time \>
+  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time
+  /// the job finished. - 'start_time` - Corresponds to the time the job
+  /// finished. * The operator must be `=` or `!=`. Examples: *
+  /// inspected_storage = cloud_storage AND state = done * inspected_storage =
+  /// cloud_storage OR inspected_storage = bigquery * inspected_storage =
+  /// cloud_storage AND (state = done OR state = canceled) * end_time \>
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
@@ -4486,9 +4485,9 @@ class ProjectsLocationsDlpJobsResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc, end_time asc, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the job was created. - `end_time`:
-  /// corresponds to time the job ended. - `name`: corresponds to job's name. -
-  /// `state`: corresponds to `state`
+  /// `create_time`: corresponds to the time the job was created. - `end_time`:
+  /// corresponds to the time the job ended. - `name`: corresponds to the job's
+  /// name. - `state`: corresponds to `state`
   ///
   /// [pageSize] - The standard list page size.
   ///
@@ -4612,7 +4611,7 @@ class ProjectsLocationsInspectTemplatesResource {
   ProjectsLocationsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an InspectTemplate for re-using frequently used configuration for
+  /// Creates an InspectTemplate for reusing frequently used configuration for
   /// inspecting content, images, and storage.
   ///
   /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
@@ -4781,12 +4780,13 @@ class ProjectsLocationsInspectTemplatesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to time the template was created. - `update_time`: corresponds
-  /// to time the template was last updated. - `name`: corresponds to template's
-  /// name. - `display_name`: corresponds to template's display name.
+  /// corresponds to the time the template was created. - `update_time`:
+  /// corresponds to the time the template was last updated. - `name`:
+  /// corresponds to the template's name. - `display_name`: corresponds to the
+  /// template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListInspectTemplates`.
@@ -5146,11 +5146,11 @@ class ProjectsLocationsJobTriggersResource {
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
-  /// fields are: - `create_time`: corresponds to time the JobTrigger was
-  /// created. - `update_time`: corresponds to time the JobTrigger was last
+  /// fields are: - `create_time`: corresponds to the time the JobTrigger was
+  /// created. - `update_time`: corresponds to the time the JobTrigger was last
   /// updated. - `last_run_time`: corresponds to the last time the JobTrigger
-  /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
-  /// corresponds to JobTrigger's display name. - `status`: corresponds to
+  /// ran. - `name`: corresponds to the JobTrigger's name. - `display_name`:
+  /// corresponds to the JobTrigger's display name. - `status`: corresponds to
   /// JobTrigger's status.
   ///
   /// [pageSize] - Size of the page, can be limited by a server.
@@ -5412,10 +5412,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
-  /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5428,13 +5425,13 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc, display_name, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the most recent version of the resource
-  /// was created. - `state`: corresponds to the state of the resource. -
-  /// `name`: corresponds to resource name. - `display_name`: corresponds to
+  /// `create_time`: corresponds to the time the most recent version of the
+  /// resource was created. - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListStoredInfoTypes`.
@@ -5684,10 +5681,7 @@ class ProjectsStoredInfoTypesResource {
   /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
-  /// location specified (defaults to global): `projects/`PROJECT_ID +
-  /// Organizations scope, location specified:
-  /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-  /// location specified (defaults to global): `organizations/`ORG_ID The
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
@@ -5700,13 +5694,13 @@ class ProjectsStoredInfoTypesResource {
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
   /// asc, display_name, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the most recent version of the resource
-  /// was created. - `state`: corresponds to the state of the resource. -
-  /// `name`: corresponds to resource name. - `display_name`: corresponds to
+  /// `create_time`: corresponds to the time the most recent version of the
+  /// resource was created. - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [pageSize] - Size of the page, can be limited by the server. If zero
+  /// server returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListStoredInfoTypes`.
@@ -5800,11 +5794,14 @@ class ProjectsStoredInfoTypesResource {
 ///
 /// See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 class GooglePrivacyDlpV2Action {
+  /// Create a de-identified copy of the input data.
+  GooglePrivacyDlpV2Deidentify? deidentify;
+
   /// Enable email notification for project owners and editors on job's
   /// completion/failure.
   GooglePrivacyDlpV2JobNotificationEmails? jobNotificationEmails;
 
-  /// Publish a notification to a pubsub topic.
+  /// Publish a notification to a Pub/Sub topic.
   GooglePrivacyDlpV2PublishToPubSub? pubSub;
 
   /// Publish findings to Cloud Datahub.
@@ -5821,6 +5818,7 @@ class GooglePrivacyDlpV2Action {
   GooglePrivacyDlpV2SaveFindings? saveFindings;
 
   GooglePrivacyDlpV2Action({
+    this.deidentify,
     this.jobNotificationEmails,
     this.pubSub,
     this.publishFindingsToCloudDataCatalog,
@@ -5831,6 +5829,10 @@ class GooglePrivacyDlpV2Action {
 
   GooglePrivacyDlpV2Action.fromJson(core.Map json_)
       : this(
+          deidentify: json_.containsKey('deidentify')
+              ? GooglePrivacyDlpV2Deidentify.fromJson(
+                  json_['deidentify'] as core.Map<core.String, core.dynamic>)
+              : null,
           jobNotificationEmails: json_.containsKey('jobNotificationEmails')
               ? GooglePrivacyDlpV2JobNotificationEmails.fromJson(
                   json_['jobNotificationEmails']
@@ -5863,6 +5865,7 @@ class GooglePrivacyDlpV2Action {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentify != null) 'deidentify': deidentify!,
         if (jobNotificationEmails != null)
           'jobNotificationEmails': jobNotificationEmails!,
         if (pubSub != null) 'pubSub': pubSub!,
@@ -5879,6 +5882,12 @@ class GooglePrivacyDlpV2Action {
 
 /// Request message for ActivateJobTrigger.
 typedef GooglePrivacyDlpV2ActivateJobTriggerRequest = $Empty;
+
+/// Apply transformation to all findings.
+typedef GooglePrivacyDlpV2AllInfoTypes = $Empty;
+
+/// Apply to all text.
+typedef GooglePrivacyDlpV2AllText = $Empty;
 
 /// Result of a risk analysis operation request.
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
@@ -6695,8 +6704,7 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
       };
 }
 
-/// Options defining a file or a set of files within a Google Cloud Storage
-/// bucket.
+/// Options defining a file or a set of files within a Cloud Storage bucket.
 class GooglePrivacyDlpV2CloudStorageOptions {
   /// Max number of bytes to scan from a file.
   ///
@@ -7019,7 +7027,7 @@ class GooglePrivacyDlpV2Conditions {
 class GooglePrivacyDlpV2Container {
   /// A string representation of the full container name.
   ///
-  /// Examples: - BigQuery: 'Project:DataSetId.TableId' - Google Cloud Storage:
+  /// Examples: - BigQuery: 'Project:DataSetId.TableId' - Cloud Storage:
   /// 'gs://Bucket/folders/filename.txt'
   core.String? fullPath;
 
@@ -7031,7 +7039,7 @@ class GooglePrivacyDlpV2Container {
   /// The rest of the path after the root.
   ///
   /// Examples: - For BigQuery table `project_id:dataset_id.table_id`, the
-  /// relative path is `table_id` - Google Cloud Storage file
+  /// relative path is `table_id` - For Cloud Storage file
   /// `gs://bucket/folder/filename.txt`, the relative path is
   /// `folder/filename.txt`
   core.String? relativePath;
@@ -7039,22 +7047,21 @@ class GooglePrivacyDlpV2Container {
   /// The root of the container.
   ///
   /// Examples: - For BigQuery table `project_id:dataset_id.table_id`, the root
-  /// is `dataset_id` - For Google Cloud Storage file
+  /// is `dataset_id` - For Cloud Storage file
   /// `gs://bucket/folder/filename.txt`, the root is `gs://bucket`
   core.String? rootPath;
 
-  /// Container type, for example BigQuery or Google Cloud Storage.
+  /// Container type, for example BigQuery or Cloud Storage.
   core.String? type;
 
   /// Findings container modification timestamp, if applicable.
   ///
-  /// For Google Cloud Storage contains last file modification timestamp. For
-  /// BigQuery table contains last_modified_time property. For Datastore - not
-  /// populated.
+  /// For Cloud Storage, this field contains the last file modification
+  /// timestamp. For a BigQuery table, this field contains the
+  /// last_modified_time property. For Datastore, this field isn't populated.
   core.String? updateTime;
 
-  /// Findings container version, if available ("generation" for Google Cloud
-  /// Storage).
+  /// Findings container version, if available ("generation" for Cloud Storage).
   core.String? version;
 
   GooglePrivacyDlpV2Container({
@@ -7153,19 +7160,18 @@ class GooglePrivacyDlpV2ContentLocation {
   /// common storage containers are formatted as follows: * BigQuery tables:
   /// `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files:
   /// `gs://{bucket}/{path}` * Datastore namespace: {namespace} Nested names
-  /// could be absent if the embedded object has no string identifier (for an
-  /// example an image contained within a document).
+  /// could be absent if the embedded object has no string identifier (for
+  /// example, an image contained within a document).
   core.String? containerName;
 
-  /// Findings container modification timestamp, if applicable.
+  /// Finding container modification timestamp, if applicable.
   ///
-  /// For Google Cloud Storage contains last file modification timestamp. For
-  /// BigQuery table contains last_modified_time property. For Datastore - not
-  /// populated.
+  /// For Cloud Storage, this field contains the last file modification
+  /// timestamp. For a BigQuery table, this field contains the
+  /// last_modified_time property. For Datastore, this field isn't populated.
   core.String? containerTimestamp;
 
-  /// Findings container version, if available ("generation" for Google Cloud
-  /// Storage).
+  /// Finding container version, if available ("generation" for Cloud Storage).
   core.String? containerVersion;
 
   /// Location data for document files.
@@ -7496,7 +7502,7 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
   /// 1. there is no record present when transforming a given value or 2. the
   /// field is not present when transforming a given value, plaintext would be
   /// used as is for encryption. Note that case (1) is expected when an
-  /// `InfoTypeTransformation` is applied to both structured and non-structured
+  /// `InfoTypeTransformation` is applied to both structured and unstructured
   /// `ContentItem`s.
   GooglePrivacyDlpV2FieldId? context;
 
@@ -7663,7 +7669,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// set but: 1. there is no record present when transforming a given value or
   /// 1. the field is not present when transforming a given value, a default
   /// tweak will be used. Note that case (1) is expected when an
-  /// `InfoTypeTransformation` is applied to both structured and non-structured
+  /// `InfoTypeTransformation` is applied to both structured and unstructured
   /// `ContentItem`s. Currently, the referenced field may be of value type
   /// integer or string. The tweak is constructed as a sequence of bytes in big
   /// endian byte order such that: - a 64 bit integer is encoded followed by a
@@ -8058,8 +8064,101 @@ class GooglePrivacyDlpV2DateTime {
       };
 }
 
+/// Create a de-identified copy of the requested table or files.
+///
+/// A TransformationDetail will be created for each transformation. If any rows
+/// in BigQuery are skipped during de-identification (transformation errors or
+/// row size exceeds BigQuery insert API limits) they are placed in the failure
+/// output table. If the original row exceeds the BigQuery insert API limit it
+/// will be truncated when written to the failure output table. The failure
+/// output table can be set in the
+/// action.deidentify.output.big_query_output.deidentified_failure_output_table
+/// field, if no table is set, a table will be automatically created in the same
+/// project and dataset as the original table. Compatible with: Inspect
+class GooglePrivacyDlpV2Deidentify {
+  /// User settable Cloud Storage bucket and folders to store de-identified
+  /// files.
+  ///
+  /// This field must be set for cloud storage deidentification. The output
+  /// Cloud Storage bucket must be different from the input bucket.
+  /// De-identified files will overwrite files in the output path. Form of:
+  /// gs://bucket/folder/ or gs://bucket
+  ///
+  /// Required.
+  core.String? cloudStorageOutput;
+
+  /// List of user-specified file type groups to transform.
+  ///
+  /// If specified, only the files with these filetypes will be transformed. If
+  /// empty, all supported files will be transformed. Supported types may be
+  /// automatically added over time. If a file type is set in this field that
+  /// isn't supported by the Deidentify action then the job will fail and will
+  /// not be successfully created/started. Currently the only filetypes
+  /// supported are: IMAGES, TEXT_FILES, CSV, TSV.
+  core.List<core.String>? fileTypesToTransform;
+
+  /// User specified deidentify templates and configs for structured,
+  /// unstructured, and image files.
+  GooglePrivacyDlpV2TransformationConfig? transformationConfig;
+
+  /// Config for storing transformation details.
+  ///
+  /// This is separate from the de-identified content, and contains metadata
+  /// about the successful transformations and/or failures that occurred while
+  /// de-identifying. This needs to be set in order for users to access
+  /// information about the status of each transformation (see
+  /// TransformationDetails message for more information about what is noted).
+  GooglePrivacyDlpV2TransformationDetailsStorageConfig?
+      transformationDetailsStorageConfig;
+
+  GooglePrivacyDlpV2Deidentify({
+    this.cloudStorageOutput,
+    this.fileTypesToTransform,
+    this.transformationConfig,
+    this.transformationDetailsStorageConfig,
+  });
+
+  GooglePrivacyDlpV2Deidentify.fromJson(core.Map json_)
+      : this(
+          cloudStorageOutput: json_.containsKey('cloudStorageOutput')
+              ? json_['cloudStorageOutput'] as core.String
+              : null,
+          fileTypesToTransform: json_.containsKey('fileTypesToTransform')
+              ? (json_['fileTypesToTransform'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          transformationConfig: json_.containsKey('transformationConfig')
+              ? GooglePrivacyDlpV2TransformationConfig.fromJson(
+                  json_['transformationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          transformationDetailsStorageConfig: json_
+                  .containsKey('transformationDetailsStorageConfig')
+              ? GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromJson(
+                  json_['transformationDetailsStorageConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudStorageOutput != null)
+          'cloudStorageOutput': cloudStorageOutput!,
+        if (fileTypesToTransform != null)
+          'fileTypesToTransform': fileTypesToTransform!,
+        if (transformationConfig != null)
+          'transformationConfig': transformationConfig!,
+        if (transformationDetailsStorageConfig != null)
+          'transformationDetailsStorageConfig':
+              transformationDetailsStorageConfig!,
+      };
+}
+
 /// The configuration that controls how the data will change.
 class GooglePrivacyDlpV2DeidentifyConfig {
+  /// Treat the dataset as an image and redact.
+  GooglePrivacyDlpV2ImageTransformations? imageTransformations;
+
   /// Treat the dataset as free-form text and apply the same free text
   /// transformation everywhere.
   GooglePrivacyDlpV2InfoTypeTransformations? infoTypeTransformations;
@@ -8077,6 +8176,7 @@ class GooglePrivacyDlpV2DeidentifyConfig {
   GooglePrivacyDlpV2TransformationErrorHandling? transformationErrorHandling;
 
   GooglePrivacyDlpV2DeidentifyConfig({
+    this.imageTransformations,
     this.infoTypeTransformations,
     this.recordTransformations,
     this.transformationErrorHandling,
@@ -8084,6 +8184,11 @@ class GooglePrivacyDlpV2DeidentifyConfig {
 
   GooglePrivacyDlpV2DeidentifyConfig.fromJson(core.Map json_)
       : this(
+          imageTransformations: json_.containsKey('imageTransformations')
+              ? GooglePrivacyDlpV2ImageTransformations.fromJson(
+                  json_['imageTransformations']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           infoTypeTransformations: json_.containsKey('infoTypeTransformations')
               ? GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
                   json_['infoTypeTransformations']
@@ -8103,6 +8208,8 @@ class GooglePrivacyDlpV2DeidentifyConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (imageTransformations != null)
+          'imageTransformations': imageTransformations!,
         if (infoTypeTransformations != null)
           'infoTypeTransformations': infoTypeTransformations!,
         if (recordTransformations != null)
@@ -8112,7 +8219,7 @@ class GooglePrivacyDlpV2DeidentifyConfig {
       };
 }
 
-/// Request to de-identify a list of items.
+/// Request to de-identify a ContentItem.
 class GooglePrivacyDlpV2DeidentifyContentRequest {
   /// Configuration for the de-identification of the content item.
   ///
@@ -8622,12 +8729,12 @@ class GooglePrivacyDlpV2DlpJob {
   /// - "RUNNING" : The job is currently running. Once a job has finished it
   /// will transition to FAILED or DONE.
   /// - "DONE" : The job is no longer running.
-  /// - "CANCELED" : The job was canceled before it could complete.
+  /// - "CANCELED" : The job was canceled before it could be completed.
   /// - "FAILED" : The job had an error and did not complete.
   /// - "ACTIVE" : The job is currently accepting findings via hybridInspect. A
   /// hybrid job in ACTIVE state may continue to have findings added to it
-  /// through calling of hybridInspect. After the job has finished no more calls
-  /// to hybridInspect may be made. ACTIVE jobs can transition to DONE.
+  /// through the calling of hybridInspect. After the job has finished no more
+  /// calls to hybridInspect may be made. ACTIVE jobs can transition to DONE.
   core.String? state;
 
   /// The type of job.
@@ -8782,7 +8889,7 @@ class GooglePrivacyDlpV2Error {
       };
 }
 
-/// List of exclude infoTypes.
+/// List of excluded infoTypes.
 class GooglePrivacyDlpV2ExcludeInfoTypes {
   /// InfoType list in ExclusionRule rule drops a finding when it overlaps or
   /// contained within with a finding of an infoType from this list.
@@ -8877,7 +8984,7 @@ class GooglePrivacyDlpV2ExclusionRule {
       };
 }
 
-/// An expression, consisting or an operator and conditions.
+/// An expression, consisting of an operator and conditions.
 class GooglePrivacyDlpV2Expressions {
   /// Conditions to apply to the expression.
   GooglePrivacyDlpV2Conditions? conditions;
@@ -9188,7 +9295,11 @@ class GooglePrivacyDlpV2Finding {
 
 /// Configuration to control the number of findings returned for inspection.
 ///
-/// This is not used for de-identification or data profiling.
+/// This is not used for de-identification or data profiling. When redacting
+/// sensitive data from images, finding limits don't apply. They can cause
+/// unexpected or inconsistent results, where only some data is redacted. Don't
+/// include finding limits in RedactImage requests. Otherwise, Cloud DLP returns
+/// an error.
 class GooglePrivacyDlpV2FindingLimits {
   /// Configuration of findings limit given for specified infoTypes.
   core.List<GooglePrivacyDlpV2InfoTypeLimit>? maxFindingsPerInfoType;
@@ -9714,6 +9825,87 @@ class GooglePrivacyDlpV2ImageRedactionConfig {
       };
 }
 
+/// Configuration for determining how redaction of images should occur.
+class GooglePrivacyDlpV2ImageTransformation {
+  /// Apply transformation to all findings not specified in other
+  /// ImageTransformation's selected_info_types.
+  ///
+  /// Only one instance is allowed within the ImageTransformations message.
+  GooglePrivacyDlpV2AllInfoTypes? allInfoTypes;
+
+  /// Apply transformation to all text that doesn't match an infoType.
+  ///
+  /// Only one instance is allowed within the ImageTransformations message.
+  GooglePrivacyDlpV2AllText? allText;
+
+  /// The color to use when redacting content from an image.
+  ///
+  /// If not specified, the default is black.
+  GooglePrivacyDlpV2Color? redactionColor;
+
+  /// Apply transformation to the selected info_types.
+  GooglePrivacyDlpV2SelectedInfoTypes? selectedInfoTypes;
+
+  GooglePrivacyDlpV2ImageTransformation({
+    this.allInfoTypes,
+    this.allText,
+    this.redactionColor,
+    this.selectedInfoTypes,
+  });
+
+  GooglePrivacyDlpV2ImageTransformation.fromJson(core.Map json_)
+      : this(
+          allInfoTypes: json_.containsKey('allInfoTypes')
+              ? GooglePrivacyDlpV2AllInfoTypes.fromJson(
+                  json_['allInfoTypes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          allText: json_.containsKey('allText')
+              ? GooglePrivacyDlpV2AllText.fromJson(
+                  json_['allText'] as core.Map<core.String, core.dynamic>)
+              : null,
+          redactionColor: json_.containsKey('redactionColor')
+              ? GooglePrivacyDlpV2Color.fromJson(json_['redactionColor']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          selectedInfoTypes: json_.containsKey('selectedInfoTypes')
+              ? GooglePrivacyDlpV2SelectedInfoTypes.fromJson(
+                  json_['selectedInfoTypes']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allInfoTypes != null) 'allInfoTypes': allInfoTypes!,
+        if (allText != null) 'allText': allText!,
+        if (redactionColor != null) 'redactionColor': redactionColor!,
+        if (selectedInfoTypes != null) 'selectedInfoTypes': selectedInfoTypes!,
+      };
+}
+
+/// A type of transformation that is applied over images.
+class GooglePrivacyDlpV2ImageTransformations {
+  core.List<GooglePrivacyDlpV2ImageTransformation>? transforms;
+
+  GooglePrivacyDlpV2ImageTransformations({
+    this.transforms,
+  });
+
+  GooglePrivacyDlpV2ImageTransformations.fromJson(core.Map json_)
+      : this(
+          transforms: json_.containsKey('transforms')
+              ? (json_['transforms'] as core.List)
+                  .map((value) =>
+                      GooglePrivacyDlpV2ImageTransformation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transforms != null) 'transforms': transforms!,
+      };
+}
+
 /// Type of information detected by the API.
 class GooglePrivacyDlpV2InfoType {
   /// Name of the information type.
@@ -9870,12 +10062,16 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// Which parts of the API supports this InfoType.
   core.List<core.String>? supportedBy;
 
+  /// A list of available versions for the infotype.
+  core.List<GooglePrivacyDlpV2VersionDescription>? versions;
+
   GooglePrivacyDlpV2InfoTypeDescription({
     this.categories,
     this.description,
     this.displayName,
     this.name,
     this.supportedBy,
+    this.versions,
   });
 
   GooglePrivacyDlpV2InfoTypeDescription.fromJson(core.Map json_)
@@ -9898,6 +10094,12 @@ class GooglePrivacyDlpV2InfoTypeDescription {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          versions: json_.containsKey('versions')
+              ? (json_['versions'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2VersionDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9906,6 +10108,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (supportedBy != null) 'supportedBy': supportedBy!,
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -10084,7 +10287,11 @@ class GooglePrivacyDlpV2InspectConfig {
 
   /// Configuration to control the number of findings returned.
   ///
-  /// This is not used for data profiling.
+  /// This is not used for data profiling. When redacting sensitive data from
+  /// images, finding limits don't apply. They can cause unexpected or
+  /// inconsistent results, where only some data is redacted. Don't include
+  /// finding limits in RedactImage requests. Otherwise, Cloud DLP returns an
+  /// error.
   GooglePrivacyDlpV2FindingLimits? limits;
 
   /// Only returns findings equal or above this threshold.
@@ -10520,8 +10727,10 @@ class GooglePrivacyDlpV2InspectionRuleSet {
       };
 }
 
-/// Enable email notification to project owners and editors on jobs's
-/// completion/failure.
+/// Sends an email when the job completes.
+///
+/// The email goes to IAM project owners and technical
+/// [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 typedef GooglePrivacyDlpV2JobNotificationEmails = $Empty;
 
 /// Contains a configuration to make dlp api calls on a repeating basis.
@@ -11313,9 +11522,9 @@ class GooglePrivacyDlpV2LDiversityResult {
 /// up to the maximum size defined in the
 /// [limits](https://cloud.google.com/dlp/limits) page.
 ///
-/// The artifacts of dictionary creation are stored in the specified Google
-/// Cloud Storage location. Consider using `CustomInfoType.Dictionary` for
-/// smaller dictionaries that satisfy the size requirements.
+/// The artifacts of dictionary creation are stored in the specified Cloud
+/// Storage location. Consider using `CustomInfoType.Dictionary` for smaller
+/// dictionaries that satisfy the size requirements.
 class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   /// Field in a BigQuery table where each cell represents a dictionary phrase.
   GooglePrivacyDlpV2BigQueryField? bigQueryField;
@@ -11323,7 +11532,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   /// Set of files containing newline-delimited lists of dictionary phrases.
   GooglePrivacyDlpV2CloudStorageFileSet? cloudStorageFileSet;
 
-  /// Location to store dictionary artifacts in Google Cloud Storage.
+  /// Location to store dictionary artifacts in Cloud Storage.
   ///
   /// These files will only be accessible by project owners and the DLP API. If
   /// any of these artifacts are modified, the dictionary is considered invalid
@@ -11803,8 +12012,7 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// - "OUTPUT_SCHEMA_UNSPECIFIED" : Unused.
   /// - "BASIC_COLUMNS" : Basic schema including only `info_type`, `quote`,
   /// `certainty`, and `timestamp`.
-  /// - "GCS_COLUMNS" : Schema tailored to findings from scanning Google Cloud
-  /// Storage.
+  /// - "GCS_COLUMNS" : Schema tailored to findings from scanning Cloud Storage.
   /// - "DATASTORE_COLUMNS" : Schema tailored to findings from scanning Google
   /// Datastore.
   /// - "BIG_QUERY_COLUMNS" : Schema tailored to findings from scanning Google
@@ -11815,8 +12023,8 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// Store findings in an existing table or a new table in an existing dataset.
   ///
   /// If table_id is not set a new one will be generated for you with the
-  /// following format: dlp_googleapis_yyyy_mm_dd_\[dlp_job_id\]. Pacific
-  /// timezone will be used for generating the date details. For Inspect, each
+  /// following format: dlp_googleapis_yyyy_mm_dd_\[dlp_job_id\]. Pacific time
+  /// zone will be used for generating the date details. For Inspect, each
   /// column in an existing output table must have the same name, type, and mode
   /// of a field in the `Finding` object. For Risk, an existing output table
   /// should be the output of a previous Risk analysis job run on the same
@@ -12180,14 +12388,20 @@ class GooglePrivacyDlpV2Proximity {
 
 /// Publish findings of a DlpJob to Data Catalog.
 ///
-/// Labels summarizing the results of the DlpJob will be applied to the entry
-/// for the resource scanned in Data Catalog. Any labels previously written by
-/// another DlpJob will be deleted. InfoType naming patterns are strictly
-/// enforced when using this feature. Note that the findings will be persisted
-/// in Data Catalog storage and are governed by Data Catalog service-specific
-/// policy, see https://cloud.google.com/terms/service-terms Only a single
-/// instance of this action can be specified and only allowed if all resources
-/// being scanned are BigQuery tables. Compatible with: Inspect
+/// In Data Catalog, tag templates are applied to the resource that Cloud DLP
+/// scanned. Data Catalog tag templates are stored in the same project and
+/// region where the BigQuery table exists. For Cloud DLP to create and apply
+/// the tag template, the Cloud DLP service agent must have the
+/// `roles/datacatalog.tagTemplateOwner` permission on the project. The tag
+/// template contains fields summarizing the results of the DlpJob. Any field
+/// values previously written by another DlpJob are deleted. InfoType naming
+/// patterns are strictly enforced when using this feature. Findings are
+/// persisted in Data Catalog storage and are governed by service-specific
+/// policies for Data Catalog. For more information, see
+/// [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only
+/// a single instance of this action can be specified. This action is allowed
+/// only if all resources being scanned are BigQuery tables. Compatible with:
+/// Inspect
 typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 
 /// Publish the result summary of a DlpJob to the Cloud Security Command Center
@@ -12195,14 +12409,14 @@ typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 ///
 /// This action is only available for projects which are parts of an
 /// organization and whitelisted for the alpha Cloud Security Command Center.
-/// The action will publish count of finding instances and their info types. The
-/// summary of findings will be persisted in CSCC and are governed by CSCC
+/// The action will publish the count of finding instances and their info types.
+/// The summary of findings will be persisted in CSCC and are governed by CSCC
 /// service-specific policy, see https://cloud.google.com/terms/service-terms
 /// Only a single instance of this action can be specified. Compatible with:
 /// Inspect
 typedef GooglePrivacyDlpV2PublishSummaryToCscc = $Empty;
 
-/// Publish a message into given Pub/Sub topic when DlpJob has completed.
+/// Publish a message into a given Pub/Sub topic when DlpJob has completed.
 ///
 /// The message contains a single field, `DlpJobName`, which is equal to the
 /// finished job's
@@ -12829,7 +13043,7 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
       };
 }
 
-/// Results of re-identifying a item.
+/// Results of re-identifying an item.
 class GooglePrivacyDlpV2ReidentifyContentResponse {
   /// The re-identified item.
   GooglePrivacyDlpV2ContentItem? item;
@@ -13115,7 +13329,7 @@ class GooglePrivacyDlpV2SaveFindings {
 
 /// Schedule for inspect job triggers.
 class GooglePrivacyDlpV2Schedule {
-  /// With this option a job is started a regular periodic basis.
+  /// With this option a job is started on a regular periodic basis.
   ///
   /// For example: every day (86400 seconds). A scheduled start time will be
   /// skipped if the previous execution has not ended when its scheduled time
@@ -13138,6 +13352,35 @@ class GooglePrivacyDlpV2Schedule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (recurrencePeriodDuration != null)
           'recurrencePeriodDuration': recurrencePeriodDuration!,
+      };
+}
+
+/// Apply transformation to the selected info_types.
+class GooglePrivacyDlpV2SelectedInfoTypes {
+  /// InfoTypes to apply the transformation to.
+  ///
+  /// Required. Provided InfoType must be unique within the ImageTransformations
+  /// message.
+  ///
+  /// Required.
+  core.List<GooglePrivacyDlpV2InfoType>? infoTypes;
+
+  GooglePrivacyDlpV2SelectedInfoTypes({
+    this.infoTypes,
+  });
+
+  GooglePrivacyDlpV2SelectedInfoTypes.fromJson(core.Map json_)
+      : this(
+          infoTypes: json_.containsKey('infoTypes')
+              ? (json_['infoTypes'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2InfoType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (infoTypes != null) 'infoTypes': infoTypes!,
       };
 }
 
@@ -13205,7 +13448,7 @@ class GooglePrivacyDlpV2StorageConfig {
   /// BigQuery options.
   GooglePrivacyDlpV2BigQueryOptions? bigQueryOptions;
 
-  /// Google Cloud Storage options.
+  /// Cloud Storage options.
   GooglePrivacyDlpV2CloudStorageOptions? cloudStorageOptions;
 
   /// Google Cloud Datastore options.
@@ -13424,8 +13667,8 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
   ///
   /// Only the five most recent errors will be displayed, with the most recent
   /// error appearing first. For example, some of the data for stored custom
-  /// dictionaries is put in the user's Google Cloud Storage bucket, and if this
-  /// data is modified or deleted by the user or another system, the dictionary
+  /// dictionaries is put in the user's Cloud Storage bucket, and if this data
+  /// is modified or deleted by the user or another system, the dictionary
   /// becomes invalid. If any errors occur, fix the problem indicated by the
   /// error message and use the UpdateStoredInfoType API method to create
   /// another version of the storedInfoType to continue using it, reusing the
@@ -13784,13 +14027,14 @@ class GooglePrivacyDlpV2TimeZone {
 
 /// Configuration of the timespan of the items to include in scanning.
 ///
-/// Currently only supported when inspecting Google Cloud Storage and BigQuery.
+/// Currently only supported when inspecting Cloud Storage and BigQuery.
 class GooglePrivacyDlpV2TimespanConfig {
   /// When the job is started by a JobTrigger we will automatically figure out a
   /// valid start_time to avoid scanning files that have not been modified since
   /// the last time the JobTrigger executed.
   ///
   /// This will be based on the time of the execution of the last run of the
+  /// JobTrigger or the timespan end_time used in the last run of the
   /// JobTrigger.
   core.bool? enableAutoPopulationOfTimespanConfig;
 
@@ -13806,17 +14050,23 @@ class GooglePrivacyDlpV2TimespanConfig {
 
   /// Specification of the field containing the timestamp of scanned items.
   ///
-  /// Used for data sources like Datastore and BigQuery. For BigQuery: If this
+  /// Used for data sources like Datastore and BigQuery. *For BigQuery* If this
   /// value is not specified and the table was modified between the given start
   /// and end times, the entire table will be scanned. If this value is
   /// specified, then rows are filtered based on the given start and end times.
   /// Rows with a `NULL` value in the provided BigQuery column are skipped.
   /// Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`,
-  /// `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified,
-  /// then entities are filtered based on the given start and end times. If an
-  /// entity does not contain the provided timestamp property or contains empty
-  /// or invalid values, then it is included. Valid data types of the provided
-  /// timestamp property are: `TIMESTAMP`.
+  /// `TIMESTAMP`, and `DATETIME`. If your BigQuery table is
+  /// [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time),
+  /// you can use any of the following pseudo-columns as your timestamp field.
+  /// When used with Cloud DLP, these pseudo-column names are case sensitive. -
+  /// _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If
+  /// this value is specified, then entities are filtered based on the given
+  /// start and end times. If an entity does not contain the provided timestamp
+  /// property or contains empty or invalid values, then it is included. Valid
+  /// data types of the provided timestamp property are: `TIMESTAMP`. See the
+  /// [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan)
+  /// related to this operation.
   GooglePrivacyDlpV2FieldId? timestampField;
 
   GooglePrivacyDlpV2TimespanConfig({
@@ -13851,6 +14101,95 @@ class GooglePrivacyDlpV2TimespanConfig {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
         if (timestampField != null) 'timestampField': timestampField!,
+      };
+}
+
+/// User specified templates and configs for how to deidentify structured,
+/// unstructures, and image files.
+///
+/// User must provide either a unstructured deidentify template or at least one
+/// redact image config.
+class GooglePrivacyDlpV2TransformationConfig {
+  /// De-identify template.
+  ///
+  /// If this template is specified, it will serve as the default de-identify
+  /// template. This template cannot contain `record_transformations` since it
+  /// can be used for unstructured content such as free-form text files. If this
+  /// template is not set, a default `ReplaceWithInfoTypeConfig` will be used to
+  /// de-identify unstructured content.
+  core.String? deidentifyTemplate;
+
+  /// Image redact template.
+  ///
+  /// If this template is specified, it will serve as the de-identify template
+  /// for images. If this template is not set, all findings in the image will be
+  /// redacted with a black box.
+  core.String? imageRedactTemplate;
+
+  /// Structured de-identify template.
+  ///
+  /// If this template is specified, it will serve as the de-identify template
+  /// for structured content such as delimited files and tables. If this
+  /// template is not set but the `deidentify_template` is set, then
+  /// `deidentify_template` will also apply to the structured content. If
+  /// neither template is set, a default `ReplaceWithInfoTypeConfig` will be
+  /// used to de-identify structured content.
+  core.String? structuredDeidentifyTemplate;
+
+  GooglePrivacyDlpV2TransformationConfig({
+    this.deidentifyTemplate,
+    this.imageRedactTemplate,
+    this.structuredDeidentifyTemplate,
+  });
+
+  GooglePrivacyDlpV2TransformationConfig.fromJson(core.Map json_)
+      : this(
+          deidentifyTemplate: json_.containsKey('deidentifyTemplate')
+              ? json_['deidentifyTemplate'] as core.String
+              : null,
+          imageRedactTemplate: json_.containsKey('imageRedactTemplate')
+              ? json_['imageRedactTemplate'] as core.String
+              : null,
+          structuredDeidentifyTemplate:
+              json_.containsKey('structuredDeidentifyTemplate')
+                  ? json_['structuredDeidentifyTemplate'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentifyTemplate != null)
+          'deidentifyTemplate': deidentifyTemplate!,
+        if (imageRedactTemplate != null)
+          'imageRedactTemplate': imageRedactTemplate!,
+        if (structuredDeidentifyTemplate != null)
+          'structuredDeidentifyTemplate': structuredDeidentifyTemplate!,
+      };
+}
+
+/// Config for storing transformation details.
+class GooglePrivacyDlpV2TransformationDetailsStorageConfig {
+  /// The BigQuery table in which to store the output.
+  ///
+  /// This may be an existing table or in a new table in an existing dataset. If
+  /// table_id is not set a new one will be generated for you with the following
+  /// format: dlp_googleapis_transformation_details_yyyy_mm_dd_\[dlp_job_id\].
+  /// Pacific time zone will be used for generating the date details.
+  GooglePrivacyDlpV2BigQueryTable? table;
+
+  GooglePrivacyDlpV2TransformationDetailsStorageConfig({
+    this.table,
+  });
+
+  GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromJson(core.Map json_)
+      : this(
+          table: json_.containsKey('table')
+              ? GooglePrivacyDlpV2BigQueryTable.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (table != null) 'table': table!,
       };
 }
 
@@ -14355,6 +14694,35 @@ class GooglePrivacyDlpV2ValueFrequency {
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Details about each available version for an infotype.
+class GooglePrivacyDlpV2VersionDescription {
+  /// Description of the version.
+  core.String? description;
+
+  /// Name of the version
+  core.String? version;
+
+  GooglePrivacyDlpV2VersionDescription({
+    this.description,
+    this.version,
+  });
+
+  GooglePrivacyDlpV2VersionDescription.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (version != null) 'version': version!,
       };
 }
 

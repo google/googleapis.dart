@@ -1185,6 +1185,8 @@ class Assignment {
   /// - "ML_EXTERNAL" : BigQuery ML jobs that use services external to BigQuery
   /// for model training. These jobs will not utilize idle slots from other
   /// reservations.
+  /// - "BACKGROUND" : Background jobs that BigQuery runs for the customers in
+  /// the background. This is a preview feature.
   core.String? jobType;
 
   /// Name of the resource.

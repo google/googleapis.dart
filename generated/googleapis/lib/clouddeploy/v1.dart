@@ -1919,8 +1919,12 @@ class Binding {
   /// represents anyone who is authenticated with a Google account or a service
   /// account. * `user:{emailid}`: An email address that represents a specific
   /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{emailid}`: An email address that represents a Google
+  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
+  /// An identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -3266,9 +3270,9 @@ class Rollout {
   /// Output only.
   core.String? deployEndTime;
 
-  /// The reason this deploy failed.
+  /// The reason this rollout failed.
   ///
-  /// This will always be unspecified while the deploy in progress.
+  /// This will always be unspecified while the rollout is in progress.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3313,9 +3317,7 @@ class Rollout {
   /// has an up-to-date value before proceeding.
   core.String? etag;
 
-  /// Reason the build failed.
-  ///
-  /// Empty if the build succeeded.
+  /// Additional information about the rollout failure, if available.
   ///
   /// Output only.
   core.String? failureReason;

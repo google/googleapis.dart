@@ -221,7 +221,7 @@ class DfareportingApi {
 
   DfareportingApi(http.Client client,
       {core.String rootUrl = 'https://dfareporting.googleapis.com/',
-      core.String servicePath = ''})
+      core.String servicePath = 'dfareporting/v3.5/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
@@ -259,7 +259,7 @@ class AccountActiveAdSummariesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountActiveAdSummaries/' +
         commons.escapeVariable('$summaryAccountId');
@@ -307,7 +307,7 @@ class AccountPermissionGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountPermissionGroups/' +
         commons.escapeVariable('$id');
@@ -345,7 +345,7 @@ class AccountPermissionGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountPermissionGroups';
 
@@ -391,7 +391,7 @@ class AccountPermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountPermissions/' +
         commons.escapeVariable('$id');
@@ -429,7 +429,7 @@ class AccountPermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountPermissions';
 
@@ -476,7 +476,7 @@ class AccountUserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountUserProfiles/' +
         commons.escapeVariable('$id');
@@ -518,7 +518,7 @@ class AccountUserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -608,7 +608,7 @@ class AccountUserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -655,7 +655,7 @@ class AccountUserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -697,7 +697,7 @@ class AccountUserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -744,7 +744,7 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accounts/' +
         commons.escapeVariable('$id');
@@ -824,9 +824,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/accounts';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/accounts';
 
     final response_ = await _requester.request(
       url_,
@@ -871,9 +870,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/accounts';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/accounts';
 
     final response_ = await _requester.request(
       url_,
@@ -912,9 +910,8 @@ class AccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/accounts';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/accounts';
 
     final response_ = await _requester.request(
       url_,
@@ -958,7 +955,7 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/ads/' +
         commons.escapeVariable('$id');
@@ -999,9 +996,8 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/ads';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1163,9 +1159,8 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/ads';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1210,9 +1205,8 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/ads';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1251,9 +1245,8 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/ads';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1295,7 +1288,7 @@ class AdvertiserGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserGroups/' +
         commons.escapeVariable('$id');
@@ -1335,7 +1328,7 @@ class AdvertiserGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserGroups/' +
         commons.escapeVariable('$id');
@@ -1377,7 +1370,7 @@ class AdvertiserGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1454,7 +1447,7 @@ class AdvertiserGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1501,7 +1494,7 @@ class AdvertiserGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1543,7 +1536,7 @@ class AdvertiserGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1591,7 +1584,7 @@ class AdvertiserLandingPagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserLandingPages/' +
         commons.escapeVariable('$id');
@@ -1633,7 +1626,7 @@ class AdvertiserLandingPagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -1727,7 +1720,7 @@ class AdvertiserLandingPagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -1774,7 +1767,7 @@ class AdvertiserLandingPagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -1816,7 +1809,7 @@ class AdvertiserLandingPagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -1863,7 +1856,7 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/advertisers/' +
         commons.escapeVariable('$id');
@@ -1905,9 +1898,8 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/advertisers';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -2017,9 +2009,8 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/advertisers';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -2064,9 +2055,8 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/advertisers';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -2106,9 +2096,8 @@ class AdvertisersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/advertisers';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -2150,9 +2139,8 @@ class BrowsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/browsers';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/browsers';
 
     final response_ = await _requester.request(
       url_,
@@ -2204,7 +2192,7 @@ class CampaignCreativeAssociationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/campaigns/' +
         commons.escapeVariable('$campaignId') +
@@ -2265,7 +2253,7 @@ class CampaignCreativeAssociationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/campaigns/' +
         commons.escapeVariable('$campaignId') +
@@ -2313,7 +2301,7 @@ class CampaignsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/campaigns/' +
         commons.escapeVariable('$id');
@@ -2354,9 +2342,8 @@ class CampaignsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/campaigns';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2464,9 +2451,8 @@ class CampaignsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/campaigns';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2511,9 +2497,8 @@ class CampaignsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/campaigns';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2552,9 +2537,8 @@ class CampaignsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/campaigns';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2598,7 +2582,7 @@ class ChangeLogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/changeLogs/' +
         commons.escapeVariable('$id');
@@ -2749,9 +2733,8 @@ class ChangeLogsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/changeLogs';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/changeLogs';
 
     final response_ = await _requester.request(
       url_,
@@ -2808,9 +2791,8 @@ class CitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/cities';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/cities';
 
     final response_ = await _requester.request(
       url_,
@@ -2854,7 +2836,7 @@ class ConnectionTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/connectionTypes/' +
         commons.escapeVariable('$id');
@@ -2892,7 +2874,7 @@ class ConnectionTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/connectionTypes';
 
@@ -2936,7 +2918,7 @@ class ContentCategoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/contentCategories/' +
         commons.escapeVariable('$id');
@@ -2976,7 +2958,7 @@ class ContentCategoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/contentCategories/' +
         commons.escapeVariable('$id');
@@ -3018,7 +3000,7 @@ class ContentCategoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3095,7 +3077,7 @@ class ContentCategoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3142,7 +3124,7 @@ class ContentCategoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3184,7 +3166,7 @@ class ContentCategoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3232,7 +3214,7 @@ class ConversionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/conversions/batchinsert';
 
@@ -3274,7 +3256,7 @@ class ConversionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/conversions/batchupdate';
 
@@ -3321,7 +3303,7 @@ class CountriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/countries/' +
         commons.escapeVariable('$dartId');
@@ -3358,9 +3340,8 @@ class CountriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/countries';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/countries';
 
     final response_ = await _requester.request(
       url_,
@@ -3413,7 +3394,7 @@ class CreativeAssetsResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'dfareporting/v3.5/userprofiles/' +
+      url_ = 'userprofiles/' +
           commons.escapeVariable('$profileId') +
           '/creativeAssets/' +
           commons.escapeVariable('$advertiserId') +
@@ -3473,7 +3454,7 @@ class CreativeFieldValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$creativeFieldId') +
@@ -3518,7 +3499,7 @@ class CreativeFieldValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$creativeFieldId') +
@@ -3565,7 +3546,7 @@ class CreativeFieldValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$creativeFieldId') +
@@ -3642,7 +3623,7 @@ class CreativeFieldValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$creativeFieldId') +
@@ -3694,7 +3675,7 @@ class CreativeFieldValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$creativeFieldId') +
@@ -3741,7 +3722,7 @@ class CreativeFieldValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$creativeFieldId') +
@@ -3788,7 +3769,7 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$id');
@@ -3828,7 +3809,7 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields/' +
         commons.escapeVariable('$id');
@@ -3870,7 +3851,7 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields';
 
@@ -3953,7 +3934,7 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields';
 
@@ -4000,7 +3981,7 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields';
 
@@ -4042,7 +4023,7 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeFields';
 
@@ -4089,7 +4070,7 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeGroups/' +
         commons.escapeVariable('$id');
@@ -4131,7 +4112,7 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -4219,7 +4200,7 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -4266,7 +4247,7 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -4308,7 +4289,7 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -4355,7 +4336,7 @@ class CreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/creatives/' +
         commons.escapeVariable('$id');
@@ -4396,9 +4377,8 @@ class CreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creatives';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -4517,9 +4497,8 @@ class CreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creatives';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -4564,9 +4543,8 @@ class CreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creatives';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -4605,9 +4583,8 @@ class CreativesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creatives';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -4661,7 +4638,7 @@ class DimensionValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/dimensionvalues/query';
 
@@ -4708,7 +4685,7 @@ class DirectorySitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/directorySites/' +
         commons.escapeVariable('$id');
@@ -4750,7 +4727,7 @@ class DirectorySitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/directorySites';
 
@@ -4855,7 +4832,7 @@ class DirectorySitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/directorySites';
 
@@ -4917,7 +4894,7 @@ class DynamicTargetingKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/dynamicTargetingKeys/' +
         commons.escapeVariable('$objectId');
@@ -4963,7 +4940,7 @@ class DynamicTargetingKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
@@ -5023,7 +5000,7 @@ class DynamicTargetingKeysResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
@@ -5067,7 +5044,7 @@ class EventTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/eventTags/' +
         commons.escapeVariable('$id');
@@ -5107,7 +5084,7 @@ class EventTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/eventTags/' +
         commons.escapeVariable('$id');
@@ -5148,9 +5125,8 @@ class EventTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/eventTags';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5251,9 +5227,8 @@ class EventTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/eventTags';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5298,9 +5273,8 @@ class EventTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/eventTags';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5339,9 +5313,8 @@ class EventTagsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/eventTags';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5396,7 +5369,7 @@ class FilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/reports/' +
+    final url_ = 'reports/' +
         commons.escapeVariable('$reportId') +
         '/files/' +
         commons.escapeVariable('$fileId');
@@ -5469,9 +5442,8 @@ class FilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/files';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/files';
 
     final response_ = await _requester.request(
       url_,
@@ -5513,7 +5485,7 @@ class FloodlightActivitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivities/' +
         commons.escapeVariable('$id');
@@ -5556,7 +5528,7 @@ class FloodlightActivitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivities/generatetag';
 
@@ -5596,7 +5568,7 @@ class FloodlightActivitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivities/' +
         commons.escapeVariable('$id');
@@ -5638,7 +5610,7 @@ class FloodlightActivitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -5763,7 +5735,7 @@ class FloodlightActivitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -5810,7 +5782,7 @@ class FloodlightActivitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -5852,7 +5824,7 @@ class FloodlightActivitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -5900,7 +5872,7 @@ class FloodlightActivityGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivityGroups/' +
         commons.escapeVariable('$id');
@@ -5942,7 +5914,7 @@ class FloodlightActivityGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -6044,7 +6016,7 @@ class FloodlightActivityGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -6091,7 +6063,7 @@ class FloodlightActivityGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -6133,7 +6105,7 @@ class FloodlightActivityGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -6181,7 +6153,7 @@ class FloodlightConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightConfigurations/' +
         commons.escapeVariable('$id');
@@ -6224,7 +6196,7 @@ class FloodlightConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightConfigurations';
 
@@ -6271,7 +6243,7 @@ class FloodlightConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightConfigurations';
 
@@ -6313,7 +6285,7 @@ class FloodlightConfigurationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/floodlightConfigurations';
 
@@ -6363,7 +6335,7 @@ class InventoryItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
@@ -6455,7 +6427,7 @@ class InventoryItemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
@@ -6500,9 +6472,8 @@ class LanguagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/languages';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/languages';
 
     final response_ = await _requester.request(
       url_,
@@ -6543,9 +6514,8 @@ class MetrosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/metros';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/metros';
 
     final response_ = await _requester.request(
       url_,
@@ -6589,7 +6559,7 @@ class MobileAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/mobileApps/' +
         commons.escapeVariable('$id');
@@ -6652,9 +6622,8 @@ class MobileAppsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/mobileApps';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/mobileApps';
 
     final response_ = await _requester.request(
       url_,
@@ -6698,7 +6667,7 @@ class MobileCarriersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/mobileCarriers/' +
         commons.escapeVariable('$id');
@@ -6736,7 +6705,7 @@ class MobileCarriersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/mobileCarriers';
 
@@ -6783,7 +6752,7 @@ class OperatingSystemVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/operatingSystemVersions/' +
         commons.escapeVariable('$id');
@@ -6821,7 +6790,7 @@ class OperatingSystemVersionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/operatingSystemVersions';
 
@@ -6867,7 +6836,7 @@ class OperatingSystemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/operatingSystems/' +
         commons.escapeVariable('$dartId');
@@ -6905,7 +6874,7 @@ class OperatingSystemsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/operatingSystems';
 
@@ -6954,7 +6923,7 @@ class OrderDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
@@ -7051,7 +7020,7 @@ class OrderDocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
@@ -7102,7 +7071,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
@@ -7186,7 +7155,7 @@ class OrdersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
@@ -7234,7 +7203,7 @@ class PlacementGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementGroups/' +
         commons.escapeVariable('$id');
@@ -7276,7 +7245,7 @@ class PlacementGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementGroups';
 
@@ -7432,7 +7401,7 @@ class PlacementGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementGroups';
 
@@ -7479,7 +7448,7 @@ class PlacementGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementGroups';
 
@@ -7521,7 +7490,7 @@ class PlacementGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementGroups';
 
@@ -7567,7 +7536,7 @@ class PlacementStrategiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementStrategies/' +
         commons.escapeVariable('$id');
@@ -7607,7 +7576,7 @@ class PlacementStrategiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementStrategies/' +
         commons.escapeVariable('$id');
@@ -7649,7 +7618,7 @@ class PlacementStrategiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -7727,7 +7696,7 @@ class PlacementStrategiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -7774,7 +7743,7 @@ class PlacementStrategiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -7816,7 +7785,7 @@ class PlacementStrategiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -7874,7 +7843,7 @@ class PlacementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placements/generatetags';
 
@@ -7914,7 +7883,7 @@ class PlacementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/placements/' +
         commons.escapeVariable('$id');
@@ -7955,9 +7924,8 @@ class PlacementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/placements';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8116,9 +8084,8 @@ class PlacementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/placements';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8163,9 +8130,8 @@ class PlacementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/placements';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8204,9 +8170,8 @@ class PlacementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/placements';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8250,7 +8215,7 @@ class PlatformTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/platformTypes/' +
         commons.escapeVariable('$id');
@@ -8288,7 +8253,7 @@ class PlatformTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/platformTypes';
 
@@ -8334,7 +8299,7 @@ class PostalCodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/postalCodes/' +
         commons.escapeVariable('$code');
@@ -8372,9 +8337,8 @@ class PostalCodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/postalCodes';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/postalCodes';
 
     final response_ = await _requester.request(
       url_,
@@ -8418,7 +8382,7 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/projects/' +
         commons.escapeVariable('$id');
@@ -8498,9 +8462,8 @@ class ProjectsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/projects';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/projects';
 
     final response_ = await _requester.request(
       url_,
@@ -8541,9 +8504,8 @@ class RegionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/regions';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/regions';
 
     final response_ = await _requester.request(
       url_,
@@ -8588,7 +8550,7 @@ class RemarketingListSharesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingListShares/' +
         commons.escapeVariable('$remarketingListId');
@@ -8636,7 +8598,7 @@ class RemarketingListSharesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingListShares';
 
@@ -8678,7 +8640,7 @@ class RemarketingListSharesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingListShares';
 
@@ -8725,7 +8687,7 @@ class RemarketingListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingLists/' +
         commons.escapeVariable('$id');
@@ -8767,7 +8729,7 @@ class RemarketingListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -8854,7 +8816,7 @@ class RemarketingListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -8901,7 +8863,7 @@ class RemarketingListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -8943,7 +8905,7 @@ class RemarketingListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -8992,7 +8954,7 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/' +
         commons.escapeVariable('$reportId');
@@ -9032,7 +8994,7 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/' +
         commons.escapeVariable('$reportId');
@@ -9073,9 +9035,8 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/reports';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/reports';
 
     final response_ = await _requester.request(
       url_,
@@ -9141,9 +9102,8 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/reports';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/reports';
 
     final response_ = await _requester.request(
       url_,
@@ -9187,7 +9147,7 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/' +
         commons.escapeVariable('$reportId');
@@ -9232,7 +9192,7 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/' +
         commons.escapeVariable('$reportId') +
@@ -9277,7 +9237,7 @@ class ReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/' +
         commons.escapeVariable('$reportId');
@@ -9328,7 +9288,7 @@ class ReportsCompatibleFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/compatiblefields/query';
 
@@ -9389,7 +9349,7 @@ class ReportsFilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/' +
         commons.escapeVariable('$reportId') +
@@ -9459,7 +9419,7 @@ class ReportsFilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/reports/' +
         commons.escapeVariable('$reportId') +
@@ -9506,7 +9466,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/sites/' +
         commons.escapeVariable('$id');
@@ -9547,9 +9507,8 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/sites';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -9665,9 +9624,8 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/sites';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -9712,9 +9670,8 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/sites';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -9753,9 +9710,8 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/sites';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -9799,7 +9755,7 @@ class SizesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/sizes/' +
         commons.escapeVariable('$id');
@@ -9840,9 +9796,8 @@ class SizesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/sizes';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/sizes';
 
     final response_ = await _requester.request(
       url_,
@@ -9899,9 +9854,8 @@ class SizesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/sizes';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/sizes';
 
     final response_ = await _requester.request(
       url_,
@@ -9945,7 +9899,7 @@ class SubaccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/subaccounts/' +
         commons.escapeVariable('$id');
@@ -9987,9 +9941,8 @@ class SubaccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/subaccounts';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10064,9 +10017,8 @@ class SubaccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/subaccounts';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10111,9 +10063,8 @@ class SubaccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/subaccounts';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10153,9 +10104,8 @@ class SubaccountsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/subaccounts';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10201,7 +10151,7 @@ class TargetableRemarketingListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/targetableRemarketingLists/' +
         commons.escapeVariable('$id');
@@ -10284,7 +10234,7 @@ class TargetableRemarketingListsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/targetableRemarketingLists';
 
@@ -10330,7 +10280,7 @@ class TargetingTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/targetingTemplates/' +
         commons.escapeVariable('$id');
@@ -10372,7 +10322,7 @@ class TargetingTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -10453,7 +10403,7 @@ class TargetingTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -10500,7 +10450,7 @@ class TargetingTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -10542,7 +10492,7 @@ class TargetingTemplatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -10586,8 +10536,7 @@ class UserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId');
+    final url_ = 'userprofiles/' + commons.escapeVariable('$profileId');
 
     final response_ = await _requester.request(
       url_,
@@ -10619,7 +10568,7 @@ class UserProfilesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const url_ = 'dfareporting/v3.5/userprofiles';
+    const url_ = 'userprofiles';
 
     final response_ = await _requester.request(
       url_,
@@ -10664,7 +10613,7 @@ class UserRolePermissionGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/userRolePermissionGroups/' +
         commons.escapeVariable('$id');
@@ -10702,7 +10651,7 @@ class UserRolePermissionGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/userRolePermissionGroups';
 
@@ -10749,7 +10698,7 @@ class UserRolePermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/userRolePermissions/' +
         commons.escapeVariable('$id');
@@ -10791,7 +10740,7 @@ class UserRolePermissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/userRolePermissions';
 
@@ -10835,7 +10784,7 @@ class UserRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/userRoles/' +
         commons.escapeVariable('$id');
@@ -10875,7 +10824,7 @@ class UserRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/userRoles/' +
         commons.escapeVariable('$id');
@@ -10916,9 +10865,8 @@ class UserRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/userRoles';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11002,9 +10950,8 @@ class UserRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/userRoles';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11049,9 +10996,8 @@ class UserRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/userRoles';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11090,9 +11036,8 @@ class UserRolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/userRoles';
+    final url_ =
+        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11136,7 +11081,7 @@ class VideoFormatsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/videoFormats/' +
         commons.escapeVariable('$id');
@@ -11174,7 +11119,7 @@ class VideoFormatsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'dfareporting/v3.5/userprofiles/' +
+    final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/videoFormats';
 

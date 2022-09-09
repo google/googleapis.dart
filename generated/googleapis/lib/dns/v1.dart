@@ -2750,10 +2750,16 @@ class GoogleIamV1Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -3470,18 +3476,28 @@ class ManagedZonePeeringConfigTargetNetwork {
 }
 
 class ManagedZonePrivateVisibilityConfig {
+  /// The list of Google Kubernetes Engine clusters that can see this zone.
+  core.List<ManagedZonePrivateVisibilityConfigGKECluster>? gkeClusters;
   core.String? kind;
 
   /// The list of VPC networks that can see this zone.
   core.List<ManagedZonePrivateVisibilityConfigNetwork>? networks;
 
   ManagedZonePrivateVisibilityConfig({
+    this.gkeClusters,
     this.kind,
     this.networks,
   });
 
   ManagedZonePrivateVisibilityConfig.fromJson(core.Map json_)
       : this(
+          gkeClusters: json_.containsKey('gkeClusters')
+              ? (json_['gkeClusters'] as core.List)
+                  .map((value) =>
+                      ManagedZonePrivateVisibilityConfigGKECluster.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           networks: json_.containsKey('networks')
               ? (json_['networks'] as core.List)
@@ -3493,8 +3509,38 @@ class ManagedZonePrivateVisibilityConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gkeClusters != null) 'gkeClusters': gkeClusters!,
         if (kind != null) 'kind': kind!,
         if (networks != null) 'networks': networks!,
+      };
+}
+
+class ManagedZonePrivateVisibilityConfigGKECluster {
+  /// The resource name of the cluster to bind this ManagedZone to.
+  ///
+  /// This should be specified in the format like: projects / * /locations / *
+  /// /clusters / * . This is referenced from GKE
+  /// projects.locations.clusters.get API:
+  /// https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+  core.String? gkeClusterName;
+  core.String? kind;
+
+  ManagedZonePrivateVisibilityConfigGKECluster({
+    this.gkeClusterName,
+    this.kind,
+  });
+
+  ManagedZonePrivateVisibilityConfigGKECluster.fromJson(core.Map json_)
+      : this(
+          gkeClusterName: json_.containsKey('gkeClusterName')
+              ? json_['gkeClusterName'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gkeClusterName != null) 'gkeClusterName': gkeClusterName!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -5071,6 +5117,10 @@ class ResponsePolicy {
   /// User-provided description for this Response Policy.
   core.String? description;
 
+  /// The list of Google Kubernetes Engine clusters to which this response
+  /// policy is applied.
+  core.List<ResponsePolicyGKECluster>? gkeClusters;
+
   /// Unique identifier for the resource; defined by the server (output only).
   core.String? id;
   core.String? kind;
@@ -5083,6 +5133,7 @@ class ResponsePolicy {
 
   ResponsePolicy({
     this.description,
+    this.gkeClusters,
     this.id,
     this.kind,
     this.networks,
@@ -5093,6 +5144,12 @@ class ResponsePolicy {
       : this(
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          gkeClusters: json_.containsKey('gkeClusters')
+              ? (json_['gkeClusters'] as core.List)
+                  .map((value) => ResponsePolicyGKECluster.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
@@ -5109,11 +5166,41 @@ class ResponsePolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (gkeClusters != null) 'gkeClusters': gkeClusters!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (networks != null) 'networks': networks!,
         if (responsePolicyName != null)
           'responsePolicyName': responsePolicyName!,
+      };
+}
+
+class ResponsePolicyGKECluster {
+  /// The resource name of the cluster to bind this response policy to.
+  ///
+  /// This should be specified in the format like: projects / * /locations / *
+  /// /clusters / * . This is referenced from GKE
+  /// projects.locations.clusters.get API:
+  /// https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+  core.String? gkeClusterName;
+  core.String? kind;
+
+  ResponsePolicyGKECluster({
+    this.gkeClusterName,
+    this.kind,
+  });
+
+  ResponsePolicyGKECluster.fromJson(core.Map json_)
+      : this(
+          gkeClusterName: json_.containsKey('gkeClusterName')
+              ? json_['gkeClusterName'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gkeClusterName != null) 'gkeClusterName': gkeClusterName!,
+        if (kind != null) 'kind': kind!,
       };
 }
 

@@ -1092,8 +1092,8 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [name] - Immutable. The relative resource name of the metastore service,
-  /// of the
-  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+  /// in the following
+  /// format:projects/{project_number}/locations/{location_id}/services/{service_id}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -2541,19 +2541,24 @@ class Binding {
   /// represents anyone who is on the internet; with or without a Google
   /// account. allAuthenticatedUsers: A special identifier that represents
   /// anyone who is authenticated with a Google account or a service account.
-  /// user:{emailid}: An email address that represents a specific Google
-  /// account. For example, alice@example.com . serviceAccount:{emailid}: An
-  /// email address that represents a service account. For example,
-  /// my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email
-  /// address that represents a Google group. For example, admins@example.com.
-  /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
-  /// identifier) representing a user that has been recently deleted. For
-  /// example, alice@example.com?uid=123456789012345678901. If the user is
-  /// recovered, this value reverts to user:{emailid} and the recovered user
-  /// retains the role in the binding.
-  /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus
-  /// unique identifier) representing a service account that has been recently
-  /// deleted. For example,
+  /// Does not include identities that come from external identity providers
+  /// (IdPs) through identity federation. user:{emailid}: An email address that
+  /// represents a specific Google account. For example, alice@example.com .
+  /// serviceAccount:{emailid}: An email address that represents a Google
+  /// service account. For example, my-other-app@appspot.gserviceaccount.com.
+  /// serviceAccount:{projectid}.svc.id.goog\[{namespace}/{kubernetes-sa}\]: An
+  /// identifier for a Kubernetes service account
+  /// (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, my-project.svc.id.goog\[my-namespace/my-kubernetes-sa\].
+  /// group:{emailid}: An email address that represents a Google group. For
+  /// example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An
+  /// email address (plus unique identifier) representing a user that has been
+  /// recently deleted. For example,
+  /// alice@example.com?uid=123456789012345678901. If the user is recovered,
+  /// this value reverts to user:{emailid} and the recovered user retains the
+  /// role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An
+  /// email address (plus unique identifier) representing a service account that
+  /// has been recently deleted. For example,
   /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the
   /// service account is undeleted, this value reverts to
   /// serviceAccount:{emailid} and the undeleted service account retains the
@@ -4221,8 +4226,8 @@ class Service {
   /// Output only.
   MetadataManagementActivity? metadataManagementActivity;
 
-  /// The relative resource name of the metastore service, of the
-  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+  /// The relative resource name of the metastore service, in the following
+  /// format:projects/{project_number}/locations/{location_id}/services/{service_id}.
   ///
   /// Immutable.
   core.String? name;

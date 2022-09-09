@@ -11771,8 +11771,9 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
 
   /// Cloud Storage bucket to export audio record to.
   ///
-  /// You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the
-  /// `Storage Object Admin` role in this bucket.
+  /// Settings this field would grant the Storage Object Creator role to the
+  /// Dialogflow Service Agent. API caller that tries to modify this field
+  /// should have the permission of storage.buckets.setIamPolicy.
   core.String? gcsBucket;
 
   GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings({

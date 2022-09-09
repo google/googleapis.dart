@@ -849,6 +849,52 @@ class AudioStream {
       };
 }
 
+/// Bob Weaver Deinterlacing Filter Configuration.
+class BwdifConfig {
+  /// Deinterlace all frames rather than just the frames identified as
+  /// interlaced.
+  ///
+  /// The default is `false`.
+  core.bool? deinterlaceAllFrames;
+
+  /// Specifies the deinterlacing mode to adopt.
+  ///
+  /// The default is `send_frame`. Supported values: - `send_frame`: Output one
+  /// frame for each frame - `send_field`: Output one frame for each field
+  core.String? mode;
+
+  /// The picture field parity assumed for the input interlaced video.
+  ///
+  /// The default is `auto`. Supported values: - `tff`: Assume the top field is
+  /// first - `bff`: Assume the bottom field is first - `auto`: Enable automatic
+  /// detection of field parity
+  core.String? parity;
+
+  BwdifConfig({
+    this.deinterlaceAllFrames,
+    this.mode,
+    this.parity,
+  });
+
+  BwdifConfig.fromJson(core.Map json_)
+      : this(
+          deinterlaceAllFrames: json_.containsKey('deinterlaceAllFrames')
+              ? json_['deinterlaceAllFrames'] as core.bool
+              : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          parity: json_.containsKey('parity')
+              ? json_['parity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deinterlaceAllFrames != null)
+          'deinterlaceAllFrames': deinterlaceAllFrames!,
+        if (mode != null) 'mode': mode!,
+        if (parity != null) 'parity': parity!,
+      };
+}
+
 /// Color preprocessing configuration.
 ///
 /// **Note:** This configuration is not supported.
@@ -985,6 +1031,37 @@ class Deblock {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (strength != null) 'strength': strength!,
+      };
+}
+
+/// Deinterlace configuration for input video.
+class Deinterlace {
+  /// Specifies the Bob Weaver Deinterlacing Filter Configuration.
+  BwdifConfig? bwdif;
+
+  /// Specifies the Yet Another Deinterlacing Filter Configuration.
+  YadifConfig? yadif;
+
+  Deinterlace({
+    this.bwdif,
+    this.yadif,
+  });
+
+  Deinterlace.fromJson(core.Map json_)
+      : this(
+          bwdif: json_.containsKey('bwdif')
+              ? BwdifConfig.fromJson(
+                  json_['bwdif'] as core.Map<core.String, core.dynamic>)
+              : null,
+          yadif: json_.containsKey('yadif')
+              ? YadifConfig.fromJson(
+                  json_['yadif'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bwdif != null) 'bwdif': bwdif!,
+        if (yadif != null) 'yadif': yadif!,
       };
 }
 
@@ -2409,6 +2486,9 @@ class PreprocessingConfig {
   /// Deblock preprocessing configuration.
   Deblock? deblock;
 
+  /// Specify the video deinterlace configuration.
+  Deinterlace? deinterlace;
+
   /// Denoise preprocessing configuration.
   Denoise? denoise;
 
@@ -2420,6 +2500,7 @@ class PreprocessingConfig {
     this.color,
     this.crop,
     this.deblock,
+    this.deinterlace,
     this.denoise,
     this.pad,
   });
@@ -2442,6 +2523,10 @@ class PreprocessingConfig {
               ? Deblock.fromJson(
                   json_['deblock'] as core.Map<core.String, core.dynamic>)
               : null,
+          deinterlace: json_.containsKey('deinterlace')
+              ? Deinterlace.fromJson(
+                  json_['deinterlace'] as core.Map<core.String, core.dynamic>)
+              : null,
           denoise: json_.containsKey('denoise')
               ? Denoise.fromJson(
                   json_['denoise'] as core.Map<core.String, core.dynamic>)
@@ -2457,6 +2542,7 @@ class PreprocessingConfig {
         if (color != null) 'color': color!,
         if (crop != null) 'crop': crop!,
         if (deblock != null) 'deblock': deblock!,
+        if (deinterlace != null) 'deinterlace': deinterlace!,
         if (denoise != null) 'denoise': denoise!,
         if (pad != null) 'pad': pad!,
       };
@@ -2930,5 +3016,63 @@ class Vp9CodecSettings {
         if (profile != null) 'profile': profile!,
         if (rateControlMode != null) 'rateControlMode': rateControlMode!,
         if (widthPixels != null) 'widthPixels': widthPixels!,
+      };
+}
+
+/// Yet Another Deinterlacing Filter Configuration.
+class YadifConfig {
+  /// Deinterlace all frames rather than just the frames identified as
+  /// interlaced.
+  ///
+  /// The default is `false`.
+  core.bool? deinterlaceAllFrames;
+
+  /// Disable spacial interlacing.
+  ///
+  /// The default is `false`.
+  core.bool? disableSpatialInterlacing;
+
+  /// Specifies the deinterlacing mode to adopt.
+  ///
+  /// The default is `send_frame`. Supported values: - `send_frame`: Output one
+  /// frame for each frame - `send_field`: Output one frame for each field
+  core.String? mode;
+
+  /// The picture field parity assumed for the input interlaced video.
+  ///
+  /// The default is `auto`. Supported values: - `tff`: Assume the top field is
+  /// first - `bff`: Assume the bottom field is first - `auto`: Enable automatic
+  /// detection of field parity
+  core.String? parity;
+
+  YadifConfig({
+    this.deinterlaceAllFrames,
+    this.disableSpatialInterlacing,
+    this.mode,
+    this.parity,
+  });
+
+  YadifConfig.fromJson(core.Map json_)
+      : this(
+          deinterlaceAllFrames: json_.containsKey('deinterlaceAllFrames')
+              ? json_['deinterlaceAllFrames'] as core.bool
+              : null,
+          disableSpatialInterlacing:
+              json_.containsKey('disableSpatialInterlacing')
+                  ? json_['disableSpatialInterlacing'] as core.bool
+                  : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          parity: json_.containsKey('parity')
+              ? json_['parity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deinterlaceAllFrames != null)
+          'deinterlaceAllFrames': deinterlaceAllFrames!,
+        if (disableSpatialInterlacing != null)
+          'disableSpatialInterlacing': disableSpatialInterlacing!,
+        if (mode != null) 'mode': mode!,
+        if (parity != null) 'parity': parity!,
       };
 }

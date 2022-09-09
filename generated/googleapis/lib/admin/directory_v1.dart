@@ -541,8 +541,6 @@ class ChromeosdevicesResource {
   /// was enabled.
   /// - "status" : Chrome device status. For more information, see the \<a
   /// \[chromeosdevices\](/admin-sdk/directory/v1/reference/chromeosdevices.html).
-  /// - "supportEndDate" : Chrome device support end date. This is applicable
-  /// only for devices purchased directly from Google.
   ///
   /// [orgUnitPath] - The full path of the organizational unit (minus the
   /// leading `/`) or its unique ID.
@@ -622,7 +620,7 @@ class ChromeosdevicesResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the Google Workspace account
+  /// [customerId] - Immutable. ID of the Google Workspace account
   ///
   /// [orgUnitPath] - Full path of the target organizational unit or its ID
   ///
@@ -819,9 +817,9 @@ class CustomerDevicesChromeosResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable. Immutable ID of the Google Workspace account.
+  /// [customerId] - Immutable. ID of the Google Workspace account.
   ///
-  /// [deviceId] - Immutable. Immutable ID of Chrome OS Device.
+  /// [deviceId] - Immutable. ID of Chrome OS Device.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -871,11 +869,11 @@ class CustomerDevicesChromeosCommandsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable. Immutable ID of the Google Workspace account.
+  /// [customerId] - Immutable. ID of the Google Workspace account.
   ///
-  /// [deviceId] - Immutable. Immutable ID of Chrome OS Device.
+  /// [deviceId] - Immutable. ID of Chrome OS Device.
   ///
-  /// [commandId] - Immutable. Immutable ID of Chrome OS Device Command.
+  /// [commandId] - Immutable. ID of Chrome OS Device Command.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2260,7 +2258,12 @@ class MembersResource {
 
   /// Checks whether the given user is a member of the group.
   ///
-  /// Membership can be direct or nested.
+  /// Membership can be direct or nested, but if nested, the `memberKey` and
+  /// `groupKey` must be entities in the same domain or an `Invalid input` error
+  /// is returned. To check for nested memberships that include entities outside
+  /// of the group's domain, use the
+  /// \[`checkTransitiveMembership()`\](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/checkTransitiveMembership)
+  /// method in the Cloud Identity Groups API.
   ///
   /// Request parameters:
   ///
@@ -6768,7 +6771,9 @@ class Channel {
 
   /// Additional parameters controlling delivery channel behavior.
   ///
-  /// Optional.
+  /// Optional. For example, `params.ttl` specifies the time-to-live in seconds
+  /// for the notification channel, where the default is 2 hours and the maximum
+  /// TTL is 2 days.
   core.Map<core.String, core.String>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
@@ -7826,6 +7831,7 @@ class ChromeOsDevice {
       };
 }
 
+/// The data regarding an action to update the status of a Chrome OS device.
 class ChromeOsDeviceAction {
   /// Action to be taken on the Chrome OS device.
   core.String? action;
@@ -10946,7 +10952,7 @@ class User {
   /// Stores the hash format of the `password` property.
   ///
   /// The following `hashFunction` values are allowed: * `MD5` - Accepts simple
-  /// hex-encoded values. * `SHA1` - Accepts simple hex-encoded values. *
+  /// hex-encoded values. * `SHA-1` - Accepts simple hex-encoded values. *
   /// `crypt` - Compliant with the
   /// [C crypt library](https://en.wikipedia.org/wiki/Crypt_%28C%29). Supports
   /// the DES, MD5 (hash prefix `$1$`), SHA-256 (hash prefix `$5$`), and SHA-512

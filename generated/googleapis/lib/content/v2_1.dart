@@ -8059,9 +8059,9 @@ class Account {
   /// with the Merchant Center account.
   AccountGoogleMyBusinessLink? googleMyBusinessLink;
 
-  /// Required for update.
+  /// 64-bit Merchant Center account ID.
   ///
-  /// Merchant Center account ID.
+  /// Required.
   core.String? id;
 
   /// Identifies what kind of resource this is.
@@ -11100,7 +11100,7 @@ class CollectionStatus {
 
   /// Date on which the collection has been created in
   /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and
-  /// offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+  /// offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
   core.String? creationDate;
 
   /// The intended destinations for the collection.
@@ -11113,7 +11113,7 @@ class CollectionStatus {
 
   /// Date on which the collection has been last updated in
   /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and
-  /// offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+  /// offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
   core.String? lastUpdateDate;
 
   CollectionStatus({
@@ -11160,21 +11160,50 @@ class CollectionStatus {
 
 /// Destination status message.
 class CollectionStatusDestinationStatus {
+  /// Country codes (ISO 3166-1 alpha-2) where the collection is approved.
+  core.List<core.String>? approvedCountries;
+
   /// The name of the destination
   core.String? destination;
 
-  /// The status for the specified destination.
+  /// Country codes (ISO 3166-1 alpha-2) where the collection is disapproved.
+  core.List<core.String>? disapprovedCountries;
+
+  /// Country codes (ISO 3166-1 alpha-2) where the collection is pending
+  /// approval.
+  core.List<core.String>? pendingCountries;
+
+  /// The status for the specified destination in the collections target
+  /// country.
   core.String? status;
 
   CollectionStatusDestinationStatus({
+    this.approvedCountries,
     this.destination,
+    this.disapprovedCountries,
+    this.pendingCountries,
     this.status,
   });
 
   CollectionStatusDestinationStatus.fromJson(core.Map json_)
       : this(
+          approvedCountries: json_.containsKey('approvedCountries')
+              ? (json_['approvedCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           destination: json_.containsKey('destination')
               ? json_['destination'] as core.String
+              : null,
+          disapprovedCountries: json_.containsKey('disapprovedCountries')
+              ? (json_['disapprovedCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          pendingCountries: json_.containsKey('pendingCountries')
+              ? (json_['pendingCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           status: json_.containsKey('status')
               ? json_['status'] as core.String
@@ -11182,13 +11211,20 @@ class CollectionStatusDestinationStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (approvedCountries != null) 'approvedCountries': approvedCountries!,
         if (destination != null) 'destination': destination!,
+        if (disapprovedCountries != null)
+          'disapprovedCountries': disapprovedCountries!,
+        if (pendingCountries != null) 'pendingCountries': pendingCountries!,
         if (status != null) 'status': status!,
       };
 }
 
 /// Issue associated with the collection.
 class CollectionStatusItemLevelIssue {
+  /// Country codes (ISO 3166-1 alpha-2) where issue applies to the offer.
+  core.List<core.String>? applicableCountries;
+
   /// The attribute's name, if the issue is caused by a single attribute.
   core.String? attributeName;
 
@@ -11214,6 +11250,7 @@ class CollectionStatusItemLevelIssue {
   core.String? servability;
 
   CollectionStatusItemLevelIssue({
+    this.applicableCountries,
     this.attributeName,
     this.code,
     this.description,
@@ -11226,6 +11263,11 @@ class CollectionStatusItemLevelIssue {
 
   CollectionStatusItemLevelIssue.fromJson(core.Map json_)
       : this(
+          applicableCountries: json_.containsKey('applicableCountries')
+              ? (json_['applicableCountries'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           attributeName: json_.containsKey('attributeName')
               ? json_['attributeName'] as core.String
               : null,
@@ -11251,6 +11293,8 @@ class CollectionStatusItemLevelIssue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (applicableCountries != null)
+          'applicableCountries': applicableCountries!,
         if (attributeName != null) 'attributeName': attributeName!,
         if (code != null) 'code': code!,
         if (description != null) 'description': description!,
@@ -14600,6 +14644,12 @@ class LocalInventory {
   /// specification.
   core.String? availability;
 
+  /// A list of custom (merchant-provided) attributes.
+  ///
+  /// Can also be used to submit any attribute of the feed specification in its
+  /// generic form, for example, `{ "name": "size type", "value": "regular" }`.
+  core.List<CustomAttribute>? customAttributes;
+
   /// In-store product location.
   core.String? instoreProductLocation;
 
@@ -14648,6 +14698,7 @@ class LocalInventory {
 
   LocalInventory({
     this.availability,
+    this.customAttributes,
     this.instoreProductLocation,
     this.kind,
     this.pickupMethod,
@@ -14663,6 +14714,12 @@ class LocalInventory {
       : this(
           availability: json_.containsKey('availability')
               ? json_['availability'] as core.String
+              : null,
+          customAttributes: json_.containsKey('customAttributes')
+              ? (json_['customAttributes'] as core.List)
+                  .map((value) => CustomAttribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           instoreProductLocation: json_.containsKey('instoreProductLocation')
               ? json_['instoreProductLocation'] as core.String
@@ -14695,6 +14752,7 @@ class LocalInventory {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availability != null) 'availability': availability!,
+        if (customAttributes != null) 'customAttributes': customAttributes!,
         if (instoreProductLocation != null)
           'instoreProductLocation': instoreProductLocation!,
         if (kind != null) 'kind': kind!,
@@ -21796,6 +21854,11 @@ class Product {
   /// sellers to your multi-seller account.
   core.String? externalSellerId;
 
+  /// Feed label for the item.
+  ///
+  /// Either `targetCountry` or `feedLabel` is required.
+  core.String? feedLabel;
+
   /// Target gender of the item.
   core.String? gender;
 
@@ -22078,6 +22141,7 @@ class Product {
     this.excludedDestinations,
     this.expirationDate,
     this.externalSellerId,
+    this.feedLabel,
     this.gender,
     this.googleProductCategory,
     this.gtin,
@@ -22245,6 +22309,9 @@ class Product {
               : null,
           externalSellerId: json_.containsKey('externalSellerId')
               ? json_['externalSellerId'] as core.String
+              : null,
+          feedLabel: json_.containsKey('feedLabel')
+              ? json_['feedLabel'] as core.String
               : null,
           gender: json_.containsKey('gender')
               ? json_['gender'] as core.String
@@ -22491,6 +22558,7 @@ class Product {
           'excludedDestinations': excludedDestinations!,
         if (expirationDate != null) 'expirationDate': expirationDate!,
         if (externalSellerId != null) 'externalSellerId': externalSellerId!,
+        if (feedLabel != null) 'feedLabel': feedLabel!,
         if (gender != null) 'gender': gender!,
         if (googleProductCategory != null)
           'googleProductCategory': googleProductCategory!,

@@ -48,6 +48,7 @@ api.BackfillAllStrategy buildBackfillAllStrategy() {
   if (buildCounterBackfillAllStrategy < 3) {
     o.mysqlExcludedObjects = buildMysqlRdbms();
     o.oracleExcludedObjects = buildOracleRdbms();
+    o.postgresqlExcludedObjects = buildPostgresqlRdbms();
   }
   buildCounterBackfillAllStrategy--;
   return o;
@@ -58,6 +59,7 @@ void checkBackfillAllStrategy(api.BackfillAllStrategy o) {
   if (buildCounterBackfillAllStrategy < 3) {
     checkMysqlRdbms(o.mysqlExcludedObjects!);
     checkOracleRdbms(o.oracleExcludedObjects!);
+    checkPostgresqlRdbms(o.postgresqlExcludedObjects!);
   }
   buildCounterBackfillAllStrategy--;
 }
@@ -127,6 +129,47 @@ void checkBackfillNoneStrategy(api.BackfillNoneStrategy o) {
   buildCounterBackfillNoneStrategy--;
 }
 
+core.int buildCounterBigQueryDestinationConfig = 0;
+api.BigQueryDestinationConfig buildBigQueryDestinationConfig() {
+  final o = api.BigQueryDestinationConfig();
+  buildCounterBigQueryDestinationConfig++;
+  if (buildCounterBigQueryDestinationConfig < 3) {
+    o.dataFreshness = 'foo';
+    o.singleTargetDataset = buildSingleTargetDataset();
+    o.sourceHierarchyDatasets = buildSourceHierarchyDatasets();
+  }
+  buildCounterBigQueryDestinationConfig--;
+  return o;
+}
+
+void checkBigQueryDestinationConfig(api.BigQueryDestinationConfig o) {
+  buildCounterBigQueryDestinationConfig++;
+  if (buildCounterBigQueryDestinationConfig < 3) {
+    unittest.expect(
+      o.dataFreshness!,
+      unittest.equals('foo'),
+    );
+    checkSingleTargetDataset(o.singleTargetDataset!);
+    checkSourceHierarchyDatasets(o.sourceHierarchyDatasets!);
+  }
+  buildCounterBigQueryDestinationConfig--;
+}
+
+core.int buildCounterBigQueryProfile = 0;
+api.BigQueryProfile buildBigQueryProfile() {
+  final o = api.BigQueryProfile();
+  buildCounterBigQueryProfile++;
+  if (buildCounterBigQueryProfile < 3) {}
+  buildCounterBigQueryProfile--;
+  return o;
+}
+
+void checkBigQueryProfile(api.BigQueryProfile o) {
+  buildCounterBigQueryProfile++;
+  if (buildCounterBigQueryProfile < 3) {}
+  buildCounterBigQueryProfile--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -164,6 +207,7 @@ api.ConnectionProfile buildConnectionProfile() {
   final o = api.ConnectionProfile();
   buildCounterConnectionProfile++;
   if (buildCounterConnectionProfile < 3) {
+    o.bigqueryProfile = buildBigQueryProfile();
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.forwardSshConnectivity = buildForwardSshTunnelConnectivity();
@@ -172,6 +216,7 @@ api.ConnectionProfile buildConnectionProfile() {
     o.mysqlProfile = buildMysqlProfile();
     o.name = 'foo';
     o.oracleProfile = buildOracleProfile();
+    o.postgresqlProfile = buildPostgresqlProfile();
     o.privateConnectivity = buildPrivateConnectivity();
     o.staticServiceIpConnectivity = buildStaticServiceIpConnectivity();
     o.updateTime = 'foo';
@@ -183,6 +228,7 @@ api.ConnectionProfile buildConnectionProfile() {
 void checkConnectionProfile(api.ConnectionProfile o) {
   buildCounterConnectionProfile++;
   if (buildCounterConnectionProfile < 3) {
+    checkBigQueryProfile(o.bigqueryProfile!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -200,6 +246,7 @@ void checkConnectionProfile(api.ConnectionProfile o) {
       unittest.equals('foo'),
     );
     checkOracleProfile(o.oracleProfile!);
+    checkPostgresqlProfile(o.postgresqlProfile!);
     checkPrivateConnectivity(o.privateConnectivity!);
     checkStaticServiceIpConnectivity(o.staticServiceIpConnectivity!);
     unittest.expect(
@@ -210,11 +257,44 @@ void checkConnectionProfile(api.ConnectionProfile o) {
   buildCounterConnectionProfile--;
 }
 
+core.int buildCounterDatasetTemplate = 0;
+api.DatasetTemplate buildDatasetTemplate() {
+  final o = api.DatasetTemplate();
+  buildCounterDatasetTemplate++;
+  if (buildCounterDatasetTemplate < 3) {
+    o.datasetIdPrefix = 'foo';
+    o.kmsKeyName = 'foo';
+    o.location = 'foo';
+  }
+  buildCounterDatasetTemplate--;
+  return o;
+}
+
+void checkDatasetTemplate(api.DatasetTemplate o) {
+  buildCounterDatasetTemplate++;
+  if (buildCounterDatasetTemplate < 3) {
+    unittest.expect(
+      o.datasetIdPrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDatasetTemplate--;
+}
+
 core.int buildCounterDestinationConfig = 0;
 api.DestinationConfig buildDestinationConfig() {
   final o = api.DestinationConfig();
   buildCounterDestinationConfig++;
   if (buildCounterDestinationConfig < 3) {
+    o.bigqueryDestinationConfig = buildBigQueryDestinationConfig();
     o.destinationConnectionProfile = 'foo';
     o.gcsDestinationConfig = buildGcsDestinationConfig();
   }
@@ -225,6 +305,7 @@ api.DestinationConfig buildDestinationConfig() {
 void checkDestinationConfig(api.DestinationConfig o) {
   buildCounterDestinationConfig++;
   if (buildCounterDestinationConfig < 3) {
+    checkBigQueryDestinationConfig(o.bigqueryDestinationConfig!);
     unittest.expect(
       o.destinationConnectionProfile!,
       unittest.equals('foo'),
@@ -245,6 +326,7 @@ api.DiscoverConnectionProfileRequest buildDiscoverConnectionProfileRequest() {
     o.hierarchyDepth = 42;
     o.mysqlRdbms = buildMysqlRdbms();
     o.oracleRdbms = buildOracleRdbms();
+    o.postgresqlRdbms = buildPostgresqlRdbms();
   }
   buildCounterDiscoverConnectionProfileRequest--;
   return o;
@@ -266,6 +348,7 @@ void checkDiscoverConnectionProfileRequest(
     );
     checkMysqlRdbms(o.mysqlRdbms!);
     checkOracleRdbms(o.oracleRdbms!);
+    checkPostgresqlRdbms(o.postgresqlRdbms!);
   }
   buildCounterDiscoverConnectionProfileRequest--;
 }
@@ -277,6 +360,7 @@ api.DiscoverConnectionProfileResponse buildDiscoverConnectionProfileResponse() {
   if (buildCounterDiscoverConnectionProfileResponse < 3) {
     o.mysqlRdbms = buildMysqlRdbms();
     o.oracleRdbms = buildOracleRdbms();
+    o.postgresqlRdbms = buildPostgresqlRdbms();
   }
   buildCounterDiscoverConnectionProfileResponse--;
   return o;
@@ -288,6 +372,7 @@ void checkDiscoverConnectionProfileResponse(
   if (buildCounterDiscoverConnectionProfileResponse < 3) {
     checkMysqlRdbms(o.mysqlRdbms!);
     checkOracleRdbms(o.oracleRdbms!);
+    checkPostgresqlRdbms(o.postgresqlRdbms!);
   }
   buildCounterDiscoverConnectionProfileResponse--;
 }
@@ -1659,12 +1744,263 @@ void checkOracleTable(api.OracleTable o) {
   buildCounterOracleTable--;
 }
 
-core.Map<core.String, core.String> buildUnnamed26() => {
+core.int buildCounterPostgresqlColumn = 0;
+api.PostgresqlColumn buildPostgresqlColumn() {
+  final o = api.PostgresqlColumn();
+  buildCounterPostgresqlColumn++;
+  if (buildCounterPostgresqlColumn < 3) {
+    o.column = 'foo';
+    o.dataType = 'foo';
+    o.length = 42;
+    o.nullable = true;
+    o.ordinalPosition = 42;
+    o.precision = 42;
+    o.primaryKey = true;
+    o.scale = 42;
+  }
+  buildCounterPostgresqlColumn--;
+  return o;
+}
+
+void checkPostgresqlColumn(api.PostgresqlColumn o) {
+  buildCounterPostgresqlColumn++;
+  if (buildCounterPostgresqlColumn < 3) {
+    unittest.expect(
+      o.column!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.length!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.nullable!, unittest.isTrue);
+    unittest.expect(
+      o.ordinalPosition!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.precision!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.primaryKey!, unittest.isTrue);
+    unittest.expect(
+      o.scale!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterPostgresqlColumn--;
+}
+
+core.int buildCounterPostgresqlObjectIdentifier = 0;
+api.PostgresqlObjectIdentifier buildPostgresqlObjectIdentifier() {
+  final o = api.PostgresqlObjectIdentifier();
+  buildCounterPostgresqlObjectIdentifier++;
+  if (buildCounterPostgresqlObjectIdentifier < 3) {
+    o.schema = 'foo';
+    o.table = 'foo';
+  }
+  buildCounterPostgresqlObjectIdentifier--;
+  return o;
+}
+
+void checkPostgresqlObjectIdentifier(api.PostgresqlObjectIdentifier o) {
+  buildCounterPostgresqlObjectIdentifier++;
+  if (buildCounterPostgresqlObjectIdentifier < 3) {
+    unittest.expect(
+      o.schema!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.table!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPostgresqlObjectIdentifier--;
+}
+
+core.int buildCounterPostgresqlProfile = 0;
+api.PostgresqlProfile buildPostgresqlProfile() {
+  final o = api.PostgresqlProfile();
+  buildCounterPostgresqlProfile++;
+  if (buildCounterPostgresqlProfile < 3) {
+    o.database = 'foo';
+    o.hostname = 'foo';
+    o.password = 'foo';
+    o.port = 42;
+    o.username = 'foo';
+  }
+  buildCounterPostgresqlProfile--;
+  return o;
+}
+
+void checkPostgresqlProfile(api.PostgresqlProfile o) {
+  buildCounterPostgresqlProfile++;
+  if (buildCounterPostgresqlProfile < 3) {
+    unittest.expect(
+      o.database!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.password!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.port!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPostgresqlProfile--;
+}
+
+core.List<api.PostgresqlSchema> buildUnnamed26() => [
+      buildPostgresqlSchema(),
+      buildPostgresqlSchema(),
+    ];
+
+void checkUnnamed26(core.List<api.PostgresqlSchema> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPostgresqlSchema(o[0]);
+  checkPostgresqlSchema(o[1]);
+}
+
+core.int buildCounterPostgresqlRdbms = 0;
+api.PostgresqlRdbms buildPostgresqlRdbms() {
+  final o = api.PostgresqlRdbms();
+  buildCounterPostgresqlRdbms++;
+  if (buildCounterPostgresqlRdbms < 3) {
+    o.postgresqlSchemas = buildUnnamed26();
+  }
+  buildCounterPostgresqlRdbms--;
+  return o;
+}
+
+void checkPostgresqlRdbms(api.PostgresqlRdbms o) {
+  buildCounterPostgresqlRdbms++;
+  if (buildCounterPostgresqlRdbms < 3) {
+    checkUnnamed26(o.postgresqlSchemas!);
+  }
+  buildCounterPostgresqlRdbms--;
+}
+
+core.List<api.PostgresqlTable> buildUnnamed27() => [
+      buildPostgresqlTable(),
+      buildPostgresqlTable(),
+    ];
+
+void checkUnnamed27(core.List<api.PostgresqlTable> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPostgresqlTable(o[0]);
+  checkPostgresqlTable(o[1]);
+}
+
+core.int buildCounterPostgresqlSchema = 0;
+api.PostgresqlSchema buildPostgresqlSchema() {
+  final o = api.PostgresqlSchema();
+  buildCounterPostgresqlSchema++;
+  if (buildCounterPostgresqlSchema < 3) {
+    o.postgresqlTables = buildUnnamed27();
+    o.schema = 'foo';
+  }
+  buildCounterPostgresqlSchema--;
+  return o;
+}
+
+void checkPostgresqlSchema(api.PostgresqlSchema o) {
+  buildCounterPostgresqlSchema++;
+  if (buildCounterPostgresqlSchema < 3) {
+    checkUnnamed27(o.postgresqlTables!);
+    unittest.expect(
+      o.schema!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPostgresqlSchema--;
+}
+
+core.int buildCounterPostgresqlSourceConfig = 0;
+api.PostgresqlSourceConfig buildPostgresqlSourceConfig() {
+  final o = api.PostgresqlSourceConfig();
+  buildCounterPostgresqlSourceConfig++;
+  if (buildCounterPostgresqlSourceConfig < 3) {
+    o.excludeObjects = buildPostgresqlRdbms();
+    o.includeObjects = buildPostgresqlRdbms();
+    o.publication = 'foo';
+    o.replicationSlot = 'foo';
+  }
+  buildCounterPostgresqlSourceConfig--;
+  return o;
+}
+
+void checkPostgresqlSourceConfig(api.PostgresqlSourceConfig o) {
+  buildCounterPostgresqlSourceConfig++;
+  if (buildCounterPostgresqlSourceConfig < 3) {
+    checkPostgresqlRdbms(o.excludeObjects!);
+    checkPostgresqlRdbms(o.includeObjects!);
+    unittest.expect(
+      o.publication!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replicationSlot!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPostgresqlSourceConfig--;
+}
+
+core.List<api.PostgresqlColumn> buildUnnamed28() => [
+      buildPostgresqlColumn(),
+      buildPostgresqlColumn(),
+    ];
+
+void checkUnnamed28(core.List<api.PostgresqlColumn> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPostgresqlColumn(o[0]);
+  checkPostgresqlColumn(o[1]);
+}
+
+core.int buildCounterPostgresqlTable = 0;
+api.PostgresqlTable buildPostgresqlTable() {
+  final o = api.PostgresqlTable();
+  buildCounterPostgresqlTable++;
+  if (buildCounterPostgresqlTable < 3) {
+    o.postgresqlColumns = buildUnnamed28();
+    o.table = 'foo';
+  }
+  buildCounterPostgresqlTable--;
+  return o;
+}
+
+void checkPostgresqlTable(api.PostgresqlTable o) {
+  buildCounterPostgresqlTable++;
+  if (buildCounterPostgresqlTable < 3) {
+    checkUnnamed28(o.postgresqlColumns!);
+    unittest.expect(
+      o.table!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPostgresqlTable--;
+}
+
+core.Map<core.String, core.String> buildUnnamed29() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed26(core.Map<core.String, core.String> o) {
+void checkUnnamed29(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1684,7 +2020,7 @@ api.PrivateConnection buildPrivateConnection() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.error = buildError();
-    o.labels = buildUnnamed26();
+    o.labels = buildUnnamed29();
     o.name = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -1706,7 +2042,7 @@ void checkPrivateConnection(api.PrivateConnection o) {
       unittest.equals('foo'),
     );
     checkError(o.error!);
-    checkUnnamed26(o.labels!);
+    checkUnnamed29(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1746,12 +2082,12 @@ void checkPrivateConnectivity(api.PrivateConnectivity o) {
   buildCounterPrivateConnectivity--;
 }
 
-core.Map<core.String, core.String> buildUnnamed27() => {
+core.Map<core.String, core.String> buildUnnamed30() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed27(core.Map<core.String, core.String> o) {
+void checkUnnamed30(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1772,7 +2108,7 @@ api.Route buildRoute() {
     o.destinationAddress = 'foo';
     o.destinationPort = 42;
     o.displayName = 'foo';
-    o.labels = buildUnnamed27();
+    o.labels = buildUnnamed30();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -1799,7 +2135,7 @@ void checkRoute(api.Route o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.labels!);
+    checkUnnamed30(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1812,6 +2148,28 @@ void checkRoute(api.Route o) {
   buildCounterRoute--;
 }
 
+core.int buildCounterSingleTargetDataset = 0;
+api.SingleTargetDataset buildSingleTargetDataset() {
+  final o = api.SingleTargetDataset();
+  buildCounterSingleTargetDataset++;
+  if (buildCounterSingleTargetDataset < 3) {
+    o.datasetId = 'foo';
+  }
+  buildCounterSingleTargetDataset--;
+  return o;
+}
+
+void checkSingleTargetDataset(api.SingleTargetDataset o) {
+  buildCounterSingleTargetDataset++;
+  if (buildCounterSingleTargetDataset < 3) {
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSingleTargetDataset--;
+}
+
 core.int buildCounterSourceConfig = 0;
 api.SourceConfig buildSourceConfig() {
   final o = api.SourceConfig();
@@ -1819,6 +2177,7 @@ api.SourceConfig buildSourceConfig() {
   if (buildCounterSourceConfig < 3) {
     o.mysqlSourceConfig = buildMysqlSourceConfig();
     o.oracleSourceConfig = buildOracleSourceConfig();
+    o.postgresqlSourceConfig = buildPostgresqlSourceConfig();
     o.sourceConnectionProfile = 'foo';
   }
   buildCounterSourceConfig--;
@@ -1830,12 +2189,32 @@ void checkSourceConfig(api.SourceConfig o) {
   if (buildCounterSourceConfig < 3) {
     checkMysqlSourceConfig(o.mysqlSourceConfig!);
     checkOracleSourceConfig(o.oracleSourceConfig!);
+    checkPostgresqlSourceConfig(o.postgresqlSourceConfig!);
     unittest.expect(
       o.sourceConnectionProfile!,
       unittest.equals('foo'),
     );
   }
   buildCounterSourceConfig--;
+}
+
+core.int buildCounterSourceHierarchyDatasets = 0;
+api.SourceHierarchyDatasets buildSourceHierarchyDatasets() {
+  final o = api.SourceHierarchyDatasets();
+  buildCounterSourceHierarchyDatasets++;
+  if (buildCounterSourceHierarchyDatasets < 3) {
+    o.datasetTemplate = buildDatasetTemplate();
+  }
+  buildCounterSourceHierarchyDatasets--;
+  return o;
+}
+
+void checkSourceHierarchyDatasets(api.SourceHierarchyDatasets o) {
+  buildCounterSourceHierarchyDatasets++;
+  if (buildCounterSourceHierarchyDatasets < 3) {
+    checkDatasetTemplate(o.datasetTemplate!);
+  }
+  buildCounterSourceHierarchyDatasets--;
 }
 
 core.int buildCounterSourceObjectIdentifier = 0;
@@ -1845,6 +2224,7 @@ api.SourceObjectIdentifier buildSourceObjectIdentifier() {
   if (buildCounterSourceObjectIdentifier < 3) {
     o.mysqlIdentifier = buildMysqlObjectIdentifier();
     o.oracleIdentifier = buildOracleObjectIdentifier();
+    o.postgresqlIdentifier = buildPostgresqlObjectIdentifier();
   }
   buildCounterSourceObjectIdentifier--;
   return o;
@@ -1855,6 +2235,7 @@ void checkSourceObjectIdentifier(api.SourceObjectIdentifier o) {
   if (buildCounterSourceObjectIdentifier < 3) {
     checkMysqlObjectIdentifier(o.mysqlIdentifier!);
     checkOracleObjectIdentifier(o.oracleIdentifier!);
+    checkPostgresqlObjectIdentifier(o.postgresqlIdentifier!);
   }
   buildCounterSourceObjectIdentifier--;
 }
@@ -1908,7 +2289,7 @@ void checkStaticServiceIpConnectivity(api.StaticServiceIpConnectivity o) {
   buildCounterStaticServiceIpConnectivity--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed28() => {
+core.Map<core.String, core.Object?> buildUnnamed31() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1921,7 +2302,7 @@ core.Map<core.String, core.Object?> buildUnnamed28() => {
       },
     };
 
-void checkUnnamed28(core.Map<core.String, core.Object?> o) {
+void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1953,15 +2334,15 @@ void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed29() => [
-      buildUnnamed28(),
-      buildUnnamed28(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed32() => [
+      buildUnnamed31(),
+      buildUnnamed31(),
     ];
 
-void checkUnnamed29(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed32(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed28(o[0]);
-  checkUnnamed28(o[1]);
+  checkUnnamed31(o[0]);
+  checkUnnamed31(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1970,7 +2351,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed29();
+    o.details = buildUnnamed32();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1984,7 +2365,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed29(o.details!);
+    checkUnnamed32(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2027,23 +2408,23 @@ void checkStopBackfillJobResponse(api.StopBackfillJobResponse o) {
   buildCounterStopBackfillJobResponse--;
 }
 
-core.List<api.Error> buildUnnamed30() => [
+core.List<api.Error> buildUnnamed33() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed30(core.List<api.Error> o) {
+void checkUnnamed33(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed31() => {
+core.Map<core.String, core.String> buildUnnamed34() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed31(core.Map<core.String, core.String> o) {
+void checkUnnamed34(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2066,8 +2447,8 @@ api.Stream buildStream() {
     o.customerManagedEncryptionKey = 'foo';
     o.destinationConfig = buildDestinationConfig();
     o.displayName = 'foo';
-    o.errors = buildUnnamed30();
-    o.labels = buildUnnamed31();
+    o.errors = buildUnnamed33();
+    o.labels = buildUnnamed34();
     o.name = 'foo';
     o.sourceConfig = buildSourceConfig();
     o.state = 'foo';
@@ -2095,8 +2476,8 @@ void checkStream(api.Stream o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.errors!);
-    checkUnnamed31(o.labels!);
+    checkUnnamed33(o.errors!);
+    checkUnnamed34(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2129,12 +2510,12 @@ void checkStreamLargeObjects(api.StreamLargeObjects o) {
   buildCounterStreamLargeObjects--;
 }
 
-core.List<api.Error> buildUnnamed32() => [
+core.List<api.Error> buildUnnamed35() => [
       buildError(),
       buildError(),
     ];
 
-void checkUnnamed32(core.List<api.Error> o) {
+void checkUnnamed35(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -2148,7 +2529,7 @@ api.StreamObject buildStreamObject() {
     o.backfillJob = buildBackfillJob();
     o.createTime = 'foo';
     o.displayName = 'foo';
-    o.errors = buildUnnamed32();
+    o.errors = buildUnnamed35();
     o.name = 'foo';
     o.sourceObject = buildSourceObjectIdentifier();
     o.updateTime = 'foo';
@@ -2169,7 +2550,7 @@ void checkStreamObject(api.StreamObject o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.errors!);
+    checkUnnamed35(o.errors!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2251,6 +2632,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BigQueryDestinationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBigQueryDestinationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BigQueryDestinationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBigQueryDestinationConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-BigQueryProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBigQueryProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BigQueryProfile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBigQueryProfile(od);
+    });
+  });
+
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCancelOperationRequest();
@@ -2268,6 +2669,16 @@ void main() {
       final od = api.ConnectionProfile.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConnectionProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-DatasetTemplate', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDatasetTemplate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatasetTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDatasetTemplate(od);
     });
   });
 
@@ -2631,6 +3042,76 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PostgresqlColumn', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPostgresqlColumn();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostgresqlColumn.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPostgresqlColumn(od);
+    });
+  });
+
+  unittest.group('obj-schema-PostgresqlObjectIdentifier', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPostgresqlObjectIdentifier();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostgresqlObjectIdentifier.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPostgresqlObjectIdentifier(od);
+    });
+  });
+
+  unittest.group('obj-schema-PostgresqlProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPostgresqlProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostgresqlProfile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPostgresqlProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-PostgresqlRdbms', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPostgresqlRdbms();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostgresqlRdbms.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPostgresqlRdbms(od);
+    });
+  });
+
+  unittest.group('obj-schema-PostgresqlSchema', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPostgresqlSchema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostgresqlSchema.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPostgresqlSchema(od);
+    });
+  });
+
+  unittest.group('obj-schema-PostgresqlSourceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPostgresqlSourceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostgresqlSourceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPostgresqlSourceConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-PostgresqlTable', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPostgresqlTable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostgresqlTable.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPostgresqlTable(od);
+    });
+  });
+
   unittest.group('obj-schema-PrivateConnection', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPrivateConnection();
@@ -2661,6 +3142,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SingleTargetDataset', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSingleTargetDataset();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SingleTargetDataset.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSingleTargetDataset(od);
+    });
+  });
+
   unittest.group('obj-schema-SourceConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSourceConfig();
@@ -2668,6 +3159,16 @@ void main() {
       final od = api.SourceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSourceConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SourceHierarchyDatasets', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceHierarchyDatasets();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceHierarchyDatasets.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSourceHierarchyDatasets(od);
     });
   });
 

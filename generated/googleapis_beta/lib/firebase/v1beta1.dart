@@ -500,6 +500,10 @@ class ProjectsResource {
   /// `ListFirebaseProjects` indicating where in the set of Projects to resume
   /// listing.
   ///
+  /// [showDeleted] - Optional. Controls whether Projects in the DELETED state
+  /// should be returned in the response. If not specified, only `ACTIVE`
+  /// Projects will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -513,11 +517,13 @@ class ProjectsResource {
   async.Future<ListFirebaseProjectsResponse> list({
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -550,9 +556,13 @@ class ProjectsResource {
   /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [updateMask] - Specifies which fields to update. If this list is empty,
-  /// then no state will be updated. Note that the fields `name`, `projectId`,
-  /// and `projectNumber` are all immutable.
+  /// [updateMask] - Specifies which fields of the FirebaseProject to update.
+  /// Note that the following fields are immutable: `name`, `project_id`, and
+  /// `project_number`. To update `state`, use any of the following Google Cloud
+  /// endpoints:
+  /// \[`projects.delete`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects/delete)
+  /// or
+  /// \[`projects.undelete`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects/undelete)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -690,7 +700,7 @@ class ProjectsResource {
   /// indicating where in the set of Apps to resume listing.
   ///
   /// [showDeleted] - Controls whether Apps in the DELETED state should be
-  /// returned. Defaults to false.
+  /// returned. If not specified, only `ACTIVE` Apps will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -894,7 +904,8 @@ class ProjectsAndroidAppsResource {
   /// indicating where in the set of Apps to resume listing.
   ///
   /// [showDeleted] - Controls whether Apps in the DELETED state should be
-  /// returned. Defaults to false.
+  /// returned in the response. If not specified, only `ACTIVE` Apps will be
+  /// returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -950,9 +961,10 @@ class ProjectsAndroidAppsResource {
   /// (see \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
-  /// [updateMask] - Specifies which fields to update. Note that the fields
-  /// `name`, `app_id`, `project_id`, `package_name`, and `state` are all
-  /// immutable.
+  /// [updateMask] - Specifies which fields of the AndroidApp to update. Note
+  /// that the following fields are immutable: `name`, `app_id`, `project_id`,
+  /// and `package_name`. To update `state`, use any of the following endpoints:
+  /// RemoveAndroidApp or UndeleteAndroidApp.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -988,7 +1000,7 @@ class ProjectsAndroidAppsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Removes the specified AndroidApp from the project.
+  /// Removes the specified AndroidApp from the FirebaseProject.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1023,6 +1035,51 @@ class ProjectsAndroidAppsResource {
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores the specified AndroidApp to the FirebaseProject.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the AndroidApp, in the format:
+  /// projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a
+  /// unique identifier, the Unique Resource from Sub-Collection access pattern
+  /// may be used here, in the format: projects/-/androidApps/APP_ID Refer to
+  /// the AndroidApp \[name\](../projects.androidApps#AndroidApp.FIELDS.name)
+  /// field for details about PROJECT_IDENTIFIER and APP_ID values.
+  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteAndroidAppRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final response_ = await _requester.request(
       url_,
@@ -1490,7 +1547,8 @@ class ProjectsIosAppsResource {
   /// indicating where in the set of Apps to resume listing.
   ///
   /// [showDeleted] - Controls whether Apps in the DELETED state should be
-  /// returned. Defaults to false.
+  /// returned in the response. If not specified, only `ACTIVE` Apps will be
+  /// returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1546,8 +1604,10 @@ class ProjectsIosAppsResource {
   /// (see \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
   ///
-  /// [updateMask] - Specifies which fields to update. Note that the fields
-  /// `name`, `appId`, `projectId`, `bundleId`, and `state` are all immutable
+  /// [updateMask] - Specifies which fields of the IosApp to update. Note that
+  /// the following fields are immutable: `name`, `app_id`, `project_id`, and
+  /// `bundle_id`. To update `state`, use any of the following endpoints:
+  /// RemoveIosApp or UndeleteIosApp.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1582,7 +1642,7 @@ class ProjectsIosAppsResource {
     return IosApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Removes the specified IosApp from the project.
+  /// Removes the specified IosApp from the FirebaseProject.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1617,6 +1677,51 @@ class ProjectsIosAppsResource {
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores the specified IosApp to the FirebaseProject.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the IosApp, in the format:
+  /// projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique
+  /// identifier, the Unique Resource from Sub-Collection access pattern may be
+  /// used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp
+  /// \[name\](../projects.iosApps#IosApp.FIELDS.name) field for details about
+  /// PROJECT_IDENTIFIER and APP_ID values.
+  /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteIosAppRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final response_ = await _requester.request(
       url_,
@@ -1785,7 +1890,8 @@ class ProjectsWebAppsResource {
   /// indicating where in the set of Apps to resume listing.
   ///
   /// [showDeleted] - Controls whether Apps in the DELETED state should be
-  /// returned. Defaults to false.
+  /// returned in the response. If not specified, only `ACTIVE` Apps will be
+  /// returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1841,8 +1947,10 @@ class ProjectsWebAppsResource {
   /// (see \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
   ///
-  /// [updateMask] - Specifies which fields to update. Note that the fields
-  /// `name`, `appId`, `projectId` and `state` are all immutable
+  /// [updateMask] - Specifies which fields of the WebApp to update. Note that
+  /// the following fields are immutable: `name`, `app_id`, and `project_id`. To
+  /// update `state`, use any of the following endpoints: RemoveWebApp or
+  /// UndeleteWebApp.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1877,7 +1985,7 @@ class ProjectsWebAppsResource {
     return WebApp.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Removes the specified WebApp from the project.
+  /// Removes the specified WebApp from the FirebaseProject.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1912,6 +2020,51 @@ class ProjectsWebAppsResource {
     };
 
     final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':remove';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores the specified WebApp to the FirebaseProject.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the WebApp, in the format:
+  /// projects/ PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique
+  /// identifier, the Unique Resource from Sub-Collection access pattern may be
+  /// used here, in the format: projects/-/webApps/APP_ID Refer to the WebApp
+  /// \[name\](../projects.webApps#WebApp.FIELDS.name) field for details about
+  /// PROJECT_IDENTIFIER and APP_ID values.
+  /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteWebAppRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final response_ = await _requester.request(
       url_,
@@ -2138,13 +2291,24 @@ class AnalyticsProperty {
 
 /// Details of a Firebase App for Android.
 class AndroidApp {
-  /// The key_id of the GCP ApiKey associated with this App.
+  /// The globally unique, Google-assigned identifier (UID) for the Firebase API
+  /// key associated with the `AndroidApp`.
   ///
-  /// If set must have no restrictions, or only have restrictions that are valid
-  /// for the associated Firebase App. Cannot be set in create requests, instead
-  /// an existing valid API Key will be chosen, or if no valid API Keys exist,
-  /// one will be provisioned for you. Cannot be set to an empty value in update
-  /// requests.
+  /// Be aware that this value is the UID of the API key, _not_ the
+  /// \[`keyString`\](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string)
+  /// of the API key. The `keyString` is the value that can be found in the
+  /// App's \[configuration
+  /// artifact\](../../rest/v1beta1/projects.androidApps/getConfig). If
+  /// `api_key_id` is not set in requests to
+  /// \[`androidApps.Create`\](../../rest/v1beta1/projects.androidApps/create),
+  /// then Firebase automatically associates an `api_key_id` with the
+  /// `AndroidApp`. This auto-associated key may be an existing valid key or, if
+  /// no valid key exists, a new one will be provisioned. In patch requests,
+  /// `api_key_id` cannot be set to an empty value, and the new UID must have no
+  /// restrictions or only have restrictions that are valid for the associated
+  /// `AndroidApp`. We recommend using the
+  /// [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+  /// to manage API keys.
   core.String? apiKeyId;
 
   /// The globally unique, Firebase-assigned identifier for the `AndroidApp`.
@@ -2195,8 +2359,12 @@ class AndroidApp {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The normal and active state.
-  /// - "DELETED" : The app has been soft deleted.
+  /// - "ACTIVE" : The App is active.
+  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
+  /// an App after it has been in the `DELETED` state for more than 30 days. Up
+  /// until this time, you can restore the App by calling `Undelete`
+  /// (\[Android\](projects.androidApps/undelete) |
+  /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
   AndroidApp({
@@ -2408,12 +2576,23 @@ class FinalizeDefaultLocationRequest {
 
 /// A high-level summary of an App.
 class FirebaseAppInfo {
-  /// The key_id of the GCP ApiKey associated with this App.
+  /// The globally unique, Google-assigned identifier (UID) for the Firebase API
+  /// key associated with the App.
   ///
-  /// If set must have no restrictions, or only have restrictions that are valid
-  /// for the associated Firebase App. Cannot be set to an empty value in update
-  /// requests. If left unset on create requests, an existing valid API Key will
-  /// be chosen, or if no valid API Keys exist, one will be provisioned for you.
+  /// Be aware that this value is the UID of the API key, _not_ the
+  /// \[`keyString`\](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string)
+  /// of the API key. The `keyString` is the value that can be found in the
+  /// App's configuration artifact
+  /// (\[`AndroidApp`\](../../rest/v1beta1/projects.androidApps/getConfig) |
+  /// \[`IosApp`\](../../rest/v1beta1/projects.iosApps/getConfig) |
+  /// \[`WebApp`\](../../rest/v1beta1/projects.webApps/getConfig)). If
+  /// `api_key_id` is not set in requests to create the App
+  /// (\[`AndroidApp`\](../../rest/v1beta1/projects.androidApps/create) |
+  /// \[`IosApp`\](../../rest/v1beta1/projects.iosApps/create) |
+  /// \[`WebApp`\](../../rest/v1beta1/projects.webApps/create)), then Firebase
+  /// automatically associates an `api_key_id` with the App. This
+  /// auto-associated key may be an existing valid key or, if no valid key
+  /// exists, a new one will be provisioned.
   core.String? apiKeyId;
 
   /// The globally unique, Firebase-assigned identifier for the `WebApp`.
@@ -2459,8 +2638,12 @@ class FirebaseAppInfo {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The normal and active state.
-  /// - "DELETED" : The app has been soft deleted.
+  /// - "ACTIVE" : The App is active.
+  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
+  /// an App after it has been in the `DELETED` state for more than 30 days. Up
+  /// until this time, you can restore the App by calling `Undelete`
+  /// (\[Android\](projects.androidApps/undelete) |
+  /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
   FirebaseAppInfo({
@@ -2571,15 +2754,11 @@ class FirebaseProject {
 
   /// The lifecycle state of the Project.
   ///
-  /// Updates to the state must be performed via
-  /// com.google.cloudresourcemanager.v1.Projects.DeleteProject and
-  /// com.google.cloudresourcemanager.v1.Projects.UndeleteProject
-  ///
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The normal and active state.
-  /// - "DELETED" : The Project has been marked for deletion by the user.
+  /// - "ACTIVE" : The Project is active.
+  /// - "DELETED" : The Project has been soft-deleted.
   core.String? state;
 
   FirebaseProject({
@@ -2637,13 +2816,24 @@ class FirebaseProject {
 
 /// Details of a Firebase App for iOS.
 class IosApp {
-  /// The key_id of the GCP ApiKey associated with this App.
+  /// The globally unique, Google-assigned identifier (UID) for the Firebase API
+  /// key associated with the `IosApp`.
   ///
-  /// If set must have no restrictions, or only have restrictions that are valid
-  /// for the associated Firebase App. Cannot be set in create requests, instead
-  /// an existing valid API Key will be chosen, or if no valid API Keys exist,
-  /// one will be provisioned for you. Cannot be set to an empty value in update
-  /// requests.
+  /// Be aware that this value is the UID of the API key, _not_ the
+  /// \[`keyString`\](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string)
+  /// of the API key. The `keyString` is the value that can be found in the
+  /// App's \[configuration
+  /// artifact\](../../rest/v1beta1/projects.iosApps/getConfig). If `api_key_id`
+  /// is not set in requests to
+  /// \[`iosApps.Create`\](../../rest/v1beta1/projects.iosApps/create), then
+  /// Firebase automatically associates an `api_key_id` with the `IosApp`. This
+  /// auto-associated key may be an existing valid key or, if no valid key
+  /// exists, a new one will be provisioned. In patch requests, `api_key_id`
+  /// cannot be set to an empty value, and the new UID must have no restrictions
+  /// or only have restrictions that are valid for the associated `IosApp`. We
+  /// recommend using the
+  /// [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+  /// to manage API keys.
   core.String? apiKeyId;
 
   /// The globally unique, Firebase-assigned identifier for the `IosApp`.
@@ -2692,8 +2882,12 @@ class IosApp {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The normal and active state.
-  /// - "DELETED" : The app has been soft deleted.
+  /// - "ACTIVE" : The App is active.
+  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
+  /// an App after it has been in the `DELETED` state for more than 30 days. Up
+  /// until this time, you can restore the App by calling `Undelete`
+  /// (\[Android\](projects.androidApps/undelete) |
+  /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
   /// The Apple Developer Team ID associated with the App in the App Store.
@@ -3251,7 +3445,9 @@ class RemoveAndroidAppRequest {
   /// client has an up-to-date value before proceeding.
   core.String? etag;
 
-  /// If set to true, only validate the request and do not delete the app.
+  /// If set to true, the request is only validated.
+  ///
+  /// The App will _not_ be removed.
   core.bool? validateOnly;
 
   RemoveAndroidAppRequest({
@@ -3287,7 +3483,9 @@ class RemoveIosAppRequest {
   /// client has an up-to-date value before proceeding.
   core.String? etag;
 
-  /// If set to true, only validate the request and do not delete the app.
+  /// If set to true, the request is only validated.
+  ///
+  /// The App will _not_ be removed.
   core.bool? validateOnly;
 
   RemoveIosAppRequest({
@@ -3323,7 +3521,9 @@ class RemoveWebAppRequest {
   /// client has an up-to-date value before proceeding.
   core.String? etag;
 
-  /// If set to true, only validate the request and do not delete the app.
+  /// If set to true, the request is only validated.
+  ///
+  /// The App will _not_ be removed.
   core.bool? validateOnly;
 
   RemoveWebAppRequest({
@@ -3498,15 +3698,113 @@ class StreamMapping {
       };
 }
 
+class UndeleteAndroidAppRequest {
+  /// Checksum provided in the AndroidApp entity, which if provided ensures the
+  /// client has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// If set to true, the request is only validated.
+  ///
+  /// The App will _not_ be undeleted.
+  core.bool? validateOnly;
+
+  UndeleteAndroidAppRequest({
+    this.etag,
+    this.validateOnly,
+  });
+
+  UndeleteAndroidAppRequest.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+class UndeleteIosAppRequest {
+  /// Checksum provided in the IosApp entity, which if provided ensures the
+  /// client has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// If set to true, the request is only validated.
+  ///
+  /// The App will _not_ be undeleted.
+  core.bool? validateOnly;
+
+  UndeleteIosAppRequest({
+    this.etag,
+    this.validateOnly,
+  });
+
+  UndeleteIosAppRequest.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+class UndeleteWebAppRequest {
+  /// Checksum provided in the WebApp entity, which if provided ensures the
+  /// client has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// If set to true, the request is only validated.
+  ///
+  /// The App will _not_ be undeleted.
+  core.bool? validateOnly;
+
+  UndeleteWebAppRequest({
+    this.etag,
+    this.validateOnly,
+  });
+
+  UndeleteWebAppRequest.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
 /// Details of a Firebase App for the web.
 class WebApp {
-  /// The key_id of the GCP ApiKey associated with this App.
+  /// The globally unique, Google-assigned identifier (UID) for the Firebase API
+  /// key associated with the `WebApp`.
   ///
-  /// If set must have no restrictions, or only have restrictions that are valid
-  /// for the associated Firebase App. Cannot be set in create requests, instead
-  /// an existing valid API Key will be chosen, or if no valid API Keys exist,
-  /// one will be provisioned for you. Cannot be set to an empty value in update
-  /// requests.
+  /// Be aware that this value is the UID of the API key, _not_ the
+  /// \[`keyString`\](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string)
+  /// of the API key. The `keyString` is the value that can be found in the
+  /// App's \[configuration
+  /// artifact\](../../rest/v1beta1/projects.webApps/getConfig). If `api_key_id`
+  /// is not set in requests to
+  /// \[`webApps.Create`\](../../rest/v1beta1/projects.webApps/create), then
+  /// Firebase automatically associates an `api_key_id` with the `WebApp`. This
+  /// auto-associated key may be an existing valid key or, if no valid key
+  /// exists, a new one will be provisioned. In patch requests, `api_key_id`
+  /// cannot be set to an empty value, and the new UID must have no restrictions
+  /// or only have restrictions that are valid for the associated `WebApp`. We
+  /// recommend using the
+  /// [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+  /// to manage API keys.
   core.String? apiKeyId;
 
   /// The globally unique, Firebase-assigned identifier for the `WebApp`.
@@ -3548,8 +3846,12 @@ class WebApp {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The normal and active state.
-  /// - "DELETED" : The app has been soft deleted.
+  /// - "ACTIVE" : The App is active.
+  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
+  /// an App after it has been in the `DELETED` state for more than 30 days. Up
+  /// until this time, you can restore the App by calling `Undelete`
+  /// (\[Android\](projects.androidApps/undelete) |
+  /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
   /// A unique, Firebase-assigned identifier for the `WebApp`.
@@ -3612,7 +3914,13 @@ class WebApp {
 
 /// Configuration metadata of a single Firebase App for the web.
 class WebAppConfig {
-  /// The API key associated with the `WebApp`.
+  /// The
+  /// \[`keyString`\](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string)
+  /// of the API key associated with the `WebApp`.
+  ///
+  /// Note that this value is _not_ the
+  /// \[`apiKeyId`\](../projects.webApps#WebApp.FIELDS.api_key_id) (the UID) of
+  /// the API key associated with the `WebApp`.
   core.String? apiKey;
 
   /// The globally unique, Firebase-assigned identifier for the `WebApp`.

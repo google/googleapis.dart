@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Firebase Realtime Database Management API - v1beta
+/// Firebase Realtime Database API - v1beta
 ///
 /// The Firebase Realtime Database Management API enables programmatic
 /// provisioning and management of Realtime Database instances.

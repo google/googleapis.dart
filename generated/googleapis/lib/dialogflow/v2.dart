@@ -13790,9 +13790,9 @@ class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
   /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified feature type.
-  /// - "ARTICLE_SUGGESTION" : Run article suggestion model.
-  /// - "FAQ" : Run FAQ model.
-  /// - "SMART_REPLY" : Run smart reply model.
+  /// - "ARTICLE_SUGGESTION" : Run article suggestion model for chat.
+  /// - "FAQ" : Run FAQ model for chat.
+  /// - "SMART_REPLY" : Run smart reply model for chat.
   core.String? suggestionFeatureType;
 
   GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest({
@@ -21202,9 +21202,9 @@ class GoogleCloudDialogflowV2SuggestionFeature {
   /// Type of Human Agent Assistant API feature to request.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unspecified feature type.
-  /// - "ARTICLE_SUGGESTION" : Run article suggestion model.
-  /// - "FAQ" : Run FAQ model.
-  /// - "SMART_REPLY" : Run smart reply model.
+  /// - "ARTICLE_SUGGESTION" : Run article suggestion model for chat.
+  /// - "FAQ" : Run FAQ model for chat.
+  /// - "SMART_REPLY" : Run smart reply model for chat.
   core.String? type;
 
   GoogleCloudDialogflowV2SuggestionFeature({

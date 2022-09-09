@@ -2612,11 +2612,29 @@ void checkTextAnnotation(api.TextAnnotation o) {
   buildCounterTextAnnotation--;
 }
 
+core.List<core.String> buildUnnamed46() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed46(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTextDetectionParams = 0;
 api.TextDetectionParams buildTextDetectionParams() {
   final o = api.TextDetectionParams();
   buildCounterTextDetectionParams++;
   if (buildCounterTextDetectionParams < 3) {
+    o.advancedOcrOptions = buildUnnamed46();
     o.enableTextDetectionConfidenceScore = true;
   }
   buildCounterTextDetectionParams--;
@@ -2626,17 +2644,18 @@ api.TextDetectionParams buildTextDetectionParams() {
 void checkTextDetectionParams(api.TextDetectionParams o) {
   buildCounterTextDetectionParams++;
   if (buildCounterTextDetectionParams < 3) {
+    checkUnnamed46(o.advancedOcrOptions!);
     unittest.expect(o.enableTextDetectionConfidenceScore!, unittest.isTrue);
   }
   buildCounterTextDetectionParams--;
 }
 
-core.List<api.DetectedLanguage> buildUnnamed46() => [
+core.List<api.DetectedLanguage> buildUnnamed47() => [
       buildDetectedLanguage(),
       buildDetectedLanguage(),
     ];
 
-void checkUnnamed46(core.List<api.DetectedLanguage> o) {
+void checkUnnamed47(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectedLanguage(o[0]);
   checkDetectedLanguage(o[1]);
@@ -2648,7 +2667,7 @@ api.TextProperty buildTextProperty() {
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
     o.detectedBreak = buildDetectedBreak();
-    o.detectedLanguages = buildUnnamed46();
+    o.detectedLanguages = buildUnnamed47();
   }
   buildCounterTextProperty--;
   return o;
@@ -2658,7 +2677,7 @@ void checkTextProperty(api.TextProperty o) {
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
     checkDetectedBreak(o.detectedBreak!);
-    checkUnnamed46(o.detectedLanguages!);
+    checkUnnamed47(o.detectedLanguages!);
   }
   buildCounterTextProperty--;
 }
@@ -2690,48 +2709,37 @@ void checkVertex(api.Vertex o) {
   buildCounterVertex--;
 }
 
-core.List<api.WebLabel> buildUnnamed47() => [
+core.List<api.WebLabel> buildUnnamed48() => [
       buildWebLabel(),
       buildWebLabel(),
     ];
 
-void checkUnnamed47(core.List<api.WebLabel> o) {
+void checkUnnamed48(core.List<api.WebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebLabel(o[0]);
   checkWebLabel(o[1]);
 }
 
-core.List<api.WebImage> buildUnnamed48() => [
+core.List<api.WebImage> buildUnnamed49() => [
       buildWebImage(),
       buildWebImage(),
     ];
 
-void checkUnnamed48(core.List<api.WebImage> o) {
+void checkUnnamed49(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebImage(o[0]);
   checkWebImage(o[1]);
 }
 
-core.List<api.WebPage> buildUnnamed49() => [
+core.List<api.WebPage> buildUnnamed50() => [
       buildWebPage(),
       buildWebPage(),
     ];
 
-void checkUnnamed49(core.List<api.WebPage> o) {
+void checkUnnamed50(core.List<api.WebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebPage(o[0]);
   checkWebPage(o[1]);
-}
-
-core.List<api.WebImage> buildUnnamed50() => [
-      buildWebImage(),
-      buildWebImage(),
-    ];
-
-void checkUnnamed50(core.List<api.WebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0]);
-  checkWebImage(o[1]);
 }
 
 core.List<api.WebImage> buildUnnamed51() => [
@@ -2745,12 +2753,23 @@ void checkUnnamed51(core.List<api.WebImage> o) {
   checkWebImage(o[1]);
 }
 
-core.List<api.WebEntity> buildUnnamed52() => [
+core.List<api.WebImage> buildUnnamed52() => [
+      buildWebImage(),
+      buildWebImage(),
+    ];
+
+void checkUnnamed52(core.List<api.WebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWebImage(o[0]);
+  checkWebImage(o[1]);
+}
+
+core.List<api.WebEntity> buildUnnamed53() => [
       buildWebEntity(),
       buildWebEntity(),
     ];
 
-void checkUnnamed52(core.List<api.WebEntity> o) {
+void checkUnnamed53(core.List<api.WebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebEntity(o[0]);
   checkWebEntity(o[1]);
@@ -2761,12 +2780,12 @@ api.WebDetection buildWebDetection() {
   final o = api.WebDetection();
   buildCounterWebDetection++;
   if (buildCounterWebDetection < 3) {
-    o.bestGuessLabels = buildUnnamed47();
-    o.fullMatchingImages = buildUnnamed48();
-    o.pagesWithMatchingImages = buildUnnamed49();
-    o.partialMatchingImages = buildUnnamed50();
-    o.visuallySimilarImages = buildUnnamed51();
-    o.webEntities = buildUnnamed52();
+    o.bestGuessLabels = buildUnnamed48();
+    o.fullMatchingImages = buildUnnamed49();
+    o.pagesWithMatchingImages = buildUnnamed50();
+    o.partialMatchingImages = buildUnnamed51();
+    o.visuallySimilarImages = buildUnnamed52();
+    o.webEntities = buildUnnamed53();
   }
   buildCounterWebDetection--;
   return o;
@@ -2775,12 +2794,12 @@ api.WebDetection buildWebDetection() {
 void checkWebDetection(api.WebDetection o) {
   buildCounterWebDetection++;
   if (buildCounterWebDetection < 3) {
-    checkUnnamed47(o.bestGuessLabels!);
-    checkUnnamed48(o.fullMatchingImages!);
-    checkUnnamed49(o.pagesWithMatchingImages!);
-    checkUnnamed50(o.partialMatchingImages!);
-    checkUnnamed51(o.visuallySimilarImages!);
-    checkUnnamed52(o.webEntities!);
+    checkUnnamed48(o.bestGuessLabels!);
+    checkUnnamed49(o.fullMatchingImages!);
+    checkUnnamed50(o.pagesWithMatchingImages!);
+    checkUnnamed51(o.partialMatchingImages!);
+    checkUnnamed52(o.visuallySimilarImages!);
+    checkUnnamed53(o.webEntities!);
   }
   buildCounterWebDetection--;
 }
@@ -2890,17 +2909,6 @@ void checkWebLabel(api.WebLabel o) {
   buildCounterWebLabel--;
 }
 
-core.List<api.WebImage> buildUnnamed53() => [
-      buildWebImage(),
-      buildWebImage(),
-    ];
-
-void checkUnnamed53(core.List<api.WebImage> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0]);
-  checkWebImage(o[1]);
-}
-
 core.List<api.WebImage> buildUnnamed54() => [
       buildWebImage(),
       buildWebImage(),
@@ -2912,14 +2920,25 @@ void checkUnnamed54(core.List<api.WebImage> o) {
   checkWebImage(o[1]);
 }
 
+core.List<api.WebImage> buildUnnamed55() => [
+      buildWebImage(),
+      buildWebImage(),
+    ];
+
+void checkUnnamed55(core.List<api.WebImage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWebImage(o[0]);
+  checkWebImage(o[1]);
+}
+
 core.int buildCounterWebPage = 0;
 api.WebPage buildWebPage() {
   final o = api.WebPage();
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
-    o.fullMatchingImages = buildUnnamed53();
+    o.fullMatchingImages = buildUnnamed54();
     o.pageTitle = 'foo';
-    o.partialMatchingImages = buildUnnamed54();
+    o.partialMatchingImages = buildUnnamed55();
     o.score = 42.0;
     o.url = 'foo';
   }
@@ -2930,12 +2949,12 @@ api.WebPage buildWebPage() {
 void checkWebPage(api.WebPage o) {
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
-    checkUnnamed53(o.fullMatchingImages!);
+    checkUnnamed54(o.fullMatchingImages!);
     unittest.expect(
       o.pageTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed54(o.partialMatchingImages!);
+    checkUnnamed55(o.partialMatchingImages!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -2948,12 +2967,12 @@ void checkWebPage(api.WebPage o) {
   buildCounterWebPage--;
 }
 
-core.List<api.Symbol> buildUnnamed55() => [
+core.List<api.Symbol> buildUnnamed56() => [
       buildSymbol(),
       buildSymbol(),
     ];
 
-void checkUnnamed55(core.List<api.Symbol> o) {
+void checkUnnamed56(core.List<api.Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSymbol(o[0]);
   checkSymbol(o[1]);
@@ -2967,7 +2986,7 @@ api.Word buildWord() {
     o.boundingBox = buildBoundingPoly();
     o.confidence = 42.0;
     o.property = buildTextProperty();
-    o.symbols = buildUnnamed55();
+    o.symbols = buildUnnamed56();
   }
   buildCounterWord--;
   return o;
@@ -2982,7 +3001,7 @@ void checkWord(api.Word o) {
       unittest.equals(42.0),
     );
     checkTextProperty(o.property!);
-    checkUnnamed55(o.symbols!);
+    checkUnnamed56(o.symbols!);
   }
   buildCounterWord--;
 }

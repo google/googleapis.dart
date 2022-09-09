@@ -768,6 +768,84 @@ class ProjectsLocationsNfsSharesResource {
   ProjectsLocationsNfsSharesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create an NFS share.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project and location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    NfsShare request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/nfsShares';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete an NFS share.
+  ///
+  /// The underlying volume is automatically deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the NFS share to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/nfsShares/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Get details of a single NFS share.
   ///
   /// Request parameters:
@@ -859,12 +937,12 @@ class ProjectsLocationsNfsSharesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The name of the NFS share.
+  /// [name] - Immutable. The name of the NFS share.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nfsShares/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to update. The only currently supported
-  /// fields are: `labels`
+  /// fields are: `labels` `allowed_clients`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1294,9 +1372,7 @@ class ProjectsLocationsVolumesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to update. The only currently supported
-  /// fields are: `snapshot_auto_delete_behavior`
-  /// `snapshot_schedule_policy_name` 'labels' 'snapshot_enabled'
-  /// 'snapshot_reservation_detail.reserved_space_percent'
+  /// fields are: 'labels'
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1500,6 +1576,11 @@ class AllowedClient {
   core.bool? noRootSquash;
 
   /// The IP address of the share on this network.
+  ///
+  /// Assigned automatically during provisioning based on the network's
+  /// services_cidr.
+  ///
+  /// Output only.
   core.String? shareIp;
 
   AllowedClient({
@@ -2640,11 +2721,19 @@ class Network {
   /// IP address configured.
   core.String? ipAddress;
 
+  /// Whether network uses standard frames or jumbo ones.
+  core.bool? jumboFramesEnabled;
+
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
 
   /// List of physical interfaces.
   core.List<core.String>? macAddress;
+
+  /// Input only.
+  ///
+  /// List of mount points to attach the network to.
+  core.List<NetworkMountPoint>? mountPoints;
 
   /// The resource name of this `Network`.
   ///
@@ -2654,6 +2743,11 @@ class Network {
   ///
   /// Output only.
   core.String? name;
+
+  /// Pod name.
+  ///
+  /// Output only.
+  core.String? pod;
 
   /// List of IP address reservations in this network.
   ///
@@ -2690,9 +2784,12 @@ class Network {
     this.cidr,
     this.id,
     this.ipAddress,
+    this.jumboFramesEnabled,
     this.labels,
     this.macAddress,
+    this.mountPoints,
     this.name,
+    this.pod,
     this.reservations,
     this.servicesCidr,
     this.state,
@@ -2708,6 +2805,9 @@ class Network {
           ipAddress: json_.containsKey('ipAddress')
               ? json_['ipAddress'] as core.String
               : null,
+          jumboFramesEnabled: json_.containsKey('jumboFramesEnabled')
+              ? json_['jumboFramesEnabled'] as core.bool
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -2721,7 +2821,14 @@ class Network {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          mountPoints: json_.containsKey('mountPoints')
+              ? (json_['mountPoints'] as core.List)
+                  .map((value) => NetworkMountPoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
           reservations: json_.containsKey('reservations')
               ? (json_['reservations'] as core.List)
                   .map((value) => NetworkAddressReservation.fromJson(
@@ -2747,9 +2854,13 @@ class Network {
         if (cidr != null) 'cidr': cidr!,
         if (id != null) 'id': id!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (jumboFramesEnabled != null)
+          'jumboFramesEnabled': jumboFramesEnabled!,
         if (labels != null) 'labels': labels!,
         if (macAddress != null) 'macAddress': macAddress!,
+        if (mountPoints != null) 'mountPoints': mountPoints!,
         if (name != null) 'name': name!,
+        if (pod != null) 'pod': pod!,
         if (reservations != null) 'reservations': reservations!,
         if (servicesCidr != null) 'servicesCidr': servicesCidr!,
         if (state != null) 'state': state!,
@@ -2962,6 +3073,51 @@ class NetworkConfig {
       };
 }
 
+/// Mount point for a network.
+class NetworkMountPoint {
+  /// Network should be a default gateway.
+  core.bool? defaultGateway;
+
+  /// Instance to attach network to.
+  core.String? instance;
+
+  /// Ip address of the server.
+  core.String? ipAddress;
+
+  /// Logical interface to detach from.
+  core.String? logicalInterface;
+
+  NetworkMountPoint({
+    this.defaultGateway,
+    this.instance,
+    this.ipAddress,
+    this.logicalInterface,
+  });
+
+  NetworkMountPoint.fromJson(core.Map json_)
+      : this(
+          defaultGateway: json_.containsKey('defaultGateway')
+              ? json_['defaultGateway'] as core.bool
+              : null,
+          instance: json_.containsKey('instance')
+              ? json_['instance'] as core.String
+              : null,
+          ipAddress: json_.containsKey('ipAddress')
+              ? json_['ipAddress'] as core.String
+              : null,
+          logicalInterface: json_.containsKey('logicalInterface')
+              ? json_['logicalInterface'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultGateway != null) 'defaultGateway': defaultGateway!,
+        if (instance != null) 'instance': instance!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (logicalInterface != null) 'logicalInterface': logicalInterface!,
+      };
+}
+
 /// Network with all used IP addresses.
 class NetworkUsage {
   /// Network.
@@ -3086,7 +3242,7 @@ class NfsShare {
 
   /// The name of the NFS share.
   ///
-  /// Output only.
+  /// Immutable.
   core.String? name;
 
   /// An identifier for the NFS share, generated by the backend.
@@ -3100,6 +3256,8 @@ class NfsShare {
   core.String? requestedSizeGib;
 
   /// The state of the NFS share.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The share is in an unknown state.
   /// - "PROVISIONED" : The share has been provisioned.
@@ -3108,7 +3266,21 @@ class NfsShare {
   /// - "DELETING" : The NFS Share has been requested to be deleted.
   core.String? state;
 
-  /// The volume containing the share.
+  /// The storage type of the underlying volume.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "STORAGE_TYPE_UNSPECIFIED" : The storage type for this volume is
+  /// unknown.
+  /// - "SSD" : The storage type for this volume is SSD.
+  /// - "HDD" : This storage type for this volume is HDD.
+  core.String? storageType;
+
+  /// The underlying volume of the share.
+  ///
+  /// Created automatically during provisioning.
+  ///
+  /// Output only.
   core.String? volume;
 
   NfsShare({
@@ -3119,6 +3291,7 @@ class NfsShare {
     this.nfsShareId,
     this.requestedSizeGib,
     this.state,
+    this.storageType,
     this.volume,
   });
 
@@ -3148,6 +3321,9 @@ class NfsShare {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          storageType: json_.containsKey('storageType')
+              ? json_['storageType'] as core.String
+              : null,
           volume: json_.containsKey('volume')
               ? json_['volume'] as core.String
               : null,
@@ -3161,6 +3337,7 @@ class NfsShare {
         if (nfsShareId != null) 'nfsShareId': nfsShareId!,
         if (requestedSizeGib != null) 'requestedSizeGib': requestedSizeGib!,
         if (state != null) 'state': state!,
+        if (storageType != null) 'storageType': storageType!,
         if (volume != null) 'volume': volume!,
       };
 }
@@ -3779,6 +3956,11 @@ class VRF {
   core.String? name;
 
   /// The QOS policy applied to this VRF.
+  ///
+  /// The value is only meaningful when all the vlan attachments have the same
+  /// QoS. This field should not be used for new integrations, use vlan
+  /// attachment level qos instead. The field is left for
+  /// backward-compatibility.
   QosPolicy? qosPolicy;
 
   /// The possible state of VRF.
@@ -3825,28 +4007,54 @@ class VRF {
 
 /// VLAN attachment details.
 class VlanAttachment {
+  /// The identifier of the attachment within vrf.
+  ///
+  /// Immutable.
+  core.String? id;
+
+  /// Input only.
+  ///
+  /// Pairing key.
+  core.String? pairingKey;
+
   /// The peer IP of the attachment.
   core.String? peerIp;
 
   /// The peer vlan ID of the attachment.
   core.String? peerVlanId;
 
+  /// The QOS policy applied to this VLAN attachment.
+  ///
+  /// This value should be preferred to using qos at vrf level.
+  QosPolicy? qosPolicy;
+
   /// The router IP of the attachment.
   core.String? routerIp;
 
   VlanAttachment({
+    this.id,
+    this.pairingKey,
     this.peerIp,
     this.peerVlanId,
+    this.qosPolicy,
     this.routerIp,
   });
 
   VlanAttachment.fromJson(core.Map json_)
       : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          pairingKey: json_.containsKey('pairingKey')
+              ? json_['pairingKey'] as core.String
+              : null,
           peerIp: json_.containsKey('peerIp')
               ? json_['peerIp'] as core.String
               : null,
           peerVlanId: json_.containsKey('peerVlanId')
               ? json_['peerVlanId'] as core.String
+              : null,
+          qosPolicy: json_.containsKey('qosPolicy')
+              ? QosPolicy.fromJson(
+                  json_['qosPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
           routerIp: json_.containsKey('routerIp')
               ? json_['routerIp'] as core.String
@@ -3854,8 +4062,11 @@ class VlanAttachment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (pairingKey != null) 'pairingKey': pairingKey!,
         if (peerIp != null) 'peerIp': peerIp!,
         if (peerVlanId != null) 'peerVlanId': peerVlanId!,
+        if (qosPolicy != null) 'qosPolicy': qosPolicy!,
         if (routerIp != null) 'routerIp': routerIp!,
       };
 }
@@ -3867,6 +4078,13 @@ class Volume {
   ///
   /// In the absence of auto-grow, the value is 0.
   core.String? autoGrownSizeGib;
+
+  /// Whether this volume is a boot volume.
+  ///
+  /// A boot volume is one which contains a boot LUN.
+  ///
+  /// Output only.
+  core.bool? bootVolume;
 
   /// The current size of this storage volume, in GiB, including space reserved
   /// for snapshots.
@@ -3898,8 +4116,25 @@ class Volume {
   /// Output only.
   core.String? name;
 
+  /// Input only.
+  ///
+  /// User-specified notes for new Volume. Used to provision Volumes that
+  /// require manual intervention.
+  core.String? notes;
+
   /// Originally requested size, in GiB.
   core.String? originallyRequestedSizeGib;
+
+  /// Performance tier of the Volume.
+  ///
+  /// Default is SHARED.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "VOLUME_PERFORMANCE_TIER_UNSPECIFIED" : Value is not specified.
+  /// - "VOLUME_PERFORMANCE_TIER_SHARED" : Regular volumes, shared aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_DEDICATED" : Dedicated (assigned) aggregates.
+  core.String? performanceTier;
 
   /// Pod name.
   ///
@@ -3959,13 +4194,16 @@ class Volume {
 
   Volume({
     this.autoGrownSizeGib,
+    this.bootVolume,
     this.currentSizeGib,
     this.emergencySizeGib,
     this.id,
     this.labels,
     this.maxSizeGib,
     this.name,
+    this.notes,
     this.originallyRequestedSizeGib,
+    this.performanceTier,
     this.pod,
     this.protocol,
     this.remainingSpaceGib,
@@ -3982,6 +4220,9 @@ class Volume {
       : this(
           autoGrownSizeGib: json_.containsKey('autoGrownSizeGib')
               ? json_['autoGrownSizeGib'] as core.String
+              : null,
+          bootVolume: json_.containsKey('bootVolume')
+              ? json_['bootVolume'] as core.bool
               : null,
           currentSizeGib: json_.containsKey('currentSizeGib')
               ? json_['currentSizeGib'] as core.String
@@ -4002,10 +4243,15 @@ class Volume {
               ? json_['maxSizeGib'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notes:
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
           originallyRequestedSizeGib:
               json_.containsKey('originallyRequestedSizeGib')
                   ? json_['originallyRequestedSizeGib'] as core.String
                   : null,
+          performanceTier: json_.containsKey('performanceTier')
+              ? json_['performanceTier'] as core.String
+              : null,
           pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
           protocol: json_.containsKey('protocol')
               ? json_['protocol'] as core.String
@@ -4041,14 +4287,17 @@ class Volume {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoGrownSizeGib != null) 'autoGrownSizeGib': autoGrownSizeGib!,
+        if (bootVolume != null) 'bootVolume': bootVolume!,
         if (currentSizeGib != null) 'currentSizeGib': currentSizeGib!,
         if (emergencySizeGib != null) 'emergencySizeGib': emergencySizeGib!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (maxSizeGib != null) 'maxSizeGib': maxSizeGib!,
         if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (originallyRequestedSizeGib != null)
           'originallyRequestedSizeGib': originallyRequestedSizeGib!,
+        if (performanceTier != null) 'performanceTier': performanceTier!,
         if (pod != null) 'pod': pod!,
         if (protocol != null) 'protocol': protocol!,
         if (remainingSpaceGib != null) 'remainingSpaceGib': remainingSpaceGib!,
@@ -4097,6 +4346,15 @@ class VolumeConfig {
   /// Set only when protocol is PROTOCOL_NFS.
   core.List<NfsExport>? nfsExports;
 
+  /// Performance tier of the Volume.
+  ///
+  /// Default is SHARED.
+  /// Possible string values are:
+  /// - "VOLUME_PERFORMANCE_TIER_UNSPECIFIED" : Value is not specified.
+  /// - "VOLUME_PERFORMANCE_TIER_SHARED" : Regular volumes, shared aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_DEDICATED" : Dedicated (assigned) aggregates.
+  core.String? performanceTier;
+
   /// Volume protocol.
   /// Possible string values are:
   /// - "PROTOCOL_UNSPECIFIED" : Unspecified value.
@@ -4128,6 +4386,7 @@ class VolumeConfig {
     this.machineIds,
     this.name,
     this.nfsExports,
+    this.performanceTier,
     this.protocol,
     this.sizeGb,
     this.snapshotsEnabled,
@@ -4159,6 +4418,9 @@ class VolumeConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          performanceTier: json_.containsKey('performanceTier')
+              ? json_['performanceTier'] as core.String
+              : null,
           protocol: json_.containsKey('protocol')
               ? json_['protocol'] as core.String
               : null,
@@ -4180,6 +4442,7 @@ class VolumeConfig {
         if (machineIds != null) 'machineIds': machineIds!,
         if (name != null) 'name': name!,
         if (nfsExports != null) 'nfsExports': nfsExports!,
+        if (performanceTier != null) 'performanceTier': performanceTier!,
         if (protocol != null) 'protocol': protocol!,
         if (sizeGb != null) 'sizeGb': sizeGb!,
         if (snapshotsEnabled != null) 'snapshotsEnabled': snapshotsEnabled!,

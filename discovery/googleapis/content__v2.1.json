@@ -5906,7 +5906,7 @@
             }
         }
     },
-    "revision": "20220728",
+    "revision": "20220905",
     "rootUrl": "https://shoppingcontent.googleapis.com/",
     "schemas": {
         "Account": {
@@ -5955,7 +5955,7 @@
                     "description": "The Business Profile which is linked or in the process of being linked with the Merchant Center account."
                 },
                 "id": {
-                    "description": "Required for update. Merchant Center account ID.",
+                    "description": "Required. 64-bit Merchant Center account ID.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -7412,7 +7412,7 @@
                     "type": "array"
                 },
                 "creationDate": {
-                    "description": "Date on which the collection has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, e.g. \"2020-01-02T09:00:00+01:00\" or \"2020-01-02T09:00:00Z\"",
+                    "description": "Date on which the collection has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example \"2020-01-02T09:00:00+01:00\" or \"2020-01-02T09:00:00Z\"",
                     "type": "string"
                 },
                 "destinationStatuses": {
@@ -7427,7 +7427,7 @@
                     "type": "string"
                 },
                 "lastUpdateDate": {
-                    "description": "Date on which the collection has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, e.g. \"2020-01-02T09:00:00+01:00\" or \"2020-01-02T09:00:00Z\"",
+                    "description": "Date on which the collection has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example \"2020-01-02T09:00:00+01:00\" or \"2020-01-02T09:00:00Z\"",
                     "type": "string"
                 }
             },
@@ -7437,12 +7437,33 @@
             "description": "Destination status message.",
             "id": "CollectionStatusDestinationStatus",
             "properties": {
+                "approvedCountries": {
+                    "description": "Country codes (ISO 3166-1 alpha-2) where the collection is approved.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "destination": {
                     "description": "The name of the destination",
                     "type": "string"
                 },
+                "disapprovedCountries": {
+                    "description": "Country codes (ISO 3166-1 alpha-2) where the collection is disapproved.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "pendingCountries": {
+                    "description": "Country codes (ISO 3166-1 alpha-2) where the collection is pending approval.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "status": {
-                    "description": "The status for the specified destination.",
+                    "description": "The status for the specified destination in the collections target country.",
                     "type": "string"
                 }
             },
@@ -7452,6 +7473,13 @@
             "description": "Issue associated with the collection.",
             "id": "CollectionStatusItemLevelIssue",
             "properties": {
+                "applicableCountries": {
+                    "description": "Country codes (ISO 3166-1 alpha-2) where issue applies to the offer.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "attributeName": {
                     "description": "The attribute's name, if the issue is caused by a single attribute.",
                     "type": "string"
@@ -9189,6 +9217,13 @@
                 "availability": {
                     "description": "Availability of the product. For accepted attribute values, see the local product inventory feed specification.",
                     "type": "string"
+                },
+                "customAttributes": {
+                    "description": "A list of custom (merchant-provided) attributes. Can also be used to submit any attribute of the feed specification in its generic form, for example, `{ \"name\": \"size type\", \"value\": \"regular\" }`.",
+                    "items": {
+                        "$ref": "CustomAttribute"
+                    },
+                    "type": "array"
                 },
                 "instoreProductLocation": {
                     "description": "In-store product location.",
@@ -12567,6 +12602,10 @@
                 },
                 "externalSellerId": {
                     "description": "Required for multi-seller accounts. Use this attribute if you're a marketplace uploading products for various sellers to your multi-seller account.",
+                    "type": "string"
+                },
+                "feedLabel": {
+                    "description": "Feed label for the item. Either `targetCountry` or `feedLabel` is required.",
                     "type": "string"
                 },
                 "gender": {

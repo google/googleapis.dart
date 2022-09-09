@@ -190,8 +190,8 @@ class ProjectsLocationsBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The backup's project and location, in the format
-  /// `projects/{project_number}/locations/{location}`. In Cloud Filestore,
-  /// backup locations map to GCP regions, for example **us-west1**.
+  /// `projects/{project_number}/locations/{location}`. In Filestore, backup
+  /// locations map to GCP regions, for example **us-west1**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupId] - Required. The ID to use for the backup. The ID must be unique
@@ -314,9 +314,9 @@ class ProjectsLocationsBackupsResource {
   ///
   /// [parent] - Required. The project and location for which to retrieve backup
   /// information, in the format
-  /// `projects/{project_number}/locations/{location}`. In Cloud Filestore,
-  /// backup locations map to GCP regions, for example **us-west1**. To retrieve
-  /// backup information for all locations, use "-" for the `{location}` value.
+  /// `projects/{project_number}/locations/{location}`. In Filestore, backup
+  /// locations map to GCP regions, for example **us-west1**. To retrieve backup
+  /// information for all locations, use "-" for the `{location}` value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -434,8 +434,8 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The instance's project and location, in the format
-  /// `projects/{project_id}/locations/{location}`. In Cloud Filestore,
-  /// locations map to GCP zones, for example **us-west1-b**.
+  /// `projects/{project_id}/locations/{location}`. In Filestore, locations map
+  /// to GCP zones, for example **us-west1-b**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - Required. The name of the instance to create. The name must
@@ -1138,7 +1138,7 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
-/// A Cloud Filestore backup.
+/// A Filestore backup.
 class Backup {
   /// Capacity of the source file share when the backup was created.
   ///
@@ -1177,17 +1177,17 @@ class Backup {
   /// Output only.
   core.bool? satisfiesPzs;
 
-  /// Name of the file share in the source Cloud Filestore instance that the
-  /// backup is created from.
+  /// Name of the file share in the source Filestore instance that the backup is
+  /// created from.
   core.String? sourceFileShare;
 
-  /// The resource name of the source Cloud Filestore instance, in the format
+  /// The resource name of the source Filestore instance, in the format
   /// `projects/{project_number}/locations/{location_id}/instances/{instance_id}`,
   /// used to create this backup.
   core.String? sourceInstance;
 
-  /// The service tier of the source Cloud Filestore instance that this backup
-  /// is created from.
+  /// The service tier of the source Filestore instance that this backup is
+  /// created from.
   ///
   /// Output only.
   /// Possible string values are:
@@ -1317,7 +1317,7 @@ typedef Empty = $Empty;
 class FileShareConfig {
   /// File share capacity in gigabytes (GB).
   ///
-  /// Cloud Filestore defines 1 GB as 1024^3 bytes.
+  /// Filestore defines 1 GB as 1024^3 bytes.
   core.String? capacityGb;
 
   /// The name of the file share (must be 16 characters or less).
@@ -1365,7 +1365,7 @@ class FileShareConfig {
       };
 }
 
-/// A Cloud Filestore instance.
+/// A Filestore instance.
 class Instance {
   /// The time when the instance was created.
   ///
@@ -1782,7 +1782,7 @@ class NetworkConfig {
   /// that identifies the range of IP addresses reserved for this instance. For
   /// example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The
   /// range you specify can't overlap with either existing subnets or assigned
-  /// IP address ranges for other Cloud Filestore instances in the selected VPC
+  /// IP address ranges for other Filestore instances in the selected VPC
   /// network.
   core.String? reservedIpRange;
 
@@ -1991,8 +1991,8 @@ class Operation {
 /// RestoreInstanceRequest restores an existing instance's file share from a
 /// backup.
 class RestoreInstanceRequest {
-  /// Name of the file share in the Cloud Filestore instance that the backup is
-  /// being restored to.
+  /// Name of the file share in the Filestore instance that the backup is being
+  /// restored to.
   ///
   /// Required.
   core.String? fileShare;

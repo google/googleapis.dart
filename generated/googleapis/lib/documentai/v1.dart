@@ -1930,15 +1930,6 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   /// Optional.
   core.String? mentionText;
 
-  /// This attribute indicates that the processing didn't actually identify this
-  /// entity, but a confidence score was assigned that represent the potential
-  /// that this could be a false negative.
-  ///
-  /// A non-present entity should have an empty mention_text and text_anchor.
-  ///
-  /// Optional.
-  core.bool? nonPresent;
-
   /// Normalized entity value.
   ///
   /// Absent if the extracted value could not be converted or the type (e.g.
@@ -1988,7 +1979,6 @@ class GoogleCloudDocumentaiV1DocumentEntity {
     this.id,
     this.mentionId,
     this.mentionText,
-    this.nonPresent,
     this.normalizedValue,
     this.pageAnchor,
     this.properties,
@@ -2009,9 +1999,6 @@ class GoogleCloudDocumentaiV1DocumentEntity {
               : null,
           mentionText: json_.containsKey('mentionText')
               ? json_['mentionText'] as core.String
-              : null,
-          nonPresent: json_.containsKey('nonPresent')
-              ? json_['nonPresent'] as core.bool
               : null,
           normalizedValue: json_.containsKey('normalizedValue')
               ? GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
@@ -2048,7 +2035,6 @@ class GoogleCloudDocumentaiV1DocumentEntity {
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (mentionText != null) 'mentionText': mentionText!,
-        if (nonPresent != null) 'nonPresent': nonPresent!,
         if (normalizedValue != null) 'normalizedValue': normalizedValue!,
         if (pageAnchor != null) 'pageAnchor': pageAnchor!,
         if (properties != null) 'properties': properties!,
@@ -3629,6 +3615,9 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   /// User defined name for the type.
   core.String? displayName;
 
+  /// Metadata for the entity type.
+  GoogleCloudDocumentaiV1EntityTypeMetadata? entityTypeMetadata;
+
   /// If specified, lists all the possible values for this entity.
   ///
   /// This should not be more than a handful of values. If the number of values
@@ -3641,7 +3630,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   /// It must be unique within the schema file and cannot be a 'Common Type'.
   /// Besides that we use the following naming conventions: - *use snake_casing*
   /// - name matching is case-insensitive - Maximum 64 characters. - Must start
-  /// with a letter. - Allowed characters: ASCII letters \[a-z0-9_-\]. (For
+  /// with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For
   /// backward compatibility internal infrastructure and tooling can handle any
   /// ascii character) - The '/' is sometimes used to denote a property of a
   /// type. For example line_item/amount. This convention is deprecated, but
@@ -3655,6 +3644,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   GoogleCloudDocumentaiV1DocumentSchemaEntityType({
     this.baseTypes,
     this.displayName,
+    this.entityTypeMetadata,
     this.enumValues,
     this.name,
     this.properties,
@@ -3669,6 +3659,11 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
               : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
+              : null,
+          entityTypeMetadata: json_.containsKey('entityTypeMetadata')
+              ? GoogleCloudDocumentaiV1EntityTypeMetadata.fromJson(
+                  json_['entityTypeMetadata']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           enumValues: json_.containsKey('enumValues')
               ? GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues
@@ -3689,6 +3684,8 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseTypes != null) 'baseTypes': baseTypes!,
         if (displayName != null) 'displayName': displayName!,
+        if (entityTypeMetadata != null)
+          'entityTypeMetadata': entityTypeMetadata!,
         if (enumValues != null) 'enumValues': enumValues!,
         if (name != null) 'name': name!,
         if (properties != null) 'properties': properties!,
@@ -3738,6 +3735,9 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   /// - "REQUIRED_MULTIPLE" : The entity type will appear once or more times.
   core.String? occurrenceType;
 
+  /// Any additional metadata about the property can be added here.
+  GoogleCloudDocumentaiV1PropertyMetadata? propertyMetadata;
+
   /// A reference to the value type of the property.
   ///
   /// This type is subject to the same conventions as the `Entity.base_types`
@@ -3747,6 +3747,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty({
     this.name,
     this.occurrenceType,
+    this.propertyMetadata,
     this.valueType,
   });
 
@@ -3757,6 +3758,11 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
           occurrenceType: json_.containsKey('occurrenceType')
               ? json_['occurrenceType'] as core.String
               : null,
+          propertyMetadata: json_.containsKey('propertyMetadata')
+              ? GoogleCloudDocumentaiV1PropertyMetadata.fromJson(
+                  json_['propertyMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           valueType: json_.containsKey('valueType')
               ? json_['valueType'] as core.String
               : null,
@@ -3765,6 +3771,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (occurrenceType != null) 'occurrenceType': occurrenceType!,
+        if (propertyMetadata != null) 'propertyMetadata': propertyMetadata!,
         if (valueType != null) 'valueType': valueType!,
       };
 }
@@ -3784,10 +3791,17 @@ class GoogleCloudDocumentaiV1DocumentSchemaMetadata {
   /// If set, all the nested entities must be prefixed with the parents.
   core.bool? prefixedNamingOnProperties;
 
+  /// If set, we will skip the naming format validation in the schema.
+  ///
+  /// So the string values in `DocumentSchema.EntityType.name` and
+  /// `DocumentSchema.EntityType.Property.name` will not be checked.
+  core.bool? skipNamingValidation;
+
   GoogleCloudDocumentaiV1DocumentSchemaMetadata({
     this.documentAllowMultipleLabels,
     this.documentSplitter,
     this.prefixedNamingOnProperties,
+    this.skipNamingValidation,
   });
 
   GoogleCloudDocumentaiV1DocumentSchemaMetadata.fromJson(core.Map json_)
@@ -3803,6 +3817,9 @@ class GoogleCloudDocumentaiV1DocumentSchemaMetadata {
               json_.containsKey('prefixedNamingOnProperties')
                   ? json_['prefixedNamingOnProperties'] as core.bool
                   : null,
+          skipNamingValidation: json_.containsKey('skipNamingValidation')
+              ? json_['skipNamingValidation'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3811,6 +3828,8 @@ class GoogleCloudDocumentaiV1DocumentSchemaMetadata {
         if (documentSplitter != null) 'documentSplitter': documentSplitter!,
         if (prefixedNamingOnProperties != null)
           'prefixedNamingOnProperties': prefixedNamingOnProperties!,
+        if (skipNamingValidation != null)
+          'skipNamingValidation': skipNamingValidation!,
       };
 }
 
@@ -4089,6 +4108,62 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
 /// Request message for the enable processor method.
 typedef GoogleCloudDocumentaiV1EnableProcessorRequest = $Empty;
 
+/// Metadata about an entity type.
+class GoogleCloudDocumentaiV1EntityTypeMetadata {
+  /// Human review labeling config on the property.
+  GoogleCloudDocumentaiV1HumanReviewLabelingMetadata?
+      humanReviewLabelingMetadata;
+
+  /// Human review config on the entity type.
+  GoogleCloudDocumentaiV1HumanReviewValidationMetadata? humanReviewMetadata;
+
+  /// Whether the entity type should be considered as "inactive".
+  core.bool? inactive;
+
+  /// If set, the properties of this entity type must be prefixed with the
+  /// parents.
+  core.bool? prefixedNamingOnProperties;
+
+  GoogleCloudDocumentaiV1EntityTypeMetadata({
+    this.humanReviewLabelingMetadata,
+    this.humanReviewMetadata,
+    this.inactive,
+    this.prefixedNamingOnProperties,
+  });
+
+  GoogleCloudDocumentaiV1EntityTypeMetadata.fromJson(core.Map json_)
+      : this(
+          humanReviewLabelingMetadata:
+              json_.containsKey('humanReviewLabelingMetadata')
+                  ? GoogleCloudDocumentaiV1HumanReviewLabelingMetadata.fromJson(
+                      json_['humanReviewLabelingMetadata']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          humanReviewMetadata: json_.containsKey('humanReviewMetadata')
+              ? GoogleCloudDocumentaiV1HumanReviewValidationMetadata.fromJson(
+                  json_['humanReviewMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          inactive: json_.containsKey('inactive')
+              ? json_['inactive'] as core.bool
+              : null,
+          prefixedNamingOnProperties:
+              json_.containsKey('prefixedNamingOnProperties')
+                  ? json_['prefixedNamingOnProperties'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (humanReviewLabelingMetadata != null)
+          'humanReviewLabelingMetadata': humanReviewLabelingMetadata!,
+        if (humanReviewMetadata != null)
+          'humanReviewMetadata': humanReviewMetadata!,
+        if (inactive != null) 'inactive': inactive!,
+        if (prefixedNamingOnProperties != null)
+          'prefixedNamingOnProperties': prefixedNamingOnProperties!,
+      };
+}
+
 /// Response message for fetch processor types.
 class GoogleCloudDocumentaiV1FetchProcessorTypesResponse {
   /// The list of processor types.
@@ -4187,6 +4262,29 @@ class GoogleCloudDocumentaiV1GcsPrefix {
       };
 }
 
+/// Metadata for human review labeling config.
+class GoogleCloudDocumentaiV1HumanReviewLabelingMetadata {
+  /// Whether to enable normalization editing.
+  core.bool? enableNormalizationEditing;
+
+  GoogleCloudDocumentaiV1HumanReviewLabelingMetadata({
+    this.enableNormalizationEditing,
+  });
+
+  GoogleCloudDocumentaiV1HumanReviewLabelingMetadata.fromJson(core.Map json_)
+      : this(
+          enableNormalizationEditing:
+              json_.containsKey('enableNormalizationEditing')
+                  ? json_['enableNormalizationEditing'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableNormalizationEditing != null)
+          'enableNormalizationEditing': enableNormalizationEditing!,
+      };
+}
+
 /// The status of human review on a processed document.
 class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
@@ -4237,6 +4335,36 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
           'humanReviewOperation': humanReviewOperation!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
+/// Metadata for Human Review config.
+class GoogleCloudDocumentaiV1HumanReviewValidationMetadata {
+  /// The confidence threshold if human review validation is enabled.
+  core.double? confidenceThreshold;
+
+  /// Whether to enable human review validation.
+  core.bool? enableValidation;
+
+  GoogleCloudDocumentaiV1HumanReviewValidationMetadata({
+    this.confidenceThreshold,
+    this.enableValidation,
+  });
+
+  GoogleCloudDocumentaiV1HumanReviewValidationMetadata.fromJson(core.Map json_)
+      : this(
+          confidenceThreshold: json_.containsKey('confidenceThreshold')
+              ? (json_['confidenceThreshold'] as core.num).toDouble()
+              : null,
+          enableValidation: json_.containsKey('enableValidation')
+              ? json_['enableValidation'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidenceThreshold != null)
+          'confidenceThreshold': confidenceThreshold!,
+        if (enableValidation != null) 'enableValidation': enableValidation!,
       };
 }
 
@@ -4808,6 +4936,51 @@ class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo {
       };
 }
 
+/// Metadata about a property.
+class GoogleCloudDocumentaiV1PropertyMetadata {
+  /// Human review labeling config on the property.
+  GoogleCloudDocumentaiV1HumanReviewLabelingMetadata?
+      humanReviewLabelingMetadata;
+
+  /// Human review validation config on the property.
+  GoogleCloudDocumentaiV1HumanReviewValidationMetadata? humanReviewMetadata;
+
+  /// Whether the property should be considered as "inactive".
+  core.bool? inactive;
+
+  GoogleCloudDocumentaiV1PropertyMetadata({
+    this.humanReviewLabelingMetadata,
+    this.humanReviewMetadata,
+    this.inactive,
+  });
+
+  GoogleCloudDocumentaiV1PropertyMetadata.fromJson(core.Map json_)
+      : this(
+          humanReviewLabelingMetadata:
+              json_.containsKey('humanReviewLabelingMetadata')
+                  ? GoogleCloudDocumentaiV1HumanReviewLabelingMetadata.fromJson(
+                      json_['humanReviewLabelingMetadata']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          humanReviewMetadata: json_.containsKey('humanReviewMetadata')
+              ? GoogleCloudDocumentaiV1HumanReviewValidationMetadata.fromJson(
+                  json_['humanReviewMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          inactive: json_.containsKey('inactive')
+              ? json_['inactive'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (humanReviewLabelingMetadata != null)
+          'humanReviewLabelingMetadata': humanReviewLabelingMetadata!,
+        if (humanReviewMetadata != null)
+          'humanReviewMetadata': humanReviewMetadata!,
+        if (inactive != null) 'inactive': inactive!,
+      };
+}
+
 /// Payload message of raw document content (bytes).
 class GoogleCloudDocumentaiV1RawDocument {
   /// Inline document content.
@@ -5187,57 +5360,58 @@ typedef GoogleTypeDate = $Date;
 /// unset: a civil time on a calendar day in a particular time zone. * When
 /// neither time_zone nor utc_offset is set: a civil time on a calendar day in
 /// local time. The date is relative to the Proleptic Gregorian Calendar. If
-/// year is 0, the DateTime is considered not to have a specific year. month and
-/// day must have valid, non-zero values. This type may also be used to
-/// represent a physical time if all the date and time fields are set and either
-/// case of the `time_offset` oneof is set. Consider using `Timestamp` message
-/// for physical time instead. If your use case also would like to store the
-/// user's timezone, that can be done in another field. This type is more
-/// flexible than some applications may want. Make sure to document and validate
-/// your application's limitations.
+/// year, month, or day are 0, the DateTime is considered not to have a specific
+/// year, month, or day respectively. This type may also be used to represent a
+/// physical time if all the date and time fields are set and either case of the
+/// `time_offset` oneof is set. Consider using `Timestamp` message for physical
+/// time instead. If your use case also would like to store the user's timezone,
+/// that can be done in another field. This type is more flexible than some
+/// applications may want. Make sure to document and validate your application's
+/// limitations.
 class GoogleTypeDateTime {
   /// Day of month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
+  /// a datetime without a day.
   ///
-  /// Required.
+  /// Optional.
   core.int? day;
 
   /// Hours of day in 24 hour format.
   ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
+  /// Should be from 0 to 23, defaults to 0 (midnight). An API may choose to
+  /// allow the value "24:00:00" for scenarios like business closing time.
   ///
-  /// Required.
+  /// Optional.
   core.int? hours;
 
   /// Minutes of hour of day.
   ///
-  /// Must be from 0 to 59.
+  /// Must be from 0 to 59, defaults to 0.
   ///
-  /// Required.
+  /// Optional.
   core.int? minutes;
 
   /// Month of year.
   ///
-  /// Must be from 1 to 12.
+  /// Must be from 1 to 12, or 0 if specifying a datetime without a month.
   ///
-  /// Required.
+  /// Optional.
   core.int? month;
 
   /// Fractions of seconds in nanoseconds.
   ///
-  /// Must be from 0 to 999,999,999.
+  /// Must be from 0 to 999,999,999, defaults to 0.
   ///
-  /// Required.
+  /// Optional.
   core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
+  /// Must normally be from 0 to 59, defaults to 0. An API may allow the value
+  /// 60 if it allows leap-seconds.
   ///
-  /// Required.
+  /// Optional.
   core.int? seconds;
 
   /// Time zone.

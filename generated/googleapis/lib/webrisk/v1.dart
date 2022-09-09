@@ -1113,22 +1113,14 @@ class GoogleLongrunningOperation {
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus? error;
 
-  /// Service-specific metadata associated with the operation.
-  ///
-  /// It typically contains progress information and common metadata such as
-  /// create time. Some services might not provide such metadata. Any method
-  /// that returns a long-running operation should document the metadata type,
-  /// if any.
+  /// This field will contain a `SubmitUriMetadata` object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
 
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
-  ///
-  /// If you use the default HTTP mapping, the `name` should be a resource name
-  /// ending with `operations/{unique_id}`.
+  /// This will match the pattern
+  /// `/v1/{project-name}/operations/{operation-id}`.
   core.String? name;
 
   /// The normal response of the operation in case of success.

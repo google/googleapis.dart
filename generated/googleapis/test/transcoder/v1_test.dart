@@ -293,6 +293,35 @@ void checkAudioStream(api.AudioStream o) {
   buildCounterAudioStream--;
 }
 
+core.int buildCounterBwdifConfig = 0;
+api.BwdifConfig buildBwdifConfig() {
+  final o = api.BwdifConfig();
+  buildCounterBwdifConfig++;
+  if (buildCounterBwdifConfig < 3) {
+    o.deinterlaceAllFrames = true;
+    o.mode = 'foo';
+    o.parity = 'foo';
+  }
+  buildCounterBwdifConfig--;
+  return o;
+}
+
+void checkBwdifConfig(api.BwdifConfig o) {
+  buildCounterBwdifConfig++;
+  if (buildCounterBwdifConfig < 3) {
+    unittest.expect(o.deinterlaceAllFrames!, unittest.isTrue);
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parity!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBwdifConfig--;
+}
+
 core.int buildCounterColor = 0;
 api.Color buildColor() {
   final o = api.Color();
@@ -384,6 +413,27 @@ void checkDeblock(api.Deblock o) {
     );
   }
   buildCounterDeblock--;
+}
+
+core.int buildCounterDeinterlace = 0;
+api.Deinterlace buildDeinterlace() {
+  final o = api.Deinterlace();
+  buildCounterDeinterlace++;
+  if (buildCounterDeinterlace < 3) {
+    o.bwdif = buildBwdifConfig();
+    o.yadif = buildYadifConfig();
+  }
+  buildCounterDeinterlace--;
+  return o;
+}
+
+void checkDeinterlace(api.Deinterlace o) {
+  buildCounterDeinterlace++;
+  if (buildCounterDeinterlace < 3) {
+    checkBwdifConfig(o.bwdif!);
+    checkYadifConfig(o.yadif!);
+  }
+  buildCounterDeinterlace--;
 }
 
 core.int buildCounterDenoise = 0;
@@ -1363,6 +1413,7 @@ api.PreprocessingConfig buildPreprocessingConfig() {
     o.color = buildColor();
     o.crop = buildCrop();
     o.deblock = buildDeblock();
+    o.deinterlace = buildDeinterlace();
     o.denoise = buildDenoise();
     o.pad = buildPad();
   }
@@ -1377,6 +1428,7 @@ void checkPreprocessingConfig(api.PreprocessingConfig o) {
     checkColor(o.color!);
     checkCrop(o.crop!);
     checkDeblock(o.deblock!);
+    checkDeinterlace(o.deinterlace!);
     checkDenoise(o.denoise!);
     checkPad(o.pad!);
   }
@@ -1743,6 +1795,37 @@ void checkVp9CodecSettings(api.Vp9CodecSettings o) {
   buildCounterVp9CodecSettings--;
 }
 
+core.int buildCounterYadifConfig = 0;
+api.YadifConfig buildYadifConfig() {
+  final o = api.YadifConfig();
+  buildCounterYadifConfig++;
+  if (buildCounterYadifConfig < 3) {
+    o.deinterlaceAllFrames = true;
+    o.disableSpatialInterlacing = true;
+    o.mode = 'foo';
+    o.parity = 'foo';
+  }
+  buildCounterYadifConfig--;
+  return o;
+}
+
+void checkYadifConfig(api.YadifConfig o) {
+  buildCounterYadifConfig++;
+  if (buildCounterYadifConfig < 3) {
+    unittest.expect(o.deinterlaceAllFrames!, unittest.isTrue);
+    unittest.expect(o.disableSpatialInterlacing!, unittest.isTrue);
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parity!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterYadifConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-AdBreak', () {
     unittest.test('to-json--from-json', () async {
@@ -1824,6 +1907,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BwdifConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBwdifConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BwdifConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBwdifConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
       final o = buildColor();
@@ -1851,6 +1944,16 @@ void main() {
       final od =
           api.Deblock.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDeblock(od);
+    });
+  });
+
+  unittest.group('obj-schema-Deinterlace', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeinterlace();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Deinterlace.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeinterlace(od);
     });
   });
 
@@ -2129,6 +2232,16 @@ void main() {
       final od = api.Vp9CodecSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkVp9CodecSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-YadifConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildYadifConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.YadifConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkYadifConfig(od);
     });
   });
 

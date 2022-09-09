@@ -1254,6 +1254,12 @@ class ApkManifest {
   /// Permissions declared to be used by the application
   core.List<core.String>? usesPermission;
 
+  /// Version number used internally by the app.
+  core.String? versionCode;
+
+  /// Version number shown to users.
+  core.String? versionName;
+
   ApkManifest({
     this.applicationLabel,
     this.intentFilters,
@@ -1262,6 +1268,8 @@ class ApkManifest {
     this.packageName,
     this.targetSdkVersion,
     this.usesPermission,
+    this.versionCode,
+    this.versionName,
   });
 
   ApkManifest.fromJson(core.Map json_)
@@ -1292,6 +1300,12 @@ class ApkManifest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          versionCode: json_.containsKey('versionCode')
+              ? json_['versionCode'] as core.String
+              : null,
+          versionName: json_.containsKey('versionName')
+              ? json_['versionName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1302,6 +1316,8 @@ class ApkManifest {
         if (packageName != null) 'packageName': packageName!,
         if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
         if (usesPermission != null) 'usesPermission': usesPermission!,
+        if (versionCode != null) 'versionCode': versionCode!,
+        if (versionName != null) 'versionName': versionName!,
       };
 }
 
@@ -2456,11 +2472,14 @@ class Locale {
 /// With manual sharding enabled, specifying test targets via
 /// environment_variables or in InstrumentationTest is invalid.
 class ManualSharding {
-  /// Group of packages, classes, and/or test methods to be run for each shard.
+  /// Group of packages, classes, and/or test methods to be run for each
+  /// manually-created shard.
   ///
-  /// When any physical devices are selected, the number of
-  /// test_targets_for_shard must be \>= 1 and \<= 50. When no physical devices
-  /// are selected, the number must be \>= 1 and \<= 500.
+  /// You must specify at least one shard if this field is present. When you
+  /// select one or more physical devices, the number of repeated
+  /// test_targets_for_shard must be \<= 50. When you select one or more ARM
+  /// virtual devices, it must be \<= 50. When you select only x86 virtual
+  /// devices, it must be \<= 500.
   ///
   /// Required.
   core.List<TestTargetsForShard>? testTargetsForShard;
@@ -3959,17 +3978,20 @@ class TrafficRule {
 
 /// Uniformly shards test cases given a total number of shards.
 ///
-/// For Instrumentation test, it will be translated to "-e numShard" "-e
-/// shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism
-/// AndroidJUnitRunner uses, there is no guarantee that test cases will be
-/// distributed uniformly across all shards. With uniform sharding enabled,
-/// specifying these sharding arguments via environment_variables is invalid.
+/// For instrumentation tests, it will be translated to "-e numShard" and "-e
+/// shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled,
+/// specifying either of these sharding arguments via `environment_variables` is
+/// invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is
+/// no guarantee that test cases will be distributed uniformly across all
+/// shards.
 class UniformSharding {
-  /// Total number of shards.
+  /// The total number of shards to create.
   ///
-  /// When any physical devices are selected, the number must be \>= 1 and \<=
-  /// 50. When no physical devices are selected, the number must be \>= 1 and
-  /// \<= 500.
+  /// This must always be a positive number that is no greater than the total
+  /// number of test cases. When you select one or more physical devices, the
+  /// number of shards must be \<= 50. When you select one or more ARM virtual
+  /// devices, it must be \<= 50. When you select only x86 virtual devices, it
+  /// must be \<= 500.
   ///
   /// Required.
   core.int? numShards;

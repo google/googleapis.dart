@@ -1074,10 +1074,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -1671,6 +1677,19 @@ class Rotation {
 /// A Secret is made up of zero or more SecretVersions that represent the secret
 /// data.
 class Secret {
+  /// Custom metadata about the secret.
+  ///
+  /// Annotations are distinct from various forms of labels. Annotations exist
+  /// to allow client tools to store their own state information without
+  /// requiring a database. Annotation keys must be between 1 and 63 characters
+  /// long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an
+  /// alphanumeric character (\[a-z0-9A-Z\]), and may have dashes (-),
+  /// underscores (_), dots (.), and alphanumerics in between these symbols. The
+  /// total size of annotation keys and values must be less than 16KiB.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
   /// The time at which the Secret was created.
   ///
   /// Output only.
@@ -1745,6 +1764,7 @@ class Secret {
   core.Map<core.String, core.String>? versionAliases;
 
   Secret({
+    this.annotations,
     this.createTime,
     this.etag,
     this.expireTime,
@@ -1759,6 +1779,15 @@ class Secret {
 
   Secret.fromJson(core.Map json_)
       : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1802,6 +1831,7 @@ class Secret {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
         if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,

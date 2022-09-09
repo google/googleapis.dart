@@ -901,6 +901,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredNodePoolAutoConfigNetworkTags = buildNetworkTags();
     o.desiredNodePoolAutoscaling = buildNodePoolAutoscaling();
     o.desiredNodePoolId = 'foo';
+    o.desiredNodePoolLoggingConfig = buildNodePoolLoggingConfig();
     o.desiredNodeVersion = 'foo';
     o.desiredNotificationConfig = buildNotificationConfig();
     o.desiredPrivateClusterConfig = buildPrivateClusterConfig();
@@ -962,6 +963,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
       o.desiredNodePoolId!,
       unittest.equals('foo'),
     );
+    checkNodePoolLoggingConfig(o.desiredNodePoolLoggingConfig!);
     unittest.expect(
       o.desiredNodeVersion!,
       unittest.equals('foo'),
@@ -2134,6 +2136,28 @@ void checkLoggingConfig(api.LoggingConfig o) {
   buildCounterLoggingConfig--;
 }
 
+core.int buildCounterLoggingVariantConfig = 0;
+api.LoggingVariantConfig buildLoggingVariantConfig() {
+  final o = api.LoggingVariantConfig();
+  buildCounterLoggingVariantConfig++;
+  if (buildCounterLoggingVariantConfig < 3) {
+    o.variant = 'foo';
+  }
+  buildCounterLoggingVariantConfig--;
+  return o;
+}
+
+void checkLoggingVariantConfig(api.LoggingVariantConfig o) {
+  buildCounterLoggingVariantConfig++;
+  if (buildCounterLoggingVariantConfig < 3) {
+    unittest.expect(
+      o.variant!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLoggingVariantConfig--;
+}
+
 core.int buildCounterMaintenanceExclusionOptions = 0;
 api.MaintenanceExclusionOptions buildMaintenanceExclusionOptions() {
   final o = api.MaintenanceExclusionOptions();
@@ -2700,6 +2724,7 @@ api.NodeConfig buildNodeConfig() {
     o.labels = buildUnnamed31();
     o.linuxNodeConfig = buildLinuxNodeConfig();
     o.localSsdCount = 42;
+    o.loggingConfig = buildNodePoolLoggingConfig();
     o.machineType = 'foo';
     o.metadata = buildUnnamed32();
     o.minCpuPlatform = 'foo';
@@ -2750,6 +2775,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.localSsdCount!,
       unittest.equals(42),
     );
+    checkNodePoolLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.machineType!,
       unittest.equals('foo'),
@@ -2786,6 +2812,7 @@ api.NodeConfigDefaults buildNodeConfigDefaults() {
   buildCounterNodeConfigDefaults++;
   if (buildCounterNodeConfigDefaults < 3) {
     o.gcfsConfig = buildGcfsConfig();
+    o.loggingConfig = buildNodePoolLoggingConfig();
   }
   buildCounterNodeConfigDefaults--;
   return o;
@@ -2795,6 +2822,7 @@ void checkNodeConfigDefaults(api.NodeConfigDefaults o) {
   buildCounterNodeConfigDefaults++;
   if (buildCounterNodeConfigDefaults < 3) {
     checkGcfsConfig(o.gcfsConfig!);
+    checkNodePoolLoggingConfig(o.loggingConfig!);
   }
   buildCounterNodeConfigDefaults--;
 }
@@ -3122,6 +3150,25 @@ void checkNodePoolDefaults(api.NodePoolDefaults o) {
     checkNodeConfigDefaults(o.nodeConfigDefaults!);
   }
   buildCounterNodePoolDefaults--;
+}
+
+core.int buildCounterNodePoolLoggingConfig = 0;
+api.NodePoolLoggingConfig buildNodePoolLoggingConfig() {
+  final o = api.NodePoolLoggingConfig();
+  buildCounterNodePoolLoggingConfig++;
+  if (buildCounterNodePoolLoggingConfig < 3) {
+    o.variantConfig = buildLoggingVariantConfig();
+  }
+  buildCounterNodePoolLoggingConfig--;
+  return o;
+}
+
+void checkNodePoolLoggingConfig(api.NodePoolLoggingConfig o) {
+  buildCounterNodePoolLoggingConfig++;
+  if (buildCounterNodePoolLoggingConfig < 3) {
+    checkLoggingVariantConfig(o.variantConfig!);
+  }
+  buildCounterNodePoolLoggingConfig--;
 }
 
 core.int buildCounterNodeTaint = 0;
@@ -4749,6 +4796,7 @@ api.UpdateNodePoolRequest buildUpdateNodePoolRequest() {
     o.labels = buildNodeLabels();
     o.linuxNodeConfig = buildLinuxNodeConfig();
     o.locations = buildUnnamed55();
+    o.loggingConfig = buildNodePoolLoggingConfig();
     o.name = 'foo';
     o.nodeNetworkConfig = buildNodeNetworkConfig();
     o.nodePoolId = 'foo';
@@ -4782,6 +4830,7 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
     checkNodeLabels(o.labels!);
     checkLinuxNodeConfig(o.linuxNodeConfig!);
     checkUnnamed55(o.locations!);
+    checkNodePoolLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -5559,6 +5608,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LoggingVariantConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLoggingVariantConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LoggingVariantConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLoggingVariantConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-MaintenanceExclusionOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMaintenanceExclusionOptions();
@@ -5816,6 +5875,16 @@ void main() {
       final od = api.NodePoolDefaults.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkNodePoolDefaults(od);
+    });
+  });
+
+  unittest.group('obj-schema-NodePoolLoggingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNodePoolLoggingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NodePoolLoggingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNodePoolLoggingConfig(od);
     });
   });
 

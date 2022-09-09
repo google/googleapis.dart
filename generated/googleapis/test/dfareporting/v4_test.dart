@@ -16913,10 +16913,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountActiveAdSummaries/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -16988,10 +16993,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountPermissionGroups/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17060,10 +17070,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountPermissionGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17130,10 +17145,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountPermissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17202,10 +17222,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountPermissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17271,10 +17296,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountUserProfiles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17348,10 +17378,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountUserProfiles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17423,10 +17458,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountUserProfiles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17542,10 +17582,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountUserProfiles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17617,10 +17662,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accountUserProfiles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17686,10 +17736,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accounts/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17765,10 +17820,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accounts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17872,10 +17932,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accounts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -17947,10 +18012,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/accounts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18016,10 +18086,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/ads/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18093,10 +18168,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/ads', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18182,10 +18262,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/ads', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18370,10 +18455,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/ads', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18445,10 +18535,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/ads', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18514,10 +18609,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserGroups/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18585,10 +18685,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserGroups/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18662,10 +18767,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18734,10 +18844,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18837,10 +18952,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18912,10 +19032,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -18984,10 +19109,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertisers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19083,10 +19213,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserLandingPages/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19160,10 +19295,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserLandingPages', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19236,10 +19376,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserLandingPages', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19360,10 +19505,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserLandingPages', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19435,10 +19585,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertiserLandingPages', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19504,10 +19659,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertisers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19581,10 +19741,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertisers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19659,10 +19824,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertisers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19792,10 +19962,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertisers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19867,10 +20042,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/advertisers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -19941,10 +20121,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/billingProfiles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20023,10 +20208,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/billingProfiles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20107,10 +20297,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/billingProfiles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20189,10 +20384,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/billingProfiles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20311,10 +20511,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/billingProfiles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20380,10 +20585,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/billingProfiles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20462,10 +20672,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/browsers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20535,10 +20750,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/campaigns/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20621,10 +20841,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/campaigns/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20721,10 +20946,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/campaigns/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20798,10 +21028,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/campaigns', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -20877,10 +21112,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/campaigns', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21014,10 +21254,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/campaigns', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21089,10 +21334,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/campaigns', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21158,10 +21408,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/changeLogs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21240,10 +21495,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/changeLogs', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21362,10 +21622,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/cities', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21451,10 +21716,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/connectionTypes/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21523,10 +21793,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/connectionTypes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21592,10 +21867,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/contentCategories/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21663,10 +21943,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/contentCategories/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21740,10 +22025,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/contentCategories', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21812,10 +22102,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/contentCategories', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21915,10 +22210,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/contentCategories', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -21990,10 +22290,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/contentCategories', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22063,10 +22368,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/conversions/batchinsert', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22135,10 +22445,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/conversions/batchupdate', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22205,10 +22520,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/countries/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22277,10 +22597,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/countries', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22353,10 +22678,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeAssets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22438,10 +22768,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22525,10 +22860,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22617,10 +22957,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22705,10 +23050,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22824,10 +23174,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22915,10 +23270,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -22999,10 +23359,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23070,10 +23435,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23147,10 +23517,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23220,10 +23595,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23328,10 +23708,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23403,10 +23788,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeFields', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23472,10 +23862,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeGroups/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23549,10 +23944,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23623,10 +24023,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23736,10 +24141,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23811,10 +24221,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creativeGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23880,10 +24295,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creatives/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -23957,10 +24377,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creatives', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24039,10 +24464,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creatives', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24191,10 +24621,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creatives', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24266,10 +24701,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/creatives', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24341,10 +24781,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/dimensionvalues/query', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24420,10 +24865,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/directorySites/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24497,10 +24947,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/directorySites', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24574,10 +25029,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/directorySites', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24701,10 +25161,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/dynamicTargetingKeys/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24785,10 +25250,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/dynamicTargetingKeys', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24855,10 +25325,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/dynamicTargetingKeys', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -24946,10 +25421,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/eventTags/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25017,10 +25497,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/eventTags/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25094,10 +25579,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/eventTags', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25170,10 +25660,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/eventTags', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25292,10 +25787,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/eventTags', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25367,10 +25867,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/eventTags', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25439,10 +25944,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 24),
-          unittest.equals('dfareporting/v4/reports/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 24;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('reports/'),
+        );
+        pathOffset += 8;
         index = path.indexOf('/files/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25516,10 +26026,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/files', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25610,10 +26125,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivities/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25681,10 +26201,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivities/generatetag', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25754,10 +26279,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivities/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25831,10 +26361,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivities', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -25910,10 +26445,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivities', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26050,10 +26590,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivities', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26125,10 +26670,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivities', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26194,10 +26744,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivityGroups/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26271,10 +26826,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivityGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26346,10 +26906,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivityGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26465,10 +27030,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivityGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26540,10 +27110,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightActivityGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26609,10 +27184,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightConfigurations/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26682,10 +27262,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightConfigurations', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26760,10 +27345,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightConfigurations', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26835,10 +27425,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/floodlightConfigurations', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -26905,10 +27500,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27001,10 +27601,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27129,10 +27734,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/languages', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27196,10 +27806,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/metros', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27264,10 +27879,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/mobileApps/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27341,10 +27961,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/mobileApps', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27435,10 +28060,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/mobileCarriers/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27507,10 +28137,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/mobileCarriers', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27576,10 +28211,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/operatingSystemVersions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27648,10 +28288,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/operatingSystemVersions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27718,10 +28363,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/operatingSystems/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27790,10 +28440,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/operatingSystems', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27860,10 +28515,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -27956,10 +28616,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28086,10 +28751,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28180,10 +28850,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28298,10 +28973,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementGroups/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28375,10 +29055,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28460,10 +29145,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28628,10 +29318,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28703,10 +29398,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28772,10 +29472,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementStrategies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28843,10 +29548,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementStrategies/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28920,10 +29630,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementStrategies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -28992,10 +29707,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementStrategies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29096,10 +29816,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementStrategies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29171,10 +29896,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placementStrategies', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29242,10 +29972,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placements/generatetags', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29325,10 +30060,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placements/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29402,10 +30142,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placements', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29490,10 +30235,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placements', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29672,10 +30422,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placements', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29747,10 +30502,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/placements', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29816,10 +30576,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/platformTypes/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29888,10 +30653,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/platformTypes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -29956,10 +30726,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/postalCodes/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30028,10 +30803,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/postalCodes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30096,10 +30876,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30175,10 +30960,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/projects', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30278,10 +31068,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/regions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30346,10 +31141,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingListShares/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30424,10 +31224,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingListShares', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30499,10 +31304,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingListShares', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30568,10 +31378,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30645,10 +31460,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingLists', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30719,10 +31539,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingLists', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30831,10 +31656,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingLists', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30906,10 +31736,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/remarketingLists', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -30975,10 +31810,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31046,10 +31886,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31123,10 +31968,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31194,10 +32044,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31291,10 +32146,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31365,10 +32225,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31455,10 +32320,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31535,10 +32405,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/compatiblefields/query', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31608,10 +32483,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31699,10 +32579,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31802,10 +32687,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sites/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31879,10 +32769,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sites', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -31960,10 +32855,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sites', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32107,10 +33007,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sites', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32182,10 +33087,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sites', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32251,10 +33161,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sizes/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32328,10 +33243,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sizes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32398,10 +33318,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/sizes', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32487,10 +33412,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/subaccounts/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32564,10 +33494,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/subaccounts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32636,10 +33571,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/subaccounts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32738,10 +33678,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/subaccounts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32813,10 +33758,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/subaccounts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32882,10 +33832,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/targetableRemarketingLists/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -32961,10 +33916,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/targetableRemarketingLists', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33066,10 +34026,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/targetingTemplates/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33143,10 +34108,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/targetingTemplates', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33216,10 +34186,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/targetingTemplates', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33324,10 +34299,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/targetingTemplates', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33399,10 +34379,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/targetingTemplates', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33467,10 +34452,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(
@@ -33523,10 +34513,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('dfareporting/v4/userprofiles'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 28;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('userprofiles'),
+        );
+        pathOffset += 12;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33577,10 +34572,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRolePermissionGroups/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33649,10 +34649,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRolePermissionGroups', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33719,10 +34724,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRolePermissions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33792,10 +34802,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRolePermissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33867,10 +34882,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRoles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -33938,10 +34958,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRoles/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -34015,10 +35040,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRoles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -34089,10 +35119,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRoles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -34201,10 +35236,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRoles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -34276,10 +35316,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/userRoles', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -34345,10 +35390,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/videoFormats/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -34417,10 +35467,15 @@ void main() {
         );
         pathOffset += 1;
         unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('dfareporting/v4/userprofiles/'),
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals('dfareporting/v4/'),
         );
-        pathOffset += 29;
+        pathOffset += 16;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals('userprofiles/'),
+        );
+        pathOffset += 13;
         index = path.indexOf('/videoFormats', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =

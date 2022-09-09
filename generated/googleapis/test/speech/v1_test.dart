@@ -688,6 +688,7 @@ api.RecognizeResponse buildRecognizeResponse() {
   final o = api.RecognizeResponse();
   buildCounterRecognizeResponse++;
   if (buildCounterRecognizeResponse < 3) {
+    o.requestId = 'foo';
     o.results = buildUnnamed9();
     o.totalBilledTime = 'foo';
   }
@@ -698,6 +699,10 @@ api.RecognizeResponse buildRecognizeResponse() {
 void checkRecognizeResponse(api.RecognizeResponse o) {
   buildCounterRecognizeResponse++;
   if (buildCounterRecognizeResponse < 3) {
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
     checkUnnamed9(o.results!);
     unittest.expect(
       o.totalBilledTime!,

@@ -96,6 +96,7 @@ api.DockerImage buildDockerImage() {
     o.mediaType = 'foo';
     o.name = 'foo';
     o.tags = buildUnnamed1();
+    o.updateTime = 'foo';
     o.uploadTime = 'foo';
     o.uri = 'foo';
   }
@@ -123,6 +124,10 @@ void checkDockerImage(api.DockerImage o) {
       unittest.equals('foo'),
     );
     checkUnnamed1(o.tags!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.uploadTime!,
       unittest.equals('foo'),
@@ -3049,6 +3054,7 @@ void main() {
           .repositories
           .dockerImages;
       final arg_parent = 'foo';
+      final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3085,6 +3091,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -3104,6 +3114,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

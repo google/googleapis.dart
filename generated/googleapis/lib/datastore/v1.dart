@@ -852,7 +852,10 @@ class ProjectsOperationsResource {
 
 /// The request for Datastore.AllocateIds.
 class AllocateIdsRequest {
-  /// If not empty, the ID of the database against which to make the request.
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
   core.String? databaseId;
 
   /// A list of keys with incomplete key paths for which to allocate IDs.
@@ -940,7 +943,10 @@ class ArrayValue {
 
 /// The request for Datastore.BeginTransaction.
 class BeginTransactionRequest {
-  /// If not empty, the ID of the database against which to make the request.
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
   core.String? databaseId;
 
   /// Options for a new transaction.
@@ -999,7 +1005,10 @@ class BeginTransactionResponse {
 
 /// The request for Datastore.Commit.
 class CommitRequest {
-  /// If not empty, the ID of the database against which to make the request.
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
   core.String? databaseId;
 
   /// The type of commit to perform.
@@ -1498,6 +1507,8 @@ class GoogleDatastoreAdminV1Index {
 
   /// An ordered sequence of property names and their index attributes.
   ///
+  /// Requires: * A maximum of 100 properties.
+  ///
   /// Required.
   core.List<GoogleDatastoreAdminV1IndexedProperty>? properties;
 
@@ -1916,7 +1927,10 @@ typedef LatLng = $LatLng;
 
 /// The request for Datastore.Lookup.
 class LookupRequest {
-  /// If not empty, the ID of the database against which to make the request.
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
   core.String? databaseId;
 
   /// Keys of entities to look up.
@@ -2677,8 +2691,6 @@ class ReadOnly {
 /// The options shared by read requests.
 class ReadOptions {
   /// The non-transactional read consistency to use.
-  ///
-  /// Cannot be set to `STRONG` for global queries.
   /// Possible string values are:
   /// - "READ_CONSISTENCY_UNSPECIFIED" : Unspecified. This value must not be
   /// used.
@@ -2762,7 +2774,10 @@ class ReadWrite {
 
 /// The request for Datastore.ReserveIds.
 class ReserveIdsRequest {
-  /// If not empty, the ID of the database against which to make the request.
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
   core.String? databaseId;
 
   /// A list of keys with complete key paths whose numeric IDs should not be
@@ -2800,7 +2815,10 @@ typedef ReserveIdsResponse = $Empty;
 
 /// The request for Datastore.Rollback.
 class RollbackRequest {
-  /// If not empty, the ID of the database against which to make the request.
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
   core.String? databaseId;
 
   /// The transaction identifier, returned by a call to
@@ -2844,7 +2862,10 @@ typedef RollbackResponse = $Empty;
 
 /// The request for Datastore.RunQuery.
 class RunQueryRequest {
-  /// If not empty, the ID of the database against which to make the request.
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
   core.String? databaseId;
 
   /// The GQL query to run.

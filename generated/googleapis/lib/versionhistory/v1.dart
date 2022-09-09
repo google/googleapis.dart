@@ -553,6 +553,7 @@ class Platform {
   /// - "LACROS"
   /// - "LACROS_ARM32"
   /// - "CHROMEOS"
+  /// - "LACROS_ARM64"
   core.String? platformType;
 
   Platform({

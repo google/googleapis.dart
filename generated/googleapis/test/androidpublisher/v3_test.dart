@@ -6789,6 +6789,7 @@ void main() {
       final arg_packageName = 'foo';
       final arg_editId = 'foo';
       final arg_ackBundleInstallationWarning = true;
+      final arg_deviceTierConfigId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -6854,6 +6855,10 @@ void main() {
           unittest.equals('$arg_ackBundleInstallationWarning'),
         );
         unittest.expect(
+          queryMap['deviceTierConfigId']!.first,
+          unittest.equals(arg_deviceTierConfigId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -6866,6 +6871,7 @@ void main() {
       }), true);
       final response = await res.upload(arg_packageName, arg_editId,
           ackBundleInstallationWarning: arg_ackBundleInstallationWarning,
+          deviceTierConfigId: arg_deviceTierConfigId,
           $fields: arg_$fields);
       checkBundle(response as api.Bundle);
     });

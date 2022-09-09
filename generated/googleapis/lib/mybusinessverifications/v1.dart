@@ -556,6 +556,10 @@ class FetchVerificationOptionsResponse {
 class GenerateVerificationTokenRequest {
   /// The target location.
   ///
+  /// Note: The location information should exactly match the target Location,
+  /// otherwise the generated verification token won't be able to verify the
+  /// target Location.
+  ///
   /// Required.
   Location? location;
 

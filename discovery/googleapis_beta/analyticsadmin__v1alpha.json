@@ -1079,7 +1079,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Lookup for a single Audience. Audiences created before 2020 may not be supported.",
+                            "description": "Lookup for a single Audience. Audiences created before 2020 may not be supported. Default audiences will not show filter definitions.",
                             "flatPath": "v1alpha/properties/{propertiesId}/audiences/{audiencesId}",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.audiences.get",
@@ -1105,7 +1105,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists Audiences on a property. Audiences created before 2020 may not be supported.",
+                            "description": "Lists Audiences on a property. Audiences created before 2020 may not be supported. Default audiences will not show filter definitions.",
                             "flatPath": "v1alpha/properties/{propertiesId}/audiences",
                             "httpMethod": "GET",
                             "id": "analyticsadmin.properties.audiences.list",
@@ -2800,7 +2800,7 @@
             }
         }
     },
-    "revision": "20220803",
+    "revision": "20220908",
     "rootUrl": "https://analyticsadmin.googleapis.com/",
     "schemas": {
         "GoogleAnalyticsAdminV1alphaAccessBetweenFilter": {
@@ -3087,7 +3087,11 @@
                 },
                 "tokensPerHour": {
                     "$ref": "GoogleAnalyticsAdminV1alphaAccessQuotaStatus",
-                    "description": "Properties can use 50,000 tokens per hour. An API request consumes a single number of tokens, and that number is deducted from both the hourly and daily quotas."
+                    "description": "Properties can use 50,000 tokens per hour. An API request consumes a single number of tokens, and that number is deducted from all of the hourly, daily, and per project hourly quotas."
+                },
+                "tokensPerProjectPerHour": {
+                    "$ref": "GoogleAnalyticsAdminV1alphaAccessQuotaStatus",
+                    "description": "Properties can use up to 25% of their tokens per project per hour. This amounts to Analytics 360 Properties can use 12,500 tokens per project per hour. An API request consumes a single number of tokens, and that number is deducted from all of the hourly, daily, and per project hourly quotas."
                 }
             },
             "type": "object"
@@ -3482,17 +3486,13 @@
                         "OPERATION_UNSPECIFIED",
                         "EQUAL",
                         "LESS_THAN",
-                        "LESS_THAN_OR_EQUAL",
-                        "GREATER_THAN",
-                        "GREATER_THAN_OR_EQUAL"
+                        "GREATER_THAN"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
                         "Equal.",
                         "Less than.",
-                        "Less than or equal.",
-                        "Greater than.",
-                        "Greater than or equal."
+                        "Greater than."
                     ],
                     "type": "string"
                 },
@@ -3536,8 +3536,7 @@
                         "BEGINS_WITH",
                         "ENDS_WITH",
                         "CONTAINS",
-                        "FULL_REGEXP",
-                        "PARTIAL_REGEXP"
+                        "FULL_REGEXP"
                     ],
                     "enumDescriptions": [
                         "Unspecified",
@@ -3545,8 +3544,7 @@
                         "Begins with the string value.",
                         "Ends with the string value.",
                         "Contains the string value.",
-                        "Full regular expression matches with the string value.",
-                        "Partial regular expression matches with the string value."
+                        "Full regular expression matches with the string value."
                     ],
                     "type": "string"
                 },

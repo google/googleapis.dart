@@ -1813,19 +1813,20 @@ class EnrolledService {
   ///
   /// Allowed values are listed below (case-sensitive): * all * GA * App Engine
   /// * BigQuery * Cloud Bigtable * Cloud Key Management Service * Compute
-  /// Engine * Cloud Dataflow * Cloud DLP * Cloud EKM * Cloud HSM * Cloud
-  /// Identity and Access Management * Cloud Logging * Cloud Pub/Sub * Cloud
-  /// Spanner * Cloud SQL * Cloud Storage * Google Kubernetes Engine *
-  /// Organization Policy Serivice * Persistent Disk * Resource Manager *
-  /// Speaker ID Note: These values are supported as input for legacy purposes,
-  /// but will not be returned from the API. * all * ga-only *
+  /// Engine * Cloud Dataflow * Cloud Dataproc * Cloud DLP * Cloud EKM * Cloud
+  /// HSM * Cloud Identity and Access Management * Cloud Logging * Cloud Pub/Sub
+  /// * Cloud Spanner * Cloud SQL * Cloud Storage * Google Kubernetes Engine *
+  /// Organization Policy Serivice * Persistent Disk * Resource Manager * Secret
+  /// Manager * Speaker ID Note: These values are supported as input for legacy
+  /// purposes, but will not be returned from the API. * all * ga-only *
   /// appengine.googleapis.com * bigquery.googleapis.com *
   /// bigtable.googleapis.com * container.googleapis.com *
   /// cloudkms.googleapis.com * cloudresourcemanager.googleapis.com *
   /// cloudsql.googleapis.com * compute.googleapis.com * dataflow.googleapis.com
-  /// * dlp.googleapis.com * iam.googleapis.com * logging.googleapis.com *
-  /// orgpolicy.googleapis.com * pubsub.googleapis.com * spanner.googleapis.com
-  /// * speakerid.googleapis.com * storage.googleapis.com Calls to
+  /// * dataproc.googleapis.com * dlp.googleapis.com * iam.googleapis.com *
+  /// logging.googleapis.com * orgpolicy.googleapis.com * pubsub.googleapis.com
+  /// * spanner.googleapis.com * secretmanager.googleapis.com *
+  /// speakerid.googleapis.com * storage.googleapis.com Calls to
   /// UpdateAccessApprovalSettings using 'all' or any of the XXX.googleapis.com
   /// will be translated to the associated product name ('all', 'App Engine',
   /// etc.). Note: 'all' will enroll the resource in all products supported at

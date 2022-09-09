@@ -145,7 +145,7 @@ Firebase App Check works alongside other Firebase services to help protect your 
 - [Documentation](https://firebase.google.com/docs/app-check)
 - [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-dev/firebaseappcheck.v1beta/firebaseappcheck.v1beta-library.html)
 
-#### Firebase Realtime Database Management API - `firebasedatabase.v1beta`
+#### Firebase Realtime Database API - `firebasedatabase.v1beta`
 
 The Firebase Realtime Database Management API enables programmatic provisioning and management of Realtime Database instances.
 

@@ -3210,10 +3210,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -8252,6 +8258,9 @@ class JobStatistics2 {
   /// \[Output-only\] Search query specific statistics.
   SearchStatistics? searchStatistics;
 
+  /// \[Output-only\] Statistics of a Spark procedure job.
+  SparkStatistics? sparkStatistics;
+
   /// The type of query statement, if valid.
   ///
   /// Possible values (new values might be added in the future): "SELECT":
@@ -8327,6 +8336,7 @@ class JobStatistics2 {
     this.reservationUsage,
     this.schema,
     this.searchStatistics,
+    this.sparkStatistics,
     this.statementType,
     this.timeline,
     this.totalBytesBilled,
@@ -8436,6 +8446,10 @@ class JobStatistics2 {
               ? SearchStatistics.fromJson(json_['searchStatistics']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sparkStatistics: json_.containsKey('sparkStatistics')
+              ? SparkStatistics.fromJson(json_['sparkStatistics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           statementType: json_.containsKey('statementType')
               ? json_['statementType'] as core.String
               : null,
@@ -8506,6 +8520,7 @@ class JobStatistics2 {
         if (reservationUsage != null) 'reservationUsage': reservationUsage!,
         if (schema != null) 'schema': schema!,
         if (searchStatistics != null) 'searchStatistics': searchStatistics!,
+        if (sparkStatistics != null) 'sparkStatistics': sparkStatistics!,
         if (statementType != null) 'statementType': statementType!,
         if (timeline != null) 'timeline': timeline!,
         if (totalBytesBilled != null) 'totalBytesBilled': totalBytesBilled!,
@@ -9058,6 +9073,8 @@ class Model {
   /// - "AUTOML_REGRESSOR" : AutoML Tables regression model.
   /// - "AUTOML_CLASSIFIER" : AutoML Tables classification model.
   /// - "PCA" : Prinpical Component Analysis model.
+  /// - "DNN_LINEAR_COMBINED_CLASSIFIER" : Wide-and-deep classifier model.
+  /// - "DNN_LINEAR_COMBINED_REGRESSOR" : Wide-and-deep regressor model.
   /// - "AUTOENCODER" : Autoencoder model.
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
   core.String? modelType;
@@ -10479,16 +10496,18 @@ class RemoteFunctionOptions {
   /// Fully qualified name of the user-provided connection object which holds
   /// the authentication information to send requests to the remote service.
   ///
-  /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+  /// Format:
+  /// ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
   core.String? connection;
 
-  /// Endpoint of the user-provided remote service (e.g. a function url in
-  /// Google Cloud Functions).
+  /// Endpoint of the user-provided remote service, e.g.
+  /// ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
   core.String? endpoint;
 
   /// Max number of rows in each batch sent to the remote service.
   ///
-  /// If absent or if 0, it means no limit.
+  /// If absent or if 0, BigQuery dynamically decides the number of rows in a
+  /// batch.
   core.String? maxBatchingRows;
 
   /// User-defined context as a set of key/value pairs, which will be sent as
@@ -10653,6 +10672,11 @@ class Routine {
   /// - "TABLE_VALUED_FUNCTION" : Non-builtin permanent TVF.
   core.String? routineType;
 
+  /// Spark specific options.
+  ///
+  /// Optional.
+  SparkOptions? sparkOptions;
+
   /// Can be set for procedures only.
   ///
   /// If true (default), the definition body will be validated in the creation
@@ -10678,6 +10702,7 @@ class Routine {
     this.returnType,
     this.routineReference,
     this.routineType,
+    this.sparkOptions,
     this.strictMode,
   });
 
@@ -10732,6 +10757,10 @@ class Routine {
           routineType: json_.containsKey('routineType')
               ? json_['routineType'] as core.String
               : null,
+          sparkOptions: json_.containsKey('sparkOptions')
+              ? SparkOptions.fromJson(
+                  json_['sparkOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
           strictMode: json_.containsKey('strictMode')
               ? json_['strictMode'] as core.bool
               : null,
@@ -10753,6 +10782,7 @@ class Routine {
         if (returnType != null) 'returnType': returnType!,
         if (routineReference != null) 'routineReference': routineReference!,
         if (routineType != null) 'routineType': routineType!,
+        if (sparkOptions != null) 'sparkOptions': sparkOptions!,
         if (strictMode != null) 'strictMode': strictMode!,
       };
 }
@@ -11205,6 +11235,208 @@ class SnapshotDefinition {
           'baseTableReference': baseTableReference!,
         if (snapshotTime != null)
           'snapshotTime': snapshotTime!.toUtc().toIso8601String(),
+      };
+}
+
+class SparkLoggingInfo {
+  /// \[Output-only\] Project ID used for logging
+  core.String? projectId;
+
+  /// \[Output-only\] Resource type used for logging
+  core.String? resourceType;
+
+  SparkLoggingInfo({
+    this.projectId,
+    this.resourceType,
+  });
+
+  SparkLoggingInfo.fromJson(core.Map json_)
+      : this(
+          projectId: json_.containsKey('project_id')
+              ? json_['project_id'] as core.String
+              : null,
+          resourceType: json_.containsKey('resource_type')
+              ? json_['resource_type'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'project_id': projectId!,
+        if (resourceType != null) 'resource_type': resourceType!,
+      };
+}
+
+/// Options for a user-defined Spark routine.
+class SparkOptions {
+  /// Archive files to be extracted into the working directory of each executor.
+  ///
+  /// For more information about Apache Spark, see
+  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+  core.List<core.String>? archiveUris;
+
+  /// Fully qualified name of the user-provided Spark connection object.
+  ///
+  /// Format:
+  /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+  core.String? connection;
+
+  /// Custom container image for the runtime environment.
+  core.String? containerImage;
+
+  /// Files to be placed in the working directory of each executor.
+  ///
+  /// For more information about Apache Spark, see
+  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+  core.List<core.String>? fileUris;
+
+  /// JARs to include on the driver and executor CLASSPATH.
+  ///
+  /// For more information about Apache Spark, see
+  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+  core.List<core.String>? jarUris;
+
+  /// The main file URI of the Spark application.
+  ///
+  /// Exactly one of the definition_body field and the main_file_uri field must
+  /// be set.
+  core.String? mainFileUri;
+
+  /// Configuration properties as a set of key/value pairs, which will be passed
+  /// on to the Spark application.
+  ///
+  /// For more information, see
+  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+  core.Map<core.String, core.String>? properties;
+
+  /// Python files to be placed on the PYTHONPATH for PySpark application.
+  ///
+  /// Supported file types: `.py`, `.egg`, and `.zip`. For more information
+  /// about Apache Spark, see
+  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+  core.List<core.String>? pyFileUris;
+
+  /// Runtime version.
+  ///
+  /// If not specified, the default runtime version is used.
+  core.String? runtimeVersion;
+
+  SparkOptions({
+    this.archiveUris,
+    this.connection,
+    this.containerImage,
+    this.fileUris,
+    this.jarUris,
+    this.mainFileUri,
+    this.properties,
+    this.pyFileUris,
+    this.runtimeVersion,
+  });
+
+  SparkOptions.fromJson(core.Map json_)
+      : this(
+          archiveUris: json_.containsKey('archiveUris')
+              ? (json_['archiveUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          connection: json_.containsKey('connection')
+              ? json_['connection'] as core.String
+              : null,
+          containerImage: json_.containsKey('containerImage')
+              ? json_['containerImage'] as core.String
+              : null,
+          fileUris: json_.containsKey('fileUris')
+              ? (json_['fileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          jarUris: json_.containsKey('jarUris')
+              ? (json_['jarUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          mainFileUri: json_.containsKey('mainFileUri')
+              ? json_['mainFileUri'] as core.String
+              : null,
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          pyFileUris: json_.containsKey('pyFileUris')
+              ? (json_['pyFileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          runtimeVersion: json_.containsKey('runtimeVersion')
+              ? json_['runtimeVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (connection != null) 'connection': connection!,
+        if (containerImage != null) 'containerImage': containerImage!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (jarUris != null) 'jarUris': jarUris!,
+        if (mainFileUri != null) 'mainFileUri': mainFileUri!,
+        if (properties != null) 'properties': properties!,
+        if (pyFileUris != null) 'pyFileUris': pyFileUris!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+      };
+}
+
+class SparkStatistics {
+  /// \[Output-only\] Endpoints generated for the Spark job.
+  core.Map<core.String, core.String>? endpoints;
+
+  /// \[Output-only\] Logging info is used to generate a link to Cloud Logging.
+  SparkLoggingInfo? loggingInfo;
+
+  /// \[Output-only\] Spark job id if a Spark job is created successfully.
+  core.String? sparkJobId;
+
+  /// \[Output-only\] Location where the Spark job is executed.
+  core.String? sparkJobLocation;
+
+  SparkStatistics({
+    this.endpoints,
+    this.loggingInfo,
+    this.sparkJobId,
+    this.sparkJobLocation,
+  });
+
+  SparkStatistics.fromJson(core.Map json_)
+      : this(
+          endpoints: json_.containsKey('endpoints')
+              ? (json_['endpoints'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          loggingInfo: json_.containsKey('logging_info')
+              ? SparkLoggingInfo.fromJson(
+                  json_['logging_info'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sparkJobId: json_.containsKey('spark_job_id')
+              ? json_['spark_job_id'] as core.String
+              : null,
+          sparkJobLocation: json_.containsKey('spark_job_location')
+              ? json_['spark_job_location'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpoints != null) 'endpoints': endpoints!,
+        if (loggingInfo != null) 'logging_info': loggingInfo!,
+        if (sparkJobId != null) 'spark_job_id': sparkJobId!,
+        if (sparkJobLocation != null) 'spark_job_location': sparkJobLocation!,
       };
 }
 
@@ -12732,6 +12964,18 @@ class TrainingOptions {
   /// If true, clean spikes and dips in the input time series.
   core.bool? cleanSpikesAndDips;
 
+  /// Enums for color space, used for processing images in Object Table.
+  ///
+  /// See more details at https://www.tensorflow.org/io/tutorials/colorspace.
+  /// Possible string values are:
+  /// - "COLOR_SPACE_UNSPECIFIED" : Unspecified color space
+  /// - "RGB" : RGB
+  /// - "HSV" : HSV
+  /// - "YIQ" : YIQ
+  /// - "YUV" : YUV
+  /// - "GRAYSCALE" : GRAYSCALE
+  core.String? colorSpace;
+
   /// Subsample ratio of columns for each level for boosted tree models.
   core.double? colsampleBylevel;
 
@@ -13041,7 +13285,7 @@ class TrainingOptions {
   /// feature name is A_b. When true, the output feature name is A.b.
   core.bool? preserveInputStructs;
 
-  /// Number of paths for the sampled shapley explain method.
+  /// Number of paths for the sampled Shapley explain method.
   core.String? sampledShapleyNumPaths;
 
   /// Subsample fraction of the training data to grow tree to prevent
@@ -13094,6 +13338,7 @@ class TrainingOptions {
     this.boosterType,
     this.calculatePValues,
     this.cleanSpikesAndDips,
+    this.colorSpace,
     this.colsampleBylevel,
     this.colsampleBynode,
     this.colsampleBytree,
@@ -13177,6 +13422,9 @@ class TrainingOptions {
               : null,
           cleanSpikesAndDips: json_.containsKey('cleanSpikesAndDips')
               ? json_['cleanSpikesAndDips'] as core.bool
+              : null,
+          colorSpace: json_.containsKey('colorSpace')
+              ? json_['colorSpace'] as core.String
               : null,
           colsampleBylevel: json_.containsKey('colsampleBylevel')
               ? (json_['colsampleBylevel'] as core.num).toDouble()
@@ -13388,6 +13636,7 @@ class TrainingOptions {
         if (calculatePValues != null) 'calculatePValues': calculatePValues!,
         if (cleanSpikesAndDips != null)
           'cleanSpikesAndDips': cleanSpikesAndDips!,
+        if (colorSpace != null) 'colorSpace': colorSpace!,
         if (colsampleBylevel != null) 'colsampleBylevel': colsampleBylevel!,
         if (colsampleBynode != null) 'colsampleBynode': colsampleBynode!,
         if (colsampleBytree != null) 'colsampleBytree': colsampleBytree!,
@@ -13503,6 +13752,9 @@ class TrainingRun {
   /// default options that were used.
   TrainingOptions? trainingOptions;
 
+  /// The start time of this training run, in milliseconds since epoch.
+  core.String? trainingStartTime;
+
   /// The model id in Vertex AI Model Registry for this training run
   core.String? vertexAiModelId;
 
@@ -13517,6 +13769,7 @@ class TrainingRun {
     this.results,
     this.startTime,
     this.trainingOptions,
+    this.trainingStartTime,
     this.vertexAiModelId,
     this.vertexAiModelVersion,
   });
@@ -13556,6 +13809,9 @@ class TrainingRun {
               ? TrainingOptions.fromJson(json_['trainingOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          trainingStartTime: json_.containsKey('trainingStartTime')
+              ? json_['trainingStartTime'] as core.String
+              : null,
           vertexAiModelId: json_.containsKey('vertexAiModelId')
               ? json_['vertexAiModelId'] as core.String
               : null,
@@ -13574,6 +13830,7 @@ class TrainingRun {
         if (results != null) 'results': results!,
         if (startTime != null) 'startTime': startTime!,
         if (trainingOptions != null) 'trainingOptions': trainingOptions!,
+        if (trainingStartTime != null) 'trainingStartTime': trainingStartTime!,
         if (vertexAiModelId != null) 'vertexAiModelId': vertexAiModelId!,
         if (vertexAiModelVersion != null)
           'vertexAiModelVersion': vertexAiModelVersion!,
