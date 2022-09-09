@@ -5355,6 +5355,9 @@ class TextAnnotation {
 ///
 /// This is used to control TEXT_DETECTION and DOCUMENT_TEXT_DETECTION features.
 class TextDetectionParams {
+  /// A list of advanced OCR options to fine-tune OCR behavior.
+  core.List<core.String>? advancedOcrOptions;
+
   /// By default, Cloud Vision API only includes confidence score for
   /// DOCUMENT_TEXT_DETECTION result.
   ///
@@ -5363,11 +5366,17 @@ class TextDetectionParams {
   core.bool? enableTextDetectionConfidenceScore;
 
   TextDetectionParams({
+    this.advancedOcrOptions,
     this.enableTextDetectionConfidenceScore,
   });
 
   TextDetectionParams.fromJson(core.Map json_)
       : this(
+          advancedOcrOptions: json_.containsKey('advancedOcrOptions')
+              ? (json_['advancedOcrOptions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           enableTextDetectionConfidenceScore:
               json_.containsKey('enableTextDetectionConfidenceScore')
                   ? json_['enableTextDetectionConfidenceScore'] as core.bool
@@ -5375,6 +5384,8 @@ class TextDetectionParams {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedOcrOptions != null)
+          'advancedOcrOptions': advancedOcrOptions!,
         if (enableTextDetectionConfidenceScore != null)
           'enableTextDetectionConfidenceScore':
               enableTextDetectionConfidenceScore!,

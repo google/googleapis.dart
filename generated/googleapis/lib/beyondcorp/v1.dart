@@ -1111,7 +1111,7 @@ class ProjectsLocationsAppConnectorsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get instance config for a given AppConnector.
+  /// Gets instance configuration for a given AppConnector.
   ///
   /// An internal method called by a AppConnector to get its container config.
   ///
@@ -3339,6 +3339,11 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   /// Output only.
   core.int? ingressPort;
 
+  /// L7 private service connection for this resource.
+  ///
+  /// Output only.
+  core.String? l7psc;
+
   /// The type of hosting used by the gateway.
   ///
   /// Required.
@@ -3356,6 +3361,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway({
     this.appGateway,
     this.ingressPort,
+    this.l7psc,
     this.type,
     this.uri,
   });
@@ -3369,6 +3375,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
           ingressPort: json_.containsKey('ingressPort')
               ? json_['ingressPort'] as core.int
               : null,
+          l7psc:
+              json_.containsKey('l7psc') ? json_['l7psc'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
@@ -3376,6 +3384,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appGateway != null) 'appGateway': appGateway!,
         if (ingressPort != null) 'ingressPort': ingressPort!,
+        if (l7psc != null) 'l7psc': l7psc!,
         if (type != null) 'type': type!,
         if (uri != null) 'uri': uri!,
       };
@@ -4141,8 +4150,12 @@ class GoogleIamV1Binding {
   /// represents anyone who is authenticated with a Google account or a service
   /// account. * `user:{emailid}`: An email address that represents a specific
   /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{emailid}`: An email address that represents a Google
+  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
+  /// An identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has

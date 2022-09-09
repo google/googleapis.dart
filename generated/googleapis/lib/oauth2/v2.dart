@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Obtains end-user authorization grants for use with other Google APIs.
 class Oauth2Api {
-  /// View your email address
+  /// See your primary Google Account email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 

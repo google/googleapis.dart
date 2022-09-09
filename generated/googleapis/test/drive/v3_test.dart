@@ -1456,6 +1456,8 @@ api.File buildFile() {
     o.properties = buildUnnamed21();
     o.quotaBytesUsed = 'foo';
     o.resourceKey = 'foo';
+    o.sha1Checksum = 'foo';
+    o.sha256Checksum = 'foo';
     o.shared = true;
     o.sharedWithMeTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.sharingUser = buildUser();
@@ -1576,6 +1578,14 @@ void checkFile(api.File o) {
     );
     unittest.expect(
       o.resourceKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sha1Checksum!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sha256Checksum!,
       unittest.equals('foo'),
     );
     unittest.expect(o.shared!, unittest.isTrue);

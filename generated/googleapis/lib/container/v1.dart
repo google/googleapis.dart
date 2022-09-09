@@ -1065,8 +1065,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// Request parameters:
   ///
   /// [name] - The name (project, location, cluster, node pool id) of the node
-  /// pool to complete upgrade. Specified in the format 'projects / * /locations
-  /// / * /clusters / * /nodePools / * '.
+  /// pool to complete upgrade. Specified in the format `projects / * /locations
+  /// / * /clusters / * /nodePools / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
@@ -3871,8 +3871,8 @@ class AutoprovisioningNodePoolDefaults {
   /// more information, read
   /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
   /// This field is deprecated, min_cpu_platform should be specified using
-  /// cloud.google.com/requested-min-cpu-platform label selector on the pod. To
-  /// unset the min cpu platform field pass "automatic" as field value.
+  /// https://cloud.google.com/requested-min-cpu-platform label selector on the
+  /// pod. To unset the min cpu platform field pass "automatic" as field value.
   ///
   /// Deprecated.
   core.String? minCpuPlatform;
@@ -3979,10 +3979,11 @@ class BigQueryDestination {
 
 /// Configuration for Binary Authorization.
 class BinaryAuthorization {
-  /// Enable Binary Authorization for this cluster.
+  /// This field is deprecated.
   ///
-  /// If enabled, all container images will be validated by Binary
-  /// Authorization.
+  /// Leave this unset and instead configure BinaryAuthorization using
+  /// evaluation_mode. If evaluation_mode is set to anything other than
+  /// EVALUATION_MODE_UNSPECIFIED, this field is ignored.
   core.bool? enabled;
 
   /// Mode of operation for binauthz policy evaluation.
@@ -5215,6 +5216,9 @@ class ClusterUpdate {
   /// node pool on the cluster.
   core.String? desiredNodePoolId;
 
+  /// The desired node pool logging configuration defaults for the cluster.
+  NodePoolLoggingConfig? desiredNodePoolLoggingConfig;
+
   /// The Kubernetes version to change the nodes to (typically an upgrade).
   ///
   /// Users may specify either explicit versions offered by Kubernetes Engine or
@@ -5287,6 +5291,7 @@ class ClusterUpdate {
     this.desiredNodePoolAutoConfigNetworkTags,
     this.desiredNodePoolAutoscaling,
     this.desiredNodePoolId,
+    this.desiredNodePoolLoggingConfig,
     this.desiredNodeVersion,
     this.desiredNotificationConfig,
     this.desiredPrivateClusterConfig,
@@ -5410,6 +5415,12 @@ class ClusterUpdate {
           desiredNodePoolId: json_.containsKey('desiredNodePoolId')
               ? json_['desiredNodePoolId'] as core.String
               : null,
+          desiredNodePoolLoggingConfig:
+              json_.containsKey('desiredNodePoolLoggingConfig')
+                  ? NodePoolLoggingConfig.fromJson(
+                      json_['desiredNodePoolLoggingConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredNodeVersion: json_.containsKey('desiredNodeVersion')
               ? json_['desiredNodeVersion'] as core.String
               : null,
@@ -5508,6 +5519,8 @@ class ClusterUpdate {
         if (desiredNodePoolAutoscaling != null)
           'desiredNodePoolAutoscaling': desiredNodePoolAutoscaling!,
         if (desiredNodePoolId != null) 'desiredNodePoolId': desiredNodePoolId!,
+        if (desiredNodePoolLoggingConfig != null)
+          'desiredNodePoolLoggingConfig': desiredNodePoolLoggingConfig!,
         if (desiredNodeVersion != null)
           'desiredNodeVersion': desiredNodeVersion!,
         if (desiredNotificationConfig != null)
@@ -6880,6 +6893,31 @@ class LoggingConfig {
       };
 }
 
+/// LoggingVariantConfig specifies the behaviour of the logging component.
+class LoggingVariantConfig {
+  /// Logging variant deployed on nodes.
+  /// Possible string values are:
+  /// - "VARIANT_UNSPECIFIED" : Default value. This shouldn't be used.
+  /// - "DEFAULT" : default logging variant.
+  /// - "MAX_THROUGHPUT" : maximum logging throughput variant.
+  core.String? variant;
+
+  LoggingVariantConfig({
+    this.variant,
+  });
+
+  LoggingVariantConfig.fromJson(core.Map json_)
+      : this(
+          variant: json_.containsKey('variant')
+              ? json_['variant'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (variant != null) 'variant': variant!,
+      };
+}
+
 /// Represents the Maintenance exclusion option.
 class MaintenanceExclusionOptions {
   /// Scope specifies the upgrade scope which upgrades are blocked by the
@@ -7622,6 +7660,9 @@ class NodeConfig {
   /// information.
   core.int? localSsdCount;
 
+  /// Logging configuration.
+  NodePoolLoggingConfig? loggingConfig;
+
   /// The name of a Google Compute Engine
   /// [machine type](https://cloud.google.com/compute/docs/machine-types) If
   /// unspecified, the default machine type is `e2-medium`.
@@ -7733,6 +7774,7 @@ class NodeConfig {
     this.labels,
     this.linuxNodeConfig,
     this.localSsdCount,
+    this.loggingConfig,
     this.machineType,
     this.metadata,
     this.minCpuPlatform,
@@ -7804,6 +7846,10 @@ class NodeConfig {
               : null,
           localSsdCount: json_.containsKey('localSsdCount')
               ? json_['localSsdCount'] as core.int
+              : null,
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? NodePoolLoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           machineType: json_.containsKey('machineType')
               ? json_['machineType'] as core.String
@@ -7878,6 +7924,7 @@ class NodeConfig {
         if (labels != null) 'labels': labels!,
         if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
         if (metadata != null) 'metadata': metadata!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
@@ -7900,11 +7947,15 @@ class NodeConfig {
 
 /// Subset of NodeConfig message that has defaults.
 class NodeConfigDefaults {
-  /// GCFS (Google Container File System, a.k.a. Riptide) options.
+  /// GCFS (Google Container File System, also known as Riptide) options.
   GcfsConfig? gcfsConfig;
+
+  /// Logging configuration for node pools.
+  NodePoolLoggingConfig? loggingConfig;
 
   NodeConfigDefaults({
     this.gcfsConfig,
+    this.loggingConfig,
   });
 
   NodeConfigDefaults.fromJson(core.Map json_)
@@ -7913,10 +7964,15 @@ class NodeConfigDefaults {
               ? GcfsConfig.fromJson(
                   json_['gcfsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? NodePoolLoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
       };
 }
 
@@ -8489,6 +8545,28 @@ class NodePoolDefaults {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nodeConfigDefaults != null)
           'nodeConfigDefaults': nodeConfigDefaults!,
+      };
+}
+
+/// NodePoolLoggingConfig specifies logging configuration for nodepools.
+class NodePoolLoggingConfig {
+  /// Logging variant configuration.
+  LoggingVariantConfig? variantConfig;
+
+  NodePoolLoggingConfig({
+    this.variantConfig,
+  });
+
+  NodePoolLoggingConfig.fromJson(core.Map json_)
+      : this(
+          variantConfig: json_.containsKey('variantConfig')
+              ? LoggingVariantConfig.fromJson(
+                  json_['variantConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (variantConfig != null) 'variantConfig': variantConfig!,
       };
 }
 
@@ -10957,6 +11035,9 @@ class UpdateNodePoolRequest {
   /// being added or removed.
   core.List<core.String>? locations;
 
+  /// Logging configuration.
+  NodePoolLoggingConfig? loggingConfig;
+
   /// The name (project, location, cluster, node pool) of the node pool to
   /// update.
   ///
@@ -11031,6 +11112,7 @@ class UpdateNodePoolRequest {
     this.labels,
     this.linuxNodeConfig,
     this.locations,
+    this.loggingConfig,
     this.name,
     this.nodeNetworkConfig,
     this.nodePoolId,
@@ -11080,6 +11162,10 @@ class UpdateNodePoolRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? NodePoolLoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nodeNetworkConfig: json_.containsKey('nodeNetworkConfig')
               ? NodeNetworkConfig.fromJson(json_['nodeNetworkConfig']
@@ -11123,6 +11209,7 @@ class UpdateNodePoolRequest {
         if (labels != null) 'labels': labels!,
         if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
         if (locations != null) 'locations': locations!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (name != null) 'name': name!,
         if (nodeNetworkConfig != null) 'nodeNetworkConfig': nodeNetworkConfig!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,

@@ -45,10 +45,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// API for provisioning and managing identity resources.
 class CloudIdentityApi {
-  /// Private Service: https://www.googleapis.com/auth/cloud-identity
-  static const cloudIdentityScope =
-      'https://www.googleapis.com/auth/cloud-identity';
-
   /// Private Service: https://www.googleapis.com/auth/cloud-identity.devices
   static const cloudIdentityDevicesScope =
       'https://www.googleapis.com/auth/cloud-identity.devices';
@@ -71,16 +67,6 @@ class CloudIdentityApi {
   /// and their emails
   static const cloudIdentityGroupsReadonlyScope =
       'https://www.googleapis.com/auth/cloud-identity.groups.readonly';
-
-  /// See, send, or cancel any Cloud Identity UserInvitations to join your
-  /// organization to users
-  static const cloudIdentityUserinvitationsScope =
-      'https://www.googleapis.com/auth/cloud-identity.userinvitations';
-
-  /// See, send, or cancel any Cloud Identity UserInvitations to join your
-  /// organization to users
-  static const cloudIdentityUserinvitationsReadonlyScope =
-      'https://www.googleapis.com/auth/cloud-identity.userinvitations.readonly';
 
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

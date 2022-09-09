@@ -2670,7 +2670,7 @@
             }
         }
     },
-    "revision": "20220729",
+    "revision": "20220825",
     "rootUrl": "https://books.googleapis.com/",
     "schemas": {
         "Annotation": {

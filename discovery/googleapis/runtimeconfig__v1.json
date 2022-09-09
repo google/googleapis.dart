@@ -208,7 +208,7 @@
             }
         }
     },
-    "revision": "20220730",
+    "revision": "20220829",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {

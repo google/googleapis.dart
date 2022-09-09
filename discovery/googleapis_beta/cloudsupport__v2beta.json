@@ -573,7 +573,7 @@
             }
         }
     },
-    "revision": "20220727",
+    "revision": "20220907",
     "rootUrl": "https://cloudsupport.googleapis.com/",
     "schemas": {
         "Actor": {
@@ -709,7 +709,7 @@
                         "P4"
                     ],
                     "enumDescriptions": [
-                        "Severity is undefined or has not been set yet.",
+                        "Priority is undefined or has not been set yet.",
                         "Extreme impact on a production service. Service is hard down.",
                         "Critical impact on a production service. Service is currently unusable.",
                         "Severe impact on a production service. Service is usable but greatly impaired.",

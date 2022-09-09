@@ -7746,6 +7746,18 @@ class File {
   /// A link back to this file.
   core.String? selfLink;
 
+  /// The SHA1 checksum associated with this file, if available.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  core.String? sha1Checksum;
+
+  /// The SHA256 checksum associated with this file, if available.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  core.String? sha256Checksum;
+
   /// Deprecated: use capabilities/canShare.
   core.bool? shareable;
 
@@ -7893,6 +7905,8 @@ class File {
     this.quotaBytesUsed,
     this.resourceKey,
     this.selfLink,
+    this.sha1Checksum,
+    this.sha256Checksum,
     this.shareable,
     this.shared,
     this.sharedWithMeDate,
@@ -8112,6 +8126,12 @@ class File {
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
+          sha1Checksum: json_.containsKey('sha1Checksum')
+              ? json_['sha1Checksum'] as core.String
+              : null,
+          sha256Checksum: json_.containsKey('sha256Checksum')
+              ? json_['sha256Checksum'] as core.String
+              : null,
           shareable: json_.containsKey('shareable')
               ? json_['shareable'] as core.bool
               : null,
@@ -8244,6 +8264,8 @@ class File {
         if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
         if (resourceKey != null) 'resourceKey': resourceKey!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (sha1Checksum != null) 'sha1Checksum': sha1Checksum!,
+        if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
         if (shareable != null) 'shareable': shareable!,
         if (shared != null) 'shared': shared!,
         if (sharedWithMeDate != null)

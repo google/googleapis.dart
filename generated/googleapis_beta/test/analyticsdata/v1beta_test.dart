@@ -1427,6 +1427,7 @@ api.PropertyQuota buildPropertyQuota() {
     o.serverErrorsPerProjectPerHour = buildQuotaStatus();
     o.tokensPerDay = buildQuotaStatus();
     o.tokensPerHour = buildQuotaStatus();
+    o.tokensPerProjectPerHour = buildQuotaStatus();
   }
   buildCounterPropertyQuota--;
   return o;
@@ -1440,6 +1441,7 @@ void checkPropertyQuota(api.PropertyQuota o) {
     checkQuotaStatus(o.serverErrorsPerProjectPerHour!);
     checkQuotaStatus(o.tokensPerDay!);
     checkQuotaStatus(o.tokensPerHour!);
+    checkQuotaStatus(o.tokensPerProjectPerHour!);
   }
   buildCounterPropertyQuota--;
 }

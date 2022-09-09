@@ -2,6 +2,13 @@
 
 - Require Dart 2.17 or later.
 
+### API changes
+
+- `beyondcorp` - new!
+- `connectors` - Added v2
+- `dfareporting` - Added v4
+- `drivelabels` - new!
+
 ## 9.1.0
 
 - Fixed `firestore/v1.dart` API.

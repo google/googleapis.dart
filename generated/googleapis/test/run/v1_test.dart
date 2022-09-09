@@ -194,6 +194,21 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterCancelExecutionRequest = 0;
+api.CancelExecutionRequest buildCancelExecutionRequest() {
+  final o = api.CancelExecutionRequest();
+  buildCounterCancelExecutionRequest++;
+  if (buildCounterCancelExecutionRequest < 3) {}
+  buildCounterCancelExecutionRequest--;
+  return o;
+}
+
+void checkCancelExecutionRequest(api.CancelExecutionRequest o) {
+  buildCounterCancelExecutionRequest++;
+  if (buildCounterCancelExecutionRequest < 3) {}
+  buildCounterCancelExecutionRequest--;
+}
+
 core.int buildCounterConfigMapEnvSource = 0;
 api.ConfigMapEnvSource buildConfigMapEnvSource() {
   final o = api.ConfigMapEnvSource();
@@ -3631,6 +3646,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CancelExecutionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelExecutionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelExecutionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCancelExecutionRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-ConfigMapEnvSource', () {
     unittest.test('to-json--from-json', () async {
       final o = buildConfigMapEnvSource();
@@ -4929,6 +4954,64 @@ void main() {
   });
 
   unittest.group('resource-NamespacesExecutionsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudRunApi(mock).namespaces.executions;
+      final arg_request = buildCancelExecutionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CancelExecutionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelExecutionRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals('apis/run.googleapis.com/v1/'),
+        );
+        pathOffset += 27;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExecution());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkExecution(response as api.Execution);
+    });
+
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
       final res = api.CloudRunApi(mock).namespaces.executions;

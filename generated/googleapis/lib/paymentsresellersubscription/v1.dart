@@ -80,13 +80,16 @@ class PartnersProductsResource {
   /// partners/{partner}
   /// Value must have pattern `^partners/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Specifies the filters for the products results. The
-  /// syntax defined in the EBNF grammar:
-  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be
-  /// thrown if any specified parameter is not supported. Currently, it can only
-  /// be used by Youtube partners. Allowed parameters are: - regionCodes -
-  /// zipCode - eligibilityId Multiple parameters can be specified, for example:
-  /// "regionCodes=US zipCode=94043 eligibilityId=2022H1Campaign"
+  /// [filter] - Optional. Specifies the filters for the product results. The
+  /// syntax is defined in https://google.aip.dev/160 with the following
+  /// caveats: - Only the following features are supported: - Logical operator
+  /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
+  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` -
+  /// `youtubePayload.postalCode` - Unless explicitly mentioned above, other
+  /// features are not supported. Example: `regionCodes:US AND
+  /// youtubePayload.postalCode=94043 AND
+  /// youtubePayload.partnerEligibilityId=eligibility-id`
   ///
   /// [pageSize] - Optional. The maximum number of products to return. The
   /// service may return fewer than this value. If unspecified, at most 50
@@ -203,13 +206,16 @@ class PartnersPromotionsResource {
   /// Value must have pattern `^partners/\[^/\]+$`.
   ///
   /// [filter] - Optional. Specifies the filters for the promotion results. The
-  /// syntax defined in the EBNF grammar:
-  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be
-  /// thrown if the specified parameter(s) is not supported. Currently, it can
-  /// only be used by Youtube partners. Allowed parameters are: - region_codes:
-  /// "US" - zip_code: "94043" - eligibility_id: "2022H1Campaign" Multiple
-  /// parameters can be specified, for example: "region_codes=US zip_code=94043
-  /// eligibility_id=2022H1Campaign"
+  /// syntax is defined in https://google.aip.dev/160 with the following
+  /// caveats: - Only the following features are supported: - Logical operator
+  /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
+  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// supported: - `applicableProducts` - `regionCodes` -
+  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` -
+  /// Unless explicitly mentioned above, other features are not supported.
+  /// Example: `applicableProducts:partners/partner1/products/product1 AND
+  /// regionCodes:US AND youtubePayload.postalCode=94043 AND
+  /// youtubePayload.partnerEligibilityId=eligibility-id`
   ///
   /// [pageSize] - Optional. The maximum number of promotions to return. The
   /// service may return fewer than this value. If unspecified, at most 50
@@ -872,14 +878,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Extension {
 class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
   /// Specifies the filters for the promotion results.
   ///
-  /// The syntax defined in the EBNF grammar:
-  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt. An error will be
-  /// thrown if any specified parameter is not supported. Currently, it can only
-  /// be used by Youtube partners. Allowed parameters are: - regionCodes -
-  /// zipCode - eligibilityId - applicableProducts Multiple parameters can be
-  /// specified, for example: "regionCodes=US zipCode=94043
-  /// eligibilityId=2022H1Campaign", or
-  /// "applicableProducts=partners/p1/products/product2"
+  /// The syntax is defined in https://google.aip.dev/160 with the following
+  /// caveats: - Only the following features are supported: - Logical operator
+  /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
+  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// supported: - `applicableProducts` - `regionCodes` -
+  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` -
+  /// Unless explicitly mentioned above, other features are not supported.
+  /// Example: `applicableProducts:partners/partner1/products/product1 AND
+  /// regionCodes:US AND youtubePayload.postalCode=94043 AND
+  /// youtubePayload.partnerEligibilityId=eligibility-id`
   ///
   /// Optional.
   core.String? filter;
@@ -1407,12 +1415,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>?
       lineItems;
 
-  /// Response only.
+  /// Resource name of the subscription.
   ///
-  /// Resource name of the subscription. It will have the format of
-  /// "partners/{partner_id}/subscriptions/{subscription_id}"
+  /// It will have the format of
+  /// "partners/{partner_id}/subscriptions/{subscription_id}". This is available
+  /// for authorizeAddon, but otherwise is response only.
   ///
-  /// Output only.
+  /// Optional.
   core.String? name;
 
   /// Identifier of the end-user in partner’s system.

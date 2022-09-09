@@ -20,6 +20,7 @@
 ///
 /// Create an instance of [CloudBuildApi] to access these resources:
 ///
+/// - [GithubDotComWebhookResource]
 /// - [LocationsResource]
 /// - [OperationsResource]
 /// - [ProjectsResource]
@@ -61,6 +62,8 @@ class CloudBuildApi {
 
   final commons.ApiRequester _requester;
 
+  GithubDotComWebhookResource get githubDotComWebhook =>
+      GithubDotComWebhookResource(_requester);
   LocationsResource get locations => LocationsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -71,6 +74,56 @@ class CloudBuildApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class GithubDotComWebhookResource {
+  final commons.ApiRequester _requester;
+
+  GithubDotComWebhookResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// ReceiveGitHubDotComWebhook is called when the API receives a github.com
+  /// webhook.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [webhookKey] - For GitHub Enterprise webhooks, this key is used to
+  /// associate the webhook request with the GitHubEnterpriseConfig to use for
+  /// validation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> receive(
+    HttpBody request, {
+    core.String? webhookKey,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (webhookKey != null) 'webhookKey': [webhookKey],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/githubDotComWebhook:receive';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class LocationsResource {
@@ -1181,9 +1234,8 @@ class ProjectsLocationsBitbucketServerConfigsReposResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 50 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// return fewer than this value. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
   ///
   /// [pageToken] - A page token, received from a previous
   /// `ListBitbucketServerRepositoriesRequest` call. Provide this to retrieve
@@ -4049,8 +4101,8 @@ class BuildOptions {
 
   /// Requested verifiability options.
   /// Possible string values are:
-  /// - "NOT_VERIFIED" : Not a verifiable build. (default)
-  /// - "VERIFIED" : Verified build.
+  /// - "NOT_VERIFIED" : Not a verifiable build (the default).
+  /// - "VERIFIED" : Build must be verified.
   core.String? requestedVerifyOption;
 
   /// A list of global environment variables, which are encrypted using a Cloud
@@ -4180,6 +4232,19 @@ class BuildOptions {
 
 /// A step in the build pipeline.
 class BuildStep {
+  /// Allow this build step to fail without failing the entire build if and only
+  /// if the exit code is one of the specified codes.
+  ///
+  /// If allow_failure is also specified, this field will take precedence.
+  core.List<core.int>? allowExitCodes;
+
+  /// Allow this build step to fail without failing the entire build.
+  ///
+  /// If false, the entire build will fail if this step fails. Otherwise, the
+  /// build will succeed, but this step will still have a failure status. Error
+  /// information will be reported in the failure_detail field.
+  core.bool? allowFailure;
+
   /// A list of arguments that will be presented to the step when it is started.
   ///
   /// If the image used to run the step's container has an entrypoint, the
@@ -4210,6 +4275,11 @@ class BuildStep {
   /// The elements are of the form "KEY=VALUE" for the environment variable
   /// "KEY" being given the value "VALUE".
   core.List<core.String>? env;
+
+  /// Return code from running the step.
+  ///
+  /// Output only.
+  core.int? exitCode;
 
   /// Unique identifier for this build step, used in `wait_for` to reference
   /// this build step as a dependency.
@@ -4297,10 +4367,13 @@ class BuildStep {
   core.List<core.String>? waitFor;
 
   BuildStep({
+    this.allowExitCodes,
+    this.allowFailure,
     this.args,
     this.dir,
     this.entrypoint,
     this.env,
+    this.exitCode,
     this.id,
     this.name,
     this.pullTiming,
@@ -4315,6 +4388,14 @@ class BuildStep {
 
   BuildStep.fromJson(core.Map json_)
       : this(
+          allowExitCodes: json_.containsKey('allowExitCodes')
+              ? (json_['allowExitCodes'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          allowFailure: json_.containsKey('allowFailure')
+              ? json_['allowFailure'] as core.bool
+              : null,
           args: json_.containsKey('args')
               ? (json_['args'] as core.List)
                   .map((value) => value as core.String)
@@ -4328,6 +4409,9 @@ class BuildStep {
               ? (json_['env'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          exitCode: json_.containsKey('exitCode')
+              ? json_['exitCode'] as core.int
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
@@ -4367,10 +4451,13 @@ class BuildStep {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowExitCodes != null) 'allowExitCodes': allowExitCodes!,
+        if (allowFailure != null) 'allowFailure': allowFailure!,
         if (args != null) 'args': args!,
         if (dir != null) 'dir': dir!,
         if (entrypoint != null) 'entrypoint': entrypoint!,
         if (env != null) 'env': env!,
+        if (exitCode != null) 'exitCode': exitCode!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (pullTiming != null) 'pullTiming': pullTiming!,

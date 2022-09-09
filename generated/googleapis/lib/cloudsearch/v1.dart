@@ -3795,22 +3795,57 @@ class DoubleValues {
 
 /// A person's email address.
 class EmailAddress {
+  /// If the value of type is custom, this property contains the custom type
+  /// string.
+  core.String? customType;
+
   /// The email address.
   core.String? emailAddress;
 
+  /// The URL to send email.
+  core.String? emailUrl;
+
+  /// Indicates if this is the user's primary email.
+  ///
+  /// Only one entry can be marked as primary.
+  core.bool? primary;
+
+  /// The type of the email account.
+  ///
+  /// Acceptable values are: "custom", "home", "other", "work".
+  core.String? type;
+
   EmailAddress({
+    this.customType,
     this.emailAddress,
+    this.emailUrl,
+    this.primary,
+    this.type,
   });
 
   EmailAddress.fromJson(core.Map json_)
       : this(
+          customType: json_.containsKey('customType')
+              ? json_['customType'] as core.String
+              : null,
           emailAddress: json_.containsKey('emailAddress')
               ? json_['emailAddress'] as core.String
               : null,
+          emailUrl: json_.containsKey('emailUrl')
+              ? json_['emailUrl'] as core.String
+              : null,
+          primary: json_.containsKey('primary')
+              ? json_['primary'] as core.bool
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customType != null) 'customType': customType!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (emailUrl != null) 'emailUrl': emailUrl!,
+        if (primary != null) 'primary': primary!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7566,7 +7601,37 @@ class ResetSearchApplicationRequest {
 }
 
 /// Debugging information about the response.
-typedef ResponseDebugInfo = $DebugInfo;
+class ResponseDebugInfo {
+  /// Experiments enabled in QAPI.
+  core.List<core.int>? enabledExperiments;
+
+  /// General debug info formatted for display.
+  core.String? formattedDebugInfo;
+
+  ResponseDebugInfo({
+    this.enabledExperiments,
+    this.formattedDebugInfo,
+  });
+
+  ResponseDebugInfo.fromJson(core.Map json_)
+      : this(
+          enabledExperiments: json_.containsKey('enabledExperiments')
+              ? (json_['enabledExperiments'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
+              ? json_['formattedDebugInfo'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledExperiments != null)
+          'enabledExperiments': enabledExperiments!,
+        if (formattedDebugInfo != null)
+          'formattedDebugInfo': formattedDebugInfo!,
+      };
+}
 
 /// Result count information
 class ResultCounts {
@@ -7594,7 +7659,26 @@ class ResultCounts {
 }
 
 /// Debugging information about the result.
-typedef ResultDebugInfo = $DebugInfo;
+class ResultDebugInfo {
+  /// General debug info formatted for display.
+  core.String? formattedDebugInfo;
+
+  ResultDebugInfo({
+    this.formattedDebugInfo,
+  });
+
+  ResultDebugInfo.fromJson(core.Map json_)
+      : this(
+          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
+              ? json_['formattedDebugInfo'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (formattedDebugInfo != null)
+          'formattedDebugInfo': formattedDebugInfo!,
+      };
+}
 
 /// Display Fields for Search Results
 class ResultDisplayField {

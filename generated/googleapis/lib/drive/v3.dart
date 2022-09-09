@@ -5178,6 +5178,18 @@ class File {
   /// A key needed to access the item via a shared link.
   core.String? resourceKey;
 
+  /// The SHA1 checksum associated with this file, if available.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  core.String? sha1Checksum;
+
+  /// The SHA256 checksum associated with this file, if available.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Docs Editors or shortcut files.
+  core.String? sha256Checksum;
+
   /// Whether the file has been shared.
   ///
   /// Not populated for items in shared drives.
@@ -5318,6 +5330,8 @@ class File {
     this.properties,
     this.quotaBytesUsed,
     this.resourceKey,
+    this.sha1Checksum,
+    this.sha256Checksum,
     this.shared,
     this.sharedWithMeTime,
     this.sharingUser,
@@ -5492,6 +5506,12 @@ class File {
           resourceKey: json_.containsKey('resourceKey')
               ? json_['resourceKey'] as core.String
               : null,
+          sha1Checksum: json_.containsKey('sha1Checksum')
+              ? json_['sha1Checksum'] as core.String
+              : null,
+          sha256Checksum: json_.containsKey('sha256Checksum')
+              ? json_['sha256Checksum'] as core.String
+              : null,
           shared:
               json_.containsKey('shared') ? json_['shared'] as core.bool : null,
           sharedWithMeTime: json_.containsKey('sharedWithMeTime')
@@ -5607,6 +5627,8 @@ class File {
         if (properties != null) 'properties': properties!,
         if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
         if (resourceKey != null) 'resourceKey': resourceKey!,
+        if (sha1Checksum != null) 'sha1Checksum': sha1Checksum!,
+        if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
         if (shared != null) 'shared': shared!,
         if (sharedWithMeTime != null)
           'sharedWithMeTime': sharedWithMeTime!.toUtc().toIso8601String(),

@@ -1718,9 +1718,13 @@ class BackfillAllStrategy {
   /// Oracle data source objects to avoid backfilling.
   OracleRdbms? oracleExcludedObjects;
 
+  /// PostgreSQL data source objects to avoid backfilling.
+  PostgresqlRdbms? postgresqlExcludedObjects;
+
   BackfillAllStrategy({
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,
+    this.postgresqlExcludedObjects,
   });
 
   BackfillAllStrategy.fromJson(core.Map json_)
@@ -1733,6 +1737,11 @@ class BackfillAllStrategy {
               ? OracleRdbms.fromJson(json_['oracleExcludedObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          postgresqlExcludedObjects:
+              json_.containsKey('postgresqlExcludedObjects')
+                  ? PostgresqlRdbms.fromJson(json_['postgresqlExcludedObjects']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1740,6 +1749,8 @@ class BackfillAllStrategy {
           'mysqlExcludedObjects': mysqlExcludedObjects!,
         if (oracleExcludedObjects != null)
           'oracleExcludedObjects': oracleExcludedObjects!,
+        if (postgresqlExcludedObjects != null)
+          'postgresqlExcludedObjects': postgresqlExcludedObjects!,
       };
 }
 
@@ -1826,12 +1837,64 @@ class BackfillJob {
 /// Backfill strategy to disable automatic backfill for the Stream's objects.
 typedef BackfillNoneStrategy = $Empty;
 
+class BigQueryDestinationConfig {
+  /// The guaranteed data freshness (in seconds) when querying tables created by
+  /// the stream.
+  ///
+  /// Editing this field will only affect new tables created in the future, but
+  /// existing tables will not be impacted. Lower values mean that queries will
+  /// return fresher data, but may result in higher cost.
+  core.String? dataFreshness;
+
+  /// Single destination dataset.
+  SingleTargetDataset? singleTargetDataset;
+
+  /// Source hierarchy datasets.
+  SourceHierarchyDatasets? sourceHierarchyDatasets;
+
+  BigQueryDestinationConfig({
+    this.dataFreshness,
+    this.singleTargetDataset,
+    this.sourceHierarchyDatasets,
+  });
+
+  BigQueryDestinationConfig.fromJson(core.Map json_)
+      : this(
+          dataFreshness: json_.containsKey('dataFreshness')
+              ? json_['dataFreshness'] as core.String
+              : null,
+          singleTargetDataset: json_.containsKey('singleTargetDataset')
+              ? SingleTargetDataset.fromJson(json_['singleTargetDataset']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceHierarchyDatasets: json_.containsKey('sourceHierarchyDatasets')
+              ? SourceHierarchyDatasets.fromJson(
+                  json_['sourceHierarchyDatasets']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataFreshness != null) 'dataFreshness': dataFreshness!,
+        if (singleTargetDataset != null)
+          'singleTargetDataset': singleTargetDataset!,
+        if (sourceHierarchyDatasets != null)
+          'sourceHierarchyDatasets': sourceHierarchyDatasets!,
+      };
+}
+
+/// BigQuery warehouse profile.
+typedef BigQueryProfile = $Empty;
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
 /// A set of reusable connection configurations to be used as a source or
 /// destination for a stream.
 class ConnectionProfile {
+  /// BigQuery Connection Profile configuration.
+  BigQueryProfile? bigqueryProfile;
+
   /// The create time of the resource.
   ///
   /// Output only.
@@ -1862,6 +1925,9 @@ class ConnectionProfile {
   /// Oracle ConnectionProfile configuration.
   OracleProfile? oracleProfile;
 
+  /// PostgreSQL Connection Profile configuration.
+  PostgresqlProfile? postgresqlProfile;
+
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
@@ -1874,6 +1940,7 @@ class ConnectionProfile {
   core.String? updateTime;
 
   ConnectionProfile({
+    this.bigqueryProfile,
     this.createTime,
     this.displayName,
     this.forwardSshConnectivity,
@@ -1882,6 +1949,7 @@ class ConnectionProfile {
     this.mysqlProfile,
     this.name,
     this.oracleProfile,
+    this.postgresqlProfile,
     this.privateConnectivity,
     this.staticServiceIpConnectivity,
     this.updateTime,
@@ -1889,6 +1957,10 @@ class ConnectionProfile {
 
   ConnectionProfile.fromJson(core.Map json_)
       : this(
+          bigqueryProfile: json_.containsKey('bigqueryProfile')
+              ? BigQueryProfile.fromJson(json_['bigqueryProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1921,6 +1993,10 @@ class ConnectionProfile {
               ? OracleProfile.fromJson(
                   json_['oracleProfile'] as core.Map<core.String, core.dynamic>)
               : null,
+          postgresqlProfile: json_.containsKey('postgresqlProfile')
+              ? PostgresqlProfile.fromJson(json_['postgresqlProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           privateConnectivity: json_.containsKey('privateConnectivity')
               ? PrivateConnectivity.fromJson(json_['privateConnectivity']
                   as core.Map<core.String, core.dynamic>)
@@ -1937,6 +2013,7 @@ class ConnectionProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryProfile != null) 'bigqueryProfile': bigqueryProfile!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (forwardSshConnectivity != null)
@@ -1946,6 +2023,7 @@ class ConnectionProfile {
         if (mysqlProfile != null) 'mysqlProfile': mysqlProfile!,
         if (name != null) 'name': name!,
         if (oracleProfile != null) 'oracleProfile': oracleProfile!,
+        if (postgresqlProfile != null) 'postgresqlProfile': postgresqlProfile!,
         if (privateConnectivity != null)
           'privateConnectivity': privateConnectivity!,
         if (staticServiceIpConnectivity != null)
@@ -1954,8 +2032,63 @@ class ConnectionProfile {
       };
 }
 
+/// Dataset template used for dynamic dataset creation.
+class DatasetTemplate {
+  /// If supplied, every created dataset will have its name prefixed by the
+  /// provided value.
+  ///
+  /// The prefix and name will be separated by an underscore. i.e. _.
+  core.String? datasetIdPrefix;
+
+  /// Describes the Cloud KMS encryption key that will be used to protect
+  /// destination BigQuery table.
+  ///
+  /// The BigQuery Service Account associated with your project requires access
+  /// to this encryption key. i.e.
+  /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+  /// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for
+  /// more information.
+  core.String? kmsKeyName;
+
+  /// The geographic location where the dataset should reside.
+  ///
+  /// See https://cloud.google.com/bigquery/docs/locations for supported
+  /// locations.
+  ///
+  /// Required.
+  core.String? location;
+
+  DatasetTemplate({
+    this.datasetIdPrefix,
+    this.kmsKeyName,
+    this.location,
+  });
+
+  DatasetTemplate.fromJson(core.Map json_)
+      : this(
+          datasetIdPrefix: json_.containsKey('datasetIdPrefix')
+              ? json_['datasetIdPrefix'] as core.String
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetIdPrefix != null) 'datasetIdPrefix': datasetIdPrefix!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (location != null) 'location': location!,
+      };
+}
+
 /// The configuration of the stream destination.
 class DestinationConfig {
+  /// BigQuery destination configuration.
+  BigQueryDestinationConfig? bigqueryDestinationConfig;
+
   /// Destination connection profile resource.
   ///
   /// Format:
@@ -1968,12 +2101,19 @@ class DestinationConfig {
   GcsDestinationConfig? gcsDestinationConfig;
 
   DestinationConfig({
+    this.bigqueryDestinationConfig,
     this.destinationConnectionProfile,
     this.gcsDestinationConfig,
   });
 
   DestinationConfig.fromJson(core.Map json_)
       : this(
+          bigqueryDestinationConfig:
+              json_.containsKey('bigqueryDestinationConfig')
+                  ? BigQueryDestinationConfig.fromJson(
+                      json_['bigqueryDestinationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           destinationConnectionProfile:
               json_.containsKey('destinationConnectionProfile')
                   ? json_['destinationConnectionProfile'] as core.String
@@ -1985,6 +2125,8 @@ class DestinationConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryDestinationConfig != null)
+          'bigqueryDestinationConfig': bigqueryDestinationConfig!,
         if (destinationConnectionProfile != null)
           'destinationConnectionProfile': destinationConnectionProfile!,
         if (gcsDestinationConfig != null)
@@ -2013,6 +2155,9 @@ class DiscoverConnectionProfileRequest {
   /// Oracle RDBMS to enrich with child data objects and metadata.
   OracleRdbms? oracleRdbms;
 
+  /// PostgreSQL RDBMS to enrich with child data objects and metadata.
+  PostgresqlRdbms? postgresqlRdbms;
+
   DiscoverConnectionProfileRequest({
     this.connectionProfile,
     this.connectionProfileName,
@@ -2020,6 +2165,7 @@ class DiscoverConnectionProfileRequest {
     this.hierarchyDepth,
     this.mysqlRdbms,
     this.oracleRdbms,
+    this.postgresqlRdbms,
   });
 
   DiscoverConnectionProfileRequest.fromJson(core.Map json_)
@@ -2045,6 +2191,10 @@ class DiscoverConnectionProfileRequest {
               ? OracleRdbms.fromJson(
                   json_['oracleRdbms'] as core.Map<core.String, core.dynamic>)
               : null,
+          postgresqlRdbms: json_.containsKey('postgresqlRdbms')
+              ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2055,6 +2205,7 @@ class DiscoverConnectionProfileRequest {
         if (hierarchyDepth != null) 'hierarchyDepth': hierarchyDepth!,
         if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
         if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
+        if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
       };
 }
 
@@ -2066,9 +2217,13 @@ class DiscoverConnectionProfileResponse {
   /// Enriched Oracle RDBMS object.
   OracleRdbms? oracleRdbms;
 
+  /// Enriched PostgreSQL RDBMS object.
+  PostgresqlRdbms? postgresqlRdbms;
+
   DiscoverConnectionProfileResponse({
     this.mysqlRdbms,
     this.oracleRdbms,
+    this.postgresqlRdbms,
   });
 
   DiscoverConnectionProfileResponse.fromJson(core.Map json_)
@@ -2081,11 +2236,16 @@ class DiscoverConnectionProfileResponse {
               ? OracleRdbms.fromJson(
                   json_['oracleRdbms'] as core.Map<core.String, core.dynamic>)
               : null,
+          postgresqlRdbms: json_.containsKey('postgresqlRdbms')
+              ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
         if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
+        if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
       };
 }
 
@@ -3211,36 +3371,7 @@ class OracleColumn {
 }
 
 /// Oracle data source object identifier.
-class OracleObjectIdentifier {
-  /// The schema name.
-  ///
-  /// Required.
-  core.String? schema;
-
-  /// The table name.
-  ///
-  /// Required.
-  core.String? table;
-
-  OracleObjectIdentifier({
-    this.schema,
-    this.table,
-  });
-
-  OracleObjectIdentifier.fromJson(core.Map json_)
-      : this(
-          schema: json_.containsKey('schema')
-              ? json_['schema'] as core.String
-              : null,
-          table:
-              json_.containsKey('table') ? json_['table'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (schema != null) 'schema': schema!,
-        if (table != null) 'table': table!,
-      };
-}
+typedef OracleObjectIdentifier = $ObjectIdentifier;
 
 /// Oracle database profile.
 class OracleProfile {
@@ -3469,6 +3600,285 @@ class OracleTable {
       };
 }
 
+/// PostgreSQL Column.
+class PostgresqlColumn {
+  /// Column name.
+  core.String? column;
+
+  /// The PostgreSQL data type.
+  core.String? dataType;
+
+  /// Column length.
+  core.int? length;
+
+  /// Whether or not the column can accept a null value.
+  core.bool? nullable;
+
+  /// The ordinal position of the column in the table.
+  core.int? ordinalPosition;
+
+  /// Column precision.
+  core.int? precision;
+
+  /// Whether or not the column represents a primary key.
+  core.bool? primaryKey;
+
+  /// Column scale.
+  core.int? scale;
+
+  PostgresqlColumn({
+    this.column,
+    this.dataType,
+    this.length,
+    this.nullable,
+    this.ordinalPosition,
+    this.precision,
+    this.primaryKey,
+    this.scale,
+  });
+
+  PostgresqlColumn.fromJson(core.Map json_)
+      : this(
+          column: json_.containsKey('column')
+              ? json_['column'] as core.String
+              : null,
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+          length:
+              json_.containsKey('length') ? json_['length'] as core.int : null,
+          nullable: json_.containsKey('nullable')
+              ? json_['nullable'] as core.bool
+              : null,
+          ordinalPosition: json_.containsKey('ordinalPosition')
+              ? json_['ordinalPosition'] as core.int
+              : null,
+          precision: json_.containsKey('precision')
+              ? json_['precision'] as core.int
+              : null,
+          primaryKey: json_.containsKey('primaryKey')
+              ? json_['primaryKey'] as core.bool
+              : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
+        if (dataType != null) 'dataType': dataType!,
+        if (length != null) 'length': length!,
+        if (nullable != null) 'nullable': nullable!,
+        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+        if (precision != null) 'precision': precision!,
+        if (primaryKey != null) 'primaryKey': primaryKey!,
+        if (scale != null) 'scale': scale!,
+      };
+}
+
+/// PostgreSQL data source object identifier.
+typedef PostgresqlObjectIdentifier = $ObjectIdentifier;
+
+/// PostgreSQL database profile.
+class PostgresqlProfile {
+  /// Database for the PostgreSQL connection.
+  ///
+  /// Required.
+  core.String? database;
+
+  /// Hostname for the PostgreSQL connection.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Password for the PostgreSQL connection.
+  ///
+  /// Required.
+  core.String? password;
+
+  /// Port for the PostgreSQL connection, default value is 5432.
+  core.int? port;
+
+  /// Username for the PostgreSQL connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  PostgresqlProfile({
+    this.database,
+    this.hostname,
+    this.password,
+    this.port,
+    this.username,
+  });
+
+  PostgresqlProfile.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
+              : null,
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (hostname != null) 'hostname': hostname!,
+        if (password != null) 'password': password!,
+        if (port != null) 'port': port!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// PostgreSQL database structure.
+class PostgresqlRdbms {
+  /// PostgreSQL schemas in the database server.
+  core.List<PostgresqlSchema>? postgresqlSchemas;
+
+  PostgresqlRdbms({
+    this.postgresqlSchemas,
+  });
+
+  PostgresqlRdbms.fromJson(core.Map json_)
+      : this(
+          postgresqlSchemas: json_.containsKey('postgresqlSchemas')
+              ? (json_['postgresqlSchemas'] as core.List)
+                  .map((value) => PostgresqlSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postgresqlSchemas != null) 'postgresqlSchemas': postgresqlSchemas!,
+      };
+}
+
+/// PostgreSQL schema.
+class PostgresqlSchema {
+  /// Tables in the schema.
+  core.List<PostgresqlTable>? postgresqlTables;
+
+  /// Schema name.
+  core.String? schema;
+
+  PostgresqlSchema({
+    this.postgresqlTables,
+    this.schema,
+  });
+
+  PostgresqlSchema.fromJson(core.Map json_)
+      : this(
+          postgresqlTables: json_.containsKey('postgresqlTables')
+              ? (json_['postgresqlTables'] as core.List)
+                  .map((value) => PostgresqlTable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          schema: json_.containsKey('schema')
+              ? json_['schema'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postgresqlTables != null) 'postgresqlTables': postgresqlTables!,
+        if (schema != null) 'schema': schema!,
+      };
+}
+
+/// PostgreSQL data source configuration
+class PostgresqlSourceConfig {
+  /// PostgreSQL objects to exclude from the stream.
+  PostgresqlRdbms? excludeObjects;
+
+  /// PostgreSQL objects to include in the stream.
+  PostgresqlRdbms? includeObjects;
+
+  /// The name of the publication that includes the set of all tables that are
+  /// defined in the stream's include_objects.
+  ///
+  /// Required.
+  core.String? publication;
+
+  /// The name of the logical replication slot that's configured with the
+  /// pgoutput plugin.
+  ///
+  /// Required.
+  core.String? replicationSlot;
+
+  PostgresqlSourceConfig({
+    this.excludeObjects,
+    this.includeObjects,
+    this.publication,
+    this.replicationSlot,
+  });
+
+  PostgresqlSourceConfig.fromJson(core.Map json_)
+      : this(
+          excludeObjects: json_.containsKey('excludeObjects')
+              ? PostgresqlRdbms.fromJson(json_['excludeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          includeObjects: json_.containsKey('includeObjects')
+              ? PostgresqlRdbms.fromJson(json_['includeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          publication: json_.containsKey('publication')
+              ? json_['publication'] as core.String
+              : null,
+          replicationSlot: json_.containsKey('replicationSlot')
+              ? json_['replicationSlot'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+        if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (publication != null) 'publication': publication!,
+        if (replicationSlot != null) 'replicationSlot': replicationSlot!,
+      };
+}
+
+/// PostgreSQL table.
+class PostgresqlTable {
+  /// PostgreSQL columns in the schema.
+  ///
+  /// When unspecified as part of include/exclude objects, includes/excludes
+  /// everything.
+  core.List<PostgresqlColumn>? postgresqlColumns;
+
+  /// Table name.
+  core.String? table;
+
+  PostgresqlTable({
+    this.postgresqlColumns,
+    this.table,
+  });
+
+  PostgresqlTable.fromJson(core.Map json_)
+      : this(
+          postgresqlColumns: json_.containsKey('postgresqlColumns')
+              ? (json_['postgresqlColumns'] as core.List)
+                  .map((value) => PostgresqlColumn.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          table:
+              json_.containsKey('table') ? json_['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postgresqlColumns != null) 'postgresqlColumns': postgresqlColumns!,
+        if (table != null) 'table': table!,
+      };
+}
+
 /// The PrivateConnection resource is used to establish private connectivity
 /// between Datastream and a customer's network.
 class PrivateConnection {
@@ -3683,6 +4093,26 @@ class Route {
       };
 }
 
+/// A single target dataset to which all data will be streamed.
+class SingleTargetDataset {
+  core.String? datasetId;
+
+  SingleTargetDataset({
+    this.datasetId,
+  });
+
+  SingleTargetDataset.fromJson(core.Map json_)
+      : this(
+          datasetId: json_.containsKey('datasetId')
+              ? json_['datasetId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+      };
+}
+
 /// The configuration of the stream source.
 class SourceConfig {
   /// MySQL data source configuration.
@@ -3690,6 +4120,9 @@ class SourceConfig {
 
   /// Oracle data source configuration.
   OracleSourceConfig? oracleSourceConfig;
+
+  /// PostgreSQL data source configuration.
+  PostgresqlSourceConfig? postgresqlSourceConfig;
 
   /// Source connection profile resoource.
   ///
@@ -3702,6 +4135,7 @@ class SourceConfig {
   SourceConfig({
     this.mysqlSourceConfig,
     this.oracleSourceConfig,
+    this.postgresqlSourceConfig,
     this.sourceConnectionProfile,
   });
 
@@ -3715,6 +4149,10 @@ class SourceConfig {
               ? OracleSourceConfig.fromJson(json_['oracleSourceConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          postgresqlSourceConfig: json_.containsKey('postgresqlSourceConfig')
+              ? PostgresqlSourceConfig.fromJson(json_['postgresqlSourceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           sourceConnectionProfile: json_.containsKey('sourceConnectionProfile')
               ? json_['sourceConnectionProfile'] as core.String
               : null,
@@ -3724,8 +4162,32 @@ class SourceConfig {
         if (mysqlSourceConfig != null) 'mysqlSourceConfig': mysqlSourceConfig!,
         if (oracleSourceConfig != null)
           'oracleSourceConfig': oracleSourceConfig!,
+        if (postgresqlSourceConfig != null)
+          'postgresqlSourceConfig': postgresqlSourceConfig!,
         if (sourceConnectionProfile != null)
           'sourceConnectionProfile': sourceConnectionProfile!,
+      };
+}
+
+/// Destination datasets are created so that hierarchy of the destination data
+/// objects matches the source hierarchy.
+class SourceHierarchyDatasets {
+  DatasetTemplate? datasetTemplate;
+
+  SourceHierarchyDatasets({
+    this.datasetTemplate,
+  });
+
+  SourceHierarchyDatasets.fromJson(core.Map json_)
+      : this(
+          datasetTemplate: json_.containsKey('datasetTemplate')
+              ? DatasetTemplate.fromJson(json_['datasetTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetTemplate != null) 'datasetTemplate': datasetTemplate!,
       };
 }
 
@@ -3737,9 +4199,13 @@ class SourceObjectIdentifier {
   /// Oracle data source object identifier.
   OracleObjectIdentifier? oracleIdentifier;
 
+  /// PostgreSQL data source object identifier.
+  PostgresqlObjectIdentifier? postgresqlIdentifier;
+
   SourceObjectIdentifier({
     this.mysqlIdentifier,
     this.oracleIdentifier,
+    this.postgresqlIdentifier,
   });
 
   SourceObjectIdentifier.fromJson(core.Map json_)
@@ -3752,11 +4218,18 @@ class SourceObjectIdentifier {
               ? OracleObjectIdentifier.fromJson(json_['oracleIdentifier']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          postgresqlIdentifier: json_.containsKey('postgresqlIdentifier')
+              ? PostgresqlObjectIdentifier.fromJson(
+                  json_['postgresqlIdentifier']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlIdentifier != null) 'mysqlIdentifier': mysqlIdentifier!,
         if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
+        if (postgresqlIdentifier != null)
+          'postgresqlIdentifier': postgresqlIdentifier!,
       };
 }
 

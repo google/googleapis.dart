@@ -479,6 +479,13 @@ Enables users to create and manage connections to Google Cloud services and thir
 - [Documentation](https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors)
 - [API details](https://pub.dev/documentation/googleapis/9.2.0-dev/connectors.v1/connectors.v1-library.html)
 
+#### Connectors API - `connectors.v2`
+
+Enables users to create and manage connections to Google Cloud services and third-party business applications using the Connectors interface.
+
+- [Documentation](https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors)
+- [API details](https://pub.dev/documentation/googleapis/9.2.0-dev/connectors.v2/connectors.v2-library.html)
+
 #### Contact Center AI Insights API - `contactcenterinsights.v1`
 
 - [Documentation](https://cloud.google.com/contact-center/insights/docs)

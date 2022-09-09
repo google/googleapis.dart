@@ -1790,6 +1790,11 @@ class RecognizeRequest {
 /// It contains the result as zero or more sequential `SpeechRecognitionResult`
 /// messages.
 class RecognizeResponse {
+  /// The ID associated with the request.
+  ///
+  /// This is a unique ID specific only to the given request.
+  core.String? requestId;
+
   /// Sequential list of transcription results corresponding to sequential
   /// portions of audio.
   core.List<SpeechRecognitionResult>? results;
@@ -1798,12 +1803,16 @@ class RecognizeResponse {
   core.String? totalBilledTime;
 
   RecognizeResponse({
+    this.requestId,
     this.results,
     this.totalBilledTime,
   });
 
   RecognizeResponse.fromJson(core.Map json_)
       : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
           results: json_.containsKey('results')
               ? (json_['results'] as core.List)
                   .map((value) => SpeechRecognitionResult.fromJson(
@@ -1816,6 +1825,7 @@ class RecognizeResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
         if (results != null) 'results': results!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };

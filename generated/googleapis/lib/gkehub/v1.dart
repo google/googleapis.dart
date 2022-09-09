@@ -1701,10 +1701,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -1851,8 +1857,8 @@ class ConfigManagementConfigSync {
   /// prevent drifts.
   core.bool? preventDrift;
 
-  /// Specifies whether the Config Sync Repo is in “hierarchical” or
-  /// “unstructured” mode.
+  /// Specifies whether the Config Sync Repo is in "hierarchical" or
+  /// "unstructured" mode.
   core.String? sourceFormat;
 
   ConfigManagementConfigSync({
@@ -2172,9 +2178,18 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
   core.String? gatekeeperControllerManagerState;
 
+  /// Status of the pod serving the mutation webhook.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
+  /// - "NOT_INSTALLED" : Deployment is not installed
+  /// - "INSTALLED" : Deployment is installed
+  /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  core.String? gatekeeperMutation;
+
   ConfigManagementGatekeeperDeploymentState({
     this.gatekeeperAudit,
     this.gatekeeperControllerManagerState,
+    this.gatekeeperMutation,
   });
 
   ConfigManagementGatekeeperDeploymentState.fromJson(core.Map json_)
@@ -2186,12 +2201,17 @@ class ConfigManagementGatekeeperDeploymentState {
               json_.containsKey('gatekeeperControllerManagerState')
                   ? json_['gatekeeperControllerManagerState'] as core.String
                   : null,
+          gatekeeperMutation: json_.containsKey('gatekeeperMutation')
+              ? json_['gatekeeperMutation'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gatekeeperAudit != null) 'gatekeeperAudit': gatekeeperAudit!,
         if (gatekeeperControllerManagerState != null)
           'gatekeeperControllerManagerState': gatekeeperControllerManagerState!,
+        if (gatekeeperMutation != null)
+          'gatekeeperMutation': gatekeeperMutation!,
       };
 }
 
@@ -3422,6 +3442,9 @@ typedef GoogleRpcStatus = $Status;
 /// Only one authentication method (e.g., OIDC and LDAP) can be set per
 /// AuthMethod.
 class IdentityServiceAuthMethod {
+  /// GoogleConfig specific configuration
+  IdentityServiceGoogleConfig? googleConfig;
+
   /// Identifier for auth config.
   core.String? name;
 
@@ -3432,6 +3455,7 @@ class IdentityServiceAuthMethod {
   core.String? proxy;
 
   IdentityServiceAuthMethod({
+    this.googleConfig,
     this.name,
     this.oidcConfig,
     this.proxy,
@@ -3439,6 +3463,10 @@ class IdentityServiceAuthMethod {
 
   IdentityServiceAuthMethod.fromJson(core.Map json_)
       : this(
+          googleConfig: json_.containsKey('googleConfig')
+              ? IdentityServiceGoogleConfig.fromJson(
+                  json_['googleConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           oidcConfig: json_.containsKey('oidcConfig')
               ? IdentityServiceOidcConfig.fromJson(
@@ -3449,9 +3477,31 @@ class IdentityServiceAuthMethod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (googleConfig != null) 'googleConfig': googleConfig!,
         if (name != null) 'name': name!,
         if (oidcConfig != null) 'oidcConfig': oidcConfig!,
         if (proxy != null) 'proxy': proxy!,
+      };
+}
+
+/// Configuration for the Google Plugin Auth flow.
+class IdentityServiceGoogleConfig {
+  /// Disable automatic configuration of Google Plugin on supported platforms.
+  core.bool? disable;
+
+  IdentityServiceGoogleConfig({
+    this.disable,
+  });
+
+  IdentityServiceGoogleConfig.fromJson(core.Map json_)
+      : this(
+          disable: json_.containsKey('disable')
+              ? json_['disable'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disable != null) 'disable': disable!,
       };
 }
 
@@ -3550,6 +3600,9 @@ class IdentityServiceOidcConfig {
   /// Cloud Console.
   core.bool? deployCloudConsoleProxy;
 
+  /// Enable access token.
+  core.bool? enableAccessToken;
+
   /// Encrypted OIDC Client secret
   ///
   /// Output only.
@@ -3594,6 +3647,7 @@ class IdentityServiceOidcConfig {
     this.clientId,
     this.clientSecret,
     this.deployCloudConsoleProxy,
+    this.enableAccessToken,
     this.encryptedClientSecret,
     this.extraParams,
     this.groupPrefix,
@@ -3619,6 +3673,9 @@ class IdentityServiceOidcConfig {
               : null,
           deployCloudConsoleProxy: json_.containsKey('deployCloudConsoleProxy')
               ? json_['deployCloudConsoleProxy'] as core.bool
+              : null,
+          enableAccessToken: json_.containsKey('enableAccessToken')
+              ? json_['enableAccessToken'] as core.bool
               : null,
           encryptedClientSecret: json_.containsKey('encryptedClientSecret')
               ? json_['encryptedClientSecret'] as core.String
@@ -3656,6 +3713,7 @@ class IdentityServiceOidcConfig {
         if (clientSecret != null) 'clientSecret': clientSecret!,
         if (deployCloudConsoleProxy != null)
           'deployCloudConsoleProxy': deployCloudConsoleProxy!,
+        if (enableAccessToken != null) 'enableAccessToken': enableAccessToken!,
         if (encryptedClientSecret != null)
           'encryptedClientSecret': encryptedClientSecret!,
         if (extraParams != null) 'extraParams': extraParams!,

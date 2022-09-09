@@ -1329,7 +1329,9 @@ class AuthorizationAttemptInfo {
   /// Human readable explanation for reaching the state.
   ///
   /// Provided to help address the configuration issues. Not guaranteed to be
-  /// stable. For programmatic access use Reason enum.
+  /// stable. For programmatic access use FailureReason enum.
+  ///
+  /// Output only.
   core.String? details;
 
   /// Domain name of the authorization attempt.
@@ -1349,6 +1351,8 @@ class AuthorizationAttemptInfo {
   core.String? failureReason;
 
   /// State of the domain for managed certificate issuance.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED"
   /// - "AUTHORIZING" : Certificate provisioning for this domain is under way.
@@ -1858,14 +1862,20 @@ typedef Empty = $Empty;
 class GclbTarget {
   /// IP configurations for this Target Proxy where the Certificate Map is
   /// serving.
+  ///
+  /// Output only.
   core.List<IpConfig>? ipConfigs;
 
   /// This field returns the resource name in the following format:
   /// `//compute.googleapis.com/projects / * /global/targetHttpsProxies / * `.
+  ///
+  /// Output only.
   core.String? targetHttpsProxy;
 
   /// This field returns the resource name in the following format:
   /// `//compute.googleapis.com/projects / * /global/targetSslProxies / * `.
+  ///
+  /// Output only.
   core.String? targetSslProxy;
 
   GclbTarget({
@@ -1900,9 +1910,13 @@ class GclbTarget {
 /// Defines IP configuration where this Certificate Map is serving.
 class IpConfig {
   /// An external IP address.
+  ///
+  /// Output only.
   core.String? ipAddress;
 
   /// Ports.
+  ///
+  /// Output only.
   core.List<core.int>? ports;
 
   IpConfig({
@@ -2204,6 +2218,8 @@ class ManagedCertificate {
   core.List<core.String>? domains;
 
   /// Information about issues with provisioning a Managed Certificate.
+  ///
+  /// Output only.
   ProvisioningIssue? provisioningIssue;
 
   /// State of the managed certificate resource.
@@ -2348,9 +2364,13 @@ class ProvisioningIssue {
   ///
   /// Provided to help address the configuration issues. Not guaranteed to be
   /// stable. For programmatic access use Reason enum.
+  ///
+  /// Output only.
   core.String? details;
 
   /// Reason for provisioning failures.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "REASON_UNSPECIFIED"
   /// - "AUTHORIZATION_ISSUE" : Certificate provisioning failed due to an issue

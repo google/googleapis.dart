@@ -879,11 +879,18 @@ class AbortInfo {
   /// - "UNSUPPORTED" : Aborted because the test scenario is not supported.
   core.String? cause;
 
+  /// List of project IDs that the user has specified in the request but does
+  /// not have permission to access network configs.
+  ///
+  /// Analysis is aborted in this case with the PERMISSION_DENIED cause.
+  core.List<core.String>? projectsMissingPermission;
+
   /// URI of the resource that caused the abort.
   core.String? resourceUri;
 
   AbortInfo({
     this.cause,
+    this.projectsMissingPermission,
     this.resourceUri,
   });
 
@@ -891,6 +898,12 @@ class AbortInfo {
       : this(
           cause:
               json_.containsKey('cause') ? json_['cause'] as core.String : null,
+          projectsMissingPermission:
+              json_.containsKey('projectsMissingPermission')
+                  ? (json_['projectsMissingPermission'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           resourceUri: json_.containsKey('resourceUri')
               ? json_['resourceUri'] as core.String
               : null,
@@ -898,6 +911,8 @@ class AbortInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cause != null) 'cause': cause!,
+        if (projectsMissingPermission != null)
+          'projectsMissingPermission': projectsMissingPermission!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
@@ -982,8 +997,12 @@ class Binding {
   /// represents anyone who is authenticated with a Google account or a service
   /// account. * `user:{emailid}`: An email address that represents a specific
   /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{emailid}`: An email address that represents a Google
+  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
+  /// An identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -1040,6 +1059,70 @@ class Binding {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Wrapper for cloud function attributes.
+class CloudFunctionEndpoint {
+  /// A [Cloud function](https://cloud.google.com/functions) name.
+  core.String? uri;
+
+  CloudFunctionEndpoint({
+    this.uri,
+  });
+
+  CloudFunctionEndpoint.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// For display only.
+///
+/// Metadata associated with a Cloud function.
+class CloudFunctionInfo {
+  /// Name of a Cloud function.
+  core.String? displayName;
+
+  /// Location in which the Cloud function is deployed.
+  core.String? location;
+
+  /// URI of a Cloud function.
+  core.String? uri;
+
+  /// Latest successfully deployed version id of the Cloud function.
+  core.String? versionId;
+
+  CloudFunctionInfo({
+    this.displayName,
+    this.location,
+    this.uri,
+    this.versionId,
+  });
+
+  CloudFunctionInfo.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+          versionId: json_.containsKey('versionId')
+              ? json_['versionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (location != null) 'location': location!,
+        if (uri != null) 'uri': uri!,
+        if (versionId != null) 'versionId': versionId!,
+      };
+}
 
 /// For display only.
 ///
@@ -1360,6 +1443,12 @@ class DropInfo {
   /// Services Network.
   /// - "CLOUD_SQL_INSTANCE_NO_IP_ADDRESS" : Packet was dropped because the
   /// Cloud SQL instance has neither a private nor a public IP address.
+  /// - "CLOUD_FUNCTION_NOT_ACTIVE" : Packet could be dropped because the Cloud
+  /// function is not in an active status.
+  /// - "VPC_CONNECTOR_NOT_SET" : Packet could be dropped because no VPC
+  /// connector is set.
+  /// - "VPC_CONNECTOR_NOT_RUNNING" : Packet could be dropped because the VPC
+  /// connector is not in a running state.
   core.String? cause;
 
   /// URI of the resource that caused the drop.
@@ -1395,6 +1484,9 @@ typedef Empty = $Empty;
 
 /// Source or destination of the Connectivity Test.
 class Endpoint {
+  /// A [Cloud function](https://cloud.google.com/functions).
+  CloudFunctionEndpoint? cloudFunction;
+
   /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
   core.String? cloudSqlInstance;
 
@@ -1444,6 +1536,7 @@ class Endpoint {
   core.String? projectId;
 
   Endpoint({
+    this.cloudFunction,
     this.cloudSqlInstance,
     this.gkeMasterCluster,
     this.instance,
@@ -1456,6 +1549,10 @@ class Endpoint {
 
   Endpoint.fromJson(core.Map json_)
       : this(
+          cloudFunction: json_.containsKey('cloudFunction')
+              ? CloudFunctionEndpoint.fromJson(
+                  json_['cloudFunction'] as core.Map<core.String, core.dynamic>)
+              : null,
           cloudSqlInstance: json_.containsKey('cloudSqlInstance')
               ? json_['cloudSqlInstance'] as core.String
               : null,
@@ -1481,6 +1578,7 @@ class Endpoint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudFunction != null) 'cloudFunction': cloudFunction!,
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
         if (gkeMasterCluster != null) 'gkeMasterCluster': gkeMasterCluster!,
         if (instance != null) 'instance': instance!,
@@ -1617,6 +1715,10 @@ class FirewallInfo {
   /// - "IMPLIED_VPC_FIREWALL_RULE" : Implied VPC firewall rule. For details,
   /// see
   /// [Implied rules](https://cloud.google.com/vpc/docs/firewalls#default_firewall_rules).
+  /// - "SERVERLESS_VPC_ACCESS_MANAGED_FIREWALL_RULE" : Implicit firewall rules
+  /// that are managed by serverless VPC access to allow ingress access. They
+  /// are not visible in the Google Cloud console. For details, see
+  /// [VPC connector's implicit rules](https://cloud.google.com/functions/docs/networking/connecting-vpc#restrict-access).
   core.String? firewallRuleType;
 
   /// The URI of the VPC network that the firewall rule is associated with.
@@ -2678,6 +2780,9 @@ class Step {
   /// This is a step that leads to the final state Drop.
   core.bool? causesDrop;
 
+  /// Display information of a Cloud function.
+  CloudFunctionInfo? cloudFunction;
+
   /// Display information of a Cloud SQL instance.
   CloudSQLInstanceInfo? cloudSqlInstance;
 
@@ -2744,6 +2849,9 @@ class Step {
   /// - "START_FROM_CLOUD_SQL_INSTANCE" : Initial state: packet originating from
   /// a Cloud SQL instance. A CloudSQLInstanceInfo is populated with starting
   /// instance information.
+  /// - "START_FROM_CLOUD_FUNCTION" : Initial state: packet originating from a
+  /// Cloud function. A CloudFunctionInfo is populated with starting function
+  /// information.
   /// - "APPLY_INGRESS_FIREWALL_RULE" : Config checking state: verify ingress
   /// firewall rule.
   /// - "APPLY_EGRESS_FIREWALL_RULE" : Config checking state: verify egress
@@ -2762,6 +2870,8 @@ class Step {
   /// gateway.
   /// - "ARRIVE_AT_VPN_TUNNEL" : Forwarding state: arriving at a Cloud VPN
   /// tunnel.
+  /// - "ARRIVE_AT_VPC_CONNECTOR" : Forwarding state: arriving at a VPC
+  /// connector.
   /// - "NAT" : Transition state: packet header translated.
   /// - "PROXY_CONNECTION" : Transition state: original connection is terminated
   /// and a new proxied connection is initiated.
@@ -2774,6 +2884,9 @@ class Step {
   /// does not have permission to see the configuration in this step.
   core.String? state;
 
+  /// Display information of a VPC connector.
+  VpcConnectorInfo? vpcConnector;
+
   /// Display information of a Compute Engine VPN gateway.
   VpnGatewayInfo? vpnGateway;
 
@@ -2783,6 +2896,7 @@ class Step {
   Step({
     this.abort,
     this.causesDrop,
+    this.cloudFunction,
     this.cloudSqlInstance,
     this.deliver,
     this.description,
@@ -2798,6 +2912,7 @@ class Step {
     this.projectId,
     this.route,
     this.state,
+    this.vpcConnector,
     this.vpnGateway,
     this.vpnTunnel,
   });
@@ -2810,6 +2925,10 @@ class Step {
               : null,
           causesDrop: json_.containsKey('causesDrop')
               ? json_['causesDrop'] as core.bool
+              : null,
+          cloudFunction: json_.containsKey('cloudFunction')
+              ? CloudFunctionInfo.fromJson(
+                  json_['cloudFunction'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudSqlInstance: json_.containsKey('cloudSqlInstance')
               ? CloudSQLInstanceInfo.fromJson(json_['cloudSqlInstance']
@@ -2867,6 +2986,10 @@ class Step {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          vpcConnector: json_.containsKey('vpcConnector')
+              ? VpcConnectorInfo.fromJson(
+                  json_['vpcConnector'] as core.Map<core.String, core.dynamic>)
+              : null,
           vpnGateway: json_.containsKey('vpnGateway')
               ? VpnGatewayInfo.fromJson(
                   json_['vpnGateway'] as core.Map<core.String, core.dynamic>)
@@ -2880,6 +3003,7 @@ class Step {
   core.Map<core.String, core.dynamic> toJson() => {
         if (abort != null) 'abort': abort!,
         if (causesDrop != null) 'causesDrop': causesDrop!,
+        if (cloudFunction != null) 'cloudFunction': cloudFunction!,
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
         if (deliver != null) 'deliver': deliver!,
         if (description != null) 'description': description!,
@@ -2895,6 +3019,7 @@ class Step {
         if (projectId != null) 'projectId': projectId!,
         if (route != null) 'route': route!,
         if (state != null) 'state': state!,
+        if (vpcConnector != null) 'vpcConnector': vpcConnector!,
         if (vpnGateway != null) 'vpnGateway': vpnGateway!,
         if (vpnTunnel != null) 'vpnTunnel': vpnTunnel!,
       };
@@ -2952,6 +3077,43 @@ class Trace {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpointInfo != null) 'endpointInfo': endpointInfo!,
         if (steps != null) 'steps': steps!,
+      };
+}
+
+/// For display only.
+///
+/// Metadata associated with a VPC connector.
+class VpcConnectorInfo {
+  /// Name of a VPC connector.
+  core.String? displayName;
+
+  /// Location in which the VPC connector is deployed.
+  core.String? location;
+
+  /// URI of a VPC connector.
+  core.String? uri;
+
+  VpcConnectorInfo({
+    this.displayName,
+    this.location,
+    this.uri,
+  });
+
+  VpcConnectorInfo.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (location != null) 'location': location!,
+        if (uri != null) 'uri': uri!,
       };
 }
 

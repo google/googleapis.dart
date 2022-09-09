@@ -167,7 +167,7 @@
             }
         }
     },
-    "revision": "20220726",
+    "revision": "20220812",
     "rootUrl": "https://servicecontrol.googleapis.com/",
     "schemas": {
         "Api": {

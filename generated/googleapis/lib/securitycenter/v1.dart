@@ -4902,7 +4902,7 @@ class Access {
   /// As compared to `principal_email`, supports principals that aren't
   /// associated with email addresses, such as third party principals. For most
   /// identities, the format will be `principal://iam.googleapis.com/{identity
-  /// pool name}/subject/{subject)` except for some GKE identities
+  /// pool name}/subjects/{subject}` except for some GKE identities
   /// (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
   /// format `serviceAccount:{identity pool name}[{subject}]`
   core.String? principalSubject;
@@ -5312,10 +5312,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -5831,6 +5837,70 @@ class Cvssv3 {
       };
 }
 
+/// Represents database access information, such as queries.
+///
+/// A database may be a sub-resource of an instance (as in the case of CloudSQL
+/// instances or Cloud Spanner instances), or the database instance itself. Some
+/// database resources may not have the full resource name populated because
+/// these resource types are not yet supported by Cloud Asset Inventory (e.g.
+/// CloudSQL databases). In these cases only the display name will be provided.
+class Database {
+  /// The human readable name of the database the user connected to.
+  core.String? displayName;
+
+  /// The target usernames/roles/groups of a SQL privilege grant (not an IAM
+  /// policy change).
+  core.List<core.String>? grantees;
+
+  /// The full resource name of the database the user connected to, if it is
+  /// supported by CAI.
+  ///
+  /// (https://google.aip.dev/122#full-resource-names)
+  core.String? name;
+
+  /// The SQL statement associated with the relevant access.
+  core.String? query;
+
+  /// The username used to connect to the DB.
+  ///
+  /// This may not necessarily be an IAM principal, and has no required format.
+  core.String? userName;
+
+  Database({
+    this.displayName,
+    this.grantees,
+    this.name,
+    this.query,
+    this.userName,
+  });
+
+  Database.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          grantees: json_.containsKey('grantees')
+              ? (json_['grantees'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+          userName: json_.containsKey('userName')
+              ? json_['userName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (grantees != null) 'grantees': grantees!,
+        if (name != null) 'name': name!,
+        if (query != null) 'query': query!,
+        if (userName != null) 'userName': userName!,
+      };
+}
+
 /// Memory hash detection contributing to the binary family match.
 class Detection {
   /// The name of the binary associated with the memory hash signature
@@ -6100,7 +6170,7 @@ class Finding {
   /// all the contacts that pertain. Please refer to:
   /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories
   /// { "security": { "contacts": \[ { "email": "person1@company.com" }, {
-  /// "email": "person2@company.com" } \] }
+  /// "email": "person2@company.com" } \] } }
   ///
   /// Output only.
   core.Map<core.String, ContactDetails>? contacts;
@@ -6113,6 +6183,9 @@ class Finding {
 
   /// The time at which the finding was created in Security Command Center.
   core.String? createTime;
+
+  /// Database associated with the finding.
+  Database? database;
 
   /// Contains more detail about the finding.
   core.String? description;
@@ -6318,6 +6391,7 @@ class Finding {
     this.contacts,
     this.containers,
     this.createTime,
+    this.database,
     this.description,
     this.eventTime,
     this.exfiltration,
@@ -6384,6 +6458,10 @@ class Finding {
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          database: json_.containsKey('database')
+              ? Database.fromJson(
+                  json_['database'] as core.Map<core.String, core.dynamic>)
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -6480,6 +6558,7 @@ class Finding {
         if (contacts != null) 'contacts': contacts!,
         if (containers != null) 'containers': containers!,
         if (createTime != null) 'createTime': createTime!,
+        if (database != null) 'database': database!,
         if (description != null) 'description': description!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (exfiltration != null) 'exfiltration': exfiltration!,
@@ -7399,7 +7478,7 @@ class Indicator {
   /// present in the environment.
   core.List<ProcessSignature>? signatures;
 
-  /// The list of URIs associated to the Findings
+  /// The list of URIs associated to the Findings.
   core.List<core.String>? uris;
 
   Indicator({
@@ -8911,8 +8990,6 @@ class SecurityMarks {
 /// Identity delegation history of an authenticated service account.
 class ServiceAccountDelegationInfo {
   /// The email address of a Google account.
-  ///
-  /// .
   core.String? principalEmail;
 
   /// A string representing the principal_subject associated with the identity.
@@ -8920,7 +8997,7 @@ class ServiceAccountDelegationInfo {
   /// As compared to `principal_email`, supports principals that aren't
   /// associated with email addresses, such as third party principals. For most
   /// identities, the format will be `principal://iam.googleapis.com/{identity
-  /// pool name}/subject/{subject)` except for some GKE identities
+  /// pool name}/subjects/{subject}` except for some GKE identities
   /// (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
   /// format `serviceAccount:{identity pool name}[{subject}]`
   core.String? principalSubject;

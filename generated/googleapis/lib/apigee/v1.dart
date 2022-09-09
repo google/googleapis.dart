@@ -76,6 +76,7 @@
 ///     - [OrganizationsEnvironmentsReferencesResource]
 ///     - [OrganizationsEnvironmentsResourcefilesResource]
 ///     - [OrganizationsEnvironmentsSecurityReportsResource]
+///     - [OrganizationsEnvironmentsSecurityStatsResource]
 ///     - [OrganizationsEnvironmentsSharedflowsResource]
 ///       - [OrganizationsEnvironmentsSharedflowsDeploymentsResource]
 ///       - [OrganizationsEnvironmentsSharedflowsRevisionsResource]
@@ -5560,6 +5561,8 @@ class OrganizationsEnvironmentsResource {
       OrganizationsEnvironmentsResourcefilesResource(_requester);
   OrganizationsEnvironmentsSecurityReportsResource get securityReports =>
       OrganizationsEnvironmentsSecurityReportsResource(_requester);
+  OrganizationsEnvironmentsSecurityStatsResource get securityStats =>
+      OrganizationsEnvironmentsSecurityStatsResource(_requester);
   OrganizationsEnvironmentsSharedflowsResource get sharedflows =>
       OrganizationsEnvironmentsSharedflowsResource(_requester);
   OrganizationsEnvironmentsStatsResource get stats =>
@@ -5871,6 +5874,56 @@ class OrganizationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1TraceConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates properties for an Apigee environment with patch semantics using a
+  /// field mask.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the environment. Use the following structure in
+  /// your request: `organizations/{org}/environments/{environment}`.
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [updateMask] - List of fields to be updated. Fields that can be updated:
+  /// node_config.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> modifyEnvironment(
+    GoogleCloudApigeeV1Environment request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -9491,6 +9544,100 @@ class OrganizationsEnvironmentsSecurityReportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ListSecurityReportsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEnvironmentsSecurityStatsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEnvironmentsSecurityStatsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieve security statistics as tabular rows.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [orgenv] - Required. Should be of the form organizations//environments/.
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1QueryTabularStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1QueryTabularStatsResponse> queryTabularStats(
+    GoogleCloudApigeeV1QueryTabularStatsRequest request,
+    core.String orgenv, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$orgenv') +
+        '/securityStats:queryTabularStats';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1QueryTabularStatsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve security statistics as a collection of time series.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [orgenv] - Required. Should be of the form organizations//environments/.
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1QueryTimeSeriesStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse>
+      queryTimeSeriesStats(
+    GoogleCloudApigeeV1QueryTimeSeriesStatsRequest request,
+    core.String orgenv, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$orgenv') +
+        '/securityStats:queryTimeSeriesStats';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1QueryTimeSeriesStatsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -13963,6 +14110,32 @@ class GoogleCloudApigeeV1ApiProduct {
   /// `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
   core.String? quota;
 
+  /// Scope of the quota decides how the quota counter gets applied and evaluate
+  /// for quota violation.
+  ///
+  /// If the Scope is set as PROXY, then all the operations defined for the
+  /// APIproduct that are associated with the same proxy will share the same
+  /// quota counter set at the APIproduct level, making it a global counter at a
+  /// proxy level. If the Scope is set as OPERATION, then each operations get
+  /// the counter set at the API product dedicated, making it a local counter.
+  /// Note that, the QuotaCounterScope applies only when an operation does not
+  /// have dedicated quota set for itself.
+  /// Possible string values are:
+  /// - "QUOTA_COUNTER_SCOPE_UNSPECIFIED" : When quota is not explicitly defined
+  /// for each operation(REST/GraphQL), the limits set at product level will be
+  /// used as a local counter for quota evaluation by all the operations,
+  /// independent of proxy association.
+  /// - "PROXY" : When quota is not explicitly defined for each
+  /// operation(REST/GraphQL), set at product level will be used as a global
+  /// counter for quota evaluation by all the operations associated with a
+  /// particular proxy.
+  /// - "OPERATION" : When quota is not explicitly defined for each
+  /// operation(REST/GraphQL), the limits set at product level will be used as a
+  /// local counter for quota evaluation by all the operations, independent of
+  /// proxy association. This behavior mimics the same as
+  /// QUOTA_COUNTER_SCOPE_UNSPECIFIED.
+  core.String? quotaCounterScope;
+
   /// Time interval over which the number of request messages is calculated.
   core.String? quotaInterval;
 
@@ -13991,6 +14164,7 @@ class GoogleCloudApigeeV1ApiProduct {
     this.operationGroup,
     this.proxies,
     this.quota,
+    this.quotaCounterScope,
     this.quotaInterval,
     this.quotaTimeUnit,
     this.scopes,
@@ -14047,6 +14221,9 @@ class GoogleCloudApigeeV1ApiProduct {
               : null,
           quota:
               json_.containsKey('quota') ? json_['quota'] as core.String : null,
+          quotaCounterScope: json_.containsKey('quotaCounterScope')
+              ? json_['quotaCounterScope'] as core.String
+              : null,
           quotaInterval: json_.containsKey('quotaInterval')
               ? json_['quotaInterval'] as core.String
               : null,
@@ -14075,6 +14252,7 @@ class GoogleCloudApigeeV1ApiProduct {
         if (operationGroup != null) 'operationGroup': operationGroup!,
         if (proxies != null) 'proxies': proxies!,
         if (quota != null) 'quota': quota!,
+        if (quotaCounterScope != null) 'quotaCounterScope': quotaCounterScope!,
         if (quotaInterval != null) 'quotaInterval': quotaInterval!,
         if (quotaTimeUnit != null) 'quotaTimeUnit': quotaTimeUnit!,
         if (scopes != null) 'scopes': scopes!,
@@ -17491,6 +17669,25 @@ class GoogleCloudApigeeV1DimensionMetric {
 /// For more information, see
 /// [Southbound networking patterns](https://cloud.google.com/apigee/docs/api-platform/architecture/southbound-networking-patterns-endpoints).
 class GoogleCloudApigeeV1EndpointAttachment {
+  /// State of the endpoint attachment connection to the service attachment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTION_STATE_UNSPECIFIED" : The connection state has not been set.
+  /// - "UNAVAILABLE" : The connection state is unavailable at this time,
+  /// possibly because the endpoint attachment is currently being provisioned.
+  /// - "PENDING" : The connection is pending acceptance by the PSC producer.
+  /// - "ACCEPTED" : The connection has been accepted by the PSC producer.
+  /// - "REJECTED" : The connection has been rejected by the PSC producer.
+  /// - "CLOSED" : The connection has been closed by the PSC producer and will
+  /// not serve traffic going forward.
+  /// - "FROZEN" : The connection has been frozen by the PSC producer and will
+  /// not serve traffic.
+  /// - "NEEDS_ATTENTION" : The connection has been accepted by the PSC
+  /// producer, but it is not ready to serve the traffic due to producer side
+  /// issues.
+  core.String? connectionState;
+
   /// Host that can be used in either the HTTP target endpoint directly or as
   /// the host in target server.
   ///
@@ -17525,6 +17722,7 @@ class GoogleCloudApigeeV1EndpointAttachment {
   core.String? state;
 
   GoogleCloudApigeeV1EndpointAttachment({
+    this.connectionState,
     this.host,
     this.location,
     this.name,
@@ -17534,6 +17732,9 @@ class GoogleCloudApigeeV1EndpointAttachment {
 
   GoogleCloudApigeeV1EndpointAttachment.fromJson(core.Map json_)
       : this(
+          connectionState: json_.containsKey('connectionState')
+              ? json_['connectionState'] as core.String
+              : null,
           host: json_.containsKey('host') ? json_['host'] as core.String : null,
           location: json_.containsKey('location')
               ? json_['location'] as core.String
@@ -17547,6 +17748,7 @@ class GoogleCloudApigeeV1EndpointAttachment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionState != null) 'connectionState': connectionState!,
         if (host != null) 'host': host!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
@@ -17671,6 +17873,11 @@ class GoogleCloudApigeeV1Environment {
   /// Required.
   core.String? name;
 
+  /// NodeConfig of the environment.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1NodeConfig? nodeConfig;
+
   /// Key-value pairs that may be used for customizing the environment.
   ///
   /// Optional.
@@ -17698,6 +17905,7 @@ class GoogleCloudApigeeV1Environment {
     this.forwardProxyUri,
     this.lastModifiedAt,
     this.name,
+    this.nodeConfig,
     this.properties,
     this.state,
   });
@@ -17726,6 +17934,10 @@ class GoogleCloudApigeeV1Environment {
               ? json_['lastModifiedAt'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nodeConfig: json_.containsKey('nodeConfig')
+              ? GoogleCloudApigeeV1NodeConfig.fromJson(
+                  json_['nodeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           properties: json_.containsKey('properties')
               ? GoogleCloudApigeeV1Properties.fromJson(
                   json_['properties'] as core.Map<core.String, core.dynamic>)
@@ -17743,6 +17955,7 @@ class GoogleCloudApigeeV1Environment {
         if (forwardProxyUri != null) 'forwardProxyUri': forwardProxyUri!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (name != null) 'name': name!,
+        if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (properties != null) 'properties': properties!,
         if (state != null) 'state': state!,
       };
@@ -19272,7 +19485,7 @@ class GoogleCloudApigeeV1Keystore {
 
   /// Resource ID for this keystore.
   ///
-  /// Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+  /// Values must match the regular expression `[\w[:space:].-]{1,255}`.
   ///
   /// Required.
   core.String? name;
@@ -20364,6 +20577,54 @@ class GoogleCloudApigeeV1Metric {
       };
 }
 
+/// The optionally aggregated metric to query with its ordering.
+class GoogleCloudApigeeV1MetricAggregation {
+  /// Aggregation function associated with the metric.
+  /// Possible string values are:
+  /// - "AGGREGATION_FUNCTION_UNSPECIFIED" : Unspecified Aggregation function.
+  /// - "AVG" : Average.
+  /// - "SUM" : Summation.
+  /// - "MIN" : Min.
+  /// - "MAX" : Max.
+  /// - "COUNT_DISTINCT" : Count distinct
+  core.String? aggregation;
+
+  /// Name of the metric
+  core.String? name;
+
+  /// Ordering for this aggregation in the result.
+  ///
+  /// For time series this is ignored since the ordering of points depends only
+  /// on the timestamp, not the values.
+  /// Possible string values are:
+  /// - "ORDER_UNSPECIFIED" : Unspecified order. Default is Descending.
+  /// - "ASCENDING" : Ascending sort order.
+  /// - "DESCENDING" : Descending sort order.
+  core.String? order;
+
+  GoogleCloudApigeeV1MetricAggregation({
+    this.aggregation,
+    this.name,
+    this.order,
+  });
+
+  GoogleCloudApigeeV1MetricAggregation.fromJson(core.Map json_)
+      : this(
+          aggregation: json_.containsKey('aggregation')
+              ? json_['aggregation'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          order:
+              json_.containsKey('order') ? json_['order'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregation != null) 'aggregation': aggregation!,
+        if (name != null) 'name': name!,
+        if (order != null) 'order': order!,
+      };
+}
+
 /// Configuration for the Monetization add-on.
 class GoogleCloudApigeeV1MonetizationConfig {
   /// Flag that specifies whether the Monetization add-on is enabled.
@@ -20432,6 +20693,61 @@ class GoogleCloudApigeeV1NatAddress {
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// NodeConfig for setting the min/max number of nodes associated with the
+/// environment.
+class GoogleCloudApigeeV1NodeConfig {
+  /// The current total number of gateway nodes that each environment currently
+  /// has across all instances.
+  ///
+  /// Output only.
+  core.String? currentAggregateNodeCount;
+
+  /// The maximum total number of gateway nodes that the is reserved for all
+  /// instances that has the specified environment.
+  ///
+  /// If not specified, the default is determined by the recommended maximum
+  /// number of nodes for that gateway.
+  ///
+  /// Optional.
+  core.String? maxNodeCount;
+
+  /// The minimum total number of gateway nodes that the is reserved for all
+  /// instances that has the specified environment.
+  ///
+  /// If not specified, the default is determined by the recommended minimum
+  /// number of nodes for that gateway.
+  ///
+  /// Optional.
+  core.String? minNodeCount;
+
+  GoogleCloudApigeeV1NodeConfig({
+    this.currentAggregateNodeCount,
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
+
+  GoogleCloudApigeeV1NodeConfig.fromJson(core.Map json_)
+      : this(
+          currentAggregateNodeCount:
+              json_.containsKey('currentAggregateNodeCount')
+                  ? json_['currentAggregateNodeCount'] as core.String
+                  : null,
+          maxNodeCount: json_.containsKey('maxNodeCount')
+              ? json_['maxNodeCount'] as core.String
+              : null,
+          minNodeCount: json_.containsKey('minNodeCount')
+              ? json_['minNodeCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentAggregateNodeCount != null)
+          'currentAggregateNodeCount': currentAggregateNodeCount!,
+        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
       };
 }
 
@@ -20740,6 +21056,7 @@ class GoogleCloudApigeeV1Organization {
   /// - "SUBSCRIPTION" : A pre-paid subscription to Apigee.
   /// - "EVALUATION" : Free and limited access to Apigee for evaluation purposes
   /// only. only.
+  /// - "PAYG" : Access to Apigee using a Pay-As-You-Go plan.
   core.String? billingType;
 
   /// Base64-encoded public certificate for the root CA of the Apigee
@@ -21531,6 +21848,328 @@ class GoogleCloudApigeeV1QueryMetric {
         if (name != null) 'name': name!,
         if (operator != null) 'operator': operator!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Request payload representing the query to be run for fetching security
+/// statistics as rows.
+class GoogleCloudApigeeV1QueryTabularStatsRequest {
+  /// List of dimension names to group the aggregations by.
+  ///
+  /// Required.
+  core.List<core.String>? dimensions;
+
+  /// Filter further on specific dimension values.
+  ///
+  /// Follows the same grammar as custom report's filter expressions. Example,
+  /// apiproxy eq 'foobar'.
+  /// https://cloud.google.com/apigee/docs/api-platform/analytics/analytics-reference#filters
+  core.String? filter;
+
+  /// List of metrics and their aggregations.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1MetricAggregation>? metrics;
+
+  /// Page size represents the number of rows.
+  core.int? pageSize;
+
+  /// Identifies a sequence of rows.
+  core.String? pageToken;
+
+  /// Time range for the stats.
+  GoogleTypeInterval? timeRange;
+
+  GoogleCloudApigeeV1QueryTabularStatsRequest({
+    this.dimensions,
+    this.filter,
+    this.metrics,
+    this.pageSize,
+    this.pageToken,
+    this.timeRange,
+  });
+
+  GoogleCloudApigeeV1QueryTabularStatsRequest.fromJson(core.Map json_)
+      : this(
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1MetricAggregation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
+              : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
+              : null,
+          timeRange: json_.containsKey('timeRange')
+              ? GoogleTypeInterval.fromJson(
+                  json_['timeRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (filter != null) 'filter': filter!,
+        if (metrics != null) 'metrics': metrics!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (timeRange != null) 'timeRange': timeRange!,
+      };
+}
+
+/// Encapsulates two kinds of stats that are results of the dimensions and
+/// aggregations requested.
+///
+/// - Tabular rows. - Time series data. Example of tabular rows, Represents
+/// security stats results as a row of flat values.
+class GoogleCloudApigeeV1QueryTabularStatsResponse {
+  /// Column names corresponding to the same order as the inner values in the
+  /// stats field.
+  core.List<core.String>? columns;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// Resultant rows from the executed query.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.List<core.Object?>>? values;
+
+  GoogleCloudApigeeV1QueryTabularStatsResponse({
+    this.columns,
+    this.nextPageToken,
+    this.values,
+  });
+
+  GoogleCloudApigeeV1QueryTabularStatsResponse.fromJson(core.Map json_)
+      : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.List)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// QueryTimeSeriesStatsRequest represents a query that returns a collection of
+/// time series sequences grouped by their values.
+class GoogleCloudApigeeV1QueryTimeSeriesStatsRequest {
+  /// List of dimension names to group the aggregations by.
+  ///
+  /// If no dimensions are passed, a single trend line representing the
+  /// requested metric aggregations grouped by environment is returned.
+  core.List<core.String>? dimensions;
+
+  /// Filter further on specific dimension values.
+  ///
+  /// Follows the same grammar as custom report's filter expressions. Example,
+  /// apiproxy eq 'foobar'.
+  /// https://cloud.google.com/apigee/docs/api-platform/analytics/analytics-reference#filters
+  core.String? filter;
+
+  /// List of metrics and their aggregations.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1MetricAggregation>? metrics;
+
+  /// Page size represents the number of time series sequences, one per unique
+  /// set of dimensions and their values.
+  core.int? pageSize;
+
+  /// Page token stands for a specific collection of time series sequences.
+  core.String? pageToken;
+
+  /// Time range for the stats.
+  ///
+  /// Required.
+  GoogleTypeInterval? timeRange;
+
+  /// Order the sequences in increasing or decreasing order of timestamps.
+  ///
+  /// Default is descending order of timestamps (latest first).
+  /// Possible string values are:
+  /// - "ORDER_UNSPECIFIED" : Unspecified order. Default is Descending.
+  /// - "ASCENDING" : Ascending sort order.
+  /// - "DESCENDING" : Descending sort order.
+  core.String? timestampOrder;
+
+  /// Time buckets to group the stats by.
+  /// Possible string values are:
+  /// - "WINDOW_SIZE_UNSPECIFIED" : Unspecified window size. Default is 1 hour.
+  /// - "MINUTE" : 1 Minute window
+  /// - "HOUR" : 1 Hour window
+  /// - "DAY" : 1 Day window
+  /// - "MONTH" : 1 Month window
+  core.String? windowSize;
+
+  GoogleCloudApigeeV1QueryTimeSeriesStatsRequest({
+    this.dimensions,
+    this.filter,
+    this.metrics,
+    this.pageSize,
+    this.pageToken,
+    this.timeRange,
+    this.timestampOrder,
+    this.windowSize,
+  });
+
+  GoogleCloudApigeeV1QueryTimeSeriesStatsRequest.fromJson(core.Map json_)
+      : this(
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1MetricAggregation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
+              : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
+              : null,
+          timeRange: json_.containsKey('timeRange')
+              ? GoogleTypeInterval.fromJson(
+                  json_['timeRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timestampOrder: json_.containsKey('timestampOrder')
+              ? json_['timestampOrder'] as core.String
+              : null,
+          windowSize: json_.containsKey('windowSize')
+              ? json_['windowSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (filter != null) 'filter': filter!,
+        if (metrics != null) 'metrics': metrics!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (timeRange != null) 'timeRange': timeRange!,
+        if (timestampOrder != null) 'timestampOrder': timestampOrder!,
+        if (windowSize != null) 'windowSize': windowSize!,
+      };
+}
+
+/// Represents security stats result as a collection of time series sequences.
+class GoogleCloudApigeeV1QueryTimeSeriesStatsResponse {
+  /// Column names corresponding to the same order as the inner values in the
+  /// stats field.
+  core.List<core.String>? columns;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// Results of the query returned as a JSON array.
+  core.List<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>? values;
+
+  GoogleCloudApigeeV1QueryTimeSeriesStatsResponse({
+    this.columns,
+    this.nextPageToken,
+    this.values,
+  });
+
+  GoogleCloudApigeeV1QueryTimeSeriesStatsResponse.fromJson(core.Map json_)
+      : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// A sequence of time series.
+class GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence {
+  /// Map of dimensions and their values that uniquely identifies a time series
+  /// sequence.
+  core.Map<core.String, core.String>? dimensions;
+
+  /// List of points.
+  ///
+  /// First value of each inner list is a timestamp.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.List<core.Object?>>? points;
+
+  GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence({
+    this.dimensions,
+    this.points,
+  });
+
+  GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence.fromJson(
+      core.Map json_)
+      : this(
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          points: json_.containsKey('points')
+              ? (json_['points'] as core.List)
+                  .map((value) => value as core.List)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (points != null) 'points': points!,
       };
 }
 
@@ -24967,10 +25606,16 @@ class GoogleIamV1Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has

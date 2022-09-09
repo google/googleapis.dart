@@ -105,6 +105,11 @@ class V1Resource {
 /// Contains the account information such as the licensing status for the user
 /// in the scope.
 class AccountDetails {
+  /// Details about the account risk for the user in the scope.
+  ///
+  /// This feature is available only to selected developers.
+  AccountRiskVerdict? accountRiskVerdict;
+
   /// Details about the licensing status of the user for the app in the scope.
   ///
   /// Required.
@@ -121,19 +126,87 @@ class AccountDetails {
   core.String? appLicensingVerdict;
 
   AccountDetails({
+    this.accountRiskVerdict,
     this.appLicensingVerdict,
   });
 
   AccountDetails.fromJson(core.Map json_)
       : this(
+          accountRiskVerdict: json_.containsKey('accountRiskVerdict')
+              ? AccountRiskVerdict.fromJson(json_['accountRiskVerdict']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           appLicensingVerdict: json_.containsKey('appLicensingVerdict')
               ? json_['appLicensingVerdict'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountRiskVerdict != null)
+          'accountRiskVerdict': accountRiskVerdict!,
         if (appLicensingVerdict != null)
           'appLicensingVerdict': appLicensingVerdict!,
+      };
+}
+
+/// Contains information about account risk that indicates if the current user
+/// session seems low risk, unknown, or risky before you allow important actions
+/// to proceed.
+class AccountRiskVerdict {
+  /// Indicates the account risk level of the current user session.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RISK_UNSPECIFIED" : Risk has not been set.
+  /// - "UNEVALUATED" : The account risk is not evaluated, because the device is
+  /// not trusted or the user does not have a Play app license.
+  /// - "HIGHER" : Play thinks that at least one of the user accounts on the
+  /// device has some unusual store engagement behavior that could be risky.
+  /// - "UNKNOWN" : Play does not have sufficient information to assess the
+  /// risk. The account may be new, or it may lack activity on the Play Store.
+  /// - "LOWER" : Play thinks the user could be genuine, since there is some
+  /// store engagement. However, some signals to support the trust level are
+  /// missing.
+  /// - "LOWEST" : Play thinks the user is more likely to be genuine due to
+  /// harder to replicate store engagement signals.
+  core.String? risk;
+
+  /// Indicates the account risk level of the current user session.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RISK_LEVEL_UNSPECIFIED" : Risk level has not been set.
+  /// - "RISK_LEVEL_UNEVALUATED" : The account risk is not evaluated, because
+  /// the device is not trusted or the user does not have a Play app license.
+  /// - "RISK_LEVEL_RISK" : Play thinks that at least one of the user accounts
+  /// on the device has some unusual store engagement behavior that could be
+  /// risky.
+  /// - "RISK_LEVEL_UNKNOWN" : Play does not have sufficient information to
+  /// assess the risk. The account may be new, or it may lack activity on the
+  /// Play Store.
+  /// - "RISK_LEVEL_LOW_RISK" : Play thinks the user could be genuine, since
+  /// there is some store engagement. However, some signals to support the trust
+  /// level are missing.
+  /// - "RISK_LEVEL_LOWEST_RISK" : Play thinks the user is more likely to be
+  /// genuine due to harder to replicate store engagement signals.
+  core.String? riskLevel;
+
+  AccountRiskVerdict({
+    this.risk,
+    this.riskLevel,
+  });
+
+  AccountRiskVerdict.fromJson(core.Map json_)
+      : this(
+          risk: json_.containsKey('risk') ? json_['risk'] as core.String : null,
+          riskLevel: json_.containsKey('riskLevel')
+              ? json_['riskLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (risk != null) 'risk': risk!,
+        if (riskLevel != null) 'riskLevel': riskLevel!,
       };
 }
 
@@ -154,9 +227,10 @@ class AppIntegrity {
   /// the minimum bar.
   core.String? appRecognitionVerdict;
 
-  /// Hex fingerprint of the application signing certificate.
+  /// The SHA256 hash of the requesting app's signing certificates (base64
+  /// web-safe encoded).
   ///
-  /// e.g. “ABCE1F....” Set iff app_recognition_verdict != UNEVALUATED.
+  /// Set iff app_recognition_verdict != UNEVALUATED.
   core.List<core.String>? certificateSha256Digest;
 
   /// Package name of the application under attestation.

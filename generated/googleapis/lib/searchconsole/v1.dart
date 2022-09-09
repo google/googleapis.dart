@@ -552,8 +552,7 @@ class AmpInspectionResult {
   /// Possible string values are:
   /// - "VERDICT_UNSPECIFIED" : Unknown verdict.
   /// - "PASS" : Equivalent to "Valid" for the page or item in Search Console.
-  /// - "PARTIAL" : Equivalent to "Valid with warnings" for the page or item in
-  /// Search Console.
+  /// - "PARTIAL" : Reserved, no longer in use.
   /// - "FAIL" : Equivalent to "Error" or "Invalid" for the page or item in
   /// Search Console.
   /// - "NEUTRAL" : Equivalent to "Excluded" for the page or item in Search
@@ -615,8 +614,7 @@ class AmpInspectionResult {
   /// Possible string values are:
   /// - "VERDICT_UNSPECIFIED" : Unknown verdict.
   /// - "PASS" : Equivalent to "Valid" for the page or item in Search Console.
-  /// - "PARTIAL" : Equivalent to "Valid with warnings" for the page or item in
-  /// Search Console.
+  /// - "PARTIAL" : Reserved, no longer in use.
   /// - "FAIL" : Equivalent to "Error" or "Invalid" for the page or item in
   /// Search Console.
   /// - "NEUTRAL" : Equivalent to "Excluded" for the page or item in Search
@@ -1024,8 +1022,7 @@ class IndexStatusInspectionResult {
   /// Possible string values are:
   /// - "VERDICT_UNSPECIFIED" : Unknown verdict.
   /// - "PASS" : Equivalent to "Valid" for the page or item in Search Console.
-  /// - "PARTIAL" : Equivalent to "Valid with warnings" for the page or item in
-  /// Search Console.
+  /// - "PARTIAL" : Reserved, no longer in use.
   /// - "FAIL" : Equivalent to "Error" or "Invalid" for the page or item in
   /// Search Console.
   /// - "NEUTRAL" : Equivalent to "Excluded" for the page or item in Search
@@ -1252,8 +1249,7 @@ class MobileUsabilityInspectionResult {
   /// Possible string values are:
   /// - "VERDICT_UNSPECIFIED" : Unknown verdict.
   /// - "PASS" : Equivalent to "Valid" for the page or item in Search Console.
-  /// - "PARTIAL" : Equivalent to "Valid with warnings" for the page or item in
-  /// Search Console.
+  /// - "PARTIAL" : Reserved, no longer in use.
   /// - "FAIL" : Equivalent to "Error" or "Invalid" for the page or item in
   /// Search Console.
   /// - "NEUTRAL" : Equivalent to "Excluded" for the page or item in Search
@@ -1378,8 +1374,7 @@ class RichResultsInspectionResult {
   /// Possible string values are:
   /// - "VERDICT_UNSPECIFIED" : Unknown verdict.
   /// - "PASS" : Equivalent to "Valid" for the page or item in Search Console.
-  /// - "PARTIAL" : Equivalent to "Valid with warnings" for the page or item in
-  /// Search Console.
+  /// - "PARTIAL" : Reserved, no longer in use.
   /// - "FAIL" : Equivalent to "Error" or "Invalid" for the page or item in
   /// Search Console.
   /// - "NEUTRAL" : Equivalent to "Excluded" for the page or item in Search

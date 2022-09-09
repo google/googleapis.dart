@@ -192,18 +192,18 @@ class ProjectsLocationsApisResource {
   ProjectsLocationsApisResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateApi creates a specified API.
+  /// Creates a specified API.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of APIs.
-  /// Format: projects / * /locations / *
+  /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [apiId] - Required. The ID to use for the api, which will become the final
-  /// component of the api's resource name. This value should be 4-63
+  /// [apiId] - Required. The ID to use for the API, which will become the final
+  /// component of the API's resource name. This value should be 4-63
   /// characters, and valid characters are /a-z-/. Following AIP-162, IDs must
   /// not have the form of a UUID.
   ///
@@ -240,12 +240,12 @@ class ProjectsLocationsApisResource {
     return Api.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteApi removes a specified API and all of the resources that it owns.
+  /// Removes a specified API and all of the resources that it owns.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the API to delete. Format: projects / *
-  /// /locations / * /apis / *
+  /// [name] - Required. The name of the API to delete. Format: `projects / *
+  /// /locations / * /apis / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
@@ -282,12 +282,12 @@ class ProjectsLocationsApisResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetApi returns a specified API.
+  /// Returns a specified API.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the API to retrieve. Format: projects / *
-  /// /locations / * /apis / *
+  /// [name] - Required. The name of the API to retrieve. Format: `projects / *
+  /// /locations / * /apis / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
@@ -376,16 +376,20 @@ class ProjectsLocationsApisResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListApis returns matching APIs.
+  /// Returns matching APIs.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of APIs.
-  /// Format: projects / * /locations / *
+  /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of APIs to return. The service may return
   /// fewer than this value. If unspecified, at most 50 values will be returned.
@@ -409,12 +413,14 @@ class ProjectsLocationsApisResource {
   async.Future<ListApisResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -431,7 +437,7 @@ class ProjectsLocationsApisResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// UpdateApi can be used to modify a specified API.
+  /// Used to modify a specified API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -441,13 +447,13 @@ class ProjectsLocationsApisResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true, and the api is not found, a new api will
+  /// [allowMissing] - If set to true, and the API is not found, a new API will
   /// be created. In this situation, `update_mask` is ignored.
   ///
   /// [updateMask] - The list of fields to be updated. If omitted, all fields
   /// are updated that are set in the request message (fields set to default
-  /// values are ignored). If a "*" is specified, all fields are updated,
-  /// including fields that are unspecified/default in the request.
+  /// values are ignored). If an asterisk "*" is specified, all fields are
+  /// updated, including fields that are unspecified/default in the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -589,14 +595,14 @@ class ProjectsLocationsApisArtifactsResource {
   ProjectsLocationsApisArtifactsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateArtifact creates a specified artifact.
+  /// Creates a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
@@ -638,12 +644,12 @@ class ProjectsLocationsApisArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteArtifact removes a specified artifact.
+  /// Removes a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to delete. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -675,12 +681,12 @@ class ProjectsLocationsApisArtifactsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifact returns a specified artifact.
+  /// Returns a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to retrieve. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -712,7 +718,7 @@ class ProjectsLocationsApisArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifactContents returns the contents of a specified artifact.
+  /// Returns the contents of a specified artifact.
   ///
   /// If artifacts are stored with GZip compression, the default behavior is to
   /// return the artifact uncompressed (the mime_type response field indicates
@@ -721,7 +727,7 @@ class ProjectsLocationsApisArtifactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact whose contents should be
-  /// retrieved. Format: {parent}/artifacts / *
+  /// retrieved. Format: `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -810,18 +816,22 @@ class ProjectsLocationsApisArtifactsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListArtifacts returns matching artifacts.
+  /// Returns matching artifacts.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields except
   /// contents.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of artifacts to return. The service may
   /// return fewer than this value. If unspecified, at most 50 values will be
@@ -845,12 +855,14 @@ class ProjectsLocationsApisArtifactsResource {
   async.Future<ListArtifactsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -867,7 +879,7 @@ class ProjectsLocationsApisArtifactsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ReplaceArtifact can be used to replace a specified artifact.
+  /// Used to replace a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1016,14 +1028,14 @@ class ProjectsLocationsApisDeploymentsResource {
   ProjectsLocationsApisDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateApiDeployment creates a specified deployment.
+  /// Creates a specified deployment.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of
-  /// deployments. Format: projects / * /locations / * /apis / *
+  /// deployments. Format: `projects / * /locations / * /apis / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
@@ -1066,13 +1078,13 @@ class ProjectsLocationsApisDeploymentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteApiDeployment removes a specified deployment, all revisions, and all
-  /// child resources (e.g. artifacts).
+  /// Removes a specified deployment, all revisions, and all child resources
+  /// (e.g., artifacts).
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the deployment to delete. Format: projects
-  /// / * /locations / * /apis / * /deployments / *
+  /// [name] - Required. The name of the deployment to delete. Format: `projects
+  /// / * /locations / * /apis / * /deployments / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+$`.
   ///
@@ -1109,13 +1121,13 @@ class ProjectsLocationsApisDeploymentsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteApiDeploymentRevision deletes a revision of a deployment.
+  /// Deletes a revision of a deployment.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the deployment revision to be deleted, with
   /// a revision ID explicitly included. Example:
-  /// projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8
+  /// `projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+$`.
   ///
@@ -1148,12 +1160,12 @@ class ProjectsLocationsApisDeploymentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetApiDeployment returns a specified deployment.
+  /// Returns a specified deployment.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the deployment to retrieve. Format:
-  /// projects / * /locations / * /apis / * /deployments / *
+  /// `projects / * /locations / * /apis / * /deployments / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+$`.
   ///
@@ -1243,17 +1255,21 @@ class ProjectsLocationsApisDeploymentsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListApiDeployments returns matching deployments.
+  /// Returns matching deployments.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of
-  /// deployments. Format: projects / * /locations / * /apis / *
+  /// deployments. Format: `projects / * /locations / * /apis / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of deployments to return. The service may
   /// return fewer than this value. If unspecified, at most 50 values will be
@@ -1277,12 +1293,14 @@ class ProjectsLocationsApisDeploymentsResource {
   async.Future<ListApiDeploymentsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1299,7 +1317,7 @@ class ProjectsLocationsApisDeploymentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListApiDeploymentRevisions lists all revisions of a deployment.
+  /// Lists all revisions of a deployment.
   ///
   /// Revisions are returned in descending order of revision creation time.
   ///
@@ -1348,7 +1366,7 @@ class ProjectsLocationsApisDeploymentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// UpdateApiDeployment can be used to modify a specified deployment.
+  /// Used to modify a specified deployment.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1363,8 +1381,8 @@ class ProjectsLocationsApisDeploymentsResource {
   ///
   /// [updateMask] - The list of fields to be updated. If omitted, all fields
   /// are updated that are set in the request message (fields set to default
-  /// values are ignored). If a "*" is specified, all fields are updated,
-  /// including fields that are unspecified/default in the request.
+  /// values are ignored). If an asterisk "*" is specified, all fields are
+  /// updated, including fields that are unspecified/default in the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1402,8 +1420,7 @@ class ProjectsLocationsApisDeploymentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// RollbackApiDeployment sets the current revision to a specified prior
-  /// revision.
+  /// Sets the current revision to a specified prior revision.
   ///
   /// Note that this creates a new revision with a new revision ID.
   ///
@@ -1494,8 +1511,7 @@ class ProjectsLocationsApisDeploymentsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// TagApiDeploymentRevision adds a tag to a specified revision of a
-  /// deployment.
+  /// Adds a tag to a specified revision of a deployment.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1596,14 +1612,14 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   ProjectsLocationsApisDeploymentsArtifactsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateArtifact creates a specified artifact.
+  /// Creates a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+$`.
   ///
@@ -1645,12 +1661,12 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteArtifact removes a specified artifact.
+  /// Removes a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to delete. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -1682,12 +1698,12 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifact returns a specified artifact.
+  /// Returns a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to retrieve. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -1719,7 +1735,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifactContents returns the contents of a specified artifact.
+  /// Returns the contents of a specified artifact.
   ///
   /// If artifacts are stored with GZip compression, the default behavior is to
   /// return the artifact uncompressed (the mime_type response field indicates
@@ -1728,7 +1744,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact whose contents should be
-  /// retrieved. Format: {parent}/artifacts / *
+  /// retrieved. Format: `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -1760,18 +1776,22 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListArtifacts returns matching artifacts.
+  /// Returns matching artifacts.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields except
   /// contents.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of artifacts to return. The service may
   /// return fewer than this value. If unspecified, at most 50 values will be
@@ -1795,12 +1815,14 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
   async.Future<ListArtifactsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1817,7 +1839,7 @@ class ProjectsLocationsApisDeploymentsArtifactsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ReplaceArtifact can be used to replace a specified artifact.
+  /// Used to replace a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1870,14 +1892,14 @@ class ProjectsLocationsApisVersionsResource {
   ProjectsLocationsApisVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateApiVersion creates a specified version.
+  /// Creates a specified version.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of versions.
-  /// Format: projects / * /locations / * /apis / *
+  /// Format: `projects / * /locations / * /apis / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
@@ -1920,13 +1942,12 @@ class ProjectsLocationsApisVersionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteApiVersion removes a specified version and all of the resources that
-  /// it owns.
+  /// Removes a specified version and all of the resources that it owns.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the version to delete. Format: projects / *
-  /// /locations / * /apis / * /versions / *
+  /// [name] - Required. The name of the version to delete. Format: `projects /
+  /// * /locations / * /apis / * /versions / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -1963,12 +1984,12 @@ class ProjectsLocationsApisVersionsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetApiVersion returns a specified version.
+  /// Returns a specified version.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the version to retrieve. Format: projects /
-  /// * /locations / * /apis / * /versions / *
+  /// [name] - Required. The name of the version to retrieve. Format: `projects
+  /// / * /locations / * /apis / * /versions / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -2058,17 +2079,21 @@ class ProjectsLocationsApisVersionsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListApiVersions returns matching versions.
+  /// Returns matching versions.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of versions.
-  /// Format: projects / * /locations / * /apis / *
+  /// Format: `projects / * /locations / * /apis / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of versions to return. The service may
   /// return fewer than this value. If unspecified, at most 50 values will be
@@ -2092,12 +2117,14 @@ class ProjectsLocationsApisVersionsResource {
   async.Future<ListApiVersionsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2114,7 +2141,7 @@ class ProjectsLocationsApisVersionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// UpdateApiVersion can be used to modify a specified version.
+  /// Used to modify a specified version.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2129,8 +2156,8 @@ class ProjectsLocationsApisVersionsResource {
   ///
   /// [updateMask] - The list of fields to be updated. If omitted, all fields
   /// are updated that are set in the request message (fields set to default
-  /// values are ignored). If a "*" is specified, all fields are updated,
-  /// including fields that are unspecified/default in the request.
+  /// values are ignored). If an asterisk "*" is specified, all fields are
+  /// updated, including fields that are unspecified/default in the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2273,14 +2300,14 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   ProjectsLocationsApisVersionsArtifactsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateArtifact creates a specified artifact.
+  /// Creates a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -2322,12 +2349,12 @@ class ProjectsLocationsApisVersionsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteArtifact removes a specified artifact.
+  /// Removes a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to delete. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -2359,12 +2386,12 @@ class ProjectsLocationsApisVersionsArtifactsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifact returns a specified artifact.
+  /// Returns a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to retrieve. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -2396,7 +2423,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifactContents returns the contents of a specified artifact.
+  /// Returns the contents of a specified artifact.
   ///
   /// If artifacts are stored with GZip compression, the default behavior is to
   /// return the artifact uncompressed (the mime_type response field indicates
@@ -2405,7 +2432,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact whose contents should be
-  /// retrieved. Format: {parent}/artifacts / *
+  /// retrieved. Format: `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -2494,18 +2521,22 @@ class ProjectsLocationsApisVersionsArtifactsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListArtifacts returns matching artifacts.
+  /// Returns matching artifacts.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields except
   /// contents.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of artifacts to return. The service may
   /// return fewer than this value. If unspecified, at most 50 values will be
@@ -2529,12 +2560,14 @@ class ProjectsLocationsApisVersionsArtifactsResource {
   async.Future<ListArtifactsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2551,7 +2584,7 @@ class ProjectsLocationsApisVersionsArtifactsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ReplaceArtifact can be used to replace a specified artifact.
+  /// Used to replace a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2700,14 +2733,14 @@ class ProjectsLocationsApisVersionsSpecsResource {
   ProjectsLocationsApisVersionsSpecsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateApiSpec creates a specified spec.
+  /// Creates a specified spec.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of specs.
-  /// Format: projects / * /locations / * /apis / * /versions / *
+  /// Format: `projects / * /locations / * /apis / * /versions / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -2749,13 +2782,13 @@ class ProjectsLocationsApisVersionsSpecsResource {
     return ApiSpec.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteApiSpec removes a specified spec, all revisions, and all child
-  /// resources (e.g. artifacts).
+  /// Removes a specified spec, all revisions, and all child resources (e.g.,
+  /// artifacts).
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the spec to delete. Format: projects / *
-  /// /locations / * /apis / * /versions / * /specs / *
+  /// [name] - Required. The name of the spec to delete. Format: `projects / *
+  /// /locations / * /apis / * /versions / * /specs / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
   ///
@@ -2792,13 +2825,13 @@ class ProjectsLocationsApisVersionsSpecsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteApiSpecRevision deletes a revision of a spec.
+  /// Deletes a revision of a spec.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the spec revision to be deleted, with a
   /// revision ID explicitly included. Example:
-  /// projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8
+  /// `projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
   ///
@@ -2830,12 +2863,12 @@ class ProjectsLocationsApisVersionsSpecsResource {
     return ApiSpec.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetApiSpec returns a specified spec.
+  /// Returns a specified spec.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the spec to retrieve. Format: projects / *
-  /// /locations / * /apis / * /versions / * /specs / *
+  /// [name] - Required. The name of the spec to retrieve. Format: `projects / *
+  /// /locations / * /apis / * /versions / * /specs / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
   ///
@@ -2867,7 +2900,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
     return ApiSpec.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetApiSpecContents returns the contents of a specified spec.
+  /// Returns the contents of a specified spec.
   ///
   /// If specs are stored with GZip compression, the default behavior is to
   /// return the spec uncompressed (the mime_type response field indicates the
@@ -2876,8 +2909,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the spec whose contents should be
-  /// retrieved. Format: projects / * /locations / * /apis / * /versions / *
-  /// /specs / *
+  /// retrieved. Format: `projects / * /locations / * /apis / * /versions / *
+  /// /specs / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
   ///
@@ -2966,18 +2999,22 @@ class ProjectsLocationsApisVersionsSpecsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListApiSpecs returns matching specs.
+  /// Returns matching specs.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of specs.
-  /// Format: projects / * /locations / * /apis / * /versions / *
+  /// Format: `projects / * /locations / * /apis / * /versions / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields except
   /// contents.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of specs to return. The service may return
   /// fewer than this value. If unspecified, at most 50 values will be returned.
@@ -3001,12 +3038,14 @@ class ProjectsLocationsApisVersionsSpecsResource {
   async.Future<ListApiSpecsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -3023,7 +3062,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListApiSpecRevisions lists all revisions of a spec.
+  /// Lists all revisions of a spec.
   ///
   /// Revisions are returned in descending order of revision creation time.
   ///
@@ -3071,7 +3110,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// UpdateApiSpec can be used to modify a specified spec.
+  /// Used to modify a specified spec.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3086,8 +3125,8 @@ class ProjectsLocationsApisVersionsSpecsResource {
   ///
   /// [updateMask] - The list of fields to be updated. If omitted, all fields
   /// are updated that are set in the request message (fields set to default
-  /// values are ignored). If a "*" is specified, all fields are updated,
-  /// including fields that are unspecified/default in the request.
+  /// values are ignored). If an asterisk "*" is specified, all fields are
+  /// updated, including fields that are unspecified/default in the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3124,7 +3163,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
     return ApiSpec.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// RollbackApiSpec sets the current revision to a specified prior revision.
+  /// Sets the current revision to a specified prior revision.
   ///
   /// Note that this creates a new revision with a new revision ID.
   ///
@@ -3214,7 +3253,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// TagApiSpecRevision adds a tag to a specified revision of a spec.
+  /// Adds a tag to a specified revision of a spec.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3315,14 +3354,14 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateArtifact creates a specified artifact.
+  /// Creates a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
   ///
@@ -3364,12 +3403,12 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteArtifact removes a specified artifact.
+  /// Removes a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to delete. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -3401,12 +3440,12 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifact returns a specified artifact.
+  /// Returns a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to retrieve. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -3438,7 +3477,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifactContents returns the contents of a specified artifact.
+  /// Returns the contents of a specified artifact.
   ///
   /// If artifacts are stored with GZip compression, the default behavior is to
   /// return the artifact uncompressed (the mime_type response field indicates
@@ -3447,7 +3486,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact whose contents should be
-  /// retrieved. Format: {parent}/artifacts / *
+  /// retrieved. Format: `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -3536,18 +3575,22 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListArtifacts returns matching artifacts.
+  /// Returns matching artifacts.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields except
   /// contents.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of artifacts to return. The service may
   /// return fewer than this value. If unspecified, at most 50 values will be
@@ -3571,12 +3614,14 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
   async.Future<ListArtifactsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -3593,7 +3638,7 @@ class ProjectsLocationsApisVersionsSpecsArtifactsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ReplaceArtifact can be used to replace a specified artifact.
+  /// Used to replace a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3739,14 +3784,14 @@ class ProjectsLocationsArtifactsResource {
   ProjectsLocationsArtifactsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// CreateArtifact creates a specified artifact.
+  /// Creates a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [artifactId] - Required. The ID to use for the artifact, which will become
@@ -3787,12 +3832,12 @@ class ProjectsLocationsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// DeleteArtifact removes a specified artifact.
+  /// Removes a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to delete. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -3824,12 +3869,12 @@ class ProjectsLocationsArtifactsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifact returns a specified artifact.
+  /// Returns a specified artifact.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact to retrieve. Format:
-  /// {parent}/artifacts / *
+  /// `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -3861,7 +3906,7 @@ class ProjectsLocationsArtifactsResource {
     return Artifact.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// GetArtifactContents returns the contents of a specified artifact.
+  /// Returns the contents of a specified artifact.
   ///
   /// If artifacts are stored with GZip compression, the default behavior is to
   /// return the artifact uncompressed (the mime_type response field indicates
@@ -3870,7 +3915,7 @@ class ProjectsLocationsArtifactsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the artifact whose contents should be
-  /// retrieved. Format: {parent}/artifacts / *
+  /// retrieved. Format: `{parent}/artifacts / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/artifacts/\[^/\]+$`.
   ///
@@ -3959,17 +4004,21 @@ class ProjectsLocationsArtifactsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ListArtifacts returns matching artifacts.
+  /// Returns matching artifacts.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of artifacts.
-  /// Format: {parent}
+  /// Format: `{parent}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - An expression that can be used to filter the list. Filters use
   /// the Common Expression Language and can refer to all message fields except
   /// contents.
+  ///
+  /// [orderBy] - A comma-separated list of fields, e.g. "foo,bar" Fields can be
+  /// sorted in descending order using the "desc" identifier, e.g. "foo
+  /// desc,bar"
   ///
   /// [pageSize] - The maximum number of artifacts to return. The service may
   /// return fewer than this value. If unspecified, at most 50 values will be
@@ -3993,12 +4042,14 @@ class ProjectsLocationsArtifactsResource {
   async.Future<ListArtifactsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -4015,7 +4066,7 @@ class ProjectsLocationsArtifactsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// ReplaceArtifact can be used to replace a specified artifact.
+  /// Used to replace a specified artifact.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4789,9 +4840,9 @@ class ProjectsLocationsRuntimeResource {
   }
 }
 
-/// An Api is a top-level description of an API.
+/// A top-level description of an API.
 ///
-/// Apis are produced by producers and are commitments to provide services.
+/// Produced by producers and are commitments to provide services.
 class Api {
   /// Annotations attach non-identifying metadata to resources.
   ///
@@ -4803,7 +4854,7 @@ class Api {
   /// A user-definable description of the availability of this service.
   ///
   /// Format: free-form, but we expect single words that describe availability,
-  /// e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+  /// e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
   core.String? availability;
 
   /// Creation timestamp.
@@ -4821,11 +4872,11 @@ class Api {
   ///
   /// Identifying metadata can be used to filter list operations. Label keys and
   /// values can be no longer than 64 characters (Unicode codepoints), can only
-  /// contain lowercase letters, numeric characters, underscores and dashes.
+  /// contain lowercase letters, numeric characters, underscores, and dashes.
   /// International characters are allowed. No more than 64 user labels can be
   /// associated with one resource (System labels are excluded). See
   /// https://goo.gl/xmQnxf for more information and examples of labels. System
-  /// reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and
+  /// reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and
   /// cannot be changed.
   core.Map<core.String, core.String>? labels;
 
@@ -4834,12 +4885,12 @@ class Api {
 
   /// The recommended deployment of the API.
   ///
-  /// Format: apis/{api}/deployments/{deployment}
+  /// Format: `apis/{api}/deployments/{deployment}`
   core.String? recommendedDeployment;
 
   /// The recommended version of the API.
   ///
-  /// Format: apis/{api}/versions/{version}
+  /// Format: `apis/{api}/versions/{version}`
   core.String? recommendedVersion;
 
   /// Last update timestamp.
@@ -4919,8 +4970,8 @@ class Api {
       };
 }
 
-/// An ApiDeployment describes a service running at particular address that
-/// provides a particular version of an API.
+/// Describes a service running at particular address that provides a particular
+/// version of an API.
 ///
 /// ApiDeployments have revisions which correspond to different configurations
 /// of a single deployment in time. Revision identifiers should be updated
@@ -4938,11 +4989,11 @@ class ApiDeployment {
   /// topic- specific metadata should be stored in Artifacts.
   core.Map<core.String, core.String>? annotations;
 
-  /// The full resource name (including revision id) of the spec of the API
+  /// The full resource name (including revision ID) of the spec of the API
   /// being served by the deployment.
   ///
   /// Changes to this value will update the revision. Format:
-  /// apis/{api}/deployments/{deployment}
+  /// `apis/{api}/deployments/{deployment}`
   core.String? apiSpecRevision;
 
   /// Creation timestamp; when the deployment resource was created.
@@ -4961,7 +5012,7 @@ class ApiDeployment {
   /// Changes to this value will update the revision.
   core.String? endpointUri;
 
-  /// The address of the external channel of the API (e.g. the Developer
+  /// The address of the external channel of the API (e.g., the Developer
   /// Portal).
   ///
   /// Changes to this value will not affect the revision.
@@ -4980,7 +5031,7 @@ class ApiDeployment {
   /// International characters are allowed. No more than 64 user labels can be
   /// associated with one resource (System labels are excluded). See
   /// https://goo.gl/xmQnxf for more information and examples of labels. System
-  /// reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and
+  /// reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and
   /// cannot be changed.
   core.Map<core.String, core.String>? labels;
 
@@ -5098,12 +5149,12 @@ class ApiDeployment {
       };
 }
 
-/// An ApiSpec describes a version of an API in a structured way.
+/// Describes a version of an API in a structured way.
 ///
 /// ApiSpecs provide formal descriptions that consumers can use to use a
 /// version. ApiSpec resources are intended to be fully-resolved descriptions of
 /// an ApiVersion. When specs consist of multiple files, these should be bundled
-/// together (e.g. in a zip archive) and stored as a unit. Multiple specs can
+/// together (e.g., in a zip archive) and stored as a unit. Multiple specs can
 /// exist to provide representations in different API description formats.
 /// Synchronization of these representations would be provided by tooling and
 /// background services.
@@ -5153,15 +5204,15 @@ class ApiSpec {
   /// International characters are allowed. No more than 64 user labels can be
   /// associated with one resource (System labels are excluded). See
   /// https://goo.gl/xmQnxf for more information and examples of labels. System
-  /// reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and
+  /// reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and
   /// cannot be changed.
   core.Map<core.String, core.String>? labels;
 
   /// A style (format) descriptor for this spec that is specified as a Media
   /// Type (https://en.wikipedia.org/wiki/Media_type).
   ///
-  /// Possible values include "application/vnd.apigee.proto",
-  /// "application/vnd.apigee.openapi", and "application/vnd.apigee.graphql",
+  /// Possible values include `application/vnd.apigee.proto`,
+  /// `application/vnd.apigee.openapi`, and `application/vnd.apigee.graphql`,
   /// with possible suffixes representing compression types. These hypothetical
   /// names are defined in the vendor tree defined in RFC6838
   /// (https://tools.ietf.org/html/rfc6838) and are not final. Content types can
@@ -5294,7 +5345,7 @@ class ApiSpec {
       };
 }
 
-/// An ApiVersion describes a particular version of an API.
+/// Describes a particular version of an API.
 ///
 /// ApiVersions are what consumers actually use.
 class ApiVersion {
@@ -5324,7 +5375,7 @@ class ApiVersion {
   /// International characters are allowed. No more than 64 user labels can be
   /// associated with one resource (System labels are excluded). See
   /// https://goo.gl/xmQnxf for more information and examples of labels. System
-  /// reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and
+  /// reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and
   /// cannot be changed.
   core.Map<core.String, core.String>? labels;
 
@@ -5334,7 +5385,7 @@ class ApiVersion {
   /// A user-definable description of the lifecycle phase of this API version.
   ///
   /// Format: free-form, but we expect single words that describe API maturity,
-  /// e.g. "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION",
+  /// e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION",
   /// "DEPRECATED", "RETIRED".
   core.String? state;
 
@@ -5407,9 +5458,9 @@ class ApiVersion {
 /// Artifacts are unique (single-value) per resource and are used to store
 /// metadata that is too large or numerous to be stored directly on the
 /// resource. Since artifacts are stored separately from parent resources, they
-/// should generally be used for metadata that is needed infrequently, i.e. not
+/// should generally be used for metadata that is needed infrequently, i.e., not
 /// for display in primary views of the resource but perhaps displayed or
-/// downloaded upon request. The ListArtifacts method allows artifacts to be
+/// downloaded upon request. The `ListArtifacts` method allows artifacts to be
 /// quickly enumerated and checked for presence without downloading their
 /// (potentially-large) contents.
 class Artifact {
@@ -5523,10 +5574,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -5685,7 +5742,7 @@ class Instance {
 
   /// Format: `projects / * /locations / * /instance`.
   ///
-  /// Currently only locations/global is supported.
+  /// Currently only `locations/global` is supported.
   core.String? name;
 
   /// The current state of the Instance.
@@ -6246,7 +6303,7 @@ class Policy {
 class RollbackApiDeploymentRequest {
   /// The revision ID to roll back to.
   ///
-  /// It must be a revision of the same deployment. Example: c7cfa2a8
+  /// It must be a revision of the same deployment. Example: `c7cfa2a8`
   ///
   /// Required.
   core.String? revisionId;
@@ -6271,7 +6328,7 @@ class RollbackApiDeploymentRequest {
 class RollbackApiSpecRequest {
   /// The revision ID to roll back to.
   ///
-  /// It must be a revision of the same spec. Example: c7cfa2a8
+  /// It must be a revision of the same spec. Example: `c7cfa2a8`
   ///
   /// Required.
   core.String? revisionId;

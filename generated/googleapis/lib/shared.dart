@@ -2644,31 +2644,6 @@ class $DayPartTargeting {
 
 /// Used by:
 ///
-/// - cloudsearch:v1 : ResponseDebugInfo
-/// - cloudsearch:v1 : ResultDebugInfo
-class $DebugInfo {
-  /// General debug info formatted for display.
-  core.String? formattedDebugInfo;
-
-  $DebugInfo({
-    this.formattedDebugInfo,
-  });
-
-  $DebugInfo.fromJson(core.Map json_)
-      : this(
-          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
-              ? json_['formattedDebugInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
-
-/// Used by:
-///
 /// - dfareporting:v3.5 : DefaultClickThroughEventTagProperties
 /// - dfareporting:v4 : DefaultClickThroughEventTagProperties
 class $DefaultClickThroughEventTagProperties {
@@ -3406,6 +3381,7 @@ class $EgressFrom {
 /// - composer:v1 : Empty
 /// - connectors:v1 : CancelOperationRequest
 /// - connectors:v1 : Empty
+/// - connectors:v2 : Empty
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1SilenceData
@@ -3455,6 +3431,7 @@ class $EgressFrom {
 /// - datastore:v1 : RollbackResponse
 /// - datastream:v1 : AvroFileFormat
 /// - datastream:v1 : BackfillNoneStrategy
+/// - datastream:v1 : BigQueryProfile
 /// - datastream:v1 : CancelOperationRequest
 /// - datastream:v1 : DropLargeObjects
 /// - datastream:v1 : Empty
@@ -3477,6 +3454,8 @@ class $EgressFrom {
 /// - displayvideo:v1 : DeactivateManualTriggerRequest
 /// - displayvideo:v1 : Empty
 /// - dlp:v2 : GooglePrivacyDlpV2ActivateJobTriggerRequest
+/// - dlp:v2 : GooglePrivacyDlpV2AllInfoTypes
+/// - dlp:v2 : GooglePrivacyDlpV2AllText
 /// - dlp:v2 : GooglePrivacyDlpV2CancelDlpJobRequest
 /// - dlp:v2 : GooglePrivacyDlpV2FinishDlpJobRequest
 /// - dlp:v2 : GooglePrivacyDlpV2HybridInspectResponse
@@ -3653,6 +3632,7 @@ class $EgressFrom {
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
 /// - retail:v2 : GoogleProtobufEmpty
+/// - run:v1 : CancelExecutionRequest
 /// - run:v1 : RunJobRequest
 /// - run:v2 : GoogleProtobufEmpty
 /// - runtimeconfig:v1 : CancelOperationRequest
@@ -6960,6 +6940,41 @@ class $ObjectFilter {
         if (kind != null) 'kind': kind!,
         if (objectIds != null) 'objectIds': objectIds!,
         if (status != null) 'status': status!,
+      };
+}
+
+/// Used by:
+///
+/// - datastream:v1 : OracleObjectIdentifier
+/// - datastream:v1 : PostgresqlObjectIdentifier
+class $ObjectIdentifier {
+  /// The schema name.
+  ///
+  /// Required.
+  core.String? schema;
+
+  /// The table name.
+  ///
+  /// Required.
+  core.String? table;
+
+  $ObjectIdentifier({
+    this.schema,
+    this.table,
+  });
+
+  $ObjectIdentifier.fromJson(core.Map json_)
+      : this(
+          schema: json_.containsKey('schema')
+              ? json_['schema'] as core.String
+              : null,
+          table:
+              json_.containsKey('table') ? json_['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (schema != null) 'schema': schema!,
+        if (table != null) 'table': table!,
       };
 }
 

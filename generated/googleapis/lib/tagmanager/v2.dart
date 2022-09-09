@@ -109,7 +109,7 @@ class AccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Accounts's API relative path. Example: accounts/{account_id}
+  /// [path] - GTM Account's API relative path. Example: accounts/{account_id}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2935,7 +2935,7 @@ class AccountsContainersWorkspacesTriggersResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspaces's API relative path. Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
@@ -3048,7 +3048,7 @@ class AccountsContainersWorkspacesTriggersResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspaces's API relative path. Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
@@ -3992,7 +3992,7 @@ class AccountAccess {
 /// Built-in variables are a special category of variables that are pre-created
 /// and non-customizable.
 ///
-/// They provide common functionality like accessing propeties of the gtm data
+/// They provide common functionality like accessing properties of the gtm data
 /// layer, monitoring clicks, or accessing elements of a page URL.
 class BuiltInVariable {
   /// GTM Account ID.
@@ -4547,7 +4547,7 @@ class ContainerVersion {
   /// @mutable tagmanager.accounts.containers.versions.update
   core.String? name;
 
-  /// GTM ContainerVersions's API relative path.
+  /// GTM Container Version's API relative path.
   core.String? path;
 
   /// The tags in the container that this version was taken from.
@@ -4729,7 +4729,7 @@ class ContainerVersionHeader {
   /// Number of zones in the container version.
   core.String? numZones;
 
-  /// GTM Container Versions's API relative path.
+  /// GTM Container Version's API relative path.
   core.String? path;
 
   ContainerVersionHeader({
@@ -7632,9 +7632,6 @@ class Zone {
   /// User notes on how to apply this zone in the container.
   core.String? notes;
 
-  /// Additional parameters.
-  core.List<Parameter>? parameter;
-
   /// GTM Zone's API relative path.
   core.String? path;
 
@@ -7658,7 +7655,6 @@ class Zone {
     this.fingerprint,
     this.name,
     this.notes,
-    this.parameter,
     this.path,
     this.tagManagerUrl,
     this.typeRestriction,
@@ -7690,12 +7686,6 @@ class Zone {
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notes:
               json_.containsKey('notes') ? json_['notes'] as core.String : null,
-          parameter: json_.containsKey('parameter')
-              ? (json_['parameter'] as core.List)
-                  .map((value) => Parameter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           tagManagerUrl: json_.containsKey('tagManagerUrl')
               ? json_['tagManagerUrl'] as core.String
@@ -7720,7 +7710,6 @@ class Zone {
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
-        if (parameter != null) 'parameter': parameter!,
         if (path != null) 'path': path!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
         if (typeRestriction != null) 'typeRestriction': typeRestriction!,

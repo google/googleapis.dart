@@ -54,12 +54,12 @@ class LabelsResource {
 
   LabelsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get a Label by its resource name.
+  /// Get a label by its resource name.
   ///
-  /// Resource name may be any of: * `labels/{id}` - See to `labels/{id}@latest`
-  /// * `labels/{id}@latest` - Gets the latest revision of the Label. *
+  /// Resource name may be any of: * `labels/{id}` - See `labels/{id}@latest` *
+  /// `labels/{id}@latest` - Gets the latest revision of the label. *
   /// `labels/{id}@published` - Gets the current published revision of the
-  /// Label. * `labels/{id}@{revision_id}` - Gets the Label at the specified
+  /// label. * `labels/{id}@{revision_id}` - Gets the label at the specified
   /// revision ID.
   ///
   /// Request parameters:
@@ -70,15 +70,15 @@ class LabelsResource {
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [languageCode] - The BCP-47 language code to use for evaluating localized
-  /// Field labels. When not specified, values in the default configured
-  /// language will be used.
+  /// field labels. When not specified, values in the default configured
+  /// language are used.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server verifies that the user is an admin for the label
   /// before allowing access.
   ///
-  /// [view] - When specified, only certain Fields belonging to the indicated
-  /// view will be returned.
+  /// [view] - When specified, only certain fields belonging to the indicated
+  /// view are returned.
   /// Possible string values are:
   /// - "LABEL_VIEW_BASIC" : Implies the field mask:
   /// `name,id,revision_id,label_type,properties.*`
@@ -119,49 +119,46 @@ class LabelsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// --------------------------------------------------------------------------
-  /// ## Label APIs
-  /// --------------------------------------------------------------- List
-  /// Labels.
+  /// List labels.
   ///
   /// Request parameters:
   ///
   /// [languageCode] - The BCP-47 language code to use for evaluating localized
   /// field labels. When not specified, values in the default configured
-  /// language will be used.
+  /// language are used.
   ///
   /// [minimumRole] - Specifies the level of access the user must have on the
   /// returned Labels. The minimum role a user must have on a label. Defaults to
   /// `READER`.
   /// Possible string values are:
   /// - "LABEL_ROLE_UNSPECIFIED" : Unknown role.
-  /// - "READER" : A reader can read the Label and associated metadata applied
+  /// - "READER" : A reader can read the label and associated metadata applied
   /// to Drive items.
   /// - "APPLIER" : An applier can write associated metadata on Drive items in
   /// which they also have write access to. Implies `READER`.
-  /// - "ORGANIZER" : An organizer is allowed to pin this label in shared drives
-  /// they manage and add new appliers to the label.
-  /// - "EDITOR" : Editors may make any updates including deleting the Label
-  /// which will also delete associated Drive item metadata. Implies `APPLIER`.
+  /// - "ORGANIZER" : An organizer can pin this label in shared drives they
+  /// manage and add new appliers to the label.
+  /// - "EDITOR" : Editors can make any update including deleting the label
+  /// which also deletes the associated Drive item metadata. Implies `APPLIER`.
   ///
-  /// [pageSize] - Maximum number of Labels to return per page. Default: 50.
+  /// [pageSize] - Maximum number of labels to return per page. Default: 50.
   /// Max: 200.
   ///
   /// [pageToken] - The token of the page to return.
   ///
   /// [publishedOnly] - Whether to include only published labels in the results.
-  /// * When `true`, only the current published label revisions will be
-  /// returned. Disabled labels will be included. Returned Label resource names
-  /// will reference the published revision (`labels/{id}/{revision_id}`). *
-  /// When `false`, the current label revisions will be returned, which may not
-  /// by published. Returned Label resource names will not reference a specific
-  /// revision (`labels/{id}`).
+  /// * When `true`, only the current published label revisions are returned.
+  /// Disabled labels are included. Returned label resource names reference the
+  /// published revision (`labels/{id}/{revision_id}`). * When `false`, the
+  /// current label revisions are returned, which might not be published.
+  /// Returned label resource names don't reference a specific revision
+  /// (`labels/{id}`).
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
   /// credentials. This will return all Labels within the customer.
   ///
   /// [view] - When specified, only certain fields belonging to the indicated
-  /// view will be returned.
+  /// view are returned.
   /// Possible string values are:
   /// - "LABEL_VIEW_BASIC" : Implies the field mask:
   /// `name,id,revision_id,label_type,properties.*`
@@ -210,20 +207,20 @@ class LabelsResource {
   }
 }
 
-/// The color derived from BadgeConfig and coerced to the nearest supported
-/// color.
+/// The color derived from BadgeConfig and changed to the closest recommended
+/// supported color.
 class GoogleAppsDriveLabelsV2BadgeColors {
-  /// Badge background which pairs with the foreground
+  /// Badge background that pairs with the foreground.
   ///
   /// Output only.
   GoogleTypeColor? backgroundColor;
 
-  /// Badge foreground which pairs with the background
+  /// Badge foreground that pairs with the background.
   ///
   /// Output only.
   GoogleTypeColor? foregroundColor;
 
-  /// Color that can be used for text without a background
+  /// Color that can be used for text without a background.
   ///
   /// Output only.
   GoogleTypeColor? soloColor;
@@ -261,13 +258,14 @@ class GoogleAppsDriveLabelsV2BadgeColors {
 class GoogleAppsDriveLabelsV2BadgeConfig {
   /// The color of the badge.
   ///
-  /// When not specified, no badge will be rendered. This color will be coerced
+  /// When not specified, no badge is rendered. The background, foreground, and
+  /// solo (light and dark mode) colors set here are changed in the Drive UI
   /// into the closest recommended supported color.
   GoogleTypeColor? color;
 
   /// Override the default global priority of this badge.
   ///
-  /// When set to 0, the default priority heuristic will be used.
+  /// When set to 0, the default priority heuristic is used.
   core.String? priorityOverride;
 
   GoogleAppsDriveLabelsV2BadgeConfig({
@@ -292,12 +290,12 @@ class GoogleAppsDriveLabelsV2BadgeConfig {
       };
 }
 
-/// Defines a field which has a display name, data type, and other configuration
+/// Defines a field that has a display name, data type, and other configuration
 /// options.
 ///
 /// This field defines the kind of metadata that may be set on a Drive item.
 class GoogleAppsDriveLabelsV2Field {
-  /// The capabilities this user has on this Field and its value when the Label
+  /// The capabilities this user has on this field and its value when the label
   /// is applied on Drive items.
   ///
   /// Output only.
@@ -330,14 +328,14 @@ class GoogleAppsDriveLabelsV2Field {
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? disabler;
 
-  /// UI Display hints for rendering a Field.
+  /// UI display hints for rendering a field.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2FieldDisplayHints? displayHints;
 
-  /// The key of a field, unique within a Label or Library.
+  /// The key of a field, unique within a label or library.
   ///
-  /// This value is autogenerated, and will match the form \`(\[a-zA-Z0-9_\])+
+  /// This value is autogenerated. Matches the regex: `([a-zA-Z0-9])+`
   ///
   /// Output only.
   core.String? id;
@@ -345,7 +343,7 @@ class GoogleAppsDriveLabelsV2Field {
   /// Integer field options.
   GoogleAppsDriveLabelsV2FieldIntegerOptions? integerOptions;
 
-  /// The lifecycle of this Field.
+  /// The lifecycle of this field.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2Lifecycle? lifecycle;
@@ -366,14 +364,14 @@ class GoogleAppsDriveLabelsV2Field {
   GoogleAppsDriveLabelsV2UserInfo? publisher;
 
   /// The key to use when constructing Drive search queries to find files based
-  /// on values defined for this Field on files.
+  /// on values defined for this field on files.
   ///
-  /// For example: "`{query_key}` \> 2001-01-01"
+  /// For example, "`{query_key}` \> 2001-01-01".
   ///
   /// Output only.
   core.String? queryKey;
 
-  /// The capabilities this user has when editing this Field
+  /// The capabilities this user has when editing this field.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2FieldSchemaCapabilities? schemaCapabilities;
@@ -532,10 +530,10 @@ class GoogleAppsDriveLabelsV2FieldAppliedCapabilities {
   /// Whether the user can read related applied metadata on items.
   core.bool? canRead;
 
-  /// Whether the user can search for drive items referencing this field.
+  /// Whether the user can search for Drive items referencing this field.
   core.bool? canSearch;
 
-  /// Whether the user can set this field on drive items.
+  /// Whether the user can set this field on Drive items.
   core.bool? canWrite;
 
   GoogleAppsDriveLabelsV2FieldAppliedCapabilities({
@@ -566,18 +564,20 @@ class GoogleAppsDriveLabelsV2FieldAppliedCapabilities {
 
 /// Options for the date field type.
 class GoogleAppsDriveLabelsV2FieldDateOptions {
-  /// ICU Date format.
+  /// ICU date format.
   ///
   /// Output only.
   core.String? dateFormat;
 
   /// Localized date formatting option.
   ///
-  /// Field values will be rendered in this format according to their locale.
+  /// Field values are rendered in this format according to their locale.
   /// Possible string values are:
   /// - "DATE_FORMAT_UNSPECIFIED" : Date format unspecified.
-  /// - "LONG_DATE" : Includes full month name. e.g. January 12, 1999 MMMM d, y
-  /// - "SHORT_DATE" : Short, numeric, representation. e.g. 12/13/99 M/d/yy
+  /// - "LONG_DATE" : Includes full month name. For example, January 12, 1999
+  /// (MMMM d, y)
+  /// - "SHORT_DATE" : Short, numeric, representation. For example, 12/13/99
+  /// (M/d/yy)
   core.String? dateFormatType;
 
   /// Maximum valid value (year, month, day).
@@ -623,18 +623,20 @@ class GoogleAppsDriveLabelsV2FieldDateOptions {
       };
 }
 
-/// UI Display hints for rendering a Field.
+/// UI display hints for rendering a field.
 class GoogleAppsDriveLabelsV2FieldDisplayHints {
   /// Whether the field should be shown in the UI as disabled.
   core.bool? disabled;
 
-  /// This Field should be hidden in the search menu.
+  /// This field should be hidden in the search menu when searching for Drive
+  /// items.
   core.bool? hiddenInSearch;
 
-  /// Whether the Field should be shown as required in the UI.
+  /// Whether the field should be shown as required in the UI.
   core.bool? required;
 
-  /// This Field should be shown when applying values to a Drive item.
+  /// This field should be shown in the apply menu when applying values to a
+  /// Drive item.
   core.bool? shownInApply;
 
   GoogleAppsDriveLabelsV2FieldDisplayHints({
@@ -731,8 +733,8 @@ class GoogleAppsDriveLabelsV2FieldProperties {
 
   /// Input only.
   ///
-  /// Insert or move this Field to be ordered before the indicated Field. If
-  /// empty, the Field will be placed at the end of the list.
+  /// Insert or move this field before the indicated field. If empty, the field
+  /// is placed at the end of the list.
   core.String? insertBeforeField;
 
   /// Whether the field should be marked as required.
@@ -764,22 +766,21 @@ class GoogleAppsDriveLabelsV2FieldProperties {
       };
 }
 
-/// The capabilities related to this Field when editing the Field.
+/// The capabilities related to this field when editing the field.
 class GoogleAppsDriveLabelsV2FieldSchemaCapabilities {
-  /// Whether the user can delete this Field.
+  /// Whether the user can delete this field.
   ///
-  /// The user must have permissions and the Field must be deprecated.
+  /// The user must have permission and the field must be deprecated.
   core.bool? canDelete;
 
-  /// Whether the user can disable this Field.
+  /// Whether the user can disable this field.
   ///
-  /// The user must have permissions and this Field must not already be
-  /// disabled.
+  /// The user must have permission and this field must not already be disabled.
   core.bool? canDisable;
 
-  /// Whether the user can enable this Field.
+  /// Whether the user can enable this field.
   ///
-  /// The user must have permissions and this Field must be disabled.
+  /// The user must have permission and this field must be disabled.
   core.bool? canEnable;
 
   /// Whether the user can change this field.
@@ -823,7 +824,7 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptions {
   /// The list order is consistent, and modified with `insert_before_choice`.
   core.List<GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice>? choices;
 
-  /// When specified, indicates that this field support a list of values.
+  /// When specified, indicates this field supports a list of values.
   ///
   /// Once the field is published, this cannot be changed.
   GoogleAppsDriveLabelsV2FieldListOptions? listOptions;
@@ -855,71 +856,71 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptions {
       };
 }
 
-/// Selection field Choice.
+/// Selection field choice.
 class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice {
-  /// The capabilities related to this Choice on applied metadata.
+  /// The capabilities related to this choice on applied metadata.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities?
       appliedCapabilities;
 
-  /// The time this Choice was created.
+  /// The time this choice was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// The user who created this Choice.
+  /// The user who created this choice.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? creator;
 
-  /// The time this Choice was disabled.
+  /// The time this choice was disabled.
   ///
-  /// This value has no meaning when the Choice is not disabled.
+  /// This value has no meaning when the choice is not disabled.
   ///
   /// Output only.
   core.String? disableTime;
 
-  /// The user who disabled this Choice.
+  /// The user who disabled this choice.
   ///
   /// This value has no meaning when the option is not disabled.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? disabler;
 
-  /// UI Display hints for rendering a Choice.
+  /// UI display hints for rendering a choice.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints? displayHints;
 
-  /// The unique value of the Choice.
+  /// The unique value of the choice.
   ///
-  /// This ID will be autogenerated, and will match the form `([a-zA-Z0-9_])+`.
+  /// This ID is autogenerated. Matches the regex: `([a-zA-Z0-9_])+`.
   core.String? id;
 
-  /// Lifecycle of the Choice.
+  /// Lifecycle of the choice.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2Lifecycle? lifecycle;
 
-  /// The LockStatus of this Choice.
+  /// The LockStatus of this choice.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LockStatus? lockStatus;
 
-  /// Basic properties of the Choice.
+  /// Basic properties of the choice.
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties? properties;
 
-  /// The time this Choice was published.
+  /// The time this choice was published.
   ///
-  /// This value has no meaning when the Choice is not published.
+  /// This value has no meaning when the choice is not published.
   ///
   /// Output only.
   core.String? publishTime;
 
-  /// The user who published this Choice.
+  /// The user who published this choice.
   ///
-  /// This value has no meaning when the Choice is not published.
+  /// This value has no meaning when the choice is not published.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? publisher;
@@ -930,12 +931,12 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice {
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities?
       schemaCapabilities;
 
-  /// The time this Choice was updated last.
+  /// The time this choice was updated last.
   ///
   /// Output only.
   core.String? updateTime;
 
-  /// The user who updated this Choice last.
+  /// The user who updated this choice last.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? updater;
@@ -1040,15 +1041,15 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice {
       };
 }
 
-/// The capabilities related to this Choice on applied metadata.
+/// The capabilities related to this choice on applied metadata.
 class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities {
   /// Whether the user can read related applied metadata on items.
   core.bool? canRead;
 
-  /// Whether the user can use this Choice in search queries.
+  /// Whether the user can use this choice in search queries.
   core.bool? canSearch;
 
-  /// Whether the user can select this Choice on an item.
+  /// Whether the user can select this choice on an item.
   core.bool? canSelect;
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities({
@@ -1078,37 +1079,38 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities {
       };
 }
 
-/// UI Display hints for rendering a Option.
+/// UI display hints for rendering an option.
 class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints {
   /// The colors to use for the badge.
   ///
-  /// Coerced to Google Material colors based on the chosen
+  /// Changed to Google Material colors based on the chosen
   /// `properties.badge_config.color`.
   GoogleAppsDriveLabelsV2BadgeColors? badgeColors;
 
-  /// The priority of this badge, used to compare and sort between multiple
-  /// badges.
+  /// The priority of this badge.
   ///
-  /// A lower number means that the badge should be shown first. When a badging
-  /// configuration is not present, this will be 0. Otherwise, this will be set
-  /// to `BadgeConfig.priority_override` or the default heuristic which prefers
-  /// creation date of the Label, and field and option priority.
+  /// Used to compare and sort between multiple badges. A lower number means the
+  /// badge should be shown first. When a badging configuration is not present,
+  /// this will be 0. Otherwise, this will be set to
+  /// `BadgeConfig.priority_override` or the default heuristic which prefers
+  /// creation date of the label, and field and option priority.
   core.String? badgePriority;
 
   /// The dark-mode color to use for the badge.
   ///
-  /// Coerced to Google Material colors based on the chosen
+  /// Changed to Google Material colors based on the chosen
   /// `properties.badge_config.color`.
   GoogleAppsDriveLabelsV2BadgeColors? darkBadgeColors;
 
   /// Whether the option should be shown in the UI as disabled.
   core.bool? disabled;
 
-  /// This option should be hidden in the search menu.
+  /// This option should be hidden in the search menu when searching for Drive
+  /// items.
   core.bool? hiddenInSearch;
 
-  /// This option should be shown in the menu when applying values to a Drive
-  /// item.
+  /// This option should be shown in the apply menu when applying values to a
+  /// Drive item.
   core.bool? shownInApply;
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints({
@@ -1156,15 +1158,14 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints {
       };
 }
 
-/// Basic properties of the Choice.
+/// Basic properties of the choice.
 class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties {
-  /// The badge configuration for this Choice.
+  /// The badge configuration for this choice.
   ///
-  /// When set, the Label that owns this Choice will be considered a "badged
-  /// label".
+  /// When set, the label that owns this choice is considered a "badged label".
   GoogleAppsDriveLabelsV2BadgeConfig? badgeConfig;
 
-  /// The description of this Label.
+  /// The description of this label.
   core.String? description;
 
   /// The display text to show in the UI identifying this field.
@@ -1174,8 +1175,8 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties {
 
   /// Input only.
   ///
-  /// Insert or move this Choice to be ordered before the indicated Choice. If
-  /// empty, the Choice will be placed at the end of the list.
+  /// Insert or move this choice before the indicated choice. If empty, the
+  /// choice is placed at the end of the list.
   core.String? insertBeforeChoice;
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties({
@@ -1212,18 +1213,18 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties {
       };
 }
 
-/// The capabilities related to this Choice when editing the Choice.
+/// The capabilities related to this choice when editing the choice.
 class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities {
-  /// Whether the user can delete this Choice.
+  /// Whether the user can delete this choice.
   core.bool? canDelete;
 
-  /// Whether the user can disable this Chioce.
+  /// Whether the user can disable this choice.
   core.bool? canDisable;
 
-  /// Whether the user can enable this Choice.
+  /// Whether the user can enable this choice.
   core.bool? canEnable;
 
-  /// Whether the user can update this Choice.
+  /// Whether the user can update this choice.
   core.bool? canUpdate;
 
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities({
@@ -1293,7 +1294,7 @@ class GoogleAppsDriveLabelsV2FieldTextOptions {
 
 /// Options for the user field type.
 class GoogleAppsDriveLabelsV2FieldUserOptions {
-  /// When specified, indicates that this field support a list of values.
+  /// When specified, indicates that this field supports a list of values.
   ///
   /// Once the field is published, this cannot be changed.
   GoogleAppsDriveLabelsV2FieldListOptions? listOptions;
@@ -1315,18 +1316,18 @@ class GoogleAppsDriveLabelsV2FieldUserOptions {
       };
 }
 
-/// A Label defines a taxonomy which may be applied to a Drive items in order to
-/// organize and search across Items.
+/// A label defines a taxonomy that can be applied to Drive items in order to
+/// organize and search across items.
 ///
-/// Labels may be simple strings, or may contain Fields that describe additional
-/// metadata which can be further used to organize and search Drive items.
+/// Labels can be simple strings, or can contain fields that describe additional
+/// metadata that can be further used to organize and search Drive items.
 class GoogleAppsDriveLabelsV2Label {
   /// The capabilities related to this label on applied metadata.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LabelAppliedCapabilities? appliedCapabilities;
 
-  /// Behavior of this Label when its applied to Drive items.
+  /// Behavior of this label when it's applied to Drive items.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy? appliedLabelPolicy;
@@ -1355,31 +1356,31 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? disabler;
 
-  /// UI Display hints for rendering the Label.
+  /// UI display hints for rendering the label.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LabelDisplayHints? displayHints;
 
-  /// List of Fields in descending priority order.
+  /// List of fields in descending priority order.
   core.List<GoogleAppsDriveLabelsV2Field>? fields;
 
-  /// Globally unique identifier of this Label.
+  /// Globally unique identifier of this label.
   ///
-  /// ID makes up part of the Label `name`, but unlike `name`, ID is consistent
+  /// ID makes up part of the label `name`, but unlike `name`, ID is consistent
   /// between revisions. Matches the regex: `([a-zA-Z0-9])+`
   ///
   /// Output only.
   core.String? id;
 
-  /// The type of this label.
+  /// The type of label.
   ///
   /// Required.
   /// Possible string values are:
   /// - "LABEL_TYPE_UNSPECIFIED" : Unknown label type.
   /// - "SHARED" : Shared labels may be shared with users to apply to Drive
   /// items.
-  /// - "ADMIN" : Admin owned label. Only creatable and editable by admins,
-  /// supports some additional admin-only features.
+  /// - "ADMIN" : Admin-owned label. Only creatable and editable by admins.
+  /// Supports some additional admin-only features.
   core.String? labelType;
 
   /// Custom URL to present to users to allow them to learn more about this
@@ -1397,7 +1398,7 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   GoogleAppsDriveLabelsV2LockStatus? lockStatus;
 
-  /// Resource name of the Label.
+  /// Resource name of the label.
   ///
   /// Will be in the form of either: `labels/{id}` or
   /// `labels/{id}@{revision_id}` depending on the request. See `id` and
@@ -1406,7 +1407,7 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   core.String? name;
 
-  /// The basic properties of the Label.
+  /// The basic properties of the label.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2LabelProperties? properties;
@@ -1435,16 +1436,16 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? revisionCreator;
 
-  /// Revision ID of the Label.
+  /// Revision ID of the label.
   ///
-  /// Revision ID may be part of the Label `name` depending on the request
+  /// Revision ID might be part of the label `name` depending on the request
   /// issued. A new revision is created whenever revisioned properties of a
-  /// Label are changed. Matches the regex: `([a-zA-Z0-9])+`
+  /// label are changed. Matches the regex: `([a-zA-Z0-9])+`
   ///
   /// Output only.
   core.String? revisionId;
 
-  /// The capabilities the user has on this Label.
+  /// The capabilities the user has on this label.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LabelSchemaCapabilities? schemaCapabilities;
@@ -1583,15 +1584,15 @@ class GoogleAppsDriveLabelsV2Label {
       };
 }
 
-/// The capabilities a user has on this Label's applied metadata.
+/// The capabilities a user has on this label's applied metadata.
 class GoogleAppsDriveLabelsV2LabelAppliedCapabilities {
-  /// Whether the user can apply this Label to items.
+  /// Whether the user can apply this label to items.
   core.bool? canApply;
 
   /// Whether the user can read applied metadata related to this label.
   core.bool? canRead;
 
-  /// Whether the user can remove this Label from items.
+  /// Whether the user can remove this label from items.
   core.bool? canRemove;
 
   GoogleAppsDriveLabelsV2LabelAppliedCapabilities({
@@ -1620,19 +1621,19 @@ class GoogleAppsDriveLabelsV2LabelAppliedCapabilities {
       };
 }
 
-/// Behavior of this Label when its applied to Drive items.
+/// Behavior of this label when it's applied to Drive items.
 class GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy {
-  /// Indicates how the applied Label, and Field values should be copied when a
+  /// Indicates how the applied label and field values should be copied when a
   /// Drive item is copied.
   /// Possible string values are:
   /// - "COPY_MODE_UNSPECIFIED" : Copy mode unspecified.
-  /// - "DO_NOT_COPY" : The applied Label and Field values will not be copied by
-  /// default when the Drive item it is applied to is copied.
-  /// - "ALWAYS_COPY" : The applied Label and Field values will always be copied
-  /// when the Drive item it is applied to is copied. Only admins may use this
+  /// - "DO_NOT_COPY" : The applied label and field values are not copied by
+  /// default when the Drive item it's applied to is copied.
+  /// - "ALWAYS_COPY" : The applied label and field values are always copied
+  /// when the Drive item it's applied to is copied. Only admins can use this
   /// mode.
-  /// - "COPY_APPLIABLE" : The applied Label and Field values will be copied if
-  /// and only if the label is appliable by the user making the copy.
+  /// - "COPY_APPLIABLE" : The applied label and field values are copied if the
+  /// label is appliable by the user making the copy.
   core.String? copyMode;
 
   GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy({
@@ -1651,19 +1652,20 @@ class GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy {
       };
 }
 
-/// UI Display hints for rendering the Label.
+/// UI display hints for rendering the label.
 class GoogleAppsDriveLabelsV2LabelDisplayHints {
-  /// Whether the Label should be shown in the UI as disabled.
+  /// Whether the label should be shown in the UI as disabled.
   core.bool? disabled;
 
-  /// This Label should be hidden in the search menu when searching for Drive
+  /// This label should be hidden in the search menu when searching for Drive
   /// items.
   core.bool? hiddenInSearch;
 
-  /// Order to display label in a list
+  /// Order to display label in a list.
   core.String? priority;
 
-  /// This Label should be shown in the apply menu.
+  /// This label should be shown in the apply menu when applying values to a
+  /// Drive item.
   core.bool? shownInApply;
 
   GoogleAppsDriveLabelsV2LabelDisplayHints({
@@ -1697,12 +1699,12 @@ class GoogleAppsDriveLabelsV2LabelDisplayHints {
       };
 }
 
-/// Basic properties of the Label.
+/// Basic properties of the label.
 class GoogleAppsDriveLabelsV2LabelProperties {
-  /// The description of this Label.
+  /// The description of the label.
   core.String? description;
 
-  /// Title of the Label.
+  /// Title of the label.
   ///
   /// Required.
   core.String? title;
@@ -1727,24 +1729,24 @@ class GoogleAppsDriveLabelsV2LabelProperties {
       };
 }
 
-/// The capabilities related to this Label when editing the Label.
+/// The capabilities related to this label when editing the label.
 class GoogleAppsDriveLabelsV2LabelSchemaCapabilities {
-  /// Whether the user can delete this Label.
+  /// Whether the user can delete this label.
   ///
-  /// The user must have permission and the Label must be disabled.
+  /// The user must have permission and the label must be disabled.
   core.bool? canDelete;
 
-  /// Whether the user can disable this Label.
+  /// Whether the user can disable this label.
   ///
-  /// The user must have permission and this Label must not already be disabled.
+  /// The user must have permission and this label must not already be disabled.
   core.bool? canDisable;
 
-  /// Whether the user can enable this Label.
+  /// Whether the user can enable this label.
   ///
-  /// The user must have permission and this Label must be disabled.
+  /// The user must have permission and this label must be disabled.
   core.bool? canEnable;
 
-  /// Whether the user can change this Label.
+  /// Whether the user can change this label.
   core.bool? canUpdate;
 
   GoogleAppsDriveLabelsV2LabelSchemaCapabilities({
@@ -1778,18 +1780,18 @@ class GoogleAppsDriveLabelsV2LabelSchemaCapabilities {
       };
 }
 
-/// The lifecycle state of an object, e.g. Label, Field, or Choice.
+/// The lifecycle state of an object, such as label, field, or choice.
 ///
-/// The Lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT`
+/// The lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT`
 /// (starting state) * `UNPUBLISHED_DRAFT` -\> `PUBLISHED` * `UNPUBLISHED_DRAFT`
 /// -\> (Deleted) * `PUBLISHED` -\> `DISABLED` * `DISABLED` -\> `PUBLISHED` *
 /// `DISABLED` -\> (Deleted) The published and disabled states have some
-/// distinct characteristics: * Published - Some kinds of changes may be made to
+/// distinct characteristics: * Published—Some kinds of changes might be made to
 /// an object in this state, in which case `has_unpublished_changes` will be
-/// true. Some kinds of changes are not permitted. Generally, any change that
-/// would invalidate or cause new restrictions on existing metadata related to
-/// the Label will be rejected. * Disabled - When disabled, the configured
-/// `DisabledPolicy` will take effect.
+/// true. Also, some kinds of changes are not permitted. Generally, any change
+/// that would invalidate or cause new restrictions on existing metadata related
+/// to the label are rejected. * Disabled—When disabled, the configured
+/// `DisabledPolicy` takes effect.
 class GoogleAppsDriveLabelsV2Lifecycle {
   /// The policy that governs how to show a disabled label, field, or selection
   /// choice.
@@ -1806,14 +1808,14 @@ class GoogleAppsDriveLabelsV2Lifecycle {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unknown State.
   /// - "UNPUBLISHED_DRAFT" : The initial state of an object. Once published,
-  /// the object may never return to this state. Once an object is published,
+  /// the object can never return to this state. Once an object is published,
   /// certain kinds of changes are no longer permitted.
-  /// - "PUBLISHED" : The object has been published. The object may have
+  /// - "PUBLISHED" : The object has been published. The object might have
   /// unpublished draft changes as indicated by `has_unpublished_changes`.
-  /// - "DISABLED" : The object has been published, and has since been disabled.
-  /// The object may have unpublished draft changes as indicated by
+  /// - "DISABLED" : The object has been published and has since been disabled.
+  /// The object might have unpublished draft changes as indicated by
   /// `has_unpublished_changes`.
-  /// - "DELETED" : The object has been deleted
+  /// - "DELETED" : The object has been deleted.
   core.String? state;
 
   GoogleAppsDriveLabelsV2Lifecycle({
@@ -1849,17 +1851,16 @@ class GoogleAppsDriveLabelsV2Lifecycle {
 class GoogleAppsDriveLabelsV2LifecycleDisabledPolicy {
   /// Whether to hide this disabled object in the search menu for Drive items.
   ///
-  /// * When `false` the object will generally be shown in the UI as disabled
-  /// (but still permit searching) when searching for Drive items. * When `true`
-  /// the object will generally be hidden in the UI when searching for Drive
+  /// * When `false`, the object is generally shown in the UI as disabled but it
+  /// appears in the search results when searching for Drive items. * When
+  /// `true`, the object is generally hidden in the UI when searching for Drive
   /// items.
   core.bool? hideInSearch;
 
   /// Whether to show this disabled object in the apply menu on Drive items.
   ///
-  /// * When `true` the object will generally be shown in the UI as disabled and
-  /// is unselectable. * When `false` the object will generally be hidden in the
-  /// UI.
+  /// * When `true`, the object is generally shown in the UI as disabled and is
+  /// unselectable. * When `false`, the object is generally hidden in the UI.
   core.bool? showInApply;
 
   GoogleAppsDriveLabelsV2LifecycleDisabledPolicy({
@@ -1921,8 +1922,8 @@ class GoogleAppsDriveLabelsV2LockStatus {
   /// Indicates whether this label component is the (direct) target of a
   /// LabelLock.
   ///
-  /// A label component may be implicitly locked even if it is not the direct
-  /// target of a LabelLock, in which case this field will be false.
+  /// A label component can be implicitly locked even if it's not the direct
+  /// target of a LabelLock, in which case this field is set to false.
   ///
   /// Output only.
   core.bool? locked;
@@ -1944,10 +1945,10 @@ class GoogleAppsDriveLabelsV2LockStatus {
 
 /// Information about a user.
 class GoogleAppsDriveLabelsV2UserInfo {
-  /// The identifier for this user who can be used with the People API to get
+  /// The identifier for this user that can be used with the People API to get
   /// more information.
   ///
-  /// e.g. people/12345678
+  /// For example, people/12345678.
   core.String? person;
 
   GoogleAppsDriveLabelsV2UserInfo({

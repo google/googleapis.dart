@@ -1343,6 +1343,7 @@ api.LogMetric buildLogMetric() {
   final o = api.LogMetric();
   buildCounterLogMetric++;
   if (buildCounterLogMetric < 3) {
+    o.bucketName = 'foo';
     o.bucketOptions = buildBucketOptions();
     o.createTime = 'foo';
     o.description = 'foo';
@@ -1362,6 +1363,10 @@ api.LogMetric buildLogMetric() {
 void checkLogMetric(api.LogMetric o) {
   buildCounterLogMetric++;
   if (buildCounterLogMetric < 3) {
+    unittest.expect(
+      o.bucketName!,
+      unittest.equals('foo'),
+    );
     checkBucketOptions(o.bucketOptions!);
     unittest.expect(
       o.createTime!,

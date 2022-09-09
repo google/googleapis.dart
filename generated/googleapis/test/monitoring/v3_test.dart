@@ -1427,6 +1427,7 @@ api.HttpCheck buildHttpCheck() {
     o.headers = buildUnnamed20();
     o.maskHeaders = true;
     o.path = 'foo';
+    o.pingConfig = buildPingConfig();
     o.port = 42;
     o.requestMethod = 'foo';
     o.useSsl = true;
@@ -1455,6 +1456,7 @@ void checkHttpCheck(api.HttpCheck o) {
       o.path!,
       unittest.equals('foo'),
     );
+    checkPingConfig(o.pingConfig!);
     unittest.expect(
       o.port!,
       unittest.equals(42),
@@ -2993,6 +2995,28 @@ void checkPerformanceThreshold(api.PerformanceThreshold o) {
   buildCounterPerformanceThreshold--;
 }
 
+core.int buildCounterPingConfig = 0;
+api.PingConfig buildPingConfig() {
+  final o = api.PingConfig();
+  buildCounterPingConfig++;
+  if (buildCounterPingConfig < 3) {
+    o.pingsCount = 42;
+  }
+  buildCounterPingConfig--;
+  return o;
+}
+
+void checkPingConfig(api.PingConfig o) {
+  buildCounterPingConfig++;
+  if (buildCounterPingConfig < 3) {
+    unittest.expect(
+      o.pingsCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterPingConfig--;
+}
+
 core.int buildCounterPoint = 0;
 api.Point buildPoint() {
   final o = api.Point();
@@ -3491,6 +3515,7 @@ api.TcpCheck buildTcpCheck() {
   final o = api.TcpCheck();
   buildCounterTcpCheck++;
   if (buildCounterTcpCheck < 3) {
+    o.pingConfig = buildPingConfig();
     o.port = 42;
   }
   buildCounterTcpCheck--;
@@ -3500,6 +3525,7 @@ api.TcpCheck buildTcpCheck() {
 void checkTcpCheck(api.TcpCheck o) {
   buildCounterTcpCheck++;
   if (buildCounterTcpCheck < 3) {
+    checkPingConfig(o.pingConfig!);
     unittest.expect(
       o.port!,
       unittest.equals(42),
@@ -4872,6 +4898,16 @@ void main() {
       final od = api.PerformanceThreshold.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPerformanceThreshold(od);
+    });
+  });
+
+  unittest.group('obj-schema-PingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.PingConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPingConfig(od);
     });
   });
 
@@ -7682,6 +7718,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -7718,6 +7755,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -7737,6 +7778,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
+          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

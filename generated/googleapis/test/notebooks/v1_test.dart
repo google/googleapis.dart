@@ -2160,6 +2160,7 @@ api.RuntimeSoftwareConfig buildRuntimeSoftwareConfig() {
   buildCounterRuntimeSoftwareConfig++;
   if (buildCounterRuntimeSoftwareConfig < 3) {
     o.customGpuDriverPath = 'foo';
+    o.disableTerminal = true;
     o.enableHealthMonitoring = true;
     o.idleShutdown = true;
     o.idleShutdownTimeout = 42;
@@ -2181,6 +2182,7 @@ void checkRuntimeSoftwareConfig(api.RuntimeSoftwareConfig o) {
       o.customGpuDriverPath!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disableTerminal!, unittest.isTrue);
     unittest.expect(o.enableHealthMonitoring!, unittest.isTrue);
     unittest.expect(o.idleShutdown!, unittest.isTrue);
     unittest.expect(

@@ -614,6 +614,7 @@ api.ConfigManagementGatekeeperDeploymentState
   if (buildCounterConfigManagementGatekeeperDeploymentState < 3) {
     o.gatekeeperAudit = 'foo';
     o.gatekeeperControllerManagerState = 'foo';
+    o.gatekeeperMutation = 'foo';
   }
   buildCounterConfigManagementGatekeeperDeploymentState--;
   return o;
@@ -629,6 +630,10 @@ void checkConfigManagementGatekeeperDeploymentState(
     );
     unittest.expect(
       o.gatekeeperControllerManagerState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gatekeeperMutation!,
       unittest.equals('foo'),
     );
   }
@@ -1621,6 +1626,7 @@ api.IdentityServiceAuthMethod buildIdentityServiceAuthMethod() {
   final o = api.IdentityServiceAuthMethod();
   buildCounterIdentityServiceAuthMethod++;
   if (buildCounterIdentityServiceAuthMethod < 3) {
+    o.googleConfig = buildIdentityServiceGoogleConfig();
     o.name = 'foo';
     o.oidcConfig = buildIdentityServiceOidcConfig();
     o.proxy = 'foo';
@@ -1632,6 +1638,7 @@ api.IdentityServiceAuthMethod buildIdentityServiceAuthMethod() {
 void checkIdentityServiceAuthMethod(api.IdentityServiceAuthMethod o) {
   buildCounterIdentityServiceAuthMethod++;
   if (buildCounterIdentityServiceAuthMethod < 3) {
+    checkIdentityServiceGoogleConfig(o.googleConfig!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1643,6 +1650,25 @@ void checkIdentityServiceAuthMethod(api.IdentityServiceAuthMethod o) {
     );
   }
   buildCounterIdentityServiceAuthMethod--;
+}
+
+core.int buildCounterIdentityServiceGoogleConfig = 0;
+api.IdentityServiceGoogleConfig buildIdentityServiceGoogleConfig() {
+  final o = api.IdentityServiceGoogleConfig();
+  buildCounterIdentityServiceGoogleConfig++;
+  if (buildCounterIdentityServiceGoogleConfig < 3) {
+    o.disable = true;
+  }
+  buildCounterIdentityServiceGoogleConfig--;
+  return o;
+}
+
+void checkIdentityServiceGoogleConfig(api.IdentityServiceGoogleConfig o) {
+  buildCounterIdentityServiceGoogleConfig++;
+  if (buildCounterIdentityServiceGoogleConfig < 3) {
+    unittest.expect(o.disable!, unittest.isTrue);
+  }
+  buildCounterIdentityServiceGoogleConfig--;
 }
 
 core.List<api.IdentityServiceAuthMethod> buildUnnamed16() => [
@@ -1718,6 +1744,7 @@ api.IdentityServiceOidcConfig buildIdentityServiceOidcConfig() {
     o.clientId = 'foo';
     o.clientSecret = 'foo';
     o.deployCloudConsoleProxy = true;
+    o.enableAccessToken = true;
     o.encryptedClientSecret = 'foo';
     o.extraParams = 'foo';
     o.groupPrefix = 'foo';
@@ -1748,6 +1775,7 @@ void checkIdentityServiceOidcConfig(api.IdentityServiceOidcConfig o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.deployCloudConsoleProxy!, unittest.isTrue);
+    unittest.expect(o.enableAccessToken!, unittest.isTrue);
     unittest.expect(
       o.encryptedClientSecret!,
       unittest.equals('foo'),
@@ -3455,6 +3483,16 @@ void main() {
       final od = api.IdentityServiceAuthMethod.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkIdentityServiceAuthMethod(od);
+    });
+  });
+
+  unittest.group('obj-schema-IdentityServiceGoogleConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIdentityServiceGoogleConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IdentityServiceGoogleConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIdentityServiceGoogleConfig(od);
     });
   });
 

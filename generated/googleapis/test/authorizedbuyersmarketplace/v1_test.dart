@@ -947,12 +947,48 @@ void checkInventorySizeTargeting(api.InventorySizeTargeting o) {
   buildCounterInventorySizeTargeting--;
 }
 
-core.List<api.AuctionPackage> buildUnnamed11() => [
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterInventoryTypeTargeting = 0;
+api.InventoryTypeTargeting buildInventoryTypeTargeting() {
+  final o = api.InventoryTypeTargeting();
+  buildCounterInventoryTypeTargeting++;
+  if (buildCounterInventoryTypeTargeting < 3) {
+    o.inventoryTypes = buildUnnamed11();
+  }
+  buildCounterInventoryTypeTargeting--;
+  return o;
+}
+
+void checkInventoryTypeTargeting(api.InventoryTypeTargeting o) {
+  buildCounterInventoryTypeTargeting++;
+  if (buildCounterInventoryTypeTargeting < 3) {
+    checkUnnamed11(o.inventoryTypes!);
+  }
+  buildCounterInventoryTypeTargeting--;
+}
+
+core.List<api.AuctionPackage> buildUnnamed12() => [
       buildAuctionPackage(),
       buildAuctionPackage(),
     ];
 
-void checkUnnamed11(core.List<api.AuctionPackage> o) {
+void checkUnnamed12(core.List<api.AuctionPackage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuctionPackage(o[0]);
   checkAuctionPackage(o[1]);
@@ -963,7 +999,7 @@ api.ListAuctionPackagesResponse buildListAuctionPackagesResponse() {
   final o = api.ListAuctionPackagesResponse();
   buildCounterListAuctionPackagesResponse++;
   if (buildCounterListAuctionPackagesResponse < 3) {
-    o.auctionPackages = buildUnnamed11();
+    o.auctionPackages = buildUnnamed12();
     o.nextPageToken = 'foo';
   }
   buildCounterListAuctionPackagesResponse--;
@@ -973,7 +1009,7 @@ api.ListAuctionPackagesResponse buildListAuctionPackagesResponse() {
 void checkListAuctionPackagesResponse(api.ListAuctionPackagesResponse o) {
   buildCounterListAuctionPackagesResponse++;
   if (buildCounterListAuctionPackagesResponse < 3) {
-    checkUnnamed11(o.auctionPackages!);
+    checkUnnamed12(o.auctionPackages!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -982,12 +1018,12 @@ void checkListAuctionPackagesResponse(api.ListAuctionPackagesResponse o) {
   buildCounterListAuctionPackagesResponse--;
 }
 
-core.List<api.ClientUser> buildUnnamed12() => [
+core.List<api.ClientUser> buildUnnamed13() => [
       buildClientUser(),
       buildClientUser(),
     ];
 
-void checkUnnamed12(core.List<api.ClientUser> o) {
+void checkUnnamed13(core.List<api.ClientUser> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClientUser(o[0]);
   checkClientUser(o[1]);
@@ -998,7 +1034,7 @@ api.ListClientUsersResponse buildListClientUsersResponse() {
   final o = api.ListClientUsersResponse();
   buildCounterListClientUsersResponse++;
   if (buildCounterListClientUsersResponse < 3) {
-    o.clientUsers = buildUnnamed12();
+    o.clientUsers = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterListClientUsersResponse--;
@@ -1008,7 +1044,7 @@ api.ListClientUsersResponse buildListClientUsersResponse() {
 void checkListClientUsersResponse(api.ListClientUsersResponse o) {
   buildCounterListClientUsersResponse++;
   if (buildCounterListClientUsersResponse < 3) {
-    checkUnnamed12(o.clientUsers!);
+    checkUnnamed13(o.clientUsers!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1017,12 +1053,12 @@ void checkListClientUsersResponse(api.ListClientUsersResponse o) {
   buildCounterListClientUsersResponse--;
 }
 
-core.List<api.Client> buildUnnamed13() => [
+core.List<api.Client> buildUnnamed14() => [
       buildClient(),
       buildClient(),
     ];
 
-void checkUnnamed13(core.List<api.Client> o) {
+void checkUnnamed14(core.List<api.Client> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClient(o[0]);
   checkClient(o[1]);
@@ -1033,7 +1069,7 @@ api.ListClientsResponse buildListClientsResponse() {
   final o = api.ListClientsResponse();
   buildCounterListClientsResponse++;
   if (buildCounterListClientsResponse < 3) {
-    o.clients = buildUnnamed13();
+    o.clients = buildUnnamed14();
     o.nextPageToken = 'foo';
   }
   buildCounterListClientsResponse--;
@@ -1043,7 +1079,7 @@ api.ListClientsResponse buildListClientsResponse() {
 void checkListClientsResponse(api.ListClientsResponse o) {
   buildCounterListClientsResponse++;
   if (buildCounterListClientsResponse < 3) {
-    checkUnnamed13(o.clients!);
+    checkUnnamed14(o.clients!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1052,12 +1088,12 @@ void checkListClientsResponse(api.ListClientsResponse o) {
   buildCounterListClientsResponse--;
 }
 
-core.List<api.Deal> buildUnnamed14() => [
+core.List<api.Deal> buildUnnamed15() => [
       buildDeal(),
       buildDeal(),
     ];
 
-void checkUnnamed14(core.List<api.Deal> o) {
+void checkUnnamed15(core.List<api.Deal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeal(o[0]);
   checkDeal(o[1]);
@@ -1068,7 +1104,7 @@ api.ListDealsResponse buildListDealsResponse() {
   final o = api.ListDealsResponse();
   buildCounterListDealsResponse++;
   if (buildCounterListDealsResponse < 3) {
-    o.deals = buildUnnamed14();
+    o.deals = buildUnnamed15();
     o.nextPageToken = 'foo';
   }
   buildCounterListDealsResponse--;
@@ -1078,7 +1114,7 @@ api.ListDealsResponse buildListDealsResponse() {
 void checkListDealsResponse(api.ListDealsResponse o) {
   buildCounterListDealsResponse++;
   if (buildCounterListDealsResponse < 3) {
-    checkUnnamed14(o.deals!);
+    checkUnnamed15(o.deals!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1087,12 +1123,12 @@ void checkListDealsResponse(api.ListDealsResponse o) {
   buildCounterListDealsResponse--;
 }
 
-core.List<api.FinalizedDeal> buildUnnamed15() => [
+core.List<api.FinalizedDeal> buildUnnamed16() => [
       buildFinalizedDeal(),
       buildFinalizedDeal(),
     ];
 
-void checkUnnamed15(core.List<api.FinalizedDeal> o) {
+void checkUnnamed16(core.List<api.FinalizedDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFinalizedDeal(o[0]);
   checkFinalizedDeal(o[1]);
@@ -1103,7 +1139,7 @@ api.ListFinalizedDealsResponse buildListFinalizedDealsResponse() {
   final o = api.ListFinalizedDealsResponse();
   buildCounterListFinalizedDealsResponse++;
   if (buildCounterListFinalizedDealsResponse < 3) {
-    o.finalizedDeals = buildUnnamed15();
+    o.finalizedDeals = buildUnnamed16();
     o.nextPageToken = 'foo';
   }
   buildCounterListFinalizedDealsResponse--;
@@ -1113,7 +1149,7 @@ api.ListFinalizedDealsResponse buildListFinalizedDealsResponse() {
 void checkListFinalizedDealsResponse(api.ListFinalizedDealsResponse o) {
   buildCounterListFinalizedDealsResponse++;
   if (buildCounterListFinalizedDealsResponse < 3) {
-    checkUnnamed15(o.finalizedDeals!);
+    checkUnnamed16(o.finalizedDeals!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1122,12 +1158,12 @@ void checkListFinalizedDealsResponse(api.ListFinalizedDealsResponse o) {
   buildCounterListFinalizedDealsResponse--;
 }
 
-core.List<api.Proposal> buildUnnamed16() => [
+core.List<api.Proposal> buildUnnamed17() => [
       buildProposal(),
       buildProposal(),
     ];
 
-void checkUnnamed16(core.List<api.Proposal> o) {
+void checkUnnamed17(core.List<api.Proposal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProposal(o[0]);
   checkProposal(o[1]);
@@ -1139,7 +1175,7 @@ api.ListProposalsResponse buildListProposalsResponse() {
   buildCounterListProposalsResponse++;
   if (buildCounterListProposalsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.proposals = buildUnnamed16();
+    o.proposals = buildUnnamed17();
   }
   buildCounterListProposalsResponse--;
   return o;
@@ -1152,17 +1188,17 @@ void checkListProposalsResponse(api.ListProposalsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.proposals!);
+    checkUnnamed17(o.proposals!);
   }
   buildCounterListProposalsResponse--;
 }
 
-core.List<api.PublisherProfile> buildUnnamed17() => [
+core.List<api.PublisherProfile> buildUnnamed18() => [
       buildPublisherProfile(),
       buildPublisherProfile(),
     ];
 
-void checkUnnamed17(core.List<api.PublisherProfile> o) {
+void checkUnnamed18(core.List<api.PublisherProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublisherProfile(o[0]);
   checkPublisherProfile(o[1]);
@@ -1174,7 +1210,7 @@ api.ListPublisherProfilesResponse buildListPublisherProfilesResponse() {
   buildCounterListPublisherProfilesResponse++;
   if (buildCounterListPublisherProfilesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.publisherProfiles = buildUnnamed17();
+    o.publisherProfiles = buildUnnamed18();
   }
   buildCounterListPublisherProfilesResponse--;
   return o;
@@ -1187,7 +1223,7 @@ void checkListPublisherProfilesResponse(api.ListPublisherProfilesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.publisherProfiles!);
+    checkUnnamed18(o.publisherProfiles!);
   }
   buildCounterListPublisherProfilesResponse--;
 }
@@ -1200,6 +1236,7 @@ api.MarketplaceTargeting buildMarketplaceTargeting() {
     o.daypartTargeting = buildDayPartTargeting();
     o.geoTargeting = buildCriteriaTargeting();
     o.inventorySizeTargeting = buildInventorySizeTargeting();
+    o.inventoryTypeTargeting = buildInventoryTypeTargeting();
     o.placementTargeting = buildPlacementTargeting();
     o.technologyTargeting = buildTechnologyTargeting();
     o.userListTargeting = buildCriteriaTargeting();
@@ -1215,6 +1252,7 @@ void checkMarketplaceTargeting(api.MarketplaceTargeting o) {
     checkDayPartTargeting(o.daypartTargeting!);
     checkCriteriaTargeting(o.geoTargeting!);
     checkInventorySizeTargeting(o.inventorySizeTargeting!);
+    checkInventoryTypeTargeting(o.inventoryTypeTargeting!);
     checkPlacementTargeting(o.placementTargeting!);
     checkTechnologyTargeting(o.technologyTargeting!);
     checkCriteriaTargeting(o.userListTargeting!);
@@ -1500,34 +1538,34 @@ void checkProgrammaticGuaranteedTerms(api.ProgrammaticGuaranteedTerms o) {
   buildCounterProgrammaticGuaranteedTerms--;
 }
 
-core.List<api.Contact> buildUnnamed18() => [
+core.List<api.Contact> buildUnnamed19() => [
       buildContact(),
       buildContact(),
     ];
 
-void checkUnnamed18(core.List<api.Contact> o) {
+void checkUnnamed19(core.List<api.Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContact(o[0]);
   checkContact(o[1]);
 }
 
-core.List<api.Note> buildUnnamed19() => [
+core.List<api.Note> buildUnnamed20() => [
       buildNote(),
       buildNote(),
     ];
 
-void checkUnnamed19(core.List<api.Note> o) {
+void checkUnnamed20(core.List<api.Note> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNote(o[0]);
   checkNote(o[1]);
 }
 
-core.List<api.Contact> buildUnnamed20() => [
+core.List<api.Contact> buildUnnamed21() => [
       buildContact(),
       buildContact(),
     ];
 
-void checkUnnamed20(core.List<api.Contact> o) {
+void checkUnnamed21(core.List<api.Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContact(o[0]);
   checkContact(o[1]);
@@ -1540,7 +1578,7 @@ api.Proposal buildProposal() {
   if (buildCounterProposal < 3) {
     o.billedBuyer = 'foo';
     o.buyer = 'foo';
-    o.buyerContacts = buildUnnamed18();
+    o.buyerContacts = buildUnnamed19();
     o.buyerPrivateData = buildPrivateData();
     o.client = 'foo';
     o.dealType = 'foo';
@@ -1548,12 +1586,12 @@ api.Proposal buildProposal() {
     o.isRenegotiating = true;
     o.lastUpdaterOrCommentorRole = 'foo';
     o.name = 'foo';
-    o.notes = buildUnnamed19();
+    o.notes = buildUnnamed20();
     o.originatorRole = 'foo';
     o.pausingConsented = true;
     o.proposalRevision = 'foo';
     o.publisherProfile = 'foo';
-    o.sellerContacts = buildUnnamed20();
+    o.sellerContacts = buildUnnamed21();
     o.state = 'foo';
     o.termsAndConditions = 'foo';
     o.updateTime = 'foo';
@@ -1573,7 +1611,7 @@ void checkProposal(api.Proposal o) {
       o.buyer!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.buyerContacts!);
+    checkUnnamed19(o.buyerContacts!);
     checkPrivateData(o.buyerPrivateData!);
     unittest.expect(
       o.client!,
@@ -1596,7 +1634,7 @@ void checkProposal(api.Proposal o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.notes!);
+    checkUnnamed20(o.notes!);
     unittest.expect(
       o.originatorRole!,
       unittest.equals('foo'),
@@ -1610,7 +1648,7 @@ void checkProposal(api.Proposal o) {
       o.publisherProfile!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.sellerContacts!);
+    checkUnnamed21(o.sellerContacts!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -1627,12 +1665,12 @@ void checkProposal(api.Proposal o) {
   buildCounterProposal--;
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1644,23 +1682,23 @@ void checkUnnamed21(core.List<core.String> o) {
   );
 }
 
-core.List<api.PublisherProfileMobileApplication> buildUnnamed22() => [
+core.List<api.PublisherProfileMobileApplication> buildUnnamed23() => [
       buildPublisherProfileMobileApplication(),
       buildPublisherProfileMobileApplication(),
     ];
 
-void checkUnnamed22(core.List<api.PublisherProfileMobileApplication> o) {
+void checkUnnamed23(core.List<api.PublisherProfileMobileApplication> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublisherProfileMobileApplication(o[0]);
   checkPublisherProfileMobileApplication(o[1]);
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed24() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1680,18 +1718,18 @@ api.PublisherProfile buildPublisherProfile() {
     o.audienceDescription = 'foo';
     o.directDealsContact = 'foo';
     o.displayName = 'foo';
-    o.domains = buildUnnamed21();
+    o.domains = buildUnnamed22();
     o.isParent = true;
     o.logoUrl = 'foo';
     o.mediaKitUrl = 'foo';
-    o.mobileApps = buildUnnamed22();
+    o.mobileApps = buildUnnamed23();
     o.name = 'foo';
     o.overview = 'foo';
     o.pitchStatement = 'foo';
     o.programmaticDealsContact = 'foo';
     o.publisherCode = 'foo';
     o.samplePageUrl = 'foo';
-    o.topHeadlines = buildUnnamed23();
+    o.topHeadlines = buildUnnamed24();
   }
   buildCounterPublisherProfile--;
   return o;
@@ -1712,7 +1750,7 @@ void checkPublisherProfile(api.PublisherProfile o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.domains!);
+    checkUnnamed22(o.domains!);
     unittest.expect(o.isParent!, unittest.isTrue);
     unittest.expect(
       o.logoUrl!,
@@ -1722,7 +1760,7 @@ void checkPublisherProfile(api.PublisherProfile o) {
       o.mediaKitUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.mobileApps!);
+    checkUnnamed23(o.mobileApps!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1747,7 +1785,7 @@ void checkPublisherProfile(api.PublisherProfile o) {
       o.samplePageUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.topHeadlines!);
+    checkUnnamed24(o.topHeadlines!);
   }
   buildCounterPublisherProfile--;
 }
@@ -1847,12 +1885,12 @@ void checkRtbMetrics(api.RtbMetrics o) {
   buildCounterRtbMetrics--;
 }
 
-core.List<api.Contact> buildUnnamed24() => [
+core.List<api.Contact> buildUnnamed25() => [
       buildContact(),
       buildContact(),
     ];
 
-void checkUnnamed24(core.List<api.Contact> o) {
+void checkUnnamed25(core.List<api.Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContact(o[0]);
   checkContact(o[1]);
@@ -1863,7 +1901,7 @@ api.SendRfpRequest buildSendRfpRequest() {
   final o = api.SendRfpRequest();
   buildCounterSendRfpRequest++;
   if (buildCounterSendRfpRequest < 3) {
-    o.buyerContacts = buildUnnamed24();
+    o.buyerContacts = buildUnnamed25();
     o.client = 'foo';
     o.displayName = 'foo';
     o.estimatedGrossSpend = buildMoney();
@@ -1883,7 +1921,7 @@ api.SendRfpRequest buildSendRfpRequest() {
 void checkSendRfpRequest(api.SendRfpRequest o) {
   buildCounterSendRfpRequest++;
   if (buildCounterSendRfpRequest < 3) {
-    checkUnnamed24(o.buyerContacts!);
+    checkUnnamed25(o.buyerContacts!);
     unittest.expect(
       o.client!,
       unittest.equals('foo'),
@@ -1947,12 +1985,12 @@ void checkSubscribeAuctionPackageRequest(api.SubscribeAuctionPackageRequest o) {
   buildCounterSubscribeAuctionPackageRequest--;
 }
 
-core.List<core.String> buildUnnamed25() => [
+core.List<core.String> buildUnnamed26() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed25(core.List<core.String> o) {
+void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1969,7 +2007,7 @@ api.SubscribeClientsRequest buildSubscribeClientsRequest() {
   final o = api.SubscribeClientsRequest();
   buildCounterSubscribeClientsRequest++;
   if (buildCounterSubscribeClientsRequest < 3) {
-    o.clients = buildUnnamed25();
+    o.clients = buildUnnamed26();
   }
   buildCounterSubscribeClientsRequest--;
   return o;
@@ -1978,7 +2016,7 @@ api.SubscribeClientsRequest buildSubscribeClientsRequest() {
 void checkSubscribeClientsRequest(api.SubscribeClientsRequest o) {
   buildCounterSubscribeClientsRequest++;
   if (buildCounterSubscribeClientsRequest < 3) {
-    checkUnnamed25(o.clients!);
+    checkUnnamed26(o.clients!);
   }
   buildCounterSubscribeClientsRequest--;
 }
@@ -2086,12 +2124,12 @@ void checkUnsubscribeAuctionPackageRequest(
   buildCounterUnsubscribeAuctionPackageRequest--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2108,7 +2146,7 @@ api.UnsubscribeClientsRequest buildUnsubscribeClientsRequest() {
   final o = api.UnsubscribeClientsRequest();
   buildCounterUnsubscribeClientsRequest++;
   if (buildCounterUnsubscribeClientsRequest < 3) {
-    o.clients = buildUnnamed26();
+    o.clients = buildUnnamed27();
   }
   buildCounterUnsubscribeClientsRequest--;
   return o;
@@ -2117,7 +2155,7 @@ api.UnsubscribeClientsRequest buildUnsubscribeClientsRequest() {
 void checkUnsubscribeClientsRequest(api.UnsubscribeClientsRequest o) {
   buildCounterUnsubscribeClientsRequest++;
   if (buildCounterUnsubscribeClientsRequest < 3) {
-    checkUnnamed26(o.clients!);
+    checkUnnamed27(o.clients!);
   }
   buildCounterUnsubscribeClientsRequest--;
 }
@@ -2146,23 +2184,6 @@ void checkUpdateDealRequest(api.UpdateDealRequest o) {
   buildCounterUpdateDealRequest--;
 }
 
-core.List<core.String> buildUnnamed27() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed27(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed28() => [
       'foo',
       'foo',
@@ -2178,27 +2199,6 @@ void checkUnnamed28(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
-}
-
-core.int buildCounterUriTargeting = 0;
-api.UriTargeting buildUriTargeting() {
-  final o = api.UriTargeting();
-  buildCounterUriTargeting++;
-  if (buildCounterUriTargeting < 3) {
-    o.excludedUris = buildUnnamed27();
-    o.targetedUris = buildUnnamed28();
-  }
-  buildCounterUriTargeting--;
-  return o;
-}
-
-void checkUriTargeting(api.UriTargeting o) {
-  buildCounterUriTargeting++;
-  if (buildCounterUriTargeting < 3) {
-    checkUnnamed27(o.excludedUris!);
-    checkUnnamed28(o.targetedUris!);
-  }
-  buildCounterUriTargeting--;
 }
 
 core.List<core.String> buildUnnamed29() => [
@@ -2218,6 +2218,27 @@ void checkUnnamed29(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterUriTargeting = 0;
+api.UriTargeting buildUriTargeting() {
+  final o = api.UriTargeting();
+  buildCounterUriTargeting++;
+  if (buildCounterUriTargeting < 3) {
+    o.excludedUris = buildUnnamed28();
+    o.targetedUris = buildUnnamed29();
+  }
+  buildCounterUriTargeting--;
+  return o;
+}
+
+void checkUriTargeting(api.UriTargeting o) {
+  buildCounterUriTargeting++;
+  if (buildCounterUriTargeting < 3) {
+    checkUnnamed28(o.excludedUris!);
+    checkUnnamed29(o.targetedUris!);
+  }
+  buildCounterUriTargeting--;
+}
+
 core.List<core.String> buildUnnamed30() => [
       'foo',
       'foo',
@@ -2235,13 +2256,30 @@ void checkUnnamed30(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed31() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed31(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterVideoTargeting = 0;
 api.VideoTargeting buildVideoTargeting() {
   final o = api.VideoTargeting();
   buildCounterVideoTargeting++;
   if (buildCounterVideoTargeting < 3) {
-    o.excludedPositionTypes = buildUnnamed29();
-    o.targetedPositionTypes = buildUnnamed30();
+    o.excludedPositionTypes = buildUnnamed30();
+    o.targetedPositionTypes = buildUnnamed31();
   }
   buildCounterVideoTargeting--;
   return o;
@@ -2250,8 +2288,8 @@ api.VideoTargeting buildVideoTargeting() {
 void checkVideoTargeting(api.VideoTargeting o) {
   buildCounterVideoTargeting++;
   if (buildCounterVideoTargeting < 3) {
-    checkUnnamed29(o.excludedPositionTypes!);
-    checkUnnamed30(o.targetedPositionTypes!);
+    checkUnnamed30(o.excludedPositionTypes!);
+    checkUnnamed31(o.targetedPositionTypes!);
   }
   buildCounterVideoTargeting--;
 }
@@ -2524,6 +2562,16 @@ void main() {
       final od = api.InventorySizeTargeting.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInventorySizeTargeting(od);
+    });
+  });
+
+  unittest.group('obj-schema-InventoryTypeTargeting', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInventoryTypeTargeting();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InventoryTypeTargeting.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInventoryTypeTargeting(od);
     });
   });
 

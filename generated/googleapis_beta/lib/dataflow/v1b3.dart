@@ -217,6 +217,8 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [name] - Optional. The job name. Optional.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -251,6 +253,7 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -259,6 +262,7 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -505,6 +509,8 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [name] - Optional. The job name. Optional.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -539,6 +545,7 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -547,6 +554,7 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -1420,6 +1428,8 @@ class ProjectsLocationsJobsResource {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
+  /// [name] - Optional. The job name. Optional.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -1454,6 +1464,7 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location, {
     core.String? filter,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -1461,6 +1472,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -4793,6 +4805,9 @@ class FlexTemplateRuntimeEnvironment {
   /// heap file.
   core.bool? dumpHeapOnOom;
 
+  /// If true serial port logging will be enabled for the launcher VM.
+  core.bool? enableLauncherVmSerialPortLogging;
+
   /// Whether to enable Streaming Engine for the job.
   core.bool? enableStreamingEngine;
 
@@ -4904,6 +4919,7 @@ class FlexTemplateRuntimeEnvironment {
     this.autoscalingAlgorithm,
     this.diskSizeGb,
     this.dumpHeapOnOom,
+    this.enableLauncherVmSerialPortLogging,
     this.enableStreamingEngine,
     this.flexrsGoal,
     this.ipConfiguration,
@@ -4950,6 +4966,10 @@ class FlexTemplateRuntimeEnvironment {
           dumpHeapOnOom: json_.containsKey('dumpHeapOnOom')
               ? json_['dumpHeapOnOom'] as core.bool
               : null,
+          enableLauncherVmSerialPortLogging:
+              json_.containsKey('enableLauncherVmSerialPortLogging')
+                  ? json_['enableLauncherVmSerialPortLogging'] as core.bool
+                  : null,
           enableStreamingEngine: json_.containsKey('enableStreamingEngine')
               ? json_['enableStreamingEngine'] as core.bool
               : null,
@@ -5013,6 +5033,9 @@ class FlexTemplateRuntimeEnvironment {
           'autoscalingAlgorithm': autoscalingAlgorithm!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (dumpHeapOnOom != null) 'dumpHeapOnOom': dumpHeapOnOom!,
+        if (enableLauncherVmSerialPortLogging != null)
+          'enableLauncherVmSerialPortLogging':
+              enableLauncherVmSerialPortLogging!,
         if (enableStreamingEngine != null)
           'enableStreamingEngine': enableStreamingEngine!,
         if (flexrsGoal != null) 'flexrsGoal': flexrsGoal!,
@@ -5250,6 +5273,37 @@ class Histogram {
       };
 }
 
+/// Information useful for debugging a hot key detection.
+class HotKeyDebuggingInfo {
+  /// Debugging information for each detected hot key.
+  ///
+  /// Keyed by a hash of the key.
+  core.Map<core.String, HotKeyInfo>? detectedHotKeys;
+
+  HotKeyDebuggingInfo({
+    this.detectedHotKeys,
+  });
+
+  HotKeyDebuggingInfo.fromJson(core.Map json_)
+      : this(
+          detectedHotKeys: json_.containsKey('detectedHotKeys')
+              ? (json_['detectedHotKeys']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    HotKeyInfo.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectedHotKeys != null) 'detectedHotKeys': detectedHotKeys!,
+      };
+}
+
 /// Proto describing a hot key detected on a given WorkItem.
 class HotKeyDetection {
   /// The age of the hot key measured from when it was first detected.
@@ -5286,6 +5340,46 @@ class HotKeyDetection {
         if (hotKeyAge != null) 'hotKeyAge': hotKeyAge!,
         if (systemName != null) 'systemName': systemName!,
         if (userStepName != null) 'userStepName': userStepName!,
+      };
+}
+
+/// Information about a hot key.
+class HotKeyInfo {
+  /// The age of the hot key measured from when it was first detected.
+  core.String? hotKeyAge;
+
+  /// A detected hot key that is causing limited parallelism.
+  ///
+  /// This field will be populated only if the following flag is set to true:
+  /// "--enable_hot_key_logging".
+  core.String? key;
+
+  /// If true, then the above key is truncated and cannot be deserialized.
+  ///
+  /// This occurs if the key above is populated and the key size is \>5MB.
+  core.bool? keyTruncated;
+
+  HotKeyInfo({
+    this.hotKeyAge,
+    this.key,
+    this.keyTruncated,
+  });
+
+  HotKeyInfo.fromJson(core.Map json_)
+      : this(
+          hotKeyAge: json_.containsKey('hotKeyAge')
+              ? json_['hotKeyAge'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          keyTruncated: json_.containsKey('keyTruncated')
+              ? json_['keyTruncated'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hotKeyAge != null) 'hotKeyAge': hotKeyAge!,
+        if (key != null) 'key': key!,
+        if (keyTruncated != null) 'keyTruncated': keyTruncated!,
       };
 }
 
@@ -7642,10 +7736,15 @@ class PipelineDescription {
   /// them.
   core.List<TransformSummary>? originalPipelineTransform;
 
+  /// A hash value of the submitted pipeline portable graph step names if
+  /// exists.
+  core.String? stepNamesHash;
+
   PipelineDescription({
     this.displayData,
     this.executionPipelineStage,
     this.originalPipelineTransform,
+    this.stepNamesHash,
   });
 
   PipelineDescription.fromJson(core.Map json_)
@@ -7669,6 +7768,9 @@ class PipelineDescription {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
+          stepNamesHash: json_.containsKey('stepNamesHash')
+              ? json_['stepNamesHash'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7677,6 +7779,7 @@ class PipelineDescription {
           'executionPipelineStage': executionPipelineStage!,
         if (originalPipelineTransform != null)
           'originalPipelineTransform': originalPipelineTransform!,
+        if (stepNamesHash != null) 'stepNamesHash': stepNamesHash!,
       };
 }
 
@@ -9735,6 +9838,9 @@ class StageSummary {
   /// - "EXECUTION_STATE_CANCELLED" : Execution of the component was cancelled.
   core.String? state;
 
+  /// Straggler summary for this stage.
+  StragglerSummary? stragglerSummary;
+
   StageSummary({
     this.endTime,
     this.metrics,
@@ -9742,6 +9848,7 @@ class StageSummary {
     this.stageId,
     this.startTime,
     this.state,
+    this.stragglerSummary,
   });
 
   StageSummary.fromJson(core.Map json_)
@@ -9767,6 +9874,10 @@ class StageSummary {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          stragglerSummary: json_.containsKey('stragglerSummary')
+              ? StragglerSummary.fromJson(json_['stragglerSummary']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9776,6 +9887,7 @@ class StageSummary {
         if (stageId != null) 'stageId': stageId!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
+        if (stragglerSummary != null) 'stragglerSummary': stragglerSummary!,
       };
 }
 
@@ -9867,6 +9979,108 @@ class Step {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (properties != null) 'properties': properties!,
+      };
+}
+
+/// Information useful for debugging a straggler.
+///
+/// Each type will provide specialized debugging information relevant for a
+/// particular cause. The StragglerDebuggingInfo will be 1:1 mapping to the
+/// StragglerCause enum.
+class StragglerDebuggingInfo {
+  /// Hot key debugging details.
+  HotKeyDebuggingInfo? hotKey;
+
+  StragglerDebuggingInfo({
+    this.hotKey,
+  });
+
+  StragglerDebuggingInfo.fromJson(core.Map json_)
+      : this(
+          hotKey: json_.containsKey('hotKey')
+              ? HotKeyDebuggingInfo.fromJson(
+                  json_['hotKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hotKey != null) 'hotKey': hotKey!,
+      };
+}
+
+/// Information useful for straggler identification and debugging.
+class StragglerInfo {
+  /// The straggler causes, keyed by the string representation of the
+  /// StragglerCause enum and contains specialized debugging information for
+  /// each straggler cause.
+  core.Map<core.String, StragglerDebuggingInfo>? causes;
+
+  /// The time when the work item attempt became a straggler.
+  core.String? startTime;
+
+  StragglerInfo({
+    this.causes,
+    this.startTime,
+  });
+
+  StragglerInfo.fromJson(core.Map json_)
+      : this(
+          causes: json_.containsKey('causes')
+              ? (json_['causes'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    StragglerDebuggingInfo.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (causes != null) 'causes': causes!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Summarized straggler identification details.
+class StragglerSummary {
+  /// Aggregated counts of straggler causes, keyed by the string representation
+  /// of the StragglerCause enum.
+  core.Map<core.String, core.String>? stragglerCauseCount;
+
+  /// The total count of stragglers.
+  core.String? totalStragglerCount;
+
+  StragglerSummary({
+    this.stragglerCauseCount,
+    this.totalStragglerCount,
+  });
+
+  StragglerSummary.fromJson(core.Map json_)
+      : this(
+          stragglerCauseCount: json_.containsKey('stragglerCauseCount')
+              ? (json_['stragglerCauseCount']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          totalStragglerCount: json_.containsKey('totalStragglerCount')
+              ? json_['totalStragglerCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stragglerCauseCount != null)
+          'stragglerCauseCount': stragglerCauseCount!,
+        if (totalStragglerCount != null)
+          'totalStragglerCount': totalStragglerCount!,
       };
 }
 
@@ -10968,6 +11182,9 @@ class WorkItemDetails {
   /// - "EXECUTION_STATE_CANCELLED" : Execution of the component was cancelled.
   core.String? state;
 
+  /// Information about straggler detections for this work item.
+  StragglerInfo? stragglerInfo;
+
   /// Name of this work item.
   core.String? taskId;
 
@@ -10978,6 +11195,7 @@ class WorkItemDetails {
     this.progress,
     this.startTime,
     this.state,
+    this.stragglerInfo,
     this.taskId,
   });
 
@@ -11004,6 +11222,10 @@ class WorkItemDetails {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          stragglerInfo: json_.containsKey('stragglerInfo')
+              ? StragglerInfo.fromJson(
+                  json_['stragglerInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           taskId: json_.containsKey('taskId')
               ? json_['taskId'] as core.String
               : null,
@@ -11016,6 +11238,7 @@ class WorkItemDetails {
         if (progress != null) 'progress': progress!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
+        if (stragglerInfo != null) 'stragglerInfo': stragglerInfo!,
         if (taskId != null) 'taskId': taskId!,
       };
 }

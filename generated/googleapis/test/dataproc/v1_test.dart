@@ -867,6 +867,7 @@ api.ExecutionConfig buildExecutionConfig() {
   final o = api.ExecutionConfig();
   buildCounterExecutionConfig++;
   if (buildCounterExecutionConfig < 3) {
+    o.idleTtl = 'foo';
     o.kmsKey = 'foo';
     o.networkTags = buildUnnamed12();
     o.networkUri = 'foo';
@@ -880,6 +881,10 @@ api.ExecutionConfig buildExecutionConfig() {
 void checkExecutionConfig(api.ExecutionConfig o) {
   buildCounterExecutionConfig++;
   if (buildCounterExecutionConfig < 3) {
+    unittest.expect(
+      o.idleTtl!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.kmsKey!,
       unittest.equals('foo'),
@@ -1865,6 +1870,7 @@ api.Job buildJob() {
     o.sparkSqlJob = buildSparkSqlJob();
     o.status = buildJobStatus();
     o.statusHistory = buildUnnamed34();
+    o.trinoJob = buildTrinoJob();
     o.yarnApplications = buildUnnamed35();
   }
   buildCounterJob--;
@@ -1901,6 +1907,7 @@ void checkJob(api.Job o) {
     checkSparkSqlJob(o.sparkSqlJob!);
     checkJobStatus(o.status!);
     checkUnnamed34(o.statusHistory!);
+    checkTrinoJob(o.trinoJob!);
     checkUnnamed35(o.yarnApplications!);
   }
   buildCounterJob--;
@@ -2923,6 +2930,7 @@ api.OrderedJob buildOrderedJob() {
     o.sparkRJob = buildSparkRJob();
     o.sparkSqlJob = buildSparkSqlJob();
     o.stepId = 'foo';
+    o.trinoJob = buildTrinoJob();
   }
   buildCounterOrderedJob--;
   return o;
@@ -2946,6 +2954,7 @@ void checkOrderedJob(api.OrderedJob o) {
       o.stepId!,
       unittest.equals('foo'),
     );
+    checkTrinoJob(o.trinoJob!);
   }
   buildCounterOrderedJob--;
 }
@@ -4775,12 +4784,83 @@ void checkUnnamed104(core.List<core.String> o) {
   );
 }
 
+core.Map<core.String, core.String> buildUnnamed105() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed105(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTrinoJob = 0;
+api.TrinoJob buildTrinoJob() {
+  final o = api.TrinoJob();
+  buildCounterTrinoJob++;
+  if (buildCounterTrinoJob < 3) {
+    o.clientTags = buildUnnamed104();
+    o.continueOnFailure = true;
+    o.loggingConfig = buildLoggingConfig();
+    o.outputFormat = 'foo';
+    o.properties = buildUnnamed105();
+    o.queryFileUri = 'foo';
+    o.queryList = buildQueryList();
+  }
+  buildCounterTrinoJob--;
+  return o;
+}
+
+void checkTrinoJob(api.TrinoJob o) {
+  buildCounterTrinoJob++;
+  if (buildCounterTrinoJob < 3) {
+    checkUnnamed104(o.clientTags!);
+    unittest.expect(o.continueOnFailure!, unittest.isTrue);
+    checkLoggingConfig(o.loggingConfig!);
+    unittest.expect(
+      o.outputFormat!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed105(o.properties!);
+    unittest.expect(
+      o.queryFileUri!,
+      unittest.equals('foo'),
+    );
+    checkQueryList(o.queryList!);
+  }
+  buildCounterTrinoJob--;
+}
+
+core.List<core.String> buildUnnamed106() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed106(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterValueValidation = 0;
 api.ValueValidation buildValueValidation() {
   final o = api.ValueValidation();
   buildCounterValueValidation++;
   if (buildCounterValueValidation < 3) {
-    o.values = buildUnnamed104();
+    o.values = buildUnnamed106();
   }
   buildCounterValueValidation--;
   return o;
@@ -4789,7 +4869,7 @@ api.ValueValidation buildValueValidation() {
 void checkValueValidation(api.ValueValidation o) {
   buildCounterValueValidation++;
   if (buildCounterValueValidation < 3) {
-    checkUnnamed104(o.values!);
+    checkUnnamed106(o.values!);
   }
   buildCounterValueValidation--;
 }
@@ -4820,23 +4900,23 @@ void checkVirtualClusterConfig(api.VirtualClusterConfig o) {
   buildCounterVirtualClusterConfig--;
 }
 
-core.List<api.OrderedJob> buildUnnamed105() => [
+core.List<api.OrderedJob> buildUnnamed107() => [
       buildOrderedJob(),
       buildOrderedJob(),
     ];
 
-void checkUnnamed105(core.List<api.OrderedJob> o) {
+void checkUnnamed107(core.List<api.OrderedJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderedJob(o[0]);
   checkOrderedJob(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed106() => {
+core.Map<core.String, core.String> buildUnnamed108() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed106(core.Map<core.String, core.String> o) {
+void checkUnnamed108(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4848,12 +4928,12 @@ void checkUnnamed106(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.TemplateParameter> buildUnnamed107() => [
+core.List<api.TemplateParameter> buildUnnamed109() => [
       buildTemplateParameter(),
       buildTemplateParameter(),
     ];
 
-void checkUnnamed107(core.List<api.TemplateParameter> o) {
+void checkUnnamed109(core.List<api.TemplateParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTemplateParameter(o[0]);
   checkTemplateParameter(o[1]);
@@ -4867,10 +4947,10 @@ api.WorkflowTemplate buildWorkflowTemplate() {
     o.createTime = 'foo';
     o.dagTimeout = 'foo';
     o.id = 'foo';
-    o.jobs = buildUnnamed105();
-    o.labels = buildUnnamed106();
+    o.jobs = buildUnnamed107();
+    o.labels = buildUnnamed108();
     o.name = 'foo';
-    o.parameters = buildUnnamed107();
+    o.parameters = buildUnnamed109();
     o.placement = buildWorkflowTemplatePlacement();
     o.updateTime = 'foo';
     o.version = 42;
@@ -4894,13 +4974,13 @@ void checkWorkflowTemplate(api.WorkflowTemplate o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed105(o.jobs!);
-    checkUnnamed106(o.labels!);
+    checkUnnamed107(o.jobs!);
+    checkUnnamed108(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed107(o.parameters!);
+    checkUnnamed109(o.parameters!);
     checkWorkflowTemplatePlacement(o.placement!);
     unittest.expect(
       o.updateTime!,
@@ -5969,6 +6049,16 @@ void main() {
       final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-TrinoJob', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTrinoJob();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TrinoJob.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTrinoJob(od);
     });
   });
 

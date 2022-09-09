@@ -5202,31 +5202,39 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// Executes all the requests in the given Bundle.
   ///
   /// Implements the FHIR standard batch/transaction interaction
-  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#transaction),
-  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#transaction),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#transaction)).
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#transaction),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#transaction),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/http.html#transaction)).
   /// Supports all interactions within a bundle, except search. This method
   /// accepts Bundles of type `batch` and `transaction`, processing them
   /// according to the batch processing rules
-  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.1),
-  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.1),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#brules)) and
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.1),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.1),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/http.html#brules)) and
   /// transaction processing rules
-  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.2),
-  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.2),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#trules)). The
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.2),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.2),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/http.html#trules)). The
   /// request body must contain a JSON-encoded FHIR `Bundle` resource, and the
   /// request headers must contain `Content-Type: application/fhir+json`. For a
-  /// batch bundle or a successful transaction the response body will contain a
+  /// batch bundle or a successful transaction, the response body contains a
   /// JSON-encoded representation of a `Bundle` resource of type
   /// `batch-response` or `transaction-response` containing one entry for each
   /// entry in the request, with the outcome of processing the entry. In the
-  /// case of an error for a transaction bundle, the response body will contain
-  /// a JSON-encoded `OperationOutcome` resource describing the reason for the
+  /// case of an error for a transaction bundle, the response body contains a
+  /// JSON-encoded `OperationOutcome` resource describing the reason for the
   /// error. If the request cannot be mapped to a valid API method on a FHIR
-  /// store, a generic GCP error might be returned instead. For samples that
-  /// show how to call `executeBundle`, see \[Managing FHIR resources using FHIR
-  /// bundles\](/healthcare/docs/how-tos/fhir-bundles).
+  /// store, a generic GCP error might be returned instead. This method checks
+  /// permissions for each request in the bundle. The `executeBundle` permission
+  /// is required to call this method, but you must also grant sufficient
+  /// permissions to execute the individual requests in the bundle. For example,
+  /// if the bundle contains a request to create a FHIR resource, the caller
+  /// must also have been granted the `healthcare.fhirResources.create`
+  /// permission. You can use audit logs to view the permissions for
+  /// `executeBundle` and each request in the bundle. For more information, see
+  /// [Viewing Cloud Audit logs](https://cloud.google.com/healthcare-api/docs/how-tos/audit-logging).
+  /// For samples that show how to call `executeBundle`, see \[Managing FHIR
+  /// resources using FHIR bundles\](/healthcare/docs/how-tos/fhir-bundles).
   ///
   /// [request] - The metadata request object.
   ///
@@ -7227,8 +7235,12 @@ class Binding {
   /// represents anyone who is authenticated with a Google account or a service
   /// account. * `user:{emailid}`: An email address that represents a specific
   /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{emailid}`: An email address that represents a Google
+  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
+  /// An identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -9454,9 +9466,9 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   /// - "WRITE_DISPOSITION_UNSPECIFIED" : Default behavior is the same as
   /// WRITE_EMPTY.
   /// - "WRITE_EMPTY" : Only export data if the destination table is empty.
-  /// - "WRITE_TRUNCATE" : Erase all existing data in a table before writing the
-  /// instances.
-  /// - "WRITE_APPEND" : Append data to the existing table.
+  /// - "WRITE_TRUNCATE" : Erase all existing data in the destination table
+  /// before writing the instances.
+  /// - "WRITE_APPEND" : Append data to the destination table.
   core.String? writeDisposition;
 
   GoogleCloudHealthcareV1DicomBigQueryDestination({
@@ -9601,9 +9613,9 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// - "WRITE_DISPOSITION_UNSPECIFIED" : Default behavior is the same as
   /// WRITE_EMPTY.
   /// - "WRITE_EMPTY" : Only export data if the destination tables are empty.
-  /// - "WRITE_TRUNCATE" : Erase all existing data in the tables before writing
-  /// the instances.
-  /// - "WRITE_APPEND" : Append data to the existing tables.
+  /// - "WRITE_TRUNCATE" : Erase all existing data in the destination tables
+  /// before writing the FHIR resources.
+  /// - "WRITE_APPEND" : Append data to the destination tables.
   core.String? writeDisposition;
 
   GoogleCloudHealthcareV1FhirBigQueryDestination({

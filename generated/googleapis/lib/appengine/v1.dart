@@ -2088,8 +2088,7 @@ class AppsServicesVersionsInstancesResource {
   }
 }
 
-/// Google Cloud Endpoints
-/// (https://cloud.google.com/appengine/docs/python/endpoints/) configuration
+/// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration
 /// for API handlers.
 class ApiConfigHandler {
   /// Action to take when users access resources that require authentication.
@@ -3074,7 +3073,7 @@ class DomainMapping {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// Cloud Endpoints (https://cloud.google.com/endpoints) configuration.
+/// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration.
 ///
 /// The Endpoints API Service provides tooling for serving Open API and gRPC
 /// endpoints via an NGINX proxy. Only valid for App Engine Flexible environment
@@ -5193,8 +5192,8 @@ class UrlMap {
 /// that are deployed into a service.
 class Version {
   /// Serving configuration for Google Cloud Endpoints
-  /// (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned
-  /// in GET requests if view=FULL is set.
+  /// (https://cloud.google.com/endpoints).Only returned in GET requests if
+  /// view=FULL is set.
   ApiConfigHandler? apiConfig;
 
   /// Allows App Engine second generation runtimes to access the legacy bundled

@@ -1023,7 +1023,7 @@ class Case {
   ///
   /// If this is set, do not set severity.
   /// Possible string values are:
-  /// - "PRIORITY_UNSPECIFIED" : Severity is undefined or has not been set yet.
+  /// - "PRIORITY_UNSPECIFIED" : Priority is undefined or has not been set yet.
   /// - "P0" : Extreme impact on a production service. Service is hard down.
   /// - "P1" : Critical impact on a production service. Service is currently
   /// unusable.

@@ -371,6 +371,48 @@ class ProjectsLocationsGlobalDomainsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Extend Schema for Domain
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> extendSchema(
+    ExtendSchemaRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':extendSchema';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets information about a domain.
   ///
   /// Request parameters:
@@ -2157,10 +2199,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -2516,6 +2564,54 @@ typedef Empty = $Empty;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// ExtendSchemaRequest is the request message for ExtendSchema method.
+class ExtendSchemaRequest {
+  /// Description for Schema Change.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// File uploaded as a byte stream input.
+  core.String? fileContents;
+  core.List<core.int> get fileContentsAsBytes =>
+      convert.base64.decode(fileContents!);
+
+  set fileContentsAsBytes(core.List<core.int> bytes_) {
+    fileContents =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// File stored in Cloud Storage bucket and represented in the form
+  /// projects/{project_id}/buckets/{bucket_name}/objects/{object_name} File
+  /// should be in the same project as the domain.
+  core.String? gcsPath;
+
+  ExtendSchemaRequest({
+    this.description,
+    this.fileContents,
+    this.gcsPath,
+  });
+
+  ExtendSchemaRequest.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          fileContents: json_.containsKey('fileContents')
+              ? json_['fileContents'] as core.String
+              : null,
+          gcsPath: json_.containsKey('gcsPath')
+              ? json_['gcsPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (fileContents != null) 'fileContents': fileContents!,
+        if (gcsPath != null) 'gcsPath': gcsPath!,
+      };
+}
 
 /// LDAPSSettings represents the ldaps settings for domain resource.
 ///

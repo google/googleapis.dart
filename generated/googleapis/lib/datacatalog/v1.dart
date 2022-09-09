@@ -3119,10 +3119,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -3730,9 +3736,12 @@ class GoogleCloudDatacatalogV1DataSource {
 
 /// Specification that applies to a data source connection.
 ///
-/// Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+/// Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of
+/// internal specs can be set at the time, and cannot be changed later.
 class GoogleCloudDatacatalogV1DataSourceConnectionSpec {
   /// Fields specific to BigQuery connections.
+  ///
+  /// Output only.
   GoogleCloudDatacatalogV1BigQueryConnectionSpec? bigqueryConnectionSpec;
 
   GoogleCloudDatacatalogV1DataSourceConnectionSpec({
@@ -4144,8 +4153,6 @@ class GoogleCloudDatacatalogV1Entry {
   core.String? type;
 
   /// Resource usage statistics.
-  ///
-  /// Output only.
   GoogleCloudDatacatalogV1UsageSignal? usageSignal;
 
   /// Indicates the entry's source system that Data Catalog doesn't
@@ -6510,22 +6517,31 @@ typedef GoogleCloudDatacatalogV1UnstarEntryResponse = $Empty;
 /// Note: Usually, these signals are updated daily. In rare cases, an update may
 /// fail but will be performed again on the next day.
 class GoogleCloudDatacatalogV1UsageSignal {
+  /// Favorite count in the source system.
+  core.String? favoriteCount;
+
   /// The end timestamp of the duration of usage statistics.
   core.String? updateTime;
 
-  /// Usage statistics over each of the predefined time ranges.
+  /// BigQuery usage statistics over each of the predefined time ranges.
   ///
   /// Supported time ranges are `{"24H", "7D", "30D"}`.
+  ///
+  /// Output only.
   core.Map<core.String, GoogleCloudDatacatalogV1UsageStats>?
       usageWithinTimeRange;
 
   GoogleCloudDatacatalogV1UsageSignal({
+    this.favoriteCount,
     this.updateTime,
     this.usageWithinTimeRange,
   });
 
   GoogleCloudDatacatalogV1UsageSignal.fromJson(core.Map json_)
       : this(
+          favoriteCount: json_.containsKey('favoriteCount')
+              ? json_['favoriteCount'] as core.String
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -6543,6 +6559,7 @@ class GoogleCloudDatacatalogV1UsageSignal {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (favoriteCount != null) 'favoriteCount': favoriteCount!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (usageWithinTimeRange != null)
           'usageWithinTimeRange': usageWithinTimeRange!,

@@ -1895,7 +1895,7 @@
             }
         }
     },
-    "revision": "20220721",
+    "revision": "20220825",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "schemas": {
         "AddGroupMigrationRequest": {
@@ -2871,7 +2871,7 @@
             "id": "LocalizedMessage",
             "properties": {
                 "locale": {
-                    "description": "The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: \"en-US\", \"fr-CH\", \"es-MX\"",
+                    "description": "The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: \"en-US\", \"fr-CH\", \"es-MX\"",
                     "type": "string"
                 },
                 "message": {

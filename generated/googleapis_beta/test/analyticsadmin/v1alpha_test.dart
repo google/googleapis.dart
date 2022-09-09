@@ -474,6 +474,8 @@ api.GoogleAnalyticsAdminV1alphaAccessQuota
         buildGoogleAnalyticsAdminV1alphaAccessQuotaStatus();
     o.tokensPerDay = buildGoogleAnalyticsAdminV1alphaAccessQuotaStatus();
     o.tokensPerHour = buildGoogleAnalyticsAdminV1alphaAccessQuotaStatus();
+    o.tokensPerProjectPerHour =
+        buildGoogleAnalyticsAdminV1alphaAccessQuotaStatus();
   }
   buildCounterGoogleAnalyticsAdminV1alphaAccessQuota--;
   return o;
@@ -488,6 +490,8 @@ void checkGoogleAnalyticsAdminV1alphaAccessQuota(
         o.serverErrorsPerProjectPerHour!);
     checkGoogleAnalyticsAdminV1alphaAccessQuotaStatus(o.tokensPerDay!);
     checkGoogleAnalyticsAdminV1alphaAccessQuotaStatus(o.tokensPerHour!);
+    checkGoogleAnalyticsAdminV1alphaAccessQuotaStatus(
+        o.tokensPerProjectPerHour!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaAccessQuota--;
 }

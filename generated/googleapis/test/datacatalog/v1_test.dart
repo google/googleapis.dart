@@ -2692,6 +2692,7 @@ api.GoogleCloudDatacatalogV1UsageSignal
   final o = api.GoogleCloudDatacatalogV1UsageSignal();
   buildCounterGoogleCloudDatacatalogV1UsageSignal++;
   if (buildCounterGoogleCloudDatacatalogV1UsageSignal < 3) {
+    o.favoriteCount = 'foo';
     o.updateTime = 'foo';
     o.usageWithinTimeRange = buildUnnamed32();
   }
@@ -2703,6 +2704,10 @@ void checkGoogleCloudDatacatalogV1UsageSignal(
     api.GoogleCloudDatacatalogV1UsageSignal o) {
   buildCounterGoogleCloudDatacatalogV1UsageSignal++;
   if (buildCounterGoogleCloudDatacatalogV1UsageSignal < 3) {
+    unittest.expect(
+      o.favoriteCount!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),

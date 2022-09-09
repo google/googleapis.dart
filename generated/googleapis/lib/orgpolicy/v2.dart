@@ -27,6 +27,7 @@
 ///   - [FoldersPoliciesResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsConstraintsResource]
+///   - [OrganizationsCustomConstraintsResource]
 ///   - [OrganizationsPoliciesResource]
 /// - [ProjectsResource]
 ///   - [ProjectsConstraintsResource]
@@ -427,6 +428,8 @@ class OrganizationsResource {
 
   OrganizationsConstraintsResource get constraints =>
       OrganizationsConstraintsResource(_requester);
+  OrganizationsCustomConstraintsResource get customConstraints =>
+      OrganizationsCustomConstraintsResource(_requester);
   OrganizationsPoliciesResource get policies =>
       OrganizationsPoliciesResource(_requester);
 
@@ -487,6 +490,242 @@ class OrganizationsConstraintsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsCustomConstraintsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsCustomConstraintsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a CustomConstraint.
+  ///
+  /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+  /// organization does not exist. Returns a `google.rpc.Status` with
+  /// `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the
+  /// given organization.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Must be in the following form: *
+  /// `organizations/{organization_id}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudOrgpolicyV2CustomConstraint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudOrgpolicyV2CustomConstraint> create(
+    GoogleCloudOrgpolicyV2CustomConstraint request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/customConstraints';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Custom Constraint.
+  ///
+  /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+  /// constraint does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom constraint to delete. See
+  /// `CustomConstraint` for naming rules.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a CustomConstraint.
+  ///
+  /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+  /// CustomConstraint does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the custom constraint. See
+  /// `CustomConstraint` for naming requirements.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudOrgpolicyV2CustomConstraint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudOrgpolicyV2CustomConstraint> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves all of the `CustomConstraints` that exist on a particular
+  /// organization resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The target Cloud resource that parents the set of
+  /// custom constraints that will be returned from this call. Must be in one of
+  /// the following forms: * `organizations/{organization_id}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Size of the pages to be returned. This is currently
+  /// unsupported and will be ignored. The server may at any point start using
+  /// this field to limit page size.
+  ///
+  /// [pageToken] - Page token used to retrieve the next page. This is currently
+  /// unsupported and will be ignored. The server may at any point start using
+  /// this field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudOrgpolicyV2ListCustomConstraintsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudOrgpolicyV2ListCustomConstraintsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/customConstraints';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Custom Constraint.
+  ///
+  /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
+  /// constraint does not exist. Note: the supplied policy will perform a full
+  /// overwrite of all fields.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Name of the constraint. This is unique within the
+  /// organization. Format of the name should be *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudOrgpolicyV2CustomConstraint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudOrgpolicyV2CustomConstraint> patch(
+    GoogleCloudOrgpolicyV2CustomConstraint request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1309,6 +1548,101 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
       };
 }
 
+/// A custom constraint defined by customers which can *only* be applied to the
+/// given resource types and organization.
+///
+/// By creating a custom constraint, customers can applied policies of this
+/// custom constraint. *Creating a custom constraint itself does NOT apply any
+/// policy enforcement*.
+class GoogleCloudOrgpolicyV2CustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Will results in user error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// Org policy condition/expression.
+  ///
+  /// For example:
+  /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or,
+  /// `resource.management.auto_upgrade == true`
+  core.String? condition;
+
+  /// Detailed information about this custom policy constraint.
+  core.String? description;
+
+  /// One line display name for the UI.
+  core.String? displayName;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Name of the constraint.
+  ///
+  /// This is unique within the organization. Format of the name should be *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The Resource Instance type on which this policy applies to.
+  ///
+  /// Format will be of the form : "/" Example: *
+  /// `compute.googleapis.com/Instance`.
+  ///
+  /// Immutable.
+  core.List<core.String>? resourceTypes;
+
+  GoogleCloudOrgpolicyV2CustomConstraint({
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.resourceTypes,
+  });
+
+  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
+      : this(
+          actionType: json_.containsKey('actionType')
+              ? json_['actionType'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          methodTypes: json_.containsKey('methodTypes')
+              ? (json_['methodTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (methodTypes != null) 'methodTypes': methodTypes!,
+        if (name != null) 'name': name!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
 /// The response returned from the ListConstraints method.
 class GoogleCloudOrgpolicyV2ListConstraintsResponse {
   /// The collection of constraints that are available on the targeted resource.
@@ -1339,6 +1673,47 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraints != null) 'constraints': constraints!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response returned from the ListCustomConstraints method.
+///
+/// It will be empty if no `CustomConstraints` are set on the organization
+/// resource.
+class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
+  /// All `CustomConstraints` that exist on the organization resource.
+  ///
+  /// It will be empty if no `CustomConstraints` are set.
+  core.List<GoogleCloudOrgpolicyV2CustomConstraint>? customConstraints;
+
+  /// Page token used to retrieve the next page.
+  ///
+  /// This is currently not used, but the server may at any point start
+  /// supplying a valid token.
+  core.String? nextPageToken;
+
+  GoogleCloudOrgpolicyV2ListCustomConstraintsResponse({
+    this.customConstraints,
+    this.nextPageToken,
+  });
+
+  GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(core.Map json_)
+      : this(
+          customConstraints: json_.containsKey('customConstraints')
+              ? (json_['customConstraints'] as core.List)
+                  .map((value) =>
+                      GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConstraints != null) 'customConstraints': customConstraints!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

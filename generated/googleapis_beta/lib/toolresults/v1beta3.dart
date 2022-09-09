@@ -5368,6 +5368,8 @@ class TestIssue {
   /// crash apps).
   /// - "deviceOutOfMemory" : Device running out of memory was detected
   /// - "logcatCollectionError" : Problems detected while collecting logcat
+  /// - "detectedAppSplashScreen" : Robo detected a splash screen provided by
+  /// app (vs. Android OS splash screen).
   core.String? type;
 
   /// Warning message with additional details of the issue.

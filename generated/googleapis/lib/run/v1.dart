@@ -169,8 +169,8 @@ class NamespacesConfigurationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the configuration to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// [name] - The name of the configuration to retrieve. For Cloud Run, replace
+  /// {namespace_id} with the project ID or number.
   /// Value must have pattern `^namespaces/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -207,28 +207,24 @@ class NamespacesConfigurationsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the configurations should be listed.
-  /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
-  /// or number.
+  /// For Cloud Run, replace {namespace_id} with the project ID or number.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
   ///
-  /// [fieldSelector] - Allows to filter resources based on a specific value for
-  /// a field name. Send this in a query string format. i.e.
-  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  /// [fieldSelector] - Not supported by Cloud Run.
   ///
-  /// [includeUninitialized] - Not currently used by Cloud Run.
+  /// [includeUninitialized] - Not supported by Cloud Run.
   ///
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - Optional. The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of the records that should be
+  /// returned.
   ///
-  /// [resourceVersion] - The baseline resource version from which the list or
-  /// watch operation should start. Not currently used by Cloud Run.
+  /// [resourceVersion] - Not supported by Cloud Run.
   ///
-  /// [watch] - Flag that indicates that the client expects to watch this
-  /// resource as well. Not currently used by Cloud Run.
+  /// [watch] - Not supported by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -354,8 +350,8 @@ class NamespacesDomainmappingsResource {
   ///
   /// [propagationPolicy] - Specifies the propagation policy of delete. Cloud
   /// Run currently ignores this setting, and deletes in the background. Please
-  /// see kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
-  /// for more information.
+  /// see kubernetes.io/docs/concepts/architecture/garbage-collection/ for more
+  /// information.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -431,7 +427,7 @@ class NamespacesDomainmappingsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List domain mappings.
+  /// List all domain mappings.
   ///
   /// Request parameters:
   ///
@@ -513,6 +509,50 @@ class NamespacesExecutionsResource {
   NamespacesExecutionsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Cancel an execution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the execution to cancel. Replace
+  /// {namespace} with the project ID or number. It takes the form
+  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// Value must have pattern `^namespaces/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Execution> cancel(
+    CancelExecutionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$name') +
+        ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Execution.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Delete an execution.
   ///
   /// Request parameters:
@@ -529,8 +569,8 @@ class NamespacesExecutionsResource {
   /// [propagationPolicy] - Optional. Specifies the propagation policy of
   /// delete. Cloud Run currently ignores this setting, and deletes in the
   /// background. Please see
-  /// kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-  /// more information.
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
+  /// for more information.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -614,22 +654,19 @@ class NamespacesExecutionsResource {
   ///
   /// [continue_] - Optional. Optional encoded string to continue paging.
   ///
-  /// [fieldSelector] - Optional. Allows to filter resources based on a specific
-  /// value for a field name. Send this in a query string format. i.e.
-  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  /// [fieldSelector] - Optional. Not supported by Cloud Run.
   ///
-  /// [includeUninitialized] - Optional. Not currently used by Cloud Run.
+  /// [includeUninitialized] - Optional. Not supported by Cloud Run.
   ///
   /// [labelSelector] - Optional. Allows to filter resources based on a label.
   /// Supported operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - Optional. The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of the records that should be
+  /// returned.
   ///
-  /// [resourceVersion] - Optional. The baseline resource version from which the
-  /// list or watch operation should start. Not currently used by Cloud Run.
+  /// [resourceVersion] - Optional. Not supported by Cloud Run.
   ///
-  /// [watch] - Optional. Flag that indicates that the client expects to watch
-  /// this resource as well. Not currently used by Cloud Run.
+  /// [watch] - Optional. Not supported by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -828,22 +865,18 @@ class NamespacesJobsResource {
   ///
   /// [continue_] - Optional. Optional encoded string to continue paging.
   ///
-  /// [fieldSelector] - Optional. Allows to filter resources based on a specific
-  /// value for a field name. Send this in a query string format. i.e.
-  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  /// [fieldSelector] - Optional. Not supported by Cloud Run.
   ///
-  /// [includeUninitialized] - Optional. Not currently used by Cloud Run.
+  /// [includeUninitialized] - Optional. Not supported by Cloud Run.
   ///
   /// [labelSelector] - Optional. Allows to filter resources based on a label.
   /// Supported operations are =, !=, exists, in, and notIn.
   ///
   /// [limit] - Optional. The maximum number of records that should be returned.
   ///
-  /// [resourceVersion] - Optional. The baseline resource version from which the
-  /// list or watch operation should start. Not currently used by Cloud Run.
+  /// [resourceVersion] - Optional. Not supported by Cloud Run.
   ///
-  /// [watch] - Optional. Flag that indicates that the client expects to watch
-  /// this resource as well. Not currently used by Cloud Run.
+  /// [watch] - Optional. Not supported by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -902,9 +935,9 @@ class NamespacesJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the service being replaced. Replace
-  /// {namespace} with the project ID or number. It takes the form
-  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The name of the job being replaced. Replace {namespace}
+  /// with the project ID or number. It takes the form namespaces/{namespace}.
+  /// For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1007,7 +1040,7 @@ class NamespacesRevisionsResource {
   ///
   /// [propagationPolicy] - Specifies the propagation policy of delete. Cloud
   /// Run currently ignores this setting, and deletes in the background. Please
-  /// see kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
+  /// see https://kubernetes.io/docs/concepts/architecture/garbage-collection/
   /// for more information.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1281,15 +1314,21 @@ class NamespacesServicesResource {
 
   NamespacesServicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Create a service.
+  /// Creates a new Service.
+  ///
+  /// Service creation will trigger a new deployment. Use GetService, and check
+  /// service.status to determine if the Service is ready.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The namespace in which the service should be created. For Cloud
-  /// Run (fully managed), replace {namespace} with the project ID or number. It
-  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [parent] - Required. The resource's parent. In Cloud Run, it may be one of
+  /// the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/services` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}`
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
@@ -1331,30 +1370,30 @@ class NamespacesServicesResource {
     return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a service.
+  /// Deletes the provided service.
   ///
-  /// This will cause the Service to stop serving traffic and will delete the
-  /// child entities like Routes, Configurations and Revisions.
+  /// This will cause the Service to stop serving traffic and will delete all
+  /// associated Revisions.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service to delete. For Cloud Run (fully managed),
-  /// replace {namespace} with the project ID or number. It takes the form
-  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the service to delete. It
+  /// can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/services/{service_name}` *
+  /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
   /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
-  /// [apiVersion] - Cloud Run currently ignores this parameter.
+  /// [apiVersion] - Not supported, and ignored by Cloud Run.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
   ///
-  /// [kind] - Cloud Run currently ignores this parameter.
+  /// [kind] - Not supported, and ignored by Cloud Run.
   ///
-  /// [propagationPolicy] - Specifies the propagation policy of delete. Cloud
-  /// Run currently ignores this setting, and deletes in the background. Please
-  /// see kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
-  /// for more information.
+  /// [propagationPolicy] - Not supported, and ignored by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1392,13 +1431,16 @@ class NamespacesServicesResource {
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get information about a service.
+  /// Gets information about a service.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace} with the project ID or number. It takes the
-  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the service to retrieve. It
+  /// can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/services/{service_name}` *
+  /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
   /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1429,34 +1471,32 @@ class NamespacesServicesResource {
     return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List services.
+  /// Lists services for the given project and region.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The namespace from which the services should be listed. For
-  /// Cloud Run (fully managed), replace {namespace} with the project ID or
-  /// number. It takes the form namespaces/{namespace}. For example:
-  /// namespaces/PROJECT_ID
+  /// [parent] - Required. The parent from where the resources should be listed.
+  /// In Cloud Run, it may be one of the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/services` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}`
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
-  /// [continue_] - Optional. Encoded string to continue paging.
+  /// [continue_] - Encoded string to continue paging.
   ///
-  /// [fieldSelector] - Allows to filter resources based on a specific value for
-  /// a field name. Send this in a query string format. i.e.
-  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  /// [fieldSelector] - Not supported, and ignored by Cloud Run.
   ///
-  /// [includeUninitialized] - Not currently used by Cloud Run.
+  /// [includeUninitialized] - Not supported, and ignored by Cloud Run.
   ///
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - Optional. The maximum number of records that should be returned.
+  /// [limit] - The maximum number of records that should be returned.
   ///
-  /// [resourceVersion] - The baseline resource version from which the list or
-  /// watch operation should start. Not currently used by Cloud Run.
+  /// [resourceVersion] - Not supported, and ignored by Cloud Run.
   ///
-  /// [watch] - Flag that indicates that the client expects to watch this
-  /// resource as well. Not currently used by Cloud Run.
+  /// [watch] - Not supported, and ignored by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1504,7 +1544,7 @@ class NamespacesServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Replace a service.
+  /// Replaces a service.
   ///
   /// Only the spec and metadata labels and annotations are modifiable. After
   /// the Update request, Cloud Run will work to make the 'status' match the
@@ -1515,9 +1555,12 @@ class NamespacesServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service being replaced. For Cloud Run (fully
-  /// managed), replace {namespace} with the project ID or number. It takes the
-  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the service to replace. It
+  /// can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/services/{service_name}` *
+  /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
   /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
@@ -1611,22 +1654,29 @@ class NamespacesTasksResource {
   ///
   /// [continue_] - Optional. Optional encoded string to continue paging.
   ///
-  /// [fieldSelector] - Optional. Allows to filter resources based on a specific
-  /// value for a field name. Send this in a query string format. i.e.
-  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  /// [fieldSelector] - Optional. Not supported by Cloud Run.
   ///
-  /// [includeUninitialized] - Optional. Not currently used by Cloud Run.
+  /// [includeUninitialized] - Optional. Not supported by Cloud Run.
   ///
   /// [labelSelector] - Optional. Allows to filter resources based on a label.
-  /// Supported operations are =, !=, exists, in, and notIn.
+  /// Supported operations are =, !=, exists, in, and notIn. For example, to
+  /// list all tasks of execution "foo" in succeeded state:
+  /// `run.googleapis.com/execution=foo,run.googleapis.com/runningState=Succeeded`.
+  /// Supported states are: * `Pending`: Initial state of all tasks. The task
+  /// has not yet started but eventually will. * `Running`: Container instances
+  /// for this task are running or will be running shortly. * `Succeeded`: No
+  /// more container instances to run for the task, and the last attempt
+  /// succeeded. * `Failed`: No more container instances to run for the task,
+  /// and the last attempt failed. This task has run out of retry attempts. *
+  /// `Cancelled`: Task was running but got stopped because its parent execution
+  /// has been aborted. * `Abandoned`: The task has not yet started and never
+  /// will because its parent execution has been aborted.
   ///
   /// [limit] - Optional. The maximum number of records that should be returned.
   ///
-  /// [resourceVersion] - Optional. The baseline resource version from which the
-  /// list or watch operation should start. Not currently used by Cloud Run.
+  /// [resourceVersion] - Optional. Not supported by Cloud Run.
   ///
-  /// [watch] - Optional. Flag that indicates that the client expects to watch
-  /// this resource as well. Not currently used by Cloud Run.
+  /// [watch] - Optional. Not supported by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1873,8 +1923,8 @@ class ProjectsLocationsConfigurationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the configuration to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace_id} with the project ID or number.
+  /// [name] - The name of the configuration to retrieve. For Cloud Run, replace
+  /// {namespace_id} with the project ID or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/configurations/\[^/\]+$`.
   ///
@@ -1912,28 +1962,24 @@ class ProjectsLocationsConfigurationsResource {
   /// Request parameters:
   ///
   /// [parent] - The namespace from which the configurations should be listed.
-  /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
-  /// or number.
+  /// For Cloud Run, replace {namespace_id} with the project ID or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Encoded string to continue paging.
   ///
-  /// [fieldSelector] - Allows to filter resources based on a specific value for
-  /// a field name. Send this in a query string format. i.e.
-  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  /// [fieldSelector] - Not supported by Cloud Run.
   ///
-  /// [includeUninitialized] - Not currently used by Cloud Run.
+  /// [includeUninitialized] - Not supported by Cloud Run.
   ///
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - Optional. The maximum number of records that should be returned.
+  /// [limit] - Optional. The maximum number of the records that should be
+  /// returned.
   ///
-  /// [resourceVersion] - The baseline resource version from which the list or
-  /// watch operation should start. Not currently used by Cloud Run.
+  /// [resourceVersion] - Not supported by Cloud Run.
   ///
-  /// [watch] - Flag that indicates that the client expects to watch this
-  /// resource as well. Not currently used by Cloud Run.
+  /// [watch] - Not supported by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2056,8 +2102,8 @@ class ProjectsLocationsDomainmappingsResource {
   ///
   /// [propagationPolicy] - Specifies the propagation policy of delete. Cloud
   /// Run currently ignores this setting, and deletes in the background. Please
-  /// see kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
-  /// for more information.
+  /// see kubernetes.io/docs/concepts/architecture/garbage-collection/ for more
+  /// information.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2134,7 +2180,7 @@ class ProjectsLocationsDomainmappingsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List domain mappings.
+  /// List all domain mappings.
   ///
   /// Request parameters:
   ///
@@ -2391,7 +2437,7 @@ class ProjectsLocationsRevisionsResource {
   ///
   /// [propagationPolicy] - Specifies the propagation policy of delete. Cloud
   /// Run currently ignores this setting, and deletes in the background. Please
-  /// see kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
+  /// see https://kubernetes.io/docs/concepts/architecture/garbage-collection/
   /// for more information.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2665,15 +2711,21 @@ class ProjectsLocationsServicesResource {
   ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create a service.
+  /// Creates a new Service.
+  ///
+  /// Service creation will trigger a new deployment. Use GetService, and check
+  /// service.status to determine if the Service is ready.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The namespace in which the service should be created. For Cloud
-  /// Run (fully managed), replace {namespace} with the project ID or number. It
-  /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [parent] - Required. The resource's parent. In Cloud Run, it may be one of
+  /// the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/services` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
@@ -2713,31 +2765,31 @@ class ProjectsLocationsServicesResource {
     return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a service.
+  /// Deletes the provided service.
   ///
-  /// This will cause the Service to stop serving traffic and will delete the
-  /// child entities like Routes, Configurations and Revisions.
+  /// This will cause the Service to stop serving traffic and will delete all
+  /// associated Revisions.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service to delete. For Cloud Run (fully managed),
-  /// replace {namespace} with the project ID or number. It takes the form
-  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the service to delete. It
+  /// can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/services/{service_name}` *
+  /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
-  /// [apiVersion] - Cloud Run currently ignores this parameter.
+  /// [apiVersion] - Not supported, and ignored by Cloud Run.
   ///
   /// [dryRun] - Indicates that the server should validate the request and
   /// populate default values without persisting the request. Supported values:
   /// `all`
   ///
-  /// [kind] - Cloud Run currently ignores this parameter.
+  /// [kind] - Not supported, and ignored by Cloud Run.
   ///
-  /// [propagationPolicy] - Specifies the propagation policy of delete. Cloud
-  /// Run currently ignores this setting, and deletes in the background. Please
-  /// see kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
-  /// for more information.
+  /// [propagationPolicy] - Not supported, and ignored by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2775,13 +2827,16 @@ class ProjectsLocationsServicesResource {
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get information about a service.
+  /// Gets information about a service.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service to retrieve. For Cloud Run (fully
-  /// managed), replace {namespace} with the project ID or number. It takes the
-  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the service to retrieve. It
+  /// can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/services/{service_name}` *
+  /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -2813,7 +2868,7 @@ class ProjectsLocationsServicesResource {
     return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the IAM Access Control policy currently in effect for the given Cloud
+  /// Gets the IAM Access Control policy currently in effect for the given Cloud
   /// Run service.
   ///
   /// This result does not include any inherited policies.
@@ -2870,34 +2925,32 @@ class ProjectsLocationsServicesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List services.
+  /// Lists services for the given project and region.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The namespace from which the services should be listed. For
-  /// Cloud Run (fully managed), replace {namespace} with the project ID or
-  /// number. It takes the form namespaces/{namespace}. For example:
-  /// namespaces/PROJECT_ID
+  /// [parent] - Required. The parent from where the resources should be listed.
+  /// In Cloud Run, it may be one of the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/services` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [continue_] - Optional. Encoded string to continue paging.
+  /// [continue_] - Encoded string to continue paging.
   ///
-  /// [fieldSelector] - Allows to filter resources based on a specific value for
-  /// a field name. Send this in a query string format. i.e.
-  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  /// [fieldSelector] - Not supported, and ignored by Cloud Run.
   ///
-  /// [includeUninitialized] - Not currently used by Cloud Run.
+  /// [includeUninitialized] - Not supported, and ignored by Cloud Run.
   ///
   /// [labelSelector] - Allows to filter resources based on a label. Supported
   /// operations are =, !=, exists, in, and notIn.
   ///
-  /// [limit] - Optional. The maximum number of records that should be returned.
+  /// [limit] - The maximum number of records that should be returned.
   ///
-  /// [resourceVersion] - The baseline resource version from which the list or
-  /// watch operation should start. Not currently used by Cloud Run.
+  /// [resourceVersion] - Not supported, and ignored by Cloud Run.
   ///
-  /// [watch] - Flag that indicates that the client expects to watch this
-  /// resource as well. Not currently used by Cloud Run.
+  /// [watch] - Not supported, and ignored by Cloud Run.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2943,7 +2996,7 @@ class ProjectsLocationsServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Replace a service.
+  /// Replaces a service.
   ///
   /// Only the spec and metadata labels and annotations are modifiable. After
   /// the Update request, Cloud Run will work to make the 'status' match the
@@ -2954,9 +3007,12 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the service being replaced. For Cloud Run (fully
-  /// managed), replace {namespace} with the project ID or number. It takes the
-  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the service to replace. It
+  /// can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/services/{service_name}` *
+  /// `projects/{project_id_or_number}/locations/{region}/services/{service_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/services/{service_name}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -3221,10 +3277,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -3279,10 +3341,13 @@ class Binding {
       };
 }
 
-/// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to
-/// populate the environment variables with.
+/// Request message for cancelling an execution.
+typedef CancelExecutionRequest = $Empty;
+
+/// Not supported by Cloud Run.
 ///
-/// The contents of the target ConfigMap's Data field will represent the
+/// ConfigMapEnvSource selects a ConfigMap to populate the environment variables
+/// with. The contents of the target ConfigMap's Data field will represent the
 /// key-value pairs as environment variables.
 class ConfigMapEnvSource {
   /// This field should not be used directly as it is meant to be inlined
@@ -3294,7 +3359,7 @@ class ConfigMapEnvSource {
   /// The ConfigMap to select from.
   core.String? name;
 
-  /// (Optional) Specify whether the ConfigMap must be defined
+  /// Specify whether the ConfigMap must be defined.
   core.bool? optional;
 
   ConfigMapEnvSource({
@@ -3323,21 +3388,22 @@ class ConfigMapEnvSource {
       };
 }
 
-/// Not supported by Cloud Run Selects a key from a ConfigMap.
+/// Not supported by Cloud Run.
 class ConfigMapKeySelector {
-  /// The key to select.
+  /// Not supported by Cloud Run.
+  ///
+  /// Required.
   core.String? key;
 
-  /// This field should not be used directly as it is meant to be inlined
-  /// directly into the message.
-  ///
-  /// Use the "name" field instead.
+  /// Not supported by Cloud Run.
   LocalObjectReference? localObjectReference;
 
-  /// The ConfigMap to select from.
+  /// Not supported by Cloud Run.
+  ///
+  /// Required.
   core.String? name;
 
-  /// (Optional) Specify whether the ConfigMap or its key must be defined
+  /// Not supported by Cloud Run.
   core.bool? optional;
 
   ConfigMapKeySelector({
@@ -3369,11 +3435,12 @@ class ConfigMapKeySelector {
       };
 }
 
-/// Not supported by Cloud Run Adapts a ConfigMap into a volume.
+/// Not supported by Cloud Run.
 ///
-/// The contents of the target ConfigMap's Data field will be presented in a
-/// volume as files using the keys in the Data field as the file names, unless
-/// the items element is populated with specific mappings of keys to paths.
+/// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's
+/// Data field will be presented in a volume as files using the keys in the Data
+/// field as the file names, unless the items element is populated with specific
+/// mappings of keys to paths.
 class ConfigMapVolumeSource {
   /// (Optional) Integer representation of mode bits to use on created files by
   /// default.
@@ -3445,7 +3512,7 @@ class ConfigMapVolumeSource {
 /// Users create new Revisions by updating the Configuration's spec. The "latest
 /// created" revision's name is available under status, as is the "latest ready"
 /// revision's name. See also:
-/// https://github.com/knative/serving/blob/main/docs/spec/overview.md#configuration
+/// https://github.com/knative/specs/blob/main/specs/serving/overview.md#configuration
 class Configuration {
   /// The API version for this call such as "serving.knative.dev/v1".
   core.String? apiVersion;
@@ -3528,7 +3595,7 @@ class ConfigurationSpec {
 /// ConfigurationStatus communicates the observed state of the Configuration
 /// (from the controller).
 class ConfigurationStatus {
-  /// Conditions communicates information about ongoing/complete reconciliation
+  /// Conditions communicate information about ongoing/complete reconciliation
   /// processes that bring the "spec" inline with the observed state of the
   /// world.
   core.List<GoogleCloudRunV1Condition>? conditions;
@@ -3536,7 +3603,8 @@ class ConfigurationStatus {
   /// LatestCreatedRevisionName is the last revision that was created from this
   /// Configuration.
   ///
-  /// It might not be ready yet, for that use LatestReadyRevisionName.
+  /// It might not be ready yet, so for the latest ready revision, use
+  /// LatestReadyRevisionName.
   core.String? latestCreatedRevisionName;
 
   /// LatestReadyRevisionName holds the name of the latest Revision stamped out
@@ -3596,57 +3664,52 @@ class ConfigurationStatus {
 /// container and the arguments to supply to it. Note that additional arguments
 /// may be supplied by the system to the container at runtime.
 class Container {
-  /// (Optional) Arguments to the entrypoint.
+  /// Arguments to the entrypoint.
   ///
   /// The docker image's CMD is used if this is not provided. Variable
-  /// references $(VAR_NAME) are expanded using the container's environment. If
-  /// a variable cannot be resolved, the reference in the input string will be
-  /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
-  /// whether the variable exists or not. More info:
-  /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  /// references are not supported in Cloud Run.
   core.List<core.String>? args;
+
+  /// Entrypoint array.
+  ///
+  /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
+  /// is not provided. Variable references are not supported in Cloud Run.
   core.List<core.String>? command;
 
-  /// (Optional) List of environment variables to set in the container.
+  /// List of environment variables to set in the container.
   core.List<EnvVar>? env;
 
-  /// (Optional) List of sources to populate environment variables in the
-  /// container.
-  ///
-  /// The keys defined within a source must be a C_IDENTIFIER. All invalid keys
-  /// will be reported as an event when the container is starting. When a key
-  /// exists in multiple sources, the value associated with the last source will
-  /// take precedence. Values defined by an Env with a duplicate key will take
-  /// precedence. Cannot be updated.
+  /// Not supported by Cloud Run.
   core.List<EnvFromSource>? envFrom;
 
-  /// Only supports containers from Google Container Registry or Artifact
-  /// Registry URL of the Container image.
+  /// URL of the Container image in Google Container Registry or Google Artifact
+  /// Registry.
   ///
   /// More info: https://kubernetes.io/docs/concepts/containers/images
+  ///
+  /// Required.
   core.String? image;
 
-  /// (Optional) Image pull policy.
+  /// Image pull policy.
   ///
   /// One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is
   /// specified, or IfNotPresent otherwise. More info:
   /// https://kubernetes.io/docs/concepts/containers/images#updating-images
   core.String? imagePullPolicy;
 
-  /// (Optional) Periodic probe of container liveness.
+  /// Periodic probe of container liveness.
   ///
   /// Container will be restarted if the probe fails. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   Probe? livenessProbe;
 
-  /// (Optional) Name of the container specified as a DNS_LABEL.
+  /// Name of the container specified as a DNS_LABEL.
   ///
   /// Currently unused in Cloud Run. More info:
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
   core.String? name;
 
-  /// (Optional) List of ports to expose from the container.
+  /// List of ports to expose from the container.
   ///
   /// Only a single port can be specified. The specified ports must be listening
   /// on all interfaces (0.0.0.0) within the container to be accessible. If
@@ -3654,36 +3717,29 @@ class Container {
   /// the PORT environment variable for the container to listen on.
   core.List<ContainerPort>? ports;
 
-  /// (Optional) Periodic probe of container service readiness.
-  ///
-  /// Container will be removed from service endpoints if the probe fails. More
-  /// info:
-  /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  /// Not supported by Cloud Run.
   Probe? readinessProbe;
 
-  /// (Optional) Compute Resources required by this container.
+  /// Compute Resources required by this container.
   ///
   /// More info:
   /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   ResourceRequirements? resources;
 
-  /// (Optional) Security options the pod should run with.
-  ///
-  /// More info: https://kubernetes.io/docs/concepts/policy/security-context/
-  /// More info:
-  /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  /// Not supported by Cloud Run.
   SecurityContext? securityContext;
 
-  /// (Optional) Startup probe of application within the container.
+  /// Startup probe of application within the container.
   ///
   /// All other probes are disabled if a startup probe is provided, until it
-  /// succeeds. Container will not be added to service endpoints if the probe
-  /// fails. More info:
+  /// succeeds. Container will not receive traffic if the probe fails. If not
+  /// provided, a default startup probe with TCP socket action is used. More
+  /// info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   Probe? startupProbe;
 
-  /// (Optional) Path at which the file to which the container's termination
-  /// message will be written is mounted into the container's filesystem.
+  /// Path at which the file to which the container's termination message will
+  /// be written is mounted into the container's filesystem.
   ///
   /// Message written is intended to be brief final status, such as an assertion
   /// failure message. Will be truncated by the node if greater than 4096 bytes.
@@ -3691,7 +3747,7 @@ class Container {
   /// Defaults to /dev/termination-log.
   core.String? terminationMessagePath;
 
-  /// (Optional) Indicate how the termination message should be populated.
+  /// Indicate how the termination message should be populated.
   ///
   /// File will use the contents of terminationMessagePath to populate the
   /// container status message on both success and failure.
@@ -3701,13 +3757,13 @@ class Container {
   /// smaller. Defaults to File. Cannot be updated.
   core.String? terminationMessagePolicy;
 
-  /// (Optional) Volume to mount into the container's filesystem.
+  /// Volume to mount into the container's filesystem.
   ///
   /// Only supports SecretVolumeSources. Pod volumes to mount into the
   /// container's filesystem.
   core.List<VolumeMount>? volumeMounts;
 
-  /// (Optional) Container's working directory.
+  /// Container's working directory.
   ///
   /// If not specified, the container runtime's default will be used, which
   /// might be configured in the container image.
@@ -3832,17 +3888,17 @@ class Container {
 
 /// ContainerPort represents a network port in a single container.
 class ContainerPort {
-  /// (Optional) Port number the container listens on.
+  /// Port number the container listens on.
   ///
   /// This must be a valid port number, 0 \< x \< 65536.
   core.int? containerPort;
 
-  /// (Optional) If specified, used to specify which protocol to use.
+  /// If specified, used to specify which protocol to use.
   ///
   /// Allowed values are "http1" and "h2c".
   core.String? name;
 
-  /// (Optional) Protocol for port.
+  /// Protocol for port.
   ///
   /// Must be "TCP". Defaults to "TCP".
   core.String? protocol;
@@ -3933,8 +3989,8 @@ class DomainMappingSpec {
   /// Possible string values are:
   /// - "CERTIFICATE_MODE_UNSPECIFIED"
   /// - "NONE" : Do not provision an HTTPS certificate.
-  /// - "AUTOMATIC" : Automatically provisions an HTTPS certificate via GoogleCA
-  /// or LetsEncrypt.
+  /// - "AUTOMATIC" : Automatically provisions an HTTPS certificate via
+  /// GoogleCA.
   core.String? certificateMode;
 
   /// If set, the mapping will override any mapping set before this spec was
@@ -3999,8 +4055,7 @@ class DomainMappingStatus {
   /// serve the application via this domain mapping.
   core.List<ResourceRecord>? resourceRecords;
 
-  /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds
-  /// the URL that will serve the traffic of the DomainMapping.
+  /// Not supported by Cloud Run.
   ///
   /// Optional.
   core.String? url;
@@ -4046,18 +4101,19 @@ class DomainMappingStatus {
       };
 }
 
-/// Not supported by Cloud Run EnvFromSource represents the source of a set of
-/// ConfigMaps
+/// Not supported by Cloud Run.
+///
+/// EnvFromSource represents the source of a set of ConfigMaps
 class EnvFromSource {
-  /// (Optional) The ConfigMap to select from
+  /// The ConfigMap to select from
   ConfigMapEnvSource? configMapRef;
 
-  /// (Optional) An optional identifier to prepend to each key in the ConfigMap.
+  /// An optional identifier to prepend to each key in the ConfigMap.
   ///
   /// Must be a C_IDENTIFIER.
   core.String? prefix;
 
-  /// (Optional) The Secret to select from
+  /// The Secret to select from
   SecretEnvSource? secretRef;
 
   EnvFromSource({
@@ -4093,22 +4149,18 @@ class EnvVar {
   /// Name of the environment variable.
   ///
   /// Must be a C_IDENTIFIER.
+  ///
+  /// Required.
   core.String? name;
 
-  /// (Optional) Variable references $(VAR_NAME) are expanded using the previous
-  /// defined environment variables in the container and any route environment
-  /// variables.
+  /// Value of the environment variable.
   ///
-  /// If a variable cannot be resolved, the reference in the input string will
-  /// be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
-  /// whether the variable exists or not. Defaults to "".
+  /// Defaults to "". Variable references are not supported in Cloud Run.
   core.String? value;
 
-  /// (Optional) Source for the environment variable's value.
+  /// Source for the environment variable's value.
   ///
-  /// Only supports secret_key_ref. Source for the environment variable's value.
-  /// Cannot be used if value is not empty.
+  /// Only supports secret_key_ref. Cannot be used if value is not empty.
   EnvVarSource? valueFrom;
 
   EnvVar({
@@ -4137,10 +4189,12 @@ class EnvVar {
 
 /// EnvVarSource represents a source for the value of an EnvVar.
 class EnvVarSource {
-  /// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
+  /// Not supported by Cloud Run.
+  ///
+  /// Not supported in Cloud Run.
   ConfigMapKeySelector? configMapKeyRef;
 
-  /// (Optional) Selects a key (version) of a secret in Secret Manager.
+  /// Selects a key (version) of a secret in Secret Manager.
   SecretKeySelector? secretKeyRef;
 
   EnvVarSource({
@@ -4166,11 +4220,12 @@ class EnvVarSource {
       };
 }
 
-/// Not supported by Cloud Run ExecAction describes a "run in container" action.
+/// Not supported by Cloud Run.
+///
+/// ExecAction describes a "run in container" action.
 class ExecAction {
-  /// (Optional) Command is the command line to execute inside the container,
-  /// the working directory for the command is root ('/') in the container's
-  /// filesystem.
+  /// Command is the command line to execute inside the container, the working
+  /// directory for the command is root ('/') in the container's filesystem.
   ///
   /// The command is simply exec'd, it is not run inside a shell, so traditional
   /// shell instructions ('|', etc) won't work. To use a shell, you need to
@@ -4198,8 +4253,8 @@ class ExecAction {
 
 /// Execution represents the configuration of a single execution.
 ///
-/// A execution an immutable resource that references a container image which is
-/// run to completion.
+/// An execution is an immutable resource that references a container image
+/// which is run to completion.
 class Execution {
   /// APIVersion defines the versioned schema of this representation of an
   /// object.
@@ -4207,7 +4262,6 @@ class Execution {
   /// Servers should convert recognized schemas to the latest internal value,
   /// and may reject unrecognized values. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  /// +optional
   ///
   /// Optional.
   core.String? apiVersion;
@@ -4218,7 +4272,6 @@ class Execution {
   /// Servers may infer this from the endpoint the client submits requests to.
   /// Cannot be updated. In CamelCase. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// +optional
   ///
   /// Optional.
   core.String? kind;
@@ -4226,8 +4279,7 @@ class Execution {
   /// Standard object's metadata.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   ///
   /// Optional.
   ObjectMeta? metadata;
@@ -4235,8 +4287,7 @@ class Execution {
   /// Specification of the desired behavior of an execution.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   ///
   /// Optional.
   ExecutionSpec? spec;
@@ -4244,8 +4295,7 @@ class Execution {
   /// Current status of an execution.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   ///
   /// Output only.
   ExecutionStatus? status;
@@ -4340,8 +4390,8 @@ class ExecutionSpec {
   /// Must be \<= task_count. When the job is run, if this field is 0 or unset,
   /// the maximum possible value will be used for that execution. The actual
   /// number of tasks running in steady state will be less than this number when
-  /// there are fewer tasks waiting to be completed remaining, i.e. when the
-  /// work left to do is less than max parallelism. +optional
+  /// there are fewer tasks waiting to be completed, i.e. when the work left to
+  /// do is less than max parallelism.
   ///
   /// Optional.
   core.int? parallelism;
@@ -4349,9 +4399,7 @@ class ExecutionSpec {
   /// Specifies the desired number of tasks the execution should run.
   ///
   /// Setting to 1 means that parallelism is limited to 1 and the success of
-  /// that task signals the success of the execution. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-  /// +optional
+  /// that task signals the success of the execution.
   ///
   /// Optional.
   core.int? taskCount;
@@ -4388,16 +4436,14 @@ class ExecutionSpec {
       };
 }
 
-/// ExecutionStatus represents the current state of a Execution.
+/// ExecutionStatus represents the current state of an Execution.
 class ExecutionStatus {
   /// The number of tasks which reached phase Cancelled.
-  ///
-  /// +optional
   ///
   /// Optional.
   core.int? cancelledCount;
 
-  /// Represents time when the execution was completed.
+  /// Represents the time that the execution was completed.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
   /// operations. It is represented in RFC3339 form and is in UTC. +optional
@@ -4405,18 +4451,19 @@ class ExecutionStatus {
   /// Optional.
   core.String? completionTime;
 
-  /// The latest available observations of an execution's current state.
+  /// Conditions communicate information about ongoing/complete reconciliation
+  /// processes that bring the "spec" inline with the observed state of the
+  /// world.
   ///
-  /// More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-  /// +optional
+  /// Execution-specific conditions include: * `ResourcesAvailable`: `True` when
+  /// underlying resources have been provisioned. * `Started`: `True` when the
+  /// execution has started to execute. * `Completed`: `True` when the execution
+  /// has succeeded. `False` when the execution has failed.
   ///
   /// Optional.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
   /// The number of tasks which reached phase Failed.
-  ///
-  /// +optional
   ///
   /// Optional.
   core.int? failedCount;
@@ -4434,29 +4481,23 @@ class ExecutionStatus {
 
   /// The number of tasks which have retried at least once.
   ///
-  /// +optional
-  ///
   /// Optional.
   core.int? retriedCount;
 
   /// The number of actively running tasks.
   ///
-  /// +optional
-  ///
   /// Optional.
   core.int? runningCount;
 
-  /// Represents time when the execution started to run.
+  /// Represents the time that the execution started to run.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
-  /// operations. It is represented in RFC3339 form and is in UTC. +optional
+  /// operations. It is represented in RFC3339 form and is in UTC.
   ///
   /// Optional.
   core.String? startTime;
 
   /// The number of tasks which reached phase Succeeded.
-  ///
-  /// +optional
   ///
   /// Optional.
   core.int? succeededCount;
@@ -4595,8 +4636,7 @@ class ExecutionTemplateSpec {
 /// information.
 typedef Expr = $Expr;
 
-/// Not supported by Cloud Run GRPCAction describes an action involving a GRPC
-/// port.
+/// GRPCAction describes an action involving a GRPC port.
 class GRPCAction {
   /// Port number of the gRPC service.
   ///
@@ -4628,7 +4668,13 @@ class GRPCAction {
       };
 }
 
-/// Condition defines a generic condition for a Resource.
+/// Conditions show the status of reconciliation progress on a given resource.
+///
+/// Most resource use a top-level condition type "Ready" or "Completed" to show
+/// overall status with other conditions to checkpoint each stage of
+/// reconciliation. Note that if metadata.Generation does not equal
+/// status.ObservedGeneration, the conditions shown may not be relevant for the
+/// current spec.
 class GoogleCloudRunV1Condition {
   /// Last time the condition transitioned from one status to another.
   ///
@@ -4642,10 +4688,17 @@ class GoogleCloudRunV1Condition {
 
   /// One-word CamelCase reason for the condition's last transition.
   ///
+  /// These are intended to be stable, unique values which the client may use to
+  /// trigger error handling logic, whereas messages which may be changed later
+  /// by the server.
+  ///
   /// Optional.
   core.String? reason;
 
-  /// How to interpret failures of this condition, one of Error, Warning, Info
+  /// How to interpret this condition.
+  ///
+  /// One of Error, Warning, or Info. Conditions of severity Info do not
+  /// contribute to resource readiness.
   ///
   /// Optional.
   core.String? severity;
@@ -4657,8 +4710,8 @@ class GoogleCloudRunV1Condition {
   ///
   /// See also:
   /// https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting
-  /// Types common to all resources include: * "Ready": True when the Resource
-  /// is ready.
+  /// Types common to all resources include: * "Ready" or "Completed": True when
+  /// the Resource is ready.
   core.String? type;
 
   GoogleCloudRunV1Condition({
@@ -4710,25 +4763,20 @@ class GoogleCloudRunV1Condition {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
 
-/// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP
-/// Get requests.
+/// HTTPGetAction describes an action based on HTTP Get requests.
 class HTTPGetAction {
-  /// (Optional) Host name to connect to, defaults to the pod IP.
-  ///
-  /// You probably want to set "Host" in httpHeaders instead.
+  /// Not supported by Cloud Run.
   core.String? host;
 
-  /// (Optional) Custom headers to set in the request.
+  /// Custom headers to set in the request.
   ///
   /// HTTP allows repeated headers.
   core.List<HTTPHeader>? httpHeaders;
 
-  /// (Optional) Path to access on the HTTP server.
+  /// Path to access on the HTTP server.
   core.String? path;
 
-  /// (Optional) Scheme to use for connecting to the host.
-  ///
-  /// Defaults to HTTP.
+  /// Not supported by Cloud Run.
   core.String? scheme;
 
   HTTPGetAction({
@@ -4761,8 +4809,7 @@ class HTTPGetAction {
       };
 }
 
-/// Not supported by Cloud Run HTTPHeader describes a custom header to be used
-/// in HTTP probes
+/// HTTPHeader describes a custom header to be used in HTTP probes
 class HTTPHeader {
   /// The header field name
   core.String? name;
@@ -4788,10 +4835,8 @@ class HTTPHeader {
       };
 }
 
-/// Job represents the configuration of a single job.
-///
-/// A job an immutable resource that references a container image which is run
-/// to completion.
+/// Job represents the configuration of a single job, which references a
+/// container image which is run to completion.
 class Job {
   /// APIVersion defines the versioned schema of this representation of an
   /// object.
@@ -4799,7 +4844,6 @@ class Job {
   /// Servers should convert recognized schemas to the latest internal value,
   /// and may reject unrecognized values. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  /// +optional
   ///
   /// Optional.
   core.String? apiVersion;
@@ -4810,7 +4854,6 @@ class Job {
   /// Servers may infer this from the endpoint the client submits requests to.
   /// Cannot be updated. In CamelCase. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// +optional
   ///
   /// Optional.
   core.String? kind;
@@ -4818,8 +4861,7 @@ class Job {
   /// Standard object's metadata.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   ///
   /// Optional.
   ObjectMeta? metadata;
@@ -4827,8 +4869,7 @@ class Job {
   /// Specification of the desired behavior of a job.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   ///
   /// Optional.
   JobSpec? spec;
@@ -4836,8 +4877,7 @@ class Job {
   /// Current status of a job.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   ///
   /// Output only.
   JobStatus? status;
@@ -4905,10 +4945,12 @@ class JobSpec {
 
 /// JobStatus represents the current state of a Job.
 class JobStatus {
-  /// The latest available observations of a job's current state.
+  /// Conditions communicate information about ongoing/complete reconciliation
+  /// processes that bring the "spec" inline with the observed state of the
+  /// world.
   ///
-  /// More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// Job-specific conditions include: * `Ready`: `True` when the job is ready
+  /// to be executed.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
   /// Number of executions created for this job.
@@ -5299,34 +5341,27 @@ class ListLocationsResponse {
       };
 }
 
-/// ListMeta describes metadata that synthetic resources must have, including
-/// lists and various status objects.
+/// Metadata for synthetic resources like List.
 ///
-/// A resource may have only one of {ObjectMeta, ListMeta}.
+/// In Cloud Run, all List Resources Responses will have a ListMeta instead of
+/// ObjectMeta.
 class ListMeta {
-  /// continue may be set if the user set a limit on the number of items
-  /// returned, and indicates that the server has more data available.
+  /// Continuation token is a value emitted when the count of items is larger
+  /// than the user/system limit.
   ///
-  /// The value is opaque and may be used to issue another request to the
-  /// endpoint that served this list to retrieve the next set of available
-  /// objects. Continuing a list may not be possible if the server configuration
-  /// has changed or more than a few minutes have passed. The resourceVersion
-  /// field returned when using this continue value will be identical to the
-  /// value in the first response.
+  /// To retrieve the next page of items, pass the value of `continue` as the
+  /// next request's `page_token`.
   core.String? continue_;
 
-  /// String that identifies the server's internal version of this object that
-  /// can be used by clients to determine when objects have changed.
+  /// Opaque string that identifies the server's internal version of this
+  /// object.
   ///
-  /// Value must be treated as opaque by clients and passed unmodified back to
-  /// the server. Populated by the system. Read-only. More info:
+  /// It can be used by clients to determine when objects have changed. If the
+  /// message is passed back to the server, it must be left unmodified.
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
-  /// +optional
   core.String? resourceVersion;
 
-  /// SelfLink is a URL representing this object.
-  ///
-  /// Populated by the system. Read-only. +optional
+  /// URL representing this object.
   core.String? selfLink;
 
   ListMeta({
@@ -5471,19 +5506,22 @@ class ListRoutesResponse {
 
 /// A list of Service resources.
 class ListServicesResponse {
-  /// The API version for this call such as "serving.knative.dev/v1".
+  /// The API version for this call; returns "serving.knative.dev/v1".
   core.String? apiVersion;
 
   /// List of Services.
   core.List<Service>? items;
 
-  /// The kind of this resource, in this case "ServiceList".
+  /// The kind of this resource; returns "ServiceList".
   core.String? kind;
 
   /// Metadata associated with this Service list.
   ListMeta? metadata;
 
-  /// Locations that could not be reached.
+  /// For calls against the global endpoint, returns the list of Cloud locations
+  /// that could not be reached.
+  ///
+  /// For regional calls, this field is not used.
   core.List<core.String>? unreachable;
 
   ListServicesResponse({
@@ -5583,10 +5621,12 @@ class ListTasksResponse {
       };
 }
 
-/// Not supported by Cloud Run LocalObjectReference contains enough information
-/// to let you locate the referenced object inside the same namespace.
+/// Not supported by Cloud Run.
+///
+/// LocalObjectReference contains enough information to let you locate the
+/// referenced object inside the same namespace.
 class LocalObjectReference {
-  /// (Optional) Name of the referent.
+  /// Name of the referent.
   ///
   /// More info:
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
@@ -5612,150 +5652,113 @@ typedef Location = $Location00;
 /// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
 /// persisted resources must have, which includes all objects users must create.
 class ObjectMeta {
-  /// (Optional) Annotations is an unstructured key value map stored with a
-  /// resource that may be set by external tools to store and retrieve arbitrary
-  /// metadata.
+  /// Unstructured key value map stored with a resource that may be set by
+  /// external tools to store and retrieve arbitrary metadata.
   ///
-  /// They are not queryable and should be preserved when modifying objects.
+  /// They are not queryable and should be preserved when modifying objects. In
+  /// Cloud Run, annotations with 'run.googleapis.com/' and
+  /// 'autoscaling.knative.dev' are restricted, and the accepted annotations
+  /// will be different depending on the resource type. *
+  /// `autoscaling.knative.dev/maxScale`: Revision. *
+  /// `autoscaling.knative.dev/minScale`: Revision. *
+  /// `run.googleapis.com/binary-authorization-breakglass`: Service, Job, *
+  /// `run.googleapis.com/binary-authorization`: Service, Job, Execution. *
+  /// `run.googleapis.com/client-name`: All resources. *
+  /// `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
+  /// `run.googleapis.com/cpu-throttling`: Revision. *
+  /// `run.googleapis.com/custom-audiences`: Service. *
+  /// `run.googleapis.com/description`: Service. *
+  /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
+  /// `run.googleapis.com/encryption-key`: Revision, Execution. *
+  /// `run.googleapis.com/execution-environment`: Revision, Execution. *
+  /// `run.googleapis.com/gc-traffic-tags`: Service. *
+  /// `run.googleapis.com/ingress`: Service. *
+  /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
+  /// `run.googleapis.com/post-key-revocation-action-type`: Revision. *
+  /// `run.googleapis.com/secrets`: Revision, Execution. *
+  /// `run.googleapis.com/secure-session-agent`: Revision. *
+  /// `run.googleapis.com/sessionAffinity`: Revision. *
+  /// `run.googleapis.com/startup-cpu-boost`: Revision. *
+  /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. *
+  /// `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   core.Map<core.String, core.String>? annotations;
 
-  /// (Optional) Not supported by Cloud Run The name of the cluster which the
-  /// object belongs to.
-  ///
-  /// This is used to distinguish resources with same name and namespace in
-  /// different clusters. This field is not set anywhere right now and apiserver
-  /// is going to ignore it if set in create or update request.
+  /// Not supported by Cloud Run
   core.String? clusterName;
 
-  /// (Optional) CreationTimestamp is a timestamp representing the server time
-  /// when this object was created.
+  /// UTC timestamp representing the server time when this object was created.
   ///
-  /// It is not guaranteed to be set in happens-before order across separate
-  /// operations. Clients may not set this value. It is represented in RFC3339
-  /// form and is in UTC. Populated by the system. Read-only. Null for lists.
   /// More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
   core.String? creationTimestamp;
 
-  /// (Optional) Not supported by Cloud Run Number of seconds allowed for this
-  /// object to gracefully terminate before it will be removed from the system.
-  ///
-  /// Only set when deletionTimestamp is also set. May only be shortened.
-  /// Read-only.
+  /// Not supported by Cloud Run
   core.int? deletionGracePeriodSeconds;
 
-  /// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date
-  /// and time at which this resource will be deleted.
+  /// The read-only soft deletion timestamp for this resource.
   ///
-  /// This field is set by the server when a graceful deletion is requested by
-  /// the user, and is not directly settable by a client. The resource is
-  /// expected to be deleted (no longer visible from resource lists, and not
-  /// reachable by name) after the time in this field, once the finalizers list
-  /// is empty. As long as the finalizers list contains items, deletion is
-  /// blocked. Once the deletionTimestamp is set, this value may not be unset or
-  /// be set further into the future, although it may be shortened or the
-  /// resource may be deleted prior to this time. For example, a user may
-  /// request that a pod is deleted in 30 seconds. The Kubelet will react by
-  /// sending a graceful termination signal to the containers in the pod. After
-  /// that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL)
-  /// to the container and after cleanup, remove the pod from the API. In the
-  /// presence of network partitions, this object may still exist after this
-  /// timestamp, until an administrator or automated process can determine the
-  /// resource is fully terminated. If not set, graceful deletion of the object
-  /// has not been requested. Populated by the system when a graceful deletion
-  /// is requested. Read-only. More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+  /// In Cloud Run, users are not able to set this field. Instead, they must
+  /// call the corresponding Delete API.
   core.String? deletionTimestamp;
 
-  /// (Optional) Not supported by Cloud Run Must be empty before the object is
-  /// deleted from the registry.
-  ///
-  /// Each entry is an identifier for the responsible component that will remove
-  /// the entry from the list. If the deletionTimestamp of the object is
-  /// non-nil, entries in this list can only be removed. +patchStrategy=merge
+  /// Not supported by Cloud Run
   core.List<core.String>? finalizers;
 
-  /// (Optional) Not supported by Cloud Run GenerateName is an optional prefix,
-  /// used by the server, to generate a unique name ONLY IF the Name field has
-  /// not been provided.
-  ///
-  /// If this field is used, the name returned to the client will be different
-  /// than the name passed. This value will also be combined with a unique
-  /// suffix. The provided value has the same validation rules as the Name
-  /// field, and may be truncated by the length of the suffix required to make
-  /// the value unique on the server. If this field is specified and the
-  /// generated name exists, the server will NOT return a 409 - instead, it will
-  /// either return 201 Created or 500 with Reason ServerTimeout indicating a
-  /// unique name could not be found in the time allotted, and the client should
-  /// retry (optionally after the time indicated in the Retry-After header).
-  /// Applied only if Name is not specified. More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency
-  /// string generateName = 2;
+  /// Not supported by Cloud Run
   core.String? generateName;
 
-  /// (Optional) A sequence number representing a specific generation of the
-  /// desired state.
-  ///
-  /// Populated by the system. Read-only.
+  /// A system-provided sequence number representing a specific generation of
+  /// the desired state.
   core.int? generation;
 
-  /// (Optional) Map of string keys and values that can be used to organize and
-  /// categorize (scope and select) objects.
+  /// Map of string keys and values that can be used to organize and categorize
+  /// (scope and select) objects.
   ///
   /// May match selectors of replication controllers and routes. More info:
   /// https://kubernetes.io/docs/user-guide/labels
   core.Map<core.String, core.String>? labels;
 
-  /// Name must be unique within a namespace, within a Cloud Run region.
+  /// The name of the resource.
   ///
-  /// Is required when creating resources, although some resources may allow a
-  /// client to request the generation of an appropriate name automatically.
-  /// Name is primarily intended for creation idempotence and configuration
-  /// definition. Cannot be updated. More info:
-  /// https://kubernetes.io/docs/user-guide/identifiers#names +optional
+  /// In Cloud Run, name is required when creating top-level resources (Service,
+  /// Job), must be unique within a Cloud Run project/region, and cannot be
+  /// changed once created. More info:
+  /// https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is
+  /// part of a CreateServiceRequest, name must contain fewer than 50
+  /// characters.
+  ///
+  /// Required.
   core.String? name;
 
-  /// Namespace defines the space within each name must be unique, within a
-  /// Cloud Run region.
+  /// Defines the space within each name must be unique within a Cloud Run
+  /// region.
   ///
-  /// In Cloud Run the namespace must be equal to either the project ID or
-  /// project number.
+  /// In Cloud Run, it must be project ID or number.
+  ///
+  /// Required.
   core.String? namespace;
 
-  /// (Optional) Not supported by Cloud Run List of objects that own this
-  /// object.
-  ///
-  /// If ALL objects in the list have been deleted, this object will be garbage
-  /// collected.
+  /// Not supported by Cloud Run
   core.List<OwnerReference>? ownerReferences;
 
-  /// An opaque value that represents the internal version of this object that
-  /// can be used by clients to determine when objects have changed.
+  /// Opaque, system-generated value that represents the internal version of
+  /// this object that can be used by clients to determine when objects have
+  /// changed.
   ///
   /// May be used for optimistic concurrency, change detection, and the watch
   /// operation on a resource or set of resources. Clients must treat these
   /// values as opaque and passed unmodified back to the server or omit the
-  /// value to disable conflict-detection. They may only be valid for a
-  /// particular resource or set of resources. Populated by the system.
-  /// Read-only. Value must be treated as opaque by clients or omitted. More
-  /// info:
+  /// value to disable conflict-detection. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-  ///
-  /// Optional.
   core.String? resourceVersion;
 
-  /// (Optional) SelfLink is a URL representing this object.
-  ///
-  /// Populated by the system. Read-only. string selfLink = 4;
+  /// URL representing this object.
   core.String? selfLink;
 
-  /// (Optional) UID is the unique in time and space value for this object.
+  /// Unique, system-generated identifier for this resource.
   ///
-  /// It is typically generated by the server on successful creation of a
-  /// resource and is not allowed to change on PUT operations. Populated by the
-  /// system. Read-only. More info:
-  /// https://kubernetes.io/docs/user-guide/identifiers#uids
+  /// More info: https://kubernetes.io/docs/user-guide/identifiers#uids
   core.String? uid;
 
   ObjectMeta({
@@ -5858,43 +5861,24 @@ class ObjectMeta {
       };
 }
 
-/// OwnerReference contains enough information to let you identify an owning
-/// object.
-///
-/// Currently, an owning object must be in the same namespace, so there is no
-/// namespace field.
+/// This is not supported or used by Cloud Run.
 class OwnerReference {
-  /// API version of the referent.
+  /// This is not supported or used by Cloud Run.
   core.String? apiVersion;
 
-  /// If true, AND if the owner has the "foregroundDeletion" finalizer, then the
-  /// owner cannot be deleted from the key-value store until this reference is
-  /// removed.
-  ///
-  /// Defaults to false. To set this field, a user needs "delete" permission of
-  /// the owner, otherwise 422 (Unprocessable Entity) will be returned.
-  /// +optional
+  /// This is not supported or used by Cloud Run.
   core.bool? blockOwnerDeletion;
 
-  /// If true, this reference points to the managing controller.
-  ///
-  /// +optional
+  /// This is not supported or used by Cloud Run.
   core.bool? controller;
 
-  /// Kind of the referent.
-  ///
-  /// More info:
-  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// This is not supported or used by Cloud Run.
   core.String? kind;
 
-  /// Name of the referent.
-  ///
-  /// More info: https://kubernetes.io/docs/user-guide/identifiers#names
+  /// This is not supported or used by Cloud Run.
   core.String? name;
 
-  /// UID of the referent.
-  ///
-  /// More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+  /// This is not supported or used by Cloud Run.
   core.String? uid;
 
   OwnerReference({
@@ -6054,60 +6038,49 @@ class Policy {
       };
 }
 
-/// Not supported by Cloud Run Probe describes a health check to be performed
-/// against a container to determine whether it is alive or ready to receive
-/// traffic.
+/// Probe describes a health check to be performed against a container to
+/// determine whether it is alive or ready to receive traffic.
 class Probe {
-  /// (Optional) Not supported by Cloud Run One and only one of the following
-  /// should be specified.
-  ///
-  /// Exec specifies the action to take. A field inlined from the Handler
-  /// message.
+  /// Not supported by Cloud Run.
   ExecAction? exec;
 
-  /// (Optional) Minimum consecutive failures for the probe to be considered
-  /// failed after having succeeded.
+  /// Minimum consecutive failures for the probe to be considered failed after
+  /// having succeeded.
   ///
   /// Defaults to 3. Minimum value is 1.
   core.int? failureThreshold;
 
-  /// (Optional) GRPCAction specifies an action involving a GRPC port.
-  ///
-  /// A field inlined from the Handler message.
+  /// GRPCAction specifies an action involving a GRPC port.
   GRPCAction? grpc;
 
-  /// (Optional) HTTPGet specifies the http request to perform.
-  ///
-  /// A field inlined from the Handler message.
+  /// HTTPGet specifies the http request to perform.
   HTTPGetAction? httpGet;
 
-  /// (Optional) Number of seconds after the container has started before the
-  /// probe is initiated.
+  /// Number of seconds after the container has started before the probe is
+  /// initiated.
   ///
   /// Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness
   /// probe is 3600. Maximum value for startup probe is 240. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   core.int? initialDelaySeconds;
 
-  /// (Optional) How often (in seconds) to perform the probe.
+  /// How often (in seconds) to perform the probe.
   ///
   /// Default to 10 seconds. Minimum value is 1. Maximum value for liveness
   /// probe is 3600. Maximum value for startup probe is 240. Must be greater or
   /// equal than timeout_seconds.
   core.int? periodSeconds;
 
-  /// (Optional) Minimum consecutive successes for the probe to be considered
-  /// successful after having failed.
+  /// Minimum consecutive successes for the probe to be considered successful
+  /// after having failed.
   ///
   /// Must be 1 if set.
   core.int? successThreshold;
 
-  /// (Optional) TCPSocket specifies an action involving a TCP port.
-  ///
-  /// TCP hooks not yet supported A field inlined from the Handler message.
+  /// TCPSocket specifies an action involving a TCP port.
   TCPSocketAction? tcpSocket;
 
-  /// (Optional) Number of seconds after which the probe times out.
+  /// Number of seconds after which the probe times out.
   ///
   /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be
   /// smaller than period_seconds. More info:
@@ -6222,14 +6195,14 @@ class ResourceRecord {
 
 /// ResourceRequirements describes the compute resource requirements.
 class ResourceRequirements {
-  /// (Optional) Only memory and CPU are supported.
+  /// Only memory and CPU are supported.
   ///
   /// Limits describes the maximum amount of compute resources allowed. The
   /// values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   core.Map<core.String, core.String>? limits;
 
-  /// (Optional) Only memory and CPU are supported.
+  /// Only memory and CPU are supported.
   ///
   /// Requests describes the minimum amount of compute resources required. If
   /// Requests is omitted for a container, it defaults to Limits if that is
@@ -6273,7 +6246,7 @@ class ResourceRequirements {
 ///
 /// A revision references a container image. Revisions are created by updates to
 /// a Configuration. See also:
-/// https://github.com/knative/serving/blob/main/docs/spec/overview.md#revision
+/// https://github.com/knative/specs/blob/main/specs/serving/overview.md#revision
 class Revision {
   /// The API version for this call such as "serving.knative.dev/v1".
   core.String? apiVersion;
@@ -6334,10 +6307,7 @@ class RevisionSpec {
   /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
   /// requests per container instance of the Revision.
   ///
-  /// Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos:
-  /// supported, defaults to 0, which means concurrency to the application is
-  /// not limited, and the system decides the target concurrency for the
-  /// autoscaler.
+  /// If not specified, defaults to 80.
   core.int? containerConcurrency;
 
   /// Containers holds the single container that defines the unit of execution
@@ -6346,24 +6316,13 @@ class RevisionSpec {
   /// In the context of a Revision, we disallow a number of fields on this
   /// Container, including: name and lifecycle. In Cloud Run, only a single
   /// container may be provided. The runtime contract is documented here:
-  /// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
+  /// https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
   core.List<Container>? containers;
 
-  /// Indicates whether information about services should be injected into pod's
-  /// environment variables, matching the syntax of Docker links.
-  ///
-  /// Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported,
-  /// defaults to true.
+  /// Not supported by Cloud Run.
   core.bool? enableServiceLinks;
 
-  /// ImagePullSecrets is a list of references to secrets in the same namespace
-  /// to use for pulling any images in pods that reference this ServiceAccount.
-  ///
-  /// ImagePullSecrets are distinct from Secrets because Secrets can be mounted
-  /// in the pod, but ImagePullSecrets are only accessed by the kubelet. More
-  /// info:
-  /// https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-  /// Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+  /// Not supported by Cloud Run.
   core.List<LocalObjectReference>? imagePullSecrets;
 
   /// Email address of the IAM service account associated with the revision of
@@ -6377,10 +6336,8 @@ class RevisionSpec {
   /// TimeoutSeconds holds the max duration the instance is allowed for
   /// responding to a request.
   ///
-  /// Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum
-  /// allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to
-  /// 300 seconds (5 minutes). Maximum allowed value is configurable by the
-  /// cluster operator.
+  /// Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is
+  /// 3600 seconds (1 hour).
   core.int? timeoutSeconds;
   core.List<Volume>? volumes;
 
@@ -6445,14 +6402,14 @@ class RevisionSpec {
 /// RevisionStatus communicates the observed state of the Revision (from the
 /// controller).
 class RevisionStatus {
-  /// Conditions communicates information about ongoing/complete reconciliation
+  /// Conditions communicate information about ongoing/complete reconciliation
   /// processes that bring the "spec" inline with the observed state of the
   /// world.
   ///
   /// As a Revision is being prepared, it will incrementally update conditions.
-  /// Revision-specific conditions include: * "ResourcesAvailable": True when
-  /// underlying resources have been provisioned. * "ContainerHealthy": True
-  /// when the Revision readiness check completes. * "Active": True when the
+  /// Revision-specific conditions include: * `ResourcesAvailable`: `True` when
+  /// underlying resources have been provisioned. * `ContainerHealthy`: `True`
+  /// when the Revision readiness check completes. * `Active`: `True` when the
   /// Revision may receive traffic.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
@@ -6576,7 +6533,7 @@ class RevisionTemplate {
 /// the Route is additionally responsible for monitoring the Configuration for
 /// "latest ready" revision changes, and smoothly rolling out latest revisions.
 /// See also:
-/// https://github.com/knative/serving/blob/main/docs/spec/overview.md#route
+/// https://github.com/knative/specs/blob/main/specs/serving/overview.md#route
 /// Cloud Run currently supports referencing a single Configuration to
 /// automatically deploy the "latest ready" Revision from that Configuration.
 class Route {
@@ -6687,7 +6644,7 @@ class RouteStatus {
   ///
   /// These entries will always contain RevisionName references. When
   /// ConfigurationName appears in the spec, this will hold the
-  /// LatestReadyRevisionName that we last observed.
+  /// LatestReadyRevisionName that was last observed.
   core.List<TrafficTarget>? traffic;
 
   /// URL holds the url that will distribute traffic over the provided traffic
@@ -6742,9 +6699,9 @@ class RouteStatus {
 /// Request message for creating a new execution of a job.
 typedef RunJobRequest = $Empty;
 
-/// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the
-/// environment variables with.
+/// Not supported by Cloud Run.
 ///
+/// SecretEnvSource selects a Secret to populate the environment variables with.
 /// The contents of the target Secret's Data field will represent the key-value
 /// pairs as environment variables.
 class SecretEnvSource {
@@ -6757,7 +6714,7 @@ class SecretEnvSource {
   /// The Secret to select from.
   core.String? name;
 
-  /// (Optional) Specify whether the Secret must be defined
+  /// Specify whether the Secret must be defined
   core.bool? optional;
 
   SecretEnvSource({
@@ -6792,6 +6749,8 @@ class SecretKeySelector {
   ///
   /// Must be 'latest' for the latest version or an integer for a specific
   /// version. The key of the secret to select from. Must be a valid secret key.
+  ///
+  /// Required.
   core.String? key;
 
   /// This field should not be used directly as it is meant to be inlined
@@ -6810,7 +6769,7 @@ class SecretKeySelector {
   /// namespace to select from.
   core.String? name;
 
-  /// (Optional) Specify whether the Secret or its key must be defined
+  /// Specify whether the Secret or its key must be defined.
   core.bool? optional;
 
   SecretKeySelector({
@@ -6842,12 +6801,13 @@ class SecretKeySelector {
       };
 }
 
-/// The secret's value will be presented as the content of a file whose name is
-/// defined in the item path.
+/// A volume representing a secret stored in Google Secret Manager.
 ///
-/// If no items are defined, the name of the file is the secret_name. The
-/// contents of the target Secret's Data field will be presented in a volume as
-/// files using the keys in the Data field as the file names.
+/// The secret's value will be presented as the content of a file whose name is
+/// defined in the item path. If no items are defined, the name of the file is
+/// the secret_name. The contents of the target Secret's Data field will be
+/// presented in a volume as files using the keys in the Data field as the file
+/// names.
 class SecretVolumeSource {
   /// Integer representation of mode bits to use on created files by default.
   ///
@@ -6863,21 +6823,17 @@ class SecretVolumeSource {
   /// file mode, like fsGroup, and the result can be other mode bits set.
   core.int? defaultMode;
 
-  /// (Optional) If unspecified, the volume will expose a file whose name is the
-  /// secret_name.
+  /// A list of secret versions to mount in the volume.
   ///
-  /// If specified, the key will be used as the version to fetch from Cloud
-  /// Secret Manager and the path will be the name of the file exposed in the
-  /// volume. When items are defined, they must specify a key and a path. If
-  /// unspecified, each key-value pair in the Data field of the referenced
-  /// Secret will be projected into the volume as a file whose name is the key
-  /// and content is the value. If specified, the listed keys will be projected
-  /// into the specified paths, and unlisted keys will not be present. If a key
-  /// is specified that is not present in the Secret, the volume setup will
-  /// error unless it is marked optional.
+  /// If no items are specified, the volume will expose a file with the same
+  /// name as the secret name. The contents of the file will be the data in the
+  /// latest version of the secret. If items are specified, the key will be used
+  /// as the version to fetch from Cloud Secret Manager and the path will be the
+  /// name of the file exposed in the volume. When items are defined, they must
+  /// specify both a key and a path.
   core.List<KeyToPath>? items;
 
-  /// (Optional) Specify whether the Secret or its keys must be defined.
+  /// Not supported by Cloud Run.
   core.bool? optional;
 
   /// The name of the secret in Cloud Secret Manager.
@@ -6924,13 +6880,14 @@ class SecretVolumeSource {
       };
 }
 
-/// Not supported by Cloud Run SecurityContext holds security configuration that
-/// will be applied to a container.
+/// Not supported by Cloud Run.
 ///
-/// Some fields are present in both SecurityContext and PodSecurityContext. When
-/// both are set, the values in SecurityContext take precedence.
+/// SecurityContext holds security configuration that will be applied to a
+/// container. Some fields are present in both SecurityContext and
+/// PodSecurityContext. When both are set, the values in SecurityContext take
+/// precedence.
 class SecurityContext {
-  /// (Optional) The UID to run the entrypoint of the container process.
+  /// The UID to run the entrypoint of the container process.
   ///
   /// Defaults to user specified in image metadata if unspecified. May also be
   /// set in PodSecurityContext. If set in both SecurityContext and
@@ -6966,18 +6923,29 @@ class SecurityContext {
 /// their statuses and conditions as its own. See also:
 /// https://github.com/knative/serving/blob/main/docs/spec/overview.md#service
 class Service {
-  /// The API version for this call such as "serving.knative.dev/v1".
+  /// The API version for this call.
+  ///
+  /// It must be "serving.knative.dev/v1".
   core.String? apiVersion;
 
-  /// The kind of resource, in this case "Service".
+  /// The kind of resource.
+  ///
+  /// It must be "Service".
   core.String? kind;
 
   /// Metadata associated with this Service, including name, namespace, labels,
   /// and annotations.
   ///
-  /// Cloud Run (fully managed) uses the following annotation keys to configure
-  /// features on a Service: * `run.googleapis.com/ingress` sets the ingress
-  /// settings for the Service. See \[the ingress settings
+  /// In Cloud Run, annotations with 'run.googleapis.com/' and
+  /// 'autoscaling.knative.dev' are restricted, and the accepted annotations
+  /// will be different depending on the resource type. The following Cloud
+  /// Run-specific annotations are accepted in Service.metadata.annotations. *
+  /// `run.googleapis.com/binary-authorization-breakglass` *
+  /// `run.googleapis.com/binary-authorization` *
+  /// `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` *
+  /// `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` *
+  /// `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the
+  /// ingress settings for the Service. See \[the ingress settings
   /// documentation\](/run/docs/securing/ingress) for details on configuring
   /// ingress settings. * `run.googleapis.com/ingress-status` is output-only and
   /// contains the currently active ingress settings for the Service.
@@ -6989,11 +6957,10 @@ class Service {
   /// `run.googleapis.com/ingress` are equal.
   ObjectMeta? metadata;
 
-  /// Spec holds the desired state of the Service (from the client).
+  /// Holds the desired state of the Service (from the client).
   ServiceSpec? spec;
 
-  /// Status communicates the observed state of the Service (from the
-  /// controller).
+  /// Communicates the system-controlled state of the Service.
   ServiceStatus? status;
 
   Service({
@@ -7036,12 +7003,11 @@ class Service {
 /// ServiceSpec holds the desired state of the Route (from the client), which is
 /// used to manipulate the underlying Route and Configuration(s).
 class ServiceSpec {
-  /// Template holds the latest specification for the Revision to be stamped
-  /// out.
+  /// Holds the latest specification for the Revision to be stamped out.
   RevisionTemplate? template;
 
-  /// Traffic specifies how to distribute traffic over a collection of Knative
-  /// Revisions and Configurations.
+  /// Specifies how to distribute traffic over a collection of Knative Revisions
+  /// and Configurations to the Service's main URL.
   core.List<TrafficTarget>? traffic;
 
   ServiceSpec({
@@ -7073,55 +7039,47 @@ class ServiceSpec {
 ///
 /// Output only.
 class ServiceStatus {
-  /// From RouteStatus.
-  ///
   /// Similar to url, information on where the service is available on HTTP.
   Addressable? address;
 
-  /// Conditions communicates information about ongoing/complete reconciliation
-  /// processes that bring the "spec" inline with the observed state of the
+  /// Conditions communicate information about ongoing/complete reconciliation
+  /// processes that bring the `spec` inline with the observed state of the
   /// world.
   ///
-  /// Service-specific conditions include: * "ConfigurationsReady": true when
-  /// the underlying Configuration is ready. * "RoutesReady": true when the
-  /// underlying Route is ready. * "Ready": true when both the underlying Route
-  /// and Configuration are ready.
+  /// Service-specific conditions include: * `ConfigurationsReady`: `True` when
+  /// the underlying Configuration is ready. * `RoutesReady`: `True` when the
+  /// underlying Route is ready. * `Ready`: `True` when all underlying resources
+  /// are ready.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
-  /// From ConfigurationStatus.
+  /// Name of the last revision that was created from this Service's
+  /// Configuration.
   ///
-  /// LatestCreatedRevisionName is the last revision that was created from this
-  /// Service's Configuration. It might not be ready yet, for that use
-  /// LatestReadyRevisionName.
+  /// It might not be ready yet, for that use LatestReadyRevisionName.
   core.String? latestCreatedRevisionName;
 
-  /// From ConfigurationStatus.
-  ///
-  /// LatestReadyRevisionName holds the name of the latest Revision stamped out
-  /// from this Service's Configuration that has had its "Ready" condition
-  /// become "True".
+  /// Name of the latest Revision from this Service's Configuration that has had
+  /// its `Ready` condition become `True`.
   core.String? latestReadyRevisionName;
 
-  /// ObservedGeneration is the 'Generation' of the Route that was last
-  /// processed by the controller.
+  /// Returns the generation last fully processed by the system.
   ///
+  /// This will only match metadata.generation when reconciliation is complete.
   /// Clients polling for completed reconciliation should poll until
   /// observedGeneration = metadata.generation and the Ready condition's status
   /// is True or False.
   core.int? observedGeneration;
 
-  /// From RouteStatus.
+  /// Holds the configured traffic distribution.
   ///
-  /// Traffic holds the configured traffic distribution. These entries will
-  /// always contain RevisionName references. When ConfigurationName appears in
-  /// the spec, this will hold the LatestReadyRevisionName that we last
-  /// observed.
+  /// These entries will always contain RevisionName references. When
+  /// ConfigurationName appears in the spec, this will hold the
+  /// LatestReadyRevisionName that we last observed.
   core.List<TrafficTarget>? traffic;
 
-  /// From RouteStatus.
+  /// URL that will distribute traffic over the provided traffic targets.
   ///
-  /// URL holds the url that will distribute traffic over the provided traffic
-  /// targets. It generally has the form
+  /// It generally has the form
   /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
   core.String? url;
 
@@ -7217,44 +7175,38 @@ class SetIamPolicyRequest {
       };
 }
 
-/// Status is a return value for calls that don't return other objects
+/// Status is a return value for calls that don't return other objects.
 class Status {
   /// Suggested HTTP return code for this status, 0 if not set.
-  ///
-  /// +optional
   core.int? code;
 
   /// Extended data associated with the reason.
   ///
   /// Each reason may define its own extended details. This field is optional
   /// and the data returned is not guaranteed to conform to any schema except
-  /// that defined by the reason type. +optional
+  /// that defined by the reason type.
   StatusDetails? details;
 
   /// A human-readable description of the status of this operation.
-  ///
-  /// +optional
   core.String? message;
 
   /// Standard list metadata.
   ///
   /// More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// +optional
   ListMeta? metadata;
 
   /// A machine-readable description of why this operation is in the "Failure"
   /// status.
   ///
   /// If this value is empty there is no information available. A Reason
-  /// clarifies an HTTP status code but does not override it. +optional
+  /// clarifies an HTTP status code but does not override it.
   core.String? reason;
 
   /// Status of the operation.
   ///
   /// One of: "Success" or "Failure". More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  /// +optional
   core.String? status;
 
   Status({
@@ -7306,19 +7258,19 @@ class StatusCause {
   ///
   /// May include dot and postfix notation for nested attributes. Arrays are
   /// zero-indexed. Fields may appear more than once in an array of causes due
-  /// to fields having multiple errors. Optional. Examples: "name" - the field
-  /// "name" on the current resource "items\[0\].name" - the field "name" on the
-  /// first array entry in "items" +optional
+  /// to fields having multiple errors. Examples: "name" - the field "name" on
+  /// the current resource "items\[0\].name" - the field "name" on the first
+  /// array entry in "items"
   core.String? field;
 
   /// A human-readable description of the cause of the error.
   ///
-  /// This field may be presented as-is to a reader. +optional
+  /// This field may be presented as-is to a reader.
   core.String? message;
 
   /// A machine-readable description of the cause of the error.
   ///
-  /// If this value is empty there is no information available. +optional
+  /// If this value is empty there is no information available.
   core.String? reason;
 
   StatusCause({
@@ -7357,13 +7309,11 @@ class StatusDetails {
   /// The Causes array includes more details associated with the StatusReason
   /// failure.
   ///
-  /// Not all StatusReasons may provide detailed causes. +optional
+  /// Not all StatusReasons may provide detailed causes.
   core.List<StatusCause>? causes;
 
   /// The group attribute of the resource associated with the status
   /// StatusReason.
-  ///
-  /// +optional
   core.String? group;
 
   /// The kind attribute of the resource associated with the status
@@ -7371,26 +7321,23 @@ class StatusDetails {
   ///
   /// On some operations may differ from the requested resource Kind. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// +optional
   core.String? kind;
 
   /// The name attribute of the resource associated with the status StatusReason
   /// (when there is a single name which can be described).
-  ///
-  /// +optional
   core.String? name;
 
   /// If specified, the time in seconds before the operation should be retried.
   ///
   /// Some errors may indicate the client must take an alternate action - for
   /// those errors this field may indicate how long to wait before taking the
-  /// alternate action. +optional
+  /// alternate action.
   core.int? retryAfterSeconds;
 
   /// UID of the resource.
   ///
   /// (when there is a single resource which can be described). More info:
-  /// https://kubernetes.io/docs/user-guide/identifiers#uids +optional
+  /// https://kubernetes.io/docs/user-guide/identifiers#uids
   core.String? uid;
 
   StatusDetails({
@@ -7430,17 +7377,14 @@ class StatusDetails {
       };
 }
 
-/// Not supported by Cloud Run TCPSocketAction describes an action based on
-/// opening a socket
+/// TCPSocketAction describes an action based on opening a socket
 class TCPSocketAction {
-  /// (Optional) Optional: Host name to connect to, defaults to the pod IP.
+  /// Not supported by Cloud Run.
   core.String? host;
 
-  /// Number or name of the port to access on the container.
+  /// Port number to access on the container.
   ///
-  /// Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-  /// This field is currently limited to integer types only because of proto's
-  /// inability to properly support the IntOrString golang type.
+  /// Number must be in the range 1 to 65535.
   core.int? port;
 
   TCPSocketAction({
@@ -7468,7 +7412,6 @@ class Task {
   /// Servers should convert recognized schemas to the latest internal value,
   /// and may reject unrecognized values. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  /// +optional
   ///
   /// Optional.
   core.String? apiVersion;
@@ -7479,7 +7422,6 @@ class Task {
   /// Servers may infer this from the endpoint the client submits requests to.
   /// Cannot be updated. In CamelCase. More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// +optional
   ///
   /// Optional.
   core.String? kind;
@@ -7487,26 +7429,23 @@ class Task {
   /// Standard object's metadata.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   ///
   /// Optional.
   ObjectMeta? metadata;
 
-  /// Specification of the desired behavior of an execution.
+  /// Specification of the desired behavior of a task.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   ///
   /// Optional.
   TaskSpec? spec;
 
-  /// Current status of an execution.
+  /// Current status of a task.
   ///
   /// More info:
-  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-  /// +optional
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   ///
   /// Output only.
   TaskStatus? status;
@@ -7607,23 +7546,23 @@ class TaskSpec {
   ///
   /// The service account represents the identity of the running task, and
   /// determines what permissions the task has. If not provided, the task will
-  /// use the project's default service account. +optional
+  /// use the project's default service account.
   ///
   /// Optional.
   core.String? serviceAccountName;
 
-  /// Optional duration in seconds the task may be active before the system will
-  /// actively try to mark it failed and kill associated containers.
+  /// Duration in seconds the task may be active before the system will actively
+  /// try to mark it failed and kill associated containers.
   ///
   /// This applies per attempt of a task, meaning each retry can run for the
-  /// full timeout. +optional
+  /// full timeout.
   ///
   /// Optional.
   core.String? timeoutSeconds;
 
   /// List of volumes that can be mounted by containers belonging to the task.
   ///
-  /// More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+  /// More info: https://kubernetes.io/docs/concepts/storage/volumes
   ///
   /// Optional.
   core.List<Volume>? volumes;
@@ -7671,21 +7610,23 @@ class TaskSpec {
       };
 }
 
-/// TaskStatus represents the status of a task of a job execution.
+/// TaskStatus represents the status of a task.
 class TaskStatus {
   /// Represents time when the task was completed.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
-  /// operations. It is represented in RFC3339 form and is in UTC. +optional
+  /// operations. It is represented in RFC3339 form and is in UTC.
   ///
   /// Optional.
   core.String? completionTime;
 
-  /// The latest available observations of a task's current state.
+  /// Conditions communicate information about ongoing/complete reconciliation
+  /// processes that bring the "spec" inline with the observed state of the
+  /// world.
   ///
-  /// More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
-  /// +optional
+  /// Task-specific conditions include: * `Started`: `True` when the task has
+  /// started to execute. * `Completed`: `True` when the task has succeeded.
+  /// `False` when the task has failed.
   ///
   /// Optional.
   core.List<GoogleCloudRunV1Condition>? conditions;
@@ -7697,8 +7638,6 @@ class TaskStatus {
 
   /// Result of the last attempt of this task.
   ///
-  /// +optional
-  ///
   /// Optional.
   TaskAttemptResult? lastAttemptResult;
 
@@ -7707,15 +7646,14 @@ class TaskStatus {
   /// Optional.
   core.String? logUri;
 
-  /// The 'generation' of the execution that was last processed by the
-  /// controller.
+  /// The 'generation' of the task that was last processed by the controller.
   ///
   /// Optional.
   core.int? observedGeneration;
 
   /// The number of times this task was retried.
   ///
-  /// Instances are retried when they fail up to the maxRetries limit. +optional
+  /// Instances are retried when they fail up to the maxRetries limit.
   ///
   /// Optional.
   core.int? retried;
@@ -7723,7 +7661,7 @@ class TaskStatus {
   /// Represents time when the task started to run.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
-  /// operations. It is represented in RFC3339 form and is in UTC. +optional
+  /// operations. It is represented in RFC3339 form and is in UTC.
   ///
   /// Optional.
   core.String? startTime;
@@ -7789,7 +7727,6 @@ class TaskTemplateSpec {
   ///
   /// More info:
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  /// +optional
   ///
   /// Optional.
   TaskSpec? spec;
@@ -7819,13 +7756,13 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// TrafficTarget holds a single entry of the routing table for a Route.
 class TrafficTarget {
-  /// ConfigurationName of a configuration to whose latest revision we will send
-  /// this portion of traffic.
+  /// ConfigurationName of a configuration to whose latest revision which will
+  /// be sent this portion of traffic.
   ///
   /// When the "status.latestReadyRevisionName" of the referenced configuration
-  /// changes, we will automatically migrate traffic from the prior "latest
-  /// ready" revision to the new one. This field is never set in Route's status,
-  /// only its spec. This is mutually exclusive with RevisionName. Cloud Run
+  /// changes, traffic will automatically migrate from the prior "latest ready"
+  /// revision to the new one. This field is never set in Route's status, only
+  /// its spec. This is mutually exclusive with RevisionName. Cloud Run
   /// currently supports a single ConfigurationName.
   core.String? configurationName;
 
@@ -7904,12 +7841,18 @@ class TrafficTarget {
 
 /// Volume represents a named volume in a container.
 class Volume {
+  /// Not supported in Cloud Run.
   ConfigMapVolumeSource? configMap;
 
   /// Volume's name.
   ///
   /// In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
   core.String? name;
+
+  /// The secret's value will be presented as the content of a file whose name
+  /// is defined in the item path.
+  ///
+  /// If no items are defined, the name of the file is the secretName.
   SecretVolumeSource? secret;
 
   Volume({
@@ -7943,20 +7886,24 @@ class VolumeMount {
   /// Path within the container at which the volume should be mounted.
   ///
   /// Must not contain ':'.
+  ///
+  /// Required.
   core.String? mountPath;
 
   /// The name of the volume.
   ///
   /// There must be a corresponding Volume with the same name.
+  ///
+  /// Required.
   core.String? name;
 
-  /// (Optional) Only true is accepted.
+  /// Only true is accepted for Secret Volumes.
   ///
-  /// Defaults to true.
+  /// Defaults to true for Secrets Volumes.
   core.bool? readOnly;
 
-  /// (Optional) Path within the volume from which the container's volume should
-  /// be mounted.
+  /// Path within the volume from which the container's volume should be
+  /// mounted.
   ///
   /// Defaults to "" (volume's root).
   core.String? subPath;

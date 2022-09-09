@@ -349,7 +349,7 @@
             }
         }
     },
-    "revision": "20220802",
+    "revision": "20220908",
     "rootUrl": "https://firebasedatabase.googleapis.com/",
     "schemas": {
         "DatabaseInstance": {
@@ -442,7 +442,7 @@
         }
     },
     "servicePath": "",
-    "title": "Firebase Realtime Database Management API",
+    "title": "Firebase Realtime Database API",
     "version": "v1beta",
     "version_module": true
 }

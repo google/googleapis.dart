@@ -480,6 +480,7 @@ api.GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway
       3) {
     o.appGateway = 'foo';
     o.ingressPort = 42;
+    o.l7psc = 'foo';
     o.type = 'foo';
     o.uri = 'foo';
   }
@@ -499,6 +500,10 @@ void checkGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway(
     unittest.expect(
       o.ingressPort!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.l7psc!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.type!,

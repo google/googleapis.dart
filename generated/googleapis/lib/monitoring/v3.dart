@@ -3493,6 +3493,11 @@ class ProjectsUptimeCheckConfigsResource {
   /// projects/\[PROJECT_ID_OR_NUMBER\]
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by uptime checks to be included in the response.For more details, see
+  /// Filtering syntax
+  /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering#filter_syntax).
+  ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// The server may further constrain the maximum number of results returned in
   /// a single page. If the page_size is \<=0, the server will decide the number
@@ -3515,11 +3520,13 @@ class ProjectsUptimeCheckConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListUptimeCheckConfigsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -6282,6 +6289,9 @@ class HttpCheck {
   /// prepended automatically.
   core.String? path;
 
+  /// Contains information needed to add pings to an HTTP check.
+  PingConfig? pingConfig;
+
   /// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is
   /// true).
   ///
@@ -6317,6 +6327,7 @@ class HttpCheck {
     this.headers,
     this.maskHeaders,
     this.path,
+    this.pingConfig,
     this.port,
     this.requestMethod,
     this.useSsl,
@@ -6352,6 +6363,10 @@ class HttpCheck {
               ? json_['maskHeaders'] as core.bool
               : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          pingConfig: json_.containsKey('pingConfig')
+              ? PingConfig.fromJson(
+                  json_['pingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           port: json_.containsKey('port') ? json_['port'] as core.int : null,
           requestMethod: json_.containsKey('requestMethod')
               ? json_['requestMethod'] as core.String
@@ -6372,6 +6387,7 @@ class HttpCheck {
         if (headers != null) 'headers': headers!,
         if (maskHeaders != null) 'maskHeaders': maskHeaders!,
         if (path != null) 'path': path!,
+        if (pingConfig != null) 'pingConfig': pingConfig!,
         if (port != null) 'port': port!,
         if (requestMethod != null) 'requestMethod': requestMethod!,
         if (useSsl != null) 'useSsl': useSsl!,
@@ -8510,6 +8526,31 @@ class PerformanceThreshold {
       };
 }
 
+/// Information involved in sending ICMP pings alongside public HTTP/TCP checks.
+///
+/// For HTTP, the pings are performed for each part of the redirect chain.
+class PingConfig {
+  /// Number of ICMP pings.
+  ///
+  /// A maximum of 3 ICMP pings is currently supported.
+  core.int? pingsCount;
+
+  PingConfig({
+    this.pingsCount,
+  });
+
+  PingConfig.fromJson(core.Map json_)
+      : this(
+          pingsCount: json_.containsKey('pingsCount')
+              ? json_['pingsCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pingsCount != null) 'pingsCount': pingsCount!,
+      };
+}
+
 /// A single data point in a time series.
 class Point {
   /// The time interval to which the data point applies.
@@ -9175,6 +9216,9 @@ typedef Status = $Status;
 
 /// Information required for a TCP Uptime check request.
 class TcpCheck {
+  /// Contains information needed to add pings to a TCP check.
+  PingConfig? pingConfig;
+
   /// The TCP port on the server against which to run the check.
   ///
   /// Will be combined with host (specified within the monitored_resource) to
@@ -9182,15 +9226,21 @@ class TcpCheck {
   core.int? port;
 
   TcpCheck({
+    this.pingConfig,
     this.port,
   });
 
   TcpCheck.fromJson(core.Map json_)
       : this(
+          pingConfig: json_.containsKey('pingConfig')
+              ? PingConfig.fromJson(
+                  json_['pingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           port: json_.containsKey('port') ? json_['port'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (pingConfig != null) 'pingConfig': pingConfig!,
         if (port != null) 'port': port!,
       };
 }
@@ -9696,7 +9746,7 @@ class UptimeCheckConfig {
   ///
   /// The following monitored resource types are valid for this field:
   /// uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
-  /// k8s_service servicedirectory_service
+  /// k8s_service servicedirectory_service cloud_run_revision
   MonitoredResource? monitoredResource;
 
   /// A unique resource name for this Uptime check configuration.

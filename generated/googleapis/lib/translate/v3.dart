@@ -24,6 +24,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsGlossariesResource]
+///       - [ProjectsLocationsGlossariesGlossaryEntriesResource]
 ///     - [ProjectsLocationsOperationsResource]
 library translate.v3;
 
@@ -632,6 +633,9 @@ class ProjectsLocationsResource {
 class ProjectsLocationsGlossariesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsGlossariesGlossaryEntriesResource get glossaryEntries =>
+      ProjectsLocationsGlossariesGlossaryEntriesResource(_requester);
+
   ProjectsLocationsGlossariesResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -822,6 +826,275 @@ class ProjectsLocationsGlossariesResource {
       queryParams: queryParams_,
     );
     return ListGlossariesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a glossary.
+  ///
+  /// A LRO is used since the update can be async if the glossary's entry file
+  /// is updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the glossary. Glossary names have
+  /// the form
+  /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. Currently only
+  /// `display_name` and 'input_config'
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Glossary request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlossariesGlossaryEntriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlossariesGlossaryEntriesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a glossary entry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the glossary to create the entry
+  /// under.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GlossaryEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GlossaryEntry> create(
+    GlossaryEntry request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/glossaryEntries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GlossaryEntry.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single entry from the glossary
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the glossary entry to delete
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/glossaryEntries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a single glossary entry by the given id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the glossary entry to get
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/glossaryEntries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GlossaryEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GlossaryEntry> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GlossaryEntry.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List the entries for the glossary.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent glossary resource name for listing the
+  /// glossary's entries.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server may return fewer
+  /// glossary entries than requested. If unspecified, the server picks an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of
+  /// \[ListGlossaryEntriesResponse.next_page_token\] returned from the previous
+  /// call. The first page is returned if `page_token`is empty or missing.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGlossaryEntriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGlossaryEntriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/glossaryEntries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGlossaryEntriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a glossary entry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the entry. Format: "projects / *
+  /// /locations / * /glossaries / * /glossaryEntries / * "
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+/glossaryEntries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GlossaryEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GlossaryEntry> patch(
+    GlossaryEntry request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GlossaryEntry.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1131,8 +1404,8 @@ class BatchDocumentOutputConfig {
   /// partial output file is written). Since index.csv will be keeping updated
   /// during the process, please make sure there is no custom retention policy
   /// applied on the output bucket that may avoid file updating.
-  /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy)
-  /// The naming format of translation output files follows (for target language
+  /// (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The
+  /// naming format of translation output files follows (for target language
   /// code \[trg\]): `translation_output`:
   /// gs://translation_output/a_b_c_\[trg\]_translation.\[extension\]
   /// `glossary_translation_output`:
@@ -1208,8 +1481,8 @@ class BatchTranslateDocumentRequest {
   /// The BCP-47 language code of the input document if known, for example,
   /// "en-US" or "sr-Latn".
   ///
-  /// Supported language codes are listed in Language Support
-  /// (https://cloud.google.com/translate/docs/languages).
+  /// Supported language codes are listed in
+  /// [Language Support](https://cloud.google.com/translate/docs/languages).
   ///
   /// Required.
   core.String? sourceLanguageCode;
@@ -1793,6 +2066,11 @@ class GcsSource {
 
 /// Represents a glossary built from user provided data.
 class Glossary {
+  /// The display name of the glossary.
+  ///
+  /// Optional.
+  core.String? displayName;
+
   /// When the glossary creation was finished.
   ///
   /// Output only.
@@ -1830,6 +2108,7 @@ class Glossary {
   core.String? submitTime;
 
   Glossary({
+    this.displayName,
     this.endTime,
     this.entryCount,
     this.inputConfig,
@@ -1841,6 +2120,9 @@ class Glossary {
 
   Glossary.fromJson(core.Map json_)
       : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
               : null,
@@ -1866,6 +2148,7 @@ class Glossary {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (endTime != null) 'endTime': endTime!,
         if (entryCount != null) 'entryCount': entryCount!,
         if (inputConfig != null) 'inputConfig': inputConfig!,
@@ -1873,6 +2156,56 @@ class Glossary {
         if (languagePair != null) 'languagePair': languagePair!,
         if (name != null) 'name': name!,
         if (submitTime != null) 'submitTime': submitTime!,
+      };
+}
+
+/// Represents a single entry in a glossary.
+class GlossaryEntry {
+  /// Describes the glossary entry.
+  core.String? description;
+
+  /// The resource name of the entry.
+  ///
+  /// Format: "projects / * /locations / * /glossaries / * /glossaryEntries / *
+  /// "
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Used for an unidirectional glossary.
+  GlossaryTermsPair? termsPair;
+
+  /// Used for an equivalent term sets glossary.
+  GlossaryTermsSet? termsSet;
+
+  GlossaryEntry({
+    this.description,
+    this.name,
+    this.termsPair,
+    this.termsSet,
+  });
+
+  GlossaryEntry.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          termsPair: json_.containsKey('termsPair')
+              ? GlossaryTermsPair.fromJson(
+                  json_['termsPair'] as core.Map<core.String, core.dynamic>)
+              : null,
+          termsSet: json_.containsKey('termsSet')
+              ? GlossaryTermsSet.fromJson(
+                  json_['termsSet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (termsPair != null) 'termsPair': termsPair!,
+        if (termsSet != null) 'termsSet': termsSet!,
       };
 }
 
@@ -1910,6 +2243,92 @@ class GlossaryInputConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsSource != null) 'gcsSource': gcsSource!,
+      };
+}
+
+/// Represents a single glossary term
+class GlossaryTerm {
+  /// The language for this glossary term.
+  core.String? languageCode;
+
+  /// The text for the glossary term.
+  core.String? text;
+
+  GlossaryTerm({
+    this.languageCode,
+    this.text,
+  });
+
+  GlossaryTerm.fromJson(core.Map json_)
+      : this(
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Represents a single entry for an unidirectional glossary.
+class GlossaryTermsPair {
+  /// The source term is the term that will get match in the text,
+  GlossaryTerm? sourceTerm;
+
+  /// The term that will replace the match source term.
+  GlossaryTerm? targetTerm;
+
+  GlossaryTermsPair({
+    this.sourceTerm,
+    this.targetTerm,
+  });
+
+  GlossaryTermsPair.fromJson(core.Map json_)
+      : this(
+          sourceTerm: json_.containsKey('sourceTerm')
+              ? GlossaryTerm.fromJson(
+                  json_['sourceTerm'] as core.Map<core.String, core.dynamic>)
+              : null,
+          targetTerm: json_.containsKey('targetTerm')
+              ? GlossaryTerm.fromJson(
+                  json_['targetTerm'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceTerm != null) 'sourceTerm': sourceTerm!,
+        if (targetTerm != null) 'targetTerm': targetTerm!,
+      };
+}
+
+/// Represents a single entry for an equivalent term set glossary.
+///
+/// This is used for equivalent term sets where each term can be replaced by the
+/// other terms in the set.
+class GlossaryTermsSet {
+  /// Each term in the set represents a term that can be replaced by the other
+  /// terms.
+  core.List<GlossaryTerm>? terms;
+
+  GlossaryTermsSet({
+    this.terms,
+  });
+
+  GlossaryTermsSet.fromJson(core.Map json_)
+      : this(
+          terms: json_.containsKey('terms')
+              ? (json_['terms'] as core.List)
+                  .map((value) => GlossaryTerm.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (terms != null) 'terms': terms!,
       };
 }
 
@@ -2061,6 +2480,45 @@ class ListGlossariesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (glossaries != null) 'glossaries': glossaries!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListGlossaryEntries
+class ListGlossaryEntriesResponse {
+  /// The Glossary Entries
+  ///
+  /// Optional.
+  core.List<GlossaryEntry>? glossaryEntries;
+
+  /// A token to retrieve a page of results.
+  ///
+  /// Pass this value in the \[ListGLossaryEntriesRequest.page_token\] field in
+  /// the subsequent calls.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  ListGlossaryEntriesResponse({
+    this.glossaryEntries,
+    this.nextPageToken,
+  });
+
+  ListGlossaryEntriesResponse.fromJson(core.Map json_)
+      : this(
+          glossaryEntries: json_.containsKey('glossaryEntries')
+              ? (json_['glossaryEntries'] as core.List)
+                  .map((value) => GlossaryEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (glossaryEntries != null) 'glossaryEntries': glossaryEntries!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2235,8 +2693,8 @@ class OutputConfig {
   /// index.csv will be keeping updated during the process, please make sure
   /// there is no custom retention policy applied on the output bucket that may
   /// avoid file updating.
-  /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy)
-  /// The format of translations_file (for target language code 'trg') is:
+  /// (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The
+  /// format of translations_file (for target language code 'trg') is:
   /// gs://translation_test/a_b_c_'trg'_translations.\[extension\] If the input
   /// file extension is tsv, the output has the following columns: Column 1: ID
   /// of the request provided in the input, if it's not provided in the input,

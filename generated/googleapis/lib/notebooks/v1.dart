@@ -2000,7 +2000,7 @@ class ProjectsLocationsRuntimesResource {
   /// } Currently, only the following fields can be updated: -
   /// software_config.kernels - software_config.post_startup_script -
   /// software_config.custom_gpu_driver_path - software_config.idle_shutdown -
-  /// software_config.idle_shutdown_timeout
+  /// software_config.idle_shutdown_timeout - software_config.disable_terminal
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2689,10 +2689,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -5210,7 +5216,8 @@ class RuntimeAcceleratorConfig {
   /// Accelerator model.
   /// Possible string values are:
   /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Accelerator type is not specified.
-  /// - "NVIDIA_TESLA_K80" : Accelerator type is Nvidia Tesla K80.
+  /// - "NVIDIA_TESLA_K80" : b/241005111 K80 deprecation in Google Managed
+  /// Notebooks Accelerator type is Nvidia Tesla K80.
   /// - "NVIDIA_TESLA_P100" : Accelerator type is Nvidia Tesla P100.
   /// - "NVIDIA_TESLA_V100" : Accelerator type is Nvidia Tesla V100.
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
@@ -5371,6 +5378,11 @@ class RuntimeSoftwareConfig {
   /// If not specified, we'll automatically choose from official GPU drivers.
   core.String? customGpuDriverPath;
 
+  /// Bool indicating whether JupyterLab terminal will be available or not.
+  ///
+  /// Default: False
+  core.bool? disableTerminal;
+
   /// Verifies core internal services are running.
   ///
   /// Default: True
@@ -5425,6 +5437,7 @@ class RuntimeSoftwareConfig {
 
   RuntimeSoftwareConfig({
     this.customGpuDriverPath,
+    this.disableTerminal,
     this.enableHealthMonitoring,
     this.idleShutdown,
     this.idleShutdownTimeout,
@@ -5440,6 +5453,9 @@ class RuntimeSoftwareConfig {
       : this(
           customGpuDriverPath: json_.containsKey('customGpuDriverPath')
               ? json_['customGpuDriverPath'] as core.String
+              : null,
+          disableTerminal: json_.containsKey('disableTerminal')
+              ? json_['disableTerminal'] as core.bool
               : null,
           enableHealthMonitoring: json_.containsKey('enableHealthMonitoring')
               ? json_['enableHealthMonitoring'] as core.bool
@@ -5477,6 +5493,7 @@ class RuntimeSoftwareConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (customGpuDriverPath != null)
           'customGpuDriverPath': customGpuDriverPath!,
+        if (disableTerminal != null) 'disableTerminal': disableTerminal!,
         if (enableHealthMonitoring != null)
           'enableHealthMonitoring': enableHealthMonitoring!,
         if (idleShutdown != null) 'idleShutdown': idleShutdown!,

@@ -624,7 +624,7 @@
             }
         }
     },
-    "revision": "20220715",
+    "revision": "20220830",
     "rootUrl": "https://datastore.googleapis.com/",
     "schemas": {
         "AllocateIdsRequest": {
@@ -632,7 +632,7 @@
             "id": "AllocateIdsRequest",
             "properties": {
                 "databaseId": {
-                    "description": "If not empty, the ID of the database against which to make the request.",
+                    "description": "The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database.",
                     "type": "string"
                 },
                 "keys": {
@@ -678,7 +678,7 @@
             "id": "BeginTransactionRequest",
             "properties": {
                 "databaseId": {
-                    "description": "If not empty, the ID of the database against which to make the request.",
+                    "description": "The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database.",
                     "type": "string"
                 },
                 "transactionOptions": {
@@ -705,7 +705,7 @@
             "id": "CommitRequest",
             "properties": {
                 "databaseId": {
-                    "description": "If not empty, the ID of the database against which to make the request.",
+                    "description": "The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database.",
                     "type": "string"
                 },
                 "mode": {
@@ -1128,7 +1128,7 @@
                     "type": "string"
                 },
                 "properties": {
-                    "description": "Required. An ordered sequence of property names and their index attributes.",
+                    "description": "Required. An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.",
                     "items": {
                         "$ref": "GoogleDatastoreAdminV1IndexedProperty"
                     },
@@ -1657,7 +1657,7 @@
             "id": "LookupRequest",
             "properties": {
                 "databaseId": {
-                    "description": "If not empty, the ID of the database against which to make the request.",
+                    "description": "The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database.",
                     "type": "string"
                 },
                 "keys": {
@@ -2043,7 +2043,7 @@
             "id": "ReadOptions",
             "properties": {
                 "readConsistency": {
-                    "description": "The non-transactional read consistency to use. Cannot be set to `STRONG` for global queries.",
+                    "description": "The non-transactional read consistency to use.",
                     "enum": [
                         "READ_CONSISTENCY_UNSPECIFIED",
                         "STRONG",
@@ -2086,7 +2086,7 @@
             "id": "ReserveIdsRequest",
             "properties": {
                 "databaseId": {
-                    "description": "If not empty, the ID of the database against which to make the request.",
+                    "description": "The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database.",
                     "type": "string"
                 },
                 "keys": {
@@ -2110,7 +2110,7 @@
             "id": "RollbackRequest",
             "properties": {
                 "databaseId": {
-                    "description": "If not empty, the ID of the database against which to make the request.",
+                    "description": "The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database.",
                     "type": "string"
                 },
                 "transaction": {
@@ -2132,7 +2132,7 @@
             "id": "RunQueryRequest",
             "properties": {
                 "databaseId": {
-                    "description": "If not empty, the ID of the database against which to make the request.",
+                    "description": "The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database.",
                     "type": "string"
                 },
                 "gqlQuery": {

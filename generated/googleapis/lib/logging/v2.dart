@@ -10918,6 +10918,16 @@ class LogExclusion {
 /// distribution records the statistics of the extracted values along with an
 /// optional histogram of the values as specified by the bucket options.
 class LogMetric {
+  /// The resource name of the Log Bucket that owns the Log Metric.
+  ///
+  /// Only Log Buckets in projects are supported. The bucket has to be in the
+  /// same project as the metric.For
+  /// example:projects/my-project/locations/global/buckets/my-bucketIf empty,
+  /// then the Log Metric is considered a non-Bucket Log Metric.
+  ///
+  /// Optional.
+  core.String? bucketName;
+
   /// The bucket_options are required when the logs-based metric is using a
   /// DISTRIBUTION value type and it describes the bucket boundaries used to
   /// create a histogram of the extracted values.
@@ -10960,7 +10970,7 @@ class LogMetric {
   /// Each label key specified in the LabelDescriptor must have an associated
   /// extractor expression in this map. The syntax of the extractor expression
   /// is the same as for the value_extractor field.The extracted value is
-  /// converted to the type defined in the label descriptor. If the either the
+  /// converted to the type defined in the label descriptor. If either the
   /// extraction or the type conversion fails, the label will have a default
   /// value. The default value for a string label is an empty string, for an
   /// integer label its 0, and for a boolean label its false.Note that there are
@@ -11014,9 +11024,9 @@ class LogMetric {
   /// to extract the values to record from a log entry.
   ///
   /// Two functions are supported for value extraction: EXTRACT(field) or
-  /// REGEXP_EXTRACT(field, regex). The argument are: 1. field: The name of the
-  /// log entry field from which the value is to be extracted. 2. regex: A
-  /// regular expression using the Google RE2 syntax
+  /// REGEXP_EXTRACT(field, regex). The arguments are: field: The name of the
+  /// log entry field from which the value is to be extracted. regex: A regular
+  /// expression using the Google RE2 syntax
   /// (https://github.com/google/re2/wiki/Syntax) with a single capture group to
   /// extract data from the specified log entry field. The value of the field is
   /// converted to a string before applying the regex. It is an error to specify
@@ -11041,6 +11051,7 @@ class LogMetric {
   core.String? version;
 
   LogMetric({
+    this.bucketName,
     this.bucketOptions,
     this.createTime,
     this.description,
@@ -11056,6 +11067,9 @@ class LogMetric {
 
   LogMetric.fromJson(core.Map json_)
       : this(
+          bucketName: json_.containsKey('bucketName')
+              ? json_['bucketName'] as core.String
+              : null,
           bucketOptions: json_.containsKey('bucketOptions')
               ? BucketOptions.fromJson(
                   json_['bucketOptions'] as core.Map<core.String, core.dynamic>)
@@ -11099,6 +11113,7 @@ class LogMetric {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
         if (bucketOptions != null) 'bucketOptions': bucketOptions!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,

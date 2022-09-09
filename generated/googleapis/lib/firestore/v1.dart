@@ -2522,8 +2522,11 @@ class FieldFilter {
       };
 }
 
-/// A reference to a field, such as `max(messages.time) as max_time`.
+/// A reference to a field in a document, ex: `stats.operations`.
 class FieldReference {
+  /// The relative path of the document being referenced.
+  ///
+  /// Requires: * Conform to document field name limitations.
   core.String? fieldPath;
 
   FieldReference({
@@ -2970,14 +2973,14 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
 class GoogleFirestoreAdminV1Index {
   /// The fields supported by this index.
   ///
-  /// For composite indexes, this is always 2 or more fields. The last field
-  /// entry is always for the field path `__name__`. If, on creation, `__name__`
-  /// was not specified as the last field, it will be added automatically with
-  /// the same direction as that of the last field defined. If the final field
-  /// in a composite index is not directional, the `__name__` will be ordered
-  /// ASCENDING (unless explicitly specified). For single field indexes, this
-  /// will always be exactly one entry with a field path equal to the field path
-  /// of the associated field.
+  /// For composite indexes, this requires a minimum of 2 and a maximum of 100
+  /// fields. The last field entry is always for the field path `__name__`. If,
+  /// on creation, `__name__` was not specified as the last field, it will be
+  /// added automatically with the same direction as that of the last field
+  /// defined. If the final field in a composite index is not directional, the
+  /// `__name__` will be ordered ASCENDING (unless explicitly specified). For
+  /// single field indexes, this will always be exactly one entry with a field
+  /// path equal to the field path of the associated field.
   core.List<GoogleFirestoreAdminV1IndexField>? fields;
 
   /// A server defined name for this index.
@@ -3269,8 +3272,10 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
 /// set.
 ///
 /// Storing a timestamp value into a TTL-enabled field will be treated as the
-/// document's absolute expiration time. Using any other data type or leaving
-/// the field absent will disable the TTL for the individual document.
+/// document's absolute expiration time. Timestamp values in the past indicate
+/// that the document is eligible for immediate expiration. Using any other data
+/// type or leaving the field absent will disable expiration for the individual
+/// document.
 class GoogleFirestoreAdminV1TtlConfig {
   /// The state of the TTL configuration.
   ///
@@ -4072,7 +4077,11 @@ typedef Status = $Status;
 
 /// A Firestore query.
 class StructuredQuery {
-  /// A end point for the query results.
+  /// A potential prefix of a position in the result set to end the query at.
+  ///
+  /// This is similar to `START_AT` but with it controlling the end position
+  /// rather than the start position. Requires: * The number of values cannot be
+  /// greater than the number of fields specified in the `ORDER BY` clause.
   Cursor? endAt;
 
   /// The collections to query.
@@ -4080,33 +4089,54 @@ class StructuredQuery {
 
   /// The maximum number of results to return.
   ///
-  /// Applies after all other constraints. Must be \>= 0 if specified.
+  /// Applies after all other constraints. Requires: * The value must be greater
+  /// than or equal to zero if specified.
   core.int? limit;
 
-  /// The number of results to skip.
+  /// The number of documents to skip before returning the first result.
   ///
-  /// Applies before limit, but after all other constraints. Must be \>= 0 if
-  /// specified.
+  /// This applies after the constraints specified by the `WHERE`, `START AT`, &
+  /// `END AT` but before the `LIMIT` clause. Requires: * The value must be
+  /// greater than or equal to zero if specified.
   core.int? offset;
 
   /// The order to apply to the query results.
   ///
-  /// Firestore guarantees a stable ordering through the following rules: * Any
-  /// field required to appear in `order_by`, that is not already specified in
-  /// `order_by`, is appended to the order in field name order by default. * If
-  /// an order on `__name__` is not specified, it is appended by default. Fields
-  /// are appended with the same sort direction as the last order specified, or
-  /// 'ASCENDING' if no order was specified. For example: * `SELECT * FROM Foo
-  /// ORDER BY A` becomes `SELECT * FROM Foo ORDER BY A, __name__` * `SELECT *
-  /// FROM Foo ORDER BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC,
-  /// __name__ DESC` * `SELECT * FROM Foo WHERE A > 1` becomes `SELECT * FROM
-  /// Foo WHERE A > 1 ORDER BY A, __name__`
+  /// Firestore allows callers to provide a full ordering, a partial ordering,
+  /// or no ordering at all. In all cases, Firestore guarantees a stable
+  /// ordering through the following rules: * The `order_by` is required to
+  /// reference all fields used with an inequality filter. * All fields that are
+  /// required to be in the `order_by` but are not already present are appended
+  /// in lexicographical ordering of the field name. * If an order on `__name__`
+  /// is not specified, it is appended by default. Fields are appended with the
+  /// same sort direction as the last order specified, or 'ASCENDING' if no
+  /// order was specified. For example: * `ORDER BY a` becomes `ORDER BY a ASC,
+  /// __name__ ASC` * `ORDER BY a DESC` becomes `ORDER BY a DESC, __name__ DESC`
+  /// * `WHERE a > 1` becomes `WHERE a > 1 ORDER BY a ASC, __name__ ASC` *
+  /// `WHERE __name__ > ... AND a > 1` becomes `WHERE __name__ > ... AND a > 1
+  /// ORDER BY a ASC, __name__ ASC`
   core.List<Order>? orderBy;
 
   /// The projection to return.
   Projection? select;
 
-  /// A starting point for the query results.
+  /// A potential prefix of a position in the result set to start the query at.
+  ///
+  /// The ordering of the result set is based on the `ORDER BY` clause of the
+  /// original query. ``` SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC,
+  /// __name__ ASC; ``` This query's results are ordered by `(b ASC, __name__
+  /// ASC)`. Cursors can reference either the full ordering or a prefix of the
+  /// location, though it cannot reference more fields than what are in the
+  /// provided `ORDER BY`. Continuing off the example above, attaching the
+  /// following start cursors will have varying impact: - `START BEFORE (2,
+  /// /k/123)`: start the query right before `a = 1 AND b > 2 AND __name__ >
+  /// /k/123`. - `START AFTER (10)`: start the query right after `a = 1 AND b >
+  /// 10`. Unlike `OFFSET` which requires scanning over the first N results to
+  /// skip, a start cursor allows the query to begin at a logical position. This
+  /// position is not required to match an actual result, it will scan forward
+  /// from this position to find the next document. Requires: * The number of
+  /// values cannot be greater than the number of fields specified in the `ORDER
+  /// BY` clause.
   Cursor? startAt;
 
   /// The filter to apply.

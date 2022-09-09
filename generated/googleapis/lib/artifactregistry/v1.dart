@@ -875,6 +875,8 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
+  /// [orderBy] - The field to order the results by.
+  ///
   /// [pageSize] - The maximum number of artifacts to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
@@ -892,11 +894,13 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
   /// this method will complete with the same error.
   async.Future<ListDockerImagesResponse> list(
     core.String parent, {
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1950,10 +1954,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -2051,6 +2061,11 @@ class DockerImage {
   /// Tags attached to this image.
   core.List<core.String>? tags;
 
+  /// The time when the docker image was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   /// Time the image was uploaded.
   core.String? uploadTime;
 
@@ -2068,6 +2083,7 @@ class DockerImage {
     this.mediaType,
     this.name,
     this.tags,
+    this.updateTime,
     this.uploadTime,
     this.uri,
   });
@@ -2089,6 +2105,9 @@ class DockerImage {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
           uploadTime: json_.containsKey('uploadTime')
               ? json_['uploadTime'] as core.String
               : null,
@@ -2101,6 +2120,7 @@ class DockerImage {
         if (mediaType != null) 'mediaType': mediaType!,
         if (name != null) 'name': name!,
         if (tags != null) 'tags': tags!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (uploadTime != null) 'uploadTime': uploadTime!,
         if (uri != null) 'uri': uri!,
       };

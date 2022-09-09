@@ -1298,6 +1298,78 @@ void checkStreamMapping(api.StreamMapping o) {
   buildCounterStreamMapping--;
 }
 
+core.int buildCounterUndeleteAndroidAppRequest = 0;
+api.UndeleteAndroidAppRequest buildUndeleteAndroidAppRequest() {
+  final o = api.UndeleteAndroidAppRequest();
+  buildCounterUndeleteAndroidAppRequest++;
+  if (buildCounterUndeleteAndroidAppRequest < 3) {
+    o.etag = 'foo';
+    o.validateOnly = true;
+  }
+  buildCounterUndeleteAndroidAppRequest--;
+  return o;
+}
+
+void checkUndeleteAndroidAppRequest(api.UndeleteAndroidAppRequest o) {
+  buildCounterUndeleteAndroidAppRequest++;
+  if (buildCounterUndeleteAndroidAppRequest < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+  }
+  buildCounterUndeleteAndroidAppRequest--;
+}
+
+core.int buildCounterUndeleteIosAppRequest = 0;
+api.UndeleteIosAppRequest buildUndeleteIosAppRequest() {
+  final o = api.UndeleteIosAppRequest();
+  buildCounterUndeleteIosAppRequest++;
+  if (buildCounterUndeleteIosAppRequest < 3) {
+    o.etag = 'foo';
+    o.validateOnly = true;
+  }
+  buildCounterUndeleteIosAppRequest--;
+  return o;
+}
+
+void checkUndeleteIosAppRequest(api.UndeleteIosAppRequest o) {
+  buildCounterUndeleteIosAppRequest++;
+  if (buildCounterUndeleteIosAppRequest < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+  }
+  buildCounterUndeleteIosAppRequest--;
+}
+
+core.int buildCounterUndeleteWebAppRequest = 0;
+api.UndeleteWebAppRequest buildUndeleteWebAppRequest() {
+  final o = api.UndeleteWebAppRequest();
+  buildCounterUndeleteWebAppRequest++;
+  if (buildCounterUndeleteWebAppRequest < 3) {
+    o.etag = 'foo';
+    o.validateOnly = true;
+  }
+  buildCounterUndeleteWebAppRequest--;
+  return o;
+}
+
+void checkUndeleteWebAppRequest(api.UndeleteWebAppRequest o) {
+  buildCounterUndeleteWebAppRequest++;
+  if (buildCounterUndeleteWebAppRequest < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+  }
+  buildCounterUndeleteWebAppRequest--;
+}
+
 core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
@@ -1752,6 +1824,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UndeleteAndroidAppRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUndeleteAndroidAppRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UndeleteAndroidAppRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUndeleteAndroidAppRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UndeleteIosAppRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUndeleteIosAppRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UndeleteIosAppRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUndeleteIosAppRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UndeleteWebAppRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUndeleteWebAppRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UndeleteWebAppRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUndeleteWebAppRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-WebApp', () {
     unittest.test('to-json--from-json', () async {
       final o = buildWebApp();
@@ -2172,6 +2274,7 @@ void main() {
       final res = api.FirebaseManagementApi(mock).projects;
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_showDeleted = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -2213,6 +2316,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['showDeleted']!.first,
+          unittest.equals('$arg_showDeleted'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2226,6 +2333,7 @@ void main() {
       final response = await res.list(
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
           $fields: arg_$fields);
       checkListFirebaseProjectsResponse(
           response as api.ListFirebaseProjectsResponse);
@@ -2783,6 +2891,64 @@ void main() {
       }), true);
       final response =
           await res.remove(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--undelete', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.androidApps;
+      final arg_request = buildUndeleteAndroidAppRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UndeleteAndroidAppRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteAndroidAppRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
   });
@@ -3434,6 +3600,64 @@ void main() {
           await res.remove(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
+
+    unittest.test('method--undelete', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.iosApps;
+      final arg_request = buildUndeleteIosAppRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UndeleteIosAppRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteIosAppRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
   });
 
   unittest.group('resource-ProjectsWebAppsResource', () {
@@ -3788,6 +4012,64 @@ void main() {
       }), true);
       final response =
           await res.remove(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--undelete', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseManagementApi(mock).projects.webApps;
+      final arg_request = buildUndeleteWebAppRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UndeleteWebAppRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteWebAppRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
   });

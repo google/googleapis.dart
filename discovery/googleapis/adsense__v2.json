@@ -133,6 +133,32 @@
                         "https://www.googleapis.com/auth/adsense.readonly"
                     ]
                 },
+                "getAdBlockingRecoveryTag": {
+                    "description": "Gets the ad blocking recovery tag of an account.",
+                    "flatPath": "v2/accounts/{accountsId}/adBlockingRecoveryTag",
+                    "httpMethod": "GET",
+                    "id": "adsense.accounts.getAdBlockingRecoveryTag",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Required. The name of the account to get the tag for. Format: accounts/{account}",
+                            "location": "path",
+                            "pattern": "^accounts/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v2/{+name}/adBlockingRecoveryTag",
+                    "response": {
+                        "$ref": "AdBlockingRecoveryTag"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adsense",
+                        "https://www.googleapis.com/auth/adsense.readonly"
+                    ]
+                },
                 "list": {
                     "description": "Lists all accounts available to this user.",
                     "flatPath": "v2/accounts",
@@ -322,7 +348,7 @@
                                     ]
                                 },
                                 "getAdcode": {
-                                    "description": "Gets the AdSense code for a given ad unit.",
+                                    "description": "Gets the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028).",
                                     "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}/adcode",
                                     "httpMethod": "GET",
                                     "id": "adsense.accounts.adclients.adunits.getAdcode",
@@ -718,6 +744,7 @@
                                         "MONTH",
                                         "ACCOUNT_NAME",
                                         "AD_CLIENT_ID",
+                                        "HOSTED_AD_CLIENT_ID",
                                         "PRODUCT_NAME",
                                         "PRODUCT_CODE",
                                         "AD_UNIT_NAME",
@@ -766,6 +793,7 @@
                                         "Month dimension in YYYY-MM format (e.g. \"2010-02\").",
                                         "Account name. The members of this dimension match the values from Account.display_name.",
                                         "Unique ID of an ad client. The members of this dimension match the values from AdClient.reporting_dimension_id.",
+                                        "Unique ID of a sub-account's ad client. The members of this dimension match the values from AdClient.reporting_dimension_id (for the sub-account).",
                                         "Localized product name (e.g. \"AdSense for Content\", \"AdSense for Search\").",
                                         "Product code (e.g. \"AFC\", \"AFS\"). The members of this dimension match the values from AdClient.product_code.",
                                         "Ad unit name (within which an ad was served). The members of this dimension match the values from AdUnit.display_name.",
@@ -1026,6 +1054,7 @@
                                         "MONTH",
                                         "ACCOUNT_NAME",
                                         "AD_CLIENT_ID",
+                                        "HOSTED_AD_CLIENT_ID",
                                         "PRODUCT_NAME",
                                         "PRODUCT_CODE",
                                         "AD_UNIT_NAME",
@@ -1074,6 +1103,7 @@
                                         "Month dimension in YYYY-MM format (e.g. \"2010-02\").",
                                         "Account name. The members of this dimension match the values from Account.display_name.",
                                         "Unique ID of an ad client. The members of this dimension match the values from AdClient.reporting_dimension_id.",
+                                        "Unique ID of a sub-account's ad client. The members of this dimension match the values from AdClient.reporting_dimension_id (for the sub-account).",
                                         "Localized product name (e.g. \"AdSense for Content\", \"AdSense for Search\").",
                                         "Product code (e.g. \"AFC\", \"AFS\"). The members of this dimension match the values from AdClient.product_code.",
                                         "Ad unit name (within which an ad was served). The members of this dimension match the values from AdUnit.display_name.",
@@ -1644,7 +1674,7 @@
             }
         }
     },
-    "revision": "20220803",
+    "revision": "20220908",
     "rootUrl": "https://adsense.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1700,6 +1730,21 @@
                 "timeZone": {
                     "$ref": "TimeZone",
                     "description": "The account time zone, as used by reporting. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725)."
+                }
+            },
+            "type": "object"
+        },
+        "AdBlockingRecoveryTag": {
+            "description": "Representation of an ad blocking recovery tag. See https://support.google.com/adsense/answer/11575177.",
+            "id": "AdBlockingRecoveryTag",
+            "properties": {
+                "errorProtectionCode": {
+                    "description": "Error protection code that can be used in conjunction with the tag. It'll display a message to users if an [ad blocking extension blocks their access to your site](https://support.google.com/adsense/answer/11575480).",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "The ad blocking recovery tag. Note that the message generated by the tag can be blocked by an ad blocking extension. If this is not your desired outcome, then you'll need to use it in conjunction with the error protection code.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1805,11 +1850,11 @@
             "type": "object"
         },
         "AdUnitAdCode": {
-            "description": "Representation of the AdSense code for a given ad unit.",
+            "description": "Representation of the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028).",
             "id": "AdUnitAdCode",
             "properties": {
                 "adCode": {
-                    "description": "Output only. The AdSense code snippet to add to the body of an HTML page.",
+                    "description": "Output only. The code snippet to add to the body of an HTML page.",
                     "readOnly": true,
                     "type": "string"
                 }

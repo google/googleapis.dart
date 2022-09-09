@@ -564,6 +564,7 @@ api.Glossary buildGlossary() {
   final o = api.Glossary();
   buildCounterGlossary++;
   if (buildCounterGlossary < 3) {
+    o.displayName = 'foo';
     o.endTime = 'foo';
     o.entryCount = 42;
     o.inputConfig = buildGlossaryInputConfig();
@@ -579,6 +580,10 @@ api.Glossary buildGlossary() {
 void checkGlossary(api.Glossary o) {
   buildCounterGlossary++;
   if (buildCounterGlossary < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.endTime!,
       unittest.equals('foo'),
@@ -602,6 +607,37 @@ void checkGlossary(api.Glossary o) {
   buildCounterGlossary--;
 }
 
+core.int buildCounterGlossaryEntry = 0;
+api.GlossaryEntry buildGlossaryEntry() {
+  final o = api.GlossaryEntry();
+  buildCounterGlossaryEntry++;
+  if (buildCounterGlossaryEntry < 3) {
+    o.description = 'foo';
+    o.name = 'foo';
+    o.termsPair = buildGlossaryTermsPair();
+    o.termsSet = buildGlossaryTermsSet();
+  }
+  buildCounterGlossaryEntry--;
+  return o;
+}
+
+void checkGlossaryEntry(api.GlossaryEntry o) {
+  buildCounterGlossaryEntry++;
+  if (buildCounterGlossaryEntry < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkGlossaryTermsPair(o.termsPair!);
+    checkGlossaryTermsSet(o.termsSet!);
+  }
+  buildCounterGlossaryEntry--;
+}
+
 core.int buildCounterGlossaryInputConfig = 0;
 api.GlossaryInputConfig buildGlossaryInputConfig() {
   final o = api.GlossaryInputConfig();
@@ -619,6 +655,84 @@ void checkGlossaryInputConfig(api.GlossaryInputConfig o) {
     checkGcsSource(o.gcsSource!);
   }
   buildCounterGlossaryInputConfig--;
+}
+
+core.int buildCounterGlossaryTerm = 0;
+api.GlossaryTerm buildGlossaryTerm() {
+  final o = api.GlossaryTerm();
+  buildCounterGlossaryTerm++;
+  if (buildCounterGlossaryTerm < 3) {
+    o.languageCode = 'foo';
+    o.text = 'foo';
+  }
+  buildCounterGlossaryTerm--;
+  return o;
+}
+
+void checkGlossaryTerm(api.GlossaryTerm o) {
+  buildCounterGlossaryTerm++;
+  if (buildCounterGlossaryTerm < 3) {
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGlossaryTerm--;
+}
+
+core.int buildCounterGlossaryTermsPair = 0;
+api.GlossaryTermsPair buildGlossaryTermsPair() {
+  final o = api.GlossaryTermsPair();
+  buildCounterGlossaryTermsPair++;
+  if (buildCounterGlossaryTermsPair < 3) {
+    o.sourceTerm = buildGlossaryTerm();
+    o.targetTerm = buildGlossaryTerm();
+  }
+  buildCounterGlossaryTermsPair--;
+  return o;
+}
+
+void checkGlossaryTermsPair(api.GlossaryTermsPair o) {
+  buildCounterGlossaryTermsPair++;
+  if (buildCounterGlossaryTermsPair < 3) {
+    checkGlossaryTerm(o.sourceTerm!);
+    checkGlossaryTerm(o.targetTerm!);
+  }
+  buildCounterGlossaryTermsPair--;
+}
+
+core.List<api.GlossaryTerm> buildUnnamed13() => [
+      buildGlossaryTerm(),
+      buildGlossaryTerm(),
+    ];
+
+void checkUnnamed13(core.List<api.GlossaryTerm> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGlossaryTerm(o[0]);
+  checkGlossaryTerm(o[1]);
+}
+
+core.int buildCounterGlossaryTermsSet = 0;
+api.GlossaryTermsSet buildGlossaryTermsSet() {
+  final o = api.GlossaryTermsSet();
+  buildCounterGlossaryTermsSet++;
+  if (buildCounterGlossaryTermsSet < 3) {
+    o.terms = buildUnnamed13();
+  }
+  buildCounterGlossaryTermsSet--;
+  return o;
+}
+
+void checkGlossaryTermsSet(api.GlossaryTermsSet o) {
+  buildCounterGlossaryTermsSet++;
+  if (buildCounterGlossaryTermsSet < 3) {
+    checkUnnamed13(o.terms!);
+  }
+  buildCounterGlossaryTermsSet--;
 }
 
 core.int buildCounterInputConfig = 0;
@@ -672,12 +786,12 @@ void checkLanguageCodePair(api.LanguageCodePair o) {
   buildCounterLanguageCodePair--;
 }
 
-core.List<core.String> buildUnnamed13() => [
+core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -694,7 +808,7 @@ api.LanguageCodesSet buildLanguageCodesSet() {
   final o = api.LanguageCodesSet();
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    o.languageCodes = buildUnnamed13();
+    o.languageCodes = buildUnnamed14();
   }
   buildCounterLanguageCodesSet--;
   return o;
@@ -703,17 +817,17 @@ api.LanguageCodesSet buildLanguageCodesSet() {
 void checkLanguageCodesSet(api.LanguageCodesSet o) {
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    checkUnnamed13(o.languageCodes!);
+    checkUnnamed14(o.languageCodes!);
   }
   buildCounterLanguageCodesSet--;
 }
 
-core.List<api.Glossary> buildUnnamed14() => [
+core.List<api.Glossary> buildUnnamed15() => [
       buildGlossary(),
       buildGlossary(),
     ];
 
-void checkUnnamed14(core.List<api.Glossary> o) {
+void checkUnnamed15(core.List<api.Glossary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlossary(o[0]);
   checkGlossary(o[1]);
@@ -724,7 +838,7 @@ api.ListGlossariesResponse buildListGlossariesResponse() {
   final o = api.ListGlossariesResponse();
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    o.glossaries = buildUnnamed14();
+    o.glossaries = buildUnnamed15();
     o.nextPageToken = 'foo';
   }
   buildCounterListGlossariesResponse--;
@@ -734,7 +848,7 @@ api.ListGlossariesResponse buildListGlossariesResponse() {
 void checkListGlossariesResponse(api.ListGlossariesResponse o) {
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    checkUnnamed14(o.glossaries!);
+    checkUnnamed15(o.glossaries!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -743,12 +857,47 @@ void checkListGlossariesResponse(api.ListGlossariesResponse o) {
   buildCounterListGlossariesResponse--;
 }
 
-core.List<api.Location> buildUnnamed15() => [
+core.List<api.GlossaryEntry> buildUnnamed16() => [
+      buildGlossaryEntry(),
+      buildGlossaryEntry(),
+    ];
+
+void checkUnnamed16(core.List<api.GlossaryEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGlossaryEntry(o[0]);
+  checkGlossaryEntry(o[1]);
+}
+
+core.int buildCounterListGlossaryEntriesResponse = 0;
+api.ListGlossaryEntriesResponse buildListGlossaryEntriesResponse() {
+  final o = api.ListGlossaryEntriesResponse();
+  buildCounterListGlossaryEntriesResponse++;
+  if (buildCounterListGlossaryEntriesResponse < 3) {
+    o.glossaryEntries = buildUnnamed16();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListGlossaryEntriesResponse--;
+  return o;
+}
+
+void checkListGlossaryEntriesResponse(api.ListGlossaryEntriesResponse o) {
+  buildCounterListGlossaryEntriesResponse++;
+  if (buildCounterListGlossaryEntriesResponse < 3) {
+    checkUnnamed16(o.glossaryEntries!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListGlossaryEntriesResponse--;
+}
+
+core.List<api.Location> buildUnnamed17() => [
       buildLocation(),
       buildLocation(),
     ];
 
-void checkUnnamed15(core.List<api.Location> o) {
+void checkUnnamed17(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -759,7 +908,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed15();
+    o.locations = buildUnnamed17();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -769,7 +918,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed15(o.locations!);
+    checkUnnamed17(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -778,12 +927,12 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed16() => [
+core.List<api.Operation> buildUnnamed18() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed16(core.List<api.Operation> o) {
+void checkUnnamed18(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -795,7 +944,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed16();
+    o.operations = buildUnnamed18();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -808,17 +957,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.operations!);
+    checkUnnamed18(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed17() => {
+core.Map<core.String, core.String> buildUnnamed19() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed17(core.Map<core.String, core.String> o) {
+void checkUnnamed19(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -830,7 +979,7 @@ void checkUnnamed17(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed20() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -843,7 +992,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
       },
     };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
+void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -881,9 +1030,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed17();
+    o.labels = buildUnnamed19();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed18();
+    o.metadata = buildUnnamed20();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -897,12 +1046,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.labels!);
+    checkUnnamed19(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.metadata!);
+    checkUnnamed20(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -911,7 +1060,7 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed19() => {
+core.Map<core.String, core.Object?> buildUnnamed21() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -924,7 +1073,7 @@ core.Map<core.String, core.Object?> buildUnnamed19() => {
       },
     };
 
-void checkUnnamed19(core.Map<core.String, core.Object?> o) {
+void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -956,7 +1105,7 @@ void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed20() => {
+core.Map<core.String, core.Object?> buildUnnamed22() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -969,7 +1118,7 @@ core.Map<core.String, core.Object?> buildUnnamed20() => {
       },
     };
 
-void checkUnnamed20(core.Map<core.String, core.Object?> o) {
+void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1008,9 +1157,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed19();
+    o.metadata = buildUnnamed21();
     o.name = 'foo';
-    o.response = buildUnnamed20();
+    o.response = buildUnnamed22();
   }
   buildCounterOperation--;
   return o;
@@ -1021,12 +1170,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed19(o.metadata!);
+    checkUnnamed21(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.response!);
+    checkUnnamed22(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1050,7 +1199,7 @@ void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed21() => {
+core.Map<core.String, core.Object?> buildUnnamed23() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1063,7 +1212,7 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       },
     };
 
-void checkUnnamed21(core.Map<core.String, core.Object?> o) {
+void checkUnnamed23(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1095,15 +1244,15 @@ void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed22() => [
-      buildUnnamed21(),
-      buildUnnamed21(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed24() => [
+      buildUnnamed23(),
+      buildUnnamed23(),
     ];
 
-void checkUnnamed22(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed24(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed21(o[0]);
-  checkUnnamed21(o[1]);
+  checkUnnamed23(o[0]);
+  checkUnnamed23(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1112,7 +1261,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed22();
+    o.details = buildUnnamed24();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1126,7 +1275,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed22(o.details!);
+    checkUnnamed24(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1166,12 +1315,12 @@ void checkSupportedLanguage(api.SupportedLanguage o) {
   buildCounterSupportedLanguage--;
 }
 
-core.List<api.SupportedLanguage> buildUnnamed23() => [
+core.List<api.SupportedLanguage> buildUnnamed25() => [
       buildSupportedLanguage(),
       buildSupportedLanguage(),
     ];
 
-void checkUnnamed23(core.List<api.SupportedLanguage> o) {
+void checkUnnamed25(core.List<api.SupportedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSupportedLanguage(o[0]);
   checkSupportedLanguage(o[1]);
@@ -1182,7 +1331,7 @@ api.SupportedLanguages buildSupportedLanguages() {
   final o = api.SupportedLanguages();
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    o.languages = buildUnnamed23();
+    o.languages = buildUnnamed25();
   }
   buildCounterSupportedLanguages--;
   return o;
@@ -1191,17 +1340,17 @@ api.SupportedLanguages buildSupportedLanguages() {
 void checkSupportedLanguages(api.SupportedLanguages o) {
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    checkUnnamed23(o.languages!);
+    checkUnnamed25(o.languages!);
   }
   buildCounterSupportedLanguages--;
 }
 
-core.Map<core.String, core.String> buildUnnamed24() => {
+core.Map<core.String, core.String> buildUnnamed26() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed24(core.Map<core.String, core.String> o) {
+void checkUnnamed26(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1221,7 +1370,7 @@ api.TranslateDocumentRequest buildTranslateDocumentRequest() {
     o.documentInputConfig = buildDocumentInputConfig();
     o.documentOutputConfig = buildDocumentOutputConfig();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
-    o.labels = buildUnnamed24();
+    o.labels = buildUnnamed26();
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
     o.targetLanguageCode = 'foo';
@@ -1236,7 +1385,7 @@ void checkTranslateDocumentRequest(api.TranslateDocumentRequest o) {
     checkDocumentInputConfig(o.documentInputConfig!);
     checkDocumentOutputConfig(o.documentOutputConfig!);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
-    checkUnnamed24(o.labels!);
+    checkUnnamed26(o.labels!);
     unittest.expect(
       o.model!,
       unittest.equals('foo'),
@@ -1305,12 +1454,12 @@ void checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
   buildCounterTranslateTextGlossaryConfig--;
 }
 
-core.List<core.String> buildUnnamed25() => [
+core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed25(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1322,12 +1471,12 @@ void checkUnnamed25(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed26() => {
+core.Map<core.String, core.String> buildUnnamed28() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed26(core.Map<core.String, core.String> o) {
+void checkUnnamed28(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1344,9 +1493,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
   final o = api.TranslateTextRequest();
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    o.contents = buildUnnamed25();
+    o.contents = buildUnnamed27();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
-    o.labels = buildUnnamed26();
+    o.labels = buildUnnamed28();
     o.mimeType = 'foo';
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
@@ -1359,9 +1508,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
 void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    checkUnnamed25(o.contents!);
+    checkUnnamed27(o.contents!);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
-    checkUnnamed26(o.labels!);
+    checkUnnamed28(o.labels!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -1382,23 +1531,23 @@ void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest--;
 }
 
-core.List<api.Translation> buildUnnamed27() => [
+core.List<api.Translation> buildUnnamed29() => [
       buildTranslation(),
       buildTranslation(),
     ];
 
-void checkUnnamed27(core.List<api.Translation> o) {
+void checkUnnamed29(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
 }
 
-core.List<api.Translation> buildUnnamed28() => [
+core.List<api.Translation> buildUnnamed30() => [
       buildTranslation(),
       buildTranslation(),
     ];
 
-void checkUnnamed28(core.List<api.Translation> o) {
+void checkUnnamed30(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
@@ -1409,8 +1558,8 @@ api.TranslateTextResponse buildTranslateTextResponse() {
   final o = api.TranslateTextResponse();
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    o.glossaryTranslations = buildUnnamed27();
-    o.translations = buildUnnamed28();
+    o.glossaryTranslations = buildUnnamed29();
+    o.translations = buildUnnamed30();
   }
   buildCounterTranslateTextResponse--;
   return o;
@@ -1419,8 +1568,8 @@ api.TranslateTextResponse buildTranslateTextResponse() {
 void checkTranslateTextResponse(api.TranslateTextResponse o) {
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    checkUnnamed27(o.glossaryTranslations!);
-    checkUnnamed28(o.translations!);
+    checkUnnamed29(o.glossaryTranslations!);
+    checkUnnamed30(o.translations!);
   }
   buildCounterTranslateTextResponse--;
 }
@@ -1632,6 +1781,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GlossaryEntry', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGlossaryEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GlossaryEntry.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGlossaryEntry(od);
+    });
+  });
+
   unittest.group('obj-schema-GlossaryInputConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGlossaryInputConfig();
@@ -1639,6 +1798,36 @@ void main() {
       final od = api.GlossaryInputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGlossaryInputConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-GlossaryTerm', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGlossaryTerm();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GlossaryTerm.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGlossaryTerm(od);
+    });
+  });
+
+  unittest.group('obj-schema-GlossaryTermsPair', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGlossaryTermsPair();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GlossaryTermsPair.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGlossaryTermsPair(od);
+    });
+  });
+
+  unittest.group('obj-schema-GlossaryTermsSet', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGlossaryTermsSet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GlossaryTermsSet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGlossaryTermsSet(od);
     });
   });
 
@@ -1679,6 +1868,16 @@ void main() {
       final od = api.ListGlossariesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListGlossariesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListGlossaryEntriesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListGlossaryEntriesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListGlossaryEntriesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListGlossaryEntriesResponse(od);
     });
   });
 
@@ -2727,6 +2926,363 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListGlossariesResponse(response as api.ListGlossariesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations.glossaries;
+      final arg_request = buildGlossary();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Glossary.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGlossary(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsGlossariesGlossaryEntriesResource',
+      () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final arg_request = buildGlossaryEntry();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GlossaryEntry.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGlossaryEntry(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGlossaryEntry());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGlossaryEntry(response as api.GlossaryEntry);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGlossaryEntry());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGlossaryEntry(response as api.GlossaryEntry);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListGlossaryEntriesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGlossaryEntriesResponse(
+          response as api.ListGlossaryEntriesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.TranslateApi(mock).projects.locations.glossaries.glossaryEntries;
+      final arg_request = buildGlossaryEntry();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GlossaryEntry.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGlossaryEntry(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v3/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGlossaryEntry());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGlossaryEntry(response as api.GlossaryEntry);
     });
   });
 

@@ -196,7 +196,7 @@
             }
         }
     },
-    "revision": "20220803",
+    "revision": "20220908",
     "rootUrl": "https://mybusinessbusinesscalls.googleapis.com/",
     "schemas": {
         "AggregateMetrics": {

@@ -1640,7 +1640,8 @@ class PropertiesAudiencesResource {
 
   /// Lookup for a single Audience.
   ///
-  /// Audiences created before 2020 may not be supported.
+  /// Audiences created before 2020 may not be supported. Default audiences will
+  /// not show filter definitions.
   ///
   /// Request parameters:
   ///
@@ -1679,7 +1680,8 @@ class PropertiesAudiencesResource {
 
   /// Lists Audiences on a property.
   ///
-  /// Audiences created before 2020 may not be supported.
+  /// Audiences created before 2020 may not be supported. Default audiences will
+  /// not show filter definitions.
   ///
   /// Request parameters:
   ///
@@ -4695,14 +4697,23 @@ class GoogleAnalyticsAdminV1alphaAccessQuota {
   /// Properties can use 50,000 tokens per hour.
   ///
   /// An API request consumes a single number of tokens, and that number is
-  /// deducted from both the hourly and daily quotas.
+  /// deducted from all of the hourly, daily, and per project hourly quotas.
   GoogleAnalyticsAdminV1alphaAccessQuotaStatus? tokensPerHour;
+
+  /// Properties can use up to 25% of their tokens per project per hour.
+  ///
+  /// This amounts to Analytics 360 Properties can use 12,500 tokens per project
+  /// per hour. An API request consumes a single number of tokens, and that
+  /// number is deducted from all of the hourly, daily, and per project hourly
+  /// quotas.
+  GoogleAnalyticsAdminV1alphaAccessQuotaStatus? tokensPerProjectPerHour;
 
   GoogleAnalyticsAdminV1alphaAccessQuota({
     this.concurrentRequests,
     this.serverErrorsPerProjectPerHour,
     this.tokensPerDay,
     this.tokensPerHour,
+    this.tokensPerProjectPerHour,
   });
 
   GoogleAnalyticsAdminV1alphaAccessQuota.fromJson(core.Map json_)
@@ -4726,6 +4737,11 @@ class GoogleAnalyticsAdminV1alphaAccessQuota {
               ? GoogleAnalyticsAdminV1alphaAccessQuotaStatus.fromJson(
                   json_['tokensPerHour'] as core.Map<core.String, core.dynamic>)
               : null,
+          tokensPerProjectPerHour: json_.containsKey('tokensPerProjectPerHour')
+              ? GoogleAnalyticsAdminV1alphaAccessQuotaStatus.fromJson(
+                  json_['tokensPerProjectPerHour']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4735,6 +4751,8 @@ class GoogleAnalyticsAdminV1alphaAccessQuota {
           'serverErrorsPerProjectPerHour': serverErrorsPerProjectPerHour!,
         if (tokensPerDay != null) 'tokensPerDay': tokensPerDay!,
         if (tokensPerHour != null) 'tokensPerHour': tokensPerHour!,
+        if (tokensPerProjectPerHour != null)
+          'tokensPerProjectPerHour': tokensPerProjectPerHour!,
       };
 }
 
@@ -5412,9 +5430,7 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter {
   /// - "OPERATION_UNSPECIFIED" : Unspecified.
   /// - "EQUAL" : Equal.
   /// - "LESS_THAN" : Less than.
-  /// - "LESS_THAN_OR_EQUAL" : Less than or equal.
   /// - "GREATER_THAN" : Greater than.
-  /// - "GREATER_THAN_OR_EQUAL" : Greater than or equal.
   core.String? operation;
 
   /// The numeric or date value to match against.
@@ -5495,8 +5511,6 @@ class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter {
   /// - "ENDS_WITH" : Ends with the string value.
   /// - "CONTAINS" : Contains the string value.
   /// - "FULL_REGEXP" : Full regular expression matches with the string value.
-  /// - "PARTIAL_REGEXP" : Partial regular expression matches with the string
-  /// value.
   core.String? matchType;
 
   /// The string value to be matched against.

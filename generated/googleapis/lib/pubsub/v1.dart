@@ -2245,10 +2245,16 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -3457,6 +3463,10 @@ class Snapshot {
 }
 
 /// A subscription resource.
+///
+/// If none of `push_config` or `bigquery_config` is set, then the subscriber
+/// will pull and ack messages using API methods. At most one of these fields
+/// may be set.
 class Subscription {
   /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
   /// the subscriber to acknowledge receipt before resending the message.
@@ -3478,10 +3488,6 @@ class Subscription {
 
   /// If delivery to BigQuery is used with this subscription, this field is used
   /// to configure it.
-  ///
-  /// Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both
-  /// are empty, then the subscriber will pull and ack messages using API
-  /// methods.
   BigQueryConfig? bigqueryConfig;
 
   /// A policy that specifies the conditions for dead lettering messages in this
@@ -3565,10 +3571,6 @@ class Subscription {
 
   /// If push delivery is used with this subscription, this field is used to
   /// configure it.
-  ///
-  /// Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both
-  /// are empty, then the subscriber will pull and ack messages using API
-  /// methods.
   PushConfig? pushConfig;
 
   /// Indicates whether to retain acknowledged messages.

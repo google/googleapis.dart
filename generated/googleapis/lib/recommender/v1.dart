@@ -2514,7 +2514,7 @@ class GoogleCloudRecommenderV1Impact {
 
 /// An insight along with the information used to derive the insight.
 ///
-/// The insight may have associated recomendations as well.
+/// The insight may have associated recommendations as well.
 class GoogleCloudRecommenderV1Insight {
   /// Recommendations derived from this insight.
   core.List<GoogleCloudRecommenderV1InsightRecommendationReference>?

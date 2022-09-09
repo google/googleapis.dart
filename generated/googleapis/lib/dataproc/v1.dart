@@ -552,7 +552,9 @@ class ProjectsLocationsBatchesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the batch resource to delete.
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+$`.
   ///
@@ -588,7 +590,9 @@ class ProjectsLocationsBatchesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the batch to retrieve.
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+$`.
   ///
@@ -4372,19 +4376,24 @@ class Binding {
   /// represents anyone who is on the internet; with or without a Google
   /// account. allAuthenticatedUsers: A special identifier that represents
   /// anyone who is authenticated with a Google account or a service account.
-  /// user:{emailid}: An email address that represents a specific Google
-  /// account. For example, alice@example.com . serviceAccount:{emailid}: An
-  /// email address that represents a service account. For example,
-  /// my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email
-  /// address that represents a Google group. For example, admins@example.com.
-  /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
-  /// identifier) representing a user that has been recently deleted. For
-  /// example, alice@example.com?uid=123456789012345678901. If the user is
-  /// recovered, this value reverts to user:{emailid} and the recovered user
-  /// retains the role in the binding.
-  /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus
-  /// unique identifier) representing a service account that has been recently
-  /// deleted. For example,
+  /// Does not include identities that come from external identity providers
+  /// (IdPs) through identity federation. user:{emailid}: An email address that
+  /// represents a specific Google account. For example, alice@example.com .
+  /// serviceAccount:{emailid}: An email address that represents a Google
+  /// service account. For example, my-other-app@appspot.gserviceaccount.com.
+  /// serviceAccount:{projectid}.svc.id.goog\[{namespace}/{kubernetes-sa}\]: An
+  /// identifier for a Kubernetes service account
+  /// (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, my-project.svc.id.goog\[my-namespace/my-kubernetes-sa\].
+  /// group:{emailid}: An email address that represents a Google group. For
+  /// example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An
+  /// email address (plus unique identifier) representing a user that has been
+  /// recently deleted. For example,
+  /// alice@example.com?uid=123456789012345678901. If the user is recovered,
+  /// this value reverts to user:{emailid} and the recovered user retains the
+  /// role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An
+  /// email address (plus unique identifier) representing a service account that
+  /// has been recently deleted. For example,
   /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the
   /// service account is undeleted, this value reverts to
   /// serviceAccount:{emailid} and the undeleted service account retains the
@@ -5208,6 +5217,16 @@ class EnvironmentConfig {
 
 /// Execution configuration for a workload.
 class ExecutionConfig {
+  /// The duration to keep the session alive while it's idling.
+  ///
+  /// Passing this threshold will cause the session to be terminated. Minimum
+  /// value is 30 minutes; maximum value is 14 days (see JSON representation of
+  /// Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Optional.
+  core.String? idleTtl;
+
   /// The Cloud KMS key to use for encryption.
   ///
   /// Optional.
@@ -5234,6 +5253,7 @@ class ExecutionConfig {
   core.String? subnetworkUri;
 
   ExecutionConfig({
+    this.idleTtl,
     this.kmsKey,
     this.networkTags,
     this.networkUri,
@@ -5243,6 +5263,9 @@ class ExecutionConfig {
 
   ExecutionConfig.fromJson(core.Map json_)
       : this(
+          idleTtl: json_.containsKey('idleTtl')
+              ? json_['idleTtl'] as core.String
+              : null,
           kmsKey: json_.containsKey('kmsKey')
               ? json_['kmsKey'] as core.String
               : null,
@@ -5263,6 +5286,7 @@ class ExecutionConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (idleTtl != null) 'idleTtl': idleTtl!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (networkTags != null) 'networkTags': networkTags!,
         if (networkUri != null) 'networkUri': networkUri!,
@@ -6386,6 +6410,9 @@ class InstanceGroupConfig {
   /// instance groups.
   /// - "PREEMPTIBLE" : Instances are preemptible.This option is allowed only
   /// for secondary worker groups.
+  /// - "SPOT" : Instances are Spot VMsThis option is allowed only for secondary
+  /// worker groups. See Spot VMs
+  /// (https://cloud.google.com/compute/docs/instances/spot).
   core.String? preemptibility;
 
   InstanceGroupConfig({
@@ -6690,6 +6717,11 @@ class Job {
   /// Output only.
   core.List<JobStatus>? statusHistory;
 
+  /// Job is a Trino job.
+  ///
+  /// Optional.
+  TrinoJob? trinoJob;
+
   /// The collection of YARN applications spun up by this job.Beta Feature: This
   /// report is available for testing purposes only.
   ///
@@ -6717,6 +6749,7 @@ class Job {
     this.sparkSqlJob,
     this.status,
     this.statusHistory,
+    this.trinoJob,
     this.yarnApplications,
   });
 
@@ -6794,6 +6827,10 @@ class Job {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          trinoJob: json_.containsKey('trinoJob')
+              ? TrinoJob.fromJson(
+                  json_['trinoJob'] as core.Map<core.String, core.dynamic>)
+              : null,
           yarnApplications: json_.containsKey('yarnApplications')
               ? (json_['yarnApplications'] as core.List)
                   .map((value) => YarnApplication.fromJson(
@@ -6823,6 +6860,7 @@ class Job {
         if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!,
         if (status != null) 'status': status!,
         if (statusHistory != null) 'statusHistory': statusHistory!,
+        if (trinoJob != null) 'trinoJob': trinoJob!,
         if (yarnApplications != null) 'yarnApplications': yarnApplications!,
       };
 }
@@ -8162,6 +8200,11 @@ class OrderedJob {
   /// Required.
   core.String? stepId;
 
+  /// Job is a Trino job.
+  ///
+  /// Optional.
+  TrinoJob? trinoJob;
+
   OrderedJob({
     this.hadoopJob,
     this.hiveJob,
@@ -8175,6 +8218,7 @@ class OrderedJob {
     this.sparkRJob,
     this.sparkSqlJob,
     this.stepId,
+    this.trinoJob,
   });
 
   OrderedJob.fromJson(core.Map json_)
@@ -8231,6 +8275,10 @@ class OrderedJob {
           stepId: json_.containsKey('stepId')
               ? json_['stepId'] as core.String
               : null,
+          trinoJob: json_.containsKey('trinoJob')
+              ? TrinoJob.fromJson(
+                  json_['trinoJob'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8247,6 +8295,7 @@ class OrderedJob {
         if (sparkRJob != null) 'sparkRJob': sparkRJob!,
         if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!,
         if (stepId != null) 'stepId': stepId!,
+        if (trinoJob != null) 'trinoJob': trinoJob!,
       };
 }
 
@@ -10273,6 +10322,108 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for TestIamPermissions method.
 typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+
+/// A Dataproc job for running Trino (https://trino.io/) queries.
+///
+/// IMPORTANT: The Dataproc Trino Optional Component
+/// (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be
+/// enabled when the cluster is created to submit a Trino job to the cluster.
+class TrinoJob {
+  /// Trino client tags to attach to this query
+  ///
+  /// Optional.
+  core.List<core.String>? clientTags;
+
+  /// Whether to continue executing queries if a query fails.
+  ///
+  /// The default value is false. Setting to true can be useful when executing
+  /// independent parallel queries.
+  ///
+  /// Optional.
+  core.bool? continueOnFailure;
+
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
+  /// The format in which query output will be displayed.
+  ///
+  /// See the Trino documentation for supported output formats
+  ///
+  /// Optional.
+  core.String? outputFormat;
+
+  /// A mapping of property names to values.
+  ///
+  /// Used to set Trino session properties
+  /// (https://trino.io/docs/current/sql/set-session.html) Equivalent to using
+  /// the --session flag in the Trino CLI
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? properties;
+
+  /// The HCFS URI of the script that contains SQL queries.
+  core.String? queryFileUri;
+
+  /// A list of queries.
+  QueryList? queryList;
+
+  TrinoJob({
+    this.clientTags,
+    this.continueOnFailure,
+    this.loggingConfig,
+    this.outputFormat,
+    this.properties,
+    this.queryFileUri,
+    this.queryList,
+  });
+
+  TrinoJob.fromJson(core.Map json_)
+      : this(
+          clientTags: json_.containsKey('clientTags')
+              ? (json_['clientTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          continueOnFailure: json_.containsKey('continueOnFailure')
+              ? json_['continueOnFailure'] as core.bool
+              : null,
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          outputFormat: json_.containsKey('outputFormat')
+              ? json_['outputFormat'] as core.String
+              : null,
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          queryFileUri: json_.containsKey('queryFileUri')
+              ? json_['queryFileUri'] as core.String
+              : null,
+          queryList: json_.containsKey('queryList')
+              ? QueryList.fromJson(
+                  json_['queryList'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientTags != null) 'clientTags': clientTags!,
+        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+        if (outputFormat != null) 'outputFormat': outputFormat!,
+        if (properties != null) 'properties': properties!,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri!,
+        if (queryList != null) 'queryList': queryList!,
+      };
+}
 
 /// Validation based on a list of allowed values.
 class ValueValidation {

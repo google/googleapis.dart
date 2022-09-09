@@ -4983,6 +4983,8 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
   ///
   /// For example, "en-US". The response will localize in the corresponding
   /// language code, if specified. The default value is "en-US".
+  ///
+  /// Optional.
   core.String? languageCode;
 
   /// Requested page size.

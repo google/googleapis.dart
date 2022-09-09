@@ -2242,7 +2242,7 @@ class ProjectsInstancesDatabasesDatabaseRolesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The database whose roles should be listed. Values are
-  /// of the form `projects//instances//databases//databaseRoles`.
+  /// of the form `projects//instances//databases/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
   ///
@@ -3556,6 +3556,8 @@ class Backup {
 
   /// The encryption information for the backup.
   ///
+  /// .
+  ///
   /// Output only.
   EncryptionInfo? encryptionInfo;
 
@@ -3878,8 +3880,12 @@ class Binding {
   /// represents anyone who is authenticated with a Google account or a service
   /// account. * `user:{emailid}`: An email address that represents a specific
   /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{emailid}`: An email address that represents a Google
+  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
+  /// An identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
@@ -4475,13 +4481,14 @@ class Database {
   EncryptionConfig? encryptionConfig;
 
   /// For databases that are using customer managed encryption, this field
-  /// contains the encryption information for the database, such as encryption
-  /// state and the Cloud KMS key versions that are in use.
+  /// contains the encryption information for the database, such as all Cloud
+  /// KMS key versions that are in use.
   ///
-  /// For databases that are using Google default or other types of encryption,
-  /// this field is empty. This field is propagated lazily from the backend.
-  /// There might be a delay from when a key version is being used and when it
-  /// appears in this field.
+  /// The \`encryption_status' field inside of each \`EncryptionInfo\` is not
+  /// populated. For databases that are using Google default or other types of
+  /// encryption, this field is empty. This field is propagated lazily from the
+  /// backend. There might be a delay from when a key version is being used and
+  /// when it appears in this field.
   ///
   /// Output only.
   core.List<EncryptionInfo>? encryptionInfo;
@@ -4596,10 +4603,8 @@ class Database {
 class DatabaseRole {
   /// The name of the database role.
   ///
-  /// Values are of the form `projects//instances//databases//databaseRoles/
-  /// {role}`, where `` is as specified in the `CREATE ROLE` DDL statement. This
-  /// name can be passed to Get/Set IAMPolicy methods to identify the database
-  /// role.
+  /// Values are of the form `projects//instances//databases//databaseRoles/`
+  /// where `` is as specified in the `CREATE ROLE` DDL statement.
   ///
   /// Required.
   core.String? name;

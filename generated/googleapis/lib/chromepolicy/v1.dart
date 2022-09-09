@@ -24,6 +24,7 @@
 ///
 /// - [CustomersResource]
 ///   - [CustomersPoliciesResource]
+///     - [CustomersPoliciesGroupsResource]
 ///     - [CustomersPoliciesOrgunitsResource]
 ///   - [CustomersPolicySchemasResource]
 /// - [MediaResource]
@@ -91,6 +92,8 @@ class CustomersResource {
 class CustomersPoliciesResource {
   final commons.ApiRequester _requester;
 
+  CustomersPoliciesGroupsResource get groups =>
+      CustomersPoliciesGroupsResource(_requester);
   CustomersPoliciesOrgunitsResource get orgunits =>
       CustomersPoliciesOrgunitsResource(_requester);
 
@@ -136,6 +139,210 @@ class CustomersPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleChromePolicyV1ResolveResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersPoliciesGroupsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersPoliciesGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Delete multiple policy values that are applied to a specific group.
+  ///
+  /// All targets must have the same target format. That is to say that they
+  /// must point to the same target resource and must have the same keys
+  /// specified in `additionalTargetKeyNames`, though the values for those keys
+  /// may be different. On failure the request will return the error details as
+  /// part of the google.rpc.Status.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - ID of the Google Workspace account or literal "my_customer"
+  /// for the customer associated to the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> batchDelete(
+    GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/groups:batchDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Modify multiple policy values that are applied to a specific group.
+  ///
+  /// All targets must have the same target format. That is to say that they
+  /// must point to the same target resource and must have the same keys
+  /// specified in `additionalTargetKeyNames`, though the values for those keys
+  /// may be different. On failure the request will return the error details as
+  /// part of the google.rpc.Status.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - ID of the Google Workspace account or literal "my_customer"
+  /// for the customer associated to the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> batchModify(
+    GoogleChromePolicyV1BatchModifyGroupPoliciesRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/groups:batchModify';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a group priority ordering for an app.
+  ///
+  /// The target app must be supplied in `additionalTargetKeyNames` in the
+  /// PolicyTargetKey. On failure the request will return the error details as
+  /// part of the google.rpc.Status.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. ID of the Google Workspace account or literal
+  /// "my_customer" for the customer associated to the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromePolicyV1ListGroupPriorityOrderingResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromePolicyV1ListGroupPriorityOrderingResponse>
+      listGroupPriorityOrdering(
+    GoogleChromePolicyV1ListGroupPriorityOrderingRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/groups:listGroupPriorityOrdering';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromePolicyV1ListGroupPriorityOrderingResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a group priority ordering for an app.
+  ///
+  /// The target app must be supplied in `additionalTargetKeyNames` in the
+  /// PolicyTargetKey. On failure the request will return the error details as
+  /// part of the google.rpc.Status.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. ID of the Google Workspace account or literal
+  /// "my_customer" for the customer associated to the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> updateGroupPriorityOrdering(
+    GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/groups:updateGroupPriorityOrdering';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -487,6 +694,38 @@ class GoogleChromePolicyV1AdditionalTargetKeyName {
       };
 }
 
+/// Request message for specifying that multiple policy values will be deleted.
+class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest {
+  /// List of policies that will be deleted as defined by the `requests`.
+  ///
+  /// All requests in the list must follow these restrictions: 1. All schemas in
+  /// the list must have the same root namespace. 2. All
+  /// `policyTargetKey.targetResource` values must point to a group resource. 3.
+  /// All `policyTargetKey` values must have the same `app_id` key name in the
+  /// `additionalTargetKeys`. 4. No two modification requests can reference the
+  /// same `policySchema` + ` policyTargetKey` pair.
+  core.List<GoogleChromePolicyV1DeleteGroupPolicyRequest>? requests;
+
+  GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest({
+    this.requests,
+  });
+
+  GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyV1DeleteGroupPolicyRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
 /// Request message for specifying that multiple policy values inherit their
 /// value from their parents.
 class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest {
@@ -514,6 +753,39 @@ class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest {
               ? (json_['requests'] as core.List)
                   .map((value) =>
                       GoogleChromePolicyV1InheritOrgUnitPolicyRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Request message for modifying multiple policy values for a specific
+/// group-based target.
+class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest {
+  /// List of policies to modify as defined by the `requests`.
+  ///
+  /// All requests in the list must follow these restrictions: 1. All schemas in
+  /// the list must have the same root namespace. 2. All
+  /// `policyTargetKey.targetResource` values must point to a group resource. 3.
+  /// All `policyTargetKey` values must have the same `app_id` key name in the
+  /// `additionalTargetKeys`. 4. No two modification requests can reference the
+  /// same `policySchema` + ` policyTargetKey` pair.
+  core.List<GoogleChromePolicyV1ModifyGroupPolicyRequest>? requests;
+
+  GoogleChromePolicyV1BatchModifyGroupPoliciesRequest({
+    this.requests,
+  });
+
+  GoogleChromePolicyV1BatchModifyGroupPoliciesRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyV1ModifyGroupPolicyRequest.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -558,6 +830,41 @@ class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest {
       };
 }
 
+/// Request parameters for deleting the policy value of a specific group target.
+class GoogleChromePolicyV1DeleteGroupPolicyRequest {
+  /// The fully qualified name of the policy schema that is being inherited.
+  core.String? policySchema;
+
+  /// The key of the target for which we want to modify a policy.
+  ///
+  /// The target resource must point to a Group.
+  ///
+  /// Required.
+  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+
+  GoogleChromePolicyV1DeleteGroupPolicyRequest({
+    this.policySchema,
+    this.policyTargetKey,
+  });
+
+  GoogleChromePolicyV1DeleteGroupPolicyRequest.fromJson(core.Map json_)
+      : this(
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
+              : null,
+          policyTargetKey: json_.containsKey('policyTargetKey')
+              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+                  json_['policyTargetKey']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policySchema != null) 'policySchema': policySchema!,
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
+      };
+}
+
 /// Request parameters for inheriting policy value of a specific org unit target
 /// from the policy value of its parent org unit.
 class GoogleChromePolicyV1InheritOrgUnitPolicyRequest {
@@ -594,6 +901,92 @@ class GoogleChromePolicyV1InheritOrgUnitPolicyRequest {
       };
 }
 
+/// Request message for listing the group priority ordering of an app.
+class GoogleChromePolicyV1ListGroupPriorityOrderingRequest {
+  /// The namespace of the policy type for the request.
+  ///
+  /// Required.
+  core.String? policyNamespace;
+
+  /// The key of the target for which we want to retrieve the group priority
+  /// ordering.
+  ///
+  /// The target resource must point to an app.
+  ///
+  /// Required.
+  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+
+  GoogleChromePolicyV1ListGroupPriorityOrderingRequest({
+    this.policyNamespace,
+    this.policyTargetKey,
+  });
+
+  GoogleChromePolicyV1ListGroupPriorityOrderingRequest.fromJson(core.Map json_)
+      : this(
+          policyNamespace: json_.containsKey('policyNamespace')
+              ? json_['policyNamespace'] as core.String
+              : null,
+          policyTargetKey: json_.containsKey('policyTargetKey')
+              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+                  json_['policyTargetKey']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
+      };
+}
+
+/// Response message for listing the group priority ordering of an app.
+class GoogleChromePolicyV1ListGroupPriorityOrderingResponse {
+  /// The group IDs, in priority ordering.
+  ///
+  /// Output only.
+  core.List<core.String>? groupIds;
+
+  /// The namespace of the policy type of the group IDs.
+  ///
+  /// Output only.
+  core.String? policyNamespace;
+
+  /// The target resource for which the group priority ordering has been
+  /// retrieved.
+  ///
+  /// Output only.
+  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+
+  GoogleChromePolicyV1ListGroupPriorityOrderingResponse({
+    this.groupIds,
+    this.policyNamespace,
+    this.policyTargetKey,
+  });
+
+  GoogleChromePolicyV1ListGroupPriorityOrderingResponse.fromJson(core.Map json_)
+      : this(
+          groupIds: json_.containsKey('groupIds')
+              ? (json_['groupIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          policyNamespace: json_.containsKey('policyNamespace')
+              ? json_['policyNamespace'] as core.String
+              : null,
+          policyTargetKey: json_.containsKey('policyTargetKey')
+              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+                  json_['policyTargetKey']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groupIds != null) 'groupIds': groupIds!,
+        if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
+      };
+}
+
 /// Response message for listing policy schemas that match a filter.
 class GoogleChromePolicyV1ListPolicySchemasResponse {
   /// The page token used to get the next page of policy schemas.
@@ -623,6 +1016,56 @@ class GoogleChromePolicyV1ListPolicySchemasResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policySchemas != null) 'policySchemas': policySchemas!,
+      };
+}
+
+/// Request parameters for modifying a policy value for a specific group target.
+class GoogleChromePolicyV1ModifyGroupPolicyRequest {
+  /// The key of the target for which we want to modify a policy.
+  ///
+  /// The target resource must point to a Group.
+  ///
+  /// Required.
+  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+
+  /// The new value for the policy.
+  GoogleChromePolicyV1PolicyValue? policyValue;
+
+  /// Policy fields to update.
+  ///
+  /// Only fields in this mask will be updated; other fields in `policy_value`
+  /// will be ignored (even if they have values). If a field is in this list it
+  /// must have a value in 'policy_value'.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  GoogleChromePolicyV1ModifyGroupPolicyRequest({
+    this.policyTargetKey,
+    this.policyValue,
+    this.updateMask,
+  });
+
+  GoogleChromePolicyV1ModifyGroupPolicyRequest.fromJson(core.Map json_)
+      : this(
+          policyTargetKey: json_.containsKey('policyTargetKey')
+              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+                  json_['policyTargetKey']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          policyValue: json_.containsKey('policyValue')
+              ? GoogleChromePolicyV1PolicyValue.fromJson(
+                  json_['policyValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
+        if (policyValue != null) 'policyValue': policyValue!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -679,7 +1122,7 @@ class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest {
 
 /// Resource representing a policy schema.
 ///
-/// Next ID: 12
+/// Next ID: 14
 class GoogleChromePolicyV1PolicySchema {
   /// Specific access restrictions related to this policy.
   ///
@@ -695,6 +1138,11 @@ class GoogleChromePolicyV1PolicySchema {
   /// Output only.
   core.List<GoogleChromePolicyV1AdditionalTargetKeyName>?
       additionalTargetKeyNames;
+
+  /// Title of the category in which a setting belongs.
+  ///
+  /// Output only.
+  core.String? categoryTitle;
 
   /// Schema definition using proto descriptor.
   Proto2FileDescriptorProto? definition;
@@ -714,9 +1162,12 @@ class GoogleChromePolicyV1PolicySchema {
   /// Output only.
   core.List<GoogleChromePolicyV1PolicySchemaNoticeDescription>? notices;
 
-  /// Current life cycle information.
+  /// Current lifecycle information.
   ///
   /// Output only.
+  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifecycle;
+
+  /// Deprecated field because of typo.
   ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifeycle;
 
   /// Description about the policy schema for user consumption.
@@ -727,7 +1178,8 @@ class GoogleChromePolicyV1PolicySchema {
   /// The fully qualified name of the policy schema.
   ///
   /// This value is used to fill the field `policy_schema` in PolicyValue when
-  /// calling BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies
+  /// calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
+  /// BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
   ///
   /// Output only.
   core.String? schemaName;
@@ -745,10 +1197,12 @@ class GoogleChromePolicyV1PolicySchema {
   GoogleChromePolicyV1PolicySchema({
     this.accessRestrictions,
     this.additionalTargetKeyNames,
+    this.categoryTitle,
     this.definition,
     this.fieldDescriptions,
     this.name,
     this.notices,
+    this.policyApiLifecycle,
     this.policyApiLifeycle,
     this.policyDescription,
     this.schemaName,
@@ -771,6 +1225,9 @@ class GoogleChromePolicyV1PolicySchema {
                               value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
+          categoryTitle: json_.containsKey('categoryTitle')
+              ? json_['categoryTitle'] as core.String
+              : null,
           definition: json_.containsKey('definition')
               ? Proto2FileDescriptorProto.fromJson(
                   json_['definition'] as core.Map<core.String, core.dynamic>)
@@ -790,6 +1247,11 @@ class GoogleChromePolicyV1PolicySchema {
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          policyApiLifecycle: json_.containsKey('policyApiLifecycle')
+              ? ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
+                  json_['policyApiLifecycle']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           policyApiLifeycle: json_.containsKey('policyApiLifeycle')
               ? ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
@@ -817,10 +1279,13 @@ class GoogleChromePolicyV1PolicySchema {
           'accessRestrictions': accessRestrictions!,
         if (additionalTargetKeyNames != null)
           'additionalTargetKeyNames': additionalTargetKeyNames!,
+        if (categoryTitle != null) 'categoryTitle': categoryTitle!,
         if (definition != null) 'definition': definition!,
         if (fieldDescriptions != null) 'fieldDescriptions': fieldDescriptions!,
         if (name != null) 'name': name!,
         if (notices != null) 'notices': notices!,
+        if (policyApiLifecycle != null)
+          'policyApiLifecycle': policyApiLifecycle!,
         if (policyApiLifeycle != null) 'policyApiLifeycle': policyApiLifeycle!,
         if (policyDescription != null) 'policyDescription': policyDescription!,
         if (schemaName != null) 'schemaName': schemaName!,
@@ -1110,7 +1575,7 @@ class GoogleChromePolicyV1PolicyTargetKey {
   /// The target resource on which this policy is applied.
   ///
   /// The following resources are supported: * Organizational Unit
-  /// ("orgunits/{orgunit_id}")
+  /// ("orgunits/{orgunit_id}") * Group ("groups/{group_id}")
   core.String? targetResource;
 
   GoogleChromePolicyV1PolicyTargetKey({
@@ -1339,6 +1804,57 @@ class GoogleChromePolicyV1ResolvedPolicy {
         if (sourceKey != null) 'sourceKey': sourceKey!,
         if (targetKey != null) 'targetKey': targetKey!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Request message for updating the group priority ordering of an app.
+class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest {
+  /// The group IDs, in desired priority ordering.
+  ///
+  /// Required.
+  core.List<core.String>? groupIds;
+
+  /// The namespace of the policy type for the request.
+  ///
+  /// Required.
+  core.String? policyNamespace;
+
+  /// The key of the target for which we want to update the group priority
+  /// ordering.
+  ///
+  /// The target resource must point to an app.
+  ///
+  /// Required.
+  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+
+  GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest({
+    this.groupIds,
+    this.policyNamespace,
+    this.policyTargetKey,
+  });
+
+  GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest.fromJson(
+      core.Map json_)
+      : this(
+          groupIds: json_.containsKey('groupIds')
+              ? (json_['groupIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          policyNamespace: json_.containsKey('policyNamespace')
+              ? json_['policyNamespace'] as core.String
+              : null,
+          policyTargetKey: json_.containsKey('policyTargetKey')
+              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+                  json_['policyTargetKey']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groupIds != null) 'groupIds': groupIds!,
+        if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
 
