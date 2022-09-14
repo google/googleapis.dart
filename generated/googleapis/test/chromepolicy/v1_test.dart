@@ -662,8 +662,10 @@ api.GoogleChromePolicyV1PolicySchemaFieldDescription
     o.description = 'foo';
     o.field = 'foo';
     o.fieldDependencies = buildUnnamed11();
+    o.fieldDescription = 'foo';
     o.inputConstraint = 'foo';
     o.knownValueDescriptions = buildUnnamed12();
+    o.name = 'foo';
     o.nestedFieldDescriptions = buildUnnamed13();
     o.requiredItems = buildUnnamed14();
   }
@@ -685,10 +687,18 @@ void checkGoogleChromePolicyV1PolicySchemaFieldDescription(
     );
     checkUnnamed11(o.fieldDependencies!);
     unittest.expect(
+      o.fieldDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.inputConstraint!,
       unittest.equals('foo'),
     );
     checkUnnamed12(o.knownValueDescriptions!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkUnnamed13(o.nestedFieldDescriptions!);
     checkUnnamed14(o.requiredItems!);
   }

@@ -382,7 +382,8 @@ class Attributes {
 
   /// Grocery Attributes.
   ///
-  /// For more information, see go/mfc-nutrition-attributes.
+  /// See more at
+  /// https://support.google.com/manufacturers/answer/12098458#grocery.
   Grocery? grocery;
 
   /// The Global Trade Item Number (GTIN) of the product.
@@ -424,7 +425,8 @@ class Attributes {
 
   /// Nutrition Attributes.
   ///
-  /// For more information, see go/mfc-nutrition-attributes.
+  /// See more at
+  /// https://support.google.com/manufacturers/answer/12098458#food-servings.
   Nutrition? nutrition;
 
   /// The pattern of the product.
@@ -908,7 +910,7 @@ class FeatureDescription {
       };
 }
 
-/// Combination of float amout and unit.
+/// Combination of float amount and unit.
 class FloatUnit {
   /// amount.
   core.double? amount;

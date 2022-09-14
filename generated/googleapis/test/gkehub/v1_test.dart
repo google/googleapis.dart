@@ -416,6 +416,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
   final o = api.ConfigManagementConfigSync();
   buildCounterConfigManagementConfigSync++;
   if (buildCounterConfigManagementConfigSync < 3) {
+    o.allowVerticalScale = true;
     o.enabled = true;
     o.git = buildConfigManagementGitConfig();
     o.oci = buildConfigManagementOciConfig();
@@ -429,6 +430,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
 void checkConfigManagementConfigSync(api.ConfigManagementConfigSync o) {
   buildCounterConfigManagementConfigSync++;
   if (buildCounterConfigManagementConfigSync < 3) {
+    unittest.expect(o.allowVerticalScale!, unittest.isTrue);
     unittest.expect(o.enabled!, unittest.isTrue);
     checkConfigManagementGitConfig(o.git!);
     checkConfigManagementOciConfig(o.oci!);
@@ -2755,12 +2757,48 @@ void checkServiceMeshControlPlaneManagement(
   buildCounterServiceMeshControlPlaneManagement--;
 }
 
+core.List<api.ServiceMeshStatusDetails> buildUnnamed32() => [
+      buildServiceMeshStatusDetails(),
+      buildServiceMeshStatusDetails(),
+    ];
+
+void checkUnnamed32(core.List<api.ServiceMeshStatusDetails> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServiceMeshStatusDetails(o[0]);
+  checkServiceMeshStatusDetails(o[1]);
+}
+
+core.int buildCounterServiceMeshDataPlaneManagement = 0;
+api.ServiceMeshDataPlaneManagement buildServiceMeshDataPlaneManagement() {
+  final o = api.ServiceMeshDataPlaneManagement();
+  buildCounterServiceMeshDataPlaneManagement++;
+  if (buildCounterServiceMeshDataPlaneManagement < 3) {
+    o.details = buildUnnamed32();
+    o.state = 'foo';
+  }
+  buildCounterServiceMeshDataPlaneManagement--;
+  return o;
+}
+
+void checkServiceMeshDataPlaneManagement(api.ServiceMeshDataPlaneManagement o) {
+  buildCounterServiceMeshDataPlaneManagement++;
+  if (buildCounterServiceMeshDataPlaneManagement < 3) {
+    checkUnnamed32(o.details!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServiceMeshDataPlaneManagement--;
+}
+
 core.int buildCounterServiceMeshMembershipSpec = 0;
 api.ServiceMeshMembershipSpec buildServiceMeshMembershipSpec() {
   final o = api.ServiceMeshMembershipSpec();
   buildCounterServiceMeshMembershipSpec++;
   if (buildCounterServiceMeshMembershipSpec < 3) {
     o.controlPlane = 'foo';
+    o.management = 'foo';
   }
   buildCounterServiceMeshMembershipSpec--;
   return o;
@@ -2773,6 +2811,10 @@ void checkServiceMeshMembershipSpec(api.ServiceMeshMembershipSpec o) {
       o.controlPlane!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.management!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterServiceMeshMembershipSpec--;
 }
@@ -2783,6 +2825,7 @@ api.ServiceMeshMembershipState buildServiceMeshMembershipState() {
   buildCounterServiceMeshMembershipState++;
   if (buildCounterServiceMeshMembershipState < 3) {
     o.controlPlaneManagement = buildServiceMeshControlPlaneManagement();
+    o.dataPlaneManagement = buildServiceMeshDataPlaneManagement();
   }
   buildCounterServiceMeshMembershipState--;
   return o;
@@ -2792,6 +2835,7 @@ void checkServiceMeshMembershipState(api.ServiceMeshMembershipState o) {
   buildCounterServiceMeshMembershipState++;
   if (buildCounterServiceMeshMembershipState < 3) {
     checkServiceMeshControlPlaneManagement(o.controlPlaneManagement!);
+    checkServiceMeshDataPlaneManagement(o.dataPlaneManagement!);
   }
   buildCounterServiceMeshMembershipState--;
 }
@@ -2904,42 +2948,6 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed32() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed32(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed32();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed32(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
@@ -2957,12 +2965,48 @@ void checkUnnamed33(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed33();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed33(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed34() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed34(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed33();
+    o.permissions = buildUnnamed34();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2971,7 +3015,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed33(o.permissions!);
+    checkUnnamed34(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -3753,6 +3797,16 @@ void main() {
       final od = api.ServiceMeshControlPlaneManagement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkServiceMeshControlPlaneManagement(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServiceMeshDataPlaneManagement', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServiceMeshDataPlaneManagement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServiceMeshDataPlaneManagement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServiceMeshDataPlaneManagement(od);
     });
   });
 

@@ -6802,6 +6802,9 @@ class JobConfigurationLoad {
   /// first partitioned and subsequently clustered.
   Clustering? clustering;
 
+  /// Connection properties.
+  core.List<ConnectionProperty>? connectionProperties;
+
   /// Specifies whether the job is allowed to create new tables.
   ///
   /// The following values are supported: CREATE_IF_NEEDED: If the table does
@@ -7060,6 +7063,7 @@ class JobConfigurationLoad {
     this.allowQuotedNewlines,
     this.autodetect,
     this.clustering,
+    this.connectionProperties,
     this.createDisposition,
     this.decimalTargetTypes,
     this.destinationEncryptionConfiguration,
@@ -7104,6 +7108,12 @@ class JobConfigurationLoad {
           clustering: json_.containsKey('clustering')
               ? Clustering.fromJson(
                   json_['clustering'] as core.Map<core.String, core.dynamic>)
+              : null,
+          connectionProperties: json_.containsKey('connectionProperties')
+              ? (json_['connectionProperties'] as core.List)
+                  .map((value) => ConnectionProperty.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           createDisposition: json_.containsKey('createDisposition')
               ? json_['createDisposition'] as core.String
@@ -7218,6 +7228,8 @@ class JobConfigurationLoad {
           'allowQuotedNewlines': allowQuotedNewlines!,
         if (autodetect != null) 'autodetect': autodetect!,
         if (clustering != null) 'clustering': clustering!,
+        if (connectionProperties != null)
+          'connectionProperties': connectionProperties!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
@@ -10617,6 +10629,7 @@ class Routine {
   /// - "LANGUAGE_UNSPECIFIED"
   /// - "SQL" : SQL language.
   /// - "JAVASCRIPT" : JavaScript language.
+  /// - "PYTHON" : Python language.
   core.String? language;
 
   /// The time when this routine was last modified, in milliseconds since the
@@ -11445,8 +11458,8 @@ class SparkStatistics {
 /// Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind":
 /// "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT\>: {
 /// "typeKind": "STRUCT", "structType": { "fields": \[ { "name": "x", "type":
-/// {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY",
-/// "arrayElementType": {"typekind": "DATE"} } } \] } }
+/// {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY",
+/// "arrayElementType": {"typeKind": "DATE"} } } \] } }
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType? arrayElementType;

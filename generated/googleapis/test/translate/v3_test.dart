@@ -1367,6 +1367,7 @@ api.TranslateDocumentRequest buildTranslateDocumentRequest() {
   final o = api.TranslateDocumentRequest();
   buildCounterTranslateDocumentRequest++;
   if (buildCounterTranslateDocumentRequest < 3) {
+    o.customizedAttribution = 'foo';
     o.documentInputConfig = buildDocumentInputConfig();
     o.documentOutputConfig = buildDocumentOutputConfig();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
@@ -1382,6 +1383,10 @@ api.TranslateDocumentRequest buildTranslateDocumentRequest() {
 void checkTranslateDocumentRequest(api.TranslateDocumentRequest o) {
   buildCounterTranslateDocumentRequest++;
   if (buildCounterTranslateDocumentRequest < 3) {
+    unittest.expect(
+      o.customizedAttribution!,
+      unittest.equals('foo'),
+    );
     checkDocumentInputConfig(o.documentInputConfig!);
     checkDocumentOutputConfig(o.documentOutputConfig!);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);

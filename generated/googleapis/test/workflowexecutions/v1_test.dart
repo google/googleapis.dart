@@ -83,6 +83,7 @@ api.Execution buildExecution() {
     o.result = 'foo';
     o.startTime = 'foo';
     o.state = 'foo';
+    o.status = buildStatus();
     o.workflowRevisionId = 'foo';
   }
   buildCounterExecution--;
@@ -121,6 +122,7 @@ void checkExecution(api.Execution o) {
       o.state!,
       unittest.equals('foo'),
     );
+    checkStatus(o.status!);
     unittest.expect(
       o.workflowRevisionId!,
       unittest.equals('foo'),
@@ -311,6 +313,63 @@ void checkStackTraceElement(api.StackTraceElement o) {
   buildCounterStackTraceElement--;
 }
 
+core.List<api.Step> buildUnnamed3() => [
+      buildStep(),
+      buildStep(),
+    ];
+
+void checkUnnamed3(core.List<api.Step> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStep(o[0]);
+  checkStep(o[1]);
+}
+
+core.int buildCounterStatus = 0;
+api.Status buildStatus() {
+  final o = api.Status();
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    o.currentSteps = buildUnnamed3();
+  }
+  buildCounterStatus--;
+  return o;
+}
+
+void checkStatus(api.Status o) {
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    checkUnnamed3(o.currentSteps!);
+  }
+  buildCounterStatus--;
+}
+
+core.int buildCounterStep = 0;
+api.Step buildStep() {
+  final o = api.Step();
+  buildCounterStep++;
+  if (buildCounterStep < 3) {
+    o.routine = 'foo';
+    o.step = 'foo';
+  }
+  buildCounterStep--;
+  return o;
+}
+
+void checkStep(api.Step o) {
+  buildCounterStep++;
+  if (buildCounterStep < 3) {
+    unittest.expect(
+      o.routine!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.step!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStep--;
+}
+
 core.int buildCounterTriggerPubsubExecutionRequest = 0;
 api.TriggerPubsubExecutionRequest buildTriggerPubsubExecutionRequest() {
   final o = api.TriggerPubsubExecutionRequest();
@@ -418,6 +477,26 @@ void main() {
       final od = api.StackTraceElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStackTraceElement(od);
+    });
+  });
+
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-Step', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStep();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Step.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkStep(od);
     });
   });
 

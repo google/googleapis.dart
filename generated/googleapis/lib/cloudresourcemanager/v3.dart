@@ -1647,8 +1647,7 @@ class ProjectsResource {
   /// the ToS. Edits to IAM policies will be rejected until the lack of a
   /// ToS-accepting owner is rectified. If the project is part of an
   /// organization, you can remove all owners, potentially making the
-  /// organization inaccessible. + Calling this method requires enabling the App
-  /// Engine Admin API.
+  /// organization inaccessible.
   ///
   /// [request] - The metadata request object.
   ///

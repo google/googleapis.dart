@@ -263,7 +263,7 @@
             }
         }
     },
-    "revision": "20220907",
+    "revision": "20220913",
     "rootUrl": "https://gmailpostmastertools.googleapis.com/",
     "schemas": {
         "DeliveryError": {

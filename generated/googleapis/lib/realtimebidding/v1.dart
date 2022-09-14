@@ -193,8 +193,8 @@ class BiddersCreativesResource {
   /// `buyers/456`. 3. The ID of the bidder itself. So for listing creatives
   /// pertaining to bidder (`123`), you would use `buyers/123`. If you want to
   /// access all creatives pertaining to both the bidder and all of its child
-  /// seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all
-  /// creatives pertaining to bidder (`123`), use `bidders/123`.
+  /// seat accounts, you would use `bidders/{bidderAccountId}`, for example, for
+  /// all creatives pertaining to bidder (`123`), use `bidders/123`.
   /// Value must have pattern `^bidders/\[^/\]+$`.
   ///
   /// [filter] - Query string to filter creatives. If no filter is specified,
@@ -203,9 +203,9 @@ class BiddersCreativesResource {
   /// declaredAttributes:IS_COOKIE_TARGETED'
   ///
   /// [pageSize] - Requested page size. The server may return fewer creatives
-  /// than requested (due to timeout constraint) even if more are available via
-  /// another call. If unspecified, server will pick an appropriate default.
-  /// Acceptable values are 1 to 1000, inclusive.
+  /// than requested (due to timeout constraint) even if more are available
+  /// through another call. If unspecified, server will pick an appropriate
+  /// default. Acceptable values are 1 to 1000, inclusive.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
@@ -1187,7 +1187,7 @@ class BiddersPublisherConnectionsResource {
   /// `createTime`. Example: 'createTime DESC'.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested (due to timeout constraint) even if more are available via
+  /// requested (due to timeout constraint) even if more are available through
   /// another call. If unspecified, the server will pick an appropriate default.
   /// Acceptable values are 1 to 5000, inclusive.
   ///
@@ -1491,8 +1491,8 @@ class BuyersCreativesResource {
   /// `buyers/456`. 3. The ID of the bidder itself. So for listing creatives
   /// pertaining to bidder (`123`), you would use `buyers/123`. If you want to
   /// access all creatives pertaining to both the bidder and all of its child
-  /// seat accounts, you would use `bidders/{bidderAccountId}`, e.g., for all
-  /// creatives pertaining to bidder (`123`), use `bidders/123`.
+  /// seat accounts, you would use `bidders/{bidderAccountId}`, for example, for
+  /// all creatives pertaining to bidder (`123`), use `bidders/123`.
   /// Value must have pattern `^buyers/\[^/\]+$`.
   ///
   /// [filter] - Query string to filter creatives. If no filter is specified,
@@ -1501,9 +1501,9 @@ class BuyersCreativesResource {
   /// declaredAttributes:IS_COOKIE_TARGETED'
   ///
   /// [pageSize] - Requested page size. The server may return fewer creatives
-  /// than requested (due to timeout constraint) even if more are available via
-  /// another call. If unspecified, server will pick an appropriate default.
-  /// Acceptable values are 1 to 1000, inclusive.
+  /// than requested (due to timeout constraint) even if more are available
+  /// through another call. If unspecified, server will pick an appropriate
+  /// default. Acceptable values are 1 to 1000, inclusive.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
@@ -2365,7 +2365,7 @@ class BatchRejectPublisherConnectionsResponse {
 
 /// Bidder settings.
 class Bidder {
-  /// A flag to bypass pretargeting for private auctions and preferred deals.
+  /// An option to bypass pretargeting for private auctions and preferred deals.
   ///
   /// When true, bid requests from these nonguaranteed deals will always be
   /// sent. When false, bid requests will be subject to regular pretargeting
@@ -2453,8 +2453,8 @@ class Bidder {
 
 /// RTB Buyer account information.
 class Buyer {
-  /// The number of creatives that this buyer submitted via the API or bid with
-  /// in the last 30 days.
+  /// The number of creatives that this buyer submitted through the API or bid
+  /// with in the last 30 days.
   ///
   /// This is counted against the maximum number of active creatives.
   ///
@@ -2572,7 +2572,7 @@ class Creative {
   /// The agency ID for this creative.
   core.String? agencyId;
 
-  /// The last update timestamp of the creative via API.
+  /// The last update timestamp of the creative through the API.
   ///
   /// Output only.
   core.String? apiUpdateTime;
@@ -3081,12 +3081,12 @@ class DestinationNotCrawlableEvidence {
   /// Reason of destination not crawlable.
   /// Possible string values are:
   /// - "REASON_UNSPECIFIED" : Default value that should never be used.
-  /// - "UNREACHABLE_ROBOTS" : Site's robots exclusion file (e.g., robots.txt)
-  /// was unreachable.
-  /// - "TIMEOUT_ROBOTS" : Timed out reading site's robots exclusion file (e.g.,
-  /// robots.txt).
+  /// - "UNREACHABLE_ROBOTS" : Site's robots exclusion file (for example,
+  /// robots.txt) was unreachable.
+  /// - "TIMEOUT_ROBOTS" : Timed out reading site's robots exclusion file (for
+  /// example, robots.txt).
   /// - "ROBOTED_DENIED" : Crawler was disallowed by the site's robots exclusion
-  /// file (e.g., robots.txt).
+  /// file (for example, robots.txt).
   /// - "UNKNOWN" : Unknown reason.
   core.String? reason;
 
@@ -3131,7 +3131,7 @@ class DestinationNotWorkingEvidence {
   /// The full non-working URL.
   core.String? expandedUrl;
 
-  /// HTTP error code (e.g. 404 or 5xx)
+  /// HTTP error code (for example, 404 or 5xx)
   core.int? httpError;
 
   /// Page was crawled successfully, but was detected as either a page with no
@@ -3244,7 +3244,8 @@ class DestinationUrlEvidence {
 
 /// Number of HTTP calls made by a creative, broken down by domain.
 class DomainCallEvidence {
-  /// Breakdown of the most frequent domains called via HTTP by the creative.
+  /// Breakdown of the most frequent domains called through HTTP by the
+  /// creative.
   core.List<DomainCalls>? topHttpCallDomains;
 
   /// The total number of HTTP calls made by the creative, including but not
@@ -4053,8 +4054,8 @@ typedef OpenUserListRequest = $Empty;
 
 /// Policy compliance of the creative for a transaction type or a region.
 class PolicyCompliance {
-  /// Serving status for the given transaction type (e.g., open auction, deals)
-  /// or region (e.g., China, Russia).
+  /// Serving status for the given transaction type (for example, open auction,
+  /// deals) or region (for example, China, Russia).
   ///
   /// Can be used to filter the response of the creatives.list method.
   /// Possible string values are:
@@ -4068,8 +4069,8 @@ class PolicyCompliance {
   /// https://support.google.com/authorizedbuyers/answer/7450776
   core.String? status;
 
-  /// Topics related to the policy compliance for this transaction type (e.g.,
-  /// open auction, deals) or region (e.g., China, Russia).
+  /// Topics related to the policy compliance for this transaction type (for
+  /// example, open auction, deals) or region (for example, China, Russia).
   ///
   /// Topics may be present only if status is DISAPPROVED.
   core.List<PolicyTopicEntry>? topics;
@@ -5122,8 +5123,8 @@ class WatchCreativesResponse {
   /// `projects/{project_id}/subscriptions/{subscription_id}`. Subscription is
   /// created with pull delivery. All service accounts belonging to the bidder
   /// will have read access to this subscription. Subscriptions that are
-  /// inactive for more than 90 days will be disabled. Please use watchCreatives
-  /// to re-enable the subscription.
+  /// inactive for more than 90 days will be disabled. Use watchCreatives to
+  /// re-enable the subscription.
   core.String? subscription;
 
   /// The Pub/Sub topic that will be used to publish creative serving status

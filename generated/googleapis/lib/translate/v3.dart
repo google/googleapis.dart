@@ -2825,6 +2825,15 @@ class SupportedLanguages {
 
 /// A document translation request.
 class TranslateDocumentRequest {
+  /// This flag is to support user customized attribution.
+  ///
+  /// If not provided, the default is `Machine Translated by Google`. Customized
+  /// attribution should follow rules in
+  /// https://cloud.google.com/translate/attribution#attribution_and_logos
+  ///
+  /// Optional.
+  core.String? customizedAttribution;
+
   /// Input configurations.
   ///
   /// Required.
@@ -2891,6 +2900,7 @@ class TranslateDocumentRequest {
   core.String? targetLanguageCode;
 
   TranslateDocumentRequest({
+    this.customizedAttribution,
     this.documentInputConfig,
     this.documentOutputConfig,
     this.glossaryConfig,
@@ -2902,6 +2912,9 @@ class TranslateDocumentRequest {
 
   TranslateDocumentRequest.fromJson(core.Map json_)
       : this(
+          customizedAttribution: json_.containsKey('customizedAttribution')
+              ? json_['customizedAttribution'] as core.String
+              : null,
           documentInputConfig: json_.containsKey('documentInputConfig')
               ? DocumentInputConfig.fromJson(json_['documentInputConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2933,6 +2946,8 @@ class TranslateDocumentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customizedAttribution != null)
+          'customizedAttribution': customizedAttribution!,
         if (documentInputConfig != null)
           'documentInputConfig': documentInputConfig!,
         if (documentOutputConfig != null)

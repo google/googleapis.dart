@@ -1171,6 +1171,7 @@ api.Finding buildFinding() {
     o.name = 'foo';
     o.nextSteps = 'foo';
     o.parent = 'foo';
+    o.parentDisplayName = 'foo';
     o.processes = buildUnnamed21();
     o.resourceName = 'foo';
     o.securityMarks = buildSecurityMarks();
@@ -1248,6 +1249,10 @@ void checkFinding(api.Finding o) {
     );
     unittest.expect(
       o.parent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parentDisplayName!,
       unittest.equals('foo'),
     );
     checkUnnamed21(o.processes!);

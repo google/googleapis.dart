@@ -1836,6 +1836,11 @@ class CommonFeatureState {
 
 /// Configuration for Config Sync
 class ConfigManagementConfigSync {
+  /// Set to true to allow the vertical scaling.
+  ///
+  /// Defaults to false which disallows vertical scaling.
+  core.bool? allowVerticalScale;
+
   /// Enables the installation of ConfigSync.
   ///
   /// If set to true, ConfigSync resources will be created and the other
@@ -1862,6 +1867,7 @@ class ConfigManagementConfigSync {
   core.String? sourceFormat;
 
   ConfigManagementConfigSync({
+    this.allowVerticalScale,
     this.enabled,
     this.git,
     this.oci,
@@ -1871,6 +1877,9 @@ class ConfigManagementConfigSync {
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
       : this(
+          allowVerticalScale: json_.containsKey('allowVerticalScale')
+              ? json_['allowVerticalScale'] as core.bool
+              : null,
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
@@ -1891,6 +1900,8 @@ class ConfigManagementConfigSync {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowVerticalScale != null)
+          'allowVerticalScale': allowVerticalScale!,
         if (enabled != null) 'enabled': enabled!,
         if (git != null) 'git': git!,
         if (oci != null) 'oci': oci!,
@@ -4962,6 +4973,52 @@ class ServiceMeshControlPlaneManagement {
       };
 }
 
+/// Status of data plane management.
+///
+/// Only reported per-member.
+class ServiceMeshDataPlaneManagement {
+  /// Explanation of the status.
+  core.List<ServiceMeshStatusDetails>? details;
+
+  /// Lifecycle status of data plane management.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified
+  /// - "DISABLED" : DISABLED means that the component is not enabled.
+  /// - "FAILED_PRECONDITION" : FAILED_PRECONDITION means that provisioning
+  /// cannot proceed because of some characteristic of the member cluster.
+  /// - "PROVISIONING" : PROVISIONING means that provisioning is in progress.
+  /// - "ACTIVE" : ACTIVE means that the component is ready for use.
+  /// - "STALLED" : STALLED means that provisioning could not be done.
+  /// - "NEEDS_ATTENTION" : NEEDS_ATTENTION means that the component is ready,
+  /// but some user intervention is required. (For example that the user should
+  /// migrate workloads to a new control plane revision.)
+  /// - "DEGRADED" : DEGRADED means that the component is ready, but operating
+  /// in a degraded state.
+  core.String? state;
+
+  ServiceMeshDataPlaneManagement({
+    this.details,
+    this.state,
+  });
+
+  ServiceMeshDataPlaneManagement.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
+                  .map((value) => ServiceMeshStatusDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpec {
   /// Enables automatic control plane management.
@@ -4975,8 +5032,18 @@ class ServiceMeshMembershipSpec {
   /// or via the ControlPlaneRevision KRM API)
   core.String? controlPlane;
 
+  /// Enables automatic Service Mesh management.
+  /// Possible string values are:
+  /// - "MANAGEMENT_UNSPECIFIED" : Unspecified
+  /// - "MANAGEMENT_AUTOMATIC" : Google should manage my Service Mesh for the
+  /// cluster.
+  /// - "MANAGEMENT_MANUAL" : User will manually configure their service mesh
+  /// components.
+  core.String? management;
+
   ServiceMeshMembershipSpec({
     this.controlPlane,
+    this.management,
   });
 
   ServiceMeshMembershipSpec.fromJson(core.Map json_)
@@ -4984,10 +5051,14 @@ class ServiceMeshMembershipSpec {
           controlPlane: json_.containsKey('controlPlane')
               ? json_['controlPlane'] as core.String
               : null,
+          management: json_.containsKey('management')
+              ? json_['management'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (controlPlane != null) 'controlPlane': controlPlane!,
+        if (management != null) 'management': management!,
       };
 }
 
@@ -4999,8 +5070,14 @@ class ServiceMeshMembershipState {
   /// Output only.
   ServiceMeshControlPlaneManagement? controlPlaneManagement;
 
+  /// Status of data plane management.
+  ///
+  /// Output only.
+  ServiceMeshDataPlaneManagement? dataPlaneManagement;
+
   ServiceMeshMembershipState({
     this.controlPlaneManagement,
+    this.dataPlaneManagement,
   });
 
   ServiceMeshMembershipState.fromJson(core.Map json_)
@@ -5010,11 +5087,18 @@ class ServiceMeshMembershipState {
                   json_['controlPlaneManagement']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          dataPlaneManagement: json_.containsKey('dataPlaneManagement')
+              ? ServiceMeshDataPlaneManagement.fromJson(
+                  json_['dataPlaneManagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (controlPlaneManagement != null)
           'controlPlaneManagement': controlPlaneManagement!,
+        if (dataPlaneManagement != null)
+          'dataPlaneManagement': dataPlaneManagement!,
       };
 }
 

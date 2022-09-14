@@ -1038,6 +1038,9 @@ class EntitlementsResource {
 
   /// Removes an entitlement to an app for a user.
   ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
+  ///
   /// Request parameters:
   ///
   /// [enterpriseId] - The ID of the enterprise.
@@ -1081,6 +1084,9 @@ class EntitlementsResource {
   }
 
   /// Retrieves details of an entitlement.
+  ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
   ///
   /// Request parameters:
   ///
@@ -1129,7 +1135,9 @@ class EntitlementsResource {
 
   /// Lists all entitlements for the specified user.
   ///
-  /// Only the ID is set.
+  /// Only the ID is set. **Note:** This item has been deprecated. New
+  /// integrations cannot use this method and can refer to our new
+  /// recommendations.
   ///
   /// Request parameters:
   ///
@@ -1172,6 +1180,9 @@ class EntitlementsResource {
   }
 
   /// Adds or updates an entitlement to an app for a user.
+  ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1238,6 +1249,9 @@ class GrouplicensesResource {
 
   /// Retrieves details of an enterprise's group license for a product.
   ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
+  ///
   /// Request parameters:
   ///
   /// [enterpriseId] - The ID of the enterprise.
@@ -1280,6 +1294,9 @@ class GrouplicensesResource {
 
   /// Retrieves IDs of all products for which the enterprise has a group
   /// license.
+  ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
   ///
   /// Request parameters:
   ///
@@ -1324,6 +1341,9 @@ class GrouplicenseusersResource {
 
   /// Retrieves the IDs of the users who have been granted entitlements under
   /// the license.
+  ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
   ///
   /// Request parameters:
   ///
@@ -2108,7 +2128,9 @@ class ProductsResource {
   /// The maximum number of products that you can approve per enterprise
   /// customer is 1,000. To learn how to use managed Google Play to design and
   /// create a store layout to display approved products to your users, see
-  /// Store Layout Design.
+  /// Store Layout Design. **Note:** This item has been deprecated. New
+  /// integrations cannot use this method and can refer to our new
+  /// recommendations.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2161,7 +2183,8 @@ class ProductsResource {
   /// in the EMM console, which in turn should trigger the use of this URL as
   /// the approvalUrlInfo.approvalUrl property in a Products.approve call to
   /// approve the product. This URL can only be used to display permissions for
-  /// up to 1 day.
+  /// up to 1 day. **Note:** This item has been deprecated. New integrations
+  /// cannot use this method and can refer to our new recommendations.
   ///
   /// Request parameters:
   ///
@@ -2352,6 +2375,9 @@ class ProductsResource {
   /// Finds approved products that match a query, or all approved products if
   /// there is no query.
   ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
+  ///
   /// Request parameters:
   ///
   /// [enterpriseId] - The ID of the enterprise.
@@ -2417,7 +2443,10 @@ class ProductsResource {
   }
 
   /// Unapproves the specified product (and the relevant app permissions, if
-  /// any)
+  /// any) **Note:** This item has been deprecated.
+  ///
+  /// New integrations cannot use this method and can refer to our new
+  /// recommendations.
   ///
   /// Request parameters:
   ///
@@ -3172,6 +3201,9 @@ class UsersResource {
 
   /// Retrieves the set of products a user is entitled to access.
   ///
+  /// **Note:** This item has been deprecated. New integrations cannot use this
+  /// method and can refer to our new recommendations.
+  ///
   /// Request parameters:
   ///
   /// [enterpriseId] - The ID of the enterprise.
@@ -3350,7 +3382,9 @@ class UsersResource {
   /// to as *whitelisted* products).
   ///
   /// Only products that are approved or products that were previously approved
-  /// (products with revoked approval) can be whitelisted.
+  /// (products with revoked approval) can be whitelisted. **Note:** This item
+  /// has been deprecated. New integrations cannot use this method and can refer
+  /// to our new recommendations.
   ///
   /// [request] - The metadata request object.
   ///

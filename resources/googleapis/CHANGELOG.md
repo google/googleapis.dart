@@ -1,4 +1,4 @@
-## 9.2.0-dev
+## 9.2.0
 
 - Require Dart 2.17 or later.
 

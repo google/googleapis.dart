@@ -183,6 +183,7 @@ api.GoogleCloudOrgpolicyV2CustomConstraint
     o.methodTypes = buildUnnamed0();
     o.name = 'foo';
     o.resourceTypes = buildUnnamed1();
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudOrgpolicyV2CustomConstraint--;
   return o;
@@ -214,6 +215,10 @@ void checkGoogleCloudOrgpolicyV2CustomConstraint(
       unittest.equals('foo'),
     );
     checkUnnamed1(o.resourceTypes!);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudOrgpolicyV2CustomConstraint--;
 }

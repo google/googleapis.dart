@@ -1329,9 +1329,11 @@ class GoogleChromePolicyV1PolicySchemaFieldDependencies {
 /// Provides detailed information for a particular field that is part of a
 /// PolicySchema.
 class GoogleChromePolicyV1PolicySchemaFieldDescription {
+  /// Use name and field_description instead.
+  ///
   /// The description for the field.
   ///
-  /// Output only.
+  /// Deprecated.
   core.String? description;
 
   /// The name of the field for associated with this description.
@@ -1348,6 +1350,11 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   core.List<GoogleChromePolicyV1PolicySchemaFieldDependencies>?
       fieldDependencies;
 
+  /// The description of the field.
+  ///
+  /// Output only.
+  core.String? fieldDescription;
+
   /// Any input constraints associated on the values for the field.
   ///
   /// Output only.
@@ -1359,6 +1366,11 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   /// Output only.
   core.List<GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>?
       knownValueDescriptions;
+
+  /// The name of the field.
+  ///
+  /// Output only.
+  core.String? name;
 
   /// Provides the description of the fields nested in this field, if the field
   /// is a message type that defines multiple fields.
@@ -1377,8 +1389,10 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
     this.description,
     this.field,
     this.fieldDependencies,
+    this.fieldDescription,
     this.inputConstraint,
     this.knownValueDescriptions,
+    this.name,
     this.nestedFieldDescriptions,
     this.requiredItems,
   });
@@ -1398,6 +1412,9 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          fieldDescription: json_.containsKey('fieldDescription')
+              ? json_['fieldDescription'] as core.String
+              : null,
           inputConstraint: json_.containsKey('inputConstraint')
               ? json_['inputConstraint'] as core.String
               : null,
@@ -1409,6 +1426,7 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nestedFieldDescriptions: json_.containsKey('nestedFieldDescriptions')
               ? (json_['nestedFieldDescriptions'] as core.List)
                   .map((value) =>
@@ -1429,9 +1447,11 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
         if (fieldDependencies != null) 'fieldDependencies': fieldDependencies!,
+        if (fieldDescription != null) 'fieldDescription': fieldDescription!,
         if (inputConstraint != null) 'inputConstraint': inputConstraint!,
         if (knownValueDescriptions != null)
           'knownValueDescriptions': knownValueDescriptions!,
+        if (name != null) 'name': name!,
         if (nestedFieldDescriptions != null)
           'nestedFieldDescriptions': nestedFieldDescriptions!,
         if (requiredItems != null) 'requiredItems': requiredItems!,

@@ -446,6 +446,20 @@ class Execution {
   /// - "CANCELLED" : The execution was stopped intentionally.
   core.String? state;
 
+  /// Status tracks the current steps and progress data of this execution.
+  ///
+  /// \> **Preview:** This field is covered by the \> \[Pre-GA Offerings
+  /// Terms\](https://cloud.google.com/terms/service-terms) of \> the Google
+  /// Cloud Terms of Service. Pre-GA features might have limited \> support, and
+  /// changes to pre-GA features might not be compatible with \> other pre-GA
+  /// versions. For more information, see the \>
+  /// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
+  /// \> This field is usable only if your project has access. See the \>
+  /// [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+  ///
+  /// Output only.
+  Status? status;
+
   /// Revision of the workflow this execution is using.
   ///
   /// Output only.
@@ -460,6 +474,7 @@ class Execution {
     this.result,
     this.startTime,
     this.state,
+    this.status,
     this.workflowRevisionId,
   });
 
@@ -487,6 +502,10 @@ class Execution {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          status: json_.containsKey('status')
+              ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
           workflowRevisionId: json_.containsKey('workflowRevisionId')
               ? json_['workflowRevisionId'] as core.String
               : null,
@@ -501,6 +520,7 @@ class Execution {
         if (result != null) 'result': result!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
+        if (status != null) 'status': status!,
         if (workflowRevisionId != null)
           'workflowRevisionId': workflowRevisionId!,
       };
@@ -643,6 +663,74 @@ class StackTraceElement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (position != null) 'position': position!,
+        if (routine != null) 'routine': routine!,
+        if (step != null) 'step': step!,
+      };
+}
+
+/// \> **Preview:** This field is covered by the \> \[Pre-GA Offerings
+/// Terms\](https://cloud.google.com/terms/service-terms) of \> the Google Cloud
+/// Terms of Service.
+///
+/// Pre-GA features might have limited \> support, and changes to pre-GA
+/// features might not be compatible with \> other pre-GA versions. For more
+/// information, see the \>
+/// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
+/// \> This field is usable only if your project has access. See the \>
+/// [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+/// Represents the current status of this execution.
+class Status {
+  /// A list of currently executing or last executed step names for the workflow
+  /// execution currently running.
+  ///
+  /// If the workflow has succeeded or failed, this is the last attempted or
+  /// executed step. Presently, if the current step is inside a subworkflow, the
+  /// list only includes that step. In the future, the list will contain items
+  /// for each step in the call stack, starting with the outermost step in the
+  /// `main` subworkflow, and ending with the most deeply nested step.
+  core.List<Step>? currentSteps;
+
+  Status({
+    this.currentSteps,
+  });
+
+  Status.fromJson(core.Map json_)
+      : this(
+          currentSteps: json_.containsKey('currentSteps')
+              ? (json_['currentSteps'] as core.List)
+                  .map((value) => Step.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentSteps != null) 'currentSteps': currentSteps!,
+      };
+}
+
+/// Represents a step of the workflow this execution is running.
+class Step {
+  /// Name of a routine within the workflow.
+  core.String? routine;
+
+  /// Name of a step within the routine.
+  core.String? step;
+
+  Step({
+    this.routine,
+    this.step,
+  });
+
+  Step.fromJson(core.Map json_)
+      : this(
+          routine: json_.containsKey('routine')
+              ? json_['routine'] as core.String
+              : null,
+          step: json_.containsKey('step') ? json_['step'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
         if (routine != null) 'routine': routine!,
         if (step != null) 'step': step!,
       };

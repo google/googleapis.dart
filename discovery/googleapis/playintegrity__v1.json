@@ -136,7 +136,7 @@
             }
         }
     },
-    "revision": "20220908",
+    "revision": "20220912",
     "rootUrl": "https://playintegrity.googleapis.com/",
     "schemas": {
         "AccountDetails": {
