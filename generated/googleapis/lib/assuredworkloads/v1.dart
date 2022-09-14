@@ -588,9 +588,16 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "CA_REGIONS_AND_SUPPORT" : Assured Workloads For Canada Regions and
   /// Support controls
   /// - "ITAR" : International Traffic in Arms Regulations
-  /// - "AU_REGIONS_AND_US_SUPPORT" : Assured Workloads for Australia Regions
-  /// and Support controls
   core.String? complianceRegime;
+
+  /// Urls for services which are compliant for this Assured Workload, but which
+  /// are currently disallowed by the ResourceUsageRestriction org policy.
+  ///
+  /// Invoke RestrictAllowedResources endpoint to allow your project developers
+  /// to use these services in their environment."
+  ///
+  /// Output only.
+  core.List<core.String>? compliantButDisallowedServices;
 
   /// The Workload creation timestamp.
   ///
@@ -688,6 +695,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   GoogleCloudAssuredworkloadsV1Workload({
     this.billingAccount,
     this.complianceRegime,
+    this.compliantButDisallowedServices,
     this.createTime,
     this.displayName,
     this.enableSovereignControls,
@@ -710,6 +718,12 @@ class GoogleCloudAssuredworkloadsV1Workload {
           complianceRegime: json_.containsKey('complianceRegime')
               ? json_['complianceRegime'] as core.String
               : null,
+          compliantButDisallowedServices:
+              json_.containsKey('compliantButDisallowedServices')
+                  ? (json_['compliantButDisallowedServices'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -766,6 +780,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
+        if (compliantButDisallowedServices != null)
+          'compliantButDisallowedServices': compliantButDisallowedServices!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (enableSovereignControls != null)

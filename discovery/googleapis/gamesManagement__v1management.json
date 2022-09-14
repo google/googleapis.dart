@@ -470,7 +470,7 @@
             }
         }
     },
-    "revision": "20220831",
+    "revision": "20220909",
     "rootUrl": "https://gamesmanagement.googleapis.com/",
     "schemas": {
         "AchievementResetAllResponse": {

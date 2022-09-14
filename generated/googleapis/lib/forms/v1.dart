@@ -1745,7 +1745,10 @@ class ListFormResponsesResponse {
   /// future request.
   core.String? nextPageToken;
 
-  /// The returned responses.
+  /// The returned form responses.
+  ///
+  /// Note: The `formId` field is not returned in the `FormResponse` object for
+  /// list requests.
   core.List<FormResponse>? responses;
 
   ListFormResponsesResponse({

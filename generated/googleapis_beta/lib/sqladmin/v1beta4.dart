@@ -1241,7 +1241,8 @@ class InstancesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates settings of a Cloud SQL instance.
+  /// Partially updates settings of a Cloud SQL instance by merging the request
+  /// with the current configuration.
   ///
   /// This method supports patch semantics.
   ///
@@ -2789,6 +2790,12 @@ class BackupRun {
   /// - "DELETED" : The backup has been deleted.
   core.String? status;
 
+  /// Backup time zone to prevent restores to an instance with a different time
+  /// zone.
+  ///
+  /// Now relevant only for SQL Server.
+  core.String? timeZone;
+
   /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL".
   ///
   /// This field defaults to "ON_DEMAND" and is ignored, when specified for
@@ -2819,6 +2826,7 @@ class BackupRun {
     this.selfLink,
     this.startTime,
     this.status,
+    this.timeZone,
     this.type,
     this.windowStartTime,
   });
@@ -2868,6 +2876,9 @@ class BackupRun {
           status: json_.containsKey('status')
               ? json_['status'] as core.String
               : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           windowStartTime: json_.containsKey('windowStartTime')
               ? json_['windowStartTime'] as core.String
@@ -2891,6 +2902,7 @@ class BackupRun {
         if (selfLink != null) 'selfLink': selfLink!,
         if (startTime != null) 'startTime': startTime!,
         if (status != null) 'status': status!,
+        if (timeZone != null) 'timeZone': timeZone!,
         if (type != null) 'type': type!,
         if (windowStartTime != null) 'windowStartTime': windowStartTime!,
       };
@@ -2990,6 +3002,12 @@ class CloneContext {
   /// binary log coordinates.
   BinLogCoordinates? binLogCoordinates;
 
+  /// (SQL Server only) Clone only the specified databases from the source
+  /// instance.
+  ///
+  /// Clone all databases if empty.
+  core.List<core.String>? databaseNames;
+
   /// Name of the Cloud SQL instance to be created as a clone.
   core.String? destinationInstanceName;
 
@@ -3006,6 +3024,7 @@ class CloneContext {
   CloneContext({
     this.allocatedIpRange,
     this.binLogCoordinates,
+    this.databaseNames,
     this.destinationInstanceName,
     this.kind,
     this.pitrTimestampMs,
@@ -3020,6 +3039,11 @@ class CloneContext {
           binLogCoordinates: json_.containsKey('binLogCoordinates')
               ? BinLogCoordinates.fromJson(json_['binLogCoordinates']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          databaseNames: json_.containsKey('databaseNames')
+              ? (json_['databaseNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           destinationInstanceName: json_.containsKey('destinationInstanceName')
               ? json_['destinationInstanceName'] as core.String
@@ -3036,6 +3060,7 @@ class CloneContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (binLogCoordinates != null) 'binLogCoordinates': binLogCoordinates!,
+        if (databaseNames != null) 'databaseNames': databaseNames!,
         if (destinationInstanceName != null)
           'destinationInstanceName': destinationInstanceName!,
         if (kind != null) 'kind': kind!,
@@ -6238,9 +6263,9 @@ class Settings {
 
   /// Specifies if connections must use Cloud SQL connectors.
   ///
-  /// Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances
-  /// can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow
-  /// connections that use Cloud SQL Connectors. Note that using REQUIRED
+  /// Option values include the following: `NOT_REQUIRED` (Cloud SQL instances
+  /// can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow
+  /// connections that use Cloud SQL Connectors) Note that using REQUIRED
   /// disables all existing authorized networks. If this field is not specified
   /// when creating a new instance, NOT_REQUIRED is used. If this field is not
   /// specified when patching or updating an existing instance, it is left
@@ -6372,6 +6397,9 @@ class Settings {
   /// WARNING: Changing this restarts the instance.
   core.String? tier;
 
+  /// Server timezone, relevant only for Cloud SQL for SQL Server.
+  core.String? timeZone;
+
   /// User-provided labels, represented as a dictionary where each label is a
   /// single key value pair.
   core.Map<core.String, core.String>? userLabels;
@@ -6404,6 +6432,7 @@ class Settings {
     this.storageAutoResize,
     this.storageAutoResizeLimit,
     this.tier,
+    this.timeZone,
     this.userLabels,
   });
 
@@ -6508,6 +6537,9 @@ class Settings {
               ? json_['storageAutoResizeLimit'] as core.String
               : null,
           tier: json_.containsKey('tier') ? json_['tier'] as core.String : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
+              : null,
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -6559,6 +6591,7 @@ class Settings {
         if (storageAutoResizeLimit != null)
           'storageAutoResizeLimit': storageAutoResizeLimit!,
         if (tier != null) 'tier': tier!,
+        if (timeZone != null) 'timeZone': timeZone!,
         if (userLabels != null) 'userLabels': userLabels!,
       };
 }

@@ -805,6 +805,7 @@ api.Node buildNode() {
     o.runtimeVersion = 'foo';
     o.schedulingConfig = buildSchedulingConfig();
     o.serviceAccount = buildServiceAccount();
+    o.shieldedInstanceConfig = buildShieldedInstanceConfig();
     o.state = 'foo';
     o.symptoms = buildUnnamed17();
     o.tags = buildUnnamed18();
@@ -863,6 +864,7 @@ void checkNode(api.Node o) {
     );
     checkSchedulingConfig(o.schedulingConfig!);
     checkServiceAccount(o.serviceAccount!);
+    checkShieldedInstanceConfig(o.shieldedInstanceConfig!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -1102,6 +1104,25 @@ void checkServiceIdentity(api.ServiceIdentity o) {
     );
   }
   buildCounterServiceIdentity--;
+}
+
+core.int buildCounterShieldedInstanceConfig = 0;
+api.ShieldedInstanceConfig buildShieldedInstanceConfig() {
+  final o = api.ShieldedInstanceConfig();
+  buildCounterShieldedInstanceConfig++;
+  if (buildCounterShieldedInstanceConfig < 3) {
+    o.enableSecureBoot = true;
+  }
+  buildCounterShieldedInstanceConfig--;
+  return o;
+}
+
+void checkShieldedInstanceConfig(api.ShieldedInstanceConfig o) {
+  buildCounterShieldedInstanceConfig++;
+  if (buildCounterShieldedInstanceConfig < 3) {
+    unittest.expect(o.enableSecureBoot!, unittest.isTrue);
+  }
+  buildCounterShieldedInstanceConfig--;
 }
 
 core.List<core.String> buildUnnamed22() => [
@@ -1541,6 +1562,16 @@ void main() {
       final od = api.ServiceIdentity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkServiceIdentity(od);
+    });
+  });
+
+  unittest.group('obj-schema-ShieldedInstanceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildShieldedInstanceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShieldedInstanceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkShieldedInstanceConfig(od);
     });
   });
 

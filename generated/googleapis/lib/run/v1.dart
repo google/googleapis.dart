@@ -3697,10 +3697,7 @@ class Container {
   /// https://kubernetes.io/docs/concepts/containers/images#updating-images
   core.String? imagePullPolicy;
 
-  /// Periodic probe of container liveness.
-  ///
-  /// Container will be restarted if the probe fails. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+  /// Not supported by Cloud Run.
   Probe? livenessProbe;
 
   /// Name of the container specified as a DNS_LABEL.

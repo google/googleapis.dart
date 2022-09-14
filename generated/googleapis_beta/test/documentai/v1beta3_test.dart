@@ -2021,6 +2021,7 @@ api.GoogleCloudDocumentaiV1beta3DocumentStyle
   if (buildCounterGoogleCloudDocumentaiV1beta3DocumentStyle < 3) {
     o.backgroundColor = buildGoogleTypeColor();
     o.color = buildGoogleTypeColor();
+    o.fontFamily = 'foo';
     o.fontSize = buildGoogleCloudDocumentaiV1beta3DocumentStyleFontSize();
     o.fontWeight = 'foo';
     o.textAnchor = buildGoogleCloudDocumentaiV1beta3DocumentTextAnchor();
@@ -2037,6 +2038,10 @@ void checkGoogleCloudDocumentaiV1beta3DocumentStyle(
   if (buildCounterGoogleCloudDocumentaiV1beta3DocumentStyle < 3) {
     checkGoogleTypeColor(o.backgroundColor!);
     checkGoogleTypeColor(o.color!);
+    unittest.expect(
+      o.fontFamily!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDocumentaiV1beta3DocumentStyleFontSize(o.fontSize!);
     unittest.expect(
       o.fontWeight!,

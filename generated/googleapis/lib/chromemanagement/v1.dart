@@ -1016,7 +1016,15 @@ class GoogleChromeManagementV1AppDetails {
       };
 }
 
-/// Audio report.
+/// Status data for storage.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceAudioStatus](https://chromeenterprise.google/policies/#ReportDeviceAudioStatus)
+/// * Data Collection Frequency: 10 minutes * Default Data Reporting Frequency:
+/// 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the
+/// collected data is stored locally, and will be reported when the device is
+/// next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1AudioStatusReport {
   /// Active input device's name.
   ///
@@ -1099,7 +1107,15 @@ class GoogleChromeManagementV1AudioStatusReport {
       };
 }
 
-/// Battery info
+/// Information about the battery.
+///
+/// * This field provides device information, which is static and will not
+/// change over time. * Data for this field is controlled via policy:
+/// [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1BatteryInfo {
   /// Design capacity (mAmpere-hours).
   ///
@@ -1176,6 +1192,14 @@ class GoogleChromeManagementV1BatteryInfo {
 }
 
 /// Sampling data for battery.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1BatterySampleReport {
   /// Battery charge percentage.
   ///
@@ -1274,6 +1298,14 @@ class GoogleChromeManagementV1BatterySampleReport {
 }
 
 /// Status data for battery.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDevicePowerStatus](https://chromeenterprise.google/policies/#ReportDevicePowerStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1BatteryStatusReport {
   /// Battery health.
   ///
@@ -1928,9 +1960,25 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
       };
 }
 
-/// CPU specs for a CPU.
+/// CPU specifications for the device * This field provides device information,
+/// which is static and will not change over time.
+///
+/// * Data for this field is controlled via policy:
+/// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1CpuInfo {
-  /// The CPU architecture.
+  /// Architecture type for the CPU.
+  ///
+  /// * This field provides device information, which is static and will not
+  /// change over time. * Data for this field is controlled via policy:
+  /// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo)
+  /// * Data Collection Frequency: Only at Upload * Default Data Reporting
+  /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+  /// offline, the collected data is stored locally, and will be reported when
+  /// the device is next online: No * Reported for affiliated users only: N/A
   ///
   /// Output only.
   /// Possible string values are:
@@ -1999,7 +2047,15 @@ class GoogleChromeManagementV1CpuInfo {
       };
 }
 
-/// Contains samples of the cpu status reports.
+/// Provides information about the status of the CPU.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo)
+/// * Data Collection Frequency: Every 10 minutes * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1CpuStatusReport {
   /// CPU temperature sample info per CPU core in Celsius
   ///
@@ -2060,7 +2116,14 @@ class GoogleChromeManagementV1CpuStatusReport {
 
 /// CPU temperature of a device.
 ///
-/// Sampled per CPU core in Celsius
+/// Sampled per CPU core in Celsius. * This field is telemetry information and
+/// this will change over time as the device is utilized. * Data for this field
+/// is controlled via policy:
+/// [ReportDeviceCpuInfo](https://chromeenterprise.google/policies/#ReportDeviceCpuInfo)
+/// * Data Collection Frequency: Every 10 minutes * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1CpuTemperatureInfo {
   /// CPU label.
   ///
@@ -2503,6 +2566,14 @@ class GoogleChromeManagementV1GraphicsAdapterInfo {
 }
 
 /// Information of the graphics subsystem.
+///
+/// * This field provides device information, which is static and will not
+/// change over time. * Data for this field is controlled via policy:
+/// [ReportDeviceGraphicsStatus](https://chromeenterprise.google/policies/#ReportDeviceGraphicsStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1GraphicsInfo {
   /// Information about the graphics adapter (GPU).
   ///
@@ -2527,6 +2598,14 @@ class GoogleChromeManagementV1GraphicsInfo {
 }
 
 /// Information of the graphics subsystem.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceGraphicsInfo](https://chromeenterprise.google/policies/#ReportDeviceGraphicsInfo)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1GraphicsStatusReport {
   /// Information about the displays for the device.
   ///
@@ -2789,6 +2868,19 @@ class GoogleChromeManagementV1ListTelemetryDevicesResponse {
 }
 
 /// Memory information of a device.
+///
+/// * This field has both telemetry and device information: - `totalRamBytes` -
+/// Device information - `availableRamBytes` - Telemetry information -
+/// `totalMemoryEncryption` - Device information * Data for this field is
+/// controlled via policy:
+/// [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo)
+/// * Data Collection Frequency: - `totalRamBytes` - Only at upload -
+/// `availableRamBytes` - Every 10 minutes - `totalMemoryEncryption` - at device
+/// startup * Default Data Reporting Frequency: - `totalRamBytes` - 3 hours -
+/// `availableRamBytes` - 3 hours - `totalMemoryEncryption` - at device startup
+/// - Policy Controlled: Yes * Cache: If the device is offline, the collected
+/// data is stored locally, and will be reported when the device is next online:
+/// only for `totalMemoryEncryption` * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1MemoryInfo {
   /// Amount of available RAM in bytes.
   ///
@@ -2835,6 +2927,15 @@ class GoogleChromeManagementV1MemoryInfo {
 }
 
 /// Contains samples of memory status reports.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo)
+/// * Data Collection Frequency: Only at upload, SystemRamFreeByes is collected
+/// every 10 minutes * Default Data Reporting Frequency: Every 3 hours - Policy
+/// Controlled: Yes * Cache: If the device is offline, the collected data is
+/// stored locally, and will be reported when the device is next online: No *
+/// Reported for affiliated users only: N/A
 class GoogleChromeManagementV1MemoryStatusReport {
   /// Number of page faults during this collection
   ///
@@ -2889,7 +2990,15 @@ class GoogleChromeManagementV1MemoryStatusReport {
       };
 }
 
-/// Network device.
+/// Details about the network device.
+///
+/// * This field provides device information, which is static and will not
+/// change over time. * Data for this field is controlled via policy:
+/// [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/policies/#ReportNetworkDeviceConfiguration)
+/// * Data Collection Frequency: At device startup * Default Data Reporting
+/// Frequency: At device startup - Policy Controlled: Yes * Cache: If the device
+/// is offline, the collected data is stored locally, and will be reported when
+/// the device is next online: Yes * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1NetworkDevice {
   /// The integrated circuit card ID associated with the device's sim card.
   ///
@@ -2994,7 +3103,15 @@ class GoogleChromeManagementV1NetworkDiagnosticsReport {
       };
 }
 
-/// Network devices info.
+/// Network device information.
+///
+/// * This field provides device information, which is static and will not
+/// change over time. * Data for this field is controlled via policy:
+/// [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/policies/#ReportNetworkDeviceConfiguration)
+/// * Data Collection Frequency: At device startup * Default Data Reporting
+/// Frequency: At device startup - Policy Controlled: Yes * Cache: If the device
+/// is offline, the collected data is stored locally, and will be reported when
+/// the device is next online: Yes * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1NetworkInfo {
   /// List of network devices.
   ///
@@ -3022,6 +3139,14 @@ class GoogleChromeManagementV1NetworkInfo {
 }
 
 /// State of visible/configured networks.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportNetworkStatus](https://chromeenterprise.google/policies/#ReportNetworkStatus)
+/// * Data Collection Frequency: 60 minutes * Default Data Reporting Frequency:
+/// 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the
+/// collected data is stored locally, and will be reported when the device is
+/// next online: Yes * Reported for affiliated users only: Yes
 class GoogleChromeManagementV1NetworkStatusReport {
   /// Current connection state of the network.
   ///
@@ -3199,6 +3324,14 @@ class GoogleChromeManagementV1NetworkStatusReport {
 }
 
 /// Contains information regarding the current OS update status.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceOsUpdateStatus](https://chromeenterprise.google/policies/#ReportDeviceOsUpdateStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1OsUpdateStatus {
   /// Timestamp of the last reboot.
   ///
@@ -3286,6 +3419,14 @@ class GoogleChromeManagementV1OsUpdateStatus {
 }
 
 /// Status data for storage.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1StorageInfo {
   /// The available space for user data storage in the device in bytes.
   core.String? availableDiskBytes;
@@ -3365,6 +3506,14 @@ class GoogleChromeManagementV1StorageInfoDiskVolume {
 }
 
 /// Status data for storage.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1StorageStatusReport {
   /// Reports on disk.
   ///
@@ -3689,6 +3838,14 @@ class GoogleChromeManagementV1TelemetryDevice {
 }
 
 /// Thunderbolt bus info.
+///
+/// * This field provides device information, which is static and will not
+/// change over time. * Data for this field is controlled via policy:
+/// [ReportDeviceSecurityStatus](https://chromeenterprise.google/policies/#ReportDeviceSecurityStatus)
+/// * Data Collection Frequency: At device startup * Default Data Reporting
+/// Frequency: At device startup - Policy Controlled: No * Cache: If the device
+/// is offline, the collected data is stored locally, and will be reported when
+/// the device is next online: Yes * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1ThunderboltInfo {
   /// Security level of the Thunderbolt bus.
   /// Possible string values are:
@@ -3727,6 +3884,14 @@ class GoogleChromeManagementV1ThunderboltInfo {
 }
 
 /// Memory encryption information of a device.
+///
+/// * This field provides device information, which is static and will not
+/// change over time. * Data for this field is controlled via policy:
+/// [ReportDeviceMemoryInfo](https://chromeenterprise.google/policies/#ReportDeviceMemoryInfo)
+/// * Data Collection Frequency: At device startup * Default Data Reporting
+/// Frequency: At device startup - Policy Controlled: Yes * Cache: If the device
+/// is offline, the collected data is stored locally, and will be reported when
+/// the device is next online: Yes * Reported for affiliated users only: N/A
 class GoogleChromeManagementV1TotalMemoryEncryptionInfo {
   /// Memory encryption algorithm.
   /// Possible string values are:

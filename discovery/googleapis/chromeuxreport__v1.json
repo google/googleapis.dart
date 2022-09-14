@@ -114,7 +114,7 @@
             }
         }
     },
-    "revision": "20220908",
+    "revision": "20220913",
     "rootUrl": "https://chromeuxreport.googleapis.com/",
     "schemas": {
         "Bin": {

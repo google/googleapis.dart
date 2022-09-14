@@ -1595,6 +1595,14 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
   /// Immutable.
   core.List<core.String>? resourceTypes;
 
+  /// The last time this custom constraint was updated.
+  ///
+  /// This represents the last time that the `CreateCustomConstraint` or
+  /// `UpdateCustomConstraint` RPC was called
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   GoogleCloudOrgpolicyV2CustomConstraint({
     this.actionType,
     this.condition,
@@ -1603,6 +1611,7 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
     this.methodTypes,
     this.name,
     this.resourceTypes,
+    this.updateTime,
   });
 
   GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
@@ -1630,6 +1639,9 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1640,6 +1652,7 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
         if (methodTypes != null) 'methodTypes': methodTypes!,
         if (name != null) 'name': name!,
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

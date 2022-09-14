@@ -1917,12 +1917,14 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
@@ -2011,6 +2013,78 @@ class BuildArtifact {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Information specifying where to deploy a Cloud Run Service.
+class CloudRunLocation {
+  /// The location where the Cloud Run Service should be located.
+  ///
+  /// Format is `projects/{project}/locations/{location}`.
+  ///
+  /// Required.
+  core.String? location;
+
+  CloudRunLocation({
+    this.location,
+  });
+
+  CloudRunLocation.fromJson(core.Map json_)
+      : this(
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
+      };
+}
+
+/// CloudRunMetadata contains information from a Cloud Run deployment.
+class CloudRunMetadata {
+  /// The Cloud Run Revision id associated with a `Rollout`.
+  ///
+  /// Output only.
+  core.String? revision;
+
+  /// The name of the Cloud Run Service that is associated with a `Rollout`.
+  ///
+  /// Format is projects/{project}/locations/{location}/services/{service}.
+  ///
+  /// Output only.
+  core.String? service;
+
+  /// The Cloud Run Service urls that are associated with a `Rollout`.
+  ///
+  /// Output only.
+  core.List<core.String>? serviceUrls;
+
+  CloudRunMetadata({
+    this.revision,
+    this.service,
+    this.serviceUrls,
+  });
+
+  CloudRunMetadata.fromJson(core.Map json_)
+      : this(
+          revision: json_.containsKey('revision')
+              ? json_['revision'] as core.String
+              : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+          serviceUrls: json_.containsKey('serviceUrls')
+              ? (json_['serviceUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (revision != null) 'revision': revision!,
+        if (service != null) 'service': service!,
+        if (serviceUrls != null) 'serviceUrls': serviceUrls!,
+      };
+}
 
 /// Service-wide configuration.
 class Config {
@@ -2662,6 +2736,30 @@ class ListTargetsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
+
+/// Metadata surfaces information associated with a `Rollout` to the user.
+class Metadata {
+  /// The name of the Cloud Run Service that is associated with a `Rollout`.
+  ///
+  /// Output only.
+  CloudRunMetadata? cloudRun;
+
+  Metadata({
+    this.cloudRun,
+  });
+
+  Metadata.fromJson(core.Map json_)
+      : this(
+          cloudRun: json_.containsKey('cloudRun')
+              ? CloudRunMetadata.fromJson(
+                  json_['cloudRun'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudRun != null) 'cloudRun': cloudRun!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3333,6 +3431,11 @@ class Rollout {
   /// and values are additionally constrained to be \<= 128 bytes.
   core.Map<core.String, core.String>? labels;
 
+  /// Metadata contains information about the rollout.
+  ///
+  /// Output only.
+  Metadata? metadata;
+
   /// Name of the `Rollout`.
   ///
   /// Format is projects/{project}/
@@ -3382,6 +3485,7 @@ class Rollout {
     this.etag,
     this.failureReason,
     this.labels,
+    this.metadata,
     this.name,
     this.state,
     this.targetId,
@@ -3438,6 +3542,10 @@ class Rollout {
                   ),
                 )
               : null,
+          metadata: json_.containsKey('metadata')
+              ? Metadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -3462,6 +3570,7 @@ class Rollout {
         if (etag != null) 'etag': etag!,
         if (failureReason != null) 'failureReason': failureReason!,
         if (labels != null) 'labels': labels!,
+        if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (targetId != null) 'targetId': targetId!,
@@ -3684,6 +3793,9 @@ class Target {
   /// Optional.
   core.bool? requireApproval;
 
+  /// Information specifying a Cloud Run deployment target.
+  CloudRunLocation? run;
+
   /// Resource id of the `Target`.
   ///
   /// Output only.
@@ -3710,6 +3822,7 @@ class Target {
     this.labels,
     this.name,
     this.requireApproval,
+    this.run,
     this.targetId,
     this.uid,
     this.updateTime,
@@ -3759,6 +3872,10 @@ class Target {
           requireApproval: json_.containsKey('requireApproval')
               ? json_['requireApproval'] as core.bool
               : null,
+          run: json_.containsKey('run')
+              ? CloudRunLocation.fromJson(
+                  json_['run'] as core.Map<core.String, core.dynamic>)
+              : null,
           targetId: json_.containsKey('targetId')
               ? json_['targetId'] as core.String
               : null,
@@ -3779,6 +3896,7 @@ class Target {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (requireApproval != null) 'requireApproval': requireApproval!,
+        if (run != null) 'run': run!,
         if (targetId != null) 'targetId': targetId!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3849,6 +3967,11 @@ class TargetRender {
   /// check Cloud Build logs.
   core.String? failureCause;
 
+  /// Additional information about the render failure, if available.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
   /// The resource name of the Cloud Build `Build` object that is used to render
   /// the manifest for this target.
   ///
@@ -3870,6 +3993,7 @@ class TargetRender {
 
   TargetRender({
     this.failureCause,
+    this.failureMessage,
     this.renderingBuild,
     this.renderingState,
   });
@@ -3878,6 +4002,9 @@ class TargetRender {
       : this(
           failureCause: json_.containsKey('failureCause')
               ? json_['failureCause'] as core.String
+              : null,
+          failureMessage: json_.containsKey('failureMessage')
+              ? json_['failureMessage'] as core.String
               : null,
           renderingBuild: json_.containsKey('renderingBuild')
               ? json_['renderingBuild'] as core.String
@@ -3889,6 +4016,7 @@ class TargetRender {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (failureCause != null) 'failureCause': failureCause!,
+        if (failureMessage != null) 'failureMessage': failureMessage!,
         if (renderingBuild != null) 'renderingBuild': renderingBuild!,
         if (renderingState != null) 'renderingState': renderingState!,
       };

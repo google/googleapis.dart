@@ -543,8 +543,9 @@ class ProjectsSnapshotsResource {
   /// [name] - Required. User-provided name for this snapshot. If the name is
   /// not provided in the request, the server will assign a random name for this
   /// snapshot on the same project as the subscription. Note that for REST API
-  /// requests, you must specify a name. See the resource name rules. Format is
-  /// `projects/{project}/snapshots/{snap}`.
+  /// requests, you must specify a name. See the
+  /// [resource name rules](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// Format is `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2311,7 +2312,8 @@ class Binding {
 
 /// Request for the `CreateSnapshot` method.
 class CreateSnapshotRequest {
-  /// See Creating and managing labels.
+  /// See
+  /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String>? labels;
 
   /// The subscription whose backlog the snapshot retains.
@@ -3067,8 +3069,8 @@ class PushConfig {
   /// created without this attribute. The only supported values for the
   /// `x-goog-version` attribute are: * `v1beta1`: uses the push format defined
   /// in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format
-  /// defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version":
-  /// "v1" }
+  /// defined in the v1 Pub/Sub API. For example: `attributes {
+  /// "x-goog-version": "v1" }`
   core.Map<core.String, core.String>? attributes;
 
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
@@ -3472,7 +3474,7 @@ class Subscription {
   /// the subscriber to acknowledge receipt before resending the message.
   ///
   /// In the interval after the message is delivered and before it is
-  /// acknowledged, it is considered to be *outstanding*. During that time
+  /// acknowledged, it is considered to be _outstanding_. During that time
   /// period, the message will not be redelivered (on a best-effort basis). For
   /// pull subscriptions, this value is used as the initial value for the ack
   /// deadline. To override this value for a given message, call
@@ -3545,7 +3547,8 @@ class Subscription {
   /// are filtered out.
   core.String? filter;
 
-  /// See Creating and managing labels.
+  /// See
+  /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String>? labels;
 
   /// How long to retain unacknowledged messages in the subscription's backlog,

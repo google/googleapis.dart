@@ -217,8 +217,6 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
-  /// [name] - Optional. The job name. Optional.
-  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -253,7 +251,6 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
-    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -262,7 +259,6 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
-      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -509,8 +505,6 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
-  /// [name] - Optional. The job name. Optional.
-  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -545,7 +539,6 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
-    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -554,7 +547,6 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
-      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -1428,8 +1420,6 @@ class ProjectsLocationsJobsResource {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
-  /// [name] - Optional. The job name. Optional.
-  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -1464,7 +1454,6 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location, {
     core.String? filter,
-    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -1472,7 +1461,6 @@ class ProjectsLocationsJobsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -7736,15 +7724,10 @@ class PipelineDescription {
   /// them.
   core.List<TransformSummary>? originalPipelineTransform;
 
-  /// A hash value of the submitted pipeline portable graph step names if
-  /// exists.
-  core.String? stepNamesHash;
-
   PipelineDescription({
     this.displayData,
     this.executionPipelineStage,
     this.originalPipelineTransform,
-    this.stepNamesHash,
   });
 
   PipelineDescription.fromJson(core.Map json_)
@@ -7768,9 +7751,6 @@ class PipelineDescription {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
-          stepNamesHash: json_.containsKey('stepNamesHash')
-              ? json_['stepNamesHash'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7779,7 +7759,6 @@ class PipelineDescription {
           'executionPipelineStage': executionPipelineStage!,
         if (originalPipelineTransform != null)
           'originalPipelineTransform': originalPipelineTransform!,
-        if (stepNamesHash != null) 'stepNamesHash': stepNamesHash!,
       };
 }
 

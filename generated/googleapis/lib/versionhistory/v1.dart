@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Version History API - v1
+/// versionhistory.googleapis.com API - v1
 ///
 /// Version History API - Prod
 ///

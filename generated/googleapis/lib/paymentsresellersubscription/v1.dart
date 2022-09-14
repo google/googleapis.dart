@@ -619,6 +619,42 @@ class PartnersSubscriptionsResource {
   }
 }
 
+/// Describes the amount unit including the currency code.
+class GoogleCloudPaymentsResellerSubscriptionV1Amount {
+  /// Amount in micros (1_000_000 micros = 1 currency unit)
+  ///
+  /// Required.
+  core.String? amountMicros;
+
+  /// Currency codes in accordance with \[ISO-4217 Currency
+  /// Codes\](https://en.wikipedia.org/wiki/ISO_4217).
+  ///
+  /// For example, USD.
+  ///
+  /// Required.
+  core.String? currencyCode;
+
+  GoogleCloudPaymentsResellerSubscriptionV1Amount({
+    this.amountMicros,
+    this.currencyCode,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(core.Map json_)
+      : this(
+          amountMicros: json_.containsKey('amountMicros')
+              ? json_['amountMicros'] as core.String
+              : null,
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amountMicros != null) 'amountMicros': amountMicros!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+      };
+}
+
 class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// If true, the subscription will be cancelled immediately.
   ///
@@ -1082,11 +1118,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1Location {
 class GoogleCloudPaymentsResellerSubscriptionV1Product {
   /// Response only.
   ///
-  /// Resource name of the subscription. It will have the format of
+  /// Resource name of the product. It will have the format of
   /// "partners/{partner_id}/products/{product_id}"
   ///
   /// Output only.
   core.String? name;
+
+  /// Price configs for the product in the available regions.
+  ///
+  /// Output only.
+  core.List<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>?
+      priceConfigs;
 
   /// 2-letter ISO region code where the product is available in.
   ///
@@ -1108,6 +1150,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
 
   GoogleCloudPaymentsResellerSubscriptionV1Product({
     this.name,
+    this.priceConfigs,
     this.regionCodes,
     this.subscriptionBillingCycleDuration,
     this.titles,
@@ -1116,6 +1159,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(core.Map json_)
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          priceConfigs: json_.containsKey('priceConfigs')
+              ? (json_['priceConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           regionCodes: json_.containsKey('regionCodes')
               ? (json_['regionCodes'] as core.List)
                   .map((value) => value as core.String)
@@ -1137,10 +1188,48 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (priceConfigs != null) 'priceConfigs': priceConfigs!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (subscriptionBillingCycleDuration != null)
           'subscriptionBillingCycleDuration': subscriptionBillingCycleDuration!,
         if (titles != null) 'titles': titles!,
+      };
+}
+
+/// Configs the prices in an available region.
+class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig {
+  /// The price in the region.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1Amount? amount;
+
+  /// 2-letter ISO region code where the product is available in.
+  ///
+  /// Ex. "US".
+  ///
+  /// Output only.
+  core.String? regionCode;
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig({
+    this.amount,
+    this.regionCode,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig.fromJson(
+      core.Map json_)
+      : this(
+          amount: json_.containsKey('amount')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (regionCode != null) 'regionCode': regionCode!,
       };
 }
 
@@ -1310,24 +1399,51 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
 
 /// The duration of an introductory pricing promotion.
 class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
+  /// The discount amount.
+  ///
+  /// The value is positive.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1Amount? discountAmount;
+
+  /// The discount percentage in micros.
+  ///
+  /// For example, 50,000 represents 5%.
+  ///
+  /// Output only.
+  core.String? discountRatioMicros;
+
   /// The duration of an introductory offer in billing cycles.
   ///
   /// Output only.
   core.int? recurrenceCount;
 
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec({
+    this.discountAmount,
+    this.discountRatioMicros,
     this.recurrenceCount,
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
       core.Map json_)
       : this(
+          discountAmount: json_.containsKey('discountAmount')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
+                  json_['discountAmount']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          discountRatioMicros: json_.containsKey('discountRatioMicros')
+              ? json_['discountRatioMicros'] as core.String
+              : null,
           recurrenceCount: json_.containsKey('recurrenceCount')
               ? json_['recurrenceCount'] as core.int
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (discountAmount != null) 'discountAmount': discountAmount!,
+        if (discountRatioMicros != null)
+          'discountRatioMicros': discountRatioMicros!,
         if (recurrenceCount != null) 'recurrenceCount': recurrenceCount!,
       };
 }

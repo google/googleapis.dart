@@ -752,9 +752,9 @@ class AccountsCreativesResource {
   /// all creatives the current user has access to.
   ///
   /// [pageSize] - Requested page size. The server may return fewer creatives
-  /// than requested (due to timeout constraint) even if more are available via
-  /// another call. If unspecified, server will pick an appropriate default.
-  /// Acceptable values are 1 to 1000, inclusive.
+  /// than requested (due to timeout constraint) even if more are available
+  /// through another call. If unspecified, server will pick an appropriate
+  /// default. Acceptable values are 1 to 1000, inclusive.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
@@ -1203,8 +1203,8 @@ class AccountsFinalizedProposalsResource {
   /// This method will set the
   /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all
   /// listed deals in the request. Currently, this method only applies to PG and
-  /// PD deals. For PA deals, please call accounts.proposals.pause endpoint. It
-  /// is a no-op to pause already-paused deals. It is an error to call
+  /// PD deals. For PA deals, call accounts.proposals.pause endpoint. It is a
+  /// no-op to pause already-paused deals. It is an error to call
   /// PauseProposalDeals for deals which are not part of the proposal of
   /// proposal_id or which are not finalized or renegotiating.
   ///
@@ -1257,11 +1257,10 @@ class AccountsFinalizedProposalsResource {
   /// This method will set the
   /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for
   /// all listed deals in the request. Currently, this method only applies to PG
-  /// and PD deals. For PA deals, please call accounts.proposals.resume
-  /// endpoint. It is a no-op to resume running deals or deals paused by the
-  /// other party. It is an error to call ResumeProposalDeals for deals which
-  /// are not part of the proposal of proposal_id or which are not finalized or
-  /// renegotiating.
+  /// and PD deals. For PA deals, call accounts.proposals.resume endpoint. It is
+  /// a no-op to resume running deals or deals paused by the other party. It is
+  /// an error to call ResumeProposalDeals for deals which are not part of the
+  /// proposal of proposal_id or which are not finalized or renegotiating.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3885,7 +3884,7 @@ class AdSize {
   /// - "PIXEL" : Ad slot with size specified by height and width in pixels.
   /// - "INTERSTITIAL" : Special size to describe an interstitial ad slot.
   /// - "NATIVE" : Native (mobile) ads rendered by the publisher.
-  /// - "FLUID" : Fluid size (i.e., responsive size) can be resized
+  /// - "FLUID" : Fluid size (for example, responsive size) can be resized
   /// automatically with the change of outside environment.
   core.String? sizeType;
 
@@ -4436,7 +4435,7 @@ class Client {
 /// the Marketplace and certain other sections of the Authorized Buyers UI based
 /// on the role granted to the associated client buyer.
 ///
-/// The only way a new client user can be created is via accepting an email
+/// The only way a new client user can be created is through accepting an email
 /// invitation (see the accounts.clients.invitations.create method). All fields
 /// are required unless otherwise specified.
 class ClientUser {
@@ -4660,7 +4659,7 @@ class Creative {
   /// The agency ID for this creative.
   core.String? agencyId;
 
-  /// The last update timestamp of the creative via API.
+  /// The last update timestamp of the creative through the API.
   ///
   /// Output only.
   core.String? apiUpdateTime;
@@ -4781,8 +4780,8 @@ class Creative {
   /// The granular status of this ad in specific contexts.
   ///
   /// A context here relates to where something ultimately serves (for example,
-  /// a physical location, a platform, an HTTPS vs HTTP request, or the type of
-  /// auction).
+  /// a physical location, a platform, an HTTPS versus HTTP request, or the type
+  /// of auction).
   ///
   /// Output only.
   core.List<ServingRestriction>? servingRestrictions;
@@ -5424,8 +5423,8 @@ class Deal {
   ///
   /// This will generally be stored in the granularity of one second since deal
   /// serving starts at seconds boundary. Any time specified with more
-  /// granularity (e.g., in milliseconds) will be truncated towards the start of
-  /// time in seconds.
+  /// granularity (for example, in milliseconds) will be truncated towards the
+  /// start of time in seconds.
   ///
   /// Optional.
   core.String? availableStartTime;
@@ -5466,8 +5465,8 @@ class Deal {
   /// each creative before it can serve.
   core.String? creativePreApprovalPolicy;
 
-  /// Restricitions about the creatives associated with the deal (i.e., size)
-  /// This is available for Programmatic Guaranteed/Preferred Deals in Ad
+  /// Restricitions about the creatives associated with the deal (for example,
+  /// size) This is available for Programmatic Guaranteed/Preferred Deals in Ad
   /// Manager.
   ///
   /// Output only.
@@ -5823,8 +5822,8 @@ class DealServingMetadata {
 
 /// The deal terms specify the details of a Product/deal.
 ///
-/// They specify things like price per buyer, the type of pricing model (e.g.,
-/// fixed price, auction) and expected impressions from the publisher.
+/// They specify things like price per buyer, the type of pricing model (for
+/// example, fixed price, auction) and expected impressions from the publisher.
 class DealTerms {
   /// Visibility of the URL in bid requests.
   ///
@@ -6192,8 +6191,9 @@ typedef Empty = $Empty;
 ///
 /// Within a filter set, an AND operation is performed across the filters
 /// represented by each field. An OR operation is performed across the filters
-/// represented by the multiple values of a repeated field, e.g., "format=VIDEO
-/// AND deal_id=12 AND (seller_network_id=34 OR seller_network_id=56)".
+/// represented by the multiple values of a repeated field, for example,
+/// "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR
+/// seller_network_id=56)".
 class FilterSet {
   /// An absolute date range, defined by a start date and an end date.
   ///
@@ -6210,14 +6210,14 @@ class FilterSet {
   /// The ID of the creative on which to filter; optional.
   ///
   /// This field may be set only for a filter set that accesses account-level
-  /// troubleshooting data, i.e., one whose name matches the `bidders / *
+  /// troubleshooting data, for example, one whose name matches the `bidders / *
   /// /accounts / * /filterSets / * ` pattern.
   core.String? creativeId;
 
   /// The ID of the deal on which to filter; optional.
   ///
   /// This field may be set only for a filter set that accesses account-level
-  /// troubleshooting data, i.e., one whose name matches the `bidders / *
+  /// troubleshooting data, for example, one whose name matches the `bidders / *
   /// /accounts / * /filterSets / * ` pattern.
   core.String? dealId;
 
@@ -6233,11 +6233,11 @@ class FilterSet {
   /// Possible string values are:
   /// - "FORMAT_UNSPECIFIED" : A placeholder for an undefined format; indicates
   /// that no format filter will be applied.
-  /// - "NATIVE_DISPLAY" : The ad impression is a native ad, and display (i.e.,
-  /// image) format.
+  /// - "NATIVE_DISPLAY" : The ad impression is a native ad, and display (for
+  /// example, image) format.
   /// - "NATIVE_VIDEO" : The ad impression is a native ad, and video format.
   /// - "NON_NATIVE_DISPLAY" : The ad impression is not a native ad, and display
-  /// (i.e., image) format.
+  /// (for example, image) format.
   /// - "NON_NATIVE_VIDEO" : The ad impression is not a native ad, and video
   /// format.
   core.String? format;
@@ -6260,8 +6260,8 @@ class FilterSet {
 
   /// The list of platforms on which to filter; may be empty.
   ///
-  /// The filters represented by multiple platforms are ORed together (i.e., if
-  /// non-empty, results must match any one of the platforms).
+  /// The filters represented by multiple platforms are ORed together (for
+  /// example, if non-empty, results must match any one of the platforms).
   core.List<core.String>? platforms;
 
   /// For Open Bidding partners only.
@@ -6283,13 +6283,13 @@ class FilterSet {
   ///
   /// The list of IDs of the seller (publisher) networks on which to filter; may
   /// be empty. The filters represented by multiple seller network IDs are ORed
-  /// together (i.e., if non-empty, results must match any one of the publisher
-  /// networks). See
+  /// together (for example, if non-empty, results must match any one of the
+  /// publisher networks). See
   /// \[seller-network-ids\](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)
   /// file for the set of existing seller network IDs.
   core.List<core.int>? sellerNetworkIds;
 
-  /// The granularity of time intervals if a time series breakdown is desired;
+  /// The granularity of time intervals if a time series breakdown is preferred;
   /// optional.
   /// Possible string values are:
   /// - "TIME_SERIES_GRANULARITY_UNSPECIFIED" : A placeholder for an unspecified
@@ -6435,8 +6435,8 @@ class FilteredBidCreativeRow {
 }
 
 /// The number of filtered bids with the specified dimension values, among those
-/// filtered due to the requested filtering reason (i.e. creative status), that
-/// have the specified detail.
+/// filtered due to the requested filtering reason (for example, creative
+/// status), that have the specified detail.
 class FilteredBidDetailRow {
   /// The number of bids with the specified detail.
   MetricValue? bidCount;
@@ -7352,7 +7352,7 @@ class ListFilteredBidRequestsResponse {
 /// auction.
 class ListFilteredBidsResponse {
   /// List of rows, with counts of filtered bids aggregated by filtering reason
-  /// (i.e. creative status).
+  /// (for example, creative status).
   core.List<CreativeStatusRow>? creativeStatusRows;
 
   /// A token to retrieve the next page of results.
@@ -7427,8 +7427,8 @@ class ListImpressionMetricsResponse {
 
 /// Response message for listing all reasons that bids lost in the auction.
 class ListLosingBidsResponse {
-  /// List of rows, with counts of losing bids aggregated by loss reason (i.e.
-  /// creative status).
+  /// List of rows, with counts of losing bids aggregated by loss reason (for
+  /// example, creative status).
   core.List<CreativeStatusRow>? creativeStatusRows;
 
   /// A token to retrieve the next page of results.
@@ -7604,7 +7604,7 @@ class ListPublisherProfilesResponse {
 class LocationContext {
   /// IDs representing the geo location for this context.
   ///
-  /// Please refer to the
+  /// Refer to the
   /// \[geo-table.csv\](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)
   /// file for different geo criteria IDs.
   core.List<core.int>? geoCriteriaIds;
@@ -7640,10 +7640,11 @@ class MarketplaceTargeting {
   /// Inventory sizes to be included/excluded.
   InventorySizeTargeting? inventorySizeTargeting;
 
-  /// Placement targeting information, e.g., URL, mobile applications.
+  /// Placement targeting information, for example, URL, mobile applications.
   PlacementTargeting? placementTargeting;
 
-  /// Technology targeting information, e.g., operating system, device category.
+  /// Technology targeting information, for example, operating system, device
+  /// category.
   TechnologyTargeting? technologyTargeting;
 
   /// Video targeting information.
@@ -7694,18 +7695,19 @@ class MarketplaceTargeting {
 }
 
 /// A metric value, with an expected value and a variance; represents a count
-/// that may be either exact or estimated (i.e. when sampled).
+/// that may be either exact or estimated (for example, when sampled).
 class MetricValue {
   /// The expected value of the metric.
   core.String? value;
 
-  /// The variance (i.e. square of the standard deviation) of the metric value.
+  /// The variance (for example, square of the standard deviation) of the metric
+  /// value.
   ///
   /// If value is exact, variance is 0. Can be used to calculate margin of error
   /// as a percentage of value, using the following formula, where Z is the
-  /// standard constant that depends on the desired size of the confidence
-  /// interval (e.g. for 90% confidence interval, use Z = 1.645): marginOfError
-  /// = 100 * Z * sqrt(variance) / value
+  /// standard constant that depends on the preferred size of the confidence
+  /// interval (for example, for 90% confidence interval, use Z = 1.645):
+  /// marginOfError = 100 * Z * sqrt(variance) / value
   core.String? variance;
 
   MetricValue({
@@ -8153,8 +8155,8 @@ class PauseProposalRequest {
       };
 }
 
-/// Represents targeting about where the ads can appear, e.g., certain sites or
-/// mobile applications.
+/// Represents targeting about where the ads can appear, for example, certain
+/// sites or mobile applications.
 ///
 /// Different placement targeting types will be logically OR'ed.
 class PlacementTargeting {
@@ -8332,7 +8334,7 @@ class PrivateData {
       };
 }
 
-/// A product is a segment of inventory that a seller wishes to sell.
+/// A product is a segment of inventory that a seller wants to sell.
 ///
 /// It is associated with certain terms and targeting information which helps
 /// the buyer know more about the inventory.
@@ -9026,18 +9028,18 @@ class RealtimeTimeRange {
 
 /// A relative date range, specified by an offset and a duration.
 ///
-/// The supported range of dates begins 30 days before today and ends today,
-/// i.e., the limits for these values are: offset_days \>= 0 duration_days \>= 1
-/// offset_days + duration_days \<= 30
+/// The supported range of dates begins 30 days before today and ends today, for
+/// example, the limits for these values are: offset_days \>= 0 duration_days
+/// \>= 1 offset_days + duration_days \<= 30
 class RelativeDateRange {
-  /// The number of days in the requested date range, e.g., for a range spanning
-  /// today: 1.
+  /// The number of days in the requested date range, for example, for a range
+  /// spanning today: 1.
   ///
   /// For a range spanning the last 7 days: 7.
   core.int? durationDays;
 
   /// The end date of the filter set, specified as the number of days before
-  /// today, e.g., for a range where the last date is today: 0.
+  /// today, for example, for a range where the last date is today: 0.
   core.int? offsetDays;
 
   RelativeDateRange({
@@ -9279,8 +9281,8 @@ class ServingContext {
 /// A representation of the status of an ad in a specific context.
 ///
 /// A context here relates to where something ultimately serves (for example, a
-/// user or publisher geo, a platform, an HTTPS vs HTTP request, or the type of
-/// auction).
+/// user or publisher geo, a platform, an HTTPS versus HTTP request, or the type
+/// of auction).
 ///
 /// Output only.
 class ServingRestriction {
@@ -9296,8 +9298,7 @@ class ServingRestriction {
   /// Any disapprovals bound to this restriction.
   ///
   /// Only present if status=DISAPPROVED. Can be used to filter the response of
-  /// the creatives.list method. Deprecated; please use disapproval field
-  /// instead.
+  /// the creatives.list method. Deprecated; use disapproval field instead.
   core.List<Disapproval>? disapprovalReasons;
 
   /// The status of the creative in this context (for example, it has been
@@ -9616,7 +9617,7 @@ class TimeOfDay {
       };
 }
 
-/// Represents a list of targeted and excluded URLs (e.g., google.com).
+/// Represents a list of targeted and excluded URLs (for example, google.com).
 ///
 /// For Private Auction and AdX Preferred Deals, URLs are either included or
 /// excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't

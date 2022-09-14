@@ -1889,6 +1889,7 @@ api.GoogleCloudDocumentaiV1DocumentStyle
   if (buildCounterGoogleCloudDocumentaiV1DocumentStyle < 3) {
     o.backgroundColor = buildGoogleTypeColor();
     o.color = buildGoogleTypeColor();
+    o.fontFamily = 'foo';
     o.fontSize = buildGoogleCloudDocumentaiV1DocumentStyleFontSize();
     o.fontWeight = 'foo';
     o.textAnchor = buildGoogleCloudDocumentaiV1DocumentTextAnchor();
@@ -1905,6 +1906,10 @@ void checkGoogleCloudDocumentaiV1DocumentStyle(
   if (buildCounterGoogleCloudDocumentaiV1DocumentStyle < 3) {
     checkGoogleTypeColor(o.backgroundColor!);
     checkGoogleTypeColor(o.color!);
+    unittest.expect(
+      o.fontFamily!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDocumentaiV1DocumentStyleFontSize(o.fontSize!);
     unittest.expect(
       o.fontWeight!,

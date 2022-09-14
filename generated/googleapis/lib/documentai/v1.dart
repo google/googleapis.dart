@@ -3884,6 +3884,11 @@ class GoogleCloudDocumentaiV1DocumentStyle {
   /// Text color.
   GoogleTypeColor? color;
 
+  /// Font family such as "Arial", "Times New Roman".
+  ///
+  /// https://www.w3schools.com/cssref/pr_font_font-family.asp
+  core.String? fontFamily;
+
   /// Font size.
   GoogleCloudDocumentaiV1DocumentStyleFontSize? fontSize;
 
@@ -3911,6 +3916,7 @@ class GoogleCloudDocumentaiV1DocumentStyle {
   GoogleCloudDocumentaiV1DocumentStyle({
     this.backgroundColor,
     this.color,
+    this.fontFamily,
     this.fontSize,
     this.fontWeight,
     this.textAnchor,
@@ -3927,6 +3933,9 @@ class GoogleCloudDocumentaiV1DocumentStyle {
           color: json_.containsKey('color')
               ? GoogleTypeColor.fromJson(
                   json_['color'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fontFamily: json_.containsKey('fontFamily')
+              ? json_['fontFamily'] as core.String
               : null,
           fontSize: json_.containsKey('fontSize')
               ? GoogleCloudDocumentaiV1DocumentStyleFontSize.fromJson(
@@ -3950,6 +3959,7 @@ class GoogleCloudDocumentaiV1DocumentStyle {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (color != null) 'color': color!,
+        if (fontFamily != null) 'fontFamily': fontFamily!,
         if (fontSize != null) 'fontSize': fontSize!,
         if (fontWeight != null) 'fontWeight': fontWeight!,
         if (textAnchor != null) 'textAnchor': textAnchor!,

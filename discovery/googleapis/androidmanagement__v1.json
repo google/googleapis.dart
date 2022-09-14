@@ -1063,7 +1063,7 @@
             }
         }
     },
-    "revision": "20220829",
+    "revision": "20220913",
     "rootUrl": "https://androidmanagement.googleapis.com/",
     "schemas": {
         "AdbShellCommandEvent": {

@@ -1645,6 +1645,9 @@ class Node {
   /// If None is specified, the default compute service account will be used.
   ServiceAccount? serviceAccount;
 
+  /// Shielded Instance options.
+  ShieldedInstanceConfig? shieldedInstanceConfig;
+
   /// The current state for the TPU Node.
   ///
   /// Output only.
@@ -1697,6 +1700,7 @@ class Node {
     this.runtimeVersion,
     this.schedulingConfig,
     this.serviceAccount,
+    this.shieldedInstanceConfig,
     this.state,
     this.symptoms,
     this.tags,
@@ -1770,6 +1774,10 @@ class Node {
               ? ServiceAccount.fromJson(json_['serviceAccount']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
+              ? ShieldedInstanceConfig.fromJson(json_['shieldedInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           symptoms: json_.containsKey('symptoms')
@@ -1803,6 +1811,8 @@ class Node {
         if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (schedulingConfig != null) 'schedulingConfig': schedulingConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (shieldedInstanceConfig != null)
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (state != null) 'state': state!,
         if (symptoms != null) 'symptoms': symptoms!,
         if (tags != null) 'tags': tags!,
@@ -1992,6 +2002,27 @@ class ServiceIdentity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
+      };
+}
+
+/// A set of Shielded Instance options.
+class ShieldedInstanceConfig {
+  /// Defines whether the instance has Secure Boot enabled.
+  core.bool? enableSecureBoot;
+
+  ShieldedInstanceConfig({
+    this.enableSecureBoot,
+  });
+
+  ShieldedInstanceConfig.fromJson(core.Map json_)
+      : this(
+          enableSecureBoot: json_.containsKey('enableSecureBoot')
+              ? json_['enableSecureBoot'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
       };
 }
 

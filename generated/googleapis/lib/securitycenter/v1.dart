@@ -6293,6 +6293,12 @@ class Finding {
   /// "organizations/{organization_id}/sources/{source_id}"
   core.String? parent;
 
+  /// The human readable display name of the finding source such as "Event
+  /// Threat Detection" or "Security Health Analytics"
+  ///
+  /// Output only.
+  core.String? parentDisplayName;
+
   /// Represents operating system processes associated with the Finding.
   core.List<Process>? processes;
 
@@ -6408,6 +6414,7 @@ class Finding {
     this.name,
     this.nextSteps,
     this.parent,
+    this.parentDisplayName,
     this.processes,
     this.resourceName,
     this.securityMarks,
@@ -6522,6 +6529,9 @@ class Finding {
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
               : null,
+          parentDisplayName: json_.containsKey('parentDisplayName')
+              ? json_['parentDisplayName'] as core.String
+              : null,
           processes: json_.containsKey('processes')
               ? (json_['processes'] as core.List)
                   .map((value) => Process.fromJson(
@@ -6575,6 +6585,7 @@ class Finding {
         if (name != null) 'name': name!,
         if (nextSteps != null) 'nextSteps': nextSteps!,
         if (parent != null) 'parent': parent!,
+        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
         if (processes != null) 'processes': processes!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (securityMarks != null) 'securityMarks': securityMarks!,
