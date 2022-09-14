@@ -14,6 +14,7 @@ import 'src/oauth2_flows/implicit.dart';
 import 'src/service_account_credentials.dart';
 
 export 'googleapis_auth.dart';
+export 'src/authentication_exception.dart' show AuthenticationException;
 
 /// Will create and complete with a [BrowserOAuth2Flow] object.
 ///

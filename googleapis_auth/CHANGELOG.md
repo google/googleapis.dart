@@ -1,7 +1,12 @@
-## 1.3.2-dev
+## 1.4.0-dev
 
 - Update `README` to include a warning about Flutter application usage.
 - Require Dart 2.17 or later.
+
+#### `auth_browser.dart` library
+
+- Add `AuthenticationException` and use it instead of `Exception` or
+  `StateError` in many cases where authentication can fail.
 
 ## 1.3.1
 
