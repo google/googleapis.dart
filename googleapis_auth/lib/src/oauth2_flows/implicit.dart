@@ -8,15 +8,13 @@ import 'dart:js' as js;
 
 import '../access_credentials.dart';
 import '../access_token.dart';
+import '../authentication_exception.dart';
+import '../browser_utils.dart';
 import '../exceptions.dart';
 import '../response_type.dart';
 
 // This will be overridden by tests.
 String gapiUrl = 'https://apis.google.com/js/client.js';
-
-// According to the CSP3 spec a nonce must be a valid base64 string.
-// https://w3c.github.io/webappsec-csp/#grammardef-base64-value
-final _noncePattern = RegExp('^[\\w+/_-]+[=]{0,2}\$');
 
 /// This class performs the implicit browser-based oauth2 flow.
 ///
@@ -38,61 +36,18 @@ final _noncePattern = RegExp('^[\\w+/_-]+[=]{0,2}\$');
 ///      => Completes with a tuple [AccessCredentials cred, String authCode]
 ///         or an Exception.
 class ImplicitFlow {
-  static const callbackTimeout = Duration(seconds: 20);
-
   final String _clientId;
   final List<String> _scopes;
   final bool _enableDebugLogs;
-
-  /// The pending result of an earlier call to [initialize], if any.
-  ///
-  /// There can be multiple [ImplicitFlow] objects in an application,
-  /// but the gapi JS library should only ever be loaded once. If
-  /// it's called again while a previous initialization is still pending,
-  /// this will be returned.
-  static Future<void>? _pendingInitialization;
 
   ImplicitFlow(this._clientId, this._scopes, this._enableDebugLogs);
 
   /// Readies the flow for calls to [login] by loading the 'gapi'
   /// JavaScript library, or returning the [Future] of a pending
   /// initialization if any object has called this method already.
-  Future<void> initialize() {
-    if (_pendingInitialization != null) {
-      return _pendingInitialization!;
-    }
-
-    final completer = Completer();
-
-    final timeout = Timer(callbackTimeout, () {
-      _pendingInitialization = null;
-      completer.completeError(
-        Exception(
-          'Timed out while waiting for the gapi.auth library to load.',
-        ),
-      );
-    });
-
-    js.context['dartGapiLoaded'] = () {
-      if (_enableDebugLogs) _gapiAuth2.callMethod('enableDebugLogs', [true]);
-      timeout.cancel();
-      completer.complete();
-    };
-
-    final script = _createScript();
-    script.src = '$gapiUrl?onload=dartGapiLoaded';
-    script.onError.first.then((errorEvent) {
-      timeout.cancel();
-      _pendingInitialization = null;
-      if (!completer.isCompleted) {
-        // script loading errors can still happen after timeouts
-        completer.completeError(StateError('Failed to load gapi library.'));
-      }
-    });
-    html.document.body!.append(script);
-
-    _pendingInitialization = completer.future;
-    return completer.future;
+  Future<void> initialize() async {
+    await initializeScript(gapiUrl, onloadParam: 'onload');
+    if (_enableDebugLogs) _gapiAuth2.callMethod('enableDebugLogs', [true]);
   }
 
   Future<LoginResult> loginHybrid({
@@ -184,7 +139,7 @@ class ImplicitFlow {
     final token = jsTokenObject['access_token'] as String?;
 
     if (token == null || tokenType != 'Bearer') {
-      throw Exception(
+      throw AuthenticationException(
         'Failed to obtain user consent. Invalid server response.',
       );
     }
@@ -193,7 +148,7 @@ class ImplicitFlow {
 
     if (responseTypes?.contains(ResponseType.idToken) == true &&
         idToken?.isNotEmpty != true) {
-      throw Exception('Expected to get id_token, but did not.');
+      throw AuthenticationException('Expected to get id_token, but did not.');
     }
 
     List<String>? scopes;
@@ -219,7 +174,7 @@ class ImplicitFlow {
       code = jsTokenObject['code'] as String?;
 
       if (code == null) {
-        throw Exception(
+        throw AuthenticationException(
           'Expected to get auth code from server in hybrid flow, but did not.',
         );
       }
@@ -247,30 +202,6 @@ String _responseTypeToString(ResponseType responseType) {
     case ResponseType.token:
       return 'token';
   }
-}
-
-/// Creates a script that will run properly when strict CSP is enforced.
-///
-/// More specifically, the script has the correct `nonce` value set.
-final html.ScriptElement Function() _createScript = (() {
-  final nonce = _getNonce();
-  if (nonce == null) return html.ScriptElement.new;
-
-  return () => html.ScriptElement()..nonce = nonce;
-})();
-
-/// Returns CSP nonce, if set for any script tag.
-String? _getNonce({html.Window? window}) {
-  final currentWindow = window ?? html.window;
-  final elements = currentWindow.document.querySelectorAll('script');
-  for (final element in elements) {
-    final nonceValue =
-        (element as html.HtmlElement).nonce ?? element.attributes['nonce'];
-    if (nonceValue != null && _noncePattern.hasMatch(nonceValue)) {
-      return nonceValue;
-    }
-  }
-  return null;
 }
 
 js.JsObject get _gapiAuth2 =>
