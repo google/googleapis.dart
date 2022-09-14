@@ -5,8 +5,11 @@
 
 #### `auth_browser.dart` library
 
-- Add `AuthenticationException` and use it instead of `Exception` or
+- Added `AuthenticationException` and use it instead of `Exception` or
   `StateError` in many cases where authentication can fail.
+- Added `requestAccessCredentials`, `requestAuthorizationCode`, `revokeConsent`,
+  and `CodeResponse` to support the new
+  [Google Identity Services](https://developers.google.com/identity/oauth2/web/guides/overview).
 
 ## 1.3.1
 
