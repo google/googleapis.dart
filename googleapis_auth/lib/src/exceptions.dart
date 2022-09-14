@@ -16,7 +16,7 @@ class AccessDeniedException implements Exception {
   String toString() => message;
 }
 
-/// Thrown if user did not give his consent.
+/// Thrown if user did not give their consent.
 class UserConsentException implements Exception {
   final String message;
 
