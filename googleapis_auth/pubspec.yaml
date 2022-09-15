@@ -11,6 +11,7 @@ dependencies:
   crypto: ^3.0.0
   http: ^0.13.0
   http_parser: ^4.0.0
+  js: ^0.6.4
 
 dev_dependencies:
   # build_ dependencies allow debugging web tests using:
