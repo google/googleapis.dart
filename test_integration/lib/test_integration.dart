@@ -8,7 +8,7 @@ import 'dart:io';
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart';
 import 'package:googleapis_auth/auth_io.dart';
-import 'package:http/io_client.dart';
+import 'package:http/http.dart';
 import 'package:yaml/yaml.dart';
 
 import 'shared.dart';
@@ -40,7 +40,7 @@ Object? readConfig(String key) {
 
 Future<T> withClientFromUserCredentials<T>(
     List<String> scopes, Future<T> Function(AuthClient) action) async {
-  final client = IOClient();
+  final client = Client();
 
   final credentials = await _credentials(client, scopes);
 
@@ -75,7 +75,7 @@ ClientId openClientId() => ClientId.fromJson(
     );
 
 Future<AccessCredentials> _credentials(
-  IOClient client,
+  Client client,
   List<String> scopes,
 ) async {
   final clientId = openClientId();
