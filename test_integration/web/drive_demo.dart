@@ -7,59 +7,73 @@ import 'dart:typed_data';
 
 import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:googleapis_auth/auth_browser.dart';
+import 'package:http/browser_client.dart';
 
 import 'web_shared.dart';
-
-late final BrowserOAuth2Flow _flow;
 
 final _textArea = querySelector('textarea') as TextAreaElement;
 
 final _loginButton = querySelector('#login') as ButtonElement;
-final _uploadButton = querySelector('#upload') as FileUploadInputElement;
+final _uploadInput = querySelector('#upload') as FileUploadInputElement;
 
-AutoRefreshingAuthClient? _client;
+AccessCredentials? _credentials;
 
 Future<void> main() async {
-  _flow = await createImplicitBrowserFlow(
-    clientId(),
-    [drive.DriveApi.driveFileScope],
-  );
-
   _loginButton.onClick.listen((_) => _login());
-  _uploadButton.onInput.listen((_) => _upload());
+  _uploadInput.onInput.listen((_) => _upload());
 }
 
 Future<void> _login() async {
-  _client = await _flow.clientViaUserConsent();
+  try {
+    _credentials = await requestAccessCredentials(
+      clientId: clientId().identifier,
+      prompt: 'consent',
+      scopes: [drive.DriveApi.driveFileScope],
+      // ignore: deprecated_member_use
+      logLevel: 'debug',
+    );
+  } on AuthenticationException catch (e) {
+    _log(e.error);
+    return;
+  }
 
-  _loginButton.disabled = _client != null;
-  _uploadButton.disabled = _client == null;
+  _loginButton.disabled = _credentials != null;
+  _uploadInput.disabled = _credentials == null;
 
   _log([
     'logged in!',
-    jsonEncode(_client!.credentials),
+    jsonEncode(_credentials),
   ].join('\n'));
 }
 
 Future<void> _upload() async {
-  final files = _uploadButton.files;
+  final files = _uploadInput.files;
 
   if (files == null) {
     _log('no file!');
     return;
   }
 
-  final api = drive.DriveApi(_client!).files;
-  final options = drive.UploadOptions.resumable;
-  final file = files.single;
+  final baseClient = BrowserClient();
+  final client = authenticatedClient(baseClient, _credentials!);
 
-  final newFile = await api.create(
-    drive.File(name: 'Google APIs test file on ${DateTime.now()}'),
-    uploadMedia: drive.Media(file.read(options.chunkSize), file.size),
-    uploadOptions: options,
-  );
+  try {
+    final api = drive.DriveApi(client).files;
+    final options = drive.UploadOptions.resumable;
+    final file = files.single;
 
-  _log(jsonEncode(newFile));
+    _log('starting upload');
+
+    final newFile = await api.create(
+      drive.File(name: 'Google APIs test file on ${DateTime.now()}'),
+      uploadMedia: drive.Media(file.read(options.chunkSize), file.size),
+      uploadOptions: options,
+    );
+
+    _log(jsonEncode(newFile));
+  } finally {
+    baseClient.close();
+  }
 }
 
 void _log(Object value) {
@@ -82,7 +96,10 @@ extension on File {
       final bytes = reader.result as Uint8List;
       loaded += bytes.length;
       yield bytes;
-      print('Finished $loaded of $size - ${loaded / size}');
+      _log(
+        'Finished $loaded of $size - '
+        '${(100 * loaded / size).toStringAsFixed(2)}%',
+      );
     }
   }
 }

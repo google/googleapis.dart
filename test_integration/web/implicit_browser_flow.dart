@@ -14,6 +14,8 @@ Future<void> main() async {
   _flow = await createImplicitBrowserFlow(
     clientId(),
     [Oauth2Api.userinfoProfileScope],
+    // ignore: deprecated_member_use
+    enableDebugLogs: true,
   );
 
   (querySelector('#hybrid_flow') as ButtonElement)
