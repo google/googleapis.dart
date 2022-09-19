@@ -19,8 +19,12 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
   final AccessCredentials credentials;
   final String? quotaProject;
 
-  AuthenticatedClient(super.client, this.credentials, {this.quotaProject})
-      : super(closeUnderlyingClient: false);
+  AuthenticatedClient(
+    super.client,
+    this.credentials, {
+    this.quotaProject,
+    super.closeUnderlyingClient = false,
+  });
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {

@@ -8,8 +8,7 @@ import 'package:http/http.dart';
 
 /// Base class for delegating HTTP clients.
 ///
-/// Depending on [closeUnderlyingClient] it will close the client it is
-/// delegating to or not.
+/// If [closeUnderlyingClient] is `true`, [close] will also close [baseClient].
 abstract class DelegatingClient extends BaseClient {
   final Client baseClient;
   final bool closeUnderlyingClient;
