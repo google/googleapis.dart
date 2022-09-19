@@ -3,6 +3,11 @@
 - Update `README` to include a warning about Flutter application usage.
 - Require Dart 2.17 or later.
 
+#### `googlapis_auth.dart`
+
+- `authenticatedClient` function: added optional `bool closeUnderlyingClient`
+  parameter.
+
 #### `auth_browser.dart` library
 
 - Added `AuthenticationException` and use it instead of `Exception` or

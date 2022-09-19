@@ -46,15 +46,24 @@ Client clientViaApiKey(
 /// [credentials].
 ///
 /// {@macro googleapis_auth_close_the_client}
+///
+/// If [closeUnderlyingClient] is `true`, [AuthClient.close] will also close
+/// [baseClient].
+///
 /// {@macro googleapis_auth_not_close_the_baseClient}
 AuthClient authenticatedClient(
   Client baseClient,
-  AccessCredentials credentials,
-) {
+  AccessCredentials credentials, {
+  bool closeUnderlyingClient = false,
+}) {
   if (credentials.accessToken.type != 'Bearer') {
     throw ArgumentError('Only Bearer access tokens are accepted.');
   }
-  return AuthenticatedClient(baseClient, credentials);
+  return AuthenticatedClient(
+    baseClient,
+    credentials,
+    closeUnderlyingClient: closeUnderlyingClient,
+  );
 }
 
 /// Creates an [AutoRefreshingAuthClient] which automatically refreshes

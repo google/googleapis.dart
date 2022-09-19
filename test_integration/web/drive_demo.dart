@@ -54,8 +54,11 @@ Future<void> _upload() async {
     return;
   }
 
-  final baseClient = BrowserClient();
-  final client = authenticatedClient(baseClient, _credentials!);
+  final client = authenticatedClient(
+    BrowserClient(),
+    _credentials!,
+    closeUnderlyingClient: true,
+  );
 
   try {
     final api = drive.DriveApi(client).files;
@@ -72,7 +75,7 @@ Future<void> _upload() async {
 
     _log(jsonEncode(newFile));
   } finally {
-    baseClient.close();
+    client.close();
   }
 }
 
