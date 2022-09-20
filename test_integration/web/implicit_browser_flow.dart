@@ -8,8 +8,6 @@ import 'web_shared.dart';
 
 late final BrowserOAuth2Flow _flow;
 
-final _textArea = querySelector('textarea') as TextAreaElement;
-
 Future<void> main() async {
   _flow = await createImplicitBrowserFlow(
     clientId(),
@@ -28,7 +26,7 @@ Future<void> main() async {
 Future<void> _hybridFlow() async {
   final creds = await _flow.runHybridFlow();
 
-  _log([
+  logToTextArea([
     'cred json',
     prettyJsonEncode(creds.credentials),
     '',
@@ -46,12 +44,8 @@ Future<void> _login() async {
     ],
   );
 
-  _log([
+  logToTextArea([
     'cred json',
     prettyJsonEncode(creds),
   ].join('\n'));
-}
-
-void _log(String value) {
-  _textArea.text = value;
 }

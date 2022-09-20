@@ -11,8 +11,6 @@ import 'package:http/browser_client.dart';
 
 import 'web_shared.dart';
 
-final _textArea = querySelector('textarea') as TextAreaElement;
-
 final _loginButton = querySelector('#login') as ButtonElement;
 final _uploadInput = querySelector('#upload') as FileUploadInputElement;
 
@@ -33,14 +31,14 @@ Future<void> _login() async {
       logLevel: 'debug',
     );
   } on AuthenticationException catch (e) {
-    _log(e.error);
+    logToTextArea(e.error);
     return;
   }
 
   _loginButton.disabled = _credentials != null;
   _uploadInput.disabled = _credentials == null;
 
-  _log([
+  logToTextArea([
     'logged in!',
     jsonEncode(_credentials),
   ].join('\n'));
@@ -50,7 +48,7 @@ Future<void> _upload() async {
   final files = _uploadInput.files;
 
   if (files == null) {
-    _log('no file!');
+    logToTextArea('no file!');
     return;
   }
 
@@ -65,7 +63,7 @@ Future<void> _upload() async {
     final options = drive.UploadOptions.resumable;
     final file = files.single;
 
-    _log('starting upload');
+    logToTextArea('starting upload');
 
     final newFile = await api.create(
       drive.File(name: 'Google APIs test file on ${DateTime.now()}'),
@@ -73,14 +71,10 @@ Future<void> _upload() async {
       uploadOptions: options,
     );
 
-    _log(jsonEncode(newFile));
+    logToTextArea(jsonEncode(newFile));
   } finally {
     client.close();
   }
-}
-
-void _log(Object value) {
-  _textArea.text = '$value\n\n\n${_textArea.text!}';
 }
 
 extension on File {
@@ -99,7 +93,7 @@ extension on File {
       final bytes = reader.result as Uint8List;
       loaded += bytes.length;
       yield bytes;
-      _log(
+      logToTextArea(
         'Finished $loaded of $size - '
         '${(100 * loaded / size).toStringAsFixed(2)}%',
       );
