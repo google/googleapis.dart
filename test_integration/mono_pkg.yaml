@@ -1,13 +1,13 @@
 # See https://pub.dev/packages/mono_repo
-sdk:
-- pubspec
-- dev
-
 stages:
 - analyze_and_format:
   - group:
     - format
     - analyze: --fatal-infos .
+    sdk: dev
+  - group:
+    - analyze
+    sdk: pubspec
 # Need to wire up Google auth on CI before we can test this on...CI
 #- unittest:
 #  - test:

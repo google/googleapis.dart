@@ -8,5 +8,9 @@ stages:
   - group:
     - format
     - analyze: --fatal-infos .
+    sdk: dev
+  - group:
+    - analyze
+    sdk: pubspec
 - unittest:
   - test:

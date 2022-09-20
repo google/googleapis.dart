@@ -40,14 +40,14 @@ jobs:
       - name: mono_repo self validate
         run: dart pub global run mono_repo generate --validate
   job_002:
-    name: "analyze_and_format; Dart 2.17.0; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator, googleapis_auth, test_integration; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    name: "analyze_and_format; Dart 2.17.0; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator, googleapis_auth, test_integration; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:format-analyze"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:analyze_1"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration
             os:ubuntu-latest;pub-cache-hosted;sdk:2.17.0
@@ -65,12 +65,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test
-      - name: "_test; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps._test_pub_upgrade.conclusion == 'success'"
-        working-directory: _test
-      - name: "_test; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: _test; dart analyze
+        run: dart analyze
         if: "always() && steps._test_pub_upgrade.conclusion == 'success'"
         working-directory: _test
       - id: _test_package_pub_upgrade
@@ -78,12 +74,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: _test_package
-      - name: "_test_package; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
-        working-directory: _test_package
-      - name: "_test_package; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: _test_package; dart analyze
+        run: dart analyze
         if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
         working-directory: _test_package
       - id: discoveryapis_commons_pub_upgrade
@@ -91,12 +83,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_commons
-      - name: "discoveryapis_commons; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
-        working-directory: discoveryapis_commons
-      - name: "discoveryapis_commons; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: discoveryapis_commons; dart analyze
+        run: dart analyze
         if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_commons
       - id: discoveryapis_generator_pub_upgrade
@@ -104,12 +92,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: discoveryapis_generator
-      - name: "discoveryapis_generator; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: discoveryapis_generator
-      - name: "discoveryapis_generator; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: discoveryapis_generator; dart analyze
+        run: dart analyze
         if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_generator
       - id: generated_googleapis_pub_upgrade
@@ -117,12 +101,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis
-      - name: "generated/googleapis; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis
-      - name: "generated/googleapis; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: generated/googleapis; dart analyze
+        run: dart analyze
         if: "always() && steps.generated_googleapis_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis
       - id: generated_googleapis_beta_pub_upgrade
@@ -130,12 +110,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generated/googleapis_beta
-      - name: "generated/googleapis_beta; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
-        working-directory: generated/googleapis_beta
-      - name: "generated/googleapis_beta; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: generated/googleapis_beta; dart analyze
+        run: dart analyze
         if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis_beta
       - id: generator_pub_upgrade
@@ -143,12 +119,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: generator
-      - name: "generator; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.generator_pub_upgrade.conclusion == 'success'"
-        working-directory: generator
-      - name: "generator; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: generator; dart analyze
+        run: dart analyze
         if: "always() && steps.generator_pub_upgrade.conclusion == 'success'"
         working-directory: generator
       - id: googleapis_auth_pub_upgrade
@@ -156,12 +128,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: googleapis_auth
-      - name: "googleapis_auth; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
-        working-directory: googleapis_auth
-      - name: "googleapis_auth; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: googleapis_auth; dart analyze
+        run: dart analyze
         if: "always() && steps.googleapis_auth_pub_upgrade.conclusion == 'success'"
         working-directory: googleapis_auth
       - id: test_integration_pub_upgrade
@@ -169,12 +137,8 @@ jobs:
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
         working-directory: test_integration
-      - name: "test_integration; dart format --output=none --set-exit-if-changed ."
-        run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
-        working-directory: test_integration
-      - name: "test_integration; dart analyze --fatal-infos ."
-        run: dart analyze --fatal-infos .
+      - name: test_integration; dart analyze
+        run: dart analyze
         if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
         working-directory: test_integration
   job_003:
@@ -185,7 +149,7 @@ jobs:
         uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:format-analyze"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration;commands:format-analyze_0"
           restore-keys: |
             os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator-googleapis_auth-test_integration
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
