@@ -8,11 +8,6 @@
 - `authenticatedClient` function: added optional `bool closeUnderlyingClient`
   parameter.
 
-#### `auth_io.dart`
-
-- Handle the `source_credentials` from the credentials file to support
-  usage of impersonating service account with gcloud cli.
-
 #### `auth_browser.dart` library
 
 - Added `AuthenticationException` and use it instead of `Exception` or
@@ -20,6 +15,11 @@
 - Added `requestAccessCredentials`, `requestAuthorizationCode`, `revokeConsent`,
   and `CodeResponse` to support the new
   [Google Identity Services](https://developers.google.com/identity/oauth2/web/guides/overview).
+
+#### `auth_io.dart`
+
+- Handle the `source_credentials` from the credentials file to support
+  usage of impersonating service account with gcloud cli.
 
 ## 1.3.1
 
